@@ -4,7 +4,7 @@
 
         <div class="absolute-center left-0 right-0">
             <a href="/" class="logo">
-                <img src="<?php echo plugin_dir_url( __DIR__ ) . '/assets/images/zume-training-logo.svg' ?>" alt="Zume Logo" />
+                <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . '/assets/images/zume-training-logo.svg' ) ?>" alt="Zume Logo" />
             </a>
         </div>
 
