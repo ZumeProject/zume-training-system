@@ -13,12 +13,12 @@
 
             <?php if ( is_user_logged_in() ) : ?>
 
-                <li class="nav__item"><a href="<?php echo esc_url( wp_logout_url() ) ?>" class="nav__link"><?php esc_html_e( 'Logout', 'zume' ) ?></a></li>
+                <li class="nav__item"><a href="<?php echo esc_url( dt_login_url( 'logout' ) ) ?>" class="nav__link"><?php esc_html_e( 'Logout', 'zume' ) ?></a></li>
 
             <?php else : ?>
 
-                <li class="nav__item"><a href="/login" class="nav__link">Sign in</a></li>
-                <li class="nav__item"><a href="/login" class="nav__link nav__link--button">Sign up</a></li>
+                <li class="nav__item"><a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="nav__link"><?php echo esc_html__( 'Sign in', 'zume-training-system' ) ?></a></li>
+                <li class="nav__item"><a href="<?php echo esc_url( dt_login_url( 'register' ) ) ?>" class="nav__link nav__link--button"><?php echo esc_html__( 'Sign up', 'zume-training-system' ) ?></a></li>
 
             <?php endif; ?>
 
