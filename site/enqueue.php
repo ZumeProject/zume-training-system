@@ -2,8 +2,7 @@
 
 use Kucrut\Vite;
 
-function zume_training_magic_url_base_allowed_js() {
-    $allowed_js = [];
+function zume_training_magic_url_base_allowed_js( $allowed_js = [] ) {
     $allowed_js[] = 'jquery';
     $allowed_js[] = 'jquery-core';
     $allowed_js[] = 'jquery-migrate';
@@ -12,14 +11,15 @@ function zume_training_magic_url_base_allowed_js() {
     $allowed_js[] = 'foundation_js';
     $allowed_js[] = 'foundation_reveal_js';
     $allowed_js[] = 'vite_bundle_js';
-    return $allowed_js;
+    return array_unique( $allowed_js );
 }
-function zume_training_magic_url_base_allowed_css() {
-    $allowed_css = [];
+function zume_training_magic_url_base_allowed_css( $allowed_css = [] ) {
     $allowed_css[] = 'foundation_css';
     $allowed_css[] = 'vite_bundle_css-0'; /* Kucrut\Vite\enqueue_asset appends a number to the handle for each css file assosciated with the js bundle */
-    return $allowed_css;
+    return array_unique( $allowed_css );
 }
+add_filter( 'dt_login_allowed_css', 'zume_training_magic_url_base_allowed_css' );
+add_filter( 'dt_login_allowed_js', 'zume_training_magic_url_base_allowed_js' );
 
 function zume_training_load_scripts( $hook ) {
 
