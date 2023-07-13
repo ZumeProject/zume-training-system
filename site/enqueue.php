@@ -25,6 +25,9 @@ function zume_training_load_scripts( $hook ) {
 
     wp_enqueue_script( 'foundation_js', 'https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.5/js/foundation.min.js', array( 'jquery' ), '6.7.5' );
 
+    wp_register_style( 'foundation_css', 'https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.5/css/foundation.min.css', false, '6.7.5' );
+    wp_enqueue_style( 'foundation_css' );
+
     /**
      * Currently this enqueuer grabs the css that is compiled because it's imported in the js
      * file, hence the target file of main.js
@@ -40,6 +43,7 @@ function zume_training_load_scripts( $hook ) {
         [
             'handle' => 'vite_bundle_css',
             'css-only' => true,
+            'dependencies' => [ 'foundation_css' ],
         ]
     );
 
@@ -51,9 +55,6 @@ function zume_training_load_scripts( $hook ) {
             'in-footer' => true,
         ]
     );
-
-    wp_register_style( 'foundation_css', 'https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.5/css/foundation.min.css', false, '6.7.5' );
-    wp_enqueue_style( 'foundation_css' );
 
 }
 add_action( 'wp_enqueue_scripts', 'zume_training_load_scripts' );
