@@ -10,8 +10,18 @@
 
         <nav class="nav" id="nav">
             <ul class="nav__list nav__list--secondary">
+
+            <?php if ( is_user_logged_in() ) : ?>
+
+                <li class="nav__item"><a href="<?php echo esc_url( wp_logout_url() ) ?>" class="nav__link"><?php esc_html_e( 'Logout', 'zume' ) ?></a></li>
+
+            <?php else : ?>
+
                 <li class="nav__item"><a href="/login" class="nav__link">Sign in</a></li>
                 <li class="nav__item"><a href="/login" class="nav__link nav__link--button">Sign up</a></li>
+
+            <?php endif; ?>
+
             </ul>
         </nav>
         <button class="nav-toggle" aria-label="open navigation">
