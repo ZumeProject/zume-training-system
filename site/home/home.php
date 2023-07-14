@@ -85,6 +85,8 @@ class Zume_Training_Home extends DT_Magic_Url_Base
 
     public function body(){
         global $zume_languages;
+
+        zume_training_nav();
         ?>
 
         current language: <?php echo esc_html( get_locale() ) ?>
