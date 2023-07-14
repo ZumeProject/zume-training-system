@@ -89,14 +89,14 @@ class Zume_Training_Login extends DT_Magic_Url_Base {
 
         ?>
         <script>
-            let jsObject = [<?php echo json_encode([
+            /*let jsObject = [<?php /*echo json_encode([
                 'root' => esc_url_raw( rest_url() ),
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'parts' => $this->parts,
                 'is_logged_in' => is_user_logged_in() ? 1 : 0,
                 'logout_url' => esc_url( '/user_app/logout' ),
                 'redirect_url' => DT_Login_Fields::get( 'redirect_url' ),
-            ]) ?>][0]
+            ]) */ ?>][0] */
         </script>
         <style>
             #login_form input {
