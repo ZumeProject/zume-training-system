@@ -107,7 +107,7 @@ class Zume_Training_Login extends DT_Magic_Url_Base {
     }
 
     public function body() {
-
+/*
         if ( is_user_logged_in() ) {
             $redirect_url = DT_Login_Fields::get( 'redirect_url' );
             if ( empty( $redirect_url ) ) {
@@ -132,27 +132,8 @@ class Zume_Training_Login extends DT_Magic_Url_Base {
                 }
             }
         }
-
+*/
         ?>
-
-        <section class="page-section" data-section="login" id="section-login">
-            <div class="container">
-                <div class="row justify-content-md-center text-center">
-                    <div class="col-lg-7" id="pg_content">
-                        <h2 class="header-border-top"><?php echo esc_html__( 'Login', 'zume' ) ?></h2>
-
-                        <div id="login-ui">
-                            <?php echo do_shortcode( '[dt_firebase_login_ui]' ) ?>
-                        </div>
-                        <div id="login-ui-loader">
-                            <span class="loading-spinner active"></span>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <?php
 
     }
