@@ -72,6 +72,14 @@ class Zume_Training {
         add_action( 'dt_login_login_page_header', function() {
             zume_training_nav();
         } );
+
+        /* Ensure that Login is enabled and settings set to the correct values */
+        DT_Login_Fields::update([
+            'login_enabled' => 'on',
+            'redirect_url' => '/dashboard',
+            'login_url' => 'login',
+            'ui_smallprint' => 'off',
+        ]);
     }
     public function i18n() {
         $domain = 'zume';
