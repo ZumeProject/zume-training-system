@@ -28,6 +28,9 @@ function zume_training() {
         require_once __DIR__ . '/vendor/autoload.php';
     }
 
+    $dotenv = Dotenv\Dotenv::createImmutable( __DIR__ );
+    $dotenv->safeLoad();
+
     /*
      * Check if the Disciple.Tools theme is loaded and is the latest required version
      */
@@ -79,6 +82,11 @@ class Zume_Training {
             'redirect_url' => '/dashboard',
             'login_url' => 'login',
             'ui_smallprint' => 'off',
+            'firebase_api_key' => $_ENV['FIREBASE_API_KEY'],
+            'firebase_project_id' => $_ENV['FIREBASE_PROJECT_ID'],
+            'firebase_app_id' => $_ENV['FIREBASE_APP_ID'],
+            'identity_providers_google' => 'on',
+            'identity_providers_facebook' => 'on',
         ]);
     }
     public function i18n() {
