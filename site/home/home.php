@@ -27,12 +27,19 @@ class Zume_Training_Home extends DT_Magic_Url_Base
         $url = dt_get_url_path();
         $url_parts = explode( '/', $url );
         $codes = zume_language_codes();
-        if ( ( empty( $url ) || ( count( $url_parts ) === 1 && in_array( $url_parts[0], $codes ) ) ) && ! dt_is_rest() ) {
+
+        $lang_code = '';
+        if ( in_array( $url_parts[0], $codes ) ) {
+            $lang_code = $url_parts[0];
+            array_shift( $url_parts );
+        }
+
+        if ( empty( $url_parts[0] ) && ! dt_is_rest() ) {
 
             dt_write_log( $url_parts[0] );
 
-            if ( true ) {
-                $this->lang = $url_parts[0];
+            if ( $lang_code !== '' ) {
+                $this->lang = $lang_code;
                 add_filter('locale', function( $locale ) {
                     return $this->lang;
                 }, 100, 1);

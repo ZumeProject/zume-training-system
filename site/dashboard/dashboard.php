@@ -34,7 +34,6 @@ class Zume_Training_Dashboard extends DT_Magic_Url_Base
             array_shift( $url_parts );
         }
 
-
         if ( $url_parts[0] === 'dashboard' && ! dt_is_rest() ) {
 
             if ( $lang_code !== '' ) {
