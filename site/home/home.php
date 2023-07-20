@@ -39,7 +39,7 @@ class Zume_Training_Home extends DT_Magic_Url_Base
             dt_write_log( $url_parts[0] );
 
             if ( $lang_code !== '' ) {
-                $this->lang = $lang_code;
+                $this->lang = get_zume_language_locale( $lang_code );
                 add_filter('locale', function( $locale ) {
                     return $this->lang;
                 }, 100, 1);
