@@ -2,7 +2,7 @@
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 
-class Zume_Training_Dashboard extends DT_Magic_Url_Base
+class Zume_Training_Profile extends DT_Magic_Url_Base
 {
     use Translateable;
 
@@ -10,9 +10,9 @@ class Zume_Training_Dashboard extends DT_Magic_Url_Base
     public $parts = false;
     public $page_title = 'Zúme Training';
     public $root = 'zume_app';
-    public $type = 'dashboard';
+    public $type = 'profile';
     public $lang = 'en';
-    public static $token = 'zume_app_dashboard';
+    public static $token = 'zume_app_profile';
 
     private static $_instance = null;
     public static function instance() {
@@ -31,7 +31,7 @@ class Zume_Training_Dashboard extends DT_Magic_Url_Base
 
         $lang_code = $this->get_lang_code( $url_parts );
 
-        if ( $url_parts[0] === 'dashboard' && ! dt_is_rest() ) {
+        if ( $url_parts[0] === 'profile' && ! dt_is_rest() ) {
 
             $this->set_locale( $lang_code );
 
@@ -79,14 +79,13 @@ class Zume_Training_Dashboard extends DT_Magic_Url_Base
     }
 
     public function body(){
-        global $zume_languages;
 
         zume_training_nav();
         ?>
 
         <div class="container">
 
-            <h1 class="text-center"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></h1>
+            <h1 class="text-center"><?php echo esc_html__( 'Profile', 'zume' ) ?></h1>
 
             <p>
                 current language: <?php echo esc_html( get_locale() ) ?>
@@ -96,4 +95,5 @@ class Zume_Training_Dashboard extends DT_Magic_Url_Base
         <?php
     }
 }
-Zume_Training_Dashboard::instance();
+Zume_Training_Profile::instance();
+
