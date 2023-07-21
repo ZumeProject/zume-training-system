@@ -95,7 +95,7 @@ class Zume_Training_Pieces_URL extends DT_Magic_Url_Base
 
         echo '<h1>' . esc_html( $this->page_title ) . '</h1>';
 
-        echo "Tool Number: $tool_number";
+        echo esc_html( "Tool Number: $tool_number" );
 
         echo wp_kses_post( wpautop( $pre_video_content ) );
 
