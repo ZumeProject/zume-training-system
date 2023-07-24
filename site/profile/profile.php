@@ -57,15 +57,21 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
             add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
 
+            add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ], 999 );
         }
     }
 
     public function dt_magic_url_base_allowed_js( $allowed_js ) {
-        return zume_training_magic_url_base_allowed_js();
+        $allowed_js[] = 'zume-profile';
+        return zume_training_magic_url_base_allowed_js( $allowed_js );
     }
 
     public function dt_magic_url_base_allowed_css( $allowed_css ) {
         return zume_training_magic_url_base_allowed_css();
+    }
+
+    public function enqueue_scripts() {
+        wp_enqueue_script( 'zume-profile', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'profile.js', array(), filemtime( trailingslashit( plugin_dir_url( __FILE__ ) ) . 'profile.js' ), true );
     }
 
     public function header_style(){
@@ -74,6 +80,12 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
             });
+        </script>
+        <script>
+            const zume_profile = [<?php echo json_encode([
+                'nonce' => wp_create_nonce( 'wp_rest' ),
+            ]) ?>][0]
+
         </script>
         <?php
     }
@@ -89,18 +101,24 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
 
             <form action="" id="profile-form">
 
-                <div class="input-group">
+                <div class="">
                     <label for="full_name"><?php echo esc_html__( 'Name', 'zume' ) ?></label>
-                    <input type="text" id="full_name" name="full_name">
+                    <input required type="text" id="full_name" name="full_name">
                 </div>
-                <div class="input-group">
+                <div class="">
                     <label for="phone"><?php echo esc_html__( 'Phone', 'zume' ) ?></label>
-                    <input type="text" id="phone" name="phone">
+                    <input type="tel" id="phone" name="phone">
                 </div>
-                <div class="input-group">
-                    <label for="full_name"><?php echo esc_html__( 'First and last name', 'zume' ) ?></label>
-                    <input type="text" id="full_name" name="full_name">
+                <div class="">
+                    <label for="email"><?php echo esc_html__( 'Email', 'zume' ) ?></label>
+                    <input type="email" id="email" name="email">
                 </div>
+                <div class="">
+                    <label for="city"><?php echo esc_html__( 'City', 'zume' ) ?></label>
+                    <input type="text" id="city" name="city">
+                </div>
+
+                <button class="button">Save</button>
 
             </form>
 
