@@ -75,7 +75,7 @@ class Zume_Training {
     }
     public function setup_hooks() {
         add_action( 'dt_login_login_page_header', function() {
-            zume_training_nav();
+            zume_training_header();
         } );
 
         /* Ensure that Login is enabled and settings set to the correct values */

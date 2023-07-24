@@ -84,7 +84,7 @@ class Zume_Training_Home extends DT_Magic_Url_Base
 
     public function body(){
 
-        zume_training_nav();
+        zume_training_header();
         ?>
 
         <div class="container">

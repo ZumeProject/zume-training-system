@@ -1,7 +1,7 @@
 <?php
 
 
-function zume_training_nav() {
+function zume_training_header() {
 
     ?>
 

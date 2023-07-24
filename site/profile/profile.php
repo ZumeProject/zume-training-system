@@ -80,16 +80,30 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
 
     public function body(){
 
-        zume_training_nav();
+        zume_training_header();
         ?>
 
         <div class="container">
 
             <h1 class="text-center"><?php echo esc_html__( 'Profile', 'zume' ) ?></h1>
 
-            <p>
-                current language: <?php echo esc_html( get_locale() ) ?>
-            </p>
+            <form action="" id="profile-form">
+
+                <div class="input-group">
+                    <label for="full_name"><?php echo esc_html__( 'Name', 'zume' ) ?></label>
+                    <input type="text" id="full_name" name="full_name">
+                </div>
+                <div class="input-group">
+                    <label for="phone"><?php echo esc_html__( 'Phone', 'zume' ) ?></label>
+                    <input type="text" id="phone" name="phone">
+                </div>
+                <div class="input-group">
+                    <label for="full_name"><?php echo esc_html__( 'First and last name', 'zume' ) ?></label>
+                    <input type="text" id="full_name" name="full_name">
+                </div>
+
+            </form>
+
 
         </div>
         <?php
