@@ -82,8 +82,9 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
             });
         </script>
         <script>
-            const zume_profile = [<?php echo json_encode([
+            const zumeProfile = [<?php echo json_encode([
                 'nonce' => wp_create_nonce( 'wp_rest' ),
+                'map_key' => DT_Mapbox_API::get_key(),
             ]) ?>][0]
 
         </script>
@@ -116,6 +117,9 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
                 <div class="">
                     <label for="city"><?php echo esc_html__( 'City', 'zume' ) ?></label>
                     <input type="text" id="city" name="city">
+                </div>
+                <div id="address_results">
+
                 </div>
 
                 <button class="button">Save</button>
