@@ -26,11 +26,29 @@ function submitProfileForm(e) {
     const city = cityInput.value
 
     /* get the location_grid from mapbox selection */
+    const id = window.mapbox_selected_id
+
+    let location_grid_meta = ''
+
+    if ( id === 'curent' ) {
+        location_grid_meta = zumeProfile.location_grid_meta
+    } else if ( id && id !== '' && window.mapbox_results ) {
+        const location_meta = window.mapbox_results.features.find((feature) => feature.id === id)
+        location_grid_meta = {
+            lng: location_meta.center[0],
+            lat: location_meta.center[1],
+            level: location_meta.place_type[0],
+            label: location_meta.place_name,
+            source: 'user',
+            grid_id: false
+        }
+    }
 
     const data = {
         name,
         phone,
         email,
+        location_grid_meta,
     }
 
     /* submit data to profile API endpoint */
@@ -81,9 +99,13 @@ function getAddressSuggestions(event) {
             addressResults.forEach((result) => {
                 result.addEventListener('click', (e) => {
                     /* Escape placeName */
+                    const id = e.target.id
                     const placeName = e.target.dataset.placeName
 
                     cityInput.value = placeName
+
+                    window.mapbox_selected_id = id
+
                     addressResultsContainer.innerHTML = ''
                 })
             })
