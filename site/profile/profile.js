@@ -23,15 +23,14 @@ function submitProfileForm(e) {
     const name = nameInput.value
     const phone = phoneInput.value
     const email = emailInput.value
-    const city = cityInput.value
 
     /* get the location_grid from mapbox selection */
-    const id = window.mapbox_selected_id
+    const id = zumeProfile.mapbox_selected_id
 
     let location_grid_meta = ''
 
     if ( id === 'curent' ) {
-        location_grid_meta = zumeProfile.location_grid_meta
+        location_grid_meta = zumeProfile.profile.location_grid_meta
     } else if ( id && id !== '' && window.mapbox_results ) {
         const location_meta = window.mapbox_results.features.find((feature) => feature.id === id)
         location_grid_meta = {
@@ -104,7 +103,7 @@ function getAddressSuggestions(event) {
 
                     cityInput.value = placeName
 
-                    window.mapbox_selected_id = id
+                    zumeProfile.mapbox_selected_id = id
 
                     addressResultsContainer.innerHTML = ''
                 })

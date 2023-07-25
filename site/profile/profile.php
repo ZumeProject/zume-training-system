@@ -75,6 +75,8 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
     }
 
     public function header_style(){
+        $profile = Zume_Profile_Model::get();
+
         ?>
         <script>
             jQuery(document).ready(function(){
@@ -85,6 +87,9 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
             const zumeProfile = [<?php echo json_encode([
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'map_key' => DT_Mapbox_API::get_key(),
+                'root' => esc_url_raw( rest_url() ),
+                'profile' => $profile,
+                'mapbox_selected_id' => 'current',
             ]) ?>][0]
 
         </script>
@@ -92,6 +97,8 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
     }
 
     public function body(){
+
+        $profile = Zume_Profile_Model::get();
 
         zume_training_header();
         ?>
@@ -104,19 +111,19 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
 
                 <div class="">
                     <label for="full_name"><?php echo esc_html__( 'Name', 'zume' ) ?></label>
-                    <input required type="text" id="full_name" name="full_name">
+                    <input required type="text" id="full_name" name="full_name" value="<?php echo esc_attr( $profile['name'] ) ?>">
                 </div>
                 <div class="">
                     <label for="phone"><?php echo esc_html__( 'Phone', 'zume' ) ?></label>
-                    <input type="tel" id="phone" name="phone">
+                    <input type="tel" id="phone" name="phone" value="<?php echo esc_attr( $profile['phone']['value'] ) ?>" data-field-id="<?php echo esc_attr( $profile['phone']['key'] ) ?>">
                 </div>
                 <div class="">
                     <label for="email"><?php echo esc_html__( 'Email', 'zume' ) ?></label>
-                    <input type="email" id="email" name="email">
+                    <input disabled aria-disabled="true" type="email" id="email" name="email" value="<?php echo esc_attr( $profile['email'] ) ?>">
                 </div>
                 <div class="">
                     <label for="city"><?php echo esc_html__( 'City', 'zume' ) ?></label>
-                    <input type="text" id="city" name="city">
+                    <input type="text" id="city" name="city" value="<?php echo esc_attr( $profile['location_grid_meta']['label'] ) ?>">
                 </div>
                 <div id="address_results">
 

@@ -64,6 +64,7 @@ class Zume_Training {
     private function __construct() {
         require_once( 'globals.php' );
         zume_languages(); // build global
+        require_once( 'classes/loader.php' );
         require_once( 'logging/loader.php' );
         require_once( 'site/loader.php' );
         $this->i18n();
