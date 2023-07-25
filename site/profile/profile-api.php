@@ -8,7 +8,7 @@ class Zume_Profile_API
 
     public static function instance()
     {
-        if (is_null(self::$_instance)) {
+        if ( is_null( self::$_instance ) ) {
             self::$_instance = new self();
         }
         return self::$_instance;
@@ -16,9 +16,9 @@ class Zume_Profile_API
 
     public function __construct()
     {
-        if ( dt_is_rest()) {
-            add_action('rest_api_init', [$this, 'add_api_routes']);
-            add_filter('dt_allow_rest_access', [$this, 'authorize_url'], 10, 1);
+        if ( dt_is_rest() ) {
+            add_action( 'rest_api_init', [ $this, 'add_api_routes' ] );
+            add_filter( 'dt_allow_rest_access', [ $this, 'authorize_url' ], 10, 1 );
         }
     }
 
@@ -28,8 +28,8 @@ class Zume_Profile_API
 
         register_rest_route(
             $namespace, '/profile', [
-                'methods' => ['POST'],
-                'callback' => [$this, 'update_profile'],
+                'methods' => [ 'POST' ],
+                'callback' => [ $this, 'update_profile' ],
                 'permission_callback' => function () {
                     return is_user_logged_in();
                 }
@@ -45,7 +45,7 @@ class Zume_Profile_API
     }
 
     public function authorize_url( $authorized ){
-        if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), $this->namespace  ) !== false ) {
+        if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), $this->namespace ) !== false ) {
             $authorized = true;
         }
         return $authorized;

@@ -20,8 +20,6 @@ class Zume_Profile_Model {
     }
 
     public static function update( $fields ) {
-
-
     }
 
 }
