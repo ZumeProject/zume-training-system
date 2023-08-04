@@ -48,6 +48,13 @@ function submitProfileForm(e) {
         location_grid_meta,
     }
 
+    /* start loading spinner */
+    const submitButton = document.querySelector('#submit-profile')
+    const loadingSpinner = document.querySelector('.loading-spinner')
+
+    submitButton.setAttribute('disabled', true)
+    loadingSpinner.classList.add('active')
+
     /* submit data to profile API endpoint */
     fetch( zumeProfile.rest_endpoint + '/profile', {
         method: 'POST',
@@ -56,8 +63,13 @@ function submitProfileForm(e) {
             'X-WP-Nonce': zumeProfile.nonce
         }
     } )
-    .then((data) => {
-        console.log(data)
+    .then((response) => response.json())
+    .catch((error) => {
+        console.error(error)
+    })
+    .finally(() => {
+        submitButton.removeAttribute('disabled')
+        loadingSpinner.classList.remove('active')
     })
 }
 

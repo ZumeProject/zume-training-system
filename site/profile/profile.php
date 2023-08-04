@@ -130,7 +130,10 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
 
                 </div>
 
-                <button class="button">Save</button>
+                <button class="button" id="submit-profile">Save</button>
+                <span class="loading-spinner">
+                    <img src="<?php echo esc_url( trailingslashit( plugin_dir_url( __DIR__ ) ) . 'assets/images/spinner.svg' ) ?>" alt="spinner">
+                </span>
 
             </form>
 
