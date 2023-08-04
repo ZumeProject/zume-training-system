@@ -78,6 +78,9 @@ class Zume_Training {
         add_action( 'dt_login_login_page_header', function() {
             zume_training_header();
         } );
+        add_filter( 'dt_custom_fields_settings', [ $this, 'dt_contact_fields' ], 1, 2 );
+        add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 10, 2 );
+        add_action( 'dt_update_users_corresponding_contact', [ $this, 'dt_update_users_corresponding_contact' ], 10, 2 );
 
         /* Ensure that Login is enabled and settings set to the correct values */
         $fields = [
@@ -100,6 +103,56 @@ class Zume_Training {
         }
         DT_Login_Fields::update( $fields );
     }
+    public function dt_details_additional_tiles( $tiles, $post_type = '' ){
+        if ( $post_type === 'contacts' ){
+            $tiles['profile_details'] = [
+                'label' => __( 'Profile Details', 'zume' ),
+                'display_for' => [
+                    'type' => [ 'user' ],
+                ],
+            ];
+        }
+        return $tiles;
+    }
+    public function dt_contact_fields( array $fields, string $post_type = '' ) {
+        if ( $post_type === 'contacts' ) {
+            if ( !isset( $fields['user_email'] ) ){
+                $fields['user_email'] = [
+                    'name' => __( 'User Email', 'zume' ),
+                    'type' => 'text',
+                    'tile' => 'profile_details',
+                    'readonly' => true,
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
+            if ( !isset( $fields['user_phone'] ) ){
+                $fields['user_phone'] = [
+                    'name' => __( 'User Phone', 'zume' ),
+                    'type' => 'text',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
+        }
+        return $fields;
+    }
+    public function dt_update_users_corresponding_contact( WP_Post $contact, WP_User $user ) {
+        $contact_record = Disciple_Tools_Users::get_contact_for_user( $user->ID );
+
+        if ( is_wp_error( $contact_record ) ) {
+            dt_write_log( __METHOD__ );
+            dt_write_log( $contact_record->get_error_message() );
+            return;
+        }
+
+        if ( $contact_record && $contact_record['user_email'] != $user->user_email ) {
+            DT_Posts::update_post( 'contacts', $contact->ID, [
+                'user_email' => $user->user_email,
+            ], false, false );
+        }
+
+    }
+
     public function i18n() {
         $domain = 'zume';
         load_plugin_textdomain( $domain, false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ). 'languages' );

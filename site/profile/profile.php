@@ -71,7 +71,7 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
     }
 
     public function enqueue_scripts() {
-        wp_enqueue_script( 'zume-profile', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'profile.js', array(), filemtime( trailingslashit( plugin_dir_url( __FILE__ ) ) . 'profile.js' ), true );
+        wp_enqueue_script( 'zume-profile', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'profile.js', array(), filemtime( trailingslashit( plugin_dir_path( __FILE__ ) ) . 'profile.js' ), true );
     }
 
     public function header_style(){
@@ -88,6 +88,7 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'map_key' => DT_Mapbox_API::get_key(),
                 'root' => esc_url_raw( rest_url() ),
+                'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
                 'profile' => $profile,
                 'mapbox_selected_id' => 'current',
             ]) ?>][0]
@@ -115,11 +116,11 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
                 </div>
                 <div class="">
                     <label for="phone"><?php echo esc_html__( 'Phone', 'zume' ) ?></label>
-                    <input type="tel" id="phone" name="phone" value="<?php echo esc_attr( $profile['phone']['value'] ) ?>" data-field-id="<?php echo esc_attr( $profile['phone']['key'] ) ?>">
+                    <input type="tel" id="phone" name="phone" value="<?php echo esc_attr( $profile['user_phone'] ) ?>">
                 </div>
                 <div class="">
                     <label for="email"><?php echo esc_html__( 'Email', 'zume' ) ?></label>
-                    <input disabled aria-disabled="true" type="email" id="email" name="email" value="<?php echo esc_attr( $profile['email'] ) ?>">
+                    <input disabled aria-disabled="true" type="email" id="email" name="email" value="<?php echo esc_attr( $profile['user_email'] ) ?>">
                 </div>
                 <div class="">
                     <label for="city"><?php echo esc_html__( 'City', 'zume' ) ?></label>

@@ -35,16 +35,22 @@ class Zume_Profile_API
                 }
             ]
         );
-
     }
 
     public function update_profile( WP_REST_Request $request ) {
         $body = $request->get_body();
+        $body = json_decode( $body, true );
 
-        Zume_Profile_Model::update( $body );
+        $return = Zume_Profile_Model::update( $body );
+
+        if ( is_wp_error( $return ) ) {
+            return $return;
+        }
+
+        return new WP_REST_Response( $return );
     }
 
-    public function authorize_url( $authorized ){
+    public function authorize_url( $authorized ) {
         if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), $this->namespace ) !== false ) {
             $authorized = true;
         }

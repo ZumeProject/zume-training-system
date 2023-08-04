@@ -22,7 +22,6 @@ function submitProfileForm(e) {
 
     const name = nameInput.value
     const phone = phoneInput.value
-    const email = emailInput.value
 
     /* get the location_grid from mapbox selection */
     const id = zumeProfile.mapbox_selected_id
@@ -46,13 +45,20 @@ function submitProfileForm(e) {
     const data = {
         name,
         phone,
-        email,
         location_grid_meta,
     }
 
     /* submit data to profile API endpoint */
-
-    console.log(data)
+    fetch( zumeProfile.rest_endpoint + '/profile', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'X-WP-Nonce': zumeProfile.nonce
+        }
+    } )
+    .then((data) => {
+        console.log(data)
+    })
 }
 
 const processLocation = debounce(getAddressSuggestions)
