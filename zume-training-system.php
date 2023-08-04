@@ -80,6 +80,7 @@ class Zume_Training {
         } );
         add_filter( 'dt_custom_fields_settings', [ $this, 'dt_contact_fields' ], 1, 2 );
         add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 10, 2 );
+        add_action( 'dt_create_users_corresponding_contact', [ $this, 'dt_update_users_corresponding_contact' ], 10, 2 );
         add_action( 'dt_update_users_corresponding_contact', [ $this, 'dt_update_users_corresponding_contact' ], 10, 2 );
 
         /* Ensure that Login is enabled and settings set to the correct values */
@@ -136,8 +137,15 @@ class Zume_Training {
         }
         return $fields;
     }
-    public function dt_update_users_corresponding_contact( WP_Post $contact, WP_User $user ) {
-        $contact_record = Disciple_Tools_Users::get_contact_for_user( $user->ID );
+    public function dt_update_users_corresponding_contact( mixed $contact, WP_User $user ) {
+        $current_user = wp_get_current_user();
+
+        if ( $user->ID !== $current_user->ID ) {
+            return;
+        }
+
+        $contact_id = Disciple_Tools_Users::get_contact_for_user( $user->ID );
+        $contact_record = DT_Posts::get_post( 'contacts', $contact_id, true, false );
 
         if ( is_wp_error( $contact_record ) ) {
             dt_write_log( __METHOD__ );
@@ -146,7 +154,7 @@ class Zume_Training {
         }
 
         if ( $contact_record && $contact_record['user_email'] != $user->user_email ) {
-            DT_Posts::update_post( 'contacts', $contact->ID, [
+            DT_Posts::update_post( 'contacts', $contact_record['ID'], [
                 'user_email' => $user->user_email,
             ], false, false );
         }
