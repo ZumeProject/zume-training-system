@@ -8,7 +8,8 @@ class Zume_Profile_Model {
         $contact_id = self::get_user_contact_id();
 
         $user = wp_get_current_user();
-        $post = DT_Posts::get_post( 'contacts', $contact_id );
+        /* Allow the current user to get their own contact record without permissions set */
+        $post = DT_Posts::get_post( 'contacts', $contact_id, true, false );
 
         $profile['user_email'] = $user->user_email;
         $profile['name'] = $user->display_name;
@@ -62,7 +63,8 @@ class Zume_Profile_Model {
         }
 
         if ( !empty( $updates ) ) {
-            $contact = DT_Posts::update_post( 'contacts', $contact_id, $updates );
+            /* Allow the current user to update their own contact record without permissions set */
+            $contact = DT_Posts::update_post( 'contacts', $contact_id, $updates, false, false );
 
             if ( is_wp_error( $contact ) ) {
                 return $contact;
