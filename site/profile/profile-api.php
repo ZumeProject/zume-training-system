@@ -6,24 +6,21 @@ class Zume_Profile_API
     public $namespace = 'zume_system/v1';
     private static $_instance = null;
 
-    public static function instance()
-    {
+    public static function instance() {
         if ( is_null( self::$_instance ) ) {
             self::$_instance = new self();
         }
         return self::$_instance;
     }
 
-    public function __construct()
-    {
+    public function __construct() {
         if ( dt_is_rest() ) {
             add_action( 'rest_api_init', [ $this, 'add_api_routes' ] );
             add_filter( 'dt_allow_rest_access', [ $this, 'authorize_url' ], 10, 1 );
         }
     }
 
-    public function add_api_routes()
-    {
+    public function add_api_routes() {
         $namespace = $this->namespace;
 
         register_rest_route(
