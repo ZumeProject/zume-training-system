@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Zúme Training System
+ * Plugin Name: Zúme - Training System
  * Plugin URI: https://github.com/ZumeProject/zume-training-system
  * Description: Zume Training System
  * Text Domain: zume
@@ -62,10 +62,13 @@ class Zume_Training {
         return self::$_instance;
     }
     private function __construct() {
+        // datatable
+        global $wpdb;
+        $wpdb->zume_message_plan = $wpdb->prefix . 'dt_zume_message_plan';
+
         require_once( 'globals.php' );
         zume_languages(); // build global
         require_once( 'classes/loader.php' );
-        require_once( 'logging/loader.php' );
         require_once( 'site/loader.php' );
         $this->i18n();
         $this->setup_hooks();
@@ -185,7 +188,7 @@ add_action( 'plugins_loaded', function (){
     if ( is_admin() && !( is_multisite() && class_exists( 'DT_Multisite' ) ) || wp_doing_cron() ){
         // Check for plugin updates
         if ( ! class_exists( 'Puc_v4_Factory' ) ) {
-            if ( file_exists( get_template_directory() . '/dt-core/libraries/plugin-update-checker/plugin-update-checker.php' ) ){
+            if ( file_exists( get_template_directory() . '/dt-core/libraries/plugin-update-checker/plugin-update-checker.php' ) ) {
                 require( get_template_directory() . '/dt-core/libraries/plugin-update-checker/plugin-update-checker.php' );
             }
         }
@@ -195,7 +198,6 @@ add_action( 'plugins_loaded', function (){
                 __FILE__,
                 'zume-training-system'
             );
-
         }
     }
 } );
