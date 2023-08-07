@@ -86,6 +86,7 @@ class Zume_Training {
         add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 10, 2 );
         add_action( 'dt_create_users_corresponding_contact', [ $this, 'dt_update_users_corresponding_contact' ], 10, 2 );
         add_action( 'dt_update_users_corresponding_contact', [ $this, 'dt_update_users_corresponding_contact' ], 10, 2 );
+        add_filter( 'dt_login_url', [ $this, 'dt_login_url' ] );
 
         /* Ensure that Login is enabled and settings set to the correct values */
         $fields = [
@@ -163,6 +164,15 @@ class Zume_Training {
             ], false, false );
         }
 
+    }
+    public function dt_login_url( $dt_login_url ) {
+        $current_language = zume_current_language();
+
+        if ( $current_language === 'en' ) {
+            return $dt_login_url;
+        }
+
+        return $current_language . '/' . $dt_login_url;
     }
 
     public function i18n() {

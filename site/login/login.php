@@ -8,6 +8,7 @@
  */
 class Zume_Training_Login extends DT_Magic_Url_Base {
 
+    use Translateable;
     public $magic = false;
     public $parts = false;
     public $page_title = 'User Login';
@@ -28,26 +29,16 @@ class Zume_Training_Login extends DT_Magic_Url_Base {
     public function __construct() {
         parent::__construct();
 
-        /**
-         * tests if other URL
-         */
-        $url_path = dt_get_url_path();
-        $this->url = new DT_URL( $url_path );
+        [
+            'lang_code' => $lang_code,
+            'url_parts' => $url_parts,
+        ] = zume_get_url_pieces();
 
-        $url_path = parse_url( $url_path, PHP_URL_PATH );
+        $page_slug = $url_parts[0];
 
-        $url_parts = explode( '/', $url_path );
+        if ( str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
 
-        $codes = zume_language_codes();
-
-        if ( ( isset( $url_parts[0] ) && ( $url_parts[0] === $this->type || ( in_array( $url_parts[0], $codes ) && isset( $url_parts[1] ) && $url_parts[1] === $this->type ) ) ) && ! dt_is_rest() ) {
-            // load if valid url
-            if ( true ) {
-                $this->lang = $url_parts[0];
-                add_filter('locale', function( $locale ) {
-                    return $this->lang;
-                }, 100, 1);
-            }
+            $this->set_locale( $lang_code );
 
             // register url and access
             add_action( 'template_redirect', [ $this, 'theme_redirect' ] );
@@ -65,6 +56,7 @@ class Zume_Training_Login extends DT_Magic_Url_Base {
 
 
             add_action( 'dt_blank_head', [ $this, '_header' ] );
+            remove_all_actions( 'dt_blank_body' );
             add_action( 'dt_blank_body', [ $this, 'body' ] );
             add_action( 'dt_blank_footer', [ $this, '_footer' ] );
 
@@ -107,6 +99,11 @@ class Zume_Training_Login extends DT_Magic_Url_Base {
     }
 
     public function body() {
+
+        zume_training_header();
+
+        require_once( get_template_directory() . '/dt-login/login-template.php' );
+
 /*
         if ( is_user_logged_in() ) {
             $redirect_url = DT_Login_Fields::get( 'redirect_url' );
