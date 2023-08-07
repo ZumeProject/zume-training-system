@@ -7,8 +7,7 @@ trait Translateable {
 
         $lang_code = '';
         if ( in_array( $url_parts[0], $codes ) ) {
-            $lang_code = $url_parts[0];
-            array_shift( $url_parts );
+            $lang_code = array_shift( $url_parts );
         }
 
         $this->lang_code = $lang_code;

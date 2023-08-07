@@ -10,7 +10,7 @@ function zume_training_header() {
             <a class="nav__link" data-open="language-menu-reveal"><?php esc_html_e( 'Language', 'zume' ) ?></a>
 
             <div class="absolute-center left-0 right-0">
-                <a href="/" class="logo">
+                <a href="<?php echo esc_url( zume_home_url() ) ?>" class="logo">
                     <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . '/assets/images/zume-training-logo.svg' ) ?>" alt="Zume Logo" />
                 </a>
             </div>
@@ -20,9 +20,9 @@ function zume_training_header() {
 
                 <?php if ( is_user_logged_in() ) : ?>
 
-                    <li class="nav__item"><a href="<?php echo esc_url( '/profile' ) ?>" class="nav__link"><?php echo esc_html__( 'Profile', 'zume' ) ?></a></li>
-                    <li class="nav__item"><a href="<?php echo esc_url( '/dashboard' ) ?>" class="nav__link"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a></li>
                     <?php if ( user_can( get_current_user_id(), 'manage_dt' ) ) { ?><li class="nav__item"><a href="<?php echo esc_url( '/contacts' ) ?>" class="nav__link"><?php echo esc_html__( 'Admin', 'zume' ) ?></a></li><?php } ?>
+                    <li class="nav__item"><a href="<?php echo esc_url( zume_profile_url() ) ?>" class="nav__link"><?php echo esc_html__( 'Profile', 'zume' ) ?></a></li>
+                    <li class="nav__item"><a href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="nav__link"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a></li>
                     <li class="nav__item"><a href="<?php echo esc_url( dt_login_url( 'logout' ) ) ?>" class="nav__link"><?php echo esc_html__( 'Logout', 'zume' ) ?></a></li>
 
                 <?php else : ?>

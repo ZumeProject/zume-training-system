@@ -5,6 +5,7 @@
 
 // Load dependencies first
 require_once __DIR__ . '/languages.php';
+require_once __DIR__ . '/functions.php';
 
 
 
