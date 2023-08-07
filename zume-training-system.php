@@ -181,14 +181,10 @@ class Zume_Training {
         $parsed_url = $url->parsed_url;
 
         /* Get the current lang_code in the current url */
-        [
-            'lang_code' => $lang_code,
-        ] = zume_get_url_pieces();
+        [ 'lang_code' => $lang_code ] = zume_get_url_pieces();
 
         /* Get the path from the redirect url without any lang codes */
-        [
-            'path' => $path,
-        ] = zume_get_url_pieces( ltrim( $parsed_url['path'], '/' ) );
+        [ 'path' => $path ] = zume_get_url_pieces( ltrim( $parsed_url['path'], '/' ) );
 
         if ( $lang_code !== 'en' ) {
             $path = $lang_code . '/' . $path;
