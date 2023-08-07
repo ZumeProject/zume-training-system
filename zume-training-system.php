@@ -87,6 +87,7 @@ class Zume_Training {
         add_action( 'dt_create_users_corresponding_contact', [ $this, 'dt_update_users_corresponding_contact' ], 10, 2 );
         add_action( 'dt_update_users_corresponding_contact', [ $this, 'dt_update_users_corresponding_contact' ], 10, 2 );
         add_filter( 'dt_login_url', [ $this, 'dt_login_url' ] );
+        add_filter( 'dt_login_redirect_url', [ $this, 'dt_login_redirect_url' ] );
 
         /* Ensure that Login is enabled and settings set to the correct values */
         $fields = [
@@ -173,6 +174,28 @@ class Zume_Training {
         }
 
         return $current_language . '/' . $dt_login_url;
+    }
+    public function dt_login_redirect_url( $redirect_url ) {
+        $url = new DT_URL( $redirect_url );
+
+        $parsed_url = $url->parsed_url;
+
+        /* Get the current lang_code in the current url */
+        [
+            'lang_code' => $lang_code,
+        ] = zume_get_url_pieces();
+
+        /* Get the path from the redirect url without any lang codes */
+        [
+            'path' => $path,
+        ] = zume_get_url_pieces( ltrim( $parsed_url['path'], '/' ) );
+
+        if ( $lang_code !== 'en' ) {
+            $path = $lang_code . '/' . $path;
+        }
+
+        $redirect_url = $parsed_url['scheme'] . '://' . $parsed_url['host'] . '/' . $path;
+        return $redirect_url;
     }
 
     public function i18n() {

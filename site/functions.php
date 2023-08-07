@@ -1,7 +1,10 @@
 <?php
 
-function zume_get_url_pieces() {
-    $url = dt_get_url_path();
+function zume_get_url_pieces( $url = null ) {
+
+    if ( !$url ) {
+        $url = dt_get_url_path();
+    }
     $codes = zume_language_codes();
 
     $url_parts = explode( '/', $url );
