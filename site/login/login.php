@@ -75,26 +75,18 @@ class Zume_Training_Login extends DT_Magic_Url_Base {
     }
 
     public function header_javascript(){
-        //require_once( trailingslashit( plugin_dir_path( __DIR__ ) ) . 'assets/header.php' );
-
-        //$user_id = get_current_user_id();
 
         ?>
-        <script>
-            /*let jsObject = [<?php /*echo json_encode([
-                'root' => esc_url_raw( rest_url() ),
-                'nonce' => wp_create_nonce( 'wp_rest' ),
-                'parts' => $this->parts,
-                'is_logged_in' => is_user_logged_in() ? 1 : 0,
-                'logout_url' => esc_url( '/user_app/logout' ),
-                'redirect_url' => DT_Login_Fields::get( 'redirect_url' ),
-            ]) */ ?>][0] */
-        </script>
         <style>
             #login_form input {
                 padding:.5em;
             }
         </style>
+        <script>
+            jQuery(document).ready(function(){
+                jQuery(document).foundation();
+            });
+        </script>
         <?php
     }
 
@@ -103,35 +95,6 @@ class Zume_Training_Login extends DT_Magic_Url_Base {
         require_once __DIR__ . '/../parts/nav.php';
 
         require_once __DIR__ . '/login-template.php';
-
-/*
-        if ( is_user_logged_in() ) {
-            $redirect_url = DT_Login_Fields::get( 'redirect_url' );
-            if ( empty( $redirect_url ) ) {
-                $redirect_url = site_url();
-            }
-
-            $redirect_to = $this->url->query_params->get( 'redirect_to' );
-
-            if ( !empty( $redirect_to ) ) {
-                $redirect_url = $redirect_to;
-            }
-
-            if ( wp_redirect( $redirect_url ) ) {
-                exit();
-            }
-        } else {
-            $loggedout = $this->url->query_params->get( 'loggedout' );
-
-            if ( !empty( $loggedout ) && $loggedout === 'true' ) {
-                if ( wp_redirect( site_url() ) ) {
-                    exit();
-                }
-            }
-        }
-*/
-        ?>
-        <?php
 
     }
 
