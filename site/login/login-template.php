@@ -376,7 +376,7 @@ switch ( $request_action ) {
                                                     </div>
                                                     <div class="grid-container">
                                                         <div class="grid-x grid-margin-x">
-                                                            <div class="cell small-12">
+                                                            <div class="cell small-12 hide">
                                                                 <label for="display_name"><?php esc_html_e( 'Display Name (optional)', 'zume' ) ?> </label>
                                                                 <input type="text" name="display_name" id="display_name" value="">
                                                             </div>
@@ -448,7 +448,13 @@ switch ( $request_action ) {
                             </div>
                             <div class="cell">
 
-                                <?php do_shortcode( '[dt_firebase_login_ui]' ) ?>
+                                <?php
+
+                                    [ 'lang_code' => $lang_code ] = zume_get_url_pieces();
+
+                                    do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" )
+
+                                ?>
 
                             </div>
                         </div>
@@ -549,7 +555,13 @@ switch ( $request_action ) {
 
                                 <div class="cell">
 
-                                    <?php do_shortcode( '[dt_firebase_login_ui]' ) ?>
+                                <?php
+
+                                    [ 'lang_code' => $lang_code ] = zume_get_url_pieces();
+
+                                    do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" )
+
+                                ?>
 
                                 </div>
                             </div>
