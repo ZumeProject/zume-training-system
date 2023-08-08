@@ -450,11 +450,16 @@ switch ( $request_action ) {
 
                                 <?php
 
-                                    [ 'lang_code' => $lang_code ] = zume_get_url_pieces();
+                                [ 'lang_code' => $lang_code ] = zume_get_url_pieces();
 
-                                    do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" )
+                                if ( strlen( $lang_code ) === 4 ) {
+                                    $lang_code = implode( '_', str_split( $lang_code, 2 ) );
+                                }
+
+                                do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" )
 
                                 ?>
+
 
                             </div>
                         </div>
@@ -557,9 +562,13 @@ switch ( $request_action ) {
 
                                 <?php
 
-                                    [ 'lang_code' => $lang_code ] = zume_get_url_pieces();
+                                [ 'lang_code' => $lang_code ] = zume_get_url_pieces();
 
-                                    do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" )
+                                if ( strlen( $lang_code ) === 4 ) {
+                                    $lang_code = implode( '_', str_split( $lang_code, 2 ) );
+                                }
+
+                                do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" )
 
                                 ?>
 
