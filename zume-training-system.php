@@ -93,7 +93,6 @@ class Zume_Training {
             'redirect_url' => '/dashboard',
             'login_url' => 'login',
             'ui_smallprint' => 'off',
-            'firebase_app_id' => $_ENV['FIREBASE_APP_ID'] ?? '',
             'identity_providers_google' => 'on',
             'identity_providers_facebook' => 'on',
         ];
