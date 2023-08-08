@@ -105,7 +105,7 @@ class Zume_Training_Profile extends DT_Magic_Url_Base
 
         $profile = Zume_Profile_Model::get();
 
-        zume_training_header();
+        require __DIR__ . '/../parts/nav.php';
         ?>
 
         <div class="container">

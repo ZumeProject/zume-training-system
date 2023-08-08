@@ -85,7 +85,7 @@ class Zume_Training_Dashboard extends DT_Magic_Url_Base
     public function body(){
         global $zume_languages;
 
-        zume_training_header();
+        require __DIR__ . '/../parts/nav.php';
         ?>
 
         <div class="container">

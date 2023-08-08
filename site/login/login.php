@@ -77,7 +77,7 @@ class Zume_Training_Login extends DT_Magic_Url_Base {
     public function header_javascript(){
         //require_once( trailingslashit( plugin_dir_path( __DIR__ ) ) . 'assets/header.php' );
 
-        $user_id = get_current_user_id();
+        //$user_id = get_current_user_id();
 
         ?>
         <script>
@@ -100,9 +100,9 @@ class Zume_Training_Login extends DT_Magic_Url_Base {
 
     public function body() {
 
-        zume_training_header();
+        require_once __DIR__ . '/../parts/nav.php';
 
-        require_once( get_template_directory() . '/dt-login/login-template.php' );
+        require_once __DIR__ . '/login-template.php';
 
 /*
         if ( is_user_logged_in() ) {

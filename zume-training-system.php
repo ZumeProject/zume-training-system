@@ -71,6 +71,7 @@ class Zume_Training {
         zume_languages(); // build global
         require_once( 'classes/loader.php' );
         require_once( 'site/loader.php' );
+        require_once( 'site/login/loader.php' );
         $this->i18n();
         $this->setup_hooks();
     }
@@ -79,9 +80,6 @@ class Zume_Training {
     public static function deactivation() {
     }
     public function setup_hooks() {
-        add_action( 'dt_login_login_page_header', function() {
-            zume_training_header();
-        } );
         add_filter( 'dt_custom_fields_settings', [ $this, 'dt_contact_fields' ], 1, 2 );
         add_filter( 'dt_details_additional_tiles', [ $this, 'dt_details_additional_tiles' ], 10, 2 );
         add_action( 'dt_create_users_corresponding_contact', [ $this, 'dt_update_users_corresponding_contact' ], 10, 2 );

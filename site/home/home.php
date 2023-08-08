@@ -80,7 +80,7 @@ class Zume_Training_Home extends DT_Magic_Url_Base
 
     public function body(){
 
-        zume_training_header();
+        require __DIR__ . '/../parts/nav.php';
         ?>
 
         <div class="container">

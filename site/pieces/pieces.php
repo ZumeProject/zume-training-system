@@ -97,7 +97,7 @@ class Zume_Training_Pieces_URL extends DT_Magic_Url_Base
         $post_video_content = $this->meta['zume_post_video_content'][0] ?? '';
         $ask_content = $this->meta['zume_ask_content'][0] ?? '';
 
-        zume_training_header();
+        require __DIR__ . '/../parts/nav.php';
         ?>
 
         <div class="container">
