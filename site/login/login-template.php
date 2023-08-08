@@ -456,6 +456,10 @@ switch ( $request_action ) {
                                     $lang_code = implode( '_', str_split( $lang_code, 2 ) );
                                 }
 
+                                if ( $lang_code === 'pt' ) {
+                                    $lang_code = 'pt_pt';
+                                }
+
                                 do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" )
 
                                 ?>
@@ -566,6 +570,10 @@ switch ( $request_action ) {
 
                                 if ( strlen( $lang_code ) === 4 ) {
                                     $lang_code = implode( '_', str_split( $lang_code, 2 ) );
+                                }
+
+                                if ( $lang_code === 'pt' ) {
+                                    $lang_code = 'pt_pt';
                                 }
 
                                 do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" )
