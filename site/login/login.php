@@ -96,6 +96,7 @@ class Zume_Training_Login extends Zume_Magic_Page {
 
         require_once __DIR__ . '/login-template.php';
 
+        require_once __DIR__ . '/../parts/footer.php';
     }
 
 }
