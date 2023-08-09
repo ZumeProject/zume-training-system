@@ -2,7 +2,7 @@
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 
-class Zume_Training_Mobile_App extends DT_Magic_Url_Base
+class Zume_Training_Mobile_App extends Zume_Magic_Page
 {
     use Translateable;
 
@@ -10,7 +10,7 @@ class Zume_Training_Mobile_App extends DT_Magic_Url_Base
     public $parts = false;
     public $page_title = 'Zúme Training';
     public $root = 'zume_app';
-    public $type = 'mobile_app';
+    public $type = 'mobile-app';
     public $lang = 'en';
     public static $token = 'zume_app_mobile_app';
 
@@ -33,9 +33,7 @@ class Zume_Training_Mobile_App extends DT_Magic_Url_Base
 
         $page_slug = $url_parts[0];
 
-        $post = zume_get_post_by_slug( $page_slug );
-
-        if ( $post && str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
+        if ( str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
 
             $this->set_locale( $lang_code );
 
@@ -57,6 +55,7 @@ class Zume_Training_Mobile_App extends DT_Magic_Url_Base
             add_action( 'dt_blank_head', [ $this, '_header' ] );
             add_action( 'dt_blank_body', [ $this, 'body' ] );
             add_action( 'dt_blank_footer', [ $this, '_footer' ] );
+            add_action( 'wp_footer', [ $this, 'action_wp_footer' ] );
 
             add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
@@ -90,7 +89,7 @@ class Zume_Training_Mobile_App extends DT_Magic_Url_Base
 
         <div class="container">
 
-            <h1 class="text-center"><?php echo esc_html__( 'Mobile_App', 'zume' ) ?></h1>
+            <h1 class="text-center"><?php echo esc_html__( 'Mobile App', 'zume' ) ?></h1>
 
             <p>
                 current language: <?php echo esc_html( get_locale() ) ?>
