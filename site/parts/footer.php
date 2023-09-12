@@ -1,10 +1,8 @@
 <footer class="footer">
 
-    <hr>
-
     <div class="container">
 
-        <ul>
+        <ul role="list">
             <li><a href="<?php echo esc_url( zume_course_url() ) ?>">Course</a></li>
             <li><a href="/book">Download Guidebook</a></li>
             <li><a href="<?php echo esc_url( zume_about_url() ) ?>">About</a></li>

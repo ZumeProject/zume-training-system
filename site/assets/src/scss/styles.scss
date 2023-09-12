@@ -1,10 +1,9 @@
-// example styles.scss
+@import 'reset';
 @import 'breakpoints';
 @import 'colors';
 @import 'fonts';
 
-@import 'mixins/buttons';
-
+@import 'utilities/buttons';
 @import 'utilities/position';
 @import 'utilities/display';
 
@@ -12,7 +11,7 @@
   font-family: $font-text;
 
   color-scheme: light dark;
-  color: $brand-dark;
+  color: $secondary-dark;
   background-color: $white;
 }
 
@@ -21,7 +20,6 @@ html {
 }
 
 body {
-    margin: 0;
     font-size: 1rem;
     font-family: $font-text;
     min-height: 100vh;
@@ -31,20 +29,20 @@ body {
 
 footer {
   margin-top: auto;
-  color: $brand-dark;
+  color: $white;
+  background-color: $brand-primary;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-header;
 }
 
 ul {
-    list-style: none;
     padding: 0;
 }
 
 a {
     text-decoration: none;
-}
-
-img {
-    max-width: 100%;
 }
 
 .container {
@@ -55,10 +53,10 @@ img {
 }
 
 header {
-  background-color: $white;
+  background-color: $brand-primary;
+  color: $white;
   padding: 1em 0;
   text-align: center;
-  border-bottom: 1px solid $brand-dark;
 }
 
 .nav {
@@ -208,12 +206,4 @@ header {
     display: inline-block;
     vertical-align: middle;
     box-sizing: border-box;
-}
-
-
-.button {
-  @include button;
-
-  margin-bottom: 0;
-  padding: 1em 2em;
 }

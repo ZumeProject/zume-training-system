@@ -9,7 +9,7 @@
             </div>
 
             <nav class="nav" id="nav">
-                <ul class="nav__list nav__list--secondary">
+                <ul class="nav__list nav__list--secondary" role="list">
 
                 <?php if ( is_user_logged_in() ) : ?>
 
