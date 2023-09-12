@@ -1,4 +1,9 @@
-#Icon-Profile {
+.svg-icon {
     stroke: $white;
     fill: $white;
+
+    &:hover, &:focus {
+        stroke: $brand-lighter;
+        fill: $brand-lighter;
+    }
 }
