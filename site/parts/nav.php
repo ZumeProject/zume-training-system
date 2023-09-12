@@ -11,25 +11,15 @@
             <nav class="nav" id="nav">
                 <ul class="nav__list nav__list--secondary" role="list">
 
+                    <?php if ( user_can( get_current_user_id(), 'manage_dt' ) ) { ?>
+
+                        <li class="nav__item"><a href="<?php echo esc_url( '/contacts' ) ?>" class="btn btn-on-dark"><?php echo esc_html__( 'DTools', 'zume' ) ?></a></li>
+
+                    <?php } ?>
                     <li class="nav__item"><a href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn btn-on-dark"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a></li>
                     <li class="nav__item"><a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn btn-on-dark"><?php echo esc_html__( 'Get Started', 'zume' ) ?></a></li>
                     <li class="nav__item"><a href="<?php echo esc_url( '/checkin' ) ?>" class="btn btn-on-dark"><?php echo esc_html__( 'Check-in', 'zume' ) ?></a></li>
                     <li class="nav__item"><a href="<?php echo esc_url( zume_profile_url() ) ?>" class="nav__icon"><?php require plugin_dir_path( __DIR__ ) . 'assets/images/profile.svg' ?></a></li>
-
-
-                <?php if ( false || is_user_logged_in() ) : ?>
-
-                    <?php if ( user_can( get_current_user_id(), 'manage_dt' ) ) { ?><li class="nav__item"><a href="<?php echo esc_url( '/contacts' ) ?>" class="nav__link"><?php echo esc_html__( 'DTools', 'zume' ) ?></a></li><?php } ?>
-                    <li class="nav__item"><a href="<?php echo esc_url( zume_profile_url() ) ?>" class="link-light"><?php echo esc_html__( 'Profile', 'zume' ) ?></a></li>
-                    <li class="nav__item"><a href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="link-light"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a></li>
-                    <li class="nav__item"><a href="<?php echo esc_url( dt_login_url( 'logout' ) ) ?>" class="link-light"><?php echo esc_html__( 'Logout', 'zume' ) ?></a></li>
-
-                <?php elseif ( false || is_user_logged_in() ) : ?>
-
-                    <li class="nav__item"><a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="link-light"><?php echo esc_html__( 'Login', 'zume' ) ?></a></li>
-                    <li class="nav__item"><a href="<?php echo esc_url( dt_login_url( 'register' ) ) ?>" class="link-light nav__link--button"><?php echo esc_html__( 'Register', 'zume' ) ?></a></li>
-
-                <?php endif; ?>
 
                 </ul>
             </nav>
