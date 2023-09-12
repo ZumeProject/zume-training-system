@@ -5,6 +5,7 @@
 
 @import 'composition';
 @import 'utilities/buttons';
+@import 'icons';
 @import 'utilities/position';
 @import 'utilities/display';
 
@@ -56,13 +57,13 @@ a {
 header {
   background-color: $brand-primary;
   color: $white;
-  padding: 1em 0;
+  padding: 0.4em 2em;
   text-align: center;
+  font-size: 14px;
 }
 
 .nav {
   display: none;
-  font-size: 1rem;
   font-weight: 600;
   font-family: $font-text;
 }
@@ -84,18 +85,21 @@ header {
   padding: 0;
 }
 
-.nav__item {
-  padding: 0.25em 0;
-}
-
-.nav__link {
-  text-transform: uppercase;
-}
-
 .nav__link--button {
   @include button;
 
   padding: 1em 1em;
+}
+
+.nav__item {
+  display: flex;
+  align-items: center;
+}
+
+.nav__icon {
+  display: inline-block;
+  width: 30px;
+  line-height: 1;
 }
 
 .nav-toggle {
@@ -145,7 +149,7 @@ header {
 .logo {
   display: flex;
   width: 150px;
-  height: 50px;
+  height: 30px;
   margin: 0 auto;
 }
 
@@ -173,10 +177,9 @@ header {
     }
 
     header {
-        padding: 1em 0;
         .nav__item {
             float: left;
-            margin-left: 2em;
+            margin-left: 1em;
         }
     }
 
