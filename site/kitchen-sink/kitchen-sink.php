@@ -114,29 +114,27 @@ class Zume_Training_Kitchen_Sink extends Zume_Magic_Page
                 <li>list</li>
             </ol>
 
-            <a class="d-block" href="#">Normal links in a page</a>
-            <div>
-                <button class="btn">A normal button</button>
-                <button class="btn-light">A light button</button>
-                <button class="btn-outline">An outline button</button>
+            <div class="flow">
+                <a class="d-block" href="#">Normal links in a page</a>
+
+                <button class="btn d-block">A normal button</button>
+                <button class="btn-light d-block">A light button</button>
+                <button class="btn-outline d-block">An outline button</button>
+
+                <a class="btn d-block">A normal button link</a>
+                <a class="btn-light d-block">A normal light button link</a>
+                <a class="btn-outline d-block">An outline button link</a>
             </div>
 
-            <div>
-                <a class="btn">A normal button link</a>
-                <a class="btn-light">A normal light button link</a>
-                <a class="btn-outline">An outline button link</a>
-            </div>
+            <div class="flow | bg-brand">
 
+                <a href="#" class="link-light">A light link on a dark background</a>
 
-            <div class="bg-brand">
+                <button class="btn btn-on-dark d-block">A light button</button>
+                <button class="btn-outline btn-on-dark d-block">A light outline button</button>
 
-                <a href="#" class="link-light ">A light link on a dark background</a>
-
-                <button class="btn btn-on-dark ">A light button</button>
-                <button class="btn-outline btn-on-dark ">A light outline button</button>
-
-                <a href="#" class="btn btn-on-dark ">A light button link</a>
-                <a href="#" class="btn-outline btn-on-dark ">A light outline button link</a>
+                <a href="#" class="btn btn-on-dark d-block">A light button link</a>
+                <a href="#" class="btn-outline btn-on-dark d-block">A light outline button link</a>
 
             </div>
 
