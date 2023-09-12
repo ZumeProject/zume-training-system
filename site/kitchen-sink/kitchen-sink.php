@@ -39,12 +39,9 @@ class Zume_Training_Kitchen_Sink extends Zume_Magic_Page
 
             // register url and access
             add_action( 'template_redirect', [ $this, 'theme_redirect' ] );
-            add_filter( 'dt_blank_access', function (){ return true;
-            }, 100, 1 );
-            add_filter( 'dt_allow_non_login_access', function (){ return true;
-            }, 100, 1 );
-            add_filter( 'dt_override_header_meta', function (){ return true;
-            }, 100, 1 );
+            add_filter( 'dt_blank_access', [ $this, 'true' ], 100, 1 );
+            add_filter( 'dt_allow_non_login_access', [ $this, 'true' ], 100, 1 );
+            add_filter( 'dt_override_header_meta', [ $this, 'true' ], 100, 1 );
 
             // header content
             add_filter( 'dt_blank_title', [ $this, 'page_tab_title' ] );
@@ -61,6 +58,10 @@ class Zume_Training_Kitchen_Sink extends Zume_Magic_Page
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
 
         }
+    }
+
+    public function true() {
+        return true;
     }
 
     public function dt_magic_url_base_allowed_js( $allowed_js ) {
