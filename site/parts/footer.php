@@ -1,15 +1,15 @@
 <footer class="footer">
 
-    <div class="container flow flow-4">
+    <div class="container flow flow-2">
 
         <div class="first-row d-flex justify-content-between">
-            <ul class="d-flex gap-5" role="list">
+            <ul class="d-flex gap-4" role="list">
                 <li><a class="link-light" href="<?php echo esc_url( zume_about_url() ) ?>">About</a></li>
                 <li><a class="link-light" href="<?php echo esc_url( zume_resources_url() ) ?>">Resources</a></li>
                 <li><a class="link-light" href="/how-to-follow-jesus">How to follow Jesus</a></li>
             </ul>
 
-            <ul class="d-flex gap-5" role="list">
+            <ul class="d-flex gap-4" role="list">
                 <li><a class="link-light" href="/book">Zume Guidebook</a></li>
                 <li><a class="link-light" href="/mobile-app">Zume Mobile App</a></li>
                 <li><a class="link-light" href="/donate">Donate</a></li>
@@ -18,7 +18,7 @@
 
         <div class="second-row d-flex justify-content-between">
             <span>(c) Zume. All rights reserved.</span>
-            <ul class="d-flex gap-4" role="list">
+            <ul class="d-flex gap-3" role="list">
                 <li><a href="#" class="link-light"><strong>f</strong></a></li>
                 <li><a href="#" class="link-light"><strong>i</strong></a></li>
             </ul>

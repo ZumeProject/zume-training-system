@@ -2,12 +2,8 @@
     margin-top: var(--flow-size, 1rem);
 }
 
-.flow-3 {
-    --flow-size: 1.5em;
-}
-.flow-4 {
-    --flow-size: 3em;
-}
-.flow-5 {
-    --flow-size: 6em;
+@for $i from -5 through 5 {
+    .flow-#{$i} {
+        --flow-size: var(--s#{$i});
+    }
 }
