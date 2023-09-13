@@ -5,7 +5,7 @@
  * Description: Zume Training System
  * Text Domain: zume-training-system
  * Domain Path: /languages
- * Version:  0.2
+ * Version:  0.3
  * Author URI: https://github.com/ZumeProject/zume-training-system
  * GitHub Plugin URI: https://github.com/ZumeProject/zume-training-system
  * Requires at least: 4.7.0
@@ -78,8 +78,6 @@ class Zume_Training {
         $this->setup_hooks();
         require_once( 'globals.php' );
         require_once( 'appearance/loader.php' );
-        require_once( 'integrations/loader.php' );
-        require_once( 'encouragement/loader.php' );
         require_once( 'classes/loader.php' );
         require_once( 'site/loader.php' );
         require_once( 'site/login/loader.php' );
@@ -210,6 +208,22 @@ class Zume_Training {
                     'only_for_types' => [ 'user' ],
                 ];
             }
+            if ( !isset( $fields['user_timezone'] ) ){
+                $fields['user_timezone'] = [
+                    'name' => __( 'User Timezone', 'zume' ),
+                    'type' => 'text',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
+            if ( !isset( $fields['user_friend_key'] ) ){
+                $fields['user_friend_key'] = [
+                    'name' => __( 'User Friend Key', 'zume' ),
+                    'type' => 'text',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
         }
         return $fields;
     }
@@ -240,9 +254,19 @@ class Zume_Training {
             $level = '';
         }
 
+        global $wpdb;
+        $user_friend_key = substr( md5( rand( 10000, 100000 ) ), 0, 3 ) . substr( md5( rand( 10000, 100000 ) ), 0, 3 );
+        $key_exists = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = 'user_friend_key' AND meta_value = %s", $user_friend_key ) );
+        while ( $key_exists ){
+            $user_friend_key = substr( md5( rand( 10000, 100000 ) ), 0, 3 ) . substr( md5( rand( 10000, 100000 ) ), 0, 3 );
+            $key_exists = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = 'user_friend_key' AND meta_value = %s", $user_friend_key ) );
+        }
+
         $fields = [
             'user_email' => $user->user_email,
             'user_phone' => '',
+            'user_timezone' => $ip_result['time_zone']['id'] ?? '',
+            'user_friend_key' => $user_friend_key,
             'location_grid_meta' => [
                 'values' => [
                     [
@@ -257,7 +281,7 @@ class Zume_Training {
         ];
         $contact_location = DT_Posts::update_post( 'contacts', $new_user_contact['ID'], $fields, true, false );
 
-        dt_report_insert( [
+        zume_log_insert('system', 'registered', [
             'user_id' => $user->ID,
             'post_id' => $new_user_contact['ID'],
             'post_type' => 'zume',
@@ -270,9 +294,9 @@ class Zume_Training {
             'label' => $contact_location['location_grid_meta'][0]['label'],
             'grid_id' => $contact_location['location_grid_meta'][0]['grid_id'],
             'time_end' => time(),
-        ]);
+        ] );
 
-        dt_report_insert( [
+        zume_log_insert('stage', 'current_level', [
             'user_id' => $user->ID,
             'post_id' => $new_user_contact['ID'],
             'post_type' => 'zume',
@@ -285,7 +309,7 @@ class Zume_Training {
             'label' => $contact_location['location_grid_meta'][0]['label'],
             'grid_id' => $contact_location['location_grid_meta'][0]['grid_id'],
             'time_end' => time(),
-        ]);
+        ] );
 
         Zume_System_Encouragement_API::_install_plan( $user->ID, Zume_System_Encouragement_API::_get_recommended_plan( $user->ID, 'system', 'registered' ) );
     }

@@ -80,7 +80,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
         return zume_training_magic_url_base_allowed_css();
     }
     public function wp_enqueue_scripts() {
-        wp_enqueue_script( 'zume_forms', plugin_dir_url( __DIR__ ) . 'assets/js/forms.js', [ 'jquery' ], filemtime( plugin_dir_path( __DIR__ ) . 'assets/js/forms.js' ), true );
+        wp_enqueue_script( 'zume_forms', plugin_dir_url( __FILE__ ) . 'forms.js', [ 'jquery' ], filemtime( plugin_dir_path( __FILE__ ) . 'forms.js' ), true );
         wp_localize_script(
             'zume_forms', 'zumeForms', array(
                 'root' => esc_url_raw( rest_url() ),
@@ -96,17 +96,22 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
     public function header_style(){}
 
     public function body(){
-        global $zume_user_profile;
-        $plans = zume_get_user_plans();
-        $stage = zume_get_user_stage();
-        $host = zume_get_user_host();
-
         require __DIR__ . '/../parts/nav.php';
         ?>
         <div class="container">
 
             <h1 class="text-center"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></h1>
 
+
+            <?php
+            /**
+             * DEV SECTION - REMOVE FOR PRODUCTION
+             */
+            global $zume_user_profile;
+            $plans = zume_get_user_plans();
+            $stage = zume_get_user_stage();
+            $host = zume_get_user_host();
+            ?>
             <div class="grid-x grid-margin-x">
                 <div class="cell medium-6">
                     <p><strong><?php echo esc_html__( 'User Profile', 'zume' ) ?></strong><pre><?php print_r( $zume_user_profile ); ?></pre></p>
@@ -117,12 +122,16 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 <div class="cell medium-6">
                     <p><button class="button cta_set_profile" />CTA: Set Profile</button></p>
                     <p><button class="button cta_get_a_coach" />CTA: Get a Coach</button></p>
+                    <p><button class="button cta_join_a_training" />CTA: Join a Training</button></p>
                     <p><button class="button cta_make_a_plan" />CTA: Make a Plan</button></p>
                     <p><button class="button cta_invite_friends" />CTA: Invite Friends</button></p>
-                    <p><button class="button cta_join_training" />CTA: Join a Training</button></p>
-                    <p><button class="button cta_post_training_plan" />CTA: Post Training Plan</button></p>
+                    <p><button class="button cta_work_the_plan" />CTA: Work the Plan</button></p>
+                    <p><button class="button cta_post_training_plan" />CTA: Post Training (3-Month) Plan</button></p>
                 </div>
             </div>
+            <!--END DEV SECTION -->
+
+
         </div>
         <?php
     }
