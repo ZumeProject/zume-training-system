@@ -1,5 +1,5 @@
 @import 'reset';
-@import 'spacing';
+@import 'root-variables';
 @import 'breakpoints';
 @import 'colors';
 @import 'fonts';
@@ -7,6 +7,7 @@
 @import 'composition';
 @import 'utilities/buttons';
 @import 'icons';
+@import 'utilities/spacing';
 @import 'utilities/position';
 @import 'utilities/display';
 

@@ -103,4 +103,4 @@
         }
       }
     `}}window.customElements.define("my-element",St);const wt=document.querySelector(".nav-toggle"),Ct=document.querySelector("#nav");wt.addEventListener("click",o=>{Ct.classList.toggle("nav--visible")});
-//# sourceMappingURL=main-c0e9d940.js.map
+//# sourceMappingURL=main-87b1b2a0.js.map
