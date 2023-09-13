@@ -138,12 +138,15 @@ class Zume_Training_Profile extends Zume_Magic_Page
 
                 </div>
 
-                <button class="button" id="submit-profile"><?php echo esc_html__( 'Save', 'zume' ) ?></button>
+                <button class="btn" id="submit-profile"><?php echo esc_html__( 'Save', 'zume' ) ?></button>
                 <span class="loading-spinner">
                     <img src="<?php echo esc_url( trailingslashit( plugin_dir_url( __DIR__ ) ) . 'assets/images/spinner.svg' ) ?>" alt="spinner">
                 </span>
 
             </form>
+
+            <br>
+            <a href="<?php echo esc_url( dt_login_url( 'logout' ) ) ?>" class="btn-outline"><?php echo esc_html__( 'Logout', 'zume' ) ?></a>
 
             <hr>
             <p><strong><?php echo esc_html__( 'User Profile', 'zume' ) ?></strong><pre><?php print_r( $zume_user_profile ); ?></pre></p>
