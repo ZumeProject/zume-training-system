@@ -24,6 +24,7 @@ class Zume_Training_Profile extends Zume_Magic_Page
 
     public function __construct() {
         parent::__construct();
+
         $this->lang = get_locale();
 
         [
@@ -36,6 +37,8 @@ class Zume_Training_Profile extends Zume_Magic_Page
         $post = zume_get_post_by_slug( $page_slug );
 
         if ( $post && str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
+
+            $this->require_authentication();
 
             $this->set_locale( $lang_code );
 
