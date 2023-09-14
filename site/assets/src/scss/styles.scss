@@ -1,11 +1,15 @@
 @import 'reset';
 @import 'root-variables';
+@import 'functions';
 @import 'breakpoints';
 @import 'colors';
 @import 'fonts';
 @import 'icons';
 
-@import 'composition';
+@import 'composition/center';
+@import 'composition/cover';
+@import 'composition/stack';
+
 @import 'utilities/buttons';
 @import 'utilities/spacing';
 @import 'utilities/position';
@@ -15,8 +19,8 @@
   font-family: $font-text;
 
   color-scheme: light dark;
-  color: $secondary-dark;
-  background-color: $white;
+  color: color('secondary-dark');
+  background-color: color('white');
 }
 
 html {
@@ -56,8 +60,8 @@ a {
 }
 
 header {
-  background-color: $brand-primary;
-  color: $white;
+  background-color: color('brand-primary');
+  color: color('white');
   padding: 0.4em 2em;
   text-align: center;
   font-size: 14px;
@@ -193,8 +197,8 @@ header {
 }
 
 .footer {
-  color: $white;
-  background-color: $brand-primary;
+  color: color('white');
+  background-color: color('brand-primary');
   font-size: 0.75rem;
   padding: var(--s2) 0;
 }

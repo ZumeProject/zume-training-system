@@ -1,0 +1,7 @@
+@function spacing( $i ) {
+    @return var(--s#{$i});
+}
+
+@function color( $color-name ) {
+    @return var( --z-#{$color-name} );
+}

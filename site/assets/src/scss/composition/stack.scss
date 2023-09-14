@@ -1,0 +1,17 @@
+$stack-sizes: (2);
+
+@each $i in $stack-sizes {
+  .stack-#{$i} {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .stack-#{$i} > * {
+    margin-block: 0;
+  }
+
+  .stack-#{$i} > * + * {
+    margin-block-start: var(--space, spacing($i));
+  }
+}
