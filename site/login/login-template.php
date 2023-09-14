@@ -597,7 +597,7 @@ switch ( $request_action ) {
                                 <div class="cell center">
                                     <h1 class="brand"><?php esc_html_e( 'Login', 'zume' ) ?></h1>
                                 </div>
-                                <div class="cell stack">
+                                <div class="cell stack-1">
 
                                     <?php do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" ) ?>
 
@@ -819,8 +819,8 @@ function zume_login_form( $args = array() ) {
         $login_form_top .
         sprintf(
             '<p class="login-username">
-                <label for="%1$s">%2$s</label>
-                <input type="text" name="log" id="%1$s" autocomplete="username" class="input" value="%3$s" size="20" />
+                <label for="%1$s" class="show-for-sr">%2$s</label>
+                <input type="text" name="log" id="%1$s" autocomplete="username" class="input" value="%3$s" size="20" placeholder="%2$s" />
             </p>',
             esc_attr( $args['id_username'] ),
             esc_html( $args['label_username'] ),
@@ -828,8 +828,8 @@ function zume_login_form( $args = array() ) {
         ) .
         sprintf(
             '<p class="login-password">
-                <label for="%1$s">%2$s</label>
-                <input type="password" name="pwd" id="%1$s" autocomplete="current-password" spellcheck="false" class="input" value="" size="20" />
+                <label for="%1$s" class="show-for-sr">%2$s</label>
+                <input type="password" name="pwd" id="%1$s" autocomplete="current-password" spellcheck="false" class="input" value="" size="20" placeholder="%2$s" />
             </p>',
             esc_attr( $args['id_password'] ),
             esc_html( $args['label_password'] )
@@ -837,7 +837,7 @@ function zume_login_form( $args = array() ) {
         $login_form_middle .
         ( $args['remember'] ?
             sprintf(
-                '<p class="login-remember"><label><input name="rememberme" type="checkbox" id="%1$s" value="forever"%2$s /> %3$s</label></p>',
+                '<p class="login-remember text-start"><label><input class="input" name="rememberme" type="checkbox" id="%1$s" value="forever"%2$s /> %3$s</label></p>',
                 esc_attr( $args['id_remember'] ),
                 ( $args['value_remember'] ? ' checked="checked"' : '' ),
                 esc_html( $args['label_remember'] )
@@ -845,7 +845,7 @@ function zume_login_form( $args = array() ) {
         ) .
         sprintf(
             '<p class="login-submit">
-                <input type="submit" name="wp-submit" id="%1$s" class="button button-primary" value="%2$s" />
+                <input type="submit" name="wp-submit" id="%1$s" class="btn uppercase w-100" value="%2$s" />
                 <input type="hidden" name="redirect_to" value="%3$s" />
             </p>',
             esc_attr( $args['id_submit'] ),

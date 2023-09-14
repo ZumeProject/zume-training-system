@@ -3,11 +3,23 @@
         padding: 0;
     }
 
+    .firebaseui-idp-list, .firebaseui-tenant-list {
+        margin: 0;
+    }
+
+    .firebaseui-idp-list> * + *, .firebaseui-tenant-list> * + * {
+        margin-block-start: spacing(-1);
+    }
+
+    .firebaseui-idp-list>.firebaseui-list-item, .firebaseui-tenant-list>.firebaseui-list-item {
+        margin-bottom: 0;
+    }
+
     .firebaseui-idp-button, .firebaseui-tenant-button {
         max-width: 100%;
 
         padding-block: 2px;
-        border-radius: 0.4em;
+        border-radius: 50px;
         font-family: var(--font-family);
         font-size: font-size(1);
     }
