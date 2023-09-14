@@ -1,0 +1,23 @@
+#login {
+    .firebaseui-card-content {
+        padding: 0;
+    }
+
+    .firebaseui-idp-button, .firebaseui-tenant-button {
+        max-width: 100%;
+
+        padding-block: 2px;
+        border-radius: 0.4em;
+        font-family: var(--font-family);
+        font-size: font-size(1);
+    }
+
+    .firebaseui-idp-text {
+        font-size: font-size(-1);
+    }
+
+    .firebaseui-idp-icon {
+        height: 25px;
+        width: 25px;
+    }
+}
