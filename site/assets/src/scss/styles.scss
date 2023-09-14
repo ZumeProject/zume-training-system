@@ -158,6 +158,19 @@ header {
   margin: 0 auto;
 }
 
+.line-text {
+  display: block;
+  width: 100%;
+  text-align: center;
+  border-bottom: 3px solid color('secondary-light');
+  line-height: 0;
+
+  & > * {
+    background-color: color('white');
+    padding: 0 spacing(0);
+  }
+}
+
 @media (min-width: $break-lg) {
 
     .row {

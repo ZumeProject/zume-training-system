@@ -31,3 +31,11 @@ h4, .h4 {
 h5, .h5 {
     font-size: font-size(1);
 }
+
+$font-sizes: (-1);
+
+@each $font-size in $font-sizes {
+    .f-#{$font-size} {
+        font-size: font-size($font-size);
+    }
+}

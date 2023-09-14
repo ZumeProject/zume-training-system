@@ -1,5 +1,19 @@
 $stack-sizes: (2);
 
+.stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.stack > * {
+    margin-block: 0;
+}
+
+.stack > * + * {
+    margin-block-start: var(--space, spacing(0));
+}
+
 @each $i in $stack-sizes {
   .stack-#{$i} {
     display: flex;

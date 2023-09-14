@@ -597,9 +597,11 @@ switch ( $request_action ) {
                                 <div class="cell center">
                                     <h1 class="brand"><?php esc_html_e( 'Login', 'zume' ) ?></h1>
                                 </div>
-                                <div class="cell">
+                                <div class="cell stack">
 
                                     <?php do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" ) ?>
+
+                                    <span class="line-text f--1"><span><?php echo esc_html__( 'Or Sign In with', 'zume' ) ?></span></span>
 
                                     <?php
                                     if ( isset( $_GET['login'] ) && $_GET['login'] === 'failed' ) {
