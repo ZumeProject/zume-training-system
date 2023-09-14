@@ -91,7 +91,12 @@ class Zume_Training_Login extends Zume_Magic_Page {
         <div class="cover-page bg-brand-gradient">
 
             <?php require_once __DIR__ . '/../parts/nav.php' ?>
-            <?php require_once __DIR__ . '/login-template.php' ?>
+
+            <div class="center">
+
+                <?php require_once __DIR__ . '/login-template.php' ?>
+
+            </div>
 
         </div>
 
