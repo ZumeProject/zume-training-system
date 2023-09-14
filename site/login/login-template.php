@@ -580,78 +580,82 @@ switch ( $request_action ) {
     default:
         ?>
 
-        <div id="content">
             <div id="login">
-                <br>
                 <div class="grid-x grid-padding-x">
-                    <div class="cell medium-3 large-4"></div>
-                    <div class="cell callout medium-6 large-4">
-                        <div class="grid-x grid-padding-x grid-padding-y">
-                            <div class="cell center">
-                                <h1 ><?php esc_html_e( 'Login', 'zume' ) ?></h1>
-                            </div>
-                            <div class="cell">
-                                <?php
-                                if ( isset( $_GET['login'] ) && $_GET['login'] === 'failed' ) {
-                                    ?>
-                                    <div class="callout warning cell center">
-                                        <?php echo esc_html__( 'Username or password does not match. Try again.', 'zume' ); ?>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-
-                                <?php if ( $dt_login['identity_providers_email'] !== 'on' ): ?>
-
-                                    <div class="cell" >
-                                        <div class="wp_login_form">
-                                            <?php
-                                            $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
-                                            $args = array(
-                                                'redirect' => dt_login_url( 'redirect', site_url( $request_uri ) ),
-                                                'id_username' => 'user',
-                                                'id_password' => 'pass',
-                                                'value_remember' => true,
-                                                'label_username' => __( 'Email Address', 'zume' ),
-                                                'label_password' => __( 'Password', 'zume' ),
-                                                'label_remember' => __( 'Remember Me', 'zume' ),
-                                                'label_log_in' => __( 'Login', 'zume' ),
-                                                );
-                                                wp_login_form( $args );
-                                            ?>
-                                        </div>
-                                    </div>
-
-                                <?php endif; ?>
-
-                                <div class="cell">
-
-                                <?php
-
-                                [ 'lang_code' => $lang_code ] = zume_get_url_pieces();
-
-                                if ( strlen( $lang_code ) === 4 ) {
-                                    $lang_code = implode( '_', str_split( $lang_code, 2 ) );
-                                }
-
-                                if ( $lang_code === 'pt' ) {
-                                    $lang_code = 'pt_pt';
-                                }
-
-                                do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" )
-
-                                ?>
-
+                    <div class="cell medium-3 large-3"></div>
+                    <div class="cell medium-6 large-6">
+                        <div class="grid-x">
+                            <div class="cell large-6 | text-center bg-brand-light">
+                                <div class="cover">
+                                    <h2><?php echo esc_html__( 'Welcome back!', 'zume' ) ?></h2>
+                                    <div class="center"><img src="https://picsum.photos/200/300" alt=""></div>
                                 </div>
                             </div>
+                            <div class="cell large-6 | text-center bg-white px-1">
+                                <div class="cell center">
+                                    <h1 ><?php esc_html_e( 'Login', 'zume' ) ?></h1>
+                                </div>
+                                <div class="cell">
 
+                                    <?php do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" ) ?>
+
+                                    <?php
+                                    if ( isset( $_GET['login'] ) && $_GET['login'] === 'failed' ) {
+                                        ?>
+                                        <div class="callout warning cell center">
+                                            <?php echo esc_html__( 'Username or password does not match. Try again.', 'zume' ); ?>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+
+                                    <?php if ( $dt_login['identity_providers_email'] !== 'on' ): ?>
+
+                                        <div class="cell" >
+                                            <div class="wp_login_form">
+                                                <?php
+                                                $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+                                                $args = array(
+                                                    'redirect' => dt_login_url( 'redirect', site_url( $request_uri ) ),
+                                                    'id_username' => 'user',
+                                                    'id_password' => 'pass',
+                                                    'value_remember' => true,
+                                                    'label_username' => __( 'Email Address', 'zume' ),
+                                                    'label_password' => __( 'Password', 'zume' ),
+                                                    'label_remember' => __( 'Remember Me', 'zume' ),
+                                                    'label_log_in' => __( 'Login', 'zume' ),
+                                                    );
+                                                    wp_login_form( $args );
+                                                ?>
+                                            </div>
+                                        </div>
+
+                                    <?php endif; ?>
+
+                                    <?php
+
+                                    [ 'lang_code' => $lang_code ] = zume_get_url_pieces();
+
+                                    if ( strlen( $lang_code ) === 4 ) {
+                                        $lang_code = implode( '_', str_split( $lang_code, 2 ) );
+                                    }
+
+                                    if ( $lang_code === 'pt' ) {
+                                        $lang_code = 'pt_pt';
+                                    }
+
+                                    ?>
+
+                                    <div class="cell">
+                                        <?php dt_login_form_links() ?>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="cell medium-3 large-4"></div>
+                    <div class="cell medium-3 large-3"></div>
                 </div>
-                <?php dt_login_form_links() ?>
             </div>
-        </div>
 
         <?php
     break;

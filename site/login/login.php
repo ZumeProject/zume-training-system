@@ -86,11 +86,16 @@ class Zume_Training_Login extends Zume_Magic_Page {
 
     public function body() {
 
-        require_once __DIR__ . '/../parts/nav.php';
+        ?>
 
-        require_once __DIR__ . '/login-template.php';
+        <div class="cover-page bg-brand-gradient">
 
-        require_once __DIR__ . '/../parts/footer.php';
+            <?php require_once __DIR__ . '/../parts/nav.php' ?>
+            <?php require_once __DIR__ . '/login-template.php' ?>
+
+        </div>
+
+        <?php
     }
 }
 Zume_Training_Login::instance();
