@@ -41,12 +41,9 @@ class Zume_Training_Vision extends Zume_Magic_Page
 
             // register url and access
             add_action( 'template_redirect', [ $this, 'theme_redirect' ] );
-            add_filter( 'dt_blank_access', function (){ return true;
-            }, 100, 1 );
-            add_filter( 'dt_allow_non_login_access', function (){ return true;
-            }, 100, 1 );
-            add_filter( 'dt_override_header_meta', function (){ return true;
-            }, 100, 1 );
+            add_filter( 'dt_blank_access', '__return_true', 100, 1 );
+            add_filter( 'dt_allow_non_login_access', '__return_true', 100, 1 );
+            add_filter( 'dt_override_header_meta', '__return_true', 100, 1 );
 
             // header content
             add_filter( 'dt_blank_title', [ $this, 'page_tab_title' ] );
