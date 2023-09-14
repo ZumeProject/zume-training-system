@@ -1,13 +1,17 @@
-.bg-brand {
-    background: color( 'brand' );
+$colors: ( 'white', 'brand', 'brand-light');
+
+@each $color in $colors {
+    .#{$color} {
+        color: color($color);
+    }
 }
 
-.bg-white {
-    background-color: color( 'white' );
-}
+$bg-colors: ('white', 'brand', 'brand-light');
 
-.bg-brand-light {
-    background-color: color( 'brand-light' );
+@each $color in $bg-colors {
+    .bg-#{$color} {
+        background-color: color($color);
+    }
 }
 
 .bg-brand-gradient {

@@ -3,20 +3,22 @@
 @import 'functions';
 @import 'breakpoints';
 @import 'colors';
-@import 'fonts';
 @import 'icons';
+@import 'typography';
 
 @import 'composition/center';
 @import 'composition/cover';
 @import 'composition/stack';
+@import 'composition/box';
 
 @import 'utilities/buttons';
 @import 'utilities/spacing';
 @import 'utilities/position';
 @import 'utilities/display';
+@import 'utilities/shapes';
 
 :root {
-  font-family: $font-text;
+  font-family: var(--font-family);
 
   color-scheme: light dark;
   color: color('secondary-dark');
@@ -29,7 +31,7 @@ html {
 
 body {
     font-size: 1rem;
-    font-family: $font-text;
+    font-family: var(--font-family);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -37,10 +39,6 @@ body {
 
 footer {
   margin-top: auto;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-header;
 }
 
 ul {
@@ -60,7 +58,7 @@ a {
 }
 
 header {
-  background-color: color('brand-primary');
+  background-color: color('brand');
   color: color('white');
   padding: 0.4em 2em;
   text-align: center;
@@ -70,7 +68,7 @@ header {
 .nav {
   display: none;
   font-weight: 600;
-  font-family: $font-text;
+  font-family: var(--font-family);
 }
 
 .nav--visible {
@@ -198,7 +196,7 @@ header {
 
 .footer {
   color: color('white');
-  background-color: color('brand-primary');
+  background-color: color('brand');
   font-size: 0.75rem;
   padding: var(--s2) 0;
 }

@@ -585,15 +585,17 @@ switch ( $request_action ) {
                     <div class="cell medium-3 large-3"></div>
                     <div class="cell medium-6 large-6">
                         <div class="grid-x">
-                            <div class="cell large-6 | text-center bg-brand-light">
+                            <div class="cell large-6 | text-center bg-brand-light px-1 rounded-start shadow">
                                 <div class="cover">
-                                    <h2><?php echo esc_html__( 'Welcome back!', 'zume' ) ?></h2>
-                                    <div class="center"><img src="https://picsum.photos/200/300" alt=""></div>
+                                    <h2 class="white"><?php echo esc_html__( 'Welcome back!', 'zume' ) ?></h2>
+                                    <div class="center">
+                                            <?php require plugin_dir_path( __DIR__ ) . 'assets/images/Jesus-01.svg' ?>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="cell large-6 | text-center bg-white px-1">
+                            <div class="cell large-6 | text-center bg-white px-1 rounded-end shadow">
                                 <div class="cell center">
-                                    <h1 ><?php esc_html_e( 'Login', 'zume' ) ?></h1>
+                                    <h1 class="brand"><?php esc_html_e( 'Login', 'zume' ) ?></h1>
                                 </div>
                                 <div class="cell">
 

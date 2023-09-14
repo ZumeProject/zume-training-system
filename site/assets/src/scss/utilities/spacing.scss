@@ -6,7 +6,7 @@ $gap-sizes: (3, 4);
     }
 }
 
-$padding-sizes: (1);
+$padding-sizes: (0, 1);
 
 @each $i in $padding-sizes {
     .p-#{$i} {
