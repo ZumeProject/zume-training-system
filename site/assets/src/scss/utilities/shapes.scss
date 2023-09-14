@@ -2,6 +2,17 @@
     border-radius: var(--border-radius);
 }
 
+.rounded-multi > :first-child {
+    border-start-start-radius: var(--border-radius);
+    border-end-start-radius: var(--border-radius);
+}
+
+.rounded-multi > :last-child {
+    border-start-end-radius: var(--border-radius);
+    border-end-end-radius: var(--border-radius);
+}
+
+
 .rounded-start {
     border-start-start-radius: var(--border-radius);
     border-end-start-radius: var(--border-radius);

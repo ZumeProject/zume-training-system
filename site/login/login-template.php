@@ -581,8 +581,8 @@ switch ( $request_action ) {
         ?>
 
             <div id="login">
-                <div class="grid-x">
-                    <div class="cell large-6 | text-center bg-brand-light px-1 py-0 rounded-start shadow">
+                <div class="grid-x rounded-multi">
+                    <div class="cell large-6 hide-for-small-only hide-for-medium-only | text-center bg-brand-light px-1 py-0 shadow">
                         <div class="cover">
                             <h2 class="white"><?php echo esc_html__( 'Welcome back!', 'zume' ) ?></h2>
                             <div class="center">
@@ -590,7 +590,7 @@ switch ( $request_action ) {
                             </div>
                         </div>
                     </div>
-                    <div class="cell large-6 | text-center bg-white px-1 py-0 rounded-end shadow">
+                    <div class="cell large-6 | text-center bg-white px-1 py-0 shadow">
                         <div class="cell">
                             <h1 class="brand"><?php esc_html_e( 'Login', 'zume' ) ?></h1>
                         </div>
