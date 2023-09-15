@@ -591,10 +591,10 @@ switch ( $request_action ) {
                         </div>
                     </div>
                     <div class="cell large-6 | text-center bg-white px-1 py-0 shadow rounded-start-on-medium">
-                        <div class="cell">
+                        <div class="">
                             <h1 class="brand"><?php esc_html_e( 'Login', 'zume' ) ?></h1>
                         </div>
-                        <div class="cell stack-1">
+                        <div class="stack-1">
 
                             <?php do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" ) ?>
 
@@ -603,7 +603,7 @@ switch ( $request_action ) {
                             <?php
                             if ( isset( $_GET['login'] ) && $_GET['login'] === 'failed' ) {
                                 ?>
-                                <div class="callout warning cell center">
+                                <div class="banner warning center">
                                     <?php echo esc_html__( 'Username or password does not match. Try again.', 'zume' ); ?>
                                 </div>
                                 <?php
@@ -612,7 +612,7 @@ switch ( $request_action ) {
 
                             <?php if ( $dt_login['identity_providers_email'] !== 'on' ): ?>
 
-                                <div class="cell" >
+                                <div class="" >
                                     <div class="wp_login_form">
                                         <?php
                                         $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
@@ -647,7 +647,7 @@ switch ( $request_action ) {
 
                             ?>
 
-                            <div class="cell">
+                            <div class="">
                                 <?php dt_login_form_links() ?>
                             </div>
                         </div>
