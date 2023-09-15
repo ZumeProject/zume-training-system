@@ -79,7 +79,21 @@ class Zume_Training_Login extends Zume_Magic_Page {
         <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
+
+                const registerEmailToggles = document.querySelectorAll('.register-email-toggle')
+                const ssoRegister = document.querySelector('.sso-register')
+                const emailRegister = document.getElementById('email_signup_form')
+
+                registerEmailToggles.forEach( (toggleElement) =>
+                    toggleElement.addEventListener('click', function() {
+                        ssoRegister.classList.toggle('hidden')
+                        emailRegister.classList.toggle('hidden')
+                    })
+                )
+
             });
+        </script>
+        <script>
         </script>
         <?php
     }

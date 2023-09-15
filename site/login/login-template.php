@@ -381,8 +381,8 @@ switch ( $request_action ) {
                             </div>
                         </div>
                     </div>
-                    <div class="cell cover large-6 | text-center bg-white px-1 py-0 shadow rounded-start-on-medium">
-                        <h1 class="brand"><?php esc_html_e( 'Register', 'zume' ) ?></h1>
+                    <div class="cell cover large-6 | bg-white px-1 py-0 shadow rounded-start-on-medium">
+                        <h1 class="brand text-center"><?php esc_html_e( 'Register', 'zume' ) ?></h1>
                         <div class="">
 
                             <div class="stack-1 sso-register">
@@ -410,6 +410,9 @@ switch ( $request_action ) {
                             </div>
 
                             <div id="email_signup_form" class="hidden">
+
+                                <button class="btn-outline-dark register-email-toggle"><?php echo esc_html__( 'Back', 'zume' ) ?></button>
+
                                 <?php if ( is_wp_error( $reg_status ) ) :?>
                                     <div class="cell warning banner">
                                         <?php echo esc_html( $reg_status->get_error_message() ) ?>
@@ -435,46 +438,38 @@ switch ( $request_action ) {
 
                                         </style>
                                         <div>
-                                            <form id="loginform" action="" method="POST" data-abide novalidate>
+                                            <form class="stack--1" id="loginform" action="" method="POST" data-abide novalidate>
                                                 <?php wp_nonce_field( 'login_form', 'login_form_nonce' ) ?>
                                                 <div data-abide-error class="warning banner" style="display: none;">
                                                     <p><i class="fi-alert"></i><?php esc_html_e( 'There are some errors in your form.', 'zume' ) ?></p>
                                                 </div>
-                                                <div class="">
-                                                    <div class="">
-                                                        <div class="cell small-12">
-                                                            <label for="email"><?php esc_html_e( 'Email', 'zume' ) ?> <strong>*</strong></label>
-                                                            <input type="email" name="email" id="email" value="" aria-errormessage="email-error" required>
-                                                            <span class="form-error" id="email-error">
-                                                                <?php esc_html_e( 'Badly formatted email address', 'zume' ) ?>
-                                                            </span>
-                                                        </div>
-                                                        <div class="cell small-12">
-                                                            <label><?php esc_html_e( 'Password', 'zume' ) ?> <strong>*</strong>
-                                                                <input type="password" id="password" name="password" placeholder="yeti4preZ" aria-errormessage="password-error-too-weak" required >
-                                                                <span class="form-error" id="password-error-too-weak">
-                                                                    <?php esc_html_e( 'Password is not strong enough', 'zume' ) ?>
-                                                                </span>
-                                                            </label>
-                                                            <meter max="4" id="password-strength-meter" value="0"></meter>
-                                                        </div>
-                                                        <div class="cell small-12">
-                                                            <label><?php esc_html_e( 'Re-enter Password', 'zume' ) ?> <strong>*</strong>
-                                                                <input id="password2" name="password2" type="password" placeholder="yeti4preZ" aria-errormessage="password-error-2" data-equalto="password" required>
-                                                                <span class="form-error" id="password-error-2">
-                                                                    <?php esc_html_e( 'Passwords do not match. Please, try again.', 'zume' ) ?>
-                                                              </span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cell small-12">
-                                                        <div class="g-recaptcha" id="g-recaptcha"></div><br>
-                                                    </div>
-                                                    <div class="cell small-12">
-                                                        <button class="button button-primary" id="submit">
-                                                            <?php esc_html_e( 'Register', 'zume' ) ?>
-                                                        </button>
-                                                    </div>
+                                                <div>
+                                                    <label class="show-for-sr" for="email"><?php esc_html_e( 'Email', 'zume' ) ?> <strong>*</strong></label>
+                                                    <input class="input" type="email" name="email" id="email" value="" aria-errormessage="email-error" placeholder="<?php esc_html_e( 'Email', 'zume' ) ?>" required>
+                                                    <span class="form-error" id="email-error">
+                                                        <?php esc_html_e( 'Badly formatted email address', 'zume' ) ?>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <label class="show-for-sr"><?php esc_html_e( 'Password', 'zume' ) ?> <strong>*</strong></label>
+                                                    <input class="input" type="password" id="password" name="password" placeholder="<?php esc_html_e( 'Password', 'zume' ) ?>" aria-errormessage="password-error-too-weak" required >
+                                                    <span class="form-error" id="password-error-too-weak">
+                                                        <?php esc_html_e( 'Password is not strong enough', 'zume' ) ?>
+                                                    </span>
+                                                </div>
+                                                <meter max="4" id="password-strength-meter" value="0"></meter>
+                                                <div>
+                                                    <label class="show-for-sr"><?php esc_html_e( 'Re-enter Password', 'zume' ) ?> <strong>*</strong></label>
+                                                    <input class="input" id="password2" name="password2" type="password" placeholder="<?php esc_html_e( 'Re-enter Password', 'zume' ) ?>" aria-errormessage="password-error-2" data-equalto="password" required>
+                                                    <span class="form-error" id="password-error-2">
+                                                        <?php esc_html_e( 'Passwords do not match. Please, try again.', 'zume' ) ?>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <div class="g-recaptcha" id="g-recaptcha"></div>
+                                                    <button class="btn-light w-100" id="submit">
+                                                        <?php esc_html_e( 'Register', 'zume' ) ?>
+                                                    </button>
                                                 </div>
                                             </form>
                                         </div>
@@ -535,7 +530,7 @@ switch ( $request_action ) {
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div class="text-center">
                             <?php dt_login_form_links() ?>
                         </div>
                     </div>
