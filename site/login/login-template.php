@@ -590,7 +590,7 @@ switch ( $request_action ) {
                             </div>
                         </div>
                     </div>
-                    <div class="cell large-6 | text-center bg-white px-1 py-0 shadow">
+                    <div class="cell large-6 | text-center bg-white px-1 py-0 shadow rounded-start-on-medium">
                         <div class="cell">
                             <h1 class="brand"><?php esc_html_e( 'Login', 'zume' ) ?></h1>
                         </div>

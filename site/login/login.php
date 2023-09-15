@@ -88,9 +88,12 @@ class Zume_Training_Login extends Zume_Magic_Page {
 
         ?>
 
-        <div class="cover-page bg-brand-gradient">
+        <div class="cover-page | position-relative bg-brand-gradient">
 
             <?php require_once __DIR__ . '/../parts/nav.php' ?>
+
+            <div class="multiply-cover show-for-medium"></div>
+            <div class="multiply-cover flip show-for-medium"></div>
 
             <div class="center">
 
