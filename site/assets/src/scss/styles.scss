@@ -58,6 +58,8 @@ a {
 }
 
 header {
+  position: relative;
+  z-index: 5;
   background-color: color('brand');
   color: color('white');
   padding: 0.4em 2em;

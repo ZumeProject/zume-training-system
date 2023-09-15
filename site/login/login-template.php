@@ -590,15 +590,13 @@ switch ( $request_action ) {
                             </div>
                         </div>
                     </div>
-                    <div class="cell large-6 | text-center bg-white px-1 py-0 shadow rounded-start-on-medium">
-                        <div class="">
-                            <h1 class="brand"><?php esc_html_e( 'Login', 'zume' ) ?></h1>
-                        </div>
+                    <div class="cell cover large-6 | text-center bg-white px-1 py-0 shadow rounded-start-on-medium">
+                        <h1 class="brand"><?php esc_html_e( 'Login', 'zume' ) ?></h1>
                         <div class="stack-1">
 
                             <?php do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" ) ?>
 
-                            <span class="line-text f--1"><span><?php echo esc_html__( 'Or Sign In with', 'zume' ) ?></span></span>
+                            <span class="line-text f--1"><span><?php echo esc_html__( 'or sign in with email', 'zume' ) ?></span></span>
 
                             <?php
                             if ( isset( $_GET['login'] ) && $_GET['login'] === 'failed' ) {
@@ -837,7 +835,7 @@ function zume_login_form( $args = array() ) {
         ) .
         sprintf(
             '<p class="login-submit">
-                <input type="submit" name="wp-submit" id="%1$s" class="btn uppercase w-100" value="%2$s" />
+                <input type="submit" name="wp-submit" id="%1$s" class="btn-light uppercase w-100" value="%2$s" />
                 <input type="hidden" name="redirect_to" value="%3$s" />
             </p>',
             esc_attr( $args['id_submit'] ),

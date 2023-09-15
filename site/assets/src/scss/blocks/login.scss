@@ -2,6 +2,10 @@
     position: relative;
     z-index: 5;
 
+    .firebaseui-container {
+        max-width: unset;
+    }
+
     .firebaseui-card-content {
         padding: 0;
     }
@@ -24,11 +28,16 @@
         padding-block: 2px;
         border-radius: 50px;
         font-family: var(--font-family);
-        font-size: font-size(1);
+    }
+
+    .firebaseui-idp-google {
+        background-color: color('black') !important;
+        color: color('white') !important;
     }
 
     .firebaseui-idp-text {
-        font-size: font-size(-1);
+        font-size: font-size(0);
+        color: color('white');
     }
 
     .firebaseui-idp-icon {

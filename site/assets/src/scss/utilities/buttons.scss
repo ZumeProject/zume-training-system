@@ -1,6 +1,8 @@
 @mixin button {
+    color: inherit;
     display: inline-block;
     font-weight: 400;
+    border: solid 2px transparent;
     border-radius: 100px;
     padding: 0.25em 1em;
     cursor: pointer;
@@ -12,7 +14,6 @@
 
     color: color('white');
     background-color: color('brand');
-    border: solid 2px transparent;
 
     &:hover, &:active {
         color: color('white');
@@ -67,7 +68,21 @@
     }
 }
 
+.btn-outline-dark {
+    @include button;
+
+    border: 2px solid color('gray');
+
+    &:hover, &:active {
+        color: color('white');
+        background-color: color('gray-dark');
+        border-color: color('gray-dark');
+    }
+}
+
 a {
+    color: color('brand');
+
     &:hover, &:active, &:focus {
         text-decoration: underline;
     }

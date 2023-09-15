@@ -1,6 +1,11 @@
 .input {
-    border-radius: var(--border-radius);
+    border-radius: calc(var(--border-radius) / 2 );
+    border: 2px solid color('gray');
     margin: 0;
+
+    &:focus {
+        border: 2px solid color('gray');
+    }
 }
 
 .input-label {
