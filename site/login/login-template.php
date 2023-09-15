@@ -409,9 +409,9 @@ switch ( $request_action ) {
 
                             </div>
 
-                            <div id="email_signup_form" class="hidden">
+                            <div id="email_signup_form" class="hidden stack">
 
-                                <button class="btn-outline-dark register-email-toggle"><?php echo esc_html__( 'Back', 'zume' ) ?></button>
+                                <button class="btn-outline-dark fit-content register-email-toggle"><?php echo esc_html__( 'Back', 'zume' ) ?></button>
 
                                 <?php if ( is_wp_error( $reg_status ) ) :?>
                                     <div class="cell warning banner">
@@ -439,10 +439,6 @@ switch ( $request_action ) {
                                         </style>
                                         <div>
                                             <form class="stack--1" id="loginform" action="" method="POST" data-abide novalidate>
-                                                <?php wp_nonce_field( 'login_form', 'login_form_nonce' ) ?>
-                                                <div data-abide-error class="warning banner" style="display: none;">
-                                                    <p><i class="fi-alert"></i><?php esc_html_e( 'There are some errors in your form.', 'zume' ) ?></p>
-                                                </div>
                                                 <div>
                                                     <label class="show-for-sr" for="email"><?php esc_html_e( 'Email', 'zume' ) ?> <strong>*</strong></label>
                                                     <input class="input" type="email" name="email" id="email" value="" aria-errormessage="email-error" placeholder="<?php esc_html_e( 'Email', 'zume' ) ?>" required>
@@ -465,6 +461,10 @@ switch ( $request_action ) {
                                                         <?php esc_html_e( 'Passwords do not match. Please, try again.', 'zume' ) ?>
                                                     </span>
                                                 </div>
+                                                <div data-abide-error class="warning banner" style="display: none;">
+                                                    <p><i class="fi-alert"></i><?php esc_html_e( 'There are some errors in your form.', 'zume' ) ?></p>
+                                                </div>
+                                                <?php wp_nonce_field( 'login_form', 'login_form_nonce' ) ?>
                                                 <div>
                                                     <div class="g-recaptcha" id="g-recaptcha"></div>
                                                     <button class="btn-light w-100" id="submit">
