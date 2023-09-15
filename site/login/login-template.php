@@ -366,6 +366,8 @@ switch ( $request_action ) {
     case 'register' :
         $register = DT_Login_Email::instance();
         $reg_status = $register->custom_registration_function();
+
+        $has_email_error = is_wp_error( $reg_status );
         ?>
 
             <div id="login">
@@ -385,7 +387,7 @@ switch ( $request_action ) {
                         <h1 class="brand text-center"><?php esc_html_e( 'Register', 'zume' ) ?></h1>
                         <div class="">
 
-                            <div class="stack-1 sso-register">
+                            <div class="stack-1 sso-register <?php echo $has_email_error ? 'hidden' : '' ?>">
 
                                 <?php
 
@@ -409,7 +411,7 @@ switch ( $request_action ) {
 
                             </div>
 
-                            <div id="email_signup_form" class="hidden stack">
+                            <div id="email_signup_form" class="<?php echo $has_email_error ? '' : 'hidden' ?> stack">
 
                                 <button class="btn-outline-dark fit-content register-email-toggle"><?php echo esc_html__( 'Back', 'zume' ) ?></button>
 
@@ -441,14 +443,14 @@ switch ( $request_action ) {
                                             <form class="stack--1" id="loginform" action="" method="POST" data-abide novalidate>
                                                 <div>
                                                     <label class="show-for-sr" for="email"><?php esc_html_e( 'Email', 'zume' ) ?> <strong>*</strong></label>
-                                                    <input class="input" type="email" name="email" id="email" value="" aria-errormessage="email-error" placeholder="<?php esc_html_e( 'Email', 'zume' ) ?>" required>
+                                                    <input class="input" type="email" name="email" id="email" value="" aria-errormessage="email-error" placeholder="<?php esc_html_e( 'Email', 'zume' ) ?>*" required>
                                                     <span class="form-error" id="email-error">
                                                         <?php esc_html_e( 'Badly formatted email address', 'zume' ) ?>
                                                     </span>
                                                 </div>
                                                 <div>
                                                     <label class="show-for-sr"><?php esc_html_e( 'Password', 'zume' ) ?> <strong>*</strong></label>
-                                                    <input class="input" type="password" id="password" name="password" placeholder="<?php esc_html_e( 'Password', 'zume' ) ?>" aria-errormessage="password-error-too-weak" required >
+                                                    <input class="input" type="password" id="password" name="password" placeholder="<?php esc_html_e( 'Password', 'zume' ) ?>*" aria-errormessage="password-error-too-weak" required >
                                                     <span class="form-error" id="password-error-too-weak">
                                                         <?php esc_html_e( 'Password is not strong enough', 'zume' ) ?>
                                                     </span>
@@ -456,7 +458,7 @@ switch ( $request_action ) {
                                                 <meter max="4" id="password-strength-meter" value="0"></meter>
                                                 <div>
                                                     <label class="show-for-sr"><?php esc_html_e( 'Re-enter Password', 'zume' ) ?> <strong>*</strong></label>
-                                                    <input class="input" id="password2" name="password2" type="password" placeholder="<?php esc_html_e( 'Re-enter Password', 'zume' ) ?>" aria-errormessage="password-error-2" data-equalto="password" required>
+                                                    <input class="input" id="password2" name="password2" type="password" placeholder="<?php esc_html_e( 'Re-enter Password', 'zume' ) ?>*" aria-errormessage="password-error-2" data-equalto="password" required>
                                                     <span class="form-error" id="password-error-2">
                                                         <?php esc_html_e( 'Passwords do not match. Please, try again.', 'zume' ) ?>
                                                     </span>
