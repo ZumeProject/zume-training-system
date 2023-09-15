@@ -2,6 +2,12 @@
     display: flex;
 }
 
+.grid-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+}
+
 .d-block {
     display: block;
 }

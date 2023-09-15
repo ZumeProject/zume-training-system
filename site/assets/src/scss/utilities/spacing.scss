@@ -6,7 +6,7 @@ $gap-sizes: (3, 4);
     }
 }
 
-$padding-sizes: (-1, 0, 1);
+$padding-sizes: (-1, 0, 1, 2);
 
 @each $i in $padding-sizes {
     .p-#{$i} {
@@ -18,4 +18,8 @@ $padding-sizes: (-1, 0, 1);
     .py-#{$i} {
         padding-block: spacing($i);
     }
+}
+
+.p0 {
+    padding: 0 !important;
 }

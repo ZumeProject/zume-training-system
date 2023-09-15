@@ -87,66 +87,61 @@ switch ( $request_action ) {
 
         ?>
 
-        <div id="content">
-            <div id="login">
-                <br>
-                <div  class="grid-x grid-margin-x grid-padding-x">
-                    <div class="cell medium-3 large-4"></div>
-                    <div class="cell banner medium-6 large-4">
-                        <div class="grid-x grid-padding-x grid-padding-y">
-                            <div class="cell center">
-                                <h1 ><?php esc_html_e( 'Get New Password', 'zume' ) ?></h1>
-                            </div>
-
-                            <?php if ( ! empty( $form_errors->errors ) ) : ?>
-
-                                <div class="cell warning banner">
-
-                                    <?php
-
-                                    if ( isset( $translated_error_messages[$form_errors->get_error_code()] ) ) {
-                                        echo esc_html( $translated_error_messages[$form_errors->get_error_code()] );
-                                    } else {
-                                        echo esc_html( $form_errors->get_error_message() );
-                                    }
-
-                                    ?>
-
-                                </div>
-
-                            <?php endif; ?>
-
-                            <div class="cell">
-                                <div class="wp_lostpassword_form">
-                                    <?php if ( ! $sent ) : ?>
-                                        <form name="lostpasswordform" id="lostpasswordform" action="<?php echo esc_url( dt_login_url( 'lostpassword' ) ); ?>" method="post">
-                                            <?php wp_nonce_field( 'retrieve_password', 'retrieve_password_nonce', false, true ) ?>
-                                            <p>
-                                                <label for="user_login" ><?php echo esc_html__( 'Email Address', 'zume' ); ?><br />
-                                                    <input type="text" name="user_login" id="user_login" class="input" value="<?php echo esc_attr( $user_login_response ); ?>" size="20" /></label>
-                                            </p>
-                                            <?php
-                                            /**
-                                             * Fires inside the lostpassword form tags, before the hidden fields.
-                                             *
-                                             * @since 2.1.0
-                                             */
-                                            do_action( 'lostpassword_form' ); ?>
-                                            <input type="hidden" name="redirect_to" value="<?php echo esc_attr( $redirect_to ); ?>" />
-                                            <p><input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="<?php echo esc_html__( 'Get New Password', 'zume' ); ?>" /></p>
-                                        </form>
-                                    <?php elseif ( $sent ): ?>
-                                        <?php echo esc_html__( 'Your password reset email has been sent. Check your email or junk mail for the link to reset your password.', 'zume' ) ?>
-                                    <?php endif; ?>
-
-                                </div>
-                            </div>
-                        </div>
+        <div id="login">
+            <div class="grid-container rounded-multi">
+                <div class="hide-for-small-only hide-for-medium-only | text-center bg-brand-light shadow">
+                    <div class="cover center">
+                        <div class="w-25 p0"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Thinking-01.svg' ) ?>" alt=""></div>
                     </div>
-                    <div class="cell medium-3 large-4"></div>
                 </div>
-                <?php dt_login_form_links() ?>
+                <div class="cover | text-center bg-white px-1 py-0 shadow rounded-start-on-medium">
+                    <h1 class="brand"><?php esc_html_e( 'Get New Password', 'zume' ) ?></h1>
 
+                    <?php if ( ! empty( $form_errors->errors ) ) : ?>
+
+                        <div class="warning banner">
+
+                            <?php
+
+                            if ( isset( $translated_error_messages[$form_errors->get_error_code()] ) ) {
+                                echo esc_html( $translated_error_messages[$form_errors->get_error_code()] );
+                            } else {
+                                echo esc_html( $form_errors->get_error_message() );
+                            }
+
+                            ?>
+
+                        </div>
+
+                    <?php endif; ?>
+
+                    <div class="wp_lostpassword_form">
+
+                        <?php if ( ! $sent ) : ?>
+
+                            <form class="stack--1" name="lostpasswordform" id="lostpasswordform" action="<?php echo esc_url( dt_login_url( 'lostpassword' ) ); ?>" method="post">
+                                <label class="show-for-sr" for="user_login" ><?php echo esc_html__( 'Email Address', 'zume' ); ?></label>
+                                <input type="text" name="user_login" id="user_login" class="input" placeholder="<?php echo esc_html__( 'Email Address', 'zume' ); ?>" value="<?php echo esc_attr( $user_login_response ); ?>" size="20" />
+                                <?php wp_nonce_field( 'retrieve_password', 'retrieve_password_nonce', false, true ) ?>
+                                <?php
+                                /**
+                                 * Fires inside the lostpassword form tags, before the hidden fields.
+                                 *
+                                 * @since 2.1.0
+                                 */
+                                do_action( 'lostpassword_form' ); ?>
+                                <input type="hidden" name="redirect_to" value="<?php echo esc_attr( $redirect_to ); ?>" />
+                                <input type="submit" name="wp-submit" id="wp-submit" class="btn-light uppercase" value="<?php echo esc_html__( 'Get New Password', 'zume' ); ?>" />
+                            </form>
+
+                        <?php elseif ( $sent ): ?>
+
+                            <?php echo esc_html__( 'Your password reset email has been sent. Check your email or junk mail for the link to reset your password.', 'zume' ) ?>
+
+                        <?php endif; ?>
+
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -371,19 +366,19 @@ switch ( $request_action ) {
         ?>
 
             <div id="login">
-                <div class="grid-x rounded-multi">
-                    <div class="cell large-6 hide-for-small-only hide-for-medium-only | text-center bg-brand-light px-1 py-0 shadow">
+                <div class="grid-container rounded-multi">
+                    <div class="hide-for-small-only hide-for-medium-only | text-center bg-brand-light px-1 py-0 shadow">
                         <div class="cover">
                             <section>
                                 <h2 class="white"><?php echo esc_html__( 'Hello!', 'zume' ) ?></h2>
                                 <h3 class="white"><?php echo esc_html__( 'Create a Zume Account', 'zume' ) ?></h3>
                             </section>
                             <div class="center">
-                                <div class="w-60"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/desk.svg' ) ?>" alt=""></div>
+                                <div class="w-50 py-2"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/desk.svg' ) ?>" alt=""></div>
                             </div>
                         </div>
                     </div>
-                    <div class="cell cover large-6 | bg-white px-1 py-0 shadow rounded-start-on-medium">
+                    <div class="stack-3 | bg-white px-1 py-0 shadow rounded-start-on-medium">
                         <h1 class="brand text-center"><?php esc_html_e( 'Register', 'zume' ) ?></h1>
                         <div class="">
 
@@ -532,9 +527,9 @@ switch ( $request_action ) {
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center">
+                        <section class="text-center">
                             <?php dt_login_form_links() ?>
-                        </div>
+                        </section>
                     </div>
                 </div>
             </div>
@@ -584,16 +579,16 @@ switch ( $request_action ) {
         ?>
 
             <div id="login">
-                <div class="grid-x rounded-multi">
-                    <div class="cell large-6 hide-for-small-only hide-for-medium-only | text-center bg-brand-light px-1 py-0 shadow">
+                <div class="grid-container rounded-multi">
+                    <div class="hide-for-small-only hide-for-medium-only | text-center bg-brand-light px-1 py-0 shadow">
                         <div class="cover">
                             <h2 class="white"><?php echo esc_html__( 'Welcome back!', 'zume' ) ?></h2>
                             <div class="center">
-                                <div class="w-60"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Jesus-01.svg' ) ?>" alt=""></div>
+                                <div class="w-70"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Jesus-01.svg' ) ?>" alt=""></div>
                             </div>
                         </div>
                     </div>
-                    <div class="cell cover large-6 | text-center bg-white px-1 py-0 shadow rounded-start-on-medium">
+                    <div class="text-center bg-white px-1 py-0 shadow rounded-start-on-medium">
                         <h1 class="brand"><?php esc_html_e( 'Login', 'zume' ) ?></h1>
                         <div class="stack-1">
 
@@ -662,9 +657,9 @@ switch ( $request_action ) {
 
                             ?>
 
-                            <div class="">
+                            <section class="">
                                 <?php dt_login_form_links() ?>
-                            </div>
+                            </section>
                         </div>
                     </div>
                 </div>

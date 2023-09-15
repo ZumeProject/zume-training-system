@@ -1,4 +1,4 @@
-$widths: (100, 60, 40);
+$widths: (100, 70, 60, 50, 40, 30, 25);
 
 @each $width in $widths {
     .w-#{$width} {
