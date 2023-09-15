@@ -368,147 +368,24 @@ switch ( $request_action ) {
         $reg_status = $register->custom_registration_function();
         ?>
 
-        <div id="content">
             <div id="login">
-                <br>
-                <div class="grid-x grid-margin-x grid-padding-x">
-                    <div class="cell medium-3 large-4"></div>
-                    <div class="cell banner medium-6 large-4">
-                        <div class="grid-x grid-padding-x grid-padding-y">
-                            <div class="cell center" >
-                                <h1 ><?php esc_html_e( 'Register', 'zume' ) ?></h1>
+                <div class="grid-x rounded-multi">
+                    <div class="cell large-6 hide-for-small-only hide-for-medium-only | text-center bg-brand-light px-1 py-0 shadow">
+                        <div class="cover">
+                            <section>
+                                <h2 class="white"><?php echo esc_html__( 'Hello!', 'zume' ) ?></h2>
+                                <h3 class="white"><?php echo esc_html__( 'Create a Zume Account', 'zume' ) ?></h3>
+                            </section>
+                            <div class="center">
+                                <div class="w-60"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/desk.svg' ) ?>" alt=""></div>
                             </div>
-                            <div class="cell">
+                        </div>
+                    </div>
+                    <div class="cell cover large-6 | text-center bg-white px-1 py-0 shadow rounded-start-on-medium">
+                        <h1 class="brand"><?php esc_html_e( 'Register', 'zume' ) ?></h1>
+                        <div class="">
 
-                                <hr />
-
-                                <div id="email_signup_form" >
-                                    <?php if ( is_wp_error( $reg_status ) ) :?>
-                                        <div class="cell warning banner">
-                                            <?php echo esc_html( $reg_status->get_error_message() ) ?>
-                                        </div>
-                                    <?php endif; ?>
-                                    <div class="cell">
-                                        <div class="wp_register_form">
-                                            <style>
-                                                meter{
-                                                    width:100%;
-                                                }
-                                                /* Webkit based browsers */
-                                                meter[value="1"]::-webkit-meter-optimum-value { background: red; }
-                                                meter[value="2"]::-webkit-meter-optimum-value { background: yellow; }
-                                                meter[value="3"]::-webkit-meter-optimum-value { background: orange; }
-                                                meter[value="4"]::-webkit-meter-optimum-value { background: green; }
-
-                                                /* Gecko based browsers */
-                                                meter[value="1"]::-moz-meter-bar { background: red; }
-                                                meter[value="2"]::-moz-meter-bar { background: yellow; }
-                                                meter[value="3"]::-moz-meter-bar { background: orange; }
-                                                meter[value="4"]::-moz-meter-bar { background: green; }
-
-                                            </style>
-                                            <div>
-                                                <form id="loginform" action="" method="POST" data-abide novalidate>
-                                                    <?php wp_nonce_field( 'login_form', 'login_form_nonce' ) ?>
-                                                    <div data-abide-error class="warning banner" style="display: none;">
-                                                        <p><i class="fi-alert"></i><?php esc_html_e( 'There are some errors in your form.', 'zume' ) ?></p>
-                                                    </div>
-                                                    <div class="grid-container">
-                                                        <div class="grid-x grid-margin-x">
-                                                            <div class="cell small-12">
-                                                                <label for="email"><?php esc_html_e( 'Email', 'zume' ) ?> <strong>*</strong></label>
-                                                                <input type="email" name="email" id="email" value="" aria-errormessage="email-error" required>
-                                                                <span class="form-error" id="email-error">
-                                                                    <?php esc_html_e( 'Badly formatted email address', 'zume' ) ?>
-                                                                </span>
-                                                            </div>
-                                                            <div class="cell small-12">
-                                                                <label><?php esc_html_e( 'Password', 'zume' ) ?> <strong>*</strong>
-                                                                    <input type="password" id="password" name="password" placeholder="yeti4preZ" aria-errormessage="password-error-too-weak" required >
-                                                                    <span class="form-error" id="password-error-too-weak">
-                                                                        <?php esc_html_e( 'Password is not strong enough', 'zume' ) ?>
-                                                                    </span>
-                                                                </label>
-                                                                <meter max="4" id="password-strength-meter" value="0"></meter>
-                                                            </div>
-                                                            <div class="cell small-12">
-                                                                <label><?php esc_html_e( 'Re-enter Password', 'zume' ) ?> <strong>*</strong>
-                                                                    <input id="password2" name="password2" type="password" placeholder="yeti4preZ" aria-errormessage="password-error-2" data-equalto="password" required>
-                                                                    <span class="form-error" id="password-error-2">
-                                                                        <?php esc_html_e( 'Passwords do not match. Please, try again.', 'zume' ) ?>
-                                                                  </span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cell small-12">
-                                                            <div class="g-recaptcha" id="g-recaptcha"></div><br>
-                                                        </div>
-                                                        <div class="cell small-12">
-                                                            <button class="button button-primary" id="submit">
-                                                                <?php esc_html_e( 'Register', 'zume' ) ?>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                            <?php // @codingStandardsIgnoreStart
-                                            if ( isset( $dt_login['google_captcha_client_key'] ) && !empty( $dt_login['google_captcha_client_key'] ) ) :
-                                                ?>
-                                                <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
-                                            <?php // @codingStandardsIgnoreEnd
-                                            endif;
-                                            ?>
-                                            <script>
-                                                const strength = {
-                                                    0: "Worst",
-                                                    1: "Bad",
-                                                    2: "Weak",
-                                                    3: "Good",
-                                                    4: "Strong"
-                                                }
-                                                const minStrength = 3
-
-                                                const form = document.getElementById('loginform')
-                                                const password = document.getElementById('password');
-                                                const passwordStrengthError = document.getElementById('password-error-too-weak')
-                                                const meter = document.getElementById('password-strength-meter');
-
-                                                password.addEventListener('input', function() {
-                                                    const result = getPasswordStrength()
-                                                    // Update the password strength meter
-                                                    meter.value = result.score;
-
-                                                    if ( result.score >= minStrength ) {
-                                                        passwordStrengthError.style.display = 'none'
-                                                    }
-                                                });
-
-                                                form.addEventListener('submit', function(event) {
-                                                    const result = getPasswordStrength()
-
-                                                    if ( result.score < minStrength ) {
-                                                        event.preventDefault()
-                                                        passwordStrengthError.style.display = 'block'
-                                                    }
-                                                })
-
-                                                function getPasswordStrength() {
-                                                    const val = password.value;
-                                                    const result = zxcvbn(val);
-
-                                                    return result
-                                                }
-
-                                            </script>
-                                            <?php // @codingStandardsIgnoreStart ?>
-                                            <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
-                                            <?php // @codingStandardsIgnoreEnd ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cell">
+                            <div class="stack-1 sso-register">
 
                                 <?php
 
@@ -526,15 +403,144 @@ switch ( $request_action ) {
 
                                 ?>
 
+                                <span class="line-text f--1"><span><?php echo esc_html__( 'Or', 'zume' ) ?></span></span>
+
+                                <button class="btn-outline-dark register-email-toggle"><?php echo esc_html__( 'Sign in with Email', 'zume' ) ?></button>
 
                             </div>
+
+                            <div id="email_signup_form" class="hidden">
+                                <?php if ( is_wp_error( $reg_status ) ) :?>
+                                    <div class="cell warning banner">
+                                        <?php echo esc_html( $reg_status->get_error_message() ) ?>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="cell">
+                                    <div class="wp_register_form">
+                                        <style>
+                                            meter{
+                                                width:100%;
+                                            }
+                                            /* Webkit based browsers */
+                                            meter[value="1"]::-webkit-meter-optimum-value { background: red; }
+                                            meter[value="2"]::-webkit-meter-optimum-value { background: yellow; }
+                                            meter[value="3"]::-webkit-meter-optimum-value { background: orange; }
+                                            meter[value="4"]::-webkit-meter-optimum-value { background: green; }
+
+                                            /* Gecko based browsers */
+                                            meter[value="1"]::-moz-meter-bar { background: red; }
+                                            meter[value="2"]::-moz-meter-bar { background: yellow; }
+                                            meter[value="3"]::-moz-meter-bar { background: orange; }
+                                            meter[value="4"]::-moz-meter-bar { background: green; }
+
+                                        </style>
+                                        <div>
+                                            <form id="loginform" action="" method="POST" data-abide novalidate>
+                                                <?php wp_nonce_field( 'login_form', 'login_form_nonce' ) ?>
+                                                <div data-abide-error class="warning banner" style="display: none;">
+                                                    <p><i class="fi-alert"></i><?php esc_html_e( 'There are some errors in your form.', 'zume' ) ?></p>
+                                                </div>
+                                                <div class="">
+                                                    <div class="">
+                                                        <div class="cell small-12">
+                                                            <label for="email"><?php esc_html_e( 'Email', 'zume' ) ?> <strong>*</strong></label>
+                                                            <input type="email" name="email" id="email" value="" aria-errormessage="email-error" required>
+                                                            <span class="form-error" id="email-error">
+                                                                <?php esc_html_e( 'Badly formatted email address', 'zume' ) ?>
+                                                            </span>
+                                                        </div>
+                                                        <div class="cell small-12">
+                                                            <label><?php esc_html_e( 'Password', 'zume' ) ?> <strong>*</strong>
+                                                                <input type="password" id="password" name="password" placeholder="yeti4preZ" aria-errormessage="password-error-too-weak" required >
+                                                                <span class="form-error" id="password-error-too-weak">
+                                                                    <?php esc_html_e( 'Password is not strong enough', 'zume' ) ?>
+                                                                </span>
+                                                            </label>
+                                                            <meter max="4" id="password-strength-meter" value="0"></meter>
+                                                        </div>
+                                                        <div class="cell small-12">
+                                                            <label><?php esc_html_e( 'Re-enter Password', 'zume' ) ?> <strong>*</strong>
+                                                                <input id="password2" name="password2" type="password" placeholder="yeti4preZ" aria-errormessage="password-error-2" data-equalto="password" required>
+                                                                <span class="form-error" id="password-error-2">
+                                                                    <?php esc_html_e( 'Passwords do not match. Please, try again.', 'zume' ) ?>
+                                                              </span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell small-12">
+                                                        <div class="g-recaptcha" id="g-recaptcha"></div><br>
+                                                    </div>
+                                                    <div class="cell small-12">
+                                                        <button class="button button-primary" id="submit">
+                                                            <?php esc_html_e( 'Register', 'zume' ) ?>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <?php // @codingStandardsIgnoreStart
+                                        if ( isset( $dt_login['google_captcha_client_key'] ) && !empty( $dt_login['google_captcha_client_key'] ) ) :
+                                            ?>
+                                            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+                                        <?php // @codingStandardsIgnoreEnd
+                                        endif;
+                                        ?>
+                                        <script>
+                                            const strength = {
+                                                0: "Worst",
+                                                1: "Bad",
+                                                2: "Weak",
+                                                3: "Good",
+                                                4: "Strong"
+                                            }
+                                            const minStrength = 3
+
+                                            const form = document.getElementById('loginform')
+                                            const password = document.getElementById('password');
+                                            const passwordStrengthError = document.getElementById('password-error-too-weak')
+                                            const meter = document.getElementById('password-strength-meter');
+
+                                            password.addEventListener('input', function() {
+                                                const result = getPasswordStrength()
+                                                // Update the password strength meter
+                                                meter.value = result.score;
+
+                                                if ( result.score >= minStrength ) {
+                                                    passwordStrengthError.style.display = 'none'
+                                                }
+                                            });
+
+                                            form.addEventListener('submit', function(event) {
+                                                const result = getPasswordStrength()
+
+                                                if ( result.score < minStrength ) {
+                                                    event.preventDefault()
+                                                    passwordStrengthError.style.display = 'block'
+                                                }
+                                            })
+
+                                            function getPasswordStrength() {
+                                                const val = password.value;
+                                                const result = zxcvbn(val);
+
+                                                return result
+                                            }
+
+                                        </script>
+                                        <?php // @codingStandardsIgnoreStart ?>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
+                                        <?php // @codingStandardsIgnoreEnd ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <?php dt_login_form_links() ?>
                         </div>
                     </div>
-                    <div class="cell medium-3 large-4"></div>
                 </div>
-                <?php dt_login_form_links() ?>
             </div>
-        </div>
 
         <?php
         break;
@@ -594,7 +600,21 @@ switch ( $request_action ) {
                         <h1 class="brand"><?php esc_html_e( 'Login', 'zume' ) ?></h1>
                         <div class="stack-1">
 
-                            <?php do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" ) ?>
+                            <?php
+
+                            [ 'lang_code' => $lang_code ] = zume_get_url_pieces();
+
+                            if ( strlen( $lang_code ) === 4 ) {
+                                $lang_code = implode( '_', str_split( $lang_code, 2 ) );
+                            }
+
+                            if ( $lang_code === 'pt' ) {
+                                $lang_code = 'pt_pt';
+                            }
+
+                            do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code]" )
+
+                            ?>
 
                             <span class="line-text f--1"><span><?php echo esc_html__( 'or sign in with email', 'zume' ) ?></span></span>
 
@@ -685,7 +705,10 @@ function dt_login_form_links() {
             if ( strpos( $dt_url, '?action=register' ) !== false ) {
                 ?>
 
-                <a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>"><?php esc_html_e( 'Login', 'zume' ) ?></a>
+                <p class="f--1">
+                    <span><?php echo esc_html__( 'Already have an account?', 'zume' ) ?></span>
+                    <a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>"><?php esc_html_e( 'Login', 'zume' ) ?></a>
+                </p>
 
                 <?php
             }

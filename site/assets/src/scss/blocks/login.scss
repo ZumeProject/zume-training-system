@@ -33,6 +33,16 @@
     .firebaseui-idp-google {
         background-color: color('black') !important;
         color: color('white') !important;
+
+        &:hover {
+            background-color: color('gray-800') !important;
+        }
+    }
+
+    .firebaseui-idp-facebook {
+        &:hover {
+            background-color: color('brand-dark') !important;
+        }
     }
 
     .firebaseui-idp-text {
