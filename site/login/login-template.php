@@ -92,7 +92,7 @@ switch ( $request_action ) {
                 <br>
                 <div  class="grid-x grid-margin-x grid-padding-x">
                     <div class="cell medium-3 large-4"></div>
-                    <div class="cell callout medium-6 large-4">
+                    <div class="cell banner medium-6 large-4">
                         <div class="grid-x grid-padding-x grid-padding-y">
                             <div class="cell center">
                                 <h1 ><?php esc_html_e( 'Get New Password', 'zume' ) ?></h1>
@@ -100,7 +100,7 @@ switch ( $request_action ) {
 
                             <?php if ( ! empty( $form_errors->errors ) ) : ?>
 
-                                <div class="cell alert callout">
+                                <div class="cell warning banner">
 
                                     <?php
 
@@ -212,7 +212,7 @@ switch ( $request_action ) {
             <br>
             <div id="inner-content" class="grid-x grid-margin-x grid-padding-x">
                 <div class="cell medium-3 large-4"></div>
-                <div class="cell callout medium-6 large-4">
+                <div class="cell banner medium-6 large-4">
                     <div class="grid-x grid-padding-x grid-padding-y">
                         <div class="cell"><?php printf( esc_html__( 'Your password is reset. %1$s You can login here %2$s', 'zume' ), '<a href="' . esc_url( dt_login_url( 'login' ) ) . '">', '</a>' ) ?></div>
                     </div>
@@ -248,13 +248,13 @@ switch ( $request_action ) {
                 <br>
                 <div id="inner-content" class="grid-x grid-margin-x grid-padding-x">
                     <div class="cell medium-3 large-4"></div>
-                    <div class="cell callout medium-6 large-4">
+                    <div class="cell banner medium-6 large-4">
                         <div class="grid-x grid-padding-x grid-padding-y">
                             <div class="cell center">
                                 <h1 style="color:gray;font-size: 14px;margin:0;padding:5px;font-weight: normal;"><?php esc_html_e( 'Reset Password', 'zume' ) ?></h1>
                             </div>
                             <?php if ( ! empty( $form_errors->errors ) ) :?>
-                                <div class="cell alert callout">
+                                <div class="cell warning banner">
                                     <?php
                                     echo esc_html( $form_errors->get_error_message() );
                                     ?>
@@ -373,7 +373,7 @@ switch ( $request_action ) {
                 <br>
                 <div class="grid-x grid-margin-x grid-padding-x">
                     <div class="cell medium-3 large-4"></div>
-                    <div class="cell callout medium-6 large-4">
+                    <div class="cell banner medium-6 large-4">
                         <div class="grid-x grid-padding-x grid-padding-y">
                             <div class="cell center" >
                                 <h1 ><?php esc_html_e( 'Register', 'zume' ) ?></h1>
@@ -384,7 +384,7 @@ switch ( $request_action ) {
 
                                 <div id="email_signup_form" >
                                     <?php if ( is_wp_error( $reg_status ) ) :?>
-                                        <div class="cell alert callout">
+                                        <div class="cell warning banner">
                                             <?php echo esc_html( $reg_status->get_error_message() ) ?>
                                         </div>
                                     <?php endif; ?>
@@ -410,7 +410,7 @@ switch ( $request_action ) {
                                             <div>
                                                 <form id="loginform" action="" method="POST" data-abide novalidate>
                                                     <?php wp_nonce_field( 'login_form', 'login_form_nonce' ) ?>
-                                                    <div data-abide-error class="alert callout" style="display: none;">
+                                                    <div data-abide-error class="warning banner" style="display: none;">
                                                         <p><i class="fi-alert"></i><?php esc_html_e( 'There are some errors in your form.', 'zume' ) ?></p>
                                                     </div>
                                                     <div class="grid-container">
