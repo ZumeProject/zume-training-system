@@ -90,7 +90,7 @@ class Zume_Training_About extends Zume_Magic_Page
 
             <h1 class="text-center"><?php echo esc_html__( 'About', 'zume' ) ?></h1>
 
-            <p><strong><?php echo esc_html__( 'User Profile', 'zume' ) ?></strong><pre><?php global $zume_user_profile; print_r( $zume_user_profile ); ?></pre></p>
+            <p><strong><?php echo esc_html__( 'User Profile', 'zume' ) ?></strong><pre><?php global $zume_user_profile;?><?php print_r( $zume_user_profile ); ?></pre></p>
 
         </div>
         <?php
