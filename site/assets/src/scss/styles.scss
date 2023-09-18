@@ -111,6 +111,13 @@ header {
   display: inline-block;
   width: 30px;
   line-height: 1;
+
+  &:hover, &:focus {
+    svg {
+        stroke: color('brand-lighter');
+        fill: color('brand-lighter');
+    }
+  }
 }
 
 .nav-toggle {

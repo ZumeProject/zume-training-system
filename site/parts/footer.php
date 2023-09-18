@@ -17,10 +17,14 @@
         </div>
 
         <div class="second-row d-flex justify-content-between">
-            <span>(c) Zume. All rights reserved.</span>
-            <ul class="d-flex gap-3" role="list">
-                <li><a href="#" class="link-light"><strong>f</strong></a></li>
-                <li><a href="#" class="link-light"><strong>i</strong></a></li>
+            <span>&copy; Zume. All rights reserved.</span>
+            <ul class="d-flex gap-3 f-0" role="list">
+                <li><a href="#" class="link-light">
+                    <div class="icon"><?php require plugin_dir_path( __DIR__ ) . 'assets/images/facebook.svg' ?></div>
+                </a></li>
+                <li><a href="#" class="link-light">
+                    <div class="icon"><?php require plugin_dir_path( __DIR__ ) . 'assets/images/instagram.svg' ?></div>
+                </a></li>
             </ul>
         </div>
     </div>

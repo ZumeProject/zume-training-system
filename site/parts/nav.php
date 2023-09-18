@@ -19,7 +19,7 @@
                     <li class="nav__item"><a href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn btn-on-dark"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a></li>
                     <li class="nav__item"><a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn btn-on-dark"><?php echo esc_html__( 'Get Started', 'zume' ) ?></a></li>
                     <li class="nav__item"><a href="<?php echo esc_url( '/checkin' ) ?>" class="btn btn-on-dark"><?php echo esc_html__( 'Check-in', 'zume' ) ?></a></li>
-                    <li class="nav__item"><a href="<?php echo esc_url( zume_profile_url() ) ?>" class="nav__icon"><?php require plugin_dir_path( __DIR__ ) . 'assets/images/profile.svg' ?></a></li>
+                    <li class="nav__item"><a href="<?php echo esc_url( zume_profile_url() ) ?>" class="nav__icon link-light"><?php require plugin_dir_path( __DIR__ ) . 'assets/images/profile.svg' ?></a></li>
 
                 </ul>
             </nav>
