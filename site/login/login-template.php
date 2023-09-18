@@ -202,17 +202,18 @@ switch ( $request_action ) {
             setcookie( $rp_cookie, ' ', time() - YEAR_IN_SECONDS, $rp_path, COOKIE_DOMAIN, is_ssl(), true );
             // @codingStandardsIgnoreEnd
             ?>
-        <div id="content">
         <div id="login">
-            <br>
-            <div id="inner-content" class="grid-x grid-margin-x grid-padding-x">
-                <div class="cell medium-3 large-4"></div>
-                <div class="cell banner medium-6 large-4">
-                    <div class="grid-x grid-padding-x grid-padding-y">
-                        <div class="cell"><?php printf( esc_html__( 'Your password is reset. %1$s You can login here %2$s', 'zume' ), '<a href="' . esc_url( dt_login_url( 'login' ) ) . '">', '</a>' ) ?></div>
+            <div id="inner-content" class="grid-container rounded-multi">
+                <div class="hide-for-small-only hide-for-medium-only | text-center bg-brand-light shadow">
+                    <div class="cover center">
+                        <div class="w-25 p0"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Thinking-01.svg' ) ?>" alt=""></div>
                     </div>
                 </div>
-                <div class="cell medium-3 large-4"></div>
+                <div class="cover | text-center bg-white px-1 py-0 shadow rounded-start-on-medium">
+                    <div>
+                        <?php printf( esc_html__( 'Your password is reset. %1$s You can login here %2$s', 'zume' ), '<a href="' . esc_url( dt_login_url( 'login' ) ) . '">', '</a>' ) ?>
+                    </div>
+                </div>
             </div>
         </div>
             <?php
@@ -238,75 +239,63 @@ switch ( $request_action ) {
             meter[value="4"]::-moz-meter-bar { background: green; }
 
         </style>
-        <div id="content">
-            <div id="login">
-                <br>
-                <div id="inner-content" class="grid-x grid-margin-x grid-padding-x">
-                    <div class="cell medium-3 large-4"></div>
-                    <div class="cell banner medium-6 large-4">
-                        <div class="grid-x grid-padding-x grid-padding-y">
-                            <div class="cell center">
-                                <h1 style="color:gray;font-size: 14px;margin:0;padding:5px;font-weight: normal;"><?php esc_html_e( 'Reset Password', 'zume' ) ?></h1>
-                            </div>
-                            <?php if ( ! empty( $form_errors->errors ) ) :?>
-                                <div class="cell warning banner">
-                                    <?php
-                                    echo esc_html( $form_errors->get_error_message() );
-                                    ?>
-                                </div>
-                            <?php endif; ?>
-                            <div class="cell">
-                                <div class="wp_resetpassword_form">
-                                    <form name="resetpassform" id="resetpassform" action="<?php echo esc_url( dt_login_url( 'resetpass' ) ); ?>" method="post" autocomplete="off" data-abide novalidate>
-                                        <input type="hidden" id="user_login" value="<?php echo esc_attr( $rp_login ); ?>" autocomplete="off" />
-
-                                        <div>
-                                            <label><?php esc_html_e( 'Password Required', 'zume' ) ?> <strong>*</strong>
-                                                <input type="password" id="pass1" name="pass1" placeholder="yeti4preZ" aria-errormessage="password-error-1" required >
-                                                <span class="form-error" id="password-error-too-weak">
-                                                    <?php esc_html_e( 'Please choose a stronger password. This one is too weak.', 'zume' ) ?>
-                                                </span>
-                                            </label>
-                                            <meter max="4" id="password-strength-meter" value="0"></meter>
-                                        </div>
-                                        <p>
-                                            <label><?php esc_html_e( 'Re-enter Password', 'zume' ) ?> <strong>*</strong>
-                                                <input type="password" name="pass2" placeholder="yeti4preZ" aria-errormessage="password-error-2" data-equalto="pass1">
-                                                <span class="form-error" id="password-error-2">
-                                                    <?php esc_html_e( 'Passwords do not match. Please, try again.', 'zume' ) ?>
-                                                </span>
-                                            </label>
-                                        </p>
-
-
-                                        <p class="description indicator-hint"><?php echo esc_html( wp_get_password_hint() ); ?></p>
-                                        <br class="clear" />
-
-                                        <?php
-                                        /**
-                                         * Fires following the 'Strength indicator' meter in the user password reset form.
-                                         *
-                                         * @since 3.9.0
-                                         *
-                                         * @param WP_User $user User object of the user whose password is being reset.
-                                         */
-                                        do_action( 'resetpass_form', $user );
-                                        ?>
-                                        <input type="hidden" name="rp_key" value="<?php echo esc_attr( $rp_key ); ?>" />
-
-                                        <input type="hidden" name="wp-submit" id="wp-submit" value="" />
-
-                                        <button class="button button-primary button-large">
-                                            <?php esc_html_e( 'Reset Password', 'zume' ); ?>
-                                        </button>
-
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
+        <div id="login">
+            <div id="inner-content" class="grid-container rounded-multi">
+                <div class="hide-for-small-only hide-for-medium-only | text-center bg-brand-light shadow">
+                    <div class="cover center">
+                        <div class="w-25 p0"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Thinking-01.svg' ) ?>" alt=""></div>
                     </div>
-                    <div class="cell medium-3 large-4"></div>
+                </div>
+                <div class="cover | text-center bg-white px-1 py-0 shadow rounded-start-on-medium">
+                    <h1 class="brand"><?php esc_html_e( 'Reset Password', 'zume' ) ?></h1>
+                    <?php if ( ! empty( $form_errors->errors ) ) :?>
+                        <div class="warning banner">
+                            <?php
+                            echo esc_html( $form_errors->get_error_message() );
+                            ?>
+                        </div>
+                    <?php endif; ?>
+                    <div class="">
+                        <form class="stack--1" name="resetpassform" id="resetpassform" action="<?php echo esc_url( dt_login_url( 'resetpass' ) ); ?>" method="post" autocomplete="off" data-abide novalidate>
+                            <div>
+                                <label class="show-for-sr" for="pass1"><?php esc_html_e( 'Password Required', 'zume' ) ?> <strong>*</strong></label>
+                                <input class="input" type="password" id="pass1" name="pass1" placeholder="<?php esc_html_e( 'Password', 'zume' ) ?> *" aria-errormessage="password-error-1" required >
+                                <span class="form-error" id="password-error-too-weak">
+                                    <?php esc_html_e( 'Please choose a stronger password. This one is too weak.', 'zume' ) ?>
+                                </span>
+
+                            </div>
+                            <meter max="4" id="password-strength-meter" value="0"></meter>
+                            <div>
+                                <label class="show-for-sr" for="pass2"><?php esc_html_e( 'Re-enter Password', 'zume' ) ?> <strong>*</strong></label>
+                                <input class="input" type="password" name="pass2" placeholder="<?php esc_html_e( 'Re-enter Password', 'zume' ) ?> *" aria-errormessage="password-error-2" data-equalto="pass1">
+                                <span class="form-error" id="password-error-2">
+                                    <?php esc_html_e( 'Passwords do not match. Please, try again.', 'zume' ) ?>
+                                </span>
+                            </div>
+
+                            <?php
+                            /**
+                             * Fires following the 'Strength indicator' meter in the user password reset form.
+                             *
+                             * @since 3.9.0
+                             *
+                             * @param WP_User $user User object of the user whose password is being reset.
+                             */
+                            do_action( 'resetpass_form', $user );
+                            ?>
+                            <input type="hidden" id="user_login" value="<?php echo esc_attr( $rp_login ); ?>" autocomplete="off" />
+                            <input type="hidden" name="rp_key" value="<?php echo esc_attr( $rp_key ); ?>" />
+
+                            <input type="hidden" name="wp-submit" id="wp-submit" value="" />
+
+                            <button class="btn-light">
+                                <?php esc_html_e( 'Reset Password', 'zume' ); ?>
+                            </button>
+
+                        </form>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -415,7 +404,7 @@ switch ( $request_action ) {
                                         <?php echo esc_html( $reg_status->get_error_message() ) ?>
                                     </div>
                                 <?php endif; ?>
-                                <div class="cell">
+                                <div class="">
                                     <div class="wp_register_form">
                                         <style>
                                             meter{
