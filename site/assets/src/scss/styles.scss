@@ -15,6 +15,7 @@
 @import 'composition/box';
 @import 'composition/cluster';
 @import 'composition/switcher';
+@import 'composition/reel';
 
 @import 'utilities/buttons';
 @import 'utilities/spacing';
@@ -25,6 +26,7 @@
 @import 'utilities/text';
 
 @import 'blocks/login';
+@import 'blocks/stories';
 
 html {
     font-size: 18px;
@@ -196,6 +198,11 @@ header {
   background-repeat: no-repeat;
   opacity: 0.2;
   background-position: center left;
+}
+.bg-world {
+  background-image: url('/wp-content/plugins/zume-training-system/site/assets/images/world-map.svg');
+  background-repeat: no-repeat;
+  opacity: 0.05;
 }
 
 .flip {

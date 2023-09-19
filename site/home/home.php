@@ -132,12 +132,60 @@ class Zume_Training_Home extends Zume_Magic_Page
             </clipPath>
         </svg>
 
-        <div class="cover-page | bg-gray-300 ">
+        <div class="cover-page | bg-gray-300">
             <div class="position-relative">
                 <h2 class="white absolute top left right px-3 py-1"><?php echo esc_html__( 'Real people ... real stories.', 'zume' ) ?></h2>
+                <div class="absolute top right bottom w-40 bg-world"></div>
                 <img class="clip-rounded-end real-people" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/RealPeople.jpg' ) ?>" alt="Real people">
-                <div class="reel">
-
+                <div class="reel absolute bottom right | story-reel overflowing">
+                    <div class="story-card">
+                        <div class="story-card__logo">
+                            <?php //phpcs:ignore ?>
+                            <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . 'assets/images/Zume-Z-crop.svg' ) ?>
+                        </div>
+                        <div class="story-card__text">
+                            <p><b>Denver, colorado</b></p>
+                            <p>
+                                <em>"Labore pariatur enim cillum quis reprehenderit sunt. Qui laborum qui do consectetur officia. Et est adipisicing culpa veniam culpa quis est ea commodo elit eu mollit aliqua."</em>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="story-card invert">
+                        <div class="story-card__logo">
+                            <?php //phpcs:ignore ?>
+                            <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . 'assets/images/Zume-Z-crop.svg' ) ?>
+                        </div>
+                        <div class="story-card__text">
+                            <p><b>Denver, colorado</b></p>
+                            <p>
+                                <em>"Labore pariatur enim cillum quis reprehenderit sunt. Qui laborum qui do consectetur officia. Et est adipisicing culpa veniam culpa quis est ea commodo elit eu mollit aliqua."</em>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-card__logo">
+                            <?php //phpcs:ignore ?>
+                            <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . 'assets/images/Zume-Z-crop.svg' ) ?>
+                        </div>
+                        <div class="story-card__text">
+                            <p><b>Denver, colorado</b></p>
+                            <p>
+                                <em>"Labore pariatur enim cillum quis reprehenderit sunt. Qui laborum qui do consectetur officia. Et est adipisicing culpa veniam culpa quis est ea commodo elit eu mollit aliqua."</em>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="story-card invert">
+                        <div class="story-card__logo">
+                            <?php //phpcs:ignore ?>
+                            <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . 'assets/images/Zume-Z-crop.svg' ) ?>
+                        </div>
+                        <div class="story-card__text">
+                            <p><b>Denver, colorado</b></p>
+                            <p>
+                                <em>"Labore pariatur enim cillum quis reprehenderit sunt. Qui laborum qui do consectetur officia. Et est adipisicing culpa veniam culpa quis est ea commodo elit eu mollit aliqua."</em>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
