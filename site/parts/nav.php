@@ -13,12 +13,12 @@
 
                     <?php if ( user_can( get_current_user_id(), 'manage_dt' ) ) { ?>
 
-                        <a role="listitem" href="<?php echo esc_url( '/contacts' ) ?>" class="btn btn-on-dark"><?php echo esc_html__( 'DTools', 'zume' ) ?></a>
+                        <a role="listitem" href="<?php echo esc_url( '/contacts' ) ?>" class="btn btn-on-dark nav__button"><?php echo esc_html__( 'DTools', 'zume' ) ?></a>
 
                     <?php } ?>
-                    <a role="listitem" href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn btn-on-dark"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
-                    <a role="listitem" href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn btn-on-dark"><?php echo esc_html__( 'Get Started', 'zume' ) ?></a>
-                    <a role="listitem" href="<?php echo esc_url( '/checkin' ) ?>" class="btn btn-on-dark"><?php echo esc_html__( 'Check-in', 'zume' ) ?></a>
+                    <a role="listitem" href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn btn-on-dark nav__button"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
+                    <a role="listitem" href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn btn-on-dark nav__button"><?php echo esc_html__( 'Get Started', 'zume' ) ?></a>
+                    <a role="listitem" href="<?php echo esc_url( '/checkin' ) ?>" class="btn btn-on-dark nav__button"><?php echo esc_html__( 'Check-in', 'zume' ) ?></a>
                     <a role="listitem" href="<?php echo esc_url( zume_profile_url() ) ?>" class="nav__icon link-light"><?php require plugin_dir_path( __DIR__ ) . 'assets/images/profile.svg' ?></a>
 
                 </div>

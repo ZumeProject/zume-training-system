@@ -88,8 +88,8 @@ class Zume_Training_Home extends Zume_Magic_Page
                 <div class="show-for-large"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JesusPointing-1.svg' ) ?>" alt="Jesus pointing"></div>
                 <div class="stack | s-zero grow-1p5 text-center">
                     <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/ZumeLOGO.svg' ) ?>" alt="Zume Logo">
-                    <h1 class="f-6">Training</h1>
-                    <p>for small groups who follow Jesus to learn how to obey His Great Commission and make disciples who multiply</p>
+                    <h1 class="f-6"><?php echo esc_html__( 'Training', 'zume' ) ?></h1>
+                    <p><?php echo esc_html__( 'for small groups who follow Jesus to learn how to obey His Great Commission and make disciples who multiply', 'zume' ) ?></p>
                 </div>
                 <div class="stack--1 | p-2 text-center align-items-center">
                     <a href="<?php echo esc_url( dt_login_url( 'register' ) ) ?>" class="btn-light uppercase w-75"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
@@ -98,16 +98,26 @@ class Zume_Training_Home extends Zume_Magic_Page
             </div>
         </div>
 
-        <div class="container">
-
-            <h1 class="text-center"><?php echo esc_html__( 'Zúme Training', 'zume' ) ?></h1>
-            <p class="text-center">
-                <?php echo esc_html__( 'Zúme Training is an on-line and in-life learning experience designed for small groups who follow Jesus to learn how to obey His Great Commission and make disciples who multiply.', 'zume' ) ?>
-            </p>
-
-            <p><strong><?php echo esc_html__( 'User Profile', 'zume' ) ?></strong><pre><?php print_r( $zume_user_profile ); ?></pre></p>
-
+        <div class="bg-gray-500" style="max-height: 100vh; overflow-y: scroll">
+            <div class="container">
+                <h2>Development Area</h2>
+                <p><strong><?php echo esc_html__( 'User Profile', 'zume' ) ?></strong><pre><?php print_r( $zume_user_profile ); ?></pre></p>
+            </div>
         </div>
+
+        <div class="cover-page | p-3 text-center bg-brand-gradient">
+            <h2 class="white"><?php echo esc_html__( 'Be a Disciple. Make Disciples', 'zume' ) ?></h2>
+            <div class="container stack-2 | align-items-center">
+                <div class="w-80 video-frame mx-auto position-relative">
+                    <div class="w-60 mx-auto"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/VideoGraphic-2.svg' ) ?>" alt="zume video"></div>
+                    <button class="absolute-cover video-play">
+                        <img class="mx-auto" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Play-Button.svg' ) ?>" alt="play">
+                    </button>
+                </div>
+                <button class="btn-outline btn-on-dark fit-content uppercase"><?php echo esc_html__( 'Watch', 'zume' ) ?></button>
+            </div>
+        </div>
+
         <?php
     }
 }

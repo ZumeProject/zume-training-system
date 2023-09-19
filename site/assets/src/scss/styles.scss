@@ -99,10 +99,8 @@ header {
   padding: 0;
 }
 
-.nav__link--button {
-  @include button;
-
-  padding: 1em 1em;
+.nav__button {
+  padding-inline: 1em;
 }
 
 .nav__item {
@@ -213,6 +211,17 @@ header {
 
 .banner.warning {
   background-color: color('warning-main');
+}
+
+.video-frame {
+  border: 2px solid color('white');
+  border-radius: var(--border-radius);
+}
+.video-play {
+  &:hover, &:focus {
+    transition: all 100ms linear;
+    transform: scale(1.1);
+  }
 }
 
 @media (min-width: $break-lg) {

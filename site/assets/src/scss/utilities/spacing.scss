@@ -10,7 +10,7 @@ $gap-sizes: (3, 4);
     gap: 0;
 }
 
-$padding-sizes: (-1, 0, 1, 2);
+$padding-sizes: (-1, 0, 1, 2, 3);
 
 @each $i in $padding-sizes {
     .p-#{$i} {
@@ -26,6 +26,24 @@ $padding-sizes: (-1, 0, 1, 2);
 
 .p0 {
     padding: 0 !important;
+}
+
+$margin-sizes: (1, 2, 3);
+
+@each $i in $margin-sizes {
+    .m-#{$i} {
+        margin: spacing($i);
+    }
+    .mx-#{$i} {
+        margin-inline: spacing($i);
+    }
+    .my-#{$i} {
+        margin-block: spacing($i);
+    }
+}
+
+.mx-auto {
+    margin-inline: auto;
 }
 
 $spacing-sizes: (-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5);
