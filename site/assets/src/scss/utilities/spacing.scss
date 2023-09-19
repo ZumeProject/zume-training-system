@@ -6,6 +6,10 @@ $gap-sizes: (3, 4);
     }
 }
 
+.gap0 {
+    gap: 0;
+}
+
 $padding-sizes: (-1, 0, 1, 2);
 
 @each $i in $padding-sizes {
@@ -30,4 +34,8 @@ $spacing-sizes: (-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5);
     .s#{$i} {
         --space: #{spacing($i)};
     }
+}
+
+.s-zero {
+    --space: 0;
 }

@@ -14,6 +14,7 @@
 @import 'composition/stack';
 @import 'composition/box';
 @import 'composition/cluster';
+@import 'composition/switcher';
 
 @import 'utilities/buttons';
 @import 'utilities/spacing';
@@ -56,7 +57,7 @@ a {
 .container {
   margin: 0 auto;
   position: relative;
-  width: 80%;
+  width: 90%;
   max-width: $max-width;
 }
 

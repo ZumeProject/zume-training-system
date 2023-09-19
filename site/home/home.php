@@ -83,6 +83,21 @@ class Zume_Training_Home extends Zume_Magic_Page
         require __DIR__ . '/../parts/nav.php';
         ?>
 
+        <div class="cover-page container">
+            <div class="switcher | align-items-center gap0">
+                <div class="show-for-large"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JesusPointing-1.svg' ) ?>" alt="Jesus pointing"></div>
+                <div class="stack | s-zero grow-1p5 text-center">
+                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/ZumeLOGO.svg' ) ?>" alt="Zume Logo">
+                    <h1 class="f-6">Training</h1>
+                    <p>for small groups who follow Jesus to learn how to obey His Great Commission and make disciples who multiply</p>
+                </div>
+                <div class="stack--1 | p-2 text-center align-items-center">
+                    <a href="<?php echo esc_url( dt_login_url( 'register' ) ) ?>" class="btn-light uppercase w-75"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
+                    <a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn-outline uppercase w-75"><?php echo esc_html__( 'Login', 'zume' ) ?></a>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
 
             <h1 class="text-center"><?php echo esc_html__( 'Zúme Training', 'zume' ) ?></h1>
