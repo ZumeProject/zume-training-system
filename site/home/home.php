@@ -105,16 +105,40 @@ class Zume_Training_Home extends Zume_Magic_Page
             </div>
         </div>
 
+
+
         <div class="cover-page | p-3 text-center bg-brand-gradient">
             <h2 class="white"><?php echo esc_html__( 'Be a Disciple. Make Disciples', 'zume' ) ?></h2>
             <div class="container stack-2 | align-items-center">
                 <div class="w-80 video-frame mx-auto position-relative">
                     <div class="w-60 mx-auto"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/VideoGraphic-2.svg' ) ?>" alt="zume video"></div>
-                    <button class="absolute-cover video-play">
+                    <button class="absolute top bottom left right video-play">
                         <img class="mx-auto" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Play-Button.svg' ) ?>" alt="play">
                     </button>
                 </div>
                 <button class="btn-outline btn-on-dark fit-content uppercase"><?php echo esc_html__( 'Watch', 'zume' ) ?></button>
+            </div>
+        </div>
+
+        <?php $width = 1024 ?>
+        <?php $height = 753 ?>
+        <?php $n = $height / $width ?>
+        <?php $center = 1 - $n / 2 ?>
+        <?php $xradius = $n / 2 ?>
+
+        <svg height="0" width="0">
+            <clipPath id="clip-rounded-end" clipPathUnits="objectBoundingBox">
+                <path d="<?php echo esc_attr( "M $center 1 h -$center v -1 h $center A $xradius 0.5, 0, 0 1, $center 1" ) ?>"/>
+            </clipPath>
+        </svg>
+
+        <div class="cover-page | bg-gray-300 ">
+            <div class="position-relative">
+                <h2 class="white absolute top left right px-3 py-1"><?php echo esc_html__( 'Real people ... real stories.', 'zume' ) ?></h2>
+                <img class="clip-rounded-end real-people" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/RealPeople.jpg' ) ?>" alt="Real people">
+                <div class="reel">
+
+                </div>
             </div>
         </div>
 

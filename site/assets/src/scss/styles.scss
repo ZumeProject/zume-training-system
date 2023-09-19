@@ -197,6 +197,7 @@ header {
   opacity: 0.2;
   background-position: center left;
 }
+
 .flip {
   transform: scaleX(-1);
 }
@@ -222,6 +223,10 @@ header {
     transition: all 100ms linear;
     transform: scale(1.1);
   }
+}
+
+.real-people {
+  filter: opacity(0.7);
 }
 
 @media (min-width: $break-lg) {

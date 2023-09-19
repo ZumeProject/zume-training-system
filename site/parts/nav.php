@@ -2,7 +2,7 @@
         <div class="cluster justify-content-between">
             <a class="btn-outline btn-on-dark" data-open="language-menu-reveal"><?php esc_html_e( 'Language', 'zume' ) ?></a>
 
-            <div class="absolute-center left-0 right-0">
+            <div class="absolute center">
                 <a href="<?php echo esc_url( zume_home_url() ) ?>" class="logo">
                     <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . '/assets/images/ZumeTraining-Small.png' ) ?>" alt="Zume Logo" />
                 </a>
