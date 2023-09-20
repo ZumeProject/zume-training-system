@@ -91,9 +91,9 @@ class Zume_Training_Home extends Zume_Magic_Page
                     <h1 class="f-6"><?php echo esc_html__( 'Training', 'zume' ) ?></h1>
                     <p><?php echo esc_html__( 'for small groups who follow Jesus to learn how to obey His Great Commission and make disciples who multiply', 'zume' ) ?></p>
                 </div>
-                <div class="stack--1 | p-2 text-center align-items-center">
-                    <a href="<?php echo esc_url( dt_login_url( 'register' ) ) ?>" class="btn-light uppercase w-75"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
-                    <a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn-outline uppercase w-75"><?php echo esc_html__( 'Login', 'zume' ) ?></a>
+                <div class="stack--1 | justify-content-center align-items-center text-center">
+                    <a href="<?php echo esc_url( dt_login_url( 'register' ) ) ?>" class="btn large light uppercase w-80 px-0"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
+                    <a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn large outline uppercase w-80 px-0"><?php echo esc_html__( 'Login', 'zume' ) ?></a>
                 </div>
             </div>
         </div>
@@ -116,7 +116,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                         <img class="mx-auto" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Play-Button.svg' ) ?>" alt="play">
                     </button>
                 </div>
-                <button class="btn-outline btn-on-dark fit-content uppercase"><?php echo esc_html__( 'Watch', 'zume' ) ?></button>
+                <button class="btn large outline dark fit-content uppercase"><?php echo esc_html__( 'Watch', 'zume' ) ?></button>
             </div>
         </div>
 
@@ -220,7 +220,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                     </div>
                 </div>
             </div>
-            <a href="<?php echo esc_url( zume_about_url() ) ?>" class="btn-light uppercase fit-content"><?php echo esc_html__( 'More about zume', 'zume' ) ?></a>
+            <a href="<?php echo esc_url( zume_about_url() ) ?>" class="btn large light uppercase fit-content"><?php echo esc_html__( 'More about zume', 'zume' ) ?></a>
         </div>
 
         <?php $radius = 250 ?>
@@ -252,7 +252,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                 <div class="cover center">
                     <div class="stack-1">
                         <h3><?php echo esc_html__( 'Explore the Zume Guidebook.', 'zume' ) ?></h3>
-                        <a href="<?php echo esc_url( zume_guidebook_url() ) ?>" class="btn-light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
+                        <a href="<?php echo esc_url( zume_guidebook_url() ) ?>" class="btn large light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
                     </div>
                 </div>
             </div>
@@ -260,7 +260,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                 <div class="cover center">
                     <div class="stack-1">
                         <h3><?php echo esc_html__( 'Get the Zume Mobile App.', 'zume' ) ?></h3>
-                        <a href="<?php echo esc_url( zume_mobile_app_url() ) ?>" class="btn-light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
+                        <a href="<?php echo esc_url( zume_mobile_app_url() ) ?>" class="btn large light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
                     </div>
                 </div>
                 <div><img class="clip-rounded-top-left" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/MobileApp.jpg' ) ?>" alt="guidebook"></div>
@@ -273,17 +273,17 @@ class Zume_Training_Home extends Zume_Magic_Page
                 <div class="stack-2 justify-content-between">
                     <img class="mx-auto h-40" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/GetACoach.svg' ) ?>" alt="<?php echo esc_attr__( 'Get a coach', 'zume' ) ?>">
                     <p><?php echo esc_html__( 'Zume offers free online coaching by experienced practitioners who want to see you become a faithful disciple', 'zume' ) ?></p>
-                    <a href="#" class="btn-outline uppercase"><?php echo esc_html__( 'Get a coach', 'zume' ) ?></a>
+                    <a href="#" class="btn large outline uppercase"><?php echo esc_html__( 'Get a coach', 'zume' ) ?></a>
                 </div>
                 <div class="stack-2 justify-content-between">
                     <img class="mx-auto h-40" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JoinATraining.svg' ) ?>" alt="<?php echo esc_attr__( 'Join a training', 'zume' ) ?>">
                     <p><?php echo esc_html__( 'Join a LIVE online training facilitated by experienced practitioners. Grow and learn with other Jesus followers', 'zume' ) ?></p>
-                    <a href="#" class="btn-outline uppercase"><?php echo esc_html__( 'Join a training', 'zume' ) ?></a>
+                    <a href="#" class="btn large outline uppercase"><?php echo esc_html__( 'Join a training', 'zume' ) ?></a>
                 </div>
                 <div class="stack-2 justify-content-between">
                     <img class="mx-auto h-40" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Register.svg' ) ?>" alt="<?php echo esc_attr__( 'Register', 'zume' ) ?>">
                     <p><?php echo esc_html__( 'Zume registration is completely free! Customize your own training and facilitate with your friends, family and church', 'zume' ) ?></p>
-                    <a href="#" class="btn-light uppercase"><?php echo esc_attr__( 'Register', 'zume' ) ?></a>
+                    <a href="#" class="btn large light uppercase"><?php echo esc_attr__( 'Register', 'zume' ) ?></a>
                 </div>
             </div>
         </div>
@@ -296,7 +296,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                     <h3 class="white"><?php echo esc_html__( 'Real-time Impact Metrics from Across the Globe', 'zume' ) ?></h3>
                     <div class="">
                         <div class="grid | gapx-3 gapy-2 p-0 mx-auto | stats-grid">
-                            <div class="rounded brand-light bg-white p-0">
+                            <div class="rounded brand-light bg-white p-0 shadow">
                                 <div class="stack | s-2 align-items-center">
                                     <h4><?php echo esc_html__( 'Registrations', 'zume' ) ?></h4>
                                     <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Register.svg' ) ?>" alt="<?php echo esc_attr__( 'Registrations', 'zume' ) ?>" class="w-30">
@@ -306,7 +306,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                                     </p>
                                 </div>
                             </div>
-                            <div class="rounded brand-light bg-white p-0">
+                            <div class="rounded brand-light bg-white shadow p-0">
                                 <div class="stack | s-2 align-items-center">
                                     <h4><?php echo esc_html__( 'Group Leaders', 'zume' ) ?></h4>
                                     <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/GroupLeaders.svg' ) ?>" alt="<?php echo esc_attr__( 'Group Leaders', 'zume' ) ?>" class="w-30">
@@ -316,7 +316,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                                     </p>
                                 </div>
                             </div>
-                            <div class="rounded brand-light bg-white p-0">
+                            <div class="rounded brand-light bg-white shadow p-0">
                                 <div class="stack | s-2 align-items-center">
                                     <h4><?php echo esc_html__( 'Groups Formed', 'zume' ) ?></h4>
                                     <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/GroupsFormed.svg' ) ?>" alt="<?php echo esc_attr__( 'Groups Formed', 'zume' ) ?>" class="w-30">
@@ -326,7 +326,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                                     </p>
                                 </div>
                             </div>
-                            <div class="rounded brand-light bg-white p-0">
+                            <div class="rounded brand-light bg-white shadow p-0">
                                 <div class="stack | s-2 align-items-center">
                                     <h4><?php echo esc_html__( 'Training Page Views', 'zume' ) ?></h4>
                                     <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/TrainingPageViews.svg' ) ?>" alt="<?php echo esc_attr__( 'Training Page Views', 'zume' ) ?>" class="w-30">
@@ -336,7 +336,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                                     </p>
                                 </div>
                             </div>
-                            <div class="rounded brand-light bg-white p-0">
+                            <div class="rounded brand-light bg-white shadow p-0">
                                 <div class="stack | s-2 align-items-center">
                                     <h4><?php echo esc_html__( 'Countries & Territories', 'zume' ) ?></h4>
                                     <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/countriesandterritories.svg' ) ?>" alt="<?php echo esc_attr__( 'Countries & Territories', 'zume' ) ?>" class="w-30">
@@ -346,7 +346,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                                     </p>
                                 </div>
                             </div>
-                            <div class="rounded brand-light bg-white p-0">
+                            <div class="rounded brand-light bg-white shadow p-0">
                                 <div class="stack | s-2 align-items-center">
                                     <h4><?php echo esc_html__( 'Countries with Groups', 'zume' ) ?></h4>
                                     <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/countriesandterritories-groups.svg' ) ?>" alt="<?php echo esc_attr__( 'Countries & Territories with Groups', 'zume' ) ?>" class="w-30">
