@@ -223,6 +223,50 @@ class Zume_Training_Home extends Zume_Magic_Page
             <a href="<?php echo esc_url( zume_about_url() ) ?>" class="btn-light uppercase fit-content"><?php echo esc_html__( 'More about zume', 'zume' ) ?></a>
         </div>
 
+        <?php $radius = 250 ?>
+        <?php $width = 932 ?>
+        <?php $height = 539 ?>
+        <?php $rx = $radius / $width ?>
+        <?php $ry = $radius / $height ?>
+        <?php $x = 1 - $rx ?>
+        <?php $y = 1 - $ry ?>
+        <svg height="0" width="0">
+            <clipPath id="clip-rounded-bottom-right" clipPathUnits="objectBoundingBox">
+                <path d="<?php echo esc_attr( "M 0 0 v 1 h $x A $rx $ry, 0, 0 0, 1 $y V 1 0 h -1" ) ?>"/>
+            </clipPath>
+        </svg>
+
+        <?php $width = 780 ?>
+        <?php $height = 539 ?>
+        <?php $rx = $radius / $width ?>
+        <?php $ry = $radius / $height ?>
+        <svg height="0" width="0">
+            <clipPath id="clip-rounded-top-left" clipPathUnits="objectBoundingBox">
+                <path d="<?php echo esc_attr( "M 1 1 v -1 H 0 $rx A $rx $ry, 0, 0 0, 0 $ry V 0 1 h 1" ) ?>"/>
+            </clipPath>
+        </svg>
+
+        <div class="bg-gray-100 text-center">
+            <div class="switcher | justify-content-between">
+                <div><img class="clip-rounded-bottom-right" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Guidebook.jpg' ) ?>" alt="guidebook"></div>
+                <div class="cover center">
+                    <div class="stack-1">
+                        <h3><?php echo esc_html__( 'Explore the Zume Guidebook.', 'zume' ) ?></h3>
+                        <a href="" class="btn-light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
+                    </div>
+                </div>
+            </div>
+            <div class="switcher | justify-content-between">
+                <div class="cover center">
+                    <div class="stack-1">
+                        <h3><?php echo esc_html__( 'Get the Zume Mobile App.', 'zume' ) ?></h3>
+                        <a href="" class="btn-light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
+                    </div>
+                </div>
+                <div><img class="clip-rounded-top-left" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/MobileApp.jpg' ) ?>" alt="guidebook"></div>
+            </div>
+        </div>
+
         <?php
     }
 }
