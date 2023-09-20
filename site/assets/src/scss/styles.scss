@@ -16,6 +16,7 @@
 @import 'composition/cluster';
 @import 'composition/switcher';
 @import 'composition/reel';
+@import 'composition/grid';
 
 @import 'utilities/buttons';
 @import 'utilities/spacing';
@@ -203,6 +204,7 @@ header {
 .bg-world {
   background-image: url('/wp-content/plugins/zume-training-system/site/assets/images/world-map.svg');
   background-repeat: no-repeat;
+  background-size: cover;
   opacity: 0.05;
 }
 
@@ -235,6 +237,10 @@ header {
 
 .real-people {
   filter: opacity(0.7);
+}
+
+.stats-grid {
+  max-width: 52rem;
 }
 
 @media (min-width: $break-lg) {

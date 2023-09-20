@@ -1,14 +1,17 @@
-$gap-sizes: (1, 3, 4);
+$gap-sizes: (1, 2, 3, 4);
 
 @each $i in $gap-sizes {
     .gap-#{$i} {
         gap: spacing($i);
+        grid-gap: spacing($i);
     }
     .gapx-#{$i} {
         column-gap: spacing($i);
+        grid-column-gap: spacing($i);
     }
     .gapy-#{$i} {
         row-gap: spacing($i);
+        grid-row-gap: spacing($i);
     }
 }
 

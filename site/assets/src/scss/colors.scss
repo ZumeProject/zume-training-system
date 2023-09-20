@@ -1,4 +1,4 @@
-$colors: ( 'white', 'brand', 'brand-light');
+$colors: ( 'white', 'gray-700', 'brand', 'brand-light', 'black');
 
 @each $color in $colors {
     .#{$color} {

@@ -134,7 +134,7 @@ class Zume_Training_Home extends Zume_Magic_Page
 
         <div class="cover-page | bg-gray-300">
             <div class="position-relative">
-                <h2 class="white absolute top left right px-3 py-1"><?php echo esc_html__( 'Real people ... real stories.', 'zume' ) ?></h2>
+                <h2 class="white absolute z-1 top left right px-3 py-1"><?php echo esc_html__( 'Real people ... real stories.', 'zume' ) ?></h2>
                 <div class="absolute top right bottom w-40 bg-world"></div>
                 <img class="clip-rounded-end real-people" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/RealPeople.jpg' ) ?>" alt="Real people">
                 <div class="reel absolute bottom right | story-reel overflowing">
@@ -284,6 +284,80 @@ class Zume_Training_Home extends Zume_Magic_Page
                     <img class="mx-auto h-40" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Register.svg' ) ?>" alt="<?php echo esc_attr__( 'Register', 'zume' ) ?>">
                     <p><?php echo esc_html__( 'Zume registration is completely free! Customize your own training and facilitate with your friends, family and church', 'zume' ) ?></p>
                     <a href="#" class="btn-light uppercase"><?php echo esc_attr__( 'Register', 'zume' ) ?></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-3 text-center bg-brand-light position-relative">
+            <div class="bg-world absolute top bottom left right"></div>
+            <div class="container">
+                <div class="stack">
+                    <h2 class="white"><?php echo esc_html__( 'Zume Discipleship Worldwide Progress Dashboard', 'zume' ) ?></h2>
+                    <h3 class="white"><?php echo esc_html__( 'Real-time Impact Metrics from Across the Globe', 'zume' ) ?></h3>
+                    <div class="">
+                        <div class="grid | gapx-3 gapy-2 p-0 mx-auto | stats-grid">
+                            <div class="rounded brand-light bg-white p-0">
+                                <div class="stack | s-2 align-items-center">
+                                    <h4><?php echo esc_html__( 'Registrations', 'zume' ) ?></h4>
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Register.svg' ) ?>" alt="<?php echo esc_attr__( 'Registrations', 'zume' ) ?>" class="w-30">
+                                    <h5 class="h2">36,294</h5>
+                                    <p class="gray-700 f--1">
+                                        <?php echo esc_html__( 'Total number of registrations in Zume training', 'zume' ) ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="rounded brand-light bg-white p-0">
+                                <div class="stack | s-2 align-items-center">
+                                    <h4><?php echo esc_html__( 'Group Leaders', 'zume' ) ?></h4>
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/GroupLeaders.svg' ) ?>" alt="<?php echo esc_attr__( 'Group Leaders', 'zume' ) ?>" class="w-30">
+                                    <h5 class="h2">1,878</h5>
+                                    <p class="gray-700 f--1">
+                                        <?php echo esc_html__( 'Total number of user accounts that have recorded a completed Zume.Training course', 'zume' ) ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="rounded brand-light bg-white p-0">
+                                <div class="stack | s-2 align-items-center">
+                                    <h4><?php echo esc_html__( 'Groups Formed', 'zume' ) ?></h4>
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/GroupsFormed.svg' ) ?>" alt="<?php echo esc_attr__( 'Groups Formed', 'zume' ) ?>" class="w-30">
+                                    <h5 class="h2">6,805</h5>
+                                    <p class="gray-700 f--1">
+                                        <?php echo esc_html__( 'Total number of registered training groups (many of which are reused by trainers) in Zume.Training', 'zume' ) ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="rounded brand-light bg-white p-0">
+                                <div class="stack | s-2 align-items-center">
+                                    <h4><?php echo esc_html__( 'Training Page Views', 'zume' ) ?></h4>
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/TrainingPageViews.svg' ) ?>" alt="<?php echo esc_attr__( 'Training Page Views', 'zume' ) ?>" class="w-30">
+                                    <h5 class="h2">929,000</h5>
+                                    <p class="gray-700 f--1">
+                                        <?php echo esc_html__( 'Total number of online training sessions delivered primarily to unregistered users', 'zume' ) ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="rounded brand-light bg-white p-0">
+                                <div class="stack | s-2 align-items-center">
+                                    <h4><?php echo esc_html__( 'Countries & Territories', 'zume' ) ?></h4>
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/countriesandterritories.svg' ) ?>" alt="<?php echo esc_attr__( 'Countries & Territories', 'zume' ) ?>" class="w-30">
+                                    <h5 class="h2">234</h5>
+                                    <p class="gray-700 f--1">
+                                        <?php echo esc_html__( 'Total number of countries and sovereign territories that have accessed Zume.Training online', 'zume' ) ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="rounded brand-light bg-white p-0">
+                                <div class="stack | s-2 align-items-center">
+                                    <h4><?php echo esc_html__( 'Countries with Groups', 'zume' ) ?></h4>
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/countriesandterritories-groups.svg' ) ?>" alt="<?php echo esc_attr__( 'Countries & Territories with Groups', 'zume' ) ?>" class="w-30">
+                                    <h5 class="h2">156</h5>
+                                    <p class="gray-700 f--1">
+                                        <?php echo esc_html__( 'Total number of conturies and sovereign territories that have had groups go through Zume.Training', 'zume' ) ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
