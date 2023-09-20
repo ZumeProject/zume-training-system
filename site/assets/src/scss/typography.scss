@@ -33,6 +33,10 @@ h5, .h5 {
     font-size: font-size(1);
 }
 
+p {
+    font-size: font-size(0);
+}
+
 @for $font-size from -5 through 6 {
     .f-#{$font-size} {
         font-size: font-size($font-size);

@@ -4,6 +4,12 @@ $gap-sizes: (1, 3, 4);
     .gap-#{$i} {
         gap: spacing($i);
     }
+    .gapx-#{$i} {
+        column-gap: spacing($i);
+    }
+    .gapy-#{$i} {
+        row-gap: spacing($i);
+    }
 }
 
 .gap0 {
