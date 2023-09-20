@@ -252,7 +252,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                 <div class="cover center">
                     <div class="stack-1">
                         <h3><?php echo esc_html__( 'Explore the Zume Guidebook.', 'zume' ) ?></h3>
-                        <a href="" class="btn-light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
+                        <a href="<?php echo esc_url( zume_guidebook_url() ) ?>" class="btn-light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
                     </div>
                 </div>
             </div>
@@ -260,10 +260,31 @@ class Zume_Training_Home extends Zume_Magic_Page
                 <div class="cover center">
                     <div class="stack-1">
                         <h3><?php echo esc_html__( 'Get the Zume Mobile App.', 'zume' ) ?></h3>
-                        <a href="" class="btn-light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
+                        <a href="<?php echo esc_url( zume_mobile_app_url() ) ?>" class="btn-light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
                     </div>
                 </div>
                 <div><img class="clip-rounded-top-left" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/MobileApp.jpg' ) ?>" alt="guidebook"></div>
+            </div>
+        </div>
+
+        <div class="cover-page center container | py-3 text-center">
+            <h2><?php echo esc_html__( 'Are you ready? Get started today!', 'zume' ) ?></h2>
+            <div class="switcher | gapx-3">
+                <div class="stack-2 justify-content-between">
+                    <img class="mx-auto h-40" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/GetACoach.svg' ) ?>" alt="<?php echo esc_attr__( 'Get a coach', 'zume' ) ?>">
+                    <p><?php echo esc_html__( 'Zume offers free online coaching by experienced practitioners who want to see you become a faithful disciple', 'zume' ) ?></p>
+                    <a href="#" class="btn-outline uppercase"><?php echo esc_html__( 'Get a coach', 'zume' ) ?></a>
+                </div>
+                <div class="stack-2 justify-content-between">
+                    <img class="mx-auto h-40" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JoinATraining.svg' ) ?>" alt="<?php echo esc_attr__( 'Join a training', 'zume' ) ?>">
+                    <p><?php echo esc_html__( 'Join a LIVE online training facilitated by experienced practitioners. Grow and learn with other Jesus followers', 'zume' ) ?></p>
+                    <a href="#" class="btn-outline uppercase"><?php echo esc_html__( 'Join a training', 'zume' ) ?></a>
+                </div>
+                <div class="stack-2 justify-content-between">
+                    <img class="mx-auto h-40" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Register.svg' ) ?>" alt="<?php echo esc_attr__( 'Register', 'zume' ) ?>">
+                    <p><?php echo esc_html__( 'Zume registration is completely free! Customize your own training and facilitate with your friends, family and church', 'zume' ) ?></p>
+                    <a href="#" class="btn-light uppercase"><?php echo esc_attr__( 'Register', 'zume' ) ?></a>
+                </div>
             </div>
         </div>
 

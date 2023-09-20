@@ -4,6 +4,9 @@ $widths: (100, 80, 75, 70, 60, 50, 40, 30, 25, 20);
     .w-#{$width} {
         width: $width * 1%;
     }
+    .h-#{$width} {
+        height: $width * 1%;
+    }
 }
 
 .fit-content {
