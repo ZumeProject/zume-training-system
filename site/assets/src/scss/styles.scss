@@ -243,6 +243,15 @@ header {
   max-width: 52rem;
 }
 
+.sticker {
+  border-radius: 50%;
+  color: color('white');
+  background-color: color('brand-light');
+  aspect-ratio: 1;
+  text-align: center;
+  line-height: 1;
+}
+
 @media (min-width: $break-lg) {
 
     .row {

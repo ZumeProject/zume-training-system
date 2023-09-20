@@ -37,6 +37,10 @@ b {
     font-weight: 600;
 }
 
+.lh1 {
+    line-height: 1;
+}
+
 @for $font-size from -5 through 6 {
     .f-#{$font-size} {
         font-size: font-size($font-size);
