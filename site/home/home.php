@@ -273,7 +273,12 @@ class Zume_Training_Home extends Zume_Magic_Page
         </div>
 
         <div class="cover-page center container | py-3 text-center">
-            <h2><?php echo esc_html__( 'Are you ready? Get started today!', 'zume' ) ?></h2>
+            <h2 class="position-relative">
+                <?php echo esc_html__( 'Are you ready? Get started today!', 'zume' ) ?>
+                <div class="stack | s-zero justify-content-center absolute right p--1 shadow | sticker">
+                    <h2 class="f-3 lh1"><?php echo esc_html__( 'Free!', 'zume' ) ?></h2>
+                </div>
+            </h2>
             <div class="switcher | gapx-3">
                 <div class="stack-2 justify-content-between">
                     <img class="mx-auto h-40" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/GetACoach.svg' ) ?>" alt="<?php echo esc_attr__( 'Get a coach', 'zume' ) ?>">
