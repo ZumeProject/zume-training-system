@@ -405,6 +405,28 @@ class Zume_Training {
     public function i18n() {
         $domain = 'zume';
         load_plugin_textdomain( $domain, false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ). 'languages' );
+
+        /* Get the language fallbacks  */
+
+        $language_code = isset( $_COOKIE[ZUME_LANGUAGE_COOKIE] ) ? sanitize_text_field( wp_unslash( $_COOKIE[ZUME_LANGUAGE_COOKIE] ) ) : null;
+
+        if ( is_user_logged_in() ) {
+            global $zume_user_profile;
+            $language_code = $zume_user_profile['user_ui_language'];
+        }
+
+        if ( !empty( $language_code ) ) {
+            [
+                'lang_code' => $lang_code,
+                'path' => $path,
+            ] = zume_get_url_pieces();
+
+            if ( $lang_code !== $language_code ) {
+                $url = site_url( '/' . $language_code . '/' . $path );
+                wp_redirect( $url );
+                exit;
+            }
+        }
     }
     public function __toString() {
         return 'zume';
