@@ -75,6 +75,9 @@ class Zume_Training_Home extends Zume_Magic_Page
                 jQuery(document).foundation();
             });
         </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+        </style>
         <?php
     }
 
@@ -275,8 +278,8 @@ class Zume_Training_Home extends Zume_Magic_Page
         <div class="cover-page center container | py-3 text-center">
             <h2 class="position-relative">
                 <?php echo esc_html__( 'Are you ready? Get started today!', 'zume' ) ?>
-                <div class="stack | s-zero justify-content-center absolute right p--1 shadow | sticker">
-                    <h2 class="f-3 lh1"><?php echo esc_html__( 'Free!', 'zume' ) ?></h2>
+                <div class="stack | s-zero justify-content-center absolute right top p--1 shadow | sticker" data-free>
+                    <h2 class="f-3 f-cursive uppercase"><?php echo esc_html__( 'Free!', 'zume' ) ?></h2>
                 </div>
             </h2>
             <div class="switcher | gapx-3">
