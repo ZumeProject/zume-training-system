@@ -232,7 +232,6 @@ class Zume_Training {
                     'only_for_types' => [ 'user' ],
                 ];
             }
-
         }
         return $fields;
     }
