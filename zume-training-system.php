@@ -421,7 +421,7 @@ class Zume_Training {
                 'path' => $path,
             ] = zume_get_url_pieces();
 
-            if ( $lang_code !== $language_code ) {
+            if ( $lang_code !== $language_code && $path !== 'wp-login.php' ) {
                 $url = site_url( '/' . $language_code . '/' . $path );
                 wp_redirect( $url );
                 exit;

@@ -78,7 +78,7 @@
                             method: 'POST',
                             body: JSON.stringify( { ui_language: lang } ),
                             headers: {
-                                'X-WP-Nonce': zumeProfile.nonce
+                                'X-WP-Nonce': nonce
                             }
                         }).then(() => {
                             window.location = url
