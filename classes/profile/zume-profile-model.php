@@ -26,8 +26,8 @@ class Zume_Profile_Model {
         $user_updates = [];
         $updates = [];
 
+        $user_id = get_current_user_id();
         if ( !empty( $name ) ) {
-            $user_id = get_current_user_id();
             $user_updates['ID'] = $user_id;
             $user_updates['display_name'] = $name;
         }
