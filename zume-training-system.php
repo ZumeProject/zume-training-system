@@ -412,10 +412,10 @@ class Zume_Training {
 
         if ( is_user_logged_in() ) {
             global $zume_user_profile;
-            $language_code = $zume_user_profile['user_ui_language'];
+            $language_code = $zume_user_profile['ui_language'];
         }
 
-        if ( !empty( $language_code ) ) {
+        if ( !empty( $language_code ) && !dt_is_rest() ) {
             [
                 'lang_code' => $lang_code,
                 'path' => $path,

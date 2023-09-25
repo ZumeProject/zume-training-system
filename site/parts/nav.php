@@ -1,6 +1,6 @@
     <header>
         <div class="cluster justify-content-between">
-            <a class="btn outline dark nav__button" data-open="language-menu-reveal"><?php esc_html_e( 'Language', 'zume' ) ?></a>
+            <button class="btn outline dark nav__button" data-open="language-menu-reveal"><?php esc_html_e( 'Language', 'zume' ) ?></button>
 
             <div class="absolute center">
                 <a href="<?php echo esc_url( zume_home_url() ) ?>" class="logo">
