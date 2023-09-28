@@ -685,7 +685,7 @@ function zume_login_form_links() {
 
             }
 
-            if ( $action === 'login' ) {
+            if ( empty( $action ) ) {
                 ?>
 
                 <p class="f--1">
