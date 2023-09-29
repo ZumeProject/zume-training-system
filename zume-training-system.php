@@ -135,7 +135,7 @@ class Zume_Training {
         if ( isset( $_ENV['FIREBASE_APP_ID'] ) ) {
             $fields['firebase_app_id'] = sanitize_text_field( $_ENV['FIREBASE_APP_ID'] );
         }
-        if ( class_exists('DT_Login_Fields' ) ) { // if outside DT context, don't run this
+        if ( class_exists( 'DT_Login_Fields' ) ) { // if outside DT context, don't run this
             DT_Login_Fields::update( $fields );
         }
     }

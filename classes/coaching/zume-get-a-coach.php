@@ -5,7 +5,7 @@ class Zume_Get_A_Coach_Endpoints
 {
     public $permissions = [ 'access_contacts' ];
     public $namespace = 'zume_system/v1';
-    const site_connection_post_id = 20125;
+    const SITE_CONNECTION_POST_ID = 20125;
     private static $_instance = null;
     public static function instance() {
         if ( is_null( self::$_instance ) ) {
@@ -91,7 +91,7 @@ class Zume_Get_A_Coach_Endpoints
             ];
         }
 
-        $site = Site_Link_System::get_site_connection_vars( self::site_connection_post_id );
+        $site = Site_Link_System::get_site_connection_vars( self::SITE_CONNECTION_POST_ID );
         if ( ! $site ) {
             dt_write_log( __METHOD__ . ' FAILED TO GET SITE LINK TO GLOBAL ' );
             return false;
@@ -130,7 +130,7 @@ class Zume_Get_A_Coach_Endpoints
      */
     public static function update_coaching_contact( int $contact_id, array $updates ) {
 
-        $site = Site_Link_System::get_site_connection_vars( self::site_connection_post_id );
+        $site = Site_Link_System::get_site_connection_vars( self::SITE_CONNECTION_POST_ID );
         if ( ! $site ) {
             dt_write_log( __METHOD__ . ' FAILED TO GET SITE LINK TO GLOBAL ' );
             return false;
@@ -142,7 +142,6 @@ class Zume_Get_A_Coach_Endpoints
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer ' . $site['transfer_token'],
-                'Cookie' => 'XDEBUG_SESSION=XDEBUG_ECLIPSE;'
             ],
         ];
 
