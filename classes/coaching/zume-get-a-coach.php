@@ -106,12 +106,7 @@ class Zume_Get_A_Coach_Endpoints
             ],
         ];
 
-        if ( str_contains( $site['url'], 'zume5.test' ) ) {
-            $scheme = 'http';
-        } else {
-            $scheme = 'https';
-        }
-        $result = wp_remote_post( $scheme . '://' . trailingslashit( $site['url'] ) . 'wp-json/dt-posts/v2/contacts', $args );
+        $result = wp_remote_post( 'https://' . trailingslashit( $site['url'] ) . 'wp-json/dt-posts/v2/contacts', $args );
         if ( is_wp_error( $result ) ) {
             dt_write_log( __METHOD__ . ' FAILED TO CREATE TRAINING FOR ' . $profile['name'] );
             return false;
@@ -145,12 +140,7 @@ class Zume_Get_A_Coach_Endpoints
             ],
         ];
 
-        if ( str_contains( $site['url'], 'zume5.test' ) ) {
-            $scheme = 'http';
-        } else {
-            $scheme = 'https';
-        }
-        $result = wp_remote_post( $scheme . '://' . trailingslashit( $site['url'] ) . 'wp-json/dt-posts/v2/contacts/' . $contact_id, $args );
+        $result = wp_remote_post( 'https://' . trailingslashit( $site['url'] ) . 'wp-json/dt-posts/v2/contacts/' . $contact_id, $args );
         if ( is_wp_error( $result ) ) {
             dt_write_log( __METHOD__ . ' FAILED TO UPDATE COACHING_CONTACT FOR ' . $contact_id );
             return false;
