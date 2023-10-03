@@ -8,9 +8,14 @@ function zume_get_url_pieces( $url = null ) {
     if ( !$url ) {
         $url = dt_get_url_path();
     }
+
+    $dt_url = new DT_URL( $url );
+
     $codes = zume_language_codes();
 
-    $url_parts = explode( '/', $url );
+    $path = isset( $dt_url->parsed_url['path'] ) ? $dt_url->parsed_url['path'] : '';
+
+    $url_parts = explode( '/', $path );
 
     $lang_code = 'en';
     if ( in_array( $url_parts[0], $codes ) ) {

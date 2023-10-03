@@ -36,11 +36,16 @@ export class Wizard extends LitElement {
         this.steps = []
         this.modules = {}
         this.step = {}
+
+        this._handleHistoryPopState = this._handleHistoryPopState.bind(this)
+        window.addEventListener('popstate', this._handleHistoryPopState)
     }
+
 
     render() {
         if (!this.isWizardLoaded()) {
             this.loadWizard()
+            this._handleHistoryPopState()
         }
 
         if (this.steps.length === 0) {
@@ -120,7 +125,6 @@ export class Wizard extends LitElement {
         const currentModule = this.step.module
         for (let i = this.stepIndex + 1; i < this.steps.length - 1; i++) {
             const step = this.steps[i];
-            console.log(currentModule, step)
             if ( step.module !== currentModule ) {
                 this.gotoStep(i)
                 return
@@ -129,8 +133,6 @@ export class Wizard extends LitElement {
         this._onFinish()
     }
     _onFinish() {
-        console.log('go to finish')
-
         if ( !this.finishUrl ) {
             window.location.href = '/'
         }
@@ -138,9 +140,28 @@ export class Wizard extends LitElement {
         window.location.href = this.finishUrl
     }
 
-    gotoStep(index) {
+    gotoStep(index, pushState = true) {
+        if ( this.steps.length === 0 ) {
+            return
+        }
+
         this.stepIndex = this.clampSteps(index)
         this.step = this.steps[this.stepIndex]
+
+        if ( pushState ) {
+            const url = new URL(window.location.href)
+            const urlParts = url.pathname.split('/')
+            const slug = urlParts[urlParts.length - 1]
+
+            let newUrl = ''
+            if ( Object.values(ZumeWizards).includes(slug) ) { // first load of the wizard
+                newUrl = urlParts.join('/') + '/' + this.step.slug + url.search
+            } else {
+                newUrl = urlParts.slice(0, -1).join('/') + '/' + this.step.slug + url.search
+            }
+
+            window.history.pushState( null, null, newUrl )
+        }
     }
     clampSteps(index) {
         let clampedIndex = index
@@ -151,6 +172,22 @@ export class Wizard extends LitElement {
             clampedIndex = 0
         }
         return clampedIndex
+    }
+    _handleHistoryPopState() {
+        const url = new URL(window.location.href)
+        const urlParts = url.pathname.split('/')
+        const path = urlParts[urlParts.length - 1]
+
+        if ( Object.values(ZumeWizards).includes(path) ) {
+            this.gotoStep(0, false)
+        }
+
+        this.steps.forEach(({slug}, i) => {
+            if ( path === slug ) {
+                this.gotoStep(i, false)
+            }
+        })
+
     }
 
     getModule( moduleName, skippable = false ) {
@@ -163,7 +200,7 @@ export class Wizard extends LitElement {
                             <h1>Complete your Profile</h1>
                             <div>
                                 <p>This is part of ${step.module}</p>
-                                <p>This module/step(?) is ${step.skippable ? '' : 'not '}skippable</p>
+                                <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
                             </div>
                         `
                     },
@@ -177,7 +214,7 @@ export class Wizard extends LitElement {
                         component: (step) => html`
                             <h1>Make your plan</h1>
                             <p>This is part of ${step.module}</p>
-                            <p>This module/step(?) is ${step.skippable ? '' : 'not '}skippable</p>
+                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
                         `
                     },
                     {
@@ -185,7 +222,7 @@ export class Wizard extends LitElement {
                         component: (step) => html`
                             <h1>what Time of Day</h1>
                             <p>This is part of ${step.module}</p>
-                            <p>This module/step(?) is ${step.skippable ? '' : 'not '}skippable</p>
+                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
                         `
                     },
                     {
@@ -193,7 +230,7 @@ export class Wizard extends LitElement {
                         component: (step) => html`
                             <h1>How Many Sessions</h1>
                             <p>This is part of ${step.module}</p>
-                            <p>This module/step(?) is ${step.skippable ? '' : 'not '}skippable</p>
+                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
                         `
                     },
                 ],
@@ -206,7 +243,7 @@ export class Wizard extends LitElement {
                         component: (step) => html`
                             <h1>Invite your friends</h1>
                             <p>This is part of ${step.module}</p>
-                            <p>This module/step(?) is ${step.skippable ? '' : 'not '}skippable</p>
+                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
                         `
                     },
                     {
@@ -214,7 +251,7 @@ export class Wizard extends LitElement {
                         component: (step) => html`
                             <h1>Use this QR or link or we can email them to you.</h1>
                             <p>This is part of ${step.module}</p>
-                            <p>This module/step(?) is ${step.skippable ? '' : 'not '}skippable</p>
+                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
                         `
                     },
                 ],
@@ -228,7 +265,7 @@ export class Wizard extends LitElement {
                             <h1>You are now connected to a coach</h1>
                             <p>One of our team will contact you in the next 24-48 hours</p>
                             <p>This is part of ${step.module}</p>
-                            <p>This module/step(?) is ${step.skippable ? '' : 'not '}skippable</p>
+                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
                         `
                     },
                 ],
@@ -265,7 +302,6 @@ export class Wizard extends LitElement {
                 this.steps.push(step)
             })
         })
-        this.gotoStep(0)
     }
 
     isWizardTypeValid() {
@@ -298,7 +334,10 @@ export class Wizard extends LitElement {
         return wizards[this.type]
     }
 
-
+    disconnectedCallback() {
+        super.disconnectedCallback()
+        window.removeEventListener('popstate', this._handleHistoryPopState)
+    }
 
     /**
      * Disable the shadow DOM
