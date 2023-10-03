@@ -18,7 +18,15 @@ export class Wizard extends LitElement {
             /**
              * The wizard type
              */
-            type: { type: String }
+            type: { type: String },
+            /**
+             * Address to go to when the wizard is finished
+             */
+            finishUrl: { type: String },
+            /**
+             * The step that is currently being shown
+             */
+            step: { attribute: false },
         }
     }
 
@@ -27,6 +35,7 @@ export class Wizard extends LitElement {
         this.stepIndex = 0
         this.steps = []
         this.modules = {}
+        this.step = {}
     }
 
     render() {
@@ -34,8 +43,20 @@ export class Wizard extends LitElement {
             this.loadWizard()
         }
 
+        if (this.steps.length === 0) {
+            return html`
+            <div class="cover">
+                <h1 class="brand">Bad Wizard</h1>
+                <p>You found a bad wizard</p>
+                <div class="center"><img class="w-20" src="https://imgs.search.brave.com/3f3MurVApxsoxJlmqxLF0fs5-WlAk6sEu9IV3sICb_k/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/YWR2ZXJ0aXNlY2Fz/dC5jb20vcG9kY2Fz/dC9pbWFnZS9WZXJ5/QmFkV2l6YXJkcw.jpeg" alt="bad wizards" /></div>
+                <a href="/">Get Back Home</a>
+            </div>`
+        }
+
+
+
         return html`
-        <div class="stack | s5">
+        <div class="cover | s5">
 
             ${this.currentStep()}
             ${this.navigationButtons()}
@@ -45,11 +66,12 @@ export class Wizard extends LitElement {
     }
 
     currentStep() {
-        if ( this.stepIndex > this.steps.length - 1 ) {
-            this.stepIndex = this.steps.length - 1
-        }
-        if ( this.stepIndex < 0 ) {
-            this.stepIndex = 0
+        if (this.steps.length === 0) {
+            return html`<div class="cover">
+                <h1 class="brand">Bad Wizard</h1>
+                <p>You found a bad wizard</p>
+                <div class="center"><img class="w-20" src="https://imgs.search.brave.com/3f3MurVApxsoxJlmqxLF0fs5-WlAk6sEu9IV3sICb_k/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/YWR2ZXJ0aXNlY2Fz/dC5jb20vcG9kY2Fz/dC9pbWFnZS9WZXJ5/QmFkV2l6YXJkcw.jpeg" alt="bad wizards" /></div>
+            </div>`
         }
 
         const currentStep = this.steps[this.stepIndex]
@@ -58,13 +80,77 @@ export class Wizard extends LitElement {
     }
 
     navigationButtons() {
+        const { skippable } = this.step
+
+        const isFirstStep = this.stepIndex === 0
+        const isLastStep = this.stepIndex === this.steps.length - 1
+
         return html`
         <div>
-            <a href="#" class="btn">Back</a>
-            <a href="#" class="btn">Next</a>
-            <a href="#" class="btn">Skip</a>
+            ${ !isFirstStep ? (
+                html`<button @click=${this._onBack} class="btn outline ">Back</button>`
+            ) : ''}
+            ${ !isLastStep ? (
+                html`<button @click=${this._onNext} class="btn">Next</button>`
+            ) : ''}
+            ${ skippable && !isLastStep ? (
+                html`<button @click=${this._onSkip} class="btn outline">Skip</button>`
+            ) : ''}
+            ${ isLastStep ? (
+                html`<button @click=${this._onFinish} class="btn">Finish</button>`
+            ) : '' }
         </div>
         `
+    }
+
+    _onBack() {
+        if ( this.stepIndex > 0 ) {
+            const backStepIndex = this.stepIndex - 1
+            this.gotoStep(backStepIndex)
+        }
+    }
+    _onNext() {
+        if ( this.stepIndex + 1 < this.steps.length ) {
+            const nextStepIndex = this.stepIndex + 1
+            this.gotoStep(nextStepIndex)
+        }
+    }
+    _onSkip() {
+        /* Go to the next module? */
+        const currentModule = this.step.module
+        for (let i = this.stepIndex + 1; i < this.steps.length - 1; i++) {
+            const step = this.steps[i];
+            console.log(currentModule, step)
+            if ( step.module !== currentModule ) {
+                this.gotoStep(i)
+                return
+            }
+        }
+        this._onFinish()
+    }
+    _onFinish() {
+        console.log('go to finish')
+
+        if ( !this.finishUrl ) {
+            window.location.href = '/'
+        }
+
+        window.location.href = this.finishUrl
+    }
+
+    gotoStep(index) {
+        this.stepIndex = this.clampSteps(index)
+        this.step = this.steps[this.stepIndex]
+    }
+    clampSteps(index) {
+        let clampedIndex = index
+        if ( index > this.steps.length - 1 ) {
+            clampedIndex = this.steps.length - 1
+        }
+        if ( index < 0 ) {
+            clampedIndex = 0
+        }
+        return clampedIndex
     }
 
     getModule( moduleName, skippable = false ) {
@@ -167,7 +253,6 @@ export class Wizard extends LitElement {
         const wizard = this.getWizard()
         this.modules = wizard
         this.steps = []
-        console.log(wizard)
         Object.entries(this.modules).forEach(([moduleName, { steps, skippable }]) => {
             steps.forEach(({ component, slug }) => {
                 const step = {
@@ -180,12 +265,11 @@ export class Wizard extends LitElement {
                 this.steps.push(step)
             })
         })
+        this.gotoStep(0)
     }
 
     isWizardTypeValid() {
         const wizardTypes = Object.values(ZumeWizards)
-
-        console.log('wizardTypes = ', wizardTypes, ' type =', this.type)
 
         if (!wizardTypes.includes(this.type)) {
             return false

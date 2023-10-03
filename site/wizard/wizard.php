@@ -87,7 +87,10 @@ class Zume_Training_Wizard extends Zume_Magic_Page
 
         <div class="container cover-page | text-center">
             <div>
-                <zume-wizard type="<?php echo esc_attr( $this->wizard_type ) ?>"></zume-wizard>
+                <zume-wizard
+                    type="<?php echo esc_attr( $this->wizard_type ) ?>"
+                    finishUrl="<?php echo esc_url( zume_dashboard_url() ) ?>"
+                ></zume-wizard>
             </div>
         </div>
 
