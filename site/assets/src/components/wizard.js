@@ -36,6 +36,7 @@ export class Wizard extends LitElement {
         this.steps = []
         this.modules = {}
         this.step = {}
+        this.t = window.SHAREDFUNCTIONS.escapeObject(jsObject.translations)
 
         this._handleHistoryPopState = this._handleHistoryPopState.bind(this)
         window.addEventListener('popstate', this._handleHistoryPopState)
@@ -51,10 +52,10 @@ export class Wizard extends LitElement {
         if (this.steps.length === 0) {
             return html`
             <div class="cover">
-                <h1 class="brand">Bad Wizard</h1>
-                <p>You found a bad wizard</p>
+                <h1 class="brand">${this.t.bad_wizard}</h1>
+                <p>${this.t.found_bad_wizard}</p>
                 <div class="center"><img class="w-20" src="https://imgs.search.brave.com/3f3MurVApxsoxJlmqxLF0fs5-WlAk6sEu9IV3sICb_k/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/YWR2ZXJ0aXNlY2Fz/dC5jb20vcG9kY2Fz/dC9pbWFnZS9WZXJ5/QmFkV2l6YXJkcw.jpeg" alt="bad wizards" /></div>
-                <a href="/">Get Back Home</a>
+                <a href="/">${this.t.home}</a>
             </div>`
         }
 
@@ -72,14 +73,6 @@ export class Wizard extends LitElement {
     }
 
     currentStep() {
-        if (this.steps.length === 0) {
-            return html`<div class="cover">
-                <h1 class="brand">Bad Wizard</h1>
-                <p>You found a bad wizard</p>
-                <div class="center"><img class="w-20" src="https://imgs.search.brave.com/3f3MurVApxsoxJlmqxLF0fs5-WlAk6sEu9IV3sICb_k/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/YWR2ZXJ0aXNlY2Fz/dC5jb20vcG9kY2Fz/dC9pbWFnZS9WZXJ5/QmFkV2l6YXJkcw.jpeg" alt="bad wizards" /></div>
-            </div>`
-        }
-
         const currentStep = this.steps[this.stepIndex]
 
         return currentStep.component(currentStep)
@@ -94,16 +87,16 @@ export class Wizard extends LitElement {
         return html`
         <div>
             ${ !isFirstStep ? (
-                html`<button @click=${this._onBack} class="btn outline ">Back</button>`
+                html`<button @click=${this._onBack} class="btn outline ">${this.t.back}</button>`
             ) : ''}
             ${ !isLastStep ? (
-                html`<button @click=${this._onNext} class="btn">Next</button>`
+                html`<button @click=${this._onNext} class="btn">${this.t.next}</button>`
             ) : ''}
             ${ skippable && !isLastStep ? (
-                html`<button @click=${this._onSkip} class="btn outline">Skip</button>`
+                html`<button @click=${this._onSkip} class="btn outline">${this.t.skip}</button>`
             ) : ''}
             ${ isLastStep ? (
-                html`<button @click=${this._onFinish} class="btn">Finish</button>`
+                html`<button @click=${this._onFinish} class="btn">${this.t.finish}</button>`
             ) : '' }
         </div>
         `

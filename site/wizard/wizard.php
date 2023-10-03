@@ -78,7 +78,24 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 jQuery(document).foundation();
             });
         </script>
+        <script>
+            const jsObject = [<?php echo json_encode([
+                'nonce' => wp_create_nonce( 'wp_rest' ),
+                'root' => esc_url_raw( rest_url() ),
+                'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
+                'language_cookie' => ZUME_LANGUAGE_COOKIE,
+                'translations' => [
+                    'bad_wizard' => esc_html__( 'Bad Wizard', 'zume' ),
+                    'found_bad_wizard' => esc_html__( 'You found a bad wizard', 'zume' ),
+                    'home' => esc_html__( 'Get back home', 'zume' ),
+                    'back' => esc_html__( 'Back', 'zume' ),
+                    'next' => esc_html__( 'Next', 'zume' ),
+                    'skip' => esc_html__( 'Skip', 'zume' ),
+                    'finish' => esc_html__( 'Finish', 'zume' ),
+                ],
+            ]) ?>][0]
 
+        </script>
         <?php
     }
 
