@@ -61,10 +61,11 @@ export class Wizard extends LitElement {
 
 
         return html`
-        <div class="cover | s5">
+        <div class="cover">
 
             ${this.currentStep()}
             ${this.navigationButtons()}
+            ${this.stepCounter()}
 
         </div>
         `
@@ -104,6 +105,23 @@ export class Wizard extends LitElement {
             ${ isLastStep ? (
                 html`<button @click=${this._onFinish} class="btn">Finish</button>`
             ) : '' }
+        </div>
+        `
+    }
+
+    stepCounter() {
+
+        return html`
+        <div class="center">
+            <div class="cluster">
+                ${this.steps.map((step, i) => {
+                    const completed = i <= this.stepIndex
+                    return html`<div class="step-circle ${completed ? 'complete' : ''}"></div>`
+                })}
+            </div>
+        </div>
+        <div>
+            ${this.stepIndex + 1} / ${this.steps.length}
         </div>
         `
     }
