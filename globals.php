@@ -5,6 +5,76 @@
  * All sql queries should not use variable table names, but should be fully qualified.
  */
 
+/**
+ * API Routes for common global functions
+ */
+if ( dt_is_rest() ) {
+    add_action( 'rest_api_init', 'zume_global_add_api_routes' );
+    add_filter( 'dt_allow_rest_access', 'zume_global_authorize_url', 10, 1 );
+}
+function zume_global_add_api_routes()
+{
+    $namespace = 'zume_system/v1';
+    register_rest_route(
+        $namespace, '/user_data/profile', [
+            'methods' => [ 'GET', 'POST' ],
+            'callback' => 'zume_get_user_profile_api',
+            'permission_callback' => '__return_true',
+        ]
+    );
+    register_rest_route(
+        $namespace, '/user_data/stage', [
+            'methods' => [ 'GET', 'POST' ],
+            'callback' => 'zume_get_user_stage_api',
+            'permission_callback' => '__return_true',
+        ]
+    );
+    register_rest_route(
+        $namespace, '/user_data/host', [
+            'methods' => [ 'GET', 'POST' ],
+            'callback' => 'zume_get_user_host_api',
+            'permission_callback' => '__return_true',
+        ]
+    );
+    register_rest_route(
+        $namespace, '/user_data/mawl', [
+            'methods' => [ 'GET', 'POST' ],
+            'callback' => 'zume_get_user_mawl_api',
+            'permission_callback' => '__return_true',
+        ]
+    );
+}
+function zume_global_authorize_url( $authorized )
+{
+    if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), 'zume_system/v1' ) !== false ) {
+        $authorized = true;
+    }
+    return $authorized;
+}
+function zume_get_user_profile_api( WP_REST_Request $request ) {
+    $user_id = get_current_user_id();
+    return zume_get_user_profile( $user_id );
+}
+function zume_get_user_stage_api( WP_REST_Request  $request )
+{
+    $user_id = get_current_user_id();
+    return zume_get_user_stage( $user_id );
+}
+function zume_get_user_host_api( WP_REST_Request $request )
+{
+    $user_id = get_current_user_id();
+    return zume_get_user_host( $user_id );
+}
+function zume_get_user_mawl_api( WP_REST_Request $request )
+{
+    $user_id = get_current_user_id();
+    return zume_get_user_mawl( $user_id );
+}
+
+/**
+ * End API Routes
+ */
+
 if ( ! function_exists( 'zume_get_user_profile' ) ) {
     function zume_get_user_profile( $user_id = null ) {
         if ( is_null( $user_id ) ) {
@@ -126,7 +196,7 @@ if ( ! function_exists( 'zume_get_user_stage' ) ) {
                 if ( 'first_practitioner_report' == $value['subtype'] ) {
                     $funnel_steps[4] = true;
                 }
-                if ( 'mawl_completed' == $value['subtype'] ) {
+                if ( 'mawl_completed' == $value['subtype'] || 'host_completed' == $value['subtype'] ) {
                     $funnel_steps[5] = true;
                 }
                 if ( 'seeing_generational_fruit' == $value['subtype'] ) {
@@ -1314,8 +1384,8 @@ if ( ! function_exists( 'zume_funnel_stages' ) ) {
             5 => [
                 'key' => 'full_practitioner',
                 'value' => 5,
-                'label' => 'Full Practitioner',
-                'label_full' => '(S2) Full Practitioner',
+                'label' => 'Practitioner',
+                'label_full' => '(S2) Practitioner',
                 'description' => 'Practitioner who has completed the MAWL checklist, but is not multiplying.',
                 'description_full' => 'Practitioner who has completed the MAWL checklist, but is not multiplying.',
                 'characteristics' => [
