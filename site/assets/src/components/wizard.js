@@ -62,7 +62,7 @@ export class Wizard extends LitElement {
 
 
         return html`
-        <div class="cover">
+        <div class="cover container">
 
             ${this.currentStep()}
             ${this.navigationButtons()}
@@ -75,7 +75,7 @@ export class Wizard extends LitElement {
     currentStep() {
         const currentStep = this.steps[this.stepIndex]
 
-        return currentStep.component(currentStep)
+        return currentStep.component(currentStep, this.t)
     }
 
     navigationButtons() {
@@ -85,7 +85,7 @@ export class Wizard extends LitElement {
         const isLastStep = this.stepIndex === this.steps.length - 1
 
         return html`
-        <div>
+        <div class="text-center">
             ${ !isFirstStep ? (
                 html`<button @click=${this._onBack} class="btn outline ">${this.t.back}</button>`
             ) : ''}
@@ -113,7 +113,7 @@ export class Wizard extends LitElement {
                 })}
             </div>
         </div>
-        <div>
+        <div class="text-center">
             ${this.stepIndex + 1} / ${this.steps.length}
         </div>
         `
@@ -122,13 +122,13 @@ export class Wizard extends LitElement {
     _onBack() {
         if ( this.stepIndex > 0 ) {
             const backStepIndex = this.stepIndex - 1
-            this.gotoStep(backStepIndex)
+            this._gotoStep(backStepIndex)
         }
     }
     _onNext() {
         if ( this.stepIndex + 1 < this.steps.length ) {
             const nextStepIndex = this.stepIndex + 1
-            this.gotoStep(nextStepIndex)
+            this._gotoStep(nextStepIndex)
         }
     }
     _onSkip() {
@@ -137,7 +137,7 @@ export class Wizard extends LitElement {
         for (let i = this.stepIndex + 1; i < this.steps.length - 1; i++) {
             const step = this.steps[i];
             if ( step.module !== currentModule ) {
-                this.gotoStep(i)
+                this._gotoStep(i)
                 return
             }
         }
@@ -151,7 +151,7 @@ export class Wizard extends LitElement {
         window.location.href = this.finishUrl
     }
 
-    gotoStep(index, pushState = true) {
+    _gotoStep(index, pushState = true) {
         if ( this.steps.length === 0 ) {
             return
         }
@@ -190,15 +190,38 @@ export class Wizard extends LitElement {
         const path = urlParts[urlParts.length - 1]
 
         if ( Object.values(ZumeWizards).includes(path) ) {
-            this.gotoStep(0, false)
+            this._gotoStep(0, false)
         }
 
         this.steps.forEach(({slug}, i) => {
             if ( path === slug ) {
-                this.gotoStep(i, false)
+                this._gotoStep(i, false)
             }
         })
 
+    }
+    _handleCompleteProfileChange(event) {
+        console.log(event)
+        /* Update the profile using the api */
+        const updates = {
+            [event.detail.id]: event.detail.value
+        }
+
+
+        fetch( jsObject.rest_endpoint + '/profile', {
+            method: 'POST',
+            body: JSON.stringify(updates),
+            headers: {
+                'X-WP-Nonce': jsObject.nonce
+            }
+        } )
+        .then(() => {
+            console.log('success')
+        })
+        .catch((error) => {
+            console.error(error)
+        })
+        .finally(() => {})
     }
 
     getModule( moduleName, skippable = false ) {
@@ -207,12 +230,13 @@ export class Wizard extends LitElement {
                 steps: [
                     {
                         slug: 'update-your-profile',
-                        component: (step) => html`
-                            <h1>Complete your Profile</h1>
-                            <div>
-                                <p>This is part of ${step.module}</p>
-                                <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
-                            </div>
+                        component: (step, t) => html`
+                            <complete-profile
+                                name=${step.slug}
+                                module=${step.module}
+                                t="${JSON.stringify(t.complete_profile)}"
+                                @profile-change=${this._handleCompleteProfileChange}
+                            ></complete-profile>
                         `
                     },
                 ],
