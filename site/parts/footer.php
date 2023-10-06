@@ -1,6 +1,6 @@
 <footer class="footer">
 
-    <div class="container stack-2">
+    <div class="container stack-2 | position-relative">
 
         <div class="cluster | justify-content-between">
             <div class="cluster gapx-4 gapy-2" role="list">
@@ -14,6 +14,12 @@
                 <a role="listitem" class="link-light" href="<?php echo esc_url( zume_mobile_app_url() ) ?>"><?php echo esc_html__( 'Mobile App', 'zume' ) ?></a>
                 <a role="listitem" class="link-light" href="https://give.zume.vision/" target="_blank"><?php echo esc_html__( 'Donate', 'zume' ) ?></a>
             </div>
+        </div>
+
+        <div class="absolute top bottom center m-0 show-for-large">
+
+            <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . '/assets/images/Zume-Z-crop.svg' ) ?>
+
         </div>
 
         <div class="cluster justify-content-between">
