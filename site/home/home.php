@@ -89,9 +89,9 @@ class Zume_Training_Home extends Zume_Magic_Page
             <h2 class="f-3 lh1">45+</h2>
             <h3 class="uppercase f--2 lh1"><?php echo esc_html__( 'Languages', 'zume' ) ?></h3>
         </div>
+        <?php require __DIR__ . '/../parts/nav.php'; ?>
         <div class="cover-page">
 
-            <?php require __DIR__ . '/../parts/nav.php'; ?>
 
             <div class="switcher container | align-items-center gap0">
                 <div class="show-for-large"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JesusPointing-1.svg' ) ?>" alt="Jesus pointing"></div>
