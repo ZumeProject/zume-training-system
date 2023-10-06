@@ -18,7 +18,7 @@
 
         <div class="cluster justify-content-between">
             <span>&copy; Zume. All rights reserved.</span>
-            <div class="cluster | s1 justify-flex-end f-0" role="list">
+            <div class="cluster | s-1 justify-flex-end f-0" role="list">
                 <a href="#" class="link-light" role="listitem">
                     <div class="icon"><?php require plugin_dir_path( __DIR__ ) . 'assets/images/facebook.svg' ?></div>
                 </a>
