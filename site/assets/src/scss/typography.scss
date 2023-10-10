@@ -29,6 +29,11 @@ h5, .h5 {
     font-size: font-size(1);
 }
 
+h6, .h6 {
+    font-size: font-size(0);
+    text-decoration: underline;
+}
+
 p {
     font-size: font-size(0);
 }

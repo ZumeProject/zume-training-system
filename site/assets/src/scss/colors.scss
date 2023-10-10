@@ -13,12 +13,23 @@ $colors: (
     }
 }
 
-$bg-colors: ( 'gray-500', 'gray-300', 'gray-100', 'white', 'brand', 'brand-light');
+$bg-colors: (
+    'gray-500',
+    'gray-300',
+    'gray-100',
+    'white',
+    'brand',
+    'brand-light'
+);
 
 @each $color in $bg-colors {
     .bg-#{$color} {
         background-color: color($color);
     }
+}
+
+.bg-none {
+    background: none;
 }
 
 .bg-brand-gradient {

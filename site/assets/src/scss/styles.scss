@@ -28,6 +28,7 @@
 
 @import 'blocks/login';
 @import 'blocks/stories';
+@import 'blocks/accordian';
 
 html {
     font-size: 18px;
@@ -177,7 +178,8 @@ header {
 }
 
 .page {
-  margin-block-start: spacing(1);
+  padding-block-start: spacing(2);
+  padding-block-end: spacing(4)
 }
 
 .line-text {
