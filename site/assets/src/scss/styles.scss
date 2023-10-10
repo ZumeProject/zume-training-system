@@ -54,7 +54,7 @@ ul {
   padding: 0;
 }
 
-a {
+a, a:visited {
     text-decoration: none;
 }
 
@@ -62,6 +62,13 @@ a {
   margin: 0 auto;
   position: relative;
   width: 90%;
+  max-width: $max-width;
+}
+
+.container-md {
+  margin: 0 auto;
+  position: relative;
+  width: 70%;
   max-width: $max-width;
 }
 
@@ -271,6 +278,14 @@ header {
   &.complete {
     background-color: color('brand');
   }
+}
+
+.thumbnail {
+  border: 1px solid color('grey');
+  border-radius: var(--border-radius);
+  background-position: center;
+  background-size: cover;
+  padding-bottom: 100%;
 }
 
 @media (min-width: $break-lg) {

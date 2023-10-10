@@ -27,6 +27,13 @@
 .align-items-center {
     align-items: center;
 }
+.align-items-start {
+    align-items: flex-start;
+}
+
+.grow-0 {
+    flex-grow: 0;
+}
 
 .grow-2 {
     flex-grow: 2;

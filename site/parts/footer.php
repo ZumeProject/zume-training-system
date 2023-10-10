@@ -16,8 +16,9 @@
             </div>
         </div>
 
-        <div class="absolute top bottom center m-0 show-for-large">
+        <div class="absolute top bottom center w-3rem m-0 show-for-large">
 
+            <?php //phpcs:ignore ?>
             <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . '/assets/images/Zume-Z-crop.svg' ) ?>
 
         </div>

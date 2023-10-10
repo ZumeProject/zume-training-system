@@ -87,11 +87,47 @@ class Zume_Training_Guidebook extends Zume_Magic_Page
         require __DIR__ . '/../parts/nav.php';
         ?>
 
-        <div class="container">
+        <div class="container-md stack-2 | page w-70">
 
             <h1 class="text-center"><?php echo esc_html__( 'Guidebook', 'zume' ) ?></h1>
 
-            <p><strong><?php echo esc_html__( 'User Profile', 'zume' ) ?></strong><pre><?php print_r( $zume_user_profile ); ?></pre></p>
+            <div class="mx-auto w-3rem brand-lighter s--1">
+                <?php //phpcs:ignore ?>
+                <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . '/assets/images/Zume-Z-crop.svg' ) ?>
+            </div>
+
+            <div class="switcher | gap-3">
+
+                <div class="stack-1 | grow-2">
+                    <h2 class="brand h3 d-flex align-items-center gap-1">
+                        <img class="w-6rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/guys-reading.svg' ) ?>" alt="guys reading">
+                        <?php echo esc_html__( 'Training Guidebook', 'zume' ) ?>
+                    </h2>
+                    <p>
+                        <?php echo esc_html__( 'Zume Training is now available in a complete workbook. All the concepts, tools, discussion questions and challenges from the training now in the palm of your hands. QR codes for every session give you access to all the video content as well!', 'zume' ) ?>
+                    </p>
+                    <div class="grid | grid-min-6rem">
+                        <div class="thumbnail" style="background-image: url(<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Guidebook.jpg' ) ?>)"></div>
+                        <div class="thumbnail" style="background-image: url(<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/zume-1.jpeg' ) ?>)"></div>
+                        <div class="thumbnail" style="background-image: url(<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/zume-2.jpeg' ) ?>)"></div>
+                        <div class="thumbnail" style="background-image: url(<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/zume-3.jpeg' ) ?>)"></div>
+                    </div>
+                </div>
+
+                <div class="stack center | text-center">
+                    <img class="w-16rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/workbooksample.png' ) ?>" alt="zume training book">
+                    <div class="d-flex align-items-start gap-1">
+                        <div class="stack w-90">
+                            <a class="btn light uppercase px--3" target="_blank" href="https://storage.googleapis.com/zume-file-mirror/en/33_en_zume_guidebook.pdf"><?php echo esc_html__( 'Free Download (PDF)', 'zume' ) ?></a>
+                            <a class="btn outline uppercase px--3" target="_blank" href="https://missionbooks.org/products/zume-training"><?php echo esc_html__( 'Order print copy', 'zume' ) ?></a>
+                        </div>
+                        <img class="w-10" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="mx-auto w-3rem"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/chevron.svg' ) ?>" alt="down button"></button>
 
         </div>
         <?php

@@ -91,7 +91,7 @@ class Zume_Training_Get_A_Coach extends Zume_Magic_Page
 
             <h1 class="text-center"><?php echo esc_html__( 'Get A Coach', 'zume' ) ?></h1>
 
-            <div class="mx-auto w-2rem brand-lighter s--1">
+            <div class="mx-auto w-3rem brand-lighter s--1">
                 <?php //phpcs:ignore ?>
                 <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . '/assets/images/Zume-Z-crop.svg' ) ?>
             </div>
