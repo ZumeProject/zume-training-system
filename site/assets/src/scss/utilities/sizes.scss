@@ -4,11 +4,25 @@ $widths: (100, 80, 75, 70, 60, 50, 40, 30, 25, 20);
     .w-#{$width} {
         width: $width * 1%;
     }
-    .h-#{$width} {
-        height: $width * 1%;
+}
+
+@for $i from -5 through 5 {
+    .h-#{$i} {
+        height: spacing($i);
     }
 }
 
 .fit-content {
     width: fit-content;
+}
+
+$rem-sizes: ( 1, 2, 3, 4, 5, 6 );
+
+@each $size in $rem-sizes {
+    .w-#{$size}rem {
+        width: $size * 1rem;
+    }
+    .h-#{$size}rem {
+        height: $size * 1rem;
+    }
 }

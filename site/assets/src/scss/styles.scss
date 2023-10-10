@@ -176,6 +176,10 @@ header {
   height: 30px;
 }
 
+.page {
+  margin-block-start: spacing(1);
+}
+
 .line-text {
   display: block;
   width: 100%;
