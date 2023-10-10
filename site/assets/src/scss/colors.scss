@@ -4,7 +4,7 @@ $colors: (
     'brand',
     'brand-light',
     'brand-lighter',
-    'black'
+    'black',
 );
 
 @each $color in $colors {
@@ -19,7 +19,8 @@ $bg-colors: (
     'gray-100',
     'white',
     'brand',
-    'brand-light'
+    'brand-light',
+    'brand-lighter',
 );
 
 @each $color in $bg-colors {
