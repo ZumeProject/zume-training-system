@@ -48,6 +48,9 @@
 .mx-auto {
     margin-inline: auto;
 }
+.ms-auto {
+    margin-inline-start: auto;
+}
 
 @for $i from -5 through 5 {
     .s-#{$i} {

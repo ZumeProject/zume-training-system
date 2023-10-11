@@ -151,7 +151,7 @@ class Zume_Training_Guidebook extends Zume_Magic_Page
                                 <p><?php echo esc_html__( "A great pattern for studying God's word", 'zume' ) ?></p>
                                 <div class="center stack--1">
                                     <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                    <button class="btn light uppercase" data-open="register-modal"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
                                 </div>
                             </div>
                         </div>
@@ -166,7 +166,7 @@ class Zume_Training_Guidebook extends Zume_Magic_Page
                                 <p><?php echo esc_html__( 'Bible sized Prayer Wheel to take where ever you pray.', 'zume' ) ?></p>
                                 <div class="center stack--1">
                                     <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                    <button class="btn light uppercase" data-open="register-modal"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
                                 </div>
                             </div>
                         </div>
@@ -181,7 +181,7 @@ class Zume_Training_Guidebook extends Zume_Magic_Page
                                 <p><?php echo esc_html__( "A great pattern for studying God's word", 'zume' ) ?></p>
                                 <div class="center stack--1">
                                     <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                    <button class="btn light uppercase" data-open="register-modal"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
                                 </div>
                             </div>
                         </div>
@@ -196,7 +196,7 @@ class Zume_Training_Guidebook extends Zume_Magic_Page
                                 <p><?php echo esc_html__( 'Bible sized Prayer Wheel to take where ever you pray.', 'zume' ) ?></p>
                                 <div class="center stack--1">
                                     <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                    <button class="btn light uppercase" data-open="register-modal"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +211,7 @@ class Zume_Training_Guidebook extends Zume_Magic_Page
                                 <p><?php echo esc_html__( "A great pattern for studying God's word", 'zume' ) ?></p>
                                 <div class="center stack--1">
                                     <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                    <button class="btn light uppercase" data-open="register-modal"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +226,7 @@ class Zume_Training_Guidebook extends Zume_Magic_Page
                                 <p><?php echo esc_html__( 'Bible sized Prayer Wheel to take where ever you pray.', 'zume' ) ?></p>
                                 <div class="center stack--1">
                                     <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                    <button class="btn light uppercase" data-open="register-modal"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
                                 </div>
                             </div>
                         </div>
@@ -250,6 +250,20 @@ class Zume_Training_Guidebook extends Zume_Magic_Page
                 <?php endif; ?>
 
             </div>
+        </div>
+
+        <div class="rounded shadow border-1 | reveal" id="register-modal" data-reveal>
+            <button class="ms-auto d-block" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="switcher | switcher-width-10">
+                <img class="h-16rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Thinking-01.svg' ) ?>" alt="man thinking">
+                <div class="stack-2 | grow-4 justify-content-center text-center">
+                    <p><?php echo esc_html__( 'Would you like access to all Zume Training resources?', 'zume' ) ?></p>
+                    <a href="<?php echo esc_url( dt_login_url( 'register' ) ) ?>" class="btn light uppercase large"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
+                </div>
+            </div>
+
         </div>
         <?php
     }
