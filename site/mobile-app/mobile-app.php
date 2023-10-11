@@ -129,18 +129,18 @@ class Zume_Training_Mobile_App extends Zume_Magic_Page
         }
         ?>
 
-        <div class="container">
+        <div class="container page">
 
             <div class="cover-page">
                 <div class="switcher">
-                    <div class="stack-2">
-                        <h1 class=""><?php echo esc_html__( 'Empowering Disciples. Anytime...Anywhere with the Zume App.', 'zume' ) ?></h1>
+                    <div class="stack-2 | align-items-center">
+                        <h1 class=""><?php echo esc_html__( 'Empowering Disciples. Anytime... Anywhere with the Zume App.', 'zume' ) ?></h1>
                         <div>
                             <h2 class="h5"><?php echo esc_html__( 'Zume Training App', 'zume' ) ?></h2>
                             <ul>
                                 <li><?php echo esc_html__( 'Access the full training wherever you go', 'zume' ) ?></li>
                             </ul>
-                            <div class="cluster">
+                            <div class="cluster justify-content-center">
                                 <a class="app-download" href='https://play.google.com/store/apps/details?id=app.training.zume&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
                                     <img
                                         alt='<?php echo esc_html__( 'Get it on Google Play', 'zume' ) ?>'
@@ -149,14 +149,15 @@ class Zume_Training_Mobile_App extends Zume_Magic_Page
                                 </a>
                                 <a class="app-download" href="https://apps.apple.com/us/app/z%C3%BAme-training/id6443335917?itsct=apps_box_badge&amp;itscg=30200">
                                     <img
-                                        class="w-100 rounded"
+                                        class="w-100"
+                                        style="padding: 1.6rem"
                                         src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/<?php echo esc_attr( $apple_lang ) ?>?size=250x83&amp;releaseDate=1662681600"
                                         alt="Download on the App Store"
                                     >
                                 </a>
                             </div>
                         </div>
-                        <dv>
+                        <div>
                             <h2 class="h5"><?php echo esc_html__( 'Offline App' ) ?></h2>
                             <ul>
                                 <li><?php echo esc_html__( 'Full Training with no internet required' ) ?></li>
@@ -171,9 +172,9 @@ class Zume_Training_Mobile_App extends Zume_Magic_Page
                                     />
                                 </a>
                             </div>
-                        </dv>
+                        </div>
                     </div>
-                    <div class="cover">
+                    <div class="cover align-items-center">
                         <div class="position-relative">
                             <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/3Phone-mock.png' ) ?>" alt="mobile views">
                             <div class="app-bg-circle bg-brand-lighter absolute">                            </div>
