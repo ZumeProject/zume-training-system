@@ -138,104 +138,117 @@ class Zume_Training_Guidebook extends Zume_Magic_Page
                     <?php //phpcs:ignore ?>
                     <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . '/assets/images/pdf-icon.svg' ) ?>
                 </div>
-                <div class="grid | grid-min-24rem">
-                    <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
-                        <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
-                            <div class="w-60 p0">
-                                <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
+                <div class="position-relative">
+                    <div class="grid | grid-min-24rem">
+                        <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
+                            <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
+                                <div class="w-60 p0">
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
+                                </div>
+                            </div>
+                            <div class="stack center">
+                                <h3 class="brand h4"><?php echo esc_html__( 'S.O.A.P.S Bible Study Guide', 'zume' ) ?></h3>
+                                <p><?php echo esc_html__( "A great pattern for studying God's word", 'zume' ) ?></p>
+                                <div class="center stack--1">
+                                    <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
+                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                </div>
                             </div>
                         </div>
-                        <div class="stack center">
-                            <h3 class="brand h4"><?php echo esc_html__( 'S.O.A.P.S Bible Study Guide', 'zume' ) ?></h3>
-                            <p><?php echo esc_html__( "A great pattern for studying God's word", 'zume' ) ?></p>
-                            <div class="center stack--1">
-                                <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                        <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
+                            <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
+                                <div class="w-60 p0">
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
+                                </div>
+                            </div>
+                            <div class="stack center">
+                                <h3 class="brand h4"><?php echo esc_html__( 'Prayer Wheel', 'zume' ) ?></h3>
+                                <p><?php echo esc_html__( 'Bible sized Prayer Wheel to take where ever you pray.', 'zume' ) ?></p>
+                                <div class="center stack--1">
+                                    <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
+                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
-                        <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
-                            <div class="w-60 p0">
-                                <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
+                        <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
+                            <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
+                                <div class="w-60 p0">
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
+                                </div>
+                            </div>
+                            <div class="stack center">
+                                <h3 class="brand h4"><?php echo esc_html__( 'S.O.A.P.S Bible Study Guide', 'zume' ) ?></h3>
+                                <p><?php echo esc_html__( "A great pattern for studying God's word", 'zume' ) ?></p>
+                                <div class="center stack--1">
+                                    <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
+                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                </div>
                             </div>
                         </div>
-                        <div class="stack center">
-                            <h3 class="brand h4"><?php echo esc_html__( 'Prayer Wheel', 'zume' ) ?></h3>
-                            <p><?php echo esc_html__( 'Bible sized Prayer Wheel to take where ever you pray.', 'zume' ) ?></p>
-                            <div class="center stack--1">
-                                <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                        <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
+                            <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
+                                <div class="w-60 p0">
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
+                                </div>
+                            </div>
+                            <div class="stack center">
+                                <h3 class="brand h4"><?php echo esc_html__( 'Prayer Wheel', 'zume' ) ?></h3>
+                                <p><?php echo esc_html__( 'Bible sized Prayer Wheel to take where ever you pray.', 'zume' ) ?></p>
+                                <div class="center stack--1">
+                                    <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
+                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
+                            <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
+                                <div class="w-60 p0">
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
+                                </div>
+                            </div>
+                            <div class="stack center">
+                                <h3 class="brand h4"><?php echo esc_html__( 'S.O.A.P.S Bible Study Guide', 'zume' ) ?></h3>
+                                <p><?php echo esc_html__( "A great pattern for studying God's word", 'zume' ) ?></p>
+                                <div class="center stack--1">
+                                    <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
+                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
+                            <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
+                                <div class="w-60 p0">
+                                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
+                                </div>
+                            </div>
+                            <div class="stack center">
+                                <h3 class="brand h4"><?php echo esc_html__( 'Prayer Wheel', 'zume' ) ?></h3>
+                                <p><?php echo esc_html__( 'Bible sized Prayer Wheel to take where ever you pray.', 'zume' ) ?></p>
+                                <div class="center stack--1">
+                                    <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
+                                    <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
-                        <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
-                            <div class="w-60 p0">
-                                <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
-                            </div>
-                        </div>
-                        <div class="stack center">
-                            <h3 class="brand h4"><?php echo esc_html__( 'S.O.A.P.S Bible Study Guide', 'zume' ) ?></h3>
-                            <p><?php echo esc_html__( "A great pattern for studying God's word", 'zume' ) ?></p>
-                            <div class="center stack--1">
-                                <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
-                        <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
-                            <div class="w-60 p0">
-                                <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
-                            </div>
-                        </div>
-                        <div class="stack center">
-                            <h3 class="brand h4"><?php echo esc_html__( 'Prayer Wheel', 'zume' ) ?></h3>
-                            <p><?php echo esc_html__( 'Bible sized Prayer Wheel to take where ever you pray.', 'zume' ) ?></p>
-                            <div class="center stack--1">
-                                <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
-                            </div>
-                        </div>
-                    </div>
+                    <?php if ( !is_user_logged_in() ) : ?>
 
-                    <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
-                        <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
-                            <div class="w-60 p0">
-                                <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
-                            </div>
-                        </div>
-                        <div class="stack center">
-                            <h3 class="brand h4"><?php echo esc_html__( 'S.O.A.P.S Bible Study Guide', 'zume' ) ?></h3>
-                            <p><?php echo esc_html__( "A great pattern for studying God's word", 'zume' ) ?></p>
-                            <div class="center stack--1">
-                                <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="resource-card rounded shadow p-0 d-flex align-items-end bg-white gap-0">
-                        <div class="cover center | w-100 bg-brand-lighter rounded show-for-large">
-                            <div class="w-60 p0">
-                                <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/pdf-placeholder.svg' ) ?>" alt="document placeholder">
-                            </div>
-                        </div>
-                        <div class="stack center">
-                            <h3 class="brand h4"><?php echo esc_html__( 'Prayer Wheel', 'zume' ) ?></h3>
-                            <p><?php echo esc_html__( 'Bible sized Prayer Wheel to take where ever you pray.', 'zume' ) ?></p>
-                            <div class="center stack--1">
-                                <img class="w-20" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/download-icon-01.svg' ) ?>" alt="download image">
-                                <button class="btn light uppercase"><?php echo esc_html__( 'Download', 'zume' ) ?></button>
-                            </div>
-                        </div>
-                    </div>
+                        <div class="absolute bottom left right h-16rem bg-gray-100 | resources-cover"></div>
+
+                    <?php endif; ?>
+
                 </div>
 
-                <p class="text-center bold f-1"><?php echo esc_html__( 'FULL ACCESS to Zume resources for all registered users.', 'zume' ) ?></p>
 
-                <a href="<?php echo esc_url( dt_login_url( 'register' ) ) ?>" class="btn light large uppercase mx-auto fit-content my-3"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
+                <?php if ( !is_user_logged_in() ) : ?>
+
+                    <p class="text-center bold f-1"><?php echo esc_html__( 'FULL ACCESS to Zume resources for all registered users.', 'zume' ) ?></p>
+
+                    <a href="<?php echo esc_url( dt_login_url( 'register' ) ) ?>" class="btn light large uppercase mx-auto fit-content my-3"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
+
+                <?php endif; ?>
+
             </div>
         </div>
         <?php

@@ -288,6 +288,13 @@ header {
   padding-bottom: 100%;
 }
 
+.resources-cover {
+  margin-inline: -1rem;
+  margin-block-end: -1rem;
+
+  background: linear-gradient( transparent, color('gray-100') 50% );
+}
+
 @media (min-width: $break-lg) {
 
     .row {
