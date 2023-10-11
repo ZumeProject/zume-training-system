@@ -295,6 +295,21 @@ header {
   background: linear-gradient( transparent, color('gray-100') 50% );
 }
 
+.app-download {
+  width: 250px;
+  border-radius: 13px;
+}
+.app-bg-circle {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  z-index: -1;
+  width: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.2;
+}
+
 @media (min-width: $break-lg) {
 
     .row {

@@ -940,6 +940,150 @@ if ( ! function_exists( 'zume_get_language_display_code' ) ) {
         }
     }
 }
+if ( ! function_exists( 'zume_google_locales' ) ) {
+    function zume_google_locales() {
+        $google_locales = [
+            'af',
+            'sq',
+            'am',
+            'ar',
+            'hy',
+            'az',
+            'eu',
+            'be',
+            'bs',
+            'bn',
+            'bg',
+            'my',
+            'ca',
+            'zh-hk',
+            'zh-cn',
+            'zh-tw',
+            'hr',
+            'cs',
+            'da',
+            'nl',
+            'en',
+            'et',
+            'fa',
+            'fil',
+            'fi',
+            'fr',
+            'fr-ca',
+            'gl',
+            'ka',
+            'de',
+            'el',
+            'gu',
+            'iw',
+            'hi',
+            'hu',
+            'is',
+            'id',
+            'it',
+            'ja',
+            'kn',
+            'kk',
+            'km',
+            'ko',
+            'ky',
+            'lo',
+            'lv',
+            'lt',
+            'mk',
+            'ms',
+            'ml',
+            'mr',
+            'mn',
+            'ne',
+            'no',
+            'pl',
+            'pt',
+            'pt-br',
+            'pa',
+            'ro',
+            'ru',
+            'sr',
+            'si',
+            'sk',
+            'sl',
+            'es',
+            'es-419',
+            'sw',
+            'sv',
+            'ta',
+            'te',
+            'th',
+            'tr',
+            'ua',
+            'ur',
+            'uz',
+            'vi',
+            'zu',
+        ];
+
+        return $google_locales;
+    }
+}
+if ( ! function_exists( 'zume_apple_locales' ) ) {
+    function zume_apple_locales( $type = 'locale' ) {
+        $apple_locales = [
+            'ar-ar',
+            'az-tr',
+            'bg-bg',
+            'cs-cz',
+            'da-dk',
+            'en-us',
+            'et-ee',
+            'de-de',
+            'el-gr',
+            'hu-hu',
+            'mt-mt',
+            'pl-pl',
+            'ro-ro',
+            'fi-fi',
+            'fr-ca',
+            'fr-fr',
+            'hb-hb',
+            'id-id',
+            'it-it',
+            'ja-jp',
+            'lv-lv',
+            'lt-lt',
+            'ko-kr',
+            'ms-my',
+            'nl-nl',
+            'no-no',
+            'pt-br',
+            'pt-pt',
+            'ru-ru',
+            'sk-sk',
+            'sl-si',
+            'nes-es',
+            'es-mx',
+            'sv-se',
+            'th-th',
+            'tl-ph',
+            'tr-tr',
+            'vi-vn',
+            'zh-cn',
+            'zh-hk',
+        ];
+
+        if ( $type === 'codes' ) {
+            $apple_codes = [];
+            foreach ( $apple_locales as $locale ) {
+                $code = explode( '-', $locale )[0];
+                $apple_codes[$code] = $locale;
+            }
+
+            return $apple_codes;
+        }
+
+        return $apple_locales;
+    }
+}
+
 if ( ! function_exists( 'zume_training_items' ) ) {
     function zume_training_items(): array {
 
