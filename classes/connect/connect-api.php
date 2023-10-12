@@ -28,7 +28,7 @@ class Zume_Friends_Endpoints
         register_rest_route(
             $this->namespace, '/connect/friend', [
                 'methods' => 'POST',
-                'callback' => [ $this, 'connect_to_friend' ],
+                'callback' => [ $this, 'connect_to_friend_callback' ],
                 'permission_callback' => '__return_true',
             ]
         );
@@ -40,16 +40,20 @@ class Zume_Friends_Endpoints
             ]
         );
     }
-    public function connect_to_friend( WP_REST_Request $request ){
+    public function connect_to_friend_callback( WP_REST_Request $request ){
         $params = dt_recursive_sanitize_array( $request->get_params() );
 
         if ( ! isset( $params['value'] ) ) {
             return new WP_Error( 'missing_params', 'Missing params', [ 'status' => 400 ] );
         }
 
+        self::connect_to_friend( $params['value'] );
+    }
+
+    public static function connect_to_friend( $key ) {
         // does key exist
         // if so, then connect current user with friend
-        if ( $contact_id = $this->test_friend_key( $params['value'] ) ) {
+        if ( $contact_id = self::test_friend_key( $key ) ) {
             $current_user_id = get_current_user_id();
             $current_contact_id = zume_get_user_contact_id( $current_user_id );
 
@@ -57,23 +61,24 @@ class Zume_Friends_Endpoints
                 'relation' => [
                     'values' => [
                         [
-                            'value' => $contact_id
-                        ]
-                    ]
-                ]
+                            'value' => $contact_id,
+                        ],
+                    ],
+                ],
             ];
-             $result = DT_Posts::update_post('contacts', $current_contact_id, $fields, true, false  );
-             if ( ! is_wp_error( $result ) && is_array( $result ) ) {
-                 zume_log_insert( 'system', 'invited_friends', [ 'user_id' => $current_user_id ], true );
-                 return $result;
-             } else {
-                 return new WP_Error( __METHOD__, 'Error updating contact', [ 'status' => 400 ] );
-             }
+            $result = DT_Posts::update_post( 'contacts', $current_contact_id, $fields, true, false );
+            if ( ! is_wp_error( $result ) && is_array( $result ) ) {
+                zume_log_insert( 'system', 'invited_friends', [ 'user_id' => $current_user_id ], true );
+                return $result;
+            } else {
+                return new WP_Error( __METHOD__, 'Error updating contact', [ 'status' => 400 ] );
+            }
         } else {
             return new WP_Error( __METHOD__, 'Key not found', [ 'status' => 400 ] );
         }
     }
-    public function test_friend_key( $key ) : bool|int {
+
+    public static function test_friend_key( $key ) : bool|int {
         global $wpdb;
         $sql = $wpdb->prepare( "SELECT post_id FROM wp_postmeta WHERE `meta_key` = 'user_friend_key' AND meta_value = %s", $key );
         $result = $wpdb->get_var( $sql );

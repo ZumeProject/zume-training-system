@@ -72,11 +72,19 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
     public function header_style(){
         ?>
         <script>
+            const zumeProfile = [<?php echo json_encode([
+                'nonce' => wp_create_nonce( 'wp_rest' ),
+                'root' => esc_url_raw( rest_url() ),
+                'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
+                'redirect_url' => zume_login_url( 'login' ),
+            ]) ?>][0]
+        </script>
+        <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
 
                 jQuery('.friend_code_submit').click(function(){
-                    var friend_code = jQuery('.friend_code').val();
+                    var friend_code = jQuery('#friend_code').val();
                     if ( ! friend_code ) {
                         alert('Please enter a friend code.');
                         return;
@@ -85,6 +93,8 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
                     makeRequest('POST', 'connect/friend', { "value": friend_code }, 'zume_system/v1' ).done( function( data ) {
                         console.log(data)
                         jQuery('.friend_code_submit').text('Done').prop('disabled', true);
+                    }).catch(function(error) {
+                        console.log(error)
                     })
                 });
             });
@@ -97,21 +107,51 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
 
         $friend_code = false;
         if ( isset( $_GET['code'] ) ) {
-            $friend_code = $_GET['code'];
+            $friend_code = sanitize_text_field( wp_unslash( $_GET['code'] ) );
+        }
+
+        if ( is_user_logged_in() ) {
+            /* connect directly to friend */
+            Zume_Friends_Endpoints::connect_to_friend( $friend_code );
         }
 
         require __DIR__ . '/../parts/nav.php';
         ?>
-        <div class="container page">
-            <div class="grid-x">
-                <div class="cell small-6">
-                    <h1>Friend Invitation</h1>
-                    <p>Use the code your friend sent you.</p>
-                    <div class="input-group">
-                        <input class="input-group-field friend_code" type="text" value="<?php echo ( $friend_code ) ? $friend_code : ''  ?>" >
-                        <button class="button input-group-label friend_code_submit">Connect</button>
+
+        <div class="cover page">
+            <div class="center">
+
+                <?php if ( !is_user_logged_in() ) : ?>
+
+
+                    <div class="grid-container rounded-multi">
+                        <div class="hidden | text-center bg-brand-light px-1 py-0 shadow">
+                            <div class="cover">
+                                <div class="center | w-100">
+                                    <div class="w-70"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Jesus-01.svg' ) ?>" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center bg-white px-1 py-0 shadow rounded-start rounded-start-on-medium">
+                            <h1 class="brand"><?php esc_html_e( 'Friend Invitation', 'zume' ) ?></h1>
+                            <div class="stack-1">
+
+                                <div class="banner warning center">
+                                    <?php echo esc_html__( 'Username or password does not match. Try again.', 'zume' ); ?>
+                                </div>
+
+                                <p><?php echo esc_html__( 'Use the code your friend sent you.', 'zume' ) ?></p>
+                                <div class="">
+                                    <label for="friend_code"></label>
+                                    <input class="input" id="friend_code" type="text" placeholder="012345" value="<?php echo ( $friend_code ) ? esc_attr( $friend_code ) : ''  ?>" >
+                                </div>
+                                <button class="btn friend_code_submit"><?php echo esc_html__( 'Connect', 'zume' ) ?></button>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                <?php endif; ?>
+
             </div>
         </div>
         <?php
