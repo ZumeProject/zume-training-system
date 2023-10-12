@@ -105,6 +105,8 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
                     </div>
                 </div>
                 <p class="mx-auto"><?php echo esc_html__( 'The sections below, will teach you what it means to be a follower (disciple) of Jesus', 'zume' ) ?></p>
+
+                <button class="mx-auto w-3rem"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/chevron.svg' ) ?>" alt="down button"></button>
             </div>
         </div>
 
