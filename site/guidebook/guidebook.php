@@ -253,8 +253,8 @@ class Zume_Training_Guidebook extends Zume_Magic_Page
         </div>
 
         <div class="rounded shadow border-1 | reveal" id="register-modal" data-reveal>
-            <button class="ms-auto d-block" data-close aria-label="Close modal" type="button">
-                <span aria-hidden="true">&times;</span>
+            <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button">
+                <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/close-button-01.svg' ) ?>" alt="close button">
             </button>
             <div class="switcher | switcher-width-10">
                 <img class="h-16rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Thinking-01.svg' ) ?>" alt="man thinking">

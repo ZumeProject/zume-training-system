@@ -175,4 +175,4 @@ var $t=Object.defineProperty;var _t=(n,t,e)=>t in n?$t(n,t,{enumerable:!0,config
           margin-left: calc(var(--play-button-size) / 10);
         }
     `);window.customElements.define("play-button",vt);const at=document.querySelector(".nav-toggle"),jt=document.querySelector("#nav");at&&at.addEventListener("click",n=>{jt.classList.toggle("nav--visible")});
-//# sourceMappingURL=main-e7b50f31.js.map
+//# sourceMappingURL=main-4d647993.js.map
