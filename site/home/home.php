@@ -121,10 +121,10 @@ class Zume_Training_Home extends Zume_Magic_Page
         <div class="cover-page | p-3 text-center bg-brand-gradient">
             <h2 class="white"><?php echo esc_html__( 'Be a Disciple. Make Disciples', 'zume' ) ?></h2>
             <div class="container stack-2 | align-items-center">
-                <div class="w-80 video-frame mx-auto position-relative">
+                <div class="w-80 video-frame mx-auto position-relative bg-white">
                     <div class="w-60 mx-auto"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/VideoGraphic-2.svg' ) ?>" alt="zume video"></div>
-                    <button class="absolute top bottom left right video-play">
-                        <img class="mx-auto" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Play-Button.svg' ) ?>" alt="play">
+                    <button class="absolute top bottom left right video-play-button">
+                        <play-button class="home-video-play"></play-button>
                     </button>
                 </div>
                 <button class="btn large outline dark fit-content uppercase"><?php echo esc_html__( 'Watch', 'zume' ) ?></button>

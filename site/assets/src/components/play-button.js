@@ -9,6 +9,7 @@ export class PlayButton extends LitElement {
         :host {
             --play-button-size: 3rem;
             --play-button-color: red;
+            --play-button-hover-color: darkred;
             --play-button-highlight: white;
 
             width: 100%;
@@ -17,6 +18,7 @@ export class PlayButton extends LitElement {
 
         :host(:hover) .circle {
             transform: scale(1.1);
+            background-color: var(--play-button-hover-color);
         }
 
         .container {

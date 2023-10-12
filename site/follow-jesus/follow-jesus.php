@@ -93,9 +93,9 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
             <div class="container stack-2 | page">
                 <h1 class="text-center"><?php echo esc_html__( 'How to Follow Jesus', 'zume' ) ?></h1>
                 <div class="center">
-                    <div class="video-thumbnail shadow w-70 position-relative">
+                    <div class="video-thumbnail shadow w-70 position-relative rounded">
                         <img class="rounded-top" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/4Relationships-thumbnail.png' ) ?>" alt="The four relationships video">
-                        <div class="video-thumbnail__footer bg-brand-light white text-center rounded-bottom stack p-1">
+                        <div class="video-thumbnail__footer bg-brand-light white text-center stack p-1">
                             <h2 class="h3"><?php echo esc_html__( 'Four Relationships', 'zume' ) ?></h2>
                             <p class="w-80 mx-auto"><?php echo esc_html__( 'Watch this important video explaining the 4 relationships of your new life', 'zume' ) ?></p>
                         </div>

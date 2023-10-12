@@ -247,6 +247,14 @@ header {
 .video-play {
   --play-button-size: #{spacing(4)};
   --play-button-color: #{color('brand-lighter')};
+  --play-button-hover-color: #{color('brand')};
+  --play-button-shadow: var(--z-box-shadow-hard);
+}
+.home-video-play {
+  --play-button-size: #{spacing(4)};
+  --play-button-color: #{color('brand')};
+  --play-button-hover-color: #{color('brand-light')};
+  --play-button-shadow: var(--z-box-shadow-hard);
 }
 
 .real-people {
