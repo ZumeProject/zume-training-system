@@ -72,31 +72,55 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
     public function header_style(){
         ?>
         <script>
-            const zumeProfile = [<?php echo json_encode([
+            const jsObject = [<?php echo json_encode([
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'root' => esc_url_raw( rest_url() ),
                 'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
                 'redirect_url' => zume_login_url( 'login' ),
+                'is_logged_in' => is_user_logged_in(),
             ]) ?>][0]
         </script>
         <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
 
-                jQuery('.friend_code_submit').click(function(){
+                jQuery('.friend_code_submit').click(function() {
                     var friend_code = jQuery('#friend_code').val();
                     if ( ! friend_code ) {
                         alert('Please enter a friend code.');
                         return;
                     }
 
+                    if ( jsObject.is_logged_in ) {
+                        submit_code( friend_code )
+                    } else {
+                        redirect_to_login( friend_code )
+                    }
+
+                });
+
+                function redirect_to_login( friend_code ) {
+                    const redirect_to = new URL( location.href )
+                    redirect_to.searchParams.append('code', friend_code)
+
+                    const url = new URL( jsObject.redirect_url )
+                    url.searchParams.append('hide-nav', true)
+                    url.searchParams.append('redirect_to', redirect_to)
+
+                    location.href = url.href
+                }
+
+                function submit_code( friend_code ){
+                    jQuery('.warning.banner').hide()
+
                     makeRequest('POST', 'connect/friend', { "value": friend_code }, 'zume_system/v1' ).done( function( data ) {
                         console.log(data)
                         jQuery('.friend_code_submit').text('Done').prop('disabled', true);
                     }).catch(function(error) {
                         console.log(error)
+                        jQuery('.warning.banner').show()
                     })
-                });
+                }
             });
         </script>
         <?php
@@ -110,47 +134,51 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
             $friend_code = sanitize_text_field( wp_unslash( $_GET['code'] ) );
         }
 
+        $is_user_logged_in = false;
+
         if ( is_user_logged_in() ) {
+            $is_user_logged_in = true;
             /* connect directly to friend */
-            Zume_Friends_Endpoints::connect_to_friend( $friend_code );
+            /* TODO: check for errors and display them */
+            $connected = Zume_Friends_Endpoints::connect_to_friend( $friend_code );
         }
 
-        require __DIR__ . '/../parts/nav.php';
+        $show_form = !$is_user_logged_in || isset( $connected ) && is_wp_error( $connected );
+
         ?>
 
-        <div class="cover page">
-            <div class="center">
+        <div class="cover-page | bg-brand-gradient">
 
-                <?php if ( !is_user_logged_in() ) : ?>
+            <?php require __DIR__ . '/../parts/nav.php' ?>
 
+            <div class="center" id="friend-invitation" style="<?php echo $show_form ? '' : 'display: none;' ?>">
 
-                    <div class="grid-container rounded-multi">
-                        <div class="hidden | text-center bg-brand-light px-1 py-0 shadow">
-                            <div class="cover">
-                                <div class="center | w-100">
-                                    <div class="w-70"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Jesus-01.svg' ) ?>" alt=""></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center bg-white px-1 py-0 shadow rounded-start rounded-start-on-medium">
-                            <h1 class="brand"><?php esc_html_e( 'Friend Invitation', 'zume' ) ?></h1>
-                            <div class="stack-1">
-
-                                <div class="banner warning center">
-                                    <?php echo esc_html__( 'Username or password does not match. Try again.', 'zume' ); ?>
-                                </div>
-
-                                <p><?php echo esc_html__( 'Use the code your friend sent you.', 'zume' ) ?></p>
-                                <div class="">
-                                    <label for="friend_code"></label>
-                                    <input class="input" id="friend_code" type="text" placeholder="012345" value="<?php echo ( $friend_code ) ? esc_attr( $friend_code ) : ''  ?>" >
-                                </div>
-                                <button class="btn friend_code_submit"><?php echo esc_html__( 'Connect', 'zume' ) ?></button>
+                <div class="grid-container rounded-multi">
+                    <div class="hidden | text-center bg-brand-light px-1 py-0 shadow">
+                        <div class="cover">
+                            <div class="center | w-100">
+                                <div class="w-70"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Jesus-01.svg' ) ?>" alt=""></div>
                             </div>
                         </div>
                     </div>
 
-                <?php endif; ?>
+                    <div class="text-center bg-white px-1 py-0 shadow rounded-start rounded-start-on-medium">
+                        <h1 class="brand"><?php esc_html_e( 'Friend Invitation', 'zume' ) ?></h1>
+                        <div class="stack-1">
+
+                            <div class="banner warning center" style="<?php echo is_wp_error( $connected ) ? '' : 'display: none' ?>">
+                                <?php echo esc_html__( 'Error connecting to friend', 'zume' ); ?>
+                            </div>
+
+                            <p><?php echo esc_html__( 'Use the code your friend sent you.', 'zume' ) ?></p>
+                            <div class="">
+                                <label for="friend_code"></label>
+                                <input class="input" id="friend_code" type="text" placeholder="012345" value="<?php echo ( $friend_code ) ? esc_attr( $friend_code ) : ''  ?>" >
+                            </div>
+                            <button class="btn friend_code_submit"><?php echo esc_html__( 'Connect', 'zume' ) ?></button>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
