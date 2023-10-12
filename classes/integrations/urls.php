@@ -59,6 +59,25 @@ function zume_home_url( $current_language = null ) {
     return $home_url;
 }
 
+/**
+ * Get the login/register url for zume, with an optional redirect url
+ *
+ * $type can be 'login' | 'register', or any other input to dt_login_url
+ *
+ * @param string $type
+ * @param string $redirect_url
+ *
+ * @return string
+ */
+function zume_login_url( $type = 'login', $redirect_url ) {
+    if ( $redirect_url ) {
+        $url = dt_create_site_url( '', [ 'redirect_to' => rawurlencode( $redirect_url ) ] );
+        return dt_login_url( $type, $url );
+    }
+
+    return dt_login_url( $type );
+}
+
 function zume_dashboard_url( $current_language = null ) {
     if ( is_null( $current_language ) ) {
         $current_language = zume_current_language();
