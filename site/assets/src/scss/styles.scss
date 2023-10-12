@@ -319,6 +319,30 @@ header {
   opacity: 0.2;
 }
 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spiner {
+  display: none;
+}
+.loading-spinner.active {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border: 0.25rem solid #919191;
+    border-top-color: black;
+    animation: spin 1s infinite linear;
+    display: inline-block;
+}
+
+
 @media (min-width: $break-lg) {
 
     .row {
@@ -353,28 +377,10 @@ header {
 
 }
 
-.loading-spinner {
-  display: none;
-}
 
 .footer {
   color: color('white');
   background-color: color('brand');
   font-size: 0.75rem;
   padding: var(--s2) 0;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-.loading-spinner.active {
-    width: 24px;
-    height: 24px;
-    display: inline-block;
-    vertical-align: middle;
 }
