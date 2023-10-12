@@ -241,11 +241,12 @@ header {
   border: 2px solid color('white');
   border-radius: var(--border-radius);
 }
+.video-play-button {
+  cursor: pointer;
+}
 .video-play {
-  &:hover, &:focus {
-    transition: all 100ms linear;
-    transform: scale(1.1);
-  }
+  --play-button-size: #{spacing(4)};
+  --play-button-color: #{color('brand-lighter')};
 }
 
 .real-people {

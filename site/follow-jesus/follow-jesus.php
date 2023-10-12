@@ -99,8 +99,8 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
                             <h2 class="h3"><?php echo esc_html__( 'Four Relationships', 'zume' ) ?></h2>
                             <p class="w-80 mx-auto"><?php echo esc_html__( 'Watch this important video explaining the 4 relationships of your new life', 'zume' ) ?></p>
                         </div>
-                        <button class="absolute top bottom left right video-play">
-                            <img class="mx-auto" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Play-Button.svg' ) ?>" alt="play">
+                        <button class="absolute top bottom left right | video-play-button">
+                            <play-button class="video-play"></play-button>
                         </button>
                     </div>
                 </div>
