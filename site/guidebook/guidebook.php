@@ -132,8 +132,8 @@ class Zume_Training_Guidebook extends Zume_Magic_Page
         </div>
 
         <div class="bg-gray-100 page">
-            <div class="container-md stack-2">
-                <h2 class="h1 text-center"><?php echo esc_html__( 'Zume Lessons & Resources (PDF)' ) ?></h2>
+            <div class="container-md stack-2 | text-center">
+                <h2 class="h1"><?php echo esc_html__( 'Zume Lessons & Resources (PDF)' ) ?></h2>
                 <div class="mx-auto w-4rem">
                     <?php //phpcs:ignore ?>
                     <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . '/assets/images/pdf-icon.svg' ) ?>
