@@ -78,6 +78,9 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
                 'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
                 'redirect_url' => zume_login_url( 'login' ),
                 'is_logged_in' => is_user_logged_in(),
+                'translations' => [
+                    'enter_code' => __( 'Please enter a friend code.', 'zume' ),
+                ],
             ]) ?>][0]
         </script>
         <script>
@@ -85,11 +88,13 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
                 jQuery(document).foundation();
 
                 const successBanner = document.querySelector('.success.banner')
+                const warningBanner = document.querySelector('.warning.banner')
 
                 jQuery('.friend_code_submit').click(function() {
                     var friend_code = jQuery('#friend_code').val();
                     if ( ! friend_code ) {
-                        alert('Please enter a friend code.');
+                        warningBanner.innerHTML = SHARED_FUNCTIONS.escapeHTML(jsObject.translations.enter_code)
+                        jQuery(warningBanner).show()
                         return;
                     }
 
@@ -191,7 +196,7 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
                             <button class="btn friend_code_submit"><?php echo esc_html__( 'Connect', 'zume' ) ?></button>
                         </div>
 
-                        <div class="stack-1 | success banner text-center" style="<?php echo $auto_submitted && !$failed ? '' : 'display: none;' ?>">
+                        <div class="success banner text-center" style="<?php echo $auto_submitted && !$failed ? '' : 'display: none;' ?>">
                             <?php echo esc_html( sprintf( __( 'Successfully connected to %s', 'zume' ), $name ) ) ?>
                         </div>
 
