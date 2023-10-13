@@ -47,7 +47,7 @@ class Zume_Friends_Endpoints
             return new WP_Error( 'missing_params', 'Missing params', [ 'status' => 400 ] );
         }
 
-        self::connect_to_friend( $params['value'] );
+        return self::connect_to_friend( $params['value'] );
     }
 
     public static function connect_to_friend( $key ) {
@@ -69,7 +69,17 @@ class Zume_Friends_Endpoints
             $result = DT_Posts::update_post( 'contacts', $current_contact_id, $fields, true, false );
             if ( ! is_wp_error( $result ) && is_array( $result ) ) {
                 zume_log_insert( 'system', 'invited_friends', [ 'user_id' => $current_user_id ], true );
-                return $result;
+
+                $name = __( 'your friend', 'zume' );
+                foreach ( $result['relation'] as $relation ) {
+                    if ( $relation['ID'] === $contact_id ) {
+                        $name = $relation['post_title'];
+                    }
+                }
+
+                return [
+                    'name' => $name,
+                ];
             } else {
                 return new WP_Error( __METHOD__, 'Error updating contact', [ 'status' => 400 ] );
             }

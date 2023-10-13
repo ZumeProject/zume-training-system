@@ -84,6 +84,8 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
 
+                const successBanner = document.querySelector('.success.banner')
+
                 jQuery('.friend_code_submit').click(function() {
                     var friend_code = jQuery('#friend_code').val();
                     if ( ! friend_code ) {
@@ -117,6 +119,9 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
                     makeRequest('POST', 'connect/friend', { "value": friend_code }, 'zume_system/v1' ).done( function( data ) {
                         console.log(data)
                         jQuery('.friend_code_submit').text('Done').prop('disabled', true);
+                        successBanner.innerHTML =successBanner.innerHTML.replace('::name::', data.name)
+                        jQuery(successBanner).show()
+                        jQuery('.invitation-form').hide()
                     }).catch(function(error) {
                         console.log(error)
                         jQuery('.warning.banner').show()
@@ -139,13 +144,19 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
 
         if ( is_user_logged_in() ) {
             $is_user_logged_in = true;
-            /* connect directly to friend */
-            /* TODO: check for errors and display them */
-            $success = Zume_Friends_Endpoints::connect_to_friend( $friend_code );
+
+            if ( $friend_code !== false ) {
+                $success = Zume_Friends_Endpoints::connect_to_friend( $friend_code );
+            }
         }
 
-        $show_form = !$is_user_logged_in || isset( $success ) && is_wp_error( $success );
-        $show_success = isset( $success ) && !is_wp_error( $success )
+        $auto_submitted = isset( $success );
+        $failed = $auto_submitted && is_wp_error( $success );
+        $show_success = isset( $success ) && !is_wp_error( $success );
+
+        $show_form = !$friend_code || !$is_user_logged_in || $auto_submitted && $failed;
+
+        $name = $show_success ? $success['name'] : '::name::';
 
         ?>
 
@@ -166,9 +177,9 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
 
                     <div class="text-center bg-white px-1 py-0 shadow rounded-start rounded-start-on-medium">
                         <h1 class="brand"><?php esc_html_e( 'Friend Invitation', 'zume' ) ?></h1>
-                        <div class="stack-1" style="<?php echo $show_form ? '' : 'display: none;' ?>">
+                        <div class="stack-1 invitation-form" style="<?php echo $show_form ? '' : 'display: none;' ?>">
 
-                            <div class="banner warning text-center" style="<?php echo is_wp_error( $success ) ? '' : 'display: none' ?>">
+                            <div class="banner warning text-center" style="<?php echo $failed ? '' : 'display: none' ?>">
                                 <?php echo esc_html__( 'Error connecting to friend', 'zume' ); ?>
                             </div>
 
@@ -180,8 +191,8 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
                             <button class="btn friend_code_submit"><?php echo esc_html__( 'Connect', 'zume' ) ?></button>
                         </div>
 
-                        <div class="stack-1 | success banner text-center" style="<?php echo $show_success ? '' : 'display: none;' ?>">
-                            <?php echo esc_html__( 'Successfully connected to %s', 'zume' ) ?>
+                        <div class="stack-1 | success banner text-center" style="<?php echo $auto_submitted && !$failed ? '' : 'display: none;' ?>">
+                            <?php echo esc_html( sprintf( __( 'Successfully connected to %s', 'zume' ), $name ) ) ?>
                         </div>
 
                     </div>
