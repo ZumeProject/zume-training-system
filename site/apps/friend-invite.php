@@ -105,6 +105,7 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
 
                     const url = new URL( jsObject.redirect_url )
                     url.searchParams.append('hide-nav', true)
+                    url.searchParams.delete('redirect_to')
                     url.searchParams.append('redirect_to', redirect_to)
 
                     location.href = url.href
@@ -140,10 +141,11 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
             $is_user_logged_in = true;
             /* connect directly to friend */
             /* TODO: check for errors and display them */
-            $connected = Zume_Friends_Endpoints::connect_to_friend( $friend_code );
+            $success = Zume_Friends_Endpoints::connect_to_friend( $friend_code );
         }
 
-        $show_form = !$is_user_logged_in || isset( $connected ) && is_wp_error( $connected );
+        $show_form = !$is_user_logged_in || isset( $success ) && is_wp_error( $success );
+        $show_success = isset( $success ) && !is_wp_error( $success )
 
         ?>
 
@@ -151,7 +153,7 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
 
             <?php require __DIR__ . '/../parts/nav.php' ?>
 
-            <div class="center" id="friend-invitation" style="<?php echo $show_form ? '' : 'display: none;' ?>">
+            <div class="center" id="friend-invitation">
 
                 <div class="grid-container rounded-multi">
                     <div class="hidden | text-center bg-brand-light px-1 py-0 shadow">
@@ -164,9 +166,9 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
 
                     <div class="text-center bg-white px-1 py-0 shadow rounded-start rounded-start-on-medium">
                         <h1 class="brand"><?php esc_html_e( 'Friend Invitation', 'zume' ) ?></h1>
-                        <div class="stack-1">
+                        <div class="stack-1" style="<?php echo $show_form ? '' : 'display: none;' ?>">
 
-                            <div class="banner warning center" style="<?php echo is_wp_error( $connected ) ? '' : 'display: none' ?>">
+                            <div class="banner warning text-center" style="<?php echo is_wp_error( $success ) ? '' : 'display: none' ?>">
                                 <?php echo esc_html__( 'Error connecting to friend', 'zume' ); ?>
                             </div>
 
@@ -177,6 +179,11 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
                             </div>
                             <button class="btn friend_code_submit"><?php echo esc_html__( 'Connect', 'zume' ) ?></button>
                         </div>
+
+                        <div class="stack-1 | success banner text-center" style="<?php echo $show_success ? '' : 'display: none;' ?>">
+                            <?php echo esc_html__( 'Successfully connected to %s', 'zume' ) ?>
+                        </div>
+
                     </div>
                 </div>
 
