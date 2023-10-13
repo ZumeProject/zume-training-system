@@ -6,7 +6,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * Custom endpoints file
  */
 
-class Zume_Friends_Endpoints
+class Zume_Connect_Endpoints
 {
     private $namespace;
     private static $_instance = null;
@@ -43,11 +43,11 @@ class Zume_Friends_Endpoints
     public function connect_to_friend_callback( WP_REST_Request $request ){
         $params = dt_recursive_sanitize_array( $request->get_params() );
 
-        if ( ! isset( $params['value'] ) ) {
+        if ( ! isset( $params['code'] ) ) {
             return new WP_Error( 'missing_params', 'Missing params', [ 'status' => 400 ] );
         }
 
-        return self::connect_to_friend( $params['value'] );
+        return self::connect_to_friend( $params['code'] );
     }
 
     public static function connect_to_friend( $key ) {
@@ -100,11 +100,11 @@ class Zume_Friends_Endpoints
     public function connect_to_plan_callback( WP_REST_Request $request ){
         $params = dt_recursive_sanitize_array( $request->get_params() );
 
-        if ( ! isset( $params['value'] ) ) {
+        if ( ! isset( $params['code'] ) ) {
             return new WP_Error( 'missing_params', 'Missing params', [ 'status' => 400 ] );
         }
 
-        return self::connect_to_plan( $params['value'] );
+        return self::connect_to_plan( $params['code'] );
     }
     public static function connect_to_plan( $key ) {
         // does key exist
@@ -153,6 +153,5 @@ class Zume_Friends_Endpoints
         }
         return false;
     }
-
 }
-Zume_Friends_Endpoints::instance();
+Zume_Connect_Endpoints::instance();

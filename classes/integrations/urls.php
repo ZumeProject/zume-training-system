@@ -69,7 +69,7 @@ function zume_home_url( $current_language = null ) {
  *
  * @return string
  */
-function zume_login_url( $type = 'login', $redirect_url = null ) {
+function zume_login_url( $type = 'login', $redirect_url = false ) {
     if ( $redirect_url ) {
         $url = dt_create_site_url( '', [ 'redirect_to' => rawurlencode( $redirect_url ) ] );
         return dt_login_url( $type, $url );
@@ -130,7 +130,7 @@ function zume_checkin_url() {
     if ( $current_language === 'en' ) {
         return dt_create_site_url( 'zume_app/checkin' );
     }
-    return dt_create_site_url( $current_language . '/' . 'zume_app/checkin' );
+    return dt_create_site_url( $current_language . '/zume_app/checkin' );
 }
 
 function zume_training_url( $current_language = null ) {
