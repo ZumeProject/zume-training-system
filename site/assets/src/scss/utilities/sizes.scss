@@ -12,6 +12,10 @@ $widths: (100, 90, 80, 75, 70, 60, 50, 40, 30, 25, 20, 10);
     }
 }
 
+.min-vh-90 {
+    min-block-size: 90vh;
+}
+
 .fit-content {
     width: fit-content;
 }

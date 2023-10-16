@@ -78,6 +78,8 @@ class Zume_Training_Home extends Zume_Magic_Page
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
         </style>
+        <?php //phpcs:ignore ?>
+        <link rel="stylesheet" href="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/fonts/BebasKai/stylesheet.css' ) ?>">
         <?php
     }
 
@@ -90,19 +92,23 @@ class Zume_Training_Home extends Zume_Magic_Page
             <h3 class="uppercase f--2 lh1"><?php echo esc_html__( 'Languages', 'zume' ) ?></h3>
         </div>
         <?php require __DIR__ . '/../parts/nav.php'; ?>
-        <div class="cover-page">
-
-
+        <div class="cover-page | hero min-vh-90">
             <div class="switcher container | align-items-center gap0">
                 <div class="show-for-large"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JesusPointing-1.svg' ) ?>" alt="Jesus pointing"></div>
-                <div class="stack | s0 grow-1p5 text-center">
-                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/ZumeLOGO.svg' ) ?>" alt="Zume Logo">
-                    <h1 class="f-6"><?php echo esc_html__( 'Training', 'zume' ) ?></h1>
-                    <p><?php echo esc_html__( 'for small groups who follow Jesus to learn how to obey His Great Commission and make disciples who multiply', 'zume' ) ?></p>
+                <div class="stack | grow-2 text-center">
+                    <h1 class="f-6 first"><?php echo esc_html_x( 'Disciple Making', 'Disciple Making Training', 'zume' ) ?></h1>
+                    <h1 class="f-8 second brand-light s0"><?php echo esc_html_x( 'Training', 'Disciple Making Training', 'zume' ) ?></h1>
+                    <p class="f-2 s0 px-2"><?php echo esc_html_x( 'for groups of Jesus followers', 'Disciple Making Training for groups of Jesus followers', 'zume' ) ?></p>
+                    <div class="switcher | switcher-width-20 s-4">
+                        <a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn large outline uppercase w-80 px-0"><?php echo esc_html__( 'Login', 'zume' ) ?></a>
+                        <a href="<?php echo esc_url( zume_make_a_plan_wizard_url() ) ?>" class="btn large light uppercase w-80 px-0"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
+                    </div>
                 </div>
-                <div class="stack--1 | justify-content-center align-items-center text-center">
-                    <a href="<?php echo esc_url( zume_make_a_plan_wizard_url() ) ?>" class="btn large light uppercase w-80 px-0"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
-                    <a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn large outline uppercase w-80 px-0"><?php echo esc_html__( 'Login', 'zume' ) ?></a>
+                <div class="show-for-large center brand-fade">
+                    <div class="mx-auto w-50">
+                        <?php //phpcs:ignore ?>
+                        <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . '/assets/images/Zume-Z-crop.svg' ) ?>
+                    </div>
                 </div>
             </div>
         </div>

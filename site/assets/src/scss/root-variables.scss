@@ -26,6 +26,10 @@
     --t4: calc(var(--t3) * var(--text-ratio));
     --t5: calc(var(--t4) * var(--text-ratio));
     --t6: calc(var(--t5) * var(--text-ratio));
+    --t7: calc(var(--t6) * var(--text-ratio));
+    --t8: calc(var(--t7) * var(--text-ratio));
+
+
 
     --border-thin: 1px;
     --border-radius: 10px;
@@ -36,6 +40,7 @@
     --z-brand: #008CC7;
     --z-brand-light: #2CACE2;
     --z-brand-lighter: #8ACDEA;
+    --z-brand-fade: #E5F3F9;
     --z-gray-900: #2B2B2B;
     --z-gray-800: #505050;
     --z-gray-700: #767676;
@@ -56,6 +61,7 @@
     --header-color-dark: var(--z-white);
 
     // fonts
+    --font-title: 'Bebas Kai', sans-serif;
     --font-family: 'Poppins', sans-serif;
     --font-cursive: 'Indie Flower', cursive;
 ;
