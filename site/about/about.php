@@ -135,6 +135,7 @@ class Zume_Training_About extends Zume_Magic_Page
 
             <div class="switcher">
                 <div class="center">
+                    <span class="brand bold"><?php echo esc_html__( '1 Training', 'zume' ) ?></span>
                     <img class="my-auto" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/1Training.svg' ) ?>" alt="One training">
                 </div>
                 <p class="my-auto">
@@ -147,6 +148,7 @@ class Zume_Training_About extends Zume_Magic_Page
                     Sit consectetur est adipisicing quis dolor reprehenderit. Amet quis voluptate cillum quis pariatur sit. Eiusmod culpa id amet laboris aliquip irure deserunt consectetur do irure fugiat dolor Lorem qui. Incididunt magna proident eu mollit esse excepteur labore consectetur tempor. Dolor fugiat deserunt sint incididunt cupidatat nulla culpa.
                 </p>
                 <div class="center">
+                    <span class="brand bold"><?php echo esc_html__( '2 Simple Churches', 'zume' ) ?></span>
                     <img class="my-auto" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/2Churches.svg' ) ?>" alt="2 simple churches">
                 </div>
             </div>
@@ -185,7 +187,7 @@ class Zume_Training_About extends Zume_Magic_Page
                     </div>
                     <div class="stack | px-3">
                         <div class="position-relative">
-                            <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/VideoGraphic-2.svg' ) ?>" alt="">
+                            <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/HowZumeWorks-videothumbnail-01.svg' ) ?>" alt="">
                             <button class="absolute top bottom left right video-play-button">
                                 <play-button class="video-play"></play-button>
                             </button>
@@ -219,7 +221,7 @@ class Zume_Training_About extends Zume_Magic_Page
                 <div class="switcher">
                     <div class="stack-2 my-auto">
                         <h3 class="white bold"><?php echo esc_html__( 'Requirements for Zume Training:', 'zume' ) ?></h3>
-                        <ul class="stack-2">
+                        <ul class="stack-1">
                             <li>Magna eu proident consequat eiusmod ullamco est veniam ad mollit esse duis labore amet ad.</li>
                             <li>Irure duis consequat dolore ea sunt dolor velit voluptate ut deserunt.</li>
                             <li>Quis voluptate nostrud nulla laboris.</li>
@@ -227,13 +229,13 @@ class Zume_Training_About extends Zume_Magic_Page
                         </ul>
                     </div>
                     <div class="center">
-                        <img class="w-70 my-auto" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/WhatsRequired.svg' ) ?>" alt="group discussion">
+                        <img class="w-70 my-auto" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Whats-Required-NEW.svg' ) ?>" alt="group discussion">
                     </div>
                 </div>
                 <div class="switcher">
                     <div class="stack-2 my-auto">
                         <h3 class="white bold"><?php echo esc_html__( 'NOT Required for Zume Training:', 'zume' ) ?></h3>
-                        <ul class="stack-2">
+                        <ul class="stack-1">
                             <li>Magna eu proident consequat eiusmod ullamco est veniam ad mollit esse duis labore amet ad.</li>
                             <li>Irure duis consequat dolore ea sunt dolor velit voluptate ut deserunt.</li>
                             <li>Quis voluptate nostrud nulla laboris.</li>
