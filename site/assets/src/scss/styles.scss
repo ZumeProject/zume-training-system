@@ -239,6 +239,12 @@ header {
   background-size: cover;
   opacity: 0.05;
 }
+.bg-path {
+  bottom: -59%;
+  left: -25%;
+  right: -100%;
+  z-index: -1;
+}
 
 .flip {
   transform: scaleX(-1);

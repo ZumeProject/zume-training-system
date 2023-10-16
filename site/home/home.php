@@ -87,19 +87,25 @@ class Zume_Training_Home extends Zume_Magic_Page
         global $zume_user_profile;
         ?>
 
-        <div class="stack | s0 justify-content-center absolute top left m-3 p--1 shadow | sticker">
+        <div class="stack | s0 justify-content-center absolute top left mx-0 my-3 p--1 shadow | sticker">
             <h2 class="f-3 lh1">45+</h2>
             <h3 class="uppercase f--2 lh1"><?php echo esc_html__( 'Languages', 'zume' ) ?></h3>
         </div>
         <?php require __DIR__ . '/../parts/nav.php'; ?>
-        <div class="cover-page | hero min-vh-90">
+        <div class="cover-page | hero min-vh-90 position-relative">
+
             <div class="switcher container | align-items-center gap0">
-                <div class="show-for-large"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JesusPointing-1.svg' ) ?>" alt="Jesus pointing"></div>
+                <div class="show-for-large position-relative">
+                    <div class="bg-path | absolute">
+                        <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Blue-Path-01.svg' ) ?>" alt="path">
+                    </div>
+                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JesusPointing-1.svg' ) ?>" alt="Jesus pointing">
+                </div>
                 <div class="stack | grow-2 text-center">
                     <h1 class="f-6 first"><?php echo esc_html_x( 'Disciple Making', 'Disciple Making Training', 'zume' ) ?></h1>
                     <h1 class="f-8 second brand-light s0"><?php echo esc_html_x( 'Training', 'Disciple Making Training', 'zume' ) ?></h1>
                     <p class="f-2 s0 px-2"><?php echo esc_html_x( 'for groups of Jesus followers', 'Disciple Making Training for groups of Jesus followers', 'zume' ) ?></p>
-                    <div class="switcher | switcher-width-20 s-4">
+                    <div class="switcher | switcher-width-20 s-3">
                         <a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn large outline uppercase w-80 px-0"><?php echo esc_html__( 'Login', 'zume' ) ?></a>
                         <a href="<?php echo esc_url( zume_make_a_plan_wizard_url() ) ?>" class="btn large light uppercase w-80 px-0"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
                     </div>
