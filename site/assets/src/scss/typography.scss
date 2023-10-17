@@ -4,7 +4,6 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1 {
-    text-transform: uppercase;
     font-weight: bold;
     font-size: font-size(3);
 }
@@ -14,10 +13,10 @@ h1, .h1 {
     line-height: 1;
 }
 .hero .first {
-    font-size: max(2.5rem, min(6.5vw, 6rem));
+    font-size: clamp(2.5rem, 6.5vw, 6rem);
 }
 .hero .second {
-    font-size: max(5rem, min(10vw, 9rem));
+    font-size: clamp(5rem, 10vw, 9rem);
 }
 
 h2, .h2 {

@@ -162,10 +162,7 @@ class Zume_Training_About extends Zume_Magic_Page
                 <div class="switcher | switcher-width-40 align-items-center">
                     <div class="stack px-0">
                         <div class="d-flex align-items-center">
-                            <!-- <img class="w-20 p-0" src="<?php //echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Play-Button.svg' ) ?>" alt="play button"> -->
-                            <div class="f--1 text-center" style="width: 20%; aspect-ratio: 1; background-color: red; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                TODO: add image
-                            </div>
+                            <img class="w-20 p-0" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/free-01.svg' ) ?>" alt="play button">
                             <p class="w-80"><?php printf( esc_html__( '%1$sFree Registration%2$s gives you full access to all training materials and online coaching.' ), '<b>', '</b>' ) ?></p>
                         </div>
                         <div class="d-flex align-items-center">
@@ -192,7 +189,6 @@ class Zume_Training_About extends Zume_Magic_Page
                                 <play-button class="video-play"></play-button>
                             </button>
                         </div>
-                        <a href="<?php echo esc_url( zume_about_url() ) ?>" class="btn large light uppercase fit-content mx-auto"><?php echo esc_html__( 'More about zume', 'zume' ) ?></a>
                     </div>
                 </div>
                 <h2 class="brand text-center"><?php echo esc_html__( 'Before you start.', 'zume' ) ?></h2>
@@ -201,7 +197,7 @@ class Zume_Training_About extends Zume_Magic_Page
                     <div class="center | position-relative z-2">
                         <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/BeforeYouStart.svg' ) ?>" alt="group around a table" class="my-auto w-70">
                     </div>
-                    <div class="stack-2 | bg-white py-2 | white-bubble">
+                    <div class="stack-2 | bg-white p-2 right z-1 | tail circle-head">
                         <h3 class="f-0 bold"><?php echo esc_html__( 'Zume is NOT like other trainings!', 'zume' ) ?></h3>
                         <p>
                             <b><?php echo esc_html__( 'First:', 'zume' ) ?></b><br>

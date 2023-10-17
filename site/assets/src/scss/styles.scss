@@ -69,20 +69,26 @@ ul li:before {
     top: 0;
     line-height: 1;
 }
+.check-list li:before {
+  content: url('/wp-content/plugins/zume-training-system/site/assets/images/check-mark-white.svg');
+  height: 1.5em;
+  width: 1.5em;
+  left: -0.8em;
+}
 
 a, a:visited {
     text-decoration: none;
 }
 
 .container {
-  margin: 0 auto;
+  margin-inline: auto;
   position: relative;
   width: calc(90% + calc(( 10 / 100 * 320px ) - ( 2 * $small-margin ) ));
   max-width: $max-width;
 }
 
 .container-md {
-  margin: 0 auto;
+  margin-inline: auto;
   position: relative;
   width: calc(70% + calc(( 30 / 100 * 320px ) - ( 2 * $small-margin ) ));
   max-width: $break-lg;
@@ -343,32 +349,61 @@ header {
   transform: translate(-50%, -50%);
   opacity: 0.2;
 }
-.white-bubble {
+.tail {
   position: relative;
-  z-index: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    z-index: -1;
+  }
+  &.right::after {
+    right: 1px;
+    transform: translateX(100%);
+  }
+  &.left::after {
+    left: 1px;
+    transform: translateX(-100%);
+  }
+
+  &.bg-white::after {
+    background-color: color('white');
+  }
+  &.bg-brand-light::after {
+    background-color: color('brand-light');
+  }
 }
-.white-bubble::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 120%;
-  transform: translateX(-50%);
-  background: color('white');
-  z-index: -1;
-  border-radius: 50%;
-}
-.white-bubble::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 50%;
-  transform: translateX(100%);
-  background-color: color('white');
-  z-index: -1;
+.circle-head {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: 500px;
+    aspect-ratio: 1;
+
+  }
+  &.right::before {
+    transform: translateX(-50%);
+    left: 0;
+  }
+  &.left::before {
+    transform: translateX(50%);
+    right: 0;
+  }
+
+  &.bg-white::before {
+    background: color('white');
+  }
+  &.bg-brand-light::before {
+    background: color('brand-light');
+  }
 }
 
 @keyframes spin {

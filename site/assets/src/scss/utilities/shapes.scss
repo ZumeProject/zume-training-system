@@ -32,6 +32,10 @@
     border-start-end-radius: var(--border-radius);
     border-end-end-radius: var(--border-radius);
 }
+.circle-end {
+    border-start-end-radius: 1000px;
+    border-end-end-radius: 1000px;
+}
 
 .clip-rounded-end {
     clip-path: url(#clip-rounded-end);
