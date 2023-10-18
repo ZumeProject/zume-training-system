@@ -11,6 +11,47 @@ const ZumeWizardModules = {
     inviteFriends: 'inviteFriends',
     connectToCoach: 'connectToCoach',
 }
+const ZumeWizardSteps = {
+    updateName: 'update-your-name',
+    updateLocation: 'update-your-location',
+    updatePhone: 'update-your-phone',
+}
+
+const wizardSteps = {
+    [ZumeWizardSteps.updateName]: {
+                        slug: ZumeWizardSteps.updateName,
+                        component: (step, t) => html`
+                            <complete-profile
+                                name=${step.slug}
+                                module=${step.module}
+                                t="${JSON.stringify(t.complete_profile)}"
+                                variant="name"
+                            ></complete-profile>
+                        `
+                    },
+    [ZumeWizardSteps.updateLocation]: {
+                        slug: ZumeWizardSteps.updateLocation,
+                        component: (step, t) => html`
+                            <complete-profile
+                                name=${step.slug}
+                                module=${step.module}
+                                t="${JSON.stringify(t.complete_profile)}"
+                                variant="location"
+                            ></complete-profile>
+                        `
+                    },
+    [ZumeWizardSteps.updatePhone]: {
+                        slug: ZumeWizardSteps.updatePhone,
+                        component: (step, t) => html`
+                            <complete-profile
+                                name=${step.slug}
+                                module=${step.module}
+                                t="${JSON.stringify(t.complete_profile)}"
+                                variant="phone"
+                            ></complete-profile>
+                        `
+                    }
+}
 
 export class Wizard extends LitElement {
     static get properties() {
@@ -62,11 +103,14 @@ export class Wizard extends LitElement {
 
 
         return html`
-        <div class="cover container">
+        <div class="cover container center">
 
             ${this.currentStep()}
-            ${this.navigationButtons()}
-            ${this.stepCounter()}
+
+            <div class="stack-1 | fixed bottom left right p-2">
+                ${this.navigationButtons()}
+                ${this.stepCounter()}
+            </div>
 
         </div>
         `
@@ -85,19 +129,21 @@ export class Wizard extends LitElement {
         const isLastStep = this.stepIndex === this.steps.length - 1
 
         return html`
-        <div class="text-center">
+        <div class="text-center d-flex justify-content-between">
             ${ !isFirstStep ? (
                 html`<button @click=${this._onBack} class="btn outline ">${this.t.back}</button>`
             ) : ''}
-            ${ !isLastStep ? (
-                html`<button @click=${this._onNext} class="btn">${this.t.next}</button>`
-            ) : ''}
-            ${ skippable && !isLastStep ? (
-                html`<button @click=${this._onSkip} class="btn outline">${this.t.skip}</button>`
-            ) : ''}
-            ${ isLastStep ? (
-                html`<button @click=${this._onFinish} class="btn">${this.t.finish}</button>`
-            ) : '' }
+            <div class="cluster ms-auto">
+                ${ skippable && !isLastStep ? (
+                    html`<button @click=${this._onSkip} class="brand">${this.t.skip}</button>`
+                ) : ''}
+                ${ !isLastStep ? (
+                    html`<button @click=${this._onNext} class="btn">${this.t.next}</button>`
+                ) : ''}
+                ${ isLastStep ? (
+                    html`<button @click=${this._onFinish} class="btn">${this.t.finish}</button>`
+                ) : '' }
+            </div>
         </div>
         `
     }
@@ -200,72 +246,66 @@ export class Wizard extends LitElement {
         })
 
     }
-    _handleCompleteProfileChange(event) {
-        console.log(event)
-        /* Update the profile using the api */
-        const updates = {
-            [event.detail.id]: event.detail.value
-        }
-
-
-        fetch( jsObject.rest_endpoint + '/profile', {
-            method: 'POST',
-            body: JSON.stringify(updates),
-            headers: {
-                'X-WP-Nonce': jsObject.nonce
-            }
-        } )
-        .then(() => {
-            console.log('success')
-        })
-        .catch((error) => {
-            console.error(error)
-        })
-        .finally(() => {})
-    }
 
     getModule( moduleName, skippable = false ) {
         const modules = {
             [ZumeWizardModules.completeProfile]: {
                 steps: [
-                    {
-                        slug: 'update-your-profile',
-                        component: (step, t) => html`
-                            <complete-profile
-                                name=${step.slug}
-                                module=${step.module}
-                                t="${JSON.stringify(t.complete_profile)}"
-                                @profile-change=${this._handleCompleteProfileChange}
-                            ></complete-profile>
-                        `
-                    },
+                    wizardSteps[ZumeWizardSteps.updateName],
+                    wizardSteps[ZumeWizardSteps.updateLocation],
                 ],
                 skippable,
             },
             [ZumeWizardModules.makePlan]: {
                 steps: [
                     {
-                        slug: 'make-your-plan',
+                        slug: 'make-a-plan',
                         component: (step) => html`
-                            <h1>Make your plan</h1>
-                            <p>This is part of ${step.module}</p>
-                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
-                        `
-                    },
-                    {
-                        slug: 'what-time-of-day',
-                        component: (step) => html`
-                            <h1>what Time of Day</h1>
-                            <p>This is part of ${step.module}</p>
-                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
+                            <h1>Make a plan</h1>
+                            <p>We would like to help you succeed with this training.</p>
+                            <p>Making a plan can help you with success.</p>
+                            <p>Answering the following questions will help us make you a plan.</p>
+                            <p>Or you can skip if you prefer</p>
                         `
                     },
                     {
                         slug: 'how-many-sessions',
                         component: (step) => html`
-                            <h1>How Many Sessions</h1>
-                            <p>This is part of ${step.module}</p>
-                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
+                            <h1>Will you do 1 or 2 hour training sessions?</h1>
+                            <div class="stack">
+                                <button class="btn">1 hour (20 sessions)</button>
+                                <button class="btn">2 hour (10 sessions)</button>
+                            </div>
+                        `
+                    },
+                    {
+                        slug: 'what-time-of-day',
+                        component: (step) => html`
+                            <h1>What time of day?</h1>
+                            <div class="stack">
+                                <button class="btn">Morning</button>
+                                <button class="btn">Afternoon</button>
+                                <button class="btn">Evening</button>
+                            </div>
+                        `
+                    },
+                    {
+                        slug: 'what-time-interval',
+                        component: (step) => html`
+                            <h1>How often will you meet?</h1>
+                            <div class="stack">
+                                <button class="btn">Every day</button>
+                                <button class="btn">Once a week</button>
+                                <button class="btn">Twice a month</button>
+                                <button class="btn">Once a month</button>
+                            </div>
+                        `
+                    },
+                    {
+                        slug: 'when-will-you-start',
+                        component: (step) => html`
+                            <h1>When do you plan to start?</h1>
+                            <input type="date">
                         `
                     },
                 ],
@@ -276,9 +316,11 @@ export class Wizard extends LitElement {
                     {
                         slug: 'invite-your-friends',
                         component: (step) => html`
-                            <h1>Invite your friends</h1>
-                            <p>This is part of ${step.module}</p>
-                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
+                            <h1>Invite your friends to join your training</h1>
+                            <p>Share the link below with your friends so that they can join your training.</p>
+                            <p><a href="https://zume.training/zume_app/friend-invite?123456">https://zume.training/zume_app/friend-invite?123456</a></p>
+                            <p>Alternatively your friends can scan this QR code in order to join.</p>
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://zume5.training/zume_app/friend_invite?code=123456" alt="" />
                         `
                     },
                     {
