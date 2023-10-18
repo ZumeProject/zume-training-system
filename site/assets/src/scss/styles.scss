@@ -470,9 +470,14 @@ header {
   font-size: 0.75rem;
   padding: var(--s2) 0;
 }
+@media (max-width: $break-lg) {
+  .footer .footer-links {
+    justify-content: center;
+  }
+}
 
 @media (max-width: $break-md) {
-  .footer .footer-links {
+  .footer .footer-links-list {
     width: 100%;
     flex-direction: column;
   }
