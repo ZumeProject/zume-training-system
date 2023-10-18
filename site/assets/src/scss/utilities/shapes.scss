@@ -39,7 +39,8 @@
 }
 @media (max-width: $break-sm) {
     .circle-end-small {
-        border-radius: unset;
+        border-start-end-radius: 100px;
+        border-end-end-radius: 100px;
     }
 }
 

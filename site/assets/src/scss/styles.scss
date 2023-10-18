@@ -464,10 +464,17 @@ header {
 
 }
 
-
 .footer {
   color: color('white');
   background-color: color('brand');
   font-size: 0.75rem;
   padding: var(--s2) 0;
 }
+
+@media (max-width: $break-md) {
+  .footer .footer-links {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
