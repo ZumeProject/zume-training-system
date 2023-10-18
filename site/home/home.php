@@ -180,17 +180,17 @@ class Zume_Training_Home extends Zume_Magic_Page
             </div>
         </div>
 
-        <div class="cover-page | p-3 text-center bg-brand-gradient">
+        <div class="stack-3 | py-3 text-center bg-brand-gradient">
             <h2 class="white"><?php echo esc_html__( 'Ordinary People. Simple Steps.', 'zume' ) ?></h2>
-            <div class="container stack-2 | align-items-center">
+            <div class="container-md | align-items-center">
                 <div class="w-80 video-frame mx-auto position-relative bg-white rounded hard-shadow">
                     <div class="w-60 mx-auto"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/VideoGraphic-2.svg' ) ?>" alt="zume video"></div>
                     <button class="absolute top bottom left right video-play-button">
                         <play-button class="home-video-play"></play-button>
                     </button>
                 </div>
-                <button class="btn large outline dark fit-content uppercase"><?php echo esc_html__( 'Watch', 'zume' ) ?></button>
             </div>
+            <button class="btn large outline dark fit-content uppercase mx-auto"><?php echo esc_html__( 'Watch', 'zume' ) ?></button>
         </div>
 
         <div class="center container stack-3 | page">
@@ -243,10 +243,10 @@ class Zume_Training_Home extends Zume_Magic_Page
             </clipPath>
         </svg>
 
-        <div class="page bg-gray-300">
+        <div class="page bg-gray-300 | real-stories">
             <div class="position-relative">
                 <h2 class="white absolute z-1 top left right px-3 py-1"><?php echo esc_html__( 'Real people ... real stories.', 'zume' ) ?></h2>
-                <div class="absolute top right bottom w-40 bg-world"></div>
+                <div class="absolute top right bottom w-40 bg-world show-for-extra-large"></div>
                 <img class="clip-rounded-end real-people" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/RealPeople.jpg' ) ?>" alt="Real people">
                 <div class="reel absolute bottom right | story-reel overflowing">
                     <div class="story-card">
