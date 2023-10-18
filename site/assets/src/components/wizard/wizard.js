@@ -2,7 +2,7 @@ import { LitElement, html } from "lit"
 
 
 const ZumeWizards = {
-    makeAPlan: 'make-a-plan',
+    makeAPlan: 'getting-started',
     connectToCoach: 'connect-to-coach',
 }
 const ZumeWizardModules = {
@@ -247,6 +247,23 @@ export class Wizard extends LitElement {
 
     }
 
+    makeModule( stepNames = [], skippable = false ) {
+
+        const module = {
+            steps: [],
+            skippable,
+        }
+
+        stepNames.forEach(stepName => {
+            if ( !Object.keys(wizardSteps).includes(stepName) ) {
+                return
+            }
+            module.steps.push(wizardSteps[stepName])
+        });
+
+        return module
+    }
+
     getModule( moduleName, skippable = false ) {
         const modules = {
             [ZumeWizardModules.completeProfile]: {
@@ -323,26 +340,55 @@ export class Wizard extends LitElement {
                             <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://zume5.training/zume_app/friend_invite?code=123456" alt="" />
                         `
                     },
-                    {
-                        slug: 'via-what-method',
-                        component: (step) => html`
-                            <h1>Use this QR or link or we can email them to you.</h1>
-                            <p>This is part of ${step.module}</p>
-                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
-                        `
-                    },
                 ],
                 skippable,
             },
             [ZumeWizardModules.connectToCoach]: {
                 steps: [
                     {
+                        slug: 'contact-preference',
+                        component: (step) => html`
+                            <h1>What is your contact preference?</h1>
+                            <label for="email">Email</label>
+                            <input type="checkbox" name="contact-preference" id="email" value="email" />
+                            <label for="text">Text</label>
+                            <input type="checkbox" name="contact-preference" id="text" value="text" />
+                            <label for="phone">Phone</label>
+                            <input type="checkbox" name="contact-preference" id="phone" value="phone" />
+                            <label for="whatsapp">Whatsapp</label>
+                            <input type="checkbox" name="contact-preference" id="whatsapp" value="whatsapp" />
+                        `
+                    },
+                    {
+                        slug: 'language-preference',
+                        component: (step) => html`
+                            <h1>What is your language preference?</h1>
+                            <label for="language">Language Preference</label>
+                            <input type="text" name="language-preference" id="language"/>
+                        `
+                    },
+                    {
+                        slug: 'how-can-we-serve',
+                        component: (step) => html`
+                            <h1>How can we serve you?</h1>
+                            <label for="coaching">Coaching</label>
+                            <input type="checkbox" name="contact-preference" id="coaching" value="coaching" />
+                            <label for="technical">Technical Assistance</label>
+                            <input type="checkbox" name="contact-preference" id="technical" value="technical" />
+                            <label for="implementation">Question about implementing the training</label>
+                            <input type="checkbox" name="contact-preference" id="implementation" value="implementation" />
+                            <label for="content">Question about the content</label>
+                            <input type="checkbox" name="contact-preference" id="content" value="content" />
+                            <label for="group-started">Help with what to do after starting a group</label>
+                            <input type="checkbox" name="contact-preference" id="group-started" value="group-started" />
+                        `
+                    },
+                    {
                         slug: 'connected-to-coach',
                         component: (step) => html`
-                            <h1>You are now connected to a coach</h1>
-                            <p>One of our team will contact you in the next 24-48 hours</p>
-                            <p>This is part of ${step.module}</p>
-                            <p>This module is ${step.skippable ? '' : 'not '}skippable</p>
+                            <h1>Connecting you to a Coach</h1>
+                            <p>Please wait while we connect you <span class="loading-spinner active"></span></p>
+                            <p>Successfully connected you. One of our team will contact you in the next 24-48 hours</p>
                         `
                     },
                 ],
@@ -398,12 +444,19 @@ export class Wizard extends LitElement {
 
         const wizards = {
             [ZumeWizards.makeAPlan]: {
-                [ZumeWizardModules.completeProfile]: this.getModule(ZumeWizardModules.completeProfile, true),
+                [ZumeWizardModules.completeProfile]: this.makeModule([
+                    ZumeWizardSteps.updateName,
+                    ZumeWizardSteps.updateLocation,
+                ], true),
                 [ZumeWizardModules.makePlan]: this.getModule(ZumeWizardModules.makePlan, true),
                 [ZumeWizardModules.inviteFriends]: this.getModule(ZumeWizardModules.inviteFriends, true),
             },
             [ZumeWizards.connectToCoach]: {
-                [ZumeWizardModules.completeProfile]: this.getModule(ZumeWizardModules.completeProfile),
+                [ZumeWizardModules.completeProfile]: this.makeModule([
+                    ZumeWizardSteps.updateName,
+                    ZumeWizardSteps.updateLocation,
+                    ZumeWizardSteps.updatePhone,
+                ]),
                 [ZumeWizardModules.connectToCoach]: this.getModule(ZumeWizardModules.connectToCoach),
             },
         }

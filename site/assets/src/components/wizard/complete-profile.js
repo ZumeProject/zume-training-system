@@ -44,12 +44,12 @@ export class CompleteProfile extends LitElement {
     }
 
     firstUpdated() {
-        this.renderRoot.querySelector('#phone').focus()
+        this.renderRoot.querySelector('.inputs input').focus()
     }
 
     render() {
         return html`
-        <div>
+        <div class="inputs">
             ${ this.variant === 'name' ? html`
                 <h2 class="f-1">What's your name?</h2>
                 <div class="">
