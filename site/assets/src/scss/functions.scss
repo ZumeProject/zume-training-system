@@ -14,26 +14,50 @@
 
 @function fluid-type(
     $i,
-    $min-base-font: 16,
-    $max-base-font: 18,
-    $min-text-ratio: 1.25,
-    $max-text-ratio: 1.3,
+    $min-base-font: $min-base-font,
+    $max-base-font: $max-base-font,
+    $min-text-ratio: $min-text-ratio,
+    $max-text-ratio: $max-text-ratio,
+    $min-screen-width: $min-screen-width,
+    $max-screen-width: $max-screen-width,
+) {
+   @return fluid-clamp($i, $min-base-font, $max-base-font, $min-text-ratio, $max-text-ratio, $min-screen-width, $max-screen-width);
+}
+
+@function fluid-space(
+    $i,
+    $min-base-space: $min-base-space,
+    $max-base-space: $max-base-space,
+    $min-spacing-ratio: $min-spacing-ratio,
+    $max-spacing-ratio: $max-spacing-ratio,
+    $min-screen-width: $min-screen-width,
+    $max-screen-width: $max-screen-width,
+) {
+   @return fluid-clamp($i, $min-base-space, $max-base-space, $min-spacing-ratio, $max-spacing-ratio, $min-screen-width, $max-screen-width);
+}
+
+@function fluid-clamp(
+    $i,
+    $min-base: 16,
+    $max-base: 18,
+    $min-ratio: 1.25,
+    $max-ratio: 1.3,
     $min-screen-width: 320,
     $max-screen-width: 1500,
 ) {
 
 
-    $min-font-size: $min-base-font * math.pow( $min-text-ratio, $i );
-    $max-font-size: $max-base-font * math.pow( $max-text-ratio, $i );
+    $min-size: $min-base* math.pow( $min-ratio, $i );
+    $max-size: $max-base* math.pow( $max-ratio, $i );
 
     /* Calculate the gradient and intercept of the fluid slope */
-    $gradient: ( $max-font-size - $min-font-size ) / ( $max-screen-width - $min-screen-width );
-    $intercept: $min-font-size - $gradient * $min-screen-width;
+    $gradient: ( $max-size - $min-size ) / ( $max-screen-width - $min-screen-width );
+    $intercept: $min-size - $gradient * $min-screen-width;
 
-    $min-font-size-rems: $min-font-size / $rem-value-in-pixels;
-    $max-font-size-rems: $max-font-size / $rem-value-in-pixels;
+    $min-size-rems: $min-size / $rem-value-in-pixels;
+    $max-size-rems: $max-size / $rem-value-in-pixels;
     $intercept-rems: $intercept / $rem-value-in-pixels;
     $gradient-vw: $gradient * 100;
 
-    @return clamp( math.round($min-font-size-rems * 100)/100 * 1rem, math.round($intercept-rems*100)/100 * 1rem + math.round($gradient-vw*100)/100 * 1vw, $max-font-size-rems * 1rem );
+    @return clamp( math.round($min-size-rems * 100)/100 * 1rem, math.round($intercept-rems*100)/100 * 1rem + math.round($gradient-vw*100)/100 * 1vw, $max-size-rems * 1rem );
 }

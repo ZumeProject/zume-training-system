@@ -1,18 +1,17 @@
 :root {
 
     // spacing
-    --ratio: 1.5;
-    --s-5: calc(var(--s-4) / var(--ratio));
-    --s-4: calc(var(--s-3) / var(--ratio));
-    --s-3: calc(var(--s-2) / var(--ratio));
-    --s-2: calc(var(--s-1) / var(--ratio));
-    --s-1: calc(var(--s0) / var(--ratio));
-    --s0: clamp(0.9rem, (18 / 425) * 100vw, 1rem);
-    --s1: calc(var(--s0) * var(--ratio));
-    --s2: calc(var(--s1) * var(--ratio));
-    --s3: calc(var(--s2) * var(--ratio));
-    --s4: calc(var(--s3) * var(--ratio));
-    --s5: calc(var(--s4) * var(--ratio));
+    --s-5: #{fluid-space(-5)};
+    --s-4: #{fluid-space(-4)};
+    --s-3: #{fluid-space(-3)};
+    --s-2: #{fluid-space(-2)};
+    --s-1: #{fluid-space(-1)};
+    --s0: #{fluid-space(0)};
+    --s1: #{fluid-space(1)};
+    --s2: #{fluid-space(2)};
+    --s3: #{fluid-space(3)};
+    --s4: #{fluid-space(4)};
+    --s5: #{fluid-space(5)};
 
     // font-sizes
     /* clamp value based on reducing font at 425px width */
