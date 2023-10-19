@@ -249,4 +249,4 @@ var gt=Object.defineProperty;var $t=(n,t,e)=>t in n?gt(n,t,{enumerable:!0,config
           margin-left: calc(var(--play-button-size) / 10);
         }
     `);window.customElements.define("play-button",mt);const ct=document.querySelector(".nav-toggle"),Bt=document.querySelector("#nav");ct&&ct.addEventListener("click",n=>{Bt.classList.toggle("nav--visible")});
-//# sourceMappingURL=main-021c0980.js.map
+//# sourceMappingURL=main-053005ba.js.map
