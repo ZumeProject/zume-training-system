@@ -430,8 +430,8 @@ class Zume_Training_Presenter extends Zume_Magic_Page
     public function body(){
         ?>
 
-        <div class="container cover-page">
-            <nav class="d-flex justify-content-between align-items-center py-2">
+        <div class="cover-page">
+            <nav class="container | d-flex justify-content-between align-items-center py-2">
                 <a class="btn outline" href="<?php echo esc_url( zume_home_url() ) ?>"><?php echo esc_html__( 'Home', 'zume' ) ?></a>
 
                 <?php $code = zume_current_language() ?>

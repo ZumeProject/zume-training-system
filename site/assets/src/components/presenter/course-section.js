@@ -24,30 +24,9 @@ export class CourseSection extends LitElement {
             ${this.info !== null ? html`<p>${this.info}</p>` : ''}
             ${this.duration !== null ? html`<p>${this.duration}</p>` : ''}
 
-            ${this.parts.map((part) => {
-                switch (part.type) {
-                    case 'section':
-                        return html`<section-part .part=${part}></section-part>`
-                    case 'watch':
-                        return html`<watch-part .part=${part}></watch-part>`
-                    case 'discuss':
-                        return html`<discuss-part .part=${part}></discuss-part>`
-                    case 'read':
-                        return html`<read-part .part=${part}></read-part>`
-                    case 'see':
-                        return html`<see-part .part=${part}></see-part>`
-                    case 'share':
-                        return html`<share-part .part=${part}></share-part>`
-                    case 'listen':
-                        return html`<listen-part .part=${part}></listen-part>`
-                    case 'form':
-                        return html`<form-part .part=${part}></form-part>`
-                    case 'cta':
-                    default:
-                        return html`<basic-part .part=${part}></basic-part>`
-                        break;
-                }
-            })}
+            ${this.parts.map((part) =>
+                html`<part-switcher .part=${part}></part-switcher>`
+            )}
 
         `;
     }

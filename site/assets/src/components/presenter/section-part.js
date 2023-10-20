@@ -13,9 +13,9 @@ export class SectionPart extends LitElement {
         const info = this.part.info ?? null
 
         return html`
-            ${this.title !== null ? html`<h2>${this.title}</h2>` : ''}
-            ${this.description !== null ? html`<p>${this.description}</p>` : ''}
-            ${this.info !== null ? html`<p>${this.info}</p>` : ''}
+            ${t !== null ? html`<h2>${t}</h2>` : ''}
+            ${d !== null ? html`<p>${d}</p>` : ''}
+            ${info !== null ? html`<p>${info}</p>` : ''}
         `;
     }
     /**

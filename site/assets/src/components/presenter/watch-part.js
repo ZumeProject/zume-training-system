@@ -13,7 +13,7 @@ export class WatchPart extends LitElement {
         const info = this.part.info ?? null
 
         return html`
-            ${t !== null ? html`<h3 class="brand">${t}</h3>` : ''}
+            ${t !== null ? html`<h3>${t}</h3>` : ''}
             ${d !== null ? html`<p>${d}</p>` : ''}
             ${info !== null ? html`<p>${info}</p>` : ''}
         `;

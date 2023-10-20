@@ -4,6 +4,7 @@ export class CoursePresenter extends LitElement {
     static get properties() {
         return {
             lessonIndex: { attribute: false },
+            view: { attribute: false },
         };
     }
 
@@ -11,6 +12,7 @@ export class CoursePresenter extends LitElement {
         super()
         this.lessonIndex = 0
         this.changeSession(this.lessonIndex)
+        this.view = 'slideshow'
     }
 
     getNextSession() {
@@ -49,12 +51,25 @@ export class CoursePresenter extends LitElement {
         return this.session.sections
     }
 
+    switchViews() {
+        if ( this.view === 'guide' ) {
+            this.view = 'slideshow'
+        } else {
+            this.view = 'guide'
+        }
+    }
+
     render() {
-        console.log(this.lessonIndex, this.session)
         /* If this is the overall presenter, then it would have a top bar, navigation buttons etc. as well */
         /* And also have a sidebar with the contents list in */
         return html`
-            <course-session title="${this.getSessionTitle()}" .sections=${this.getSessionSections()}></course-session>
+            <div class="container"><button class="btn" @click=${this.switchViews}>Switch Views</button></div>
+            ${
+                this.view === 'guide'
+                ? html`<course-guide title="${this.getSessionTitle()}" .sections=${this.getSessionSections()}></course-guide>`
+                : html`<course-slideshow title="${this.getSessionTitle()}" .sections=${this.getSessionSections()}></course-slideshow>`
+            }
+
             <div class="container-md | d-flex justify-content-between py-2">
                 <button class="btn outline" @click=${this.getPreviousSession}>Back</button>
                 <button class="btn" @click=${this.getNextSession}>Next</button>
