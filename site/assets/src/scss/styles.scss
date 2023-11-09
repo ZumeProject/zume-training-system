@@ -185,6 +185,11 @@ header {
   height: 3px;
   background: color('white');
 }
+.hamburger.brand,
+.hamburger.brand::before,
+.hamburger.brand::after {
+  background: color('brand');
+}
 
 .hamburger::before,
 .hamburger::after {
@@ -443,6 +448,9 @@ header {
 
     .nav-toggle {
         display: none;
+    }
+    .nav-toggle.show {
+      display: block;
     }
 
     .nav {

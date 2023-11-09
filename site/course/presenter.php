@@ -80,6 +80,10 @@ class Zume_Training_Presenter extends Zume_Magic_Page
         <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
+
+                jQuery('#hamburger-menu').click(function(){
+                    jQuery('#offCanvas').foundation('open');
+                })
             });
         </script>
         <script>
@@ -430,21 +434,23 @@ class Zume_Training_Presenter extends Zume_Magic_Page
     public function body(){
         ?>
 
-        <div class="cover-page">
-            <nav class="container | d-flex justify-content-between align-items-center py-2">
-                <a class="btn outline" href="<?php echo esc_url( zume_home_url() ) ?>"><?php echo esc_html__( 'Home', 'zume' ) ?></a>
+        <div class="">
 
-                <?php $code = zume_current_language() ?>
-                <?php $display_code = zume_get_language_display_code( $code ) ?>
 
-                <button class="btn d-flex align-items-center gap--4" data-open="language-menu-reveal">
-                    <?php require plugin_dir_path( __DIR__ ) . 'assets/images/globe-outline.svg' ?>
-                    <?php echo esc_html( strtoupper( $display_code ) ) ?>
-                </button>
-            </nav>
-            <div>
-                <course-presenter></course-presenter>
+            <div class="off-canvas-content" data-off-canvas-content>
+
+                <?php $display_code = zume_get_language_display_code( zume_current_language() ) ?>
+
+                <course-presenter
+                    languageCode="<?php echo esc_html( strtoupper( $display_code ) ) ?>"
+                    homeUrl="<?php echo esc_url( zume_home_url() ) ?>"
+                    assetsPath="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images' ) ?>"
+                    translations="<?php echo esc_attr( json_encode([
+                        'home' => __( 'Home', 'zume' ),
+                    ]) ) ?>"
+                ></course-presenter>
             </div>
+
         </div>
 
         <?php require __DIR__ . '/../parts/language-selector.php'; ?>
