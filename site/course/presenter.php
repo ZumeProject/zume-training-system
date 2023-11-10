@@ -265,6 +265,11 @@ class Zume_Training_Presenter extends Zume_Magic_Page
                                             't' => __( 'WELCOME BACK!', 'zume' ),
                                             'parts' => array(
                                                 array(
+                                                    'type' => 'checkin',
+                                                    't' => __( 'Checkin', 'zume' ),
+                                                    'info' => __( 'Have all of the participants of the training check-in', 'zume' ),
+                                                ),
+                                                array(
                                                     't' => __( 'CHECK-IN', 'zume' ),
                                                     'd' => array(
                                                         __( 'Before getting started, take some time to check-in.', 'zume' ),
