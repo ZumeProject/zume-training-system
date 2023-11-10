@@ -127,6 +127,11 @@ class Zume_Training_Presenter extends Zume_Magic_Page
                                             't' => __( 'Welcome to Zúme', 'zume' ),
                                             'parts' => array(
                                                 array(
+                                                    'type' => 'checkin',
+                                                    't' => __( 'Checkin', 'zume' ),
+                                                    'info' => __( 'Have all of the participants of the training check-in', 'zume' ),
+                                                ),
+                                                array(
                                                     'type' => 'cta',
                                                     't' => __( 'Download', 'zume' ),
                                                     'd' => __( 'You will be able to follow along on a digital PDF for this session, but please make sure that each member of your group has a printed copy of the materials for future sessions.', 'zume' ),

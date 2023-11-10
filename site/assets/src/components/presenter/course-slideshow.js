@@ -46,8 +46,6 @@ export class CourseSlideshow extends LitElement {
             }
             return section.parts.length
         });
-
-        console.log(this.index)
     }
 
     nextSlide() {
@@ -135,11 +133,11 @@ export class CourseSlideshow extends LitElement {
             this.setSlide(0,-1)
         }
         return html`
-            <div class="">
+            <div class="text-center">
                 <div class="container">
                     <h2>${this.title}</h2>
                     ${this.currentSlide}
-                    <div class="container-md | d-flex justify-content-between py-2">
+                    <div class="fixed left right bottom d-flex justify-content-between py-2">
                         <button class="btn outline light" @click=${this.previousSlide}>Back</button>
                         <button class="btn  light" @click=${this.nextSlide}>Next</button>
                     </div>
