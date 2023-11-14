@@ -14,13 +14,17 @@ export class CourseSlideshow extends LitElement {
 
     constructor() {
         super()
-        this.sectionIndex = -1
-        this.partIndex = -1
-        this.currentSlide = null
-        this.index = []
+        this.reset();
 
         this.listenForKeyboard = this.listenForKeyboard.bind(this)
         this.listenForMouseClick = this.listenForMouseClick.bind(this)
+    }
+
+    reset() {
+        this.sectionIndex = -1;
+        this.partIndex = -1;
+        this.currentSlide = null;
+        this.index = [];
     }
 
     connectedCallback() {
@@ -34,6 +38,12 @@ export class CourseSlideshow extends LitElement {
 
         document.removeEventListener('keydown', this.listenForKeyboard)
         document.removeEventListener('mousedown', this.listenForMouseClick)
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback(name, oldValue, newValue);
+        if (name === 'title' && oldValue !== newValue) {
+            this.reset()
+        }
     }
 
     setupIndex() {
