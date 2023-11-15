@@ -1,5 +1,10 @@
 import { LitElement, html, css } from 'lit';
 
+const courseViews = {
+    slideshow: 'slideshow',
+    guide: 'guide',
+}
+
 export class CoursePresenter extends LitElement {
     static get properties() {
         return {
@@ -29,7 +34,14 @@ export class CoursePresenter extends LitElement {
         }
         this.changeSession(this.lessonIndex, false)
 
-        this.view = 'slideshow'
+        if ( url.searchParams.has('view') ) {
+            const view = url.searchParams.get('view')
+            if ( Object.keys(courseViews).includes(view)) {
+                this.view = view
+            }
+        } else {
+            this.view = 'slideshow'
+        }
 
         this.handleSessionLink = this.handleSessionLink.bind(this)
         this.handleHistoryPopState = this.handleHistoryPopState.bind(this)
@@ -64,23 +76,27 @@ export class CoursePresenter extends LitElement {
         this.session = zumeSessions[thisIndex]
 
         if (pushState) {
-            this.pushHistory(thisIndex)
+            this.pushHistory()
         }
     }
 
-    pushHistory(sessionIndex = null, pageIndex = null) {
+    pushHistory() {
+        const sessionIndex = this.lessonIndex
+        const view = this.view
+
         const url = new URL(window.location.href)
         if (sessionIndex !== null && Number.isInteger(sessionIndex)) {
             url.searchParams.set('session', sessionIndex + 1)
         }
-        if (pageIndex !== null && Number.isInteger(pageIndex)) {
-            url.searchParams.set('page', pageIndex + 1)
+        if (view) {
+            url.searchParams.set('view', view)
         }
         window.history.pushState(null, null, url.href)
     }
     handleHistoryPopState() {
         const url = new URL(location.href)
         const sessionIndex = url.searchParams.has('session') ? Number(url.searchParams.get('session')) : null
+        const view = url.searchParams.get('view') || 'slideshow'
 
         if ( Number.isInteger(sessionIndex) ) {
             this.lessonIndex = sessionIndex - 1
@@ -107,6 +123,7 @@ export class CoursePresenter extends LitElement {
         } else {
             this.view = 'guide'
         }
+        this.pushHistory({view: this.view})
     }
 
     render() {
