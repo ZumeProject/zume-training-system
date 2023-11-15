@@ -128,10 +128,10 @@ export class CourseSlideshow extends LitElement {
         this.partIndex = partIndex
         if ( partIndex < 0 ) {
             const part = this.sections[sectionIndex]
-            this.currentSlide = html`<section-part .part=${part}></section-part>`
+            this.currentSlide = html`<section-part .partData=${part}></section-part>`
         } else {
             const part = this.sections[sectionIndex].parts[partIndex]
-            this.currentSlide = html`<part-switcher .part=${part}></part-switcher>`
+            this.currentSlide = html`<part-switcher .partData=${part}></part-switcher>`
         }
     }
 
