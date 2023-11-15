@@ -1,9 +1,9 @@
 import { LitElement, html, css } from 'lit';
 
-const courseViews = {
-    slideshow: 'slideshow',
-    guide: 'guide',
-}
+const courseViews = [
+    'slideshow',
+    'guide',
+]
 
 export class CoursePresenter extends LitElement {
     static get properties() {
@@ -36,7 +36,7 @@ export class CoursePresenter extends LitElement {
 
         if ( url.searchParams.has('view') ) {
             const view = url.searchParams.get('view')
-            if ( Object.keys(courseViews).includes(view)) {
+            if ( courseViews.includes(view) ) {
                 this.view = view
             }
         } else {
@@ -96,12 +96,17 @@ export class CoursePresenter extends LitElement {
     handleHistoryPopState() {
         const url = new URL(location.href)
         const sessionIndex = url.searchParams.has('session') ? Number(url.searchParams.get('session')) : null
-        const view = url.searchParams.get('view') || 'slideshow'
+        const view = url.searchParams.get('view')
 
         if ( Number.isInteger(sessionIndex) ) {
             this.lessonIndex = sessionIndex - 1
             this.changeSession(this.lessonIndex, false)
         }
+
+        if (view && courseViews.includes(view)) {
+            this.view = view
+        }
+
     }
 
     getSessionTitle() {
@@ -117,13 +122,16 @@ export class CoursePresenter extends LitElement {
         return this.session.sections
     }
 
-    switchViews() {
+    switchViews( pushState = true) {
         if ( this.view === 'guide' ) {
             this.view = 'slideshow'
         } else {
             this.view = 'guide'
         }
-        this.pushHistory({view: this.view})
+
+        if ( pushState === true) {
+            this.pushHistory({view: this.view})
+        }
     }
 
     render() {
