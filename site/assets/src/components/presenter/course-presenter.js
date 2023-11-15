@@ -32,6 +32,8 @@ export class CoursePresenter extends LitElement {
         this.view = 'slideshow'
 
         this.handleSessionLink = this.handleSessionLink.bind(this)
+        this.handleHistoryPopState = this.handleHistoryPopState.bind(this)
+        window.addEventListener('popstate', this.handleHistoryPopState)
     }
 
     handleSessionLink(event) {
@@ -67,7 +69,6 @@ export class CoursePresenter extends LitElement {
     }
 
     pushHistory(sessionIndex = null, pageIndex = null) {
-        console.log(sessionIndex)
         const url = new URL(window.location.href)
         if (sessionIndex !== null && Number.isInteger(sessionIndex)) {
             url.searchParams.set('session', sessionIndex + 1)
@@ -76,6 +77,15 @@ export class CoursePresenter extends LitElement {
             url.searchParams.set('page', pageIndex + 1)
         }
         window.history.pushState(null, null, url.href)
+    }
+    handleHistoryPopState() {
+        const url = new URL(location.href)
+        const sessionIndex = url.searchParams.has('session') ? Number(url.searchParams.get('session')) : null
+
+        if ( Number.isInteger(sessionIndex) ) {
+            this.lessonIndex = sessionIndex - 1
+            this.changeSession(this.lessonIndex, false)
+        }
     }
 
     getSessionTitle() {
