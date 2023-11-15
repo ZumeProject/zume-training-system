@@ -15,8 +15,20 @@ export class CoursePresenter extends LitElement {
 
     constructor() {
         super()
-        this.lessonIndex = 0
-        this.changeSession(this.lessonIndex)
+
+        const url = new URL(window.location.href)
+        if ( url.searchParams.has('session') ) {
+            const sessionIndex = Number(url.searchParams.get('session'))
+            if ( Number.isInteger(sessionIndex) ) {
+                this.lessonIndex = sessionIndex - 1
+            } else {
+                this.lessonIndex = 0
+            }
+        } else {
+            this.lessonIndex = 0
+        }
+        this.changeSession(this.lessonIndex, false)
+
         this.view = 'slideshow'
 
         this.handleSessionLink = this.handleSessionLink.bind(this)
@@ -38,18 +50,32 @@ export class CoursePresenter extends LitElement {
         this.changeSession(this.lessonIndex)
     }
 
-    changeSession(index) {
+    changeSession(index, pushState = true) {
+        let thisIndex = index
         if ( index < 0 ) {
-            this.lessonIndex = 0
-            this.session = zumeSessions[0]
-            return
+            thisIndex = 0
         }
         if ( index > zumeSessions.length - 1 ) {
-            this.lessonIndex = zumeSessions.length - 1
-            this.session = zumeSessions[zumeSessions.length - 1]
-            return
+            thisIndex = zumeSessions.length - 1
         }
-        this.session = zumeSessions[index]
+        this.lessonIndex = thisIndex
+        this.session = zumeSessions[thisIndex]
+
+        if (pushState) {
+            this.pushHistory(thisIndex)
+        }
+    }
+
+    pushHistory(sessionIndex = null, pageIndex = null) {
+        console.log(sessionIndex)
+        const url = new URL(window.location.href)
+        if (sessionIndex !== null && Number.isInteger(sessionIndex)) {
+            url.searchParams.set('session', sessionIndex + 1)
+        }
+        if (pageIndex !== null && Number.isInteger(pageIndex)) {
+            url.searchParams.set('page', pageIndex + 1)
+        }
+        window.history.pushState(null, null, url.href)
     }
 
     getSessionTitle() {
