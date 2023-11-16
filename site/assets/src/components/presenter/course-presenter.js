@@ -46,6 +46,35 @@ export class CoursePresenter extends LitElement {
         this.handleSessionLink = this.handleSessionLink.bind(this)
         this.handleHistoryPopState = this.handleHistoryPopState.bind(this)
         window.addEventListener('popstate', this.handleHistoryPopState)
+
+        const languageSelectors = document.querySelectorAll('.language-selector')
+        languageSelectors.forEach(function(languageSelector) {
+            languageSelector.addEventListener('click', () => {
+                const newLanguageCode = languageSelector.dataset.value
+
+                const url = new URL(location.href)
+
+                const urlPieces = url.pathname.substring(1).split('/')
+
+                let newUrl = ''
+                if ( urlPieces.length > 0 && jsObject.zume_languages.includes(urlPieces[0]) ) {
+                    newUrl = urlPieces.slice(1).join('/')
+                } else {
+                    newUrl = urlPieces.join('/')
+                }
+
+                if (newLanguageCode !== 'en') {
+                    newUrl = '/' + newLanguageCode + '/' + newUrl
+                } else {
+                    newUrl = '/' + newUrl
+                }
+
+                newUrl += url.search
+
+                location.href = newUrl
+            })
+        })
+
     }
 
     handleSessionLink(event) {
