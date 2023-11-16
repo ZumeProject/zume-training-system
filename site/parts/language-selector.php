@@ -5,13 +5,15 @@
     <hr>
     <table class="hover" id="language-table">
         <?php
+
+        $dt_url = new DT_URL( dt_get_url_path() );
         $url_pieces = zume_get_url_pieces();
 
         foreach ( $zume_languages_by_code as $item ){
             if ( 'en' === $item['code'] ) {
-                $url = esc_url( trailingslashit( site_url() ) . $url_pieces['path'] );
+                $url = esc_url( trailingslashit( site_url() ) . $url_pieces['path'] ) . '?' . $dt_url->parsed_url['query'];
             } else {
-                $url = esc_url( site_url() ) . '/' . $item['code'] . '/' . $url_pieces['path'];
+                $url = esc_url( site_url() ) . '/' . $item['code'] . '/' . $url_pieces['path'] . '?' . $dt_url->parsed_url['query'];
             }
             ?>
             <tr class="language-selector" data-url="<?php echo esc_url( $url ) ?>" data-value="<?php echo esc_attr( $item['code'] ) ?>" id="row-<?php echo esc_attr( $item['code'] ) ?>">
