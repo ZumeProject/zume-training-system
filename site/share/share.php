@@ -74,6 +74,8 @@ class Zume_Training_Share extends Zume_Magic_Page
         <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
+
+                window.zumeInitShareLinks()
             });
         </script>
         <?php

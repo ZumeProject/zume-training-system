@@ -119,23 +119,23 @@ class Zume_Training_Course extends Zume_Magic_Page
 
                         <?php
 
-                            $status = isset( $post['status'] ) ? $post['status'] : false;
+                        $status = isset( $post['status'] ) ? $post['status'] : false;
+
                         if ( !$status || empty( $status ) || $status['key'] !== 'active' ) {
                             continue;
                         }
 
-                            $page_title = $post['post_title'];
+                        $page_title = $post['post_title'];
 
-
-                            $plan_length = 10;
-                            $plan_prefix = 'set_a';
+                        $plan_length = 10;
+                        $plan_prefix = 'set_a';
 
                         if ( isset( $post['set_b_01'] ) ) {
                             $plan_length = 20;
                             $plan_prefix = 'set_b';
                         }
 
-                            $now = time();
+                        $now = time();
 
                         for ( $i =1; $i < $plan_length + 1; $i++ ) {
                             $session_index = $i < 10 ? "0$i" : "$i";
@@ -146,11 +146,11 @@ class Zume_Training_Course extends Zume_Magic_Page
                             }
                         }
 
-                            $formatted_date = gmdate( 'M d', $latest_plan_date );
+                        $formatted_date = gmdate( 'M d', $latest_plan_date );
 
-                            $time = isset( $post['time_of_day_note'] ) ? $post['time_of_day_note'] : '';
-                            $timezone = isset( $post['timezone_note'] ) ? $post['timezone_note'] : '';
-                            $language = isset( $post['language_note'] ) ? $post['language_note'] : '';
+                        $time = isset( $post['time_of_day_note'] ) ? $post['time_of_day_note'] : '';
+                        $timezone = isset( $post['timezone_note'] ) ? $post['timezone_note'] : '';
+                        $language = isset( $post['language_note'] ) ? $post['language_note'] : '';
 
                         ?>
 
@@ -169,6 +169,7 @@ class Zume_Training_Course extends Zume_Magic_Page
             </table>
             <p><strong><?php echo esc_html__( 'User Profile', 'zume' ) ?></strong><pre><?php print_r( $zume_user_profile ); ?></pre></p>
         </div>
+
         <?php
     }
 }
