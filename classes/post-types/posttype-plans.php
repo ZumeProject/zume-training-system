@@ -220,6 +220,14 @@ class Zume_Plans_Post_Type extends DT_Module_Base {
                 'tile' => 'details',
                 'icon' => get_template_directory_uri() . '/dt-assets/images/date-start.svg',
             ];
+            $fields['language_note'] = [
+                'name'        => __( 'Language', 'zume-training-system' ),
+                'description' => 'Language of the training',
+                'type'        => 'text',
+                'default'     => '',
+                'tile' => 'details',
+                'icon' => get_template_directory_uri() . '/dt-assets/images/languages.svg',
+            ];
             $fields['join_key'] = [
                 'name'        => __( 'Join Key', 'zume-training-system' ),
                 'description' => 'Key to join the training, like a password or meeting ID',

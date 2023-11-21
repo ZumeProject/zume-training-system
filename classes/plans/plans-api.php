@@ -124,6 +124,8 @@ class Zume_Plans_Endpoints
         return DT_Posts::update_post( 'zume_plans', $post_id_exists,[ 'participants' => [ 'values' => [ ['value' => $contact_id ] ] ] ], true, false );
     }
     public function delete_plan( WP_REST_Request $request ) {
+        global $wpdb;
+
         if ( ! is_user_logged_in() ) {
             return new WP_Error( __METHOD__, 'User not logged in', array( 'status' => 401 ) );
         }
@@ -151,9 +153,13 @@ class Zume_Plans_Endpoints
     public function public_plans( WP_REST_Request $request ){
         $params = dt_recursive_sanitize_array( $request->get_params() );
 
-        $plans = DT_Posts::list_posts( 'zume_plans', [ 'fields' => [ [ 'visibility' => ['public'] ] ] ], false );
+        $plans = self::get_public_plans();
 
         return $plans;
+    }
+
+    public static function get_public_plans() {
+        return DT_Posts::list_posts( 'zume_plans', [ 'fields' => [ [ 'visibility' => ['public'] ] ] ], false );
     }
 }
 Zume_Plans_Endpoints::instance();

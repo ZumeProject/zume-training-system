@@ -117,8 +117,6 @@ class Zume_Training_Share extends Zume_Magic_Page
 
                     ?>
 
-
-
                     <li>
                         <div class="cluster">
                             <a class="f-1 bold brand my-0" href="<?php echo esc_url( $page_url ) ?>">
