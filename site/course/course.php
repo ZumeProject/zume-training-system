@@ -110,6 +110,7 @@ class Zume_Training_Course extends Zume_Magic_Page
                         <td><?php echo esc_html__( 'Start Time', 'zume' ) ?></td>
                         <td><?php echo esc_html__( 'TimeZone', 'zume' ) ?></td>
                         <td><?php echo esc_html__( 'Language', 'zume' ) ?></td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -119,9 +120,9 @@ class Zume_Training_Course extends Zume_Magic_Page
                         <?php
 
                             $status = isset( $post['status'] ) ? $post['status'] : false;
-                            if ( !$status || empty( $status ) || $status['key'] !== 'active' ) {
-                                continue;
-                            }
+                        if ( !$status || empty( $status ) || $status['key'] !== 'active' ) {
+                            continue;
+                        }
 
                             $page_title = $post['post_title'];
 
@@ -129,23 +130,23 @@ class Zume_Training_Course extends Zume_Magic_Page
                             $plan_length = 10;
                             $plan_prefix = 'set_a';
 
-                            if ( isset( $post['set_b_01'] ) ) {
-                                $plan_length = 20;
-                                $plan_prefix = 'set_b';
-                            }
+                        if ( isset( $post['set_b_01'] ) ) {
+                            $plan_length = 20;
+                            $plan_prefix = 'set_b';
+                        }
 
                             $now = time();
 
-                            for ($i=1; $i < $plan_length + 1; $i++) {
-                                $session_index = $i < 10 ? "0$i" : "$i";
-                                $session_date = $post["${plan_prefix}_$session_index"];
-                                $latest_plan_date = $session_date['timestamp'];
-                                if ( $now < $session_date['timestamp'] ) {
-                                    break;
-                                }
+                        for ( $i =1; $i < $plan_length + 1; $i++ ) {
+                            $session_index = $i < 10 ? "0$i" : "$i";
+                            $session_date = $post["${plan_prefix}_$session_index"];
+                            $latest_plan_date = $session_date['timestamp'];
+                            if ( $now < $session_date['timestamp'] ) {
+                                break;
                             }
+                        }
 
-                            $formatted_date = date( 'M d', $latest_plan_date );
+                            $formatted_date = gmdate( 'M d', $latest_plan_date );
 
                             $time = isset( $post['time_of_day_note'] ) ? $post['time_of_day_note'] : '';
                             $timezone = isset( $post['timezone_note'] ) ? $post['timezone_note'] : '';
@@ -159,6 +160,7 @@ class Zume_Training_Course extends Zume_Magic_Page
                             <td><?php echo esc_html( $time ) ?></td>
                             <td><?php echo esc_html( $timezone ) ?></td>
                             <td><?php echo esc_html( $language ) ?></td>
+                            <td><?php echo esc_url( $join_url ) ?></td>
                         </tr>
 
                     <?php endforeach; ?>
