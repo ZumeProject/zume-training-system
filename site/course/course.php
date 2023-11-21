@@ -151,6 +151,7 @@ class Zume_Training_Course extends Zume_Magic_Page
                         $time = isset( $post['time_of_day_note'] ) ? $post['time_of_day_note'] : '';
                         $timezone = isset( $post['timezone_note'] ) ? $post['timezone_note'] : '';
                         $language = isset( $post['language_note'] ) ? $post['language_note'] : '';
+                        $join_key = isset( $post['join_key'] ) ? $post['join_key'] : '';
 
                         ?>
 
@@ -161,6 +162,11 @@ class Zume_Training_Course extends Zume_Magic_Page
                             <td><?php echo esc_html( $timezone ) ?></td>
                             <td><?php echo esc_html( $language ) ?></td>
                             <td><?php echo esc_url( $join_url ) ?></td>
+                            <td>
+                                <a href="<?php echo esc_url( zume_url( 'zume_app/plan_invite?code=' . $join_key ) ) ?>" class="btn">
+                                    <?php echo esc_html__( 'Join', 'zume' ) ?>
+                                </a>
+                            </td>
                         </tr>
 
                     <?php endforeach; ?>
