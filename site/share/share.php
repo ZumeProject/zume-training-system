@@ -106,22 +106,28 @@ class Zume_Training_Share extends Zume_Magic_Page
 
             <?php endif; ?>
 
-            <ol>
+            <ol class="stack-1">
                 <?php foreach ( $posts as $post ): ?>
 
                     <?php
 
                         $meta = get_post_meta( $post->ID );
                         $page_title = empty( $meta['zume_piece_h1'][0] ) ? get_the_title( $post->ID ) : $meta['zume_piece_h1'][0];
+                        $page_url = site_url( $current_language . '/' . $post->post_name );
 
                     ?>
 
-                    <li>
-                        <a href="<?php echo esc_url( site_url( $current_language . '/' . $post->post_name ) ) ?>">
+
+
+                    <li class="cluster">
+                        <a class="h4 brand" href="<?php echo esc_url( $page_url ) ?>">
 
                             <?php echo esc_html( $page_title ) ?>
 
                         </a>
+
+                        <?php share_links( $page_title, $page_url ) ?>
+
                     </li>
 
                 <?php endforeach; ?>
