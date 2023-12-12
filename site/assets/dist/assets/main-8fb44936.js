@@ -280,14 +280,14 @@ var be=Object.defineProperty;var _e=(i,e,t)=>e in i?be(i,e,{enumerable:!0,config
                             </div>
                         `)}
                 </div>
-                <div class="cluster | justify-flex-end">
+                <div class="cluster | mx-auto">
                     <button type="button" class="btn" ?disabled=${this.loading} @click=${this.handleSubmitLocation}>${this.t.done}</button>
                 </div>
             `:""}
             ${[l.updatePhone,l.updateName].includes(this.variant)?a`
-                <div class="cluster | justify-flex-end">
-                    <span class="loading-spinner ${this.loading?"active":""}"></span>
+                <div class="cluster | mx-auto">
                     <button type="submit" class="btn" ?disabled=${this.loading}>${this.t.done}</button>
+                    <span class="loading-spinner ${this.loading?"active":""}"></span>
                 </div>
             `:""}
         </form>
@@ -301,7 +301,7 @@ var be=Object.defineProperty;var _e=(i,e,t)=>e in i?be(i,e,{enumerable:!0,config
         <form class="inputs stack-2" @submit=${this._handleDone}>
             ${this.variant===l.contactPreferences?a`
                 <h2 class="f-1">${this.t.contact_preference_question}</h2>
-                <div class="stack">
+                <div class="stack center | w-50 align-items-start">
                     <div>
                         <input type="checkbox" name="contact-preference" id="email" value="email" @change=${this._handleChange}/>
                         <label for="email">${this.t.email}</label>
@@ -331,24 +331,24 @@ var be=Object.defineProperty;var _e=(i,e,t)=>e in i?be(i,e,{enumerable:!0,config
 
             ${this.variant===l.howCanWeServe?a`
                 <h2 class="f-1">${this.t.how_can_we_serve}</h2>
-                <div class="stack">
-                    <div>
+                <div class="stack center | w-50 align-items-start">
+                    <div class="d-flex align-items-center">
                         <input type="checkbox" name="contact-preference" id="coaching" value="coaching" @change=${this._handleChange}/>
                         <label for="coaching">${this.t.coaching}</label>
                     </div>
-                    <div>
+                    <div class="d-flex align-items-center">
                         <input type="checkbox" name="contact-preference" id="technical" value="technical" @change=${this._handleChange}/>
                         <label for="technical">${this.t.technical_assistance}</label>
                     </div>
-                    <div>
+                    <div class="d-flex align-items-center">
                         <input type="checkbox" name="contact-preference" id="implementation" value="implementation" @change=${this._handleChange}/>
                         <label for="implementation">${this.t.question_implementation}</label>
                     </div>
-                    <div>
+                    <div class="d-flex align-items-center">
                         <input type="checkbox" name="contact-preference" id="content" value="content" @change=${this._handleChange}/>
                         <label for="content">${this.t.question_content}</label>
                     </div>
-                    <div>
+                    <div class="d-flex align-items-center">
                         <input type="checkbox" name="contact-preference" id="group-started" value="group-started" @change=${this._handleChange}/>
                         <label for="group-started">${this.t.help_with_group}</label>
                     </div>
@@ -357,14 +357,14 @@ var be=Object.defineProperty;var _e=(i,e,t)=>e in i?be(i,e,{enumerable:!0,config
             ${this.variant===l.connectingToCoach?a`
 
                 <h1>${this.t.connecting_coach_title}</h1>
-                <div class="stack">
+                <div class="stack center | w-50 align-items-start">
                     ${this.loading===!0?a`<p>${this.t.please_wait} <span class="loading-spinner active"></span></p>`:a`<p>${this.doneText}</p>`}
                 </div>
             `:""}
             ${this.variant!==l.connectingToCoach?a`
-                    <div class="cluster">
-                        <button type="submit" class="btn" ?disabled=${this.loading}>${this.t.done}</button>
+                    <div class="cluster | mx-auto">
                         <span class="loading-spinner ${this.loading?"active":""}"></span>
+                        <button type="submit" class="btn" ?disabled=${this.loading}>${this.t.done}</button>
                     </div>
                 `:""}
             <div class="warning banner" data-state=${this.errorMessage.length?"":"empty"}>${this.errorMessage}</div>
@@ -607,4 +607,4 @@ var be=Object.defineProperty;var _e=(i,e,t)=>e in i?be(i,e,{enumerable:!0,config
 
             </div>
         `}createRenderRoot(){return this}}customElements.define("share-links",pt);const de=document.querySelector(".nav-toggle"),gt=document.querySelector("#nav");de&&de.addEventListener("click",i=>{gt.classList.toggle("nav--visible")});const mt=({title:i,url:e,copyFeedback:t,shareFeedback:s})=>({title:i,url:e,webShareSupported:navigator.share,clipboardSupported:navigator.clipboard,shareFeedback:"",copyFeedback:"",noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported},share(){navigator.share({title:i,url:e,text:i}).then(()=>{this.shareFeedback=s,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(n=>console.error("Error sharing",n))},copyLink(){navigator.clipboard.writeText(e).then(()=>{this.copyFeedback=t,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(n=>console.error(n))}});window.zumeInitShareLinks=()=>{ye({share:mt}).mount()};
-//# sourceMappingURL=main-41ef2918.js.map
+//# sourceMappingURL=main-8fb44936.js.map

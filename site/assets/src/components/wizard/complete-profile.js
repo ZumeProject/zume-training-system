@@ -128,14 +128,14 @@ export class CompleteProfile extends LitElement {
                         `
                     })}
                 </div>
-                <div class="cluster | justify-flex-end">
+                <div class="cluster | mx-auto">
                     <button type="button" class="btn" ?disabled=${this.loading} @click=${this.handleSubmitLocation}>${this.t.done}</button>
                 </div>
             ` : '' }
             ${ [ ZumeWizardSteps.updatePhone, ZumeWizardSteps.updateName ].includes(this.variant) ? html`
-                <div class="cluster | justify-flex-end">
-                    <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
+                <div class="cluster | mx-auto">
                     <button type="submit" class="btn" ?disabled=${this.loading}>${this.t.done}</button>
+                    <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
                 </div>
             ` : '' }
         </form>
