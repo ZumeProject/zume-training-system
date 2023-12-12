@@ -9,7 +9,7 @@ export class WizardStateManager {
     }
 
     init() {
-        const existingState = this.get()
+        const existingState = this.#get()
 
         if ( existingState && Date.now() - existingState.timestamp < this.MAX_LIFESPAN ) {
             return existingState
@@ -26,8 +26,12 @@ export class WizardStateManager {
         return localStorage.getItem(this.WIZARD_STATE) ? true : false
     }
 
-    get() {
+    #get() {
         return JSON.parse(localStorage.getItem(this.WIZARD_STATE))
+    }
+
+    get( key ) {
+        return this.wizardState.data[key]
     }
 
     add(key, value) {
@@ -38,6 +42,7 @@ export class WizardStateManager {
 
     clear() {
         this.wizardState = null
+
         localStorage.removeItem(this.WIZARD_STATE)
     }
 }

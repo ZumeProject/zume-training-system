@@ -90,10 +90,11 @@ export class GetCoach extends LitElement {
     }
 
     render() {
-        if ( !this.wizardStateManager ) {
-            this.wizardStateManager = new WizardStateManager(this.module)
+        if ( !this.stateManager ) {
+            this.stateManager = new WizardStateManager(this.module)
+
+            this.state = this.stateManager.get(this.variant) || {}
         }
-        console.log(this.wizardStateManager.get());
 
         return html`
         <form class="inputs stack-2" @submit=${this._handleDone}>
@@ -101,19 +102,19 @@ export class GetCoach extends LitElement {
                 <h2 class="f-1">${this.t.contact_preference_question}</h2>
                 <div class="stack center | w-50 align-items-start">
                     <div>
-                        <input type="checkbox" name="contact-preference" id="email" value="email" @change=${this._handleChange}/>
+                        <input type="checkbox" name="contact-preference" id="email" value="email" @change=${this._handleChange} ?checked=${!!this.state.email} />
                         <label for="email">${this.t.email}</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="contact-preference" id="text" value="text" @change=${this._handleChange}/>
+                        <input type="checkbox" name="contact-preference" id="text" value="text" @change=${this._handleChange} ?checked=${!!this.state.text} />
                         <label for="text">${this.t.text}</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="contact-preference" id="phone" value="phone" @change=${this._handleChange}/>
+                        <input type="checkbox" name="contact-preference" id="phone" value="phone" @change=${this._handleChange} ?checked=${!!this.state.phone} />
                         <label for="phone">${this.t.phone}</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="contact-preference" id="whatsapp" value="whatsapp" @change=${this._handleChange}/>
+                        <input type="checkbox" name="contact-preference" id="whatsapp" value="whatsapp" @change=${this._handleChange} ?checked=${!!this.state.whatsapp} />
                         <label for="whatsapp">${this.t.whatsapp}</label>
                     </div>
                 </div>
@@ -123,7 +124,7 @@ export class GetCoach extends LitElement {
                 <h2 class="f-1">${this.t.language_preference_question}</h2>
                 <div class="stack">
                     <label for="language">${this.t.language_preference}</label>
-                    <input type="text" name="language-preference" id="language" @change=${this._handleChange}/>
+                    <input type="text" name="language-preference" id="language" @change=${this._handleChange} value=${this.state.value} />
                 </div>
             ` : ''}
 
@@ -131,23 +132,23 @@ export class GetCoach extends LitElement {
                 <h2 class="f-1">${this.t.how_can_we_serve}</h2>
                 <div class="stack center | w-50 align-items-start">
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="contact-preference" id="coaching" value="coaching" @change=${this._handleChange}/>
+                        <input type="checkbox" name="contact-preference" id="coaching" value="coaching" @change=${this._handleChange} ?checked=${!!this.state.coaching} />
                         <label for="coaching">${this.t.coaching}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="contact-preference" id="technical" value="technical" @change=${this._handleChange}/>
+                        <input type="checkbox" name="contact-preference" id="technical" value="technical" @change=${this._handleChange} ?checked=${!!this.state.technical} />
                         <label for="technical">${this.t.technical_assistance}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="contact-preference" id="implementation" value="implementation" @change=${this._handleChange}/>
+                        <input type="checkbox" name="contact-preference" id="implementation" value="implementation" @change=${this._handleChange} ?checked=${!!this.state.implementation} />
                         <label for="implementation">${this.t.question_implementation}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="contact-preference" id="content" value="content" @change=${this._handleChange}/>
+                        <input type="checkbox" name="contact-preference" id="content" value="content" @change=${this._handleChange} ?checked=${!!this.state.content} />
                         <label for="content">${this.t.question_content}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="contact-preference" id="group-started" value="group-started" @change=${this._handleChange}/>
+                        <input type="checkbox" name="contact-preference" id="group-started" value="group-started" @change=${this._handleChange} ?checked=${!!this.state['group-started']} />
                         <label for="group-started">${this.t.help_with_group}</label>
                     </div>
                 </div>
@@ -186,8 +187,6 @@ export class GetCoach extends LitElement {
             return
         }
 
-        this.wizardStateManager.add(this.variant, this.state)
-
         this._sendDoneStepEvent()
     }
 
@@ -209,6 +208,8 @@ export class GetCoach extends LitElement {
         if ( event.target.type === 'text' ) {
             this.state.value = event.target.value
         }
+
+        this.stateManager.add(this.variant, this.state)
     }
 
     createRenderRoot() {
