@@ -209,7 +209,7 @@ export class Wizard extends LitElement {
             this._gotoStep(0, false)
         }
 
-        let currentModule = 's'
+        let currentModule = ''
         let beginningOfModule = 0
         this.steps.forEach(({slug, module}, i) => {
             if ( currentModule !== module ) {
@@ -218,11 +218,10 @@ export class Wizard extends LitElement {
             }
 
             if ( path === slug ) {
-                if (goToBeginningOfModule === true) {
-                    this._gotoStep(beginningOfModule, false)
+                if (goToBeginningOfModule === true && this.stateManager.isDataStale()) {
+                    this._gotoStep(beginningOfModule)
                     return
                 }
-
 
                 this._gotoStep(i, false)
             }

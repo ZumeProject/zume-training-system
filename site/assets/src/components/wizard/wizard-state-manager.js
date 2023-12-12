@@ -1,17 +1,20 @@
 export class WizardStateManager {
-    WIZARD_STATE = 'zume_wizard_state'
-    MAX_LIFESPAN = 1 * 60 * 1000
+    WIZARD_STATE_NAME = 'zume_wizard_state'
+    STALE_LIFESPAN = 10 * 60 * 1000
+    MAX_LIFESPAN = 60 * 60 * 1000
+
+    #wizardState;
 
     constructor(moduleName) {
         this.moduleName = moduleName
 
-        this.wizardState = this.init()
+        this.#wizardState = this.#init()
     }
 
-    init() {
+    #init() {
         const existingState = this.#get()
 
-        if ( existingState && Date.now() - existingState.timestamp < this.MAX_LIFESPAN ) {
+        if ( existingState && !this.#isOlderThan(existingState, this.MAX_LIFESPAN) ) {
             return existingState
         }
 
@@ -22,27 +25,41 @@ export class WizardStateManager {
         })
     }
 
-    exists() {
-        return localStorage.getItem(this.WIZARD_STATE) ? true : false
+    #get() {
+        return JSON.parse(localStorage.getItem(this.WIZARD_STATE_NAME))
     }
 
-    #get() {
-        return JSON.parse(localStorage.getItem(this.WIZARD_STATE))
+    #refreshTimestamp() {
+        this.#wizardState.timestamp = Date.now()
+    }
+
+    #isOlderThan(state, milliseconds) {
+        return Date.now() - state.timestamp > milliseconds
+    }
+
+    empty() {
+        return Object.keys(this.#wizardState.data).length === 0
+    }
+
+    isDataStale() {
+        return this.#isOlderThan(this.#wizardState, this.STALE_LIFESPAN)
     }
 
     get( key ) {
-        return this.wizardState.data[key]
+        return this.#wizardState.data[key]
     }
 
     add(key, value) {
-        this.wizardState.data[key] = value
+        this.#wizardState.data[key] = value
 
-        localStorage.setItem(this.WIZARD_STATE, JSON.stringify(this.wizardState))
+        this.#refreshTimestamp()
+
+        localStorage.setItem(this.WIZARD_STATE_NAME, JSON.stringify(this.#wizardState))
     }
 
     clear() {
-        this.wizardState = null
+        this.#wizardState = null
 
-        localStorage.removeItem(this.WIZARD_STATE)
+        localStorage.removeItem(this.WIZARD_STATE_NAME)
     }
 }
