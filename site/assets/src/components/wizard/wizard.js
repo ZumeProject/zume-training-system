@@ -66,7 +66,7 @@ export class Wizard extends LitElement {
                 <div class="center">${this.stepCounter()}</div>
             </header>
 
-            <article>
+            <article class="container-md center text-center">
                 ${this.currentStep()}
             </article>
 
@@ -262,53 +262,63 @@ export class Wizard extends LitElement {
                     {
                         slug: 'make-a-plan',
                         component: (step) => html`
-                            <h1>Make a plan</h1>
-                            <p>We would like to help you succeed with this training.</p>
-                            <p>Making a plan can help you with success.</p>
-                            <p>Answering the following questions will help us make you a plan.</p>
-                            <p>Or you can skip if you prefer</p>
-                            <button class="btn" @click=${step.doneHandler}>OK</button>
+                            <div class="stack">
+                                <h2 class="f-1">Make a plan</h2>
+                                <p>We would like to help you succeed with this training.</p>
+                                <p>Making a plan can help you with success.</p>
+                                <p>Answering the following questions will help us make you a plan.</p>
+                                <p>Or you can skip if you prefer</p>
+                                <button class="btn" @click=${step.doneHandler}>OK</button>
+                            </div>
                         `
                     },
                     {
                         slug: 'how-many-sessions',
                         component: (step) => html`
-                            <h1>Will you do 1 or 2 hour training sessions?</h1>
                             <div class="stack">
-                                <button class="btn" @click=${step.doneHandler}>1 hour (20 sessions)</button>
-                                <button class="btn" @click=${step.doneHandler}>2 hour (10 sessions)</button>
+                                <h2 class="f-1">Will you do 1 or 2 hour training sessions?</h2>
+                                <div class="stack">
+                                    <button class="btn" @click=${step.doneHandler}>1 hour (20 sessions)</button>
+                                    <button class="btn" @click=${step.doneHandler}>2 hour (10 sessions)</button>
+                                </div>
                             </div>
                         `
                     },
                     {
                         slug: 'what-time-of-day',
                         component: (step) => html`
-                            <h1>What time of day?</h1>
                             <div class="stack">
-                                <button class="btn" @click=${step.doneHandler}>Morning</button>
-                                <button class="btn" @click=${step.doneHandler}>Afternoon</button>
-                                <button class="btn" @click=${step.doneHandler}>Evening</button>
+                                <h2 class="f-1">What time of day?</h2>
+                                <div class="stack">
+                                    <button class="btn" @click=${step.doneHandler}>Morning</button>
+                                    <button class="btn" @click=${step.doneHandler}>Afternoon</button>
+                                    <button class="btn" @click=${step.doneHandler}>Evening</button>
+                                </div>
                             </div>
                         `
                     },
                     {
                         slug: 'what-time-interval',
                         component: (step) => html`
-                            <h1>How often will you meet?</h1>
                             <div class="stack">
-                                <button class="btn" @click=${step.doneHandler}>Every day</button>
-                                <button class="btn" @click=${step.doneHandler}>Once a week</button>
-                                <button class="btn" @click=${step.doneHandler}>Twice a month</button>
-                                <button class="btn" @click=${step.doneHandler}>Once a month</button>
+                                <h2 class="f-1">How often will you meet?</h2>
+                                <div class="stack">
+                                    <button class="btn" @click=${step.doneHandler}>Every day</button>
+                                    <button class="btn" @click=${step.doneHandler}>Once a week</button>
+                                    <button class="btn" @click=${step.doneHandler}>Twice a month</button>
+                                    <button class="btn" @click=${step.doneHandler}>Once a month</button>
+                                </div>
                             </div>
                         `
                     },
                     {
                         slug: 'when-will-you-start',
                         component: (step) => html`
-                            <h1>When do you plan to start?</h1>
-                            <input type="date">
-                            <button class="btn" @click=${step.doneHandler}>Done</button>
+                            <div class="stack">
+                                <h2 class="f-1">When do you plan to start?</h2>
+                                <input type="date">
+                                <button class="btn" @click=${step.doneHandler}>Done</button>
+                            </div>
                         `
                     },
                 ],

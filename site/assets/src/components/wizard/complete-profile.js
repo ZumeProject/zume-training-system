@@ -68,8 +68,6 @@ export class CompleteProfile extends LitElement {
     }
 
     render() {
-        //                         pattern="+?([0-9]{1,3})?[0-9\(\)\s\-]*"
-        //
         return html`
         <form class="inputs stack" @submit=${this._handleDone}>
             ${ this.variant === ZumeWizardSteps.updateName ? html`
@@ -130,15 +128,14 @@ export class CompleteProfile extends LitElement {
                         `
                     })}
                 </div>
-                <div class="cluster">
+                <div class="cluster | justify-flex-end">
                     <button type="button" class="btn" ?disabled=${this.loading} @click=${this.handleSubmitLocation}>${this.t.done}</button>
-                    <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
                 </div>
             ` : '' }
             ${ [ ZumeWizardSteps.updatePhone, ZumeWizardSteps.updateName ].includes(this.variant) ? html`
-                <div class="cluster">
-                    <button type="submit" class="btn" ?disabled=${this.loading}>${this.t.done}</button>
+                <div class="cluster | justify-flex-end">
                     <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
+                    <button type="submit" class="btn" ?disabled=${this.loading}>${this.t.done}</button>
                 </div>
             ` : '' }
         </form>
