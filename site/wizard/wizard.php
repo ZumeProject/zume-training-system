@@ -155,7 +155,11 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                         'success' => __( 'Successfully checked in', 'zume' ),
                         'error' => __( 'Something went wrong while checking in', 'zume' ),
                     ],
-                    'share' => Zume_Training_Share::translations(),
+                    'share' => array_merge( [
+                        'title' => __( 'Invite your friends to join your training', 'zume' ),
+                        'share_with_friends' => __( 'Share the link below with your friends so that they can join your training.', 'zume' ),
+                        'join_my_plan' => __( 'Join my zume plan', 'zume' ),
+                    ], Zume_Training_Share::translations() ),
                 ],
             ]) ?>][0]
             const zumeProfile = [<?php echo json_encode([
