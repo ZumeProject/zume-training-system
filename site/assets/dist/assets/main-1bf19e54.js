@@ -27,17 +27,18 @@ var be=Object.defineProperty;var _e=(i,e,t)=>e in i?be(i,e,{enumerable:!0,config
             </div>`:a`
         <div class="container center">
 
-            <header class="ms-auto p-2">
-                ${this.skipButton()}
+            <header class="py-1 px--4 w-100 position-relative">
+                <div class="text-end" id="wizard-skip-button">${this.skipButton()}</div>
+                <div class="center">${this.stepCounter()}</div>
             </header>
 
-            <div>
+            <article>
                 ${this.currentStep()}
-            </div>
+            </article>
 
-            <div class="stack-1 | fixed bottom left right p-2">
+            <footer class="stack-1 | fixed bottom left right p-2">
                 ${this.footer()}
-            </div>
+            </footer>
 
         </div>
         `}currentStep(){const e=this.steps[this.stepIndex];return e.component(e,this.t)}skipButton(){const{skippable:e}=this.step,t=this.stepIndex===this.steps.length-1;return e&&!t?a`<button @click=${this._onSkip} class="brand">${this.t.skip}</button>`:""}finishButton(){return a`
@@ -46,14 +47,11 @@ var be=Object.defineProperty;var _e=(i,e,t)=>e in i?be(i,e,{enumerable:!0,config
                     <button @click=${this._onFinish} class="btn">${this.t.finish}</button>
                 </div>
             </div>
-        `}footer(){return this.stepIndex===this.steps.length-1?this.finishButton():a`
-        <div class="center">
+        `}stepCounter(){return a`
             <div class="cluster">
-                ${this.steps.map((t,s)=>{const n=s<=this.stepIndex;return a`<div class="step-circle ${n?"complete":""}"></div>`})}
+                ${this.steps.map((e,t)=>{const s=t<=this.stepIndex;return a`<div class="step-circle ${s?"complete":""}"></div>`})}
             </div>
-        </div>
-
-        `}_onBack(){if(this.stepIndex>0){const e=this.stepIndex-1;this._gotoStep(e)}}_onNext(){if(this.stepIndex+1<this.steps.length){const e=this.stepIndex+1;this._gotoStep(e)}else this._onFinish()}_onSkip(){const e=this.step.module;for(let t=this.stepIndex+1;t<this.steps.length;t++)if(this.steps[t].module!==e){this._gotoStep(t);return}this._onFinish()}_onFinish(){this.stateManager.clear(),this.finishUrl||(window.location.href="/");const e=new URL(this.finishUrl);this.type===$.checkin?e.searchParams.set("completed",this.type):e.searchParams.set("completed",this.type),window.location.href=e}_gotoStep(e,t=!0){if(this.steps.length!==0&&(this.stepIndex=this.clampSteps(e),this.step=this.steps[this.stepIndex],t)){const s=new URL(window.location.href),n=s.pathname.split("/"),r=n[n.length-1];let o="";Object.values($).includes(r)?o=n.join("/")+"/"+this.step.slug+s.search:o=n.slice(0,-1).join("/")+"/"+this.step.slug+s.search,window.history.pushState(null,null,o)}}clampSteps(e){let t=e;return e>this.steps.length-1&&(t=this.steps.length-1),e<0&&(t=0),t}_handleHistoryPopState(e=!1){const s=new URL(window.location.href).pathname.split("/"),n=s[s.length-1];Object.values($).includes(n)&&this._gotoStep(0,!1);let r="s",o=0;this.steps.forEach(({slug:d,module:c},h)=>{if(r!==c&&(r=c,o=h),n===d){if(e===!0){this._gotoStep(o,!1);return}this._gotoStep(h,!1)}})}makeModule(e=[],t=!1){const s={steps:[],skippable:t};return e.forEach(n=>{Object.keys(k).includes(n)&&s.steps.push(k[n])}),s}getModule(e,t=!1){const s={[m.completeProfile]:{steps:[k[l.updateName],k[l.updateLocation]],skippable:t},[m.makePlan]:{steps:[{slug:"make-a-plan",component:r=>a`
+        `}footer(){return this.stepIndex===this.steps.length-1?this.finishButton():""}_onBack(){if(this.stepIndex>0){const e=this.stepIndex-1;this._gotoStep(e)}}_onNext(){if(this.stepIndex+1<this.steps.length){const e=this.stepIndex+1;this._gotoStep(e)}else this._onFinish()}_onSkip(){const e=this.step.module;for(let t=this.stepIndex+1;t<this.steps.length;t++)if(this.steps[t].module!==e){this._gotoStep(t);return}this._onFinish()}_onFinish(){this.stateManager.clear(),this.finishUrl||(window.location.href="/");const e=new URL(this.finishUrl);this.type===$.checkin?e.searchParams.set("completed",this.type):e.searchParams.set("completed",this.type),window.location.href=e}_gotoStep(e,t=!0){if(this.steps.length!==0&&(this.stepIndex=this.clampSteps(e),this.step=this.steps[this.stepIndex],t)){const s=new URL(window.location.href),n=s.pathname.split("/"),r=n[n.length-1];let o="";Object.values($).includes(r)?o=n.join("/")+"/"+this.step.slug+s.search:o=n.slice(0,-1).join("/")+"/"+this.step.slug+s.search,window.history.pushState(null,null,o)}}clampSteps(e){let t=e;return e>this.steps.length-1&&(t=this.steps.length-1),e<0&&(t=0),t}_handleHistoryPopState(e=!1){const s=new URL(window.location.href).pathname.split("/"),n=s[s.length-1];Object.values($).includes(n)&&this._gotoStep(0,!1);let r="s",o=0;this.steps.forEach(({slug:d,module:c},h)=>{if(r!==c&&(r=c,o=h),n===d){if(e===!0){this._gotoStep(o,!1);return}this._gotoStep(h,!1)}})}makeModule(e=[],t=!1){const s={steps:[],skippable:t};return e.forEach(n=>{Object.keys(k).includes(n)&&s.steps.push(k[n])}),s}getModule(e,t=!1){const s={[m.completeProfile]:{steps:[k[l.updateName],k[l.updateLocation]],skippable:t},[m.makePlan]:{steps:[{slug:"make-a-plan",component:r=>a`
                             <h1>Make a plan</h1>
                             <p>We would like to help you succeed with this training.</p>
                             <p>Making a plan can help you with success.</p>
@@ -590,4 +588,4 @@ var be=Object.defineProperty;var _e=(i,e,t)=>e in i?be(i,e,{enumerable:!0,config
 
             </div>
         `}createRenderRoot(){return this}}customElements.define("share-links",pt);const de=document.querySelector(".nav-toggle"),gt=document.querySelector("#nav");de&&de.addEventListener("click",i=>{gt.classList.toggle("nav--visible")});const mt=({title:i,url:e,copyFeedback:t,shareFeedback:s})=>({title:i,url:e,webShareSupported:navigator.share,clipboardSupported:navigator.clipboard,shareFeedback:"",copyFeedback:"",noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported},share(){navigator.share({title:i,url:e,text:i}).then(()=>{this.shareFeedback=s,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(n=>console.error("Error sharing",n))},copyLink(){navigator.clipboard.writeText(e).then(()=>{this.copyFeedback=t,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(n=>console.error(n))}});window.zumeInitShareLinks=()=>{ye({share:mt}).mount()};
-//# sourceMappingURL=main-f25dceb9.js.map
+//# sourceMappingURL=main-1bf19e54.js.map

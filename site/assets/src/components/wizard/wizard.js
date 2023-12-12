@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit"
+import { LitElement, html, css } from "lit"
 import { ZumeWizardModules, ZumeWizardSteps, ZumeWizardStepsConnectedFields as ConnectedFields, ZumeWizards } from "./wizard-constants"
 import { WizardStateManager } from "./wizard-state-manager"
 
@@ -61,17 +61,18 @@ export class Wizard extends LitElement {
         return html`
         <div class="container center">
 
-            <header class="ms-auto p-2">
-                ${this.skipButton()}
+            <header class="py-1 px--4 w-100 position-relative">
+                <div class="text-end" id="wizard-skip-button">${this.skipButton()}</div>
+                <div class="center">${this.stepCounter()}</div>
             </header>
 
-            <div>
+            <article>
                 ${this.currentStep()}
-            </div>
+            </article>
 
-            <div class="stack-1 | fixed bottom left right p-2">
+            <footer class="stack-1 | fixed bottom left right p-2">
                 ${this.footer()}
-            </div>
+            </footer>
 
         </div>
         `
@@ -105,20 +106,21 @@ export class Wizard extends LitElement {
         `
     }
 
-    footer() {
-        const isLastStep = this.stepIndex === this.steps.length - 1
-
-        return isLastStep ? this.finishButton() : html`
-        <div class="center">
+    stepCounter() {
+        return html`
             <div class="cluster">
                 ${this.steps.map((step, i) => {
                     const completed = i <= this.stepIndex
                     return html`<div class="step-circle ${completed ? 'complete' : ''}"></div>`
                 })}
             </div>
-        </div>
-
         `
+    }
+
+    footer() {
+        const isLastStep = this.stepIndex === this.steps.length - 1
+
+        return isLastStep ? this.finishButton() : ''
     }
 
     _onBack() {
