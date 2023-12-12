@@ -36,7 +36,6 @@ export class Wizard extends LitElement {
         window.addEventListener('popstate', this._handleHistoryPopState)
 
         this.stateManager = new WizardStateManager()
-        this.stateManager.clear()
     }
 
     render() {

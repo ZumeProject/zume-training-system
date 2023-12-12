@@ -46,7 +46,6 @@ export class GetCoach extends LitElement {
     }
 
     firstUpdated() {
-        this.wizardStateManager = new WizardStateManager(this.module)
         this.doneText = this.t.connect_success
 
         if ( this.variant === ZumeWizardSteps.connectingToCoach ) {
@@ -91,6 +90,11 @@ export class GetCoach extends LitElement {
     }
 
     render() {
+        if ( !this.wizardStateManager ) {
+            this.wizardStateManager = new WizardStateManager(this.module)
+        }
+        console.log(this.wizardStateManager.get());
+
         return html`
         <form class="inputs stack-2" @submit=${this._handleDone}>
             ${ this.variant === ZumeWizardSteps.contactPreferences ? html`
