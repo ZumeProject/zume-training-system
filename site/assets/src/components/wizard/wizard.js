@@ -66,7 +66,7 @@ export class Wizard extends LitElement {
                 <div class="center">${this.stepCounter()}</div>
             </header>
 
-            <article class="container-md center text-center">
+            <article class="container-xsm center text-center">
                 ${this.currentStep()}
             </article>
 
@@ -81,7 +81,7 @@ export class Wizard extends LitElement {
     currentStep() {
         const currentStep = this.steps[this.stepIndex]
 
-        return currentStep.component(currentStep, this.t)
+        return currentStep.component(currentStep, this.t, 'w-100')
     }
 
     skipButton() {
@@ -261,9 +261,9 @@ export class Wizard extends LitElement {
                 steps: [
                     {
                         slug: 'make-a-plan',
-                        component: (step) => html`
-                            <div class="stack">
-                                <h2 class="f-1">Make a plan</h2>
+                        component: (step, t, classes) => html`
+                            <div class=${`stack ${classes}`}>
+                                <h2>Make a plan</h2>
                                 <p>We would like to help you succeed with this training.</p>
                                 <p>Making a plan can help you with success.</p>
                                 <p>Answering the following questions will help us make you a plan.</p>
@@ -274,9 +274,9 @@ export class Wizard extends LitElement {
                     },
                     {
                         slug: 'how-many-sessions',
-                        component: (step) => html`
-                            <div class="stack">
-                                <h2 class="f-1">Will you do 1 or 2 hour training sessions?</h2>
+                        component: (step, t, classes) => html`
+                            <div class=${`stack ${classes}`}>
+                                <h2>Will you do 1 or 2 hour training sessions?</h2>
                                 <div class="stack">
                                     <button class="btn" @click=${step.doneHandler}>1 hour (20 sessions)</button>
                                     <button class="btn" @click=${step.doneHandler}>2 hour (10 sessions)</button>
@@ -286,9 +286,9 @@ export class Wizard extends LitElement {
                     },
                     {
                         slug: 'what-time-of-day',
-                        component: (step) => html`
-                            <div class="stack">
-                                <h2 class="f-1">What time of day?</h2>
+                        component: (step, t, classes) => html`
+                            <div class=${`stack ${classes}`}>
+                                <h2>What time of day?</h2>
                                 <div class="stack">
                                     <button class="btn" @click=${step.doneHandler}>Morning</button>
                                     <button class="btn" @click=${step.doneHandler}>Afternoon</button>
@@ -299,9 +299,9 @@ export class Wizard extends LitElement {
                     },
                     {
                         slug: 'what-time-interval',
-                        component: (step) => html`
-                            <div class="stack">
-                                <h2 class="f-1">How often will you meet?</h2>
+                        component: (step, t, classes) => html`
+                            <div class=${`stack ${classes}`}>
+                                <h2>How often will you meet?</h2>
                                 <div class="stack">
                                     <button class="btn" @click=${step.doneHandler}>Every day</button>
                                     <button class="btn" @click=${step.doneHandler}>Once a week</button>
@@ -313,9 +313,9 @@ export class Wizard extends LitElement {
                     },
                     {
                         slug: 'when-will-you-start',
-                        component: (step) => html`
-                            <div class="stack">
-                                <h2 class="f-1">When do you plan to start?</h2>
+                        component: (step, t, classes) => html`
+                            <div class=${`stack ${classes}`}>
+                                <h2>When do you plan to start?</h2>
                                 <input type="date">
                                 <button class="btn" @click=${step.doneHandler}>Done</button>
                             </div>
@@ -472,8 +472,9 @@ window.customElements.define( 'zume-wizard', Wizard )
 const wizardSteps = {
     [ZumeWizardSteps.updateName]: {
         slug: ZumeWizardSteps.updateName,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <complete-profile
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
@@ -486,8 +487,9 @@ const wizardSteps = {
     },
     [ZumeWizardSteps.updateLocation]: {
         slug: ZumeWizardSteps.updateLocation,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <complete-profile
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
@@ -500,8 +502,9 @@ const wizardSteps = {
     },
     [ZumeWizardSteps.updatePhone]: {
         slug: ZumeWizardSteps.updatePhone,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <complete-profile
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
@@ -514,8 +517,9 @@ const wizardSteps = {
     },
     [ZumeWizardSteps.contactPreferences]: {
         slug: ZumeWizardSteps.contactPreferences,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <get-coach
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
@@ -527,8 +531,9 @@ const wizardSteps = {
     },
     [ZumeWizardSteps.languagePreferences]: {
         slug: ZumeWizardSteps.languagePreferences,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <get-coach
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
@@ -540,8 +545,9 @@ const wizardSteps = {
     },
     [ZumeWizardSteps.howCanWeServe]: {
         slug: ZumeWizardSteps.howCanWeServe,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <get-coach
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
@@ -553,8 +559,9 @@ const wizardSteps = {
     },
     [ZumeWizardSteps.connectingToCoach]: {
         slug: ZumeWizardSteps.connectingToCoach,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <get-coach
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
@@ -566,8 +573,9 @@ const wizardSteps = {
     },
     [ZumeWizardSteps.inviteFriends]: {
         slug: ZumeWizardSteps.inviteFriends,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <invite-friends
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
@@ -577,8 +585,9 @@ const wizardSteps = {
     },
     [ZumeWizardSteps.joinTraining]: {
         slug: ZumeWizardSteps.joinTraining,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <join-training
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
@@ -589,8 +598,9 @@ const wizardSteps = {
     },
     [ZumeWizardSteps.joinFriendsPlan]: {
         slug: ZumeWizardSteps.joinFriendsPlan,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <join-friends-plan
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
@@ -601,8 +611,9 @@ const wizardSteps = {
     },
     [ZumeWizardSteps.connectToFriend]: {
         slug: ZumeWizardSteps.connectToFriend,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <connect-friend
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
@@ -613,8 +624,9 @@ const wizardSteps = {
     },
     [ZumeWizardSteps.checkinSubmit]: {
         slug: ZumeWizardSteps.checkinSubmit,
-        component: (step, t) => html`
+        component: (step, t, classes) => html`
             <session-checkin
+                class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
