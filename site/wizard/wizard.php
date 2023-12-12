@@ -129,7 +129,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                         'missing_response' => __( 'Please give a response to this question', 'zume' ),
                         'connect_success' => __( 'Request Submitted, we will do our best to connect you with a coach near you.', 'zume' ),
                         'connect_fail' => __( 'Sorry. We were unable to submit your request. Please try again later.', 'zume' ),
-                        'already_coached' => __( 'You already have a coach.', 'zume' ),
+                        'already_coached' => __( 'You have already requested a coach', 'zume' ),
                         'error_connecting' => __( 'Error connecting with a coach', 'zume' ),
                         'connecting_coach_title' => __( 'Connecting you to a Coach', 'zume' ),
                         'please_wait' => __( 'Please wait while we connect you', 'zume' ),

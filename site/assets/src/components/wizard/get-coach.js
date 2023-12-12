@@ -56,7 +56,7 @@ export class GetCoach extends LitElement {
 
                 if ( data === false ) {
                     this.doneText = this.t.connect_fail
-                    this.errorMessage = this.t.error_connecting
+                    this.setErrorMessage(this.t.error_connecting)
                 }
 
                 if (
@@ -68,13 +68,11 @@ export class GetCoach extends LitElement {
 
                     if (errorKeys[0] === 'already_has_coach') {
                         this.doneText = this.t.already_coached
-                        this.errorMessage = this.t.error_connecting
+                        this.setErrorMessage(this.t.error_connecting)
                     }
                 }
 
-                if ( this.errorMessage !== '' ) {
-                    this.hideErorrMessage()
-                }
+                this._handleFinish()
             }).bind(this)
             makeRequest('POST', 'get_a_coach', {}, 'zume_system/v1/' )
                 .done(onCoachRequested)
@@ -84,7 +82,9 @@ export class GetCoach extends LitElement {
         }
     }
 
-    hideErorrMessage() {
+    setErrorMessage( message ) {
+        this.errorMessage = message
+
         setTimeout(() => {
             this.errorMessage = ''
         }, 3000)
@@ -177,17 +177,25 @@ export class GetCoach extends LitElement {
         }
 
         if ( Object.keys(this.state).length === 0 ) {
-            this.errorMessage = this.t.missing_response
-
-            this.hideErorrMessage()
+            this.setErrorMessage(this.t.missing_response)
 
             return
         }
 
         this.wizardStateManager.add(this.variant, this.state)
 
+        this._sendDoneStepEvent()
+    }
+
+    _sendDoneStepEvent() {
         const doneStepEvent = new CustomEvent( 'done-step', { bubbles: true } )
         this.dispatchEvent(doneStepEvent)
+    }
+
+    _handleFinish() {
+        setTimeout(() => {
+            this._sendDoneStepEvent()
+        }, 3000);
     }
 
     _handleChange(event) {
@@ -197,10 +205,6 @@ export class GetCoach extends LitElement {
         if ( event.target.type === 'text' ) {
             this.state.value = event.target.value
         }
-    }
-
-    clearErrorMessage() {
-        this.errorMessage = ''
     }
 
     createRenderRoot() {
