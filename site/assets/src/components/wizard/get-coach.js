@@ -43,6 +43,15 @@ export class GetCoach extends LitElement {
         this.errorMessage = ''
         this.doneText = ''
         this.loading = false
+        this.contactPreferences = [
+            'email',
+            'text',
+            'phone',
+            'whatsapp',
+            'signal',
+            'telegram',
+            'messenger',
+        ]
     }
 
     firstUpdated() {
@@ -101,22 +110,12 @@ export class GetCoach extends LitElement {
             ${ this.variant === ZumeWizardSteps.contactPreferences ? html`
                 <h2 class="f-1">${this.t.contact_preference_question}</h2>
                 <div class="stack center | w-50 align-items-start">
-                    <div>
-                        <input type="checkbox" name="contact-preference" id="email" value="email" @change=${this._handleChange} ?checked=${!!this.state.email} />
-                        <label for="email">${this.t.email}</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="contact-preference" id="text" value="text" @change=${this._handleChange} ?checked=${!!this.state.text} />
-                        <label for="text">${this.t.text}</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="contact-preference" id="phone" value="phone" @change=${this._handleChange} ?checked=${!!this.state.phone} />
-                        <label for="phone">${this.t.phone}</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="contact-preference" id="whatsapp" value="whatsapp" @change=${this._handleChange} ?checked=${!!this.state.whatsapp} />
-                        <label for="whatsapp">${this.t.whatsapp}</label>
-                    </div>
+                    ${this.contactPreferences.map((preference) => html`
+                        <div>
+                            <input type="checkbox" name="contact-preference" id=${preference} value=${preference} @change=${this._handleChange} ?checked=${!!this.state[preference]} />
+                            <label for="email">${this.t[preference]}</label>
+                        </div>
+                    `)}
                 </div>
             ` : ''}
 
@@ -132,23 +131,23 @@ export class GetCoach extends LitElement {
                 <h2 class="f-1">${this.t.how_can_we_serve}</h2>
                 <div class="stack center | w-50 align-items-start">
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="contact-preference" id="coaching" value="coaching" @change=${this._handleChange} ?checked=${!!this.state.coaching} />
+                        <input type="checkbox" name="how-can-we-serve" id="coaching" value="coaching" @change=${this._handleChange} ?checked=${!!this.state.coaching} />
                         <label for="coaching">${this.t.coaching}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="contact-preference" id="technical" value="technical" @change=${this._handleChange} ?checked=${!!this.state.technical} />
+                        <input type="checkbox" name="how-can-we-serve" id="technical" value="technical" @change=${this._handleChange} ?checked=${!!this.state.technical} />
                         <label for="technical">${this.t.technical_assistance}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="contact-preference" id="implementation" value="implementation" @change=${this._handleChange} ?checked=${!!this.state.implementation} />
+                        <input type="checkbox" name="how-can-we-serve" id="implementation" value="implementation" @change=${this._handleChange} ?checked=${!!this.state.implementation} />
                         <label for="implementation">${this.t.question_implementation}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="contact-preference" id="content" value="content" @change=${this._handleChange} ?checked=${!!this.state.content} />
+                        <input type="checkbox" name="how-can-we-serve" id="content" value="content" @change=${this._handleChange} ?checked=${!!this.state.content} />
                         <label for="content">${this.t.question_content}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="contact-preference" id="group-started" value="group-started" @change=${this._handleChange} ?checked=${!!this.state['group-started']} />
+                        <input type="checkbox" name="how-can-we-serve" id="group-started" value="group-started" @change=${this._handleChange} ?checked=${!!this.state['group-started']} />
                         <label for="group-started">${this.t.help_with_group}</label>
                     </div>
                 </div>
