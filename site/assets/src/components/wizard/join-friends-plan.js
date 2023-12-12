@@ -43,7 +43,7 @@ export class JoinFriendsPlan extends LitElement {
         const url = new URL( location.href )
         if ( !url.searchParams.has('code') ) {
             this.message = ""
-            this.setErrorMessage(this.t.link_broken)
+            this.setErrorMessage(this.t.broken_link)
             this._sendDoneStepEvent()
             this.loading = false
             return
@@ -64,7 +64,7 @@ export class JoinFriendsPlan extends LitElement {
                 console.log(error)
                 this.message = ''
                 if ( error.code === 'bad_plan_code' ) {
-                    this.setErrorMessage(this.t.link_broken)
+                    this.setErrorMessage(this.t.broken_link)
                 } else {
                     this.setErrorMessage(this.t.error)
                 }

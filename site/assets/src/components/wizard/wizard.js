@@ -156,7 +156,13 @@ export class Wizard extends LitElement {
 
         const url = new URL( this.finishUrl )
 
-        url.searchParams.set( 'completed', this.type )
+        if ( this.type === ZumeWizards.checkin ) {
+            /* TODO: after checkin send them to the HOST dashboard */
+            url.searchParams.set( 'completed', this.type )
+        } else {
+            url.searchParams.set( 'completed', this.type )
+        }
+
         window.location.href = url
     }
 
@@ -426,6 +432,11 @@ export class Wizard extends LitElement {
                     ZumeWizardSteps.joinFriendsPlan,
                 ])
             },
+            [ZumeWizards.checkin]: {
+                [ZumeWizardModules.checkin]: this.makeModule([
+                    ZumeWizardSteps.checkinSubmit,
+                ])
+            },
         }
 
         return wizards[this.type]
@@ -586,6 +597,18 @@ const wizardSteps = {
                 .t=${t.connect_friend}
                 @done-step=${step.doneHandler}
             ></connect-friend>
+        `
+    },
+    [ZumeWizardSteps.checkinSubmit]: {
+        slug: ZumeWizardSteps.checkinSubmit,
+        component: (step, t) => html`
+            <session-checkin
+                name=${step.slug}
+                module=${step.module}
+                ?skippable=${step.skippable}
+                .t=${t.checkin}
+                @done-step=${step.doneHandler}
+            ></session-checkin>
         `
     }
 }

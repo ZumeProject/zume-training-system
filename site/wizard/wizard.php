@@ -137,7 +137,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                     'join_training' => [
                         'title' => __( 'Joining Plan', 'zume' ),
                         'please_wait' => __( 'Please wait while we connect you', 'zume' ),
-                        'link_broken' => __( 'The training link is broken. Please try again.', 'zume' ),
+                        'broken_link' => __( 'The training link is broken. Please try again.', 'zume' ),
                         'success' => __( 'Successfully joined training %s', 'zume' ),
                         'error' => __( 'Something went wrong while joining the plan', 'zume' ),
                     ],
@@ -147,6 +147,13 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                         'broken_link' => __( 'The friend link is broken. Please try again.', 'zume' ),
                         'success' => __( 'Successfully connected with friend %s', 'zume' ),
                         'error' => __( 'Something went wrong while connecting with friend', 'zume' ),
+                    ],
+                    'checkin' => [
+                        'title' => __( 'Checking in', 'zume' ),
+                        'please_wait' => __( 'Please wait while we connect you', 'zume' ),
+                        'broken_link' => __( 'The checkin link is broken. Please try again.', 'zume' ),
+                        'success' => __( 'Successfully checked in', 'zume' ),
+                        'error' => __( 'Something went wrong while checking in', 'zume' ),
                     ],
                     'share' => Zume_Training_Share::translations(),
                 ],

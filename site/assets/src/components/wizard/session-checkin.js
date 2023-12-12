@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 
-export class JoinTraining extends LitElement {
+export class SessionCheckin extends LitElement {
 
     static get properties() {
         return {
@@ -52,10 +52,8 @@ export class JoinTraining extends LitElement {
         const code = url.searchParams.get('code')
         this.code = code
 
-        makeRequest( 'POST', 'connect/public-plan', { code: code }, 'zume_system/v1' )
+        makeRequest( 'POST', 'checkin', { code: code }, 'zume_system/v1' )
             .then( ( data ) => {
-                console.log(data)
-
                 this.message = this.t.success.replace('%s', data.name)
 
                 this._sendDoneStepEvent()
@@ -63,7 +61,7 @@ export class JoinTraining extends LitElement {
             .fail( ({ responseJSON: error }) => {
                 console.log(error)
                 this.message = ''
-                if ( error.code === 'bad_plan_code' ) {
+                if ( error.code === 'bad_checkin_code' ) {
                     this.setErrorMessage(this.t.broken_link)
                 } else {
                     this.setErrorMessage(this.t.error)
@@ -84,6 +82,7 @@ export class JoinTraining extends LitElement {
     }
 
     setErrorMessage( message ) {
+        console.log(message)
         this.errorMessage = message
 
         setTimeout(() => {
@@ -104,4 +103,4 @@ export class JoinTraining extends LitElement {
         return this
     }
 }
-customElements.define('join-training', JoinTraining);
+customElements.define('session-checkin', SessionCheckin);

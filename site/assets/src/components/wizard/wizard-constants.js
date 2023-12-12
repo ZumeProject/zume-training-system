@@ -4,6 +4,7 @@ export const ZumeWizards = {
     joinAPlan: 'join-a-training',
     connectWithFriend: 'connect-with-friend',
     joinFriendsPlan: 'join-friends-training',
+    checkin: 'checkin',
 }
 export const ZumeWizardModules = {
     completeProfile: 'completeProfile',
@@ -13,6 +14,7 @@ export const ZumeWizardModules = {
     joinTraining: 'joinTraining',
     connectFriend: 'connectFriend',
     joinFriendsTraining: 'joinFriendsTraining',
+    checkin: 'checkin',
 }
 export const ZumeWizardSteps = {
     updateName: 'update-your-name',
@@ -25,7 +27,8 @@ export const ZumeWizardSteps = {
     connectingToCoach: 'connecting-to-coach',
     joinTraining: 'join-training',
     connectToFriend: 'connect-friend',
-    joinFriendsPlan: 'join-friends-training'
+    joinFriendsPlan: 'join-friends-training',
+    checkinSubmit: 'checkin-submit',
 }
 export const ZumeWizardStepsConnectedFields = {
     [ZumeWizardSteps.updateName]: {
