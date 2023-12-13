@@ -300,19 +300,19 @@ var Re=Object.defineProperty;var Ie=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
         `}createRenderRoot(){return this}}window.customElements.define("invite-friends",rt);class ot extends u{static get properties(){return{name:{type:String},module:{type:String},skippable:{type:Boolean},t:{type:Object},variant:{type:String},state:{attribute:!1},errorMessage:{attribute:!1},doneText:{attribute:!1},loading:{attribute:!1}}}constructor(){super(),this.name="",this.module="",this.skippable=!1,this.variant="",this.t={},this.state={},this.errorMessage="",this.doneText="",this.loading=!1,this.contactPreferences=["email","text","phone","whatsapp","signal","telegram","messenger"]}firstUpdated(){if(this.doneText=this.t.connect_success,this.variant===l.connectingToCoach){this.loading=!0;const e=(t=>{this.loading=!1,t===!1&&(this.doneText=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting)),t.coach_request&&t.coach_request.errors&&Object.keys(t.coach_request.errors).length!==0&&Object.keys(t.coach_request.errors)[0]==="already_has_coach"&&(this.doneText=this.t.already_coached,this.setErrorMessage(this.t.error_connecting)),this._handleFinish()}).bind(this);makeRequest("POST","get_a_coach",{},"zume_system/v1/").done(e).fail(t=>{console.log(t)})}}setErrorMessage(e){this.errorMessage=e,setTimeout(()=>{this.errorMessage=""},3e3)}render(){return this.stateManager||(this.stateManager=new ke(this.module),this.state=this.stateManager.get(this.variant)||{}),a`
         <form class="inputs stack-2" @submit=${this._handleDone}>
             ${this.variant===l.contactPreferences?a`
-                <h2 class="f-1">${this.t.contact_preference_question}</h2>
-                <div class="stack center | w-50 align-items-start">
+                <h2>${this.t.contact_preference_question}</h2>
+                <div class="stack center container-sm | align-items-start text-start">
                     ${this.contactPreferences.map(e=>a`
                         <div>
                             <input type="checkbox" name="contact-preference" id=${e} value=${e} @change=${this._handleChange} ?checked=${!!this.state[e]} />
-                            <label for="email">${this.t[e]}</label>
+                            <label for=${e}>${this.t[e]}</label>
                         </div>
                     `)}
                 </div>
             `:""}
 
             ${this.variant===l.languagePreferences?a`
-                <h2 class="f-1">${this.t.language_preference_question}</h2>
+                <h2>${this.t.language_preference_question}</h2>
                 <div class="stack">
                     <label for="language">${this.t.language_preference}</label>
                     <input type="text" name="language-preference" id="language" @change=${this._handleChange} value=${this.state.value} />
@@ -320,8 +320,8 @@ var Re=Object.defineProperty;var Ie=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
             `:""}
 
             ${this.variant===l.howCanWeServe?a`
-                <h2 class="f-1">${this.t.how_can_we_serve}</h2>
-                <div class="stack center | w-50 align-items-start">
+                <h2>${this.t.how_can_we_serve}</h2>
+                <div class="stack center | container-sm align-items-start text-start">
                     <div class="d-flex align-items-center">
                         <input type="checkbox" name="how-can-we-serve" id="coaching" value="coaching" @change=${this._handleChange} ?checked=${!!this.state.coaching} />
                         <label for="coaching">${this.t.coaching}</label>
@@ -347,7 +347,7 @@ var Re=Object.defineProperty;var Ie=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
             ${this.variant===l.connectingToCoach?a`
 
                 <h1>${this.t.connecting_coach_title}</h1>
-                <div class="stack center | w-50 align-items-start">
+                <div class="stack center | container-sm align-items-start">
                     ${this.loading===!0?a`<p>${this.t.please_wait} <span class="loading-spinner active"></span></p>`:a`<p>${this.doneText}</p>`}
                 </div>
             `:""}
@@ -597,4 +597,4 @@ var Re=Object.defineProperty;var Ie=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
 
             </div>
         `}createRenderRoot(){return this}}customElements.define("share-links",At);const Se=document.querySelector(".nav-toggle"),Pt=document.querySelector("#nav");Se&&Se.addEventListener("click",i=>{Pt.classList.toggle("nav--visible")});const Ct=({title:i,url:e,copyFeedback:t,shareFeedback:s})=>({title:i,url:e,webShareSupported:navigator.share,clipboardSupported:navigator.clipboard,shareFeedback:"",copyFeedback:"",noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported},share(){navigator.share({title:i,url:e,text:i}).then(()=>{this.shareFeedback=s,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(n=>console.error("Error sharing",n))},copyLink(){navigator.clipboard.writeText(e).then(()=>{this.copyFeedback=t,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(n=>console.error(n))}});window.zumeInitShareLinks=()=>{Oe({share:Ct}).mount()};
-//# sourceMappingURL=main-b091a6fa.js.map
+//# sourceMappingURL=main-4e73e877.js.map

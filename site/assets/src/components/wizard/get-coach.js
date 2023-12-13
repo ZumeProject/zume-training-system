@@ -108,19 +108,19 @@ export class GetCoach extends LitElement {
         return html`
         <form class="inputs stack-2" @submit=${this._handleDone}>
             ${ this.variant === ZumeWizardSteps.contactPreferences ? html`
-                <h2 class="f-1">${this.t.contact_preference_question}</h2>
-                <div class="stack center | w-50 align-items-start">
+                <h2>${this.t.contact_preference_question}</h2>
+                <div class="stack center container-sm | align-items-start text-start">
                     ${this.contactPreferences.map((preference) => html`
                         <div>
                             <input type="checkbox" name="contact-preference" id=${preference} value=${preference} @change=${this._handleChange} ?checked=${!!this.state[preference]} />
-                            <label for="email">${this.t[preference]}</label>
+                            <label for=${preference}>${this.t[preference]}</label>
                         </div>
                     `)}
                 </div>
             ` : ''}
 
             ${ this.variant === ZumeWizardSteps.languagePreferences ? html`
-                <h2 class="f-1">${this.t.language_preference_question}</h2>
+                <h2>${this.t.language_preference_question}</h2>
                 <div class="stack">
                     <label for="language">${this.t.language_preference}</label>
                     <input type="text" name="language-preference" id="language" @change=${this._handleChange} value=${this.state.value} />
@@ -128,8 +128,8 @@ export class GetCoach extends LitElement {
             ` : ''}
 
             ${ this.variant === ZumeWizardSteps.howCanWeServe ? html`
-                <h2 class="f-1">${this.t.how_can_we_serve}</h2>
-                <div class="stack center | w-50 align-items-start">
+                <h2>${this.t.how_can_we_serve}</h2>
+                <div class="stack center | container-sm align-items-start text-start">
                     <div class="d-flex align-items-center">
                         <input type="checkbox" name="how-can-we-serve" id="coaching" value="coaching" @change=${this._handleChange} ?checked=${!!this.state.coaching} />
                         <label for="coaching">${this.t.coaching}</label>
@@ -155,7 +155,7 @@ export class GetCoach extends LitElement {
             ${ this.variant === ZumeWizardSteps.connectingToCoach ? html`
 
                 <h1>${this.t.connecting_coach_title}</h1>
-                <div class="stack center | w-50 align-items-start">
+                <div class="stack center | container-sm align-items-start">
                     ${ this.loading === true
                         ? html`<p>${this.t.please_wait} <span class="loading-spinner active"></span></p>`
                         : html`<p>${this.doneText}</p>`
