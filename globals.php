@@ -48,6 +48,7 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
         $phone = $contact_meta['user_phone'] ?? '';
         $timezone = $contact_meta['user_timezone'] ?? '';
         $user_friend_key = $contact_meta['user_friend_key'] ?? '';
+        $user_preferred_language = $contact_meta['user_preferred_language'] ?? '';
         $user_ui_language = $contact_meta['user_ui_language'] ?? '';
         $language = zume_get_user_language( $user_id );
         $location = zume_get_user_location( $user_id );
@@ -93,6 +94,7 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
                 'coaches' => $coaches,
                 'friend_key' => $user_friend_key,
                 'ui_language' => $user_ui_language,
+                'preferred_language' => $user_preferred_language,
             ];
             return $zume_user_profile;
         } else {
@@ -110,6 +112,7 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
                 'coaches' => $coaches,
                 'friend_key' => $user_friend_key,
                 'ui_language' => $user_ui_language,
+                'preferred_language' => $user_preferred_language,
             ];
         }
     }

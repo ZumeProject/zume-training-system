@@ -21,6 +21,7 @@ class Zume_Profile_Model {
         $phone = isset( $fields['phone'] ) ? $fields['phone'] : '';
         $email = isset( $fields['email'] ) ? $fields['email'] : '';
         $location_grid_meta = isset( $fields['location_grid_meta'] ) ? $fields['location_grid_meta'] : [];
+        $preferred_language = isset( $fields['preferred_language'] ) ? $fields['preferred_language'] : '';
         $ui_language = isset( $fields['ui_language'] ) ? $fields['ui_language'] : '';
 
         $user_updates = [];
@@ -50,6 +51,10 @@ class Zume_Profile_Model {
 
         if ( !empty( $ui_language ) ) {
             $updates['user_ui_language'] = $ui_language;
+        }
+
+        if ( !empty( $preferred_language ) ) {
+            $updates['user_preferred_language'] = $preferred_language;
         }
 
         $contact_id = zume_get_user_contact_id( $user_id );

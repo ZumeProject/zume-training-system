@@ -255,6 +255,14 @@ class Zume_Training {
                     'only_for_types' => [ 'user' ],
                 ];
             }
+            if ( !isset( $fields['user_preferred_language'] ) ){
+                $fields['user_preferred_language'] = [
+                    'name' => __( 'User Preferred Language', 'zume' ),
+                    'type' => 'text',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
         }
         return $fields;
     }

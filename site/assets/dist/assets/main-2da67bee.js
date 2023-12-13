@@ -597,4 +597,4 @@ var Re=Object.defineProperty;var Ie=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
 
             </div>
         `}createRenderRoot(){return this}}customElements.define("share-links",At);const Se=document.querySelector(".nav-toggle"),Pt=document.querySelector("#nav");Se&&Se.addEventListener("click",i=>{Pt.classList.toggle("nav--visible")});const Ct=({title:i,url:e,copyFeedback:t,shareFeedback:s})=>({title:i,url:e,webShareSupported:navigator.share,clipboardSupported:navigator.clipboard,shareFeedback:"",copyFeedback:"",noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported},share(){navigator.share({title:i,url:e,text:i}).then(()=>{this.shareFeedback=s,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(n=>console.error("Error sharing",n))},copyLink(){navigator.clipboard.writeText(e).then(()=>{this.copyFeedback=t,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(n=>console.error(n))}});window.zumeInitShareLinks=()=>{Oe({share:Ct}).mount()};
-//# sourceMappingURL=main-4e73e877.js.map
+//# sourceMappingURL=main-2da67bee.js.map
