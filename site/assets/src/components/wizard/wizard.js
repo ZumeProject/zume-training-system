@@ -516,7 +516,7 @@ const wizardSteps = {
     [ZumeWizardSteps.contactPreferences]: {
         slug: ZumeWizardSteps.contactPreferences,
         component: (step, t, classes) => html`
-            <get-coach
+            <request-coach
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -524,13 +524,13 @@ const wizardSteps = {
                 .t="${t.get_a_coach}"
                 variant=${ZumeWizardSteps.contactPreferences}
                 @done-step=${step.doneHandler}
-            ></get-coach>
+            ></request-coach>
         `
     },
     [ZumeWizardSteps.languagePreferences]: {
         slug: ZumeWizardSteps.languagePreferences,
         component: (step, t, classes) => html`
-            <get-coach
+            <request-coach
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -538,13 +538,13 @@ const wizardSteps = {
                 .t="${t.get_a_coach}"
                 variant=${ZumeWizardSteps.languagePreferences}
                 @done-step=${step.doneHandler}
-            ></get-coach>
+            ></request-coach>
         `
     },
     [ZumeWizardSteps.howCanWeServe]: {
         slug: ZumeWizardSteps.howCanWeServe,
         component: (step, t, classes) => html`
-            <get-coach
+            <request-coach
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -552,13 +552,13 @@ const wizardSteps = {
                 .t="${t.get_a_coach}"
                 variant=${ZumeWizardSteps.howCanWeServe}
                 @done-step=${step.doneHandler}
-            ></get-coach>
+            ></request-coach>
         `
     },
     [ZumeWizardSteps.connectingToCoach]: {
         slug: ZumeWizardSteps.connectingToCoach,
         component: (step, t, classes) => html`
-            <get-coach
+            <request-coach
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -566,7 +566,7 @@ const wizardSteps = {
                 .t="${t.get_a_coach}"
                 variant=${ZumeWizardSteps.connectingToCoach}
                 @done-step=${step.doneHandler}
-            ></get-coach>
+            ></request-coach>
         `
     },
     [ZumeWizardSteps.inviteFriends]: {
@@ -597,14 +597,14 @@ const wizardSteps = {
     [ZumeWizardSteps.joinFriendsPlan]: {
         slug: ZumeWizardSteps.joinFriendsPlan,
         component: (step, t, classes) => html`
-            <join-friends-plan
+            <join-friends-training
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
                 ?skippable=${step.skippable}
                 .t=${t.join_training}
                 @done-step=${step.doneHandler}
-            ></join-friends-plan>
+            ></join-friends-training>
         `
     },
     [ZumeWizardSteps.connectToFriend]: {

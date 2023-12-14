@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 
-export class JoinFriendsPlan extends LitElement {
+export class JoinFriendsTraining extends LitElement {
 
     static get properties() {
         return {
@@ -104,4 +104,4 @@ export class JoinFriendsPlan extends LitElement {
         return this
     }
 }
-customElements.define('join-friends-plan', JoinFriendsPlan);
+customElements.define('join-friends-training', JoinFriendsTraining);

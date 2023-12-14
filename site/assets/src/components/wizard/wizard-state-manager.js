@@ -49,6 +49,10 @@ export class WizardStateManager {
         return this.#wizardState.data[key]
     }
 
+    getAll() {
+        return this.#wizardState.data
+    }
+
     add(key, value) {
         this.#wizardState.data[key] = value
 

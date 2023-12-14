@@ -44,8 +44,12 @@ class Zume_Get_A_Coach_Endpoints
             }
         }
 
+        if ( !isset( $params['data'] ) ) {
+            return new WP_Error( 'no_data', 'No data provided', array( 'status' => 400 ) );
+        }
+
         // create coaching request
-        $coaching_result = self::register_request_to_coaching( $params['user_id'] );
+        $coaching_result = self::register_request_to_coaching( $params['user_id'], $params['data'] );
 
         // log coaching request
         $log_result = Zume_System_Log_API::log( 'system', 'requested_a_coach', [ 'user_id' => $params['user_id'] ] );
@@ -56,8 +60,8 @@ class Zume_Get_A_Coach_Endpoints
         ];
     }
 
-    public static function register_request_to_coaching( $user_id ) {
-        return self::manage_user_coaching( $user_id );
+    public static function register_request_to_coaching( $user_id, $data ) {
+        return self::manage_user_coaching( $user_id, null, $data );
     }
 
     public static function connect_user_to_coach( $user_id, $coach_id ) {
@@ -73,7 +77,7 @@ class Zume_Get_A_Coach_Endpoints
      * @param int $user_id
      * @param int $coach_id
      */
-    private static function manage_user_coaching( $user_id, $coach_id = null )
+    private static function manage_user_coaching( $user_id, $coach_id = null, $data = [] )
     {
         $profile = zume_get_user_profile( $user_id );
 
@@ -81,6 +85,17 @@ class Zume_Get_A_Coach_Endpoints
 
         if ( $coaching_contact_id && $coach_id === null ) {
             return new WP_Error( 'already_has_coach', 'User has already requested a coach', array( 'status' => 400 ) );
+        }
+
+        $preferred_language = empty( $data ) ? $profile['preferred_language'] : $data['preferred-language']['value'];
+
+        $preferred_language = empty( $preferred_language ) ? 'en' : $preferred_language;
+
+        if ( !empty( $data ) ) {
+            $fields = [
+                'preferred_language' => $preferred_language,
+            ];
+            $result = Zume_Profile_Model::update( $fields );
         }
 
         $fields = [
@@ -91,7 +106,7 @@ class Zume_Get_A_Coach_Endpoints
                     [ 'value' => 'zume_training' ],
                 ],
             ],
-            'language_preference' => $profile['language']['code'],
+            'language_preference' => $preferred_language,
             'trainee_user_id' => $profile['user_id'],
             'trainee_contact_id' => $profile['contact_id'],
         ];

@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { ZumeWizardSteps } from './wizard-constants';
 import { WizardStateManager } from './wizard-state-manager';
 
-export class GetCoach extends LitElement {
+export class RequestCoach extends LitElement {
     static get properties() {
         return {
             /**
@@ -57,6 +57,8 @@ export class GetCoach extends LitElement {
     firstUpdated() {
         this.doneText = this.t.connect_success
 
+        const data = this.stateManager.getAll()
+
         if ( this.variant === ZumeWizardSteps.connectingToCoach ) {
             this.loading = true
             const onCoachRequested = (( data ) => {
@@ -82,7 +84,7 @@ export class GetCoach extends LitElement {
 
                 this._handleFinish()
             }).bind(this)
-            makeRequest('POST', 'get_a_coach', {}, 'zume_system/v1/' )
+            makeRequest('POST', 'get_a_coach', { data }, 'zume_system/v1/' )
                 .done(onCoachRequested)
                 .fail((error) => {
                     console.log(error)
@@ -103,6 +105,11 @@ export class GetCoach extends LitElement {
             this.stateManager = new WizardStateManager(this.module)
 
             this.state = this.stateManager.get(this.variant) || {}
+
+            if ( this.variant === ZumeWizardSteps.languagePreferences && !this.state.value ) {
+                this.state.value = 'en'
+                this.stateManager.add( this.variant, this.state )
+            }
         }
 
         return html`
@@ -122,8 +129,16 @@ export class GetCoach extends LitElement {
             ${ this.variant === ZumeWizardSteps.languagePreferences ? html`
                 <h2>${this.t.language_preference_question}</h2>
                 <div class="stack">
-                    <label for="language">${this.t.language_preference}</label>
-                    <input type="text" name="language-preference" id="language" @change=${this._handleChange} value=${this.state.value} />
+                    <label for="preferred-language">${this.t.language_preference}</label>
+                    <select name="preferred-language" id="preferred-language" @change=${this._handleChange} >
+
+                        ${ Object.values(jsObject.languages).map((language) => html`
+                            <option value=${language['code']} ?selected=${language['code'] === this.state.value} >
+                                ${language['nativeName']} - ${language['enDisplayName']}
+                            </option>
+                        `) }
+
+                    </select>
                 </div>
             ` : ''}
 
@@ -131,23 +146,23 @@ export class GetCoach extends LitElement {
                 <h2>${this.t.how_can_we_serve}</h2>
                 <div class="stack center | container-sm align-items-start text-start">
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="how-can-we-serve" id="coaching" value="coaching" @change=${this._handleChange} ?checked=${!!this.state.coaching} />
+                        <input type="checkbox" name="how-can-we-serve" id="coaching" value="coaching-request" @change=${this._handleChange} ?checked=${!!this.state.coaching} />
                         <label for="coaching">${this.t.coaching}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="how-can-we-serve" id="technical" value="technical" @change=${this._handleChange} ?checked=${!!this.state.technical} />
+                        <input type="checkbox" name="how-can-we-serve" id="technical" value="technical-assistance" @change=${this._handleChange} ?checked=${!!this.state.technical} />
                         <label for="technical">${this.t.technical_assistance}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="how-can-we-serve" id="implementation" value="implementation" @change=${this._handleChange} ?checked=${!!this.state.implementation} />
+                        <input type="checkbox" name="how-can-we-serve" id="implementation" value="question-about-implementation" @change=${this._handleChange} ?checked=${!!this.state.implementation} />
                         <label for="implementation">${this.t.question_implementation}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="how-can-we-serve" id="content" value="content" @change=${this._handleChange} ?checked=${!!this.state.content} />
+                        <input type="checkbox" name="how-can-we-serve" id="content" value="question-about-content" @change=${this._handleChange} ?checked=${!!this.state.content} />
                         <label for="content">${this.t.question_content}</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <input type="checkbox" name="how-can-we-serve" id="group-started" value="group-started" @change=${this._handleChange} ?checked=${!!this.state['group-started']} />
+                        <input type="checkbox" name="how-can-we-serve" id="group-started" value="help-with-group" @change=${this._handleChange} ?checked=${!!this.state['group-started']} />
                         <label for="group-started">${this.t.help_with_group}</label>
                     </div>
                 </div>
@@ -207,6 +222,11 @@ export class GetCoach extends LitElement {
         if ( event.target.type === 'text' ) {
             this.state.value = event.target.value
         }
+        if ( event.target.type === 'select-one' ) {
+            this.state.value = event.target.value
+        }
+
+        console.log(event, this.state);
 
         this.stateManager.add(this.variant, this.state)
     }
@@ -215,4 +235,4 @@ export class GetCoach extends LitElement {
         return this
     }
 }
-customElements.define('get-coach', GetCoach);
+customElements.define('request-coach', RequestCoach);

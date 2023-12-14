@@ -22,7 +22,7 @@ export const ZumeWizardSteps = {
     updatePhone: 'update-your-phone',
     inviteFriends: 'invite-friends',
     contactPreferences: 'contact-preferences',
-    languagePreferences: 'language-preferences',
+    languagePreferences: 'preferred-language',
     howCanWeServe: 'how-can-we-serve',
     connectingToCoach: 'connecting-to-coach',
     joinTraining: 'join-training',

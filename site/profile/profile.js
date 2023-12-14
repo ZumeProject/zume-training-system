@@ -48,12 +48,6 @@ function submitProfileForm(e) {
     .finally(() => {
         submitButton.removeAttribute('disabled')
         loadingSpinner.classList.remove('active')
-
-        /* if the language was changed, trigger a refresh */
-        if ( preferred_language !== old_preferred_language ) {
-            window.SHAREDFUNCTIONS.setCookie( zumeProfile.language_cookie, preferred_language, '/', 365 )
-            window.location.reload()
-        }
     })
 }
 

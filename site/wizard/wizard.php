@@ -77,7 +77,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
     }
 
     public function header_style(){
-        global $zume_user_profile;
+        global $zume_user_profile, $zume_languages_by_code;
         ?>
         <script>
             jQuery(document).ready(function(){
@@ -90,6 +90,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'root' => esc_url_raw( rest_url() ),
                 'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
                 'language_cookie' => ZUME_LANGUAGE_COOKIE,
+                'languages' => $zume_languages_by_code,
                 'translations' => [
                     'bad_wizard' => __( 'Bad Wizard', 'zume' ),
                     'found_bad_wizard' => __( 'You have fallen in with some very bad wizards!', 'zume' ),
