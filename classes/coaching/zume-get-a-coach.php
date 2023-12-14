@@ -92,10 +92,24 @@ class Zume_Get_A_Coach_Endpoints
         $preferred_language = empty( $preferred_language ) ? 'en' : $preferred_language;
 
         if ( !empty( $data ) ) {
-            $fields = [
-                'preferred_language' => $preferred_language,
-            ];
+            $fields['preferred_language'] = $preferred_language;
+
+            if ( isset( $data['contact-preferences'] ) ) {
+                $contact_preferences = [];
+
+                foreach ( $data['contact-preferences'] as $preference => $value ) {
+                    $contact_preferences[] = [ 'value' => $preference ];
+                }
+
+                $fields['contact_preference'] = [
+                    'values' => $contact_preferences,
+                    'force_values' => true,
+                ];
+            }
+
             $result = Zume_Profile_Model::update( $fields );
+
+
         }
 
         $fields = [
@@ -164,6 +178,37 @@ class Zume_Get_A_Coach_Endpoints
         }
 
         $body = json_decode( $result['body'], true );
+
+        if ( !empty( $data ) && isset( $data['how-can-we-serve'] ) ) {
+            $coaching_needs = [
+                'coaching-request' => '&nbsp;&nbsp;* Someone to coach them',
+                'technical-assistance' => '&nbsp;&nbsp;* Technical assistance',
+                'question-about-implementation' => '&nbsp;&nbsp;* Help with implementing the training',
+                'question-about-content' => '&nbsp;&nbsp;* Help with the course content',
+                'help-with-group' => '&nbsp;&nbsp;* Help with what to do after starting a group',
+            ];
+
+
+            $comments = "This contact is requesting:\n";
+            foreach ( $data['how-can-we-serve'] as $key => $value ) {
+                $comment = $coaching_needs[$key];
+                $comments .= "$comment\n";
+            }
+
+            $fields = [
+                'comment' => $comments,
+            ];
+
+            $comment_args = $args;
+            $comment_args['body'] = json_encode( $fields );
+
+            $url = 'https://' . trailingslashit( $site['url'] ) . 'wp-json/dt-posts/v2/contacts/' . $body['ID'] . '/comments';
+
+            $result = wp_remote_post( $url, $comment_args );
+            if ( is_wp_error( $result ) ) {
+                dt_write_log( __METHOD__ . ' FAILED TO ADD COMMENTS TO COACHING CONTACT FOR ' . $profile['name'] );
+            }
+        }
 
         return $body;
     }

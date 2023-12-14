@@ -266,7 +266,7 @@ class Zume_Training {
             if ( !isset( $fields['user_contact_preference'] ) ) {
                 $fields['user_contact_preference'] = [
                     'name' => __( 'Preferred Contact Methods', 'zume' ),
-                    'type' => 'key_select',
+                    'type' => 'multi_select',
                     'tile' => 'profile_details',
                     'default' => [
                         'email' => [ 'label' => __( 'Email', 'zume' ) ],
