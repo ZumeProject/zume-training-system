@@ -98,6 +98,9 @@ class Zume_Get_A_Coach_Endpoints
                 $contact_preferences = [];
 
                 foreach ( $data['contact-preferences'] as $preference => $value ) {
+                    if ( $value === 'false' ) {
+                        continue;
+                    }
                     $contact_preferences[] = [ 'value' => $preference ];
                 }
 
@@ -191,6 +194,10 @@ class Zume_Get_A_Coach_Endpoints
 
             $comments = "This contact is requesting:\n";
             foreach ( $data['how-can-we-serve'] as $key => $value ) {
+                if ( $value === 'false' ) {
+                    continue;
+                }
+
                 $comment = $coaching_needs[$key];
                 $comments .= "$comment\n";
             }
