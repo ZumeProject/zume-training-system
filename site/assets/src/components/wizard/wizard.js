@@ -359,8 +359,6 @@ export class Wizard extends LitElement {
         })
     }
 
-
-
     updateWizard( wizardName ) {
         const wizard = this.getWizard(wizardName)
 
@@ -369,8 +367,6 @@ export class Wizard extends LitElement {
         }
 
         this.loadWizard( wizard )
-
-        console.log(this.steps)
     }
 
     isWizardTypeValid( type ) {
