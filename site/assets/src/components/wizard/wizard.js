@@ -21,6 +21,10 @@ export class Wizard extends LitElement {
              * The step that is currently being shown
              */
             step: { attribute: false },
+            /**
+             * The array of steps
+             */
+            steps: { attribute: false },
         }
     }
 
@@ -40,7 +44,8 @@ export class Wizard extends LitElement {
 
     render() {
         if (!this.isWizardLoaded()) {
-            this.loadWizard()
+            const wizard = this.getWizard(this.type)
+            this.loadWizard( wizard )
             this._handleHistoryPopState( true )
         }
 
@@ -229,6 +234,23 @@ export class Wizard extends LitElement {
 
     }
 
+    _handlePlanDecision(event) {
+        const decision = event.target.dataset.decision
+
+        switch (decision) {
+            case 'make':
+                this.updateWizard( ZumeWizards.makeAGroup )
+                break;
+            case 'join':
+                this.updateWizard( ZumeWizards.joinAPlan )
+                break;
+            case 'skip':
+            default:
+                this._onSkip()
+                break;
+        }
+    }
+
     makeModule( stepNames = [], skippable = false ) {
 
         const module = {
@@ -255,73 +277,29 @@ export class Wizard extends LitElement {
                 ],
                 skippable,
             },
-            [ZumeWizardModules.makePlan]: {
+            [ZumeWizardModules.planDecision]: {
                 steps: [
                     {
-                        slug: 'make-a-plan',
+                        slug: 'plan-decision',
                         component: (step, t, classes) => html`
                             <div class=${`stack ${classes}`}>
-                                <h2>Make a plan</h2>
-                                <p>We would like to help you succeed with this training.</p>
-                                <p>Making a plan can help you with success.</p>
-                                <p>Answering the following questions will help us make you a plan.</p>
-                                <p>Or you can skip if you prefer</p>
-                                <button class="btn" @click=${step.doneHandler}>OK</button>
-                            </div>
-                        `
-                    },
-                    {
-                        slug: 'how-many-sessions',
-                        component: (step, t, classes) => html`
-                            <div class=${`stack ${classes}`}>
-                                <h2>Will you do 1 or 2 hour training sessions?</h2>
-                                <div class="stack">
-                                    <button class="btn" @click=${step.doneHandler}>1 hour (20 sessions)</button>
-                                    <button class="btn" @click=${step.doneHandler}>2 hour (10 sessions)</button>
-                                </div>
-                            </div>
-                        `
-                    },
-                    {
-                        slug: 'what-time-of-day',
-                        component: (step, t, classes) => html`
-                            <div class=${`stack ${classes}`}>
-                                <h2>What time of day?</h2>
-                                <div class="stack">
-                                    <button class="btn" @click=${step.doneHandler}>Morning</button>
-                                    <button class="btn" @click=${step.doneHandler}>Afternoon</button>
-                                    <button class="btn" @click=${step.doneHandler}>Evening</button>
-                                </div>
-                            </div>
-                        `
-                    },
-                    {
-                        slug: 'what-time-interval',
-                        component: (step, t, classes) => html`
-                            <div class=${`stack ${classes}`}>
-                                <h2>How often will you meet?</h2>
-                                <div class="stack">
-                                    <button class="btn" @click=${step.doneHandler}>Every day</button>
-                                    <button class="btn" @click=${step.doneHandler}>Once a week</button>
-                                    <button class="btn" @click=${step.doneHandler}>Twice a month</button>
-                                    <button class="btn" @click=${step.doneHandler}>Once a month</button>
-                                </div>
-                            </div>
-                        `
-                    },
-                    {
-                        slug: 'when-will-you-start',
-                        component: (step, t, classes) => html`
-                            <div class=${`stack ${classes}`}>
-                                <h2>When do you plan to start?</h2>
-                                <input type="date">
-                                <button class="btn" @click=${step.doneHandler}>Done</button>
+                                <h2>Join or Make a plan</h2>
+                                <button class="btn" data-decision="make" @click=${this._handlePlanDecision}>Make a Plan</button>
+                                <button class="btn" data-decision="join" @click=${this._handlePlanDecision}>Join a Plan</button>
+                                <button class="btn outline" data-decision="skip" @click=${this._handlePlanDecision}>Skip for now</button>
                             </div>
                         `
                     },
                 ],
                 skippable,
             },
+            [ZumeWizardModules.makePlan]: this.makeModule([
+                ZumeWizardSteps.howManySessions,
+                ZumeWizardSteps.whatTimeOfDay,
+                ZumeWizardSteps.howOften,
+                ZumeWizardSteps.startDate,
+                ZumeWizardSteps.inviteFriends,
+            ], skippable),
             [ZumeWizardModules.inviteFriends]: {
                 steps: [ wizardSteps[ZumeWizardSteps.inviteFriends] ],
                 skippable,
@@ -344,10 +322,14 @@ export class Wizard extends LitElement {
         return Object.keys(this.modules).length !== 0
     }
 
-    loadWizard() {
-        const wizard = this.getWizard()
+    loadWizard( wizard, append = false  ) {
+
         this.modules = wizard
-        this.steps = []
+
+        if ( append === false ) {
+            this.steps = []
+        }
+
         Object.entries(this.modules).forEach(([moduleName, { steps, skippable }]) => {
             steps.forEach(({ component, slug }) => {
                 /* Skip if the corresponding field exists in the user */
@@ -377,31 +359,45 @@ export class Wizard extends LitElement {
         })
     }
 
-    isWizardTypeValid() {
+
+
+    updateWizard( wizardName ) {
+        const wizard = this.getWizard(wizardName)
+
+        if ( Object.keys(wizard).length === 0 ) {
+            return
+        }
+
+        this.loadWizard( wizard )
+
+        console.log(this.steps)
+    }
+
+    isWizardTypeValid( type ) {
         const wizardTypes = Object.values(ZumeWizards)
 
-        if (!wizardTypes.includes(this.type)) {
+        if (!wizardTypes.includes(type)) {
             return false
         }
 
         return true
     }
 
-    getWizard() {
-        if (!this.isWizardTypeValid()) {
+    getWizard( type ) {
+        if (!this.isWizardTypeValid(type)) {
             return {}
         }
 
         const wizards = {
-            [ZumeWizards.makeAPlan]: {
+            [ZumeWizards.gettingStarted]: {
                 [ZumeWizardModules.completeProfile]: this.makeModule([
                     ZumeWizardSteps.updateName,
                     ZumeWizardSteps.updateLocation,
                 ], true),
-                [ZumeWizardModules.makePlan]: this.getModule(ZumeWizardModules.makePlan, true),
-                [ZumeWizardModules.inviteFriends]: this.makeModule([
-                    ZumeWizardSteps.inviteFriends,
-                ], true),
+                [ZumeWizardModules.planDecision]: this.getModule(ZumeWizardModules.planDecision),
+                            },
+            [ZumeWizards.makeAGroup]: {
+                [ZumeWizardModules.makePlan]: this.getModule(ZumeWizardModules.makePlan),
             },
             [ZumeWizards.getACoach]: {
                 [ZumeWizardModules.completeProfile]: this.makeModule([
@@ -449,7 +445,7 @@ export class Wizard extends LitElement {
             },
         }
 
-        return wizards[this.type]
+        return wizards[type]
     }
 
     disconnectedCallback() {
@@ -632,5 +628,61 @@ const wizardSteps = {
                 @done-step=${step.doneHandler}
             ></session-checkin>
         `
-    }
+    },
+    [ZumeWizardSteps.howManySessions]: {
+        slug: ZumeWizardSteps.howManySessions,
+        component: (step, t, classes) => html`
+            <make-plan
+                class=${classes}
+                name=${step.slug}
+                module=${step.module}
+                variant=${ZumeWizardSteps.howManySessions}
+                ?skippable=${step.skippable}
+                .t=${t.checkin}
+                @done-step=${step.doneHandler}
+            ></make-plan>
+        `
+    },
+    [ZumeWizardSteps.whatTimeOfDay]: {
+        slug: ZumeWizardSteps.whatTimeOfDay,
+        component: (step, t, classes) => html`
+            <make-plan
+                class=${classes}
+                name=${step.slug}
+                module=${step.module}
+                variant=${ZumeWizardSteps.whatTimeOfDay}
+                ?skippable=${step.skippable}
+                .t=${t.checkin}
+                @done-step=${step.doneHandler}
+            ></make-plan>
+        `
+    },
+    [ZumeWizardSteps.howOften]: {
+        slug: ZumeWizardSteps.howOften,
+        component: (step, t, classes) => html`
+            <make-plan
+                class=${classes}
+                name=${step.slug}
+                module=${step.module}
+                variant=${ZumeWizardSteps.howOften}
+                ?skippable=${step.skippable}
+                .t=${t.checkin}
+                @done-step=${step.doneHandler}
+            ></make-plan>
+        `
+    },
+    [ZumeWizardSteps.startDate]: {
+        slug: ZumeWizardSteps.startDate,
+        component: (step, t, classes) => html`
+            <make-plan
+                class=${classes}
+                name=${step.slug}
+                module=${step.module}
+                variant=${ZumeWizardSteps.startDate}
+                ?skippable=${step.skippable}
+                .t=${t.checkin}
+                @done-step=${step.doneHandler}
+            ></make-plan>
+        `
+    },
 }
