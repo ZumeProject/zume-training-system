@@ -328,6 +328,7 @@ export class Wizard extends LitElement {
 
         if ( append === false ) {
             this.steps = []
+            this.stepIndex = 0
         }
 
         Object.entries(this.modules).forEach(([moduleName, { steps, skippable }]) => {
