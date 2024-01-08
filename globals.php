@@ -4805,8 +4805,12 @@ class Zume_Global_Endpoints {
 
         global $wpdb;
         $params = dt_recursive_sanitize_array( $request->get_params() );
-        $user_id = $params['user_id'];
-        if ( empty( $user_id ) ) {
+        if ( isset( $params['user_id'] ) ) {
+            $user_id = zume_validate_user_id_request( $params['user_id'] );
+            if ( is_wp_error( $user_id ) ) {
+                return $user_id;
+            }
+        } else {
             $user_id = get_current_user_id();
         }
         $contact_id = zume_get_user_contact_id( $user_id );
@@ -4816,11 +4820,11 @@ class Zume_Global_Endpoints {
             'post_id' => $contact_id,
             'meta_key' => 'tasks',
             'meta_value' => maybe_serialize([
-                'note' => $params['note'],
-                'question' => $params['question'],
-                'answer' => $params['answer'],
+                'note' => $params['note'] ?? '',
+                'question' => $params['question'] ?? '',
+                'answer' => $params['answer'] ?? '',
             ]),
-            'date' => $params['date'],
+            'date' => $params['date'] ?? date( 'Y-m-d H:i:s' ),
             'category' => $params['category'] ?? 'custom',
         ];
 
@@ -6085,8 +6089,7 @@ class Zume_System_Log_API
         if ( empty( $log ) ) {
             $log = zume_get_user_log( $user_id );
         }
-        $stage = zume_get_user_stage( $user_id, $log );
-        $current_stage = $stage['value'];
+        $current_stage = zume_get_user_stage( $user_id, $log, true );
 
         $highest_logged_stage = 0;
         foreach( $log as $row ) {
@@ -6096,11 +6099,13 @@ class Zume_System_Log_API
         }
 
         if ( $highest_logged_stage < $current_stage ) {
-            $report['type'] = 'stage';
-            $report['subtype'] = 'current_level';
-            $report['value'] = $current_stage;
-            $report['hash'] = hash('sha256', maybe_serialize( $report )  . time() );
-            $added_log[] = self::insert( $report, true, false );
+            for ( $i = $highest_logged_stage + 1; $i <= $current_stage; $i++ ) {
+                $report['type'] = 'stage';
+                $report['subtype'] = 'current_level';
+                $report['value'] = $i;
+                $report['hash'] = hash('sha256', maybe_serialize( $report )  . time() . $i );
+                $added_log[] = self::insert( $report, true, false );
+            }
         }
 
         return $added_log;
