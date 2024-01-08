@@ -66,11 +66,30 @@ export class PublicTrainings extends LitElement {
                             post_title,
                             time_of_day_note,
                             timezone_note,
+                            ...fields
                         }) => {
+                            const set = fields['set_a_01'] ? 'a' : 'b'
+                            const plan_length = set === 'a' ? 10 : 20
+                            const plan_prefix = `set_${set}_`
+
+                            const now = Date.now() / 1000
+
+                            let latestPlanDate = ''
+                            for ( let i = 1; i < plan_length + 1; i++ ) {
+                                const sessionIndex = i < 10 ? `0${i}` : `${i}`;
+                                const sessionDate = fields[plan_prefix + sessionIndex];
+                                latestPlanDate = sessionDate['timestamp'];
+                                if ( now < sessionDate['timestamp'] ) {
+                                    break;
+                                }
+                            }
+
+                            const formattedDate = moment(latestPlanDate * 1000).format('MMM Do \'YY')
+
                             return html`
                                 <tr>
                                     <td>${post_title}</td>
-                                    <td>${post_title}</td>
+                                    <td>${formattedDate}</td>
                                     <td>${time_of_day_note}</td>
                                     <td>${timezone_note}</td>
                                     <td>${language_note}</td>
