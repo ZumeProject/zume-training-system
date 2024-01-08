@@ -42,6 +42,10 @@ export class PublicTrainings extends LitElement {
     }
 
     render() {
+        if ( this.loading ) {
+            return html`<span class="loading-spinner active"></span>`
+        }
+
         return html`
             <table>
                 <thead>
@@ -55,7 +59,6 @@ export class PublicTrainings extends LitElement {
                     </tr>
                 </thead>
                 <tbody>
-                    <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
                     ${this.plans.length > 0 ? (
                         this.plans.map(({
                             join_key,
@@ -75,9 +78,7 @@ export class PublicTrainings extends LitElement {
                                 </tr>
                             `
                         })
-                    ): html`
-                        There are currently no public trainings available.
-                    `}
+                    ): this.t.no_plans}
                </tbody>
             </table>
         `;
