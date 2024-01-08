@@ -144,6 +144,12 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                         'broken_link' => __( 'The training link is broken. Please try again.', 'zume' ),
                         'success' => __( 'Successfully joined training %s', 'zume' ),
                         'error' => __( 'Something went wrong while joining the plan', 'zume' ),
+                        'name' => __( 'Name', 'zume' ),
+                        'next_date' => __( 'Next Session Date', 'zume' ),
+                        'start_time' => __( 'Start Time', 'zume' ),
+                        'timezone' => __( 'Timezone', 'zume' ),
+                        'language' => __( 'Language', 'zume' ),
+                        'join' => __( 'Join', 'zume' ),
                     ],
                     'connect_friend' => [
                         'title' => __( 'Connecting with friend', 'zume' ),

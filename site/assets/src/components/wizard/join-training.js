@@ -33,24 +33,25 @@ export class JoinTraining extends LitElement {
 
         this.code = ''
         this.errorMessage = ''
+        this.showTrainings = false
         this.loading = false
     }
 
     firstUpdated() {
         this.loading = true
-        this.message = this.t.please_wait
         /* We need the plan id */
         const url = new URL( location.href )
         if ( !url.searchParams.has('code') ) {
             this.message = ""
-            this.setErrorMessage(this.t.broken_link)
-            this._sendDoneStepEvent()
             this.loading = false
+            this.showTrainings = true
             return
         }
 
         const code = url.searchParams.get('code')
         this.code = code
+
+        console.log(code)
 
         makeRequest( 'POST', 'connect/public-plan', { code: code }, 'zume_system/v1' )
             .then( ( data ) => {
@@ -95,6 +96,9 @@ export class JoinTraining extends LitElement {
         return html`
             <h1>${this.t.title}</h1>
             <p>${this.message}</p>
+            ${this.showTrainings ? html`
+                <public-trainings .t=${this.t}></public-trainings>
+            `: ''}
             <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
             <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
         `;

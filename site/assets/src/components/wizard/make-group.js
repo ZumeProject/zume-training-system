@@ -110,4 +110,4 @@ export class MakePlan extends LitElement {
         return this
     }
 }
-customElements.define('make-plan', MakePlan);
+customElements.define('make-group', MakePlan);

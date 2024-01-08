@@ -283,9 +283,9 @@ export class Wizard extends LitElement {
                         slug: 'plan-decision',
                         component: (step, t, classes) => html`
                             <div class=${`stack ${classes}`}>
-                                <h2>Join or Make a plan</h2>
-                                <button class="btn" data-decision="make" @click=${this._handlePlanDecision}>Make a Plan</button>
-                                <button class="btn" data-decision="join" @click=${this._handlePlanDecision}>Join a Plan</button>
+                                <h2>Join or start a training</h2>
+                                <button class="btn" data-decision="make" @click=${this._handlePlanDecision}>Start a training</button>
+                                <button class="btn" data-decision="join" @click=${this._handlePlanDecision}>Join a public training</button>
                                 <button class="btn outline" data-decision="skip" @click=${this._handlePlanDecision}>Skip for now</button>
                             </div>
                         `
@@ -629,7 +629,7 @@ const wizardSteps = {
     [ZumeWizardSteps.howManySessions]: {
         slug: ZumeWizardSteps.howManySessions,
         component: (step, t, classes) => html`
-            <make-plan
+            <make-group
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -637,13 +637,13 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.checkin}
                 @done-step=${step.doneHandler}
-            ></make-plan>
+            ></make-group>
         `
     },
     [ZumeWizardSteps.whatTimeOfDay]: {
         slug: ZumeWizardSteps.whatTimeOfDay,
         component: (step, t, classes) => html`
-            <make-plan
+            <make-group
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -651,13 +651,13 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.checkin}
                 @done-step=${step.doneHandler}
-            ></make-plan>
+            ></make-group>
         `
     },
     [ZumeWizardSteps.howOften]: {
         slug: ZumeWizardSteps.howOften,
         component: (step, t, classes) => html`
-            <make-plan
+            <make-group
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -665,13 +665,13 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.checkin}
                 @done-step=${step.doneHandler}
-            ></make-plan>
+            ></make-group>
         `
     },
     [ZumeWizardSteps.startDate]: {
         slug: ZumeWizardSteps.startDate,
         component: (step, t, classes) => html`
-            <make-plan
+            <make-group
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -679,7 +679,7 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.checkin}
                 @done-step=${step.doneHandler}
-            ></make-plan>
+            ></make-group>
         `
     },
 }
