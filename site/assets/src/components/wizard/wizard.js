@@ -332,15 +332,18 @@ export class Wizard extends LitElement {
         }
 
         Object.entries(this.modules).forEach(([moduleName, { steps, skippable }]) => {
+
+            const profile = zumeProfile.profile
+
             steps.forEach(({ component, slug }) => {
                 /* Skip if the corresponding field exists in the user */
                 const connectedField = ConnectedFields[slug]
                 let connectedFieldValue = null
-                if ( connectedField && this.user) {
-                    if ( connectedField.testExistance(this.user[connectedField.field], this.user) ) {
+                if ( connectedField && profile) {
+                    if ( connectedField.testExistance(profile[connectedField.field], profile) ) {
                         return
                     }
-                    connectedFieldValue = this.user[connectedField.field]
+                    connectedFieldValue = profile[connectedField.field]
                 }
 
                 const step = {
