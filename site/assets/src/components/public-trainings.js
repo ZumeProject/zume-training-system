@@ -74,7 +74,7 @@ export class PublicTrainings extends LitElement {
                                     <td>${time_of_day_note}</td>
                                     <td>${timezone_note}</td>
                                     <td>${language_note}</td>
-                                    <td><button class="btn">${this.t.join}</button></td>
+                                    <td><button class="btn" data-code=${join_key} @click=${this._handleJoinTraining}>${this.t.join}</button></td>
                                 </tr>
                             `
                         })
@@ -82,6 +82,15 @@ export class PublicTrainings extends LitElement {
                </tbody>
             </table>
         `;
+    }
+
+    _handleJoinTraining(event) {
+        console.log(event)
+
+        const code = event.target.dataset.code
+
+        const chosenTrainingEvent = new CustomEvent( 'chosen-training', { bubbles: true, detail: { code } } )
+        this.dispatchEvent(chosenTrainingEvent)
     }
 
     createRenderRoot() {

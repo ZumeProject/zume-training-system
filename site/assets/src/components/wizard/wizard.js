@@ -395,7 +395,7 @@ export class Wizard extends LitElement {
                     ZumeWizardSteps.updateLocation,
                 ], true),
                 [ZumeWizardModules.planDecision]: this.getModule(ZumeWizardModules.planDecision),
-                            },
+            },
             [ZumeWizards.makeAGroup]: {
                 [ZumeWizardModules.makePlan]: this.getModule(ZumeWizardModules.makePlan),
             },
