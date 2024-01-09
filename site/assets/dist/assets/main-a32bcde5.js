@@ -28,7 +28,7 @@ var Re=Object.defineProperty;var Oe=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
         <div class="container center">
 
             <header class="py-1 px--4 w-100 position-relative">
-                <div class="text-end" id="wizard-skip-button">${this.skipButton()}</div>
+                <div class="text-end" id="wizard-skip-button">${this.headerButtons()}</div>
                 <div class="center">${this.stepCounter()}</div>
             </header>
 
@@ -41,7 +41,14 @@ var Re=Object.defineProperty;var Oe=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
             </footer>
 
         </div>
-        `}containerSize(){const e=this.steps[this.stepIndex];return(e.slug=r.joinTraining)?"container-md":"container-xsm"}currentStep(){const e=this.steps[this.stepIndex];return e.component(e,this.t,"w-100")}skipButton(){const{skippable:e}=this.step,t=this.stepIndex===this.steps.length-1;return e&&!t?a`<button @click=${this._onSkip} class="brand">${this.t.skip}</button>`:""}finishButton(){return a`
+        `}containerSize(){const e=this.steps[this.stepIndex];return(e.slug=r.joinTraining)?"container-md":"container-xsm"}currentStep(){const e=this.steps[this.stepIndex];return e.component(e,this.t,"w-100")}headerButtons(){const{skippable:e}=this.step,t=this.stepIndex===this.steps.length-1;return a`
+        <div class="cluster | inline s-3">
+            ${e&&!t?a`<button @click=${this._onSkip} class="brand">${this.t.skip}</button>`:""}
+            <button @click=${this._onQuit} class="d-flex">
+                <svg data-src="${jsObject.images_url+"/close-button-01.svg"}" class="h-2"></svg>
+            </button>
+        </div>
+        `}finishButton(){return a`
             <div class="text-center d-flex justify-content-between">
                 <div class="cluster ms-auto">
                     <button @click=${this._onFinish} class="btn">${this.t.finish}</button>
@@ -51,7 +58,7 @@ var Re=Object.defineProperty;var Oe=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
             <div class="cluster">
                 ${this.steps.map((e,t)=>{const s=t<=this.stepIndex;return a`<div class="step-circle ${s?"complete":""}"></div>`})}
             </div>
-        `}footer(){return this.stepIndex===this.steps.length-1?this.finishButton():""}_onBack(){if(this.stepIndex>0){const e=this.stepIndex-1;this._gotoStep(e)}}_onNext(){if(this.stepIndex+1<this.steps.length){const e=this.stepIndex+1;this._gotoStep(e)}else this._onFinish()}_onSkip(){const e=this.step.module;for(let t=this.stepIndex+1;t<this.steps.length;t++)if(this.steps[t].module!==e){this._gotoStep(t);return}this._onFinish()}_onFinish(){this.stateManager.clear(),this.finishUrl||(window.location.href="/");const e=new URL(this.finishUrl);this.type===b.checkin?e.searchParams.set("completed",this.type):e.searchParams.set("completed",this.type),window.location.href=e}_gotoStep(e,t=!0){if(this.steps.length!==0&&(this.stepIndex=this.clampSteps(e),this.step=this.steps[this.stepIndex],t)){const s=new URL(window.location.href),n=s.pathname.split("/"),l=n[n.length-1];let o="";Object.values(b).includes(l)?o=n.join("/")+"/"+this.step.slug+s.search:o=n.slice(0,-1).join("/")+"/"+this.step.slug+s.search,window.history.pushState(null,null,o)}}clampSteps(e){let t=e;return e>this.steps.length-1&&(t=this.steps.length-1),e<0&&(t=0),t}_handleHistoryPopState(e=!1){const s=new URL(window.location.href).pathname.split("/"),n=s[s.length-1];Object.values(b).includes(n)&&this._gotoStep(0,!1);let l="",o=0;this.steps.forEach(({slug:d,module:c},h)=>{if(l!==c&&(l=c,o=h),n===d){if(e===!0&&this.stateManager.isDataStale()){this._gotoStep(o);return}this._gotoStep(h,!1)}})}_handlePlanDecision(e){switch(e.target.dataset.decision){case"make":this.updateWizard(b.makeAGroup);break;case"join":this.updateWizard(b.joinAPlan);break;case"skip":default:this._onSkip();break}}makeModule(e=[],t=!1){const s={steps:[],skippable:t};return e.forEach(n=>{Object.keys(D).includes(n)&&s.steps.push(D[n])}),s}getModule(e,t=!1){const s={[m.completeProfile]:{steps:[D[r.updateName],D[r.updateLocation]],skippable:t},[m.planDecision]:{steps:[{slug:"plan-decision",component:(l,o,d)=>a`
+        `}footer(){return this.stepIndex===this.steps.length-1?this.finishButton():""}_onBack(){if(this.stepIndex>0){const e=this.stepIndex-1;this._gotoStep(e)}}_onNext(){if(this.stepIndex+1<this.steps.length){const e=this.stepIndex+1;this._gotoStep(e)}else this._onFinish()}_onSkip(){const e=this.step.module;for(let t=this.stepIndex+1;t<this.steps.length;t++)if(this.steps[t].module!==e){this._gotoStep(t);return}this._onFinish()}_onQuit(){this._onFinish(!0)}_onFinish(e=!1){this.stateManager.clear(),this.finishUrl||(window.location.href="/");const t=new URL(this.finishUrl);e||(this.type===b.checkin?t.searchParams.set("completed",this.type):t.searchParams.set("completed",this.type)),window.location.href=t}_gotoStep(e,t=!0){if(this.steps.length!==0&&(this.stepIndex=this.clampSteps(e),this.step=this.steps[this.stepIndex],t)){const s=new URL(window.location.href),n=s.pathname.split("/"),l=n[n.length-1];let o="";Object.values(b).includes(l)?o=n.join("/")+"/"+this.step.slug+s.search:o=n.slice(0,-1).join("/")+"/"+this.step.slug+s.search,window.history.pushState(null,null,o)}}clampSteps(e){let t=e;return e>this.steps.length-1&&(t=this.steps.length-1),e<0&&(t=0),t}_handleHistoryPopState(e=!1){const s=new URL(window.location.href).pathname.split("/"),n=s[s.length-1];Object.values(b).includes(n)&&this._gotoStep(0,!1);let l="",o=0;this.steps.forEach(({slug:d,module:c},h)=>{if(l!==c&&(l=c,o=h),n===d){if(e===!0&&this.stateManager.isDataStale()){this._gotoStep(o);return}this._gotoStep(h,!1)}})}_handlePlanDecision(e){switch(e.target.dataset.decision){case"make":this.updateWizard(b.makeAGroup);break;case"join":this.updateWizard(b.joinAPlan);break;case"skip":default:this._onSkip();break}}makeModule(e=[],t=!1){const s={steps:[],skippable:t};return e.forEach(n=>{Object.keys(D).includes(n)&&s.steps.push(D[n])}),s}getModule(e,t=!1){const s={[m.completeProfile]:{steps:[D[r.updateName],D[r.updateLocation]],skippable:t},[m.planDecision]:{steps:[{slug:"plan-decision",component:(l,o,d)=>a`
                             <div class=${`stack ${d}`}>
                                 <h2>Join or start a training</h2>
                                 <button class="btn" data-decision="make" @click=${this._handlePlanDecision}>Start a training</button>
@@ -668,4 +675,4 @@ var Re=Object.defineProperty;var Oe=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
                 <td><button class="btn" data-code=${e} @click=${this._handleJoinTraining}>${this.t.join}</button></td>
             </tr>
         `}_handleJoinTraining(e){console.log(e);const t=e.target.dataset.code,s=new CustomEvent("chosen-training",{bubbles:!0,detail:{code:t}});this.dispatchEvent(s)}createRenderRoot(){return this}}customElements.define("public-trainings",Dt);const Se=document.querySelector(".nav-toggle"),Tt=document.querySelector("#nav");Se&&Se.addEventListener("click",i=>{Tt.classList.toggle("nav--visible")});const Mt=({title:i,url:e,copyFeedback:t,shareFeedback:s})=>({title:i,url:e,webShareSupported:navigator.share,clipboardSupported:navigator.clipboard,shareFeedback:"",copyFeedback:"",noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported},share(){navigator.share({title:i,url:e,text:i}).then(()=>{this.shareFeedback=s,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(n=>console.error("Error sharing",n))},copyLink(){navigator.clipboard.writeText(e).then(()=>{this.copyFeedback=t,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(n=>console.error(n))}});window.zumeInitShareLinks=()=>{je({share:Mt}).mount()};
-//# sourceMappingURL=main-0b7be744.js.map
+//# sourceMappingURL=main-a32bcde5.js.map

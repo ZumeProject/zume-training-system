@@ -66,7 +66,7 @@ export class Wizard extends LitElement {
         <div class="container center">
 
             <header class="py-1 px--4 w-100 position-relative">
-                <div class="text-end" id="wizard-skip-button">${this.skipButton()}</div>
+                <div class="text-end" id="wizard-skip-button">${this.headerButtons()}</div>
                 <div class="center">${this.stepCounter()}</div>
             </header>
 
@@ -104,15 +104,21 @@ export class Wizard extends LitElement {
         return currentStep.component(currentStep, this.t, 'w-100')
     }
 
-    skipButton() {
+    headerButtons() {
         const { skippable } = this.step
         const isLastStep = this.stepIndex === this.steps.length - 1
 
-        if ( skippable && !isLastStep ) {
-            return html`<button @click=${this._onSkip} class="brand">${this.t.skip}</button>`
-        }
-
-        return ''
+        return html`
+        <div class="cluster | inline s-3">
+            ${( skippable && !isLastStep )
+                ? html`<button @click=${this._onSkip} class="brand">${this.t.skip}</button>`
+                : ''
+            }
+            <button @click=${this._onQuit} class="d-flex">
+                <svg data-src="${jsObject.images_url + '/close-button-01.svg'}" class="h-2"></svg>
+            </button>
+        </div>
+        `
     }
 
     finishButton() {
@@ -169,7 +175,10 @@ export class Wizard extends LitElement {
         }
         this._onFinish()
     }
-    _onFinish() {
+    _onQuit() {
+        this._onFinish(true)
+    }
+    _onFinish(quit = false) {
         this.stateManager.clear()
 
         if ( !this.finishUrl ) {
@@ -178,11 +187,13 @@ export class Wizard extends LitElement {
 
         const url = new URL( this.finishUrl )
 
-        if ( this.type === ZumeWizards.checkin ) {
-            /* TODO: after checkin send them to the HOST dashboard */
-            url.searchParams.set( 'completed', this.type )
-        } else {
-            url.searchParams.set( 'completed', this.type )
+        if ( !quit ) {
+            if ( this.type === ZumeWizards.checkin ) {
+                /* TODO: after checkin send them to the HOST dashboard */
+                url.searchParams.set( 'completed', this.type )
+            } else {
+                url.searchParams.set( 'completed', this.type )
+            }
         }
 
         window.location.href = url

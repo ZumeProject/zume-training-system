@@ -89,6 +89,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'root' => esc_url_raw( rest_url() ),
                 'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
+                'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '/assets/images' ),
                 'language_cookie' => ZUME_LANGUAGE_COOKIE,
                 'languages' => $zume_languages_by_code,
                 'translations' => [
