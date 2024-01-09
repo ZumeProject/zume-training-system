@@ -70,7 +70,7 @@ export class Wizard extends LitElement {
                 <div class="center">${this.stepCounter()}</div>
             </header>
 
-            <article class="container-xsm center text-center">
+            <article class="${this.containerSize()} center text-center">
                 ${this.currentStep()}
             </article>
 
@@ -80,6 +80,22 @@ export class Wizard extends LitElement {
 
         </div>
         `
+    }
+
+    /**
+     * Is this hacky? Either we have the container size of the wizard contents controlled here
+     * or we control it within the content, but then you have to keep all steps with the same container
+     * or we do as here and have some steps that are allowed to be wider because they need the space like a table
+     * but this section shouldn't have to know about the internal workings of a section
+     */
+    containerSize() {
+        const currentStep = this.steps[this.stepIndex]
+
+        if (currentStep.slug = ZumeWizardSteps.joinTraining) {
+            return 'container-md'
+        }
+
+        return 'container-xsm'
     }
 
     currentStep() {
