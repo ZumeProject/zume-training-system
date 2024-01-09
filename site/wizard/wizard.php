@@ -111,7 +111,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                         'phone_error' => __( 'Phone number can only contain numbers, brackets and hyphens', 'zume' ),
                         'location_question' => __( 'What city do you live in?', 'zume' ),
                         'approximate_location' => __( 'This is your approximate location.', 'zume' ),
-                        'done' => __( 'Done', 'zume' ),
+                        'next' => __( 'Next', 'zume' ),
                     ],
                     'get_a_coach' => [
                         'contact_preference_question' => __( 'What is your contact preference?', 'zume' ),
@@ -130,7 +130,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                         'question_implementation' => __( 'Question about implementing the training', 'zume' ),
                         'question_content' => __( 'Question about the content', 'zume' ),
                         'help_with_group' => __( 'Help with what to do after starting a group', 'zume' ),
-                        'done' => __( 'Done', 'zume' ),
+                        'next' => __( 'Next', 'zume' ),
                         'missing_response' => __( 'Please give a response to this question', 'zume' ),
                         'connect_success' => __( 'Request Submitted, we will do our best to connect you with a coach near you.', 'zume' ),
                         'connect_fail' => __( 'Sorry. We were unable to submit your request. Please try again later.', 'zume' ),

@@ -129,12 +129,12 @@ export class CompleteProfile extends LitElement {
                     })}
                 </div>
                 <div class="cluster | mx-auto">
-                    <button type="submit" class="btn" ?disabled=${this.loading}>${this.t.done}</button>
+                    <button type="submit" class="btn" ?disabled=${this.loading}>${this.t.next}</button>
                 </div>
             ` : '' }
             ${ [ ZumeWizardSteps.updatePhone, ZumeWizardSteps.updateName ].includes(this.variant) ? html`
                 <div class="cluster | mx-auto">
-                    <button type="submit" class="btn" ?disabled=${this.loading}>${this.t.done}</button>
+                    <button type="submit" class="btn" ?disabled=${this.loading}>${this.t.next}</button>
                     <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
                 </div>
             ` : '' }
