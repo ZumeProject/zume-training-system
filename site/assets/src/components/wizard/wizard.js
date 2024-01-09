@@ -74,7 +74,7 @@ export class Wizard extends LitElement {
                 ${this.currentStep()}
             </article>
 
-            <footer class="stack-1 ${this.containerSize()}">
+            <footer class="stack-1 ${this.containerSize()} | my-3">
                 ${this.footer()}
             </footer>
 
@@ -114,9 +114,14 @@ export class Wizard extends LitElement {
                 ? html`<button @click=${this._onSkip} class="brand">${this.t.skip}</button>`
                 : ''
             }
-            <button @click=${this._onQuit} class="d-flex">
-                <svg data-src="${jsObject.images_url + '/close-button-01.svg'}" class="h-2"></svg>
-            </button>
+            ${( !skippable && !isLastStep )
+                ? html`
+                    <button @click=${this._onQuit} class="d-flex">
+                        <svg data-src="${jsObject.images_url + '/close-button-01.svg'}" class="h-2"></svg>
+                    </button>
+                    `
+                : ''
+            }
         </div>
         `
     }

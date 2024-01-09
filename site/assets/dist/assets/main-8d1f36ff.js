@@ -36,7 +36,7 @@ var Re=Object.defineProperty;var Oe=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
                 ${this.currentStep()}
             </article>
 
-            <footer class="stack-1 ${this.containerSize()}">
+            <footer class="stack-1 ${this.containerSize()} | my-3">
                 ${this.footer()}
             </footer>
 
@@ -44,9 +44,11 @@ var Re=Object.defineProperty;var Oe=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
         `}containerSize(){const e=this.steps[this.stepIndex];return(e.slug=r.joinTraining)?"container-md":"container-xsm"}currentStep(){const e=this.steps[this.stepIndex];return e.component(e,this.t,"w-100")}headerButtons(){const{skippable:e}=this.step,t=this.stepIndex===this.steps.length-1;return a`
         <div class="cluster | inline s-3">
             ${e&&!t?a`<button @click=${this._onSkip} class="brand">${this.t.skip}</button>`:""}
-            <button @click=${this._onQuit} class="d-flex">
-                <svg data-src="${jsObject.images_url+"/close-button-01.svg"}" class="h-2"></svg>
-            </button>
+            ${!e&&!t?a`
+                    <button @click=${this._onQuit} class="d-flex">
+                        <svg data-src="${jsObject.images_url+"/close-button-01.svg"}" class="h-2"></svg>
+                    </button>
+                    `:""}
         </div>
         `}finishButton(){return a`
             <div class="text-center d-flex justify-content-between">
@@ -675,4 +677,4 @@ var Re=Object.defineProperty;var Oe=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
                 <td><button class="btn" data-code=${e} @click=${this._handleJoinTraining}>${this.t.join}</button></td>
             </tr>
         `}_handleJoinTraining(e){console.log(e);const t=e.target.dataset.code,s=new CustomEvent("chosen-training",{bubbles:!0,detail:{code:t}});this.dispatchEvent(s)}createRenderRoot(){return this}}customElements.define("public-trainings",Dt);const Se=document.querySelector(".nav-toggle"),Tt=document.querySelector("#nav");Se&&Se.addEventListener("click",i=>{Tt.classList.toggle("nav--visible")});const Mt=({title:i,url:e,copyFeedback:t,shareFeedback:s})=>({title:i,url:e,webShareSupported:navigator.share,clipboardSupported:navigator.clipboard,shareFeedback:"",copyFeedback:"",noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported},share(){navigator.share({title:i,url:e,text:i}).then(()=>{this.shareFeedback=s,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(n=>console.error("Error sharing",n))},copyLink(){navigator.clipboard.writeText(e).then(()=>{this.copyFeedback=t,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(n=>console.error(n))}});window.zumeInitShareLinks=()=>{je({share:Mt}).mount()};
-//# sourceMappingURL=main-a32bcde5.js.map
+//# sourceMappingURL=main-8d1f36ff.js.map
