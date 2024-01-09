@@ -74,7 +74,7 @@ export class Wizard extends LitElement {
                 ${this.currentStep()}
             </article>
 
-            <footer class="stack-1 | fixed bottom left right p-2">
+            <footer class="stack-1 ${this.containerSize()}">
                 ${this.footer()}
             </footer>
 
