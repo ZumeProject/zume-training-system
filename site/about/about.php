@@ -217,7 +217,7 @@ class Zume_Training_About extends Zume_Magic_Page
                 <div class="switcher align-items-center">
                     <div class="stack-2">
                         <h3 class="white bold"><?php echo esc_html__( 'Requirements for Zume Training:', 'zume' ) ?></h3>
-                        <ul class="stack-1">
+                        <ul role="list" class="stack-1">
                             <li>Magna eu proident consequat eiusmod ullamco est veniam ad mollit esse duis labore amet ad.</li>
                             <li>Irure duis consequat dolore ea sunt dolor velit voluptate ut deserunt.</li>
                             <li>Quis voluptate nostrud nulla laboris.</li>
@@ -231,7 +231,7 @@ class Zume_Training_About extends Zume_Magic_Page
                 <div class="switcher align-items-center">
                     <div class="stack-2">
                         <h3 class="white bold"><?php echo esc_html__( 'NOT Required for Zume Training:', 'zume' ) ?></h3>
-                        <ul class="stack-1">
+                        <ul role="list" class="stack-1">
                             <li>Magna eu proident consequat eiusmod ullamco est veniam ad mollit esse duis labore amet ad.</li>
                             <li>Irure duis consequat dolore ea sunt dolor velit voluptate ut deserunt.</li>
                             <li>Quis voluptate nostrud nulla laboris.</li>
