@@ -61,9 +61,8 @@ export class RequestCoach extends LitElement {
 
         if ( this.variant === ZumeWizardSteps.connectingToCoach ) {
             this.loading = true
+            this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
             const onCoachRequested = (( data ) => {
-                this.loading = false
-
                 if ( data === false ) {
                     this.message = this.t.connect_fail
                     this.setErrorMessage(this.t.error_connecting)
@@ -95,6 +94,7 @@ export class RequestCoach extends LitElement {
                 .fail(onFail)
                 .always(() => {
                     this.loading = false
+                    this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
                 })
         }
     }

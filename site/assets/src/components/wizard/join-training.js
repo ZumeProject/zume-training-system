@@ -54,6 +54,7 @@ export class JoinTraining extends LitElement {
 
     connectToPlan(code) {
         this.loading = true;
+        this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
         this.message = this.t.please_wait;
         this.code = code;
         makeRequest('POST', 'connect/public-plan', { code: code }, 'zume_system/v1')
@@ -77,6 +78,7 @@ export class JoinTraining extends LitElement {
             })
             .always(() => {
                 this.loading = false;
+                this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
             });
     }
 

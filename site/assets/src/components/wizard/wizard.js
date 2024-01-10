@@ -25,6 +25,10 @@ export class Wizard extends LitElement {
              * The array of steps
              */
             steps: { attribute: false },
+            /**
+             * Is a step running an API request
+             */
+            loading: { attribute: false },
         }
     }
 
@@ -131,7 +135,7 @@ export class Wizard extends LitElement {
         return html`
             <div class="text-center d-flex justify-content-between">
                 <div class="cluster ms-auto">
-                    <button @click=${this._onFinish} class="btn">${this.t.finish}</button>
+                    <button @click=${this._onFinish} ?disabled=${this.loading} class="btn ${this.loading ? 'disabled' : ''}">${this.t.finish}</button>
                 </div>
             </div>
         `
@@ -283,6 +287,12 @@ export class Wizard extends LitElement {
         }
     }
 
+    _handleLoading(event) {
+        const { loading } = event.detail
+
+        this.loading = loading
+    }
+
     makeModule( stepNames = [], skippable = false ) {
 
         const module = {
@@ -384,6 +394,7 @@ export class Wizard extends LitElement {
                     module: moduleName,
                     skippable,
                     doneHandler: this._onNext,
+                    handleLoading: this._handleLoading,
                 }
 
                 if ( connectedFieldValue !== null ) {
@@ -598,6 +609,7 @@ const wizardSteps = {
                 .t="${t.get_a_coach}"
                 variant=${ZumeWizardSteps.connectingToCoach}
                 @done-step=${step.doneHandler}
+                @loadingChange=${step.handleLoading}
             ></request-coach>
         `
     },
@@ -623,6 +635,7 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.join_training}
                 @done-step=${step.doneHandler}
+                @loadingChange=${step.handleLoading}
             ></join-training>
         `
     },
@@ -636,6 +649,7 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.join_training}
                 @done-step=${step.doneHandler}
+                @loadingChange=${step.handleLoading}
             ></join-friends-training>
         `
     },
@@ -649,6 +663,7 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.connect_friend}
                 @done-step=${step.doneHandler}
+                @loadingChange=${step.handleLoading}
             ></connect-friend>
         `
     },
@@ -662,6 +677,7 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.checkin}
                 @done-step=${step.doneHandler}
+                @loadingChange=${step.handleLoading}
             ></session-checkin>
         `
     },
