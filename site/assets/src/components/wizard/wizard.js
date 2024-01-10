@@ -393,6 +393,10 @@ export class Wizard extends LitElement {
                 this.steps.push(step)
             })
         })
+
+        if ( append === false ) {
+            this._gotoStep(0)
+        }
     }
 
     updateWizard( wizardName ) {
@@ -442,7 +446,7 @@ export class Wizard extends LitElement {
                     ZumeWizardSteps.languagePreferences,
                     ZumeWizardSteps.howCanWeServe,
                     ZumeWizardSteps.connectingToCoach,
-                ], true),
+                ]),
             },
             [ZumeWizards.joinAPlan]: {
                 [ZumeWizardModules.completeProfile]: this.makeModule([
