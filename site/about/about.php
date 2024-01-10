@@ -184,10 +184,9 @@ class Zume_Training_About extends Zume_Magic_Page
                     </div>
                     <div class="stack | px-3">
                         <div class="position-relative">
-                            <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/HowZumeWorks-videothumbnail-01.svg' ) ?>" alt="">
-                            <button class="absolute top bottom left right video-play-button">
-                                <play-button class="video-play"></play-button>
-                            </button>
+                            <div class="responsive-embed widescreen m0">
+                                <iframe width="640" height="360" src="<?php echo esc_url( Zume_Course::get_video_by_key( '32' ) ) ?>" frameborder="0" allowfullscreen></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
