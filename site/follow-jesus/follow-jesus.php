@@ -102,7 +102,7 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
                 </div>
                 <p class="hidden mx-auto"><?php echo esc_html__( 'The sections below, will teach you what it means to be a follower (disciple) of Jesus', 'zume' ) ?></p>
 
-                <button class="hidden mx-auto w-3rem"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/chevron.svg' ) ?>" alt="down button"></button>
+                <a href="<?php echo esc_url( zume_make_a_plan_wizard_url() ) ?>" class="mx-auto btn large light uppercase"><?php echo esc_html__( 'Register', 'zume' ) ?></a>
             </div>
         </div>
 
