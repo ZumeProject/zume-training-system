@@ -66,6 +66,7 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
             add_action( 'dt_blank_head', [ $this, '_header' ] );
             add_action( 'dt_blank_body', [ $this, 'body' ] );
             add_action( 'dt_blank_footer', [ $this, '_footer' ] );
+            add_action( 'wp_footer', [ $this, 'action_wp_footer' ] );
 
             add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
@@ -87,32 +88,85 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
     public function body(){
         global $zume_user_profile;
 
+        require __DIR__ . '/../parts/nav.php';
+        ?>
+
+        <?php
+
         $tool_number = $this->meta['zume_piece'][0] ?? 0;
         $pre_video_content = $this->meta['zume_pre_video_content'][0] ?? '';
         $post_video_content = $this->meta['zume_post_video_content'][0] ?? '';
         $ask_content = $this->meta['zume_ask_content'][0] ?? '';
+        $h1_title = $this->page_title;
 
-        require __DIR__ . '/../parts/nav.php';
+        $args = Zume_V5_Pieces::vars( $tool_number );
+
+        if ( empty( $args ) ) {
+            return '';
+        }
+
+        $alt_video = $args['alt_video'];
+        $image_url = $args['image_url'];
+        $audio = $args['audio'];
+        $has_video = $args['has_video'];
+        $video_id = $args['video_id'];
+
         ?>
 
-        <div class="container">
+        <div class="container-xsm stack-2 | py-2 f-1 | pieces-page">
 
-            <?php
+            <?php if ( ! empty( $image_url ) ) : ?>
+                <img class="hidden" src="<?php echo esc_url( $image_url ) ?>" alt="<?php echo esc_html( $h1_title ) ?>"/>
+            <?php endif; ?>
 
-            echo '<h1>' . esc_html( $this->page_title ) . '</h1>';
+            <div class="stack-1">
+                <h1 class="center brand"><?php echo esc_html( $h1_title ) ?></h1>
 
-            echo esc_html( "Tool Number: $tool_number" );
+                <div class="stack-1 s-1">
+                    <?php echo wp_kses_post( wpautop( $pre_video_content ) ) ?>
+                </div>
+            </div>
 
-            echo wp_kses_post( wpautop( $pre_video_content ) );
 
-            echo wp_kses_post( wpautop( $post_video_content ) );
+            <!-- video block -->
+            <?php if ( $has_video ) : ?>
+                <div class="stack-1">
+                    <?php if ( $audio ) :  ?>
+                        <h3><?php esc_html_e( 'Listen and Read Along', 'zume' ) ?></h3>
+                        <a class="btn large uppercase"
+                           href="<?php echo esc_url( Zume_Course::get_download_by_key( '33' ) ) ?>"
+                           target="_blank" rel="noopener noreferrer nofollow">
+                            <?php esc_html_e( 'Download Free Guidebook', 'zume' ) ?>
+                        </a>
+                    <?php else : ?>
+                        <h3 class="center"><?php esc_html_e( 'Watch This Video', 'zume' ) ?></h3>
+                    <?php endif; ?>
 
-            echo wp_kses_post( wpautop( $ask_content ) );
+                    <?php if ( $alt_video ) : ?>
+                        <video width="960" style="border: 1px solid lightgrey;max-width: 960px;width:100%;" controls>
+                            <source src="<?php echo esc_url( zume_mirror_url() . zume_current_language() . '/'.$video_id.'.mp4' ) ?>" type="video/mp4" >
+                            Your browser does not support the video tag.
+                        </video>
+                    <?php else : ?>
+                        <div class="responsive-embed widescreen">
+                            <iframe style="border: 1px solid lightgrey;"  src="<?php echo esc_url( Zume_Course::get_video_by_key( $video_id ) ) ?>" width="560" height="315"
+                                    frameborder="1" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+                            </iframe>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
 
-            ?>
+            <!-- post-video block -->
+            <div class="">
+                <div class="stack-1 | s-1"><?php echo wp_kses_post( wpautop( $post_video_content ) ) ?></div>
+            </div>
 
-            <p><strong><?php echo esc_html__( 'User Profile', 'zume' ) ?></strong><pre><?php print_r( $zume_user_profile ); ?></pre></p>
-
+            <!-- question block -->
+            <div class="stack-1">
+                <h3 class="center"><?php esc_html_e( 'Ask Yourself', 'zume' ) ?></h3>
+                <?php echo wp_kses_post( wpautop( $ask_content ) ) ?>
+            </div>
         </div>
 
         <?php
