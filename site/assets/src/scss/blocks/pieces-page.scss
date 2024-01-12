@@ -1,4 +1,8 @@
 .pieces-page {
+    .grid-x.center {
+        flex-direction: row;
+    }
+
     .cell > * + * {
         margin-block-start: var(--space);
     }
