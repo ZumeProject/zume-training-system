@@ -76,6 +76,31 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
         <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
+
+                const piecesContent = document.querySelector('#pieces-content')
+                const lang = '<?php echo esc_attr( $this->lang ) ?>'
+
+
+                document.querySelectorAll('.open-modal').forEach((element) => {
+                    element.addEventListener('click', (event) => {
+                        const { value, tool } = event.srcElement.dataset
+
+                        piecesContent.innerHTML = `<span class="loading-spinner active"></span>`
+
+                        makeRequest( 'GET', 'piece', { id: value, lang, strings: [<?php echo json_encode([
+                            'wtv' => esc_html__( 'Watch This Video', 'zume' ),
+                            'ay' => esc_html__( 'Ask Yourself', 'zume' ),
+                            'd' => esc_html__( 'Download Free Guidebook', 'zume' ),
+                            'lra' => esc_html__( 'Listen and Read Along', 'zume' ),
+                        ]) ?>][0] }, 'zume_system/v1' )
+                            .done(function (data) {
+                                piecesContent.innerHTML = data
+                            })
+
+                        jQuery('#pieces-wrapper').foundation('open')
+
+                    })
+                })
             });
         </script>
         <?php
@@ -285,6 +310,14 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
                 </ul>
             </div>
         </div>
+
+        <div class="reveal large" id="pieces-wrapper" data-reveal data-v-offset="20">
+            <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button">
+                <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/close-button-01.svg' ) ?>" alt="close button">
+            </button>
+            <div id="pieces-content"></div>
+        </div>
+
         <?php
     }
 }
