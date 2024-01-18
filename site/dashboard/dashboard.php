@@ -105,8 +105,9 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
 
             <div class="dashboard__sidebar"></div>
 
-            <div class="dashboard__titlebar | p-0">
-                <button class="btn uppercase primary large | ms-auto">
+            <div class="dashboard__titlebar">
+                <h1 class="h3">Title here</h1>
+                <button class="btn uppercase light">
                     <?php echo esc_html__( 'Launch Course', 'zume' ) ?>
                 </button>
             </div>
