@@ -101,58 +101,66 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
     public function body(){
         require __DIR__ . '/../parts/nav.php';
         ?>
-        <div class="container" style="margin-top:50px;">
+        <div class="dashboard">
 
-            <h1 class="text-center"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></h1>
+            <div class="dashboard__sidebar"></div>
 
-            <?php
-            /**
-             * DEV SECTION - REMOVE FOR PRODUCTION
-             */
-            global $zume_user_profile;
-            $plans = zume_get_user_plans();
-            $stage = zume_get_user_stage();
-            $host = zume_get_user_host();
-            $commitments = zume_get_user_commitments();
-            $mawl = zume_get_user_mawl();
-            $friends = zume_get_user_friends();
-            ?>
-            <hr />
-            <div class="grid-x grid-margin-x">
-                <div class="cell medium-6">
+            <div class="dashboard__titlebar | p-0">
+                <button class="btn uppercase primary large | ms-auto">
+                    <?php echo esc_html__( 'Launch Course', 'zume' ) ?>
+                </button>
+            </div>
 
-                    <p><strong><?php echo esc_html__( 'User Profile', 'zume' ) ?></strong><pre><?php print_r( $zume_user_profile ); ?></pre></p><hr />
-                    <p><strong><?php echo esc_html__( 'User Stage', 'zume' ) ?></strong><pre><?php print_r( $stage ); ?></pre></p><hr />
-                    <p><strong><?php echo esc_html__( 'User Friends', 'zume' ) ?></strong><pre><?php print_r( $friends ); ?></pre></p><hr />
-                    <p><strong><?php echo esc_html__( 'User Plans', 'zume' ) ?></strong><pre><?php print_r( $plans ); ?></pre></p><hr />
-                    <p><strong><?php echo esc_html__( 'User HOST', 'zume' ) ?></strong><pre><?php print_r( $host ); ?></pre></p><hr />
-                    <p><strong><?php echo esc_html__( 'User Commitments', 'zume' ) ?></strong><pre><?php print_r( $commitments ); ?></pre></p><hr />
-                    <p><strong><?php echo esc_html__( 'User MAWL', 'zume' ) ?></strong><pre><?php print_r( $mawl ); ?></pre></p><hr />
-                </div>
-                <div class="cell medium-6">
-                    <p><button class="button cta_set_profile" />Set Profile</button></p>
-                    <p><a class="button cta_get_a_coach" href="<?php echo esc_url( zume_get_a_coach_wizard_url() ) ?>" />Get a Coach</a></p>
-                    <p><button class="button cta_invite_friends" />Invite to Friendship</button></p>
-                    <p><a class="button" href="<?php echo esc_url( zume_join_a_public_plan_wizard_url() ) ?>" />Join a public Plan</a></p>
-                    <p><a class="button" href="<?php echo esc_url( zume_invite_friends_url() ) ?>" />Join a friend's Plan</a></p>
-                    <p><button class="button cta_make_a_plan" />Make a Plan</button></p>
-                    <p><button class="button cta_invite_plan" />Invite to Plan</button></p>
-                    <p><button class="button cta_work_the_plan" />Work a Plan</button></p>
+            <div class="dashboard__main">
 
-                    <p><button class="button" onclick="window.location.href = 'https://zume5.training/course_app/10session'" />10 Session Course</button></p>
-                    <p><button class="button" onclick="window.location.href = 'https://zume5.training/course_app/20session'" />20 Session Course</button></p>
-                    <p><button class="button cta_post_training_plan" />Create 3-Month Plan</button></p>
-                    <hr>
-                    <p><button class="button cta_join_vision" />Join Practioner Community</button></p>
-                    <p><button class="button cta_practitioner_reports" />Report New Churches</button></p>
-                    <p><button class="button cta_commitments" />3-Month Commitments</button></p>
-                    <p><button class="button cta_host_progress" />HOST Progress</button></p>
-                    <hr>
-                    <p><button class="button cta_other_commitments" />Other Commitments</button></p>
+                <?php
+                /**
+                 * DEV SECTION - REMOVE FOR PRODUCTION
+                 */
+                global $zume_user_profile;
+                $plans = zume_get_user_plans();
+                $stage = zume_get_user_stage();
+                $host = zume_get_user_host();
+                $commitments = zume_get_user_commitments();
+                $mawl = zume_get_user_mawl();
+                $friends = zume_get_user_friends();
+                ?>
+
+                <div class="grid-x grid-margin-x">
+                    <div class="cell medium-6">
+                        <p><strong><?php echo esc_html__( 'User Profile', 'zume' ) ?></strong><pre><?php print_r( $zume_user_profile ); ?></pre></p><hr />
+                        <p><strong><?php echo esc_html__( 'User Stage', 'zume' ) ?></strong><pre><?php print_r( $stage ); ?></pre></p><hr />
+                        <p><strong><?php echo esc_html__( 'User Friends', 'zume' ) ?></strong><pre><?php print_r( $friends ); ?></pre></p><hr />
+                        <p><strong><?php echo esc_html__( 'User Plans', 'zume' ) ?></strong><pre><?php print_r( $plans ); ?></pre></p><hr />
+                        <p><strong><?php echo esc_html__( 'User HOST', 'zume' ) ?></strong><pre><?php print_r( $host ); ?></pre></p><hr />
+                        <p><strong><?php echo esc_html__( 'User Commitments', 'zume' ) ?></strong><pre><?php print_r( $commitments ); ?></pre></p><hr />
+                        <p><strong><?php echo esc_html__( 'User MAWL', 'zume' ) ?></strong><pre><?php print_r( $mawl ); ?></pre></p><hr />
+                    </div>
+                    <div class="cell medium-6">
+                        <p><button class="button cta_set_profile" />Set Profile</button></p>
+                        <p><a class="button cta_get_a_coach" href="<?php echo esc_url( zume_get_a_coach_wizard_url() ) ?>" />Get a Coach</a></p>
+                        <p><button class="button cta_invite_friends" />Invite to Friendship</button></p>
+                        <p><a class="button" href="<?php echo esc_url( zume_join_a_public_plan_wizard_url() ) ?>" />Join a public Plan</a></p>
+                        <p><a class="button" href="<?php echo esc_url( zume_invite_friends_url() ) ?>" />Join a friend's Plan</a></p>
+                        <p><button class="button cta_make_a_plan" />Make a Plan</button></p>
+                        <p><button class="button cta_invite_plan" />Invite to Plan</button></p>
+                        <p><button class="button cta_work_the_plan" />Work a Plan</button></p>
+                        <p><button class="button" onclick="window.location.href = 'https://zume5.training/course_app/10session'" />10 Session Course</button></p>
+                        <p><button class="button" onclick="window.location.href = 'https://zume5.training/course_app/20session'" />20 Session Course</button></p>
+                        <p><button class="button cta_post_training_plan" />Create 3-Month Plan</button></p>
+                        <hr>
+                        <p><button class="button cta_join_vision" />Join Practioner Community</button></p>
+                        <p><button class="button cta_practitioner_reports" />Report New Churches</button></p>
+                        <p><button class="button cta_commitments" />3-Month Commitments</button></p>
+                        <p><button class="button cta_host_progress" />HOST Progress</button></p>
+                        <hr>
+                        <p><button class="button cta_other_commitments" />Other Commitments</button></p>
+                    </div>
                 </div>
             </div>
             <!--END DEV SECTION -->
 
+            <div class="dashboard__secondary"></div>
 
         </div>
         <?php
