@@ -189,7 +189,13 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             </div>
             <!--END DEV SECTION -->
 
-            <div class="dashboard__secondary"></div>
+            <div class="dashboard__secondary">
+                <div class="stack | card cta">
+                    <h2 class="h5 text-center"><?php echo esc_html__( 'Get a Coach', 'zume' ) ?></h2>
+                    <p>Don't forget about our free coaching</p>
+                    <a href="#" class="btn light uppercase"><?php echo esc_html__( 'Get a Coach', 'zume' ) ?></a>
+                </div>
+            </div>
 
         </div>
         <?php
