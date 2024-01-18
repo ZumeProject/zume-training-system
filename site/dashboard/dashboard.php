@@ -103,7 +103,35 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
         ?>
         <div class="dashboard">
 
-            <div class="dashboard__sidebar"></div>
+            <div class="dashboard__sidebar">
+                <ul class="stack-2 | progress-menu accordion-menu" data-accordion-menu data-submenu-toggle="true">
+                    <li class="menu-section">
+                        <a href="#" class="menu-section__title"><?php echo esc_html__( 'Getting Started', 'zume' ) ?></a>
+                        <ul class="nested">
+                            <li><a href="#"><?php echo esc_html__( 'Set Profile', 'zume' ) ?></a></li>
+                            <li><a href="#"><?php echo esc_html__( 'Create a Training', 'zume' ) ?></a></li>
+                            <li><a href="#"><?php echo esc_html__( 'Join a Training', 'zume' ) ?></a></li>
+                            <li><a href="#"><?php echo esc_html__( 'Get a Coach', 'zume' ) ?></a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-section">
+                        <a href="#" class="menu-section__title"><?php echo esc_html__( 'Training', 'zume' ) ?></a>
+                        <ul class="nested is-active">
+                            <li><a href="#"><?php echo esc_html__( 'My Progress', 'zume' ) ?></a></li>
+                            <li><a href="#"><?php echo esc_html__( 'My Training', 'zume' ) ?></a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-section">
+                        <a href="#" class="menu-section__title"><?php echo esc_html__( 'Practicing', 'zume' ) ?></a>
+                        <ul class="nested">
+                            <li><a href="#"><?php echo esc_html__( 'My Tools', 'zume' ) ?></a></li>
+                            <li><a href="#"><?php echo esc_html__( 'My Plans', 'zume' ) ?></a></li>
+                            <li><a href="#"><?php echo esc_html__( 'My Churches', 'zume' ) ?></a></li>
+                            <li><a href="#"><?php echo esc_html__( 'My Maps', 'zume' ) ?></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
             <div class="dashboard__titlebar">
                 <h1 class="h3">Title here</h1>
