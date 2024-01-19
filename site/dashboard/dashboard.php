@@ -135,9 +135,17 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
 
             <div class="dashboard__titlebar">
                 <h1 class="h3">Title here</h1>
-                <button class="btn uppercase light">
+                <button class="btn uppercase light" data-toggle="launch-course-panel">
                     <?php echo esc_html__( 'Launch Course', 'zume' ) ?>
                 </button>
+                <div class="dropdown-pane" id="launch-course-panel" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true">
+                    <ul>
+                        <li><a href="#"><?php echo esc_html__( '10 Session Course', 'zume' ) ?></a></li>
+                        <li><a href="#"><?php echo esc_html__( '20 Session Course', 'zume' ) ?></a></li>
+                        <li><a href="#"><?php echo esc_html__( '3 Day Intensive Course', 'zume' ) ?></a></li>
+                    </ul>
+                </div>
+
             </div>
 
             <div class="dashboard__main">
