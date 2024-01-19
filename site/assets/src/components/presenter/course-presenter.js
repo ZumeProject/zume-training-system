@@ -12,6 +12,7 @@ export class CoursePresenter extends LitElement {
             homeUrl: { type: String },
             assetsPath: { type: String },
             translations: { type: Object },
+            zumeSessions: { attribute: false },
             lessonIndex: { attribute: false },
             view: { attribute: false },
             linkNodes: { attribute: false },
@@ -22,6 +23,27 @@ export class CoursePresenter extends LitElement {
         super()
 
         const url = new URL(window.location.href)
+
+        const type = url.searchParams.get('type') || '10'
+
+        let zumeSessions
+        switch (type) {
+            case '10':
+                zumeSessions = zume10Sessions
+                break;
+            case '20':
+                zumeSessions = zume20Sessions
+                break;
+            case 'intensive':
+                zumeSessions = zumeIntensiveSessions
+                break;
+            default:
+                zumeSessions = zume10Sessions
+                break;
+        }
+
+        this.zumeSessions = zumeSessions
+
         if ( url.searchParams.has('session') ) {
             const sessionIndex = Number(url.searchParams.get('session'))
             if ( Number.isInteger(sessionIndex) ) {
@@ -32,7 +54,8 @@ export class CoursePresenter extends LitElement {
         } else {
             this.lessonIndex = 0
         }
-        this.changeSession(this.lessonIndex, false)
+        console.log(type, zumeSessions)
+        this.changeSession(this.lessonIndex, false, zumeSessions)
 
         if ( url.searchParams.has('view') ) {
             const view = url.searchParams.get('view')
@@ -93,16 +116,19 @@ export class CoursePresenter extends LitElement {
         this.changeSession(this.lessonIndex)
     }
 
-    changeSession(index, pushState = true) {
+    changeSession(index, pushState = true, zumeSessions = null) {
+
+        const sessions = zumeSessions || this.zumeSessions
+
         let thisIndex = index
         if ( index < 0 ) {
             thisIndex = 0
         }
-        if ( index > zumeSessions.length - 1 ) {
-            thisIndex = zumeSessions.length - 1
+        if ( index > sessions.length - 1 ) {
+            thisIndex = sessions.length - 1
         }
         this.lessonIndex = thisIndex
-        this.session = zumeSessions[thisIndex]
+        this.session = sessions[thisIndex]
 
         if (pushState) {
             this.pushHistory()
@@ -185,7 +211,7 @@ export class CoursePresenter extends LitElement {
                     <button class="btn" @click=${this.switchViews}>Switch Views</button>
 
                     <div class="stack-1 py-1">
-                        ${zumeSessions.map((session, sessionNumber) => html`
+                        ${this.zumeSessions.map((session, sessionNumber) => html`
                             <button
                                 class="link session-link"
                                 data-session-number="${sessionNumber}"
