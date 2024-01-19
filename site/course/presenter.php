@@ -78,10 +78,6 @@ class Zume_Training_Presenter extends Zume_Magic_Page
         <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
-
-                jQuery('#hamburger-menu').click(function(){
-                    jQuery('#offCanvas').foundation('open');
-                })
             });
         </script>
         <script>
@@ -89,6 +85,7 @@ class Zume_Training_Presenter extends Zume_Magic_Page
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'root' => esc_url_raw( rest_url() ),
                 'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
+                'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . 'assets/images' ),
                 'language_cookie' => ZUME_LANGUAGE_COOKIE,
                 'zume_languages' => zume_language_codes(),
             ]) ?>][0]

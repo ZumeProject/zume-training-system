@@ -240,15 +240,15 @@ function zume_faq_url() {
 }
 
 function zume_10_session_url() {
-    return zume_url( 'presenter' );
+    return zume_url( 'presenter?session=index' );
 }
 
 function zume_20_session_url() {
-    return zume_url( 'presenter?type=20' );
+    return zume_url( 'presenter?type=20&session=index' );
 }
 
 function zume_intensive_session_url() {
-    return zume_url( 'presenter?type=intensive' );
+    return zume_url( 'presenter?type=intensive&session=index' );
 }
 
 function zume_url( $slug ) {

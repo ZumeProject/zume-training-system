@@ -120,6 +120,32 @@ a {
     }
 }
 
+.card-btn[role="button"],
+button.card-btn {
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    padding: spacing(0);
+    box-shadow: var(--z-box-shadow-medium);
+    border-radius: var(--border-radius);
+    transition: color 100ms linear;
+
+    & > * {
+        pointer-events: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: color('brand-light');
+        color: white;
+
+        > .brand-light {
+            transition: color 100ms linear;
+            color: white;
+        }
+    }
+}
+
 .link-light {
     color: color('white');
 
