@@ -453,7 +453,7 @@ var Re=Object.defineProperty;var Oe=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
                         <div class="grid | grid-min-8rem gutter0">
                             ${this.zumeSessions.map((t,s)=>a`
                                 <button
-                                    class="stack--3 center | card-btn | justify-content-evenly bg-white black m--2 gap--2"
+                                    class="card-btn | bg-white black m--2 gap--3"
                                     data-session-number=${s}
                                     @click=${this.handleSessionLink}
                                 >
@@ -701,4 +701,4 @@ var Re=Object.defineProperty;var Oe=(i,e,t)=>e in i?Re(i,e,{enumerable:!0,config
                 <td><button class="btn" data-code=${e} @click=${this._handleJoinTraining}>${this.t.join}</button></td>
             </tr>
         `}_handleJoinTraining(e){console.log(e);const t=e.target.dataset.code,s=new CustomEvent("chosen-training",{bubbles:!0,detail:{code:t}});this.dispatchEvent(s)}createRenderRoot(){return this}}customElements.define("public-trainings",Dt);const Se=document.querySelector(".nav-toggle"),Tt=document.querySelector("#nav");Se&&Se.addEventListener("click",i=>{Tt.classList.toggle("nav--visible")});const Mt=({title:i,url:e,copyFeedback:t,shareFeedback:s})=>({title:i,url:e,webShareSupported:navigator.share,clipboardSupported:navigator.clipboard,shareFeedback:"",copyFeedback:"",noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported},share(){navigator.share({title:i,url:e,text:i}).then(()=>{this.shareFeedback=s,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(n=>console.error("Error sharing",n))},copyLink(){navigator.clipboard.writeText(e).then(()=>{this.copyFeedback=t,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(n=>console.error(n))}});window.zumeInitShareLinks=()=>{je({share:Mt}).mount()};
-//# sourceMappingURL=main-e4414dad.js.map
+//# sourceMappingURL=main-e459b176.js.map

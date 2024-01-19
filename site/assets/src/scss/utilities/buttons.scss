@@ -122,6 +122,11 @@ a {
 
 .card-btn[role="button"],
 button.card-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
     aspect-ratio: 1/1;
     cursor: pointer;
     padding: spacing(0);
