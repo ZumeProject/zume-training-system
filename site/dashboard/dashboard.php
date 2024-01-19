@@ -140,9 +140,9 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 </button>
                 <div class="dropdown-pane" id="launch-course-panel" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true">
                     <ul>
-                        <li><a class="menu-btn" href="#"><?php echo esc_html__( '10 Session Course', 'zume' ) ?></a></li>
-                        <li><a class="menu-btn" href="#"><?php echo esc_html__( '20 Session Course', 'zume' ) ?></a></li>
-                        <li><a class="menu-btn" href="#"><?php echo esc_html__( '3 Day Intensive Course', 'zume' ) ?></a></li>
+                        <li><a class="menu-btn" href="#"><span class="icon zume-course"></span><?php echo esc_html__( '10 Session Course', 'zume' ) ?></a></li>
+                        <li><a class="menu-btn" href="#"><span class="icon zume-course"></span><?php echo esc_html__( '20 Session Course', 'zume' ) ?></a></li>
+                        <li><a class="menu-btn" href="#"><span class="icon zume-course"></span><?php echo esc_html__( '3 Day Intensive Course', 'zume' ) ?></a></li>
                     </ul>
                 </div>
 
