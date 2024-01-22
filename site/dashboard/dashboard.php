@@ -108,26 +108,26 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                     <li class="menu-section">
                         <a href="#" class="menu-section__title menu-btn"><span class="icon zume-start brand-light"></span><?php echo esc_html__( 'Getting Started', 'zume' ) ?></a>
                         <ul class="nested">
-                            <li><a class="menu-btn" href="#"><span class="icon zume-profile brand-light"></span> <?php echo esc_html__( 'Set Profile', 'zume' ) ?></a></li>
-                            <li><a class="menu-btn" href="#"><span class="icon zume-start-group brand-light"></span><?php echo esc_html__( 'Create a Training', 'zume' ) ?></a></li>
-                            <li><a class="menu-btn" href="#"><span class="icon zume-invite brand-light"></span><?php echo esc_html__( 'Join a Training', 'zume' ) ?></a></li>
-                            <li><a class="menu-btn" href="#"><span class="icon zume-coach brand-light"></span><?php echo esc_html__( 'Get a Coach', 'zume' ) ?></a></li>
+                            <li><a class="menu-btn" href="#"><span class="icon zume-profile brand-light"></span> <span><?php echo esc_html__( 'Set Profile', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
+                            <li><a class="menu-btn" href="#"><span class="icon zume-start-group brand-light"></span><span><?php echo esc_html__( 'Create a Training', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
+                            <li><a class="menu-btn" href="#"><span class="icon zume-invite brand-light"></span><span><?php echo esc_html__( 'Join a Training', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
+                            <li><a class="menu-btn" href="#"><span class="icon zume-coach brand-light"></span><span><?php echo esc_html__( 'Get a Coach', 'zume' ) ?></span></a></li>
                         </ul>
                     </li>
                     <li class="menu-section">
                         <a href="#" class="menu-section__title menu-btn"><span class="icon zume-training brand-light"></span><?php echo esc_html__( 'Training', 'zume' ) ?></a>
                         <ul class="nested is-active">
-                            <li><a class="menu-btn" href="#"><span class="icon zume-progress brand-light"></span><?php echo esc_html__( 'My Progress', 'zume' ) ?></a></li>
-                            <li><a class="menu-btn" href="#"><span class="icon zume-group brand-light"></span><?php echo esc_html__( 'My Training', 'zume' ) ?></a></li>
+                            <li><a class="menu-btn" href="#"><span class="icon zume-progress brand-light"></span><span><?php echo esc_html__( 'My Progress', 'zume' ) ?></span></a></li>
+                            <li><a class="menu-btn" href="#"><span class="icon zume-group brand-light"></span><span><?php echo esc_html__( 'My Training', 'zume' ) ?></span></a></li>
                         </ul>
                     </li>
                     <li class="menu-section">
                         <a href="#" class="menu-section__title menu-btn"><span class="icon zume-practicing brand-light"></span><?php echo esc_html__( 'Practicing', 'zume' ) ?></a>
                         <ul class="nested">
-                            <li><a class="menu-btn" href="#"><span class="icon zume-tools brand-light"></span><?php echo esc_html__( 'My Tools', 'zume' ) ?></a></li>
-                            <li><a class="menu-btn" href="#"><span class="icon zume-plans brand-light"></span><?php echo esc_html__( 'My Plans', 'zume' ) ?></a></li>
-                            <li><a class="menu-btn" href="#"><span class="icon zume-churches brand-light"></span><?php echo esc_html__( 'My Churches', 'zume' ) ?></a></li>
-                            <li><a class="menu-btn" href="#"><span class="icon zume-pin brand-light"></span><?php echo esc_html__( 'My Maps', 'zume' ) ?></a></li>
+                            <li><a class="menu-btn" href="#"><span class="icon zume-tools brand-light"></span><span><?php echo esc_html__( 'My Tools', 'zume' ) ?></span></a></li>
+                            <li><a class="menu-btn" href="#"><span class="icon zume-plans brand-light"></span><span><?php echo esc_html__( 'My Plans', 'zume' ) ?></span></a></li>
+                            <li><a class="menu-btn" href="#"><span class="icon zume-churches brand-light"></span><span><?php echo esc_html__( 'My Churches', 'zume' ) ?></span></a></li>
+                            <li><a class="menu-btn" href="#"><span class="icon zume-pin brand-light"></span><span><?php echo esc_html__( 'My Maps', 'zume' ) ?></span></a></li>
                         </ul>
                     </li>
                 </ul>

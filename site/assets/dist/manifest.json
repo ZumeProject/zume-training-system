@@ -1,16 +1,4 @@
 {
-  "Zume-Icons.svg": {
-    "file": "assets/Zume-Icons-8346df54.svg",
-    "src": "Zume-Icons.svg"
-  },
-  "Zume-Icons.ttf": {
-    "file": "assets/Zume-Icons-b039a768.ttf",
-    "src": "Zume-Icons.ttf"
-  },
-  "Zume-Icons.woff": {
-    "file": "assets/Zume-Icons-81a69ba0.woff",
-    "src": "Zume-Icons.woff"
-  },
   "site/assets/fonts/ZumeIcons/fonts/Zume-Icons.svg": {
     "file": "assets/Zume-Icons-8346df54.svg",
     "src": "site/assets/fonts/ZumeIcons/fonts/Zume-Icons.svg"
@@ -24,7 +12,7 @@
     "src": "site/assets/fonts/ZumeIcons/fonts/Zume-Icons.woff"
   },
   "site/assets/src/main.css": {
-    "file": "assets/main-1cf56441.css",
+    "file": "assets/main-214ec488.css",
     "src": "site/assets/src/main.css"
   },
   "site/assets/src/main.js": {
@@ -34,9 +22,9 @@
       "assets/Zume-Icons-8346df54.svg"
     ],
     "css": [
-      "assets/main-1cf56441.css"
+      "assets/main-214ec488.css"
     ],
-    "file": "assets/main-259d2de7.js",
+    "file": "assets/main-7d07e816.js",
     "isEntry": true,
     "src": "site/assets/src/main.js"
   }
