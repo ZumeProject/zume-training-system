@@ -106,8 +106,13 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             <div class="dashboard__sidebar">
                 <ul class="stack-2 | progress-menu accordion-menu" data-accordion-menu data-submenu-toggle="true">
                     <li class="menu-section">
-                        <a href="#" class="menu-section__title menu-btn"><span class="icon zume-start brand-light"></span><?php echo esc_html__( 'Getting Started', 'zume' ) ?></a>
-                        <ul class="nested">
+                        <a href="#" class="menu-section__title menu-btn">
+                            <span class="icon zume-start brand-light"></span>
+                            <?php echo esc_html__( 'Getting Started', 'zume' ) ?>
+                            <progress-circle percent="66" radius="12"></progress-circle>
+                        </a>
+
+                        <ul class="nested is-active">
                             <li><a class="menu-btn" href="#" aria-disabled="true" data-completed="true"><span class="icon zume-profile brand-light"></span> <span><?php echo esc_html__( 'Set Profile', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
                             <li><a class="menu-btn" href="#" aria-disabled="true" data-completed="true"><span class="icon zume-start-group brand-light"></span><span><?php echo esc_html__( 'Create a Training', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
                             <li><a class="menu-btn" href="#" aria-disabled="true" data-completed="true"><span class="icon zume-invite brand-light"></span><span><?php echo esc_html__( 'Join a Training', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>

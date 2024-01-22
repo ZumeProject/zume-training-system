@@ -7,13 +7,17 @@
     .menu-section {
         position: relative;
         display: grid;
-        grid-template-columns: auto 1.5rem;
+        grid-template-columns: auto;
         align-items: center;
 
         background: var(--z-white);
         border-radius: 10px;
         box-shadow: var(--z-box-shadow-medium);
         padding: spacing(-1);
+
+        &:first-child .submenu-toggle{
+            display: none;
+        }
     }
     .menu-section:nth-child(2):before,
     .menu-section:nth-child(3):before {
@@ -37,6 +41,10 @@
 
         .icon {
             font-size: 1.3em;
+        }
+
+        progress-circle {
+            margin-inline-start: spacing(-1);
         }
     }
     .has-submenu-toggle>a {
