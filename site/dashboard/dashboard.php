@@ -108,10 +108,10 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                     <li class="menu-section">
                         <a href="#" class="menu-section__title menu-btn"><span class="icon zume-start brand-light"></span><?php echo esc_html__( 'Getting Started', 'zume' ) ?></a>
                         <ul class="nested">
-                            <li><a class="menu-btn" href="#" aria-disabled="true"><span class="icon zume-profile brand-light"></span> <span><?php echo esc_html__( 'Set Profile', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
-                            <li><a class="menu-btn" href="#" aria-disabled="true"><span class="icon zume-start-group brand-light"></span><span><?php echo esc_html__( 'Create a Training', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
-                            <li><a class="menu-btn" href="#" aria-disabled="true"><span class="icon zume-invite brand-light"></span><span><?php echo esc_html__( 'Join a Training', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
-                            <li><a class="menu-btn" href="#"><span class="icon zume-coach brand-light"></span><span><?php echo esc_html__( 'Get a Coach', 'zume' ) ?></span></a></li>
+                            <li><a class="menu-btn" href="#" aria-disabled="true" data-completed="true"><span class="icon zume-profile brand-light"></span> <span><?php echo esc_html__( 'Set Profile', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
+                            <li><a class="menu-btn" href="#" aria-disabled="true" data-completed="true"><span class="icon zume-start-group brand-light"></span><span><?php echo esc_html__( 'Create a Training', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
+                            <li><a class="menu-btn" href="#" aria-disabled="true" data-completed="true"><span class="icon zume-invite brand-light"></span><span><?php echo esc_html__( 'Join a Training', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
+                            <li><a class="menu-btn" href="#"><span class="icon zume-coach brand-light"></span><span><?php echo esc_html__( 'Get a Coach', 'zume' ) ?></span></a><span class="icon zume-check-mark success"></span></li>
                         </ul>
                     </li>
                     <li class="menu-section">

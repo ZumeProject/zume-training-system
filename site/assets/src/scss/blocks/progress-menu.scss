@@ -1,4 +1,9 @@
 .progress-menu {
+    a {
+        color: inherit;
+        padding: 0;
+    }
+
     .menu-section {
         position: relative;
         display: grid;
@@ -43,11 +48,6 @@
         cursor: pointer;
     }
 
-    a {
-        color: inherit;
-        padding: 0;
-    }
-
     .nested {
         grid-column: 1/3;
         padding-inline-start: 1rem;
@@ -68,5 +68,12 @@
                 font-weight: 500;
             }
         }
+    }
+
+    .menu-btn + .icon {
+        opacity: 0;
+    }
+    .menu-btn[data-completed="true"] + .icon {
+        opacity: 1;
     }
 }
