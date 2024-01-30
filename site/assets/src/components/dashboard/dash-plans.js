@@ -10,6 +10,18 @@ export class DashPlans extends LitElement {
                     <launch-course></launch-course>
                 </div>
                 <div class="dashboard__main">
+                    <ul class="list">
+                        <li class="list__item">
+                            <h2 class="f-1">I will</h2>
+                        </li>
+                        <li class="list__item">
+                            <span>Share my story and God's story with [person]</span>
+                            <div>
+                                <span class="zume-check-mark success"></span>
+                                <span>kebab</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         `;
