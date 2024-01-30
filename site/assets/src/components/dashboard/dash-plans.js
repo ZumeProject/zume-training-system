@@ -11,9 +11,6 @@ export class DashPlans extends LitElement {
                 </div>
                 <div class="dashboard__main">
                 </div>
-                <div class="dashboard__secondary">
-                    <dash-cta></dash-cta>
-                </div>
             </div>
         `;
     }

@@ -625,9 +625,6 @@ var Oe=Object.defineProperty;var je=(i,e,t)=>e in i?Oe(i,e,{enumerable:!0,config
                 </div>
                 <div class="dashboard__main">
                 </div>
-                <div class="dashboard__secondary">
-                    <dash-cta></dash-cta>
-                </div>
             </div>
         `}createRenderRoot(){return this}}customElements.define("dash-plans",Dt);class Pt extends d{constructor(){super(),this.routeName="practicing",this.routes=M.childRoutesOf("practicing")}render(){return a`
             <div class="dashboard__content">
@@ -995,4 +992,4 @@ var Oe=Object.defineProperty;var je=(i,e,t)=>e in i?Oe(i,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("progress-circle",Xt);const Se=document.querySelector(".nav-toggle"),Qt=document.querySelector("#nav");Se&&Se.addEventListener("click",i=>{Qt.classList.toggle("nav--visible")});const es=({title:i,url:e,copyFeedback:t,shareFeedback:s})=>({title:i,url:e,webShareSupported:navigator.share,clipboardSupported:navigator.clipboard,shareFeedback:"",copyFeedback:"",noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported},share(){navigator.share({title:i,url:e,text:i}).then(()=>{this.shareFeedback=s,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(n=>console.error("Error sharing",n))},copyLink(){navigator.clipboard.writeText(e).then(()=>{this.copyFeedback=t,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(n=>console.error(n))}});window.zumeInitShareLinks=()=>{Ie({share:es}).mount()};
-//# sourceMappingURL=main-4945505a.js.map
+//# sourceMappingURL=main-268386eb.js.map
