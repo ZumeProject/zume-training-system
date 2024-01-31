@@ -50,7 +50,7 @@ export class DashPlans extends LitElement {
         const { question, answer, id, status } = commitment
         return html`
             <li class="list__item">
-                <span>${question}: <b>${answer}</b></span>
+                <span>${question} <b>${answer}</b></span>
                 <div class="list__secondary">
                     <div class="d-flex w-6rem justify-content-center">
                         ${status === 'closed'
@@ -66,7 +66,7 @@ export class DashPlans extends LitElement {
                             `
                         }
                     </div>
-                    <button class="lh-sm d-flex align-items-center">
+                    <button class="icon-btn">
                         <span class="icon zume-kebab brand-light"></span>
                     </button>
                 </div>

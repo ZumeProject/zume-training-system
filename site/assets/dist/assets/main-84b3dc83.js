@@ -619,7 +619,7 @@ var Oe=Object.defineProperty;var Ie=(i,e,t)=>e in i?Oe(i,e,{enumerable:!0,config
             </div>
         `}createRenderRoot(){return this}}customElements.define("dash-not-found",Dt);class At extends d{static get properties(){return{loading:{type:Boolean,attribute:!1},commitments:{type:Array,attribute:!1}}}constructor(){super(),this.loading=!0,this.renderListItem=this.renderListItem.bind(this)}firstUpdated(){this.fetchCommitments()}fetchCommitments(){makeRequest("GET","commitments",{status:""},"zume_system/v1").done(e=>{console.log(this),console.log(e),this.commitments=e}).always(()=>{this.loading=!1})}completeCommitment(e){let t={id:e,user_id:zumeDashboard.user_profile.user_id};makeRequest("PUT","commitment",t,"zume_system/v1").done(s=>{this.fetchCommitments()})}renderList(){return this.commitments.map(this.renderListItem)}renderListItem(e){const{question:t,answer:s,id:n,status:o}=e;return a`
             <li class="list__item">
-                <span>${t}: <b>${s}</b></span>
+                <span>${t} <b>${s}</b></span>
                 <div class="list__secondary">
                     <div class="d-flex w-6rem justify-content-center">
                         ${o==="closed"?a`<span class="icon zume-check-mark success"></span>`:a`
@@ -632,7 +632,7 @@ var Oe=Object.defineProperty;var Ie=(i,e,t)=>e in i?Oe(i,e,{enumerable:!0,config
                                 </button>
                             `}
                     </div>
-                    <button class="lh-sm d-flex align-items-center">
+                    <button class="icon-btn">
                         <span class="icon zume-kebab brand-light"></span>
                     </button>
                 </div>
@@ -1021,4 +1021,4 @@ var Oe=Object.defineProperty;var Ie=(i,e,t)=>e in i?Oe(i,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("progress-circle",Xt);const we=document.querySelector(".nav-toggle"),Qt=document.querySelector("#nav");we&&we.addEventListener("click",i=>{Qt.classList.toggle("nav--visible")});const es=({title:i,url:e,copyFeedback:t,shareFeedback:s})=>({title:i,url:e,webShareSupported:navigator.share,clipboardSupported:navigator.clipboard,shareFeedback:"",copyFeedback:"",noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported},share(){navigator.share({title:i,url:e,text:i}).then(()=>{this.shareFeedback=s,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(n=>console.error("Error sharing",n))},copyLink(){navigator.clipboard.writeText(e).then(()=>{this.copyFeedback=t,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(n=>console.error(n))}});window.zumeInitShareLinks=()=>{je({share:es}).mount()};
-//# sourceMappingURL=main-84f35f93.js.map
+//# sourceMappingURL=main-84b3dc83.js.map
