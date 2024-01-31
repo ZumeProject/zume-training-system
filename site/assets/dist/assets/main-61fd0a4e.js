@@ -620,7 +620,7 @@ var Oe=Object.defineProperty;var Ie=(i,e,t)=>e in i?Oe(i,e,{enumerable:!0,config
         `}createRenderRoot(){return this}}customElements.define("dash-not-found",Dt);class At extends d{static get properties(){return{loading:{type:Boolean,attribute:!1},commitments:{type:Array,attribute:!1}}}constructor(){super(),this.loading=!0,this.renderListItem=this.renderListItem.bind(this)}firstUpdated(){this.fetchCommitments()}fetchCommitments(){makeRequest("GET","commitments",{status:""},"zume_system/v1").done(e=>{console.log(this),console.log(e),this.commitments=e}).always(()=>{this.loading=!1})}completeCommitment(e){let t={id:e,user_id:zumeDashboard.user_profile.user_id};makeRequest("PUT","commitment",t,"zume_system/v1").done(s=>{this.fetchCommitments()})}renderList(){return this.commitments.map(this.renderListItem)}renderListItem(e){const{question:t,answer:s,id:n,status:o}=e;return a`
             <li class="list__item">
                 <span>${t}: ${s}</span>
-                <div class="d-flex">
+                <div class="f-2">
                     ${o==="closed"?a`<span class="zume-check-mark success"></span>`:a`
                             <button
                                 class="btn light uppercase small"
@@ -630,7 +630,9 @@ var Oe=Object.defineProperty;var Ie=(i,e,t)=>e in i?Oe(i,e,{enumerable:!0,config
                                 ${zumeDashboard.translations.done}
                             </button>
                         `}
-                    <button>kebab</button>
+                    <button class="lh-sm d-flex align-items-center">
+                        <span class="icon zume-kebab brand-light"></span>
+                    </button>
                 </div>
             </li>
         `}render(){return a`
@@ -1017,4 +1019,4 @@ var Oe=Object.defineProperty;var Ie=(i,e,t)=>e in i?Oe(i,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("progress-circle",Xt);const Se=document.querySelector(".nav-toggle"),Qt=document.querySelector("#nav");Se&&Se.addEventListener("click",i=>{Qt.classList.toggle("nav--visible")});const es=({title:i,url:e,copyFeedback:t,shareFeedback:s})=>({title:i,url:e,webShareSupported:navigator.share,clipboardSupported:navigator.clipboard,shareFeedback:"",copyFeedback:"",noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported},share(){navigator.share({title:i,url:e,text:i}).then(()=>{this.shareFeedback=s,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(n=>console.error("Error sharing",n))},copyLink(){navigator.clipboard.writeText(e).then(()=>{this.copyFeedback=t,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(n=>console.error(n))}});window.zumeInitShareLinks=()=>{je({share:es}).mount()};
-//# sourceMappingURL=main-5feed10b.js.map
+//# sourceMappingURL=main-61fd0a4e.js.map

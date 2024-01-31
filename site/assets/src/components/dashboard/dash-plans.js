@@ -51,7 +51,7 @@ export class DashPlans extends LitElement {
         return html`
             <li class="list__item">
                 <span>${question}: ${answer}</span>
-                <div class="d-flex">
+                <div class="f-2">
                     ${status === 'closed'
                         ? html`<span class="zume-check-mark success"></span>`
                         : html`
@@ -64,7 +64,9 @@ export class DashPlans extends LitElement {
                             </button>
                         `
                     }
-                    <button>kebab</button>
+                    <button class="lh-sm d-flex align-items-center">
+                        <span class="icon zume-kebab brand-light"></span>
+                    </button>
                 </div>
             </li>
         `
