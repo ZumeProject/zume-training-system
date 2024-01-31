@@ -19,6 +19,10 @@ export class DashPlans extends LitElement {
         this.fetchCommitments()
     }
 
+    updated() {
+        jQuery(document).foundation();
+    }
+
     fetchCommitments() {
         makeRequest('GET', 'commitments', { status: '' }, 'zume_system/v1' )
             .done( ( data ) => {
@@ -42,6 +46,13 @@ export class DashPlans extends LitElement {
         })
     }
 
+    deleteCommitment(id) {
+        console.log(id)
+    }
+    editCommitment(id) {
+        console.log(id)
+    }
+
     renderList() {
         return this.commitments.map(this.renderListItem)
     }
@@ -58,7 +69,6 @@ export class DashPlans extends LitElement {
                             : html`
                                 <button
                                     class="btn light uppercase tight break-anywhere"
-                                    data-id=${id}
                                     @click=${() => this.completeCommitment(id)}
                                 >
                                     ${zumeDashboard.translations.done}
@@ -66,11 +76,17 @@ export class DashPlans extends LitElement {
                             `
                         }
                     </div>
-                    <button class="icon-btn">
+                    <button class="icon-btn" data-toggle="kebab-menu-${id}">
                         <span class="icon zume-kebab brand-light"></span>
                     </button>
                 </div>
             </li>
+            <div class="dropdown-pane" id="kebab-menu-${id}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true">
+                <ul>
+                    <li><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon zume-pencil"></span>${zumeDashboard.translations.edit}</button></li>
+                    <li><button class="menu-btn" @click=${() => this.deleteCommitment(id)}><span class="icon zume-trash"></span>${zumeDashboard.translations.delete}</button></li>
+                </ul>
+            </div>
         `
     }
 
