@@ -95,6 +95,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'training_items' => zume_training_items(),
                 'friends' => zume_get_user_friends(),
                 'translations' => [
+                    'done' => __( 'Done', 'zume' ),
                     'share' => __( 'Share', 'zume' ),
                     'copy_link' => __( 'Copy Link', 'zume' ),
                     'copy_and_share_text' => __( 'Copy this link and send it to your friends 🙂', 'zume' ),

@@ -1,6 +1,74 @@
 import { LitElement, html } from 'lit';
 
 export class DashPlans extends LitElement {
+    static get properties() {
+        return {
+            loading: { type: Boolean, attribute: false },
+            commitments: { type: Array, attribute: false },
+        };
+    }
+
+    constructor() {
+        super()
+        this.loading = true
+
+        this.renderListItem = this.renderListItem.bind(this)
+    }
+
+    firstUpdated() {
+        this.fetchCommitments()
+    }
+
+    fetchCommitments() {
+        makeRequest('GET', 'commitments', { status: '' }, 'zume_system/v1' )
+            .done( ( data ) => {
+                console.log(this)
+                console.log(data)
+                this.commitments = data
+            })
+            .always(() => {
+                this.loading = false
+            })
+    }
+
+    completeCommitment(id) {
+
+        let data = {
+            id: id,
+            user_id: zumeDashboard.user_profile.user_id
+        }
+        makeRequest('PUT', 'commitment', data, 'zume_system/v1' ).done( ( data ) => {
+            this.fetchCommitments()
+        })
+    }
+
+    renderList() {
+        return this.commitments.map(this.renderListItem)
+    }
+
+    renderListItem(commitment) {
+        const { question, answer, id, status } = commitment
+        return html`
+            <li class="list__item">
+                <span>${question}: ${answer}</span>
+                <div class="d-flex">
+                    ${status === 'closed'
+                        ? html`<span class="zume-check-mark success"></span>`
+                        : html`
+                            <button
+                                class="btn light uppercase small"
+                                data-id=${id}
+                                @click=${() => this.completeCommitment(id)}
+                            >
+                                ${zumeDashboard.translations.done}
+                            </button>
+                        `
+                    }
+                    <button>kebab</button>
+                </div>
+            </li>
+        `
+    }
 
     render() {
         return html`
@@ -10,18 +78,23 @@ export class DashPlans extends LitElement {
                     <launch-course></launch-course>
                 </div>
                 <div class="dashboard__main">
-                    <ul class="list">
-                        <li class="list__item">
-                            <h2 class="f-1">I will</h2>
-                        </li>
-                        <li class="list__item">
-                            <span>Share my story and God's story with [person]</span>
-                            <div>
-                                <span class="zume-check-mark success"></span>
-                                <span>kebab</span>
-                            </div>
-                        </li>
-                    </ul>
+                    ${
+                        this.loading
+                            ? html`<span class="loading-spinner active"></span>`
+                            : html`
+                                <ul class="list">
+                                    <li class="list__item">
+                                        <h2 class="f-1">I will</h2>
+                                    </li>
+                                    ${
+                                        !this.loading && this.commitments && this.commitments.length > 0
+                                        ? this.renderList()
+                                        : ''
+                                    }
+                                </ul>
+                            `
+                    }
+
                 </div>
             </div>
         `;
