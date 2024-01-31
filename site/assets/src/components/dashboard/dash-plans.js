@@ -50,20 +50,22 @@ export class DashPlans extends LitElement {
         const { question, answer, id, status } = commitment
         return html`
             <li class="list__item">
-                <span>${question}: ${answer}</span>
-                <div class="f-2">
-                    ${status === 'closed'
-                        ? html`<span class="zume-check-mark success"></span>`
-                        : html`
-                            <button
-                                class="btn light uppercase small"
-                                data-id=${id}
-                                @click=${() => this.completeCommitment(id)}
-                            >
-                                ${zumeDashboard.translations.done}
-                            </button>
-                        `
-                    }
+                <span>${question}: <b>${answer}</b></span>
+                <div class="list__secondary">
+                    <div class="d-flex w-6rem justify-content-center">
+                        ${status === 'closed'
+                            ? html`<span class="icon zume-check-mark success"></span>`
+                            : html`
+                                <button
+                                    class="btn light uppercase tight break-anywhere"
+                                    data-id=${id}
+                                    @click=${() => this.completeCommitment(id)}
+                                >
+                                    ${zumeDashboard.translations.done}
+                                </button>
+                            `
+                        }
+                    </div>
                     <button class="lh-sm d-flex align-items-center">
                         <span class="icon zume-kebab brand-light"></span>
                     </button>
