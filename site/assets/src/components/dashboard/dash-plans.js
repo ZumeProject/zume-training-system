@@ -27,8 +27,8 @@ export class DashPlans extends LitElement {
         jQuery(document).foundation();
     }
 
-    fetchCommitments() {
-        makeRequest('GET', 'commitments', { status: '' }, 'zume_system/v1' )
+    fetchCommitments(status = '') {
+        makeRequest('GET', 'commitments', { status }, 'zume_system/v1' )
             .done( ( data ) => {
                 this.commitments = data
             })
@@ -108,6 +108,23 @@ export class DashPlans extends LitElement {
         console.log(id)
     }
 
+    filterCommitments(status) {
+        switch (status) {
+            case 'open':
+                this.fetchCommitments('open')
+                break;
+            case 'closed':
+                this.fetchCommitments('closed')
+                break;
+            case 'all':
+                this.fetchCommitments('')
+                break;
+
+            default:
+                break;
+        }
+    }
+
     closeMenu(id) {
         const menu = this.querySelector(`#kebab-menu-${id}`)
         jQuery(menu).foundation('close')
@@ -156,6 +173,28 @@ export class DashPlans extends LitElement {
                         <button class="icon-btn f-2" @click=${this.openCommitmentsModal}>
                             <span class="icon zume-plus brand-light"></span>
                         </button>
+                        <button class="icon-btn f-2" data-toggle="filter-menu">
+                            <span class="icon zume-filter brand-light"></span>
+                        </button>
+                    </div>
+                    <div class="dropdown-pane" id="filter-menu" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true" data-close-on-click-inside="true">
+                        <ul>
+                            <li>
+                                <button class="menu-btn" @click=${() => this.filterCommitments('open')}>
+                                    ${zumeDashboard.translations.active}
+                                </button>
+                            </li>
+                            <li>
+                                <button class="menu-btn" @click=${() => this.filterCommitments('closed')}>
+                                    ${zumeDashboard.translations.completed}
+                                </button>
+                            </li>
+                            <li>
+                                <button class="menu-btn" @click=${() => this.filterCommitments('all')}>
+                                    ${zumeDashboard.translations.both}
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                     <launch-course></launch-course>
                 </div>
