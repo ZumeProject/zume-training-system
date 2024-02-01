@@ -34,6 +34,10 @@ export class DashPlans extends LitElement {
             })
     }
 
+    addCommitment() {
+        console.log('open modal to add commitments')
+    }
+
     completeCommitment(id) {
 
         let data = {
@@ -90,7 +94,7 @@ export class DashPlans extends LitElement {
                 </div>
                 <div class="dropdown-pane" id="kebab-menu-${id}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true" data-close-on-click-inside="true">
                     <ul>
-                        <li><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon zume-pencil"></span>${zumeDashboard.translations.edit}</button></li>
+                        <li class="hidden"><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon zume-pencil"></span>${zumeDashboard.translations.edit}</button></li>
                         <li><button class="menu-btn" @click=${() => this.deleteCommitment(id)}><span class="icon zume-trash"></span>${zumeDashboard.translations.delete}</button></li>
                     </ul>
                 </div>
@@ -103,7 +107,12 @@ export class DashPlans extends LitElement {
         return html`
             <div class="dashboard__content">
                 <div class="dashboard__header">
-                    <h1 class="h3">Plans</h1>
+                    <div class="d-flex gap-0">
+                        <h1 class="h3">Plans</h1>
+                        <button class="icon-btn f-2" @click=${this.addCommitment}>
+                            <span class="icon zume-plus brand-light"></span>
+                        </button>
+                    </div>
                     <launch-course></launch-course>
                 </div>
                 <div class="dashboard__main">
