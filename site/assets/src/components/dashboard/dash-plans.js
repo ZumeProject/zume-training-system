@@ -31,7 +31,8 @@ export class DashPlans extends LitElement {
         jQuery(document).foundation();
     }
 
-    fetchCommitments(status = '') {
+    fetchCommitments() {
+        const status = this.filterStatus
         makeRequest('GET', 'commitments', { status }, 'zume_system/v1' )
             .done( ( data ) => {
                 this.commitments = data
@@ -113,20 +114,8 @@ export class DashPlans extends LitElement {
     }
 
     filterCommitments(status) {
-        switch (status) {
-            case 'open':
-                this.fetchCommitments('open')
-                break;
-            case 'closed':
-                this.fetchCommitments('closed')
-                break;
-            case 'all':
-                this.fetchCommitments('')
-                break;
-
-            default:
-                break;
-        }
+        this.filterStatus = status
+        this.fetchCommitments(status)
         ZumeStorage.save(this.filterName, status)
     }
 
@@ -195,7 +184,7 @@ export class DashPlans extends LitElement {
                                 </button>
                             </li>
                             <li>
-                                <button class="menu-btn" @click=${() => this.filterCommitments('all')}>
+                                <button class="menu-btn" @click=${() => this.filterCommitments('')}>
                                     ${zumeDashboard.translations.both}
                                 </button>
                             </li>
