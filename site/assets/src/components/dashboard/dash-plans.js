@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { repeat } from 'lit/directives/repeat.js'
+import { DashBoard } from './dash-board';
 
 export class DashPlans extends LitElement {
     static get properties() {
@@ -12,6 +13,7 @@ export class DashPlans extends LitElement {
     constructor() {
         super()
         this.loading = true
+        this.route = DashBoard.getRoute('my-plans')
 
         this.renderListItem = this.renderListItem.bind(this)
     }
@@ -108,7 +110,7 @@ export class DashPlans extends LitElement {
             <div class="dashboard__content">
                 <div class="dashboard__header">
                     <div class="d-flex gap-0">
-                        <h1 class="h3">Plans</h1>
+                        <h1 class="h3">${this.route.translation}</h1>
                         <button class="icon-btn f-2" @click=${this.addCommitment}>
                             <span class="icon zume-plus brand-light"></span>
                         </button>
