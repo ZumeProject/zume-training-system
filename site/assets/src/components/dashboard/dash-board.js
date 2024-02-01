@@ -244,7 +244,7 @@ export class DashBoard extends router(LitElement) {
                             icon="zume-practicing"
                             text=${zumeDashboard.translations.practicing}
                         ></nav-link>
-                        <ul class="nested">
+                        <ul class="nested is-active">
                             ${
                                 DashBoard.childRoutesOf('practicing')
                                     .map((route) => html`

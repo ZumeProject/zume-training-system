@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit';
+import { repeat } from 'lit/directives/repeat.js'
 
 export class DashPlans extends LitElement {
     static get properties() {
@@ -26,8 +27,6 @@ export class DashPlans extends LitElement {
     fetchCommitments() {
         makeRequest('GET', 'commitments', { status: '' }, 'zume_system/v1' )
             .done( ( data ) => {
-                console.log(this)
-                console.log(data)
                 this.commitments = data
             })
             .always(() => {
@@ -47,14 +46,23 @@ export class DashPlans extends LitElement {
     }
 
     deleteCommitment(id) {
-        console.log(id)
+        let data = {
+            id: id,
+            user_id: zumeDashboard.user_profile.user_id
+        }
+        makeRequest('DELETE', 'commitment', data, 'zume_system/v1' ).done( ( data ) => {
+            this.closeMenu(id)
+            this.fetchCommitments()
+        })
     }
+
     editCommitment(id) {
         console.log(id)
     }
 
-    renderList() {
-        return this.commitments.map(this.renderListItem)
+    closeMenu(id) {
+        const menu = this.querySelector(`#kebab-menu-${id}`)
+        jQuery(menu).foundation('close')
     }
 
     renderListItem(commitment) {
@@ -80,13 +88,14 @@ export class DashPlans extends LitElement {
                         <span class="icon zume-kebab brand-light"></span>
                     </button>
                 </div>
+                <div class="dropdown-pane" id="kebab-menu-${id}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true" data-close-on-click-inside="true">
+                    <ul>
+                        <li><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon zume-pencil"></span>${zumeDashboard.translations.edit}</button></li>
+                        <li><button class="menu-btn" @click=${() => this.deleteCommitment(id)}><span class="icon zume-trash"></span>${zumeDashboard.translations.delete}</button></li>
+                    </ul>
+                </div>
             </li>
-            <div class="dropdown-pane" id="kebab-menu-${id}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true">
-                <ul>
-                    <li><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon zume-pencil"></span>${zumeDashboard.translations.edit}</button></li>
-                    <li><button class="menu-btn" @click=${() => this.deleteCommitment(id)}><span class="icon zume-trash"></span>${zumeDashboard.translations.delete}</button></li>
-                </ul>
-            </div>
+
         `
     }
 
@@ -108,7 +117,7 @@ export class DashPlans extends LitElement {
                                     </li>
                                     ${
                                         !this.loading && this.commitments && this.commitments.length > 0
-                                        ? this.renderList()
+                                        ? repeat(this.commitments, (commitment) => commitment.id, this.renderListItem)
                                         : ''
                                     }
                                 </ul>
