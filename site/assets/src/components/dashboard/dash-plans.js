@@ -16,6 +16,7 @@ export class DashPlans extends LitElement {
         this.route = DashBoard.getRoute('my-plans')
 
         this.renderListItem = this.renderListItem.bind(this)
+        this.closeCommitmentsModal = this.closeCommitmentsModal.bind(this)
     }
 
     firstUpdated() {
@@ -36,8 +37,49 @@ export class DashPlans extends LitElement {
             })
     }
 
-    addCommitment() {
-        console.log('open modal to add commitments')
+    openCommitmentsModal() {
+        const modal = document.querySelector('#new-commitments-form')
+        jQuery(modal).foundation('open')
+    }
+
+    closeCommitmentsModal() {
+        const modal = document.querySelector('#new-commitments-form')
+        jQuery(modal).foundation('close')
+    }
+    clearCommitmentsModal() {
+        jQuery('.post-training-plan').each(function(value) {
+            this.value = ''
+        })
+    }
+
+    addCommitments() {
+        jQuery('.post-training-plan').each(function(value) {
+            const answer = jQuery(this).val();
+            if ( answer ) {
+
+                const question = jQuery(this).prev().text();
+                console.log('Question: ' + question + ' Answer: ' + answer)
+
+                var date = new Date(); // Now
+                date.setDate(date.getDate() + 30);
+
+                this.value = ''
+
+                makeRequest('POST', 'commitment', {
+                    "user_id": zumeDashboard.user_profile.user_id,
+                    "post_id": zumeDashboard.user_profile.contact_id,
+                    "meta_key": "tasks",
+                    "note": 'Question: ' + question + ' Answer: ' + answer,
+                    "question": question,
+                    "answer": answer,
+                    "date": date,
+                    "category": "post_training_plan"
+                }, 'zume_system/v1' ).done((data) => {
+                    console.log(data)
+                })
+            }
+        })
+        this.closeCommitmentsModal()
     }
 
     completeCommitment(id) {
@@ -111,7 +153,7 @@ export class DashPlans extends LitElement {
                 <div class="dashboard__header">
                     <div class="d-flex gap-0">
                         <h1 class="h3">${this.route.translation}</h1>
-                        <button class="icon-btn f-2" @click=${this.addCommitment}>
+                        <button class="icon-btn f-2" @click=${this.openCommitmentsModal}>
                             <span class="icon zume-plus brand-light"></span>
                         </button>
                     </div>
@@ -135,6 +177,72 @@ export class DashPlans extends LitElement {
                             `
                     }
 
+                </div>
+            </div>
+            <div class="reveal large" id="new-commitments-form" data-reveal data-v-offset="20">
+                <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.clearCommitmentsModal}>
+                        <img src=${`${zumeDashboard.images_url}/close-button-01.svg`} alt="close button">
+                </button>
+                <div id="pieces-content" class="stack">
+                    <div class="stack--3">
+                      <label for="plan_name">I will share My Story [Testimony] and God's Story [the Gospel] with the following individuals:</label>
+                      <input type="text" name="" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will invite the following people to begin an Accountability Group with me:</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will challenge the following people to begin their own Accountability Groups and train them how to do it:</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will invite the following people to begin a 3/3 Group with me:</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will challenge the following people to begin their own 3/3 Groups and train them how to do it:</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will invite the following people to participate in a 3/3 Hope or Discover Group [see Appendix of Zúme Guidebook]</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will invite the following people to participate in Prayer Walking with me:</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will Prayer Walk once every [days / weeks / months].</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will equip the following people to share their story and God's Story and make a List of 100 of the people in their relational network:</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will challenge the following people to use the Prayer Cycle tool on a periodic basis:</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will use the Prayer Cycle tool once every [days / weeks / months].</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will invite the following people to be part of a Leadership Cell that I will lead:</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">I will encourage the following people to go through this Zúme Training course:</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <label for="plan_name">Other commitments:</label>
+                      <input type="text" class="post-training-plan" />
+                    </div>
+                    <div class="stack--3">
+                      <button class="btn" @click=${this.addCommitments}>Save</button>
+                    </div>
                 </div>
             </div>
         `;

@@ -90,6 +90,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'site_url' => get_site_url(),
                 'base_url' => $this->base_url,
+                'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '/assets/images' ),
                 'template_dir' => get_template_directory_uri(),
                 'user_profile' => zume_get_user_profile(),
                 'training_items' => zume_training_items(),
