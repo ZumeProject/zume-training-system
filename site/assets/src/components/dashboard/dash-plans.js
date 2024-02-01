@@ -7,6 +7,7 @@ export class DashPlans extends LitElement {
         return {
             loading: { type: Boolean, attribute: false },
             commitments: { type: Array, attribute: false },
+            filterStatus: { type: String, attribute: false },
         };
     }
 
@@ -14,13 +15,16 @@ export class DashPlans extends LitElement {
         super()
         this.loading = true
         this.route = DashBoard.getRoute('my-plans')
+        this.filterName = 'my-plans-filter'
+        this.filterStatus = ZumeStorage.load(this.filterName)
 
         this.renderListItem = this.renderListItem.bind(this)
         this.closeCommitmentsModal = this.closeCommitmentsModal.bind(this)
     }
 
     firstUpdated() {
-        this.fetchCommitments()
+        const status = this.filterStatus || ''
+        this.fetchCommitments(status)
     }
 
     updated() {
@@ -123,6 +127,7 @@ export class DashPlans extends LitElement {
             default:
                 break;
         }
+        ZumeStorage.save(this.filterName, status)
     }
 
     closeMenu(id) {
