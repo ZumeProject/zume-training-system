@@ -83,7 +83,11 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
 
     public function header_style(){
         ?>
-
+        <script>
+            jQuery(document).ready(function(){
+                jQuery(document).foundation();
+            });
+        </script>
         <script>
             const zumeDashboard = [<?php echo json_encode([
                 'root' => esc_url_raw( rest_url() ),

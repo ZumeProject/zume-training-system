@@ -6,14 +6,20 @@ export class DashPracticing extends LitElement {
     constructor() {
         super()
         this.routeName = 'practicing'
-        this.routes = DashBoard.childRoutesOf('practicing')
+        this.route = DashBoard.getRoute(this.routeName)
+        this.routes = DashBoard.childRoutesOf(this.routeName)
     }
 
     render() {
         return html`
             <div class="dashboard__content">
-                <div class="dashboard__header">
-                    <h1 class="h3">Practicing</h1>
+                <div class="dashboard__header left">
+                    <div class="dashboard__title">
+                        <span class="icon ${this.route.icon}"></span>
+                        <h1 class="h3">${this.route.translation}</h1>
+                    </div>
+                </div>
+                <div class="dashboard__header right">
                     <launch-course></launch-course>
                 </div>
                 <div class="dashboard__main p-1">
@@ -21,7 +27,7 @@ export class DashPracticing extends LitElement {
                         ${this.routes.map((route) => html`
                             <grid-link
                                 href=${route.pattern}
-                                text=${zumeDashboard.translations[route.translation] || ''}
+                                text=${route.translation || ''}
                                 icon=${route.icon}
                             >
                             </grid-link>

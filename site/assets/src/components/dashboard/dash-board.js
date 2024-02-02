@@ -39,7 +39,8 @@ export class DashBoard extends router(LitElement) {
             {
                 name: 'practicing',
                 pattern: `${zumeDashboard.base_url}/practicing`,
-                icon: '',
+                icon: 'zume-practicing',
+                translation: zumeDashboard.translations['practicing'],
                 data: {
                     component: 'dash-practicing',
                 },

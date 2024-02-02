@@ -201,6 +201,8 @@ export class DashPlans extends LitElement {
                             </li>
                         </ul>
                     </div>
+                </div>
+                <div class="dashboard__header right">
                     <launch-course></launch-course>
                 </div>
                 <div class="dashboard__main">
@@ -284,8 +286,8 @@ export class DashPlans extends LitElement {
                       <label for="plan_name">Other commitments:</label>
                       <input type="text" class="post-training-plan" />
                     </div>
-                    <div class="stack--3">
-                      <button class="btn" @click=${this.addCommitments}>Save</button>
+                    <div class="">
+                      <button class="btn d-block ms-auto" @click=${this.addCommitments}>Save</button>
                     </div>
                 </div>
             </div>
