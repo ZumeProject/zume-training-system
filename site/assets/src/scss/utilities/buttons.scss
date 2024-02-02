@@ -206,3 +206,25 @@ button.card-btn {
     align-items: center;
     line-height: 1;
 }
+
+.icon-btn-group {
+    display: flex;
+
+    border-radius: 100px;
+    overflow: hidden;
+    border: 1px solid color('brand-light');
+
+    padding: 0;
+    line-height: 1;
+    font-size: font-size(1);
+
+    & > button {
+        padding: spacing(-4) spacing(-2);
+        color: color('brand-light');
+    }
+
+    & .selected {
+        color: color('white');
+        background-color: color('brand-light');
+    }
+}

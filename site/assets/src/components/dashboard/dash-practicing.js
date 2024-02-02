@@ -18,6 +18,16 @@ export class DashPracticing extends LitElement {
                         <span class="icon ${this.route.icon}"></span>
                         <h1 class="h3">${this.route.translation}</h1>
                     </div>
+                    <div class="icon-btn-group">
+                        <button class="selected" data-id="list">
+                            <span class="icon zume-list" aria-hidden="true"></span>
+                            <span class="visually-hidden">${zumeDashboard.translations.list}</span>
+                        </button>
+                        <button data-id="grid">
+                            <span class="icon zume-grid" aria-hidden="true"></span>
+                            <span class="visually-hidden">${zumeDashboard.translations.grid}</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="dashboard__header right">
                     <launch-course></launch-course>
