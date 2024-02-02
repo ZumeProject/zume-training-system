@@ -106,7 +106,8 @@ a {
 .menu-btn {
     @include button;
 
-    padding: spacing(-3) 0;
+    border-radius: var(--border-radius);
+    padding: spacing(-3);
     font-weight: 500;
     text-align: start;
 
@@ -119,6 +120,10 @@ a {
     --btn-hover-color: #{color('brand-light')};
     --btn-hover-bg-color: none;
     --btn-hover-border-color: transparent;
+
+    &.selected {
+        background-color: color('brand-fade');
+    }
 
     &:hover {
         text-decoration: none;

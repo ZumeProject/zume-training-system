@@ -79,7 +79,7 @@ export class DashBoard extends router(LitElement) {
                 pattern: `${zumeDashboard.base_url}/my-churches`,
                 parent: 'practicing',
                 icon: 'zume-churches',
-                translation: zumeDashboard.translations['my_churches`'],
+                translation: zumeDashboard.translations['my_churches'],
                 data: {
                     component: 'dash-churches',
                 },

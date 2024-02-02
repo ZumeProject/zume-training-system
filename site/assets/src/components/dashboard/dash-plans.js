@@ -117,6 +117,12 @@ export class DashPlans extends LitElement {
         this.filterStatus = status
         this.fetchCommitments(status)
         ZumeStorage.save(this.filterName, status)
+        this.closeFilter()
+    }
+
+    closeFilter() {
+        const menu = this.querySelector('#filter-menu')
+        jQuery(menu).foundation('close')
     }
 
     closeMenu(id) {
@@ -165,26 +171,31 @@ export class DashPlans extends LitElement {
                     <div class="d-flex gap-0">
                         <h1 class="h3">${this.route.translation}</h1>
                         <button class="icon-btn f-2" @click=${this.openCommitmentsModal}>
-                            <span class="icon zume-plus brand-light"></span>
+                            <span class="visually-hidden">${zumeDashboard.translations.add_commitments}</span>
+                            <span class="icon zume-plus brand-light" aria-hidden="true"></span>
                         </button>
                         <button class="icon-btn f-2" data-toggle="filter-menu">
-                            <span class="icon zume-filter brand-light"></span>
+                            <span class="visually-hidden">${zumeDashboard.translations.filter}</span>
+                            <span class="icon zume-filter brand-light" aria-hidden="true"></span>
                         </button>
                     </div>
                     <div class="dropdown-pane" id="filter-menu" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true" data-close-on-click-inside="true">
                         <ul>
                             <li>
-                                <button class="menu-btn" @click=${() => this.filterCommitments('open')}>
+                                <button class="menu-btn w-100 ${this.filterStatus === 'open' ? 'selected' : ''}" @click=${() => this.filterCommitments('open')}>
+                                    <span class="icon zume-sort-todo" aria-hidden="true"></span>
                                     ${zumeDashboard.translations.active}
                                 </button>
                             </li>
                             <li>
-                                <button class="menu-btn" @click=${() => this.filterCommitments('closed')}>
+                                <button class="menu-btn w-100 ${this.filterStatus === 'closed' ? 'selected' : ''}" @click=${() => this.filterCommitments('closed')}>
+                                    <span class="icon zume-sort-done" aria-hidden="true"></span>
                                     ${zumeDashboard.translations.completed}
                                 </button>
                             </li>
                             <li>
-                                <button class="menu-btn" @click=${() => this.filterCommitments('')}>
+                                <button class="menu-btn w-100 ${this.filterStatus === '' ? 'selected' : ''}" @click=${() => this.filterCommitments('')}>
+                                    <span class="icon zume-sort-all" aria-hidden="true"></span>
                                     ${zumeDashboard.translations.both}
                                 </button>
                             </li>

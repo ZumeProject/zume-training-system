@@ -103,6 +103,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                     'active' => __( 'Active', 'zume' ),
                     'completed' => __( 'Completed', 'zume' ),
                     'both' => __( 'Both', 'zume' ),
+                    'filter' => __( 'Filter', 'zume' ),
+                    'add_commitments' => __( 'Add commitments', 'zume' ),
                     'copy_link' => __( 'Copy Link', 'zume' ),
                     'copy_and_share_text' => __( 'Copy this link and send it to your friends 🙂', 'zume' ),
                     'share_feedback' => __( 'Thanks!', 'zume' ),
