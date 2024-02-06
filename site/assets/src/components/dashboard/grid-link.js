@@ -12,6 +12,10 @@ export class GridLink extends NavLink {
         `)
     }
 
+    getIcon() {
+        return this.disabled ? this.icon + '-locked' : this.icon
+    }
+
     render() {
         return html`
             <a
@@ -20,9 +24,10 @@ export class GridLink extends NavLink {
                 role="button"
                 @click=${this.handleClick}
                 aria-disabled=${this.printBool(this.disabled)}
+                data-disabled=${this.printBool(this.disabled)}
                 data-completed=${this.printBool(this.completed)}
             >
-                <span class="icon ${this.icon} brand-light"></span>
+                <span class="icon ${this.getIcon()} brand-light"></span>
                 ${this.renderText()}
             </a>
         `;

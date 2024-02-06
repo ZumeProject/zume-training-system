@@ -94,7 +94,7 @@ export class DashBoard extends router(LitElement) {
                 name: 'my-maps',
                 pattern: `${zumeDashboard.base_url}/my-maps`,
                 parent: 'practicing',
-                icon: 'zume-location',
+                icon: 'zume-maps',
                 translation: zumeDashboard.translations['my_maps'],
                 explanation: zumeDashboard.translations['my_maps_explanation'],
                 data: {

@@ -12,6 +12,10 @@ export class ListLink extends NavLink {
         `)
     }
 
+    getIcon() {
+        return this.disabled ? this.icon + '-locked' : this.icon
+    }
+
     render() {
         return html`
             <div
@@ -20,12 +24,12 @@ export class ListLink extends NavLink {
                 data-completed=${this.printBool(this.completed)}
             >
                 <div class="dash-menu__icon-area | stack--5">
-                    <span class="icon ${this.icon} dash-menu__list-icon"></span>
+                    <span class="icon ${this.getIcon()} dash-menu__list-icon"></span>
                     ${this.renderText()}
                 </div>
                 <span>${this.explanation}</span>
                 <a href=${this.href} class="btn light tight" role="button" @click=${this.handleClick}>
-                    ${zumeDashboard.translations.view_now}
+                    ${this.disabled ? zumeDashboard.translations.preview : zumeDashboard.translations.view_now}
                 </a>
             </div>
         `

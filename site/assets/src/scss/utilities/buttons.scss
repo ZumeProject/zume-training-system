@@ -156,7 +156,7 @@ button.card-btn {
     padding: spacing(0);
     box-shadow: var(--z-box-shadow-medium);
     border-radius: var(--border-radius);
-    transition: color 100ms linear;
+    transition: color, background-color 100ms linear;
 
     & > * {
         pointer-events: none;
@@ -168,6 +168,10 @@ button.card-btn {
         background-color: color('brand-light');
         color: white;
         text-decoration: none;
+
+        &[aria-disabled="true"] {
+            background-color: color('gray-500');
+        }
 
         > .brand-light {
             transition: color 100ms linear;

@@ -111,6 +111,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                     'list' => __( 'List View', 'zume' ),
                     'grid' => __( 'Grid View', 'zume' ),
                     'view_now' => __( 'View Now', 'zume' ),
+                    'preview' => __( 'Preview', 'zume' ),
                     'add_commitments' => __( 'Add commitments', 'zume' ),
                     'copy_link' => __( 'Copy Link', 'zume' ),
                     'copy_and_share_text' => __( 'Copy this link and send it to your friends 🙂', 'zume' ),
