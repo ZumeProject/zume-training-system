@@ -58,6 +58,7 @@ export class DashPlans extends LitElement {
     }
 
     addCommitments() {
+        const requests = []
         jQuery('.post-training-plan').each(function(value) {
             const answer = jQuery(this).val();
             if ( answer ) {
@@ -70,7 +71,11 @@ export class DashPlans extends LitElement {
 
                 this.value = ''
 
-                makeRequest('POST', 'commitment', {
+                /**
+                 * TODO: refactor the POST commitment API to take a list of commitments
+                 * then we can safely fetch all the commitments once the single API request has completed
+                 */
+                const request = makeRequest('POST', 'commitment', {
                     "user_id": zumeDashboard.user_profile.user_id,
                     "post_id": zumeDashboard.user_profile.contact_id,
                     "meta_key": "tasks",
@@ -79,12 +84,17 @@ export class DashPlans extends LitElement {
                     "answer": answer,
                     "date": date,
                     "category": "post_training_plan"
-                }, 'zume_system/v1' ).done((data) => {
-                    console.log(data)
-                })
+                }, 'zume_system/v1' )
+                requests.push(request.promise())
             }
         })
-        this.closeCommitmentsModal()
+        console.log(requests)
+        return Promise.all(requests)
+            .then(() => {
+                console.log
+                this.fetchCommitments()
+                this.closeCommitmentsModal()
+            })
     }
 
     completeCommitment(id) {
