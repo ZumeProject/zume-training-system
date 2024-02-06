@@ -6,7 +6,7 @@ export class DashProgress extends LitElement {
     static get properties() {
         return {
             loading: { type: Boolean, attribute: false },
-            commitments: { type: Array, attribute: false },
+            filteredItems: { type: Array, attribute: false },
             filterStatus: { type: String, attribute: false },
         };
     }
@@ -15,15 +15,27 @@ export class DashProgress extends LitElement {
         super()
         this.loading = false
         this.route = DashBoard.getRoute('my-progress')
+
+        this.trainingItems = zumeDashboard.training_items
+        this.filteredItems = [ ...this.trainingItems ]
+
         this.filterName = 'my-progress-filter'
         this.filterStatus = ZumeStorage.load(this.filterName)
+
+
 
         this.renderListItem = this.renderListItem.bind(this)
         this.closeInfoModal = this.closeInfoModal.bind(this)
     }
 
     firstUpdated() {
-        const status = this.filterStatus || ''
+        /* Get user HOST progress */
+        this.loading = true
+        makeRequest('GET', 'host', { user_id: zumeDashboard.user_profile.user_id }, 'zume_system/v1' )
+            .done( ( data ) => {
+                console.log(data)
+                this.loading = false
+            })
     }
 
     updated() {
@@ -57,37 +69,28 @@ export class DashProgress extends LitElement {
         jQuery(menu).foundation('close')
     }
 
-    renderListItem(courseElement) {
-        const { question, answer, id, status } = courseElement
+    renderListItem(trainingItem) {
+        const { title, host } = trainingItem
         return html`
-            <li class="list__item">
-                <span>${question} <b>${answer}</b></span>
+            <li class="list__item tight">
+                <span class="bold">${title}</span>
                 <div class="list__secondary">
-                    <div class="d-flex w-6rem justify-content-center">
-                        ${status === 'closed'
-                            ? html`<span class="icon zume-check-mark success"></span>`
-                            : html`
-                                <button
-                                    class="btn light uppercase tight break-anywhere"
-                                    @click=${() => this.completeCommitment(id)}
-                                >
-                                    ${zumeDashboard.translations.done}
-                                </button>
-                            `
-                        }
+                    <div class="training-progress">
+                        <button data-subtype=${host[0].subtype} class="active">
+                            <span class="icon zume-heard-concept"></span>
+                        </button>
+                        <button data-subtype=${host[1].subtype} class="active">
+                            <span class="icon zume-obey-concept"></span>
+                        </button>
+                        <button data-subtype=${host[2].subtype} class="active">
+                            <span class="icon zume-share-concept"></span>
+                        </button>
+                        <button data-subtype=${host[3].subtype} class="active">
+                            <span class="icon zume-train-concept"></span>
+                        </button>
                     </div>
-                    <button class="icon-btn" data-toggle="kebab-menu-${id}">
-                        <span class="icon zume-kebab brand-light"></span>
-                    </button>
-                </div>
-                <div class="dropdown-pane" id="kebab-menu-${id}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true" data-close-on-click-inside="true">
-                    <ul>
-                        <li class="hidden"><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon zume-pencil"></span>${zumeDashboard.translations.edit}</button></li>
-                        <li><button class="menu-btn" @click=${() => this.deleteCommitment(id)}><span class="icon zume-trash"></span>${zumeDashboard.translations.delete}</button></li>
-                    </ul>
                 </div>
             </li>
-
         `
     }
 
@@ -126,9 +129,7 @@ export class DashProgress extends LitElement {
                         html`
                             <ul class="list">
                                 ${
-                                    this.commitments && this.commitments.length > 0
-                                    ? repeat(this.commitments, (commitment) => commitment.id, this.renderListItem)
-                                    : ''
+                                    repeat(this.filteredItems, (trainingItem) => trainingItem.key, this.renderListItem)
                                 }
                             </ul>
                         `

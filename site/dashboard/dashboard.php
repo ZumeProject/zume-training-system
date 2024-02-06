@@ -98,6 +98,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'template_dir' => get_template_directory_uri(),
                 'user_profile' => zume_get_user_profile(),
                 'training_items' => zume_training_items(),
+                'host_progress' => zume_get_user_host(),
                 'friends' => zume_get_user_friends(),
                 'translations' => [
                     'done' => __( 'Done', 'zume' ),

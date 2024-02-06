@@ -11,6 +11,10 @@
     align-items: center;
     padding: spacing(0);
     border-bottom: 2px solid color('gray-100');
+
+    &.tight {
+        padding-block: spacing(-2);
+    }
 }
 
 .list__secondary {
