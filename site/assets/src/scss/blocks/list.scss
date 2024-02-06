@@ -11,6 +11,7 @@
     align-items: center;
     padding: spacing(0);
     border-bottom: 2px solid color('gray-100');
+    gap: spacing(0);
 
     &.tight {
         padding-block: spacing(-2);

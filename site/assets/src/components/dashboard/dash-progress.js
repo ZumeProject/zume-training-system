@@ -102,10 +102,28 @@ export class DashProgress extends LitElement {
     }
 
     renderListItem(trainingItem) {
-        const { title, host } = trainingItem
+        const { title, description, host, slug } = trainingItem
+
+        let url = [ zumeDashboard.site_url, zumeDashboard.language, slug ].join('/')
+
+        if ( zumeDashboard.language === 'en' ) {
+            url = [ zumeDashboard.site_url, slug ].join('/')
+        }
+
         return html`
             <li class="list__item tight">
-                <span class="bold">${title}</span>
+                <div class="stack">
+                    <h2 class="h5 bold">${title}</h2>
+                    <div class="collapse" data-open="false">
+                        <div class="stack">
+                            <p>${description}</p>
+                            <div class="cluster">
+                                <share-links url=${url} title=${title} .t=${zumeDashboard.share_translations}></share-links>
+                                <a class="btn light uppercase" href=${url}>${zumeDashboard.translations.view}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="list__secondary">
                     <div class="training-progress">
                         <button

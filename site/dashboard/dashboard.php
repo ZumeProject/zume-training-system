@@ -32,6 +32,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'url_parts' => $url_parts,
         ] = zume_get_url_pieces();
 
+        $this->lang_code = $lang_code;
+
         $page_slug = $url_parts[0] ?? '';
 
         $post = zume_get_post_by_slug( $page_slug );
@@ -92,6 +94,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             const zumeDashboard = [<?php echo json_encode([
                 'root' => esc_url_raw( rest_url() ),
                 'nonce' => wp_create_nonce( 'wp_rest' ),
+                'language' => $this->lang_code,
                 'site_url' => get_site_url(),
                 'base_url' => $this->base_url,
                 'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '/assets/images' ),
@@ -100,6 +103,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'training_items' => zume_training_items(),
                 'host_progress' => zume_get_user_host(),
                 'friends' => zume_get_user_friends(),
+                'share_translations' => Zume_Training_Share::translations(),
                 'translations' => [
                     'done' => __( 'Done', 'zume' ),
                     'edit' => __( 'Edit', 'zume' ),
@@ -112,6 +116,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                     'list' => __( 'List View', 'zume' ),
                     'grid' => __( 'Grid View', 'zume' ),
                     'view_now' => __( 'View Now', 'zume' ),
+                    'view' => __( 'View', 'zume' ),
+                    'share_title' => __( 'Check out this Zume concept', 'zume' ),
                     'preview' => __( 'Preview', 'zume' ),
                     'add_commitments' => __( 'Add commitments', 'zume' ),
                     'copy_link' => __( 'Copy Link', 'zume' ),
