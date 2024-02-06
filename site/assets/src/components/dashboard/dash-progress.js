@@ -8,6 +8,7 @@ export class DashProgress extends LitElement {
             loading: { type: Boolean, attribute: false },
             filteredItems: { type: Array, attribute: false },
             filterStatus: { type: String, attribute: false },
+            hostProgress: { type: Object, attribute: false},
         };
     }
 
@@ -65,9 +66,39 @@ export class DashProgress extends LitElement {
         jQuery(menu).foundation('close')
     }
 
-    closeMenu(id) {
-        const menu = this.querySelector(`#kebab-menu-${id}`)
-        jQuery(menu).foundation('close')
+    toggleHost(host) {
+        const {type, subtype, key} = host
+        const currentState = this.hostProgress.list[key]
+
+        if (currentState === false) {
+            makeRequest('POST', 'host', { type: type, subtype: subtype, user_id: zumeDashboard.user_profile.user_id }, 'zume_system/v1' )
+                .done( ( data ) => {
+                    console.log(data)
+                    if ( Array.isArray(data) ) {
+                        this.hostProgress.list[key] = true
+                    }
+                    this.loadHostStatus()
+                })
+        }
+
+        if (currentState === true) {
+            makeRequest('DELETE', 'host', { type: type, subtype: subtype, user_id: zumeDashboard.user_profile.user_id }, 'zume_system/v1' )
+                .done( ( data ) => {
+                    console.log(data)
+                    if ( Array.isArray(data) ) {
+                        this.hostProgress.list[key] = false
+                    }
+                    this.loadHostStatus()
+                })
+        }
+    }
+
+    loadHostStatus() {
+        makeRequest('GET', 'host', { user_id: zumeDashboard.user_profile.user_id }, 'zume_system/v1' )
+            .done( ( data ) => {
+                console.log(data)
+                this.hostProgress = data
+            })
     }
 
     renderListItem(trainingItem) {
@@ -77,16 +108,32 @@ export class DashProgress extends LitElement {
                 <span class="bold">${title}</span>
                 <div class="list__secondary">
                     <div class="training-progress">
-                        <button data-subtype=${host[0].subtype} class=${this.hostProgress.list[host[0].key] ? 'active' : ''}>
+                        <button
+                            data-subtype=${host[0].subtype}
+                            class=${this.hostProgress.list[host[0].key] ? 'active' : ''}
+                            @click=${() => this.toggleHost(host[0])}
+                        >
                             <span class="icon zume-heard-concept"></span>
                         </button>
-                        <button data-subtype=${host[1].subtype} class=${this.hostProgress.list[host[1].key] ? 'active' : ''}>
+                        <button
+                            data-subtype=${host[1].subtype}
+                            class=${this.hostProgress.list[host[1].key] ? 'active' : ''}
+                            @click=${() => this.toggleHost(host[1])}
+                        >
                             <span class="icon zume-obey-concept"></span>
                         </button>
-                        <button data-subtype=${host[2].subtype} class=${this.hostProgress.list[host[2].key] ? 'active' : ''}>
+                        <button
+                            data-subtype=${host[2].subtype}
+                            class=${this.hostProgress.list[host[2].key] ? 'active' : ''}
+                            @click=${() => this.toggleHost(host[2])}
+                        >
                             <span class="icon zume-share-concept"></span>
                         </button>
-                        <button data-subtype=${host[3].subtype} class=${this.hostProgress.list[host[3].key] ? 'active' : ''}>
+                        <button
+                            data-subtype=${host[3].subtype}
+                            class=${this.hostProgress.list[host[3].key] ? 'active' : ''}
+                            @click=${() => this.toggleHost(host[3])}
+                        >
                             <span class="icon zume-train-concept"></span>
                         </button>
                     </div>
