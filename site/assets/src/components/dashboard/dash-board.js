@@ -24,7 +24,8 @@ export class DashBoard extends router(LitElement) {
             {
                 name: 'getting-started',
                 pattern: `${zumeDashboard.base_url}/getting-started`,
-                icon: '',
+                icon: 'zume-start',
+                translation: zumeDashboard.translations['getting_started'],
                 data: {
                     component: 'dash-getting-started',
                 },
@@ -32,9 +33,43 @@ export class DashBoard extends router(LitElement) {
             {
                 name: 'training',
                 pattern: `${zumeDashboard.base_url}/training`,
-                icon: '',
+                icon: 'zume-training',
+                translation: zumeDashboard.translations['training'],
                 data: {
                     component: 'dash-training',
+                },
+            },
+            {
+                name: 'my-training',
+                pattern: `${zumeDashboard.base_url}/my-training`,
+                parent: 'training',
+                icon: 'zume-group',
+                translation: zumeDashboard.translations['my_training'],
+                explanation: zumeDashboard.translations['my_training_explanation'],
+                data: {
+                    component: 'dash-trainings',
+                },
+            },
+            {
+                name: 'my-progress',
+                pattern: `${zumeDashboard.base_url}/my-progress`,
+                parent: 'training',
+                icon: 'zume-progress',
+                translation: zumeDashboard.translations['my_progress'],
+                explanation: zumeDashboard.translations['my_progress_explanation'],
+                data: {
+                    component: 'dash-progress',
+                },
+            },
+            {
+                name: '3-month-plan',
+                pattern: `${zumeDashboard.base_url}/3-month-plan`,
+                parent: 'training',
+                icon: 'zume-plans',
+                translation: zumeDashboard.translations['3_month_plan'],
+                explanation: zumeDashboard.translations['3_month_plan_explanation'],
+                data: {
+                    component: 'dash-progress',
                 },
             },
             {
@@ -241,24 +276,21 @@ export class DashBoard extends router(LitElement) {
                         >
                         </nav-link>
                         <ul class="nested is-active">
-                            <li>
-                                <nav-link
-                                    class="menu-btn"
-                                    href="#"
-                                    icon="zume-progress"
-                                    text=${zumeDashboard.translations.my_progress}
-                                ></nav-link>
-                                <span class="icon zume-locked gray-500"></span>
-                            </li>
-                            <li>
-                                <nav-link
-                                    class="menu-btn"
-                                    href="#"
-                                    icon="zume-group"
-                                    text=${zumeDashboard.translations.my_training}
-                                ></nav-link>
-                                <span class="icon zume-locked gray-500"></span>
-                            </li>
+                            ${
+                                DashBoard.childRoutesOf('training')
+                                    .map((route) => html`
+                                        <li>
+                                            <nav-link
+                                                class="menu-btn"
+                                                href=${this.makeHrefRoute(route.name)}
+                                                icon=${route.icon}
+                                                text=${route.translation}
+                                                ?locked=${['3-month-plan'].includes(route.name)}
+                                            ></nav-link>
+                                            <span class="icon zume-locked gray-500"></span>
+                                        </li>
+                                    `)
+                            }
                         </ul>
                     </li>
                     <li class="menu-section">
