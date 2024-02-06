@@ -178,7 +178,8 @@ export class DashPlans extends LitElement {
         return html`
             <div class="dashboard__content">
                 <div class="dashboard__header">
-                    <div class="d-flex gap-0">
+                    <div class="dashboard__title">
+                        <span class="icon ${this.route.icon}"></span>
                         <h1 class="h3">${this.route.translation}</h1>
                         <button class="icon-btn f-2" @click=${this.openCommitmentsModal}>
                             <span class="visually-hidden">${zumeDashboard.translations.add_commitments}</span>

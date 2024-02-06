@@ -13,119 +13,36 @@ export class DashProgress extends LitElement {
 
     constructor() {
         super()
-        this.loading = true
-        this.route = DashBoard.getRoute('my-plans')
-        this.filterName = 'my-plans-filter'
+        this.loading = false
+        this.route = DashBoard.getRoute('my-progress')
+        this.filterName = 'my-progress-filter'
         this.filterStatus = ZumeStorage.load(this.filterName)
 
         this.renderListItem = this.renderListItem.bind(this)
-        this.closeCommitmentsModal = this.closeCommitmentsModal.bind(this)
+        this.closeInfoModal = this.closeInfoModal.bind(this)
     }
 
     firstUpdated() {
         const status = this.filterStatus || ''
-        this.fetchCommitments(status)
     }
 
     updated() {
         jQuery(document).foundation();
     }
 
-    fetchCommitments() {
-        const status = this.filterStatus
-        makeRequest('GET', 'commitments', { status }, 'zume_system/v1' )
-            .done( ( data ) => {
-                this.commitments = data
-            })
-            .always(() => {
-                this.loading = false
-            })
-    }
-
-    openCommitmentsModal() {
+    openInfoModal() {
         const modal = document.querySelector('#new-commitments-form')
         jQuery(modal).foundation('open')
     }
 
-    closeCommitmentsModal() {
+    closeInfoModal() {
         const modal = document.querySelector('#new-commitments-form')
         jQuery(modal).foundation('close')
     }
-    clearCommitmentsModal() {
-        jQuery('.post-training-plan').each(function(value) {
-            this.value = ''
-        })
-    }
 
-    addCommitments() {
-        const requests = []
-        jQuery('.post-training-plan').each(function(value) {
-            const answer = jQuery(this).val();
-            if ( answer ) {
-
-                const question = jQuery(this).prev().text();
-                console.log('Question: ' + question + ' Answer: ' + answer)
-
-                var date = new Date(); // Now
-                date.setDate(date.getDate() + 30);
-
-                this.value = ''
-
-                /**
-                 * TODO: refactor the POST commitment API to take a list of commitments
-                 * then we can safely fetch all the commitments once the single API request has completed
-                 */
-                const request = makeRequest('POST', 'commitment', {
-                    "user_id": zumeDashboard.user_profile.user_id,
-                    "post_id": zumeDashboard.user_profile.contact_id,
-                    "meta_key": "tasks",
-                    "note": 'Question: ' + question + ' Answer: ' + answer,
-                    "question": question,
-                    "answer": answer,
-                    "date": date,
-                    "category": "post_training_plan"
-                }, 'zume_system/v1' )
-                requests.push(request.promise())
-            }
-        })
-        console.log(requests)
-        return Promise.all(requests)
-            .then(() => {
-                console.log
-                this.fetchCommitments()
-                this.closeCommitmentsModal()
-            })
-    }
-
-    completeCommitment(id) {
-
-        let data = {
-            id: id,
-            user_id: zumeDashboard.user_profile.user_id
-        }
-        makeRequest('PUT', 'commitment', data, 'zume_system/v1' ).done( ( data ) => {
-            this.fetchCommitments()
-        })
-    }
-
-    deleteCommitment(id) {
-        let data = {
-            id: id,
-            user_id: zumeDashboard.user_profile.user_id
-        }
-        makeRequest('DELETE', 'commitment', data, 'zume_system/v1' ).done( ( data ) => {
-            this.closeMenu(id)
-            this.fetchCommitments()
-        })
-    }
-
-    editCommitment(id) {
-        console.log(id)
-    }
-
-    filterCommitments(status) {
+    filterProgress(status) {
         this.filterStatus = status
-        this.fetchCommitments(status)
+        /* Reorder progress */
         ZumeStorage.save(this.filterName, status)
         this.closeFilter()
     }
@@ -140,8 +57,8 @@ export class DashProgress extends LitElement {
         jQuery(menu).foundation('close')
     }
 
-    renderListItem(commitment) {
-        const { question, answer, id, status } = commitment
+    renderListItem(courseElement) {
+        const { question, answer, id, status } = courseElement
         return html`
             <li class="list__item">
                 <span>${question} <b>${answer}</b></span>
@@ -178,35 +95,24 @@ export class DashProgress extends LitElement {
         return html`
             <div class="dashboard__content">
                 <div class="dashboard__header">
-                    <div class="d-flex gap-0">
+                    <div class="dashboard__title">
+                        <span class="icon ${this.route.icon}"></span>
                         <h1 class="h3">${this.route.translation}</h1>
-                        <button class="icon-btn f-2" @click=${this.openCommitmentsModal}>
-                            <span class="visually-hidden">${zumeDashboard.translations.add_commitments}</span>
-                            <span class="icon zume-plus brand-light" aria-hidden="true"></span>
-                        </button>
                         <button class="icon-btn f-2" data-toggle="filter-menu">
                             <span class="visually-hidden">${zumeDashboard.translations.filter}</span>
                             <span class="icon zume-filter brand-light" aria-hidden="true"></span>
+                        </button>
+                        <button class="icon-btn f-2" @click=${this.openInfoModal}>
+                            <span class="visually-hidden">${zumeDashboard.translations.progress_info}</span>
+                            <span class="icon zume-info brand-light" aria-hidden="true"></span>
                         </button>
                     </div>
                     <div class="dropdown-pane" id="filter-menu" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true" data-close-on-click-inside="true">
                         <ul>
                             <li>
-                                <button class="menu-btn w-100 ${this.filterStatus === 'open' ? 'selected' : ''}" @click=${() => this.filterCommitments('open')}>
+                                <button class="menu-btn w-100 ${this.filterStatus === 'open' ? 'selected' : ''}" @click=${() => this.filterProgress('open')}>
                                     <span class="icon zume-sort-todo" aria-hidden="true"></span>
                                     ${zumeDashboard.translations.active}
-                                </button>
-                            </li>
-                            <li>
-                                <button class="menu-btn w-100 ${this.filterStatus === 'closed' ? 'selected' : ''}" @click=${() => this.filterCommitments('closed')}>
-                                    <span class="icon zume-sort-done" aria-hidden="true"></span>
-                                    ${zumeDashboard.translations.completed}
-                                </button>
-                            </li>
-                            <li>
-                                <button class="menu-btn w-100 ${this.filterStatus === '' ? 'selected' : ''}" @click=${() => this.filterCommitments('')}>
-                                    <span class="icon zume-sort-all" aria-hidden="true"></span>
-                                    ${zumeDashboard.translations.both}
                                 </button>
                             </li>
                         </ul>
@@ -217,88 +123,24 @@ export class DashProgress extends LitElement {
                 </div>
                 <div class="dashboard__main">
                     ${
-                        this.loading
-                            ? html`<span class="loading-spinner active"></span>`
-                            : html`
-                                <ul class="list">
-                                    <li class="list__item">
-                                        <h2 class="f-1">I will</h2>
-                                    </li>
-                                    ${
-                                        !this.loading && this.commitments && this.commitments.length > 0
-                                        ? repeat(this.commitments, (commitment) => commitment.id, this.renderListItem)
-                                        : ''
-                                    }
-                                </ul>
-                            `
+                        html`
+                            <ul class="list">
+                                ${
+                                    this.commitments && this.commitments.length > 0
+                                    ? repeat(this.commitments, (commitment) => commitment.id, this.renderListItem)
+                                    : ''
+                                }
+                            </ul>
+                        `
                     }
 
                 </div>
             </div>
             <div class="reveal large" id="new-commitments-form" data-reveal data-v-offset="20">
-                <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.clearCommitmentsModal}>
+                <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button">
                         <img src=${`${zumeDashboard.images_url}/close-button-01.svg`} alt="close button">
                 </button>
                 <div id="pieces-content" class="stack">
-                    <div class="stack--3">
-                      <label for="plan_name">I will share My Story [Testimony] and God's Story [the Gospel] with the following individuals:</label>
-                      <input type="text" name="" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will invite the following people to begin an Accountability Group with me:</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will challenge the following people to begin their own Accountability Groups and train them how to do it:</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will invite the following people to begin a 3/3 Group with me:</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will challenge the following people to begin their own 3/3 Groups and train them how to do it:</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will invite the following people to participate in a 3/3 Hope or Discover Group [see Appendix of Zúme Guidebook]</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will invite the following people to participate in Prayer Walking with me:</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will Prayer Walk once every [days / weeks / months].</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will equip the following people to share their story and God's Story and make a List of 100 of the people in their relational network:</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will challenge the following people to use the Prayer Cycle tool on a periodic basis:</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will use the Prayer Cycle tool once every [days / weeks / months].</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will invite the following people to be part of a Leadership Cell that I will lead:</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">I will encourage the following people to go through this Zúme Training course:</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="stack--3">
-                      <label for="plan_name">Other commitments:</label>
-                      <input type="text" class="post-training-plan" />
-                    </div>
-                    <div class="">
-                      <button class="btn d-block ms-auto" @click=${this.addCommitments}>Save</button>
-                    </div>
                 </div>
             </div>
         `;

@@ -124,6 +124,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                     'training' => __( 'Training', 'zume' ),
                     'my_progress' => __( 'My Progress', 'zume' ),
                     'my_progress_explanation' => __( 'Track your course progress with this interactive view. Learn to listen, obey, share and train others with what you have learned.', 'zume' ),
+                    'progress_info' => __( 'Information about progress', 'zume' ),
                     'my_training' => __( 'My Training', 'zume' ),
                     'my_training_explanation' => __( 'Full access to your training content, schedule, group details and sharing tools.', 'zume' ),
                     '3_month_plan' => __( '3-Month Plan', 'zume' ),
