@@ -29,7 +29,6 @@ export class DashPracticing extends LitElement {
     }
 
     render() {
-        console.log(this.routes)
         return html`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
@@ -49,7 +48,7 @@ export class DashPracticing extends LitElement {
                 <div class="dashboard__header right">
                     <launch-course></launch-course>
                 </div>
-                <div class="dashboard__main p-1">
+                <div class="dashboard__main p-2">
                     ${this.view === 'grid' ? html`
                         <div class="nav-grid">
                             ${this.routes.map((route) => html`

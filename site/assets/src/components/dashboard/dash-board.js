@@ -15,6 +15,7 @@ export class DashBoard extends router(LitElement) {
             route: { type: String },
             params: { type: Object },
             query: { type: Object },
+            menuOffset: { type: Number, attribute: false },
         };
     }
 
@@ -128,10 +129,17 @@ export class DashBoard extends router(LitElement) {
         this.params = {}
         this.query = {}
         this.data = {}
+        this.menuOffset = 0
 
         this.addEventListener('route', (event) => {
             console.log(event)
         })
+    }
+
+    firstUpdated() {
+        const progressMenu = this.querySelector('.progress-menu')
+        const offsetTop = progressMenu.offsetTop
+        this.menuOffset = offsetTop
     }
 
     router(route, params, query, data) {
@@ -174,7 +182,12 @@ export class DashBoard extends router(LitElement) {
             <div class="dashboard">
 
             <div class="dashboard__sidebar">
-                <ul class="stack-2 | progress-menu accordion-menu" data-accordion-menu data-submenu-toggle="true">
+                <ul
+                    class="stack-2 | progress-menu accordion-menu"
+                    data-accordion-menu
+                    data-submenu-toggle="true"
+                    style="top: ${this.menuOffset}px"
+                >
                     <li class="menu-section">
                         <nav-link
                             href=${this.makeHref('getting-started')}
