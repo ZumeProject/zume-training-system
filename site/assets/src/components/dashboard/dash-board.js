@@ -51,6 +51,7 @@ export class DashBoard extends router(LitElement) {
                 parent: 'practicing',
                 icon: 'zume-coach',
                 translation: zumeDashboard.translations['my_coach'],
+                explanation: zumeDashboard.translations['my_coach_explanation'],
                 data: {
                     component: 'dash-coach',
                 },
@@ -61,6 +62,7 @@ export class DashBoard extends router(LitElement) {
                 parent: 'practicing',
                 icon: 'zume-tools',
                 translation: zumeDashboard.translations['my_tools'],
+                explanation: zumeDashboard.translations['my_tools_explanation'],
                 data: {
                     component: 'dash-tools',
                 },
@@ -71,6 +73,7 @@ export class DashBoard extends router(LitElement) {
                 parent: 'practicing',
                 icon: 'zume-plans',
                 translation: zumeDashboard.translations['my_plans'],
+                explanation: zumeDashboard.translations['my_plans_explanation'],
                 data: {
                     component: 'dash-plans',
                 },
@@ -81,6 +84,7 @@ export class DashBoard extends router(LitElement) {
                 parent: 'practicing',
                 icon: 'zume-churches',
                 translation: zumeDashboard.translations['my_churches'],
+                explanation: zumeDashboard.translations['my_churches_explanation'],
                 data: {
                     component: 'dash-churches',
                 },
@@ -91,6 +95,7 @@ export class DashBoard extends router(LitElement) {
                 parent: 'practicing',
                 icon: 'zume-location',
                 translation: zumeDashboard.translations['my_maps'],
+                explanation: zumeDashboard.translations['my_maps_explanation'],
                 data: {
                     component: 'dash-maps',
                 },

@@ -11,6 +11,7 @@ export class NavLink extends navigator(LitElement) {
             directLink: { type: Boolean },
             icon: { type: String },
             text: { type: String },
+            explanation: { type: String },
         };
     }
 
@@ -20,6 +21,7 @@ export class NavLink extends navigator(LitElement) {
         this.class = ''
         this.icon = ''
         this.text = ''
+        this.explanation = ''
         this.disabled = false
         this.completed = false
         this.directLink = false

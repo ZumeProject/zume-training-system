@@ -12,5 +12,6 @@ import './dash-tools'
 import './dash-training'
 
 import './grid-link'
+import './list-link'
 import './launch-course'
 import './nav-link'
