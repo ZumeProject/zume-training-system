@@ -17,6 +17,7 @@ export class DashProgress extends LitElement {
         this.route = DashBoard.getRoute('my-progress')
 
         this.trainingItems = zumeDashboard.training_items
+        this.hostProgress = zumeDashboard.host_progress
         this.filteredItems = [ ...this.trainingItems ]
 
         this.filterName = 'my-progress-filter'
@@ -76,16 +77,16 @@ export class DashProgress extends LitElement {
                 <span class="bold">${title}</span>
                 <div class="list__secondary">
                     <div class="training-progress">
-                        <button data-subtype=${host[0].subtype} class="active">
+                        <button data-subtype=${host[0].subtype} class=${this.hostProgress.list[host[0].key] ? 'active' : ''}>
                             <span class="icon zume-heard-concept"></span>
                         </button>
-                        <button data-subtype=${host[1].subtype} class="active">
+                        <button data-subtype=${host[1].subtype} class=${this.hostProgress.list[host[1].key] ? 'active' : ''}>
                             <span class="icon zume-obey-concept"></span>
                         </button>
-                        <button data-subtype=${host[2].subtype} class="active">
+                        <button data-subtype=${host[2].subtype} class=${this.hostProgress.list[host[2].key] ? 'active' : ''}>
                             <span class="icon zume-share-concept"></span>
                         </button>
-                        <button data-subtype=${host[3].subtype} class="active">
+                        <button data-subtype=${host[3].subtype} class=${this.hostProgress.list[host[3].key] ? 'active' : ''}>
                             <span class="icon zume-train-concept"></span>
                         </button>
                     </div>

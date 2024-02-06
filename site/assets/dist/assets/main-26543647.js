@@ -806,21 +806,21 @@ var se=Object.defineProperty;var ie=(i,t,e)=>t in i?se(i,t,{enumerable:!0,config
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-plans",Qe);class Ve extends et{constructor(){super("practicing")}createRenderRoot(){return this}}customElements.define("dash-practicing",Ve);class Ze extends u{static get properties(){return{loading:{type:Boolean,attribute:!1},filteredItems:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1}}}constructor(){super(),this.loading=!1,this.route=w.getRoute("my-progress"),this.trainingItems=zumeDashboard.training_items,this.filteredItems=[...this.trainingItems],this.filterName="my-progress-filter",this.filterStatus=ZumeStorage.load(this.filterName),this.renderListItem=this.renderListItem.bind(this),this.closeInfoModal=this.closeInfoModal.bind(this)}firstUpdated(){this.loading=!0,makeRequest("GET","host",{user_id:zumeDashboard.user_profile.user_id},"zume_system/v1").done(t=>{console.log(t),this.loading=!1})}updated(){jQuery(document).foundation()}openInfoModal(){const t=document.querySelector("#new-commitments-form");jQuery(t).foundation("open")}closeInfoModal(){const t=document.querySelector("#new-commitments-form");jQuery(t).foundation("close")}filterProgress(t){this.filterStatus=t,ZumeStorage.save(this.filterName,t),this.closeFilter()}closeFilter(){const t=this.querySelector("#filter-menu");jQuery(t).foundation("close")}closeMenu(t){const e=this.querySelector(`#kebab-menu-${t}`);jQuery(e).foundation("close")}renderListItem(t){const{title:e,host:s}=t;return a`
+        `}createRenderRoot(){return this}}customElements.define("dash-plans",Qe);class Ve extends et{constructor(){super("practicing")}createRenderRoot(){return this}}customElements.define("dash-practicing",Ve);class Ze extends u{static get properties(){return{loading:{type:Boolean,attribute:!1},filteredItems:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1}}}constructor(){super(),this.loading=!1,this.route=w.getRoute("my-progress"),this.trainingItems=zumeDashboard.training_items,this.hostProgress=zumeDashboard.host_progress,this.filteredItems=[...this.trainingItems],this.filterName="my-progress-filter",this.filterStatus=ZumeStorage.load(this.filterName),this.renderListItem=this.renderListItem.bind(this),this.closeInfoModal=this.closeInfoModal.bind(this)}firstUpdated(){this.loading=!0,makeRequest("GET","host",{user_id:zumeDashboard.user_profile.user_id},"zume_system/v1").done(t=>{console.log(t),this.loading=!1})}updated(){jQuery(document).foundation()}openInfoModal(){const t=document.querySelector("#new-commitments-form");jQuery(t).foundation("open")}closeInfoModal(){const t=document.querySelector("#new-commitments-form");jQuery(t).foundation("close")}filterProgress(t){this.filterStatus=t,ZumeStorage.save(this.filterName,t),this.closeFilter()}closeFilter(){const t=this.querySelector("#filter-menu");jQuery(t).foundation("close")}closeMenu(t){const e=this.querySelector(`#kebab-menu-${t}`);jQuery(e).foundation("close")}renderListItem(t){const{title:e,host:s}=t;return a`
             <li class="list__item tight">
                 <span class="bold">${e}</span>
                 <div class="list__secondary">
                     <div class="training-progress">
-                        <button data-subtype=${s[0].subtype} class="active">
+                        <button data-subtype=${s[0].subtype} class=${this.hostProgress.list[s[0].key]?"active":""}>
                             <span class="icon zume-heard-concept"></span>
                         </button>
-                        <button data-subtype=${s[1].subtype} class="active">
+                        <button data-subtype=${s[1].subtype} class=${this.hostProgress.list[s[1].key]?"active":""}>
                             <span class="icon zume-obey-concept"></span>
                         </button>
-                        <button data-subtype=${s[2].subtype} class="active">
+                        <button data-subtype=${s[2].subtype} class=${this.hostProgress.list[s[2].key]?"active":""}>
                             <span class="icon zume-share-concept"></span>
                         </button>
-                        <button data-subtype=${s[3].subtype} class="active">
+                        <button data-subtype=${s[3].subtype} class=${this.hostProgress.list[s[3].key]?"active":""}>
                             <span class="icon zume-train-concept"></span>
                         </button>
                     </div>
@@ -1374,4 +1374,4 @@ var se=Object.defineProperty;var ie=(i,t,e)=>t in i?se(i,t,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("progress-circle",vs);
-//# sourceMappingURL=main-939cf239.js.map
+//# sourceMappingURL=main-26543647.js.map
