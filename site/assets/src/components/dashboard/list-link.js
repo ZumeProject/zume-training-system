@@ -13,14 +13,14 @@ export class ListLink extends NavLink {
     }
 
     getIcon() {
-        return this.disabled ? this.icon + '-locked' : this.icon
+        return this.locked ? this.icon + '-locked' : this.icon
     }
 
     render() {
         return html`
             <div
                 class="dash-menu__list-item"
-                data-disabled=${this.printBool(this.disabled)}
+                data-locked=${this.printBool(this.locked)}
                 data-completed=${this.printBool(this.completed)}
             >
                 <div class="dash-menu__icon-area | stack--5">
@@ -28,9 +28,9 @@ export class ListLink extends NavLink {
                     ${this.renderText()}
                 </div>
                 <span>${this.explanation}</span>
-                <a href=${this.href} class="btn ${this.disabled ? 'locked' : 'light'} tight" role="button" @click=${this.handleClick}>
+                <a href=${this.href} class="btn ${this.locked ? 'locked' : 'light'} tight" role="button" @click=${this.handleClick}>
                     ${
-                        this.disabled
+                        this.locked
                             ? zumeDashboard.translations.preview
                             : zumeDashboard.translations.view_now
                     }

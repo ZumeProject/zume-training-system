@@ -56,13 +56,13 @@ export class DashPracticing extends LitElement {
                                     href=${route.pattern}
                                     text=${route.translation || ''}
                                     icon=${route.icon}
-                                    ?disabled=${['my-plans', 'my-churches', 'my-maps'].includes(route.name)}
+                                    ?locked=${['my-plans', 'my-churches', 'my-maps'].includes(route.name)}
                                 >
                                 </grid-link>
                                 `
                             )}
                         </div>
-                    ` : html `
+                    ` : html`
                         <div class="stack-3">
                             ${this.routes.map((route) => html`
                                 <list-link
@@ -70,7 +70,7 @@ export class DashPracticing extends LitElement {
                                     text=${route.translation}
                                     explanation=${route.explanation}
                                     icon=${route.icon}
-                                    ?disabled=${['my-plans', 'my-churches', 'my-maps'].includes(route.name)}
+                                    ?locked=${['my-plans', 'my-churches', 'my-maps'].includes(route.name)}
                                 >
                                 </list-link>
                             `)}

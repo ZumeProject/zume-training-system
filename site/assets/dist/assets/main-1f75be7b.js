@@ -463,7 +463,6 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                                 <nav-link
                                     class="menu-btn"
                                     href=${zumeDashboard.urls.set_profile_wizard}
-                                    ?disabled=${!0}
                                     ?completed=${!0}
                                     ?directLink=${!0}
                                     icon="zume-profile"
@@ -475,7 +474,6 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                                 <nav-link
                                     class="menu-btn"
                                     href=${zumeDashboard.urls.plan_training_wizard}
-                                    ?disabled=${!0}
                                     ?completed=${!0}
                                     ?directLink=${!0}
                                     icon="zume-start"
@@ -511,6 +509,7 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                                     icon="zume-progress"
                                     text=${zumeDashboard.translations.my_progress}
                                 ></nav-link>
+                                <span class="icon zume-locked gray-500"></span>
                             </li>
                             <li>
                                 <nav-link
@@ -519,6 +518,7 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                                     icon="zume-group"
                                     text=${zumeDashboard.translations.my_training}
                                 ></nav-link>
+                                <span class="icon zume-locked gray-500"></span>
                             </li>
                         </ul>
                     </li>
@@ -537,7 +537,9 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                                                 href=${this.makeHrefRoute(e.name)}
                                                 icon=${e.icon}
                                                 text=${e.translation}
+                                                ?locked=${["my-plans","my-churches","my-maps"].includes(e.name)}
                                             ></nav-link>
+                                            <span class="icon zume-locked gray-500"></span>
                                         </li>
                                     `)}
                         </ul>
@@ -801,7 +803,7 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                                     href=${e.pattern}
                                     text=${e.translation||""}
                                     icon=${e.icon}
-                                    ?disabled=${["my-plans","my-churches","my-maps"].includes(e.name)}
+                                    ?locked=${["my-plans","my-churches","my-maps"].includes(e.name)}
                                 >
                                 </grid-link>
                                 `)}
@@ -814,7 +816,7 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                                     text=${e.translation}
                                     explanation=${e.explanation}
                                     icon=${e.icon}
-                                    ?disabled=${["my-plans","my-churches","my-maps"].includes(e.name)}
+                                    ?locked=${["my-plans","my-churches","my-maps"].includes(e.name)}
                                 >
                                 </list-link>
                             `)}
@@ -852,27 +854,28 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                     <dash-cta></dash-cta>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-training",Jt);class fe extends Ot(u){static get properties(){return{href:{type:String},class:{type:String},disabled:{type:Boolean},completed:{type:Boolean},directLink:{type:Boolean},icon:{type:String},text:{type:String},explanation:{type:String}}}constructor(){super(),this.href="",this.class="",this.icon="",this.text="",this.explanation="",this.disabled=!1,this.completed=!1,this.directLink=!1}handleClick(e){this.directLink||(e.preventDefault(),this.navigate(this.href))}printBool(e){return e?"true":"false"}render(){return r`
+        `}createRenderRoot(){return this}}customElements.define("dash-training",Jt);class fe extends Ot(u){static get properties(){return{href:{type:String},class:{type:String},locked:{type:Boolean},completed:{type:Boolean},directLink:{type:Boolean},icon:{type:String},text:{type:String},explanation:{type:String}}}constructor(){super(),this.href="",this.class="",this.icon="",this.text="",this.explanation="",this.locked=!1,this.completed=!1,this.directLink=!1}handleClick(e){this.directLink||(e.preventDefault(),this.navigate(this.href))}printBool(e){return e?"true":"false"}render(){return r`
             <a
                 href=${this.href}
                 class=${this.class}
                 @click=${this.handleClick}
-                aria-disabled=${this.printBool(this.disabled)}
+                aria-disabled=${this.printBool(this.completed)}
                 data-completed=${this.printBool(this.completed)}
+                data-locked=${this.printBool(this.locked)}
             >
                 <span class="icon ${this.icon} brand-light"></span>
                 <span>${this.text}</span>
             </a>
         `}createRenderRoot(){return this}}customElements.define("nav-link",fe);class Gt extends fe{constructor(){super()}renderText(){return this.text.split(" ").map(e=>r`
             <span>${e}</span>
-        `)}getIcon(){return this.disabled?this.icon+"-locked":this.icon}render(){return r`
+        `)}getIcon(){return this.locked?this.icon+"-locked":this.icon}render(){return r`
             <a
                 href=${this.href}
                 class="card-btn grid-link"
                 role="button"
                 @click=${this.handleClick}
-                aria-disabled=${this.printBool(this.disabled)}
-                data-disabled=${this.printBool(this.disabled)}
+                aria-disabled=${this.printBool(this.locked)}
+                data-locked=${this.printBool(this.locked)}
                 data-completed=${this.printBool(this.completed)}
             >
                 <span class="icon ${this.getIcon()} brand-light"></span>
@@ -880,10 +883,10 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
             </a>
         `}}customElements.define("grid-link",Gt);class Qt extends fe{constructor(){super()}renderText(){return this.text.split(" ").map(e=>r`
             <span>${e}</span>
-        `)}getIcon(){return this.disabled?this.icon+"-locked":this.icon}render(){return r`
+        `)}getIcon(){return this.locked?this.icon+"-locked":this.icon}render(){return r`
             <div
                 class="dash-menu__list-item"
-                data-disabled=${this.printBool(this.disabled)}
+                data-locked=${this.printBool(this.locked)}
                 data-completed=${this.printBool(this.completed)}
             >
                 <div class="dash-menu__icon-area | stack--5">
@@ -891,8 +894,8 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                     ${this.renderText()}
                 </div>
                 <span>${this.explanation}</span>
-                <a href=${this.href} class="btn ${this.disabled?"locked":"light"} tight" role="button" @click=${this.handleClick}>
-                    ${this.disabled?zumeDashboard.translations.preview:zumeDashboard.translations.view_now}
+                <a href=${this.href} class="btn ${this.locked?"locked":"light"} tight" role="button" @click=${this.handleClick}>
+                    ${this.locked?zumeDashboard.translations.preview:zumeDashboard.translations.view_now}
                 </a>
             </div>
         `}}customElements.define("list-link",Qt);class Kt extends u{updated(){jQuery(document).foundation()}render(){return r`
@@ -1198,4 +1201,4 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("progress-circle",gs);
-//# sourceMappingURL=main-77b60924.js.map
+//# sourceMappingURL=main-1f75be7b.js.map

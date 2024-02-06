@@ -202,7 +202,6 @@ export class DashBoard extends router(LitElement) {
                                 <nav-link
                                     class="menu-btn"
                                     href=${zumeDashboard.urls.set_profile_wizard}
-                                    ?disabled=${true}
                                     ?completed=${true}
                                     ?directLink=${true}
                                     icon="zume-profile"
@@ -214,7 +213,6 @@ export class DashBoard extends router(LitElement) {
                                 <nav-link
                                     class="menu-btn"
                                     href=${zumeDashboard.urls.plan_training_wizard}
-                                    ?disabled=${true}
                                     ?completed=${true}
                                     ?directLink=${true}
                                     icon="zume-start"
@@ -250,6 +248,7 @@ export class DashBoard extends router(LitElement) {
                                     icon="zume-progress"
                                     text=${zumeDashboard.translations.my_progress}
                                 ></nav-link>
+                                <span class="icon zume-locked gray-500"></span>
                             </li>
                             <li>
                                 <nav-link
@@ -258,6 +257,7 @@ export class DashBoard extends router(LitElement) {
                                     icon="zume-group"
                                     text=${zumeDashboard.translations.my_training}
                                 ></nav-link>
+                                <span class="icon zume-locked gray-500"></span>
                             </li>
                         </ul>
                     </li>
@@ -278,7 +278,9 @@ export class DashBoard extends router(LitElement) {
                                                 href=${this.makeHrefRoute(route.name)}
                                                 icon=${route.icon}
                                                 text=${route.translation}
+                                                ?locked=${['my-plans', 'my-churches', 'my-maps'].includes(route.name)}
                                             ></nav-link>
+                                            <span class="icon zume-locked gray-500"></span>
                                         </li>
                                     `)
                             }

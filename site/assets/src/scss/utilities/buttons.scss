@@ -146,6 +146,11 @@ a {
             color: color('gray-400');
         }
     }
+    &[data-locked="true"] {
+        .icon {
+            color: color('gray-400');
+        }
+    }
 
     .icon {
         margin-inline-end: 0.5em;
