@@ -891,7 +891,7 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                     ${this.renderText()}
                 </div>
                 <span>${this.explanation}</span>
-                <a href=${this.href} class="btn light tight" role="button" @click=${this.handleClick}>
+                <a href=${this.href} class="btn ${this.disabled?"locked":"light"} tight" role="button" @click=${this.handleClick}>
                     ${this.disabled?zumeDashboard.translations.preview:zumeDashboard.translations.view_now}
                 </a>
             </div>
@@ -1198,4 +1198,4 @@ var et=Object.defineProperty;var tt=(s,e,t)=>e in s?et(s,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("progress-circle",gs);
-//# sourceMappingURL=main-869019fd.js.map
+//# sourceMappingURL=main-77b60924.js.map

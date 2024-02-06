@@ -72,6 +72,13 @@ a {
         --btn-hover-border-color: #{color('gray-600')};
     }
 
+    &.locked {
+        --btn-bg-color: #{color('gray-500')};
+        --btn-border-color: #{color('gray-500')};
+        --btn-hover-bg-color: #{color('gray-600')};
+        --btn-hover-border-color: #{color('gray-600')};
+    }
+
     &.light {
         --btn-color: #{color('white')};
         --btn-bg-color: #{color('brand-light')};

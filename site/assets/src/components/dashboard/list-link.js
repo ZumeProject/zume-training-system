@@ -28,8 +28,12 @@ export class ListLink extends NavLink {
                     ${this.renderText()}
                 </div>
                 <span>${this.explanation}</span>
-                <a href=${this.href} class="btn light tight" role="button" @click=${this.handleClick}>
-                    ${this.disabled ? zumeDashboard.translations.preview : zumeDashboard.translations.view_now}
+                <a href=${this.href} class="btn ${this.disabled ? 'locked' : 'light'} tight" role="button" @click=${this.handleClick}>
+                    ${
+                        this.disabled
+                            ? zumeDashboard.translations.preview
+                            : zumeDashboard.translations.view_now
+                    }
                 </a>
             </div>
         `
