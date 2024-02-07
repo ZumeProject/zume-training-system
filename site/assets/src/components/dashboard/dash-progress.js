@@ -24,6 +24,11 @@ export class DashProgress extends LitElement {
         this.filterName = 'my-progress-filter'
         this.filterStatus = ZumeStorage.load(this.filterName)
 
+        this.openStates = {}
+
+        this.trainingItems.forEach(item => {
+            this.openStates[item.key] = false
+        });
 
 
         this.renderListItem = this.renderListItem.bind(this)
@@ -35,7 +40,6 @@ export class DashProgress extends LitElement {
         this.loading = true
         makeRequest('GET', 'host', { user_id: zumeDashboard.user_profile.user_id }, 'zume_system/v1' )
             .done( ( data ) => {
-                console.log(data)
                 this.loading = false
             })
     }
@@ -66,14 +70,14 @@ export class DashProgress extends LitElement {
         jQuery(menu).foundation('close')
     }
 
-    toggleHost(host) {
+    toggleHost(host, event) {
+        event.stopImmediatePropagation()
         const {type, subtype, key} = host
         const currentState = this.hostProgress.list[key]
 
         if (currentState === false) {
             makeRequest('POST', 'host', { type: type, subtype: subtype, user_id: zumeDashboard.user_profile.user_id }, 'zume_system/v1' )
                 .done( ( data ) => {
-                    console.log(data)
                     if ( Array.isArray(data) ) {
                         this.hostProgress.list[key] = true
                     }
@@ -84,7 +88,6 @@ export class DashProgress extends LitElement {
         if (currentState === true) {
             makeRequest('DELETE', 'host', { type: type, subtype: subtype, user_id: zumeDashboard.user_profile.user_id }, 'zume_system/v1' )
                 .done( ( data ) => {
-                    console.log(data)
                     if ( Array.isArray(data) ) {
                         this.hostProgress.list[key] = false
                     }
@@ -96,13 +99,28 @@ export class DashProgress extends LitElement {
     loadHostStatus() {
         makeRequest('GET', 'host', { user_id: zumeDashboard.user_profile.user_id }, 'zume_system/v1' )
             .done( ( data ) => {
-                console.log(data)
                 this.hostProgress = data
             })
     }
 
+    toggleDetails(key) {
+        const collapseElement = this.querySelector(`#details-${key}`)
+        const open = this.openStates[key]
+
+        if (open === false) {
+            const height = collapseElement.scrollHeight + 'px'
+            collapseElement.style.height = height
+            collapseElement.dataset.collapsed = 'false'
+            this.openStates[key] = true
+        } else {
+            collapseElement.style.height = '0'
+            collapseElement.dataset.collapsed = 'true'
+            this.openStates[key] = false
+        }
+    }
+
     renderListItem(trainingItem) {
-        const { title, description, host, slug } = trainingItem
+        const { title, description, host, slug, key } = trainingItem
 
         let url = [ zumeDashboard.site_url, zumeDashboard.language, slug ].join('/')
 
@@ -111,46 +129,46 @@ export class DashProgress extends LitElement {
         }
 
         return html`
-            <li class="list__item tight">
-                <div class="stack">
-                    <h2 class="h5 bold">${title}</h2>
-                    <div class="collapse" data-open="false">
-                        <div class="stack">
-                            <p>${description}</p>
+            <li class="list__item tight" @click=${() => this.toggleDetails(key)} role="button">
+                <div>
+                    <h2 class="h5 bold m0">${title}</h2>
+                    <div class="collapse" id="details-${key}" data-collapsed="true">
+                        <div class="stack--2 mt--2">
+                            <p class="f--1 gray-700">${description}</p>
                             <div class="cluster">
                                 <share-links url=${url} title=${title} .t=${zumeDashboard.share_translations}></share-links>
-                                <a class="btn light uppercase" href=${url}>${zumeDashboard.translations.view}</a>
+                                <a class="btn light uppercase" href=${url} @click=${(event) => event.stopImmediatePropagation()}>${zumeDashboard.translations.view}</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="list__secondary">
+                <div class="list__secondary" data-align-start>
                     <div class="training-progress">
                         <button
                             data-subtype=${host[0].subtype}
                             class=${this.hostProgress.list[host[0].key] ? 'active' : ''}
-                            @click=${() => this.toggleHost(host[0])}
+                            @click=${(event) => this.toggleHost(host[0], event)}
                         >
                             <span class="icon zume-heard-concept"></span>
                         </button>
                         <button
                             data-subtype=${host[1].subtype}
                             class=${this.hostProgress.list[host[1].key] ? 'active' : ''}
-                            @click=${() => this.toggleHost(host[1])}
+                            @click=${(event) => this.toggleHost(host[1], event)}
                         >
                             <span class="icon zume-obey-concept"></span>
                         </button>
                         <button
                             data-subtype=${host[2].subtype}
                             class=${this.hostProgress.list[host[2].key] ? 'active' : ''}
-                            @click=${() => this.toggleHost(host[2])}
+                            @click=${(event) => this.toggleHost(host[2], event)}
                         >
                             <span class="icon zume-share-concept"></span>
                         </button>
                         <button
                             data-subtype=${host[3].subtype}
                             class=${this.hostProgress.list[host[3].key] ? 'active' : ''}
-                            @click=${() => this.toggleHost(host[3])}
+                            @click=${(event) => this.toggleHost(host[3], event)}
                         >
                             <span class="icon zume-train-concept"></span>
                         </button>

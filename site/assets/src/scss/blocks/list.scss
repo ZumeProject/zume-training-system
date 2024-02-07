@@ -8,8 +8,8 @@
 .list__item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: spacing(0);
+    align-items: stretch;
+    padding: spacing(0) spacing(1);
     border-bottom: 2px solid color('gray-100');
     gap: spacing(0);
 
@@ -29,4 +29,7 @@
     & .icon {
         font-size: font-size(2);
     }
+}
+.list__secondary[data-align-start] {
+    align-items: flex-start;
 }

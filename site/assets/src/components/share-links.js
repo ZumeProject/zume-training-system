@@ -38,7 +38,8 @@ export class ShareLinks extends LitElement {
         .catch((error) => console.error('Error sharing', error));
     }
 
-    copyLink() {
+    copyLink(event) {
+      event.stopImmediatePropagation()
       navigator.clipboard
         .writeText(this.url)
         .then(() => {
