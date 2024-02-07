@@ -16,6 +16,11 @@
     &.tight {
         padding-block: spacing(-2);
     }
+
+    & .btn {
+        padding-block: spacing(-2);
+        line-height: 1;
+    }
 }
 
 .list__secondary {
