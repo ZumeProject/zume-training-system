@@ -161,7 +161,9 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                     'trained_explanation' => __( 'Have I trained outhers to share this tool or concept?', 'zume' ),
                 ],
                 'urls' => [
-                    'launch_ten_session_course' => esc_url( zume_10_session_url() ),
+                    'launch_ten_session_course' => zume_10_session_url(),
+                    'launch_twenty_session_course' => zume_20_session_url(),
+                    'launch_intensive_session_course' => zume_intensive_session_url(),
                     'set_profile_wizard' => esc_url( '#' ),
                     'plan_training_wizard' => esc_url( zume_make_a_plan_wizard_url() ),
                     'get_coach_wizard' => esc_url( zume_get_a_coach_wizard_url() ),
