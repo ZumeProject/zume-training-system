@@ -19,10 +19,11 @@ export class DashProgress extends LitElement {
 
         this.trainingItems = zumeDashboard.training_items
         this.hostProgress = zumeDashboard.host_progress
-        this.filteredItems = [ ...this.trainingItems ]
 
         this.filterName = 'my-progress-filter'
         this.filterStatus = ZumeStorage.load(this.filterName)
+
+        this.filteredItems = this.filterItems(this.filterStatus)
 
         this.openStates = {}
 
@@ -52,9 +53,29 @@ export class DashProgress extends LitElement {
 
     filterProgress(status) {
         this.filterStatus = status
-        /* Reorder progress */
+        this.filteredItems = this.filterItems(status)
+        console.log(this.filteredItems)
         ZumeStorage.save(this.filterName, status)
         this.closeFilter()
+    }
+
+    filterItems(status) {
+        switch (status) {
+            case 'heard':
+                return this.trainingItems.filter((item) => {
+                    const key = item.host[0].key
+                    const heard = this.hostProgress.list[key] || false
+                    return !!heard
+                })
+            case 'not-heard':
+                return this.trainingItems.filter((item) => {
+                    const key = item.host[0].key
+                    const heard = this.hostProgress.list[key] || false
+                    return !heard
+                })
+            default:
+                return [ ...this.trainingItems ]
+        }
     }
 
     closeFilter() {
@@ -189,9 +210,14 @@ export class DashProgress extends LitElement {
                     <div class="dropdown-pane" id="filter-menu" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true" data-close-on-click-inside="true">
                         <ul>
                             <li>
-                                <button class="menu-btn w-100 ${this.filterStatus === 'open' ? 'selected' : ''}" @click=${() => this.filterProgress('open')}>
-                                    <span class="icon zume-sort-todo" aria-hidden="true"></span>
-                                    ${zumeDashboard.translations.active}
+                                <button class="menu-btn w-100 ${this.filterStatus === 'heard' ? 'selected' : ''}" @click=${() => this.filterProgress('heard')}>
+                                    ${zumeDashboard.translations.heard}
+                                </button>
+                                <button class="menu-btn w-100 ${this.filterStatus === 'not-heard' ? 'selected' : ''}" @click=${() => this.filterProgress('not-heard')}>
+                                    ${zumeDashboard.translations.not_heard}
+                                </button>
+                                <button class="menu-btn w-100 ${this.filterStatus === 'all' ? 'selected' : ''}" @click=${() => this.filterProgress('all')}>
+                                    ${zumeDashboard.translations.all}
                                 </button>
                             </li>
                         </ul>
