@@ -17,12 +17,12 @@
         &:hover,
         &:active,
         &:focus {
-            background-color: color('gray-500');
+            background-color: color('gray-500')
         }
     }
 
     & .icon {
-        color: color('gray-50');
+        color: color('gray-100');
         font-size: font-size('1');
         transition: color .1s linear;
     }

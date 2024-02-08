@@ -225,7 +225,36 @@ export class DashProgress extends LitElement {
                 <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button">
                         <img src=${`${zumeDashboard.images_url}/close-button-01.svg`} alt="close button">
                 </button>
-                <div id="pieces-content" class="stack">
+                <div id="host-info" class="stack mx-2">
+                    <div class="d-flex align-items-center gap-2">
+                        <host-progress-circle type="heard"></host-progress-circle>
+                        <div class="stack">
+                            <h3>HEARD</h3>
+                            <p class="italic">Have I heard about this tool or concept?</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <host-progress-circle type="obeyed"></host-progress-circle>
+                        <div class="stack">
+                            <h3>HEARD</h3>
+                            <p class="italic">Have I heard about this tool or concept?</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <host-progress-circle type="shared"></host-progress-circle>
+                        <div class="stack">
+                            <h3>HEARD</h3>
+                            <p class="italic">Have I heard about this tool or concept?</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <host-progress-circle type="trained"></host-progress-circle>
+                        <div class="stack">
+                            <h3>HEARD</h3>
+                            <p class="italic">Have I heard about this tool or concept?</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
