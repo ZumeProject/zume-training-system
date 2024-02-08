@@ -33,15 +33,7 @@ export class DashProgress extends LitElement {
 
         this.renderListItem = this.renderListItem.bind(this)
         this.closeInfoModal = this.closeInfoModal.bind(this)
-    }
 
-    firstUpdated() {
-        /* Get user HOST progress */
-        this.loading = true
-        makeRequest('GET', 'host', { user_id: zumeDashboard.user_profile.user_id }, 'zume_system/v1' )
-            .done( ( data ) => {
-                this.loading = false
-            })
     }
 
     updated() {
@@ -225,34 +217,34 @@ export class DashProgress extends LitElement {
                 <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button">
                         <img src=${`${zumeDashboard.images_url}/close-button-01.svg`} alt="close button">
                 </button>
-                <div id="host-info" class="stack mx-2">
-                    <div class="d-flex align-items-center gap-2">
-                        <host-progress-circle type="heard"></host-progress-circle>
-                        <div class="stack">
-                            <h3>HEARD</h3>
-                            <p class="italic">Have I heard about this tool or concept?</p>
+                <div class="stack-2 host-info mx-2">
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="heard" percent=${this.hostProgress?.percent?.h || 0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${zumeDashboard.translations.heard}</h3>
+                            <p class="italic">${zumeDashboard.translations.heard_explanation}</p>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center gap-2">
-                        <host-progress-circle type="obeyed"></host-progress-circle>
-                        <div class="stack">
-                            <h3>HEARD</h3>
-                            <p class="italic">Have I heard about this tool or concept?</p>
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="obeyed" percent=${this.hostProgress?.percent?.o || 0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${zumeDashboard.translations.obeyed}</h3>
+                            <p class="italic">${zumeDashboard.translations.obeyed_explanation}</p>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center gap-2">
-                        <host-progress-circle type="shared"></host-progress-circle>
-                        <div class="stack">
-                            <h3>HEARD</h3>
-                            <p class="italic">Have I heard about this tool or concept?</p>
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="shared" percent=${this.hostProgress?.percent?.s || 0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${zumeDashboard.translations.shared}</h3>
+                            <p class="italic">${zumeDashboard.translations.shared_explanation}</p>
                         </div>
                     </div>
 
-                    <div class="d-flex align-items-center gap-2">
-                        <host-progress-circle type="trained"></host-progress-circle>
-                        <div class="stack">
-                            <h3>HEARD</h3>
-                            <p class="italic">Have I heard about this tool or concept?</p>
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="trained" percent=${this.hostProgress?.percent?.t || 0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${zumeDashboard.translations.trained}</h3>
+                            <p class="italic">${zumeDashboard.translations.trained_explanation}</p>
                         </div>
                     </div>
                 </div>

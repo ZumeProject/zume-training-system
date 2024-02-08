@@ -78,7 +78,6 @@ export class HostProgressCircle extends ProgressCircle {
         const iconSize = this.iconSize()
         const [ x, y ] = this.iconPosition()
 
-        console.log(iconSize, x, y)
         return html`
             <div
                 class="progress-circle"
