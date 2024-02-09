@@ -687,9 +687,10 @@ var ae=Object.defineProperty;var oe=(i,t,e)=>t in i?ae(i,t,{enumerable:!0,config
                 </div>
             </li>
 
-        `}render(){return o`
+        `}openMenu(){const t=document.querySelector(".dashboard__sidebar"),e=t.dataset.state;e==="open"&&(t.dataset.state="closed"),(!e||e==="closed")&&(t.dataset.state="open")}render(){return o`
             <div class="dashboard__content">
                 <div class="dashboard__header right">
+                    <button class="btn light tight" @click=${this.openMenu}>Menu</button>
                     <launch-course></launch-course>
                 </div>
                 <div class="dashboard__header left">
@@ -1506,4 +1507,4 @@ var ae=Object.defineProperty;var oe=(i,t,e)=>t in i?ae(i,t,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",_s);
-//# sourceMappingURL=main-f0f4baf8.js.map
+//# sourceMappingURL=main-e3fa1b98.js.map

@@ -174,10 +174,24 @@ export class DashPlans extends LitElement {
         `
     }
 
+    openMenu() {
+        const sidebar = document.querySelector('.dashboard__sidebar')
+
+        const state = sidebar.dataset.state
+
+        if ( state === 'open' ) {
+            sidebar.dataset.state = 'closed'
+        }
+        if ( !state || state === 'closed' ) {
+            sidebar.dataset.state = 'open'
+        }
+    }
+
     render() {
         return html`
             <div class="dashboard__content">
                 <div class="dashboard__header right">
+                    <button class="btn light tight" @click=${this.openMenu}>Menu</button>
                     <launch-course></launch-course>
                 </div>
                 <div class="dashboard__header left">
