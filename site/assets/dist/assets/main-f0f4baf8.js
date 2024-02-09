@@ -689,18 +689,25 @@ var ae=Object.defineProperty;var oe=(i,t,e)=>t in i?ae(i,t,{enumerable:!0,config
 
         `}render(){return o`
             <div class="dashboard__content">
-                <div class="dashboard__header">
+                <div class="dashboard__header right">
+                    <launch-course></launch-course>
+                </div>
+                <div class="dashboard__header left">
                     <div class="dashboard__title">
-                        <span class="icon ${this.route.icon}"></span>
-                        <h1 class="h3">${this.route.translation}</h1>
-                        <button class="icon-btn f-2" data-toggle="filter-menu">
-                            <span class="visually-hidden">${zumeDashboard.translations.filter}</span>
-                            <span class="icon zume-filter brand-light" aria-hidden="true"></span>
-                        </button>
-                        <button class="icon-btn f-2" @click=${this.openCommitmentsModal}>
-                            <span class="visually-hidden">${zumeDashboard.translations.add_commitments}</span>
-                            <span class="icon zume-plus brand-light" aria-hidden="true"></span>
-                        </button>
+                        <div>
+                            <span class="icon ${this.route.icon}"></span>
+                            <h1 class="h3">${this.route.translation}</h1>
+                        </div>
+                        <div class="s--2">
+                            <button class="icon-btn f-2" data-toggle="filter-menu">
+                                <span class="visually-hidden">${zumeDashboard.translations.filter}</span>
+                                <span class="icon zume-filter brand-light" aria-hidden="true"></span>
+                            </button>
+                            <button class="icon-btn f-2" @click=${this.openCommitmentsModal}>
+                                <span class="visually-hidden">${zumeDashboard.translations.add_commitments}</span>
+                                <span class="icon zume-plus brand-light" aria-hidden="true"></span>
+                            </button>
+                        </div>
                     </div>
                     <div class="dropdown-pane" id="filter-menu" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="right" data-close-on-click="true" data-close-on-click-inside="true">
                         <ul>
@@ -724,9 +731,6 @@ var ae=Object.defineProperty;var oe=(i,t,e)=>t in i?ae(i,t,{enumerable:!0,config
                             </li>
                         </ul>
                     </div>
-                </div>
-                <div class="dashboard__header right">
-                    <launch-course></launch-course>
                 </div>
                 <div class="dashboard__main">
                     ${this.loading?o`<span class="loading-spinner active"></span>`:o`
@@ -1502,4 +1506,4 @@ var ae=Object.defineProperty;var oe=(i,t,e)=>t in i?ae(i,t,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",_s);
-//# sourceMappingURL=main-d10868b3.js.map
+//# sourceMappingURL=main-f0f4baf8.js.map

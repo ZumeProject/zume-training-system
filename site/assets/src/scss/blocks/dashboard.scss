@@ -72,6 +72,13 @@
     & .icon {
         color: color('brand-light');
     }
+
+    & > * {
+        display: flex;
+        align-items: center;
+        gap: var(--space, spacing(0));
+    }
+
 }
 
 @media (max-width: $break-lg) {
@@ -93,5 +100,23 @@
 
     .dashboard__sidebar[data-state="open"] {
         transform: none;
+    }
+}
+
+@media (max-width: $break-md) {
+    .dashboard__content {
+        display: block;
+    }
+
+    .dashboard__header {
+        display: block;
+    }
+    .dashboard__header.right {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .dashboard__title {
+        justify-content: space-between;
     }
 }
