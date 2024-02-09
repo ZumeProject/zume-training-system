@@ -73,3 +73,25 @@
         color: color('brand-light');
     }
 }
+
+@media (max-width: $break-lg) {
+    .dashboard {
+        grid-template-areas:"content";
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard__sidebar {
+        grid-area: unset;
+        position: fixed;
+        left: 0;
+        top: 2.5rem;
+        transform: translateX(-100%);
+        transition: transform 200ms ease-in-out;
+        overflow-y: auto;
+        height: calc(100% - 2.5rem);
+    }
+
+    .dashboard__sidebar[data-state="open"] {
+        transform: none;
+    }
+}
