@@ -95,7 +95,7 @@
         transform: translateX(-100%);
         transition: transform 200ms ease-in-out;
         overflow-y: auto;
-        height: calc(100% - 2.5rem);
+        bottom: 0;
     }
 
     .dashboard__sidebar[data-state="open"] {
@@ -109,7 +109,8 @@
     }
 
     .dashboard__header {
-        display: block;
+        flex-wrap: wrap;
+        padding: spacing(0);
     }
     .dashboard__header.right {
         display: flex;
