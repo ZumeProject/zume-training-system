@@ -204,8 +204,8 @@ export class DashProgress extends LitElement {
 
     render() {
         return html`
-            <div class="dashboard__content">
-                <div class="dashboard__header">
+            <div class="dashboard__content" data-no-secondary-area>
+                <div class="dashboard__header left">
                     <div class="dashboard__title">
                         <span class="icon ${this.route.icon}"></span>
                         <h1 class="h3">${this.route.translation}</h1>

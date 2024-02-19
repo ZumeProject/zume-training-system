@@ -862,8 +862,8 @@ var ae=Object.defineProperty;var oe=(i,t,e)=>t in i?ae(i,t,{enumerable:!0,config
                 </div>
             </li>
         `}render(){var t,e,s,n,r,a,d,c;return o`
-            <div class="dashboard__content">
-                <div class="dashboard__header">
+            <div class="dashboard__content" data-no-secondary-area>
+                <div class="dashboard__header left">
                     <div class="dashboard__title">
                         <span class="icon ${this.route.icon}"></span>
                         <h1 class="h3">${this.route.translation}</h1>
@@ -1510,4 +1510,4 @@ var ae=Object.defineProperty;var oe=(i,t,e)=>t in i?ae(i,t,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",_s);
-//# sourceMappingURL=main-61f29174.js.map
+//# sourceMappingURL=main-9a4c4b1a.js.map
