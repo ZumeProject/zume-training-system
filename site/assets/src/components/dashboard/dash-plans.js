@@ -190,13 +190,11 @@ export class DashPlans extends LitElement {
     render() {
         return html`
             <div class="dashboard__content">
-                <div class="dashboard__header right">
-                    <button class="btn light tight" @click=${this.openMenu}>Menu</button>
-                    <launch-course></launch-course>
-                </div>
+                <dash-header-right></dash-header-right>
                 <div class="dashboard__header left">
                     <div class="dashboard__title">
                         <div>
+                            <dash-sidebar-toggle></dash-sidebar-toggle>
                             <span class="icon ${this.route.icon}"></span>
                             <h1 class="h3">${this.route.translation}</h1>
                         </div>

@@ -166,7 +166,7 @@ export class DashBoard extends router(LitElement) {
         this.data = {}
         this.menuOffset = 0
 
-        this.addEventListener('route', (event) => {
+        this.addEventListener('toggle-dashboard-sidebar', (event) => {
             console.log(event)
         })
         window.addEventListener('resize', () => {

@@ -212,9 +212,7 @@ export class DashTrainings extends LitElement {
                         </ul>
                     </div>
                 </div>
-                <div class="dashboard__header right">
-                    <launch-course></launch-course>
-                </div>
+                <dash-header-right></dash-header-right>
                 <div class="dashboard__main">
                     ${
                         this.loading
