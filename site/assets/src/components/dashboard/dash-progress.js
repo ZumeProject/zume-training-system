@@ -133,10 +133,13 @@ export class DashProgress extends LitElement {
                 collapseElement.dataset.state = 'open'
             }, transitionDuration);
         } else {
-            collapseElement.style.height = '0'
+            collapseElement.style.height = height + 'px'
             collapseElement.dataset.state = 'closing'
             this.openStates[key] = false
 
+            setTimeout(() => {
+                collapseElement.style.height = '0'
+            }, 10)
             setTimeout(() => {
                 collapseElement.dataset.state = 'closed'
             }, transitionDuration);
