@@ -129,6 +129,7 @@ export class DashProgress extends LitElement {
             this.openStates[key] = true
 
             setTimeout(() => {
+                collapseElement.style.height = 'auto'
                 collapseElement.dataset.state = 'open'
             }, transitionDuration);
         } else {

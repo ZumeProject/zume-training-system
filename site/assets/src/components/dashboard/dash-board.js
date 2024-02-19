@@ -169,6 +169,9 @@ export class DashBoard extends router(LitElement) {
         this.addEventListener('route', (event) => {
             console.log(event)
         })
+        window.addEventListener('resize', () => {
+            this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
+        })
     }
 
     firstUpdated() {
@@ -223,7 +226,7 @@ export class DashBoard extends router(LitElement) {
             <div class="dashboard__sidebar">
                 <div
                     class="sidebar-wrapper"
-                    style="top: ${this.menuOffset}px; height: calc( min( 100%, 100vh ) - ${this.menuOffset}px );"
+                    style="top: ${this.menuOffset}px; height: calc( min( 100%, 100vh ) - ${this.menuOffset}px - var(--s0) );"
                 >
                     <ul
                         class="stack-2 | progress-menu accordion-menu"
