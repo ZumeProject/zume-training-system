@@ -1,8 +1,9 @@
-import { LitElement, html } from 'lit';
+import { html } from 'lit';
 import { repeat } from 'lit/directives/repeat.js'
 import { DashBoard } from './dash-board';
+import { DashPage } from './dash-page';
 
-export class DashTrainings extends LitElement {
+export class DashTrainings extends DashPage {
     static get properties() {
         return {
             loading: { type: Boolean, attribute: false },
@@ -23,6 +24,7 @@ export class DashTrainings extends LitElement {
     }
 
     firstUpdated() {
+        super.firstUpdated()
         const status = this.filterStatus || ''
         this.fetchCommitments(status)
     }

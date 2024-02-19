@@ -1,7 +1,8 @@
-import { LitElement, html } from 'lit';
+import { html } from 'lit';
 import { DashBoard } from './dash-board';
+import { DashPage } from './dash-page';
 
-export class DashTopLevel extends LitElement {
+export class DashTopLevel extends DashPage {
     static get properties() {
         return {
             view: { type: String, attribute: false },

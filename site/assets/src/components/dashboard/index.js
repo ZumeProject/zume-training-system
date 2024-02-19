@@ -15,6 +15,7 @@ import './dash-training'
 import './dash-trainings'
 import './dash-header-right'
 import './dash-sidebar-toggle'
+import './dash-page'
 
 import './grid-link'
 import './list-link'

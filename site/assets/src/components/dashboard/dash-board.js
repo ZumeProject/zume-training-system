@@ -245,9 +245,9 @@ export class DashBoard extends router(LitElement) {
 
     render() {
         return html`
+            <div class="sidebar__trigger-close-background" @click=${this.toggleSidebar}></div>
             <div class="dashboard">
 
-            <div class="sidebar__trigger-close-background" @click=${this.toggleSidebar}></div>
             <div class="dashboard__sidebar">
                 <div
                     class="sidebar-wrapper"
