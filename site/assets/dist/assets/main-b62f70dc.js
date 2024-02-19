@@ -439,106 +439,109 @@ var ae=Object.defineProperty;var oe=(i,t,e)=>t in i?ae(i,t,{enumerable:!0,config
                 <button class="btn" @click=${this._handleDone}>Done</button>
             `:""}
 
-        `}_handleDone(t){t&&t.preventDefault(),this._sendDoneStepEvent()}_sendDoneStepEvent(){const t=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(t)}_handleFinish(){setTimeout(()=>{this._sendDoneStepEvent()},3e3)}createRenderRoot(){return this}}customElements.define("make-group",Ie);function Te(i){return i?JSON.parse('{"'+i.substring(1).replace(/&/g,'","').replace(/=/g,'":"')+'"}'):{}}function je(i,t){let e={};const s=i.split("/").filter(r=>r!=""),n=t.split("/").filter(r=>r!="");return s.map((r,a)=>{/^:/.test(r)&&(e[r.substring(1)]=n[a])}),e}function Oe(i){return i?new RegExp("^(|/)"+i.replace(/:[^\s/]+/g,"([\\wÀ-ÖØ-öø-ÿ-]+)")+"(|/)$"):new RegExp("(^$|^/$)")}function Le(i,t){if(Oe(t).test(i))return!0}function Ne(i){return class extends i{static get properties(){return{route:{type:String,reflect:!0,attribute:"route"},canceled:{type:Boolean}}}constructor(...t){super(...t),this.route="",this.canceled=!1}connectedCallback(...t){super.connectedCallback(...t),this.routing(this.constructor.routes,(...e)=>this.router(...e)),window.addEventListener("route",()=>{this.routing(this.constructor.routes,(...e)=>this.router(...e))}),window.onpopstate=()=>{window.dispatchEvent(new CustomEvent("route"))}}routed(t,e,s,n,r,a){a&&a(t,e,s,n),r(t,e,s,n)}routing(t,e){this.canceled=!0;const s=decodeURI(window.location.pathname),n=decodeURI(window.location.search);let r=t.filter(c=>c.pattern==="*")[0],a=t.filter(c=>c.pattern!=="*"&&Le(s,c.pattern))[0],d=Te(n);a?(a.params=je(a.pattern,s),a.data=a.data||{},a.authentication&&a.authentication.authenticate&&typeof a.authentication.authenticate=="function"?(this.canceled=!1,Promise.resolve(a.authentication.authenticate.bind(this).call()).then(c=>{this.canceled||(c?a.authorization&&a.authorization.authorize&&typeof a.authorization.authorize=="function"?(this.canceled=!1,Promise.resolve(a.authorization.authorize.bind(this).call()).then(h=>{this.canceled||(h?this.routed(a.name,a.params,d,a.data,e,a.callback):this.routed(a.authorization.unauthorized.name,a.params,d,a.data,e,a.callback))})):this.routed(a.name,a.params,d,a.data,e,a.callback):this.routed(a.authentication.unauthenticated.name,a.params,d,a.data,e,a.callback))})):a.authorization&&a.authorization.authorize&&typeof a.authorization.authorize=="function"?(this.canceled=!1,Promise.resolve(a.authorization.authorize.bind(this).call()).then(c=>{this.canceled||(c?this.routed(a.name,a.params,d,a.data,e,a.callback):this.routed(a.authorization.unauthorized.name,a.params,d,a.data,e,a.callback))})):this.routed(a.name,a.params,d,a.data,e,a.callback)):r&&(r.data=r.data||{},this.routed(r.name,{},d,r.data,e,r.callback))}}}function He(i){return class extends i{navigate(t){window.history.pushState({},null,t),window.dispatchEvent(new CustomEvent("route"))}}}class w extends Ne(u){static get properties(){return{route:{type:String},params:{type:Object},query:{type:Object},menuOffset:{type:Number,attribute:!1}}}static get routes(){return[{name:"getting-started",pattern:`${zumeDashboard.base_url}/getting-started`,icon:"zume-start",translation:zumeDashboard.translations.getting_started,data:{component:"dash-getting-started"}},{name:"training",pattern:`${zumeDashboard.base_url}/training`,icon:"zume-training",translation:zumeDashboard.translations.training,data:{component:"dash-training"}},{name:"my-training",pattern:`${zumeDashboard.base_url}/my-training`,parent:"training",icon:"zume-group",translation:zumeDashboard.translations.my_training,explanation:zumeDashboard.translations.my_training_explanation,data:{component:"dash-trainings"}},{name:"my-progress",pattern:`${zumeDashboard.base_url}/my-progress`,parent:"training",icon:"zume-progress",translation:zumeDashboard.translations.my_progress,explanation:zumeDashboard.translations.my_progress_explanation,data:{component:"dash-progress"}},{name:"3-month-plan",pattern:`${zumeDashboard.base_url}/3-month-plan`,parent:"training",icon:"zume-plans",translation:zumeDashboard.translations["3_month_plan"],explanation:zumeDashboard.translations["3_month_plan_explanation"],data:{component:"dash-progress"}},{name:"practicing",pattern:`${zumeDashboard.base_url}/practicing`,icon:"zume-practicing",translation:zumeDashboard.translations.practicing,data:{component:"dash-practicing"}},{name:"my-coach",pattern:`${zumeDashboard.base_url}/my-coach`,parent:"practicing",icon:"zume-coach",translation:zumeDashboard.translations.my_coach,explanation:zumeDashboard.translations.my_coach_explanation,data:{component:"dash-coach"}},{name:"my-tools",pattern:`${zumeDashboard.base_url}/my-tools`,parent:"practicing",icon:"zume-tools",translation:zumeDashboard.translations.my_tools,explanation:zumeDashboard.translations.my_tools_explanation,data:{component:"dash-tools"}},{name:"my-plans",pattern:`${zumeDashboard.base_url}/my-plans`,parent:"practicing",icon:"zume-plans",translation:zumeDashboard.translations.my_plans,explanation:zumeDashboard.translations.my_plans_explanation,data:{component:"dash-plans"}},{name:"my-churches",pattern:`${zumeDashboard.base_url}/my-churches`,parent:"practicing",icon:"zume-churches",translation:zumeDashboard.translations.my_churches,explanation:zumeDashboard.translations.my_churches_explanation,data:{component:"dash-churches"}},{name:"my-maps",pattern:`${zumeDashboard.base_url}/my-maps`,parent:"practicing",icon:"zume-maps",translation:zumeDashboard.translations.my_maps,explanation:zumeDashboard.translations.my_maps_explanation,data:{component:"dash-maps"}},{name:"not-found",pattern:"*",icon:"",data:{component:"dash-not-found"}}]}static getRoute(t){return w.routes.find(s=>s.name===t)}static childRoutesOf(t){return w.routes.filter(({parent:s})=>s===t)}constructor(){super(),this.route="",this.params={},this.query={},this.data={},this.menuOffset=0,this.addEventListener("route",t=>{console.log(t)})}firstUpdated(){const e=this.querySelector(".progress-menu").offsetTop;this.menuOffset=e}router(t,e,s,n){this.route=t,this.params=e,this.query=s,this.data=n}makeHref(t){return`${zumeDashboard.base_url}/${t}`}makeHrefRoute(t){const s=w.routes.find(({name:n})=>n===t);return s?s.pattern:(console.error("MISSING ROUTE",t),"")}renderRoute(){const{component:t}=this.data;return t?document.createElement(t):""}render(){return o`
+        `}_handleDone(t){t&&t.preventDefault(),this._sendDoneStepEvent()}_sendDoneStepEvent(){const t=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(t)}_handleFinish(){setTimeout(()=>{this._sendDoneStepEvent()},3e3)}createRenderRoot(){return this}}customElements.define("make-group",Ie);function Te(i){return i?JSON.parse('{"'+i.substring(1).replace(/&/g,'","').replace(/=/g,'":"')+'"}'):{}}function je(i,t){let e={};const s=i.split("/").filter(r=>r!=""),n=t.split("/").filter(r=>r!="");return s.map((r,a)=>{/^:/.test(r)&&(e[r.substring(1)]=n[a])}),e}function Oe(i){return i?new RegExp("^(|/)"+i.replace(/:[^\s/]+/g,"([\\wÀ-ÖØ-öø-ÿ-]+)")+"(|/)$"):new RegExp("(^$|^/$)")}function Le(i,t){if(Oe(t).test(i))return!0}function Ne(i){return class extends i{static get properties(){return{route:{type:String,reflect:!0,attribute:"route"},canceled:{type:Boolean}}}constructor(...t){super(...t),this.route="",this.canceled=!1}connectedCallback(...t){super.connectedCallback(...t),this.routing(this.constructor.routes,(...e)=>this.router(...e)),window.addEventListener("route",()=>{this.routing(this.constructor.routes,(...e)=>this.router(...e))}),window.onpopstate=()=>{window.dispatchEvent(new CustomEvent("route"))}}routed(t,e,s,n,r,a){a&&a(t,e,s,n),r(t,e,s,n)}routing(t,e){this.canceled=!0;const s=decodeURI(window.location.pathname),n=decodeURI(window.location.search);let r=t.filter(c=>c.pattern==="*")[0],a=t.filter(c=>c.pattern!=="*"&&Le(s,c.pattern))[0],d=Te(n);a?(a.params=je(a.pattern,s),a.data=a.data||{},a.authentication&&a.authentication.authenticate&&typeof a.authentication.authenticate=="function"?(this.canceled=!1,Promise.resolve(a.authentication.authenticate.bind(this).call()).then(c=>{this.canceled||(c?a.authorization&&a.authorization.authorize&&typeof a.authorization.authorize=="function"?(this.canceled=!1,Promise.resolve(a.authorization.authorize.bind(this).call()).then(h=>{this.canceled||(h?this.routed(a.name,a.params,d,a.data,e,a.callback):this.routed(a.authorization.unauthorized.name,a.params,d,a.data,e,a.callback))})):this.routed(a.name,a.params,d,a.data,e,a.callback):this.routed(a.authentication.unauthenticated.name,a.params,d,a.data,e,a.callback))})):a.authorization&&a.authorization.authorize&&typeof a.authorization.authorize=="function"?(this.canceled=!1,Promise.resolve(a.authorization.authorize.bind(this).call()).then(c=>{this.canceled||(c?this.routed(a.name,a.params,d,a.data,e,a.callback):this.routed(a.authorization.unauthorized.name,a.params,d,a.data,e,a.callback))})):this.routed(a.name,a.params,d,a.data,e,a.callback)):r&&(r.data=r.data||{},this.routed(r.name,{},d,r.data,e,r.callback))}}}function He(i){return class extends i{navigate(t){window.history.pushState({},null,t),window.dispatchEvent(new CustomEvent("route"))}}}class w extends Ne(u){static get properties(){return{route:{type:String},params:{type:Object},query:{type:Object},menuOffset:{type:Number,attribute:!1}}}static get routes(){return[{name:"getting-started",pattern:`${zumeDashboard.base_url}/getting-started`,icon:"zume-start",translation:zumeDashboard.translations.getting_started,data:{component:"dash-getting-started"}},{name:"training",pattern:`${zumeDashboard.base_url}/training`,icon:"zume-training",translation:zumeDashboard.translations.training,data:{component:"dash-training"}},{name:"my-training",pattern:`${zumeDashboard.base_url}/my-training`,parent:"training",icon:"zume-group",translation:zumeDashboard.translations.my_training,explanation:zumeDashboard.translations.my_training_explanation,data:{component:"dash-trainings"}},{name:"my-progress",pattern:`${zumeDashboard.base_url}/my-progress`,parent:"training",icon:"zume-progress",translation:zumeDashboard.translations.my_progress,explanation:zumeDashboard.translations.my_progress_explanation,data:{component:"dash-progress"}},{name:"3-month-plan",pattern:`${zumeDashboard.base_url}/3-month-plan`,parent:"training",icon:"zume-plans",translation:zumeDashboard.translations["3_month_plan"],explanation:zumeDashboard.translations["3_month_plan_explanation"],data:{component:"dash-progress"}},{name:"practicing",pattern:`${zumeDashboard.base_url}/practicing`,icon:"zume-practicing",translation:zumeDashboard.translations.practicing,data:{component:"dash-practicing"}},{name:"my-coach",pattern:`${zumeDashboard.base_url}/my-coach`,parent:"practicing",icon:"zume-coach",translation:zumeDashboard.translations.my_coach,explanation:zumeDashboard.translations.my_coach_explanation,data:{component:"dash-coach"}},{name:"my-tools",pattern:`${zumeDashboard.base_url}/my-tools`,parent:"practicing",icon:"zume-tools",translation:zumeDashboard.translations.my_tools,explanation:zumeDashboard.translations.my_tools_explanation,data:{component:"dash-tools"}},{name:"my-plans",pattern:`${zumeDashboard.base_url}/my-plans`,parent:"practicing",icon:"zume-plans",translation:zumeDashboard.translations.my_plans,explanation:zumeDashboard.translations.my_plans_explanation,data:{component:"dash-plans"}},{name:"my-churches",pattern:`${zumeDashboard.base_url}/my-churches`,parent:"practicing",icon:"zume-churches",translation:zumeDashboard.translations.my_churches,explanation:zumeDashboard.translations.my_churches_explanation,data:{component:"dash-churches"}},{name:"my-maps",pattern:`${zumeDashboard.base_url}/my-maps`,parent:"practicing",icon:"zume-maps",translation:zumeDashboard.translations.my_maps,explanation:zumeDashboard.translations.my_maps_explanation,data:{component:"dash-maps"}},{name:"not-found",pattern:"*",icon:"",data:{component:"dash-not-found"}}]}static getRoute(t){return w.routes.find(s=>s.name===t)}static childRoutesOf(t){return w.routes.filter(({parent:s})=>s===t)}constructor(){super(),this.route="",this.params={},this.query={},this.data={},this.menuOffset=0,this.addEventListener("route",t=>{console.log(t)})}firstUpdated(){this.menuOffset=this.getOffsetTop(".sidebar-wrapper")}router(t,e,s,n){this.route=t,this.params=e,this.query=s,this.data=n}makeHref(t){return`${zumeDashboard.base_url}/${t}`}makeHrefRoute(t){const s=w.routes.find(({name:n})=>n===t);return s?s.pattern:(console.error("MISSING ROUTE",t),"")}renderRoute(){const{component:t}=this.data;return t?document.createElement(t):""}getOffsetTop(t){return this.querySelector(t).offsetTop}render(){return o`
             <div class="dashboard">
 
             <div class="dashboard__sidebar">
-                <ul
-                    class="stack-2 | progress-menu accordion-menu"
-                    data-accordion-menu
-                    data-submenu-toggle="true"
-                    style="top: ${this.menuOffset}px"
+                <div
+                    class="sidebar-wrapper"
+                    style="top: ${this.menuOffset}px; height: calc( min( 100%, 100vh ) - ${this.menuOffset}px );"
                 >
-                    <li class="menu-section">
-                        <nav-link
-                            href=${this.makeHref("getting-started")}
-                            class="menu-section__title menu-btn"
-                            icon="zume-start"
-                            text=${zumeDashboard.translations.getting_started}>
-                        </nav-link>
-                        <progress-circle percent="66" radius="12"></progress-circle>
-
-                        <ul class="nested is-active">
-                            <li>
-                                <nav-link
-                                    class="menu-btn"
-                                    href=${zumeDashboard.urls.set_profile_wizard}
-                                    ?completed=${!0}
-                                    ?directLink=${!0}
-                                    icon="zume-profile"
-                                    text=${zumeDashboard.translations.set_profile}
-                                ></nav-link>
-                                <span class="icon zume-check-mark success"></span>
-                            </li>
-                            <li>
-                                <nav-link
-                                    class="menu-btn"
-                                    href=${zumeDashboard.urls.plan_training_wizard}
-                                    ?completed=${!0}
-                                    ?directLink=${!0}
-                                    icon="zume-start"
-                                    text=${zumeDashboard.translations.plan_a_training}
-                                ></nav-link>
-                                <span class="icon zume-check-mark success"></span>
-                            </li>
-                            <li>
-                                <nav-link
-                                    ?directLink=${!0}
-                                    class="menu-btn"
-                                    href=${zumeDashboard.urls.get_coach_wizard}
-                                    icon="zume-coach"
-                                    text=${zumeDashboard.translations.get_a_coach}
-                                ></nav-link>
-                                <span class="icon zume-check-mark success"></span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu-section">
-                        <nav-link
-                            href=${this.makeHref("training")}
-                            class="menu-section__title menu-btn"
-                            icon="zume-training"
-                            text=${zumeDashboard.translations.training}
-                        >
-                        </nav-link>
-                        <ul class="nested is-active">
-                            ${w.childRoutesOf("training").map(t=>o`
-                                        <li>
-                                            <nav-link
-                                                class="menu-btn"
-                                                href=${this.makeHrefRoute(t.name)}
-                                                icon=${t.icon}
-                                                text=${t.translation}
-                                                ?locked=${["3-month-plan"].includes(t.name)}
-                                            ></nav-link>
-                                            <span class="icon zume-locked gray-500"></span>
-                                        </li>
-                                    `)}
-                        </ul>
-                    </li>
-                    <li class="menu-section">
-                        <nav-link
-                            href=${this.makeHref("practicing")}
-                            class="menu-section__title menu-btn"
-                            icon="zume-practicing"
-                            text=${zumeDashboard.translations.practicing}
-                        ></nav-link>
-                        <ul class="nested is-active">
-                            ${w.childRoutesOf("practicing").map(t=>o`
-                                        <li>
-                                            <nav-link
-                                                class="menu-btn"
-                                                href=${this.makeHrefRoute(t.name)}
-                                                icon=${t.icon}
-                                                text=${t.translation}
-                                                ?locked=${["my-plans","my-churches","my-maps"].includes(t.name)}
-                                            ></nav-link>
-                                            <span class="icon zume-locked gray-500"></span>
-                                        </li>
-                                    `)}
-                        </ul>
-                    </li>
-                </ul>
+                    <ul
+                        class="stack-2 | progress-menu accordion-menu"
+                        data-accordion-menu
+                        data-submenu-toggle="true"
+                    >
+                        <li class="menu-section">
+                            <nav-link
+                                href=${this.makeHref("getting-started")}
+                                class="menu-section__title menu-btn"
+                                icon="zume-start"
+                                text=${zumeDashboard.translations.getting_started}>
+                            </nav-link>
+                            <progress-circle percent="66" radius="12"></progress-circle>
+                            <ul class="nested is-active">
+                                <li>
+                                    <nav-link
+                                        class="menu-btn"
+                                        href=${zumeDashboard.urls.set_profile_wizard}
+                                        ?completed=${!0}
+                                        ?directLink=${!0}
+                                        icon="zume-profile"
+                                        text=${zumeDashboard.translations.set_profile}
+                                    ></nav-link>
+                                    <span class="icon zume-check-mark success"></span>
+                                </li>
+                                <li>
+                                    <nav-link
+                                        class="menu-btn"
+                                        href=${zumeDashboard.urls.plan_training_wizard}
+                                        ?completed=${!0}
+                                        ?directLink=${!0}
+                                        icon="zume-start"
+                                        text=${zumeDashboard.translations.plan_a_training}
+                                    ></nav-link>
+                                    <span class="icon zume-check-mark success"></span>
+                                </li>
+                                <li>
+                                    <nav-link
+                                        ?directLink=${!0}
+                                        class="menu-btn"
+                                        href=${zumeDashboard.urls.get_coach_wizard}
+                                        icon="zume-coach"
+                                        text=${zumeDashboard.translations.get_a_coach}
+                                    ></nav-link>
+                                    <span class="icon zume-check-mark success"></span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-section">
+                            <nav-link
+                                href=${this.makeHref("training")}
+                                class="menu-section__title menu-btn"
+                                icon="zume-training"
+                                text=${zumeDashboard.translations.training}
+                            >
+                            </nav-link>
+                            <ul class="nested is-active">
+                                ${w.childRoutesOf("training").map(t=>o`
+                                            <li>
+                                                <nav-link
+                                                    class="menu-btn"
+                                                    href=${this.makeHrefRoute(t.name)}
+                                                    icon=${t.icon}
+                                                    text=${t.translation}
+                                                    ?locked=${["3-month-plan"].includes(t.name)}
+                                                ></nav-link>
+                                                <span class="icon zume-locked gray-500"></span>
+                                            </li>
+                                        `)}
+                            </ul>
+                        </li>
+                        <li class="menu-section">
+                            <nav-link
+                                href=${this.makeHref("practicing")}
+                                class="menu-section__title menu-btn"
+                                icon="zume-practicing"
+                                text=${zumeDashboard.translations.practicing}
+                            ></nav-link>
+                            <ul class="nested is-active">
+                                ${w.childRoutesOf("practicing").map(t=>o`
+                                            <li>
+                                                <nav-link
+                                                    class="menu-btn"
+                                                    href=${this.makeHrefRoute(t.name)}
+                                                    icon=${t.icon}
+                                                    text=${t.translation}
+                                                    ?locked=${["my-plans","my-churches","my-maps"].includes(t.name)}
+                                                ></nav-link>
+                                                <span class="icon zume-locked gray-500"></span>
+                                            </li>
+                                        `)}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             ${this.renderRoute()}
@@ -1507,4 +1510,4 @@ var ae=Object.defineProperty;var oe=(i,t,e)=>t in i?ae(i,t,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",_s);
-//# sourceMappingURL=main-786f3415.js.map
+//# sourceMappingURL=main-b62f70dc.js.map
