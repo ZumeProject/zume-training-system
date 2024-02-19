@@ -221,14 +221,17 @@ export class DashBoard extends router(LitElement) {
 
     toggleSidebar() {
         const sidebar = document.querySelector('.dashboard__sidebar')
+        const backgroundTrigger = document.querySelector('.sidebar__trigger-close-background')
 
         const state = sidebar.dataset.state
 
         if ( state === 'open' ) {
             sidebar.dataset.state = 'closed'
+            backgroundTrigger.style.opacity = 0
         }
         if ( !state || state === 'closed' ) {
             sidebar.dataset.state = 'open'
+            backgroundTrigger.style.opacity = 'initial'
         }
     }
 
@@ -236,6 +239,7 @@ export class DashBoard extends router(LitElement) {
         return html`
             <div class="dashboard">
 
+            <div class="sidebar__trigger-close-background" @click=${this.toggleSidebar}></div>
             <div class="dashboard__sidebar">
                 <div
                     class="sidebar-wrapper"
