@@ -166,8 +166,8 @@ export class DashBoard extends router(LitElement) {
         this.data = {}
         this.menuOffset = 0
 
-        this.addEventListener('toggle-dashboard-sidebar', (event) => {
-            console.log(event)
+        this.addEventListener('toggle-dashboard-sidebar', () => {
+            this.toggleSidebar()
         })
         window.addEventListener('resize', () => {
             this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
@@ -219,6 +219,19 @@ export class DashBoard extends router(LitElement) {
         return offsetTop
     }
 
+    toggleSidebar() {
+        const sidebar = document.querySelector('.dashboard__sidebar')
+
+        const state = sidebar.dataset.state
+
+        if ( state === 'open' ) {
+            sidebar.dataset.state = 'closed'
+        }
+        if ( !state || state === 'closed' ) {
+            sidebar.dataset.state = 'open'
+        }
+    }
+
     render() {
         return html`
             <div class="dashboard">
@@ -228,6 +241,14 @@ export class DashBoard extends router(LitElement) {
                     class="sidebar-wrapper"
                     style="top: ${this.menuOffset}px; height: calc( min( 100%, 100vh ) - ${this.menuOffset}px - var(--s0) );"
                 >
+                    <button
+                        class="ms-auto mb-0 d-block w-2rem dashboard__sidebar-toggle break-large break-medium"
+                        aria-label="Close modal"
+                        type="button"
+                        @click=${this.toggleSidebar}
+                    >
+                        <img src=${zumeDashboard.images_url + '/close-button-01.svg'} alt="close button">
+                    </button>
                     <ul
                         class="stack-2 | progress-menu accordion-menu"
                         data-accordion-menu

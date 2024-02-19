@@ -174,19 +174,6 @@ export class DashPlans extends LitElement {
         `
     }
 
-    openMenu() {
-        const sidebar = document.querySelector('.dashboard__sidebar')
-
-        const state = sidebar.dataset.state
-
-        if ( state === 'open' ) {
-            sidebar.dataset.state = 'closed'
-        }
-        if ( !state || state === 'closed' ) {
-            sidebar.dataset.state = 'open'
-        }
-    }
-
     render() {
         return html`
             <div class="dashboard__content">

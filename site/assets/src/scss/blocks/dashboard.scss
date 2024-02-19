@@ -21,11 +21,6 @@ dash-sidebar-toggle {
     display: none;
 }
 
-.break-large-toggle,
-.break-medium-toggle {
-    display: none;
-}
-
 .sidebar-wrapper {
     position: sticky;
     overflow-y: auto;
@@ -126,7 +121,7 @@ dash-sidebar-toggle {
     }
     .dashboard__sidebar-toggle {
         &.break-large {
-            display: initial;
+            display: block;
         }
     }
 
@@ -155,11 +150,11 @@ dash-sidebar-toggle {
         order: 10;
     }
     .dashboard__sidebar-toggle {
-        &.break-medium {
-            display: inline;
-        }
         &.break-large {
             display: none;
+        }
+        &.break-medium {
+            display: block;
         }
    }
     .dashboard__header {
