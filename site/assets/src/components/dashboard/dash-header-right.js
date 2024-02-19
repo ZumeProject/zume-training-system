@@ -1,6 +1,10 @@
 import { LitElement, html } from 'lit';
 
 export class DashHeaderRight extends LitElement {
+    firstUpdated() {
+        const offset = this.offsetTop
+        this.style.top = offset + 'px'
+    }
 
     render() {
         return html`

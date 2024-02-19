@@ -128,10 +128,14 @@ dash-sidebar-toggle {
         transition: opacity 200ms ease-in-out;
         z-index: 99;
         opacity: 0;
+        visibility: hidden;
     }
 
     dash-sidebar-toggle {
         order: initial;
+    }
+    dash-header-right {
+        position: sticky;
     }
     .dashboard__sidebar-toggle {
         &.break-large {

@@ -1103,7 +1103,7 @@ var ne=Object.defineProperty;var re=(i,t,e)=>t in i?ne(i,t,{enumerable:!0,config
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-trainings",Xe);class ts extends u{render(){return r`
+        `}createRenderRoot(){return this}}customElements.define("dash-trainings",Xe);class ts extends u{firstUpdated(){const t=this.offsetTop;this.style.top=t+"px"}render(){return r`
             <div class="dashboard__header right">
                 <dash-sidebar-toggle displayOn="medium"></dash-sidebar-toggle>
                 <launch-course></launch-course>
@@ -1524,4 +1524,4 @@ var ne=Object.defineProperty;var re=(i,t,e)=>t in i?ne(i,t,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",ks);
-//# sourceMappingURL=main-c7e84e18.js.map
+//# sourceMappingURL=main-401d5115.js.map
