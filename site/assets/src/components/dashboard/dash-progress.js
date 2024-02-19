@@ -133,10 +133,12 @@ export class DashProgress extends LitElement {
                 collapseElement.dataset.state = 'open'
             }, transitionDuration);
         } else {
+            /* Add back the height so we can transition back to 0 */
             collapseElement.style.height = height + 'px'
             collapseElement.dataset.state = 'closing'
             this.openStates[key] = false
 
+            /* Set the height to 0 after this function has finished so that we key the transition correctly */
             setTimeout(() => {
                 collapseElement.style.height = '0'
             }, 10)
