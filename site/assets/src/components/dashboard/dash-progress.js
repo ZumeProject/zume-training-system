@@ -159,7 +159,7 @@ export class DashProgress extends DashPage {
         }
 
         return html`
-            <li class="list__item tight" @click=${() => this.toggleDetails(key)} role="button">
+            <li class="switcher | switcher-width-30 list__item tight" @click=${() => this.toggleDetails(key)} role="button">
                 <div>
                     <h2 class="h5 bold m0">${title}</h2>
                     <div class="collapse" id="details-${key}" data-state="closed">
@@ -172,7 +172,7 @@ export class DashProgress extends DashPage {
                         </div>
                     </div>
                 </div>
-                <div class="list__secondary" data-align-start>
+                <div class="list__secondary grow-0" data-align-start>
                     <div class="training-progress">
                         <button
                             data-subtype=${host[0].subtype}

@@ -825,7 +825,7 @@ var re=Object.defineProperty;var oe=(i,t,e)=>t in i?re(i,t,{enumerable:!0,config
                 </div>
             </div>
         `}createRenderRoot(){return this}}customElements.define("dash-plans",Ge);class Je extends it{constructor(){super("practicing")}createRenderRoot(){return this}}customElements.define("dash-practicing",Je);class Ke extends st{static get properties(){return{loading:{type:Boolean,attribute:!1},filteredItems:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1},hostProgress:{type:Object,attribute:!1}}}constructor(){super(),this.loading=!1,this.route=w.getRoute("my-progress"),this.trainingItems=zumeDashboard.training_items,this.hostProgress=zumeDashboard.host_progress,this.filterName="my-progress-filter",this.filterStatus=ZumeStorage.load(this.filterName),this.filteredItems=this.filterItems(this.filterStatus),this.openStates={},this.trainingItems.forEach(t=>{this.openStates[t.key]=!1}),this.renderListItem=this.renderListItem.bind(this),this.closeInfoModal=this.closeInfoModal.bind(this)}updated(){jQuery(document).foundation()}openInfoModal(){const t=document.querySelector("#new-commitments-form");jQuery(t).foundation("open")}closeInfoModal(){const t=document.querySelector("#new-commitments-form");jQuery(t).foundation("close")}filterProgress(t){this.filterStatus=t,this.filteredItems=this.filterItems(t),console.log(this.filteredItems),ZumeStorage.save(this.filterName,t),this.closeFilter()}filterItems(t){switch(t){case"heard":return this.trainingItems.filter(e=>{const s=e.host[0].key;return!!(this.hostProgress.list[s]||!1)});case"not-heard":return this.trainingItems.filter(e=>{const s=e.host[0].key;return!(this.hostProgress.list[s]||!1)});default:return[...this.trainingItems]}}closeFilter(){const t=this.querySelector("#filter-menu");jQuery(t).foundation("close")}toggleHost(t,e){e.stopImmediatePropagation();const{type:s,subtype:a,key:o}=t,n=this.hostProgress.list[o];n===!1&&makeRequest("POST","host",{type:s,subtype:a,user_id:zumeDashboard.user_profile.user_id},"zume_system/v1").done(h=>{Array.isArray(h)&&(this.hostProgress.list[o]=!0),this.loadHostStatus()}),n===!0&&makeRequest("DELETE","host",{type:s,subtype:a,user_id:zumeDashboard.user_profile.user_id},"zume_system/v1").done(h=>{Array.isArray(h)&&(this.hostProgress.list[o]=!1),this.loadHostStatus()})}loadHostStatus(){makeRequest("GET","host",{user_id:zumeDashboard.user_profile.user_id},"zume_system/v1").done(t=>{this.hostProgress=t})}toggleDetails(t){const e=this.querySelector(`#details-${t}`),s=this.openStates[t],a=e.scrollHeight,o="200";s===!1?(e.style.height=a+"px",e.style.transitionDuration=o+"ms",e.dataset.state="opening",this.openStates[t]=!0,setTimeout(()=>{e.style.height="auto",e.dataset.state="open"},o)):(e.style.height=a+"px",e.dataset.state="closing",this.openStates[t]=!1,setTimeout(()=>{e.style.height="0"},10),setTimeout(()=>{e.dataset.state="closed"},o))}renderListItem(t){const{title:e,description:s,host:a,slug:o,key:n}=t;let h=[zumeDashboard.site_url,zumeDashboard.language,o].join("/");return zumeDashboard.language==="en"&&(h=[zumeDashboard.site_url,o].join("/")),r`
-            <li class="list__item tight" @click=${()=>this.toggleDetails(n)} role="button">
+            <li class="switcher | switcher-width-30 list__item tight" @click=${()=>this.toggleDetails(n)} role="button">
                 <div>
                     <h2 class="h5 bold m0">${e}</h2>
                     <div class="collapse" id="details-${n}" data-state="closed">
@@ -838,7 +838,7 @@ var re=Object.defineProperty;var oe=(i,t,e)=>t in i?re(i,t,{enumerable:!0,config
                         </div>
                     </div>
                 </div>
-                <div class="list__secondary" data-align-start>
+                <div class="list__secondary grow-0" data-align-start>
                     <div class="training-progress">
                         <button
                             data-subtype=${a[0].subtype}
@@ -1524,4 +1524,4 @@ var re=Object.defineProperty;var oe=(i,t,e)=>t in i?re(i,t,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",ws);
-//# sourceMappingURL=main-e25cc90f.js.map
+//# sourceMappingURL=main-93817339.js.map
