@@ -222,16 +222,24 @@ export class DashBoard extends router(LitElement) {
     toggleSidebar() {
         const sidebar = document.querySelector('.dashboard__sidebar')
         const backgroundTrigger = document.querySelector('.sidebar__trigger-close-background')
+        const transitionDuration = '200'
+
+        sidebar.style.transitionDuration = transitionDuration
+        backgroundTrigger.style.transitionDuration = transitionDuration
 
         const state = sidebar.dataset.state
 
         if ( state === 'open' ) {
             sidebar.dataset.state = 'closed'
             backgroundTrigger.style.opacity = 0
+            setTimeout(() => {
+                backgroundTrigger.style.visibility = 'hidden'
+            }, transitionDuration)
         }
         if ( !state || state === 'closed' ) {
             sidebar.dataset.state = 'open'
             backgroundTrigger.style.opacity = 'initial'
+            backgroundTrigger.style.visibility = 'visible'
         }
     }
 
