@@ -596,7 +596,7 @@ var re=Object.defineProperty;var oe=(i,t,e)=>t in i?re(i,t,{enumerable:!0,config
                 <p>Don't forget about our free coaching</p>
                 <a href="#" class="btn light uppercase">${zumeDashboard.translations.get_a_coach}</a>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-cta",We);class st extends u{firstUpdated(){this.updateHeaderStyle()}updateHeaderStyle(){const t=this.querySelector(".dashboard__header.left"),e=t.offsetTop;console.log(e,t),t.style.top=e+"px"}}class it extends st{static get properties(){return{view:{type:String,attribute:!1}}}constructor(t){super(),this.routeName=t,this.route=w.getRoute(this.routeName),this.routes=w.childRoutesOf(this.routeName),this.view="list"}switchView(t="list"){this.view=t}renderLinks(){return this.view==="grid"?r`
+        `}createRenderRoot(){return this}}customElements.define("dash-cta",We);class st extends u{connectedCallback(){super.connectedCallback(),window.addEventListener("load",this.updateHeaderStyle)}disconnectedCallback(){super.disconnectedCallback(),window.removeEventListener("load",this.updateHeaderStyle)}updateHeaderStyle(){const t=document.querySelector(".dashboard__header.left"),e=t.offsetTop;console.log(e,t),t.style.top=e+"px"}}class it extends st{static get properties(){return{view:{type:String,attribute:!1}}}constructor(t){super(),this.routeName=t,this.route=w.getRoute(this.routeName),this.routes=w.childRoutesOf(this.routeName),this.view="list"}switchView(t="list"){this.view=t}renderLinks(){return this.view==="grid"?r`
                 <div class="nav-grid">
                     ${this.routes.map(t=>r`
                         <grid-link
@@ -1524,4 +1524,4 @@ var re=Object.defineProperty;var oe=(i,t,e)=>t in i?re(i,t,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",ws);
-//# sourceMappingURL=main-93817339.js.map
+//# sourceMappingURL=main-b4c26f23.js.map
