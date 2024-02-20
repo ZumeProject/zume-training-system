@@ -1,7 +1,6 @@
 import './dash-board'
 import './dash-churches'
 import './dash-coach'
-import './dash-content'
 import './dash-cta'
 import './dash-top-level'
 import './dash-getting-started'

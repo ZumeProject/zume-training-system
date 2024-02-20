@@ -179,7 +179,7 @@ export class DashTrainings extends DashPage {
     render() {
         return html`
             <div class="dashboard__content">
-                <div class="dashboard__header">
+                <div class="dashboard__header left">
                     <div class="d-flex gap-0">
                         <h1 class="h3">${this.route.translation}</h1>
                         <button class="icon-btn f-2" @click=${this.openCommitmentsModal}>

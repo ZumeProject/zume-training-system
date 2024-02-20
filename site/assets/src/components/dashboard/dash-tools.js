@@ -1,6 +1,7 @@
-import { LitElement, html } from 'lit';
+import { html } from 'lit';
+import { DashPage } from './dash-page';
 
-export class DashTools extends LitElement {
+export class DashTools extends DashPage {
 
     render() {
         return html`
