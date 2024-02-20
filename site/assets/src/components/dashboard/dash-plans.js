@@ -178,7 +178,7 @@ export class DashPlans extends DashPage {
 
     render() {
         return html`
-            <div class="dashboard__content">
+            <div class="dashboard__content" data-no-secondary-area>
                 <dash-header-right></dash-header-right>
                 <div class="dashboard__header left">
                     <div class="dashboard__title">
@@ -227,9 +227,6 @@ export class DashPlans extends DashPage {
                             ? html`<span class="loading-spinner active"></span>`
                             : html`
                                 <ul class="list">
-                                    <li class="list__item">
-                                        <h2 class="f-1">I will</h2>
-                                    </li>
                                     ${
                                         !this.loading && this.commitments && this.commitments.length > 0
                                         ? repeat(this.commitments, (commitment) => commitment.id, this.renderListItem)
