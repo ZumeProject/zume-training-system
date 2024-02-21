@@ -555,7 +555,7 @@ var re=Object.defineProperty;var oe=(i,t,e)=>t in i?re(i,t,{enumerable:!0,config
 
             ${this.renderRoute()}
         </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-board",w);class D extends p{firstUpdated(){this.updateHeaderStyle()}updateHeaderStyle(){const t=document.querySelector(".dashboard__header.left"),e=t.offsetTop;console.log(e,t),t.style.top=e+"px"}}class qe extends D{render(){return r`
+        `}createRenderRoot(){return this}}customElements.define("dash-board",w);class D extends p{firstUpdated(){this.attachResizeObeserver(),this.updateHeaderStyle()}attachResizeObeserver(){const t=document.querySelector("dash-header-right"),e=new ResizeObserver(s=>{for(let a of s){if(console.log("size changed",a),!a.contentRect)return;console.log(a.contentRect.height);const o=Math.round(a.contentRect.height),n=Math.round(a.contentRect.width);this.updateHeaderStyle(!1,o,n)}});this.resizeObserver=e,console.log(t),e.observe(t)}updateHeaderStyle(t=!0,e=0,s=window.innerWidth){const a=document.querySelector(".dashboard__header.left");t&&(this.initialOffset=a.offsetTop);let o;s<window.innerWidth/2?o=this.initialOffset:o=this.initialOffset+e,a.style.top=o+"px"}disconnectedCallback(){super.disconnectedCallback(),this.resizeObserver.disconnect()}}class qe extends D{render(){return r`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -1512,4 +1512,4 @@ var re=Object.defineProperty;var oe=(i,t,e)=>t in i?re(i,t,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",ks);
-//# sourceMappingURL=main-6f312b69.js.map
+//# sourceMappingURL=main-dca816c5.js.map
