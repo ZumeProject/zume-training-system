@@ -1128,19 +1128,30 @@ var re=Object.defineProperty;var oe=(i,t,e)=>t in i?re(i,t,{enumerable:!0,config
         `}}customElements.define("grid-link",ss);class is extends yt{constructor(){super()}renderText(){return this.text.split(" ").map(t=>r`
             <span>${t}</span>
         `)}getIcon(){return this.locked?this.icon+"-locked":this.icon}render(){return r`
-            <div
-                class="dash-menu__list-item"
-                data-locked=${this.printBool(this.locked)}
-                data-completed=${this.printBool(this.completed)}
-            >
-                <div class="dash-menu__icon-area | stack--5">
-                    <span class="icon ${this.getIcon()} dash-menu__list-icon"></span>
-                    ${this.renderText()}
+            <div class="container-inline">
+                <div
+                    class="dash-menu__list-item"
+                    data-locked=${this.printBool(this.locked)}
+                    data-completed=${this.printBool(this.completed)}
+                >
+                    <div class="dash-menu__icon-area | stack--5">
+                        <span class="icon ${this.getIcon()} dash-menu__list-icon"></span>
+                    </div>
+                    <div class="dash-menu__text-area | switcher | switcher-width-20">
+                        <div>
+                            <h3 class="f-1 bold uppercase">${this.text}</h3>
+                            <p>${this.explanation}</p>
+                        </div>
+                        <a
+                            href=${this.href}
+                            class="dash-menu__view-button btn ${this.locked?"locked":"light"} tight"
+                            role="button"
+                            @click=${this.handleClick}
+                        >
+                            ${this.locked?zumeDashboard.translations.preview:zumeDashboard.translations.view_now}
+                        </a>
+                    </div>
                 </div>
-                <span>${this.explanation}</span>
-                <a href=${this.href} class="btn ${this.locked?"locked":"light"} tight" role="button" @click=${this.handleClick}>
-                    ${this.locked?zumeDashboard.translations.preview:zumeDashboard.translations.view_now}
-                </a>
             </div>
         `}}customElements.define("list-link",is);class as extends p{updated(){jQuery(document).foundation()}render(){return r`
             <button class="btn uppercase light tight" data-toggle="launch-course-panel">
@@ -1512,4 +1523,4 @@ var re=Object.defineProperty;var oe=(i,t,e)=>t in i?re(i,t,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",ks);
-//# sourceMappingURL=main-e335f919.js.map
+//# sourceMappingURL=main-c0191ee6.js.map
