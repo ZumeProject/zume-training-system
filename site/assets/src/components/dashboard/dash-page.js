@@ -16,11 +16,9 @@ export class DashPage extends LitElement {
 
         const resizeObeserver = new ResizeObserver((entries) => {
             for (let entry of entries) {
-                console.log('size changed', entry)
                 if ( !entry.contentRect ) {
                     return
                 }
-                console.log(entry.contentRect.height)
                 const height = Math.round(entry.contentRect.height)
                 const width = Math.round(entry.contentRect.width)
                 this.updateHeaderStyle(false, height, width)
@@ -28,8 +26,6 @@ export class DashPage extends LitElement {
         })
 
         this.resizeObserver = resizeObeserver
-
-        console.log(headerRight)
 
         resizeObeserver.observe(headerRight)
     }
