@@ -13,12 +13,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="center">
-                    <div class="center-title">
-                        <img src="<?php echo $slide['center'][0] ?>" /><br>
-                        <h2><?php echo $slide['center'][1] ?></h2>
-                    </div>
-                </div>
+                <title-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></title-slide>
             </div>
             <?php
             break;
