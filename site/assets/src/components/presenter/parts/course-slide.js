@@ -15,4 +15,3 @@ export class CourseSlide extends LitElement {
         return this
     }
 }
-customElements.define('course-slide', CourseSlide);

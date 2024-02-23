@@ -21,18 +21,15 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div>
-                    <div class="left-4">
-                        <div class="left-single-title">
-                            <img src="https://placehold.co/60x60/png" /> <span class="title"><?php echo $slide['left'][0]; ?></span><br>
-                        </div>
+                <div class="slide-template">
+                    <div class="d-flex align-items-center gap-0">
+                        <div class="slide__title-icon"><img src="https://placehold.co/60x60/png" /></div>
+                        <span class="slide__title"><?php echo $slide['left'][0]; ?></span>
                     </div>
-                    <div class="right-8">
-                        <div class="right-8-checkin middle">
-                            <p><?php echo $slide['right'][0]; ?></p>
-                            <p><img src="<?php echo $slide['right'][1]; ?>" /></p>
-                            <p><?php echo $slide['right'][2]; ?> <span style="font-weight:bold;"><?php echo $slide['right'][3]; ?></span></p>
-                        </div>
+                    <div class="">
+                        <p><?php echo $slide['right'][0]; ?></p>
+                        <div class="w-5rem"><img src="<?php echo $slide['right'][1]; ?>" /></div>
+                        <p><?php echo $slide['right'][2]; ?> <span style="font-weight:bold;"><?php echo $slide['right'][3]; ?></span></p>
                     </div>
                 </div>
             </div>
@@ -369,25 +366,12 @@ function zume_course_slide_template( $slide ) {
 
 function zume_course_slide_css( $build ) {
     ?>
-    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
     <style>
         #blank-template-body {
             padding: 1em;
-            font-family: Poppins, sans-serif;
         }
 
         /* center */
-        .center {
-            width: 100%;
-            text-align: center;
-        }
-        .center .title {
-            text-transform: uppercase;
-        }
-        .center-title {
-            height: 710px;
-            padding-top: 200px;
-        }
         .center-activity {
             max-width:1000px;
             margin: 0 auto;
@@ -405,12 +389,6 @@ function zume_course_slide_css( $build ) {
             height: 645px;
             border-right: 6px solid #5dccff;
             text-align:center;
-        }
-        .left-single-title {
-            padding-top: 300px;
-            text-align:right;
-            padding-right: 2em;
-            vertical-align: middle;
         }
         .left-single-title img {
             margin: 0 1em 1em 0;
