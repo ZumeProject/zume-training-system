@@ -104,28 +104,28 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="center">
-                    <strong><span class="title"><?php echo $slide['center'][0] ?? '' ?></span> <?php echo $slide['center'][1] ?? '' ?> </strong>
-                </div>
-                <div>
-                    <div class="center-activity middle">
-                        <?php
-                        foreach( $slide['left'] as $i => $v ) {
-                            if ( $i == 0 ) {
-                                echo '<p><strong>' . $v . '</strong></p>';
-                            } else {
-                                if (is_array($v)) {
-                                    echo '<ul>';
-                                    foreach ($v as $pp) {
-                                        echo '<li>' . $pp . '</li>';
-                                    }
-                                    echo '</ul>';
+                <div class="cover">
+                    <h2 class="top-title"><?php echo $slide['center'][0] ?? '' ?> <?php echo $slide['center'][1] ?? '' ?></h2>
+                    <div class="center w-70">
+                        <div class="stack activity-card">
+                            <?php
+                            foreach( $slide['left'] as $i => $v ) {
+                                if ( $i == 0 ) {
+                                    echo '<p><strong>' . $v . '</strong></p>';
                                 } else {
-                                    echo '<p>' . $v . '</p>';
+                                    if (is_array($v)) {
+                                        echo '<ul role="list">';
+                                        foreach ($v as $pp) {
+                                            echo '<li>' . $pp . '</li>';
+                                        }
+                                        echo '</ul>';
+                                    } else {
+                                        echo '<p>' . $v . '</p>';
+                                    }
                                 }
                             }
-                        }
-                        ?>
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@ function zume_course_slide_template( $slide ) {
                                     echo '<p><strong>' . $v . '</strong></p>';
                                 } else {
                                     if (is_array($v)) {
-                                        echo '<ul>';
+                                        echo '<ul role="list">';
                                         foreach ($v as $pp) {
                                             echo '<li>' . $pp . '</li>';
                                         }
@@ -205,7 +205,7 @@ function zume_course_slide_template( $slide ) {
                             <?php
                             foreach( $slide['right'] as $p ) {
                                 if ( is_array( $p ) ) {
-                                    echo '<ul>';
+                                    echo '<ul role="list">';
                                     foreach( $p as $pp ) {
                                         echo '<li>' . $pp . '</li>';
                                     }
