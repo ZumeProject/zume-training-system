@@ -2,6 +2,19 @@
     --slide-unit: 1vw;
     --base-font: calc( var(--slide-unit) * 2 );
 
+    --spacing-ratio: 1.5;
+    --s-5: calc( var(--s-4) / var(--spacing-ratio) );
+    --s-4: calc( var(--s-3) / var(--spacing-ratio) );
+    --s-3: calc( var(--s-2) / var(--spacing-ratio) );
+    --s-2: calc( var(--s-1) / var(--spacing-ratio) );
+    --s-1: calc( var(--s0) / var(--spacing-ratio) );
+    --s0: calc( var(--slide-unit) * 2 );
+    --s1: calc( var(--s0) * var(--spacing-ratio) );
+    --s2: calc( var(--s1) * var(--spacing-ratio) );
+    --s3: calc( var(--s2) * var(--spacing-ratio) );
+    --s4: calc( var(--s3) * var(--spacing-ratio) );
+    --s5: calc( var(--s4) * var(--spacing-ratio) );
+
     font-size: var(--base-font);
     line-height: 1.5;
 
@@ -12,6 +25,11 @@
         font-size: calc( var(--slide-unit) * 3 );
         font-weight: 500;
         color: color('brand-dark');
+    }
+    ul[role="list"] li::before {
+        font-size: 1em;
+        vertical-align: unset;
+        padding-inline-end: 1em;
     }
 
     .title-icon {

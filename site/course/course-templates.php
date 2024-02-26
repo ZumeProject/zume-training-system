@@ -65,18 +65,19 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div>
-                    <div class="left-4">
-                        <div class="left-single-title">
-                            <img src="https://placehold.co/60x60/png" /> <span class="title"><?php echo $slide['left'][0]; ?></span>
+                <div class="slide-template">
+                    <div>
+                        <div class="slide-icon">
+                            <img src="https://placehold.co/60x60/png" />
                         </div>
+                        <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
                     </div>
-                    <div class="right-8">
-                        <div class="right-8-lookback middle">
+                    <div>
+                        <div class="stack--2">
                             <?php
                             foreach( $slide['right'] as $p ) {
                                 if ( is_array( $p ) ) {
-                                    echo '<ul>';
+                                    echo '<ul role="list">';
                                     foreach( $p as $pp ) {
                                         echo '<li>' . $pp . '</li>';
                                     }
