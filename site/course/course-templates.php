@@ -26,9 +26,9 @@ function zume_course_slide_template( $slide ) {
                         <div class="slide__title-icon"><img src="https://placehold.co/60x60/png" /></div>
                         <span class="slide__title"><?php echo $slide['left'][0]; ?></span>
                     </div>
-                    <div class="">
+                    <div class="stack">
                         <p><?php echo $slide['right'][0]; ?></p>
-                        <div class="w-5rem"><img src="<?php echo $slide['right'][1]; ?>" /></div>
+                        <div class="presenter__qr-code"><img src="<?php echo $slide['right'][1]; ?>" /></div>
                         <p><?php echo $slide['right'][2]; ?> <span style="font-weight:bold;"><?php echo $slide['right'][3]; ?></span></p>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 .slides-card {
-    font-size: 1vw;
+    font-size: 2vw;
 
     img {
         width: 100%;
@@ -28,7 +28,7 @@
         &::after {
             content: "";
             position: absolute;
-            width: 0.3vw;
+            width: 0.5vw;
             background-color: color('brand-light');
             height: 70%;
             border-radius: 3vw;
@@ -46,11 +46,12 @@
 
 }
 .slide__title-icon {
-    width: 5vw;
+    width: 6vw;
 }
 .slide__title {
     font-size: 3vw;
     font-weight: 700;
+    text-transform: uppercase;
     color: color('brand-dark');
 }
 
@@ -60,4 +61,8 @@
         font-weight: 500;
         color: color('brand-dark');
     }
+}
+
+.presenter__qr-code {
+    width: 12vw;
 }
