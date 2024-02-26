@@ -23,8 +23,10 @@ function zume_course_slide_template( $slide ) {
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
                 <div class="two-column left">
                     <div>
-                        <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
-                        <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
+                        <div class="title-area">
+                            <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
+                            <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
+                        </div>
                     </div>
                     <div class="stack">
                         <p><?php echo $slide['right'][0]; ?></p>
@@ -41,10 +43,12 @@ function zume_course_slide_template( $slide ) {
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
                 <div class="two-column left">
                     <div>
-                        <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
-                        <div class="stack">
-                            <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
-                            <span class="subtitle"><?php echo $slide['left'][1]; ?></span>
+                        <div class="title-area">
+                            <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
+                            <div class="stack">
+                                <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
+                                <span class="subtitle"><?php echo $slide['left'][1]; ?></span>
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -67,10 +71,12 @@ function zume_course_slide_template( $slide ) {
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
                 <div class="two-column left">
                     <div>
-                        <div class="slide-icon">
-                            <img src="https://placehold.co/60x60/png" />
+                        <div class="title-area">
+                            <div class="slide-icon">
+                                <img src="https://placehold.co/60x60/png" />
+                            </div>
+                            <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
                         </div>
-                        <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
                     </div>
                     <div>
                         <div class="stack">
@@ -131,12 +137,14 @@ function zume_course_slide_template( $slide ) {
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
                 <div class="two-column left">
                     <div>
-                        <div class="slide-icon">
-                            <img src="https://placehold.co/60x60/png" />
-                        </div>
-                        <div class="stack">
-                            <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
-                            <span class="subtitle"><?php echo $slide['left'][1] ?? ''; ?></span>
+                        <div class="title-area">
+                            <div class="slide-icon">
+                                <img src="https://placehold.co/60x60/png" />
+                            </div>
+                            <div class="stack">
+                                <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
+                                <span class="subtitle"><?php echo $slide['left'][1] ?? ''; ?></span>
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -182,12 +190,14 @@ function zume_course_slide_template( $slide ) {
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
                 <div class="two-column left">
                     <div>
-                        <div class="slide-icon">
-                            <img src="https://placehold.co/60x60/png" />
-                        </div>
-                        <div class="stack">
-                            <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
-                            <span class="subtitle"><?php echo $slide['left'][1] ?? ''; ?></span>
+                        <div class="title-area">
+                            <div class="slide-icon">
+                                <img src="https://placehold.co/60x60/png" />
+                            </div>
+                            <div class="stack">
+                                <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
+                                <span class="subtitle"><?php echo $slide['left'][1] ?? ''; ?></span>
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -255,24 +265,32 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="slide-row">
-                    <div class="left-4-obey">
-                        <div class="left-obey-title">
-                            <img src="https://placehold.co/60x60/png" /> <span class="title"><?php echo $slide['left'][0]; ?></span>
+                <div class="obey-slide">
+                    <div class="two-column left">
+                        <div>
+                            <div class="title-area">
+                                <div class="slide-icon">
+                                    <img src="https://placehold.co/60x60/png" />
+                                </div>
+                                <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
+                            </div>
+                        </div>
+                        <div>
+                            <p><?php echo $slide['right'][0]; ?></p>
                         </div>
                     </div>
-                    <div class="right-8-obey">
-                        <p><?php echo $slide['right'][0]; ?></p>
-                    </div>
-                </div>
-                <div class="slide-row">
-                    <div class="left-4-obey">
-                        <div class="left-obey-title ">
-                            <img src="https://placehold.co/60x60/png" /> <?php echo $slide['left'][1]; ?>
+                    <div class="two-column left">
+                        <div>
+                            <div class="title-area">
+                                <div class="slide-icon">
+                                    <img src="https://placehold.co/60x60/png" />
+                                </div>
+                                <h2 class="title"><?php echo $slide['left'][1]; ?></h2>
+                            </div>
                         </div>
-                    </div>
-                    <div class="right-8-obey">
-                        <p><?php echo $slide['right'][1]; ?></p>
+                        <div>
+                            <p><?php echo $slide['right'][1]; ?></p>
+                        </div>
                     </div>
                 </div>
             </div>
