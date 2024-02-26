@@ -8,7 +8,7 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 function zume_course_slide_template( $slide ) {
 
-    switch( $slide['type'] ) {
+    switch ( $slide['type'] ) {
         case 'title':
             ?>
             <div class="slides-card">
@@ -22,13 +22,13 @@ function zume_course_slide_template( $slide ) {
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
                 <div class="slide-template">
-                    <div class="d-flex align-items-center gap-0">
-                        <div class="slide__title-icon"><img src="https://placehold.co/60x60/png" /></div>
-                        <span class="slide__title"><?php echo $slide['left'][0]; ?></span>
+                    <div>
+                        <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
+                        <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
                     </div>
                     <div class="stack">
                         <p><?php echo $slide['right'][0]; ?></p>
-                        <div class="presenter__qr-code"><img src="<?php echo $slide['right'][1]; ?>" /></div>
+                        <div class="qr-code"><img src="<?php echo $slide['right'][1]; ?>" /></div>
                         <p><?php echo $slide['right'][2]; ?> <span style="font-weight:bold;"><?php echo $slide['right'][3]; ?></span></p>
                     </div>
                 </div>
@@ -39,15 +39,16 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div>
-                    <div class="left-4">
-                        <div class="left-single-title">
-                            <img src="https://placehold.co/60x60/png" /> <span class="title"><?php echo $slide['left'][0]; ?></span><br>
+                <div class="slide-template">
+                    <div>
+                        <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
+                        <div class="stack--2">
+                            <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
                             <span class="subtitle"><?php echo $slide['left'][1]; ?></span>
                         </div>
                     </div>
-                    <div class="right-8">
-                        <div class="right-8-pray middle">
+                    <div>
+                        <div class="pray-card">
                             <?php
                             foreach( $slide['right'] as $prayer ) {
                                 echo '<p>' . $prayer . '</p>';
@@ -383,13 +384,6 @@ function zume_course_slide_css( $build ) {
         }
 
         /* left column */
-        .left-4 {
-            width: 33%;
-            float: left;
-            height: 645px;
-            border-right: 6px solid #5dccff;
-            text-align:center;
-        }
         .left-single-title img {
             margin: 0 1em 1em 0;
         }
@@ -397,9 +391,6 @@ function zume_course_slide_css( $build ) {
             font-size:2.5em;
             font-weight: bold;
             text-transform: uppercase;
-        }
-        .left-single-title .subtitle {
-            font-size:2em;
         }
         .left-4-obey {
             width: 33%;
@@ -445,12 +436,6 @@ function zume_course_slide_css( $build ) {
         }
 
         /* right column */
-        .right-8 {
-            width: 66%;
-            float: right;
-            height: 645px;
-            font-size: 2.1em;
-        }
         .right-8-checkin {
             padding: 1em;
             margin: 0 1em;

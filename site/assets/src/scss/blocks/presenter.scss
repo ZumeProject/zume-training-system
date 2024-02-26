@@ -1,13 +1,47 @@
 .slides-card {
-    font-size: 2vw;
+    --slide-unit: 1vw;
+    --base-font: calc( var(--slide-unit) * 2 );
+
+    font-size: var(--base-font);
 
     img {
         width: 100%;
     }
+    h2 {
+        font-size: calc( var(--slide-unit) * 3 );
+        font-weight: 500;
+        color: color('brand-dark');
+    }
+
+    .title-icon {
+        width: calc( var(--slide-unit) * 6 );
+    }
+    .title {
+        font-weight: 700;
+        text-transform: uppercase;
+        color: color('brand-dark');
+    }
+    .subtitle {
+        font-weight: 600;
+    }
+
+    .qr-code {
+        width: calc( var(--slide-unit) * 12 );
+    }
+
+    .pray-card {
+        padding: 2em 1em;
+        background-color: #e7f6fc;
+        border-radius: calc( var(--slide-unit) * 2 );
+        border: calc( var(--slide-unit) * 0.3 ) solid #5dccff;
+        box-shadow: 0px calc( var(--slide-unit) * 0.3 ) calc( var(--slide-unit) * 0.2 ) 0px #0c1a2130;
+    }
+
 }
 
 .slide-template {
     --gap-width: 8vw;
+    padding-inline: calc( var(--gap-width) / 2 );
     display: flex;
     align-items: center;
     height: 100%;
@@ -17,52 +51,27 @@
     position: relative;
 
     & > :first-child {
-        width: calc( 1 / 3 * 100% );
+        width: calc( 1 / 3 * 100% - var( --gap-width ) / 2 );
 
         display: flex;
         align-items: center;
-        gap: 1vw;
+        gap: calc( var(--slide-unit) );
         justify-content: flex-end;
 
 
         &::after {
             content: "";
             position: absolute;
-            width: 0.5vw;
+            width: calc( var(--slide-unit) * 0.5 );
             background-color: color('brand-light');
             height: 70%;
-            border-radius: 3vw;
+            border-radius: calc( var(--slide-unit) * 3 );
 
             transform: translateX( calc( var(--gap-width) / 2 + 100% ) );
         }
     }
 
     & > :nth-child(2) {
-        width: calc( 2 / 3 * 100% );
+        width: calc( 2 / 3 * 100% - var( --gap-width ) / 2 );
     }
-}
-
-.slide__title-area {
-
-}
-.slide__title-icon {
-    width: 6vw;
-}
-.slide__title {
-    font-size: 3vw;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: color('brand-dark');
-}
-
-.presenter__title-slide {
-    h2 {
-        font-size: 3vw;
-        font-weight: 500;
-        color: color('brand-dark');
-    }
-}
-
-.presenter__qr-code {
-    width: 12vw;
 }

@@ -1173,7 +1173,7 @@ var ot=Object.defineProperty;var rt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 </ul>
             </div>
         `}createRenderRoot(){return this}}customElements.define("launch-course",as);class ns extends g{static get properties(){return{slide:{type:Object}}}render(){return r``}createRenderRoot(){return this}}class os extends ns{render(){return r`
-            <div class="cover | presenter__title-slide | text-center">
+            <div class="cover | title-slide | text-center">
                 <div class="stack-1 | w-100">
                     <div class="center | w-40"><img src=${this.slide.center[0]} /></div>
                     <h2>${this.slide.center[1]}</h2>
@@ -1451,4 +1451,4 @@ var ot=Object.defineProperty;var rt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",hs);
-//# sourceMappingURL=main-54ff6018.js.map
+//# sourceMappingURL=main-c2d74bbc.js.map
