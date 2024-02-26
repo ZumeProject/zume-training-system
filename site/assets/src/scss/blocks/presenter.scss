@@ -18,6 +18,12 @@
     font-size: var(--base-font);
     line-height: 1.5;
 
+    border: 1px solid #ccc;
+    border-radius: calc( var(--slide-unit) );
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background-color: color(white);
+
     img {
         width: 100%;
     }
@@ -30,6 +36,9 @@
         font-size: 1em;
         vertical-align: unset;
         padding-inline-end: 1em;
+    }
+    strong {
+        font-weight: 600;
     }
 
     .stack {
@@ -60,6 +69,13 @@
         box-shadow: 0px calc( var(--slide-unit) * 0.3 ) calc( var(--slide-unit) * 0.2 ) 0px #0c1a2130;
     }
 
+}
+
+.video-slide {
+    --slide-unit: 1vw;
+    aspect-ratio: 16 / 9;
+    border-radius: calc( var(--slide-unit) );
+    overflow: hidden;
 }
 
 .slide-template {

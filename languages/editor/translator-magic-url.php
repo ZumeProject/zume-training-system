@@ -109,16 +109,10 @@ class Zume_Training_Translator extends Zume_Magic_Page
         if ( isset( $_GET['tab'] ) && $_GET['tab'] === 'view_course' ) {
             ?>
             <style>
-            #blank-template-body {
-                background-color: WhiteSmoke !important;
-            }
-            .slides-card {
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                aspect-ratio: 16 / 9;
-                background-color: white;
-            }
-        </style>
+                #blank-template-body {
+                    background-color: WhiteSmoke !important;
+                }
+            </style>
             <?php
         } else {
             ?>

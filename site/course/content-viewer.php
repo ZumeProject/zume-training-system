@@ -75,12 +75,6 @@ class Zume_Content_Viewer extends Zume_Magic_Page
             #blank-template-body {
                 background-color: WhiteSmoke !important;
             }
-            .slides-card {
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                aspect-ratio: 16 / 9;
-                background-color: white;
-            }
         </style>
         <?php
     }

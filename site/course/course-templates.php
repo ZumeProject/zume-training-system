@@ -166,7 +166,7 @@ function zume_course_slide_template( $slide ) {
             break;
         case 'video':
             ?>
-            <div class="video">
+            <div class="video-slide">
                 <iframe src="<?php echo $slide['center'][0] ?>?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                         frameborder="0"
                         allow="autoplay; fullscreen; picture-in-picture"
@@ -494,11 +494,6 @@ function zume_course_slide_css( $build ) {
             font-size: 1.8em;
             max-width: 700px;
             margin: 80px auto;
-        }
-        .video {
-            width: 1280px;
-            height: 720px;
-            border-radius: 5px;
         }
         .congratulations {
             font-size: 2.5em;
