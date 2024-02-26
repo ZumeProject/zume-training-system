@@ -21,7 +21,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="slide-template">
+                <div class="two-column left">
                     <div>
                         <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
                         <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
@@ -39,7 +39,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="slide-template">
+                <div class="two-column left">
                     <div>
                         <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
                         <div class="stack">
@@ -48,7 +48,7 @@ function zume_course_slide_template( $slide ) {
                         </div>
                     </div>
                     <div>
-                        <div class="pray-card">
+                        <div class="activity-card" expanded-padding>
                             <?php
                             foreach( $slide['right'] as $prayer ) {
                                 echo '<p>' . $prayer . '</p>';
@@ -65,7 +65,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="slide-template">
+                <div class="two-column left">
                     <div>
                         <div class="slide-icon">
                             <img src="https://placehold.co/60x60/png" />
@@ -129,7 +129,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="slide-template">
+                <div class="two-column left">
                     <div>
                         <div class="slide-icon">
                             <img src="https://placehold.co/60x60/png" />
@@ -180,15 +180,18 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div>
-                    <div class="left-4">
-                        <div class="left-single-title">
-                            <img src="https://placehold.co/60x60/png" /> <span class="title"><?php echo $slide['left'][0]; ?></span><br>
+                <div class="two-column left">
+                    <div>
+                        <div class="slide-icon">
+                            <img src="https://placehold.co/60x60/png" />
+                        </div>
+                        <div class="stack">
+                            <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
                             <span class="subtitle"><?php echo $slide['left'][1] ?? ''; ?></span>
                         </div>
                     </div>
-                    <div class="right-8">
-                        <div class="right-8-lookback middle">
+                    <div>
+                        <div class="stack">
                             <?php
                             foreach( $slide['right'] as $p ) {
                                 if ( is_array( $p ) ) {
@@ -213,35 +216,35 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="center">
-                    <strong> <span class="title"><?php echo $slide['center'][0] ?></span>  <?php echo $slide['center'][1] ?> </strong>
-                </div>
-                <div>
-                    <div class="left-8 ">
-                        <div class="left-8-activity middle">
-                            <?php
-                            foreach( $slide['left'] as $i => $v ) {
-                                if ( $i == 0 ) {
-                                    echo '<p><strong>' . $v . '</strong></p>';
-                                } else {
-                                    if (is_array($v)) {
-                                        echo '<ul>';
-                                        foreach ($v as $pp) {
-                                            echo '<li>' . $pp . '</li>';
-                                        }
-                                        echo '</ul>';
+                <div class="cover">
+                    <h2 class="title text-center" data-small><?php echo $slide['center'][0] ?> <?php echo $slide['center'][1] ?></h2>
+                    <div class="two-column right">
+                        <div>
+                            <div class="activity-card" data-expanded-padding>
+                                <?php
+                                foreach( $slide['left'] as $i => $v ) {
+                                    if ( $i == 0 ) {
+                                        echo '<p><strong>' . $v . '</strong></p>';
                                     } else {
-                                        echo '<p>' . $v . '</p>';
+                                        if (is_array($v)) {
+                                            echo '<ul role="list">';
+                                            foreach ($v as $pp) {
+                                                echo '<li>' . $pp . '</li>';
+                                            }
+                                            echo '</ul>';
+                                        } else {
+                                            echo '<p>' . $v . '</p>';
+                                        }
                                     }
                                 }
-                            }
-                            ?>
+                                ?>
+                            </div>
                         </div>
-                    </div>
-                    <div class="right-4">
-                        <div class="right-4-activity">
-                            <p><img src="<?php echo $slide['right'][0]; ?>" /></p>
-                            <p><?php echo $slide['right'][1]; ?></p>
+                        <div>
+                            <div class="">
+                                <div class="qr-code"><img src="<?php echo $slide['right'][0]; ?>" /></div>
+                                <p><?php echo $slide['right'][1]; ?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
