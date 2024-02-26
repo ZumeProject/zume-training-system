@@ -32,6 +32,10 @@
         padding-inline-end: 1em;
     }
 
+    .stack {
+        --space: var(--s-2);
+    }
+
     .title-icon {
         width: calc( var(--slide-unit) * 6 );
     }
