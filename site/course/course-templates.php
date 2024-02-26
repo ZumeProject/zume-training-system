@@ -367,11 +367,11 @@ function zume_course_slide_template( $slide ) {
         case 'final':
             ?>
             <div class="slides-card">
-                <div class="center">
-                    <div class="final">
-                        <p><img style="width:150px;" src="<?php echo $slide['center'][0] ?>" /></p>
+                <div class="cover">
+                    <div class="center stack | text-center w-50">
+                        <div class="w-30"><img src="<?php echo $slide['center'][0] ?>" /></div>
                         <p><?php echo $slide['center'][1] ?></p>
-                        <p><img style="width:200px;" src="<?php echo $slide['center'][2] ?>" /></p>
+                        <div class="w-30"><img src="<?php echo $slide['center'][2] ?>" /></div>
                         <p><?php echo $slide['center'][3] ?></p>
                     </div>
                 </div>
