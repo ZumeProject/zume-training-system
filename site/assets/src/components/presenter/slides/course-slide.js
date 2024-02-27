@@ -7,6 +7,41 @@ export class CourseSlide extends LitElement {
         };
     }
 
+    renderProgressBar() {
+        let progress_bar = []
+        let stage = []
+        for (let i = 0; i < this.slide.progress_bar.length; i++) {
+            const item = this.slide.progress_bar[i];
+            if (!item) {
+                progress_bar.push(stage)
+                progress_bar.push(false)
+                stage = []
+                continue
+            }
+            stage.push(item)
+        }
+        progress_bar.push(stage)
+
+        return html`
+            <div class="stage ${this.slide['key']}-bar">
+                <div class="progress-bar-wrapper">
+                    ${progress_bar.map((stage) => {
+                        if ( !stage ) {
+                            return html`<div class="progress-bar-divider"></div>`
+                        }
+                        return html`
+                            <div class="progress-bar-stage">
+                                ${stage.map((item) => html`
+                                    <div class="progress-bar-item ${this.slide.key === item ? 'active' : ''}"></div>
+                                `)}
+                            </div>
+                        `
+                    })}
+                </div>
+            </div>
+        `
+    }
+
     renderContent(stack = [], boldFirst = false, boldAll = false) {
         return stack.map((item, i) => {
             if ((boldFirst && i === 0)) {

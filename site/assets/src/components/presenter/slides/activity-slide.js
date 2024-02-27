@@ -6,7 +6,7 @@ export class ActivitySlide extends CourseSlide {
     render() {
         return html`
             <div class="slides-card">
-                <div class="stage ${this.slide['key']}-bar"></div>
+                ${this.renderProgressBar()}
                 <div class="cover">
                     <h2 class="title text-center" data-small>${this.slide['center'][0]} ${this.slide['center'][1]}</h2>
                     <div class="two-column right">

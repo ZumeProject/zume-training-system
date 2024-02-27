@@ -212,3 +212,63 @@ not of the 2 column section */
         width: calc( 1 / 2 * 100% - var( --gap-width ) / 2 );
     }
 }
+
+.stage {
+    height: 3vw;
+    padding-top: 1vw;
+    text-align: center;
+    background-color: white !important;
+    margin-bottom: 0.5vw;
+}
+.progress-bar-wrapper {
+    width: fit-content;
+    height: 2vw;
+    margin: 0 auto;
+
+    & > .progress-bar-stage:first-child > :first-child {
+        border-end-start-radius: 3vw;
+        border-start-start-radius: 3vw;
+    }
+    & > .progress-bar-stage:last-child > :last-child {
+        border-end-end-radius: 3vw;
+        border-start-end-radius: 3vw;
+    }
+}
+.progress-bar-stage {
+    float: left;
+
+    & > * {
+        border-right: 0.1vw solid color('gray-300');
+        border-top: 0.1vw solid color('gray-300');
+        border-bottom: 0.1vw solid color('gray-300');
+    }
+    & > :first-child {
+        border-left: 0.1vw solid color('gray-300');
+    }
+}
+.progress-bar-item {
+    width: 1.5vw;
+    height: 1.5vw;
+    background: white;
+    float:left;
+
+    &.active {
+        background-color: color('brand-lighter');
+    }
+}
+.progress-bar-divider {
+    width: 1.5vw;
+    height: 1.5vw;
+    float:left;
+
+    display: flex;
+    align-items: center;
+
+    &::after {
+        content: '';
+        height: 0.1vw;
+        width: 100%;
+        display: block;
+        background-color: color('gray-300');
+    }
+}

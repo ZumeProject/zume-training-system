@@ -5,7 +5,7 @@ export class ObeySlide extends CourseSlide {
     render() {
         return html`
             <div class="slides-card">
-                <div class="stage ${this.slide['key']}-bar"></div>
+                ${this.renderProgressBar()}
                 <div class="obey-slide">
                     <div class="two-column left">
                         <div>

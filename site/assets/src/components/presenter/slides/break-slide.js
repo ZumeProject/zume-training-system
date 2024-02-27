@@ -5,7 +5,7 @@ export class BreakSlide extends CourseSlide {
     render() {
         return html`
             <div class="slides-card">
-                <div class="stage ${this.slide['key']}-bar"></div>
+                ${this.renderProgressBar()}
                 <div class="cover">
                     <div class="center activity-card" data-large>
                         <p>${this.slide['center'][0]}</p>

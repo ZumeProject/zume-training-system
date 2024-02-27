@@ -5,7 +5,6 @@ export class FinalSlide extends CourseSlide {
     render() {
         return html`
             <div class="slides-card">
-                <div class="stage ${this.slide['key']}-bar"></div>
                 <div class="cover">
                     <div class="center stack | text-center w-50">
                         <div class="w-30"><img src="${this.slide['center'][0]}" /></div>

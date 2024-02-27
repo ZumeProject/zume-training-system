@@ -103,39 +103,6 @@ function zume_course_slide_css( $build ) {
         #blank-template-body {
             padding: 1em;
         }
-        /* progress bar row */
-        .stage {
-            height: 30px;
-            padding-top: 10px;
-            text-align: center;
-            background-color: white !important;
-            margin-bottom: 5px;
-        }
-        .progress-bar-wrapper {
-            width: fit-content;
-            background-image: url('https://storage.googleapis.com/zume-file-mirror/images/horizontal-line.png');
-            background-repeat: repeat-x;
-            height: 20px;
-            margin: 0 auto;
-        }
-        .progress-bar-item {
-            width: 17px;
-            height: 17px;
-            border: 1px solid lightgrey;
-            background: white;
-            float:left;
-        }
-        .progress-bar-divider {
-            width: 17px;
-            height: 17px;
-            float:left;
-        }
-        <?php
-            // itemized progress bar active incicator. Puts blue background on active slide
-           foreach( $build as $slide ) {
-               echo '.' . $slide['key'] . '-bar .' . $slide['key'] . '-bar { background-color: #5dccff; }';
-           }
-        ?>
     </style>
 
     <?php
