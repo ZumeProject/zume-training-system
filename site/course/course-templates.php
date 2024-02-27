@@ -21,21 +21,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="two-column left">
-                    <div>
-                        <div class="title-area">
-                            <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
-                            <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
-                        </div>
-                    </div>
-                    <div class="content-area">
-                        <div class="stack">
-                            <p><?php echo $slide['right'][0]; ?></p>
-                            <div class="qr-code"><img src="<?php echo $slide['right'][1]; ?>" /></div>
-                            <p><?php echo $slide['right'][2]; ?> <span style="font-weight:bold;"><?php echo $slide['right'][3]; ?></span></p>
-                        </div>
-                    </div>
-                </div>
+                <checkin-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></checkin-slide>
             </div>
             <?php
             break;
@@ -43,26 +29,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="two-column left">
-                    <div>
-                        <div class="title-area">
-                            <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
-                            <div class="stack">
-                                <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
-                                <span class="subtitle"><?php echo $slide['left'][1]; ?></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content-area">
-                        <div class="activity-card" expanded-padding>
-                            <?php
-                            foreach( $slide['right'] as $prayer ) {
-                                echo '<p>' . $prayer . '</p>';
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
+                <pray-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></pray-slide>
             </div>
             <?php
             break;
@@ -71,33 +38,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="two-column left">
-                    <div>
-                        <div class="title-area">
-                            <div class="title-icon">
-                                <img src="https://placehold.co/60x60/png" />
-                            </div>
-                            <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
-                        </div>
-                    </div>
-                    <div class="content-area">
-                        <div class="stack">
-                            <?php
-                            foreach( $slide['right'] as $p ) {
-                                if ( is_array( $p ) ) {
-                                    echo '<ul role="list">';
-                                    foreach( $p as $pp ) {
-                                        echo '<li>' . $pp . '</li>';
-                                    }
-                                    echo '</ul>';
-                                } else {
-                                    echo '<p><strong>' . $p . '</strong></p>';
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
+                <overview-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></overview-slide>
             </div>
             <?php
             break;
@@ -106,30 +47,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="cover">
-                    <h2 class="title text-center"><?php echo $slide['center'][0] ?? '' ?> <?php echo $slide['center'][1] ?? '' ?></h2>
-                    <div class="center w-70">
-                        <div class="stack activity-card">
-                            <?php
-                            foreach( $slide['left'] as $i => $v ) {
-                                if ( $i == 0 ) {
-                                    echo '<p><strong>' . $v . '</strong></p>';
-                                } else {
-                                    if (is_array($v)) {
-                                        echo '<ul role="list">';
-                                        foreach ($v as $pp) {
-                                            echo '<li>' . $pp . '</li>';
-                                        }
-                                        echo '</ul>';
-                                    } else {
-                                        echo '<p>' . $v . '</p>';
-                                    }
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
+                <center-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></center-slide>
             </div>
             <?php
             break;
@@ -137,51 +55,14 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="two-column left">
-                    <div>
-                        <div class="title-area">
-                            <div class="title-icon">
-                                <img src="https://placehold.co/60x60/png" />
-                            </div>
-                            <div class="stack">
-                                <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
-                                <span class="subtitle"><?php echo $slide['left'][1] ?? ''; ?></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content-area">
-                        <div class="stack">
-                            <?php
-                            foreach( $slide['right'] as $i => $v ) {
-                                if ( $i == 0 ) {
-                                    echo '<p><strong>' . $v . '</strong></p>';
-                                } else {
-                                    if (is_array($v)) {
-                                        echo '<ul role="list">';
-                                        foreach ($v as $pp) {
-                                            echo '<li>' . $pp . '</li>';
-                                        }
-                                        echo '</ul>';
-                                    } else {
-                                        echo '<p>' . $v . '</p>';
-                                    }
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
+                <watch-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></watch-slide>
             </div>
             <?php
             break;
         case 'video':
             ?>
             <div class="video-slide">
-                <iframe src="<?php echo $slide['center'][0] ?>?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                        frameborder="0"
-                        allow="autoplay; fullscreen; picture-in-picture"
-                >
-                </iframe>
+                <video-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></video-slide>
             </div>
             <?php
             break;
@@ -190,36 +71,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="two-column left">
-                    <div>
-                        <div class="title-area">
-                            <div class="title-icon">
-                                <img src="https://placehold.co/60x60/png" />
-                            </div>
-                            <div class="stack">
-                                <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
-                                <span class="subtitle"><?php echo $slide['left'][1] ?? ''; ?></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content-area">
-                        <div class="stack">
-                            <?php
-                            foreach( $slide['right'] as $p ) {
-                                if ( is_array( $p ) ) {
-                                    echo '<ul role="list">';
-                                    foreach( $p as $pp ) {
-                                        echo '<li>' . $pp . '</li>';
-                                    }
-                                    echo '</ul>';
-                                } else {
-                                    echo '<p>' . $p . '</p>';
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
+                <discuss-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></discuss-slide>
             </div>
             <?php
             break;
@@ -228,38 +80,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="cover">
-                    <h2 class="title text-center" data-small><?php echo $slide['center'][0] ?> <?php echo $slide['center'][1] ?></h2>
-                    <div class="two-column right">
-                        <div>
-                            <div class="activity-card" data-expanded-padding>
-                                <?php
-                                foreach( $slide['left'] as $i => $v ) {
-                                    if ( $i == 0 ) {
-                                        echo '<p><strong>' . $v . '</strong></p>';
-                                    } else {
-                                        if (is_array($v)) {
-                                            echo '<ul role="list">';
-                                            foreach ($v as $pp) {
-                                                echo '<li>' . $pp . '</li>';
-                                            }
-                                            echo '</ul>';
-                                        } else {
-                                            echo '<p>' . $v . '</p>';
-                                        }
-                                    }
-                                }
-                                ?>
-                            </div>
-                        </div>
-                        <div class="content-area">
-                            <div class="stack center | text-center">
-                                <div class="qr-code"><img src="<?php echo $slide['right'][0]; ?>" /></div>
-                                <p><?php echo $slide['right'][1]; ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <activity-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></activity-slide>
             </div>
             <?php
             break;
@@ -267,34 +88,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="obey-slide">
-                    <div class="two-column left">
-                        <div>
-                            <div class="title-area">
-                                <div class="title-icon">
-                                    <img src="https://placehold.co/60x60/png" />
-                                </div>
-                                <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
-                            </div>
-                        </div>
-                        <div class="content-area">
-                            <p><?php echo $slide['right'][0]; ?></p>
-                        </div>
-                    </div>
-                    <div class="two-column left">
-                        <div>
-                            <div class="title-area">
-                                <div class="title-icon">
-                                    <img src="https://placehold.co/60x60/png" />
-                                </div>
-                                <h2 class="title"><?php echo $slide['left'][1]; ?></h2>
-                            </div>
-                        </div>
-                        <div class="content-area">
-                            <p><?php echo $slide['right'][1]; ?></p>
-                        </div>
-                    </div>
-                </div>
+                <obey-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></obey-slide>
             </div>
             <?php
             break;
@@ -302,20 +96,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="two-column right">
-                    <div>
-                        <div class="cover center text-center">
-                            <p><strong><?php echo $slide['left'][0]; ?></strong></p>
-                            <div class="mw-60"><img src="<?php echo $slide['left'][1]; ?>" /></div>
-                        </div>
-                    </div>
-                    <div class="content-area">
-                        <div class="stack center | text-center">
-                            <div class="qr-code"><img src="<?php echo $slide['right'][0]; ?>" /></div>
-                            <p><?php echo $slide['right'][1]; ?></p>
-                        </div>
-                    </div>
-                </div>
+                <left-image-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></left-image-slide>
             </div>
             <?php
             break;
@@ -323,25 +104,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="cover">
-                    <h2 class="title text-center" data-small><?php echo $slide['center'][0] ?></h2>
-                    <div class="two-column middle">
-                        <div>
-                            <div class="stack align-items-center">
-                                <p><strong><?php echo $slide['left'][0] ?></strong></p>
-                                <div class="qr-code"><img src="<?php echo $slide['left'][2] ?>" /></div>
-                                <p><?php echo $slide['left'][1] ?></p>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="stack align-items-center">
-                                <p><strong><?php echo $slide['right'][0] ?></strong></p>
-                                <div class="qr-code"><img src="<?php echo $slide['right'][2] ?>" /></div>
-                                <p><?php echo $slide['right'][1] ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <next-steps-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></next-steps-slide>
             </div>
             <?php
             break;
@@ -349,38 +112,21 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="cover">
-                    <div class="center activity-card" data-large>
-                        <p><?php echo $slide['center'][0] ?></p>
-                        <p><?php echo $slide['center'][1] ?? '' ?></p>
-                    </div>
-                </div>
+                <break-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></break-slide>
             </div>
             <?php
             break;
         case 'congratulations':
             ?>
             <div class="slides-card">
-                <div class="cover">
-                    <div class="center activity-card" data-large>
-                        <p><?php echo $slide['center'][0] ?></p>
-                        <p><?php echo $slide['center'][1] ?? '' ?></p>
-                    </div>
-                </div>
+                <congratulations-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></congratulations-slide>
             </div>
             <?php
             break;
         case 'final':
             ?>
             <div class="slides-card">
-                <div class="cover">
-                    <div class="center stack | text-center w-50">
-                        <div class="w-30"><img src="<?php echo $slide['center'][0] ?>" /></div>
-                        <p><?php echo $slide['center'][1] ?></p>
-                        <div class="w-30"><img src="<?php echo $slide['center'][2] ?>" /></div>
-                        <p><?php echo $slide['center'][3] ?></p>
-                    </div>
-                </div>
+                <final-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></final-slide>
             </div>
             <?php
             break;
@@ -388,7 +134,7 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>"><?php echo $slide['progress_bar']; ?></div>
-                <div class="center"></div>
+                <course-slide slide="<?php echo esc_attr( json_encode( $slide ) ) ?>"></course-slide>
             </div>
             <?php
             break;

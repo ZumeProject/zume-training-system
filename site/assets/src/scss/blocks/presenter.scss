@@ -150,6 +150,7 @@ not of the 2 column section */
     display: flex;
     align-items: stretch;
     width: 100%;
+    min-block-size: 100%;
     gap: var(--gap-width);
     position: relative;
 
