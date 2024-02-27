@@ -28,10 +28,12 @@ function zume_course_slide_template( $slide ) {
                             <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
                         </div>
                     </div>
-                    <div class="stack">
-                        <p><?php echo $slide['right'][0]; ?></p>
-                        <div class="qr-code"><img src="<?php echo $slide['right'][1]; ?>" /></div>
-                        <p><?php echo $slide['right'][2]; ?> <span style="font-weight:bold;"><?php echo $slide['right'][3]; ?></span></p>
+                    <div class="content-area">
+                        <div class="stack">
+                            <p><?php echo $slide['right'][0]; ?></p>
+                            <div class="qr-code"><img src="<?php echo $slide['right'][1]; ?>" /></div>
+                            <p><?php echo $slide['right'][2]; ?> <span style="font-weight:bold;"><?php echo $slide['right'][3]; ?></span></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,7 +53,7 @@ function zume_course_slide_template( $slide ) {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div class="content-area">
                         <div class="activity-card" expanded-padding>
                             <?php
                             foreach( $slide['right'] as $prayer ) {
@@ -78,7 +80,7 @@ function zume_course_slide_template( $slide ) {
                             <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
                         </div>
                     </div>
-                    <div>
+                    <div class="content-area">
                         <div class="stack">
                             <?php
                             foreach( $slide['right'] as $p ) {
@@ -147,7 +149,7 @@ function zume_course_slide_template( $slide ) {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div class="content-area">
                         <div class="stack">
                             <?php
                             foreach( $slide['right'] as $i => $v ) {
@@ -200,7 +202,7 @@ function zume_course_slide_template( $slide ) {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div class="content-area">
                         <div class="stack">
                             <?php
                             foreach( $slide['right'] as $p ) {
@@ -250,8 +252,8 @@ function zume_course_slide_template( $slide ) {
                                 ?>
                             </div>
                         </div>
-                        <div>
-                            <div class="">
+                        <div class="content-area">
+                            <div class="stack">
                                 <div class="qr-code"><img src="<?php echo $slide['right'][0]; ?>" /></div>
                                 <p><?php echo $slide['right'][1]; ?></p>
                             </div>
@@ -275,7 +277,7 @@ function zume_course_slide_template( $slide ) {
                                 <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
                             </div>
                         </div>
-                        <div>
+                        <div class="content-area">
                             <p><?php echo $slide['right'][0]; ?></p>
                         </div>
                     </div>
@@ -288,7 +290,7 @@ function zume_course_slide_template( $slide ) {
                                 <h2 class="title"><?php echo $slide['left'][1]; ?></h2>
                             </div>
                         </div>
-                        <div>
+                        <div class="content-area">
                             <p><?php echo $slide['right'][1]; ?></p>
                         </div>
                     </div>
@@ -321,19 +323,23 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="center">
-                    <strong><span class="title"><?php echo $slide['center'][0] ?></span></strong>
-                </div>
-                <div>
-                    <div class="left-6">
-                        <p><strong><?php echo $slide['left'][0] ?></strong></p>
-                        <p><img src="<?php echo $slide['left'][2] ?>" style="width:200px;" /></p>
-                        <p><?php echo $slide['left'][1] ?></p>
-                    </div>
-                    <div class="right-6">
-                        <p><strong><?php echo $slide['right'][0] ?></strong></p>
-                        <p><img src="<?php echo $slide['right'][2] ?>" style="width:200px;" /></p>
-                        <p><?php echo $slide['right'][1] ?></p>
+                <div class="cover">
+                    <h2 class="title text-center" data-small><?php echo $slide['center'][0] ?></h2>
+                    <div class="two-column middle">
+                        <div>
+                            <div class="stack align-items-center">
+                                <p><strong><?php echo $slide['left'][0] ?></strong></p>
+                                <div class="qr-code"><img src="<?php echo $slide['left'][2] ?>" /></div>
+                                <p><?php echo $slide['left'][1] ?></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="stack align-items-center">
+                                <p><strong><?php echo $slide['right'][0] ?></strong></p>
+                                <div class="qr-code"><img src="<?php echo $slide['right'][2] ?>" /></div>
+                                <p><?php echo $slide['right'][1] ?></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -565,13 +571,6 @@ function zume_course_slide_css( $build ) {
            }
         ?>
     </style>
-    <script>
-        jQuery(document).ready(function() {
-            // set section heights to put content in the middle
-            jQuery.each( jQuery('.middle'), function( index, value ) {
-                jQuery(this).css('margin-top', ( 615 - jQuery(this).height() ) * .5 + 'px');
-            });
-        });
-    </script>
+
     <?php
 }
