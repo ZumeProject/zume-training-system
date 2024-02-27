@@ -212,7 +212,7 @@ export class CoursePresenter extends LitElement {
         if ( !this.session ) {
             return []
         }
-        return this.session.slides
+        return this.session
     }
 
     switchViews(pushState = true) {

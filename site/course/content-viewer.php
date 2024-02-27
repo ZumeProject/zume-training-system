@@ -156,7 +156,7 @@ class Zume_Content_Viewer extends Zume_Magic_Page
             // get the slides for the schedule and session
             $build = zume_course_builder( $_GET['type'], $_GET['session'] );
 
-            foreach( $build['slides'] as $slide ) {
+            foreach( $build as $slide ) {
 
                 // print keys above slides
                 echo $slide['key'] . ' - ' . $slide['type'];
@@ -167,7 +167,7 @@ class Zume_Content_Viewer extends Zume_Magic_Page
             }
 
             // print the css
-            zume_course_slide_css($build['slides']);
+            zume_course_slide_css($build);
         }
         ?>
 
