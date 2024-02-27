@@ -45,7 +45,7 @@ export class CourseSlideshow extends LitElement {
     }
 
     nextSlide() {
-        if ( this.sectionIndex > this.sections.length - 1 ) {
+        if ( this.sectionIndex >= this.sections.length - 1 ) {
             this.sectionIndex = this.sections.length - 1
             return
         }
