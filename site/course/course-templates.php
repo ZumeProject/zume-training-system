@@ -302,16 +302,16 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div>
-                    <div class="left-8 ">
-                        <div class="left-8-image">
+                <div class="two-column right">
+                    <div>
+                        <div class="cover center text-center">
                             <p><strong><?php echo $slide['left'][0]; ?></strong></p>
-                            <p><img src="<?php echo $slide['left'][1]; ?>" /></p>
+                            <div class="mw-60"><img src="<?php echo $slide['left'][1]; ?>" /></div>
                         </div>
                     </div>
-                    <div class="right-4">
-                        <div class="right-4-activity">
-                            <p><img src="<?php echo $slide['right'][0]; ?>" /></p>
+                    <div class="content-area">
+                        <div class="stack">
+                            <div class="qr-code"><img src="<?php echo $slide['right'][0]; ?>" /></div>
                             <p><?php echo $slide['right'][1]; ?></p>
                         </div>
                     </div>
@@ -349,8 +349,8 @@ function zume_course_slide_template( $slide ) {
             ?>
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
-                <div class="center">
-                    <div class="congratulations middle">
+                <div class="cover">
+                    <div class="center activity-card" data-large>
                         <p><?php echo $slide['center'][0] ?></p>
                         <p><?php echo $slide['center'][1] ?? '' ?></p>
                     </div>
