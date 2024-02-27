@@ -3,7 +3,6 @@ import { LitElement, html } from 'lit';
 export class CourseSlideshow extends LitElement {
     static get properties() {
         return {
-            title: { type: String },
             sections: { type: Array },
             sectionIndex: { attribute: false },
             partIndex: { attribute: false },
