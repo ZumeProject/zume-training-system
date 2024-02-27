@@ -204,17 +204,14 @@ export class CoursePresenter extends LitElement {
 
     }
 
-    getSessionTitle() {
-        if ( !this.session || !this.session.t ) {
-            return '';
-        }
-        return this.session.t
+    getSessionTitle(index) {
+        return `Session ${index + 1}`
     }
     getSessionSections() {
-        if ( !this.session || !this.session.sections ) {
+        if ( !this.session ) {
             return []
         }
-        return this.session.sections
+        return this.session
     }
 
     switchViews( pushState = true) {
@@ -289,7 +286,7 @@ export class CoursePresenter extends LitElement {
                                 data-session-number="${sessionNumber}"
                                 @click=${this.handleSessionLink}
                             >
-                                ${session.t}
+                                ${this.getSessionTitle(sessionNumber)}
                             </button>
                         `)}
                     </div>
@@ -310,8 +307,8 @@ export class CoursePresenter extends LitElement {
             <div class="${hiddenClass} container">
                 ${
                     this.view === 'guide'
-                    ? html`<course-guide title="${this.getSessionTitle()}" .sections=${this.getSessionSections()}></course-guide>`
-                    : html`<course-slideshow title="${this.getSessionTitle()}" .sections=${this.getSessionSections()}></course-slideshow>`
+                    ? html`<course-guide title="${this.getSessionTitle(this.lessonIndex)}" .sections=${this.getSessionSections()}></course-guide>`
+                    : html`<course-slideshow title="${this.getSessionTitle(this.lessonIndex)}" .sections=${this.getSessionSections()}></course-slideshow>`
                 }
             </div>
         `
