@@ -109,7 +109,10 @@ function zume_course_builder( $session_type = '10', $session_number = '1', $lang
         $ordered_slides[] = $slide;
     }
 
-    return $ordered_slides;
+    return [
+        'progress_meter' => !empty( $session_number ) ? $all[$session_number] : [],
+        'slides' => $ordered_slides
+    ];
 
     /*
      * // Notes on bundles of slides
