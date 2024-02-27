@@ -74,7 +74,7 @@ function zume_course_slide_template( $slide ) {
                 <div class="two-column left">
                     <div>
                         <div class="title-area">
-                            <div class="slide-icon">
+                            <div class="title-icon">
                                 <img src="https://placehold.co/60x60/png" />
                             </div>
                             <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
@@ -107,7 +107,7 @@ function zume_course_slide_template( $slide ) {
             <div class="slides-card">
                 <div class="stage <?php echo $slide['key']; ?>-bar"><?php echo $slide['progress_bar']; ?></div>
                 <div class="cover">
-                    <h2 class="top-title"><?php echo $slide['center'][0] ?? '' ?> <?php echo $slide['center'][1] ?? '' ?></h2>
+                    <h2 class="title text-center"><?php echo $slide['center'][0] ?? '' ?> <?php echo $slide['center'][1] ?? '' ?></h2>
                     <div class="center w-70">
                         <div class="stack activity-card">
                             <?php
@@ -140,7 +140,7 @@ function zume_course_slide_template( $slide ) {
                 <div class="two-column left">
                     <div>
                         <div class="title-area">
-                            <div class="slide-icon">
+                            <div class="title-icon">
                                 <img src="https://placehold.co/60x60/png" />
                             </div>
                             <div class="stack">
@@ -193,7 +193,7 @@ function zume_course_slide_template( $slide ) {
                 <div class="two-column left">
                     <div>
                         <div class="title-area">
-                            <div class="slide-icon">
+                            <div class="title-icon">
                                 <img src="https://placehold.co/60x60/png" />
                             </div>
                             <div class="stack">
@@ -253,7 +253,7 @@ function zume_course_slide_template( $slide ) {
                             </div>
                         </div>
                         <div class="content-area">
-                            <div class="stack">
+                            <div class="stack center | text-center">
                                 <div class="qr-code"><img src="<?php echo $slide['right'][0]; ?>" /></div>
                                 <p><?php echo $slide['right'][1]; ?></p>
                             </div>
@@ -271,7 +271,7 @@ function zume_course_slide_template( $slide ) {
                     <div class="two-column left">
                         <div>
                             <div class="title-area">
-                                <div class="slide-icon">
+                                <div class="title-icon">
                                     <img src="https://placehold.co/60x60/png" />
                                 </div>
                                 <h2 class="title"><?php echo $slide['left'][0]; ?></h2>
@@ -284,7 +284,7 @@ function zume_course_slide_template( $slide ) {
                     <div class="two-column left">
                         <div>
                             <div class="title-area">
-                                <div class="slide-icon">
+                                <div class="title-icon">
                                     <img src="https://placehold.co/60x60/png" />
                                 </div>
                                 <h2 class="title"><?php echo $slide['left'][1]; ?></h2>
@@ -310,7 +310,7 @@ function zume_course_slide_template( $slide ) {
                         </div>
                     </div>
                     <div class="content-area">
-                        <div class="stack">
+                        <div class="stack center | text-center">
                             <div class="qr-code"><img src="<?php echo $slide['right'][0]; ?>" /></div>
                             <p><?php echo $slide['right'][1]; ?></p>
                         </div>
@@ -402,141 +402,6 @@ function zume_course_slide_css( $build ) {
         #blank-template-body {
             padding: 1em;
         }
-
-        /* center */
-        .center-activity {
-            max-width:1000px;
-            margin: 0 auto;
-            font-size: 1.8em;
-            padding: 1em;
-            background-color: #e7f6fc;
-            border-radius: 1em;
-            border: 3px solid #5dccff;
-        }
-
-        /* left column */
-        .left-single-title img {
-            margin: 0 1em 1em 0;
-        }
-        .left-single-title .title {
-            font-size:2.5em;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .left-4-obey {
-            width: 33%;
-            float: left;
-            text-align:right;
-            padding-right: 2em;
-        }
-        .left-obey-title {
-            font-size:2.5em;
-            font-weight: bold;
-            text-transform: uppercase;
-            vertical-align: middle;
-        }
-        .left-obey-title img {
-            margin-right: 10px;
-        }
-        .left-8 {
-            width: 66%;
-            float: left;
-            height: 645px;
-        }
-        .left-8-activity {
-            margin: 0 1em;
-            font-size: 1.8em;
-            padding: 1em;
-            background-color: #e7f6fc;
-            border-radius: 1em;
-            border: 3px solid #5dccff;
-        }
-        .left-8-image {
-            text-align: center;
-            max-height: 600px;
-            max-width: 600px;
-            margin: 1em auto 0;
-        }
-        .left-6 {
-            font-size: 1.8em;
-            width: 50%;
-            float: left;
-            height: 635px;
-            text-align: center;
-            padding: 1em;
-        }
-
-        /* right column */
-        .right-8-checkin {
-            padding: 1em;
-            margin: 0 1em;
-        }
-        .right-8-checkin img {
-            width: 200px;
-        }
-        .right-8-pray {
-            margin: 0 1em;
-            padding: 1em;
-            background-color: #e7f6fc;
-            border-radius: 1em;
-            border: 3px solid #5dccff;
-        }
-        .right-8-lookback {
-            padding: 1em;
-            margin: 0 1em;
-        }
-        .right-8-obey {
-            border-left: 6px solid #5dccff;
-            padding: 0 1.5em;
-            width: 66%;
-            float: right;
-            font-size: 2.1em;
-        }
-        .right-4 {
-            width: 33%;
-            float: right;
-            height: 620px;
-            border-left: 6px solid #5dccff;
-            text-align:center;
-        }
-        .right-4-activity {
-            padding-top:170px;
-            font-size: 1.5em;
-        }
-        .right-4-activity img {
-            width: 250px;
-        }
-        .right-6 {
-            font-size: 1.8em;
-            width: 50%;
-            float: right;
-            height: 635px;
-            border-left: 6px solid #5dccff;
-            text-align: center;
-            padding: 1em;
-        }
-
-        /* special */
-        .final {
-            font-size: 1.8em;
-            max-width: 700px;
-            margin: 80px auto;
-        }
-        .congratulations {
-            font-size: 2.5em;
-            font-weight: bold;
-            padding: 1em;
-            background-color: #e7f6fc;
-            border-radius: 1em;
-            border: 3px solid #5dccff;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .slide-row {
-           width: 100%;
-           height: 320px;
-        }
-
         /* progress bar row */
         .stage {
             height: 30px;

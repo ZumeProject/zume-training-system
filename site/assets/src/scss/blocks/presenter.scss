@@ -1,6 +1,7 @@
 .slides-card {
     --slide-unit: 1vw;
     --font-size: calc( var(--slide-unit) * 2 );
+    --z-brand-lighter: #5dccff;
 
     --spacing-ratio: 1.5;
     --s-5: calc( var(--s-4) / var(--spacing-ratio) );
@@ -63,6 +64,7 @@
         align-items: center;
         justify-content: space-between;
         flex-grow: 1;
+        text-align: end;
 
         & > div:nth-child(2) {
             align-items: flex-end;
@@ -96,7 +98,7 @@
         padding: 1em;
         background-color: #e7f6fc;
         border-radius: calc( var(--slide-unit) * 2 );
-        border: calc( var(--slide-unit) * 0.3 ) solid #5dccff;
+        border: calc( var(--slide-unit) * 0.3 ) solid color('brand-lighter');
         box-shadow: 0px calc( var(--slide-unit) * 0.3 ) calc( var(--slide-unit) * 0.2 ) 0px #0c1a2130;
 
         &[data-expanded-padding] {
@@ -165,7 +167,7 @@ not of the 2 column section */
         top: 15%;
         bottom: 15%;
         width: calc( var(--slide-unit) * 0.5 );
-        background-color: color('brand-light');
+        background-color: color('brand-lighter');
         border-radius: calc( var(--slide-unit) * 3 );
 
         transform: translateX( calc( var(--gap-width) / 2 + 50% ) );
