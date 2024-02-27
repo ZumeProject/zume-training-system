@@ -69,15 +69,24 @@ export class CourseSlideshow extends LitElement {
     listenForMouseClick(event) {
         const { x } = event
         const { innerWidth } = window
+        const dir = document.querySelector('html').dir
 
         const threshhold = 1 / 2 * innerWidth
 
         if ( x < threshhold ) {
-            this.previousSlide()
+            if ( dir === 'rtl' ) {
+                this.nextSlide()
+            } else {
+                this.previousSlide()
+            }
         }
 
         if ( x > innerWidth - threshhold ) {
-            this.nextSlide()
+            if ( dir === 'rtl' ) {
+                this.previousSlide()
+            } else {
+                this.nextSlide()
+            }
         }
     }
 
