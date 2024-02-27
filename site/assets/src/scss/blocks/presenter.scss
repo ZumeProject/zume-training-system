@@ -182,6 +182,9 @@ not of the 2 column section */
 
         transform: translateX( calc( var(--gap-width) / 2 + 50% ) );
     }
+    [dir="rtl"] & > :first-child::after {
+        transform: translateX( calc( -1 * var(--gap-width) / 2 ) );
+    }
     &[data-align-start] > :first-child::after {
         height: auto;
         top: 15%;
