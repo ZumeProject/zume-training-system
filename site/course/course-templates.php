@@ -361,8 +361,8 @@ function zume_course_slide_template( $slide ) {
         case 'congratulations':
             ?>
             <div class="slides-card">
-                <div class="center">
-                    <div class="congratulations middle">
+                <div class="cover">
+                    <div class="center activity-card" data-large>
                         <p><?php echo $slide['center'][0] ?></p>
                         <p><?php echo $slide['center'][1] ?? '' ?></p>
                     </div>

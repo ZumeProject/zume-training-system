@@ -99,8 +99,13 @@
         border: calc( var(--slide-unit) * 0.3 ) solid #5dccff;
         box-shadow: 0px calc( var(--slide-unit) * 0.3 ) calc( var(--slide-unit) * 0.2 ) 0px #0c1a2130;
 
-        [data-expanded-padding] {
+        &[data-expanded-padding] {
             padding-block: 2em;
+        }
+
+        &[data-large] {
+            font-weight: 600;
+            font-size: calc( var(--slide-unit) * 3 );
         }
     }
 
@@ -163,7 +168,7 @@ not of the 2 column section */
         background-color: color('brand-light');
         border-radius: calc( var(--slide-unit) * 3 );
 
-        transform: translateX( calc( var(--gap-width) / 2 + 100% ) );
+        transform: translateX( calc( var(--gap-width) / 2 + 50% ) );
     }
 
     &.left > :first-child {
