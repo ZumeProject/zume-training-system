@@ -116,12 +116,16 @@
 
         & > .two-column {
             position: static;
+            min-block-size: auto;
 
             & > *::after {
                 content: none;
             }
             &:first-child > :first-child::after {
                 content: "";
+                top: 15%;
+                bottom: 15%;
+                height: auto;
             }
         }
     }
