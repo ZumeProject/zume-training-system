@@ -1,18 +1,18 @@
-var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):s[e]=t;var A=(s,e,t)=>(lt(s,typeof e!="symbol"?e+"":e,t),t),re=(s,e,t)=>{if(!e.has(s))throw TypeError("Cannot "+t)};var D=(s,e,t)=>(re(s,e,"read from private field"),t?t.call(s):e.get(s)),I=(s,e,t)=>{if(e.has(s))throw TypeError("Cannot add the same private member more than once");e instanceof WeakSet?e.add(s):e.set(s,t)},oe=(s,e,t,i)=>(re(s,e,"write to private field"),i?i.call(s,t):e.set(s,t),t);var O=(s,e,t)=>(re(s,e,"access private method"),t);const Se=document.querySelector(".nav-toggle"),ct=document.querySelector("#nav");Se&&Se.addEventListener("click",s=>{ct.classList.toggle("nav--visible")});var ge;let dt=(ge=class{static save(e,t){localStorage.setItem(this.createKey(e),JSON.stringify(t))}static load(e){const t=localStorage.getItem(this.createKey(e));try{return JSON.parse(t)}catch{return t}}static createKey(e){return this.prefix+e}},A(ge,"prefix","Z5_"),ge);window.ZumeStorage=dt;var k,te,qe,se,Ue,ie,Fe,Q,ve;class He{constructor(e){I(this,te);I(this,se);I(this,ie);I(this,Q);A(this,"WIZARD_STATE_NAME","zume_wizard_state");A(this,"STALE_LIFESPAN",10*60*1e3);A(this,"MAX_LIFESPAN",60*60*1e3);I(this,k,void 0);this.moduleName=e,oe(this,k,O(this,te,qe).call(this))}empty(){return Object.keys(D(this,k).data).length===0}isDataStale(){return O(this,Q,ve).call(this,D(this,k),this.STALE_LIFESPAN)}get(e){return D(this,k).data[e]}getAll(){return D(this,k).data}add(e,t){D(this,k).data[e]=t,O(this,ie,Fe).call(this),localStorage.setItem(this.WIZARD_STATE_NAME,JSON.stringify(D(this,k)))}clear(){oe(this,k,null),localStorage.removeItem(this.WIZARD_STATE_NAME)}}k=new WeakMap,te=new WeakSet,qe=function(){const e=O(this,se,Ue).call(this);return e&&!O(this,Q,ve).call(this,e,this.MAX_LIFESPAN)?e:{module:this.moduleName,data:{},timestamp:Date.now()}},se=new WeakSet,Ue=function(){return JSON.parse(localStorage.getItem(this.WIZARD_STATE_NAME))},ie=new WeakSet,Fe=function(){D(this,k).timestamp=Date.now()},Q=new WeakSet,ve=function(e,t){return Date.now()-e.timestamp>t};const w={gettingStarted:"getting-started",makeAGroup:"make-a-group",getACoach:"get-a-coach",joinAPlan:"join-a-training",connectWithFriend:"connect-with-friend",joinFriendsPlan:"join-friends-training",checkin:"checkin"},$={completeProfile:"completeProfile",makePlan:"makePlan",inviteFriends:"inviteFriends",getACoach:"getACoach",joinTraining:"joinTraining",connectFriend:"connectFriend",joinFriendsTraining:"joinFriendsTraining",checkin:"checkin",planDecision:"planDecision"},ht={howManySessions:"how-many-sessions",whatTimeOfDay:"what-time-of-day",howOften:"how-often",startDate:"what-start-date"},l={updateName:"update-your-name",updateLocation:"update-your-location",updatePhone:"update-your-phone",inviteFriends:"invite-friends",contactPreferences:"contact-preferences",languagePreferences:"preferred-language",howCanWeServe:"how-can-we-serve",connectingToCoach:"connecting-to-coach",joinTraining:"join-training",connectToFriend:"connect-friend",joinFriendsPlan:"join-friends-training",checkinSubmit:"checkin-submit",...ht},ut={[l.updateName]:{field:"name",testExistance:(s,e)=>e.has_set_name},[l.updateLocation]:{field:"location",testExistance:s=>!(s.source&&s.source==="ip")},[l.updatePhone]:{field:"phone",testExistance:s=>!!s}};/**
+var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):s[e]=t;var A=(s,e,t)=>(lt(s,typeof e!="symbol"?e+"":e,t),t),re=(s,e,t)=>{if(!e.has(s))throw TypeError("Cannot "+t)};var D=(s,e,t)=>(re(s,e,"read from private field"),t?t.call(s):e.get(s)),I=(s,e,t)=>{if(e.has(s))throw TypeError("Cannot add the same private member more than once");e instanceof WeakSet?e.add(s):e.set(s,t)},oe=(s,e,t,i)=>(re(s,e,"write to private field"),i?i.call(s,t):e.set(s,t),t);var O=(s,e,t)=>(re(s,e,"access private method"),t);const Se=document.querySelector(".nav-toggle"),dt=document.querySelector("#nav");Se&&Se.addEventListener("click",s=>{dt.classList.toggle("nav--visible")});var ge;let ct=(ge=class{static save(e,t){localStorage.setItem(this.createKey(e),JSON.stringify(t))}static load(e){const t=localStorage.getItem(this.createKey(e));try{return JSON.parse(t)}catch{return t}}static createKey(e){return this.prefix+e}},A(ge,"prefix","Z5_"),ge);window.ZumeStorage=ct;var w,te,qe,se,Ue,ie,Fe,Q,ve;class He{constructor(e){I(this,te);I(this,se);I(this,ie);I(this,Q);A(this,"WIZARD_STATE_NAME","zume_wizard_state");A(this,"STALE_LIFESPAN",10*60*1e3);A(this,"MAX_LIFESPAN",60*60*1e3);I(this,w,void 0);this.moduleName=e,oe(this,w,O(this,te,qe).call(this))}empty(){return Object.keys(D(this,w).data).length===0}isDataStale(){return O(this,Q,ve).call(this,D(this,w),this.STALE_LIFESPAN)}get(e){return D(this,w).data[e]}getAll(){return D(this,w).data}add(e,t){D(this,w).data[e]=t,O(this,ie,Fe).call(this),localStorage.setItem(this.WIZARD_STATE_NAME,JSON.stringify(D(this,w)))}clear(){oe(this,w,null),localStorage.removeItem(this.WIZARD_STATE_NAME)}}w=new WeakMap,te=new WeakSet,qe=function(){const e=O(this,se,Ue).call(this);return e&&!O(this,Q,ve).call(this,e,this.MAX_LIFESPAN)?e:{module:this.moduleName,data:{},timestamp:Date.now()}},se=new WeakSet,Ue=function(){return JSON.parse(localStorage.getItem(this.WIZARD_STATE_NAME))},ie=new WeakSet,Fe=function(){D(this,w).timestamp=Date.now()},Q=new WeakSet,ve=function(e,t){return Date.now()-e.timestamp>t};const k={gettingStarted:"getting-started",makeAGroup:"make-a-group",getACoach:"get-a-coach",joinAPlan:"join-a-training",connectWithFriend:"connect-with-friend",joinFriendsPlan:"join-friends-training",checkin:"checkin"},$={completeProfile:"completeProfile",makePlan:"makePlan",inviteFriends:"inviteFriends",getACoach:"getACoach",joinTraining:"joinTraining",connectFriend:"connectFriend",joinFriendsTraining:"joinFriendsTraining",checkin:"checkin",planDecision:"planDecision"},ht={howManySessions:"how-many-sessions",whatTimeOfDay:"what-time-of-day",howOften:"how-often",startDate:"what-start-date"},l={updateName:"update-your-name",updateLocation:"update-your-location",updatePhone:"update-your-phone",inviteFriends:"invite-friends",contactPreferences:"contact-preferences",languagePreferences:"preferred-language",howCanWeServe:"how-can-we-serve",connectingToCoach:"connecting-to-coach",joinTraining:"join-training",connectToFriend:"connect-friend",joinFriendsPlan:"join-friends-training",checkinSubmit:"checkin-submit",...ht},ut={[l.updateName]:{field:"name",testExistance:(s,e)=>e.has_set_name},[l.updateLocation]:{field:"location",testExistance:s=>!(s.source&&s.source==="ip")},[l.updatePhone]:{field:"phone",testExistance:s=>!!s}};/**
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const K=window,fe=K.ShadowRoot&&(K.ShadyCSS===void 0||K.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,$e=Symbol(),xe=new WeakMap;let Be=class{constructor(e,t,i){if(this._$cssResult$=!0,i!==$e)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o;const t=this.t;if(fe&&e===void 0){const i=t!==void 0&&t.length===1;i&&(e=xe.get(t)),e===void 0&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),i&&xe.set(t,e))}return e}toString(){return this.cssText}};const pt=s=>new Be(typeof s=="string"?s:s+"",void 0,$e),mt=(s,...e)=>{const t=s.length===1?s[0]:e.reduce((i,n,r)=>i+(a=>{if(a._$cssResult$===!0)return a.cssText;if(typeof a=="number")return a;throw Error("Value passed to 'css' function must be a 'css' function result: "+a+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(n)+s[r+1],s[0]);return new Be(t,s,$e)},gt=(s,e)=>{fe?s.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet):e.forEach(t=>{const i=document.createElement("style"),n=K.litNonce;n!==void 0&&i.setAttribute("nonce",n),i.textContent=t.cssText,s.appendChild(i)})},Ee=fe?s=>s:s=>s instanceof CSSStyleSheet?(e=>{let t="";for(const i of e.cssRules)t+=i.cssText;return pt(t)})(s):s;/**
+ */const K=window,fe=K.ShadowRoot&&(K.ShadyCSS===void 0||K.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,$e=Symbol(),xe=new WeakMap;let Be=class{constructor(e,t,i){if(this._$cssResult$=!0,i!==$e)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o;const t=this.t;if(fe&&e===void 0){const i=t!==void 0&&t.length===1;i&&(e=xe.get(t)),e===void 0&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),i&&xe.set(t,e))}return e}toString(){return this.cssText}};const pt=s=>new Be(typeof s=="string"?s:s+"",void 0,$e),mt=(s,...e)=>{const t=s.length===1?s[0]:e.reduce((i,a,r)=>i+(n=>{if(n._$cssResult$===!0)return n.cssText;if(typeof n=="number")return n;throw Error("Value passed to 'css' function must be a 'css' function result: "+n+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(a)+s[r+1],s[0]);return new Be(t,s,$e)},gt=(s,e)=>{fe?s.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet):e.forEach(t=>{const i=document.createElement("style"),a=K.litNonce;a!==void 0&&i.setAttribute("nonce",a),i.textContent=t.cssText,s.appendChild(i)})},Ee=fe?s=>s:s=>s instanceof CSSStyleSheet?(e=>{let t="";for(const i of e.cssRules)t+=i.cssText;return pt(t)})(s):s;/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */var le;const Y=window,ze=Y.trustedTypes,vt=ze?ze.emptyScript:"",Ce=Y.reactiveElementPolyfillSupport,be={toAttribute(s,e){switch(e){case Boolean:s=s?vt:null;break;case Object:case Array:s=s==null?s:JSON.stringify(s)}return s},fromAttribute(s,e){let t=s;switch(e){case Boolean:t=s!==null;break;case Number:t=s===null?null:Number(s);break;case Object:case Array:try{t=JSON.parse(s)}catch{t=null}}return t}},We=(s,e)=>e!==s&&(e==e||s==s),ce={attribute:!0,type:String,converter:be,reflect:!1,hasChanged:We};let L=class extends HTMLElement{constructor(){super(),this._$Ei=new Map,this.isUpdatePending=!1,this.hasUpdated=!1,this._$El=null,this.u()}static addInitializer(e){var t;this.finalize(),((t=this.h)!==null&&t!==void 0?t:this.h=[]).push(e)}static get observedAttributes(){this.finalize();const e=[];return this.elementProperties.forEach((t,i)=>{const n=this._$Ep(i,t);n!==void 0&&(this._$Ev.set(n,i),e.push(n))}),e}static createProperty(e,t=ce){if(t.state&&(t.attribute=!1),this.finalize(),this.elementProperties.set(e,t),!t.noAccessor&&!this.prototype.hasOwnProperty(e)){const i=typeof e=="symbol"?Symbol():"__"+e,n=this.getPropertyDescriptor(e,i,t);n!==void 0&&Object.defineProperty(this.prototype,e,n)}}static getPropertyDescriptor(e,t,i){return{get(){return this[t]},set(n){const r=this[e];this[t]=n,this.requestUpdate(e,r,i)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)||ce}static finalize(){if(this.hasOwnProperty("finalized"))return!1;this.finalized=!0;const e=Object.getPrototypeOf(this);if(e.finalize(),e.h!==void 0&&(this.h=[...e.h]),this.elementProperties=new Map(e.elementProperties),this._$Ev=new Map,this.hasOwnProperty("properties")){const t=this.properties,i=[...Object.getOwnPropertyNames(t),...Object.getOwnPropertySymbols(t)];for(const n of i)this.createProperty(n,t[n])}return this.elementStyles=this.finalizeStyles(this.styles),!0}static finalizeStyles(e){const t=[];if(Array.isArray(e)){const i=new Set(e.flat(1/0).reverse());for(const n of i)t.unshift(Ee(n))}else e!==void 0&&t.push(Ee(e));return t}static _$Ep(e,t){const i=t.attribute;return i===!1?void 0:typeof i=="string"?i:typeof e=="string"?e.toLowerCase():void 0}u(){var e;this._$E_=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$Eg(),this.requestUpdate(),(e=this.constructor.h)===null||e===void 0||e.forEach(t=>t(this))}addController(e){var t,i;((t=this._$ES)!==null&&t!==void 0?t:this._$ES=[]).push(e),this.renderRoot!==void 0&&this.isConnected&&((i=e.hostConnected)===null||i===void 0||i.call(e))}removeController(e){var t;(t=this._$ES)===null||t===void 0||t.splice(this._$ES.indexOf(e)>>>0,1)}_$Eg(){this.constructor.elementProperties.forEach((e,t)=>{this.hasOwnProperty(t)&&(this._$Ei.set(t,this[t]),delete this[t])})}createRenderRoot(){var e;const t=(e=this.shadowRoot)!==null&&e!==void 0?e:this.attachShadow(this.constructor.shadowRootOptions);return gt(t,this.constructor.elementStyles),t}connectedCallback(){var e;this.renderRoot===void 0&&(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),(e=this._$ES)===null||e===void 0||e.forEach(t=>{var i;return(i=t.hostConnected)===null||i===void 0?void 0:i.call(t)})}enableUpdating(e){}disconnectedCallback(){var e;(e=this._$ES)===null||e===void 0||e.forEach(t=>{var i;return(i=t.hostDisconnected)===null||i===void 0?void 0:i.call(t)})}attributeChangedCallback(e,t,i){this._$AK(e,i)}_$EO(e,t,i=ce){var n;const r=this.constructor._$Ep(e,i);if(r!==void 0&&i.reflect===!0){const a=(((n=i.converter)===null||n===void 0?void 0:n.toAttribute)!==void 0?i.converter:be).toAttribute(t,i.type);this._$El=e,a==null?this.removeAttribute(r):this.setAttribute(r,a),this._$El=null}}_$AK(e,t){var i;const n=this.constructor,r=n._$Ev.get(e);if(r!==void 0&&this._$El!==r){const a=n.getPropertyOptions(r),h=typeof a.converter=="function"?{fromAttribute:a.converter}:((i=a.converter)===null||i===void 0?void 0:i.fromAttribute)!==void 0?a.converter:be;this._$El=r,this[r]=h.fromAttribute(t,a.type),this._$El=null}}requestUpdate(e,t,i){let n=!0;e!==void 0&&(((i=i||this.constructor.getPropertyOptions(e)).hasChanged||We)(this[e],t)?(this._$AL.has(e)||this._$AL.set(e,t),i.reflect===!0&&this._$El!==e&&(this._$EC===void 0&&(this._$EC=new Map),this._$EC.set(e,i))):n=!1),!this.isUpdatePending&&n&&(this._$E_=this._$Ej())}async _$Ej(){this.isUpdatePending=!0;try{await this._$E_}catch(t){Promise.reject(t)}const e=this.scheduleUpdate();return e!=null&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var e;if(!this.isUpdatePending)return;this.hasUpdated,this._$Ei&&(this._$Ei.forEach((n,r)=>this[r]=n),this._$Ei=void 0);let t=!1;const i=this._$AL;try{t=this.shouldUpdate(i),t?(this.willUpdate(i),(e=this._$ES)===null||e===void 0||e.forEach(n=>{var r;return(r=n.hostUpdate)===null||r===void 0?void 0:r.call(n)}),this.update(i)):this._$Ek()}catch(n){throw t=!1,this._$Ek(),n}t&&this._$AE(i)}willUpdate(e){}_$AE(e){var t;(t=this._$ES)===null||t===void 0||t.forEach(i=>{var n;return(n=i.hostUpdated)===null||n===void 0?void 0:n.call(i)}),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$Ek(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$E_}shouldUpdate(e){return!0}update(e){this._$EC!==void 0&&(this._$EC.forEach((t,i)=>this._$EO(i,this[i],t)),this._$EC=void 0),this._$Ek()}updated(e){}firstUpdated(e){}};L.finalized=!0,L.elementProperties=new Map,L.elementStyles=[],L.shadowRootOptions={mode:"open"},Ce==null||Ce({ReactiveElement:L}),((le=Y.reactiveElementVersions)!==null&&le!==void 0?le:Y.reactiveElementVersions=[]).push("1.6.1");/**
+ */var le;const Y=window,ze=Y.trustedTypes,vt=ze?ze.emptyScript:"",Ce=Y.reactiveElementPolyfillSupport,be={toAttribute(s,e){switch(e){case Boolean:s=s?vt:null;break;case Object:case Array:s=s==null?s:JSON.stringify(s)}return s},fromAttribute(s,e){let t=s;switch(e){case Boolean:t=s!==null;break;case Number:t=s===null?null:Number(s);break;case Object:case Array:try{t=JSON.parse(s)}catch{t=null}}return t}},We=(s,e)=>e!==s&&(e==e||s==s),de={attribute:!0,type:String,converter:be,reflect:!1,hasChanged:We};let L=class extends HTMLElement{constructor(){super(),this._$Ei=new Map,this.isUpdatePending=!1,this.hasUpdated=!1,this._$El=null,this.u()}static addInitializer(e){var t;this.finalize(),((t=this.h)!==null&&t!==void 0?t:this.h=[]).push(e)}static get observedAttributes(){this.finalize();const e=[];return this.elementProperties.forEach((t,i)=>{const a=this._$Ep(i,t);a!==void 0&&(this._$Ev.set(a,i),e.push(a))}),e}static createProperty(e,t=de){if(t.state&&(t.attribute=!1),this.finalize(),this.elementProperties.set(e,t),!t.noAccessor&&!this.prototype.hasOwnProperty(e)){const i=typeof e=="symbol"?Symbol():"__"+e,a=this.getPropertyDescriptor(e,i,t);a!==void 0&&Object.defineProperty(this.prototype,e,a)}}static getPropertyDescriptor(e,t,i){return{get(){return this[t]},set(a){const r=this[e];this[t]=a,this.requestUpdate(e,r,i)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)||de}static finalize(){if(this.hasOwnProperty("finalized"))return!1;this.finalized=!0;const e=Object.getPrototypeOf(this);if(e.finalize(),e.h!==void 0&&(this.h=[...e.h]),this.elementProperties=new Map(e.elementProperties),this._$Ev=new Map,this.hasOwnProperty("properties")){const t=this.properties,i=[...Object.getOwnPropertyNames(t),...Object.getOwnPropertySymbols(t)];for(const a of i)this.createProperty(a,t[a])}return this.elementStyles=this.finalizeStyles(this.styles),!0}static finalizeStyles(e){const t=[];if(Array.isArray(e)){const i=new Set(e.flat(1/0).reverse());for(const a of i)t.unshift(Ee(a))}else e!==void 0&&t.push(Ee(e));return t}static _$Ep(e,t){const i=t.attribute;return i===!1?void 0:typeof i=="string"?i:typeof e=="string"?e.toLowerCase():void 0}u(){var e;this._$E_=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$Eg(),this.requestUpdate(),(e=this.constructor.h)===null||e===void 0||e.forEach(t=>t(this))}addController(e){var t,i;((t=this._$ES)!==null&&t!==void 0?t:this._$ES=[]).push(e),this.renderRoot!==void 0&&this.isConnected&&((i=e.hostConnected)===null||i===void 0||i.call(e))}removeController(e){var t;(t=this._$ES)===null||t===void 0||t.splice(this._$ES.indexOf(e)>>>0,1)}_$Eg(){this.constructor.elementProperties.forEach((e,t)=>{this.hasOwnProperty(t)&&(this._$Ei.set(t,this[t]),delete this[t])})}createRenderRoot(){var e;const t=(e=this.shadowRoot)!==null&&e!==void 0?e:this.attachShadow(this.constructor.shadowRootOptions);return gt(t,this.constructor.elementStyles),t}connectedCallback(){var e;this.renderRoot===void 0&&(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),(e=this._$ES)===null||e===void 0||e.forEach(t=>{var i;return(i=t.hostConnected)===null||i===void 0?void 0:i.call(t)})}enableUpdating(e){}disconnectedCallback(){var e;(e=this._$ES)===null||e===void 0||e.forEach(t=>{var i;return(i=t.hostDisconnected)===null||i===void 0?void 0:i.call(t)})}attributeChangedCallback(e,t,i){this._$AK(e,i)}_$EO(e,t,i=de){var a;const r=this.constructor._$Ep(e,i);if(r!==void 0&&i.reflect===!0){const n=(((a=i.converter)===null||a===void 0?void 0:a.toAttribute)!==void 0?i.converter:be).toAttribute(t,i.type);this._$El=e,n==null?this.removeAttribute(r):this.setAttribute(r,n),this._$El=null}}_$AK(e,t){var i;const a=this.constructor,r=a._$Ev.get(e);if(r!==void 0&&this._$El!==r){const n=a.getPropertyOptions(r),h=typeof n.converter=="function"?{fromAttribute:n.converter}:((i=n.converter)===null||i===void 0?void 0:i.fromAttribute)!==void 0?n.converter:be;this._$El=r,this[r]=h.fromAttribute(t,n.type),this._$El=null}}requestUpdate(e,t,i){let a=!0;e!==void 0&&(((i=i||this.constructor.getPropertyOptions(e)).hasChanged||We)(this[e],t)?(this._$AL.has(e)||this._$AL.set(e,t),i.reflect===!0&&this._$El!==e&&(this._$EC===void 0&&(this._$EC=new Map),this._$EC.set(e,i))):a=!1),!this.isUpdatePending&&a&&(this._$E_=this._$Ej())}async _$Ej(){this.isUpdatePending=!0;try{await this._$E_}catch(t){Promise.reject(t)}const e=this.scheduleUpdate();return e!=null&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var e;if(!this.isUpdatePending)return;this.hasUpdated,this._$Ei&&(this._$Ei.forEach((a,r)=>this[r]=a),this._$Ei=void 0);let t=!1;const i=this._$AL;try{t=this.shouldUpdate(i),t?(this.willUpdate(i),(e=this._$ES)===null||e===void 0||e.forEach(a=>{var r;return(r=a.hostUpdate)===null||r===void 0?void 0:r.call(a)}),this.update(i)):this._$Ek()}catch(a){throw t=!1,this._$Ek(),a}t&&this._$AE(i)}willUpdate(e){}_$AE(e){var t;(t=this._$ES)===null||t===void 0||t.forEach(i=>{var a;return(a=i.hostUpdated)===null||a===void 0?void 0:a.call(i)}),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$Ek(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$E_}shouldUpdate(e){return!0}update(e){this._$EC!==void 0&&(this._$EC.forEach((t,i)=>this._$EO(i,this[i],t)),this._$EC=void 0),this._$Ek()}updated(e){}firstUpdated(e){}};L.finalized=!0,L.elementProperties=new Map,L.elementStyles=[],L.shadowRootOptions={mode:"open"},Ce==null||Ce({ReactiveElement:L}),((le=Y.reactiveElementVersions)!==null&&le!==void 0?le:Y.reactiveElementVersions=[]).push("1.6.1");/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */var de;const X=window,H=X.trustedTypes,Ae=H?H.createPolicy("lit-html",{createHTML:s=>s}):void 0,ee="$lit$",z=`lit$${(Math.random()+"").slice(9)}$`,_e="?"+z,bt=`<${_e}>`,q=document,W=()=>q.createComment(""),Z=s=>s===null||typeof s!="object"&&typeof s!="function",Ze=Array.isArray,Ve=s=>Ze(s)||typeof(s==null?void 0:s[Symbol.iterator])=="function",he=`[ 	
+ */var ce;const X=window,H=X.trustedTypes,Ae=H?H.createPolicy("lit-html",{createHTML:s=>s}):void 0,ee="$lit$",z=`lit$${(Math.random()+"").slice(9)}$`,_e="?"+z,bt=`<${_e}>`,q=document,W=()=>q.createComment(""),Z=s=>s===null||typeof s!="object"&&typeof s!="function",Ze=Array.isArray,Ve=s=>Ze(s)||typeof(s==null?void 0:s[Symbol.iterator])=="function",he=`[ 	
 \f\r]`,F=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,De=/-->/g,Pe=/>/g,P=RegExp(`>|${he}(?:([^\\s"'>=/]+)(${he}*=${he}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`,"g"),Me=/'/g,Re=/"/g,Qe=/^(?:script|style|textarea|title)$/i,Ge=s=>(e,...t)=>({_$litType$:s,strings:e,values:t}),o=Ge(1),J=Ge(2),x=Symbol.for("lit-noChange"),_=Symbol.for("lit-nothing"),Te=new WeakMap,N=q.createTreeWalker(q,129,null,!1),Je=(s,e)=>{const t=s.length-1,i=[];let n,r=e===2?"<svg>":"",a=F;for(let c=0;c<t;c++){const d=s[c];let b,p,u=-1,m=0;for(;m<d.length&&(a.lastIndex=m,p=a.exec(d),p!==null);)m=a.lastIndex,a===F?p[1]==="!--"?a=De:p[1]!==void 0?a=Pe:p[2]!==void 0?(Qe.test(p[2])&&(n=RegExp("</"+p[2],"g")),a=P):p[3]!==void 0&&(a=P):a===P?p[0]===">"?(a=n??F,u=-1):p[1]===void 0?u=-2:(u=a.lastIndex-p[2].length,b=p[1],a=p[3]===void 0?P:p[3]==='"'?Re:Me):a===Re||a===Me?a=P:a===De||a===Pe?a=F:(a=P,n=void 0);const v=a===P&&s[c+1].startsWith("/>")?" ":"";r+=a===F?d+bt:u>=0?(i.push(b),d.slice(0,u)+ee+d.slice(u)+z+v):d+z+(u===-2?(i.push(void 0),c):v)}const h=r+(s[t]||"<?>")+(e===2?"</svg>":"");if(!Array.isArray(s)||!s.hasOwnProperty("raw"))throw Error("invalid template strings array");return[Ae!==void 0?Ae.createHTML(h):h,i]};class V{constructor({strings:e,_$litType$:t},i){let n;this.parts=[];let r=0,a=0;const h=e.length-1,c=this.parts,[d,b]=Je(e,t);if(this.el=V.createElement(d,i),N.currentNode=this.el.content,t===2){const p=this.el.content,u=p.firstChild;u.remove(),p.append(...u.childNodes)}for(;(n=N.nextNode())!==null&&c.length<h;){if(n.nodeType===1){if(n.hasAttributes()){const p=[];for(const u of n.getAttributeNames())if(u.endsWith(ee)||u.startsWith(z)){const m=b[a++];if(p.push(u),m!==void 0){const v=n.getAttribute(m.toLowerCase()+ee).split(z),f=/([.?@])?(.*)/.exec(m);c.push({type:1,index:r,name:f[2],strings:v,ctor:f[1]==="."?Ye:f[1]==="?"?Xe:f[1]==="@"?et:G})}else c.push({type:6,index:r})}for(const u of p)n.removeAttribute(u)}if(Qe.test(n.tagName)){const p=n.textContent.split(z),u=p.length-1;if(u>0){n.textContent=H?H.emptyScript:"";for(let m=0;m<u;m++)n.append(p[m],W()),N.nextNode(),c.push({type:2,index:++r});n.append(p[u],W())}}}else if(n.nodeType===8)if(n.data===_e)c.push({type:2,index:r});else{let p=-1;for(;(p=n.data.indexOf(z,p+1))!==-1;)c.push({type:7,index:r}),p+=z.length-1}r++}}static createElement(e,t){const i=q.createElement("template");return i.innerHTML=e,i}}function T(s,e,t=s,i){var n,r,a,h;if(e===x)return e;let c=i!==void 0?(n=t._$Co)===null||n===void 0?void 0:n[i]:t._$Cl;const d=Z(e)?void 0:e._$litDirective$;return(c==null?void 0:c.constructor)!==d&&((r=c==null?void 0:c._$AO)===null||r===void 0||r.call(c,!1),d===void 0?c=void 0:(c=new d(s),c._$AT(s,t,i)),i!==void 0?((a=(h=t)._$Co)!==null&&a!==void 0?a:h._$Co=[])[i]=c:t._$Cl=c),c!==void 0&&(e=T(s,c._$AS(s,e.values),c,i)),e}class Ke{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){var t;const{el:{content:i},parts:n}=this._$AD,r=((t=e==null?void 0:e.creationScope)!==null&&t!==void 0?t:q).importNode(i,!0);N.currentNode=r;let a=N.nextNode(),h=0,c=0,d=n[0];for(;d!==void 0;){if(h===d.index){let b;d.type===2?b=new U(a,a.nextSibling,this,e):d.type===1?b=new d.ctor(a,d.name,d.strings,this,e):d.type===6&&(b=new tt(a,this,e)),this._$AV.push(b),d=n[++c]}h!==(d==null?void 0:d.index)&&(a=N.nextNode(),h++)}return r}v(e){let t=0;for(const i of this._$AV)i!==void 0&&(i.strings!==void 0?(i._$AI(e,i,t),t+=i.strings.length-2):i._$AI(e[t])),t++}}class U{constructor(e,t,i,n){var r;this.type=2,this._$AH=_,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=i,this.options=n,this._$Cp=(r=n==null?void 0:n.isConnected)===null||r===void 0||r}get _$AU(){var e,t;return(t=(e=this._$AM)===null||e===void 0?void 0:e._$AU)!==null&&t!==void 0?t:this._$Cp}get parentNode(){let e=this._$AA.parentNode;const t=this._$AM;return t!==void 0&&(e==null?void 0:e.nodeType)===11&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=T(this,e,t),Z(e)?e===_||e==null||e===""?(this._$AH!==_&&this._$AR(),this._$AH=_):e!==this._$AH&&e!==x&&this._(e):e._$litType$!==void 0?this.g(e):e.nodeType!==void 0?this.$(e):Ve(e)?this.T(e):this._(e)}k(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}$(e){this._$AH!==e&&(this._$AR(),this._$AH=this.k(e))}_(e){this._$AH!==_&&Z(this._$AH)?this._$AA.nextSibling.data=e:this.$(q.createTextNode(e)),this._$AH=e}g(e){var t;const{values:i,_$litType$:n}=e,r=typeof n=="number"?this._$AC(e):(n.el===void 0&&(n.el=V.createElement(n.h,this.options)),n);if(((t=this._$AH)===null||t===void 0?void 0:t._$AD)===r)this._$AH.v(i);else{const a=new Ke(r,this),h=a.u(this.options);a.v(i),this.$(h),this._$AH=a}}_$AC(e){let t=Te.get(e.strings);return t===void 0&&Te.set(e.strings,t=new V(e)),t}T(e){Ze(this._$AH)||(this._$AH=[],this._$AR());const t=this._$AH;let i,n=0;for(const r of e)n===t.length?t.push(i=new U(this.k(W()),this.k(W()),this,this.options)):i=t[n],i._$AI(r),n++;n<t.length&&(this._$AR(i&&i._$AB.nextSibling,n),t.length=n)}_$AR(e=this._$AA.nextSibling,t){var i;for((i=this._$AP)===null||i===void 0||i.call(this,!1,!0,t);e&&e!==this._$AB;){const n=e.nextSibling;e.remove(),e=n}}setConnected(e){var t;this._$AM===void 0&&(this._$Cp=e,(t=this._$AP)===null||t===void 0||t.call(this,e))}}class G{constructor(e,t,i,n,r){this.type=1,this._$AH=_,this._$AN=void 0,this.element=e,this.name=t,this._$AM=n,this.options=r,i.length>2||i[0]!==""||i[1]!==""?(this._$AH=Array(i.length-1).fill(new String),this.strings=i):this._$AH=_}get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}_$AI(e,t=this,i,n){const r=this.strings;let a=!1;if(r===void 0)e=T(this,e,t,0),a=!Z(e)||e!==this._$AH&&e!==x,a&&(this._$AH=e);else{const h=e;let c,d;for(e=r[0],c=0;c<r.length-1;c++)d=T(this,h[i+c],t,c),d===x&&(d=this._$AH[c]),a||(a=!Z(d)||d!==this._$AH[c]),d===_?e=_:e!==_&&(e+=(d??"")+r[c+1]),this._$AH[c]=d}a&&!n&&this.j(e)}j(e){e===_?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,e??"")}}class Ye extends G{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===_?void 0:e}}const ft=H?H.emptyScript:"";class Xe extends G{constructor(){super(...arguments),this.type=4}j(e){e&&e!==_?this.element.setAttribute(this.name,ft):this.element.removeAttribute(this.name)}}class et extends G{constructor(e,t,i,n,r){super(e,t,i,n,r),this.type=5}_$AI(e,t=this){var i;if((e=(i=T(this,e,t,0))!==null&&i!==void 0?i:_)===x)return;const n=this._$AH,r=e===_&&n!==_||e.capture!==n.capture||e.once!==n.once||e.passive!==n.passive,a=e!==_&&(n===_||r);r&&this.element.removeEventListener(this.name,this,n),a&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){var t,i;typeof this._$AH=="function"?this._$AH.call((i=(t=this.options)===null||t===void 0?void 0:t.host)!==null&&i!==void 0?i:this.element,e):this._$AH.handleEvent(e)}}class tt{constructor(e,t,i){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=i}get _$AU(){return this._$AM._$AU}_$AI(e){T(this,e)}}const $t={O:ee,P:z,A:_e,C:1,M:Je,L:Ke,D:Ve,R:T,I:U,V:G,H:Xe,N:et,U:Ye,F:tt},Ie=X.litHtmlPolyfillSupport;Ie==null||Ie(V,U),((de=X.litHtmlVersions)!==null&&de!==void 0?de:X.litHtmlVersions=[]).push("2.7.3");const _t=(s,e,t)=>{var i,n;const r=(i=t==null?void 0:t.renderBefore)!==null&&i!==void 0?i:e;let a=r._$litPart$;if(a===void 0){const h=(n=t==null?void 0:t.renderBefore)!==null&&n!==void 0?n:null;r._$litPart$=a=new U(e.insertBefore(W(),h),h,void 0,t??{})}return a._$AI(s),a};/**
+\f\r"'\`<>=]|("|')|))|$)`,"g"),Me=/'/g,Re=/"/g,Qe=/^(?:script|style|textarea|title)$/i,Ge=s=>(e,...t)=>({_$litType$:s,strings:e,values:t}),o=Ge(1),J=Ge(2),x=Symbol.for("lit-noChange"),_=Symbol.for("lit-nothing"),Te=new WeakMap,N=q.createTreeWalker(q,129,null,!1),Je=(s,e)=>{const t=s.length-1,i=[];let a,r=e===2?"<svg>":"",n=F;for(let d=0;d<t;d++){const c=s[d];let b,p,u=-1,m=0;for(;m<c.length&&(n.lastIndex=m,p=n.exec(c),p!==null);)m=n.lastIndex,n===F?p[1]==="!--"?n=De:p[1]!==void 0?n=Pe:p[2]!==void 0?(Qe.test(p[2])&&(a=RegExp("</"+p[2],"g")),n=P):p[3]!==void 0&&(n=P):n===P?p[0]===">"?(n=a??F,u=-1):p[1]===void 0?u=-2:(u=n.lastIndex-p[2].length,b=p[1],n=p[3]===void 0?P:p[3]==='"'?Re:Me):n===Re||n===Me?n=P:n===De||n===Pe?n=F:(n=P,a=void 0);const v=n===P&&s[d+1].startsWith("/>")?" ":"";r+=n===F?c+bt:u>=0?(i.push(b),c.slice(0,u)+ee+c.slice(u)+z+v):c+z+(u===-2?(i.push(void 0),d):v)}const h=r+(s[t]||"<?>")+(e===2?"</svg>":"");if(!Array.isArray(s)||!s.hasOwnProperty("raw"))throw Error("invalid template strings array");return[Ae!==void 0?Ae.createHTML(h):h,i]};class V{constructor({strings:e,_$litType$:t},i){let a;this.parts=[];let r=0,n=0;const h=e.length-1,d=this.parts,[c,b]=Je(e,t);if(this.el=V.createElement(c,i),N.currentNode=this.el.content,t===2){const p=this.el.content,u=p.firstChild;u.remove(),p.append(...u.childNodes)}for(;(a=N.nextNode())!==null&&d.length<h;){if(a.nodeType===1){if(a.hasAttributes()){const p=[];for(const u of a.getAttributeNames())if(u.endsWith(ee)||u.startsWith(z)){const m=b[n++];if(p.push(u),m!==void 0){const v=a.getAttribute(m.toLowerCase()+ee).split(z),f=/([.?@])?(.*)/.exec(m);d.push({type:1,index:r,name:f[2],strings:v,ctor:f[1]==="."?Ye:f[1]==="?"?Xe:f[1]==="@"?et:G})}else d.push({type:6,index:r})}for(const u of p)a.removeAttribute(u)}if(Qe.test(a.tagName)){const p=a.textContent.split(z),u=p.length-1;if(u>0){a.textContent=H?H.emptyScript:"";for(let m=0;m<u;m++)a.append(p[m],W()),N.nextNode(),d.push({type:2,index:++r});a.append(p[u],W())}}}else if(a.nodeType===8)if(a.data===_e)d.push({type:2,index:r});else{let p=-1;for(;(p=a.data.indexOf(z,p+1))!==-1;)d.push({type:7,index:r}),p+=z.length-1}r++}}static createElement(e,t){const i=q.createElement("template");return i.innerHTML=e,i}}function T(s,e,t=s,i){var a,r,n,h;if(e===x)return e;let d=i!==void 0?(a=t._$Co)===null||a===void 0?void 0:a[i]:t._$Cl;const c=Z(e)?void 0:e._$litDirective$;return(d==null?void 0:d.constructor)!==c&&((r=d==null?void 0:d._$AO)===null||r===void 0||r.call(d,!1),c===void 0?d=void 0:(d=new c(s),d._$AT(s,t,i)),i!==void 0?((n=(h=t)._$Co)!==null&&n!==void 0?n:h._$Co=[])[i]=d:t._$Cl=d),d!==void 0&&(e=T(s,d._$AS(s,e.values),d,i)),e}class Ke{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){var t;const{el:{content:i},parts:a}=this._$AD,r=((t=e==null?void 0:e.creationScope)!==null&&t!==void 0?t:q).importNode(i,!0);N.currentNode=r;let n=N.nextNode(),h=0,d=0,c=a[0];for(;c!==void 0;){if(h===c.index){let b;c.type===2?b=new U(n,n.nextSibling,this,e):c.type===1?b=new c.ctor(n,c.name,c.strings,this,e):c.type===6&&(b=new tt(n,this,e)),this._$AV.push(b),c=a[++d]}h!==(c==null?void 0:c.index)&&(n=N.nextNode(),h++)}return r}v(e){let t=0;for(const i of this._$AV)i!==void 0&&(i.strings!==void 0?(i._$AI(e,i,t),t+=i.strings.length-2):i._$AI(e[t])),t++}}class U{constructor(e,t,i,a){var r;this.type=2,this._$AH=_,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=i,this.options=a,this._$Cp=(r=a==null?void 0:a.isConnected)===null||r===void 0||r}get _$AU(){var e,t;return(t=(e=this._$AM)===null||e===void 0?void 0:e._$AU)!==null&&t!==void 0?t:this._$Cp}get parentNode(){let e=this._$AA.parentNode;const t=this._$AM;return t!==void 0&&(e==null?void 0:e.nodeType)===11&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=T(this,e,t),Z(e)?e===_||e==null||e===""?(this._$AH!==_&&this._$AR(),this._$AH=_):e!==this._$AH&&e!==x&&this._(e):e._$litType$!==void 0?this.g(e):e.nodeType!==void 0?this.$(e):Ve(e)?this.T(e):this._(e)}k(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}$(e){this._$AH!==e&&(this._$AR(),this._$AH=this.k(e))}_(e){this._$AH!==_&&Z(this._$AH)?this._$AA.nextSibling.data=e:this.$(q.createTextNode(e)),this._$AH=e}g(e){var t;const{values:i,_$litType$:a}=e,r=typeof a=="number"?this._$AC(e):(a.el===void 0&&(a.el=V.createElement(a.h,this.options)),a);if(((t=this._$AH)===null||t===void 0?void 0:t._$AD)===r)this._$AH.v(i);else{const n=new Ke(r,this),h=n.u(this.options);n.v(i),this.$(h),this._$AH=n}}_$AC(e){let t=Te.get(e.strings);return t===void 0&&Te.set(e.strings,t=new V(e)),t}T(e){Ze(this._$AH)||(this._$AH=[],this._$AR());const t=this._$AH;let i,a=0;for(const r of e)a===t.length?t.push(i=new U(this.k(W()),this.k(W()),this,this.options)):i=t[a],i._$AI(r),a++;a<t.length&&(this._$AR(i&&i._$AB.nextSibling,a),t.length=a)}_$AR(e=this._$AA.nextSibling,t){var i;for((i=this._$AP)===null||i===void 0||i.call(this,!1,!0,t);e&&e!==this._$AB;){const a=e.nextSibling;e.remove(),e=a}}setConnected(e){var t;this._$AM===void 0&&(this._$Cp=e,(t=this._$AP)===null||t===void 0||t.call(this,e))}}class G{constructor(e,t,i,a,r){this.type=1,this._$AH=_,this._$AN=void 0,this.element=e,this.name=t,this._$AM=a,this.options=r,i.length>2||i[0]!==""||i[1]!==""?(this._$AH=Array(i.length-1).fill(new String),this.strings=i):this._$AH=_}get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}_$AI(e,t=this,i,a){const r=this.strings;let n=!1;if(r===void 0)e=T(this,e,t,0),n=!Z(e)||e!==this._$AH&&e!==x,n&&(this._$AH=e);else{const h=e;let d,c;for(e=r[0],d=0;d<r.length-1;d++)c=T(this,h[i+d],t,d),c===x&&(c=this._$AH[d]),n||(n=!Z(c)||c!==this._$AH[d]),c===_?e=_:e!==_&&(e+=(c??"")+r[d+1]),this._$AH[d]=c}n&&!a&&this.j(e)}j(e){e===_?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,e??"")}}class Ye extends G{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===_?void 0:e}}const ft=H?H.emptyScript:"";class Xe extends G{constructor(){super(...arguments),this.type=4}j(e){e&&e!==_?this.element.setAttribute(this.name,ft):this.element.removeAttribute(this.name)}}class et extends G{constructor(e,t,i,a,r){super(e,t,i,a,r),this.type=5}_$AI(e,t=this){var i;if((e=(i=T(this,e,t,0))!==null&&i!==void 0?i:_)===x)return;const a=this._$AH,r=e===_&&a!==_||e.capture!==a.capture||e.once!==a.once||e.passive!==a.passive,n=e!==_&&(a===_||r);r&&this.element.removeEventListener(this.name,this,a),n&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){var t,i;typeof this._$AH=="function"?this._$AH.call((i=(t=this.options)===null||t===void 0?void 0:t.host)!==null&&i!==void 0?i:this.element,e):this._$AH.handleEvent(e)}}class tt{constructor(e,t,i){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=i}get _$AU(){return this._$AM._$AU}_$AI(e){T(this,e)}}const $t={O:ee,P:z,A:_e,C:1,M:Je,L:Ke,D:Ve,R:T,I:U,V:G,H:Xe,N:et,U:Ye,F:tt},Ie=X.litHtmlPolyfillSupport;Ie==null||Ie(V,U),((ce=X.litHtmlVersions)!==null&&ce!==void 0?ce:X.litHtmlVersions=[]).push("2.7.3");const _t=(s,e,t)=>{var i,a;const r=(i=t==null?void 0:t.renderBefore)!==null&&i!==void 0?i:e;let n=r._$litPart$;if(n===void 0){const h=(a=t==null?void 0:t.renderBefore)!==null&&a!==void 0?a:null;r._$litPart$=n=new U(e.insertBefore(W(),h),h,void 0,t??{})}return n._$AI(s),n};/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
@@ -60,14 +60,14 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
             <div class="cluster">
                 ${this.steps.map((e,t)=>{const i=t<=this.stepIndex;return o`<div class="step-circle ${i?"complete":""}"></div>`})}
             </div>
-        `}footer(){return this.stepIndex===this.steps.length-1?this.finishButton():""}_onBack(){if(this.stepIndex>0){const e=this.stepIndex-1;this._gotoStep(e)}}_onNext(){if(this.stepIndex+1<this.steps.length){const e=this.stepIndex+1;this._gotoStep(e)}else this._onFinish()}_onSkip(){const e=this.step.module;for(let t=this.stepIndex+1;t<this.steps.length;t++)if(this.steps[t].module!==e){this._gotoStep(t);return}this._onFinish()}_onQuit(){this._onFinish(!0)}_onFinish(e=!1){this.stateManager.clear(),this.finishUrl||(window.location.href="/");const t=new URL(this.finishUrl);e||(this.type===w.checkin?t.searchParams.set("completed",this.type):t.searchParams.set("completed",this.type)),window.location.href=t}_gotoStep(e,t=!0){if(this.steps.length!==0&&(this.stepIndex=this.clampSteps(e),this.step=this.steps[this.stepIndex],t)){const i=new URL(window.location.href),n=i.pathname.split("/"),r=n[n.length-1];let a="";Object.values(w).includes(r)?a=n.join("/")+"/"+this.step.slug+i.search:a=n.slice(0,-1).join("/")+"/"+this.step.slug+i.search,window.history.pushState(null,null,a)}}clampSteps(e){let t=e;return e>this.steps.length-1&&(t=this.steps.length-1),e<0&&(t=0),t}_handleHistoryPopState(e=!1){const i=new URL(window.location.href).pathname.split("/"),n=i[i.length-1];Object.values(w).includes(n)&&this._gotoStep(0,!1);let r="",a=0;this.steps.forEach(({slug:h,module:c},d)=>{if(r!==c&&(r=c,a=d),n===h){if(e===!0&&this.stateManager.isDataStale()){this._gotoStep(a);return}this._gotoStep(d,!1)}})}_handlePlanDecision(e){switch(e.target.dataset.decision){case"make":this.updateWizard(w.makeAGroup);break;case"join":this.updateWizard(w.joinAPlan);break;case"skip":default:this._onSkip();break}}_handleLoading(e){const{loading:t}=e.detail;this.loading=t}makeModule(e=[],t=!1){const i={steps:[],skippable:t};return e.forEach(n=>{Object.keys(j).includes(n)&&i.steps.push(j[n])}),i}getModule(e,t=!1){const i={[$.completeProfile]:{steps:[j[l.updateName],j[l.updateLocation]],skippable:t},[$.planDecision]:{steps:[{slug:"plan-decision",component:(r,a,h)=>o`
+        `}footer(){return this.stepIndex===this.steps.length-1?this.finishButton():""}_onBack(){if(this.stepIndex>0){const e=this.stepIndex-1;this._gotoStep(e)}}_onNext(){if(this.stepIndex+1<this.steps.length){const e=this.stepIndex+1;this._gotoStep(e)}else this._onFinish()}_onSkip(){const e=this.step.module;for(let t=this.stepIndex+1;t<this.steps.length;t++)if(this.steps[t].module!==e){this._gotoStep(t);return}this._onFinish()}_onQuit(){this._onFinish(!0)}_onFinish(e=!1){this.stateManager.clear(),this.finishUrl||(window.location.href="/");const t=new URL(this.finishUrl);e||(this.type===k.checkin?t.searchParams.set("completed",this.type):t.searchParams.set("completed",this.type)),window.location.href=t}_gotoStep(e,t=!0){if(this.steps.length!==0&&(this.stepIndex=this.clampSteps(e),this.step=this.steps[this.stepIndex],t)){const i=new URL(window.location.href),a=i.pathname.split("/"),r=a[a.length-1];let n="";Object.values(k).includes(r)?n=a.join("/")+"/"+this.step.slug+i.search:n=a.slice(0,-1).join("/")+"/"+this.step.slug+i.search,window.history.pushState(null,null,n)}}clampSteps(e){let t=e;return e>this.steps.length-1&&(t=this.steps.length-1),e<0&&(t=0),t}_handleHistoryPopState(e=!1){const i=new URL(window.location.href).pathname.split("/"),a=i[i.length-1];Object.values(k).includes(a)&&this._gotoStep(0,!1);let r="",n=0;this.steps.forEach(({slug:h,module:d},c)=>{if(r!==d&&(r=d,n=c),a===h){if(e===!0&&this.stateManager.isDataStale()){this._gotoStep(n);return}this._gotoStep(c,!1)}})}_handlePlanDecision(e){switch(e.target.dataset.decision){case"make":this.updateWizard(k.makeAGroup);break;case"join":this.updateWizard(k.joinAPlan);break;case"skip":default:this._onSkip();break}}_handleLoading(e){const{loading:t}=e.detail;this.loading=t}makeModule(e=[],t=!1){const i={steps:[],skippable:t};return e.forEach(a=>{Object.keys(j).includes(a)&&i.steps.push(j[a])}),i}getModule(e,t=!1){const i={[$.completeProfile]:{steps:[j[l.updateName],j[l.updateLocation]],skippable:t},[$.planDecision]:{steps:[{slug:"plan-decision",component:(r,n,h)=>o`
                             <div class=${`stack ${h}`}>
                                 <h2>Join or start a training</h2>
                                 <button class="btn" data-decision="make" @click=${this._handlePlanDecision}>Start a training</button>
                                 <button class="btn" data-decision="join" @click=${this._handlePlanDecision}>Join a public training</button>
                                 <button class="btn outline" data-decision="skip" @click=${this._handlePlanDecision}>Skip for now</button>
                             </div>
-                        `}],skippable:t},[$.makePlan]:this.makeModule([l.howManySessions,l.whatTimeOfDay,l.howOften,l.startDate,l.inviteFriends],t),[$.inviteFriends]:{steps:[j[l.inviteFriends]],skippable:t},[$.joinTraining]:{steps:[j[l.joinTraining]]}};return Object.keys(i).includes(e)?i[e]:i[$.completeProfile]}isWizardLoaded(){return Object.keys(this.modules).length!==0}loadWizard(e,t=!1){this.modules=e,t===!1&&(this.steps=[],this.stepIndex=0),Object.entries(this.modules).forEach(([i,{steps:n,skippable:r}])=>{const a=zumeProfile.profile;n.forEach(({component:h,slug:c})=>{const d=ut[c];let b=null;if(d&&a){if(d.testExistance(a[d.field],a))return;b=a[d.field]}const p={component:h,slug:c,module:i,skippable:r,doneHandler:this._onNext,handleLoading:this._handleLoading};b!==null&&(p.value=b),this.steps.push(p)})}),t===!1&&this._gotoStep(0)}updateWizard(e){const t=this.getWizard(e);Object.keys(t).length!==0&&this.loadWizard(t)}isWizardTypeValid(e){return!!Object.values(w).includes(e)}getWizard(e){return this.isWizardTypeValid(e)?{[w.gettingStarted]:{[$.completeProfile]:this.makeModule([l.updateName,l.updateLocation],!0),[$.planDecision]:this.getModule($.planDecision)},[w.makeAGroup]:{[$.makePlan]:this.getModule($.makePlan)},[w.getACoach]:{[$.completeProfile]:this.makeModule([l.updateName,l.updateLocation,l.updatePhone]),[$.getACoach]:this.makeModule([l.contactPreferences,l.languagePreferences,l.howCanWeServe,l.connectingToCoach])},[w.joinAPlan]:{[$.completeProfile]:this.makeModule([l.updateName,l.updateLocation,l.updatePhone]),[$.joinTraining]:this.getModule($.joinTraining)},[w.connectWithFriend]:{[$.completeProfile]:this.makeModule([l.updateName,l.updateLocation],!0),[$.connectFriend]:this.makeModule([l.connectToFriend])},[w.joinFriendsPlan]:{[$.completeProfile]:this.makeModule([l.updateName,l.updateLocation],!0),[$.joinFriendsTraining]:this.makeModule([l.joinFriendsPlan])},[w.checkin]:{[$.checkin]:this.makeModule([l.checkinSubmit])}}[e]:{}}disconnectedCallback(){super.disconnectedCallback(),window.removeEventListener("popstate",this._handleHistoryPopState)}createRenderRoot(){return this}}window.customElements.define("zume-wizard",yt);const j={[l.updateName]:{slug:l.updateName,component:(s,e,t)=>o`
+                        `}],skippable:t},[$.makePlan]:this.makeModule([l.howManySessions,l.whatTimeOfDay,l.howOften,l.startDate,l.inviteFriends],t),[$.inviteFriends]:{steps:[j[l.inviteFriends]],skippable:t},[$.joinTraining]:{steps:[j[l.joinTraining]]}};return Object.keys(i).includes(e)?i[e]:i[$.completeProfile]}isWizardLoaded(){return Object.keys(this.modules).length!==0}loadWizard(e,t=!1){this.modules=e,t===!1&&(this.steps=[],this.stepIndex=0),Object.entries(this.modules).forEach(([i,{steps:a,skippable:r}])=>{const n=zumeProfile.profile;a.forEach(({component:h,slug:d})=>{const c=ut[d];let b=null;if(c&&n){if(c.testExistance(n[c.field],n))return;b=n[c.field]}const p={component:h,slug:d,module:i,skippable:r,doneHandler:this._onNext,handleLoading:this._handleLoading};b!==null&&(p.value=b),this.steps.push(p)})}),t===!1&&this._gotoStep(0)}updateWizard(e){const t=this.getWizard(e);Object.keys(t).length!==0&&this.loadWizard(t)}isWizardTypeValid(e){return!!Object.values(k).includes(e)}getWizard(e){return this.isWizardTypeValid(e)?{[k.gettingStarted]:{[$.completeProfile]:this.makeModule([l.updateName,l.updateLocation],!0),[$.planDecision]:this.getModule($.planDecision)},[k.makeAGroup]:{[$.makePlan]:this.getModule($.makePlan)},[k.getACoach]:{[$.completeProfile]:this.makeModule([l.updateName,l.updateLocation,l.updatePhone]),[$.getACoach]:this.makeModule([l.contactPreferences,l.languagePreferences,l.howCanWeServe,l.connectingToCoach])},[k.joinAPlan]:{[$.completeProfile]:this.makeModule([l.updateName,l.updateLocation,l.updatePhone]),[$.joinTraining]:this.getModule($.joinTraining)},[k.connectWithFriend]:{[$.completeProfile]:this.makeModule([l.updateName,l.updateLocation],!0),[$.connectFriend]:this.makeModule([l.connectToFriend])},[k.joinFriendsPlan]:{[$.completeProfile]:this.makeModule([l.updateName,l.updateLocation],!0),[$.joinFriendsTraining]:this.makeModule([l.joinFriendsPlan])},[k.checkin]:{[$.checkin]:this.makeModule([l.checkinSubmit])}}[e]:{}}disconnectedCallback(){super.disconnectedCallback(),window.removeEventListener("popstate",this._handleHistoryPopState)}createRenderRoot(){return this}}window.customElements.define("zume-wizard",yt);const j={[l.updateName]:{slug:l.updateName,component:(s,e,t)=>o`
             <complete-profile
                 class=${t}
                 name=${s.slug}
@@ -237,11 +237,11 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
  * @license
  * Copyright 2020 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const{I:wt}=$t,kt=s=>s.strings===void 0,je=()=>document.createComment(""),B=(s,e,t)=>{var i;const n=s._$AA.parentNode,r=e===void 0?s._$AB:e._$AA;if(t===void 0){const a=n.insertBefore(je(),r),h=n.insertBefore(je(),r);t=new wt(a,h,s,s.options)}else{const a=t._$AB.nextSibling,h=t._$AM,c=h!==s;if(c){let d;(i=t._$AQ)===null||i===void 0||i.call(t,s),t._$AM=s,t._$AP!==void 0&&(d=s._$AU)!==h._$AU&&t._$AP(d)}if(a!==r||c){let d=t._$AA;for(;d!==a;){const b=d.nextSibling;n.insertBefore(d,r),d=b}}}return t},M=(s,e,t=s)=>(s._$AI(e,t),s),St={},nt=(s,e=St)=>s._$AH=e,xt=s=>s._$AH,me=s=>{var e;(e=s._$AP)===null||e===void 0||e.call(s,!1,!0);let t=s._$AA;const i=s._$AB.nextSibling;for(;t!==i;){const n=t.nextSibling;t.remove(),t=n}};/**
+ */const{I:kt}=$t,wt=s=>s.strings===void 0,je=()=>document.createComment(""),B=(s,e,t)=>{var i;const a=s._$AA.parentNode,r=e===void 0?s._$AB:e._$AA;if(t===void 0){const n=a.insertBefore(je(),r),h=a.insertBefore(je(),r);t=new kt(n,h,s,s.options)}else{const n=t._$AB.nextSibling,h=t._$AM,d=h!==s;if(d){let c;(i=t._$AQ)===null||i===void 0||i.call(t,s),t._$AM=s,t._$AP!==void 0&&(c=s._$AU)!==h._$AU&&t._$AP(c)}if(n!==r||d){let c=t._$AA;for(;c!==n;){const b=c.nextSibling;a.insertBefore(c,r),c=b}}}return t},M=(s,e,t=s)=>(s._$AI(e,t),s),St={},at=(s,e=St)=>s._$AH=e,xt=s=>s._$AH,me=s=>{var e;(e=s._$AP)===null||e===void 0||e.call(s,!1,!0);let t=s._$AA;const i=s._$AB.nextSibling;for(;t!==i;){const a=t.nextSibling;t.remove(),t=a}};/**
  * @license
  * Copyright 2020 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const Et=st(class extends it{constructor(s){if(super(s),s.type!==R.PROPERTY&&s.type!==R.ATTRIBUTE&&s.type!==R.BOOLEAN_ATTRIBUTE)throw Error("The `live` directive is not allowed on child or event bindings");if(!kt(s))throw Error("`live` bindings can only contain a single expression")}render(s){return s}update(s,[e]){if(e===x||e===_)return e;const t=s.element,i=s.name;if(s.type===R.PROPERTY){if(e===t[i])return x}else if(s.type===R.BOOLEAN_ATTRIBUTE){if(!!e===t.hasAttribute(i))return x}else if(s.type===R.ATTRIBUTE&&t.getAttribute(i)===e+"")return x;return nt(s),e}});class zt extends g{static get properties(){return{name:{type:String},module:{type:String},skippable:{type:Boolean},t:{type:Object},variant:{type:String},value:{type:String},locations:{attribute:!1},locationError:{attribute:!1},phoneError:{attribute:!1},city:{attribute:!1},loading:{attribute:!1},state:{attribute:!1},localValue:{attribute:!1}}}constructor(){super(),this.name="",this.module="",this.skippable=!1,this.variant="",this.t={},this.locations=[],this.locationError="",this.city="",this.loading=!1,this.localValue="",this.phoneError="",this._clearLocations=this._clearLocations.bind(this),this._handleSuggestions=this._handleSuggestions.bind(this),this._debounceCityChange=debounce(getAddressSuggestions(this._handleSuggestions,zumeProfile.map_key)).bind(this),this._handleCityInputChange=this._handleCityInputChange.bind(this)}firstUpdated(){this.renderRoot.querySelector(".inputs input").focus(),this.value!==""&&(this.localValue=JSON.parse(this.value))}render(){var e;return o`
+ */const Et=st(class extends it{constructor(s){if(super(s),s.type!==R.PROPERTY&&s.type!==R.ATTRIBUTE&&s.type!==R.BOOLEAN_ATTRIBUTE)throw Error("The `live` directive is not allowed on child or event bindings");if(!wt(s))throw Error("`live` bindings can only contain a single expression")}render(s){return s}update(s,[e]){if(e===x||e===_)return e;const t=s.element,i=s.name;if(s.type===R.PROPERTY){if(e===t[i])return x}else if(s.type===R.BOOLEAN_ATTRIBUTE){if(!!e===t.hasAttribute(i))return x}else if(s.type===R.ATTRIBUTE&&t.getAttribute(i)===e+"")return x;return at(s),e}});class zt extends g{static get properties(){return{name:{type:String},module:{type:String},skippable:{type:Boolean},t:{type:Object},variant:{type:String},value:{type:String},locations:{attribute:!1},locationError:{attribute:!1},phoneError:{attribute:!1},city:{attribute:!1},loading:{attribute:!1},state:{attribute:!1},localValue:{attribute:!1}}}constructor(){super(),this.name="",this.module="",this.skippable=!1,this.variant="",this.t={},this.locations=[],this.locationError="",this.city="",this.loading=!1,this.localValue="",this.phoneError="",this._clearLocations=this._clearLocations.bind(this),this._handleSuggestions=this._handleSuggestions.bind(this),this._debounceCityChange=debounce(getAddressSuggestions(this._handleSuggestions,zumeProfile.map_key)).bind(this),this._handleCityInputChange=this._handleCityInputChange.bind(this)}firstUpdated(){this.renderRoot.querySelector(".inputs input").focus(),this.value!==""&&(this.localValue=JSON.parse(this.value))}render(){var e;return o`
         <form class="inputs stack" @submit=${this._handleSubmit}>
             ${this.variant===l.updateName?o`
                 <h2>${this.t.name_question}</h2>
@@ -310,13 +310,13 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 </div>
             `:""}
         </form>
-        `}_handleInput(e){this.phoneError=""}_handleInvalid(e){e.preventDefault(),this.phoneError=this.t.phone_error}_handleSubmit(e){e.preventDefault(),e.srcElement.querySelector("#city")?this._handleSubmitLocation():this._handleDone(e)}_handleDone(e){e&&e.preventDefault();const t=e.target[0];if(t.type==="submit")return;let{name:i,value:n}=t;t.type==="tel"&&(n=t.value.replace(/[\(\)\-\s]/g,"")),this._updateProfile(i,n,()=>{this._sendDoneStepEvent()})}_sendDoneStepEvent(){const e=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(e)}_handleCityChange(e){this._handleCityInputChange(e),this._debounceCityChange(e)}_handleCityInputChange(e){this.city=e.target.value}_handleSuggestions(e){e.features.length<1&&(this.locationError=this.t.no_locations_found),this.locations=e.features}_handleLocationSelection(e){this.city=e.target.dataset.placeName;const t=getLocationGridFromMapbox(e.target.id,zumeProfile.profile.location);this.localValue=t,this._clearLocations()}_handleSubmitLocation(){if(this.localValue.source==="ip"){const{label:e,level:t,lat:i,lng:n}=this.localValue;this.localValue={source:"user",grid_id:!1,label:e,level:t,lat:Number(i),lng:Number(n)}}this._updateProfile("location_grid_meta",this.localValue,()=>{this._sendDoneStepEvent()})}_updateProfile(e,t,i=()=>{}){this.loading=!0;const n={[e]:t};fetch(jsObject.rest_endpoint+"/profile",{method:"POST",body:JSON.stringify(n),headers:{"X-WP-Nonce":jsObject.nonce}}).then(r=>r.json()).then(r=>{zumeProfile.profile=r,i()}).catch(r=>{console.error(r)}).finally(()=>{this.loading=!1})}_clearLocations(){this.locations=[]}createRenderRoot(){return this}}window.customElements.define("complete-profile",zt);class Ct extends g{static get properties(){return{name:{type:String},module:{type:String},skippable:{type:Boolean},t:{type:Object},inviteCode:{type:String}}}constructor(){super(),this.name="",this.module="",this.skippable=!1,this.t={},this.inviteCode="123456",this.url=`https://zume5.test/zume_app/plan_invite${this.inviteCode!==""?"?code="+this.inviteCode:""}`}render(){return o`
+        `}_handleInput(e){this.phoneError=""}_handleInvalid(e){e.preventDefault(),this.phoneError=this.t.phone_error}_handleSubmit(e){e.preventDefault(),e.srcElement.querySelector("#city")?this._handleSubmitLocation():this._handleDone(e)}_handleDone(e){e&&e.preventDefault();const t=e.target[0];if(t.type==="submit")return;let{name:i,value:a}=t;t.type==="tel"&&(a=t.value.replace(/[\(\)\-\s]/g,"")),this._updateProfile(i,a,()=>{this._sendDoneStepEvent()})}_sendDoneStepEvent(){const e=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(e)}_handleCityChange(e){this._handleCityInputChange(e),this._debounceCityChange(e)}_handleCityInputChange(e){this.city=e.target.value}_handleSuggestions(e){e.features.length<1&&(this.locationError=this.t.no_locations_found),this.locations=e.features}_handleLocationSelection(e){this.city=e.target.dataset.placeName;const t=getLocationGridFromMapbox(e.target.id,zumeProfile.profile.location);this.localValue=t,this._clearLocations()}_handleSubmitLocation(){if(this.localValue.source==="ip"){const{label:e,level:t,lat:i,lng:a}=this.localValue;this.localValue={source:"user",grid_id:!1,label:e,level:t,lat:Number(i),lng:Number(a)}}this._updateProfile("location_grid_meta",this.localValue,()=>{this._sendDoneStepEvent()})}_updateProfile(e,t,i=()=>{}){this.loading=!0;const a={[e]:t};fetch(jsObject.rest_endpoint+"/profile",{method:"POST",body:JSON.stringify(a),headers:{"X-WP-Nonce":jsObject.nonce}}).then(r=>r.json()).then(r=>{zumeProfile.profile=r,i()}).catch(r=>{console.error(r)}).finally(()=>{this.loading=!1})}_clearLocations(){this.locations=[]}createRenderRoot(){return this}}window.customElements.define("complete-profile",zt);class Ct extends g{static get properties(){return{name:{type:String},module:{type:String},skippable:{type:Boolean},t:{type:Object},inviteCode:{type:String}}}constructor(){super(),this.name="",this.module="",this.skippable=!1,this.t={},this.inviteCode="123456",this.url=`https://zume5.test/zume_app/plan_invite${this.inviteCode!==""?"?code="+this.inviteCode:""}`}render(){return o`
             <div class="center stack">
                 <h2>${this.t.title}</h2>
                 <p>${this.t.share_with_friends}</p>
                 <share-links url=${this.url} title="${this.t.join_my_plan}" .t=${this.t}></share-links>
             </div>
-        `}createRenderRoot(){return this}}window.customElements.define("invite-friends",Ct);class At extends g{static get properties(){return{name:{type:String},module:{type:String},skippable:{type:Boolean},t:{type:Object},variant:{type:String},state:{attribute:!1},errorMessage:{attribute:!1},message:{attribute:!1},loading:{attribute:!1}}}constructor(){super(),this.name="",this.module="",this.skippable=!1,this.variant="",this.t={},this.state={},this.errorMessage="",this.message="",this.loading=!1,this.contactPreferences=["email","text","phone","whatsapp","signal","telegram","messenger"]}firstUpdated(){this.message=this.t.connect_success;const e=this.stateManager.getAll();if(this.variant===l.connectingToCoach){this.loading=!0,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}}));const t=(n=>{n===!1&&(this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting)),n.coach_request&&n.coach_request.errors&&Object.keys(n.coach_request.errors).length!==0&&Object.keys(n.coach_request.errors)[0]==="already_has_coach"&&(this.message=this.t.already_coached,this.setErrorMessage(this.t.error_connecting)),this._handleFinish()}).bind(this),i=(()=>{this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting),this._handleFinish()}).bind(this);makeRequest("POST","get_a_coach",{data:e},"zume_system/v1/").done(t).fail(i).always(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}}))})}}setErrorMessage(e){this.errorMessage=e,setTimeout(()=>{this.errorMessage=""},3e3)}render(){return this.stateManager||(this.stateManager=new He(this.module),this.state=this.stateManager.get(this.variant)||{},this.variant===l.languagePreferences&&!this.state.value&&(this.state.value=zumeProfile.profile.preferred_language||"en",this.stateManager.add(this.variant,this.state)),this.variant===l.contactPreferences&&Object.keys(this.state).length===0&&(this.state=Object.fromEntries(zumeProfile.profile.contact_preference.map(e=>[e,"true"])))),o`
+        `}createRenderRoot(){return this}}window.customElements.define("invite-friends",Ct);class At extends g{static get properties(){return{name:{type:String},module:{type:String},skippable:{type:Boolean},t:{type:Object},variant:{type:String},state:{attribute:!1},errorMessage:{attribute:!1},message:{attribute:!1},loading:{attribute:!1}}}constructor(){super(),this.name="",this.module="",this.skippable=!1,this.variant="",this.t={},this.state={},this.errorMessage="",this.message="",this.loading=!1,this.contactPreferences=["email","text","phone","whatsapp","signal","telegram","messenger"]}firstUpdated(){this.message=this.t.connect_success;const e=this.stateManager.getAll();if(this.variant===l.connectingToCoach){this.loading=!0,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}}));const t=(a=>{a===!1&&(this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting)),a.coach_request&&a.coach_request.errors&&Object.keys(a.coach_request.errors).length!==0&&Object.keys(a.coach_request.errors)[0]==="already_has_coach"&&(this.message=this.t.already_coached,this.setErrorMessage(this.t.error_connecting)),this._handleFinish()}).bind(this),i=(()=>{this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting),this._handleFinish()}).bind(this);makeRequest("POST","get_a_coach",{data:e},"zume_system/v1/").done(t).fail(i).always(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}}))})}}setErrorMessage(e){this.errorMessage=e,setTimeout(()=>{this.errorMessage=""},3e3)}render(){return this.stateManager||(this.stateManager=new He(this.module),this.state=this.stateManager.get(this.variant)||{},this.variant===l.languagePreferences&&!this.state.value&&(this.state.value=zumeProfile.profile.preferred_language||"en",this.stateManager.add(this.variant,this.state)),this.variant===l.contactPreferences&&Object.keys(this.state).length===0&&(this.state=Object.fromEntries(zumeProfile.profile.contact_preference.map(e=>[e,"true"])))),o`
         <form class="inputs stack-2" @submit=${this._handleDone}>
             ${this.variant===l.contactPreferences?o`
                 <h2>${this.t.contact_preference_question}</h2>
@@ -439,7 +439,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 <button class="btn" @click=${this._handleDone}>Done</button>
             `:""}
 
-        `}_handleDone(e){e&&e.preventDefault(),this._sendDoneStepEvent()}_sendDoneStepEvent(){const e=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(e)}_handleFinish(){setTimeout(()=>{this._sendDoneStepEvent()},3e3)}createRenderRoot(){return this}}customElements.define("make-group",Tt);function It(s){return s?JSON.parse('{"'+s.substring(1).replace(/&/g,'","').replace(/=/g,'":"')+'"}'):{}}function Ot(s,e){let t={};const i=s.split("/").filter(r=>r!=""),n=e.split("/").filter(r=>r!="");return i.map((r,a)=>{/^:/.test(r)&&(t[r.substring(1)]=n[a])}),t}function jt(s){return s?new RegExp("^(|/)"+s.replace(/:[^\s/]+/g,"([\\wÀ-ÖØ-öø-ÿ-]+)")+"(|/)$"):new RegExp("(^$|^/$)")}function Lt(s,e){if(jt(e).test(s))return!0}function Nt(s){return class extends s{static get properties(){return{route:{type:String,reflect:!0,attribute:"route"},canceled:{type:Boolean}}}constructor(...e){super(...e),this.route="",this.canceled=!1}connectedCallback(...e){super.connectedCallback(...e),this.routing(this.constructor.routes,(...t)=>this.router(...t)),window.addEventListener("route",()=>{this.routing(this.constructor.routes,(...t)=>this.router(...t))}),window.onpopstate=()=>{window.dispatchEvent(new CustomEvent("route"))}}routed(e,t,i,n,r,a){a&&a(e,t,i,n),r(e,t,i,n)}routing(e,t){this.canceled=!0;const i=decodeURI(window.location.pathname),n=decodeURI(window.location.search);let r=e.filter(c=>c.pattern==="*")[0],a=e.filter(c=>c.pattern!=="*"&&Lt(i,c.pattern))[0],h=It(n);a?(a.params=Ot(a.pattern,i),a.data=a.data||{},a.authentication&&a.authentication.authenticate&&typeof a.authentication.authenticate=="function"?(this.canceled=!1,Promise.resolve(a.authentication.authenticate.bind(this).call()).then(c=>{this.canceled||(c?a.authorization&&a.authorization.authorize&&typeof a.authorization.authorize=="function"?(this.canceled=!1,Promise.resolve(a.authorization.authorize.bind(this).call()).then(d=>{this.canceled||(d?this.routed(a.name,a.params,h,a.data,t,a.callback):this.routed(a.authorization.unauthorized.name,a.params,h,a.data,t,a.callback))})):this.routed(a.name,a.params,h,a.data,t,a.callback):this.routed(a.authentication.unauthenticated.name,a.params,h,a.data,t,a.callback))})):a.authorization&&a.authorization.authorize&&typeof a.authorization.authorize=="function"?(this.canceled=!1,Promise.resolve(a.authorization.authorize.bind(this).call()).then(c=>{this.canceled||(c?this.routed(a.name,a.params,h,a.data,t,a.callback):this.routed(a.authorization.unauthorized.name,a.params,h,a.data,t,a.callback))})):this.routed(a.name,a.params,h,a.data,t,a.callback)):r&&(r.data=r.data||{},this.routed(r.name,{},h,r.data,t,r.callback))}}}function Ht(s){return class extends s{navigate(e){window.history.pushState({},null,e),window.dispatchEvent(new CustomEvent("route"))}}}class S extends Nt(g){static get properties(){return{route:{type:String},params:{type:Object},query:{type:Object},menuOffset:{type:Number,attribute:!1}}}static get routes(){return[{name:"getting-started",pattern:`${zumeDashboard.base_url}/getting-started`,icon:"zume-start",translation:zumeDashboard.translations.getting_started,data:{component:"dash-getting-started"}},{name:"training",pattern:`${zumeDashboard.base_url}/training`,icon:"zume-training",translation:zumeDashboard.translations.training,data:{component:"dash-training"}},{name:"my-training",pattern:`${zumeDashboard.base_url}/my-training`,parent:"training",icon:"zume-group",translation:zumeDashboard.translations.my_training,explanation:zumeDashboard.translations.my_training_explanation,data:{component:"dash-trainings"}},{name:"my-progress",pattern:`${zumeDashboard.base_url}/my-progress`,parent:"training",icon:"zume-progress",translation:zumeDashboard.translations.my_progress,explanation:zumeDashboard.translations.my_progress_explanation,data:{component:"dash-progress"}},{name:"3-month-plan",pattern:`${zumeDashboard.base_url}/3-month-plan`,parent:"training",icon:"zume-plans",translation:zumeDashboard.translations["3_month_plan"],explanation:zumeDashboard.translations["3_month_plan_explanation"],data:{component:"dash-progress"}},{name:"practicing",pattern:`${zumeDashboard.base_url}/practicing`,icon:"zume-practicing",translation:zumeDashboard.translations.practicing,data:{component:"dash-practicing"}},{name:"my-coach",pattern:`${zumeDashboard.base_url}/my-coach`,parent:"practicing",icon:"zume-coach",translation:zumeDashboard.translations.my_coach,explanation:zumeDashboard.translations.my_coach_explanation,data:{component:"dash-coach"}},{name:"my-tools",pattern:`${zumeDashboard.base_url}/my-tools`,parent:"practicing",icon:"zume-tools",translation:zumeDashboard.translations.my_tools,explanation:zumeDashboard.translations.my_tools_explanation,data:{component:"dash-tools"}},{name:"my-plans",pattern:`${zumeDashboard.base_url}/my-plans`,parent:"practicing",icon:"zume-plans",translation:zumeDashboard.translations.my_plans,explanation:zumeDashboard.translations.my_plans_explanation,data:{component:"dash-plans"}},{name:"my-churches",pattern:`${zumeDashboard.base_url}/my-churches`,parent:"practicing",icon:"zume-churches",translation:zumeDashboard.translations.my_churches,explanation:zumeDashboard.translations.my_churches_explanation,data:{component:"dash-churches"}},{name:"my-maps",pattern:`${zumeDashboard.base_url}/my-maps`,parent:"practicing",icon:"zume-maps",translation:zumeDashboard.translations.my_maps,explanation:zumeDashboard.translations.my_maps_explanation,data:{component:"dash-maps"}},{name:"not-found",pattern:"*",icon:"",data:{component:"dash-not-found"}}]}static getRoute(e){return S.routes.find(i=>i.name===e)}static childRoutesOf(e){return S.routes.filter(({parent:i})=>i===e)}constructor(){super(),this.route="",this.params={},this.query={},this.data={},this.menuOffset=0,this.addEventListener("toggle-dashboard-sidebar",()=>{this.toggleSidebar()})}firstUpdated(){this.menuOffset=this.getOffsetTop(".sidebar-wrapper")}router(e,t,i,n){this.route=e,this.params=t,this.query=i,this.data=n}makeHref(e){return`${zumeDashboard.base_url}/${e}`}makeHrefRoute(e){const i=S.routes.find(({name:n})=>n===e);return i?i.pattern:(console.error("MISSING ROUTE",e),"")}renderRoute(){const{component:e}=this.data;return e?document.createElement(e):""}getOffsetTop(e){return this.querySelector(e).offsetTop}toggleSidebar(){const e=document.querySelector(".dashboard__sidebar"),t=document.querySelector(".sidebar__trigger-close-background"),i="200";e.style.transitionDuration=i,t.style.transitionDuration=i;const n=e.dataset.state;n==="open"&&(e.dataset.state="closed",t.style.opacity=0,setTimeout(()=>{t.style.visibility="hidden"},i)),(!n||n==="closed")&&(e.dataset.state="open",t.style.opacity="initial",t.style.visibility="visible")}render(){return o`
+        `}_handleDone(e){e&&e.preventDefault(),this._sendDoneStepEvent()}_sendDoneStepEvent(){const e=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(e)}_handleFinish(){setTimeout(()=>{this._sendDoneStepEvent()},3e3)}createRenderRoot(){return this}}customElements.define("make-group",Tt);function It(s){return s?JSON.parse('{"'+s.substring(1).replace(/&/g,'","').replace(/=/g,'":"')+'"}'):{}}function Ot(s,e){let t={};const i=s.split("/").filter(r=>r!=""),a=e.split("/").filter(r=>r!="");return i.map((r,n)=>{/^:/.test(r)&&(t[r.substring(1)]=a[n])}),t}function jt(s){return s?new RegExp("^(|/)"+s.replace(/:[^\s/]+/g,"([\\wÀ-ÖØ-öø-ÿ-]+)")+"(|/)$"):new RegExp("(^$|^/$)")}function Lt(s,e){if(jt(e).test(s))return!0}function Nt(s){return class extends s{static get properties(){return{route:{type:String,reflect:!0,attribute:"route"},canceled:{type:Boolean}}}constructor(...e){super(...e),this.route="",this.canceled=!1}connectedCallback(...e){super.connectedCallback(...e),this.routing(this.constructor.routes,(...t)=>this.router(...t)),window.addEventListener("route",()=>{this.routing(this.constructor.routes,(...t)=>this.router(...t))}),window.onpopstate=()=>{window.dispatchEvent(new CustomEvent("route"))}}routed(e,t,i,a,r,n){n&&n(e,t,i,a),r(e,t,i,a)}routing(e,t){this.canceled=!0;const i=decodeURI(window.location.pathname),a=decodeURI(window.location.search);let r=e.filter(d=>d.pattern==="*")[0],n=e.filter(d=>d.pattern!=="*"&&Lt(i,d.pattern))[0],h=It(a);n?(n.params=Ot(n.pattern,i),n.data=n.data||{},n.authentication&&n.authentication.authenticate&&typeof n.authentication.authenticate=="function"?(this.canceled=!1,Promise.resolve(n.authentication.authenticate.bind(this).call()).then(d=>{this.canceled||(d?n.authorization&&n.authorization.authorize&&typeof n.authorization.authorize=="function"?(this.canceled=!1,Promise.resolve(n.authorization.authorize.bind(this).call()).then(c=>{this.canceled||(c?this.routed(n.name,n.params,h,n.data,t,n.callback):this.routed(n.authorization.unauthorized.name,n.params,h,n.data,t,n.callback))})):this.routed(n.name,n.params,h,n.data,t,n.callback):this.routed(n.authentication.unauthenticated.name,n.params,h,n.data,t,n.callback))})):n.authorization&&n.authorization.authorize&&typeof n.authorization.authorize=="function"?(this.canceled=!1,Promise.resolve(n.authorization.authorize.bind(this).call()).then(d=>{this.canceled||(d?this.routed(n.name,n.params,h,n.data,t,n.callback):this.routed(n.authorization.unauthorized.name,n.params,h,n.data,t,n.callback))})):this.routed(n.name,n.params,h,n.data,t,n.callback)):r&&(r.data=r.data||{},this.routed(r.name,{},h,r.data,t,r.callback))}}}function Ht(s){return class extends s{navigate(e){window.history.pushState({},null,e),window.dispatchEvent(new CustomEvent("route"))}}}class S extends Nt(g){static get properties(){return{route:{type:String},params:{type:Object},query:{type:Object},menuOffset:{type:Number,attribute:!1}}}static get routes(){return[{name:"getting-started",pattern:`${zumeDashboard.base_url}/getting-started`,icon:"zume-start",translation:zumeDashboard.translations.getting_started,data:{component:"dash-getting-started"}},{name:"training",pattern:`${zumeDashboard.base_url}/training`,icon:"zume-training",translation:zumeDashboard.translations.training,data:{component:"dash-training"}},{name:"my-training",pattern:`${zumeDashboard.base_url}/my-training`,parent:"training",icon:"zume-group",translation:zumeDashboard.translations.my_training,explanation:zumeDashboard.translations.my_training_explanation,data:{component:"dash-trainings"}},{name:"my-progress",pattern:`${zumeDashboard.base_url}/my-progress`,parent:"training",icon:"zume-progress",translation:zumeDashboard.translations.my_progress,explanation:zumeDashboard.translations.my_progress_explanation,data:{component:"dash-progress"}},{name:"3-month-plan",pattern:`${zumeDashboard.base_url}/3-month-plan`,parent:"training",icon:"zume-plans",translation:zumeDashboard.translations["3_month_plan"],explanation:zumeDashboard.translations["3_month_plan_explanation"],data:{component:"dash-progress"}},{name:"practicing",pattern:`${zumeDashboard.base_url}/practicing`,icon:"zume-practicing",translation:zumeDashboard.translations.practicing,data:{component:"dash-practicing"}},{name:"my-coach",pattern:`${zumeDashboard.base_url}/my-coach`,parent:"practicing",icon:"zume-coach",translation:zumeDashboard.translations.my_coach,explanation:zumeDashboard.translations.my_coach_explanation,data:{component:"dash-coach"}},{name:"my-tools",pattern:`${zumeDashboard.base_url}/my-tools`,parent:"practicing",icon:"zume-tools",translation:zumeDashboard.translations.my_tools,explanation:zumeDashboard.translations.my_tools_explanation,data:{component:"dash-tools"}},{name:"my-plans",pattern:`${zumeDashboard.base_url}/my-plans`,parent:"practicing",icon:"zume-plans",translation:zumeDashboard.translations.my_plans,explanation:zumeDashboard.translations.my_plans_explanation,data:{component:"dash-plans"}},{name:"my-churches",pattern:`${zumeDashboard.base_url}/my-churches`,parent:"practicing",icon:"zume-churches",translation:zumeDashboard.translations.my_churches,explanation:zumeDashboard.translations.my_churches_explanation,data:{component:"dash-churches"}},{name:"my-maps",pattern:`${zumeDashboard.base_url}/my-maps`,parent:"practicing",icon:"zume-maps",translation:zumeDashboard.translations.my_maps,explanation:zumeDashboard.translations.my_maps_explanation,data:{component:"dash-maps"}},{name:"not-found",pattern:"*",icon:"",data:{component:"dash-not-found"}}]}static getRoute(e){return S.routes.find(i=>i.name===e)}static childRoutesOf(e){return S.routes.filter(({parent:i})=>i===e)}constructor(){super(),this.route="",this.params={},this.query={},this.data={},this.menuOffset=0,this.addEventListener("toggle-dashboard-sidebar",()=>{this.toggleSidebar()})}firstUpdated(){this.menuOffset=this.getOffsetTop(".sidebar-wrapper")}router(e,t,i,a){this.route=e,this.params=t,this.query=i,this.data=a}makeHref(e){return`${zumeDashboard.base_url}/${e}`}makeHrefRoute(e){const i=S.routes.find(({name:a})=>a===e);return i?i.pattern:(console.error("MISSING ROUTE",e),"")}renderRoute(){const{component:e}=this.data;return e?document.createElement(e):""}getOffsetTop(e){return this.querySelector(e).offsetTop}toggleSidebar(){const e=document.querySelector(".dashboard__sidebar"),t=document.querySelector(".sidebar__trigger-close-background"),i="200";e.style.transitionDuration=i,t.style.transitionDuration=i;const a=e.dataset.state;a==="open"&&(e.dataset.state="closed",t.style.opacity=0,setTimeout(()=>{t.style.visibility="hidden"},i)),(!a||a==="closed")&&(e.dataset.state="open",t.style.opacity="initial",t.style.visibility="visible")}render(){return o`
             <div class="sidebar__trigger-close-background" @click=${this.toggleSidebar}></div>
             <div class="dashboard">
 
@@ -555,7 +555,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
 
             ${this.renderRoute()}
         </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-board",S);class C extends g{constructor(){super();const t=document.querySelector("html").dataset.dir;this.isRtl=t==="rtl"}firstUpdated(){this.attachResizeObeserver(),this.updateHeaderStyle()}attachResizeObeserver(){const e=document.querySelector("dash-header-right"),t=new ResizeObserver(i=>{for(let n of i){if(!n.contentRect)return;const r=Math.round(n.contentRect.height),a=Math.round(n.contentRect.width);this.updateHeaderStyle(!1,r,a)}});this.resizeObserver=t,t.observe(e)}updateHeaderStyle(e=!0,t=0,i=window.innerWidth){const n=document.querySelector(".dashboard__header.left");e&&(this.initialOffset=n.offsetTop);let r;i<window.innerWidth/2?r=this.initialOffset:r=this.initialOffset+t,n.style.top=r+"px"}disconnectedCallback(){super.disconnectedCallback(),this.resizeObserver.disconnect()}}class qt extends C{render(){return o`
+        `}createRenderRoot(){return this}}customElements.define("dash-board",S);class C extends g{constructor(){super();const t=document.querySelector("html").dataset.dir;this.isRtl=t==="rtl"}firstUpdated(){this.attachResizeObeserver(),this.updateHeaderStyle()}attachResizeObeserver(){const e=document.querySelector("dash-header-right"),t=new ResizeObserver(i=>{for(let a of i){if(!a.contentRect)return;const r=Math.round(a.contentRect.height),n=Math.round(a.contentRect.width);this.updateHeaderStyle(!1,r,n)}});this.resizeObserver=t,t.observe(e)}updateHeaderStyle(e=!0,t=0,i=window.innerWidth){const a=document.querySelector(".dashboard__header.left");e&&(this.initialOffset=a.offsetTop);let r;i<window.innerWidth/2?r=this.initialOffset:r=this.initialOffset+t,a.style.top=r+"px"}disconnectedCallback(){super.disconnectedCallback(),this.resizeObserver.disconnect()}}class qt extends C{render(){return o`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -587,7 +587,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 <p>Don't forget about our free coaching</p>
                 <a href="#" class="btn light uppercase">${zumeDashboard.translations.get_a_coach}</a>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-cta",Ft);class ne extends C{static get properties(){return{view:{type:String,attribute:!1}}}constructor(e){super(),this.routeName=e,this.route=S.getRoute(this.routeName),this.routes=S.childRoutesOf(this.routeName),this.view="list"}switchView(e="list"){this.view=e}renderLinks(){return this.view==="grid"?o`
+        `}createRenderRoot(){return this}}customElements.define("dash-cta",Ft);class ae extends C{static get properties(){return{view:{type:String,attribute:!1}}}constructor(e){super(),this.routeName=e,this.route=S.getRoute(this.routeName),this.routes=S.childRoutesOf(this.routeName),this.view="list"}switchView(e="list"){this.view=e}renderLinks(){return this.view==="grid"?o`
                 <div class="nav-grid">
                     ${this.routes.map(e=>o`
                         <grid-link
@@ -637,7 +637,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                     <dash-cta></dash-cta>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-top-level",ne);class Bt extends ne{constructor(){super("getting-started")}createRenderRoot(){return this}}customElements.define("dash-getting-started",Bt);class Wt extends C{render(){return o`
+        `}createRenderRoot(){return this}}customElements.define("dash-top-level",ae);class Bt extends ae{constructor(){super("getting-started")}createRenderRoot(){return this}}customElements.define("dash-getting-started",Bt);class Wt extends C{render(){return o`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -667,7 +667,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const Le=(s,e,t)=>{const i=new Map;for(let n=e;n<=t;n++)i.set(s[n],n);return i},ye=st(class extends it{constructor(s){if(super(s),s.type!==R.CHILD)throw Error("repeat() can only be used in text expressions")}dt(s,e,t){let i;t===void 0?t=e:e!==void 0&&(i=e);const n=[],r=[];let a=0;for(const h of s)n[a]=i?i(h,a):a,r[a]=t(h,a),a++;return{values:r,keys:n}}render(s,e,t){return this.dt(s,e,t).values}update(s,[e,t,i]){var n;const r=xt(s),{values:a,keys:h}=this.dt(e,t,i);if(!Array.isArray(r))return this.ht=h,a;const c=(n=this.ht)!==null&&n!==void 0?n:this.ht=[],d=[];let b,p,u=0,m=r.length-1,v=0,f=a.length-1;for(;u<=m&&v<=f;)if(r[u]===null)u++;else if(r[m]===null)m--;else if(c[u]===h[v])d[v]=M(r[u],a[v]),u++,v++;else if(c[m]===h[f])d[f]=M(r[m],a[f]),m--,f--;else if(c[u]===h[f])d[f]=M(r[u],a[f]),B(s,d[f+1],r[u]),u++,f--;else if(c[m]===h[v])d[v]=M(r[m],a[v]),B(s,r[u],r[m]),m--,v++;else if(b===void 0&&(b=Le(h,v,f),p=Le(c,u,m)),b.has(c[u]))if(b.has(c[m])){const E=p.get(h[v]),ae=E!==void 0?r[E]:null;if(ae===null){const ke=B(s,r[u]);M(ke,a[v]),d[v]=ke}else d[v]=M(ae,a[v]),B(s,r[u],ae),r[E]=null;v++}else me(r[m]),m--;else me(r[u]),u++;for(;v<=f;){const E=B(s,d[f+1]);M(E,a[v]),d[v++]=E}for(;u<=m;){const E=r[u++];E!==null&&me(E)}return this.ht=h,nt(s,d),x}});class Vt extends C{static get properties(){return{loading:{type:Boolean,attribute:!1},commitments:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1}}}constructor(){super(),this.loading=!0,this.route=S.getRoute("my-plans"),this.filterName="my-plans-filter",this.filterStatus=ZumeStorage.load(this.filterName),this.renderListItem=this.renderListItem.bind(this),this.closeCommitmentsModal=this.closeCommitmentsModal.bind(this)}firstUpdated(){super.firstUpdated();const e=this.filterStatus||"";this.fetchCommitments(e)}updated(){jQuery(document).foundation()}fetchCommitments(){const e=this.filterStatus;makeRequest("GET","commitments",{status:e},"zume_system/v1").done(t=>{this.commitments=t}).always(()=>{this.loading=!1})}openCommitmentsModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("open")}closeCommitmentsModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("close")}clearCommitmentsModal(){jQuery(".post-training-plan").each(function(e){this.value=""})}addCommitments(){const e=[];return jQuery(".post-training-plan").each(function(t){const i=jQuery(this).val();if(i){const r=jQuery(this).prev().text();console.log("Question: "+r+" Answer: "+i);var n=new Date;n.setDate(n.getDate()+30),this.value="";const a=makeRequest("POST","commitment",{user_id:zumeDashboard.user_profile.user_id,post_id:zumeDashboard.user_profile.contact_id,meta_key:"tasks",note:"Question: "+r+" Answer: "+i,question:r,answer:i,date:n,category:"post_training_plan"},"zume_system/v1");e.push(a.promise())}}),console.log(e),Promise.all(e).then(()=>{this.fetchCommitments(),this.closeCommitmentsModal()})}completeCommitment(e){let t={id:e,user_id:zumeDashboard.user_profile.user_id};makeRequest("PUT","commitment",t,"zume_system/v1").done(i=>{this.fetchCommitments()})}deleteCommitment(e){let t={id:e,user_id:zumeDashboard.user_profile.user_id};makeRequest("DELETE","commitment",t,"zume_system/v1").done(i=>{this.closeMenu(e),this.fetchCommitments()})}editCommitment(e){console.log(e)}filterCommitments(e){this.filterStatus=e,this.fetchCommitments(e),ZumeStorage.save(this.filterName,e),this.closeFilter()}closeFilter(){const e=this.querySelector("#filter-menu");jQuery(e).foundation("close")}closeMenu(e){const t=this.querySelector(`#kebab-menu-${e}`);jQuery(t).foundation("close")}renderListItem(e){const{question:t,answer:i,id:n,status:r}=e;return o`
+ */const Le=(s,e,t)=>{const i=new Map;for(let a=e;a<=t;a++)i.set(s[a],a);return i},ye=st(class extends it{constructor(s){if(super(s),s.type!==R.CHILD)throw Error("repeat() can only be used in text expressions")}dt(s,e,t){let i;t===void 0?t=e:e!==void 0&&(i=e);const a=[],r=[];let n=0;for(const h of s)a[n]=i?i(h,n):n,r[n]=t(h,n),n++;return{values:r,keys:a}}render(s,e,t){return this.dt(s,e,t).values}update(s,[e,t,i]){var a;const r=xt(s),{values:n,keys:h}=this.dt(e,t,i);if(!Array.isArray(r))return this.ht=h,n;const d=(a=this.ht)!==null&&a!==void 0?a:this.ht=[],c=[];let b,p,u=0,m=r.length-1,v=0,f=n.length-1;for(;u<=m&&v<=f;)if(r[u]===null)u++;else if(r[m]===null)m--;else if(d[u]===h[v])c[v]=M(r[u],n[v]),u++,v++;else if(d[m]===h[f])c[f]=M(r[m],n[f]),m--,f--;else if(d[u]===h[f])c[f]=M(r[u],n[f]),B(s,c[f+1],r[u]),u++,f--;else if(d[m]===h[v])c[v]=M(r[m],n[v]),B(s,r[u],r[m]),m--,v++;else if(b===void 0&&(b=Le(h,v,f),p=Le(d,u,m)),b.has(d[u]))if(b.has(d[m])){const E=p.get(h[v]),ne=E!==void 0?r[E]:null;if(ne===null){const we=B(s,r[u]);M(we,n[v]),c[v]=we}else c[v]=M(ne,n[v]),B(s,r[u],ne),r[E]=null;v++}else me(r[m]),m--;else me(r[u]),u++;for(;v<=f;){const E=B(s,c[f+1]);M(E,n[v]),c[v++]=E}for(;u<=m;){const E=r[u++];E!==null&&me(E)}return this.ht=h,at(s,c),x}});class Vt extends C{static get properties(){return{loading:{type:Boolean,attribute:!1},commitments:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1}}}constructor(){super(),this.loading=!0,this.route=S.getRoute("my-plans"),this.filterName="my-plans-filter",this.filterStatus=ZumeStorage.load(this.filterName),this.renderListItem=this.renderListItem.bind(this),this.closeCommitmentsModal=this.closeCommitmentsModal.bind(this)}firstUpdated(){super.firstUpdated();const e=this.filterStatus||"";this.fetchCommitments(e)}updated(){jQuery(document).foundation()}fetchCommitments(){const e=this.filterStatus;makeRequest("GET","commitments",{status:e},"zume_system/v1").done(t=>{this.commitments=t}).always(()=>{this.loading=!1})}openCommitmentsModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("open")}closeCommitmentsModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("close")}clearCommitmentsModal(){jQuery(".post-training-plan").each(function(e){this.value=""})}addCommitments(){const e=[];return jQuery(".post-training-plan").each(function(t){const i=jQuery(this).val();if(i){const r=jQuery(this).prev().text();console.log("Question: "+r+" Answer: "+i);var a=new Date;a.setDate(a.getDate()+30),this.value="";const n=makeRequest("POST","commitment",{user_id:zumeDashboard.user_profile.user_id,post_id:zumeDashboard.user_profile.contact_id,meta_key:"tasks",note:"Question: "+r+" Answer: "+i,question:r,answer:i,date:a,category:"post_training_plan"},"zume_system/v1");e.push(n.promise())}}),console.log(e),Promise.all(e).then(()=>{this.fetchCommitments(),this.closeCommitmentsModal()})}completeCommitment(e){let t={id:e,user_id:zumeDashboard.user_profile.user_id};makeRequest("PUT","commitment",t,"zume_system/v1").done(i=>{this.fetchCommitments()})}deleteCommitment(e){let t={id:e,user_id:zumeDashboard.user_profile.user_id};makeRequest("DELETE","commitment",t,"zume_system/v1").done(i=>{this.closeMenu(e),this.fetchCommitments()})}editCommitment(e){console.log(e)}filterCommitments(e){this.filterStatus=e,this.fetchCommitments(e),ZumeStorage.save(this.filterName,e),this.closeFilter()}closeFilter(){const e=this.querySelector("#filter-menu");jQuery(e).foundation("close")}closeMenu(e){const t=this.querySelector(`#kebab-menu-${e}`);jQuery(t).foundation("close")}renderListItem(e){const{question:t,answer:i,id:a,status:r}=e;return o`
             <li class="list__item | switcher | switcher-width-30">
                 <span>${t} <b>${i}</b></span>
                 <div class="list__secondary | grow-0">
@@ -675,20 +675,20 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                         ${r==="closed"?o`<span class="icon zume-check-mark success"></span>`:o`
                                 <button
                                     class="btn light uppercase tight break-anywhere"
-                                    @click=${()=>this.completeCommitment(n)}
+                                    @click=${()=>this.completeCommitment(a)}
                                 >
                                     ${zumeDashboard.translations.done}
                                 </button>
                             `}
                     </div>
-                    <button class="icon-btn" data-toggle="kebab-menu-${n}">
+                    <button class="icon-btn" data-toggle="kebab-menu-${a}">
                         <span class="icon zume-kebab brand-light"></span>
                     </button>
                 </div>
-                <div class="dropdown-pane" id="kebab-menu-${n}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl?"right":"left"} data-close-on-click="true" data-close-on-click-inside="true">
+                <div class="dropdown-pane" id="kebab-menu-${a}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl?"right":"left"} data-close-on-click="true" data-close-on-click-inside="true">
                     <ul>
-                        <li class="hidden"><button class="menu-btn" @click=${()=>this.editCommitment(n)}><span class="icon zume-pencil"></span>${zumeDashboard.translations.edit}</button></li>
-                        <li><button class="menu-btn" @click=${()=>this.deleteCommitment(n)}><span class="icon zume-trash"></span>${zumeDashboard.translations.delete}</button></li>
+                        <li class="hidden"><button class="menu-btn" @click=${()=>this.editCommitment(a)}><span class="icon zume-pencil"></span>${zumeDashboard.translations.edit}</button></li>
+                        <li><button class="menu-btn" @click=${()=>this.deleteCommitment(a)}><span class="icon zume-trash"></span>${zumeDashboard.translations.delete}</button></li>
                     </ul>
                 </div>
             </li>
@@ -812,16 +812,16 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-plans",Vt);class Qt extends ne{constructor(){super("practicing")}createRenderRoot(){return this}}customElements.define("dash-practicing",Qt);class Gt extends C{static get properties(){return{loading:{type:Boolean,attribute:!1},filteredItems:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1},hostProgress:{type:Object,attribute:!1}}}constructor(){super(),this.loading=!1,this.route=S.getRoute("my-progress"),this.trainingItems=zumeDashboard.training_items,this.hostProgress=zumeDashboard.host_progress,this.filterName="my-progress-filter",this.filterStatus=ZumeStorage.load(this.filterName),this.filteredItems=this.filterItems(this.filterStatus),this.openStates={},this.trainingItems.forEach(e=>{this.openStates[e.key]=!1}),this.renderListItem=this.renderListItem.bind(this),this.closeInfoModal=this.closeInfoModal.bind(this)}updated(){jQuery(document).foundation()}openInfoModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("open")}closeInfoModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("close")}filterProgress(e){this.filterStatus=e,this.filteredItems=this.filterItems(e),console.log(this.filteredItems),ZumeStorage.save(this.filterName,e),this.closeFilter()}filterItems(e){switch(e){case"heard":return this.trainingItems.filter(t=>{const i=t.host[0].key;return!!(this.hostProgress.list[i]||!1)});case"not-heard":return this.trainingItems.filter(t=>{const i=t.host[0].key;return!(this.hostProgress.list[i]||!1)});default:return[...this.trainingItems]}}closeFilter(){const e=this.querySelector("#filter-menu");jQuery(e).foundation("close")}toggleHost(e,t){t.stopImmediatePropagation();const{type:i,subtype:n,key:r}=e,a=this.hostProgress.list[r];a===!1&&makeRequest("POST","host",{type:i,subtype:n,user_id:zumeDashboard.user_profile.user_id},"zume_system/v1").done(h=>{Array.isArray(h)&&(this.hostProgress.list[r]=!0),this.loadHostStatus()}),a===!0&&makeRequest("DELETE","host",{type:i,subtype:n,user_id:zumeDashboard.user_profile.user_id},"zume_system/v1").done(h=>{Array.isArray(h)&&(this.hostProgress.list[r]=!1),this.loadHostStatus()})}loadHostStatus(){makeRequest("GET","host",{user_id:zumeDashboard.user_profile.user_id},"zume_system/v1").done(e=>{this.hostProgress=e})}toggleDetails(e){const t=this.querySelector(`#details-${e}`),i=this.openStates[e],n=t.scrollHeight,r="200";i===!1?(t.style.height=n+"px",t.style.transitionDuration=r+"ms",t.dataset.state="opening",this.openStates[e]=!0,setTimeout(()=>{t.style.height="auto",t.dataset.state="open"},r)):(t.style.height=n+"px",t.dataset.state="closing",this.openStates[e]=!1,setTimeout(()=>{t.style.height="0"},10),setTimeout(()=>{t.dataset.state="closed"},r))}renderListItem(e){const{title:t,description:i,host:n,slug:r,key:a}=e;let h=[zumeDashboard.site_url,zumeDashboard.language,r].join("/");return zumeDashboard.language==="en"&&(h=[zumeDashboard.site_url,r].join("/")),o`
-            <li class="switcher | switcher-width-30 list__item tight" @click=${()=>this.toggleDetails(a)} role="button">
+        `}createRenderRoot(){return this}}customElements.define("dash-plans",Vt);class Qt extends ae{constructor(){super("practicing")}createRenderRoot(){return this}}customElements.define("dash-practicing",Qt);class Gt extends C{static get properties(){return{loading:{type:Boolean,attribute:!1},filteredItems:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1},hostProgress:{type:Object,attribute:!1}}}constructor(){super(),this.loading=!1,this.route=S.getRoute("my-progress"),this.trainingItems=zumeDashboard.training_items,this.hostProgress=zumeDashboard.host_progress,this.filterName="my-progress-filter",this.filterStatus=ZumeStorage.load(this.filterName),this.filteredItems=this.filterItems(this.filterStatus),this.openStates={},this.trainingItems.forEach(e=>{this.openStates[e.key]=!1}),this.renderListItem=this.renderListItem.bind(this),this.closeInfoModal=this.closeInfoModal.bind(this)}updated(){jQuery(document).foundation()}openInfoModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("open")}closeInfoModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("close")}filterProgress(e){this.filterStatus=e,this.filteredItems=this.filterItems(e),console.log(this.filteredItems),ZumeStorage.save(this.filterName,e),this.closeFilter()}filterItems(e){switch(e){case"heard":return this.trainingItems.filter(t=>{const i=t.host[0].key;return!!(this.hostProgress.list[i]||!1)});case"not-heard":return this.trainingItems.filter(t=>{const i=t.host[0].key;return!(this.hostProgress.list[i]||!1)});default:return[...this.trainingItems]}}closeFilter(){const e=this.querySelector("#filter-menu");jQuery(e).foundation("close")}toggleHost(e,t){t.stopImmediatePropagation();const{type:i,subtype:a,key:r}=e,n=this.hostProgress.list[r];n===!1&&makeRequest("POST","host",{type:i,subtype:a,user_id:zumeDashboard.user_profile.user_id},"zume_system/v1").done(h=>{Array.isArray(h)&&(this.hostProgress.list[r]=!0),this.loadHostStatus()}),n===!0&&makeRequest("DELETE","host",{type:i,subtype:a,user_id:zumeDashboard.user_profile.user_id},"zume_system/v1").done(h=>{Array.isArray(h)&&(this.hostProgress.list[r]=!1),this.loadHostStatus()})}loadHostStatus(){makeRequest("GET","host",{user_id:zumeDashboard.user_profile.user_id},"zume_system/v1").done(e=>{this.hostProgress=e})}toggleDetails(e){const t=this.querySelector(`#details-${e}`),i=this.openStates[e],a=t.scrollHeight,r="200";i===!1?(t.style.height=a+"px",t.style.transitionDuration=r+"ms",t.dataset.state="opening",this.openStates[e]=!0,setTimeout(()=>{t.style.height="auto",t.dataset.state="open"},r)):(t.style.height=a+"px",t.dataset.state="closing",this.openStates[e]=!1,setTimeout(()=>{t.style.height="0"},10),setTimeout(()=>{t.dataset.state="closed"},r))}renderListItem(e){const{title:t,description:i,host:a,slug:r,key:n}=e;let h=[zumeDashboard.site_url,zumeDashboard.language,r].join("/");return zumeDashboard.language==="en"&&(h=[zumeDashboard.site_url,r].join("/")),o`
+            <li class="switcher | switcher-width-30 list__item tight" @click=${()=>this.toggleDetails(n)} role="button">
                 <div>
                     <h2 class="h5 bold m0">${t}</h2>
-                    <div class="collapse" id="details-${a}" data-state="closed">
+                    <div class="collapse" id="details-${n}" data-state="closed">
                         <div class="stack--2 mt--2">
                             <p class="f--1 gray-700">${i}</p>
                             <div class="cluster">
                                 <share-links url=${h} title=${t} .t=${zumeDashboard.share_translations}></share-links>
-                                <a class="btn light uppercase" href=${h} @click=${c=>c.stopImmediatePropagation()}>${zumeDashboard.translations.view}</a>
+                                <a class="btn light uppercase" href=${h} @click=${d=>d.stopImmediatePropagation()}>${zumeDashboard.translations.view}</a>
                             </div>
                         </div>
                     </div>
@@ -829,37 +829,37 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 <div class="list__secondary grow-0" data-align-start>
                     <div class="training-progress">
                         <button
-                            data-subtype=${n[0].subtype}
-                            class=${this.hostProgress.list[n[0].key]?"active":""}
-                            @click=${c=>this.toggleHost(n[0],c)}
+                            data-subtype=${a[0].subtype}
+                            class=${this.hostProgress.list[a[0].key]?"active":""}
+                            @click=${d=>this.toggleHost(a[0],d)}
                         >
                             <span class="icon zume-heard-concept"></span>
                         </button>
                         <button
-                            data-subtype=${n[1].subtype}
-                            class=${this.hostProgress.list[n[1].key]?"active":""}
-                            @click=${c=>this.toggleHost(n[1],c)}
+                            data-subtype=${a[1].subtype}
+                            class=${this.hostProgress.list[a[1].key]?"active":""}
+                            @click=${d=>this.toggleHost(a[1],d)}
                         >
                             <span class="icon zume-obey-concept"></span>
                         </button>
                         <button
-                            data-subtype=${n[2].subtype}
-                            class=${this.hostProgress.list[n[2].key]?"active":""}
-                            @click=${c=>this.toggleHost(n[2],c)}
+                            data-subtype=${a[2].subtype}
+                            class=${this.hostProgress.list[a[2].key]?"active":""}
+                            @click=${d=>this.toggleHost(a[2],d)}
                         >
                             <span class="icon zume-share-concept"></span>
                         </button>
                         <button
-                            data-subtype=${n[3].subtype}
-                            class=${this.hostProgress.list[n[3].key]?"active":""}
-                            @click=${c=>this.toggleHost(n[3],c)}
+                            data-subtype=${a[3].subtype}
+                            class=${this.hostProgress.list[a[3].key]?"active":""}
+                            @click=${d=>this.toggleHost(a[3],d)}
                         >
                             <span class="icon zume-train-concept"></span>
                         </button>
                     </div>
                 </div>
             </li>
-        `}render(){var e,t,i,n,r,a,h,c;return o`
+        `}render(){var e,t,i,a,r,n,h,d;return o`
             <div class="dashboard__content" data-no-secondary-area>
                 <div class="dashboard__header left">
                     <div class="dashboard__title">
@@ -895,7 +895,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 <div class="dashboard__main">
                     ${o`
                             <ul class="list">
-                                ${ye(this.filteredItems,d=>d.key,this.renderListItem)}
+                                ${ye(this.filteredItems,c=>c.key,this.renderListItem)}
                             </ul>
                         `}
                 </div>
@@ -913,14 +913,14 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                         </div>
                     </div>
                     <div class="switcher gap-1 align-items-center switcher-width-20">
-                        <host-progress-circle class="grow-0" type="obeyed" percent=${((n=(i=this.hostProgress)==null?void 0:i.percent)==null?void 0:n.o)||0}></host-progress-circle>
+                        <host-progress-circle class="grow-0" type="obeyed" percent=${((a=(i=this.hostProgress)==null?void 0:i.percent)==null?void 0:a.o)||0}></host-progress-circle>
                         <div class="stack--2">
                             <h3 class="bold">${zumeDashboard.translations.obeyed}</h3>
                             <p class="italic">${zumeDashboard.translations.obeyed_explanation}</p>
                         </div>
                     </div>
                     <div class="switcher gap-1 align-items-center switcher-width-20">
-                        <host-progress-circle class="grow-0" type="shared" percent=${((a=(r=this.hostProgress)==null?void 0:r.percent)==null?void 0:a.s)||0}></host-progress-circle>
+                        <host-progress-circle class="grow-0" type="shared" percent=${((n=(r=this.hostProgress)==null?void 0:r.percent)==null?void 0:n.s)||0}></host-progress-circle>
                         <div class="stack--2">
                             <h3 class="bold">${zumeDashboard.translations.shared}</h3>
                             <p class="italic">${zumeDashboard.translations.shared_explanation}</p>
@@ -928,7 +928,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                     </div>
 
                     <div class="switcher gap-1 align-items-center switcher-width-20">
-                        <host-progress-circle class="grow-0" type="trained" percent=${((c=(h=this.hostProgress)==null?void 0:h.percent)==null?void 0:c.t)||0}></host-progress-circle>
+                        <host-progress-circle class="grow-0" type="trained" percent=${((d=(h=this.hostProgress)==null?void 0:h.percent)==null?void 0:d.t)||0}></host-progress-circle>
                         <div class="stack--2">
                             <h3 class="bold">${zumeDashboard.translations.trained}</h3>
                             <p class="italic">${zumeDashboard.translations.trained_explanation}</p>
@@ -949,7 +949,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                     <dash-cta></dash-cta>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-tools",Jt);class Kt extends ne{constructor(){super("training")}createRenderRoot(){return this}}customElements.define("dash-training",Kt);class Yt extends C{static get properties(){return{loading:{type:Boolean,attribute:!1},commitments:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1}}}constructor(){super(),this.loading=!0,this.route=S.getRoute("my-plans"),this.filterName="my-plans-filter",this.filterStatus=ZumeStorage.load(this.filterName),this.renderListItem=this.renderListItem.bind(this),this.closeCommitmentsModal=this.closeCommitmentsModal.bind(this)}firstUpdated(){super.firstUpdated();const e=this.filterStatus||"";this.fetchCommitments(e)}updated(){jQuery(document).foundation()}fetchCommitments(){const e=this.filterStatus;makeRequest("GET","commitments",{status:e},"zume_system/v1").done(t=>{this.commitments=t}).always(()=>{this.loading=!1})}openCommitmentsModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("open")}closeCommitmentsModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("close")}clearCommitmentsModal(){jQuery(".post-training-plan").each(function(e){this.value=""})}addCommitments(){const e=[];return jQuery(".post-training-plan").each(function(t){const i=jQuery(this).val();if(i){const r=jQuery(this).prev().text();console.log("Question: "+r+" Answer: "+i);var n=new Date;n.setDate(n.getDate()+30),this.value="";const a=makeRequest("POST","commitment",{user_id:zumeDashboard.user_profile.user_id,post_id:zumeDashboard.user_profile.contact_id,meta_key:"tasks",note:"Question: "+r+" Answer: "+i,question:r,answer:i,date:n,category:"post_training_plan"},"zume_system/v1");e.push(a.promise())}}),console.log(e),Promise.all(e).then(()=>{this.fetchCommitments(),this.closeCommitmentsModal()})}completeCommitment(e){let t={id:e,user_id:zumeDashboard.user_profile.user_id};makeRequest("PUT","commitment",t,"zume_system/v1").done(i=>{this.fetchCommitments()})}deleteCommitment(e){let t={id:e,user_id:zumeDashboard.user_profile.user_id};makeRequest("DELETE","commitment",t,"zume_system/v1").done(i=>{this.closeMenu(e),this.fetchCommitments()})}editCommitment(e){console.log(e)}filterCommitments(e){this.filterStatus=e,this.fetchCommitments(e),ZumeStorage.save(this.filterName,e),this.closeFilter()}closeFilter(){const e=this.querySelector("#filter-menu");jQuery(e).foundation("close")}closeMenu(e){const t=this.querySelector(`#kebab-menu-${e}`);jQuery(t).foundation("close")}renderListItem(e){const{question:t,answer:i,id:n,status:r}=e;return o`
+        `}createRenderRoot(){return this}}customElements.define("dash-tools",Jt);class Kt extends ae{constructor(){super("training")}createRenderRoot(){return this}}customElements.define("dash-training",Kt);class Yt extends C{static get properties(){return{loading:{type:Boolean,attribute:!1},commitments:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1}}}constructor(){super(),this.loading=!0,this.route=S.getRoute("my-plans"),this.filterName="my-plans-filter",this.filterStatus=ZumeStorage.load(this.filterName),this.renderListItem=this.renderListItem.bind(this),this.closeCommitmentsModal=this.closeCommitmentsModal.bind(this)}firstUpdated(){super.firstUpdated();const e=this.filterStatus||"";this.fetchCommitments(e)}updated(){jQuery(document).foundation()}fetchCommitments(){const e=this.filterStatus;makeRequest("GET","commitments",{status:e},"zume_system/v1").done(t=>{this.commitments=t}).always(()=>{this.loading=!1})}openCommitmentsModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("open")}closeCommitmentsModal(){const e=document.querySelector("#new-commitments-form");jQuery(e).foundation("close")}clearCommitmentsModal(){jQuery(".post-training-plan").each(function(e){this.value=""})}addCommitments(){const e=[];return jQuery(".post-training-plan").each(function(t){const i=jQuery(this).val();if(i){const r=jQuery(this).prev().text();console.log("Question: "+r+" Answer: "+i);var a=new Date;a.setDate(a.getDate()+30),this.value="";const n=makeRequest("POST","commitment",{user_id:zumeDashboard.user_profile.user_id,post_id:zumeDashboard.user_profile.contact_id,meta_key:"tasks",note:"Question: "+r+" Answer: "+i,question:r,answer:i,date:a,category:"post_training_plan"},"zume_system/v1");e.push(n.promise())}}),console.log(e),Promise.all(e).then(()=>{this.fetchCommitments(),this.closeCommitmentsModal()})}completeCommitment(e){let t={id:e,user_id:zumeDashboard.user_profile.user_id};makeRequest("PUT","commitment",t,"zume_system/v1").done(i=>{this.fetchCommitments()})}deleteCommitment(e){let t={id:e,user_id:zumeDashboard.user_profile.user_id};makeRequest("DELETE","commitment",t,"zume_system/v1").done(i=>{this.closeMenu(e),this.fetchCommitments()})}editCommitment(e){console.log(e)}filterCommitments(e){this.filterStatus=e,this.fetchCommitments(e),ZumeStorage.save(this.filterName,e),this.closeFilter()}closeFilter(){const e=this.querySelector("#filter-menu");jQuery(e).foundation("close")}closeMenu(e){const t=this.querySelector(`#kebab-menu-${e}`);jQuery(t).foundation("close")}renderListItem(e){const{question:t,answer:i,id:a,status:r}=e;return o`
             <li class="list__item">
                 <span>${t} <b>${i}</b></span>
                 <div class="list__secondary">
@@ -957,20 +957,20 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                         ${r==="closed"?o`<span class="icon zume-check-mark success"></span>`:o`
                                 <button
                                     class="btn light uppercase tight break-anywhere"
-                                    @click=${()=>this.completeCommitment(n)}
+                                    @click=${()=>this.completeCommitment(a)}
                                 >
                                     ${zumeDashboard.translations.done}
                                 </button>
                             `}
                     </div>
-                    <button class="icon-btn" data-toggle="kebab-menu-${n}">
+                    <button class="icon-btn" data-toggle="kebab-menu-${a}">
                         <span class="icon zume-kebab brand-light"></span>
                     </button>
                 </div>
-                <div class="dropdown-pane" id="kebab-menu-${n}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl?"right":"left"} data-close-on-click="true" data-close-on-click-inside="true">
+                <div class="dropdown-pane" id="kebab-menu-${a}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl?"right":"left"} data-close-on-click="true" data-close-on-click-inside="true">
                     <ul>
-                        <li class="hidden"><button class="menu-btn" @click=${()=>this.editCommitment(n)}><span class="icon zume-pencil"></span>${zumeDashboard.translations.edit}</button></li>
-                        <li><button class="menu-btn" @click=${()=>this.deleteCommitment(n)}><span class="icon zume-trash"></span>${zumeDashboard.translations.delete}</button></li>
+                        <li class="hidden"><button class="menu-btn" @click=${()=>this.editCommitment(a)}><span class="icon zume-pencil"></span>${zumeDashboard.translations.edit}</button></li>
+                        <li><button class="menu-btn" @click=${()=>this.deleteCommitment(a)}><span class="icon zume-trash"></span>${zumeDashboard.translations.delete}</button></li>
                     </ul>
                 </div>
             </li>
@@ -1098,7 +1098,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
             </div>
         `}createRenderRoot(){return this}}customElements.define("dash-header-right",Xt);class es extends g{static get properties(){return{displayOn:{type:String}}}constructor(){super(),this.displayOn="large"}toggleSidebar(){const e=new CustomEvent("toggle-dashboard-sidebar",{bubbles:!0});this.dispatchEvent(e)}render(){return o`
             <button class="btn f-0 light tight dashboard__sidebar-toggle break-${this.displayOn}" @click=${this.toggleSidebar}>${zumeDashboard.translations.menu}</button>
-        `}createRenderRoot(){return this}}customElements.define("dash-sidebar-toggle",es);class we extends Ht(g){static get properties(){return{href:{type:String},class:{type:String},locked:{type:Boolean},completed:{type:Boolean},directLink:{type:Boolean},icon:{type:String},text:{type:String},explanation:{type:String}}}constructor(){super(),this.href="",this.class="",this.icon="",this.text="",this.explanation="",this.locked=!1,this.completed=!1,this.directLink=!1}handleClick(e){this.directLink||(e.preventDefault(),this.navigate(this.href))}printBool(e){return e?"true":"false"}render(){return o`
+        `}createRenderRoot(){return this}}customElements.define("dash-sidebar-toggle",es);class ke extends Ht(g){static get properties(){return{href:{type:String},class:{type:String},locked:{type:Boolean},completed:{type:Boolean},directLink:{type:Boolean},icon:{type:String},text:{type:String},explanation:{type:String}}}constructor(){super(),this.href="",this.class="",this.icon="",this.text="",this.explanation="",this.locked=!1,this.completed=!1,this.directLink=!1}handleClick(e){this.directLink||(e.preventDefault(),this.navigate(this.href))}printBool(e){return e?"true":"false"}render(){return o`
             <a
                 href=${this.href}
                 class=${this.class}
@@ -1110,7 +1110,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 <span class="icon ${this.icon} brand-light"></span>
                 <span>${this.text}</span>
             </a>
-        `}createRenderRoot(){return this}}customElements.define("nav-link",we);class ts extends we{constructor(){super()}renderText(){return this.text.split(" ").map(e=>o`
+        `}createRenderRoot(){return this}}customElements.define("nav-link",ke);class ts extends ke{constructor(){super()}renderText(){return this.text.split(" ").map(e=>o`
             <span>${e}</span>
         `)}getIcon(){return this.locked?this.icon+"-locked":this.icon}render(){return o`
             <a
@@ -1125,7 +1125,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 <span class="icon ${this.getIcon()} brand-light"></span>
                 ${this.renderText()}
             </a>
-        `}}customElements.define("grid-link",ts);class ss extends we{constructor(){super()}renderText(){return this.text.split(" ").map(e=>o`
+        `}}customElements.define("grid-link",ts);class ss extends ke{constructor(){super()}renderText(){return this.text.split(" ").map(e=>o`
             <span>${e}</span>
         `)}getIcon(){return this.locked?this.icon+"-locked":this.icon}render(){return o`
             <div class="container-inline">
@@ -1172,19 +1172,126 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                     <li><a class="menu-btn" href="${zumeDashboard.urls.launch_intensive_session_course}"><span class="icon zume-course"></span>${zumeDashboard.translations.three_day_intensive_course}</a></li>
                 </ul>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("launch-course",is);class y extends g{static get properties(){return{slide:{type:Object}}}renderContent(e=[],t=!1,i=!1){return e.map((n,r)=>t&&r===0?o`<p><strong>${n}</strong></p>`:Array.isArray(n)?o`
+        `}createRenderRoot(){return this}}customElements.define("launch-course",is);class y extends g{static get properties(){return{slide:{type:Object}}}renderContent(e=[],t=!1,i=!1){return e.map((a,r)=>t&&r===0?o`<p><strong>${a}</strong></p>`:Array.isArray(a)?o`
                     <ul role="list">
-                        ${n.map(a=>o`<li>${a}</li>`)}
+                        ${a.map(n=>o`<li>${n}</li>`)}
                     </ul>
-                `:i?o`<p><strong>${n}</strong></p>`:o`<p>${n}</p>`)}render(){return o`
-            <div class="center"></div>
-        `}createRenderRoot(){return this}}customElements.define("course-slide",y);class ns extends y{render(){return o`
-            <div class="cover">
-                <h2 class="title text-center" data-small>${this.slide.center[0]} ${this.slide.center[1]}</h2>
+                `:i?o`<p><strong>${a}</strong></p>`:o`<p>${a}</p>`)}render(){return o`
+            <div class="slides-card">
+                <div class="center"></div>
+            </div>
+        `}createRenderRoot(){return this}}customElements.define("course-slide",y);class as extends y{render(){return o`
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="cover">
+                    <h2 class="title text-center" data-small>${this.slide.center[0]} ${this.slide.center[1]}</h2>
+                    <div class="two-column right">
+                        <div>
+                            <div class="activity-card" data-expanded-padding>
+                                ${this.renderContent(this.slide.left,!0)}
+                            </div>
+                        </div>
+                        <div class="content-area">
+                            <div class="stack center | text-center">
+                                <div class="qr-code"><img src="${this.slide.right[0]}" /></div>
+                                <p>${this.slide.right[1]}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `}}customElements.define("activity-slide",as);class ns extends y{render(){return o`
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="cover">
+                    <div class="center activity-card" data-large>
+                        <p>${this.slide.center[0]}</p>
+                        <p>${this.slide.center[1]??""}</p>
+                    </div>
+                </div>
+            </div>
+        `}}customElements.define("break-slide",ns);class rs extends y{render(){return o`
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="cover">
+                    <h2 class="title text-center">${this.slide.center[0]??""} ${this.slide.center[1]??""}</h2>
+                    <div class="center w-70">
+                        <div class="stack activity-card">
+                            ${this.renderContent(this.slide.left,!0)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `}}customElements.define("center-slide",rs);class os extends y{render(){return o`
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="two-column left">
+                    <div>
+                        <div class="title-area">
+                            <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
+                            <h2 class="title">${this.slide.left[0]}</h2>
+                        </div>
+                    </div>
+                    <div class="content-area">
+                        <div class="stack">
+                            <p>${this.slide.right[0]}</p>
+                            <div class="qr-code"><img src="${this.slide.right[1]}" /></div>
+                            <p>${this.slide.right[2]} <span style="font-weight:bold;">${this.slide.right[3]}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `}}customElements.define("checkin-slide",os);class ls extends y{render(){return o`
+            <div class="slides-card">
+                <div class="cover">
+                    <div class="center activity-card" data-large>
+                        <p>${this.slide.center[0]}</p>
+                        <p>${this.slide.center[1]??""}</p>
+                    </div>
+                </div>
+            </div>
+        `}}customElements.define("congratulations-slide",ls);class ds extends y{render(){return o`
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="two-column left">
+                    <div>
+                        <div class="title-area">
+                            <div class="title-icon">
+                                <img src="https://placehold.co/60x60/png" />
+                            </div>
+                            <div class="stack">
+                                <h2 class="title">${this.slide.left[0]}</h2>
+                                <span class="subtitle">${this.slide.left[1]??""}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-area">
+                        <div class="stack">
+                            ${this.renderContent(this.slide.right)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `}}customElements.define("discuss-slide",ds);class cs extends y{render(){return o`
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="cover">
+                    <div class="center stack | text-center w-50">
+                        <div class="w-30"><img src="${this.slide.center[0]}" /></div>
+                        <p>${this.slide.center[1]}</p>
+                        <div class="w-30"><img src="${this.slide.center[2]}" /></div>
+                        <p>${this.slide.center[3]}</p>
+                    </div>
+                </div>
+            </div>
+        `}}customElements.define("final-slide",cs);class hs extends y{render(){return o`
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
                 <div class="two-column right">
                     <div>
-                        <div class="activity-card" data-expanded-padding>
-                            ${this.renderContent(this.slide.left,!0)}
+                        <div class="cover center text-center">
+                            <p><strong>${this.slide.left[0]}</strong></p>
+                            <div class="mw-60"><img src="${this.slide.left[1]}" /></div>
                         </div>
                     </div>
                     <div class="content-area">
@@ -1195,216 +1302,154 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                     </div>
                 </div>
             </div>
-        `}}customElements.define("activity-slide",ns);class as extends y{render(){return o`
-            <div class="cover">
-                <div class="center activity-card" data-large>
-                    <p>${this.slide.center[0]}</p>
-                    <p>${this.slide.center[1]??""}</p>
-                </div>
-            </div>
-        `}}customElements.define("break-slide",as);class rs extends y{render(){return o`
-            <div class="cover">
-                <h2 class="title text-center">${this.slide.center[0]??""} ${this.slide.center[1]??""}</h2>
-                <div class="center w-70">
-                    <div class="stack activity-card">
-                        ${this.renderContent(this.slide.left,!0)}
-                    </div>
-                </div>
-            </div>
-        `}}customElements.define("center-slide",rs);class os extends y{render(){return o`
-            <div class="two-column left">
-                <div>
-                    <div class="title-area">
-                        <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
-                        <h2 class="title">${this.slide.left[0]}</h2>
-                    </div>
-                </div>
-                <div class="content-area">
-                    <div class="stack">
-                        <p>${this.slide.right[0]}</p>
-                        <div class="qr-code"><img src="${this.slide.right[1]}" /></div>
-                        <p>${this.slide.right[2]} <span style="font-weight:bold;">${this.slide.right[3]}</span></p>
-                    </div>
-                </div>
-            </div>
-        `}}customElements.define("checkin-slide",os);class ls extends y{render(){return o`
-            <div class="cover">
-                <div class="center activity-card" data-large>
-                    <p>${this.slide.center[0]}</p>
-                    <p>${this.slide.center[1]??""}</p>
-                </div>
-            </div>
-        `}}customElements.define("congratulations-slide",ls);class cs extends y{render(){return o`
-            <div class="two-column left">
-                <div>
-                    <div class="title-area">
-                        <div class="title-icon">
-                            <img src="https://placehold.co/60x60/png" />
-                        </div>
-                        <div class="stack">
-                            <h2 class="title">${this.slide.left[0]}</h2>
-                            <span class="subtitle">${this.slide.left[1]??""}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-area">
-                    <div class="stack">
-                        ${this.renderContent(this.slide.right)}
-                    </div>
-                </div>
-            </div>
-        `}}customElements.define("discuss-slide",cs);class ds extends y{render(){return o`
-            <div class="cover">
-                <div class="center stack | text-center w-50">
-                    <div class="w-30"><img src="${this.slide.center[0]}" /></div>
-                    <p>${this.slide.center[1]}</p>
-                    <div class="w-30"><img src="${this.slide.center[2]}" /></div>
-                    <p>${this.slide.center[3]}</p>
-                </div>
-            </div>
-        `}}customElements.define("final-slide",ds);class hs extends y{render(){return o`
-            <div class="two-column right">
-                <div>
-                    <div class="cover center text-center">
-                        <p><strong>${this.slide.left[0]}</strong></p>
-                        <div class="mw-60"><img src="${this.slide.left[1]}" /></div>
-                    </div>
-                </div>
-                <div class="content-area">
-                    <div class="stack center | text-center">
-                        <div class="qr-code"><img src="${this.slide.right[0]}" /></div>
-                        <p>${this.slide.right[1]}</p>
-                    </div>
-                </div>
-            </div>
         `}}customElements.define("left-image-slide",hs);class us extends y{render(){return o`
-            <div class="cover">
-                <h2 class="title text-center" data-small>${this.slide.center[0]}</h2>
-                <div class="two-column middle" data-align-start>
-                    <div>
-                        <div class="stack align-items-center">
-                            <p><strong>${this.slide.left[0]}</strong></p>
-                            <div class="qr-code"><img src="${this.slide.left[2]}" /></div>
-                            <p>${this.slide.left[1]}</p>
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="cover">
+                    <h2 class="title text-center" data-small>${this.slide.center[0]}</h2>
+                    <div class="two-column middle" data-align-start>
+                        <div>
+                            <div class="stack align-items-center">
+                                <p><strong>${this.slide.left[0]}</strong></p>
+                                <div class="qr-code"><img src="${this.slide.left[2]}" /></div>
+                                <p>${this.slide.left[1]}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="stack align-items-center">
-                            <p><strong>${this.slide.right[0]}</strong></p>
-                            <div class="qr-code"><img src="${this.slide.right[2]}" /></div>
-                            <p>${this.slide.right[1]}</p>
+                        <div>
+                            <div class="stack align-items-center">
+                                <p><strong>${this.slide.right[0]}</strong></p>
+                                <div class="qr-code"><img src="${this.slide.right[2]}" /></div>
+                                <p>${this.slide.right[1]}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         `}}customElements.define("next-steps-slide",us);class ps extends y{render(){return o`
-            <div class="obey-slide"></div>
-                <div class="two-column left">
-                    <div>
-                        <div class="title-area">
-                            <div class="title-icon">
-                                <img src="https://placehold.co/60x60/png" />
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="obey-slide">
+                    <div class="two-column left">
+                        <div>
+                            <div class="title-area">
+                                <div class="title-icon">
+                                    <img src="https://placehold.co/60x60/png" />
+                                </div>
+                                <h2 class="title">${this.slide.left[0]}</h2>
                             </div>
-                            <h2 class="title">${this.slide.left[0]}</h2>
+                        </div>
+                        <div class="content-area">
+                            <p>${this.slide.right[0]}</p>
                         </div>
                     </div>
-                    <div class="content-area">
-                        <p>${this.slide.right[0]}</p>
-                    </div>
-                </div>
-                <div class="two-column left">
-                    <div>
-                        <div class="title-area">
-                            <div class="title-icon">
-                                <img src="https://placehold.co/60x60/png" />
+                    <div class="two-column left">
+                        <div>
+                            <div class="title-area">
+                                <div class="title-icon">
+                                    <img src="https://placehold.co/60x60/png" />
+                                </div>
+                                <h2 class="title">${this.slide.left[1]}</h2>
                             </div>
-                            <h2 class="title">${this.slide.left[1]}</h2>
                         </div>
-                    </div>
-                    <div class="content-area">
-                        <p>${this.slide.right[1]}</p>
+                        <div class="content-area">
+                            <p>${this.slide.right[1]}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         `}}customElements.define("obey-slide",ps);class ms extends y{render(){return o`
-            <div class="two-column left">
-                <div>
-                    <div class="title-area">
-                        <div class="title-icon">
-                            <img src="https://placehold.co/60x60/png" />
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="two-column left">
+                    <div>
+                        <div class="title-area">
+                            <div class="title-icon">
+                                <img src="https://placehold.co/60x60/png" />
+                            </div>
+                            <h2 class="title">${this.slide.left[0]}</h2>
                         </div>
-                        <h2 class="title">${this.slide.left[0]}</h2>
                     </div>
-                </div>
-                <div class="content-area">
-                    <div class="stack">
-                        ${this.renderContent(this.slide.right,!1,!0)}
+                    <div class="content-area">
+                        <div class="stack">
+                            ${this.renderContent(this.slide.right,!1,!0)}
+                        </div>
                     </div>
                 </div>
             </div>
         `}}customElements.define("overview-slide",ms);class gs extends y{render(){return o`
-            <div class="two-column left">
-                <div>
-                    <div class="title-area">
-                        <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
-                        <div class="stack">
-                            <h2 class="title">${this.slide.left[0]}</h2>
-                            <span class="subtitle">${this.slide.left[1]}</span>
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="two-column left">
+                    <div>
+                        <div class="title-area">
+                            <div class="title-icon"><img src="https://placehold.co/60x60/png" /></div>
+                            <div class="stack">
+                                <h2 class="title">${this.slide.left[0]}</h2>
+                                <span class="subtitle">${this.slide.left[1]}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="content-area">
-                    <div class="activity-card" expanded-padding>
-                        ${this.renderContent(this.slide.right)}
+                    <div class="content-area">
+                        <div class="activity-card" expanded-padding>
+                            ${this.renderContent(this.slide.right)}
+                        </div>
                     </div>
                 </div>
             </div>
         `}}customElements.define("pray-slide",gs);class vs extends y{render(){return o`
-            <div class="cover | title-slide | text-center">
-                <div class="stack-1 | w-100">
-                    <div class="center | w-40"><img src=${this.slide.center[0]} /></div>
-                    <h2>${this.slide.center[1]}</h2>
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="cover | title-slide | text-center">
+                    <div class="stack-1 | w-100">
+                        <div class="center | w-40"><img src=${this.slide.center[0]} /></div>
+                        <h2>${this.slide.center[1]}</h2>
+                    </div>
                 </div>
             </div>
         `}}customElements.define("title-slide",vs);class bs extends y{render(){return o`
-            <iframe src="${this.slide.center[0]}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                    frameborder="0"
-                    allow="autoplay; fullscreen; picture-in-picture"
-            >
-            </iframe>
+            <div class="video-slide">
+                <iframe src="${this.slide.center[0]}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                >
+                </iframe>
+            </div>
         `}}customElements.define("video-slide",bs);class fs extends y{render(){return o`
-            <div class="two-column left">
-                <div>
-                    <div class="title-area">
-                        <div class="title-icon">
-                            <img src="https://placehold.co/60x60/png" />
-                        </div>
-                        <div class="stack">
-                            <h2 class="title">${this.slide.left[0]}</h2>
-                            <span class="subtitle">${this.slide.left[1]??""}</span>
+            <div class="slides-card">
+                <div class="stage ${this.slide.key}-bar"></div>
+                <div class="two-column left">
+                    <div>
+                        <div class="title-area">
+                            <div class="title-icon">
+                                <img src="https://placehold.co/60x60/png" />
+                            </div>
+                            <div class="stack">
+                                <h2 class="title">${this.slide.left[0]}</h2>
+                                <span class="subtitle">${this.slide.left[1]??""}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="content-area">
-                    <div class="stack">
-                        ${this.renderContent(this.slide.right,!0)}
+                    <div class="content-area">
+                        <div class="stack">
+                            ${this.renderContent(this.slide.right,!0)}
+                        </div>
                     </div>
                 </div>
             </div>
-        `}}customElements.define("watch-slide",fs);const Ne=["slideshow","guide"];class $s extends g{static get properties(){return{languageCode:{type:String},homeUrl:{type:String},assetsPath:{type:String},translations:{type:Object},zumeSessions:{attribute:!1},lessonIndex:{attribute:!1},view:{attribute:!1},linkNodes:{attribute:!1},showIndex:{attribute:!1}}}constructor(){super();const e=new URL(window.location.href),t=this.getZumeSessions(e);this.zumeSessions=t;const i=this.getLessonIndex(e);this.lessonIndex=i,this.view=this.getView(e),this.changeSession(i,!1,t),this.handleSessionLink=this.handleSessionLink.bind(this),this.handleHistoryPopState=this.handleHistoryPopState.bind(this),window.addEventListener("popstate",this.handleHistoryPopState),document.querySelectorAll(".language-selector").forEach(function(r){r.addEventListener("click",()=>{const a=r.dataset.value,h=new URL(location.href),c=h.pathname.substring(1).split("/");let d="";c.length>0&&jsObject.zume_languages.includes(c[0])?d=c.slice(1).join("/"):d=c.join("/"),a!=="en"?d="/"+a+"/"+d:d="/"+d,d+=h.search,location.href=d})})}getView(e){if(e.searchParams.has("view")){const t=e.searchParams.get("view");if(Ne.includes(t))return t}else return"slideshow"}getLessonIndex(e){if(e.searchParams.has("session")){const t=e.searchParams.get("session");if(t==="index")return"index";const i=Number(t);return Number.isInteger(i)?i-1:0}else return 0}getZumeSessions(e){const t=e.searchParams.get("type")||"10";this.type=t;let i;switch(t){case"10":i=zume10Sessions;break;case"20":i=zume20Sessions;break;case"intensive":i=zumeIntensiveSessions;break;default:i=zume10Sessions;break}return i}handleSessionLink(e){const t=e.target,i=Number(t.dataset.sessionNumber);this.lessonIndex=i,this.showIndex===!0&&(this.showIndex=!1),this.changeSession(this.lessonIndex)}getNextSession(){this.lessonIndex+=1,this.changeSession(this.lessonIndex)}getPreviousSession(){this.lessonIndex-=1,this.changeSession(this.lessonIndex)}changeSession(e,t=!0,i=null){if(e==="index"){this.showIndex=!0;return}else this.showIndex=!1;const n=i||this.zumeSessions;let r=e;e<0&&(r=0),e>n.length-1&&(r=n.length-1),this.lessonIndex=r,this.session=n[r],t&&this.pushHistory()}pushHistory(){const e=this.lessonIndex,t=this.view,i=new URL(window.location.href);e!==null&&Number.isInteger(e)&&i.searchParams.set("session",e+1),t&&i.searchParams.set("view",t),window.history.pushState(null,null,i.href)}handleHistoryPopState(){var n;const e=new URL(location.href),t=e.searchParams.has("session")?e.searchParams.get("session"):null,i=e.searchParams.get("view");(n=document.querySelector(".js-off-canvas-overlay"))==null||n.classList.remove("is-visible"),Number.isInteger(Number(t))&&(this.lessonIndex=t-1,this.changeSession(this.lessonIndex,!1)),t==="index"&&(this.lessonIndex="index",this.changeSession("index",!1)),i&&Ne.includes(i)&&(this.view=i)}getSessionTitle(e){return`Session ${e+1}`}getSessionSections(){return this.session?this.session:[]}switchViews(e=!0){console.log(this.view),this.view==="guide"?this.view="slideshow":this.view="guide",e===!0&&this.pushHistory({view:this.view})}openMenu(){const e=this.querySelector("#offCanvas");jQuery(e).foundation("open")}render(){const e=this.showIndex?"visually-hidden":"",t=this.type==="intensive"?"container-xsm":"container-sm";return o`
+        `}}customElements.define("watch-slide",fs);const Ne=["slideshow","guide"];class $s extends g{static get properties(){return{languageCode:{type:String},homeUrl:{type:String},assetsPath:{type:String},translations:{type:Object},zumeSessions:{attribute:!1},lessonIndex:{attribute:!1},view:{attribute:!1},linkNodes:{attribute:!1},showIndex:{attribute:!1}}}constructor(){super();const e=new URL(window.location.href),t=this.getZumeSessions(e);this.zumeSessions=t;const i=this.getLessonIndex(e);this.lessonIndex=i,this.view=this.getView(e),this.changeSession(i,!1,t),this.handleSessionLink=this.handleSessionLink.bind(this),this.handleHistoryPopState=this.handleHistoryPopState.bind(this),window.addEventListener("popstate",this.handleHistoryPopState),document.querySelectorAll(".language-selector").forEach(function(r){r.addEventListener("click",()=>{const n=r.dataset.value,h=new URL(location.href),d=h.pathname.substring(1).split("/");let c="";d.length>0&&jsObject.zume_languages.includes(d[0])?c=d.slice(1).join("/"):c=d.join("/"),n!=="en"?c="/"+n+"/"+c:c="/"+c,c+=h.search,location.href=c})})}getView(e){if(e.searchParams.has("view")){const t=e.searchParams.get("view");if(Ne.includes(t))return t}else return"slideshow"}getLessonIndex(e){if(e.searchParams.has("session")){const t=e.searchParams.get("session");if(t==="index")return"index";const i=Number(t);return Number.isInteger(i)?i-1:0}else return 0}getZumeSessions(e){const t=e.searchParams.get("type")||"10";this.type=t;let i;switch(t){case"10":i=zume10Sessions;break;case"20":i=zume20Sessions;break;case"intensive":i=zumeIntensiveSessions;break;default:i=zume10Sessions;break}return i}handleSessionLink(e){const t=e.target,i=Number(t.dataset.sessionNumber);this.lessonIndex=i,this.showIndex===!0&&(this.showIndex=!1),this.changeSession(this.lessonIndex)}getNextSession(){this.lessonIndex+=1,this.changeSession(this.lessonIndex)}getPreviousSession(){this.lessonIndex-=1,this.changeSession(this.lessonIndex)}changeSession(e,t=!0,i=null){if(e==="index"){this.showIndex=!0;return}else this.showIndex=!1;const a=i||this.zumeSessions;let r=e;e<0&&(r=0),e>a.length-1&&(r=a.length-1),this.lessonIndex=r,this.session=a[r],t&&this.pushHistory()}pushHistory(){const e=this.lessonIndex,t=this.view,i=new URL(window.location.href);e!==null&&Number.isInteger(e)&&i.searchParams.set("session",e+1),t&&i.searchParams.set("view",t),window.history.pushState(null,null,i.href)}handleHistoryPopState(){var a;const e=new URL(location.href),t=e.searchParams.has("session")?e.searchParams.get("session"):null,i=e.searchParams.get("view");(a=document.querySelector(".js-off-canvas-overlay"))==null||a.classList.remove("is-visible"),Number.isInteger(Number(t))&&(this.lessonIndex=t-1,this.changeSession(this.lessonIndex,!1)),t==="index"&&(this.lessonIndex="index",this.changeSession("index",!1)),i&&Ne.includes(i)&&(this.view=i)}getSessionTitle(e){return`Session ${e+1}`}getSessionSections(){return this.session?this.session:[]}switchViews(e=!0){console.log(this.view),this.view==="guide"?this.view="slideshow":this.view="guide",e===!0&&this.pushHistory({view:this.view})}openMenu(){const e=this.querySelector("#offCanvas");jQuery(e).foundation("open")}render(){const e=this.showIndex?"visually-hidden":"",t=this.type==="intensive"?"container-xsm":"container-sm";return o`
             ${this.showIndex?o`
                     <div class="course-index | bg-brand-gradient">
                         <img src="${jsObject.images_url}/zume-training-logo-white.svg" alt="Zume Logo" class="mx-auto w-70 py-1" />
                         <div class="${t}" data-max-width="750">
                             <div class="grid | grid-min-8rem gutter0">
-                                ${this.zumeSessions.map((i,n)=>o`
+                                ${this.zumeSessions.map((i,a)=>o`
                                     <button
                                         class="card-btn | bg-white black m--2 gap--3 aspect-1 justify-content-evenly"
-                                        data-session-number=${n}
+                                        data-session-number=${a}
                                         @click=${this.handleSessionLink}
                                     >
                                         <h2 class="f-0 bold">Session</h2>
-                                        <p class="f-3 bold lh-sm">${n+1}</p>
+                                        <p class="f-3 bold lh-sm">${a+1}</p>
                                         <span class="icon zume-course brand-light f-3"></span>
                                     </button>
                                 `)}
@@ -1431,13 +1476,13 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                     <button class="btn" @click=${this.switchViews}>Switch Views</button>
 
                     <div class="stack-1 py-1">
-                        ${this.zumeSessions.map((i,n)=>o`
+                        ${this.zumeSessions.map((i,a)=>o`
                             <button
                                 class="link session-link"
-                                data-session-number="${n}"
+                                data-session-number="${a}"
                                 @click=${this.handleSessionLink}
                             >
-                                ${this.getSessionTitle(n)}
+                                ${this.getSessionTitle(a)}
                             </button>
                         `)}
                     </div>
@@ -1465,18 +1510,15 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                         <course-section .section=${e}></course-section>
                     `)}
             </div>
-        `}createRenderRoot(){return this}}customElements.define("course-guide",_s);class ys extends g{static get properties(){return{title:{type:String},sections:{type:Array},sectionIndex:{attribute:!1},partIndex:{attribute:!1},currentSlide:{attribute:!1},index:{attribute:!1}}}constructor(){super(),this.reset(),this.listenForKeyboard=this.listenForKeyboard.bind(this),this.listenForMouseClick=this.listenForMouseClick.bind(this)}reset(){this.sectionIndex=-1,this.currentSlide=null}connectedCallback(){super.connectedCallback(),document.addEventListener("keydown",this.listenForKeyboard),document.addEventListener("mousedown",this.listenForMouseClick)}disconnectedCallback(){super.disconnectedCallback(),document.removeEventListener("keydown",this.listenForKeyboard),document.removeEventListener("mousedown",this.listenForMouseClick)}attributeChangedCallback(e,t,i){super.attributeChangedCallback(e,t,i),e==="title"&&t!==i&&this.reset()}nextSlide(){if(this.sectionIndex>this.sections.length-1){this.sectionIndex=this.sections.length-1;return}this.setSlide(this.sectionIndex+1)}previousSlide(){this.sectionIndex<0&&(this.sectionIndex=0),this.setSlide(this.sectionIndex-1)}listenForKeyboard(e){["Space","ArrowRight"].includes(e.code)&&this.nextSlide(),["Backspace","ArrowLeft"].includes(e.code)&&this.previousSlide()}listenForMouseClick(e){const{x:t}=e,{innerWidth:i}=window,n=1/2*i;t<n&&this.previousSlide(),t>i-n&&this.nextSlide()}setSlide(e){this.sectionIndex=e;const t=this.sections[e];this.currentSlide=t}render(){return this.sectionIndex<0&&this.setSlide(0),o`
-            <div class="slides-card">
-                <div class="stage ${this.currentSlide.key}-bar"></div>
-                <slide-switcher .slide=${this.currentSlide}></slide-switcher>
-            </div>
-        `}createRenderRoot(){return this}}customElements.define("course-slideshow",ys);class ws extends g{static get properties(){return{slide:{type:Object}}}render(){switch(this.slide.type){case"title":return o`<title-slide .slide=${this.slide}></title-slide>`;case"checkin":return o`<checkin-slide .slide=${this.slide}></checkin-slide>`;case"pray":return o`<pray-slide .slide=${this.slide}></pray-slide>`;case"review":case"overview":return o`<overview-slide .slide=${this.slide}></overview-slide>`;case"challenge":case"center":return o`<center-slide .slide=${this.slide}></center-slide>`;case"watch":return o`<watch-slide .slide=${this.slide}></watch-slide>`;case"video":return o`<video-slide .slide=${this.slide}></video-slide>`;case"discuss":case"look_back":return o`<discuss-slide .slide=${this.slide}></discuss-slide>`;case"left_content":case"activity":return o`<activity-slide .slide=${this.slide}></activity-slide>`;case"obey":return o`<obey-slide .slide=${this.slide}></obey-slide>`;case"left_image":return o`<left-image-slide .slide=${this.slide}></left-image-slide>`;case"next_steps":return o`<next-steps-slide .slide=${this.slide}></next-steps-slide>`;case"break":return o`<break-slide .slide=${this.slide}></break-slide>`;case"congratulations":return o`<congratulations-slide .slide=${this.slide}></congratulations-slide>`;case"final":return o`<final-slide .slide=${this.slide}></final-slide>`;default:return o`<course-slide .slide=${this.slide}></course-slide>`}}createRenderRoot(){return this}}customElements.define("slide-switcher",ws);class at extends g{constructor(){super()}render(){return o`
+        `}createRenderRoot(){return this}}customElements.define("course-guide",_s);class ys extends g{static get properties(){return{title:{type:String},sections:{type:Array},sectionIndex:{attribute:!1},partIndex:{attribute:!1},currentSlide:{attribute:!1},index:{attribute:!1}}}constructor(){super(),this.reset(),this.listenForKeyboard=this.listenForKeyboard.bind(this),this.listenForMouseClick=this.listenForMouseClick.bind(this)}reset(){this.sectionIndex=-1,this.currentSlide=null}connectedCallback(){super.connectedCallback(),document.addEventListener("keydown",this.listenForKeyboard),document.addEventListener("mousedown",this.listenForMouseClick)}disconnectedCallback(){super.disconnectedCallback(),document.removeEventListener("keydown",this.listenForKeyboard),document.removeEventListener("mousedown",this.listenForMouseClick)}attributeChangedCallback(e,t,i){super.attributeChangedCallback(e,t,i),e==="title"&&t!==i&&this.reset()}nextSlide(){if(this.sectionIndex>this.sections.length-1){this.sectionIndex=this.sections.length-1;return}this.setSlide(this.sectionIndex+1)}previousSlide(){this.sectionIndex<0&&(this.sectionIndex=0),this.setSlide(this.sectionIndex-1)}listenForKeyboard(e){["Space","ArrowRight"].includes(e.code)&&this.nextSlide(),["Backspace","ArrowLeft"].includes(e.code)&&this.previousSlide()}listenForMouseClick(e){const{x:t}=e,{innerWidth:i}=window,a=1/2*i;t<a&&this.previousSlide(),t>i-a&&this.nextSlide()}setSlide(e){this.sectionIndex=e;const t=this.sections[e];this.currentSlide=t}render(){return this.sectionIndex<0&&this.setSlide(0),o`
+            <slide-switcher .slide=${this.currentSlide}></slide-switcher>
+        `}createRenderRoot(){return this}}customElements.define("course-slideshow",ys);class ks extends g{static get properties(){return{slide:{type:Object}}}render(){switch(this.slide.type){case"title":return o`<title-slide .slide=${this.slide}></title-slide>`;case"checkin":return o`<checkin-slide .slide=${this.slide}></checkin-slide>`;case"pray":return o`<pray-slide .slide=${this.slide}></pray-slide>`;case"review":case"overview":return o`<overview-slide .slide=${this.slide}></overview-slide>`;case"challenge":case"center":return o`<center-slide .slide=${this.slide}></center-slide>`;case"watch":return o`<watch-slide .slide=${this.slide}></watch-slide>`;case"video":return o`<video-slide .slide=${this.slide}></video-slide>`;case"discuss":case"look_back":return o`<discuss-slide .slide=${this.slide}></discuss-slide>`;case"left_content":case"activity":return o`<activity-slide .slide=${this.slide}></activity-slide>`;case"obey":return o`<obey-slide .slide=${this.slide}></obey-slide>`;case"left_image":return o`<left-image-slide .slide=${this.slide}></left-image-slide>`;case"next_steps":return o`<next-steps-slide .slide=${this.slide}></next-steps-slide>`;case"break":return o`<break-slide .slide=${this.slide}></break-slide>`;case"congratulations":return o`<congratulations-slide .slide=${this.slide}></congratulations-slide>`;case"final":return o`<final-slide .slide=${this.slide}></final-slide>`;default:return o`<course-slide .slide=${this.slide}></course-slide>`}}createRenderRoot(){return this}}customElements.define("slide-switcher",ks);class nt extends g{constructor(){super()}render(){return o`
             <div class="container">
                 <div class="circle">
                     <div class="triangle"></div>
                 </div>
             </div>
-        `}}A(at,"styles",mt`
+        `}}A(nt,"styles",mt`
         :host {
             --play-button-size: 3rem;
             --play-button-color: red;
@@ -1523,7 +1565,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
           border-bottom: calc(var(--play-button-size) / 4.5) solid transparent;
           margin-left: calc(var(--play-button-size) / 10);
         }
-    `);window.customElements.define("play-button",at);class ks extends g{constructor(){super();A(this,"webShareSupported",!!window.navigator.share);A(this,"clipboardSupported",!!window.navigator.clipboard);this.shareFeedback="",this.copyFeedback=""}static get properties(){return{url:{type:String},title:{type:String},t:{type:Object},shareFeedback:{attribute:!1},copyFeedback:{attribute:!1}}}share(){navigator.share({title:this.title,url:this.url,text:title}).then(()=>{this.shareFeedback=this.t.share_feedback,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(t=>console.error("Error sharing",t))}copyLink(t){t.stopImmediatePropagation(),navigator.clipboard.writeText(this.url).then(()=>{this.copyFeedback=this.t.copy_feedback,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(i=>console.error(i))}noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported}render(){return o`
+    `);window.customElements.define("play-button",nt);class ws extends g{constructor(){super();A(this,"webShareSupported",!!window.navigator.share);A(this,"clipboardSupported",!!window.navigator.clipboard);this.shareFeedback="",this.copyFeedback=""}static get properties(){return{url:{type:String},title:{type:String},t:{type:Object},shareFeedback:{attribute:!1},copyFeedback:{attribute:!1}}}share(){navigator.share({title:this.title,url:this.url,text:title}).then(()=>{this.shareFeedback=this.t.share_feedback,setTimeout(()=>{this.shareFeedback=""},3e3)}).catch(t=>console.error("Error sharing",t))}copyLink(t){t.stopImmediatePropagation(),navigator.clipboard.writeText(this.url).then(()=>{this.copyFeedback=this.t.copy_feedback,setTimeout(()=>{this.copyFeedback=""},3e3)}).catch(i=>console.error(i))}noOptionsAvailable(){return!this.clipboardSupported&&!this.webShareSupported}render(){return o`
             <div id="share" tabindex="-1" class="stack--2">
               ${this.noOptionsAvailable()?o`
                   <div class="stack--2">
@@ -1555,7 +1597,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
 
 
             </div>
-        `}createRenderRoot(){return this}}customElements.define("share-links",ks);class Ss extends g{static get properties(){return{t:{type:Object},joinLink:{type:String},loading:{attribute:!1},posts:{attribute:!1}}}constructor(){super(),this.loading=!0,this.plans=[],this.getTrainings(),this.renderRow=this.renderRow.bind(this)}getTrainings(){makeRequest("POST","public_plans",{},"zume_system/v1").then(e=>{this.plans=e}).catch(e=>{console.log(e)}).always(()=>{this.loading=!1})}render(){return this.loading?o`<span class="loading-spinner active"></span>`:o`
+        `}createRenderRoot(){return this}}customElements.define("share-links",ws);class Ss extends g{static get properties(){return{t:{type:Object},joinLink:{type:String},loading:{attribute:!1},posts:{attribute:!1}}}constructor(){super(),this.loading=!0,this.plans=[],this.getTrainings(),this.renderRow=this.renderRow.bind(this)}getTrainings(){makeRequest("POST","public_plans",{},"zume_system/v1").then(e=>{this.plans=e}).catch(e=>{console.log(e)}).always(()=>{this.loading=!1})}render(){return this.loading?o`<span class="loading-spinner active"></span>`:o`
             <table>
                 <thead>
                     <tr>
@@ -1571,11 +1613,11 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                     ${this.plans.length>0?this.plans.map(this.renderRow):this.t.no_plans}
                </tbody>
             </table>
-        `}renderRow({join_key:e,language_note:t,post_title:i,time_of_day_note:n,timezone_note:r,...a}){const h=a.set_a_01?"a":"b",c=h==="a"?10:20,d=`set_${h}_`,b=Date.now()/1e3;let p="";for(let m=1;m<c+1;m++){const v=m<10?`0${m}`:`${m}`,f=a[d+v];if(p=f.timestamp,b<f.timestamp)break}const u=moment(p*1e3).format("MMM Do 'YY");return o`
+        `}renderRow({join_key:e,language_note:t,post_title:i,time_of_day_note:a,timezone_note:r,...n}){const h=n.set_a_01?"a":"b",d=h==="a"?10:20,c=`set_${h}_`,b=Date.now()/1e3;let p="";for(let m=1;m<d+1;m++){const v=m<10?`0${m}`:`${m}`,f=n[c+v];if(p=f.timestamp,b<f.timestamp)break}const u=moment(p*1e3).format("MMM Do 'YY");return o`
             <tr>
                 <td data-label="${this.t.name}">${i}</td>
                 <td data-label="${this.t.next_date}">${u}</td>
-                <td data-label="${this.t.start_time}">${n}</td>
+                <td data-label="${this.t.start_time}">${a}</td>
                 <td data-label="${this.t.timezone}">${r}</td>
                 <td data-label="${this.t.language}">${t}</td>
                 <td><button class="btn" data-code=${e} @click=${this._handleJoinTraining}>${this.t.join}</button></td>
@@ -1668,4 +1710,4 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",xs);
-//# sourceMappingURL=main-965680a8.js.map
+//# sourceMappingURL=main-d50b82e4.js.map

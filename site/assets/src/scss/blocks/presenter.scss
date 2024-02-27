@@ -49,10 +49,6 @@
         min-block-size: calc( 100% - 45px );
         position: relative;
     }
-    /* Temporary solution until all slides are in web components */
-    & > :nth-child(2) {
-        display: block;
-    }
 
     .stack {
         --space: var(--s-2);
@@ -136,6 +132,12 @@
     aspect-ratio: 16 / 9;
     border-radius: calc( var(--slide-unit) );
     overflow: hidden;
+    background-color: #2DADE2;
+
+    & > iframe {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 /* On e.g. an activity page we want the relative size of the divider to be the height of the cover section

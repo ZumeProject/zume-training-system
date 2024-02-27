@@ -30,7 +30,9 @@ export class CourseSlide extends LitElement {
 
     render() {
         return html`
-            <div class="center"></div>
+            <div class="slides-card">
+                <div class="center"></div>
+            </div>
         `
     }
 

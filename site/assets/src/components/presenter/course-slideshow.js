@@ -93,10 +93,7 @@ export class CourseSlideshow extends LitElement {
             this.setSlide(0)
         }
         return html`
-            <div class="slides-card">
-                <div class="stage ${this.currentSlide['key']}-bar"></div>
-                <slide-switcher .slide=${this.currentSlide}></slide-switcher>
-            </div>
+            <slide-switcher .slide=${this.currentSlide}></slide-switcher>
         `;
     }
 
