@@ -71,15 +71,13 @@ export class CourseSlideshow extends LitElement {
         const { x } = event
         const { innerWidth } = window
 
-        const threshhold = 10 / 100 * innerWidth + 80
+        const threshhold = 1 / 2 * innerWidth
 
         if ( x < threshhold ) {
-            this.querySelector('.clickable-area.back').classList.add('visible')
             this.previousSlide()
         }
 
         if ( x > innerWidth - threshhold ) {
-            this.querySelector('.clickable-area.forward').classList.add('visible')
             this.nextSlide()
         }
     }
@@ -94,25 +92,11 @@ export class CourseSlideshow extends LitElement {
         if ( this.sectionIndex < 0 ) {
             this.setSlide(0)
         }
-        console.log(this.sections)
         return html`
-            <div class="">
-                <div class="slides-card">
-                    <div class="stage ${this.currentSlide['key']}-bar"></div>
-                    <slide-switcher .slide=${this.currentSlide}></slide-switcher>
-                </div>
+            <div class="slides-card">
+                <div class="stage ${this.currentSlide['key']}-bar"></div>
+                <slide-switcher .slide=${this.currentSlide}></slide-switcher>
             </div>
-
-
-            <div class="clickable-area back">
-                <div class="absolute top bottom left right bg-gray-500 opacity-50"></div>
-                <span class="absolute middle center brand f-3">🡰</span>
-            </div>
-            <div class="clickable-area forward">
-                <div class="absolute top bottom left right bg-gray-500 opacity-50"></div>
-                <span class="absolute middle center brand f-3">🡲</span>
-            </div>
-
         `;
     }
 
