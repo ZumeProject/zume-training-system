@@ -58,11 +58,33 @@ export class CourseSlideshow extends LitElement {
 
         this.setSlide(this.sectionIndex - 1)
     }
-    listenForKeyboard(event) {
-        if ( [ 'Space', 'ArrowRight' ].includes(event.code) ) {
+    leftSlide() {
+        const dir = document.querySelector('html').dir
+        if (dir === 'rtl') {
+            this.nextSlide()
+        } else {
+            this.previousSlide()
+        }
+    }
+    rightSlide() {
+        const dir = document.querySelector('html').dir
+        if (dir === 'rtl') {
+            this.previousSlide()
+        } else {
             this.nextSlide()
         }
-        if ( [ 'Backspace', 'ArrowLeft' ].includes(event.code) ) {
+    }
+    listenForKeyboard(event) {
+        if ( [ 'ArrowRight' ].includes(event.code) ) {
+            this.rightSlide()
+        }
+        if ( ['Space'].includes(event.code) ) {
+            this.nextSlide()
+        }
+        if ( [ 'ArrowLeft' ].includes(event.code) ) {
+            this.leftSlide()
+        }
+        if (['Backspace'].includes(event.code)) {
             this.previousSlide()
         }
     }
@@ -74,19 +96,11 @@ export class CourseSlideshow extends LitElement {
         const threshhold = 1 / 2 * innerWidth
 
         if ( x < threshhold ) {
-            if ( dir === 'rtl' ) {
-                this.nextSlide()
-            } else {
-                this.previousSlide()
-            }
+            this.leftSlide()
         }
 
         if ( x > innerWidth - threshhold ) {
-            if ( dir === 'rtl' ) {
-                this.previousSlide()
-            } else {
-                this.nextSlide()
-            }
+            this.rightSlide()
         }
     }
 
