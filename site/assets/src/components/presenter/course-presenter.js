@@ -23,6 +23,8 @@ export class CoursePresenter extends LitElement {
     constructor() {
         super()
 
+        this.dir = document.querySelector('html').dir
+
         const url = new URL(window.location.href)
 
         const zumeSessions = this.getZumeSessions(url);
@@ -262,7 +264,7 @@ export class CoursePresenter extends LitElement {
                 ` : ''
             }
 
-            <nav class="${hiddenClass} stack | bg-white px-0 text-center | off-canvas position-left justify-content-between py-1" id="offCanvas" data-off-canvas data-transition="overlap">
+            <nav class="${hiddenClass} stack | bg-white px-0 text-center | off-canvas ${this.dir === 'rtl' ? 'position-right' : 'position-left'} justify-content-between py-1" id="offCanvas" data-off-canvas data-transition="overlap">
                 <div class="stack">
                     <!-- Close button -->
                     <button class="close-button" aria-label="Close menu" type="button" data-close>

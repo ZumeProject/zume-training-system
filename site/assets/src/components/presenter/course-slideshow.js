@@ -89,7 +89,12 @@ export class CourseSlideshow extends LitElement {
         }
     }
     listenForMouseClick(event) {
-        const { x } = event
+        const { x, type, which } = event
+
+        if ( type !== 'mousedown' || which !== 1 ) {
+            return
+        }
+
         const { innerWidth } = window
         const dir = document.querySelector('html').dir
 
