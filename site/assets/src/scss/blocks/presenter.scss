@@ -225,6 +225,9 @@ not of the 2 column section */
     height: 2vw;
     margin: 0 auto;
 
+    display: flex;
+    align-items: center;
+
     & > .progress-bar-stage:first-child > :first-child {
         border-end-start-radius: 3vw;
         border-start-start-radius: 3vw;
@@ -235,15 +238,16 @@ not of the 2 column section */
     }
 }
 .progress-bar-stage {
-    float: left;
+    display: flex;
+    align-items: center;
 
     & > * {
-        border-right: 0.1vw solid color('gray-300');
+        border-inline-end: 0.1vw solid color('gray-300');
         border-top: 0.1vw solid color('gray-300');
         border-bottom: 0.1vw solid color('gray-300');
     }
     & > :first-child {
-        border-left: 0.1vw solid color('gray-300');
+        border-inline-start: 0.1vw solid color('gray-300');
     }
 }
 .progress-bar-item {
