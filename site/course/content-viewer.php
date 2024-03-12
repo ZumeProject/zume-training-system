@@ -75,6 +75,11 @@ class Zume_Content_Viewer extends Zume_Magic_Page
             #blank-template-body {
                 background-color: WhiteSmoke !important;
             }
+            .slide-outline {
+                border: 1px solid #ccc;
+                border-radius: calc( var(--slide-unit, 1vw) );
+                overflow: hidden;
+            }
         </style>
         <?php
     }
@@ -163,7 +168,11 @@ class Zume_Content_Viewer extends Zume_Magic_Page
                 echo '<br>';
 
                 // print the slide
+                echo '<div class="slide-outline">';
+
                 zume_course_slide_template( $slide );
+
+                echo '</div>';
             }
 
             // print the css

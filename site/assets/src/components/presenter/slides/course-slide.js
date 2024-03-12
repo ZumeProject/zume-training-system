@@ -7,6 +7,26 @@ export class CourseSlide extends LitElement {
         };
     }
 
+    connectedCallback() {
+        super.connectedCallback()
+        window.addEventListener('resize', this.resizeCallback)
+    }
+    disconnectedCallback() {
+        super.disconnectedCallback()
+        window.removeEventListener('resize', this.resizeCallback)
+    }
+    resizeCallback(event) {
+        const slide = document.querySelector('.slides-card')
+        const { innerWidth: W, innerHeight: H } = event.currentTarget
+
+        if ( W/H > 16/9 ) {
+            slide.style = `--slide-unit: ${16 / 9 * H / 100}px`
+        } else {
+            slide.style = `--slide-unit: ${W / 100}px`
+        }
+
+    }
+
     renderProgressBar() {
         let progress_bar = []
         let stage = []

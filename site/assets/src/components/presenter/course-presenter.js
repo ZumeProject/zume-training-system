@@ -295,13 +295,13 @@ export class CoursePresenter extends LitElement {
                 </div>
             </nav>
 
-            <span class="${hiddenClass} p-1 d-block position-relative z-1">
+            <span class="${hiddenClass} p-1 d-block absolute z-1">
                 <button id="hamburger-menu" class="nav-toggle show" @click=${this.openMenu}>
                     <span class="hamburger brand"></span>
                 </button>
             </span>
 
-            <div class="${hiddenClass} container">
+            <div class="${hiddenClass}">
                 ${
                     this.view === 'guide'
                     ? html`<course-guide .sections=${this.getSessionSections()}></course-guide>`

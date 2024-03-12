@@ -20,10 +20,10 @@
     font-size: var(--font-size);
     line-height: 1.5;
 
-    border: 1px solid #ccc;
-    border-radius: calc( var(--slide-unit) );
-    overflow: hidden;
     aspect-ratio: 16 / 9;
+    max-height: 100vh;
+    margin-inline: auto;
+
     background-color: color(white);
 
     img {
@@ -132,7 +132,7 @@
 }
 
 .video-slide {
-    --slide-unit: 1vw;
+    --slide-unit: calc( 1 * var(--slide-unit) );
     aspect-ratio: 16 / 9;
     border-radius: calc( var(--slide-unit) );
     overflow: hidden;
@@ -152,7 +152,7 @@ not of the 2 column section */
 
 /* The divider is contained in the ::after pseudoelement of the first column (:first-child) */
 .two-column {
-    --gap-width: 8vw;
+    --gap-width: calc( 8 * var(--slide-unit) );
     padding-inline: calc( var(--gap-width) / 2 );
     display: flex;
     align-items: stretch;
@@ -214,27 +214,27 @@ not of the 2 column section */
 }
 
 .stage {
-    height: 3vw;
-    padding-top: 1vw;
+    height: calc( 3 * var(--slide-unit) );
+    padding-top: calc( 1 * var(--slide-unit) );
     text-align: center;
     background-color: white !important;
-    margin-bottom: 0.5vw;
+    margin-bottom: calc( 0.5 * var(--slide-unit) );
 }
 .progress-bar-wrapper {
     width: fit-content;
-    height: 2vw;
+    height: calc( 2 * var(--slide-unit) );
     margin: 0 auto;
 
     display: flex;
     align-items: center;
 
     & > .progress-bar-stage:first-child > :first-child {
-        border-end-start-radius: 3vw;
-        border-start-start-radius: 3vw;
+        border-end-start-radius: calc( 3 * var(--slide-unit) );
+        border-start-start-radius: calc( 3 * var(--slide-unit) );
     }
     & > .progress-bar-stage:last-child > :last-child {
-        border-end-end-radius: 3vw;
-        border-start-end-radius: 3vw;
+        border-end-end-radius: calc( 3 * var(--slide-unit) );
+        border-start-end-radius: calc( 3 * var(--slide-unit) );
     }
 }
 .progress-bar-stage {
@@ -242,17 +242,17 @@ not of the 2 column section */
     align-items: center;
 
     & > * {
-        border-inline-end: 0.1vw solid color('gray-300');
-        border-top: 0.1vw solid color('gray-300');
-        border-bottom: 0.1vw solid color('gray-300');
+        border-inline-end: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
+        border-top: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
+        border-bottom: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
     }
     & > :first-child {
-        border-inline-start: 0.1vw solid color('gray-300');
+        border-inline-start: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
     }
 }
 .progress-bar-item {
-    width: 1.5vw;
-    height: 1.5vw;
+    width: calc( 1.5 * var(--slide-unit) );
+    height: calc( 1.5 * var(--slide-unit) );
     background: white;
     float:left;
 
@@ -261,8 +261,8 @@ not of the 2 column section */
     }
 }
 .progress-bar-divider {
-    width: 1.5vw;
-    height: 1.5vw;
+    width: calc( 1.5 * var(--slide-unit) );
+    height: calc( 1.5 * var(--slide-unit) );
     float:left;
 
     display: flex;
@@ -270,7 +270,7 @@ not of the 2 column section */
 
     &::after {
         content: '';
-        height: 0.1vw;
+        height: calc( 0.1 * var(--slide-unit) );
         width: 100%;
         display: block;
         background-color: color('gray-300');

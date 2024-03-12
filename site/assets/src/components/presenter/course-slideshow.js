@@ -148,7 +148,11 @@ export class CourseSlideshow extends LitElement {
             this.setSlide(0)
         }
         return html`
-            <slide-switcher .slide=${this.currentSlide}></slide-switcher>
+            <div class="cover-page">
+                <div>
+                    <slide-switcher .slide=${this.currentSlide}></slide-switcher>
+                </div>
+            </div>
         `;
     }
 

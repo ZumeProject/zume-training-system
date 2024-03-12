@@ -1172,7 +1172,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                     <li><a class="menu-btn" href="${zumeDashboard.urls.launch_intensive_session_course}"><span class="icon zume-course"></span>${zumeDashboard.translations.three_day_intensive_course}</a></li>
                 </ul>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("launch-course",is);class y extends g{static get properties(){return{slide:{type:Object}}}renderProgressBar(){let e=[],t=[];for(let i=0;i<this.slide.progress_bar.length;i++){const a=this.slide.progress_bar[i];if(!a){e.push(t),e.push(!1),t=[];continue}t.push(a)}return e.push(t),o`
+        `}createRenderRoot(){return this}}customElements.define("launch-course",is);class y extends g{static get properties(){return{slide:{type:Object}}}connectedCallback(){super.connectedCallback(),window.addEventListener("resize",this.resizeCallback)}disconnectedCallback(){super.disconnectedCallback(),window.removeEventListener("resize",this.resizeCallback)}resizeCallback(e){const t=document.querySelector(".slides-card"),{innerWidth:i,innerHeight:a}=e.currentTarget;i/a>16/9?t.style=`--slide-unit: ${16/9*a/100}px`:t.style=`--slide-unit: ${i/100}px`}renderProgressBar(){let e=[],t=[];for(let i=0;i<this.slide.progress_bar.length;i++){const a=this.slide.progress_bar[i];if(!a){e.push(t),e.push(!1),t=[];continue}t.push(a)}return e.push(t),o`
             <div class="stage ${this.slide.key}-bar">
                 <div class="progress-bar-wrapper">
                     ${e.map(i=>i?o`
@@ -1408,12 +1408,14 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 </div>
             </div>
         `}}customElements.define("pray-slide",gs);class vs extends y{render(){return o`
-            <div class="slides-card">
-                ${this.renderProgressBar()}
-                <div class="cover | title-slide | text-center">
-                    <div class="stack-1 | w-100">
-                        <div class="center | w-40"><img src=${this.slide.center[0]} /></div>
-                        <h2>${this.slide.center[1]}</h2>
+            <div>
+                <div class="slides-card">
+                    ${this.renderProgressBar()}
+                    <div class="cover | title-slide | text-center">
+                        <div class="stack-1 | w-100">
+                            <div class="center | w-40"><img src=${this.slide.center[0]} /></div>
+                            <h2>${this.slide.center[1]}</h2>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1500,13 +1502,13 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 </div>
             </nav>
 
-            <span class="${e} p-1 d-block position-relative z-1">
+            <span class="${e} p-1 d-block absolute z-1">
                 <button id="hamburger-menu" class="nav-toggle show" @click=${this.openMenu}>
                     <span class="hamburger brand"></span>
                 </button>
             </span>
 
-            <div class="${e} container">
+            <div class="${e}">
                 ${this.view==="guide"?o`<course-guide .sections=${this.getSessionSections()}></course-guide>`:o`<course-slideshow .sections=${this.getSessionSections()}></course-slideshow>`}
             </div>
         `}createRenderRoot(){return this}}customElements.define("course-presenter",$s);class _s extends g{static get properties(){return{sections:{type:Array}}}render(){return o`
@@ -1518,7 +1520,11 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 </div>
             </div>
         `}createRenderRoot(){return this}}customElements.define("course-guide",_s);class ys extends g{static get properties(){return{sections:{type:Array},sectionIndex:{attribute:!1},partIndex:{attribute:!1},currentSlide:{attribute:!1},index:{attribute:!1}}}constructor(){super(),this.reset(),this.listenForKeyboard=this.listenForKeyboard.bind(this),this.listenForMouseClick=this.listenForMouseClick.bind(this)}reset(){this.sectionIndex=-1,this.currentSlide=null}connectedCallback(){super.connectedCallback(),document.addEventListener("keydown",this.listenForKeyboard),document.addEventListener("mousedown",this.listenForMouseClick)}disconnectedCallback(){super.disconnectedCallback(),document.removeEventListener("keydown",this.listenForKeyboard),document.removeEventListener("mousedown",this.listenForMouseClick)}update(e){e.has("sections")&&this.reset(),super.update(e)}nextSlide(){if(this.sectionIndex>=this.sections.length-1){this.sectionIndex=this.sections.length-1;return}this.setSlide(this.sectionIndex+1)}previousSlide(){this.sectionIndex<0&&(this.sectionIndex=0),this.setSlide(this.sectionIndex-1)}leftSlide(){document.querySelector("html").dir==="rtl"?this.nextSlide():this.previousSlide()}rightSlide(){document.querySelector("html").dir==="rtl"?this.previousSlide():this.nextSlide()}listenForKeyboard(e){["ArrowRight"].includes(e.code)&&this.rightSlide(),["Space"].includes(e.code)&&this.nextSlide(),["ArrowLeft"].includes(e.code)&&this.leftSlide(),["Backspace"].includes(e.code)&&this.previousSlide()}listenForMouseClick(e){if(e.target.id==="hamburger-menu")return;const t=d=>d.id==="offCanvas"||d.classList.contains("js-off-canvas-overlay");if(this.hasParent(e.target,t))return;const{x:i,type:a,which:r}=e;if(a!=="mousedown"||r!==1)return;const{innerWidth:n}=window,h=1/2*n;i<h&&this.leftSlide(),i>n-h&&this.rightSlide()}hasParent(e,t){let i=e;const a=50;let r=0;for(;i;){if(t(i))return!0;if(i=i.parentElement,r=r+1,r>a)return!1}return!1}setSlide(e){this.sectionIndex=e;const t=this.sections[e];this.currentSlide=t}render(){return this.sectionIndex<0&&this.setSlide(0),o`
-            <slide-switcher .slide=${this.currentSlide}></slide-switcher>
+            <div class="cover-page">
+                <div>
+                    <slide-switcher .slide=${this.currentSlide}></slide-switcher>
+                </div>
+            </div>
         `}createRenderRoot(){return this}}customElements.define("course-slideshow",ys);class ws extends g{static get properties(){return{slide:{type:Object}}}render(){switch(this.slide.type){case"title":return o`<title-slide .slide=${this.slide}></title-slide>`;case"checkin":return o`<checkin-slide .slide=${this.slide}></checkin-slide>`;case"pray":return o`<pray-slide .slide=${this.slide}></pray-slide>`;case"review":case"overview":return o`<overview-slide .slide=${this.slide}></overview-slide>`;case"challenge":case"center":return o`<center-slide .slide=${this.slide}></center-slide>`;case"watch":return o`<watch-slide .slide=${this.slide}></watch-slide>`;case"video":return o`<video-slide .slide=${this.slide}></video-slide>`;case"discuss":case"look_back":return o`<discuss-slide .slide=${this.slide}></discuss-slide>`;case"left_content":case"activity":return o`<activity-slide .slide=${this.slide}></activity-slide>`;case"obey":return o`<obey-slide .slide=${this.slide}></obey-slide>`;case"left_image":return o`<left-image-slide .slide=${this.slide}></left-image-slide>`;case"next_steps":return o`<next-steps-slide .slide=${this.slide}></next-steps-slide>`;case"break":return o`<break-slide .slide=${this.slide}></break-slide>`;case"congratulations":return o`<congratulations-slide .slide=${this.slide}></congratulations-slide>`;case"final":return o`<final-slide .slide=${this.slide}></final-slide>`;default:return o`<course-slide .slide=${this.slide}></course-slide>`}}createRenderRoot(){return this}}customElements.define("slide-switcher",ws);class nt extends g{constructor(){super()}render(){return o`
             <div class="container">
                 <div class="circle">
@@ -1717,4 +1723,4 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",xs);
-//# sourceMappingURL=main-3f5a8b6c.js.map
+//# sourceMappingURL=main-fc5c8f7f.js.map
