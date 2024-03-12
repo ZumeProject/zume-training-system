@@ -36,11 +36,11 @@ export class CourseSlideshow extends LitElement {
         document.removeEventListener('keydown', this.listenForKeyboard)
         document.removeEventListener('mousedown', this.listenForMouseClick)
     }
-    attributeChangedCallback(name, oldValue, newValue) {
-        super.attributeChangedCallback(name, oldValue, newValue);
-        if (name === 'title' && oldValue !== newValue) {
+    update(changedProperties) {
+        if ( changedProperties.has('sections') ) {
             this.reset()
         }
+        super.update(changedProperties)
     }
 
     nextSlide() {
