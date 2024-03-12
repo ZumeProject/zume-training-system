@@ -15,9 +15,14 @@ export class CourseSlide extends LitElement {
         super.disconnectedCallback()
         window.removeEventListener('resize', this.resizeCallback)
     }
-    resizeCallback(event) {
+    firstUpdated() {
+        this.resizeCallback(null, window)
+    }
+    resizeCallback(event, target = null) {
         const slide = document.querySelector('.slides-card')
-        const { innerWidth: W, innerHeight: H } = event.currentTarget
+
+        const currentTarget = target || event.currentTarget
+        const { innerWidth: W, innerHeight: H } = currentTarget
 
         if ( W/H > 16/9 ) {
             slide.style = `--slide-unit: ${16 / 9 * H / 100}px`

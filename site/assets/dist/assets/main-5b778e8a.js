@@ -1172,7 +1172,7 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                     <li><a class="menu-btn" href="${zumeDashboard.urls.launch_intensive_session_course}"><span class="icon zume-course"></span>${zumeDashboard.translations.three_day_intensive_course}</a></li>
                 </ul>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("launch-course",is);class y extends g{static get properties(){return{slide:{type:Object}}}connectedCallback(){super.connectedCallback(),window.addEventListener("resize",this.resizeCallback)}disconnectedCallback(){super.disconnectedCallback(),window.removeEventListener("resize",this.resizeCallback)}resizeCallback(e){const t=document.querySelector(".slides-card"),{innerWidth:i,innerHeight:a}=e.currentTarget;i/a>16/9?t.style=`--slide-unit: ${16/9*a/100}px`:t.style=`--slide-unit: ${i/100}px`}renderProgressBar(){let e=[],t=[];for(let i=0;i<this.slide.progress_bar.length;i++){const a=this.slide.progress_bar[i];if(!a){e.push(t),e.push(!1),t=[];continue}t.push(a)}return e.push(t),o`
+        `}createRenderRoot(){return this}}customElements.define("launch-course",is);class y extends g{static get properties(){return{slide:{type:Object}}}connectedCallback(){super.connectedCallback(),window.addEventListener("resize",this.resizeCallback)}disconnectedCallback(){super.disconnectedCallback(),window.removeEventListener("resize",this.resizeCallback)}firstUpdated(){this.resizeCallback(null,window)}resizeCallback(e,t=null){const i=document.querySelector(".slides-card"),a=t||e.currentTarget,{innerWidth:r,innerHeight:n}=a;r/n>16/9?i.style=`--slide-unit: ${16/9*n/100}px`:i.style=`--slide-unit: ${r/100}px`}renderProgressBar(){let e=[],t=[];for(let i=0;i<this.slide.progress_bar.length;i++){const a=this.slide.progress_bar[i];if(!a){e.push(t),e.push(!1),t=[];continue}t.push(a)}return e.push(t),o`
             <div class="stage ${this.slide.key}-bar">
                 <div class="progress-bar-wrapper">
                     ${e.map(i=>i?o`
@@ -1723,4 +1723,4 @@ var ot=Object.defineProperty;var lt=(s,e,t)=>e in s?ot(s,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",xs);
-//# sourceMappingURL=main-fc5c8f7f.js.map
+//# sourceMappingURL=main-5b778e8a.js.map
