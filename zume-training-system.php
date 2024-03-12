@@ -135,6 +135,7 @@ class Zume_Training {
         add_filter( 'email_change_email', [ $this, 'filter_email_change_email' ], 10, 1 );
         add_action( 'dt_create_users_corresponding_contact', [ $this, 'dt_create_users_corresponding_contact' ], 10, 2 );
         add_action( 'dt_post_updated', [ $this, 'update_coaching_contact' ], 10, 5 );
+        add_filter( 'pll_redirect_home', '__return_false' );
 
         /* Ensure that Login is enabled and settings set to the correct values */
         $fields = [
@@ -528,8 +529,8 @@ class Zume_Training {
 
         $is_magic_link_page = apply_filters( 'dt_blank_access', false );
 
-        // zume-redirects This ensures that the url always matches the language in the cookie
-        if ( !empty( $language_code ) && !dt_is_rest() && $is_magic_link_page ) {
+        // zume-redirects This ensures that the url always matches the users ui_language
+        if ( false && !empty( $language_code ) && !dt_is_rest() && $is_magic_link_page ) {
             [
                 'lang_code' => $lang_code,
                 'path' => $path,
