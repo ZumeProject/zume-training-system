@@ -89,6 +89,17 @@ export class CourseSlideshow extends LitElement {
         }
     }
     listenForMouseClick(event) {
+        if (event.target.id === 'hamburger-menu') {
+            return
+        }
+        const matcher = (target) => {
+            return target.id === 'offCanvas' || target.classList.contains('js-off-canvas-overlay')
+        }
+        if (this.hasParent(event.target, matcher)
+        ) {
+            return
+        }
+
         const { x, type, which } = event
 
         if ( type !== 'mousedown' || which !== 1 ) {
@@ -96,7 +107,6 @@ export class CourseSlideshow extends LitElement {
         }
 
         const { innerWidth } = window
-        const dir = document.querySelector('html').dir
 
         const threshhold = 1 / 2 * innerWidth
 
@@ -107,6 +117,24 @@ export class CourseSlideshow extends LitElement {
         if ( x > innerWidth - threshhold ) {
             this.rightSlide()
         }
+    }
+
+    hasParent(target, matcher) {
+        let thisTarget = target
+        const maxDepth = 50
+        let i = 0
+        while (thisTarget) {
+            if (matcher(thisTarget)) {
+                return true
+            }
+            thisTarget = thisTarget.parentElement
+
+            i = i + 1
+            if (i > maxDepth) {
+                return false
+            }
+        }
+        return false
     }
 
     setSlide(sectionIndex) {
