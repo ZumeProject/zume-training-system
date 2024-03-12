@@ -923,7 +923,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enDisplayName' => 'Spanish',
                 'code' => 'es',
                 'displayCode' => 'es',
-                'locale' => 'es_ES',
+                'locale' => 'es',
                 'nativeName' => 'Español',
                 'rtl' => false,
             ),
@@ -1197,7 +1197,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
         $training_items = [
             '1' => [
                 'key' => '01',
-                'name' => __( 'god-uses-ordinary-people', 'zume' ),
+                'name' => 'god-uses-ordinary-people',
                 'title' => __( 'God Uses Ordinary People', 'zume' ),
                 'description' => __( "You'll see how God uses ordinary people doing simple things to make a big impact.", 'zume' ),
                 'type' => 'concept',
@@ -1431,7 +1431,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
             ],
             '27' => [
                 'key' => '27',
-                'name' => '',
+                'name' => 'three-month-plan',
                 'title' => __( 'Three-Month Plan', 'zume' ),
                 'description' => __( 'Create and share your plan for how you will implement the Zúme tools over the next three months.', 'zume' ),
                 'type' => 'tool',

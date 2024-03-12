@@ -2,17 +2,17 @@
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 
-class Zume_QR_Video extends Zume_Magic_Page
+class Zume_Activites_Prayer_Cycle extends Zume_Magic_Page
 {
     use Translateable;
 
     public $magic = false;
     public $parts = false;
-    public $page_title = 'Zúme Training';
-    public $root = 'zume_app';
-    public $type = 'video';
-    public $lang = 'en';
-    public static $token = 'zume_app_video';
+    public $page_title = 'Zúme Activity - Accountability';
+    public $root = 'zume_activity';
+    public $type = 'prayercycle';
+    public $lang;
+    public static $token = 'zume_activity_prayercycle';
 
     private static $_instance = null;
     public static function instance() {
@@ -24,16 +24,15 @@ class Zume_QR_Video extends Zume_Magic_Page
 
     public function __construct() {
         parent::__construct();
-        $this->lang = get_locale();
 
         [
             'lang_code' => $lang_code,
             'url_parts' => $url_parts,
         ] = zume_get_url_pieces();
 
-        $page_slug = $url_parts[0] ?? '';
+        $this->lang = $lang_code ?? $this->lang;
 
-        if ( isset( $url_parts[0] ) && ( $this->root === $url_parts[0] && $this->type === $url_parts[1] ) && ! dt_is_rest() ) {
+        if ( isset( $url_parts[0] ) && $this->root === $url_parts[0] && isset( $url_parts[1] ) && $this->type === $url_parts[1] && ! dt_is_rest() ) {
 
             $this->set_locale( $lang_code );
 
@@ -52,10 +51,10 @@ class Zume_QR_Video extends Zume_Magic_Page
             add_action( 'dt_blank_head', [ $this, '_header' ] );
             add_action( 'dt_blank_body', [ $this, 'body' ] );
             add_action( 'dt_blank_footer', [ $this, '_footer' ] );
-//            add_action( 'wp_footer', [ $this, 'action_wp_footer' ] );
 
             add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
+
             add_filter( 'wp_enqueue_scripts', [ $this, 'enqueue_zume_training_scripts' ] );
 
         }
@@ -70,37 +69,21 @@ class Zume_QR_Video extends Zume_Magic_Page
     }
 
     public function header_style(){
-
+        ?>
+        <script>
+            jQuery(document).ready(function($){
+                document.cookie = "zume_language=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "pll_language=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            });
+        </script>
+        <?php
     }
 
     public function body(){
-        if ( ! is_numeric( $_GET['id'] ) ) {
-            die( 'Not the correct id type' );
-        }
-        $vimeo_id = sanitize_text_field( wp_unslash( $_GET['id'] ) );
-        // https://zume.training/wp-content/themes/zume-training/video.php?id=551339739
 
-        ?>
-        <!doctype html>
-        <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        </head>
-        <body>
-        <div style="padding:56.25% 0 0 0;position:relative;">
-            <iframe src="https://player.vimeo.com/video/<?php echo $vimeo_id ?>?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;h=fcfe2172a8"
-                    frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
-                    allowfullscreen
-                    style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                    title="<?php echo $vimeo_id ?>">
-            </iframe>
-        </div>
-        <script src="https://player.vimeo.com/api/player.js"></script>
-        </body>
-        </html>
-        <?php
+        echo $this->lang . '<br>';
+        echo '<pre>'; print_r( zume_get_url_pieces() ); echo '</pre>';
+        echo '<pre>'; debug_print_backtrace(); echo '</pre>';
     }
 }
-Zume_QR_Video::instance();
+Zume_Activites_Prayer_Cycle::instance();
