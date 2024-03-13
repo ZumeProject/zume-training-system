@@ -295,7 +295,7 @@ export class CoursePresenter extends LitElement {
                 </div>
             </nav>
 
-            <span class="${hiddenClass} p-1 d-block absolute z-1">
+            <span class="${hiddenClass} p-1 d-block absolute top z-1">
                 <button id="hamburger-menu" class="nav-toggle show" @click=${this.openMenu}>
                     <span class="hamburger brand"></span>
                 </button>

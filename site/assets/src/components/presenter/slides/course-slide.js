@@ -19,19 +19,23 @@ export class CourseSlide extends LitElement {
         this.resizeCallback(null, window)
     }
     resizeCallback(event, target = null) {
-        let slide = document.querySelector('.slides-card')
+        const normalSlides = document.querySelectorAll('.slides-card')
 
-        if (!slide) {
-            slide = document.querySelector('.video-slide')
-        }
+        const videoSlides = document.querySelectorAll('.video-slide')
+
+        const slides = [...normalSlides, videoSlides]
 
         const currentTarget = target || event.currentTarget
         const { innerWidth: W, innerHeight: H } = currentTarget
 
         if ( W/H > 16/9 ) {
-            slide.style = `--slide-unit: ${16 / 9 * H / 100}px`
+            slides.forEach((slide) => {
+                slide.style = `--slide-unit: ${16 / 9 * H / 100}px`
+            })
         } else {
-            slide.style = `--slide-unit: ${W / 100}px`
+            slides.forEach((slide) => {
+                slide.style = `--slide-unit: ${W / 100}px`
+            })
         }
 
     }

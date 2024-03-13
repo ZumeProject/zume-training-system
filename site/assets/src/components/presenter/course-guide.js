@@ -10,7 +10,7 @@ export class CourseGuide extends LitElement {
     render() {
         return html`
             <div class="container">
-                <div class="stack | mb-5">
+                <div class="stack | my-4" data-outline-slides>
                     ${this.sections.map((slide, i) => {
                         return html`
                             <slide-switcher .slide=${slide}></slide-switcher>

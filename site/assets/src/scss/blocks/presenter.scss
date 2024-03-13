@@ -143,6 +143,12 @@
         height: 100%;
     }
 }
+[data-outline-slides] .slides-card,
+.slide-outline {
+    border: 1px solid #ccc;
+    border-radius: calc( var(--slide-unit, 1vw) );
+    overflow: hidden;
+}
 
 /* On e.g. an activity page we want the relative size of the divider to be the height of the cover section
 not of the 2 column section */

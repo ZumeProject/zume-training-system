@@ -112,11 +112,6 @@ class Zume_Training_Translator extends Zume_Magic_Page
                 #blank-template-body {
                     background-color: WhiteSmoke !important;
                 }
-                .slide-outline {
-                    border: 1px solid #ccc;
-                    border-radius: calc( var(--slide-unit, 1vw) );
-                    overflow: hidden;
-                }
             </style>
             <?php
         } else {
