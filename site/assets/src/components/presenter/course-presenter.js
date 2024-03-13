@@ -133,6 +133,21 @@ export class CoursePresenter extends LitElement {
             this.showIndex = false
         }
         this.changeSession(this.lessonIndex)
+        this.closeMenu()
+    }
+
+    /* TODO: complete this function to use the subsection numbers correctly */
+    handleSubSectionLink(event) {
+        const link = event.target
+        const sessionNumber = Number(link.dataset.sessionNumber)
+        const subsectionNumber = Number(link.dataset.subsectionNumber)
+        this.lessonIndex = sessionNumber
+
+        if ( this.showIndex === true ) {
+            this.showIndex = false
+        }
+        this.changeSession(this.lessonIndex)
+        this.closeMenu()
     }
 
     getNextSession() {
@@ -233,6 +248,10 @@ export class CoursePresenter extends LitElement {
         const menu = this.querySelector('#offCanvas')
         jQuery(menu).foundation('open')
     }
+    closeMenu() {
+        const menu = this.querySelector('#offCanvas')
+        jQuery(menu).foundation('close')
+    }
 
     render() {
         const hiddenClass = this.showIndex ? 'visually-hidden' : ''
@@ -272,17 +291,48 @@ export class CoursePresenter extends LitElement {
                     </button>
                     <!-- Menu -->
 
-                    <div class="stack-1 py-1">
+                    <ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true" data-multi-open="false">
                         ${this.zumeSessions.map((session, sessionNumber) => html`
-                            <button
-                                class="link session-link"
-                                data-session-number="${sessionNumber}"
-                                @click=${this.handleSessionLink}
-                            >
-                                ${this.getSessionTitle(sessionNumber)}
-                            </button>
+                            <li>
+                                <a
+                                    class="session-link"
+                                    data-session-number="${sessionNumber}"
+                                    @click=${this.handleSessionLink}
+                                >
+                                    ${this.getSessionTitle(sessionNumber)}
+                                </a>
+                                <ul class="menu vertical nested">
+                                    <a
+                                        class="session-link"
+                                        data-subitem
+                                        data-session-number=${sessionNumber}
+                                        data-subsection-number=${0}
+                                        @click=${this.handleSubSectionLink}
+                                    >
+                                        Sub menu 1
+                                    </a>
+                                    <a
+                                        class="session-link"
+                                        data-subitem
+                                        data-session-number=${sessionNumber}
+                                        data-subsection-number=${1}
+                                        @click=${this.handleSubSectionLink}
+                                    >
+                                        Sub menu 2
+                                    </a>
+                                    <a
+                                        class="session-link"
+                                        data-subitem
+                                        data-session-number=${sessionNumber}
+                                        data-subsection-number=${2}
+                                        @click=${this.handleSubSectionLink}
+                                    >
+                                        Sub menu 3
+                                    </a>
+                                </ul>
+                            </li>
                         `)}
-                    </div>
+                    </ul>
                 </div>
 
                 <div class="stack">
