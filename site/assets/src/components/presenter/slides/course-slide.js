@@ -19,7 +19,11 @@ export class CourseSlide extends LitElement {
         this.resizeCallback(null, window)
     }
     resizeCallback(event, target = null) {
-        const slide = document.querySelector('.slides-card')
+        let slide = document.querySelector('.slides-card')
+
+        if (!slide) {
+            slide = document.querySelector('.video-slide')
+        }
 
         const currentTarget = target || event.currentTarget
         const { innerWidth: W, innerHeight: H } = currentTarget
