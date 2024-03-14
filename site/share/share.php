@@ -120,7 +120,7 @@ class Zume_Training_Share extends Zume_Magic_Page
                 </div>
 
                 <p>
-                    <?php echo esc_html__( 'When we are faithful to obey and share what the Lord has shared with us, then he promises to share even more.' , 'zume' ) ?>
+                    <?php echo esc_html__( 'When we are faithful to obey and share what the Lord has shared with us, then he promises to share even more.', 'zume' ) ?>
                 </p>
 
                 <?php if ( empty( $posts ) ): ?>
@@ -151,7 +151,6 @@ class Zume_Training_Share extends Zume_Magic_Page
                                 card.classList.remove('d-none')
                                 return
                             }
-
 
                             if (cardType === filterType) {
                                 console.log('removing d-none from card', card)
@@ -206,7 +205,7 @@ class Zume_Training_Share extends Zume_Magic_Page
 
                     <li class="share-cards" data-type="<?php echo esc_attr( $page_info['type'] ) ?>">
                         <div class="stack | share card">
-                            <a class="f-1 bold brand my-0" href="<?php echo esc_url( $page_url ) ?>">
+                            <a class="f-0 bold my-0" href="<?php echo esc_url( $page_url ) ?>">
                                 <?php echo esc_html( $page_title ) ?>
                             </a>
                             <div class="center">
