@@ -2,18 +2,6 @@ import { html } from 'lit';
 import { CourseSlide } from './course-slide';
 
 export class VideoSlide extends CourseSlide {
-    constructor() {
-        super()
-
-    }
-
-    sendNavigateEvent(direction = 'forwards') {
-        console.log(direction)
-        const dir = direction === 'forwards' ? 'forwards' : 'backwards'
-        const event = new CustomEvent( `navigateSlide-${dir}` , { bubbles: true })
-        this.dispatchEvent(event)
-    }
-
     render() {
         return html`
             <div class="video-slide">
@@ -24,6 +12,8 @@ export class VideoSlide extends CourseSlide {
                     >
                     </iframe>
                 </div>
+                <!-- These buttons have no click handlers. They essentially give a space to allow the
+            mouse click to trigger the click left/right side of screen event -->
                 <button
                     type="button"
                     class="btn icon-btn absolute middle left mx-0"
