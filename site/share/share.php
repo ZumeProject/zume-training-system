@@ -95,29 +95,104 @@ class Zume_Training_Share extends Zume_Magic_Page
         require __DIR__ . '/../parts/nav.php';
 
 
-        $current_language = $zume_user_profile['language']['code'];
+        $current_language = zume_current_language();
 
         $args = [
             'post_type' => 'zume_pieces',
             'lang' => $current_language,
             'posts_per_page' => -1,
+            'order' => 'ASC',
         ];
 
         $posts = get_posts( $args );
+        $pieces_info = zume_training_items();
+
         $share_translations = self::translations();
 
         ?>
 
-        <div class="container">
-            <h1 class="text-center"><?php echo esc_html__( 'Share', 'zume' ) ?></h1>
+        <div class="container-xsm | my-1">
+            <div class="stack">
+                <h1 class="text-center"><?php echo esc_html__( 'Sharing with Others', 'zume' ) ?></h1>
 
-            <?php if ( empty( $posts ) ): ?>
+                <div class="center">
+                    <img class="w-30" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/guys-reading.svg' ) ?>" alt="guys reading">
+                </div>
 
-                <p>No pieces pages for the language code <?php echo esc_html( $current_language ) ?></p>
+                <p>
+                    <?php echo esc_html__( 'When we are faithful to obey and share what the Lord has shared with us, then he promises to share even more.' , 'zume' ) ?>
+                </p>
 
-            <?php endif; ?>
+                <?php if ( empty( $posts ) ): ?>
 
-            <ol class="stack-1">
+                    <p>No pieces pages for the language code <?php echo esc_html( $current_language ) ?></p>
+
+                <?php endif; ?>
+            </div>
+
+            <script>
+                jQuery(document).ready(function(){
+                    const filterArea = document.querySelector('.filter-area')
+                    const filterButtons = document.querySelectorAll('.filter-button')
+                    const shareCards = document.querySelectorAll('.share-cards')
+
+                    const filterCallback = (event) => {
+                        const filterType = event.target.dataset.filter
+
+                        filterButtons.forEach(button => {
+                            button.classList.remove('selected')
+                        })
+                        event.target.classList.add('selected')
+
+                        shareCards.forEach(card => {
+                            const cardType = card.dataset.type
+
+                            if ( filterType === 'all' ) {
+                                card.classList.remove('d-none')
+                                return
+                            }
+
+
+                            if (cardType === filterType) {
+                                console.log('removing d-none from card', card)
+                                card.classList.remove('d-none')
+                            } else {
+                                console.log('adding d-none to card', card, cardType, filterType, cardType === filterType)
+                                card.classList.add('d-none')
+                            }
+
+                        })
+                    }
+
+                    filterArea.classList.toggle('d-none')
+                    filterButtons.forEach(button => {
+                        button.addEventListener('click', filterCallback)
+                    });
+                })
+            </script>
+
+            <div class="d-none filter-area">
+                <button class="icon-btn f-2 ms-auto" data-toggle="filter-menu">
+                    <span class="visually-hidden"><?php echo esc_html__( 'Filter', 'zume' ) ?></span>
+                    <span class="icon zume-filter brand-light" aria-hidden="true"></span>
+                </button>
+                <div class="dropdown-pane" id="filter-menu" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="center" data-close-on-click="true" data-close-on-click-inside="true">
+                    <ul>
+                        <li>
+                            <button class="menu-btn w-100 filter-button selected" data-filter="all">
+                                <?php echo esc_html__( 'All', 'zume' ) ?>
+                            </button>
+                            <button class="menu-btn w-100 filter-button" data-filter="tool">
+                                <?php echo esc_html__( 'Tools', 'zume' ) ?>
+                            </button>
+                            <button class="menu-btn w-100 filter-button" data-filter="concept">
+                                <?php echo esc_html__( 'Concepts', 'zume' ) ?>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="stack container-xsm">
                 <?php foreach ( $posts as $post ): ?>
 
                     <?php
@@ -125,23 +200,33 @@ class Zume_Training_Share extends Zume_Magic_Page
                         $meta = get_post_meta( $post->ID );
                         $page_title = empty( $meta['zume_piece_h1'][0] ) ? get_the_title( $post->ID ) : $meta['zume_piece_h1'][0];
                         $page_url = site_url( $current_language . '/' . $post->post_name );
+                        $page_info = $pieces_info[ (int) $meta['zume_piece'][0] - 1 ];
 
                     ?>
 
-                    <li>
-                        <div class="cluster">
+                    <li class="share-cards" data-type="<?php echo esc_attr( $page_info['type'] ) ?>">
+                        <div class="stack | share card">
                             <a class="f-1 bold brand my-0" href="<?php echo esc_url( $page_url ) ?>">
                                 <?php echo esc_html( $page_title ) ?>
                             </a>
-                            <share-links
-                                url="<?php echo esc_attr( $page_url ) ?>"
-                                title="<?php echo esc_attr( $page_title ) ?>"
-                                t="<?php echo esc_attr( json_encode( $share_translations ) ) ?>"></share-links>
+                            <div class="center">
+                                <share-links
+                                    url="<?php echo esc_attr( $page_url ) ?>"
+                                    title="<?php echo esc_attr( $page_title ) ?>"
+                                    t="<?php echo esc_attr( json_encode( $share_translations ) ) ?>">
+                                </share-links>
+                                <noscript>
+                                    <div class="stack--2">
+                                        <p><?php echo esc_html( $share_translations['copy_and_share_text'] ) ?></p>
+                                        <p><code style="overflow-wrap: anywhere"><?php echo esc_url( $page_url ) ?></code></p>
+                                    </div>
+                                </noscript>
+                            </div>
                         </div>
                     </li>
 
                 <?php endforeach; ?>
-            </ol>
+            </ul>
         </div>
         <?php
     }
