@@ -283,7 +283,7 @@ export class CoursePresenter extends LitElement {
                 ` : ''
             }
 
-            <nav class="${hiddenClass} stack | bg-white px-0 text-center | off-canvas ${this.dir === 'rtl' ? 'position-right' : 'position-left'} justify-content-between py-1" id="offCanvas" data-off-canvas data-transition="overlap">
+            <nav class="${hiddenClass} stack | bg-white px-0 text-center | presenter-menu off-canvas ${this.dir === 'rtl' ? 'position-right' : 'position-left'} justify-content-between py-1" id="offCanvas" data-off-canvas data-transition="overlap">
                 <div class="stack">
                     <!-- Close button -->
                     <button class="close-button" aria-label="Close menu" type="button" data-close>

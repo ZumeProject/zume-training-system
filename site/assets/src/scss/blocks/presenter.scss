@@ -137,6 +137,8 @@
     border-radius: calc( var(--slide-unit) );
     overflow: hidden;
     background-color: #2DADE2;
+    max-height: 100vh;
+    margin-inline: auto;
 
     & > iframe {
         width: 100%;
@@ -281,6 +283,9 @@ not of the 2 column section */
         display: block;
         background-color: color('gray-300');
     }
+}
+.presenter-menu {
+    width: min( 100vw, 500px );
 }
 .session-link {
     color: color('black');

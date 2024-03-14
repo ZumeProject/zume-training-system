@@ -89,6 +89,10 @@ class Zume_Training_Presenter extends Zume_Magic_Page
                 'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . 'assets/images' ),
                 'language_cookie' => ZUME_LANGUAGE_COOKIE,
                 'zume_languages' => zume_language_codes(),
+                'translations' => [
+                    'next_slide' => __( 'Next slide', 'zume' ),
+                    'previous_slide' => __( 'Previous slide', 'zume' ),
+                ],
             ]) ?>][0]
             const zume10Sessions = [<?php echo json_encode( zume_full_course_builder( '10', $this->lang_code ) ) ?>][0]
             const zume20Sessions = [<?php echo json_encode( zume_full_course_builder( '20', $this->lang_code ) ) ?>][0]
