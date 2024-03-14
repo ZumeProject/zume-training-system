@@ -356,7 +356,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                     <h3><?php echo esc_html__( 'Change the World.', 'zume' ) ?></h3>
                 </div>
             </div>
-            <a href="<?php echo esc_url( zume_make_a_plan_wizard_url() ) ?>" class="btn large uppercase light fit-content mx-auto"><?php echo esc_html__( 'Get started!', 'zume' ) ?></a>
+            <a href="<?php echo esc_url( zume_make_a_plan_wizard_url() ) ?>" class="btn large uppercase light fit-content mx-auto"><?php echo esc_html__( 'Get started', 'zume' ) ?></a>
         </div>
 
         <!------- End of page -------->

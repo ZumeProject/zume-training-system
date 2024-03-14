@@ -86,6 +86,39 @@ class Zume_Training_Page extends Zume_Magic_Page
 
         require __DIR__ . '/../parts/nav.php';
 
+        ?>
+
+        <div class="container-md stack-2 center | py-1">
+            <h1 class="text-center"><?php echo esc_html__( "Training Path... It's your choice" ) ?></h1>
+            <div class="switcher">
+                <div class="stack | card | switcher-width-40">
+                    <h2 class="f-1 text-center"><?php echo esc_html__( 'Create your own training', 'zume' ) ?></h2>
+                    <img class="mx-auto h-6rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Gather-A-Group-01.svg' ) ?>" alt="<?php echo esc_attr__( 'Join a training', 'zume' ) ?>">
+                    <p class="mb-0">
+                        <?php echo esc_html__('Gather a few friends or go through the training with an existing small group. Create your own training plan and track your progress.', 'zume' ) ?>
+                    </p>
+                    <button class="btn light uppercase mt-auto"><?php echo esc_html__( 'Get started', 'zume' ) ?></button>
+                </div>
+                <div class="stack | card | switcher-width-40">
+                    <h2 class="f-1 text-center"><?php echo esc_html__( 'Create your own training', 'zume' ) ?></h2>
+                    <img class="mx-auto h-6rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JoinATraining.svg' ) ?>" alt="<?php echo esc_attr__( 'Join a training', 'zume' ) ?>">
+                    <p class="mb-0">
+                        <?php echo esc_html__('If you can‘t gather a group right now, consider joining one of our online trainings lead by an experienced Zúme coach.', 'zume' ) ?>
+                    </p>
+                    <button class="btn light uppercase mt-auto"><?php echo esc_html__( 'Join now', 'zume' ) ?></button>
+                </div>
+                <div class="stack | card | switcher-width-40">
+                    <h2 class="f-1 text-center"><?php echo esc_html__( 'Create your own training', 'zume' ) ?></h2>
+                    <img class="mx-auto h-6rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/coach-2guys.svg' ) ?>" alt="<?php echo esc_attr__( 'Join a training', 'zume' ) ?>">
+                    <p class="mb-0">
+                        <?php echo esc_html__('We can connect you with free Zúme coach who is committed to helping you get the training and becoming a fruitful disciple.', 'zume' ) ?>
+                    </p>
+                    <button class="btn light uppercase mt-auto"><?php echo esc_html__( 'Learn more', 'zume' ) ?></button>
+                </div>
+            </div>
+        </div>
+
+        <?php
 
         $strings = [
             __('Zúme Training', 'zume' ),
@@ -157,10 +190,6 @@ class Zume_Training_Page extends Zume_Magic_Page
             __('3 Day Intensive', 'zume' ),
             __('Zume can bet compressed into 5 half day sections of 4 hours each. This can be done with a Friday evening (4 hours), and all day Saturday (8 hours) and all day Sunday (8 hours).', 'zume' ),
         ];
-        foreach($strings as $string ){
-            echo $string . '<br>';
-        }
-
 
     }
 }

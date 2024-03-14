@@ -32,7 +32,7 @@
     "src": "site/assets/fonts/ZumeIconsSquare/fonts/Zume-Icons-Square.woff"
   },
   "site/assets/src/main.css": {
-    "file": "assets/main-6a5cbc03.css",
+    "file": "assets/main-2da60185.css",
     "src": "site/assets/src/main.css"
   },
   "site/assets/src/main.js": {
@@ -43,9 +43,9 @@
       "assets/Zume-Icons-Square-1f38015f.svg"
     ],
     "css": [
-      "assets/main-6a5cbc03.css"
+      "assets/main-2da60185.css"
     ],
-    "file": "assets/main-ea886507.js",
+    "file": "assets/main-a0076a8e.js",
     "isEntry": true,
     "src": "site/assets/src/main.js"
   }
