@@ -136,6 +136,7 @@ class Zume_Training_Share extends Zume_Magic_Page
                         'tools' => __( 'Tools', 'zume' ),
                         'concepts' => __( 'Concepts', 'zume' ),
                         'filter' => __( 'Filter', 'zume' ),
+                        'sort' => __( 'Sort', 'zume' ),
                     ],
                 ),
             ]) ?>][0]
