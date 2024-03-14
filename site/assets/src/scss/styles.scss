@@ -573,6 +573,26 @@ a, a:visited {
 .collapse[data-state="open"] {
   overflow: initial;
 }
+.concepts__title {
+  color: color('white');
+  background-color: color('brand-light');
+  padding: spacing(0);
+  line-height: 1;
+  border-radius: 0.5rem;
+  font-size: font-size(0);
+}
+.concepts__tick {
+  color: color('brand-light');
+  background-color: color('gray-100');
+  line-height: 1;
+  padding: spacing(-1) spacing(1);
+  border-radius: 0.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
 
 @media (min-width: $break-lg) {
 
