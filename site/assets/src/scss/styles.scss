@@ -588,7 +588,27 @@ a, a:visited {
     background-position: top,right,bottom,left;
     background-size: 14px 15px
 }
+.training-page {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  width: 100%;
+  max-width: $max-width;
+  margin-inline: auto;
 
+  & .left-menu {
+    display: flex;
+    flex-direction: column;
+    max-width: 26rem;
+
+    & > :last-child {
+      flex-grow: 2;
+    }
+  }
+
+  & .content-area {
+    margin-inline: spacing(2);
+  }
+}
 
 .concepts__title {
   color: color('white');
@@ -655,6 +675,14 @@ a, a:visited {
     }
 }
 @media (max-width: $break-lg) {
+  .training-page {
+    display: block;
+
+    & .left-menu {
+      display: none;
+    }
+  }
+
   .footer .footer-links {
     justify-content: center;
   }
