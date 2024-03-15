@@ -49,6 +49,7 @@
 
 html {
     font-size: 18px;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -104,6 +105,11 @@ ul[role="list"] {
 
 a, a:visited {
     text-decoration: none;
+}
+
+.offset-anchor {
+  position: absolute;
+  top: -5rem;
 }
 
 [role="button"] {
@@ -599,6 +605,11 @@ a, a:visited {
     display: flex;
     flex-direction: column;
     max-width: 26rem;
+    min-height: 100vh;
+
+    position: sticky;
+    top: 3rem;
+    align-self: flex-start;
 
     & > :last-child {
       flex-grow: 2;

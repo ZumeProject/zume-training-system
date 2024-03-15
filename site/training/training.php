@@ -121,16 +121,17 @@ class Zume_Training_Page extends Zume_Magic_Page
             <div class="left-menu">
                 <h2 class="p-2 uppercase white bg-brand-light circle-end"><?php echo esc_html__( 'Course Overview', 'zume' ) ?></h2>
                 <ul>
-                    <li><a href="#course-concepts" class="px-2"><?php echo esc_html__( 'Course Concepts', 'zume' ) ?></a></li>
-                    <li><a href="#training-schedules" class="px-2"><?php echo esc_html__( 'Training Schedules', 'zume' ) ?></a></li>
-                    <li><a href="#what-is-required" class="px-2"><?php echo esc_html__( 'What is required?', 'zume' ) ?></a></li>
+                    <li><a href="#course-concepts" class="px-2 training-link"><?php echo esc_html__( 'Course Concepts', 'zume' ) ?></a></li>
+                    <li><a href="#training-schedules" class="px-2 training-link"><?php echo esc_html__( 'Training Schedules', 'zume' ) ?></a></li>
+                    <li><a href="#what-is-required" class="px-2 training-link"><?php echo esc_html__( 'What is required?', 'zume' ) ?></a></li>
                 </ul>
                 <div class="bg-brand-light p-2 rounded-end">
                     <img class="w-60 mx-auto" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Whats-Required-NEW.svg' ) ?>" alt="Group doing zume">
                 </div>
             </div>
             <div class="stack-4 | content-area">
-                <div class="stack" id="course-concepts">
+                <div class="stack | position-relative">
+                    <span class="offset-anchor" id="course-concepts"></span>
                     <h2 class="h1 brand-light">
                         <?php echo esc_html__( 'Course Concepts', 'zume' ) ?>
                     </h2>
@@ -234,7 +235,8 @@ class Zume_Training_Page extends Zume_Magic_Page
                         </div>
                     </div>
                 </div>
-                <div class="stack-2" id="training-schedules">
+                <div class="stack-2 | position-relative">
+                    <span class="offset-anchor" id="training-schedules"></span>
                     <h2 class="brand-light"><?php echo esc_html__( 'Training Schedules', 'zume' ) ?></h2>
                     <p>
                         <?php echo esc_html__( 'Zúme is 20 hours of training. But those 20 hours can be broken up differently depending on your groups availability.', 'zume' ) ?>
@@ -278,7 +280,8 @@ class Zume_Training_Page extends Zume_Magic_Page
                         </div>
                     </div>
                 </div>
-                <div class="stack-2" id="what-is-required">
+                <div class="stack-2 | position-relative">
+                    <span class="offset-anchor" id="what-is-required"></span>
                     <h2 class="brand-light"><?php echo esc_html__( 'What is required?', 'zume' ) ?></h2>
                     <p>Aute reprehenderit anim ipsum ea aliqua cillum occaecat laboris. Do Lorem id in ad velit id culpa culpa velit cillum in. Cillum aliquip enim elit eiusmod. Nulla dolore sunt dolor eu irure. Aliquip commodo officia incididunt exercitation ad cillum excepteur laboris reprehenderit laborum ipsum fugiat. Do veniam eu sunt elit est amet. Aliquip deserunt occaecat est ipsum non ipsum eu non nulla est fugiat enim sunt amet.</p>
                 </div>
