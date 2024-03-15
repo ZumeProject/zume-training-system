@@ -621,6 +621,43 @@ a, a:visited {
   }
 }
 
+.training-link {
+  padding-block: spacing(-3);
+  transition: all 100ms linear;
+
+  & > a {
+    color: color('black');
+
+    &:link {
+      text-decoration: none;
+    }
+  }
+
+  &.active {
+    background-color: color('gray-100');
+    border-end-end-radius: 5px;
+    border-start-end-radius: 5px;
+
+    position: relative;
+
+    & > a {
+      font-weight: 600;
+    }
+
+    &:before {
+      content: '';
+      width: 7px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      border-end-end-radius: 5px;
+      border-start-end-radius: 5px;
+      background-color: color('brand-light');
+    }
+  }
+}
+
 .concepts__title {
   color: color('white');
   background-color: color('brand-light');

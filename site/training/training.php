@@ -76,6 +76,47 @@ class Zume_Training_Page extends Zume_Magic_Page
         <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
+
+                const trainingLinks = Array.from(document.querySelectorAll('.training-link a'))
+
+                const scrollItems = trainingLinks.reduce(function(links, link) {
+                    const href = link.getAttribute('href')
+
+                    const scrollItem = document.querySelector(href)
+
+                    if (scrollItem) {
+                        links.push(scrollItem)
+                    }
+                    return links
+                }, [])
+
+                window.addEventListener('scroll', onWindowScroll)
+                const screenHeight = window.screen.height
+
+                function onWindowScroll(event) {
+                    const scrollTop = $(this).scrollTop()
+
+                    const currentScrolledItems = scrollItems.reduce((items, item) => {
+
+                        const rect = item.getBoundingClientRect()
+                        if ( $(item).offset().top < scrollTop + screenHeight * 0.4 ) {
+                            items.push(item)
+                        }
+                        return items
+                    }, [])
+
+                    const lastItem = currentScrolledItems[currentScrolledItems.length - 1]
+                    const id = lastItem ? lastItem.id : ''
+
+                    trainingLinks.forEach(element => {
+                        const parent = element.parentElement
+                        parent.classList.remove('active')
+
+                        if ( element.getAttribute('href') === '#' + id ) {
+                            parent.classList.add('active')
+                        }
+                    });
+                }
             });
         </script>
         <?php
@@ -121,9 +162,9 @@ class Zume_Training_Page extends Zume_Magic_Page
             <div class="left-menu">
                 <h2 class="p-2 uppercase white bg-brand-light circle-end"><?php echo esc_html__( 'Course Overview', 'zume' ) ?></h2>
                 <ul>
-                    <li><a href="#course-concepts" class="px-2 training-link"><?php echo esc_html__( 'Course Concepts', 'zume' ) ?></a></li>
-                    <li><a href="#training-schedules" class="px-2 training-link"><?php echo esc_html__( 'Training Schedules', 'zume' ) ?></a></li>
-                    <li><a href="#what-is-required" class="px-2 training-link"><?php echo esc_html__( 'What is required?', 'zume' ) ?></a></li>
+                    <li class="training-link"><a href="#course-concepts" class="px-2"><?php echo esc_html__( 'Course Concepts', 'zume' ) ?></a></li>
+                    <li class="training-link"><a href="#training-schedules" class="px-2"><?php echo esc_html__( 'Training Schedules', 'zume' ) ?></a></li>
+                    <li class="training-link"><a href="#what-is-required" class="px-2"><?php echo esc_html__( 'What is required?', 'zume' ) ?></a></li>
                 </ul>
                 <div class="bg-brand-light p-2 rounded-end">
                     <img class="w-60 mx-auto" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Whats-Required-NEW.svg' ) ?>" alt="Group doing zume">
@@ -284,6 +325,8 @@ class Zume_Training_Page extends Zume_Magic_Page
                     <span class="offset-anchor" id="what-is-required"></span>
                     <h2 class="brand-light"><?php echo esc_html__( 'What is required?', 'zume' ) ?></h2>
                     <p>Aute reprehenderit anim ipsum ea aliqua cillum occaecat laboris. Do Lorem id in ad velit id culpa culpa velit cillum in. Cillum aliquip enim elit eiusmod. Nulla dolore sunt dolor eu irure. Aliquip commodo officia incididunt exercitation ad cillum excepteur laboris reprehenderit laborum ipsum fugiat. Do veniam eu sunt elit est amet. Aliquip deserunt occaecat est ipsum non ipsum eu non nulla est fugiat enim sunt amet.</p>
+                    <p>Cupidatat velit tempor velit ut ex nulla consequat incididunt in qui dolore incididunt do. Et quis consectetur ex mollit in laborum. Aute dolor reprehenderit anim eiusmod dolor magna. Ex veniam quis officia ut quis exercitation id laborum do dolore ea et consectetur elit.</p>
+                    <p>Elit culpa dolore est Lorem est ex id nisi. Lorem qui laboris elit et esse voluptate in qui ullamco dolore voluptate. Et eiusmod consectetur non officia aliquip ullamco.</p>
                 </div>
             </div>
         </div>
@@ -291,76 +334,75 @@ class Zume_Training_Page extends Zume_Magic_Page
         <?php
 
         $strings = [
-            __('Zúme Training', 'zume' ),
+            __( 'Zúme Training', 'zume' ),
             '-------------------',
-            __('Create your own training.', 'zume' ),
-            __('Join a training.', 'zume' ),
-            __('Get help starting.', 'zume' ),
-            __('Set up wizard', 'zume' ),
-            __('Join a training', 'zume' ),
-            __('Request a coach', 'zume' ),
-            __('Gather a few friends or go through the training with an existing small group. Create your own training plan and track your progress.', 'zume' ),
-            __('If you can‘t gather a group right now, consider joining one of our online trainings lead by an experienced Zúme coach.', 'zume' ),
-            __('We can connect you with free Zúme coach who is committed to helping you get the training and becoming a fruitful disciple.', 'zume' ),
+            __( 'Create your own training.', 'zume' ),
+            __( 'Join a training.', 'zume' ),
+            __( 'Get help starting.', 'zume' ),
+            __( 'Set up wizard', 'zume' ),
+            __( 'Join a training', 'zume' ),
+            __( 'Request a coach', 'zume' ),
+            __( 'Gather a few friends or go through the training with an existing small group. Create your own training plan and track your progress.', 'zume' ),
+            __( 'If you can‘t gather a group right now, consider joining one of our online trainings lead by an experienced Zúme coach.', 'zume' ),
+            __( 'We can connect you with free Zúme coach who is committed to helping you get the training and becoming a fruitful disciple.', 'zume' ),
             '-------------------',
-            __('Course Overview', 'zume' ),
-            __('What is required?', 'zume' ),
+            __( 'Course Overview', 'zume' ),
+            __( 'What is required?', 'zume' ),
             '-------------------',
 
-            __('Course Concepts', 'zume' ),
-            __('In this self-facilitated course, you and your group will uses short videos, discussion questions, and simple exercises to develop your skills and knowledge in the following areas:', 'zume' ),
+            __( 'Course Concepts', 'zume' ),
+            __( 'In this self-facilitated course, you and your group will uses short videos, discussion questions, and simple exercises to develop your skills and knowledge in the following areas:', 'zume' ),
 
             '-------------------',
-            __('Discipleship Concepts', 'zume' ),
-            __('God Uses Ordinary People', 'zume' ),
-            __('What is a Disciple and a Church?', 'zume' ),
-            __('Four Main Ways God Grows Disciples', 'zume' ),
-            __('Vision for Multiplying Disciples', 'zume' ),
-            __('Following and Leading at the Same Time.', 'zume' ),
-            __('Eyes to See Where the Kingdom Isn‘t', 'zume' ),
-            __('Learning How the Kingdom Grows', 'zume' ),
-            __('Why Pace of Multiplication Matters', 'zume' ),
+            __( 'Discipleship Concepts', 'zume' ),
+            __( 'God Uses Ordinary People', 'zume' ),
+            __( 'What is a Disciple and a Church?', 'zume' ),
+            __( 'Four Main Ways God Grows Disciples', 'zume' ),
+            __( 'Vision for Multiplying Disciples', 'zume' ),
+            __( 'Following and Leading at the Same Time.', 'zume' ),
+            __( 'Eyes to See Where the Kingdom Isn‘t', 'zume' ),
+            __( 'Learning How the Kingdom Grows', 'zume' ),
+            __( 'Why Pace of Multiplication Matters', 'zume' ),
 
             '-------------------',
-            __('Spiritual Practices', 'zume' ),
-            __('Hearing and Obeying God', 'zume' ),
-            __('How to Study the Bible', 'zume' ),
-            __('How to Live out Loving Accountability', 'zume' ),
-            __('How to Spend an Hour in Prayer', 'zume' ),
-            __('How to Baptize', 'zume' ),
-            __('How to Lead the Lord‘s Supper', 'zume' ),
-            __('Prayer Walking', 'zume' ),
-            __('A Simple Way to Pray for Others', 'zume' ),
+            __( 'Spiritual Practices', 'zume' ),
+            __( 'Hearing and Obeying God', 'zume' ),
+            __( 'How to Study the Bible', 'zume' ),
+            __( 'How to Live out Loving Accountability', 'zume' ),
+            __( 'How to Spend an Hour in Prayer', 'zume' ),
+            __( 'How to Baptize', 'zume' ),
+            __( 'How to Lead the Lord‘s Supper', 'zume' ),
+            __( 'Prayer Walking', 'zume' ),
+            __( 'A Simple Way to Pray for Others', 'zume' ),
 
             '-------------------',
-            __('Personal Evangelism', 'zume' ),
-            __('Learning to Engage Others', 'zume' ),
-            __('How to Find a Person of Peace', 'zume' ),
-            __('How to Share the Gospel', 'zume' ),
-            __('How to Tell Your 3 Minute Testimony', 'zume' ),
+            __( ' Personal Evangelism', 'zume' ),
+            __( 'Learning to Engage Others', 'zume' ),
+            __( 'How to Find a Person of Peace', 'zume' ),
+            __( 'How to Share the Gospel', 'zume' ),
+            __( 'How to Tell Your 3 Minute Testimony', 'zume' ),
 
             '-------------------',
-            __('Leadership Development', 'zume' ),
-            __('Training Cycle for Maturing Disciples', 'zume' ),
-            __('Practice Leading a Simple Church', 'zume' ),
-            __('How to Facilitate a Leadership Cell', 'zume' ),
-            __('How to Use a Coaching Checklist', 'zume' ),
-            __('How to Facilitate a Peer Mentoring Group', 'zume' ),
-            __('Introduction to Four Fields Tool', 'zume' ),
-            __('How to Make a Generational Map', 'zume' ),
-            __('Create a 3-Month Implementation Plan', 'zume' ),
+            __( 'Leadership Development', 'zume' ),
+            __( 'Training Cycle for Maturing Disciples', 'zume' ),
+            __( 'Practice Leading a Simple Church', 'zume' ),
+            __( 'How to Facilitate a Leadership Cell', 'zume' ),
+            __( 'How to Use a Coaching Checklist', 'zume' ),
+            __( 'How to Facilitate a Peer Mentoring Group', 'zume' ),
+            __( 'Introduction to Four Fields Tool', 'zume' ),
+            __( 'How to Make a Generational Map', 'zume' ),
+            __( 'Create a 3-Month Implementation Plan', 'zume' ),
 
             '-------------------',
-            __('Training Schedules', 'zume' ),
-            __('Zúme is 20 hours of training. But those 20 hours can be broken up differently depending on your groups availability.', 'zume' ),
-            __('10 Sessions', 'zume' ),
-            __('The original Züme training format is 10 two hour sessions. Each session finishes with practical obedience steps and ways to share in-between sessions. This format is often ran once a week for 10 weeks.', 'zume' ),
-            __('20 Sessions', 'zume' ),
-            __('For a longer slower pace training with more opportunity for gaining competence in the concepts and skills, the 20 session format has more practice opportunities for each of the concepts and tools.', 'zume' ),
-            __('3 Day Intensive', 'zume' ),
-            __('Zume can bet compressed into 5 half day sections of 4 hours each. This can be done with a Friday evening (4 hours), and all day Saturday (8 hours) and all day Sunday (8 hours).', 'zume' ),
+            __( 'Training Schedules', 'zume' ),
+            __( 'Zúme is 20 hours of training. But those 20 hours can be broken up differently depending on your groups availability.', 'zume' ),
+            __( '10 Sessions', 'zume' ),
+            __( 'The original Züme training format is 10 two hour sessions. Each session finishes with practical obedience steps and ways to share in-between sessions. This format is often ran once a week for 10 weeks.', 'zume' ),
+            __( '20 Sessions', 'zume' ),
+            __( 'For a longer slower pace training with more opportunity for gaining competence in the concepts and skills, the 20 session format has more practice opportunities for each of the concepts and tools.', 'zume' ),
+            __( '3 Day Intensive', 'zume' ),
+            __( 'Zume can bet compressed into 5 half day sections of 4 hours each. This can be done with a Friday evening (4 hours), and all day Saturday (8 hours) and all day Sunday (8 hours).', 'zume' ),
         ];
-
     }
 }
 Zume_Training_Page::instance();
