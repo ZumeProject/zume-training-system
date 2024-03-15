@@ -97,23 +97,23 @@ class Zume_Training_Page extends Zume_Magic_Page
                     <p class="mb-0">
                         <?php echo esc_html__('Gather a few friends or go through the training with an existing small group. Create your own training plan and track your progress.', 'zume' ) ?>
                     </p>
-                    <button class="btn light uppercase mt-auto"><?php echo esc_html__( 'Get started', 'zume' ) ?></button>
+                    <a href="<?php echo esc_url( zume_make_a_plan_wizard_url() ) ?>" class="btn light uppercase mt-auto"><?php echo esc_html__( 'Get started', 'zume' ) ?></a>
                 </div>
                 <div class="stack | card | switcher-width-40">
-                    <h2 class="f-1 text-center"><?php echo esc_html__( 'Create your own training', 'zume' ) ?></h2>
+                    <h2 class="f-1 text-center"><?php echo esc_html__( 'Join a training.', 'zume' ) ?></h2>
                     <img class="mx-auto h-6rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JoinATraining.svg' ) ?>" alt="<?php echo esc_attr__( 'Join a training', 'zume' ) ?>">
                     <p class="mb-0">
                         <?php echo esc_html__('If you can‘t gather a group right now, consider joining one of our online trainings lead by an experienced Zúme coach.', 'zume' ) ?>
                     </p>
-                    <button class="btn light uppercase mt-auto"><?php echo esc_html__( 'Join now', 'zume' ) ?></button>
+                    <a href="<?php echo esc_url( zume_join_a_public_plan_wizard_url() ) ?>" class="btn light uppercase mt-auto"><?php echo esc_html__( 'Join now', 'zume' ) ?></a>
                 </div>
                 <div class="stack | card | switcher-width-40">
-                    <h2 class="f-1 text-center"><?php echo esc_html__( 'Create your own training', 'zume' ) ?></h2>
+                    <h2 class="f-1 text-center"><?php echo esc_html__( 'Request a coach', 'zume' ) ?></h2>
                     <img class="mx-auto h-6rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/coach-2guys.svg' ) ?>" alt="<?php echo esc_attr__( 'Join a training', 'zume' ) ?>">
                     <p class="mb-0">
                         <?php echo esc_html__('We can connect you with free Zúme coach who is committed to helping you get the training and becoming a fruitful disciple.', 'zume' ) ?>
                     </p>
-                    <button class="btn light uppercase mt-auto"><?php echo esc_html__( 'Learn more', 'zume' ) ?></button>
+                    <a href="<?php echo esc_url( zume_get_a_coach_url() ) ?>" class="btn light uppercase mt-auto"><?php echo esc_html__( 'Learn more', 'zume' ) ?></a>
                 </div>
             </div>
 
@@ -231,37 +231,37 @@ class Zume_Training_Page extends Zume_Magic_Page
                         </p>
                         <div class="stack-1">
                             <div class="switcher | switcher-width-40 align-items-center mx-auto gapx-2">
-                                <div class="card-btn training-card" role="button">
+                                <a href="<?php echo esc_url( zume_10_session_url() ) ?>" class="card-btn training-card" role="button">
                                     <h3 class="training-card__title h1"><?php echo esc_html__('10 Sessions', 'zume' ) ?></h3>
                                     <div class="w-6rem brand-light">
                                         <?php //phpcs:ignore ?>
                                         <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . 'assets/images/course.svg' ) ?>
                                     </div>
-                                </div>
+                                </a>
                                 <p class="mx-auto mw-50ch w-100">
                                     <?php echo esc_html__('The original Zúme training format is 10 two hour sessions. Each session finishes with practical obedience steps and ways to share in-between sessions. This format is often ran once a week for 10 weeks.', 'zume' ) ?>
                                 </p>
                             </div>
                             <div class="switcher | switcher-width-40 align-items-center mx-auto gapx-2">
-                                <div class="card-btn training-card" role="button">
+                                <a href="<?php echo esc_url( zume_20_session_url() ) ?>" class="card-btn training-card" role="button">
                                     <h3 class="training-card__title h1"><?php echo esc_html__('20 Sessions', 'zume' ) ?></h3>
                                     <div class="w-6rem brand-light">
                                         <?php //phpcs:ignore ?>
                                         <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . 'assets/images/course.svg' ) ?>
                                     </div>
-                                </div>
+                                </a>
                                 <p class="mx-auto mw-50ch w-100">
                                     <?php echo esc_html__('For a longer slower pace training with more opportunity for gaining competence in the concepts and skills, the 20 session format has more practice opportunities for each of the concepts and tools.', 'zume' ) ?>
                                 </p>
                             </div>
                             <div class="switcher | switcher-width-40 align-items-center mx-auto gapx-2">
-                                <div class="card-btn training-card" role="button">
+                                <a href="<?php echo esc_url( zume_intensive_session_url() ) ?>" class="card-btn training-card" role="button">
                                     <h3 class="training-card__title h1"><?php echo esc_html__('3 Day Intensive', 'zume' ) ?></h3>
                                     <div class="w-6rem brand-light">
                                         <?php //phpcs:ignore ?>
                                         <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . 'assets/images/course.svg' ) ?>
                                     </div>
-                                </div>
+                                </a>
                                 <p class="mx-auto mw-50ch w-100">
                                     <?php echo esc_html__('Zúme can be compressed into 5 half day sections of 4 hours each. This can be done with a Friday evening (4 hours), and all day Saturday (8 hours) and all day Sunday (8 hours).', 'zume' ) ?>
                                 </p>
