@@ -593,6 +593,15 @@ a, a:visited {
   justify-content: center;
   width: 4rem;
 }
+.training-card[role="button"] {
+  justify-content: center;
+  aspect-ratio: 1;
+  margin-inline: auto;
+  padding: spacing(1);
+  max-width: 16rem;
+  width: 100%;
+  text-align: center;
+}
 
 @media (min-width: $break-lg) {
 

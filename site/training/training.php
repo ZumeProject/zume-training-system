@@ -119,71 +119,153 @@ class Zume_Training_Page extends Zume_Magic_Page
 
             <div>
                 <div class="left-menu"></div>
-                <div class="stack | content-area">
-                    <h2 class="h1 brand-light">
-                        <?php echo esc_html__('Course Concepts', 'zume' ) ?>
-                    </h2>
-                    <p class="f-medium">
-                        <?php echo esc_html__('In this self-facilitated course, you and your group will uses short videos, discussion questions, and simple exercises to develop your skills and knowledge in the following areas:', 'zume' ) ?>
-                    </p>
-                    <div class="concepts">
-                        <div class="stack--4">
-                            <h3 class="concepts__title"><?php echo esc_html__('Discipleship Concepts', 'zume' ) ?></h3>
-                            <ul class="stack--4">
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('God Uses Ordinary People', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('What is a Disciple and a Church?', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Four Main Ways God Grows Disciples', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Vision for Multiplying Disciples', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Following and Leading at the Same Time.', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Eyes to See Where the Kingdom Isn‘t', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Learning How the Kingdom Grows', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Why Pace of Multiplication Matters', 'zume' ) ?></span>
-                                </li>
-                            </ul>
-                            <h3 class="concepts__title"><?php echo esc_html__('Spiritual Practices', 'zume' ) ?></h3>
-                            <ul class="stack--4">
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Hearing and Obeying God', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Study the Bible', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Live out Loving Accountability', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Spend an Hour in Prayer', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Baptize', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Lead the Lord‘s Supper', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Prayer Walking', 'zume' ) ?></span>
-                                </li>
-                                <li class="d-flex gap-2 align-items-center">
-                                    <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('A Simple Way to Pray for Others', 'zume' ) ?></span>
-                                </li>
-                            </ul>
-                            <h3 class="concepts__title"><?php echo esc_html__('Personal Evangelism', 'zume' ) ?></h3>
-                            <h3 class="concepts__title"><?php echo esc_html__('Leadership Development', 'zume' ) ?></h3>
+                <div class="stack-4 | content-area">
+                    <div class="stack">
+                        <h2 class="h1 brand-light">
+                            <?php echo esc_html__('Course Concepts', 'zume' ) ?>
+                        </h2>
+                        <p class="f-medium">
+                            <?php echo esc_html__('In this self-facilitated course, you and your group will uses short videos, discussion questions, and simple exercises to develop your skills and knowledge in the following areas:', 'zume' ) ?>
+                        </p>
+                        <div class="concepts">
+                            <div class="stack--4">
+                                <h3 class="concepts__title"><?php echo esc_html__('Discipleship Concepts', 'zume' ) ?></h3>
+                                <ul class="stack--4">
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('God Uses Ordinary People', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('What is a Disciple and a Church?', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Four Main Ways God Grows Disciples', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Vision for Multiplying Disciples', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Following and Leading at the Same Time.', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Eyes to See Where the Kingdom Isn‘t', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Learning How the Kingdom Grows', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Why Pace of Multiplication Matters', 'zume' ) ?></span>
+                                    </li>
+                                </ul>
+                                <h3 class="concepts__title"><?php echo esc_html__('Spiritual Practices', 'zume' ) ?></h3>
+                                <ul class="stack--4">
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Hearing and Obeying God', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Study the Bible', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Live out Loving Accountability', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Spend an Hour in Prayer', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Baptize', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Lead the Lord‘s Supper', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Prayer Walking', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('A Simple Way to Pray for Others', 'zume' ) ?></span>
+                                    </li>
+                                </ul>
+                                <h3 class="concepts__title"><?php echo esc_html__('Personal Evangelism', 'zume' ) ?></h3>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Learning to Engage Others', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Find a Person of Peace', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Share the Gospel', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Tell Your 3 Minute Testimony', 'zume' ) ?></span>
+                                    </li>
+                                <h3 class="concepts__title"><?php echo esc_html__('Leadership Development', 'zume' ) ?></h3>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Training Cycle for Maturing Disciples', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Practice Leading a Simple Church', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Facilitate a Leadership Cell', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Use a Coaching Checklist', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Facilitate a Peer Mentoring Group', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Introduction to Four Fields Tool', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('How to Make a Generational Map', 'zume' ) ?></span>
+                                    </li>
+                                    <li class="d-flex gap-2 align-items-center">
+                                        <span class="concepts__tick"><span class="icon brand-light zume-check-mark f-2"></span></span><span><?php echo esc_html__('Create a 3-Month Implementation Plan', 'zume' ) ?></span>
+                                    </li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stack-2">
+                        <h2 class="brand-light"><?php echo esc_html__('Training Schedules', 'zume' ) ?></h2>
+                        <p>
+                            <?php echo esc_html__('Zúme is 20 hours of training. But those 20 hours can be broken up differently depending on your groups availability.', 'zume' ) ?>
+                        </p>
+                        <div class="stack-1">
+                            <div class="switcher | switcher-width-40 align-items-center mx-auto gapx-2">
+                                <div class="card-btn training-card" role="button">
+                                    <h3 class="training-card__title h1"><?php echo esc_html__('10 Sessions', 'zume' ) ?></h3>
+                                    <div class="w-6rem brand-light">
+                                        <?php //phpcs:ignore ?>
+                                        <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . 'assets/images/course.svg' ) ?>
+                                    </div>
+                                </div>
+                                <p class="mx-auto mw-50ch w-100">
+                                    <?php echo esc_html__('The original Zúme training format is 10 two hour sessions. Each session finishes with practical obedience steps and ways to share in-between sessions. This format is often ran once a week for 10 weeks.', 'zume' ) ?>
+                                </p>
+                            </div>
+                            <div class="switcher | switcher-width-40 align-items-center mx-auto gapx-2">
+                                <div class="card-btn training-card" role="button">
+                                    <h3 class="training-card__title h1"><?php echo esc_html__('20 Sessions', 'zume' ) ?></h3>
+                                    <div class="w-6rem brand-light">
+                                        <?php //phpcs:ignore ?>
+                                        <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . 'assets/images/course.svg' ) ?>
+                                    </div>
+                                </div>
+                                <p class="mx-auto mw-50ch w-100">
+                                    <?php echo esc_html__('For a longer slower pace training with more opportunity for gaining competence in the concepts and skills, the 20 session format has more practice opportunities for each of the concepts and tools.', 'zume' ) ?>
+                                </p>
+                            </div>
+                            <div class="switcher | switcher-width-40 align-items-center mx-auto gapx-2">
+                                <div class="card-btn training-card" role="button">
+                                    <h3 class="training-card__title h1"><?php echo esc_html__('3 Day Intensive', 'zume' ) ?></h3>
+                                    <div class="w-6rem brand-light">
+                                        <?php //phpcs:ignore ?>
+                                        <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . 'assets/images/course.svg' ) ?>
+                                    </div>
+                                </div>
+                                <p class="mx-auto mw-50ch w-100">
+                                    <?php echo esc_html__('Zúme can be compressed into 5 half day sections of 4 hours each. This can be done with a Friday evening (4 hours), and all day Saturday (8 hours) and all day Sunday (8 hours).', 'zume' ) ?>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
