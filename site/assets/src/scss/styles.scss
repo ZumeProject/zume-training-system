@@ -573,6 +573,23 @@ a, a:visited {
 .collapse[data-state="open"] {
   overflow: initial;
 }
+.training-path {
+  position: relative;
+}
+.training-path:after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(50%,63%);
+    content: "";
+    width: 10px;
+    height: 45px;
+    background-image: radial-gradient(circle at 5px,var(--z-brand-light) 3px,rgba(255,255,255,0) 3px);
+    background-position: top,right,bottom,left;
+    background-size: 14px 15px
+}
+
+
 .concepts__title {
   color: color('white');
   background-color: color('brand-light');

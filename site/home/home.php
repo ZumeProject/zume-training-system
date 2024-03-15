@@ -420,7 +420,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                     <a href="<?php echo esc_url( zume_get_a_coach_wizard_url() ) ?>" class="btn large outline uppercase"><?php echo esc_html__( 'Get a coach', 'zume' ) ?></a>
                 </div>
                 <div class="stack-2 justify-content-between">
-                    <img class="mx-auto h-40" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JoinATraining.svg' ) ?>" alt="<?php echo esc_attr__( 'Join a training', 'zume' ) ?>">
+                    <img class="mx-auto h-40" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/JoinTraining.svg' ) ?>" alt="<?php echo esc_attr__( 'Join a training', 'zume' ) ?>">
                     <p><?php echo esc_html__( 'Join a LIVE online training facilitated by experienced practitioners. Grow and learn with other Jesus followers', 'zume' ) ?></p>
                     <a href="<?php echo esc_url( zume_join_a_public_plan_wizard_url() ) ?>" class="btn large outline uppercase"><?php echo esc_html__( 'Join a training', 'zume' ) ?></a>
                 </div>
