@@ -41,7 +41,7 @@ export class ListLink extends NavLink {
                             ${
                                 this.locked
                                     ? zumeDashboard.translations.preview
-                                    : zumeDashboard.translations.view_now
+                                    : this.directLink ? zumeDashboard.translations.complete_now : zumeDashboard.translations.view_now
                             }
                         </a>
                     </div>

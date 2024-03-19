@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { router } from 'lit-element-router';
+import { dashRoutes } from './dash-routes';
 
 /**
  * This highest level of the dashboard should mostly be focussed on the routing
@@ -20,131 +21,24 @@ export class DashBoard extends router(LitElement) {
     }
 
     static get routes() {
-        return [
-            {
-                name: 'getting-started',
-                pattern: `${zumeDashboard.base_url}/getting-started`,
-                icon: 'zume-start',
-                translation: zumeDashboard.translations['getting_started'],
-                data: {
-                    component: 'dash-getting-started',
-                },
-            },
-            {
-                name: 'training',
-                pattern: `${zumeDashboard.base_url}/training`,
-                icon: 'zume-training',
-                translation: zumeDashboard.translations['training'],
-                data: {
-                    component: 'dash-training',
-                },
-            },
-            {
-                name: 'my-training',
-                pattern: `${zumeDashboard.base_url}/my-training`,
-                parent: 'training',
-                icon: 'zume-group',
-                translation: zumeDashboard.translations['my_training'],
-                explanation: zumeDashboard.translations['my_training_explanation'],
-                data: {
-                    component: 'dash-trainings',
-                },
-            },
-            {
-                name: 'my-progress',
-                pattern: `${zumeDashboard.base_url}/my-progress`,
-                parent: 'training',
-                icon: 'zume-progress',
-                translation: zumeDashboard.translations['my_progress'],
-                explanation: zumeDashboard.translations['my_progress_explanation'],
-                data: {
-                    component: 'dash-progress',
-                },
-            },
-            {
-                name: '3-month-plan',
-                pattern: `${zumeDashboard.base_url}/3-month-plan`,
-                parent: 'training',
-                icon: 'zume-plans',
-                translation: zumeDashboard.translations['3_month_plan'],
-                explanation: zumeDashboard.translations['3_month_plan_explanation'],
-                data: {
-                    component: 'dash-progress',
-                },
-            },
-            {
-                name: 'practicing',
-                pattern: `${zumeDashboard.base_url}/practicing`,
-                icon: 'zume-practicing',
-                translation: zumeDashboard.translations['practicing'],
-                data: {
-                    component: 'dash-practicing',
-                },
-            },
-            {
-                name: 'my-coach',
-                pattern: `${zumeDashboard.base_url}/my-coach`,
-                parent: 'practicing',
-                icon: 'zume-coach',
-                translation: zumeDashboard.translations['my_coach'],
-                explanation: zumeDashboard.translations['my_coach_explanation'],
-                data: {
-                    component: 'dash-coach',
-                },
-            },
-            {
-                name: 'my-tools',
-                pattern: `${zumeDashboard.base_url}/my-tools`,
-                parent: 'practicing',
-                icon: 'zume-tools',
-                translation: zumeDashboard.translations['my_tools'],
-                explanation: zumeDashboard.translations['my_tools_explanation'],
-                data: {
-                    component: 'dash-tools',
-                },
-            },
-            {
-                name: 'my-plans',
-                pattern: `${zumeDashboard.base_url}/my-plans`,
-                parent: 'practicing',
-                icon: 'zume-plans',
-                translation: zumeDashboard.translations['my_plans'],
-                explanation: zumeDashboard.translations['my_plans_explanation'],
-                data: {
-                    component: 'dash-plans',
-                },
-            },
-            {
-                name: 'my-churches',
-                pattern: `${zumeDashboard.base_url}/my-churches`,
-                parent: 'practicing',
-                icon: 'zume-churches',
-                translation: zumeDashboard.translations['my_churches'],
-                explanation: zumeDashboard.translations['my_churches_explanation'],
-                data: {
-                    component: 'dash-churches',
-                },
-            },
-            {
-                name: 'my-maps',
-                pattern: `${zumeDashboard.base_url}/my-maps`,
-                parent: 'practicing',
-                icon: 'zume-maps',
-                translation: zumeDashboard.translations['my_maps'],
-                explanation: zumeDashboard.translations['my_maps_explanation'],
-                data: {
-                    component: 'dash-maps',
-                },
-            },
-            {
-                name: 'not-found',
-                pattern: '*',
-                icon: '',
-                data: {
-                    component: 'dash-not-found',
-                },
+        const redirectRoutes = {
+            1: 'dash-getting-started',
+            2: 'dash-training',
+            3: 'dash-practicing',
+        }
+        const userStage = zumeDashboard.user_stage.value || 1
+        const redirectRouteIndex = userStage < 4 ? userStage : 3;
+
+        /* Setup the route of the /dashboard url to point to the appropriate landing stage of the user */
+        const routes = dashRoutes.map((route) => {
+            if ( route.name === 'root' ) {
+                route.data.component = redirectRoutes[redirectRouteIndex]
             }
-        ]
+
+            return route
+        })
+
+        return routes
     }
 
     static getRoute(name) {
@@ -272,38 +166,22 @@ export class DashBoard extends router(LitElement) {
                             </nav-link>
                             <progress-circle percent="66" radius="12"></progress-circle>
                             <ul class="nested is-active">
-                                <li>
-                                    <nav-link
-                                        class="menu-btn"
-                                        href=${zumeDashboard.urls.set_profile_wizard}
-                                        ?completed=${true}
-                                        ?directLink=${true}
-                                        icon="zume-profile"
-                                        text=${zumeDashboard.translations.set_profile}
-                                    ></nav-link>
-                                    <span class="icon zume-check-mark success"></span>
-                                </li>
-                                <li>
-                                    <nav-link
-                                        class="menu-btn"
-                                        href=${zumeDashboard.urls.plan_training_wizard}
-                                        ?completed=${true}
-                                        ?directLink=${true}
-                                        icon="zume-start"
-                                        text=${zumeDashboard.translations.plan_a_training}
-                                    ></nav-link>
-                                    <span class="icon zume-check-mark success"></span>
-                                </li>
-                                <li>
-                                    <nav-link
-                                        ?directLink=${true}
-                                        class="menu-btn"
-                                        href=${zumeDashboard.urls.get_coach_wizard}
-                                        icon="zume-coach"
-                                        text=${zumeDashboard.translations.get_a_coach}
-                                    ></nav-link>
-                                    <span class="icon zume-check-mark success"></span>
-                                </li>
+                                ${
+                                    DashBoard.childRoutesOf('getting-started')
+                                        .map((route) => html`
+                                            <li>
+                                                <nav-link
+                                                    class="menu-btn"
+                                                    href=${this.makeHrefRoute(route.name)}
+                                                    icon=${route.icon}
+                                                    text=${route.translation}
+                                                    ?directLink=${route.type === 'direct-link'}
+                                                    ?locked=${['3-month-plan'].includes(route.name)}
+                                                ></nav-link>
+                                                <span class="icon zume-locked gray-500"></span>
+                                            </li>
+                                        `)
+                                }
                             </ul>
                         </li>
                         <li class="menu-section">
