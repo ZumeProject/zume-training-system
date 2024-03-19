@@ -59,6 +59,7 @@ export class DashBoard extends router(LitElement) {
         this.query = {}
         this.data = {}
         this.menuOffset = 0
+        this.userState = zumeDashboard.user_stage.state
 
         this.addEventListener('toggle-dashboard-sidebar', () => {
             this.toggleSidebar()
@@ -134,6 +135,47 @@ export class DashBoard extends router(LitElement) {
         }
     }
 
+    static getCompletedStatus(routeName) {
+        const userState = zumeDashboard.user_stage.state
+        if (routeName === 'set-profile' && userState.set_profile) {
+            return true
+        }
+        if (routeName === 'get-a-coach' && userState.requested_a_coach) {
+            return true
+        }
+        if (routeName === 'plan-a-training' && ( userState.plan_created || userState.joined_online_training )) {
+            return true
+        }
+        return false
+    }
+
+    static getLockedStatus(routeName) {
+        const userState = zumeDashboard.user_stage.state
+        if (routeName === 'my-plans' && !userState.made_3_month_plan) {
+            return true
+        }
+        if (['my-churches', 'my-maps'].includes(routeName) && !userState.join_community) {
+            return true
+        }
+        if (routeName === '3-month-plan' && !userState.can_create_3_month_plan) {
+            return true
+        }
+        return false
+    }
+
+    getGettingStartedPercentage() {
+        const itemsToComplete = ['get-a-coach', 'set-profile', 'plan-a-training'];
+
+        const numberCompleted = itemsToComplete.reduce((total, item) => {
+            if (DashBoard.getCompletedStatus(item)) {
+                return total + 1
+            }
+            return total
+        }, 0)
+
+        return Math.round( numberCompleted / itemsToComplete.length * 100 )
+    }
+
     render() {
         return html`
             <div class="sidebar__trigger-close-background" @click=${this.toggleSidebar}></div>
@@ -164,7 +206,7 @@ export class DashBoard extends router(LitElement) {
                                 icon="zume-start"
                                 text=${zumeDashboard.translations.getting_started}>
                             </nav-link>
-                            <progress-circle percent="66" radius="12"></progress-circle>
+                            <progress-circle percent=${this.getGettingStartedPercentage()} radius="12"></progress-circle>
                             <ul class="nested is-active">
                                 ${
                                     DashBoard.childRoutesOf('getting-started')
@@ -176,9 +218,9 @@ export class DashBoard extends router(LitElement) {
                                                     icon=${route.icon}
                                                     text=${route.translation}
                                                     ?directLink=${route.type === 'direct-link'}
-                                                    ?locked=${['3-month-plan'].includes(route.name)}
+                                                    ?completed=${DashBoard.getCompletedStatus(route.name)}
                                                 ></nav-link>
-                                                <span class="icon zume-locked gray-500"></span>
+                                                <span class="icon zume-check-mark success"></span>
                                             </li>
                                         `)
                                 }
@@ -202,7 +244,7 @@ export class DashBoard extends router(LitElement) {
                                                     href=${this.makeHrefRoute(route.name)}
                                                     icon=${route.icon}
                                                     text=${route.translation}
-                                                    ?locked=${['3-month-plan'].includes(route.name)}
+                                                    ?locked=${DashBoard.getLockedStatus(route.name)}
                                                 ></nav-link>
                                                 <span class="icon zume-locked gray-500"></span>
                                             </li>
@@ -227,7 +269,7 @@ export class DashBoard extends router(LitElement) {
                                                     href=${this.makeHrefRoute(route.name)}
                                                     icon=${route.icon}
                                                     text=${route.translation}
-                                                    ?locked=${['my-plans', 'my-churches', 'my-maps'].includes(route.name)}
+                                                    ?locked=${DashBoard.getLockedStatus(route.name)}
                                                 ></nav-link>
                                                 <span class="icon zume-locked gray-500"></span>
                                             </li>

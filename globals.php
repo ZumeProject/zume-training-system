@@ -168,6 +168,12 @@ if ( ! function_exists( 'zume_get_user_stage' ) ) {
                 if ( 'seeing_generational_fruit' == $value['subtype'] ) {
                     $funnel_steps[6] = true;
                 }
+                if ( 'plan_created' == $value['subtype'] ) {
+                    $user_state[$value['subtype']] = true;
+                }
+                if ( 'joined_online_training' == $value['subtype'] ) {
+                    $user_state[$value['subtype']] = true;
+                }
                 if ( 'set_profile' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
                 }
@@ -185,6 +191,9 @@ if ( ! function_exists( 'zume_get_user_stage' ) ) {
                 }
                 if ( 'set_profile_name' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
+                }
+                if ( 'training_26_heard' == $value['log_key'] ) {
+                    $user_state['can_create_3_month_plan'] = true;
                 }
                 if ( 'made_3_month_plan' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
