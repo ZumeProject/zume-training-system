@@ -30,7 +30,7 @@ export class DashBoard extends router(LitElement) {
         const redirectRouteIndex = userStage < 4 ? userStage : 3;
 
         /* Setup the route of the /dashboard url to point to the appropriate landing stage of the user */
-        const routes = dashRoutes.map((route) => {
+        const routes = dashRoutes().map((route) => {
             if ( route.name === 'root' ) {
                 route.data.component = redirectRoutes[redirectRouteIndex]
             }
