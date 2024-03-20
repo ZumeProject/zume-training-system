@@ -1338,20 +1338,20 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                     </div>
                 </div>
             </div>
-        `}}customElements.define("watch-slide",$s);const Ne=["slideshow","guide"];class _s extends g{static get properties(){return{languageCode:{type:String},homeUrl:{type:String},assetsPath:{type:String},zumeSessions:{attribute:!1},lessonIndex:{attribute:!1},view:{attribute:!1},linkNodes:{attribute:!1},showIndex:{attribute:!1}}}constructor(){super(),this.dir=document.querySelector("html").dir;const e=new URL(window.location.href),t=this.getZumeSessions(e);this.zumeSessions=t;const s=this.getLessonIndex(e);this.lessonIndex=s,this.view=this.getView(e),this.changeSession(s,!1,t),this.handleSessionLink=this.handleSessionLink.bind(this),this.handleHistoryPopState=this.handleHistoryPopState.bind(this),window.addEventListener("popstate",this.handleHistoryPopState),document.querySelectorAll(".language-selector").forEach(function(r){r.addEventListener("click",()=>{const n=r.dataset.value,h=new URL(location.href),d=h.pathname.substring(1).split("/");let c="";d.length>0&&jsObject.zume_languages.includes(d[0])?c=d.slice(1).join("/"):c=d.join("/"),n!=="en"?c="/"+n+"/"+c:c="/"+c,c+=h.search,location.href=c})})}getView(e){if(e.searchParams.has("view")){const t=e.searchParams.get("view");if(Ne.includes(t))return t}else return"slideshow"}getLessonIndex(e){if(e.searchParams.has("session")){const t=e.searchParams.get("session");if(t==="index")return"index";const s=Number(t);return Number.isInteger(s)?s-1:0}else return 0}getZumeSessions(e){const t=e.searchParams.get("type")||"10";this.type=t;let s;switch(t){case"10":s=zume10Sessions;break;case"20":s=zume20Sessions;break;case"intensive":s=zumeIntensiveSessions;break;default:s=zume10Sessions;break}return s}handleSessionLink(e){const t=e.target,s=Number(t.dataset.sessionNumber);this.lessonIndex=s,this.showIndex===!0&&(this.showIndex=!1),this.changeSession(this.lessonIndex),this.closeMenu()}handleSubSectionLink(e){const t=e.target,s=Number(t.dataset.sessionNumber);Number(t.dataset.subsectionNumber),this.lessonIndex=s,this.showIndex===!0&&(this.showIndex=!1),this.changeSession(this.lessonIndex),this.closeMenu()}getNextSession(){this.lessonIndex+=1,this.changeSession(this.lessonIndex)}getPreviousSession(){this.lessonIndex-=1,this.changeSession(this.lessonIndex)}changeSession(e,t=!0,s=null){if(e==="index"){this.showIndex=!0;return}else this.showIndex=!1;const a=s||this.zumeSessions;let r=e;e<0&&(r=0),e>a.length-1&&(r=a.length-1),this.lessonIndex=r,this.session=a[r],t&&this.pushHistory()}pushHistory(){const e=this.lessonIndex,t=this.view,s=new URL(window.location.href);e!==null&&Number.isInteger(e)&&s.searchParams.set("session",e+1),t&&s.searchParams.set("view",t),window.history.pushState(null,null,s.href)}handleHistoryPopState(){var a;const e=new URL(location.href),t=e.searchParams.has("session")?e.searchParams.get("session"):null,s=e.searchParams.get("view");(a=document.querySelector(".js-off-canvas-overlay"))==null||a.classList.remove("is-visible"),Number.isInteger(Number(t))&&(this.lessonIndex=t-1,this.changeSession(this.lessonIndex,!1)),t==="index"&&(this.lessonIndex="index",this.changeSession("index",!1)),s&&Ne.includes(s)&&(this.view=s)}getSessionTitle(e){return`Session ${e+1}`}getSessionSections(){return this.session?this.session:[]}switchViews(e=!0){this.view==="guide"?this.view="slideshow":this.view="guide",e===!0&&this.pushHistory()}openMenu(){const e=this.querySelector("#offCanvas");jQuery(e).foundation("open")}closeMenu(){const e=this.querySelector("#offCanvas");jQuery(e).foundation("close")}render(){const e=this.showIndex?"visually-hidden":"",t=this.type==="intensive"?"container-xsm":"container-sm";return o`
+        `}}customElements.define("watch-slide",$s);const Ne=["slideshow","guide"];class _s extends g{static get properties(){return{languageCode:{type:String},homeUrl:{type:String},assetsPath:{type:String},zumeSessions:{attribute:!1},lessonIndex:{attribute:!1},view:{attribute:!1},linkNodes:{attribute:!1},showIndex:{attribute:!1}}}constructor(){super(),this.dir=document.querySelector("html").dir;const e=new URL(window.location.href),t=this.getZumeSessions(e);this.zumeSessions=t;const s=this.getLessonIndex(e);this.lessonIndex=s,this.view=this.getView(e),this.changeSession(s,!1,t),this.handleSessionLink=this.handleSessionLink.bind(this),this.handleHistoryPopState=this.handleHistoryPopState.bind(this),window.addEventListener("popstate",this.handleHistoryPopState),document.querySelectorAll(".language-selector").forEach(function(r){r.addEventListener("click",()=>{const n=r.dataset.value,h=new URL(location.href),d=h.pathname.substring(1).split("/");let c="";d.length>0&&jsObject.zume_languages.includes(d[0])?c=d.slice(1).join("/"):c=d.join("/"),n!=="en"?c="/"+n+"/"+c:c="/"+c,c+=h.search,location.href=c})})}getView(e){if(e.searchParams.has("view")){const t=e.searchParams.get("view");if(Ne.includes(t))return t}else return"slideshow"}getLessonIndex(e){if(e.searchParams.has("session")){const t=e.searchParams.get("session");if(t==="index")return"index";const s=Number(t);return Number.isInteger(s)?s-1:0}else return 0}getZumeSessions(e){const t=e.searchParams.get("type")||"10";this.type=t;let s;switch(t){case"10":s=zume10Sessions;break;case"20":s=zume20Sessions;break;case"intensive":s=zumeIntensiveSessions;break;default:s=zume10Sessions;break}return s}handleSessionLink(e){const t=e.target,s=Number(t.dataset.sessionNumber);this.lessonIndex=s,this.showIndex===!0&&(this.showIndex=!1),this.changeSession(this.lessonIndex),this.closeMenu()}handleSubSectionLink(e){const t=e.target,s=Number(t.dataset.sessionNumber);Number(t.dataset.subsectionNumber),this.lessonIndex=s,this.showIndex===!0&&(this.showIndex=!1),this.changeSession(this.lessonIndex),this.closeMenu()}getNextSession(){this.lessonIndex+=1,this.changeSession(this.lessonIndex)}getPreviousSession(){this.lessonIndex-=1,this.changeSession(this.lessonIndex)}changeSession(e,t=!0,s=null){if(e==="index"){this.showIndex=!0;return}else this.showIndex=!1;const a=s||this.zumeSessions;let r=e;e<0&&(r=0),e>a.length-1&&(r=a.length-1),this.lessonIndex=r,this.session=a[r],t&&this.pushHistory()}pushHistory(){const e=this.lessonIndex,t=this.view,s=new URL(window.location.href);e!==null&&Number.isInteger(e)&&s.searchParams.set("session",e+1),t&&s.searchParams.set("view",t),window.history.pushState(null,null,s.href)}handleHistoryPopState(){var a;const e=new URL(location.href),t=e.searchParams.has("session")?e.searchParams.get("session"):null,s=e.searchParams.get("view");(a=document.querySelector(".js-off-canvas-overlay"))==null||a.classList.remove("is-visible"),Number.isInteger(Number(t))&&(this.lessonIndex=t-1,this.changeSession(this.lessonIndex,!1)),t==="index"&&(this.lessonIndex="index",this.changeSession("index",!1)),s&&Ne.includes(s)&&(this.view=s)}getSessionTitle(e){return`Session ${e+1}`}getSessionSections(){return this.session?this.session:[]}switchViews(e=!0){this.view==="guide"?this.view="slideshow":this.view="guide",e===!0&&this.pushHistory()}openMenu(){const e=this.querySelector("#offCanvas");jQuery(e).foundation("open")}closeMenu(){const e=this.querySelector("#offCanvas");jQuery(e).foundation("close")}render(){this.showIndex;const e=this.type==="intensive"?"container-xsm":"container-sm";return o`
             ${this.showIndex?o`
                     <div class="course-index | bg-brand-gradient">
                         <img src="${jsObject.images_url}/zume-training-logo-white.svg" alt="Zume Logo" class="mx-auto w-70 py-1" />
-                        <div class="${t}" data-max-width="750">
+                        <div class="${e}" data-max-width="750">
                             <div class="grid | grid-min-8rem gutter0">
-                                ${this.zumeSessions.map((s,a)=>o`
+                                ${this.zumeSessions.map((t,s)=>o`
                                     <button
                                         class="card-btn | bg-white black m--2 gap--3 aspect-1 justify-content-evenly"
-                                        data-session-number=${a}
+                                        data-session-number=${s}
                                         @click=${this.handleSessionLink}
                                     >
                                         <h2 class="f-0 bold">Session</h2>
-                                        <p class="f-3 bold lh-sm">${a+1}</p>
+                                        <p class="f-3 bold lh-sm">${s+1}</p>
                                         <span class="icon zume-course brand-light f-3"></span>
                                     </button>
                                 `)}
@@ -1360,7 +1360,7 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                     </div>
                 `:""}
 
-            <nav class="${e} stack | bg-white px-0 text-center | presenter-menu off-canvas ${this.dir==="rtl"?"position-right":"position-left"} justify-content-between py-1" id="offCanvas" data-off-canvas data-transition="overlap">
+            <nav class="stack | bg-white px-0 text-center | presenter-menu off-canvas ${this.dir==="rtl"?"position-right":"position-left"} justify-content-between py-1" id="offCanvas" data-off-canvas data-transition="overlap">
                 <div class="stack">
                     <!-- Close button -->
                     <button class="close-button" aria-label="Close menu" type="button" data-close>
@@ -1369,20 +1369,20 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                     <!-- Menu -->
 
                     <ul class="vertical menu accordion-menu" data-accordion-menu data-submenu-toggle="true" data-multi-open="false">
-                        ${this.zumeSessions.map((s,a)=>o`
+                        ${this.zumeSessions.map((t,s)=>o`
                             <li>
                                 <a
                                     class="session-link"
-                                    data-session-number="${a}"
+                                    data-session-number="${s}"
                                     @click=${this.handleSessionLink}
                                 >
-                                    ${this.getSessionTitle(a)}
+                                    ${this.getSessionTitle(s)}
                                 </a>
-                                <ul class="menu vertical nested ${this.lessonIndex===a?"is-active":""}">
+                                <ul class="menu vertical nested ${this.lessonIndex===s?"is-active":""}">
                                     <a
                                         class="session-link"
                                         data-subitem
-                                        data-session-number=${a}
+                                        data-session-number=${s}
                                         data-subsection-number=${0}
                                         @click=${this.handleSubSectionLink}
                                     >
@@ -1391,7 +1391,7 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                                     <a
                                         class="session-link"
                                         data-subitem
-                                        data-session-number=${a}
+                                        data-session-number=${s}
                                         data-subsection-number=${1}
                                         @click=${this.handleSubSectionLink}
                                     >
@@ -1400,7 +1400,7 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                                     <a
                                         class="session-link"
                                         data-subitem
-                                        data-session-number=${a}
+                                        data-session-number=${s}
                                         data-subsection-number=${2}
                                         @click=${this.handleSubSectionLink}
                                     >
@@ -1425,13 +1425,13 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                 </div>
             </nav>
 
-            <span class="${e} p-1 d-block absolute top z-1">
+            <span class="p-1 d-block absolute top z-1">
                 <button id="hamburger-menu" class="nav-toggle show" @click=${this.openMenu}>
                     <span class="hamburger brand"></span>
                 </button>
             </span>
 
-            <div class="${e}">
+            <div class="">
                 ${this.view==="guide"?o`<course-guide .sections=${this.getSessionSections()}></course-guide>`:o`<course-slideshow .sections=${this.getSessionSections()}></course-slideshow>`}
             </div>
         `}createRenderRoot(){return this}}customElements.define("course-presenter",_s);class ys extends g{static get properties(){return{sections:{type:Array}}}render(){return o`
@@ -1448,7 +1448,7 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                     <slide-switcher .slide=${this.currentSlide}></slide-switcher>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("course-slideshow",ks);class ws extends g{static get properties(){return{slide:{type:Object}}}render(){switch(this.slide.type){case"title":return o`<title-slide .slide=${this.slide}></title-slide>`;case"checkin":return o`<checkin-slide .slide=${this.slide}></checkin-slide>`;case"pray":return o`<pray-slide .slide=${this.slide}></pray-slide>`;case"review":case"overview":return o`<overview-slide .slide=${this.slide}></overview-slide>`;case"challenge":case"center":return o`<center-slide .slide=${this.slide}></center-slide>`;case"watch":return o`<watch-slide .slide=${this.slide}></watch-slide>`;case"video":return o`<video-slide .slide=${this.slide}></video-slide>`;case"discuss":case"look_back":return o`<discuss-slide .slide=${this.slide}></discuss-slide>`;case"left_content":case"activity":return o`<activity-slide .slide=${this.slide}></activity-slide>`;case"obey":return o`<obey-slide .slide=${this.slide}></obey-slide>`;case"left_image":return o`<left-image-slide .slide=${this.slide}></left-image-slide>`;case"next_steps":return o`<next-steps-slide .slide=${this.slide}></next-steps-slide>`;case"break":return o`<break-slide .slide=${this.slide}></break-slide>`;case"congratulations":return o`<congratulations-slide .slide=${this.slide}></congratulations-slide>`;case"final":return o`<final-slide .slide=${this.slide}></final-slide>`;default:return o`<course-slide .slide=${this.slide}></course-slide>`}}createRenderRoot(){return this}}customElements.define("slide-switcher",ws);class nt extends g{constructor(){super()}render(){return o`
+        `}createRenderRoot(){return this}}customElements.define("course-slideshow",ks);class ws extends g{static get properties(){return{slide:{type:Object}}}render(){if(this.slide)switch(this.slide.type){case"title":return o`<title-slide .slide=${this.slide}></title-slide>`;case"checkin":return o`<checkin-slide .slide=${this.slide}></checkin-slide>`;case"pray":return o`<pray-slide .slide=${this.slide}></pray-slide>`;case"review":case"overview":return o`<overview-slide .slide=${this.slide}></overview-slide>`;case"challenge":case"center":return o`<center-slide .slide=${this.slide}></center-slide>`;case"watch":return o`<watch-slide .slide=${this.slide}></watch-slide>`;case"video":return o`<video-slide .slide=${this.slide}></video-slide>`;case"discuss":case"look_back":return o`<discuss-slide .slide=${this.slide}></discuss-slide>`;case"left_content":case"activity":return o`<activity-slide .slide=${this.slide}></activity-slide>`;case"obey":return o`<obey-slide .slide=${this.slide}></obey-slide>`;case"left_image":return o`<left-image-slide .slide=${this.slide}></left-image-slide>`;case"next_steps":return o`<next-steps-slide .slide=${this.slide}></next-steps-slide>`;case"break":return o`<break-slide .slide=${this.slide}></break-slide>`;case"congratulations":return o`<congratulations-slide .slide=${this.slide}></congratulations-slide>`;case"final":return o`<final-slide .slide=${this.slide}></final-slide>`;default:return o`<course-slide .slide=${this.slide}></course-slide>`}}createRenderRoot(){return this}}customElements.define("slide-switcher",ws);class nt extends g{constructor(){super()}render(){return o`
             <div class="container">
                 <div class="circle">
                     <div class="triangle"></div>
@@ -1707,4 +1707,4 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",zs);
-//# sourceMappingURL=main-5c4a7bc4.js.map
+//# sourceMappingURL=main-07a6771f.js.map
