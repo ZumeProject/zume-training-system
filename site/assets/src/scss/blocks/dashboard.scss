@@ -12,6 +12,27 @@
     border-inline-end: 2px solid var(--border-color-main);
 }
 
+.profile-area {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-inline: auto;
+    margin-block-end: spacing(1);
+}
+.profile-btn {
+    border-radius: 100px;
+    border: 3px solid color('brand-light');
+    background-color: color('brand');
+    color: color('white');
+    aspect-ratio: 1;
+    font-size: font-size(2);
+    font-weight: bold;
+    line-height: 1;
+}
+.profile-name {
+    font-size: font-size(-2);
+}
+
 dash-sidebar-toggle {
     order: 10;
 }

@@ -443,99 +443,103 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
             <div class="sidebar__trigger-close-background" @click=${this.toggleSidebar}></div>
             <div class="dashboard">
 
-            <div class="dashboard__sidebar">
-                <div
-                    class="sidebar-wrapper"
-                    style="top: ${this.menuOffset}px; height: calc( min( 100%, 100vh ) - ${this.menuOffset}px - var(--s0) );"
-                >
-                    <button
-                        class="ms-auto mb-0 d-block w-2rem dashboard__sidebar-toggle break-large break-medium"
-                        aria-label="Close modal"
-                        type="button"
-                        @click=${this.toggleSidebar}
+                <div class="dashboard__sidebar">
+                    <div
+                        class="sidebar-wrapper"
+                        style="top: ${this.menuOffset}px; height: calc( min( 100%, 100vh ) - ${this.menuOffset}px - var(--s0) );"
                     >
-                        <img src=${zumeDashboard.images_url+"/close-button-01.svg"} alt="close button">
-                    </button>
-                    <ul
-                        class="stack-2 | progress-menu accordion-menu"
-                        data-accordion-menu
-                        data-submenu-toggle="true"
-                    >
-                        <li class="menu-section">
-                            <nav-link
-                                href=${this.makeHref("getting-started")}
-                                class="menu-section__title menu-btn"
-                                icon="zume-start"
-                                text=${zumeDashboard.translations.getting_started}>
-                            </nav-link>
-                            <progress-circle percent=${this.getGettingStartedPercentage()} radius="12"></progress-circle>
-                            <ul class="nested is-active">
-                                ${_.childRoutesOf("getting-started").map(e=>o`
-                                            <li>
-                                                <nav-link
-                                                    class="menu-btn"
-                                                    href=${this.makeHrefRoute(e.name)}
-                                                    icon=${e.icon}
-                                                    text=${e.translation}
-                                                    ?directLink=${e.type==="direct-link"}
-                                                    ?completed=${_.getCompletedStatus(e.name)}
-                                                ></nav-link>
-                                                <span class="icon zume-check-mark success"></span>
-                                            </li>
-                                        `)}
-                            </ul>
-                        </li>
-                        <li class="menu-section">
-                            <nav-link
-                                href=${this.makeHref("training")}
-                                class="menu-section__title menu-btn"
-                                icon="zume-training"
-                                text=${zumeDashboard.translations.training}
-                            >
-                            </nav-link>
-                            <ul class="nested is-active">
-                                ${_.childRoutesOf("training").map(e=>o`
-                                            <li>
-                                                <nav-link
-                                                    class="menu-btn"
-                                                    href=${this.makeHrefRoute(e.name)}
-                                                    icon=${e.icon}
-                                                    text=${e.translation}
-                                                    ?locked=${_.getLockedStatus(e.name)}
-                                                ></nav-link>
-                                                <span class="icon zume-locked gray-500"></span>
-                                            </li>
-                                        `)}
-                            </ul>
-                        </li>
-                        <li class="menu-section">
-                            <nav-link
-                                href=${this.makeHref("practicing")}
-                                class="menu-section__title menu-btn"
-                                icon="zume-practicing"
-                                text=${zumeDashboard.translations.practicing}
-                            ></nav-link>
-                            <ul class="nested is-active">
-                                ${_.childRoutesOf("practicing").map(e=>o`
-                                            <li>
-                                                <nav-link
-                                                    class="menu-btn"
-                                                    href=${this.makeHrefRoute(e.name)}
-                                                    icon=${e.icon}
-                                                    text=${e.translation}
-                                                    ?locked=${_.getLockedStatus(e.name)}
-                                                ></nav-link>
-                                                <span class="icon zume-locked gray-500"></span>
-                                            </li>
-                                        `)}
-                            </ul>
-                        </li>
-                    </ul>
+                        <button
+                            class="ms-auto mb-0 d-block w-2rem dashboard__sidebar-toggle break-large break-medium"
+                            aria-label="Close modal"
+                            type="button"
+                            @click=${this.toggleSidebar}
+                        >
+                            <span class="icon zume-close gray-500"></span>
+                        </button>
+                        <div class="profile-area">
+                            <button class="profile-btn">SE</button>
+                            <span class="profile-name">Steady Eddy</span>
+                        </div>
+                        <ul
+                            class="stack-2 | progress-menu accordion-menu"
+                            data-accordion-menu
+                            data-submenu-toggle="true"
+                        >
+                            <li class="menu-section">
+                                <nav-link
+                                    href=${this.makeHref("getting-started")}
+                                    class="menu-section__title menu-btn"
+                                    icon="zume-start"
+                                    text=${zumeDashboard.translations.getting_started}>
+                                </nav-link>
+                                <progress-circle percent=${this.getGettingStartedPercentage()} radius="12"></progress-circle>
+                                <ul class="nested is-active">
+                                    ${_.childRoutesOf("getting-started").map(e=>o`
+                                                <li>
+                                                    <nav-link
+                                                        class="menu-btn"
+                                                        href=${this.makeHrefRoute(e.name)}
+                                                        icon=${e.icon}
+                                                        text=${e.translation}
+                                                        ?directLink=${e.type==="direct-link"}
+                                                        ?completed=${_.getCompletedStatus(e.name)}
+                                                    ></nav-link>
+                                                    <span class="icon zume-check-mark success"></span>
+                                                </li>
+                                            `)}
+                                </ul>
+                            </li>
+                            <li class="menu-section">
+                                <nav-link
+                                    href=${this.makeHref("training")}
+                                    class="menu-section__title menu-btn"
+                                    icon="zume-training"
+                                    text=${zumeDashboard.translations.training}
+                                >
+                                </nav-link>
+                                <ul class="nested is-active">
+                                    ${_.childRoutesOf("training").map(e=>o`
+                                                <li>
+                                                    <nav-link
+                                                        class="menu-btn"
+                                                        href=${this.makeHrefRoute(e.name)}
+                                                        icon=${e.icon}
+                                                        text=${e.translation}
+                                                        ?locked=${_.getLockedStatus(e.name)}
+                                                    ></nav-link>
+                                                    <span class="icon zume-locked gray-500"></span>
+                                                </li>
+                                            `)}
+                                </ul>
+                            </li>
+                            <li class="menu-section">
+                                <nav-link
+                                    href=${this.makeHref("practicing")}
+                                    class="menu-section__title menu-btn"
+                                    icon="zume-practicing"
+                                    text=${zumeDashboard.translations.practicing}
+                                ></nav-link>
+                                <ul class="nested is-active">
+                                    ${_.childRoutesOf("practicing").map(e=>o`
+                                                <li>
+                                                    <nav-link
+                                                        class="menu-btn"
+                                                        href=${this.makeHrefRoute(e.name)}
+                                                        icon=${e.icon}
+                                                        text=${e.translation}
+                                                        ?locked=${_.getLockedStatus(e.name)}
+                                                    ></nav-link>
+                                                    <span class="icon zume-locked gray-500"></span>
+                                                </li>
+                                            `)}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            ${this.renderRoute()}
-        </div>
+                ${this.renderRoute()}
+            </div>
         `}createRenderRoot(){return this}}customElements.define("dash-board",_);class A extends g{constructor(){super();const t=document.querySelector("html").dataset.dir;this.isRtl=t==="rtl"}firstUpdated(){this.attachResizeObeserver(),this.updateHeaderStyle()}attachResizeObeserver(){const e=document.querySelector("dash-header-right"),t=new ResizeObserver(s=>{for(let a of s){if(!a.contentRect)return;const r=Math.round(a.contentRect.height),n=Math.round(a.contentRect.width);this.updateHeaderStyle(!1,r,n)}});this.resizeObserver=t,t.observe(e)}updateHeaderStyle(e=!0,t=0,s=window.innerWidth){const a=document.querySelector(".dashboard__header.left");e&&(this.initialOffset=a.offsetTop);let r;s<window.innerWidth/2?r=this.initialOffset:r=this.initialOffset+t,a.style.top=r+"px"}disconnectedCallback(){super.disconnectedCallback(),this.resizeObserver.disconnect()}}class qt extends A{render(){return o`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
@@ -1707,4 +1711,4 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",zs);
-//# sourceMappingURL=main-39a46d2a.js.map
+//# sourceMappingURL=main-a8c70b09.js.map

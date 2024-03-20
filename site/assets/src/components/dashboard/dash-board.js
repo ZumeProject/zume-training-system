@@ -181,108 +181,112 @@ export class DashBoard extends router(LitElement) {
             <div class="sidebar__trigger-close-background" @click=${this.toggleSidebar}></div>
             <div class="dashboard">
 
-            <div class="dashboard__sidebar">
-                <div
-                    class="sidebar-wrapper"
-                    style="top: ${this.menuOffset}px; height: calc( min( 100%, 100vh ) - ${this.menuOffset}px - var(--s0) );"
-                >
-                    <button
-                        class="ms-auto mb-0 d-block w-2rem dashboard__sidebar-toggle break-large break-medium"
-                        aria-label="Close modal"
-                        type="button"
-                        @click=${this.toggleSidebar}
+                <div class="dashboard__sidebar">
+                    <div
+                        class="sidebar-wrapper"
+                        style="top: ${this.menuOffset}px; height: calc( min( 100%, 100vh ) - ${this.menuOffset}px - var(--s0) );"
                     >
-                        <img src=${zumeDashboard.images_url + '/close-button-01.svg'} alt="close button">
-                    </button>
-                    <ul
-                        class="stack-2 | progress-menu accordion-menu"
-                        data-accordion-menu
-                        data-submenu-toggle="true"
-                    >
-                        <li class="menu-section">
-                            <nav-link
-                                href=${this.makeHref('getting-started')}
-                                class="menu-section__title menu-btn"
-                                icon="zume-start"
-                                text=${zumeDashboard.translations.getting_started}>
-                            </nav-link>
-                            <progress-circle percent=${this.getGettingStartedPercentage()} radius="12"></progress-circle>
-                            <ul class="nested is-active">
-                                ${
-                                    DashBoard.childRoutesOf('getting-started')
-                                        .map((route) => html`
-                                            <li>
-                                                <nav-link
-                                                    class="menu-btn"
-                                                    href=${this.makeHrefRoute(route.name)}
-                                                    icon=${route.icon}
-                                                    text=${route.translation}
-                                                    ?directLink=${route.type === 'direct-link'}
-                                                    ?completed=${DashBoard.getCompletedStatus(route.name)}
-                                                ></nav-link>
-                                                <span class="icon zume-check-mark success"></span>
-                                            </li>
-                                        `)
-                                }
-                            </ul>
-                        </li>
-                        <li class="menu-section">
-                            <nav-link
-                                href=${this.makeHref('training')}
-                                class="menu-section__title menu-btn"
-                                icon="zume-training"
-                                text=${zumeDashboard.translations.training}
-                            >
-                            </nav-link>
-                            <ul class="nested is-active">
-                                ${
-                                    DashBoard.childRoutesOf('training')
-                                        .map((route) => html`
-                                            <li>
-                                                <nav-link
-                                                    class="menu-btn"
-                                                    href=${this.makeHrefRoute(route.name)}
-                                                    icon=${route.icon}
-                                                    text=${route.translation}
-                                                    ?locked=${DashBoard.getLockedStatus(route.name)}
-                                                ></nav-link>
-                                                <span class="icon zume-locked gray-500"></span>
-                                            </li>
-                                        `)
-                                }
-                            </ul>
-                        </li>
-                        <li class="menu-section">
-                            <nav-link
-                                href=${this.makeHref('practicing')}
-                                class="menu-section__title menu-btn"
-                                icon="zume-practicing"
-                                text=${zumeDashboard.translations.practicing}
-                            ></nav-link>
-                            <ul class="nested is-active">
-                                ${
-                                    DashBoard.childRoutesOf('practicing')
-                                        .map((route) => html`
-                                            <li>
-                                                <nav-link
-                                                    class="menu-btn"
-                                                    href=${this.makeHrefRoute(route.name)}
-                                                    icon=${route.icon}
-                                                    text=${route.translation}
-                                                    ?locked=${DashBoard.getLockedStatus(route.name)}
-                                                ></nav-link>
-                                                <span class="icon zume-locked gray-500"></span>
-                                            </li>
-                                        `)
-                                }
-                            </ul>
-                        </li>
-                    </ul>
+                        <button
+                            class="ms-auto mb-0 d-block w-2rem dashboard__sidebar-toggle break-large break-medium"
+                            aria-label="Close modal"
+                            type="button"
+                            @click=${this.toggleSidebar}
+                        >
+                            <span class="icon zume-close gray-500"></span>
+                        </button>
+                        <div class="profile-area">
+                            <button class="profile-btn">SE</button>
+                            <span class="profile-name">Steady Eddy</span>
+                        </div>
+                        <ul
+                            class="stack-2 | progress-menu accordion-menu"
+                            data-accordion-menu
+                            data-submenu-toggle="true"
+                        >
+                            <li class="menu-section">
+                                <nav-link
+                                    href=${this.makeHref('getting-started')}
+                                    class="menu-section__title menu-btn"
+                                    icon="zume-start"
+                                    text=${zumeDashboard.translations.getting_started}>
+                                </nav-link>
+                                <progress-circle percent=${this.getGettingStartedPercentage()} radius="12"></progress-circle>
+                                <ul class="nested is-active">
+                                    ${
+                                        DashBoard.childRoutesOf('getting-started')
+                                            .map((route) => html`
+                                                <li>
+                                                    <nav-link
+                                                        class="menu-btn"
+                                                        href=${this.makeHrefRoute(route.name)}
+                                                        icon=${route.icon}
+                                                        text=${route.translation}
+                                                        ?directLink=${route.type === 'direct-link'}
+                                                        ?completed=${DashBoard.getCompletedStatus(route.name)}
+                                                    ></nav-link>
+                                                    <span class="icon zume-check-mark success"></span>
+                                                </li>
+                                            `)
+                                    }
+                                </ul>
+                            </li>
+                            <li class="menu-section">
+                                <nav-link
+                                    href=${this.makeHref('training')}
+                                    class="menu-section__title menu-btn"
+                                    icon="zume-training"
+                                    text=${zumeDashboard.translations.training}
+                                >
+                                </nav-link>
+                                <ul class="nested is-active">
+                                    ${
+                                        DashBoard.childRoutesOf('training')
+                                            .map((route) => html`
+                                                <li>
+                                                    <nav-link
+                                                        class="menu-btn"
+                                                        href=${this.makeHrefRoute(route.name)}
+                                                        icon=${route.icon}
+                                                        text=${route.translation}
+                                                        ?locked=${DashBoard.getLockedStatus(route.name)}
+                                                    ></nav-link>
+                                                    <span class="icon zume-locked gray-500"></span>
+                                                </li>
+                                            `)
+                                    }
+                                </ul>
+                            </li>
+                            <li class="menu-section">
+                                <nav-link
+                                    href=${this.makeHref('practicing')}
+                                    class="menu-section__title menu-btn"
+                                    icon="zume-practicing"
+                                    text=${zumeDashboard.translations.practicing}
+                                ></nav-link>
+                                <ul class="nested is-active">
+                                    ${
+                                        DashBoard.childRoutesOf('practicing')
+                                            .map((route) => html`
+                                                <li>
+                                                    <nav-link
+                                                        class="menu-btn"
+                                                        href=${this.makeHrefRoute(route.name)}
+                                                        icon=${route.icon}
+                                                        text=${route.translation}
+                                                        ?locked=${DashBoard.getLockedStatus(route.name)}
+                                                    ></nav-link>
+                                                    <span class="icon zume-locked gray-500"></span>
+                                                </li>
+                                            `)
+                                    }
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            ${this.renderRoute()}
-        </div>
+                ${this.renderRoute()}
+            </div>
         `;
     }
 
