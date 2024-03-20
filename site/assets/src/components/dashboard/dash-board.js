@@ -60,6 +60,8 @@ export class DashBoard extends router(LitElement) {
         this.data = {}
         this.menuOffset = 0
         this.userState = zumeDashboard.user_stage.state
+        this.userName = zumeDashboard.user_profile.name
+        this.userInitials = this.createInitials(this.userName)
 
         this.addEventListener('toggle-dashboard-sidebar', () => {
             this.toggleSidebar()
@@ -135,6 +137,14 @@ export class DashBoard extends router(LitElement) {
         }
     }
 
+    createInitials(name) {
+        if (typeof name !== 'string' || name.length === 0) {
+            return ''
+        }
+        const initials = name.split(' ').map((text) => text.length > 0 ? text[0].toUpperCase() : '').join('')
+        return initials
+    }
+
     static getCompletedStatus(routeName) {
         const userState = zumeDashboard.user_stage.state
         if (routeName === 'set-profile' && userState.set_profile) {
@@ -187,7 +197,7 @@ export class DashBoard extends router(LitElement) {
                         style="top: ${this.menuOffset}px; height: calc( min( 100%, 100vh ) - ${this.menuOffset}px - var(--s0) );"
                     >
                         <button
-                            class="ms-auto mb-0 d-block w-2rem dashboard__sidebar-toggle break-large break-medium"
+                            class="ms-auto d-block w-2rem dashboard__sidebar-toggle break-large break-medium"
                             aria-label="Close modal"
                             type="button"
                             @click=${this.toggleSidebar}
@@ -195,8 +205,10 @@ export class DashBoard extends router(LitElement) {
                             <span class="icon zume-close gray-500"></span>
                         </button>
                         <div class="profile-area">
-                            <button class="profile-btn">SE</button>
-                            <span class="profile-name">Steady Eddy</span>
+                            <button class="profile-btn">
+                                ${this.userInitials}
+                            </button>
+                            <span class="profile-name">${this.userName}</span>
                         </div>
                         <ul
                             class="stack-2 | progress-menu accordion-menu"
