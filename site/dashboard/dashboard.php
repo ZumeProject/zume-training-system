@@ -65,7 +65,6 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             add_action( 'dt_blank_head', [ $this, '_header' ] );
             add_action( 'dt_blank_body', [ $this, 'body' ] );
             add_action( 'dt_blank_footer', [ $this, '_footer' ] );
-            add_action( 'wp_footer', [ $this, 'action_wp_footer' ] );
 
             add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
@@ -122,6 +121,12 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                     'complete_now' => __( 'Complete Now', 'zume' ),
                     'view' => __( 'View', 'zume' ),
                     'menu' => __( 'Menu', 'zume' ),
+                    'name' => __( 'Name', 'zume' ),
+                    'phone' => __( 'Phone', 'zume' ),
+                    'email' => __( 'Email', 'zume' ),
+                    'city' => __( 'City', 'zume' ),
+                    'save' => __( 'Save', 'zume' ),
+                    'edit_profile' => __( 'Edit Profile', 'zume' ),
                     'share_title' => __( 'Check out this Zume concept', 'zume' ),
                     'preview' => __( 'Preview', 'zume' ),
                     'add_commitments' => __( 'Add commitments', 'zume' ),

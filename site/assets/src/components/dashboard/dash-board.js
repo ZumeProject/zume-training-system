@@ -186,6 +186,15 @@ export class DashBoard extends router(LitElement) {
         return Math.round( numberCompleted / itemsToComplete.length * 100 )
     }
 
+    openProfile() {
+        const modal = document.querySelector('#profile-modal')
+        jQuery(modal).foundation('open')
+    }
+    closeProfile() {
+        const modal = document.querySelector('#profile-modal')
+        jQuery(modal).foundation('open')
+    }
+
     render() {
         return html`
             <div class="sidebar__trigger-close-background" @click=${this.toggleSidebar}></div>
@@ -205,7 +214,10 @@ export class DashBoard extends router(LitElement) {
                             <span class="icon zume-close gray-500"></span>
                         </button>
                         <div class="profile-area">
-                            <button class="profile-btn">
+                            <button
+                                class="profile-btn"
+                                @click=${this.openProfile}
+                            >
                                 ${this.userInitials}
                             </button>
                             <span class="profile-name">${this.userName}</span>
@@ -298,6 +310,37 @@ export class DashBoard extends router(LitElement) {
                 </div>
 
                 ${this.renderRoute()}
+            </div>
+            <div class="reveal medium" id="profile-modal" data-reveal data-v-offset="20">
+                <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.closeProfile}>
+                    <span class="icon zume-close gray-500"></span>
+                </button>
+                <div class="center my-0">
+                    <h3>${zumeDashboard.translations.edit_profile}</h3>
+                    <form action="" id="profile-form">
+
+                        <div class="">
+                            <label for="full_name">${zumeDashboard.translations.name}</label>
+                            <input required type="text" id="full_name" name="full_name" value=${zumeDashboard.user_profile.name}>
+                        </div>
+                        <div class="">
+                            <label for="phone">${zumeDashboard.translations.phone}</label>
+                            <input type="tel" id="phone" name="phone" value=${zumeDashboard.user_profile.phone}>
+                        </div>
+                        <div class="">
+                            <label for="email">${zumeDashboard.translations.email}</label>
+                            <input type="email" id="email" name="email" value=${zumeDashboard.user_profile.email}>
+                        </div>
+                        <div class="">
+                            <label for="city">${zumeDashboard.translations.city}</label>
+                            <input type="text" id="city" name="city" value=${zumeDashboard.user_profile.location?.label ?? ''}>
+                        </div>
+
+                        <button class="btn" id="submit-profile">${zumeDashboard.translations.save}</button>
+                        <span class="loading-spinner"></span>
+
+                    </form>
+                </div>
             </div>
         `;
     }
