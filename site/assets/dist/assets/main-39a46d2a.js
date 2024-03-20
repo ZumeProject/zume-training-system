@@ -1425,7 +1425,7 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                 </div>
             </nav>
 
-            <span class="p-1 d-block absolute top z-1">
+            <span class="p-1 d-block fixed top z-1">
                 <button id="hamburger-menu" class="nav-toggle show" @click=${this.openMenu}>
                     <span class="hamburger brand"></span>
                 </button>
@@ -1707,4 +1707,4 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",zs);
-//# sourceMappingURL=main-07a6771f.js.map
+//# sourceMappingURL=main-39a46d2a.js.map
