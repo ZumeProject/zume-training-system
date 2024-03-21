@@ -43,11 +43,11 @@ export class ProfileForm extends LitElement {
         this.loading = true
 
         /* submit data to profile API endpoint */
-        fetch( zumeDashboard.rest_endpoint + '/profile', {
+        fetch( jsObject.rest_endpoint + '/profile', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
-                'X-WP-Nonce': zumeDashboard.nonce
+                'X-WP-Nonce': jsObject.nonce
             }
         } )
         .then((response) => response.json())
@@ -72,7 +72,7 @@ export class ProfileForm extends LitElement {
         }
     }
 
-    processLocation = debounce(getAddressSuggestions(this.addressCallback, zumeDashboard.map_key))
+    processLocation = debounce(getAddressSuggestions(this.addressCallback, jsObject.map_key))
 
     selectAddress(e) {
         /* Escape placeName */
@@ -91,25 +91,25 @@ export class ProfileForm extends LitElement {
             <form action="" id="profile-form" @submit=${this.submitProfileForm}>
 
                 <div class="">
-                    <label for="full_name">${zumeDashboard.translations.name}</label>
+                    <label for="full_name">${jsObject.translations.name}</label>
                     <input class="input" required type="text" id="full_name" name="full_name" value=${this.userProfile.name}>
                 </div>
                 <div class="">
-                    <label for="phone">${zumeDashboard.translations.phone}</label>
+                    <label for="phone">${jsObject.translations.phone}</label>
                     <input class="input" type="tel" id="phone" name="phone" value=${this.userProfile.phone}>
                 </div>
                 <div class="">
-                    <label for="email">${zumeDashboard.translations.email}</label>
+                    <label for="email">${jsObject.translations.email}</label>
                     <input class="input" type="email" id="email" name="email" value=${this.userProfile.email}>
                 </div>
                 <div class="">
-                    <label for="city">${zumeDashboard.translations.city}</label>
+                    <label for="city">${jsObject.translations.city}</label>
                     <input class="input" type="text" id="city" name="city" value=${this.userProfile.location?.label ?? ''} @input=${this.processLocation}>
                 </div>
                     ${
                         !Array.isArray(this.locations)
                         ? html`
-                            ${zumeDashboard.translations.no_locations}
+                            ${jsObject.translations.no_locations}
                         `
                         : ''
                     }
@@ -134,11 +134,11 @@ export class ProfileForm extends LitElement {
                 </div>
 
                 <div>
-                    <label for="preferred-language">${zumeDashboard.translations.language}</label>
+                    <label for="preferred-language">${jsObject.translations.language}</label>
                     <select class="input" name="preferred-language" id="preferred-language">
 
                     ${
-                        Object.values(zumeDashboard.zume_languages_by_code).map((item) => html`
+                        Object.values(jsObject.zume_languages_by_code).map((item) => html`
                             <option value=${item.code} ?selected=${this.userProfile.preferred_language === item.code}>
                                 ${item.nativeName} - ${item.enDisplayName}
                             </option>
@@ -148,7 +148,7 @@ export class ProfileForm extends LitElement {
                     </select>
                 </div>
 
-                <button class="btn my-0" id="submit-profile" ?disabled=${this.loading}>${zumeDashboard.translations.save}</button>
+                <button class="btn my-0" id="submit-profile" ?disabled=${this.loading}>${jsObject.translations.save}</button>
                 <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
 
             </form>

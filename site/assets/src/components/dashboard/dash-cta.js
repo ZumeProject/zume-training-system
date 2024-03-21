@@ -12,7 +12,7 @@ export class DashCta extends LitElement {
         super()
         this.allCtas = []
         this.ctas = []
-        this.userId = zumeDashboard.user_profile.user_id
+        this.userId = jsObject.user_profile.user_id
     }
 
     firstUpdated() {

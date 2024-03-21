@@ -114,11 +114,11 @@ export class RequestCoach extends LitElement {
             this.state = this.stateManager.get(this.variant) || {}
 
             if ( this.variant === ZumeWizardSteps.languagePreferences && !this.state.value ) {
-                this.state.value = zumeProfile.profile.preferred_language || 'en'
+                this.state.value = jsObject.profile.preferred_language || 'en'
                 this.stateManager.add( this.variant, this.state )
             }
             if ( this.variant === ZumeWizardSteps.contactPreferences && Object.keys(this.state).length === 0 ) {
-                this.state = Object.fromEntries(zumeProfile.profile.contact_preference.map((pref) => ([ pref, 'true' ])))
+                this.state = Object.fromEntries(jsObject.profile.contact_preference.map((pref) => ([ pref, 'true' ])))
             }
         }
 

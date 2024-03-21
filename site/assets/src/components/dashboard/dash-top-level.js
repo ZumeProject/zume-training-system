@@ -69,10 +69,10 @@ export class DashTopLevel extends DashPage {
                         <h1 class="h3">${this.route.translation}</h1>
                     </div>
                     <div class="icon-btn-group">
-                        <button class="${this.view === 'list' ? 'selected' : ''}" title=${zumeDashboard.translations.list} @click=${() => this.switchView('list')}>
+                        <button class="${this.view === 'list' ? 'selected' : ''}" title=${jsObject.translations.list} @click=${() => this.switchView('list')}>
                             <span class="icon zume-list" aria-hidden="true"></span>
                         </button>
-                        <button class="${this.view === 'grid' ? 'selected' : ''}" title=${zumeDashboard.translations.grid} @click=${() => this.switchView('grid')}>
+                        <button class="${this.view === 'grid' ? 'selected' : ''}" title=${jsObject.translations.grid} @click=${() => this.switchView('grid')}>
                             <span class="icon zume-grid" aria-hidden="true"></span>
                         </button>
                     </div>

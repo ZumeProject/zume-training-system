@@ -93,8 +93,6 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'language_cookie' => ZUME_LANGUAGE_COOKIE,
                 'languages' => $zume_languages_by_code,
                 'translations' => $this->translations(),
-            ]) ?>][0]
-            const zumeProfile = [<?php echo json_encode([
                 'map_key' => DT_Mapbox_API::get_key(),
                 'profile' => $zume_user_profile,
                 'mapbox_selected_id' => 'current',

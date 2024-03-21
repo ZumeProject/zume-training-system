@@ -78,8 +78,8 @@ export class DashPlans extends DashPage {
                  * then we can safely fetch all the commitments once the single API request has completed
                  */
                 const request = makeRequest('POST', 'commitment', {
-                    "user_id": zumeDashboard.user_profile.user_id,
-                    "post_id": zumeDashboard.user_profile.contact_id,
+                    "user_id": jsObject.user_profile.user_id,
+                    "post_id": jsObject.user_profile.contact_id,
                     "meta_key": "tasks",
                     "note": 'Question: ' + question + ' Answer: ' + answer,
                     "question": question,
@@ -103,7 +103,7 @@ export class DashPlans extends DashPage {
 
         let data = {
             id: id,
-            user_id: zumeDashboard.user_profile.user_id
+            user_id: jsObject.user_profile.user_id
         }
         makeRequest('PUT', 'commitment', data, 'zume_system/v1' ).done( ( data ) => {
             this.fetchCommitments()
@@ -113,7 +113,7 @@ export class DashPlans extends DashPage {
     deleteCommitment(id) {
         let data = {
             id: id,
-            user_id: zumeDashboard.user_profile.user_id
+            user_id: jsObject.user_profile.user_id
         }
         makeRequest('DELETE', 'commitment', data, 'zume_system/v1' ).done( ( data ) => {
             this.closeMenu(id)
@@ -156,7 +156,7 @@ export class DashPlans extends DashPage {
                                     class="btn light uppercase tight break-anywhere"
                                     @click=${() => this.completeCommitment(id)}
                                 >
-                                    ${zumeDashboard.translations.done}
+                                    ${jsObject.translations.done}
                                 </button>
                             `
                         }
@@ -167,8 +167,8 @@ export class DashPlans extends DashPage {
                 </div>
                 <div class="dropdown-pane" id="kebab-menu-${id}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl ? 'right' : 'left'} data-close-on-click="true" data-close-on-click-inside="true">
                     <ul>
-                        <li class="hidden"><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon zume-pencil"></span>${zumeDashboard.translations.edit}</button></li>
-                        <li><button class="menu-btn" @click=${() => this.deleteCommitment(id)}><span class="icon zume-trash"></span>${zumeDashboard.translations.delete}</button></li>
+                        <li class="hidden"><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon zume-pencil"></span>${jsObject.translations.edit}</button></li>
+                        <li><button class="menu-btn" @click=${() => this.deleteCommitment(id)}><span class="icon zume-trash"></span>${jsObject.translations.delete}</button></li>
                     </ul>
                 </div>
             </li>
@@ -189,11 +189,11 @@ export class DashPlans extends DashPage {
                         </div>
                         <div class="s0">
                             <button class="icon-btn f-2" data-toggle="filter-menu">
-                                <span class="visually-hidden">${zumeDashboard.translations.filter}</span>
+                                <span class="visually-hidden">${jsObject.translations.filter}</span>
                                 <span class="icon zume-filter brand-light" aria-hidden="true"></span>
                             </button>
                             <button class="icon-btn f-2" @click=${this.openCommitmentsModal}>
-                                <span class="visually-hidden">${zumeDashboard.translations.add_commitments}</span>
+                                <span class="visually-hidden">${jsObject.translations.add_commitments}</span>
                                 <span class="icon zume-plus brand-light" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -203,19 +203,19 @@ export class DashPlans extends DashPage {
                             <li>
                                 <button class="menu-btn w-100 ${this.filterStatus === 'open' ? 'selected' : ''}" @click=${() => this.filterCommitments('open')}>
                                     <span class="icon zume-sort-todo" aria-hidden="true"></span>
-                                    ${zumeDashboard.translations.active}
+                                    ${jsObject.translations.active}
                                 </button>
                             </li>
                             <li>
                                 <button class="menu-btn w-100 ${this.filterStatus === 'closed' ? 'selected' : ''}" @click=${() => this.filterCommitments('closed')}>
                                     <span class="icon zume-sort-done" aria-hidden="true"></span>
-                                    ${zumeDashboard.translations.completed}
+                                    ${jsObject.translations.completed}
                                 </button>
                             </li>
                             <li>
                                 <button class="menu-btn w-100 ${this.filterStatus === '' ? 'selected' : ''}" @click=${() => this.filterCommitments('')}>
                                     <span class="icon zume-sort-all" aria-hidden="true"></span>
-                                    ${zumeDashboard.translations.all}
+                                    ${jsObject.translations.all}
                                 </button>
                             </li>
                         </ul>
@@ -240,7 +240,7 @@ export class DashPlans extends DashPage {
             </div>
             <div class="reveal large" id="new-commitments-form" data-reveal data-v-offset="20">
                 <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.clearCommitmentsModal}>
-                        <img src=${`${zumeDashboard.images_url}/close-button-01.svg`} alt="close button">
+                        <img src=${`${jsObject.images_url}/close-button-01.svg`} alt="close button">
                 </button>
                 <div id="pieces-content" class="stack">
                     <div class="stack--3">

@@ -97,7 +97,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             });
         </script>
         <script>
-            const zumeDashboard = [<?php echo json_encode([
+            const jsObject = [<?php echo json_encode([
                 'root' => esc_url_raw( rest_url() ),
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'language' => $this->lang_code,

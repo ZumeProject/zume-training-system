@@ -375,7 +375,7 @@ export class Wizard extends LitElement {
 
         Object.entries(this.modules).forEach(([moduleName, { steps, skippable }]) => {
 
-            const profile = zumeProfile.profile
+            const profile = jsObject.profile
 
             steps.forEach(({ component, slug }) => {
                 /* Skip if the corresponding field exists in the user */

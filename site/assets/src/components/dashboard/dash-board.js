@@ -27,7 +27,7 @@ export class DashBoard extends router(LitElement) {
             2: 'dash-training',
             3: 'dash-practicing',
         }
-        const userStage = zumeDashboard.user_stage.value || 1
+        const userStage = jsObject.user_stage.value || 1
         const redirectRouteIndex = userStage < 4 ? userStage : 3;
 
         /* Setup the route of the /dashboard url to point to the appropriate landing stage of the user */
@@ -60,8 +60,8 @@ export class DashBoard extends router(LitElement) {
         this.query = {}
         this.data = {}
         this.menuOffset = 0
-        this.userProfile = zumeDashboard.user_profile
-        this.userState = zumeDashboard.user_stage.state
+        this.userProfile = jsObject.user_profile
+        this.userState = jsObject.user_stage.state
 
         this.updateUserProfile = this.updateUserProfile.bind(this)
     }
@@ -92,7 +92,7 @@ export class DashBoard extends router(LitElement) {
     }
 
     makeHref(slug) {
-        return `${zumeDashboard.base_url}/${slug}`
+        return `${jsObject.base_url}/${slug}`
     }
 
     makeHrefRoute(routeName) {
@@ -163,7 +163,7 @@ export class DashBoard extends router(LitElement) {
     }
 
     static getCompletedStatus(routeName) {
-        const userState = zumeDashboard.user_stage.state
+        const userState = jsObject.user_stage.state
         if (routeName === 'set-profile' && userState.set_profile) {
             return true
         }
@@ -177,7 +177,7 @@ export class DashBoard extends router(LitElement) {
     }
 
     static getLockedStatus(routeName) {
-        const userState = zumeDashboard.user_stage.state
+        const userState = jsObject.user_stage.state
         if (routeName === 'my-plans' && !userState.made_3_month_plan) {
             return true
         }
@@ -249,7 +249,7 @@ export class DashBoard extends router(LitElement) {
                                     href=${this.makeHref('getting-started')}
                                     class="menu-section__title menu-btn"
                                     icon="zume-start"
-                                    text=${zumeDashboard.translations.getting_started}>
+                                    text=${jsObject.translations.getting_started}>
                                 </nav-link>
                                 <progress-circle percent=${this.getGettingStartedPercentage()} radius="12"></progress-circle>
                                 <ul class="nested is-active">
@@ -276,7 +276,7 @@ export class DashBoard extends router(LitElement) {
                                     href=${this.makeHref('training')}
                                     class="menu-section__title menu-btn"
                                     icon="zume-training"
-                                    text=${zumeDashboard.translations.training}
+                                    text=${jsObject.translations.training}
                                 >
                                 </nav-link>
                                 <ul class="nested is-active">
@@ -302,7 +302,7 @@ export class DashBoard extends router(LitElement) {
                                     href=${this.makeHref('practicing')}
                                     class="menu-section__title menu-btn"
                                     icon="zume-practicing"
-                                    text=${zumeDashboard.translations.practicing}
+                                    text=${jsObject.translations.practicing}
                                 ></nav-link>
                                 <ul class="nested is-active">
                                     ${
@@ -333,7 +333,7 @@ export class DashBoard extends router(LitElement) {
                     <span class="icon zume-close gray-500"></span>
                 </button>
                 <div class="container-xsm my-0">
-                    <h3>${zumeDashboard.translations.edit_profile}</h3>
+                    <h3>${jsObject.translations.edit_profile}</h3>
                     <profile-form .userProfile=${this.userProfile}></profile-form>
                 </div>
             </div>
