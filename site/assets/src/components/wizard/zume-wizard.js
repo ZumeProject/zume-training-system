@@ -60,6 +60,12 @@ export class Wizard extends LitElement {
         }
     }
 
+    willUpdate(properties) {
+        if (properties.has('type') && this.type === '') {
+            this.modules = {}
+        }
+    }
+
     render() {
         if (!this.isWizardLoaded()) {
             const wizard = this.getWizard(this.type)
@@ -131,7 +137,7 @@ export class Wizard extends LitElement {
                 ? html`<button @click=${this._onSkip} class="brand">${this.t.skip}</button>`
                 : ''
             }
-            ${( !skippable && !isLastStep )
+            ${( !skippable && !isLastStep && !this.noUrlChange )
                 ? html`
                     <button @click=${this._onQuit} class="d-flex">
                         <svg data-src="${jsObject.images_url + '/close-button-01.svg'}" class="h-2"></svg>
@@ -202,6 +208,7 @@ export class Wizard extends LitElement {
     }
     _onFinish(quit = false) {
         this.stateManager.clear()
+        this.modules = {}
 
         if ( !this.finishUrl ) {
             this.dispatchEvent(new CustomEvent(
