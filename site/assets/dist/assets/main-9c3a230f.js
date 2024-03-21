@@ -1022,7 +1022,7 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                             <p>${this.explanation}</p>
                         </div>
                         ${this.completed?o`
-                                <span class="icon zume-check-mark grow-0 | dash-menu__list-success"></span>
+                                <div><span class="icon zume-check-mark grow-0 | dash-menu__list-success"></span></div>
                             `:o`
                                 <a
                                     href=${this.href}
@@ -1781,4 +1781,4 @@ var ot=Object.defineProperty;var lt=(i,e,t)=>e in i?ot(i,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",Cs);
-//# sourceMappingURL=main-9ad7efd9.js.map
+//# sourceMappingURL=main-9c3a230f.js.map

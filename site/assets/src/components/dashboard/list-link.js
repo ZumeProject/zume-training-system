@@ -35,7 +35,7 @@ export class ListLink extends NavLink {
                         ${
                             this.completed
                             ? html`
-                                <span class="icon zume-check-mark grow-0 | dash-menu__list-success"></span>
+                                <div><span class="icon zume-check-mark grow-0 | dash-menu__list-success"></span></div>
                             `
                             : html`
                                 <a
