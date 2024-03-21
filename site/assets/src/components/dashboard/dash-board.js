@@ -66,6 +66,7 @@ export class DashBoard extends router(LitElement) {
         this.wizardType = ''
 
         this.updateUserProfile = this.updateUserProfile.bind(this)
+        this.updateWizardType = this.updateWizardType.bind(this)
     }
 
     connectedCallback() {
@@ -73,6 +74,7 @@ export class DashBoard extends router(LitElement) {
 
         window.addEventListener('user-profile:change', this.updateUserProfile)
         this.addEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
+        window.addEventListener('open-wizard', this.updateWizardType)
     }
 
     disconnectedCallback() {
@@ -80,6 +82,12 @@ export class DashBoard extends router(LitElement) {
 
         window.removeEventListener('user-profile:change', this.updateUserProfile)
         this.removeEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
+        window.removeEventListener('open-wizard', this.updateWizardType)
+    }
+
+    updateWizardType(event) {
+        const type = event.detail.type
+        this.openWizard(type)
     }
 
     firstUpdated() {
@@ -205,6 +213,16 @@ export class DashBoard extends router(LitElement) {
         return Math.round( numberCompleted / itemsToComplete.length * 100 )
     }
 
+    openWizard(type) {
+        const modal = document.querySelector('#wizard-modal')
+        jQuery(modal).foundation('open')
+        this.wizardType = type
+    }
+    closeWizard() {
+        const modal = document.querySelector('#wizard-modal')
+        jQuery(modal).foundation('open')
+    }
+
     openProfile() {
         const modal = document.querySelector('#profile-modal')
         jQuery(modal).foundation('open')
@@ -264,7 +282,10 @@ export class DashBoard extends router(LitElement) {
                                                         href=${this.makeHrefRoute(route.name)}
                                                         icon=${route.icon}
                                                         text=${route.translation}
-                                                        ?disableNavigate=${route.type === 'direct-link'}
+                                                        ?disableNavigate=${route.type === 'handled-link'}
+                                                        @click=${route.type === 'handled-link' ? (event) => {
+                                                            route.clickHandler(event, this.dispatchEvent)
+                                                        } : null}
                                                         ?completed=${DashBoard.getCompletedStatus(route.name)}
                                                     ></nav-link>
                                                     <span class="icon zume-check-mark success"></span>
@@ -340,12 +361,12 @@ export class DashBoard extends router(LitElement) {
                 </div>
             </div>
             <div class="reveal full" id="wizard-modal" data-reveal>
-                <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.closeProfile}>
+                <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.closeWizard}>
                     <span class="icon zume-close gray-500"></span>
                 </button>
                 <zume-wizard
                     type=${this.wizardType}
-                    user=${this.userProfile}
+                    .user=${this.userProfile}
                 ></zume-wizard>
             </div>
         `;

@@ -46,6 +46,10 @@ export class Wizard extends LitElement {
         this.stateManager = new WizardStateManager()
     }
 
+    firstUpdated() {
+        console.log(this.type)
+    }
+
     render() {
         if (!this.isWizardLoaded()) {
             const wizard = this.getWizard(this.type)

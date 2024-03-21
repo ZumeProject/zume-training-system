@@ -1,3 +1,10 @@
+function makeClickHandler(type) {
+    return (event, dispatchEvent) => {
+        event.preventDefault()
+        dispatchEvent(new CustomEvent('open-wizard', { bubbles: true, detail: { type } }))
+    }
+}
+
 export function dashRoutes() {
     return [
         {
@@ -22,10 +29,11 @@ export function dashRoutes() {
         },
         {
             name: 'set-profile',
-            pattern: `${jsObject.urls.set_profile_wizard}`,
+            pattern: '#',
             parent: 'getting-started',
             icon: 'zume-profile',
-            type: 'direct-link',
+            type: 'handled-link',
+            clickHandler: makeClickHandler('set-profile'),
             translation: jsObject.translations['set_profile'],
             explanation: jsObject.translations['set_profile_explanation'],
             data: {
@@ -34,10 +42,11 @@ export function dashRoutes() {
         },
         {
             name: 'plan-a-training',
-            pattern: `${jsObject.urls.plan_training_wizard}`,
+            pattern: '#',
             parent: 'getting-started',
             icon: 'zume-start',
-            type: 'direct-link',
+            type: 'handled-link',
+            clickHandler: makeClickHandler('plan-a-training'),
             translation: jsObject.translations['plan_a_training'],
             explanation: jsObject.translations['plan_a_training_explanation'],
             data: {
@@ -46,10 +55,11 @@ export function dashRoutes() {
         },
         {
             name: 'get-a-coach',
-            pattern: `${jsObject.urls.get_coach_wizard}`,
+            pattern: '#',
             parent: 'getting-started',
             icon: 'zume-coach',
-            type: 'direct-link',
+            type: 'handled-link',
+            clickHandler: makeClickHandler('get-a-coach'),
             translation: jsObject.translations['get_a_coach'],
             explanation: jsObject.translations['get_a_coach_explanation'],
             data: {
