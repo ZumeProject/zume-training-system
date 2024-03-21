@@ -328,11 +328,11 @@ export class DashBoard extends router(LitElement) {
 
                 ${this.renderRoute()}
             </div>
-            <div class="reveal medium" id="profile-modal" data-reveal data-v-offset="20">
+            <div class="reveal full" id="profile-modal" data-reveal>
                 <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.closeProfile}>
                     <span class="icon zume-close gray-500"></span>
                 </button>
-                <div class="center my-0">
+                <div class="container-xsm my-0">
                     <h3>${zumeDashboard.translations.edit_profile}</h3>
                     <profile-form .userProfile=${this.userProfile}></profile-form>
                 </div>

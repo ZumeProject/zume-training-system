@@ -5,11 +5,13 @@ export class ProfileForm extends LitElement {
         return {
             userProfile: { type: Object },
             loading: { type: Boolean, attribute: false },
+            locations: { type: Array, attribute: false },
         };
     }
     constructor() {
         super()
         this.userProfile = {}
+        this.locations = []
     }
 
     firstUpdated() {
@@ -27,16 +29,16 @@ export class ProfileForm extends LitElement {
         const name = this.nameInput.value
         const email = this.emailInput.value
         const phone = this.phoneInput.value
-        //const preferred_language = this.prefferedLanguageInput.value
+        const preferred_language = this.prefferedLanguageInput.value
 
         const data = {
           name,
           phone,
           email,
-          //preferred_language,
+          preferred_language,
         }
 
-        data.location_grid_meta = getLocationGridFromMapbox(zumeDashboard.mapbox_selected_id, this.userProfile.location)
+        data.location_grid_meta = getLocationGridFromMapbox(this.mapboxSelectedId, this.userProfile.location)
 
         this.loading = true
 
@@ -61,38 +63,27 @@ export class ProfileForm extends LitElement {
         })
     }
 
-    addressCallback(data) {
-        if (data.features.length < 1) {
-            addressResultsContainer.innerHTML = `
-                No Locations Found
-            ` /* TODO: translate and escape me */
+    /* I couldn't get this to bind correctly, so have made an arrow function to implicitly gain access to 'this' of the class */
+    addressCallback = (data) => {
+        if ( data.features.length < 1 ) {
+            this.locations = -1
+        } else {
+            this.locations = data.features
         }
+    }
 
-        let locations = ''
-        data.features.forEach((feature) => {
-            locations += `
-                <div class="address-result" id="${feature.id}" data-place-name="${feature.place_name}">
-                    ${feature.place_name}
-                </div>
-            ` /* TODO: escape place names */
-        })
+    processLocation = debounce(getAddressSuggestions(this.addressCallback, zumeDashboard.map_key))
 
-        addressResultsContainer.innerHTML = locations
+    selectAddress(e) {
+        /* Escape placeName */
+        const id = e.target.id
+        const placeName = e.target.dataset.placeName
 
-        addressResults = this.renderRoot.querySelectorAll('.address-result')
-        addressResults.forEach((result) => {
-            result.addEventListener('click', function(e) {
-                /* Escape placeName */
-                const id = e.target.id
-                const placeName = e.target.dataset.placeName
+        this.cityInput.value = placeName
 
-                cityInput.value = placeName
+        this.mapboxSelectedId = id
 
-                zumeDashboard.mapbox_selected_id = id
-
-                addressResultsContainer.innerHTML = ''
-            })
-        })
+        this.locations = []
     }
 
     render() {
@@ -101,22 +92,63 @@ export class ProfileForm extends LitElement {
 
                 <div class="">
                     <label for="full_name">${zumeDashboard.translations.name}</label>
-                    <input required type="text" id="full_name" name="full_name" value=${this.userProfile.name}>
+                    <input class="input" required type="text" id="full_name" name="full_name" value=${this.userProfile.name}>
                 </div>
                 <div class="">
                     <label for="phone">${zumeDashboard.translations.phone}</label>
-                    <input type="tel" id="phone" name="phone" value=${this.userProfile.phone}>
+                    <input class="input" type="tel" id="phone" name="phone" value=${this.userProfile.phone}>
                 </div>
                 <div class="">
                     <label for="email">${zumeDashboard.translations.email}</label>
-                    <input type="email" id="email" name="email" value=${this.userProfile.email}>
+                    <input class="input" type="email" id="email" name="email" value=${this.userProfile.email}>
                 </div>
-                <div class=""></div>
+                <div class="">
                     <label for="city">${zumeDashboard.translations.city}</label>
-                    <input type="text" id="city" name="city" value=${this.userProfile.location?.label ?? ''}>
+                    <input class="input" type="text" id="city" name="city" value=${this.userProfile.location?.label ?? ''} @input=${this.processLocation}>
+                </div>
+                    ${
+                        !Array.isArray(this.locations)
+                        ? html`
+                            ${zumeDashboard.translations.no_locations}
+                        `
+                        : ''
+                    }
+                    ${
+                        Array.isArray(this.locations) && this.locations.length > 0
+                        ? html`
+                            <div id="address_results" class="stack my-0">
+                                ${ this.locations.map((feature) => html`
+                                    <div
+                                        class="card-btn | text-center"
+                                        role="button"
+                                        id="${feature.id}"
+                                        data-place-name="${feature.place_name}"
+                                        @click=${this.selectAddress}
+                                    >
+                                        ${feature.place_name}
+                                    </div>
+                                `)}
+                            </div>
+                        ` : ''
+                    }
                 </div>
 
-                <button class="btn" id="submit-profile" ?disabled=${this.loading}>${zumeDashboard.translations.save}</button>
+                <div>
+                    <label for="preferred-language">${zumeDashboard.translations.language}</label>
+                    <select class="input" name="preferred-language" id="preferred-language">
+
+                    ${
+                        Object.values(zumeDashboard.zume_languages_by_code).map((item) => html`
+                            <option value=${item.code} ?selected=${this.userProfile.preferred_language === item.code}>
+                                ${item.nativeName} - ${item.enDisplayName}
+                            </option>
+                        `)
+                    }
+
+                    </select>
+                </div>
+
+                <button class="btn my-0" id="submit-profile" ?disabled=${this.loading}>${zumeDashboard.translations.save}</button>
                 <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
 
             </form>

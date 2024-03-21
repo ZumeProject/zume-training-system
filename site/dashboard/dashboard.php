@@ -89,6 +89,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
     }
 
     public function header_style(){
+        global $zume_languages_by_code;
         ?>
         <script>
             jQuery(document).ready(function(){
@@ -102,6 +103,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'language' => $this->lang_code,
                 'site_url' => get_site_url(),
                 'base_url' => $this->base_url,
+                'map_key' => DT_Mapbox_API::get_key(),
                 'mapbox_selected_id' => 'current',
                 'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
                 'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '/assets/images' ),
@@ -111,6 +113,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'training_items' => zume_training_items(),
                 'host_progress' => zume_get_user_host(),
                 'friends' => zume_get_user_friends(),
+                'zume_languages_by_code' => $zume_languages_by_code,
                 'has_pieces_pages' => zume_feature_flag( 'pieces_pages', zume_current_language() ),
                 'share_translations' => Zume_Training_Share::translations(),
                 'translations' => [
@@ -133,6 +136,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                     'phone' => __( 'Phone', 'zume' ),
                     'email' => __( 'Email', 'zume' ),
                     'city' => __( 'City', 'zume' ),
+                    'no_locations' => __( 'No Locations found', 'zume' ),
+                    'language' => __( 'Language', 'zume' ),
                     'save' => __( 'Save', 'zume' ),
                     'edit_profile' => __( 'Edit Profile', 'zume' ),
                     'share_title' => __( 'Check out this Zume concept', 'zume' ),
