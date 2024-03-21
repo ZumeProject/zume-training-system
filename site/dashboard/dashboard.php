@@ -108,7 +108,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
                 'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '/assets/images' ),
                 'template_dir' => get_template_directory_uri(),
-                'user_profile' => zume_get_user_profile(),
+                'profile' => zume_get_user_profile(),
                 'user_stage' => zume_get_user_stage(),
                 'training_items' => zume_training_items(),
                 'host_progress' => zume_get_user_host(),

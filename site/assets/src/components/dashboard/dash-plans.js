@@ -78,8 +78,8 @@ export class DashPlans extends DashPage {
                  * then we can safely fetch all the commitments once the single API request has completed
                  */
                 const request = makeRequest('POST', 'commitment', {
-                    "user_id": jsObject.user_profile.user_id,
-                    "post_id": jsObject.user_profile.contact_id,
+                    "user_id": jsObject.profile.user_id,
+                    "post_id": jsObject.profile.contact_id,
                     "meta_key": "tasks",
                     "note": 'Question: ' + question + ' Answer: ' + answer,
                     "question": question,
@@ -103,7 +103,7 @@ export class DashPlans extends DashPage {
 
         let data = {
             id: id,
-            user_id: jsObject.user_profile.user_id
+            user_id: jsObject.profile.user_id
         }
         makeRequest('PUT', 'commitment', data, 'zume_system/v1' ).done( ( data ) => {
             this.fetchCommitments()
@@ -113,7 +113,7 @@ export class DashPlans extends DashPage {
     deleteCommitment(id) {
         let data = {
             id: id,
-            user_id: jsObject.user_profile.user_id
+            user_id: jsObject.profile.user_id
         }
         makeRequest('DELETE', 'commitment', data, 'zume_system/v1' ).done( ( data ) => {
             this.closeMenu(id)

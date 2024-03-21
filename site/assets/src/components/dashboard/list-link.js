@@ -47,7 +47,7 @@ export class ListLink extends NavLink {
                                     ${
                                         this.locked
                                             ? jsObject.translations.preview
-                                            : this.directLink ? this.text : jsObject.translations.view_now
+                                            : this.disableNavigate ? this.text : jsObject.translations.view_now
                                     }
                                 </a>
                             `

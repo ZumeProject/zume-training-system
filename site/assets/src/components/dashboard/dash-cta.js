@@ -12,7 +12,7 @@ export class DashCta extends LitElement {
         super()
         this.allCtas = []
         this.ctas = []
-        this.userId = jsObject.user_profile.user_id
+        this.userId = jsObject.profile.user_id
     }
 
     firstUpdated() {

@@ -18,6 +18,7 @@ export class DashBoard extends router(LitElement) {
             query: { type: Object },
             menuOffset: { type: Number, attribute: false },
             userProfile: { type: Object, attribute: false },
+            wizardType: { type: String, attribute: false },
         };
     }
 
@@ -60,8 +61,9 @@ export class DashBoard extends router(LitElement) {
         this.query = {}
         this.data = {}
         this.menuOffset = 0
-        this.userProfile = jsObject.user_profile
+        this.userProfile = jsObject.profile
         this.userState = jsObject.user_stage.state
+        this.wizardType = ''
 
         this.updateUserProfile = this.updateUserProfile.bind(this)
     }
@@ -262,7 +264,7 @@ export class DashBoard extends router(LitElement) {
                                                         href=${this.makeHrefRoute(route.name)}
                                                         icon=${route.icon}
                                                         text=${route.translation}
-                                                        ?directLink=${route.type === 'direct-link'}
+                                                        ?disableNavigate=${route.type === 'direct-link'}
                                                         ?completed=${DashBoard.getCompletedStatus(route.name)}
                                                     ></nav-link>
                                                     <span class="icon zume-check-mark success"></span>
@@ -336,6 +338,15 @@ export class DashBoard extends router(LitElement) {
                     <h3>${jsObject.translations.edit_profile}</h3>
                     <profile-form .userProfile=${this.userProfile}></profile-form>
                 </div>
+            </div>
+            <div class="reveal full" id="wizard-modal" data-reveal>
+                <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.closeProfile}>
+                    <span class="icon zume-close gray-500"></span>
+                </button>
+                <zume-wizard
+                    type=${this.wizardType}
+                    user=${this.userProfile}
+                ></zume-wizard>
             </div>
         `;
     }
