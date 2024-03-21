@@ -28,9 +28,13 @@
     font-size: font-size(2);
     font-weight: bold;
     line-height: 1;
+    width: fit-content;
+    margin-inline: auto;
+    padding: var(--s-1);
 }
 .profile-name {
     font-size: font-size(-2);
+    text-align: center;
 }
 
 dash-sidebar-toggle {

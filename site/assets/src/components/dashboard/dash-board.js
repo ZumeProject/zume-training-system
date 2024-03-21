@@ -17,6 +17,7 @@ export class DashBoard extends router(LitElement) {
             params: { type: Object },
             query: { type: Object },
             menuOffset: { type: Number, attribute: false },
+            userProfile: { type: Object, attribute: false },
         };
     }
 
@@ -59,13 +60,24 @@ export class DashBoard extends router(LitElement) {
         this.query = {}
         this.data = {}
         this.menuOffset = 0
+        this.userProfile = zumeDashboard.user_profile
         this.userState = zumeDashboard.user_stage.state
-        this.userName = zumeDashboard.user_profile.name
-        this.userInitials = this.createInitials(this.userName)
 
-        this.addEventListener('toggle-dashboard-sidebar', () => {
-            this.toggleSidebar()
-        })
+        this.updateUserProfile = this.updateUserProfile.bind(this)
+    }
+
+    connectedCallback() {
+        super.connectedCallback()
+
+        window.addEventListener('user-profile:change', this.updateUserProfile)
+        this.addEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback()
+
+        window.removeEventListener('user-profile:change', this.updateUserProfile)
+        this.removeEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
     }
 
     firstUpdated() {
@@ -137,11 +149,16 @@ export class DashBoard extends router(LitElement) {
         }
     }
 
+    updateUserProfile(event) {
+        const newProfile = event.detail
+        this.userProfile = newProfile
+    }
+
     createInitials(name) {
         if (typeof name !== 'string' || name.length === 0) {
             return ''
         }
-        const initials = name.split(' ').map((text) => text.length > 0 ? text[0].toUpperCase() : '').join('')
+        const initials = name.split(' ').map((text) => text.length > 0 ? text[0].toUpperCase() : '').slice(0,2).join('')
         return initials
     }
 
@@ -218,9 +235,9 @@ export class DashBoard extends router(LitElement) {
                                 class="profile-btn"
                                 @click=${this.openProfile}
                             >
-                                ${this.userInitials}
+                                ${this.createInitials(this.userProfile.name)}
                             </button>
-                            <span class="profile-name">${this.userName}</span>
+                            <span class="profile-name">${this.userProfile.name}</span>
                         </div>
                         <ul
                             class="stack-2 | progress-menu accordion-menu"
@@ -317,29 +334,7 @@ export class DashBoard extends router(LitElement) {
                 </button>
                 <div class="center my-0">
                     <h3>${zumeDashboard.translations.edit_profile}</h3>
-                    <form action="" id="profile-form">
-
-                        <div class="">
-                            <label for="full_name">${zumeDashboard.translations.name}</label>
-                            <input required type="text" id="full_name" name="full_name" value=${zumeDashboard.user_profile.name}>
-                        </div>
-                        <div class="">
-                            <label for="phone">${zumeDashboard.translations.phone}</label>
-                            <input type="tel" id="phone" name="phone" value=${zumeDashboard.user_profile.phone}>
-                        </div>
-                        <div class="">
-                            <label for="email">${zumeDashboard.translations.email}</label>
-                            <input type="email" id="email" name="email" value=${zumeDashboard.user_profile.email}>
-                        </div>
-                        <div class="">
-                            <label for="city">${zumeDashboard.translations.city}</label>
-                            <input type="text" id="city" name="city" value=${zumeDashboard.user_profile.location?.label ?? ''}>
-                        </div>
-
-                        <button class="btn" id="submit-profile">${zumeDashboard.translations.save}</button>
-                        <span class="loading-spinner"></span>
-
-                    </form>
+                    <profile-form .userProfile=${this.userProfile}></profile-form>
                 </div>
             </div>
         `;

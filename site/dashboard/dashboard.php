@@ -70,16 +70,22 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
 
             add_filter( 'wp_enqueue_scripts', [ $this, 'enqueue_zume_training_scripts' ] );
+            add_filter( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
         }
     }
 
     public function dt_magic_url_base_allowed_js( $allowed_js ) {
         $allowed_js[] = 'zume_forms';
+        $allowed_js[] = 'zume-profile-utilities';
         return zume_training_magic_url_base_allowed_js( $allowed_js );
     }
 
     public function dt_magic_url_base_allowed_css( $allowed_css ) {
         return zume_training_magic_url_base_allowed_css();
+    }
+
+    public function enqueue_scripts() {
+        wp_enqueue_script( 'zume-profile-utilities', trailingslashit( plugin_dir_url( __DIR__ ) ) . 'profile/profile-utilities.js', array(), filemtime( trailingslashit( plugin_dir_path( __DIR__ ) ) . 'profile/profile-utilities.js' ), true );
     }
 
     public function header_style(){
@@ -96,6 +102,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'language' => $this->lang_code,
                 'site_url' => get_site_url(),
                 'base_url' => $this->base_url,
+                'mapbox_selected_id' => 'current',
+                'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
                 'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '/assets/images' ),
                 'template_dir' => get_template_directory_uri(),
                 'user_profile' => zume_get_user_profile(),
