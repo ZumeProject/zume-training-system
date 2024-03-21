@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit"
+import { LitElement, html } from "lit"
 import { ZumeWizardModules, ZumeWizardSteps, ZumeWizardStepsConnectedFields as ConnectedFields, ZumeWizards } from "./wizard-constants"
 import { WizardStateManager } from "./wizard-state-manager"
 
@@ -17,6 +17,14 @@ export class Wizard extends LitElement {
              * Logged in user profile
              */
             user: { type: Object },
+            /**
+             * Wizard translation strings
+             */
+            translations: { type: Object },
+            /**
+             * Wizard translation strings
+             */
+            noUrlChange: { type: Boolean },
             /**
              * The step that is currently being shown
              */
@@ -47,7 +55,9 @@ export class Wizard extends LitElement {
     }
 
     firstUpdated() {
-        console.log(this.type)
+        if (this.translations) {
+            this.t = window.SHAREDFUNCTIONS.escapeObject(this.translations)
+        }
     }
 
     render() {
@@ -56,7 +66,6 @@ export class Wizard extends LitElement {
             this.loadWizard( wizard )
             this._handleHistoryPopState( true )
         }
-
 
         if (this.steps.length === 0) {
             return html`
@@ -195,7 +204,13 @@ export class Wizard extends LitElement {
         this.stateManager.clear()
 
         if ( !this.finishUrl ) {
-            window.location.href = '/'
+            this.dispatchEvent(new CustomEvent(
+                'wizard-finished',
+                {
+                    bubbles: true,
+                }
+            ))
+            return
         }
 
         const url = new URL( this.finishUrl )
@@ -220,7 +235,7 @@ export class Wizard extends LitElement {
         this.stepIndex = this.clampSteps(index)
         this.step = this.steps[this.stepIndex]
 
-        if ( pushState ) {
+        if ( pushState && !this.noUrlChange ) {
             const url = new URL(window.location.href)
             const urlParts = url.pathname.split('/')
             const slug = urlParts[urlParts.length - 1]
@@ -282,7 +297,7 @@ export class Wizard extends LitElement {
                 this.updateWizard( ZumeWizards.makeAGroup )
                 break;
             case 'join':
-                this.updateWizard( ZumeWizards.joinAPlan )
+                this.updateWizard( ZumeWizards.joinATraining )
                 break;
             case 'skip':
             default:
@@ -329,10 +344,10 @@ export class Wizard extends LitElement {
                         slug: 'plan-decision',
                         component: (step, t, classes) => html`
                             <div class=${`stack ${classes}`}>
-                                <h2>Join or start a training</h2>
-                                <button class="btn" data-decision="make" @click=${this._handlePlanDecision}>Start a training</button>
-                                <button class="btn" data-decision="join" @click=${this._handlePlanDecision}>Join a public training</button>
-                                <button class="btn outline" data-decision="skip" @click=${this._handlePlanDecision}>Skip for now</button>
+                                <h2>${t.join_or_start_a_training}</h2>
+                                <button class="btn" data-decision="make" @click=${this._handlePlanDecision}>${t.start_a_training}</button>
+                                <button class="btn" data-decision="join" @click=${this._handlePlanDecision}>${t.join_a_public_training}</button>
+                                <button class="btn outline" data-decision="skip" @click=${this._handlePlanDecision}>${t.skip_for_now}</button>
                             </div>
                         `
                     },
@@ -385,6 +400,7 @@ export class Wizard extends LitElement {
                 /* Skip if the corresponding field exists in the user */
                 const connectedField = ConnectedFields[slug]
                 let connectedFieldValue = null
+
                 if ( connectedField && profile) {
                     if ( connectedField.testExistance(profile[connectedField.field], profile) ) {
                         return
@@ -447,6 +463,12 @@ export class Wizard extends LitElement {
                 ], true),
                 [ZumeWizardModules.planDecision]: this.getModule(ZumeWizardModules.planDecision),
             },
+            [ZumeWizards.setProfile]: {
+                [ZumeWizardModules.completeProfile]: this.makeModule([
+                    ZumeWizardSteps.updateName,
+                    ZumeWizardSteps.updateLocation,
+                ], true),
+            },
             [ZumeWizards.makeAGroup]: {
                 [ZumeWizardModules.makePlan]: this.getModule(ZumeWizardModules.makePlan),
             },
@@ -463,7 +485,7 @@ export class Wizard extends LitElement {
                     ZumeWizardSteps.connectingToCoach,
                 ]),
             },
-            [ZumeWizards.joinAPlan]: {
+            [ZumeWizards.joinATraining]: {
                 [ZumeWizardModules.completeProfile]: this.makeModule([
                     ZumeWizardSteps.updateName,
                     ZumeWizardSteps.updateLocation,

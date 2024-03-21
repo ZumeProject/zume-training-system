@@ -41,12 +41,12 @@ export function dashRoutes() {
             },
         },
         {
-            name: 'plan-a-training',
+            name: 'join-a-training',
             pattern: '#',
             parent: 'getting-started',
             icon: 'zume-start',
             type: 'handled-link',
-            clickHandler: makeClickHandler('plan-a-training'),
+            clickHandler: makeClickHandler('getting-started'),
             translation: jsObject.translations['plan_a_training'],
             explanation: jsObject.translations['plan_a_training_explanation'],
             data: {

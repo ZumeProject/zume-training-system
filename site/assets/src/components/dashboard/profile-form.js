@@ -138,7 +138,7 @@ export class ProfileForm extends LitElement {
                     <select class="input" name="preferred-language" id="preferred-language">
 
                     ${
-                        Object.values(jsObject.zume_languages_by_code).map((item) => html`
+                        Object.values(jsObject.languages).map((item) => html`
                             <option value=${item.code} ?selected=${this.userProfile.preferred_language === item.code}>
                                 ${item.nativeName} - ${item.enDisplayName}
                             </option>

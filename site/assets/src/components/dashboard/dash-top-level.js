@@ -31,7 +31,10 @@ export class DashTopLevel extends DashPage {
                             text=${route.translation || ''}
                             icon=${route.icon}
                             ?disableNavigate=${route.type === 'handled-link'}
-                            @click=${route.type === 'handled-link' ? (event) => route.handler(event, this.dispatchEvent) : null}
+                            @click=${route.type === 'handled-link' ? (event) => {
+                                if (DashBoard.getCompletedStatus(route.name)) return
+                                route.clickHandler(event, this.dispatchEvent)
+                            } : null}
                             ?completed=${DashBoard.getCompletedStatus(route.name)}
                             ?locked=${DashBoard.getLockedStatus(route.name)}
                         >
@@ -51,7 +54,10 @@ export class DashTopLevel extends DashPage {
                         explanation=${route.explanation}
                         icon=${route.icon}
                         ?disableNavigate=${route.type === 'handled-link'}
-                        @click=${route.type === 'handled-link' ? (event) => route.handler(event, this.dispatchEvent) : null}
+                        @click=${route.type === 'handled-link' ? (event) => {
+                            if (DashBoard.getCompletedStatus(route.name)) return
+                            route.clickHandler(event, this.dispatchEvent)
+                        } : null}
                         ?completed=${DashBoard.getCompletedStatus(route.name)}
                         ?locked=${DashBoard.getLockedStatus(route.name)}
                     >

@@ -75,6 +75,7 @@ export class DashBoard extends router(LitElement) {
         window.addEventListener('user-profile:change', this.updateUserProfile)
         this.addEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
         window.addEventListener('open-wizard', this.updateWizardType)
+        window.addEventListener('wizard-finished', this.closeWizard)
     }
 
     disconnectedCallback() {
@@ -83,6 +84,7 @@ export class DashBoard extends router(LitElement) {
         window.removeEventListener('user-profile:change', this.updateUserProfile)
         this.removeEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
         window.removeEventListener('open-wizard', this.updateWizardType)
+        window.removeEventListener('wizard-finished', this.closeWizard)
     }
 
     updateWizardType(event) {
@@ -174,7 +176,7 @@ export class DashBoard extends router(LitElement) {
 
     static getCompletedStatus(routeName) {
         const userState = jsObject.user_stage.state
-        if (routeName === 'set-profile' && userState.set_profile) {
+        if (routeName === 'set-profile' && userState.set_profile_location && userState.set_profile_name) {
             return true
         }
         if (routeName === 'get-a-coach' && userState.requested_a_coach) {
@@ -219,8 +221,9 @@ export class DashBoard extends router(LitElement) {
         this.wizardType = type
     }
     closeWizard() {
+        this.wizardType = ''
         const modal = document.querySelector('#wizard-modal')
-        jQuery(modal).foundation('open')
+        jQuery(modal).foundation('close')
     }
 
     openProfile() {
@@ -229,7 +232,7 @@ export class DashBoard extends router(LitElement) {
     }
     closeProfile() {
         const modal = document.querySelector('#profile-modal')
-        jQuery(modal).foundation('open')
+        jQuery(modal).foundation('close')
     }
 
     render() {
@@ -284,6 +287,7 @@ export class DashBoard extends router(LitElement) {
                                                         text=${route.translation}
                                                         ?disableNavigate=${route.type === 'handled-link'}
                                                         @click=${route.type === 'handled-link' ? (event) => {
+                                                            if (DashBoard.getCompletedStatus(route.name)) return
                                                             route.clickHandler(event, this.dispatchEvent)
                                                         } : null}
                                                         ?completed=${DashBoard.getCompletedStatus(route.name)}
@@ -358,6 +362,7 @@ export class DashBoard extends router(LitElement) {
                 <div class="container-xsm my-0">
                     <h3>${jsObject.translations.edit_profile}</h3>
                     <profile-form .userProfile=${this.userProfile}></profile-form>
+                    <a href=${jsObject.urls.logout} class="btn outline">${jsObject.translations.logout}</a>
                 </div>
             </div>
             <div class="reveal full" id="wizard-modal" data-reveal>
@@ -367,6 +372,8 @@ export class DashBoard extends router(LitElement) {
                 <zume-wizard
                     type=${this.wizardType}
                     .user=${this.userProfile}
+                    .translations=${jsObject.wizard_translations}
+                    noUrlChange
                 ></zume-wizard>
             </div>
         `;
