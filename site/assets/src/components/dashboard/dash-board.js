@@ -229,7 +229,6 @@ export class DashBoard extends router(LitElement) {
     }
     refetchState() {
         makeRequest('GET', 'user_stage', {}, 'zume_system/v1' ).done( ( data ) => {
-            console.log(data)
             if (!data || !data.state) {
                 console.error('Stage or state data not returned from api')
             }
@@ -244,6 +243,35 @@ export class DashBoard extends router(LitElement) {
     }
     closeProfile() {
         const modal = document.querySelector('#profile-modal')
+        jQuery(modal).foundation('close')
+    }
+
+    openCommunityModal(event) {
+        event.preventDefault()
+        const modal = document.querySelector('#community-modal')
+        jQuery(modal).foundation('open')
+    }
+    closeCommunityModal() {
+        const modal = document.querySelector('#community-modal')
+        jQuery(modal).foundation('close')
+    }
+
+    joinCommunity() {
+        makeRequest('POST', 'log', { type: 'system', subtype: 'join_community' }, 'zume_system/v1/' ).done( ( data ) => {
+            this.refetchState()
+        })
+    }
+    hasJoinedCommunity() {
+        return this.userState.join_community ? true : false
+    }
+
+    openResourcesModal(event) {
+        event.preventDefault()
+        const modal = document.querySelector('#resources-modal')
+        jQuery(modal).foundation('open')
+    }
+    closeResourcesModal() {
+        const modal = document.querySelector('#resources-modal')
         jQuery(modal).foundation('close')
     }
 
@@ -362,6 +390,24 @@ export class DashBoard extends router(LitElement) {
                                 </ul>
                             </li>
                         </ul>
+                        <div class="footer-links">
+                            <nav-link
+                                class="menu-btn | f--1"
+                                href=''
+                                icon='zume-community'
+                                text=${this.hasJoinedCommunity() ? jsObject.translations.community : jsObject.translations.join_the_community}
+                                ?disableNavigate=${true}
+                                @click=${this.openCommunityModal}
+                            ></nav-link>
+                            <nav-link
+                                class="menu-btn | f--1"
+                                href=''
+                                icon='zume-resources'
+                                text=${jsObject.translations.resources}
+                                ?disableNavigate=${true}
+                                @click=${this.openResourcesModal}
+                            ></nav-link>
+                        </div>
                     </div>
                 </div>
 
@@ -387,6 +433,40 @@ export class DashBoard extends router(LitElement) {
                     .translations=${jsObject.wizard_translations}
                     noUrlChange
                 ></zume-wizard>
+            </div>
+            <div class="reveal full" id="resources-modal" data-reveal>
+                <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.closeResourcesModal}>
+                    <span class="icon zume-close gray-500"></span>
+                </button>
+                <div class="container-xsm">
+                    <h1>Resources</h1>
+                    <p>All the resources</p>
+                    <ul role="list">
+                        <li>in a</li>
+                        <li>great big</li>
+                        <li>list</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="reveal full" id="community-modal" data-reveal>
+                <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.closeCommunityModal}>
+                    <span class="icon zume-close gray-500"></span>
+                </button>
+                <div class="container-xsm">
+                    <h1>Practitioner Community</h1>
+                    ${
+                        this.hasJoinedCommunity() ? html`
+                            <p>Here is all the community stuff we promised you :)</p>
+                        `
+                        : html`
+                            <p>There are lot's of good reasons to join the community here</p>
+                            <button class="btn" @click=${this.joinCommunity}>
+                                Join
+                            </button>
+                        `
+                    }
+                </div>
+
             </div>
         `;
     }

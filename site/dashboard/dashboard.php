@@ -213,6 +213,9 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'shared_explanation' => __( 'Have I shared this tool or concept?', 'zume' ),
             'trained' => __( 'Trained', 'zume' ),
             'trained_explanation' => __( 'Have I trained others to share this tool or concept?', 'zume' ),
+            'join_the_community' => __( 'Join the Community', 'zume' ),
+            'community' => __( 'Community links', 'zume' ),
+            'resources' => __( 'Resources', 'zume' ),
         ];
     }
 }
