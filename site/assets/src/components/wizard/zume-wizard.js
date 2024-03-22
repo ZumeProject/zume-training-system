@@ -54,6 +54,10 @@ export class Wizard extends LitElement {
         this.stateManager = new WizardStateManager()
     }
 
+    resetWizard() {
+        this.modules = {}
+    }
+
     firstUpdated() {
         if (this.translations) {
             this.t = window.SHAREDFUNCTIONS.escapeObject(this.translations)
@@ -62,7 +66,7 @@ export class Wizard extends LitElement {
 
     willUpdate(properties) {
         if (properties.has('type') && this.type === '') {
-            this.modules = {}
+            this.resetWizard()
         }
     }
 
@@ -208,9 +212,15 @@ export class Wizard extends LitElement {
     }
     _onFinish(quit = false) {
         this.stateManager.clear()
-        this.modules = {}
+        this.resetWizard()
 
         if ( !this.finishUrl ) {
+            this.dispatchEvent(new CustomEvent(
+                'user-state:change',
+                {
+                    bubbles: true,
+                }
+            ))
             this.dispatchEvent(new CustomEvent(
                 'wizard-finished',
                 {

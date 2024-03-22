@@ -54,6 +54,8 @@ export class ProfileForm extends LitElement {
         .then((profile) => {
             const event = new CustomEvent( 'user-profile:change', { bubbles: true, detail: profile} )
             this.dispatchEvent(event)
+            const stateChangeEvent = new CustomEvent( 'user-state:change', { bubbles: true } )
+            this.dispatchEvent(stateChangeEvent)
         })
         .catch((error) => {
             console.error(error)

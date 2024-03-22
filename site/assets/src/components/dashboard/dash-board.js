@@ -18,6 +18,7 @@ export class DashBoard extends router(LitElement) {
             query: { type: Object },
             menuOffset: { type: Number, attribute: false },
             userProfile: { type: Object, attribute: false },
+            userState: { type: Object, attribute: false },
             wizardType: { type: String, attribute: false },
         };
     }
@@ -67,6 +68,7 @@ export class DashBoard extends router(LitElement) {
 
         this.updateUserProfile = this.updateUserProfile.bind(this)
         this.updateWizardType = this.updateWizardType.bind(this)
+        this.refetchState = this.refetchState.bind(this)
     }
 
     connectedCallback() {
@@ -76,6 +78,7 @@ export class DashBoard extends router(LitElement) {
         this.addEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
         window.addEventListener('open-wizard', this.updateWizardType)
         window.addEventListener('wizard-finished', this.closeWizard)
+        window.addEventListener('user-state:change', this.refetchState)
     }
 
     disconnectedCallback() {
@@ -85,15 +88,16 @@ export class DashBoard extends router(LitElement) {
         this.removeEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
         window.removeEventListener('open-wizard', this.updateWizardType)
         window.removeEventListener('wizard-finished', this.closeWizard)
+        window.removeEventListener('user-state:change', this.refetchState)
+    }
+
+    firstUpdated() {
+        this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
     }
 
     updateWizardType(event) {
         const type = event.detail.type
         this.openWizard(type)
-    }
-
-    firstUpdated() {
-        this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
     }
 
     router(route, params, query, data) {
@@ -174,22 +178,20 @@ export class DashBoard extends router(LitElement) {
         return initials
     }
 
-    static getCompletedStatus(routeName) {
-        const userState = jsObject.user_stage.state
+    static getCompletedStatus(routeName, userState) {
         if (routeName === 'set-profile' && userState.set_profile_location && userState.set_profile_name) {
             return true
         }
         if (routeName === 'get-a-coach' && userState.requested_a_coach) {
             return true
         }
-        if (routeName === 'plan-a-training' && ( userState.plan_created || userState.joined_online_training )) {
+        if (routeName === 'join-a-training' && ( userState.plan_created || userState.joined_online_training )) {
             return true
         }
         return false
     }
 
-    static getLockedStatus(routeName) {
-        const userState = jsObject.user_stage.state
+    static getLockedStatus(routeName, userState) {
         if (routeName === 'my-plans' && !userState.made_3_month_plan) {
             return true
         }
@@ -203,10 +205,10 @@ export class DashBoard extends router(LitElement) {
     }
 
     getGettingStartedPercentage() {
-        const itemsToComplete = ['get-a-coach', 'set-profile', 'plan-a-training'];
+        const itemsToComplete = ['get-a-coach', 'set-profile', 'join-a-training'];
 
         const numberCompleted = itemsToComplete.reduce((total, item) => {
-            if (DashBoard.getCompletedStatus(item)) {
+            if (DashBoard.getCompletedStatus(item, this.userState)) {
                 return total + 1
             }
             return total
@@ -224,6 +226,16 @@ export class DashBoard extends router(LitElement) {
         this.wizardType = ''
         const modal = document.querySelector('#wizard-modal')
         jQuery(modal).foundation('close')
+    }
+    refetchState() {
+        makeRequest('GET', 'user_stage', {}, 'zume_system/v1' ).done( ( data ) => {
+            console.log(data)
+            if (!data || !data.state) {
+                console.error('Stage or state data not returned from api')
+            }
+            jsObject.user_stage = data
+            this.userState = data.state
+        })
     }
 
     openProfile() {
@@ -287,10 +299,10 @@ export class DashBoard extends router(LitElement) {
                                                         text=${route.translation}
                                                         ?disableNavigate=${route.type === 'handled-link'}
                                                         @click=${route.type === 'handled-link' ? (event) => {
-                                                            if (DashBoard.getCompletedStatus(route.name)) return
+                                                            if (DashBoard.getCompletedStatus(route.name, this.userState)) return
                                                             route.clickHandler(event, this.dispatchEvent)
                                                         } : null}
-                                                        ?completed=${DashBoard.getCompletedStatus(route.name)}
+                                                        ?completed=${DashBoard.getCompletedStatus(route.name, this.userState)}
                                                     ></nav-link>
                                                     <span class="icon zume-check-mark success"></span>
                                                 </li>
@@ -316,7 +328,7 @@ export class DashBoard extends router(LitElement) {
                                                         href=${this.makeHrefRoute(route.name)}
                                                         icon=${route.icon}
                                                         text=${route.translation}
-                                                        ?locked=${DashBoard.getLockedStatus(route.name)}
+                                                        ?locked=${DashBoard.getLockedStatus(route.name, this.userState)}
                                                     ></nav-link>
                                                     <span class="icon zume-locked gray-500"></span>
                                                 </li>
@@ -341,7 +353,7 @@ export class DashBoard extends router(LitElement) {
                                                         href=${this.makeHrefRoute(route.name)}
                                                         icon=${route.icon}
                                                         text=${route.translation}
-                                                        ?locked=${DashBoard.getLockedStatus(route.name)}
+                                                        ?locked=${DashBoard.getLockedStatus(route.name, this.userState)}
                                                     ></nav-link>
                                                     <span class="icon zume-locked gray-500"></span>
                                                 </li>
