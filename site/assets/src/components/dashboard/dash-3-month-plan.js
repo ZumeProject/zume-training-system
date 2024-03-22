@@ -47,6 +47,9 @@ export class Dash3MonthPlan extends DashPage {
     }
 
     openCommitmentsModal() {
+        if (this.showTeaser) {
+            return
+        }
         const modal = document.querySelector('#new-commitments-form')
         jQuery(modal).foundation('open')
     }
@@ -193,6 +196,7 @@ export class Dash3MonthPlan extends DashPage {
     }
 
     render() {
+        console.log(this.route)
         return html`
             <div class="dashboard__content" data-no-secondary-area>
                 <dash-header-right></dash-header-right>
@@ -203,14 +207,14 @@ export class Dash3MonthPlan extends DashPage {
                             <span class="icon ${this.route.icon}"></span>
                             <h1 class="h3">${this.route.translation}</h1>
                         </div>
-                        <div class="s0">
-                            <button class="icon-btn f-2" data-toggle="filter-menu">
+                        <div class="s0"></div>
+                            <button class="icon-btn f-2" data-toggle="filter-menu" ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser ? 'true' : 'false'}>
                                 <span class="visually-hidden">${jsObject.translations.filter}</span>
-                                <span class="icon zume-filter brand-light" aria-hidden="true"></span>
+                                <span class="icon zume-filter" aria-hidden="true"></span>
                             </button>
-                            <button class="icon-btn f-2" @click=${this.openCommitmentsModal}>
+                            <button class="icon-btn f-2" @click=${this.openCommitmentsModal} ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser ? 'true' : 'false'}>
                                 <span class="visually-hidden">${jsObject.translations.add_commitments}</span>
-                                <span class="icon zume-plus brand-light" aria-hidden="true"></span>
+                                <span class="icon zume-plus" aria-hidden="true"></span>
                             </button>
                         </div>
                     </div>

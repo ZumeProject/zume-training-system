@@ -141,6 +141,10 @@ dash-header-right {
         color: color('brand-light');
     }
 
+    & button[disabled] .icon {
+        color: color('disabled');
+    }
+
     & > * {
         display: flex;
         align-items: center;
