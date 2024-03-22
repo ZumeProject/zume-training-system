@@ -69,26 +69,28 @@ export class DashBoard extends router(LitElement) {
         this.updateUserProfile = this.updateUserProfile.bind(this)
         this.updateWizardType = this.updateWizardType.bind(this)
         this.refetchState = this.refetchState.bind(this)
+        this.refetchHost = this.refetchHost.bind(this)
     }
 
     connectedCallback() {
         super.connectedCallback()
 
         window.addEventListener('user-profile:change', this.updateUserProfile)
-        this.addEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
+        window.addEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
         window.addEventListener('open-wizard', this.updateWizardType)
         window.addEventListener('wizard-finished', this.closeWizard)
         window.addEventListener('user-state:change', this.refetchState)
+        window.addEventListener('user-host:change', this.refetchHost)
     }
 
     disconnectedCallback() {
         super.disconnectedCallback()
 
         window.removeEventListener('user-profile:change', this.updateUserProfile)
-        this.removeEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
+        window.removeEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
         window.removeEventListener('open-wizard', this.updateWizardType)
         window.removeEventListener('wizard-finished', this.closeWizard)
-        window.removeEventListener('user-state:change', this.refetchState)
+        window.removeEventListener('user-host:change', this.refetchHost)
     }
 
     firstUpdated() {
@@ -127,11 +129,16 @@ export class DashBoard extends router(LitElement) {
     renderRoute() {
         const { component } = this.data
 
+        const isLocked = DashBoard.getLockedStatus(this.route, this.userState)
+
         if ( !component ) {
             return ''
         }
 
         const element = document.createElement(component)
+        if (isLocked) {
+            element.setAttribute('showTeaser', isLocked)
+        }
         return element
     }
 
@@ -201,6 +208,9 @@ export class DashBoard extends router(LitElement) {
         if (routeName === '3-month-plan' && !userState.can_create_3_month_plan) {
             return true
         }
+        if (routeName === 'my-training' && !userState.plan_created && !userState.joined_online_training ) {
+            return true
+        }
         return false
     }
 
@@ -228,12 +238,22 @@ export class DashBoard extends router(LitElement) {
         jQuery(modal).foundation('close')
     }
     refetchState() {
+        console.log('refetching state')
         makeRequest('GET', 'user_stage', {}, 'zume_system/v1' ).done( ( data ) => {
             if (!data || !data.state) {
                 console.error('Stage or state data not returned from api')
             }
             jsObject.user_stage = data
             this.userState = data.state
+        })
+    }
+    refetchHost() {
+        console.log('refetching host')
+        makeRequest('GET', 'user_host', {}, 'zume_system/v1' ).done( ( data ) => {
+            if (!data) {
+                console.error('Host not returned from api')
+            }
+            jsObject.host_progress = data
         })
     }
 

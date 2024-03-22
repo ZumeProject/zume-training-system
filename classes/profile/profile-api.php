@@ -41,6 +41,15 @@ class Zume_Profile_API
                 },
             ]
         );
+        register_rest_route(
+            $namespace, '/user_host', [
+                'methods' => [ 'GET' ],
+                'callback' => [ $this, 'get_user_host' ],
+                'permission_callback' => function () {
+                    return is_user_logged_in();
+                },
+            ]
+        );
     }
 
     public function update_profile( WP_REST_Request $request ) {
@@ -59,6 +68,17 @@ class Zume_Profile_API
 
     public function get_user_stage( WP_REST_Request $request ) {
         $return = zume_get_user_stage();
+
+        if ( is_wp_error( $return ) ) {
+            return $return;
+        }
+
+        return new WP_REST_Response( $return );
+    }
+
+
+    public function get_user_host( WP_REST_Request $request ) {
+        $return = zume_get_user_host();
 
         if ( is_wp_error( $return ) ) {
             return $return;

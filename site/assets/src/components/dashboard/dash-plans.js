@@ -6,6 +6,7 @@ import { DashPage } from './dash-page';
 export class DashPlans extends DashPage {
     static get properties() {
         return {
+            showTeaser: { type: Boolean },
             loading: { type: Boolean, attribute: false },
             commitments: { type: Array, attribute: false },
             filterStatus: { type: String, attribute: false },
@@ -14,6 +15,7 @@ export class DashPlans extends DashPage {
 
     constructor() {
         super()
+        this.showTeaser = false
         this.loading = true
         this.route = DashBoard.getRoute('my-plans')
         this.filterName = 'my-plans-filter'
@@ -176,6 +178,20 @@ export class DashPlans extends DashPage {
         `
     }
 
+    unlock3MonthPlan() {
+        makeRequest('POST', 'log', { type: 'training', subtype: '26_heard' }, 'zume_system/v1/' ).done( ( data ) => {
+            const stateEvent = new CustomEvent('user-state:change', { bubbles: true })
+            this.dispatchEvent(stateEvent)
+            const hostChangeEvent = new CustomEvent('user-host:change', { bubbles: true })
+            this.dispatchEvent(hostChangeEvent)
+
+            /* We should trigger a refetch of the user-host:change as well */
+            /* That way the progress page will be correct when navigated to. */
+
+            this.showTeaser = false
+        })
+    }
+
     render() {
         return html`
             <div class="dashboard__content" data-no-secondary-area>
@@ -223,7 +239,14 @@ export class DashPlans extends DashPage {
                 </div>
                 <div class="dashboard__main">
                     ${
-                        this.loading
+                        this.showTeaser ? html`
+                            <p>Here lies the teaser area for this page</p>
+                            <p>Once you have done the 3 month plan section of the training this area will unlock</p>
+                            <button class="btn" @click=${this.unlock3MonthPlan}>Unlock now</button>
+                        ` : ''
+                    }
+                    ${
+                        this.loading && !this.showTeaser
                             ? html`<span class="loading-spinner active"></span>`
                             : html`
                                 <ul class="list">

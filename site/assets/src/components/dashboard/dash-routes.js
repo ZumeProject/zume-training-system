@@ -109,7 +109,7 @@ export function dashRoutes() {
             translation: jsObject.translations['3_month_plan'],
             explanation: jsObject.translations['3_month_plan_explanation'],
             data: {
-                component: 'dash-progress',
+                component: 'dash-plans',
             },
         },
         {
