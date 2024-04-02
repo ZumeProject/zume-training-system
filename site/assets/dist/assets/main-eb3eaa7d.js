@@ -1295,9 +1295,9 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
                     </div>
                 </div>
             </div>
-        `}}customElements.define("list-link",as);class rs extends g{constructor(){super();const t=document.querySelector("html").dataset.dir;this.isRtl=t==="rtl"}updated(){jQuery(document).foundation()}render(){return o`
-            <button class="btn uppercase light tight" data-toggle="launch-course-panel">
-                ${jsObject.translations.launch_course}
+        `}}customElements.define("list-link",as);class rs extends g{static get properties(){return{translations:{type:Object},urls:{type:Object},position:{type:String},asLink:{type:Boolean}}}constructor(){super(),typeof jsObject<"u"&&(this.translations=jsObject.translations,this.urls=jsObject.urls),this.position="bottom";const t=document.querySelector("html").dataset.dir;this.isRtl=t==="rtl"}updated(){jQuery(document).foundation()}render(){return o`
+            <button class="${this.asLink?"btn dark tight":" btn uppercase light tight"}" data-toggle="launch-course-panel">
+                ${this.translations.launch_course}
             </button>
             <div
                 class="dropdown-pane"
@@ -1305,13 +1305,13 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
                 data-dropdown
                 data-auto-focus="true"
                 data-close-on-click="true"
-                data-position="bottom"
+                data-position=${this.position}
                 data-alignment=${this.isRtl?"right":"left"}
             >
                 <ul>
-                    <li><a class="menu-btn" href="${jsObject.urls.launch_ten_session_course}"><span class="icon zume-course"></span>${jsObject.translations.ten_session_course}</a></li>
-                    <li><a class="menu-btn" href="${jsObject.urls.launch_twenty_session_course}"><span class="icon zume-course"></span>${jsObject.translations.twenty_session_course}</a></li>
-                    <li><a class="menu-btn" href="${jsObject.urls.launch_intensive_session_course}"><span class="icon zume-course"></span>${jsObject.translations.three_day_intensive_course}</a></li>
+                    <li><a class="menu-btn" href="${this.urls.launch_ten_session_course}"><span class="icon zume-course"></span>${this.translations.ten_session_course}</a></li>
+                    <li><a class="menu-btn" href="${this.urls.launch_twenty_session_course}"><span class="icon zume-course"></span>${this.translations.twenty_session_course}</a></li>
+                    <li><a class="menu-btn" href="${this.urls.launch_intensive_session_course}"><span class="icon zume-course"></span>${this.translations.three_day_intensive_course}</a></li>
                 </ul>
             </div>
         `}createRenderRoot(){return this}}customElements.define("launch-course",rs);class os extends g{constructor(){super();S(this,"addressCallback",t=>{t.features.length<1?this.locations=-1:this.locations=t.features});S(this,"processLocation",debounce(getAddressSuggestions(this.addressCallback,jsObject.map_key)));this.userProfile={},this.locations=[]}static get properties(){return{userProfile:{type:Object},loading:{type:Boolean,attribute:!1},locations:{type:Array,attribute:!1}}}firstUpdated(){this.nameInput=this.renderRoot.querySelector("#full_name"),this.phoneInput=this.renderRoot.querySelector("#phone"),this.emailInput=this.renderRoot.querySelector("#email"),this.cityInput=this.renderRoot.querySelector("#city"),this.prefferedLanguageInput=this.renderRoot.querySelector("#preferred-language"),this.addressResultsContainer=this.renderRoot.querySelector("#address_results")}submitProfileForm(t){t.preventDefault();const s=this.nameInput.value,n=this.emailInput.value,r=this.phoneInput.value,a=this.prefferedLanguageInput.value,h={name:s,phone:r,email:n,preferred_language:a};h.location_grid_meta=getLocationGridFromMapbox(this.mapboxSelectedId,this.userProfile.location),this.loading=!0,fetch(jsObject.rest_endpoint+"/profile",{method:"POST",body:JSON.stringify(h),headers:{"X-WP-Nonce":jsObject.nonce}}).then(l=>l.json()).then(l=>{const d=new CustomEvent("user-profile:change",{bubbles:!0,detail:l});this.dispatchEvent(d);const $=new CustomEvent("user-state:change",{bubbles:!0});this.dispatchEvent($)}).catch(l=>{console.error(l)}).finally(()=>{this.loading=!1})}selectAddress(t){const s=t.target.id,n=t.target.dataset.placeName;this.cityInput.value=n,this.mapboxSelectedId=s,this.locations=[]}render(){var t;return o`
@@ -2067,4 +2067,4 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",As);
-//# sourceMappingURL=main-65aa0f42.js.map
+//# sourceMappingURL=main-eb3eaa7d.js.map
