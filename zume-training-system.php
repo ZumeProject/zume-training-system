@@ -297,6 +297,14 @@ class Zume_Training {
                     'only_for_types' => [ 'user' ],
                 ];
             }
+            if ( !isset( $fields['user_preferred_email'] ) ){
+                $fields['user_preferred_email'] = [
+                    'name' => __( 'User Preferred Email', 'zume' ),
+                    'type' => 'text',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
             if ( !isset( $fields['user_contact_preference'] ) ) {
                 $fields['user_contact_preference'] = [
                     'name' => __( 'Preferred Contact Methods', 'zume' ),
