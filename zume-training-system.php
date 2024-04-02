@@ -361,6 +361,7 @@ class Zume_Training {
 
         $fields = [
             'user_email' => $user->user_email,
+            'user_communications_email' => $user->user_email,
             'user_phone' => '',
             'user_timezone' => $ip_result['time_zone']['id'] ?? '',
             'user_friend_key' => $user_friend_key,
