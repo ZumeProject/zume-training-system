@@ -1601,7 +1601,7 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
                     </div>
                 </div>
             </div>
-        `}}customElements.define("title-slide",ys);class _s extends w{render(){return o`
+        `}}customElements.define("title-slide",ys);class _s extends w{static get properties(){return{slide:{type:Object},showButtons:{type:Boolean}}}constructor(){super()}render(){return o`
             <div class="video-slide">
                 <div>
                     <iframe src="${this.slide.center[0]}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
@@ -1610,28 +1610,31 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
                     >
                     </iframe>
                 </div>
-                <!-- These buttons have no click handlers. They essentially give a space to allow the
-            mouse click to trigger the click left/right side of screen event -->
-                <button
-                    type="button"
-                    class="btn icon-btn absolute middle left mx-0"
-                >
-                    <img
-                        src="${jsObject.images_url}/chevron.svg"
-                        alt=${jsObject.translations.previous_slide}
-                        class="svg white rotate-90 w-1rem h-1rem"
-                    />
-                </button>
-                <button
-                    type="button"
-                    class="btn icon-btn absolute middle right mx-0"
-                >
-                    <img
-                        src="${jsObject.images_url}/chevron.svg"
-                        alt=${jsObject.translations.next_slide}
-                        class="svg white rotate--90 w-1rem h-1rem"
-                    />
-                </button>
+
+                ${this.showButtons===!0?o`
+                     <!-- These buttons have no click handlers. They essentially give a space to allow the
+                mouse click to trigger the click left/right side of screen event -->
+                    <button
+                        type="button"
+                        class="btn icon-btn absolute middle left mx-0"
+                    >
+                        <img
+                            src="${jsObject.images_url}/chevron.svg"
+                            alt=${jsObject.translations.previous_slide}
+                            class="svg white rotate-90 w-1rem h-1rem"
+                        />
+                    </button>
+                    <button
+                        type="button"
+                        class="btn icon-btn absolute middle right mx-0"
+                    >
+                        <img
+                            src="${jsObject.images_url}/chevron.svg"
+                            alt=${jsObject.translations.next_slide}
+                            class="svg white rotate--90 w-1rem h-1rem"
+                        />
+                    </button>
+                `:""}
             </div>
         `}}customElements.define("video-slide",_s);class ws extends w{render(){return o`
             <div class="slides-card">
@@ -1782,10 +1785,10 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
         `}createRenderRoot(){return this}}customElements.define("course-guide",js);class xs extends g{static get properties(){return{sections:{type:Array},sectionIndex:{attribute:!1},currentSlide:{attribute:!1},index:{attribute:!1}}}constructor(){super(),this.reset(),this.listenForKeyboard=this.listenForKeyboard.bind(this),this.listenForMouseClick=this.listenForMouseClick.bind(this)}reset(){this.sectionIndex=-1,this.currentSlide=null}connectedCallback(){super.connectedCallback(),document.addEventListener("keydown",this.listenForKeyboard),document.addEventListener("mousedown",this.listenForMouseClick)}disconnectedCallback(){super.disconnectedCallback(),document.removeEventListener("keydown",this.listenForKeyboard),document.removeEventListener("mousedown",this.listenForMouseClick)}update(e){e.has("sections")&&this.reset(),super.update(e)}nextSlide(){if(this.sectionIndex>=this.sections.length-1){this.sectionIndex=this.sections.length-1;return}this.setSlide(this.sectionIndex+1)}previousSlide(){this.sectionIndex<0&&(this.sectionIndex=0),this.setSlide(this.sectionIndex-1)}leftSlide(){document.querySelector("html").dir==="rtl"?this.nextSlide():this.previousSlide()}rightSlide(){document.querySelector("html").dir==="rtl"?this.previousSlide():this.nextSlide()}listenForKeyboard(e){["ArrowRight"].includes(e.code)&&this.rightSlide(),["Space"].includes(e.code)&&this.nextSlide(),["ArrowLeft"].includes(e.code)&&this.leftSlide(),["Backspace"].includes(e.code)&&this.previousSlide()}listenForMouseClick(e){if(e.target.id==="hamburger-menu")return;const t=l=>l.id==="offCanvas"||l.classList.contains("js-off-canvas-overlay");if(this.hasParent(e.target,t))return;const{x:s,type:n,which:r}=e;if(n!=="mousedown"||r!==1)return;const{innerWidth:a}=window,h=1/2*a;s<h&&this.leftSlide(),s>a-h&&this.rightSlide()}hasParent(e,t){let s=e;const n=50;let r=0;for(;s;){if(t(s))return!0;if(s=s.parentElement,r=r+1,r>n)return!1}return!1}setSlide(e){this.sectionIndex=e;const t=this.sections[e];this.currentSlide=t}render(){return this.sectionIndex<0&&this.setSlide(0),o`
             <div class="cover-page">
                 <div>
-                    <slide-switcher .slide=${this.currentSlide}></slide-switcher>
+                    <slide-switcher .slide=${this.currentSlide} showControls></slide-switcher>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("course-slideshow",xs);class Es extends g{static get properties(){return{slide:{type:Object}}}render(){if(this.slide)switch(this.slide.type){case"title":return o`<title-slide .slide=${this.slide}></title-slide>`;case"checkin":return o`<checkin-slide .slide=${this.slide}></checkin-slide>`;case"pray":return o`<pray-slide .slide=${this.slide}></pray-slide>`;case"review":case"overview":return o`<overview-slide .slide=${this.slide}></overview-slide>`;case"challenge":case"center":return o`<center-slide .slide=${this.slide}></center-slide>`;case"watch":return o`<watch-slide .slide=${this.slide}></watch-slide>`;case"video":return o`<video-slide .slide=${this.slide}></video-slide>`;case"look_back":return o`<look-back-slide .slide=${this.slide}></look-back-slide>`;case"discuss":return o`<discuss-slide .slide=${this.slide}></discuss-slide>`;case"left_content":case"activity":return o`<activity-slide .slide=${this.slide}></activity-slide>`;case"obey":return o`<obey-slide .slide=${this.slide}></obey-slide>`;case"left_image":return o`<left-image-slide .slide=${this.slide}></left-image-slide>`;case"next_steps":return o`<next-steps-slide .slide=${this.slide}></next-steps-slide>`;case"break":return o`<break-slide .slide=${this.slide}></break-slide>`;case"congratulations":return o`<congratulations-slide .slide=${this.slide}></congratulations-slide>`;case"final":return o`<final-slide .slide=${this.slide}></final-slide>`;default:return o`<course-slide .slide=${this.slide}></course-slide>`}}createRenderRoot(){return this}}customElements.define("slide-switcher",Es);class rt extends g{constructor(){super()}render(){return o`
+        `}createRenderRoot(){return this}}customElements.define("course-slideshow",xs);class Es extends g{static get properties(){return{slide:{type:Object},showControls:{type:Boolean}}}render(){if(this.slide)switch(this.slide.type){case"title":return o`<title-slide .slide=${this.slide}></title-slide>`;case"checkin":return o`<checkin-slide .slide=${this.slide}></checkin-slide>`;case"pray":return o`<pray-slide .slide=${this.slide}></pray-slide>`;case"review":case"overview":return o`<overview-slide .slide=${this.slide}></overview-slide>`;case"challenge":case"center":return o`<center-slide .slide=${this.slide}></center-slide>`;case"watch":return o`<watch-slide .slide=${this.slide}></watch-slide>`;case"video":return o`<video-slide .slide=${this.slide} ?showButtons=${this.showControls}></video-slide>`;case"look_back":return o`<look-back-slide .slide=${this.slide}></look-back-slide>`;case"discuss":return o`<discuss-slide .slide=${this.slide}></discuss-slide>`;case"left_content":case"activity":return o`<activity-slide .slide=${this.slide}></activity-slide>`;case"obey":return o`<obey-slide .slide=${this.slide}></obey-slide>`;case"left_image":return o`<left-image-slide .slide=${this.slide}></left-image-slide>`;case"next_steps":return o`<next-steps-slide .slide=${this.slide}></next-steps-slide>`;case"break":return o`<break-slide .slide=${this.slide}></break-slide>`;case"congratulations":return o`<congratulations-slide .slide=${this.slide}></congratulations-slide>`;case"final":return o`<final-slide .slide=${this.slide}></final-slide>`;default:return o`<course-slide .slide=${this.slide}></course-slide>`}}createRenderRoot(){return this}}customElements.define("slide-switcher",Es);class rt extends g{constructor(){super()}render(){return o`
             <div class="container">
                 <div class="circle">
                     <div class="triangle"></div>
@@ -2046,4 +2049,4 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",As);
-//# sourceMappingURL=main-27fab56f.js.map
+//# sourceMappingURL=main-9c7b9f57.js.map
