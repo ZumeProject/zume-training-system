@@ -191,6 +191,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
             });
             const jsObject = [<?php echo json_encode([
                 'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . 'assets/images' ),
+                'translations' => Zume_Training_Presenter::translations(),
             ]) ?>][0]
 
         </script>
