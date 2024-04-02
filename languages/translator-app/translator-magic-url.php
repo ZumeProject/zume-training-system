@@ -249,7 +249,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                         <option>----------</option>
                         <?php
                         foreach( $zume_languages as $k => $l ) {
-                            if ( ! in_array( $k, $approved_languages ) && ! in_array( 'administrator', $this->user->roles ) ) {
+                            if ( empty( $approved_languages ) || ! in_array( $k, $approved_languages ) && ! in_array( 'administrator', $this->user->roles ) ) {
                                 continue;
                             }
                             ?>
