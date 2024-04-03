@@ -1679,7 +1679,7 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
                     </div>
                 </div>
             </div>
-        `}}customElements.define("title-slide",ys);class _s extends w{static get properties(){return{slide:{type:Object},showButtons:{type:Boolean}}}constructor(){super()}firstUpdated(){jQuery(document).foundation()}openMenu(){const e=document.querySelector("#informationOffCanvas");jQuery(e).foundation("open")}closeMenu(){const e=document.querySelector("#informationOffCanvas");jQuery(e).foundation("close")}render(){return o`
+        `}}customElements.define("title-slide",ys);class _s extends w{static get properties(){return{slide:{type:Object},showButtons:{type:Boolean},scriptUrl:{type:String,attribute:!1}}}firstUpdated(){jQuery(document).foundation();const e=this.slide.script_id,t=jsObject.lang_code,s=new URL(location.href),n=new URL(s.origin);n.pathname=[t,"zume_app","script"].join("/"),n.searchParams.append("s",e),this.scriptUrl=n.href}openMenu(){const e=document.querySelector("#informationOffCanvas");jQuery(e).foundation("open")}closeMenu(){const e=document.querySelector("#informationOffCanvas");jQuery(e).foundation("close")}render(){return o`
             <div class="video-slide">
 
                 <button
@@ -1729,9 +1729,11 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
                       <span aria-hidden="true">&times;</span>
                     </button>
 
-                    <p>
-                        Video script goes here
-                    </p>
+                    <iframe
+                        src=${this.scriptUrl||""}
+                        frameborder="0"
+                    >
+                    </iframe>
                 </div>
             </div>
         `}}customElements.define("video-slide",_s);class ws extends w{render(){return o`
@@ -2147,4 +2149,4 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",As);
-//# sourceMappingURL=main-d66f469c.js.map
+//# sourceMappingURL=main-27578aab.js.map

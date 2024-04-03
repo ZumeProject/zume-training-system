@@ -6,13 +6,21 @@ export class VideoSlide extends CourseSlide {
         return {
             slide: { type: Object },
             showButtons: { type: Boolean },
+            scriptUrl: { type: String, attribute: false }
         };
-    }
-    constructor() {
-        super()
     }
     firstUpdated() {
         jQuery(document).foundation();
+
+        const scriptId = this.slide.script_id
+        const lang_code = jsObject.lang_code
+
+        const url = new URL(location.href)
+        const scriptUrl = new URL(url.origin)
+        scriptUrl.pathname = [ lang_code, 'zume_app', 'script' ].join('/')
+        scriptUrl.searchParams.append('s', scriptId)
+
+        this.scriptUrl = scriptUrl.href
     }
     openMenu() {
         const menu = document.querySelector('#informationOffCanvas')
@@ -74,9 +82,11 @@ export class VideoSlide extends CourseSlide {
                       <span aria-hidden="true">&times;</span>
                     </button>
 
-                    <p>
-                        Video script goes here
-                    </p>
+                    <iframe
+                        src=${this.scriptUrl || ''}
+                        frameborder="0"
+                    >
+                    </iframe>
                 </div>
             </div>
         `;
