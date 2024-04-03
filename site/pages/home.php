@@ -387,7 +387,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                 <div class="cover center">
                     <div class="stack-1">
                         <h3><?php echo esc_html__( 'Explore the Zume Guidebook.', 'zume' ) ?></h3>
-                        <a href="<?php echo esc_url( zume_guidebook_url() ) ?>" class="btn large light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
+                        <a href="<?php echo esc_url( zume_resources_url() ) ?>" class="btn large light uppercase mx-auto fit-content"><?php echo esc_html__( 'Download' ) ?></a>
                     </div>
                 </div>
             </div>
