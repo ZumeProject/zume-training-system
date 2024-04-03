@@ -8,14 +8,33 @@ export class VideoSlide extends CourseSlide {
             showButtons: { type: Boolean },
         };
     }
-
     constructor() {
         super()
+    }
+    firstUpdated() {
+        jQuery(document).foundation();
+    }
+    openMenu() {
+        const menu = document.querySelector('#informationOffCanvas')
+        jQuery(menu).foundation('open')
+    }
+    closeMenu() {
+        const menu = document.querySelector('#informationOffCanvas')
+        jQuery(menu).foundation('close')
     }
 
     render() {
         return html`
             <div class="video-slide">
+
+                <button
+                    type="button"
+                    class="btn icon-btn absolute top ${this.dir === 'rtl' ? 'left' : 'right'} m-0 f-3 bypass-nav-click"
+                    @click=${this.openMenu}
+                >
+                    <span class="icon zume-info"></span>
+                </button>
+
                 <div>
                     <iframe src="${this.slide['center'][0]}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                             frameborder="0"
@@ -48,6 +67,17 @@ export class VideoSlide extends CourseSlide {
                         />
                     </button>
                 ` : '' }
+            </div>
+            <div class="stack | bg-white px-0 | information-flyout bypass-nav-click off-canvas ${this.dir === 'rtl' ? 'position-left' : 'position-right'} py-1" id="informationOffCanvas" data-off-canvas data-transition="overlap">
+                <div class="stack">
+                    <button class="close-button" aria-label="Close menu" type="button" data-close>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <p>
+                        Video script goes here
+                    </p>
+                </div>
             </div>
         `;
     }
