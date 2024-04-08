@@ -306,6 +306,7 @@ export class CoursePresenter extends LitElement {
                                             <a
                                                 class="session-link"
                                                 data-subitem
+                                                href=${`#${key}`}
                                                 @click=${() => this.handleSubSectionLink(sessionNumber, key)}
                                             >
                                                 <span>${title}</span> <span>${length}</span>
