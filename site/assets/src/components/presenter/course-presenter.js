@@ -259,6 +259,7 @@ export class CoursePresenter extends LitElement {
         const hiddenClass = this.showIndex ? 'visually-hidden' : ''
         const containerClass = this.type === 'intensive' ? 'container-xsm' : 'container-sm'
 
+        console.log(this.showIndex)
         /* If this is the overall presenter, then it would have a top bar, navigation buttons etc. as well */
         /* And also have a sidebar with the contents list in */
         return html`
@@ -337,8 +338,8 @@ export class CoursePresenter extends LitElement {
             </nav>
 
             <span class="p-1 d-block fixed top z-2">
-                <button id="hamburger-menu" class="nav-toggle show" @click=${this.openMenu}>
-                    <span class="hamburger ${this.showIndex ? '' : 'brand'}"></span>
+                <button id="hamburger-menu" class="nav-toggle show ${this.showIndex ? 'invert' : ''}" @click=${this.openMenu}>
+                    <span class="hamburger"></span>
                 </button>
             </span>
 
