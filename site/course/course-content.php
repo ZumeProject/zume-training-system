@@ -1,12 +1,19 @@
 <?php
+if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 function zume_content( $lang_code = 'en') {
+
+    if ( get_transient( __FUNCTION__.'_'.$lang_code ) ) {
+        return get_transient( __FUNCTION__.'_'.$lang_code );
+    }
+
+
     $mirror_url = 'https://storage.googleapis.com/zume-file-mirror/' . $lang_code . '/';
     $checkin_base_url = site_url() . '/' . $lang_code . '/checkin/?code=';
     $activity_base_url = trailingslashit( site_url() ) . 'zume_app/qr/?l=' . $lang_code . '&a=';
     $other_page_base_url = trailingslashit( site_url() ) . 'zume_app/qr/?l=' . $lang_code . '&o=';
 
-    return [
+    $content = [
         /***************************************************************************************************************
          *
          *
@@ -21,10 +28,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_1_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 1', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 1', 'zume' ),  // title
+                __( 'SESSION 1', 'zume' ),  // title
             ],
             'left' => [],
             'right' => [],
@@ -32,10 +42,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_1_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -48,10 +61,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_1_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Begin with prayer. Spiritual insight and transformation is not possible without the Holy Spirit. Take time as a group to invite Him to guide you over this session.', 'zume' )
@@ -60,6 +74,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_1_4',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -82,6 +97,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't1_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'God Uses Ordinary People', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -95,7 +114,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't1_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 34,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '1', true, $lang_code ), // video
@@ -106,6 +129,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't1_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -118,6 +142,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't2_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Disciples and the Church', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -131,7 +159,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't2_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 35,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '2', true, $lang_code ), // video
@@ -142,6 +174,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't2_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -158,6 +191,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't3_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Hearing and Obeying God', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -171,7 +208,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't3_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 36,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '3', true, $lang_code), // video
@@ -182,6 +223,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't3_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -197,6 +239,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't4_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'SOAPS Bible Reading', 'zume' ),
+                [35]
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -210,7 +256,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't4_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 37,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '4', true, $lang_code ), // video
@@ -222,6 +272,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't4_c',
             'type' => 'activity',
+            'menu' => [
+                __( 'Practice S.O.A.P.S.', 'zume' ),
+                [30],
+            ],
             'length' => [30],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -248,6 +302,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't5_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Accountability Groups', 'zume' ),
+                [25],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -262,7 +320,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't5_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 38,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '5', true, $lang_code ), // video
@@ -273,6 +335,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't5_c',
             'type' => 'activity',
+            'menu' => [],
             'length' => [20],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -294,6 +357,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_1_20',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -316,6 +380,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_1_21',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -347,10 +412,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_2_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 2', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 2', 'zume' ),
+                __( 'SESSION 2', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -358,10 +426,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_2_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -374,6 +445,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_2_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -388,6 +460,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_2_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -402,6 +475,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_2_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -422,6 +496,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't6_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Producer Not Consumer', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -441,7 +519,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't6_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 39,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '6', true, $lang_code ), // video
@@ -452,6 +534,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't6_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -468,6 +551,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't7_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Prayer Cycle', 'zume' ),
+                [75],
+            ],
             'length' => [],
             'center' => [],
             'left' => [
@@ -481,7 +568,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't7_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 40,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '7', true, $lang_code ), // video
@@ -492,6 +583,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't7_c',
             'type' => 'activity',
+            'menu' => [],
             'length' => [60],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -510,6 +602,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't7_d',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -527,7 +620,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't8_a',
             'type' => 'watch',
-            'length' => [],
+            'menu' => [
+                __( 'List of 100', 'zume' ),
+                [35],
+            ],
+            'length' => [5],
             'center' => [],
             'left' => [
                 __( 'WATCH', 'zume' )
@@ -542,7 +639,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't8_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 41,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '8', true, $lang_code ), // video
@@ -553,6 +654,9 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't8_c',
             'type' => 'activity',
+            'menu' => [
+                __( 'Create your own list of 100', 'zume' ),
+            ],
             'length' => [30],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -574,6 +678,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_2_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -594,6 +699,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_2_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -608,6 +714,7 @@ function zume_content( $lang_code = 'en') {
         [ // final slide
             'key' => 's1_2_18',
             'type' => 'final',
+            'menu' => [],
             'length' => [],
             'center' => [
                 $mirror_url . 'Zume-logo-blue.png', // Zume logo
@@ -640,10 +747,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_3_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 3', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 3', 'zume' ),
+                __( 'SESSION 3', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -651,10 +761,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_3_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -667,10 +780,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_3_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for the ways you experienced Him in the last session and invite His Holy Spirit to lead your time together.', 'zume' ),
@@ -679,6 +793,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_3_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -693,6 +808,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_3_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -713,6 +829,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't9_a',
             'type' => 'watch',
+            'menu' =>  [
+                __( 'Spiritual Economy', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -726,7 +846,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't9_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 42,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '9', true, $lang_code ), // video
@@ -737,6 +861,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't9_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -749,6 +874,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't10_a',
             'type' => 'center',
+            'menu' => [
+                __( 'The Gospel', 'zume' ),
+                [25],
+            ],
             'length' => [],
             'center' => [],
             'left' => [
@@ -760,6 +889,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't10_b',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -776,6 +906,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't10_c',
             'type' => 'watch',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -789,7 +920,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't10_d',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 43,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '10', true, $lang_code ), // video
@@ -800,6 +935,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't10_e',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -816,6 +952,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_3_8',
             'type' => 'activity',
+            'menu' => [],
             'length' => [45],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -838,6 +975,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't11_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Baptism', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -851,7 +992,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't11_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 44,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '11', true, $lang_code ), // video
@@ -862,6 +1007,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't11_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -878,6 +1024,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't11_d',
             'type' => 'center',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -890,6 +1037,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_3_10',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -910,6 +1058,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_3_11',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -925,6 +1074,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_3_12',
             'type' => 'center',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -949,10 +1099,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_4_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 4', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                'Session 4'
+                __( 'SESSION 4', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -960,10 +1113,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_4_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -976,6 +1132,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_4_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -989,6 +1146,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_4_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1003,6 +1161,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_4_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -1025,6 +1184,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't12_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Three-Minute Testimony', 'zume' ),
+                [35],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1038,7 +1201,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't12_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 45,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '12', true, $lang_code ), // video
@@ -1049,6 +1216,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't12_c',
             'type' => 'activity',
+            'menu' => [],
             'length' => [30],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -1070,6 +1238,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't13_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Great - Greater - Greatest Blessings', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1083,7 +1255,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't13_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 46,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '13', true, $lang_code ), // video
@@ -1094,6 +1270,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't13_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -1110,6 +1287,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't14_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Duckling Discipleship', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1123,7 +1304,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't14_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 47,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '14', true, $lang_code ), // video
@@ -1134,6 +1319,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't14_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -1149,6 +1335,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't15_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Eyes to See Where the Kingdom Isn’t', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1163,7 +1353,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't15_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 48,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '15', true, $lang_code ), // video
@@ -1174,6 +1368,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't15_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -1190,6 +1385,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't16_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'The Lord’s Supper', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1203,7 +1402,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't16_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 49,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '16', true, $lang_code ), // video
@@ -1214,6 +1417,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't16_c',
             'type' => 'activity',
+            'menu' => [],
             'length' => [10],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -1234,6 +1438,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_4_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -1256,6 +1461,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_4_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -1284,10 +1490,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_5_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 5', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 5', 'zume' ),
+                __( 'SESSION 5', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -1295,10 +1504,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_5_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -1311,10 +1523,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_5_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for the ways He works through the testimony of His people. Invite His Holy Spirit to lead your time together.', 'zume' ),
@@ -1323,6 +1536,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_5_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1337,6 +1551,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_5_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -1357,6 +1572,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't17_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Prayer Walking', 'zume' ),
+                [5],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1370,7 +1589,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't17_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 50,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '17', true, $lang_code ), // video
@@ -1381,6 +1604,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't18_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Person of Peace', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1394,7 +1621,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't18_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 51,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '18', true, $lang_code ), // video
@@ -1405,6 +1636,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't18_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -1421,6 +1653,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't19_a',
             'type' => 'activity',
+            'menu' => [
+                __( 'The B.L.E.S.S. Prayer', 'zume' ),
+                [10],
+            ],
             'length' => [10],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -1441,6 +1677,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't17_d',
             'type' => 'activity',
+            'menu' => [
+                __( 'Prayer Walking Activity', 'zume' ),
+                [6090],
+            ],
             'length' => [6090],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -1464,10 +1704,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't17_e',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Before you go out on your Prayer Walking activity, be sure to pray with your group to end your time together.', 'zume' ),
@@ -1493,10 +1734,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_6_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 6', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 6', 'zume' ),
+                __( 'SESSION 6', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -1504,10 +1748,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_6_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -1520,10 +1767,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_6_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for what He did in the last session, ask Him to help when you find it hard to obey, and invite His Holy Spirit to lead your time together.', 'zume' ),
@@ -1532,6 +1780,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_6_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1546,6 +1795,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_6_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -1565,6 +1815,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't20_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Faithfulness', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1578,7 +1832,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't20_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 52,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '20', true, $lang_code ), // video
@@ -1589,6 +1847,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't20_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -1601,6 +1860,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't21_a',
             'type' => 'watch',
+            'menu' => [
+                __( '3/3 Group Meeting', 'zume' ),
+                [75],
+            ],
             'length' => [75],
             'center' => [],
             'left' => [
@@ -1614,7 +1877,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't21_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 53,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '21', true, $lang_code ), // video
@@ -1625,6 +1892,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't21_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -1640,6 +1908,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_6_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -1659,6 +1928,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_6_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -1691,10 +1961,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_7_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 7', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 7', 'zume' ),
+                __( 'SESSION 7', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -1702,10 +1975,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_7_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -1718,10 +1994,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_7_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for the group’s commitment to faithfully following Jesus and invite God’s Holy Spirit to lead your time together.', 'zume' ),
@@ -1730,6 +2007,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_7_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1744,6 +2022,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_7_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -1763,6 +2042,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't22_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'The Training Cycle', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1776,7 +2059,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't22_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 54,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '22', true, $lang_code ), // video
@@ -1787,6 +2074,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't22_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -1804,6 +2092,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_7_6',
             'type' => 'activity',
+            'menu' => [],
             'length' => [6090],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -1826,6 +2115,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_7_7',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -1841,6 +2131,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_7_8',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -1860,6 +2151,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_7_9',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -1888,10 +2180,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_8_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 8', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 8', 'zume' ),
+                __( 'SESSION 8', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -1899,10 +2194,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_8_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -1915,10 +2213,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_8_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for giving your group the energy, the focus and the faithfulness to come so far in this training. Ask God to have His Holy Spirit remind everyone in the group that they can do nothing without Him!', 'zume' ),
@@ -1927,6 +2226,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_8_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1941,6 +2241,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_8_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -1960,6 +2261,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't23_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Leadership Cells', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -1974,7 +2279,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't23_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 55,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '23', true, $lang_code ), // video
@@ -1985,6 +2294,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't23_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -2000,6 +2310,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_8_6',
             'type' => 'activity',
+            'menu' => [],
             'length' => [6090],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -2022,6 +2333,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_8_7',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2041,6 +2353,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_8_8',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2069,10 +2382,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_9_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 9', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 9', 'zume' ),
+                __( 'SESSION 9', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -2080,10 +2396,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_9_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -2096,6 +2415,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_9_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -2108,6 +2428,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_9_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -2122,6 +2443,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_9_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2145,6 +2467,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't24_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Non-Sequential Growth', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -2158,7 +2484,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't24_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 56,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '24', true, $lang_code ), // video
@@ -2169,6 +2499,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't24_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -2184,6 +2515,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't25_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Pace', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -2197,7 +2532,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't25_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 57,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '25', true, $lang_code ), // video
@@ -2208,6 +2547,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't25_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -2224,6 +2564,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't26_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Always Part of Two Churches', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -2238,7 +2582,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't26_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 58,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '26', true, $lang_code ), // video
@@ -2249,6 +2597,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't26_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -2261,6 +2610,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't28_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Coaching Checklist', 'zume' ),
+                [25],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -2274,7 +2627,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't28_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 60,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '28', true, $lang_code ), // video
@@ -2285,6 +2642,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't28_c',
             'type' => 'activity',
+            'menu' => [],
             'length' => [20],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -2306,6 +2664,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't28_d',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -2322,6 +2681,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't28_e',
             'type' => 'activity',
+            'menu' => [],
             'length' => [],
             'center' => [
             ],
@@ -2338,6 +2698,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't31_a',
             'type' => 'center',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2349,6 +2710,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't31_b',
             'type' => 'center',
+            'menu' => [
+                __( 'Four Fields', 'zume' ),
+                [15],
+            ],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2362,6 +2727,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't31_c',
             'type' => 'center',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2383,6 +2749,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't31_d',
             'type' => 'left_image',
+            'menu' => [],
             'length' => [],
             'center' => [
                 __( 'Four Fields Example', 'zume' ),
@@ -2400,6 +2767,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't31_e',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [
             ],
@@ -2418,6 +2786,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't32_a',
             'type' => 'center',
+            'menu' =>  [
+                __( 'Generational Mapping', 'zume' ),
+                [15],
+            ],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2431,6 +2803,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't32_b',
             'type' => 'left_image',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2446,6 +2819,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't32_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -2463,6 +2837,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_9_9',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2486,6 +2861,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_9_10',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2513,10 +2889,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_10_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 10', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 10', 'zume' ),
+                __( 'SESSION 10', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -2524,10 +2903,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_10_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -2540,6 +2922,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_10_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -2554,6 +2937,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_10_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -2568,6 +2952,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_10_5',
             'type' => 'center',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2581,6 +2966,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_10_6',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2601,6 +2987,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't29_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Leadership in Networks', 'zume' ),
+                [15],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -2614,7 +3004,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't29_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 61,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '29', true, $lang_code ), // video
@@ -2625,6 +3019,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't29_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -2638,6 +3033,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't30_a',
             'type' => 'watch',
+            'menu' => [
+                __( 'Peer Mentoring Groups', 'zume' ),
+                [50],
+            ],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -2652,7 +3051,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't30_b',
             'type' => 'video',
+<<<<<<< HEAD
             'script_id' => 62,
+=======
+            'menu' => [],
+>>>>>>> main
             'length' => [],
             'center' => [
                 Zume_Course::get_video_by_key( '30', true, $lang_code ), // video
@@ -2663,6 +3066,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't30_c',
             'type' => 'activity',
+            'menu' => [],
             'length' => [45],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -2685,6 +3089,10 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't27_a',
             'type' => 'center',
+            'menu' => [
+                __( 'Three-Month Plan', 'zume' ),
+                [40],
+            ],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2699,6 +3107,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't27_b',
             'type' => 'activity',
+            'menu' => [],
             'length' => [30],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -2720,6 +3129,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 't27_c',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [10],
             'center' => [],
             'left' => [
@@ -2733,6 +3143,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's1_10_7',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2777,10 +3188,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_1_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 1', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 1', 'zume' ),
+                __( 'SESSION 1', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -2788,10 +3202,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_1_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -2804,10 +3221,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_1_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Begin with prayer. Spiritual insight and transformation is not possible without the Holy Spirit. Take time as a group to invite Him to guide you over this session.', 'zume' )
@@ -2816,6 +3234,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_1_4',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2833,6 +3252,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_1_5',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2850,6 +3270,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_1_6',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2878,10 +3299,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_2_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 2', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 2', 'zume' ),
+                __( 'SESSION 2', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -2889,10 +3313,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_2_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -2905,10 +3332,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_2_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Ask if anyone in the group has specific needs they would like the group to pray for.', 'zume' ),
@@ -2919,6 +3347,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_2_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -2933,6 +3362,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_2_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2948,6 +3378,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_2_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2963,6 +3394,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_2_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -2990,10 +3422,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_3_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 3', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 3', 'zume' ),
+                __( 'SESSION 3', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -3001,10 +3436,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_3_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -3017,10 +3455,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_3_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for His presence in our lives. Pray for each person in the group to have ears to hear His voice and grace to obey what He says.', 'zume' ),
@@ -3029,6 +3468,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_3_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -3043,6 +3483,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_3_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3058,6 +3499,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_3_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3073,6 +3515,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_3_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3101,10 +3544,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_4_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 4', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 4', 'zume' ),
+                __( 'SESSION 4', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -3112,10 +3558,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_4_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -3128,10 +3577,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_4_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God that He is making us like Jesus. Invite the Holy Spirit to lead your time together.',  'zume' ),
@@ -3140,6 +3590,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_4_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -3154,6 +3605,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_4_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3173,6 +3625,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_4_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3192,6 +3645,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_4_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3220,10 +3674,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_5_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 5', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 5', 'zume' ),
+                __( 'SESSION 5', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -3231,10 +3688,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_5_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -3247,10 +3707,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_5_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for His love for all of the people in our lives. Pray for each person in the group to see those around you the way God sees them.', 'zume' ),
@@ -3259,6 +3720,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_5_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -3273,6 +3735,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_5_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3288,6 +3751,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_5_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3303,6 +3767,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_5_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3331,10 +3796,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_6_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 6', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 6', 'zume' ),
+                __( 'SESSION 6', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -3342,10 +3810,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_6_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -3358,10 +3829,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_6_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for the ways you experienced Him in the last session and invite His Holy Spirit to lead your time together.', 'zume' ),
@@ -3370,6 +3842,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_6_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -3384,6 +3857,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_6_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3402,6 +3876,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_6_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3419,6 +3894,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_6_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3448,10 +3924,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_7_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 7', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 7', 'zume' ),
+                __( 'SESSION 7', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -3459,10 +3938,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_7_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -3475,10 +3957,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_7_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray for each member of your group to experience the blessings of following Jesus, leading others to follow Jesus, and equipping others to start new spiritual families.', 'zume' ),
@@ -3487,6 +3970,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_7_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -3501,6 +3985,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_7_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3516,6 +4001,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_7_6',
             'type' => 'activity',
+            'menu' => [],
             'length' => [50],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -3537,6 +4023,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_7_7',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3552,6 +4039,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_7_8',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3581,10 +4069,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_8_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 8', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 8', 'zume' ),
+                __( 'SESSION 8', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -3592,10 +4083,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_8_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -3608,10 +4102,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_8_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God that He invites us to share His Good News with others. Ask Him to give each member of your group the mind of Christ — and to fill each one with His Spirit.', 'zume' ),
@@ -3620,6 +4115,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_8_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -3634,6 +4130,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_8_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3650,6 +4147,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_8_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3666,6 +4164,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_8_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3694,10 +4193,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_9_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 9', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 9', 'zume' ),
+                __( 'SESSION 9', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -3705,10 +4207,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_9_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -3721,10 +4226,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_9_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for the gift of being united with Christ‘s death, burial, and resurrection. Ask God‘s Holy Spirit to lead your time, together.', 'zume' ),
@@ -3733,6 +4239,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_9_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -3747,6 +4254,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_9_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3762,6 +4270,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_9_6',
             'type' => 'center',
+            'menu' => [],
             'length' => [50],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -3780,6 +4289,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_9_7',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3795,6 +4305,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_9_8',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3809,6 +4320,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_9_9',
             'type' => 'center',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3834,10 +4346,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_10_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 10', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 10', 'zume' ),
+                __( 'SESSION 10', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -3845,10 +4360,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_10_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -3861,10 +4379,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_10_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for the ways He works through our testimony and invite His Holy Spirit to lead your time together.',  'zume' ),
@@ -3873,6 +4392,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_10_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -3887,6 +4407,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_10_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3907,6 +4428,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_10_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3927,6 +4449,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_10_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -3955,10 +4478,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_11_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 11', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 11', 'zume' ),
+                __( 'SESSION 11', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -3966,10 +4492,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_11_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -3982,10 +4511,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_11_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for how He is at work in your life and the lives of others around you. Pray for the group to have eyes to see where the Kingdom isn‘t, yet.',  'zume' ),
@@ -3994,6 +4524,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_11_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -4008,6 +4539,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_11_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4023,6 +4555,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_11_6',
             'type' => 'activity',
+            'menu' => [],
             'length' => [6090],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -4059,10 +4592,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_12_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 12', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 12', 'zume' ),
+                __( 'SESSION 12', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -4070,10 +4606,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_12_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -4086,10 +4625,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_12_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for what He did in the last session, ask Him to help when you find it hard to obey, and invite His Holy Spirit to lead your time together.', 'zume' ),
@@ -4098,6 +4638,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_12_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -4112,6 +4653,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_12_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4131,6 +4673,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_12_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4150,6 +4693,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_12_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4179,10 +4723,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_13_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 13', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 13', 'zume' ),
+                __( 'SESSION 13', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -4190,10 +4737,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_13_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -4206,10 +4756,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_13_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for what you learned in the last session. Pray for God‘s Spirit to help you be faithful to put into practice all you are learning.', 'zume' ),
@@ -4218,6 +4769,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_13_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -4232,6 +4784,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_13_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4248,6 +4801,7 @@ function zume_content( $lang_code = 'en') {
         [ // modified time from 75 to 40 min, original t21_a
             'key' => 't21_aa',
             'type' => 'watch',
+            'menu' => [],
             'length' => [40],
             'center' => [],
             'left' => [
@@ -4261,6 +4815,7 @@ function zume_content( $lang_code = 'en') {
         [ // modified time from 10 to 5 minutes, original t21_c
             'key' => 't21_cc',
             'type' => 'discuss',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -4276,6 +4831,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_13_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4292,6 +4848,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_13_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4320,10 +4877,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_14_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 14', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 14', 'zume' ),
+                __( 'SESSION 14', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -4331,10 +4891,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_14_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -4347,10 +4910,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_14_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for the group’s commitment to faithfully following Jesus and invite God’s Holy Spirit to lead your time together.', 'zume' ),
@@ -4359,6 +4923,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_14_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -4373,6 +4938,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_14_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4388,6 +4954,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_14_6',
             'type' => 'activity',
+            'menu' => [],
             'length' => [45],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
@@ -4410,6 +4977,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_14_7',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4425,6 +4993,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_14_8',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4454,10 +5023,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_15_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 14', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 15', 'zume' ),
+                __( 'SESSION 15', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -4465,10 +5037,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_15_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -4481,10 +5056,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_15_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Ask if anyone in the group has specific needs they would like the group to pray for. Thank God that He promises in His Word to listen and act when His people pray. Ask God’s Holy Spirit to lead your time, together.', 'zume' ),
@@ -4493,6 +5069,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_15_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -4507,6 +5084,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_15_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4523,6 +5101,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_15_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4539,6 +5118,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_15_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4568,10 +5148,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_16_1',
             'type' => 'title',
+            'menu' => __( 'SESSION 16', 'zume' ),
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 16', 'zume' ),
+                __( 'SESSION 16', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -4579,10 +5160,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_16_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -4595,10 +5179,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_16_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for giving your group the energy, the focus and the faithfulness to come so far in this training. Ask God to have His Holy Spirit remind everyone in the group that they can do nothing without Him!', 'zume' ),
@@ -4607,6 +5192,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_16_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -4621,6 +5207,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_16_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4638,6 +5225,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_16_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4655,6 +5243,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_16_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4686,10 +5275,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_17_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 17', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 17', 'zume' ),
+                __( 'SESSION 17', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -4697,10 +5289,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_17_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -4713,10 +5308,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_17_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for how He continues to speak through the word, prayer, the body, and persecution and suffering. Pray for each person in the group to have ears to hear His voice and grace to obey what He says.', 'zume' ),
@@ -4725,6 +5321,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_17_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -4739,6 +5336,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_17_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4758,6 +5356,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_17_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4777,6 +5376,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_17_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4808,10 +5408,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_18_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 18', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 18', 'zume' ),
+                __( 'SESSION 18', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -4819,10 +5422,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_18_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -4835,10 +5441,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_18_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God that his ways are not our ways and His thoughts are not our thoughts. Ask Him to give each member of your group the mind of Christ - always focused on His Father‘s work. Ask the Holy Spirit to lead your time together and make it the best session yet.', 'zume' ),
@@ -4847,6 +5454,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_18_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -4861,6 +5469,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_18_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4877,6 +5486,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_18_6',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -4889,6 +5499,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_18_7',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4905,6 +5516,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_18_8',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -4933,10 +5545,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_19_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 19', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 19', 'zume' ),
+                __( 'SESSION 19', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -4944,10 +5559,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_19_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -4960,10 +5578,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_19_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God for the Body of Christ. Pray for mutual love and encouragement to continue to grow between each member of your group as you draw near to Jesus.', 'zume' ),
@@ -4972,6 +5591,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_19_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -4986,6 +5606,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_19_5',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -5001,6 +5622,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_19_6',
             'type' => 'review',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -5016,6 +5638,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_19_7',
             'type' => 'obey',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -5046,10 +5669,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_20_1',
             'type' => 'title',
+            'menu' => [
+                __( 'SESSION 20', 'zume' ),
+            ],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png',  // location image
-                __( 'Session 20', 'zume' ),
+                __( 'SESSION 20', 'zume' ),
             ],
             'left' => [],
             'right' => [],
@@ -5057,10 +5683,13 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_20_2',
             'type' => 'checkin',
+            'menu' => [
+                __( 'CHECK-IN', 'zume' ),
+            ],
             'length' => [],
             'center' => [],
             'left' => [
-                __( 'Check-in', 'zume' ),
+                __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
@@ -5073,10 +5702,11 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_20_3',
             'type' => 'pray',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
-                __( 'Pray', 'zume' ),
+                __( 'PRAY', 'zume' ),
             ],
             'right' => [
                 __( 'Pray and thank God that He is faithful to complete His good work in us.', 'zume' ),
@@ -5087,6 +5717,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_20_4',
             'type' => 'look_back',
+            'menu' => [],
             'length' => [5],
             'center' => [],
             'left' => [
@@ -5101,6 +5732,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_20_5',
             'type' => 'center',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -5114,6 +5746,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_20_6',
             'type' => 'overview',
+            'menu' => [],
             'length' => [],
             'center' => [],
             'left' => [
@@ -5146,6 +5779,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 'next_steps',
             'type' => 'activity',
+            'menu' => [],
             'length' => [],
             'center' => [
                 __( 'NEXT STEP', 'zume' ),
@@ -5165,6 +5799,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 'congratulations',
             'type' => 'congratulations',
+            'menu' => [],
             'length' => [],
             'center' => [
                 __( 'CONGRATULATIONS on completing Zume Training!', 'zume' ),
@@ -5176,6 +5811,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 'break',
             'type' => 'break',
+            'menu' => [],
             'length' => [],
             'center' => [
                 __( 'TAKE A BREAK', 'zume' ),
@@ -5186,6 +5822,7 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 'final',
             'type' => 'final',
+            'menu' => [],
             'length' => [],
             'center' => [
                 'https://storage.googleapis.com/zume-file-mirror/en/Zume-logo-blue.png', // Zume logo
@@ -5198,5 +5835,9 @@ function zume_content( $lang_code = 'en') {
         ],
 
     ]; // end course array
+
+    set_transient( __FUNCTION__.'_'.$lang_code, $content, 24 * HOUR_IN_SECONDS );
+
+    return $content;
 
 } // end function
