@@ -1725,18 +1725,17 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
                     </button>
                 `:""}
             </div>
-            <div class="stack | bg-white px-0 | information-flyout bypass-nav-click off-canvas ${this.dir==="rtl"?"position-left":"position-right"} py-1" id="informationOffCanvas" data-off-canvas data-transition="overlap">
-                <div class="stack">
-                    <button class="close-button" aria-label="Close menu" type="button" data-close>
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+            <div class="bg-white | information-flyout bypass-nav-click off-canvas ${this.dir==="rtl"?"position-left":"position-right"}" id="informationOffCanvas" data-off-canvas data-transition="overlap">
+                <button class="close-button" aria-label="Close menu" type="button" data-close>
+                  <span aria-hidden="true">&times;</span>
+                </button>
 
-                    <iframe
-                        src=${this.scriptUrl||""}
-                        frameborder="0"
-                    >
-                    </iframe>
-                </div>
+                <iframe
+                    src=${this.scriptUrl||""}
+                    frameborder="0"
+                    width="100%"
+                >
+                </iframe>
             </div>
         `}}customElements.define("video-slide",_s);class ws extends w{render(){return o`
             <div class="slides-card">
@@ -2151,4 +2150,4 @@ var lt=Object.defineProperty;var ct=(i,e,t)=>e in i?lt(i,e,{enumerable:!0,config
                 </svg>
             </div>
         `}createRenderRoot(){return this}}customElements.define("host-progress-circle",As);
-//# sourceMappingURL=main-e6d0993d.js.map
+//# sourceMappingURL=main-3d4a81a6.js.map
