@@ -147,6 +147,9 @@ export class CoursePresenter extends LitElement {
     handleSubSectionLink(sessionNumber, subsectionKey) {
         this.lessonIndex = sessionNumber
 
+        if ( this.showIndex === true ) {
+            this.showIndex = false
+        }
         this.changeSession(this.lessonIndex)
         this.sessionKey = subsectionKey
         this.closeMenu()
@@ -333,9 +336,9 @@ export class CoursePresenter extends LitElement {
                 </div>
             </nav>
 
-            <span class="p-1 d-block fixed top z-1">
+            <span class="p-1 d-block fixed top z-2">
                 <button id="hamburger-menu" class="nav-toggle show" @click=${this.openMenu}>
-                    <span class="hamburger brand"></span>
+                    <span class="hamburger ${this.showIndex ? '' : 'brand'}"></span>
                 </button>
             </span>
 
