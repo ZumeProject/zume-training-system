@@ -85,10 +85,6 @@ class Zume_Activites extends Zume_Magic_Page
                 width:100%;
                 margin: 0 auto;
             }
-            .zume-activity .header-bar {
-                background-color: blue;
-                color: white;
-            }
             .zume-activity-header {
                 font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
                 text-align: center;
@@ -118,18 +114,20 @@ class Zume_Activites extends Zume_Magic_Page
 
         ?>
         <div class="activity-page">
-            <div class="">
-                <div class=""><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/zume-training-logo-white.svg' ) ?>" alt="logo"></div>
-                <span class=""><?php echo esc_html__( 'Activity', 'zume' ) ?></span>
+            <div class="bg-brand">
+                <div class="container-md | activity-header">
+                    <div class="logo"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/zume-training-logo-white.svg' ) ?>" alt="logo"></div>
+                    <span class="title"><?php echo esc_html__( 'Activity', 'zume' ) ?></span>
+                </div>
             </div>
             <div class="container-md">
-                <h1 class="text-center"><?php self::content_header( $post_id ); ?></h1>
-                <hr>
+                <h1 class="activity-title"><?php self::content_header( $post_id ); ?></h1>
             </div>
+            <hr>
             <div class="container-md">
                 <?php self::content_body( $post_id ); ?>
             </div>
-        </div>
+        </hr>
         <?php
     }
     public function content_header( $post_id ){

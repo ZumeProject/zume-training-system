@@ -1,5 +1,6 @@
 .activity-page {
     font-size: font-size(1);
+    margin-bottom: spacing(3);
 
     [class^="container"] {
         max-width: 60ch;
@@ -7,10 +8,52 @@
 
     h1, h2, h3 {
         color: color('brand-light');
-        margin-bottom: spacing(-2);
+        margin-bottom: spacing(-1);
+        font-weight: 600;
+    }
+
+    h1 {
+        font-size: font-size(3);
+    }
+
+    h2, h3 {
+        font-size: font-size(1)
+    }
+
+    .activity-title {
+        margin-block: spacing(1);
+        text-align: center;
     }
 
     p {
-        margin-bottom: spacing(1);
+        margin-bottom: spacing(2);
+    }
+    ul, ol {
+        margin-bottom: spacing(2);
+    }
+
+    .button {
+        @include button;
+
+        text-transform: uppercase;
+        line-height: 1.5;
+    }
+}
+.activity-header {
+    background-color: color('brand');
+    color: color('white');
+    padding-block: 0.3em;
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    align-items: center;
+
+    .logo {
+        width: 100px;
+    }
+
+    .title {
+        font-size: font-size(2);
+        font-weight: 600;
+        text-align: center;
     }
 }
