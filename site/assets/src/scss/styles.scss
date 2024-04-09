@@ -31,6 +31,7 @@
 @import 'utilities/text';
 @import 'utilities/transformations';
 
+@import 'blocks/activities';
 @import 'blocks/login';
 @import 'blocks/stories';
 @import 'blocks/accordian';
@@ -67,6 +68,10 @@ body {
 
 footer {
   margin-top: auto;
+}
+
+p {
+  margin-bottom: spacing(0);
 }
 
 ul {

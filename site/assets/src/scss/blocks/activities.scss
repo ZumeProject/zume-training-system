@@ -1,0 +1,16 @@
+.activity-page {
+    font-size: font-size(1);
+
+    [class^="container"] {
+        max-width: 60ch;
+    }
+
+    h1, h2, h3 {
+        color: color('brand-light');
+        margin-bottom: spacing(-2);
+    }
+
+    p {
+        margin-bottom: spacing(1);
+    }
+}
