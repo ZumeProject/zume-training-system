@@ -114,12 +114,12 @@ class Zume_Activites extends Zume_Magic_Page
 
         ?>
         <div class="activity-page">
-            <div class="bg-brand">
+            <header class="bg-brand">
                 <div class="container-md | activity-header">
                     <div class="logo"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/zume-training-logo-white.svg' ) ?>" alt="logo"></div>
                     <span class="title"><?php echo esc_html__( 'Activity', 'zume' ) ?></span>
                 </div>
-            </div>
+            </header>
             <div class="container-md">
                 <h1 class="activity-title"><?php self::content_header( $post_id ); ?></h1>
             </div>

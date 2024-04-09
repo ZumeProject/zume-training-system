@@ -20,16 +20,26 @@
         font-size: font-size(1)
     }
 
-    .activity-title {
-        margin-block: spacing(1);
-        text-align: center;
-    }
-
     p {
         margin-bottom: spacing(2);
     }
+
     ul, ol {
         margin-bottom: spacing(2);
+    }
+
+    ol > * + * {
+        margin-top: spacing(0);
+    }
+
+    strong {
+        color: color('brand-light');
+        font-weight: 600;
+    }
+
+    .activity-title {
+        margin-block: spacing(1);
+        text-align: center;
     }
 
     .button {
@@ -37,6 +47,7 @@
 
         text-transform: uppercase;
         line-height: 1.5;
+        font-weight: 500;
     }
 }
 .activity-header {
@@ -44,7 +55,7 @@
     color: color('white');
     padding-block: 0.3em;
     display: grid;
-    grid-template-columns: 100px 1fr 100px;
+    grid-template-columns: 50px 1fr 50px;
     align-items: center;
 
     .logo {
