@@ -17,7 +17,8 @@
 }
 .slides-card {
     --slide-unit: 1vw;
-    --font-size: calc( var(--slide-unit) * 2 );
+    --font-size-ratio: 2;
+    --font-size: calc( var(--slide-unit) * var(--font-size-ratio) );
     --z-brand-lighter: #5dccff;
 
     --spacing-ratio: 1.5;

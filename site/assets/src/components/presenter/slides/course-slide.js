@@ -11,6 +11,8 @@ export class CourseSlide extends LitElement {
     constructor() {
         super()
 
+        this.maxPercentage = 80
+
         this.resizeCallback = this.resizeCallback.bind(this)
     }
 
@@ -25,9 +27,32 @@ export class CourseSlide extends LitElement {
     }
     firstUpdated() {
         this.resizeSlide(window)
+        this.fitContentToSlide('.activity-card')
+        this.fitContentToSlide('.content-area__text')
     }
     resizeCallback(event) {
         this.resizeSlide(event.currentTarget)
+    }
+    fitContentToSlide(selector) {
+        const contentArea = this.renderRoot.querySelector(selector)
+
+        if (!contentArea) {
+            return
+        }
+
+        const contentAreaHeight = contentArea.getBoundingClientRect().height
+
+        const progressBar = this.renderRoot.querySelector('.stage')
+        const progressBarHeight = progressBar ? progressBar.getBoundingClientRect().height : 0
+
+        const percentageOfSlideHeight = contentAreaHeight / ( this.slideHeight - progressBarHeight ) * 100
+
+        if (percentageOfSlideHeight > this.maxPercentage) {
+            /* CurrentFontRatio is hardcoded to match the ratio currently in presenter.scss as --font-size-ratio */
+            const currentFontRatio = 2
+            const newFontSize = currentFontRatio * this.maxPercentage / percentageOfSlideHeight
+            contentArea.style.fontSize = `calc( var(--slide-unit) * ${newFontSize} )`
+        }
     }
     resizeSlide(target) {
 
@@ -39,24 +64,25 @@ export class CourseSlide extends LitElement {
 
         const { innerWidth: screenWidth, innerHeight: screenHeight } = target
 
-        if ( screenWidth/screenHeight > 16/9 ) {
-            /* The screen is wider than the slide */
-            slides.forEach((slide) => {
-                slide.style = `
-                    --slide-unit: ${16 / 9 * screenHeight / 100}px;
-                    --slide-height: ${screenHeight}px;
-                `
-            })
-        } else {
-            /* The screen is taller than the slide */
-            slides.forEach((slide) => {
-                slide.style = `
-                    --slide-unit: ${screenWidth / 100}px;
-                    --slide-height: ${9 / 16 * screenWidth}px;
-                `
-            })
-        }
+        const isScreenWiderThanSlide = screenWidth/screenHeight > 16/9
 
+        const slideUnit = isScreenWiderThanSlide
+            ? 16 / 9 * screenHeight / 100
+            : screenWidth / 100
+
+        const slideHeight = isScreenWiderThanSlide
+            ? screenHeight
+            : 9 / 16 * screenWidth
+
+        this.slideUnit = slideUnit
+        this.slideHeight = slideHeight
+
+        slides.forEach((slide) => {
+            slide.style = `
+                --slide-unit: ${slideUnit}px;
+                --slide-height: ${slideHeight}px;
+            `
+        })
     }
 
     renderProgressBar() {

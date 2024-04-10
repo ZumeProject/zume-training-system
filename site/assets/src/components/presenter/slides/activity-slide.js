@@ -15,6 +15,8 @@ export class ActivitySlide extends CourseSlide {
 
         this.offCanvasId = 'activityOffCanvas' + this.id
         this.offCanvasSelector = '#' + this.offCanvasId
+
+        super.firstUpdated()
     }
 
     openMenu() {
