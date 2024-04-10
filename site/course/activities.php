@@ -77,34 +77,6 @@ class Zume_Activites extends Zume_Magic_Page
                 document.cookie = "pll_language=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             });
         </script>
-        <style>
-            .zume-activity {
-                font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-                padding: 1em;
-                max-width: 800px;
-                width:100%;
-                margin: 0 auto;
-            }
-            .zume-activity-header {
-                font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-                text-align: center;
-            }
-            .zume-activity-content h3 {
-                font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-                margin-bottom: 1em;
-            }
-            .zume-activity-content p {
-                margin-bottom: 1em;
-                font-size: 1.2em;
-            }
-            .zume-activity-content ul {
-                padding: 0 2em 1em !important;
-                list-style: disc !important;
-            }
-            .zume-activity-content ul li {
-                font-size: 1.2em;
-            }
-        </style>
         <?php
     }
     public function body(){
@@ -117,7 +89,6 @@ class Zume_Activites extends Zume_Magic_Page
             <header class="bg-brand">
                 <div class="container-md | activity-header">
                     <div class="logo"><img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/zume-training-logo-white.svg' ) ?>" alt="logo"></div>
-                    <span class="title"><?php echo esc_html__( 'Activity', 'zume' ) ?></span>
                 </div>
             </header>
             <div class="container-md">

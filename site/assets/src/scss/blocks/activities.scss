@@ -1,6 +1,6 @@
 .activity-page {
     font-size: font-size(1);
-    margin-bottom: spacing(3);
+    margin-block-end: spacing(3);
 
     [class^="container"] {
         max-width: 60ch;
@@ -8,7 +8,7 @@
 
     h1, h2, h3 {
         color: color('brand-light');
-        margin-bottom: spacing(-1);
+        margin-block-end: spacing(-1);
         font-weight: 600;
     }
 
@@ -21,15 +21,19 @@
     }
 
     p {
-        margin-bottom: spacing(2);
+        margin-block-end: spacing(2);
     }
 
     ul, ol {
-        margin-bottom: spacing(2);
+        margin-block-end: spacing(2);
     }
 
     ol > * + * {
-        margin-top: spacing(0);
+        margin-block-start: spacing(0);
+    }
+
+    img {
+        margin-block-end: spacing(2);
     }
 
     strong {
@@ -54,8 +58,7 @@
     background-color: color('brand');
     color: color('white');
     padding-block: 0.3em;
-    display: grid;
-    grid-template-columns: 50px 1fr 50px;
+    display: flex;
     align-items: center;
 
     .logo {
