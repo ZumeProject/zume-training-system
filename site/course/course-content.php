@@ -4888,7 +4888,9 @@ function zume_content( $lang_code = 'en') {
         [
             'key' => 's2_14_6',
             'type' => 'activity',
-            'menu' => [],
+            'menu' => [
+                __( '3/3 Group Meeting', 'zume' ),
+            ],
             'length' => [45],
             'center' => [
                 __( 'ACTIVITY', 'zume' ),
