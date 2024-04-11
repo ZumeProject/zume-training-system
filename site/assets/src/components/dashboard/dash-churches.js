@@ -163,24 +163,6 @@ export class DashChurches extends DashPage {
                     </div>
                     <div class="dropdown-pane" id="filter-menu" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl ? 'right' : 'left'} data-close-on-click="true" data-close-on-click-inside="true">
                         <ul>
-                            <li>
-                                <button class="menu-btn w-100 ${this.filterStatus === 'open' ? 'selected' : ''}" @click=${() => this.filterCommitments('open')}>
-                                    <span class="icon zume-sort-todo" aria-hidden="true"></span>
-                                    ${jsObject.translations.active}
-                                </button>
-                            </li>
-                            <li>
-                                <button class="menu-btn w-100 ${this.filterStatus === 'closed' ? 'selected' : ''}" @click=${() => this.filterCommitments('closed')}>
-                                    <span class="icon zume-sort-done" aria-hidden="true"></span>
-                                    ${jsObject.translations.completed}
-                                </button>
-                            </li>
-                            <li>
-                                <button class="menu-btn w-100 ${this.filterStatus === '' ? 'selected' : ''}" @click=${() => this.filterCommitments('')}>
-                                    <span class="icon zume-sort-all" aria-hidden="true"></span>
-                                    ${jsObject.translations.all}
-                                </button>
-                            </li>
                         </ul>
                     </div>
                 </div>

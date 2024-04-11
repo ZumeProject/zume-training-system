@@ -233,7 +233,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'church_location' => __( 'Church Location', 'zume' ),
             'parent_church' => __( 'Parent Church', 'zume' ),
             'add_new_church' => sprintf( __( 'Add new %s', 'zume' ), __( 'Church', 'zume' ) ),
-            'cancel' => __( 'cancel', 'zume' ) ,
+            'cancel' => __( 'cancel', 'zume' ),
         ];
     }
 }
