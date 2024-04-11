@@ -214,6 +214,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'trained' => __( 'Trained', 'zume' ),
             'trained_explanation' => __( 'Have I trained others to share this tool or concept?', 'zume' ),
             'join_the_community' => __( 'Join the Community', 'zume' ),
+            'join' => __( 'Join', 'zume' ),
+            'join_to_access' => __( 'Join the community to get access to this area.', 'zume' ),
             'community' => __( 'Community links', 'zume' ),
             'resources' => __( 'Resources', 'zume' ),
             'previous_slide' => __( 'Previous Slide', 'zume' ),
@@ -225,6 +227,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'edit_time' => __( 'Edit time', 'zume' ),
             'add_new_training' => sprintf( __( 'Add new %s', 'zume' ), __( 'Training', 'zume' ) ),
             'invite_friends' => __( 'Invite Friends', 'zume' ),
+            'add_first_church' => __( 'Click to add your first church', 'zume' ),
         ];
     }
 }
