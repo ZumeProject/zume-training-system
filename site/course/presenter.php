@@ -125,7 +125,7 @@ class Zume_Training_Presenter extends Zume_Magic_Page
 
                 <div class="cover-page container-xsm">
                     <div class="center">
-                        <stack>
+                        <div class="stack">
                             <h1 class="text-center"><?php echo esc_html__( 'Zume Course Presenter', 'zume' ) ?></h1>
                             <h2 class="h3 brand text-center"><?php echo esc_html__( 'Scripts are off', 'zume' ) ?></h2>
                             <p><?php echo esc_html__( 'To enjoy the interactive experience of the zume course, turn on scripts if you are able.', 'zume' ) ?></p>
@@ -145,8 +145,19 @@ class Zume_Training_Presenter extends Zume_Magic_Page
                                 <p><?php echo esc_html__( 'Please come back later and check on our resources page for the slides download.' ) ?></p>
                                 <a href="<?php echo esc_url( zume_resources_url() ) ?>"><?php echo esc_html__( 'Resources', 'zume' ) ?></a>
                             <?php endif; ?>
-                            <!-- TODO: maybe add footer links here? or some 404-esque get me out of here links? -->
-                        </stack>
+                            <div class="stack">
+                                <h3><?php echo esc_html__( 'Links', 'zume' ) ?></h3>
+                                <div class="cluster">
+                                    <a href="<?php echo esc_url( zume_home_url() ) ?>"><?php echo esc_html__( 'Home', 'zume' ) ?></a>
+                                    <?php if ( is_user_logged_in() ) : ?>
+                                        <a href="<?php echo esc_url( zume_dashboard_url() ) ?>"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
+                                    <?php endif; ?>
+                                    <a href="<?php echo esc_url( zume_about_url() ) ?>"><?php echo esc_html__( 'About', 'zume' ) ?></a>
+                                    <a href="<?php echo esc_url( zume_course_url() ) ?>"><?php echo esc_html__( 'Course', 'zume' ) ?></a>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
 
