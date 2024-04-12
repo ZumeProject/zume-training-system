@@ -106,6 +106,7 @@ class Zume_Training_Presenter extends Zume_Magic_Page
     }
 
     public function body(){
+        global $zume_languages_by_code;
         ?>
 
         <div class="">
@@ -131,11 +132,23 @@ class Zume_Training_Presenter extends Zume_Magic_Page
                             <p><?php echo esc_html__( 'To enjoy the interactive experience of the zume course, turn on scripts if you are able.', 'zume' ) ?></p>
                             <?php /* TODO: Generate/create list of language names+codes that have translated course slides
                                     @note This could be set up to default to english if the the language called is not available.  */ ?>
-                            <?php $languages = []; ?>
-                            <?php if ( !empty( $languages ) ) : ?>
+                            <?php $languages = zume_feature_flag( 'course_slides_download' ); ?>
+                            <?php $any_downloads_available = false ?>
+                            <?php
+                            foreach ( $languages as $download_available ) {
+                                if ( $download_available ) {
+                                    $any_downloads_available = true;
+                                    break;
+                                }
+                            }
+                            ?>
+                            <?php if ( $any_downloads_available ) : ?>
                                 <p><?php echo esc_html__( 'If you are unable to turn on scripts, you may download the course slides below', 'zume' ) ?></p>
                                 <ul role="list">
-                                    <?php foreach ( $languages as $language_details ) : ?>
+                                    <?php foreach ( $languages as $language_code => $download_available ) : ?>
+                                        <?php if ( !$download_available ) { continue; } ?>
+                                        <?php $language_details = isset( $zume_languages_by_code[$language_code] ) ? $zume_languages_by_code[$language_code] : null ?>
+                                        <?php if ( empty( $language_details ) ) { continue; } ?>
                                         <li><a href="#"><?php echo esc_html( sprintf( __( 'Zume Course slides in %s', 'zume' ), $language_details['name'] ) ) ?></a></li>
                                     <?php endforeach; ?>
                                 </ul>
@@ -155,7 +168,6 @@ class Zume_Training_Presenter extends Zume_Magic_Page
                                     <a href="<?php echo esc_url( zume_about_url() ) ?>"><?php echo esc_html__( 'About', 'zume' ) ?></a>
                                     <a href="<?php echo esc_url( zume_course_url() ) ?>"><?php echo esc_html__( 'Course', 'zume' ) ?></a>
                                 </div>
-
                             </div>
                         </div>
                     </div>
