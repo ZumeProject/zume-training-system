@@ -145,12 +145,19 @@ class Zume_Training_Presenter extends Zume_Magic_Page
                             <?php if ( $any_downloads_available ) : ?>
                                 <p><?php echo esc_html__( 'If you are unable to turn on scripts, you may download the course slides below', 'zume' ) ?></p>
                                 <ul role="list">
-                                    <?php foreach ( $languages as $language_code => $download_available ) : ?>
-                                        <?php if ( !$download_available ) { continue; } ?>
-                                        <?php $language_details = isset( $zume_languages_by_code[$language_code] ) ? $zume_languages_by_code[$language_code] : null ?>
-                                        <?php if ( empty( $language_details ) ) { continue; } ?>
-                                        <li><a href="#"><?php echo esc_html( sprintf( __( 'Zume Course slides in %s', 'zume' ), $language_details['name'] ) ) ?></a></li>
-                                    <?php endforeach; ?>
+                                <?php foreach ( $languages as $language_code => $download_available ) {
+                                    if ( !$download_available ) {
+                                        continue;
+                                    }
+                                    $language_details = isset( $zume_languages_by_code[$language_code] ) ? $zume_languages_by_code[$language_code] : null;
+                                    if ( empty( $language_details ) ) {
+                                        continue;
+                                    }
+
+                                    /* TODO: get the correct link for the slide download for this language code */
+                                    ?>
+                                    <li><a href="#"><?php echo esc_html( sprintf( __( 'Zume Course slides in %s', 'zume' ), $language_details['name'] ) ) ?></a></li>
+                                <?php } ?>
                                 </ul>
                             <?php else : ?>
                                 <p><?php echo esc_html__( 'Unfortunately we do not have the course available for download yet.' ) ?></p>
