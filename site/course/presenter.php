@@ -110,6 +110,8 @@ class Zume_Training_Presenter extends Zume_Magic_Page
 
         <div class="">
 
+            <?php require __DIR__ . '/../parts/language-menu.php'; ?>
+
             <div class="off-canvas-content" data-off-canvas-content>
 
                 <?php $display_code = zume_get_language_display_code( zume_current_language() ) ?>
@@ -167,7 +169,6 @@ class Zume_Training_Presenter extends Zume_Magic_Page
 
         </div>
 
-        <?php require __DIR__ . '/../parts/language-menu.php'; ?>
 
         <?php
     }
