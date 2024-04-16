@@ -74,7 +74,7 @@ class Zume_Training_Page extends Zume_Magic_Page
     public function header_style(){
         ?>
         <script>
-            jQuery(document).ready(function(){
+            jQuery(document).ready(function($){
                 jQuery(document).foundation();
 
                 const trainingLinks = Array.from(document.querySelectorAll('.training-link a'))
