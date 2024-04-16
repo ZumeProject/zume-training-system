@@ -1,3 +1,4 @@
+<?php // WARNING: this file contains a desktop and mobile version of the nav. So both need editing ?>
     <header class="header">
         <div class="container | d-flex justify-content-between">
             <div class="d-flex gap-0">
@@ -67,7 +68,7 @@
 
             <?php if ( is_user_logged_in() ) : ?>
 
-                <a role="listitem" href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn dark nav__link"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
+                <a role="listitem" href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn dark nav__link"><span class="icon zume-dashboard"></span><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
 
             <?php else : ?>
 
@@ -80,7 +81,19 @@
 
             <?php if ( is_user_logged_in() ) : ?>
 
+                <?php $user_stage = zume_get_user_stage() ?>
 
+                <?php if ( !isset( $user_stage['state']['requested_a_coach'] ) ) : ?>
+
+                    <a role="listitem" href="<?php echo esc_url( zume_get_a_coach_wizard_url() ) ?>" class="link-light nav__link"><div class="icon zume-coach"></div> <?php echo esc_html__( 'Get a Coach', 'zume' ) ?></a>
+
+                <?php endif; ?>
+
+                <?php if ( !isset( $user_stage['state']['join_community'] ) ) : ?>
+
+                    <a role="listitem" href="<?php echo esc_url( zume_join_the_community_wizard_url() ) ?>" class="link-light nav__link"><div class="icon zume-community"></div> <?php echo esc_html__( 'Join the Community', 'zume' ) ?></a>
+
+                <?php endif; ?>
 
             <?php else : ?>
 
