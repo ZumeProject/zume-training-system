@@ -10,33 +10,25 @@ export class DashCta extends LitElement {
 
     constructor() {
         super()
-        this.allCtas = []
         this.ctas = []
-        this.userId = jsObject.profile.user_id
+
+        this.getCtas = this.getCtas.bind(this)
     }
 
+    connectedCallback() {
+        super.connectedCallback();
+        window.addEventListener('ctas:changed', this.getCtas)
+    }
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        window.removeEventListener('ctas:changed', this.getCtas)
+    }
     firstUpdated() {
         this.getCtas()
     }
 
     getCtas() {
-        /* Get ctas from api */
-        makeRequest('POST', 'user_ctas', { user_id: this.userId }, 'zume_system/v1' ).done( ( data ) => {
-            const ctas = Object.values(data)
-
-            this.allCtas = ctas
-
-            /* Take the first 3 of the randomized list to display */
-            this.ctas = this.shuffleArray(ctas).slice(0, 3)
-        })
-    }
-
-    shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array
+        this.ctas = jsObject.ctas ?? []
     }
 
     renderCta({ content, content_template }) {

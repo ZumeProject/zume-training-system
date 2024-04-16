@@ -69,6 +69,10 @@ export class DashBoard extends router(LitElement) {
         this.userState = jsObject.user_stage.state
         this.wizardType = ''
 
+        this.allCtas = []
+        this.ctas = []
+        this.userId = jsObject.profile.user_id
+
         this.updateUserProfile = this.updateUserProfile.bind(this)
         this.updateWizardType = this.updateWizardType.bind(this)
         this.refetchState = this.refetchState.bind(this)
@@ -98,6 +102,7 @@ export class DashBoard extends router(LitElement) {
 
     firstUpdated() {
         this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
+        this.getCtas()
     }
 
     updateWizardType(event) {
@@ -239,7 +244,6 @@ export class DashBoard extends router(LitElement) {
         jQuery(modal).foundation('close')
     }
     refetchState() {
-        console.log('refetching state')
         makeRequest('GET', 'user_stage', {}, 'zume_system/v1' ).done( ( data ) => {
             if (!data || !data.state) {
                 console.error('Stage or state data not returned from api')
@@ -249,7 +253,6 @@ export class DashBoard extends router(LitElement) {
         })
     }
     refetchHost() {
-        console.log('refetching host')
         makeRequest('GET', 'user_host', {}, 'zume_system/v1' ).done( ( data ) => {
             if (!data) {
                 console.error('Host not returned from api')
@@ -257,6 +260,30 @@ export class DashBoard extends router(LitElement) {
             jsObject.host_progress = data
         })
     }
+    getCtas() {
+        /* Get ctas from api */
+        makeRequest('POST', 'user_ctas', { user_id: this.userId }, 'zume_system/v1' ).done( ( data ) => {
+            const ctas = Object.values(data)
+
+            this.allCtas = ctas
+
+
+            const shuffleArray = (array) => {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array
+            }
+
+            /* Take the first 3 of the randomized list to display */
+            this.ctas = shuffleArray(ctas).slice(0, 3)
+
+            jsObject.ctas = this.ctas
+            this.dispatchEvent( new CustomEvent( 'ctas:changed', { bubbles: true } ) )
+        })
+    }
+
 
     openProfile() {
         const modal = document.querySelector('#profile-modal')
