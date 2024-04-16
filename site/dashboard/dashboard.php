@@ -240,6 +240,12 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'parent_church' => __( 'Parent Church', 'zume' ),
             'add_new_church' => sprintf( __( 'Add new %s', 'zume' ), __( 'Church', 'zume' ) ),
             'cancel' => __( 'cancel', 'zume' ),
+            'congratulations' => __( 'Congratulations!', 'zume' ),
+            'you_have_a_coach' => __( 'You have requested a coach', 'zume' ),
+            'you_have_joined_a_training' => __( 'You have joined a training', 'zume' ),
+            'you_have_set_your_profile' => __( 'You have set your profile', 'zume' ),
+            '3_month_plan_unlocked' => sprintf( _x( '%s unlocked', '3-month plan unlocked', 'zume' ), __( '3 month plan', 'zume' ) ),
+            'joined_community' => __( 'You have joined the community', 'zume' ),
         ];
     }
 }

@@ -41,6 +41,19 @@ export class DashCta extends LitElement {
                 </div>
             `
         }
+        if (content_template === 'celebration') {
+            return html`
+                <div class="stack | card celebration">
+                    <h2 class="h5 text-center bold">${content.title}</h2>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <img src="${jsObject.images_url + '/fireworks-2.svg'}" alt="" />
+                        <img src="${content.imageUrl}" alt="" />
+                        <img src="${jsObject.images_url + '/fireworks-2.svg'}" alt="" />
+                    </div>
+                    <p>${content.description}</p>
+                </div>
+            `
+        }
     }
 
     render() {

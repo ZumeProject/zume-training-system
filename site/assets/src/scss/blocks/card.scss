@@ -8,6 +8,11 @@
         border: 2px solid color('brand-light');
     }
 
+    &.celebration {
+        background-color: color('brand-light');
+        color: color('white');
+    }
+
     .btn {
         padding-inline: spacing(0);
         width: 100%;

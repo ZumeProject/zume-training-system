@@ -261,12 +261,17 @@ export class DashBoard extends router(LitElement) {
         })
     }
     getCtas() {
+        const url = new URL(location.href)
+        const celebrate = url.searchParams.has('completed') ? url.searchParams.get('completed') : ''
+        const celebrations = []
+
+        const joinedCommunityCelebration = this.makeCelebration('joined-community')
+        celebrations.push(joinedCommunityCelebration)
         /* Get ctas from api */
         makeRequest('POST', 'user_ctas', { user_id: this.userId }, 'zume_system/v1' ).done( ( data ) => {
             const ctas = Object.values(data)
 
             this.allCtas = ctas
-
 
             const shuffleArray = (array) => {
                 for (let i = array.length - 1; i > 0; i--) {
@@ -277,13 +282,32 @@ export class DashBoard extends router(LitElement) {
             }
 
             /* Take the first 3 of the randomized list to display */
-            this.ctas = shuffleArray(ctas).slice(0, 3)
+            this.ctas = [...celebrations, ...shuffleArray(this.allCtas)].slice(0, 3)
 
             jsObject.ctas = this.ctas
             this.dispatchEvent( new CustomEvent( 'ctas:changed', { bubbles: true } ) )
         })
     }
-
+    makeCelebration(celebrateType) {
+        let description = ''
+        let imageUrl = ''
+        switch (celebrateType) {
+            case 'joined-community':
+                description = jsObject.translations.joined_community
+                imageUrl = jsObject.images_url + '/thumbs-up.svg'
+                break;
+            default:
+                break;
+        }
+        return {
+            content_template: 'celebration',
+            content: {
+                title: jsObject.translations.congratulations,
+                description,
+                imageUrl,
+            }
+        }
+    }
 
     openProfile() {
         const modal = document.querySelector('#profile-modal')
