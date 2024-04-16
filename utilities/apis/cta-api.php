@@ -130,7 +130,7 @@ class Zume_System_CTA_API
                     'title' => __( 'Register', 'zume' ),
                     'description' => __( 'Register to start your training', 'zume' ),
                     'link_text' => __( 'Register', 'zume' ),
-                    'link' => '/register',
+                    'link' => zume_login_url(),
                 ],
                 'content_template' => 'card'
             ],
@@ -145,7 +145,7 @@ class Zume_System_CTA_API
                     'title' => __( 'Join Online Training', 'zume' ),
                     'description' => __( 'Join the online training to learn more', 'zume' ),
                     'link_text' => __( 'Join', 'zume' ),
-                    'link' => '/online-training',
+                    'link' => zume_join_a_public_plan_wizard_url(),
                 ],
                 'content_template' => 'card'
             ],
@@ -160,7 +160,7 @@ class Zume_System_CTA_API
                     'title' => __( 'Get a Coach', 'zume' ),
                     'description' => __( 'Get a coach to help you on your journey', 'zume' ),
                     'link_text' => __( 'Get a Coach', 'zume' ),
-                    'link' => '/request-coach',
+                    'link' => zume_get_a_coach_wizard_url(),
                 ],
                 'content_template' => 'card'
             ],
@@ -175,7 +175,7 @@ class Zume_System_CTA_API
                     'title' => __( 'Create a Plan', 'zume' ),
                     'description' => __( 'Create a plan to help you grow', 'zume' ),
                     'link_text' => __( 'Create a Plan', 'zume' ),
-                    'link' => '/create-plan',
+                    'link' => zume_make_a_plan_wizard_url(),
                 ],
                 'content_template' => 'card'
             ],
@@ -190,7 +190,7 @@ class Zume_System_CTA_API
                     'title' => __( 'Invite Friends', 'zume' ),
                     'description' => __( 'Invite friends to join you on your journey', 'zume' ),
                     'link_text' => __( 'Invite Friends', 'zume' ),
-                    'link' => '/invite-friends',
+                    'link' => zume_invite_friends_url(),
                 ],
                 'content_template' => 'card'
             ],
@@ -205,7 +205,7 @@ class Zume_System_CTA_API
                     'title' => __( 'Set Profile', 'zume' ),
                     'description' => __( 'Set your profile to help others know you', 'zume' ),
                     'link_text' => __( 'Set Profile', 'zume' ),
-                    'link' => '/profile',
+                    'link' => zume_set_profile_wizard(),
                 ],
                 'content_template' => 'card',
             ],
