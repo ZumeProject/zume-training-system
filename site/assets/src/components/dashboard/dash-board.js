@@ -261,12 +261,6 @@ export class DashBoard extends router(LitElement) {
         })
     }
     getCtas() {
-        const url = new URL(location.href)
-        const celebrate = url.searchParams.has('completed') ? url.searchParams.get('completed') : ''
-        const celebrations = []
-
-        const joinedCommunityCelebration = this.makeCelebration('joined-community')
-        celebrations.push(joinedCommunityCelebration)
         /* Get ctas from api */
         makeRequest('POST', 'user_ctas', { user_id: this.userId }, 'zume_system/v1' ).done( ( data ) => {
             const ctas = Object.values(data)
@@ -281,8 +275,11 @@ export class DashBoard extends router(LitElement) {
                 return array
             }
 
+            const celebrations = this.allCtas.filter(({content_template}) => content_template === 'celebration')
+            const cards = this.allCtas.filter(({content_template}) => content_template === 'card')
+
             /* Take the first 3 of the randomized list to display */
-            this.ctas = [...celebrations, ...shuffleArray(this.allCtas)].slice(0, 3)
+            this.ctas = [...celebrations, ...shuffleArray(cards)].slice(0, 3)
 
             jsObject.ctas = this.ctas
             this.dispatchEvent( new CustomEvent( 'ctas:changed', { bubbles: true } ) )
