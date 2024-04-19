@@ -77,6 +77,7 @@ export class DashBoard extends router(LitElement) {
         this.updateWizardType = this.updateWizardType.bind(this)
         this.refetchState = this.refetchState.bind(this)
         this.refetchHost = this.refetchHost.bind(this)
+        this.showCelebrationModal = this.showCelebrationModal.bind(this)
     }
 
     connectedCallback() {
@@ -90,6 +91,8 @@ export class DashBoard extends router(LitElement) {
         window.addEventListener('user-state:change', this.refetchState)
         window.addEventListener('user-state:change', this.getCtas)
         window.addEventListener('user-host:change', this.refetchHost)
+
+        window.addEventListener('load', this.showCelebrationModal)
     }
 
     disconnectedCallback() {
@@ -270,7 +273,6 @@ export class DashBoard extends router(LitElement) {
         /* Get ctas from api */
         makeRequest('POST', 'user_ctas', { user_id: this.userId }, 'zume_system/v1' ).done( ( data ) => {
             const ctas = Object.values(data)
-            console.log(ctas)
 
             this.allCtas = ctas
 
@@ -293,6 +295,15 @@ export class DashBoard extends router(LitElement) {
             jsObject.allCtas = this.allCtas
             this.dispatchEvent( new CustomEvent( 'ctas:changed', { bubbles: true } ) )
         })
+    }
+    showCelebrationModal() {
+        const ctaArea = this.renderRoot.querySelector('dash-cta')
+
+        const celebrations = this.allCtas.filter(({content_template}) => content_template === 'card')
+
+        if (!ctaArea && celebrations.length > 0) {
+            console.log('open celebrations modal')
+        }
     }
     makeCelebration(celebrateType) {
         let description = ''

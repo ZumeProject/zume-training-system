@@ -62,7 +62,6 @@ export class DashCta extends LitElement {
     transitionCelebrations() {
         const celebrationElements = this.getCtaElements(this.celebrationKeys)
         celebrationElements.forEach((element) => {
-            console.log(element)
             element.style.height = element.clientHeight + 'px'
             setTimeout(() => {
                 element.classList.add('transition-out')
