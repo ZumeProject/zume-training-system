@@ -150,7 +150,7 @@ class Zume_System_CTA_API
                 'content_template' => 'card'
             ],
             [
-                'stages' => [0,1],
+                'stages' => [2,3,4,5,6],
                 'required_keys' => ['system_joined_online_training'],
                 'disable_keys' => ['system_celebrated_joining_training'],
                 'key' => 'system_celebrated_joining_training',
@@ -208,7 +208,7 @@ class Zume_System_CTA_API
                 'content_template' => 'card',
             ],
             [
-                'stages' => [1],
+                'stages' => [1,2],
                 'required_keys' => ['system_plan_created'],
                 'disable_keys' => ['system_celebrate_plan_created'],
                 'key' => 'system_celebrate_plan_created',
@@ -281,7 +281,7 @@ class Zume_System_CTA_API
                 'content_template' => 'card',
             ],
             [
-                'stages' => [2],
+                'stages' => [1,2],
                 'required_keys' => ['training_26_heard'],
                 'disable_keys' => ['system_celebrated_plan_unlocked'],
                 'key' => 'system_celebrated_plan_unlocked',

@@ -86,7 +86,9 @@ export class DashBoard extends router(LitElement) {
         window.addEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
         window.addEventListener('open-wizard', this.updateWizardType)
         window.addEventListener('wizard-finished', this.closeWizard)
+        window.addEventListener('wizard-finished', this.getCtas)
         window.addEventListener('user-state:change', this.refetchState)
+        window.addEventListener('user-state:change', this.getCtas)
         window.addEventListener('user-host:change', this.refetchHost)
     }
 
@@ -97,6 +99,9 @@ export class DashBoard extends router(LitElement) {
         window.removeEventListener('toggle-dashboard-sidebar', this.toggleSidebar)
         window.removeEventListener('open-wizard', this.updateWizardType)
         window.removeEventListener('wizard-finished', this.closeWizard)
+        window.removeEventListener('wizard-finished', this.getCtas)
+        window.removeEventListener('user-state:change', this.refetchState)
+        window.removeEventListener('user-state:change', this.getCtas)
         window.removeEventListener('user-host:change', this.refetchHost)
     }
 
@@ -244,6 +249,7 @@ export class DashBoard extends router(LitElement) {
         jQuery(modal).foundation('close')
     }
     refetchState() {
+        this.getCtas()
         makeRequest('GET', 'user_stage', {}, 'zume_system/v1' ).done( ( data ) => {
             if (!data || !data.state) {
                 console.error('Stage or state data not returned from api')
@@ -264,6 +270,7 @@ export class DashBoard extends router(LitElement) {
         /* Get ctas from api */
         makeRequest('POST', 'user_ctas', { user_id: this.userId }, 'zume_system/v1' ).done( ( data ) => {
             const ctas = Object.values(data)
+            console.log(ctas)
 
             this.allCtas = ctas
 
@@ -279,9 +286,11 @@ export class DashBoard extends router(LitElement) {
             const cards = this.allCtas.filter(({content_template}) => content_template === 'card')
 
             /* Take the first 3 of the randomized list to display */
-            this.ctas = [...celebrations, ...shuffleArray(cards)].slice(0, 3)
+            const organizedCtas = [ ...celebrations, ...shuffleArray(cards) ]
+            this.allCtas = organizedCtas
 
-            jsObject.ctas = this.ctas
+            /* Save it globally for lower down web components to access */
+            jsObject.allCtas = this.allCtas
             this.dispatchEvent( new CustomEvent( 'ctas:changed', { bubbles: true } ) )
         })
     }
