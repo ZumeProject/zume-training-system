@@ -20,6 +20,7 @@ export class DashBoard extends router(LitElement) {
             userProfile: { type: Object, attribute: false },
             userState: { type: Object, attribute: false },
             wizardType: { type: String, attribute: false },
+            celbrationModalContent: { type: Object, attribute: false },
         };
     }
 
@@ -68,6 +69,10 @@ export class DashBoard extends router(LitElement) {
         this.userProfile = jsObject.profile
         this.userState = jsObject.user_stage.state
         this.wizardType = ''
+        this.celebrationModalContent = {
+            title: '',
+            content: [],
+        }
 
         this.allCtas = []
         this.ctas = []
@@ -299,10 +304,18 @@ export class DashBoard extends router(LitElement) {
     showCelebrationModal() {
         const ctaArea = this.renderRoot.querySelector('dash-cta')
 
-        const celebrations = this.allCtas.filter(({content_template}) => content_template === 'card')
+        console.log(this.allCtas)
+        const celebrations = this.allCtas.filter(({content_template}) => content_template === 'celebration')
 
         if (!ctaArea && celebrations.length > 0) {
-            console.log('open celebrations modal')
+            celebrations.forEach(({content: { title, description }}) => {
+                this.celebrationModalContent.title = title
+                this.celebrationModalContent.content.push(description)
+            })
+            this.requestUpdate()
+
+            const celebrationModal = document.querySelector('#celebration-modal')
+            jQuery(celebrationModal).foundation('open')
         }
     }
     makeCelebration(celebrateType) {
@@ -365,6 +378,7 @@ export class DashBoard extends router(LitElement) {
     }
 
     render() {
+        console.log(this.celebrationModalContent)
         return html`
             <div class="sidebar__trigger-close-background" @click=${this.toggleSidebar}></div>
             <div class="dashboard">
@@ -501,6 +515,25 @@ export class DashBoard extends router(LitElement) {
                 </div>
 
                 ${this.renderRoute()}
+            </div>
+            <div class="stack | reveal tiny card celebration showing | border-none" id="celebration-modal" data-reveal>
+                <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.closeProfile}>
+                    <span class="icon zume-close gray-500"></span>
+                </button>
+                <h2 class="h5 text-center bold">${this.celebrationModalContent.title}</h2>
+                <div class="d-flex align-items-center justify-content-between">
+                    <img class="w-30" src="${jsObject.images_url + '/fireworks-2.svg'}" alt="" />
+                    <img class="w-40" src="${jsObject.images_url + '/thumbs-up.svg'}" alt="" />
+                    <img class="w-30" src="${jsObject.images_url + '/fireworks-2.svg'}" alt="" />
+                </div>
+                <div class="stack--3">
+                    ${
+                        this.celebrationModalContent.content.map((content) => html`
+                            <p><span class="icon zume-check-mark"></span> ${content}</p>
+                        `)
+                    }
+                </div>
+
             </div>
             <div class="reveal full" id="profile-modal" data-reveal>
                 <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.closeProfile}>
