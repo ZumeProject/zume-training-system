@@ -1212,7 +1212,7 @@ var dt=Object.defineProperty;var ht=(i,e,t)=>e in i?dt(i,e,{enumerable:!0,config
                 </div>
             </li>
         `}render(){var e,t,s,n,o,a,c,l;return r`
-            <div class="dashboard__content" data-no-secondary-area>
+            <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <div class="dashboard__title">
                         <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -1252,6 +1252,9 @@ var dt=Object.defineProperty;var ht=(i,e,t)=>e in i?dt(i,e,{enumerable:!0,config
                                 ${P(this.filteredItems,h=>h.key,this.renderListItem)}
                             </ul>
                         `}
+                </div>
+                <div class="dashboard__secondary">
+                    <dash-cta></dash-cta>
                 </div>
             </div>
             <div class="reveal large" id="new-commitments-form" data-reveal data-v-offset="20">
