@@ -84,7 +84,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
     }
 
     public function header_style(){
-        global $zume_languages_by_code;
+        global $zume_languages_by_code, $three_month_plan_questions;
         ?>
         <?php //phpcs:ignore ?>
         <script src="<?php echo trailingslashit( plugin_dir_url( __DIR__ ) ) . 'profile/profile-utilities.js?version=' . filemtime( trailingslashit( plugin_dir_path( __DIR__ ) ) . 'profile/profile-utilities.js' ) ?>"></script>
@@ -115,6 +115,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'share_translations' => Zume_Training_Share::translations(),
                 'translations' => $this->translations(),
                 'wizard_translations' => Zume_Training_Wizard::translations(),
+                'three_month_plan_questions' => self::three_month_plan_questions(),
                 'urls' => [
                     'logout' => esc_url( dt_login_url( 'logout' ) ),
                     'launch_ten_session_course' => zume_10_session_url(),
@@ -195,7 +196,11 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'my_trainings' => __( 'My Trainings', 'zume' ),
             'my_training_explanation' => __( 'Full access to your training content, schedule, group details and sharing tools.', 'zume' ),
             '3_month_plan' => __( '3-Month Plan', 'zume' ),
+            'create_3_month_plan' => __( 'Create a Plan', 'zume' ),
             '3_month_plan_explanation' => __( 'A Three Month Plan is a tool you can use to help focus your attention and efforts and keep them aligned with God’s priorities for making disciples who multiply.', 'zume' ),
+            'locked_3_month_plan' => __( 'Three Month Plan Locked', 'zume' ),
+            'locked_3_month_plan_explanation' => __( 'The three month plan is a tool to help you take action and implement the tools and concepts learned through the Zúme course. It is most useful, once you have completed the training.', 'zume' ),
+            'locked_3_month_plan_button' => __( 'Unlock now', 'zume' ),
             'practicing' => __( 'Practicing', 'zume' ),
             'my_coach' => __( 'My Coach', 'zume' ),
             'my_coach_explanation' => __( 'Quick access to your coach at all times.', 'zume' ),
@@ -206,7 +211,9 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'my_churches' => __( 'My Churches', 'zume' ),
             'my_churches_explanation' => __( 'Unlock the My Churches area by joining the community.', 'zume' ),
             'my_maps' => __( 'My Maps', 'zume' ),
-            'my_maps_explanation' => __( 'Unlock the My Maps area by joining the community.', 'zume' ),
+            'my_maps_locked' => __( 'My Maps are Locked', 'zume' ),
+            'my_maps_explanation' => __( 'My maps help clarify the Zúme vision of 1 trainee and 2 churches for every 5,000 people in the US, and 50,000 globally. To unlock My Maps, join the Zúme community and connect with other disciple makers passionate about seeing the great commission fulfilled.', 'zume' ),
+            'my_training_locked' => __( 'My Training is Locked', 'zume' ),
             'launch_course' => __( 'Launch Course', 'zume' ),
             'ten_session_course' => __( '10 Session Course', 'zume' ),
             'twenty_session_course' => __( '20 Session Course', 'zume' ),
@@ -246,6 +253,25 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'you_have_set_your_profile' => __( 'You have set your profile', 'zume' ),
             '3_month_plan_unlocked' => sprintf( _x( '%s unlocked', '3-month plan unlocked', 'zume' ), __( '3 month plan', 'zume' ) ),
             'joined_community' => __( 'You have joined the community', 'zume' ),
+        ];
+    }
+
+    public static function three_month_plan_questions() {
+        return [
+            __('I will share My Story [Testimony] and God‘s Story [the Gospel] with the following individuals:', 'zume'),
+            __('I will invite the following people to begin an Accountability Group with me:', 'zume'),
+            __('I will challenge the following people to begin their own Accountability Groups and train them how to do it:', 'zume'),
+            __('I will invite the following people to begin a 3/3 Group with me:', 'zume'),
+            __('I will challenge the following people to begin their own 3/3 Groups and train them how to do it:', 'zume'),
+            __('I will invite the following people to participate in a 3/3 Hope or Discover Group:', 'zume'),
+            __('I will invite the following people to participate in Prayer Walking with me:', 'zume'),
+            __('I will Prayer Walk once every [days / weeks / months].', 'zume'),
+            __('I will equip the following people to share their story and God‘s Story and make a List of 100 of the people in their relational network:', 'zume'),
+            __('I will challenge the following people to use the Prayer Cycle tool on a periodic basis:', 'zume'),
+            __('I will use the Prayer Cycle tool once every [days / weeks / months].', 'zume'),
+            __('I will invite the following people to be part of a Leadership Cell that I will lead:', 'zume'),
+            __('I will encourage the following people to go through this Zúme Training course:', 'zume'),
+            __('Other commitments:', 'zume'),
         ];
     }
 }

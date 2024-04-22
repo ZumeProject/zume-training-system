@@ -654,6 +654,10 @@ if ( ! function_exists( 'zume_get_user_log' ) ) {
 }
 
 if ( ! function_exists( 'zume_languages' ) ) {
+    /**
+     * @param $type string 'code' or 'locale' or 'full'
+     * @return array
+     */
     function zume_languages( $type = 'code' ) {
         global $zume_languages_by_code, $zume_languages_by_locale, $zume_languages_full_list;
         $list = array(
@@ -666,6 +670,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'en',
                 'nativeName' => 'English',
                 'rtl' => false,
+                'flag' => '🇺🇸',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -678,10 +683,11 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enDisplayName' => 'Amharic',
                 'code' => 'am',
                 'displayCode' => 'am',
-                'locale' => 'am',
+                'locale' => 'amh',
                 'weblate' => 'am',
                 'nativeName' => 'አማርኛ',
                 'rtl' => false,
+                'flag' => '🇪🇹',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -689,15 +695,16 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 ],
                 'enabled' => true,
             ),
-            'ar' => array( // @note ar and ar_LB are basically the same translation.
+            'ar' => array(
                 'name' => 'Arabic',
                 'enDisplayName' => 'Arabic',
                 'code' => 'ar',
                 'displayCode' => 'ar',
-                'locale' => 'ar_LB',
-                'weblate' => 'ar_LB',
+                'locale' => 'ar',
+                'weblate' => 'ar',
                 'nativeName' => 'العربية',
                 'rtl' => true,
+                'flag' => '🇸🇦',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -706,7 +713,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enabled' => true,
             ),
             'ar_jo' => array(
-                'name' => 'Arabic (JO)',
+                'name' => 'Arabic (Jordanian)',
                 'enDisplayName' => 'Arabic (JO)',
                 'code' => 'ar_jo',
                 'displayCode' => 'ar_jo',
@@ -714,6 +721,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'ar_JO',
                 'nativeName' => 'العربية - الأردن',
                 'rtl' => true,
+                'flag' => '🇯🇴',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -721,31 +729,16 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 ],
                 'enabled' => true,
             ),
-            'ar_lb' => array(
-                'name' => 'Arabic (LB)',
-                'enDisplayName' => 'Arabic (LB)',
-                'code' => 'ar_lb',
-                'displayCode' => 'ar_lb',
-                'locale' => 'ar_LB',
-                'weblate' => 'ar_LB',
-                'nativeName' => 'العربية - الأردن',
-                'rtl' => true,
-                'feature_flags' => [
-                    'language_selector' => false,
-                    'pieces_pages' => false,
-                    'course_slides_download' => false,
-                ],
-                'enabled' => false,
-            ),
             'ar_tn' => array(
-                'name' => 'Arabic (TN)',
-                'enDisplayName' => 'Arabic (Tunisian)',
+                'name' => 'Arabic (Tunisian)',
+                'enDisplayName' => 'Arabic (TN)',
                 'code' => 'ar_tn',
                 'displayCode' => 'ar_tn',
                 'locale' => 'ar_TN',
                 'weblate' => 'ar_TN',
                 'nativeName' => 'العربية - الأردن',
                 'rtl' => true,
+                'flag' => '🇹🇳',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -754,14 +747,15 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enabled' => true,
             ),
             'ar_ma' => array(
-                'name' => 'Arabic (MA)',
-                'enDisplayName' => 'Arabic (Morocco)',
+                'name' => 'Arabic (Moroccan)',
+                'enDisplayName' => 'Arabic (MA)',
                 'code' => 'ar_ma',
                 'displayCode' => 'ar_ma',
                 'locale' => 'ar_MA',
                 'weblate' => 'ar_MA',
                 'nativeName' => 'العربية - الأردن',
                 'rtl' => true,
+                'flag' => '🇲🇦',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -778,6 +772,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'hy',
                 'nativeName' => 'Armenian',
                 'rtl' => false,
+                'flag' => '🇦🇲',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -794,6 +789,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'az',
                 'nativeName' => 'Azerbaijani',
                 'rtl' => false,
+                'flag' => '🇦🇿',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -810,6 +806,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'asl',
                 'nativeName' => 'Sign Language',
                 'rtl' => false,
+                'flag' => '🤟',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -826,6 +823,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'bn_IN',
                 'nativeName' => 'বাংলা',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -842,6 +840,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'bho',
                 'nativeName' => 'भोजपुरी',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -858,6 +857,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'bs_BA',
                 'nativeName' => 'Bosanski',
                 'rtl' => false,
+                'flag' => '🇧🇦',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -874,6 +874,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'bg_BG',
                 'nativeName' => 'български език',
                 'rtl' => false,
+                'flag' => '🇧🇬',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -890,6 +891,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'my',
                 'nativeName' => 'မြန်မာဘာသာ',
                 'rtl' => false,
+                'flag' => '🇲🇲',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -906,6 +908,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'zh_Hant_HK',
                 'nativeName' => '粵語（繁體)',
                 'rtl' => false,
+                'flag' => '🇭🇰',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -922,6 +925,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'zh_Hans',
                 'nativeName' => '简体中文',
                 'rtl' => false,
+                'flag' => '🇨🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -938,6 +942,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'zh_Hant',
                 'nativeName' => '中國傳統的',
                 'rtl' => false,
+                'flag' => '🇹🇼',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -954,6 +959,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'hr',
                 'nativeName' => 'Hrvatski',
                 'rtl' => false,
+                'flag' => '🇭🇷',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -970,6 +976,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'fo',
                 'nativeName' => 'Faroese',
                 'rtl' => false,
+                'flag' => '🇫🇴',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -986,6 +993,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'fr_FR',
                 'nativeName' => 'Français',
                 'rtl' => false,
+                'flag' => '🇫🇷',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1002,6 +1010,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'de_DE',
                 'nativeName' => 'Deutsch',
                 'rtl' => false,
+                'flag' => '🇩🇪',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1018,6 +1027,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'gu',
                 'nativeName' => 'ગુજરાતી',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1034,6 +1044,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'ha_NG',
                 'nativeName' => 'Hausa',
                 'rtl' => false,
+                'flag' => '🇳🇬',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1050,6 +1061,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'hi_IN',
                 'nativeName' => 'हिन्दी',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1066,6 +1078,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'id_ID',
                 'nativeName' => 'Bahasa Indonesia',
                 'rtl' => false,
+                'flag' => '🇮🇩',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1082,6 +1095,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'it_IT',
                 'nativeName' => 'Italiano',
                 'rtl' => false,
+                'flag' => '🇮🇹',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1098,6 +1112,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'ja',
                 'nativeName' => '日本語',
                 'rtl' => false,
+                'flag' => '🇯🇵',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -1114,6 +1129,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'kn',
                 'nativeName' => 'ಕನ್ನಡ',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1130,6 +1146,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'ko_KR',
                 'nativeName' => '한국어',
                 'rtl' => false,
+                'flag' => '🇰🇷',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1146,6 +1163,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'ku',
                 'nativeName' => 'کوردی',
                 'rtl' => true,
+                'flag' => '🇮🇶',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1162,6 +1180,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'lo',
                 'nativeName' => 'ພາສາລາວ',
                 'rtl' => false,
+                'flag' => '🇱🇦',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1178,6 +1197,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'lv',
                 'nativeName' => 'Latviešu',
                 'rtl' => false,
+                'flag' => '🇱🇻',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -1194,6 +1214,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'mai',
                 'nativeName' => '𑒧𑒻𑒟𑒱𑒪𑒲',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1206,10 +1227,11 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enDisplayName' => 'Malayalam',
                 'code' => 'ml',
                 'displayCode' => 'ml',
-                'locale' => 'ml',
+                'locale' => 'ml_IN',
                 'weblate' => 'ml',
                 'nativeName' => 'മലയാളം',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1226,6 +1248,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'mr',
                 'nativeName' => 'मराठी',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1242,6 +1265,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'mn',
                 'nativeName' => 'Монгол',
                 'rtl' => false,
+                'flag' => '🇲🇳',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -1258,6 +1282,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'ne_NP',
                 'nativeName' => 'नेपाली',
                 'rtl' => false,
+                'flag' => '🇳🇵',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1274,6 +1299,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'or_IN',
                 'nativeName' => 'ଓଡ଼ିଆ',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1290,6 +1316,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'fa_IR',
                 'nativeName' => 'فارسی',
                 'rtl' => true,
+                'flag' => '🇮🇷',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1306,6 +1333,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'pl_PL',
                 'nativeName' => 'Polski',
                 'rtl' => false,
+                'flag' => '🇵🇱',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1322,6 +1350,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'pt_PT',
                 'nativeName' => 'Português',
                 'rtl' => false,
+                'flag' => '🇵🇹',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1338,6 +1367,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'pa_IN',
                 'nativeName' => 'ਪੰਜਾਬੀ',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1345,7 +1375,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 ],
                 'enabled' => true,
             ),
-            'pa' => array(
+            'pa_pk' => array(
                 'name' => 'Punjabi (Western)',
                 'enDisplayName' => 'Punjabi (Western)',
                 'code' => 'pa_pk',
@@ -1354,6 +1384,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'pa_PK',
                 'nativeName' => 'ਪੰਜਾਬੀ (ਪੱਛਮੀ)',
                 'rtl' => false,
+                'flag' => '🇵🇰',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -1370,6 +1401,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'ru_RU',
                 'nativeName' => 'Русский',
                 'rtl' => false,
+                'flag' => '🇷🇺',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1386,6 +1418,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'ro_RO',
                 'nativeName' => 'Română',
                 'rtl' => false,
+                'flag' => '🇷🇴',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1398,10 +1431,11 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enDisplayName' => 'Slovenian',
                 'code' => 'sl',
                 'displayCode' => 'sl',
-                'locale' => 'sl_Sl',
-                'weblate' => 'sl_Sl',
+                'locale' => 'sl_SI',
+                'weblate' => 'sl_SI',
                 'nativeName' => 'Slovenščina',
                 'rtl' => false,
+                'flag' => '🇸🇮',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1418,6 +1452,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'so',
                 'nativeName' => 'Soomaali',
                 'rtl' => false,
+                'flag' => '🇸🇴',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1434,12 +1469,30 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'es',
                 'nativeName' => 'Español',
                 'rtl' => false,
+                'flag' => '🇪🇸',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
                     'course_slides_download' => false,
                 ],
                 'enabled' => true,
+            ),
+            'es_es' => array(
+                'name' => 'Spanish (Spain)',
+                'enDisplayName' => 'Spanish (Spain)',
+                'code' => 'es_es',
+                'displayCode' => 'es_es',
+                'locale' => 'es_ES',
+                'weblate' => 'es_ES',
+                'nativeName' => 'Español (España)',
+                'rtl' => false,
+                'flag' => '🇪🇸',
+                'feature_flags' => [
+                    'language_selector' => false,
+                    'pieces_pages' => false,
+                    'course_slides_download' => false,
+                ],
+                'enabled' => false,
             ),
             'swa' => array(
                 'name' => 'Swahili',
@@ -1450,6 +1503,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'swa',
                 'nativeName' => 'Kiswahili',
                 'rtl' => false,
+                'flag' => '🇹🇿',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1466,6 +1520,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'ta_IN',
                 'nativeName' => 'தமிழ்',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1482,6 +1537,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'te',
                 'nativeName' => 'తెలుగు',
                 'rtl' => false,
+                'flag' => '🇮🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => true,
@@ -1498,6 +1554,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'th',
                 'nativeName' => 'ไทย',
                 'rtl' => false,
+                'flag' => '🇹🇭',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1514,6 +1571,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'tr_TR',
                 'nativeName' => 'Türkçe',
                 'rtl' => false,
+                'flag' => '🇹🇷',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1530,6 +1588,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'uk',
                 'nativeName' => 'Україна',
                 'rtl' => true,
+                'flag' => '🇺🇦',
                 'feature_flags' => [
                     'language_selector' => false,
                     'pieces_pages' => false,
@@ -1546,6 +1605,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'ur',
                 'nativeName' => 'اردو',
                 'rtl' => true,
+                'flag' => '🇵🇰',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1562,6 +1622,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'vi',
                 'nativeName' => 'Tiếng Việt',
                 'rtl' => false,
+                'flag' => '🇻🇳',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1578,6 +1639,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'weblate' => 'yo',
                 'nativeName' => 'Yorùbá',
                 'rtl' => false,
+                'flag' => '🇳🇬',
                 'feature_flags' => [
                     'language_selector' => true,
                     'pieces_pages' => false,
@@ -1842,7 +1904,8 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => '01',
                 'key_int' => 1,
                 'slug' => 'god-uses-ordinary-people',
-                'title' => __( 'God Uses Ordinary People', 'zume' ),
+                'title' => __( 'God Uses Ordinary People', 'zume' ), // pieces title & SEO title
+                'video_title' => __( 'God Uses Ordinary People', 'zume' ), // video title & training title. simple
                 'description' => __( "You'll see how God uses ordinary people doing simple things to make a big impact.", 'zume' ),
                 'type' => 'concept',
                 'host' => true,
@@ -1853,7 +1916,8 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => '02',
                 'key_int' => 2,
                 'slug' => 'definition-of-disciple-and-church',
-                'title' => __( 'Disciples and the Church', 'zume' ),
+                'title' => __( 'Simple Definition of Disciple and Church', 'zume' ),
+                'video_title' => __( 'Disciples and the Church', 'zume' ),
                 'description' => __( 'Discover the essence of being a disciple, making a disciple, and what is the church.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
@@ -1864,7 +1928,8 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => '03',
                 'key_int' => 3,
                 'slug' => 'spiritual-breathing-is-hearing-and-obeying-god',
-                'title' => __( 'Hearing and Obeying God', 'zume' ),
+                'title' => __( 'Spiritual Breathing is Hearing and Obeying God', 'zume' ),
+                'video_title' => __( 'Hearing and Obeying God', 'zume' ),
                 'description' => __( 'Being a disciple means we hear from God and we obey God.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
@@ -1875,7 +1940,8 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => '04',
                 'key_int' => 4,
                 'slug' => 'soaps-bible-reading',
-                'title' => __( 'SOAPS Bible Reading', 'zume' ),
+                'title' => __( 'S.O.A.P.S. Bible Study', 'zume' ),
+                'video_title' => __( 'S.O.A.P.S. Bible Study', 'zume' ),
                 'description' => __( 'A tool for daily Bible study that helps you understand, obey, and share God’s Word.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -1887,6 +1953,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 5,
                 'slug' => 'accountability-groups',
                 'title' => __( 'Accountability Groups', 'zume' ),
+                'video_title' => __( 'Accountability Groups', 'zume' ),
                 'description' => __( 'A tool for two or three people of the same gender to meet weekly and encourage each other in areas that are going well and reveal areas that need correction.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -1897,7 +1964,8 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => '06',
                 'key_int' => 6,
                 'slug' => 'consumer-vs-producer-lifestyle',
-                'title' => __( 'Producer not Consumer', 'zume' ),
+                'title' => __( 'Consumer vs Producer Lifestyle', 'zume' ),
+                'video_title' => __( 'Producer not Consumer', 'zume' ),
                 'description' => __( "You'll discover the four main ways God makes everyday followers more like Jesus.", 'zume' ),
                 'type' => 'concept',
                 'host' => true,
@@ -1909,6 +1977,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 7,
                 'slug' => 'how-to-spend-an-hour-in-prayer',
                 'title' => __( 'How to Spend an Hour in Prayer', 'zume' ),
+                'video_title' => __( 'How to Spend an Hour in Prayer', 'zume' ),
                 'description' => __( 'See how easy it is to spend an hour in prayer.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -1920,6 +1989,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 8,
                 'slug' => 'relational-stewardship-list-of-100',
                 'title' => __( 'Relational Stewardship – List of 100', 'zume' ),
+                'video_title' => __( 'List of 100', 'zume' ),
                 'description' => __( 'A tool designed to help you be a good steward of your relationships.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -1931,6 +2001,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 9,
                 'slug' => 'the-spiritual-economy',
                 'title' => __( 'Spiritual Economy', 'zume' ),
+                'video_title' => __( 'Spiritual Economy', 'zume' ),
                 'description' => __( "Learn how God's economy is different from the world's. God invests more in those who are faithful with what they've already been given.", 'zume' ),
                 'type' => 'concept',
                 'host' => true,
@@ -1941,7 +2012,8 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => '10',
                 'key_int' => 10,
                 'slug' => 'the-gospel-and-how-to-share-it',
-                'title' => __( 'How to Share the Gospel', 'zume' ),
+                'title' => __( 'The Gospel and How to Share It', 'zume' ),
+                'video_title' => __( 'Sharing God‘s Story', 'zume' ),
                 'description' => __( 'Learn a way to share God’s Good News from the beginning of humanity all the way to the end of this age.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -1952,7 +2024,8 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => '11',
                 'key_int' => 11,
                 'slug' => 'baptism-and-how-to-do-it',
-                'title' => __( 'How to Baptize', 'zume' ),
+                'title' => __( 'Baptism and How To Do It', 'zume' ),
+                'video_title' => __( 'Baptism', 'zume' ),
                 'description' => __( 'Jesus said, “Go and make disciples of all nations, BAPTIZING them in the name of the Father and of the Son and of the Holy Spirit…” Learn how to put this into practice.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -1964,6 +2037,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 12,
                 'slug' => 'prepare-your-3-minute-testimony',
                 'title' => __( 'Prepare Your 3-Minute Testimony', 'zume' ),
+                'video_title' => __( '3-Minute Testimony', 'zume' ),
                 'description' => __( 'Learn how to share your testimony in three minutes by sharing how Jesus has impacted your life.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -1975,6 +2049,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 13,
                 'slug' => 'vision-casting-the-greatest-blessing',
                 'title' => __( 'Vision Casting the Greatest Blessing', 'zume' ),
+                'video_title' => __( 'Great, Greater, and Greatest Blessing', 'zume' ),
                 'description' => __( 'Learn a simple pattern of making not just one follower of Jesus but entire spiritual families who multiply for generations to come.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -1986,6 +2061,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 14,
                 'slug' => 'duckling-discipleship-leading-sooner',
                 'title' => __( 'Duckling Discipleship – Leading Immediately', 'zume' ),
+                'video_title' => __( 'Duckling Discipleship', 'zume' ),
                 'description' => __( 'Learn what ducklings have to do with disciple-making.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
@@ -1997,6 +2073,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 15,
                 'slug' => 'eyes-to-see-where-the-kingdom-isnt',
                 'title' => __( 'Eyes to See Where the Kingdom Isn’t', 'zume' ),
+                'video_title' => __( 'Eyes to See Where the Kingdom Isn’t', 'zume' ),
                 'description' => __( 'Begin to see where God’s Kingdom isn’t. These are usually the places where God wants to work the most.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
@@ -2007,7 +2084,8 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => '16',
                 'key_int' => 16,
                 'slug' => 'the-lords-supper-and-how-to-lead-it',
-                'title' => __( 'How to Lead the Lord’s Supper', 'zume' ),
+                'title' => __( 'The Lord’s Supper and How To Lead It', 'zume' ),
+                'video_title' => __( 'The Lord’s Supper', 'zume' ),
                 'description' => __( 'It’s a simple way to celebrate our intimate connection and ongoing relationship with Jesus. Learn a simple way to celebrate.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -2018,8 +2096,9 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => '17',
                 'key_int' => 17,
                 'slug' => 'prayer-walking',
-                'title' => __( 'How to Prayer Walk', 'zume' ),
-                'description' => __( "It’s a simple way to obey God’s command to pray for others. And it's just what it sounds like — praying to God while walking around!", 'zume' ),
+                'title' => __( 'Prayer Walking and How To Do It', 'zume' ),
+                'video_title' => __( 'Prayer Walking', 'zume' ),
+                'description' => __( 'It‘s a simple way to obey God’s command to pray for others. And it‘s just what it sounds like — praying to God while walking around!', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
                 'mawl' => true,
@@ -2029,8 +2108,9 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => '18',
                 'key_int' => 18,
                 'slug' => 'a-person-of-peace-and-how-to-find-one',
-                'title' => __( 'How to Find a Person of Peace', 'zume' ),
-                'description' => __( "Learn who a person of peace might be and how to know when you've found one.", 'zume' ),
+                'title' => __( 'A Person of Peace and How To Find One', 'zume' ),
+                'video_title' => __( 'Person of Peace', 'zume' ),
+                'description' => __( 'Learn who a person of peace might be and how to know when you‘ve found one.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
                 'mawl' => false,
@@ -2041,7 +2121,8 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 19,
                 'slug' => 'faithfulness-is-better-than-knowledge',
                 'title' => __( 'Faithfulness is Better Than Knowledge', 'zume' ),
-                'description' => __( "It's important what disciples know — but it's much more important what they DO with what they know.", 'zume' ),
+                'video_title' => __( 'Faithfulness', 'zume' ),
+                'description' => __( 'It‘s important what disciples know — but it‘s much more important what they DO with what they know.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
                 'mawl' => false,
@@ -2052,6 +2133,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 20,
                 'slug' => 'the-bless-prayer-pattern',
                 'title' => __( 'The BLESS Prayer Pattern', 'zume' ),
+                'video_title' => __( 'The BLESS Prayer', 'zume' ),
                 'description' => __( 'Practice a simple mnemonic to remind you of ways to pray for others.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -2062,8 +2144,9 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => '21',
                 'key_int' => 21,
                 'slug' => '3-3-group-meeting-pattern',
-                'title' => __( '3/3 Group Meeting', 'zume' ),
-                'description' => __( "A 3/3 Group is a way for followers of Jesus to meet, pray, learn, grow, fellowship and practice obeying and sharing what they've learned. In this way, a 3/3 Group is not just a small group but a Simple Church.", 'zume' ),
+                'title' => __( '3/3 Group Meeting Pattern', 'zume' ),
+                'video_title' => __( '3/3 Group', 'zume' ),
+                'description' => __( 'A 3/3 Group is a way for followers of Jesus to meet, pray, learn, grow, fellowship and practice obeying and sharing what they‘ve learned. In this way, a 3/3 Group is not just a small group but a Simple Church.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
                 'mawl' => true,
@@ -2074,6 +2157,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 22,
                 'slug' => 'training-cycle-for-maturing-disciples',
                 'title' => __( 'Training Cycle for Maturing Disciples', 'zume' ),
+                'video_title' => __( 'Training Cycle', 'zume' ),
                 'description' => 'Learn the training cycle and consider how it applies to disciple making.',
                 'type' => 'tool',
                 'host' => true,
@@ -2085,6 +2169,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 23,
                 'slug' => 'leadership-cells',
                 'title' => __( 'Leadership Cells', 'zume' ),
+                'video_title' => __( 'Leadership Cells', 'zume' ),
                 'description' => __( 'A Leadership Cell is a way someone who feels called to lead can develop their leadership by practicing serving.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
@@ -2096,7 +2181,8 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 24,
                 'slug' => 'expect-non-sequential-growth',
                 'title' => __( 'Expect Non-Sequential Growth', 'zume' ),
-                'description' => __( "See how disciple making doesn't have to be linear. Multiple things can happen at the same time.", 'zume' ),
+                'video_title' => __( 'Expect Non-Sequential Growth', 'zume' ),
+                'description' => __( 'See how disciple making doesn‘t have to be linear. Multiple things can happen at the same time.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
                 'mawl' => false,
@@ -2107,6 +2193,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 25,
                 'slug' => 'pace-of-multiplication-matters',
                 'title' => __( 'Pace of Multiplication Matters', 'zume' ),
+                'video_title' => __( 'Pace', 'zume' ),
                 'description' => __( 'Multiplying matters and multiplying quickly matters even more. See why pace matters.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
@@ -2118,7 +2205,8 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 26,
                 'slug' => 'always-part-of-two-churches',
                 'title' => __( 'Always Part of Two Churches', 'zume' ),
-                'description' => __( "Learn how to obey Jesus' commands by going AND staying.", 'zume' ),
+                'video_title' => __( 'Always Part of Two Churches', 'zume' ),
+                'description' => __( 'Learn how to obey Jesus‘ commands by going AND staying.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
                 'mawl' => true,
@@ -2129,6 +2217,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 27,
                 'slug' => 'three-month-plan',
                 'title' => __( 'Three-Month Plan', 'zume' ),
+                'video_title' => __( 'Three-Month Plan', 'zume' ),
                 'description' => __( 'Create and share your plan for how you will implement the Zúme tools over the next three months.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -2140,6 +2229,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 28,
                 'slug' => 'coaching-checklist',
                 'title' => __( 'Coaching Checklist', 'zume' ),
+                'video_title' => __( 'Coaching Checklist', 'zume' ),
                 'description' => __( 'A powerful tool you can use to quickly assess your own strengths and vulnerabilities when it comes to making disciples who multiply.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -2151,6 +2241,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 29,
                 'slug' => 'leadership-in-networks',
                 'title' => __( 'Leadership in Networks', 'zume' ),
+                'video_title' => __( 'Leadership in Networks', 'zume' ),
                 'description' => __( 'Learn how multiplying churches stay connected and live life together as an extended, spiritual family.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
@@ -2162,6 +2253,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 30,
                 'slug' => 'peer-mentoring-groups',
                 'title' => __( 'Peer Mentoring Groups', 'zume' ),
+                'video_title' => __( 'Peer Mentoring', 'zume' ),
                 'description' => __( 'This is a group that consists of people who are leading and starting 3/3 Groups. It also follows a 3/3 format and is a powerful way to assess the spiritual health of God’s work in your area.', 'zume' ),
                 'type' => 'concept',
                 'host' => true,
@@ -2173,6 +2265,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 31,
                 'slug' => 'four-fields-tool',
                 'title' => __( 'Four Fields Tool', 'zume' ),
+                'video_title' => __( 'Four Fields Tool', 'zume' ),
                 'description' => __( 'The four fields diagnostic chart is a simple tool to be used by a leadership cell to reflect on the status of current efforts and the kingdom activity around them.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
@@ -2184,11 +2277,24 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => 32,
                 'slug' => 'generational-mapping',
                 'title' => __( 'Generational Mapping', 'zume' ),
+                'video_title' => __( 'Generational Mapping', 'zume' ),
                 'description' => __( 'Generation mapping is another simple tool to help leaders in a movement understand the growth around them.', 'zume' ),
                 'type' => 'tool',
                 'host' => true,
                 'mawl' => true,
                 'script' => false,
+            ],
+            '33' => [
+                'key' => '33',
+                'key_int' => 33,
+                'slug' => '3-circles-gospel-presentation',
+                'title' => __( '3-Circles Gospel Presentation', 'zume' ),
+                'video_title' => __( '3-Circles', 'zume' ),
+                'description' => __( 'The 3-Circles gospel presentation is a way to tell the gospel using a simple illustration that can be drawn on a piece of paper.', 'zume' ),
+                'type' => 'tool',
+                'host' => true,
+                'mawl' => true,
+                'script' => 63,
             ],
         ];
 
@@ -2200,6 +2306,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key_int' => $training_item['key_int'],
                 'type' => $training_item['type'],
                 'title' => $training_item['title'],
+                'video_title' => $training_item['video_title'],
                 'slug' => $training_item['slug'],
                 'script' => $training_item['script'],
                 'description' => $training_item['description'],

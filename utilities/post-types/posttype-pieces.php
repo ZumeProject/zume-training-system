@@ -308,13 +308,12 @@ class Zume_Training_Pieces_Post_Type
 
     public function sort_custom_column_query( $query )
     {
-
-        if ( $query->query_vars['zume_piece'] ) {
+        if ( isset( $query->query_vars['zume_piece'] ) ) {
             $query->set( 'meta_key', 'zume_piece' );
             $query->set( 'meta_value', $query->query_vars['zume_piece'] );
         }
 
-        if ( $query->query_vars['zume_lang'] ) {
+        if ( isset( $query->query_vars['zume_lang'] ) ) {
             $query->set( 'meta_key', 'zume_lang' );
             $query->set( 'meta_value', $query->query_vars['zume_lang'] );
         }

@@ -170,12 +170,25 @@ export class DashTrainings extends DashPage {
                     </div>
                 </div>
                 <dash-header-right></dash-header-right>
-                <div class="dashboard__main">
+                <div class="dashboard__main p-2">
                     ${
                         this.showTeaser
                         ? html`
-                            <div class="center p-2">
-                                <p>Start or join a training to get access to your trainings here</p>
+                            <div class="container-inline">
+                              <div class="dash-menu__list-item" data-locked="false" data-completed="false">
+                                <div class="dash-menu__icon-area | stack--5">
+                                  <span class="icon zume-locked dash-menu__list-icon"></span>
+                                </div>
+                                <div class="dash-menu__text-area | switcher | switcher-width-20">
+                                  <div>
+                                    <h3 class="f-1 bold uppercase">${jsObject.translations.my_training_locked}</h3>
+                                    <p>${jsObject.translations.plan_a_training_explanation}</p>
+                                  </div>
+                                  <button class="dash-menu__view-button btn tight" @click=${this.joinCommunity}>
+                                    ${jsObject.translations.plan_a_training}
+                                  </button>
+                                </div>
+                              </div>
                             </div>
                         `
                         : html`
