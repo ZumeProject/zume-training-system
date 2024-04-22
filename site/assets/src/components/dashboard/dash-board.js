@@ -276,7 +276,7 @@ export class DashBoard extends router(LitElement) {
     }
     getCtas() {
         /* Get ctas from api */
-        makeRequest('POST', 'user_ctas', { user_id: this.userId }, 'zume_system/v1' ).done( ( data ) => {
+        makeRequest('POST', 'user_ctas', { user_id: this.userId, language: jsObject.language }, 'zume_system/v1' ).done( ( data ) => {
             const ctas = Object.values(data)
 
             this.allCtas = ctas
@@ -304,7 +304,6 @@ export class DashBoard extends router(LitElement) {
     showCelebrationModal() {
         const ctaArea = this.renderRoot.querySelector('dash-cta')
 
-        console.log(this.allCtas)
         const celebrations = this.allCtas.filter(({content_template}) => content_template === 'celebration')
 
         if (!ctaArea && celebrations.length > 0) {
@@ -378,7 +377,6 @@ export class DashBoard extends router(LitElement) {
     }
 
     render() {
-        console.log(this.celebrationModalContent)
         return html`
             <div class="sidebar__trigger-close-background" @click=${this.toggleSidebar}></div>
             <div class="dashboard">

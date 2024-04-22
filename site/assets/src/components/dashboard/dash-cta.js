@@ -52,6 +52,8 @@ export class DashCta extends LitElement {
             })
 
             this.timeout = setTimeout(this.transitionCelebrations, DashCta.FADE_TIMEOUT)
+        } else {
+            this.ctas = allCtas.slice(0, DashCta.MAX_CTAS)
         }
 
         this.allCtas = allCtas
@@ -82,6 +84,16 @@ export class DashCta extends LitElement {
         this.ctas = this.ctas.filter(({content_template}) => content_template !== 'celebration')
     }
 
+    isWizardLink(link) {
+        return link.includes('/wizard/')
+    }
+    openWizard(link) {
+        const urlParts = link.split('/')
+        const wizardType = urlParts[urlParts.length - 1]
+
+        dispatchEvent(new CustomEvent('open-wizard', { bubbles: true, detail: { type: wizardType } }))
+    }
+
     renderCta({ content, content_template, key }) {
         const classes = this.hiddenCtaKeys.includes(key) ? 'hiding' : 'showing'
         if (content_template === 'card') {
@@ -89,7 +101,16 @@ export class DashCta extends LitElement {
                 <div class="stack | card cta ${classes}" data-key=${key} style="--duration: ${DashCta.TRANSITION_TIMEOUT}ms">
                     <h2 class="h5 text-center">${content.title}</h2>
                     <p>${content.description}</p>
-                    <a href="${content.link}" class="btn light uppercase">${content.link_text}</a>
+                    ${
+                        this.isWizardLink(content.link)
+                        ? html`
+                            <button class="btn light uppercase" @click=${() => this.openWizard(content.link)}>${content.link_text}</button>
+                        `
+                        : html`
+                            <a href="${content.link}" class="btn light uppercase">${content.link_text}</a>
+                        `
+                    }
+
                 </div>
             `
         }
