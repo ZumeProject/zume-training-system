@@ -111,6 +111,8 @@ export class DashBoard extends router(LitElement) {
         window.removeEventListener('user-state:change', this.refetchState)
         window.removeEventListener('user-state:change', this.getCtas)
         window.removeEventListener('user-host:change', this.refetchHost)
+
+        window.removeEventListener('load', this.showCelebrationModal)
     }
 
     firstUpdated() {
