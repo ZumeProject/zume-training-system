@@ -77,6 +77,7 @@ export class DashBoard extends router(LitElement) {
         this.allCtas = []
         this.ctas = []
         this.userId = jsObject.profile.user_id
+        this.showingCelebrationModal = false
 
         this.updateUserProfile = this.updateUserProfile.bind(this)
         this.updateWizardType = this.updateWizardType.bind(this)
@@ -99,6 +100,7 @@ export class DashBoard extends router(LitElement) {
         window.addEventListener('user-host:change', this.refetchHost)
 
         window.addEventListener('load', this.showCelebrationModal)
+        window.addEventListener('ctas:changed', this.showCelebrationModal)
     }
 
     disconnectedCallback() {
@@ -114,11 +116,17 @@ export class DashBoard extends router(LitElement) {
         window.removeEventListener('user-host:change', this.refetchHost)
 
         window.removeEventListener('load', this.showCelebrationModal)
+        window.removeEventListener('ctas:changed', this.showCelebrationModal)
     }
 
     firstUpdated() {
         this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
         this.getCtas()
+
+        const celebrationModal = this.renderRoot.querySelector('#celebration-modal')
+        celebrationModal?.addEventListener('closed.zf.reveal', () => {
+            this.showingCelebrationModal = false
+        })
     }
 
     updateWizardType(event) {
@@ -304,19 +312,30 @@ export class DashBoard extends router(LitElement) {
         })
     }
     showCelebrationModal() {
+        if (this.showingCelebrationModal) {
+            return
+        }
         const ctaArea = this.renderRoot.querySelector('dash-cta')
 
         const celebrations = this.allCtas.filter(({content_template}) => content_template === 'celebration')
 
         if (!ctaArea && celebrations.length > 0) {
+            this.showingCelebrationModal = true
             celebrations.forEach(({content: { title, description }}) => {
-                this.celebrationModalContent.title = title
-                this.celebrationModalContent.content.push(description)
+                this.celebrationModalContent.title = description
+                this.celebrationModalContent.content.push(title)
             })
             this.requestUpdate()
 
             const celebrationModal = document.querySelector('#celebration-modal')
             jQuery(celebrationModal).foundation('open')
+
+
+            celebrations.forEach(({type, subtype}) => {
+                makeRequest('POST', 'log', { type, subtype }, 'zume_system/v1')
+            })
+            const celebrationKeys = celebrations.map(({key}) => key)
+            jsObject.allCtas = jsObject.allCtas.filter(({key}) => !celebrationKeys.includes(key))
         }
     }
     openProfile() {

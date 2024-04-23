@@ -164,7 +164,7 @@ class Zume_System_CTA_API
                 'subtype' => 'celebrated_joining_training',
                 'content' => [
                     'title' => __( 'Joined Training!', 'zume' ),
-                    'description' => __( 'Congratulations', 'zume' ),
+                    'description' => __( 'Congratulations!', 'zume' ),
                     'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
                 ],
                 'content_template' => 'celebration',
@@ -265,8 +265,8 @@ class Zume_System_CTA_API
                 'type' => 'system',
                 'subtype' => 'celebrated_set_profile',
                 'content' => [
-                    'title' => __( 'Congratulations!', 'zume' ),
-                    'description' => __( 'Your profile is set', 'zume' ),
+                    'title' => __( 'Profile Set', 'zume' ),
+                    'description' => __( 'Congratulations!', 'zume' ),
                     'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
                 ],
                 'content_template' => 'celebration',
@@ -294,8 +294,8 @@ class Zume_System_CTA_API
                 'type' => 'system',
                 'subtype' => 'celebrated_plan_unlocked',
                 'content' => [
-                    'title' => __( 'Congratulations!', 'zume' ),
-                    'description' => sprintf( __( '%s unlocked', 'zume' ), __( '3 month plan', 'zume' ) ),
+                    'title' => sprintf( __( '%s unlocked', 'zume' ), __( '3 month plan', 'zume' ) ),
+                    'description' => __( 'Congratulations!', 'zume' ),
                     'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/unlocked.svg' ),
                 ],
                 'content_template' => 'celebration',
