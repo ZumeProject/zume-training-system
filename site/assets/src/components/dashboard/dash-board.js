@@ -82,6 +82,7 @@ export class DashBoard extends router(LitElement) {
         this.updateWizardType = this.updateWizardType.bind(this)
         this.refetchState = this.refetchState.bind(this)
         this.refetchHost = this.refetchHost.bind(this)
+        this.getCtas = this.getCtas.bind(this)
         this.showCelebrationModal = this.showCelebrationModal.bind(this)
     }
 
@@ -294,7 +295,6 @@ export class DashBoard extends router(LitElement) {
             const celebrations = this.allCtas.filter(({content_template}) => content_template === 'celebration')
             const cards = this.allCtas.filter(({content_template}) => content_template === 'card')
 
-            /* Take the first 3 of the randomized list to display */
             const organizedCtas = [ ...celebrations, ...shuffleArray(cards) ]
             this.allCtas = organizedCtas
 
@@ -319,27 +319,6 @@ export class DashBoard extends router(LitElement) {
             jQuery(celebrationModal).foundation('open')
         }
     }
-    makeCelebration(celebrateType) {
-        let description = ''
-        let imageUrl = ''
-        switch (celebrateType) {
-            case 'joined-community':
-                description = jsObject.translations.joined_community
-                imageUrl = jsObject.images_url + '/thumbs-up.svg'
-                break;
-            default:
-                break;
-        }
-        return {
-            content_template: 'celebration',
-            content: {
-                title: jsObject.translations.congratulations,
-                description,
-                imageUrl,
-            }
-        }
-    }
-
     openProfile() {
         const modal = document.querySelector('#profile-modal')
         jQuery(modal).foundation('open')

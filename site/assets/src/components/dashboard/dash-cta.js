@@ -17,73 +17,141 @@ export class DashCta extends LitElement {
         this.allCtas = []
         this.ctas = []
 
+        this.celebrations = []
         this.hiddenCtaKeys = []
-        this.celebrationKeys = []
+        this.initialCtaKeys = []
+        this.removedCtaKeys = []
 
         this.manageCtas = this.manageCtas.bind(this)
-        this.transitionCelebrations = this.transitionCelebrations.bind(this)
-        this.removeCelebrations = this.removeCelebrations.bind(this)
+        this.transitionIn = this.transitionIn.bind(this)
+        this.transitionCtas = this.transitionCtas.bind(this)
         this.renderCta = this.renderCta.bind(this)
     }
 
     connectedCallback() {
         super.connectedCallback();
+
         window.addEventListener('ctas:changed', this.manageCtas)
+        this.addEventListener('begin-cta-transitions', this.transitionIn)
+        this.addEventListener('cta-transition-in-ended', this.logCelebrationsSeen)
     }
     disconnectedCallback() {
         super.disconnectedCallback();
+
         window.removeEventListener('ctas:changed', this.manageCtas)
+        this.removeEventListener('begin-cta-transitions', this.transitionIn)
+        this.removeEventListener('cta-transition-in-ended', this.logCelebrationsSeen)
     }
     firstUpdated() {
         this.manageCtas()
     }
+    updated() {
+        if (this.dispatchEventAfterUpdated) {
+            this.dispatchEventAfterUpdated = false
+
+            setTimeout(() => {
+                this.dispatchEvent(new CustomEvent('begin-cta-transitions'))
+            }, 10)
+        }
+    }
 
     manageCtas() {
-        const allCtas = this.getCtas()
+        /* Get the new CTAs */
+        const newCtas = this.getCtas()
 
-        const celebrations = allCtas.filter(({content_template}) => content_template === 'celebration')
+        /* Compare new to old to get the diff */
+        const [ comingCtas, stayingCtas, goingCtas ] = this.diffCtas(newCtas, this.ctas)
 
-        if ( celebrations.length > 0 ) {
-            this.ctas = allCtas.slice(0, DashCta.MAX_CTAS + celebrations.length)
-            this.hiddenCtaKeys = allCtas.slice(DashCta.MAX_CTAS).map(({key}) => key)
+        const celebrations = [...comingCtas, ...stayingCtas].filter(({content_template}) => content_template === 'celebration')
+        const nonCelebrations = [...comingCtas, ...stayingCtas].filter(({content_template}) => content_template !== 'celebration')
 
-            celebrations.forEach(({key}) => {
-                this.celebrationKeys.push(key)
-            })
+        const organisedCtas = [...celebrations, ...nonCelebrations]
+        const organisedCtaKeys = this.getCtaKeys(organisedCtas)
 
-            this.timeout = setTimeout(this.transitionCelebrations, DashCta.FADE_TIMEOUT)
-        } else {
-            this.ctas = allCtas.slice(0, DashCta.MAX_CTAS)
+        const goingCtaKeys = this.getCtaKeys(goingCtas)
+
+        /* anything that is new, should start as hidden */
+        this.ctas = organisedCtas
+        this.celebrations = celebrations
+
+        this.hiddenCtaKeys = this.getCtaKeys(comingCtas)
+        this.removedCtaKeys = [...goingCtaKeys, ...organisedCtaKeys.slice(DashCta.MAX_CTAS)]
+        this.initialCtaKeys = organisedCtaKeys.slice(0, DashCta.MAX_CTAS)
+
+        if (this.ctas.length > 1) {
+            this.dispatchEventAfterUpdated = true
         }
-
-        this.allCtas = allCtas
     }
     getCtas() {
         return jsObject.allCtas ?? []
     }
-    transitionCelebrations() {
-        const celebrationElements = this.getCtaElements(this.celebrationKeys)
-        celebrationElements.forEach((element) => {
+    /**
+     * Find the different CTAs in both, old or new arrays
+     *
+     * @param {array} newCtas
+     * @param {array} oldCtas
+     *
+     * @returns {array}
+     */
+    diffCtas(newCtas, oldCtas) {
+        /* Get only new, only old and same */
+        /* [ a, b, c] [ b, c, d, e ] */
+        const onlyNew = newCtas.filter(({key: newKey}) => oldCtas.findIndex(({key: oldKey}) => oldKey === newKey) === -1)
+        const onlyOld = oldCtas.filter(({key: oldKey}) => newCtas.findIndex(({key: newKey}) => newKey === oldKey) === -1)
+        const inBoth = oldCtas.filter(({key: oldKey}) => newCtas.findIndex(({key: newKey}) => newKey === oldKey) > -1)
+
+        return [onlyNew, inBoth, onlyOld]
+    }
+    transitionIn() {
+        this.transitionCtas(this.removedCtaKeys, this.initialCtaKeys)
+
+        setTimeout(() => {
+            this.dispatchEvent(new CustomEvent('cta-transition-in-ended'))
+        }, DashCta.TRANSITION_TIMEOUT)
+    }
+    logCelebrationsSeen() {
+        this.celebrations.forEach(({type, subtype}) => {
+            makeRequest('POST', 'log', { type, subtype }, 'zume_system/v1')
+        })
+        const celebrationKeys = this.getCtaKeys(this.celebrations)
+        jsObject.allCtas = jsObject.allCtas.filter(({key}) => !celebrationKeys.includes(key))
+    }
+    /**
+     * @param {array} outKeys Keys of ctas to transition out
+     * @param {array} inKeys Keys of ctas to transition in
+     */
+    transitionCtas(outKeys, inKeys) {
+        const transitioningInElements = outKeys.length > 0 ? this.getCtaElements(outKeys) : []
+        transitioningInElements.forEach((element) => {
+            if (!element) {
+                return
+            }
             element.style.height = element.clientHeight + 'px'
             setTimeout(() => {
                 element.classList.add('transition-out')
                 element.style.height = ''
             }, 10)
         })
-        const hiddenCtaElements = this.getCtaElements(this.hiddenCtaKeys)
-        hiddenCtaElements.forEach((element) => {
+        const transitioningOutElements = inKeys.length > 0 ? this.getCtaElements(inKeys) : []
+        transitioningOutElements.forEach((element) => {
+            if (!element) {
+                return
+            }
             element.classList.remove('hiding')
             element.classList.add('showing')
         })
-        setTimeout(this.removeCelebrations, DashCta.TRANSITION_TIMEOUT)
     }
     getCtaElements(keys) {
         return this.renderRoot.querySelectorAll(keys.map((key) => `[data-key="${key}"]`).join(','))
     }
-    removeCelebrations() {
-        this.ctas = this.ctas.filter(({content_template}) => content_template !== 'celebration')
+    /**
+     * Get the keys from an arary of CTAs
+     * @param {array} ctas
+     * @returns {array}
+     */
+    getCtaKeys(ctas) {
+        return ctas.map(({key}) => key)
     }
-
     isWizardLink(link) {
         return link.includes('/wizard/')
     }

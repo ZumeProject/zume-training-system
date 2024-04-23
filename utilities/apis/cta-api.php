@@ -163,8 +163,8 @@ class Zume_System_CTA_API
                 'type' => 'system',
                 'subtype' => 'celebrated_joining_training',
                 'content' => [
-                    'title' => __( 'Congratulations!', 'zume' ),
-                    'description' => __( 'You joined a training', 'zume' ),
+                    'title' => __( 'Joined Training!', 'zume' ),
+                    'description' => __( 'Congratulations', 'zume' ),
                     'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
                 ],
                 'content_template' => 'celebration',
@@ -192,8 +192,8 @@ class Zume_System_CTA_API
                 'type' => 'system',
                 'subtype' => 'celebrated_coach_request',
                 'content' => [
-                    'title' => __( 'Congratulations!', 'zume' ),
-                    'description' => __( 'You have requested a coach', 'zume' ),
+                    'title' => __( 'Requested Coach!', 'zume' ),
+                    'description' => __( 'Congratulations', 'zume' ),
                     'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
                 ],
                 'content_template' => 'celebration',
@@ -221,8 +221,8 @@ class Zume_System_CTA_API
                 'type' => 'system',
                 'subtype' => 'celebrate_plan_created',
                 'content' => [
-                    'title' => __( 'Congratulations!', 'zume' ),
-                    'description' => __( 'You have created a training', 'zume' ),
+                    'title' => __( 'Created Training!', 'zume' ),
+                    'description' => __( 'Congratulations', 'zume' ),
                     'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
                 ],
                 'content_template' => 'celebration',
