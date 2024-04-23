@@ -8,7 +8,7 @@ class Zume_System_CTA_API
 
     public static function instance()
     {
-        if (is_null(self::$_instance)) {
+        if ( is_null( self::$_instance ) ) {
             self::$_instance = new self();
         }
         return self::$_instance;
@@ -16,15 +16,15 @@ class Zume_System_CTA_API
 
     public function __construct()
     {
-        if (dt_is_rest()) {
-            add_action('rest_api_init', [$this, 'add_api_routes']);
-            add_filter('dt_allow_rest_access', [$this, 'authorize_url'], 10, 1);
+        if ( dt_is_rest() ) {
+            add_action( 'rest_api_init', [$this, 'add_api_routes'] );
+            add_filter( 'dt_allow_rest_access', [$this, 'authorize_url'], 10, 1 );
         }
     }
 
-    public function authorize_url($authorized)
+    public function authorize_url( $authorized )
     {
-        if (isset($_SERVER['REQUEST_URI']) && strpos(sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'])), $this->namespace) !== false) {
+        if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), $this->namespace ) !== false ) {
             $authorized = true;
         }
         return $authorized;
@@ -37,23 +37,23 @@ class Zume_System_CTA_API
             $namespace, '/user_ctas', [
                 'methods' => ['GET', 'POST'],
                 'callback' => [$this, 'request_sorter'],
-                'permission_callback' => '__return_true'
+                'permission_callback' => '__return_true',
             ]
         );
     }
 
-    public function request_sorter(WP_REST_Request $request)
+    public function request_sorter( WP_REST_Request $request )
     {
         $params = dt_recursive_sanitize_array( $request->get_params() );
 
         if ( is_user_logged_in() ) {
-            return $this->user($params);
+            return $this->user( $params );
         } else {
-            return $this->guest($params);
+            return $this->guest( $params );
         }
     }
 
-    public function user($params)
+    public function user( $params )
     {
         if ( ! isset( $params['user_id'], $params['language'] ) ) {
             return new WP_Error( 'no_user_id', 'Missing parames user_id or language', array( 'status' => 400 ) );
@@ -62,11 +62,11 @@ class Zume_System_CTA_API
         global $zume_languages_by_code;
         $language = $zume_languages_by_code[$params['language']];
 
-        switch_to_locale($language['locale']);
+        switch_to_locale( $language['locale'] );
 
         return self::_get_ctas( $params['user_id'] );
     }
-    public static function _get_ctas( $user_id, $log = NULL ) : array
+    public static function _get_ctas( $user_id, $log = null ) : array
     {
         if ( is_null( $log ) ) {
             $log = zume_get_user_log( $user_id );
@@ -78,26 +78,26 @@ class Zume_System_CTA_API
         $stage = zume_get_user_stage( $user_id, $log );
 
         $log_keys = [];
-        foreach( $log as $row ) {
+        foreach ( $log as $row ) {
             $log_keys[] = $row['log_key'];
         }
 
         $templates = self::get_ctas();
 
         $ctas = [];
-        foreach($templates as $template) {
+        foreach ( $templates as $template ) {
             if ( in_array( $stage['value'], $template['stages'] ) ) {
                 $ctas[] = $template;
             }
         }
         if ( ! empty( $ctas ) ) {
-            foreach( $ctas as $key => $cta ) {
-                foreach( $cta['required_keys'] as $required_key) {
+            foreach ( $ctas as $key => $cta ) {
+                foreach ( $cta['required_keys'] as $required_key ) {
                     if ( ! in_array( $required_key, $log_keys ) ) {
                         unset( $ctas[$key] );
                     }
                 }
-                foreach( $cta['disable_keys'] as $disable_key) {
+                foreach ( $cta['disable_keys'] as $disable_key ) {
                     if ( in_array( $disable_key, $log_keys ) ) {
                         unset( $ctas[$key] );
                     }
@@ -113,7 +113,7 @@ class Zume_System_CTA_API
         $templates = self::get_ctas();
 
         $ctas = [];
-        foreach($templates as $template) {
+        foreach ( $templates as $template ) {
             if ( in_array( 0, $template['stages'] ) ) {
                 $ctas[] = $template;
             }
@@ -138,10 +138,10 @@ class Zume_System_CTA_API
                     'link_text' => __( 'Register', 'zume' ),
                     'link' => zume_login_url(),
                 ],
-                'content_template' => 'card'
+                'content_template' => 'card',
             ],
             [
-                'stages' => [0,1],
+                'stages' => [0, 1],
                 'required_keys' => [],
                 'disable_keys' => ['system_joined_online_training'],
                 'key' => 'system_joined_online_training',
@@ -153,10 +153,10 @@ class Zume_System_CTA_API
                     'link_text' => __( 'Join', 'zume' ),
                     'link' => zume_wizard_url( 'join' ),
                 ],
-                'content_template' => 'card'
+                'content_template' => 'card',
             ],
             [
-                'stages' => [2,3,4,5,6],
+                'stages' => [2, 3, 4, 5, 6],
                 'required_keys' => ['system_joined_online_training'],
                 'disable_keys' => ['system_celebrated_joining_training'],
                 'key' => 'system_celebrated_joining_training',
@@ -170,7 +170,7 @@ class Zume_System_CTA_API
                 'content_template' => 'celebration',
             ],
             [
-                'stages' => [1,2,3,4,5,6],
+                'stages' => [1, 2, 3, 4, 5, 6],
                 'required_keys' => [],
                 'disable_keys' => ['system_requested_a_coach'],
                 'key' => 'system_requested_a_coach',
@@ -185,7 +185,7 @@ class Zume_System_CTA_API
                 'content_template' => 'card',
             ],
             [
-                'stages' => [1,2,3,4,5,6],
+                'stages' => [1, 2, 3, 4, 5, 6],
                 'required_keys' => ['system_requested_a_coach'],
                 'disable_keys' => ['system_celebrated_coach_request'],
                 'key' => 'system_celebrated_coach_request',
@@ -214,7 +214,7 @@ class Zume_System_CTA_API
                 'content_template' => 'card',
             ],
             [
-                'stages' => [1,2],
+                'stages' => [1, 2],
                 'required_keys' => ['system_plan_created'],
                 'disable_keys' => ['system_celebrate_plan_created'],
                 'key' => 'system_celebrate_plan_created',
@@ -228,7 +228,7 @@ class Zume_System_CTA_API
                 'content_template' => 'celebration',
             ],
             [
-                'stages' => [1,2],
+                'stages' => [1, 2],
                 'required_keys' => [],
                 'disable_keys' => ['system_invited_friends'],
                 'key' => 'system_invited_friends',
@@ -240,10 +240,10 @@ class Zume_System_CTA_API
                     'link_text' => __( 'Invite Friends', 'zume' ),
                     'link' => zume_invite_friends_url(),
                 ],
-                'content_template' => 'card'
+                'content_template' => 'card',
             ],
             [
-                'stages' => [1,2,3,4,5,6],
+                'stages' => [1, 2, 3, 4, 5, 6],
                 'required_keys' => [],
                 'disable_keys' => ['system_set_profile'],
                 'key' => 'system_set_profile',
@@ -258,7 +258,7 @@ class Zume_System_CTA_API
                 'content_template' => 'card',
             ],
             [
-                'stages' => [1,2,3,4,5,6],
+                'stages' => [1, 2, 3, 4, 5, 6],
                 'required_keys' => ['system_set_profile'],
                 'disable_keys' => ['system_celebrated_set_profile'],
                 'key' => 'system_celebrated_set_profile',
@@ -287,7 +287,7 @@ class Zume_System_CTA_API
                 'content_template' => 'card',
             ],
             [
-                'stages' => [1,2],
+                'stages' => [1, 2],
                 'required_keys' => ['training_26_heard'],
                 'disable_keys' => ['system_celebrated_plan_unlocked'],
                 'key' => 'system_celebrated_plan_unlocked',
@@ -313,10 +313,10 @@ class Zume_System_CTA_API
                     'link_text' => __( 'Complete 3 Month Plan', 'zume' ),
                     'link' => '/complete-3-month-plan',
                 ],
-                'content_template' => 'card'
+                'content_template' => 'card',
             ],
             [
-                'stages' => [3,4,5,6],
+                'stages' => [3, 4, 5, 6],
                 'required_keys' => [],
                 'disable_keys' => [],
                 'key' => 'report_practitioner_report',
@@ -328,10 +328,10 @@ class Zume_System_CTA_API
                     'link_text' => __( 'Submit Report', 'zume' ),
                     'link' => '/submit-report',
                 ],
-                'content_template' => 'card'
+                'content_template' => 'card',
             ],
             [
-                'stages' => [4,5,6],
+                'stages' => [4, 5, 6],
                 'required_keys' => [],
                 'disable_keys' => ['system_joined_affinity_hub'],
                 'key' => 'system_joined_affinity_hub',
@@ -343,7 +343,7 @@ class Zume_System_CTA_API
                     'link_text' => __( 'Join a Hub', 'zume' ),
                     'link' => zume_wizard_url( 'join_the_community' ),
                 ],
-                'content_template' => 'card'
+                'content_template' => 'card',
             ],
 
 
@@ -361,7 +361,7 @@ class Zume_System_CTA_API
                     'link_text' => __( 'Share Spiritual Breathing', 'zume' ),
                     'link' => '/training_03_shared',
                 ],
-                'content_template' => 'card'
+                'content_template' => 'card',
             ],
             [
                 'stages' => [2],
@@ -381,6 +381,5 @@ class Zume_System_CTA_API
         ];
         return $templates;
     }
-
 }
 Zume_System_CTA_API::instance();
