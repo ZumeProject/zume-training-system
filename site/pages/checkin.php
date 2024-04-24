@@ -24,20 +24,19 @@ class Zume_Training_Checkin extends Zume_Magic_Page
 
     public function __construct() {
         parent::__construct();
-//        $this->lang = get_locale();
 
         [
             'lang_code' => $lang_code,
             'url_parts' => $url_parts,
         ] = zume_get_url_pieces();
 
-//        dt_write_log( zume_get_url_pieces() );
+        $this->initialize_language();
 
         $page_slug = $url_parts[0] ?? '';
 
         if ( isset( $url_parts[0] ) && ( ( $this->root === $url_parts[0] && $this->type === $url_parts[1] ) || 'checkin' === $url_parts[0] ) && ! dt_is_rest() ) {
 
-//            $this->set_locale( $lang_code );
+            $this->set_locale( );
 
             // register url and access
             add_action( 'template_redirect', [ $this, 'theme_redirect' ] );
@@ -59,8 +58,6 @@ class Zume_Training_Checkin extends Zume_Magic_Page
             add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
             add_filter( 'wp_enqueue_scripts', [ $this, 'enqueue_zume_training_scripts' ] );
-
-//            exit();
 
         }
     }
@@ -135,11 +132,6 @@ class Zume_Training_Checkin extends Zume_Magic_Page
         if ( isset( $_GET['code'] ) ) {
             $key_code = sanitize_text_field( wp_unslash( $_GET['code'] ) );
         }
-
-//        if ( $key_code !== false ) {
-//            wp_redirect( zume_checkin_wizard_url( $key_code ) );
-//            exit;
-//        }
 
         ?>
 
