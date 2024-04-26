@@ -60,6 +60,7 @@ export class DashPlans extends DashPage {
     }
 
     handleAddedCommitments() {
+        this.fetchCommitments()
         this.closeCommitmentsModal()
     }
 
@@ -129,7 +130,16 @@ export class DashPlans extends DashPage {
                         <span class="icon zume-kebab brand-light"></span>
                     </button>
                 </div>
-                <div class="dropdown-pane" id="kebab-menu-${id}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl ? 'right' : 'left'} data-close-on-click="true" data-close-on-click-inside="true">
+                <div
+                    class="dropdown-pane"
+                    id="kebab-menu-${id}"
+                    data-dropdown
+                    data-auto-focus="true"
+                    data-position="bottom"
+                    data-alignment=${this.isRtl ? 'right' : 'left'}
+                    data-close-on-click="true"
+                    data-close-on-click-inside="true"
+                >
                     <ul>
                         <li class="hidden"><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon zume-pencil"></span>${jsObject.translations.edit}</button></li>
                         <li><button class="menu-btn" @click=${() => this.deleteCommitment(id)}><span class="icon zume-trash"></span>${jsObject.translations.delete}</button></li>
@@ -177,7 +187,7 @@ export class DashPlans extends DashPage {
                                 </button>
                             </li>
                             <li>
-                                <button class="menu-btn w-100 ${this.filterStatus === '' ? 'selected' : ''}" @click=${() => this.filterCommitments('')}>
+                                <button class="menu-btn w-100 ${this.filterStatus === 'all' ? 'selected' : ''}" @click=${() => this.filterCommitments('all')}>
                                     <span class="icon zume-sort-all" aria-hidden="true"></span>
                                     ${jsObject.translations.all}
                                 </button>
@@ -185,10 +195,10 @@ export class DashPlans extends DashPage {
                         </ul>
                     </div>
                 </div>
-                <div class="dashboard__main p-2">
+                <div class="dashboard__main">
                     ${
                         this.showTeaser ? html`
-                          <div class="container-inline">
+                          <div class="container-inline p-2">
                             <div class="dash-menu__list-item" data-locked="false" data-completed="false">
                               <div class="dash-menu__icon-area | stack--5">
                                 <span class="icon zume-locked dash-menu__list-icon"></span>
@@ -222,7 +232,7 @@ export class DashPlans extends DashPage {
                 </button>
                 <activity-3-month-plan
                     .questions=${jsObject.three_month_plan_questions}
-                    .translations=${{ save: jsObject.translations.save }}
+                    .translations=${{ save: jsObject.translations.save, cancel: jsObject.translations.cancel }}
                     user_id=${jsObject.profile.user_id}
                     contact_id=${jsObject.profile.contact_id}
                     @3-month-plan-saved=${this.handleAddedCommitments}

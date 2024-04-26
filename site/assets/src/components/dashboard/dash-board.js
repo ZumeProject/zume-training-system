@@ -248,7 +248,7 @@ export class DashBoard extends router(LitElement) {
     }
 
     static getLockedStatus(routeName, userState) {
-        if (routeName === 'my-plans' && !userState.made_3_month_plan) {
+        if (routeName === 'my-plans' && !userState.made_post_training_plan) {
             return true
         }
         if (['my-churches', 'my-maps'].includes(routeName) && !userState.join_community) {

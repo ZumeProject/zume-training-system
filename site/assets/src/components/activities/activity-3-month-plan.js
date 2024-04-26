@@ -100,7 +100,7 @@ export class Activity3MonthPlan extends LitElement {
                                 type="text"
                                 class="input post-training-plan"
                                 rows="1"
-                                @change=${this.handleInputChange}
+                                @input=${this.handleInputChange}
                             ></textarea>
                         </div>
                 `
