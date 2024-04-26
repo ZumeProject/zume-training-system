@@ -226,6 +226,8 @@ export class DashPlans extends DashPage {
                     user_id=${jsObject.profile.user_id}
                     contact_id=${jsObject.profile.contact_id}
                     @3-month-plan-saved=${this.handleAddedCommitments}
+                    @3-month-plan-cancelled=${this.closeCommitmentsModal}
+                    showCancel
                 ></activity-3-month-plan>
             </div>
         `;

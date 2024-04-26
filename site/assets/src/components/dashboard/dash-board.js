@@ -97,6 +97,7 @@ export class DashBoard extends router(LitElement) {
         window.addEventListener('open-wizard', this.updateWizardType)
         window.addEventListener('wizard-finished', this.closeWizard)
         window.addEventListener('wizard-finished', this.getCtas)
+        window.addEventListener('open-3-month-plan', this.open3MonthPlan)
         window.addEventListener('user-state:change', this.refetchState)
         window.addEventListener('user-state:change', this.getCtas)
         window.addEventListener('user-host:change', this.refetchHost)
@@ -115,6 +116,7 @@ export class DashBoard extends router(LitElement) {
         window.removeEventListener('open-wizard', this.updateWizardType)
         window.removeEventListener('wizard-finished', this.closeWizard)
         window.removeEventListener('wizard-finished', this.getCtas)
+        window.removeEventListener('open-3-month-plan', this.open3MonthPlan)
         window.removeEventListener('user-state:change', this.refetchState)
         window.removeEventListener('user-state:change', this.getCtas)
         window.removeEventListener('user-host:change', this.refetchHost)
@@ -282,6 +284,16 @@ export class DashBoard extends router(LitElement) {
     closeWizard() {
         this.wizardType = ''
         const modal = document.querySelector('#wizard-modal')
+        jQuery(modal).foundation('close')
+    }
+    open3MonthPlan() {
+        const modal = document.querySelector('#activity-3-month-plan-modal')
+        jQuery(modal).foundation('_disableScroll')
+        jQuery(modal).foundation('open')
+    }
+    close3MonthPlan() {
+        const modal = document.querySelector('#activity-3-month-plan-modal')
+        jQuery(modal).foundation('_enableScroll')
         jQuery(modal).foundation('close')
     }
     refetchState() {
@@ -475,6 +487,12 @@ export class DashBoard extends router(LitElement) {
                                                         icon=${route.icon}
                                                         text=${route.translation}
                                                         ?locked=${DashBoard.getLockedStatus(route.name, this.userState)}
+                                                        ?disableNavigate=${route.type === 'handled-link'}
+                                                        @click=${route.type === 'handled-link' ? (event) => {
+                                                            if (DashBoard.getCompletedStatus(route.name, this.userState)) return
+                                                            route.clickHandler(event, this.dispatchEvent)
+                                                        } : null}
+                                                        ?completed=${DashBoard.getCompletedStatus(route.name, this.userState)}
                                                     ></nav-link>
                                                     <span class="icon zume-locked gray-500"></span>
                                                 </li>
@@ -570,6 +588,20 @@ export class DashBoard extends router(LitElement) {
                     .translations=${jsObject.wizard_translations}
                     noUrlChange
                 ></zume-wizard>
+            </div>
+            <div class="reveal full" id="activity-3-month-plan-modal" data-reveal>
+                <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.closeWizard}>
+                    <span class="icon zume-close gray-500"></span>
+                </button>
+                <activity-3-month-plan
+                    .questions=${jsObject.three_month_plan_questions}
+                    .translations=${{ save: jsObject.translations.save, cancel: jsObject.translations.cancel }}
+                    user_id=${this.userProfile.user_id}
+                    contact_id=${this.userProfile.contact_id}
+                    @3-month-plan-saved=${this.close3MonthPlan}
+                    @3-month-plan-cancelled=${this.close3MonthPlan}
+                    showCancel
+                ></activity-3-month-plan>
             </div>
             <div class="reveal full" id="resources-modal" data-reveal>
                 <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.closeResourcesModal}>

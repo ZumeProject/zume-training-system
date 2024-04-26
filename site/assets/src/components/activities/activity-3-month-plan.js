@@ -4,10 +4,11 @@ export class Activity3MonthPlan extends LitElement {
     static get properties() {
         return {
             questions: { type: Array },
-            answers: { type: Array, reflect: true },
             translations: { type: Object },
             contact_id: { type: String },
             user_id: { type: String },
+            showCancel: { type: Boolean },
+            answers: { type: Array, attribue: false },
             error: { type: Boolean, attribute: false },
             loading: { type: Boolean, attribute: false },
         };
@@ -17,6 +18,7 @@ export class Activity3MonthPlan extends LitElement {
         super()
         this.questions = []
         this.answers = []
+        this.translations = []
         this.contact_id = ''
         this.user_id = ''
         this.error = false
@@ -26,6 +28,11 @@ export class Activity3MonthPlan extends LitElement {
     handleInputChange(event) {
         const i = event.target.dataset.i
         this.answers[i] = event.target.value
+        this.update()
+    }
+    handleCancel() {
+        this.clearAnswers()
+        this.dispatchEvent(new CustomEvent('3-month-plan-cancelled', { bubbles: true }))
     }
     handleSave() {
         this.loading = true
@@ -79,6 +86,7 @@ export class Activity3MonthPlan extends LitElement {
     }
 
     render() {
+        const disabled = this.loading || this.answers.length === 0
         return html`
             <div id="pieces-content" class="stack">
                 ${ this.questions.map( (question, i) => {
@@ -97,11 +105,21 @@ export class Activity3MonthPlan extends LitElement {
                         </div>
                 `
                 })}
-                <div>
+                <div class="cluster justify-flex-end">
+                    ${
+                        this.showCancel ? html`
+                            <button
+                                class="btn light outline uppercase"
+                                @click=${this.handleCancel}
+                            >
+                                ${this.translations.cancel}
+                            </button>
+                            ` : ''
+                    }
                     <button
-                        ?disabled=${this.loading}
-                        aria-disabled=${this.loading ? 'true' : 'false'}
-                        class="btn light uppercase d-block ms-auto"
+                        ?disabled=${disabled}
+                        aria-disabled=${disabled ? 'true' : 'false'}
+                        class="btn light uppercase"
                         @click=${this.handleSave}
                     >
                         ${this.translations.save}
