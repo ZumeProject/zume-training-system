@@ -45,7 +45,6 @@ export class Activity3MonthPlan extends LitElement {
             if ( answer ) {
 
                 const question = this.questions[i]
-                console.log('Question: ' + question + ' Answer: ' + answer)
 
                 var date = new Date(); // Now
                 date.setDate(date.getDate() + 30);
