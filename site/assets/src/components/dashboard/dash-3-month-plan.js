@@ -58,50 +58,9 @@ export class Dash3MonthPlan extends DashPage {
         const modal = document.querySelector('#new-commitments-form')
         jQuery(modal).foundation('close')
     }
-    clearCommitmentsModal() {
-        jQuery('.post-training-plan').each(function(value) {
-            this.value = ''
-        })
-    }
 
-    addCommitments() {
-        const requests = []
-        jQuery('.post-training-plan').each(function(value) {
-            const answer = jQuery(this).val();
-            if ( answer ) {
-
-                const question = jQuery(this).prev().text();
-                console.log('Question: ' + question + ' Answer: ' + answer)
-
-                var date = new Date(); // Now
-                date.setDate(date.getDate() + 30);
-
-                this.value = ''
-
-                /**
-                 * TODO: refactor the POST commitment API to take a list of commitments
-                 * then we can safely fetch all the commitments once the single API request has completed
-                 */
-                const request = makeRequest('POST', 'commitment', {
-                    "user_id": jsObject.profile.user_id,
-                    "post_id": jsObject.profile.contact_id,
-                    "meta_key": "tasks",
-                    "note": 'Question: ' + question + ' Answer: ' + answer,
-                    "question": question,
-                    "answer": answer,
-                    "date": date,
-                    "category": "post_training_plan"
-                }, 'zume_system/v1' )
-                requests.push(request.promise())
-            }
-        })
-        console.log(requests)
-        return Promise.all(requests)
-            .then(() => {
-                console.log
-                this.fetchCommitments()
-                this.closeCommitmentsModal()
-            })
+    handleAddedCommitments() {
+        this.closeCommitmentsModal()
     }
 
     completeCommitment(id) {
@@ -274,19 +233,13 @@ export class Dash3MonthPlan extends DashPage {
                 <button class="ms-auto d-block w-2rem" data-close aria-label="Close modal" type="button" @click=${this.clearCommitmentsModal}>
                         <img src=${`${jsObject.images_url}/close-button-01.svg`} alt="close button">
                 </button>
-                <div id="pieces-content" class="stack">
-                    ${ jsObject.three_month_plan_questions.forEach( (question) => {
-                      return html`
-                      <div class="stack--3">
-                        <label for="plan_name">${question}</label>
-                        <input type="text" class="post-training-plan" />
-                      </div>
-                    `
-                    })}
-                    <div class="">
-                      <button class="btn d-block ms-auto" @click=${this.addCommitments}>${jsObject.translations.save}</button>
-                    </div>
-                </div>
+                <activity-3-month-plan
+                    .questions=${jsObject.three_month_plan_questions}
+                    .translations=${{ save: jsObject.translations.save }}
+                    user_id=${jsObject.profile.user_id}
+                    contact_id=${jsObject.profile.contact_id}
+                    @3-month-plan-saved=${this.handleAddedCommitments}
+                ></activity-3-month-plan>
             </div>
         `;
     }

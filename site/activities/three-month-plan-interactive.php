@@ -24,7 +24,19 @@ class Zume_Activites_3monthplan extends Zume_Activites
     }
     public function body(){
         $questions = Zume_Training_Dashboard::three_month_plan_questions();
+        $profile = zume_get_user_profile();
+
         ?>
+        <script>
+            jQuery(document).ready(() => {
+                const activity = document.querySelector('activity-3-month-plan')
+                function handleSavedEvent() {
+                    location.href = '<?php echo esc_url( zume_dashboard_page_url( 'my-plans' ) ) ?>'
+                }
+                activity.addEventListener('3-month-plan-saved', handleSavedEvent);
+            })
+        </script>
+
         <div class="activity-page">
             <header class="bg-brand">
                 <div class="container-md | activity-header">
@@ -37,27 +49,30 @@ class Zume_Activites_3monthplan extends Zume_Activites
             </div>
             <hr>
             <div class="container-md activity-content">
-                <div id="pieces-content" class="stack">
-                    <?php
-                    foreach ( $questions as $question ){
-                        ?>
-                        <div class="stack--3">
-                            <label for="plan_name"><?php echo esc_html( $question ) ?></label>
-                            <textarea class="input" rows="1"></textarea>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                    <div class="center">
-                        <button class="btn light uppercase d-block"><?php echo esc_html__( 'Save', 'zume' ) ?></button>
+                <activity-3-month-plan
+                    questions="<?php echo esc_attr( json_encode( $questions ) ) ?>"
+                    translations="<?php echo esc_attr( json_encode( $this->translations() ) ) ?>"
+                    user_id="<?php echo esc_attr( $profile['user_id'] ) ?>"
+                    contact_id="<?php echo esc_attr( $profile['contact_id'] ) ?>"
+                ></activity-3-month-plan>
+
+                <noscript>
+                    <div class="text-center">
+                        <p><?php echo esc_html__( 'Scripts are off', 'zume' ) ?></p>
+                        <p><?php echo esc_html__( 'Please turn on scripts to use this interactive page. Otherwise you may use the printable version using the link above.', 'zume' ) ?></p>
                     </div>
-                </div>
+                </noscript>
             </div>
         </div>
         </hr>
         <?php
     }
 
+    public function translations() {
+        return [
+            'save' => __( 'Save', 'zume' ),
+        ];
+    }
 }
 Zume_Activites_3monthplan::instance();
 
