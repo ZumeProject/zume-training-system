@@ -17,6 +17,10 @@ class Zume_Activites_3monthplan extends Zume_Activites
 
     public function __construct() {
         parent::__construct();
+
+        if ( $this->url_matches_this_activity() ) {
+            $this->require_authentication();
+        }
     }
     public function body(){
         $questions = Zume_Training_Dashboard::three_month_plan_questions();
