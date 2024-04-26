@@ -36,6 +36,8 @@ class Zume_Activites extends Zume_Magic_Page
 
             $this->language_code = $lang_code;
 
+            $this->require_authentication();
+
             // register url and access
             add_action( 'template_redirect', [ $this, 'theme_redirect' ] );
             add_filter( 'dt_blank_access', '__return_true', 100, 1 );
