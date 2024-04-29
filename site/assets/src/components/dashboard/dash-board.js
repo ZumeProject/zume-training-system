@@ -432,12 +432,12 @@ export class DashBoard extends navigator(router(LitElement)) {
                         style="top: ${this.menuOffset}px; height: calc( min( 100%, 100vh ) - ${this.menuOffset}px - var(--s0) );"
                     >
                         <button
-                            class="ms-auto d-block w-2rem dashboard__sidebar-toggle break-large break-medium"
+                            class="close-btn ms-auto dashboard__sidebar-toggle break-large break-medium"
                             aria-label="Close modal"
                             type="button"
                             @click=${this.toggleSidebar}
                         >
-                            <span class="icon zume-close gray-500"></span>
+                            <span class="icon zume-close"></span>
                         </button>
                         <div class="profile-area">
                             <button
