@@ -257,16 +257,23 @@ button.card-btn {
     display: flex;
     padding: 0.3em;
     transition: all 50ms linear;
+    --close-btn-color: #{color('gray-500')};
+    --close-btn-hover-color: #{color('brand-light')};
+
+    &.invert {
+        --close-btn-color: #{color('white')};
+        --close-btn-hover-color: #{color('white')};
+    }
 
     & .icon {
-        color: color('gray-500');
+        color: var(--close-btn-color);
     }
 
     &:hover {
-        border-color: color('brand-light');
+        border-color: var(--close-btn-hover-color);
 
         & .icon {
-            color: color('brand-light');
+            color: var(--close-btn-hover-color);
         }
     }
 }
