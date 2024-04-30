@@ -55,6 +55,8 @@ html {
     &.is-reveal-open.zf-has-scroll {
       overflow-y: visible;
     }
+
+    scrollbar-color: var(--scroll-thumb-color) var(--scroll-track-color);
 }
 
 body {
