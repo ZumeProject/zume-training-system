@@ -142,10 +142,10 @@ a, a:visited {
   background-image: linear-gradient(
     to left,
     var(--scroll-track-color) 0,
-    var(--scroll-track-color) 0.15rem,
-    var(--scroll-thumb-color) 0.15rem,
-    var(--scroll-thumb-color) 0.85rem,
-    var(--scroll-track-color) 0.85rem
+    var(--scroll-track-color) 15%,
+    var(--scroll-thumb-color) 15%,
+    var(--scroll-thumb-color) 85%,
+    var(--scroll-track-color) 85%
   );
 }
 
