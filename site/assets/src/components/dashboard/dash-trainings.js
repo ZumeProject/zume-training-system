@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { repeat } from 'lit/directives/repeat.js'
 import { DashBoard } from './dash-board';
 import { DashPage } from './dash-page';
+import { ZumeWizards } from '../wizard/wizard-constants';
 
 export class DashTrainings extends DashPage {
     static get properties() {
@@ -110,10 +111,14 @@ export class DashTrainings extends DashPage {
         super.firstUpdated()
     }
 
-    editSession(id) {}
-
     updated() {
         jQuery(document).foundation();
+    }
+
+    editSession(id) {}
+
+    planTraining() {
+        this.dispatchEvent(new CustomEvent('open-wizard', { bubbles: true, detail: { type: ZumeWizards.gettingStarted } }))
     }
 
     renderListItem(session) {
@@ -151,7 +156,6 @@ export class DashTrainings extends DashPage {
     }
 
     renderMemberItem(member) {
-        console.log(member)
         const { name } = member
         return html`
             <li>
@@ -185,7 +189,7 @@ export class DashTrainings extends DashPage {
                                     <h3 class="f-1 bold uppercase">${jsObject.translations.my_training_locked}</h3>
                                     <p>${jsObject.translations.plan_a_training_explanation}</p>
                                   </div>
-                                  <button class="dash-menu__view-button btn tight" @click=${this.joinCommunity}>
+                                  <button class="dash-menu__view-button btn tight" @click=${this.planTraining}>
                                     ${jsObject.translations.plan_a_training}
                                   </button>
                                 </div>

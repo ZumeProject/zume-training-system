@@ -1,4 +1,5 @@
 import { html } from "lit"
+import { ZumeWizards } from "../wizard/wizard-constants"
 
 function makeClickHandler(type, eventName) {
     return (event, dispatchEvent) => {
@@ -35,7 +36,7 @@ export function dashRoutes() {
             parent: 'getting-started',
             icon: 'zume-profile',
             type: 'handled-link',
-            clickHandler: makeClickHandler('set-profile', 'open-wizard'),
+            clickHandler: makeClickHandler(ZumeWizards.setProfile, 'open-wizard'),
             translation: jsObject.translations['set_profile'],
             explanation: jsObject.translations['set_profile_explanation'],
             data: {
@@ -48,7 +49,7 @@ export function dashRoutes() {
             parent: 'getting-started',
             icon: 'zume-start',
             type: 'handled-link',
-            clickHandler: makeClickHandler('getting-started', 'open-wizard'),
+            clickHandler: makeClickHandler(ZumeWizards.gettingStarted, 'open-wizard'),
             translation: jsObject.translations['plan_a_training'],
             explanation: jsObject.translations['plan_a_training_explanation'],
             data: {
@@ -61,7 +62,7 @@ export function dashRoutes() {
             parent: 'getting-started',
             icon: 'zume-coach',
             type: 'handled-link',
-            clickHandler: makeClickHandler('get-a-coach', 'open-wizard'),
+            clickHandler: makeClickHandler(ZumeWizards.getACoach, 'open-wizard'),
             translation: jsObject.translations['get_a_coach'],
             explanation: jsObject.translations['get_a_coach_explanation'],
             data: {
