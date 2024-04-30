@@ -779,7 +779,7 @@ const wizardSteps = {
                 module=${step.module}
                 variant=${ZumeWizardSteps.howManySessions}
                 ?skippable=${step.skippable}
-                .t=${t.checkin}
+                .t=${t.make_training}
                 @done-step=${step.doneHandler}
             ></make-group>
         `
@@ -793,7 +793,7 @@ const wizardSteps = {
                 module=${step.module}
                 variant=${ZumeWizardSteps.whatTimeOfDay}
                 ?skippable=${step.skippable}
-                .t=${t.checkin}
+                .t=${t.make_training}
                 @done-step=${step.doneHandler}
             ></make-group>
         `
@@ -807,7 +807,7 @@ const wizardSteps = {
                 module=${step.module}
                 variant=${ZumeWizardSteps.howOften}
                 ?skippable=${step.skippable}
-                .t=${t.checkin}
+                .t=${t.make_training}
                 @done-step=${step.doneHandler}
             ></make-group>
         `
@@ -821,7 +821,7 @@ const wizardSteps = {
                 module=${step.module}
                 variant=${ZumeWizardSteps.startDate}
                 ?skippable=${step.skippable}
-                .t=${t.checkin}
+                .t=${t.make_training}
                 @done-step=${step.doneHandler}
             ></make-group>
         `

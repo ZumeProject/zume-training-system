@@ -55,33 +55,33 @@ export class MakePlan extends LitElement {
     render() {
         return html`
             ${this.variant === ZumeWizardSteps.howManySessions ? html`
-                <h2>${jsObject.translations.question_which_session}</h2>
+                <h2>${this.t.question_which_session}</h2>
                 <div class="stack">
-                    <button class="btn" @click=${this._handleDone}>${jsObject.translations.hour_1_session_20}</button>
-                    <button class="btn" @click=${this._handleDone}>${jsObject.translations.hour_2_session_10}</button>
+                    <button class="btn" @click=${this._handleDone}>${this.t.hour_1_session_20}</button>
+                    <button class="btn" @click=${this._handleDone}>${this.t.hour_2_session_10}</button>
                 </div>
             ` : ''}
             ${this.variant === ZumeWizardSteps.whatTimeOfDay ? html`
-                <h2>${jsObject.translations.question_which_time}</h2>
+                <h2>${this.t.question_which_time}</h2>
                 <div class="stack">
-                    <button class="btn" @click=${this._handleDone}>${jsObject.translations.morning}</button>
-                    <button class="btn" @click=${this._handleDone}>${jsObject.translations.afternoon}</button>
-                    <button class="btn" @click=${this._handleDone}>${jsObject.translations.evening}</button>
+                    <button class="btn" @click=${this._handleDone}>${this.t.morning}</button>
+                    <button class="btn" @click=${this._handleDone}>${this.t.afternoon}</button>
+                    <button class="btn" @click=${this._handleDone}>${this.t.evening}</button>
                 </div>
             ` : ''}
             ${this.variant === ZumeWizardSteps.howOften ? html`
-                <h2>${jsObject.translations.question_how_often}</h2>
+                <h2>${this.t.question_how_often}</h2>
                 <div class="stack">
-                    <button class="btn" @click=${this._handleDone}>${jsObject.translations.daily}</button>
-                    <button class="btn" @click=${this._handleDone}>${jsObject.translations.weekly}</button>
-                    <button class="btn" @click=${this._handleDone}>${jsObject.translations.bimonthly}</button>
-                    <button class="btn" @click=${this._handleDone}>${jsObject.translations.monthly}</button>
+                    <button class="btn" @click=${this._handleDone}>${this.t.daily}</button>
+                    <button class="btn" @click=${this._handleDone}>${this.t.weekly}</button>
+                    <button class="btn" @click=${this._handleDone}>${this.t.bimonthly}</button>
+                    <button class="btn" @click=${this._handleDone}>${this.t.monthly}</button>
                 </div>
             ` : ''}
             ${this.variant === ZumeWizardSteps.startDate ? html`
-                <h2>${jsObject.translations.question_when_will_you_start}</h2>
+                <h2>${this.t.question_when_will_you_start}</h2>
                 <input type="date">
-                <button class="btn" @click=${this._handleDone}>${jsObject.translations.done}</button>
+                <button class="btn" @click=${this._handleDone}>${this.t.done}</button>
             ` : ''}
 
         `;
