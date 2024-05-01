@@ -187,7 +187,7 @@ export class RequestCoach extends LitElement {
                 ? html`
                     <div class="cluster | mx-auto">
                         <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
-                        <button type="submit" class="btn" ?disabled=${this.loading}>${this.t.next}</button>
+                        <button type="submit" class="btn tight light" ?disabled=${this.loading}>${this.t.next}</button>
                     </div>
                 `
                 : ''}

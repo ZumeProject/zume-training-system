@@ -84,7 +84,7 @@ export class Wizard extends LitElement {
                         <h1 class="brand">${this.t.bad_wizard}</h1>
                         <p>${this.t.found_bad_wizard}</p>
                         <div class="center"><img class="w-50" src="https://imgs.search.brave.com/3f3MurVApxsoxJlmqxLF0fs5-WlAk6sEu9IV3sICb_k/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/YWR2ZXJ0aXNlY2Fz/dC5jb20vcG9kY2Fz/dC9pbWFnZS9WZXJ5/QmFkV2l6YXJkcw.jpeg" alt="bad wizards" /></div>
-                        <a class="btn" href="/">${this.t.home}</a>
+                        <a class="btn tight light" href="/">${this.t.home}</a>
                     </div>
                 </div>
             `
@@ -156,7 +156,7 @@ export class Wizard extends LitElement {
             }
             ${( !skippable && !isLastStep && !this.noUrlChange )
                 ? html`
-                    <button @click=${this._onQuit} class="close-btn">
+                    <button @click=${this._onQuit} class="close-btn tight light">
                         <span class="icon zume-close"></span>
                     </button>
                     `
@@ -171,24 +171,28 @@ export class Wizard extends LitElement {
         return html`
             <div class="text-center d-flex justify-content-between">
                 <div class="cluster ms-auto">
-                    <button @click=${this._handleFinish} ?disabled=${this.loading} class="btn ${this.loading ? 'disabled' : ''}">${this.t.finish}</button>
+                    <button @click=${this._handleFinish} ?disabled=${this.loading} class="btn tight light ${this.loading ? 'disabled' : ''}">${this.t.finish}</button>
                 </div>
             </div>
         `
     }
 
     stepCounter() {
+        const hideCircles = this.steps.length < 2
+
         return html`
             <div class="cluster">
                 ${this.steps.map((step, i) => {
                     const completed = i <= this.stepIndex
-                    return html`<div class="step-circle ${completed ? 'complete' : ''}"></div>`
+                    return html`<div class="step-circle ${hideCircles ? 'hidden' : ''} ${completed ? 'complete' : ''}"></div>`
                 })}
             </div>
         `
     }
 
     footer() {
+        /* This may have a back button in it later, but for now kill the finishbutton */
+        return
         const isLastStep = this.stepIndex === this.steps.length - 1
 
         return isLastStep ? this.finishButton() : ''
@@ -386,10 +390,11 @@ export class Wizard extends LitElement {
                         slug: 'plan-decision',
                         component: (step, t, classes) => html`
                             <div class=${`stack ${classes}`}>
+                                <span class="zume-start-group brand-light f-7"></span>
                                 <h2>${t.join_or_start_a_training}</h2>
-                                <button class="btn" data-decision="make" @click=${this._handlePlanDecision}>${t.start_a_training}</button>
-                                <button class="btn" data-decision="join" @click=${this._handlePlanDecision}>${t.join_a_public_training}</button>
-                                <button class="btn outline" data-decision="skip" @click=${this._handlePlanDecision}>${t.skip_for_now}</button>
+                                <button class="btn tight light" data-decision="make" @click=${this._handlePlanDecision}>${t.start_a_training}</button>
+                                <button class="btn tight light" data-decision="join" @click=${this._handlePlanDecision}>${t.join_a_public_training}</button>
+                                <button class="btn tight light outline" data-decision="skip" @click=${this._handlePlanDecision}>${t.skip_for_now}</button>
                             </div>
                         `
                     },
@@ -415,9 +420,10 @@ export class Wizard extends LitElement {
             },
             [ZumeWizardModules.makePlan]: this.makeModule([
                 ZumeWizardSteps.howManySessions,
-                ZumeWizardSteps.whatTimeOfDay,
                 ZumeWizardSteps.howOften,
                 ZumeWizardSteps.startDate,
+                ZumeWizardSteps.location,
+                ZumeWizardSteps.review,
                 ZumeWizardSteps.inviteFriends,
             ], skippable),
             [ZumeWizardModules.inviteFriends]: {
@@ -783,20 +789,6 @@ const wizardSteps = {
             ></make-training>
         `
     },
-    [ZumeWizardSteps.whatTimeOfDay]: {
-        slug: ZumeWizardSteps.whatTimeOfDay,
-        component: (step, t, classes) => html`
-            <make-training
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                variant=${ZumeWizardSteps.whatTimeOfDay}
-                ?skippable=${step.skippable}
-                .t=${t.make_training}
-                @done-step=${step.doneHandler}
-            ></make-training>
-        `
-    },
     [ZumeWizardSteps.howOften]: {
         slug: ZumeWizardSteps.howOften,
         component: (step, t, classes) => html`
@@ -819,6 +811,34 @@ const wizardSteps = {
                 name=${step.slug}
                 module=${step.module}
                 variant=${ZumeWizardSteps.startDate}
+                ?skippable=${step.skippable}
+                .t=${t.make_training}
+                @done-step=${step.doneHandler}
+            ></make-training>
+        `
+    },
+    [ZumeWizardSteps.location]: {
+        slug: ZumeWizardSteps.location,
+        component: (step, t, classes) => html`
+            <make-training
+                class=${classes}
+                name=${step.slug}
+                module=${step.module}
+                variant=${ZumeWizardSteps.location}
+                ?skippable=${step.skippable}
+                .t=${t.make_training}
+                @done-step=${step.doneHandler}
+            ></make-training>
+        `
+    },
+    [ZumeWizardSteps.review]: {
+        slug: ZumeWizardSteps.review,
+        component: (step, t, classes) => html`
+            <make-training
+                class=${classes}
+                name=${step.slug}
+                module=${step.module}
+                variant=${ZumeWizardSteps.review}
                 ?skippable=${step.skippable}
                 .t=${t.make_training}
                 @done-step=${step.doneHandler}

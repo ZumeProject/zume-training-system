@@ -23,9 +23,10 @@ export const ZumeWizardModules = {
 }
 const makeAPlanSteps = {
     howManySessions: 'how-many-sessions',
-    whatTimeOfDay: 'what-time-of-day',
     howOften: 'how-often',
     startDate: 'what-start-date',
+    location: 'what-location',
+    review: 'review-training',
 }
 export const ZumeWizardSteps = {
     updateName: 'update-your-name',

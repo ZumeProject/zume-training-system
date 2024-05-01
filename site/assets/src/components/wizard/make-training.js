@@ -55,33 +55,54 @@ export class MakeTraining extends LitElement {
     render() {
         return html`
             ${this.variant === ZumeWizardSteps.howManySessions ? html`
-                <h2>${this.t.question_which_session}</h2>
                 <div class="stack">
-                    <button class="btn" @click=${this._handleDone}>${this.t.hour_1_session_20}</button>
-                    <button class="btn" @click=${this._handleDone}>${this.t.hour_2_session_10}</button>
-                </div>
-            ` : ''}
-            ${this.variant === ZumeWizardSteps.whatTimeOfDay ? html`
-                <h2>${this.t.question_which_time}</h2>
-                <div class="stack">
-                    <button class="btn" @click=${this._handleDone}>${this.t.morning}</button>
-                    <button class="btn" @click=${this._handleDone}>${this.t.afternoon}</button>
-                    <button class="btn" @click=${this._handleDone}>${this.t.evening}</button>
+                    <span class="zume-session-choice brand-light f-7"></span>
+                    <h2>${this.t.question_which_session}</h2>
+                    <button class="btn tight light outline" @click=${this._handleDone}>${this.t.hour_1_session_20}</button>
+                    <button class="btn tight light" @click=${this._handleDone}>${this.t.hour_2_session_10}</button>
+                    <button class="btn tight light outline" @click=${this._handleDone}>${this.t.hour_4_session_5}</button>
                 </div>
             ` : ''}
             ${this.variant === ZumeWizardSteps.howOften ? html`
-                <h2>${this.t.question_how_often}</h2>
                 <div class="stack">
-                    <button class="btn" @click=${this._handleDone}>${this.t.daily}</button>
-                    <button class="btn" @click=${this._handleDone}>${this.t.weekly}</button>
-                    <button class="btn" @click=${this._handleDone}>${this.t.bimonthly}</button>
-                    <button class="btn" @click=${this._handleDone}>${this.t.monthly}</button>
+                    <span class="zume-time brand-light f-7"></span>
+                    <h2>${this.t.question_how_often}</h2>
+                    <button class="btn tight light" @click=${this._handleDone}>${this.t.weekly}</button>
+                    <button class="btn tight light" @click=${this._handleDone}>${this.t.biweekly}</button>
+                    <button class="btn tight light" @click=${this._handleDone}>${this.t.monthly}</button>
+                    <button class="btn tight light" @click=${this._handleDone}>${this.t.other}</button>
+                    <button class="btn tight light outline" @click=${this._handleDone}>${this.t.skip}</button>
                 </div>
             ` : ''}
             ${this.variant === ZumeWizardSteps.startDate ? html`
-                <h2>${this.t.question_when_will_you_start}</h2>
-                <input type="date">
-                <button class="btn" @click=${this._handleDone}>${this.t.done}</button>
+                <div class="stack">
+                    <span class="zume-start-date brand-light f-7"></span>
+                    <h2>${this.t.question_when_will_you_start}</h2>
+                    <div class="cluster justify-content-center gapy-0">
+                        <input type="date" class="fit-content m0">
+                        <input type="time" class="fit-content m0" />
+                    </div>
+                    <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
+                    <button class="btn light outline fit-content mx-auto" @click=${this._handleDone}>${this.t.skip}</button>
+                </div>
+            ` : ''}
+            ${this.variant === ZumeWizardSteps.location ? html`
+                <div class="stack">
+                    <span class="zume-start-date brand-light f-7"></span>
+                    <h2>${this.t.question_where_will_you_meet}</h2>
+                    <p>${this.t.question_where_will_you_meet_help_text}</p>
+                    <input type="text" />
+                    <button class="btn tight light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
+                    <button class="btn tight light outline" @click=${this._handleDone}>${this.t.skip}</button>
+                </div>
+            ` : ''}
+            ${this.variant === ZumeWizardSteps.review ? html`
+                <div class="stack">
+                    <span class="zume-overview brand-light f-7"></span>
+                    <h2>${this.t.review_training}</h2>
+                    <p>${this.t.you_can_change_your_choices}</p>
+                    <button class="btn tight light fit-content mx-auto" @click=${this._handleDone}>${this.t.create}</button>
+                </div>
             ` : ''}
 
         `;
