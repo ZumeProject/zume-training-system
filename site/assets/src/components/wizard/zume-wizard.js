@@ -129,7 +129,7 @@ export class Wizard extends LitElement {
      * but this section shouldn't have to know about the internal workings of a section
      */
     containerSize() {
-        const currentStep = this.steps[this.stepIndex]
+        const currentStep = {...this.steps[this.stepIndex]}
 
         if (currentStep.slug = ZumeWizardSteps.joinTraining) {
             return 'container-md'
@@ -139,7 +139,7 @@ export class Wizard extends LitElement {
     }
 
     currentStep() {
-        const currentStep = this.steps[this.stepIndex]
+        const currentStep = { ...this.steps[this.stepIndex] }
 
         return currentStep.component(currentStep, this.t, 'w-100')
     }
@@ -257,7 +257,6 @@ export class Wizard extends LitElement {
                     const checkinDashboardUrl = new URL( jsObject.checkin_dashboard_url )
                     checkinDashboardUrl.searchParams.set( 'code', code)
 
-                    console.log('GOTO Checkin Dashboard')
                     window.location.href = checkinDashboardUrl.href
                     return
                 }
@@ -266,7 +265,6 @@ export class Wizard extends LitElement {
             }
         }
 
-        console.log('GOTO Dashboard', quit)
         window.location.href = url.href
     }
 
@@ -276,7 +274,7 @@ export class Wizard extends LitElement {
         }
 
         this.stepIndex = this.clampSteps(index)
-        this.step = this.steps[this.stepIndex]
+        this.step = {...this.steps[this.stepIndex] }
 
         if ( pushState && !this.noUrlChange ) {
             const url = new URL(window.location.href)
@@ -314,6 +312,7 @@ export class Wizard extends LitElement {
 
         let currentModule = ''
         let beginningOfModule = 0
+
         this.steps.forEach(({slug, module}, i) => {
             if ( currentModule !== module ) {
                 currentModule = module
@@ -773,7 +772,7 @@ const wizardSteps = {
     [ZumeWizardSteps.howManySessions]: {
         slug: ZumeWizardSteps.howManySessions,
         component: (step, t, classes) => html`
-            <make-group
+            <make-training
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -781,13 +780,13 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.make_training}
                 @done-step=${step.doneHandler}
-            ></make-group>
+            ></make-training>
         `
     },
     [ZumeWizardSteps.whatTimeOfDay]: {
         slug: ZumeWizardSteps.whatTimeOfDay,
         component: (step, t, classes) => html`
-            <make-group
+            <make-training
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -795,13 +794,13 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.make_training}
                 @done-step=${step.doneHandler}
-            ></make-group>
+            ></make-training>
         `
     },
     [ZumeWizardSteps.howOften]: {
         slug: ZumeWizardSteps.howOften,
         component: (step, t, classes) => html`
-            <make-group
+            <make-training
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -809,13 +808,13 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.make_training}
                 @done-step=${step.doneHandler}
-            ></make-group>
+            ></make-training>
         `
     },
     [ZumeWizardSteps.startDate]: {
         slug: ZumeWizardSteps.startDate,
         component: (step, t, classes) => html`
-            <make-group
+            <make-training
                 class=${classes}
                 name=${step.slug}
                 module=${step.module}
@@ -823,7 +822,7 @@ const wizardSteps = {
                 ?skippable=${step.skippable}
                 .t=${t.make_training}
                 @done-step=${step.doneHandler}
-            ></make-group>
+            ></make-training>
         `
     },
 }

@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { ZumeWizardSteps } from './wizard-constants';
 
-export class MakePlan extends LitElement {
+export class MakeTraining extends LitElement {
     static get properties() {
         return {
             /**
@@ -110,4 +110,4 @@ export class MakePlan extends LitElement {
         return this
     }
 }
-customElements.define('make-group', MakePlan);
+customElements.define('make-training', MakeTraining);
