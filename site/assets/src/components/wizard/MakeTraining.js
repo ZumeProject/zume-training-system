@@ -2,6 +2,7 @@ import { LitElement, html } from 'lit';
 import { Steps } from './wizard-constants';
 import { WizardStateManager } from './wizard-state-manager';
 
+
 export class MakeTraining extends LitElement {
     static get properties() {
         return {
@@ -29,45 +30,39 @@ export class MakeTraining extends LitElement {
             errorMessage: { attribute: false },
             message: { attribute: false },
             loading: { attribute: false },
-        }
+        };
     }
 
     connectedCallback() {
         super.connectedCallback();
 
-        this.stateManager = new WizardStateManager(this.module)
-    }
-
-    willUpdate(properties) {
-        if (properties.has('variant')) {
-            this.state = this.stateManager.get(this.variant) || {}
-        }
+        this.stateManager = new WizardStateManager(this.module);
     }
 
     constructor() {
-        super()
-        this.name = ''
-        this.module = ''
-        this.skippable = false
-        this.variant = ''
-        this.t = {}
-        this.state = {}
-        this.errorMessage = ''
-        this.message = ''
-        this.loading = false
+        super();
+        this.name = '';
+        this.module = '';
+        this.skippable = false;
+        this.variant = '';
+        this.t = {};
+        this.state = {};
+        this.errorMessage = '';
+        this.message = '';
+        this.loading = false;
     }
 
-    setErrorMessage( message ) {
-        this.errorMessage = message
+    setErrorMessage(message) {
+        this.errorMessage = message;
 
         setTimeout(() => {
-            this.errorMessage = ''
-        }, 3000)
+            this.errorMessage = '';
+        }, 3000);
     }
 
     _handlePlanDecision(event) {
-        const decision = event.target.dataset.decision
-        this.dispatchEvent(new CustomEvent('plan-decision', { bubbles: true, detail: { decision } }))
+        const decision = event.target.dataset.decision;
+        this.dispatchEvent(new CustomEvent('plan-decision', { bubbles: true, detail: { decision } }));
     }
 
     render() {
@@ -112,8 +107,8 @@ export class MakeTraining extends LitElement {
                     <span class="zume-start-date brand-light f-7"></span>
                     <h2>${this.t.question_when_will_you_start}</h2>
                     <div class="cluster justify-content-center gapy-0">
-                        <input type="date" name="date" class="fit-content m0" @change=${this._handleChange}>
-                        <input type="time" name="time" class="fit-content m0" @change=${this._handleChange}/>
+                        <input type="date" class="fit-content m0" @change=${this._handleChange}>
+                        <input type="time" class="fit-content m0" />
                     </div>
                     <div class="stack" data-fit-content>
                         <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
@@ -126,7 +121,7 @@ export class MakeTraining extends LitElement {
                     <span class="zume-start-date brand-light f-7"></span>
                     <h2>${this.t.question_where_will_you_meet}</h2>
                     <p>${this.t.question_where_will_you_meet_help_text}</p>
-                    <input type="text" name="location" @change=${this._handleChange} />
+                    <input type="text" />
                     <div class="stack" data-fit-content>
                         <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
                         <button class="btn light outline" @click=${this._handleDone}>${this.t.skip}</button>
@@ -146,45 +141,33 @@ export class MakeTraining extends LitElement {
     }
 
     _handleDone(event) {
-        if ( event ) {
-            event.preventDefault()
+        if (event) {
+            event.preventDefault();
         }
 
-        this._sendDoneStepEvent()
+        this._sendDoneStepEvent();
     }
 
     _sendDoneStepEvent() {
-        const doneStepEvent = new CustomEvent( 'done-step', { bubbles: true } )
-        this.dispatchEvent(doneStepEvent)
+        const doneStepEvent = new CustomEvent('done-step', { bubbles: true });
+        this.dispatchEvent(doneStepEvent);
     }
 
     _handleSelection(event) {
-        const value = event.target.dataset.value
+        const value = event.target.dataset.value;
 
-        this.stateManager.add(this.variant, value)
+        this.stateManager.add(this.variant, value);
 
-        this._handleDone()
-    }
-
-    _handleChange(event) {
-        if (event.target.type === 'text') {
-            this.state = event.target.value
-        }
-        if (['date', 'time'].includes(event.target.type)) {
-            this.state[event.target.name] = event.target.value
-        }
-
-        this.stateManager.add(this.variant, this.state)
+        this._handleDone();
     }
 
     _handleFinish() {
         setTimeout(() => {
-            this._sendDoneStepEvent()
+            this._sendDoneStepEvent();
         }, 3000);
     }
 
     createRenderRoot() {
-        return this
+        return this;
     }
 }
-customElements.define('make-training', MakeTraining);

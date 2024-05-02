@@ -37,7 +37,7 @@ export class WizardStateManager {
         return Date.now() - state.timestamp > milliseconds
     }
 
-    empty() {
+    isEmpty() {
         return Object.keys(this.#wizardState.data).length === 0
     }
 
@@ -55,6 +55,13 @@ export class WizardStateManager {
 
     add(key, value) {
         this.#wizardState.data[key] = value
+
+        this.#refreshTimestamp()
+
+        localStorage.setItem(this.WIZARD_STATE_NAME, JSON.stringify(this.#wizardState))
+    }
+    remove(key) {
+        delete this.#wizardState.data[key]
 
         this.#refreshTimestamp()
 
