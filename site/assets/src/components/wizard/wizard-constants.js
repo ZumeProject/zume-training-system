@@ -22,6 +22,7 @@ export const ZumeWizardModules = {
     joinCommunity: 'joinCommunity',
 }
 const makeAPlanSteps = {
+    planDecision: 'plan-decision',
     howManySessions: 'how-many-sessions',
     howOften: 'how-often',
     startDate: 'what-start-date',
@@ -41,6 +42,7 @@ export const ZumeWizardSteps = {
     connectToFriend: 'connect-friend',
     joinFriendsPlan: 'join-friends-training',
     checkinSubmit: 'checkin-submit',
+    joinCommunity: 'join-community',
     ...makeAPlanSteps,
 }
 export const ZumeWizardStepsConnectedFields = {

@@ -130,10 +130,6 @@ class Zume_Training_Wizard extends Zume_Magic_Page
             'skip' => __( 'Skip', 'zume' ),
             'finish' => __( 'Finish', 'zume' ),
             'no_locations_found' => __( 'No locations found', 'zume' ),
-            'join_or_start_a_training' => __( 'Join or start a training', 'zume' ),
-            'start_a_training' => __( 'Start a training', 'zume' ),
-            'join_a_public_training' => __( 'Join a public training', 'zume' ),
-            'skip_for_now' => __( 'Skip for now', 'zume' ),
             'join_community' => __( 'Join the Community', 'zume' ),
             'complete_profile' => [
                 'title' => __( 'Complete your profile', 'zume' ),
@@ -203,6 +199,10 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'error' => __( 'Something went wrong while checking in', 'zume' ),
             ],
             'make_training' => [
+                'join_or_start_a_training' => __( 'Join or start a training', 'zume' ),
+                'start_a_training' => __( 'Start a training', 'zume' ),
+                'join_a_public_training' => __( 'Join a public training', 'zume' ),
+                'skip_for_now' => __( 'Skip for now', 'zume' ),
                 'question_which_session' => __( 'Choose your preferred training format', 'zume' ),
                 'hour_1_session_20' => __( '1 hour (20 sessions)', 'zume' ),
                 'hour_2_session_10' => __( '2 hour (10 sessions)', 'zume' ),

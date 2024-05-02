@@ -52,8 +52,22 @@ export class MakeTraining extends LitElement {
         }, 3000)
     }
 
+    _handlePlanDecision(event) {
+        const decision = event.target.dataset.decision
+        this.dispatchEvent(new CustomEvent('plan-decision', { bubbles: true, detail: { decision } }))
+    }
+
     render() {
         return html`
+            ${this.variant === ZumeWizardSteps.planDecision ? html`
+                <div class="stack">
+                    <span class="zume-start-group brand-light f-7"></span>
+                    <h2>${this.t.join_or_start_a_training}</h2>
+                    <button class="btn tight light" data-decision="make" @click=${this._handlePlanDecision}>${this.t.start_a_training}</button>
+                    <button class="btn tight light" data-decision="join" @click=${this._handlePlanDecision}>${this.t.join_a_public_training}</button>
+                    <button class="btn tight light outline" data-decision="skip" @click=${this._handlePlanDecision}>${this.t.skip_for_now}</button>
+                </div>
+            ` : ''}
             ${this.variant === ZumeWizardSteps.howManySessions ? html`
                 <div class="stack">
                     <span class="zume-session-choice brand-light f-7"></span>

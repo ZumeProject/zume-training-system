@@ -29,6 +29,7 @@ export class RequestCoach extends LitElement {
             errorMessage: { attribute: false },
             message: { attribute: false },
             loading: { attribute: false },
+            requestSent: { attribute: false },
         }
     }
 
@@ -43,6 +44,7 @@ export class RequestCoach extends LitElement {
         this.errorMessage = ''
         this.message = ''
         this.loading = false
+        this.requestSent = false
         this.contactPreferences = [
             'email',
             'text',
@@ -54,13 +56,14 @@ export class RequestCoach extends LitElement {
         ]
     }
 
-    firstUpdated() {
+    updated() {
         this.message = this.t.connect_success
 
         const data = this.stateManager.getAll()
 
-        if ( this.variant === ZumeWizardSteps.connectingToCoach ) {
+        if ( this.variant === ZumeWizardSteps.connectingToCoach && this.requestSent === false ) {
             this.loading = true
+            this.requestSent = true
             this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
             const onCoachRequested = (( data ) => {
                 if ( data === false ) {

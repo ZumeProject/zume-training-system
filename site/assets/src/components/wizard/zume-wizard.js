@@ -1,4 +1,5 @@
 import { LitElement, html } from "lit"
+import { html as staticHtml, literal } from "lit/static-html.js"
 import { ZumeWizardModules, ZumeWizardSteps, ZumeWizardStepsConnectedFields as ConnectedFields, ZumeWizards } from "./wizard-constants"
 import { WizardStateManager } from "./wizard-state-manager"
 
@@ -49,7 +50,7 @@ export class Wizard extends LitElement {
         this.t = window.SHAREDFUNCTIONS.escapeObject(jsObject.translations)
 
         this._handleHistoryPopState = this._handleHistoryPopState.bind(this)
-        window.addEventListener('popstate', this._handleHistoryPopState)
+        this._handlePlanDecision = this._handlePlanDecision.bind(this)
 
         this.stateManager = new WizardStateManager()
     }
@@ -141,7 +142,68 @@ export class Wizard extends LitElement {
     currentStep() {
         const currentStep = { ...this.steps[this.stepIndex] }
 
-        return currentStep.component(currentStep, this.t, 'w-100')
+        let tag = ''
+        let translations = ''
+        switch (currentStep.slug) {
+            case ZumeWizardSteps.updateName:
+            case ZumeWizardSteps.updateLocation:
+            case ZumeWizardSteps.updatePhone:
+                tag = literal`complete-profile`
+                translations = this.t.complete_profile
+                break
+            case ZumeWizardSteps.contactPreferences:
+            case ZumeWizardSteps.languagePreferences:
+            case ZumeWizardSteps.howCanWeServe:
+            case ZumeWizardSteps.connectingToCoach:
+                tag = literal`request-coach`
+                translations = this.t.get_a_coach
+                break
+            case ZumeWizardSteps.inviteFriends:
+                tag = literal`invite-friends`
+                translations = this.t.share
+                break
+            case ZumeWizardSteps.joinTraining:
+                tag = literal`join-training`
+                translations = this.t.join_training
+                break
+            case ZumeWizardSteps.joinFriendsPlan:
+                tag = literal`join-friend-training`
+                translations = this.t.join_training
+                break
+            case ZumeWizardSteps.connectToFriend:
+                tag = literal`connect-friend`
+                translations = this.t.connect_friend
+                break
+            case ZumeWizardSteps.checkinSubmit:
+                tag = literal`session-checkin`
+                translations = this.t.checkin
+                break
+            case ZumeWizardSteps.planDecision:
+            case ZumeWizardSteps.howManySessions:
+            case ZumeWizardSteps.howOften:
+            case ZumeWizardSteps.startDate:
+            case ZumeWizardSteps.location:
+            case ZumeWizardSteps.review:
+                tag = literal`make-training`
+                translations = this.t.make_training
+                break
+            default:
+                break;
+        }
+
+        return staticHtml`
+            <${tag}
+                class="w-100"
+                name=${currentStep.slug}
+                module=${currentStep.module}
+                variant=${currentStep.slug}
+                ?skippable=${currentStep.skippable}
+                .t=${translations}
+                @done-step=${this._onNext}
+                @loadingChange=${this._handleLoading}
+                value=${JSON.stringify(currentStep?.value)}
+            ></${tag}>
+        `
     }
 
     headerButtons() {
@@ -336,7 +398,7 @@ export class Wizard extends LitElement {
     }
 
     _handlePlanDecision(event) {
-        const decision = event.target.dataset.decision
+        const { decision } = event.detail
 
         switch (decision) {
             case 'make':
@@ -366,82 +428,13 @@ export class Wizard extends LitElement {
         }
 
         stepNames.forEach(stepName => {
-            if ( !Object.keys(wizardSteps).includes(stepName) ) {
+            if ( !Object.values(ZumeWizardSteps).includes(stepName) ) {
                 return
             }
-            module.steps.push(wizardSteps[stepName])
+            module.steps.push(stepName)
         });
 
         return module
-    }
-
-    getModule( moduleName, skippable = false ) {
-        const modules = {
-            [ZumeWizardModules.completeProfile]: {
-                steps: [
-                    wizardSteps[ZumeWizardSteps.updateName],
-                    wizardSteps[ZumeWizardSteps.updateLocation],
-                ],
-                skippable,
-            },
-            [ZumeWizardModules.planDecision]: {
-                steps: [
-                    {
-                        slug: 'plan-decision',
-                        component: (step, t, classes) => html`
-                            <div class=${`stack ${classes}`}>
-                                <span class="zume-start-group brand-light f-7"></span>
-                                <h2>${t.join_or_start_a_training}</h2>
-                                <button class="btn tight light" data-decision="make" @click=${this._handlePlanDecision}>${t.start_a_training}</button>
-                                <button class="btn tight light" data-decision="join" @click=${this._handlePlanDecision}>${t.join_a_public_training}</button>
-                                <button class="btn tight light outline" data-decision="skip" @click=${this._handlePlanDecision}>${t.skip_for_now}</button>
-                            </div>
-                        `
-                    },
-                ],
-                skippable,
-            },
-            [ZumeWizardModules.joinCommunity]: {
-                steps: [
-                    {
-                        slug: 'join',
-                        component: (step, t, classes) => html`
-                            <div class=${`stack ${classes}`}>
-                                <h2>${t.join_community}</h2>
-                                <p>These are all the things that you get when you join</p> <!-- @todo content for this panel -->
-                                <ul role="list">
-                                    <li>lots of good things</li>
-                                    <li>and more</li>
-                                </ul>
-                            </div>
-                        `
-                    }
-                ]
-            },
-            [ZumeWizardModules.makePlan]: this.makeModule([
-                ZumeWizardSteps.howManySessions,
-                ZumeWizardSteps.howOften,
-                ZumeWizardSteps.startDate,
-                ZumeWizardSteps.location,
-                ZumeWizardSteps.review,
-                ZumeWizardSteps.inviteFriends,
-            ], skippable),
-            [ZumeWizardModules.inviteFriends]: {
-                steps: [ wizardSteps[ZumeWizardSteps.inviteFriends] ],
-                skippable,
-            },
-            [ZumeWizardModules.joinTraining]: {
-                steps: [ wizardSteps[ZumeWizardSteps.joinTraining] ],
-            }
-        }
-
-        const moduleNames = Object.keys(modules)
-
-        if ( !moduleNames.includes(moduleName) ) {
-            return modules[ZumeWizardModules.completeProfile]
-        }
-
-        return modules[moduleName]
     }
 
     isWizardLoaded() {
@@ -461,7 +454,7 @@ export class Wizard extends LitElement {
 
             const profile = jsObject.profile
 
-            steps.forEach(({ component, slug }) => {
+            steps.forEach((slug) => {
                 /* Skip if the corresponding field exists in the user */
                 const connectedField = ConnectedFields[slug]
                 let connectedFieldValue = null
@@ -474,12 +467,9 @@ export class Wizard extends LitElement {
                 }
 
                 const step = {
-                    component,
                     slug,
                     module: moduleName,
                     skippable,
-                    doneHandler: this._onNext,
-                    handleLoading: this._handleLoading,
                 }
 
                 if ( connectedFieldValue !== null ) {
@@ -526,7 +516,9 @@ export class Wizard extends LitElement {
                     ZumeWizardSteps.updateName,
                     ZumeWizardSteps.updateLocation,
                 ], true),
-                [ZumeWizardModules.planDecision]: this.getModule(ZumeWizardModules.planDecision),
+                [ZumeWizardModules.planDecision]: this.makeModule([
+                    ZumeWizardSteps.planDecision
+                ], false),
             },
             [ZumeWizards.setProfile]: {
                 [ZumeWizardModules.completeProfile]: this.makeModule([
@@ -535,7 +527,14 @@ export class Wizard extends LitElement {
                 ], true),
             },
             [ZumeWizards.makeAGroup]: {
-                [ZumeWizardModules.makePlan]: this.getModule(ZumeWizardModules.makePlan),
+                [ZumeWizardModules.makePlan]: this.makeModule([
+                    ZumeWizardSteps.howManySessions,
+                    ZumeWizardSteps.howOften,
+                    ZumeWizardSteps.startDate,
+                    ZumeWizardSteps.location,
+                    ZumeWizardSteps.review,
+                    ZumeWizardSteps.inviteFriends,
+                ], true),
             },
             [ZumeWizards.getACoach]: {
                 [ZumeWizardModules.completeProfile]: this.makeModule([
@@ -556,7 +555,9 @@ export class Wizard extends LitElement {
                     ZumeWizardSteps.updateLocation,
                     ZumeWizardSteps.updatePhone,
                 ]),
-                [ZumeWizardModules.joinTraining]: this.getModule(ZumeWizardModules.joinTraining),
+                [ZumeWizardModules.joinTraining]: this.makeModule([
+                    ZumeWizardSteps.joinTraining,
+                ], true),
             },
             [ZumeWizards.connectWithFriend]: {
                 [ZumeWizardModules.completeProfile]: this.makeModule([
@@ -577,7 +578,9 @@ export class Wizard extends LitElement {
                 ])
             },
             [ZumeWizards.joinCommunity]: {
-                [ZumeWizardModules.joinCommunity]: this.getModule(ZumeWizardModules.joinCommunity)
+                [ZumeWizardModules.joinCommunity]: this.makeModule([
+                    ZumeWizardSteps.joinCommunity,
+                ], true),
             },
             [ZumeWizards.checkin]: {
                 [ZumeWizardModules.checkin]: this.makeModule([
@@ -588,10 +591,16 @@ export class Wizard extends LitElement {
 
         return wizards[type]
     }
+    connectedCallback() {
+        super.connectedCallback()
+        window.addEventListener('popstate', this._handleHistoryPopState)
+        window.addEventListener('plan-decision', this._handlePlanDecision)
+    }
 
     disconnectedCallback() {
         super.disconnectedCallback()
         window.removeEventListener('popstate', this._handleHistoryPopState)
+        window.removeEventListener('plan-decision', this._handlePlanDecision)
     }
 
     /**
@@ -603,246 +612,3 @@ export class Wizard extends LitElement {
 }
 
 window.customElements.define( 'zume-wizard', Wizard )
-
-const wizardSteps = {
-    [ZumeWizardSteps.updateName]: {
-        slug: ZumeWizardSteps.updateName,
-        component: (step, t, classes) => html`
-            <complete-profile
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t="${t.complete_profile}"
-                variant=${ZumeWizardSteps.updateName}
-                @done-step=${step.doneHandler}
-                value=${JSON.stringify(step.value)}
-            ></complete-profile>
-        `
-    },
-    [ZumeWizardSteps.updateLocation]: {
-        slug: ZumeWizardSteps.updateLocation,
-        component: (step, t, classes) => html`
-            <complete-profile
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t="${t.complete_profile}"
-                variant=${ZumeWizardSteps.updateLocation}
-                @done-step=${step.doneHandler}
-                value=${JSON.stringify(step.value)}
-            ></complete-profile>
-        `
-    },
-    [ZumeWizardSteps.updatePhone]: {
-        slug: ZumeWizardSteps.updatePhone,
-        component: (step, t, classes) => html`
-            <complete-profile
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t="${t.complete_profile}"
-                variant=${ZumeWizardSteps.updatePhone}
-                @done-step=${step.doneHandler}
-                value=${JSON.stringify(step.value)}
-            ></complete-profile>
-        `
-    },
-    [ZumeWizardSteps.contactPreferences]: {
-        slug: ZumeWizardSteps.contactPreferences,
-        component: (step, t, classes) => html`
-            <request-coach
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t="${t.get_a_coach}"
-                variant=${ZumeWizardSteps.contactPreferences}
-                @done-step=${step.doneHandler}
-            ></request-coach>
-        `
-    },
-    [ZumeWizardSteps.languagePreferences]: {
-        slug: ZumeWizardSteps.languagePreferences,
-        component: (step, t, classes) => html`
-            <request-coach
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t="${t.get_a_coach}"
-                variant=${ZumeWizardSteps.languagePreferences}
-                @done-step=${step.doneHandler}
-            ></request-coach>
-        `
-    },
-    [ZumeWizardSteps.howCanWeServe]: {
-        slug: ZumeWizardSteps.howCanWeServe,
-        component: (step, t, classes) => html`
-            <request-coach
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t="${t.get_a_coach}"
-                variant=${ZumeWizardSteps.howCanWeServe}
-                @done-step=${step.doneHandler}
-            ></request-coach>
-        `
-    },
-    [ZumeWizardSteps.connectingToCoach]: {
-        slug: ZumeWizardSteps.connectingToCoach,
-        component: (step, t, classes) => html`
-            <request-coach
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t="${t.get_a_coach}"
-                variant=${ZumeWizardSteps.connectingToCoach}
-                @done-step=${step.doneHandler}
-                @loadingChange=${step.handleLoading}
-            ></request-coach>
-        `
-    },
-    [ZumeWizardSteps.inviteFriends]: {
-        slug: ZumeWizardSteps.inviteFriends,
-        component: (step, t, classes) => html`
-            <invite-friends
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t=${t.share}
-            ></invite-friends>
-        `
-    },
-    [ZumeWizardSteps.joinTraining]: {
-        slug: ZumeWizardSteps.joinTraining,
-        component: (step, t, classes) => html`
-            <join-training
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t=${t.join_training}
-                @done-step=${step.doneHandler}
-                @loadingChange=${step.handleLoading}
-            ></join-training>
-        `
-    },
-    [ZumeWizardSteps.joinFriendsPlan]: {
-        slug: ZumeWizardSteps.joinFriendsPlan,
-        component: (step, t, classes) => html`
-            <join-friends-training
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t=${t.join_training}
-                @done-step=${step.doneHandler}
-                @loadingChange=${step.handleLoading}
-            ></join-friends-training>
-        `
-    },
-    [ZumeWizardSteps.connectToFriend]: {
-        slug: ZumeWizardSteps.connectToFriend,
-        component: (step, t, classes) => html`
-            <connect-friend
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t=${t.connect_friend}
-                @done-step=${step.doneHandler}
-                @loadingChange=${step.handleLoading}
-            ></connect-friend>
-        `
-    },
-    [ZumeWizardSteps.checkinSubmit]: {
-        slug: ZumeWizardSteps.checkinSubmit,
-        component: (step, t, classes) => html`
-            <session-checkin
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                ?skippable=${step.skippable}
-                .t=${t.checkin}
-                @done-step=${step.doneHandler}
-                @loadingChange=${step.handleLoading}
-            ></session-checkin>
-        `
-    },
-    [ZumeWizardSteps.howManySessions]: {
-        slug: ZumeWizardSteps.howManySessions,
-        component: (step, t, classes) => html`
-            <make-training
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                variant=${ZumeWizardSteps.howManySessions}
-                ?skippable=${step.skippable}
-                .t=${t.make_training}
-                @done-step=${step.doneHandler}
-            ></make-training>
-        `
-    },
-    [ZumeWizardSteps.howOften]: {
-        slug: ZumeWizardSteps.howOften,
-        component: (step, t, classes) => html`
-            <make-training
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                variant=${ZumeWizardSteps.howOften}
-                ?skippable=${step.skippable}
-                .t=${t.make_training}
-                @done-step=${step.doneHandler}
-            ></make-training>
-        `
-    },
-    [ZumeWizardSteps.startDate]: {
-        slug: ZumeWizardSteps.startDate,
-        component: (step, t, classes) => html`
-            <make-training
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                variant=${ZumeWizardSteps.startDate}
-                ?skippable=${step.skippable}
-                .t=${t.make_training}
-                @done-step=${step.doneHandler}
-            ></make-training>
-        `
-    },
-    [ZumeWizardSteps.location]: {
-        slug: ZumeWizardSteps.location,
-        component: (step, t, classes) => html`
-            <make-training
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                variant=${ZumeWizardSteps.location}
-                ?skippable=${step.skippable}
-                .t=${t.make_training}
-                @done-step=${step.doneHandler}
-            ></make-training>
-        `
-    },
-    [ZumeWizardSteps.review]: {
-        slug: ZumeWizardSteps.review,
-        component: (step, t, classes) => html`
-            <make-training
-                class=${classes}
-                name=${step.slug}
-                module=${step.module}
-                variant=${ZumeWizardSteps.review}
-                ?skippable=${step.skippable}
-                .t=${t.make_training}
-                @done-step=${step.doneHandler}
-            ></make-training>
-        `
-    },
-}
