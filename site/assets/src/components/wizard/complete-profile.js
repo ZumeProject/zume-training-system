@@ -1,6 +1,6 @@
 import { LitElement, html } from "lit"
 import { live } from 'lit/directives/live.js';
-import { ZumeWizardSteps } from "./wizard-constants";
+import { Steps } from "./wizard-constants";
 
 export class CompleteProfile extends LitElement {
     static get properties() {
@@ -60,9 +60,14 @@ export class CompleteProfile extends LitElement {
         this._handleCityInputChange = this._handleCityInputChange.bind(this)
     }
 
-    firstUpdated() {
-        this.renderRoot.querySelector('.inputs input').focus()
-        if ( this.value !== '' ) {
+    updated(properties) {
+        if (properties.has('variant')) {
+            this.renderRoot.querySelector('.inputs input').focus()
+        }
+    }
+
+    willUpdate(properties) {
+        if (properties.has('value') && this.value !== '') {
             this.localValue = JSON.parse(this.value)
         }
     }
@@ -70,7 +75,7 @@ export class CompleteProfile extends LitElement {
     render() {
         return html`
         <form class="inputs stack" @submit=${this._handleSubmit}>
-            ${ this.variant === ZumeWizardSteps.updateName ? html`
+            ${ this.variant === Steps.updateName ? html`
                 <h2>${this.t.name_question}</h2>
                 <div class="">
                     <label for="name">${this.t.name}</label>
@@ -78,7 +83,7 @@ export class CompleteProfile extends LitElement {
                 </div>
             ` : ''}
 
-            ${ this.variant === ZumeWizardSteps.updatePhone ? html`
+            ${ this.variant === Steps.updatePhone ? html`
                 <h2>${this.t.phone_question}</h2>
                 <div class="">
                     <label for="phone">${this.t.phone}</label>
@@ -97,7 +102,7 @@ export class CompleteProfile extends LitElement {
                 </div>
             ` : ''}
 
-            ${ this.variant === ZumeWizardSteps.updateLocation ? html`
+            ${ this.variant === Steps.updateLocation ? html`
                 <h2>${this.t.location_question}</h2>
                 <div class="form-group">
                     <label class="input-label" for="city">${this.t.city}</label>
@@ -132,7 +137,7 @@ export class CompleteProfile extends LitElement {
                     <button type="submit" class="btn tight light" ?disabled=${this.loading}>${this.t.next}</button>
                 </div>
             ` : '' }
-            ${ [ ZumeWizardSteps.updatePhone, ZumeWizardSteps.updateName ].includes(this.variant) ? html`
+            ${ [ Steps.updatePhone, Steps.updateName ].includes(this.variant) ? html`
                 <div class="cluster | mx-auto">
                     <button type="submit" class="btn tight light" ?disabled=${this.loading}>${this.t.next}</button>
                     <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>

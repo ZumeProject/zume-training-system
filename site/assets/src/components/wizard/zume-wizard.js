@@ -1,7 +1,8 @@
 import { LitElement, html } from "lit"
 import { html as staticHtml, literal } from "lit/static-html.js"
-import { ZumeWizardModules, ZumeWizardSteps, ZumeWizardStepsConnectedFields as ConnectedFields, ZumeWizards } from "./wizard-constants"
+import { Steps,  Wizards } from "./wizard-constants"
 import { WizardStateManager } from "./wizard-state-manager"
+import { WizardModuleManager } from "./wizard-module-manager"
 
 export class Wizard extends LitElement {
     static get properties() {
@@ -45,7 +46,6 @@ export class Wizard extends LitElement {
         super()
         this.stepIndex = 0
         this.steps = []
-        this.modules = {}
         this.step = {}
         this.t = window.SHAREDFUNCTIONS.escapeObject(jsObject.translations)
 
@@ -54,31 +54,48 @@ export class Wizard extends LitElement {
 
         this.stateManager = new WizardStateManager()
     }
+    connectedCallback() {
+        super.connectedCallback()
+        window.addEventListener('popstate', this._handleHistoryPopState)
+        window.addEventListener('plan-decision', this._handlePlanDecision)
+    }
 
-    resetWizard() {
-        this.modules = {}
+    disconnectedCallback() {
+        super.disconnectedCallback()
+        window.removeEventListener('popstate', this._handleHistoryPopState)
+        window.removeEventListener('plan-decision', this._handlePlanDecision)
     }
 
     firstUpdated() {
+        this.loadWizard()
+        this._handleHistoryPopState( true )
+
         if (this.translations) {
             this.t = window.SHAREDFUNCTIONS.escapeObject(this.translations)
         }
     }
 
     willUpdate(properties) {
-        if (properties.has('type') && this.type === '') {
-            this.resetWizard()
+        if (properties.has('type') && this.type === '' && this.wizard) {
+            this.wizard.reset()
+        }
+        if (properties.has('type') && this.type !== '') {
+            this.loadWizard(this.type)
         }
     }
 
+    loadWizard( type ) {
+        this.wizard = new WizardModuleManager( this.user )
+        this.steps = this.wizard.getSteps(this.type)
+        this._gotoStep(0)
+    }
+
     render() {
-        if (!this.isWizardLoaded()) {
-            const wizard = this.getWizard(this.type)
-            this.loadWizard( wizard )
-            this._handleHistoryPopState( true )
+        if (!this.wizard || !this.wizard.isLoaded()) {
+            return
         }
 
-        if (!this.isWizardTypeValid( this.type )) {
+        if (!this.wizard.isTypeValid( this.type )) {
             return html`
                 <div class="cover-page">
                     <div class="stack center | text-center">
@@ -132,7 +149,7 @@ export class Wizard extends LitElement {
     containerSize() {
         const currentStep = {...this.steps[this.stepIndex]}
 
-        if (currentStep.slug = ZumeWizardSteps.joinTraining) {
+        if (currentStep.slug = Steps.joinTraining) {
             return 'container-md'
         }
 
@@ -145,45 +162,45 @@ export class Wizard extends LitElement {
         let tag = ''
         let translations = ''
         switch (currentStep.slug) {
-            case ZumeWizardSteps.updateName:
-            case ZumeWizardSteps.updateLocation:
-            case ZumeWizardSteps.updatePhone:
+            case Steps.updateName:
+            case Steps.updateLocation:
+            case Steps.updatePhone:
                 tag = literal`complete-profile`
                 translations = this.t.complete_profile
                 break
-            case ZumeWizardSteps.contactPreferences:
-            case ZumeWizardSteps.languagePreferences:
-            case ZumeWizardSteps.howCanWeServe:
-            case ZumeWizardSteps.connectingToCoach:
+            case Steps.contactPreferences:
+            case Steps.languagePreferences:
+            case Steps.howCanWeServe:
+            case Steps.connectingToCoach:
                 tag = literal`request-coach`
                 translations = this.t.get_a_coach
                 break
-            case ZumeWizardSteps.inviteFriends:
+            case Steps.inviteFriends:
                 tag = literal`invite-friends`
                 translations = this.t.share
                 break
-            case ZumeWizardSteps.joinTraining:
+            case Steps.joinTraining:
                 tag = literal`join-training`
                 translations = this.t.join_training
                 break
-            case ZumeWizardSteps.joinFriendsPlan:
+            case Steps.joinFriendsPlan:
                 tag = literal`join-friend-training`
                 translations = this.t.join_training
                 break
-            case ZumeWizardSteps.connectToFriend:
+            case Steps.connectToFriend:
                 tag = literal`connect-friend`
                 translations = this.t.connect_friend
                 break
-            case ZumeWizardSteps.checkinSubmit:
+            case Steps.checkinSubmit:
                 tag = literal`session-checkin`
                 translations = this.t.checkin
                 break
-            case ZumeWizardSteps.planDecision:
-            case ZumeWizardSteps.howManySessions:
-            case ZumeWizardSteps.howOften:
-            case ZumeWizardSteps.startDate:
-            case ZumeWizardSteps.location:
-            case ZumeWizardSteps.review:
+            case Steps.planDecision:
+            case Steps.howManySessions:
+            case Steps.howOften:
+            case Steps.startDate:
+            case Steps.location:
+            case Steps.review:
                 tag = literal`make-training`
                 translations = this.t.make_training
                 break
@@ -294,7 +311,7 @@ export class Wizard extends LitElement {
     }
     _onFinish(quit = false) {
         this.stateManager.clear()
-        this.resetWizard()
+        this.wizard.reset()
 
         if ( !this.finishUrl ) {
             this.dispatchEvent(new CustomEvent(
@@ -315,7 +332,7 @@ export class Wizard extends LitElement {
         const url = new URL( this.finishUrl )
 
         if ( quit === false ) {
-            if ( this.type === ZumeWizards.checkin ) {
+            if ( this.type === Wizards.checkin ) {
                 const currentUrl = new URL( location.href )
                 const code = currentUrl.searchParams.get('code')
 
@@ -348,7 +365,7 @@ export class Wizard extends LitElement {
             const slug = urlParts[urlParts.length - 1]
 
             let newUrl = ''
-            if ( Object.values(ZumeWizards).includes(slug) ) { // first load of the wizard
+            if ( Object.values(Wizards).includes(slug) ) { // first load of the wizard
                 newUrl = urlParts.join('/') + '/' + this.step.slug + url.search
             } else {
                 newUrl = urlParts.slice(0, -1).join('/') + '/' + this.step.slug + url.search
@@ -372,7 +389,7 @@ export class Wizard extends LitElement {
         const urlParts = url.pathname.split('/')
         const path = urlParts[urlParts.length - 1]
 
-        if ( Object.values(ZumeWizards).includes(path) ) {
+        if ( Object.values(Wizards).includes(path) ) {
             this._gotoStep(0, false)
         }
 
@@ -402,10 +419,12 @@ export class Wizard extends LitElement {
 
         switch (decision) {
             case 'make':
-                this.updateWizard( ZumeWizards.makeAGroup )
+                this.steps = this.wizard.getSteps( Wizards.makeAGroup )
+                this._gotoStep(0)
                 break;
             case 'join':
-                this.updateWizard( ZumeWizards.joinATraining )
+                this.steps = this.wizard.getSteps( Wizards.joinATraining )
+                this._gotoStep(0)
                 break;
             case 'skip':
             default:
@@ -418,189 +437,6 @@ export class Wizard extends LitElement {
         const { loading } = event.detail
 
         this.loading = loading
-    }
-
-    makeModule( stepNames = [], skippable = false ) {
-
-        const module = {
-            steps: [],
-            skippable,
-        }
-
-        stepNames.forEach(stepName => {
-            if ( !Object.values(ZumeWizardSteps).includes(stepName) ) {
-                return
-            }
-            module.steps.push(stepName)
-        });
-
-        return module
-    }
-
-    isWizardLoaded() {
-        return Object.keys(this.modules).length !== 0
-    }
-
-    loadWizard( wizard, append = false  ) {
-
-        this.modules = wizard
-
-        if ( append === false ) {
-            this.steps = []
-            this.stepIndex = 0
-        }
-
-        Object.entries(this.modules).forEach(([moduleName, { steps, skippable }]) => {
-
-            const profile = jsObject.profile
-
-            steps.forEach((slug) => {
-                /* Skip if the corresponding field exists in the user */
-                const connectedField = ConnectedFields[slug]
-                let connectedFieldValue = null
-
-                if ( connectedField && profile) {
-                    if ( connectedField.testExistance(profile[connectedField.field], profile) ) {
-                        return
-                    }
-                    connectedFieldValue = profile[connectedField.field]
-                }
-
-                const step = {
-                    slug,
-                    module: moduleName,
-                    skippable,
-                }
-
-                if ( connectedFieldValue !== null ) {
-                    step.value = connectedFieldValue
-                }
-
-                this.steps.push(step)
-            })
-        })
-
-        if ( append === false ) {
-            this._gotoStep(0)
-        }
-    }
-
-    updateWizard( wizardName ) {
-        const wizard = this.getWizard(wizardName)
-
-        if ( Object.keys(wizard).length === 0 ) {
-            return
-        }
-
-        this.loadWizard( wizard )
-    }
-
-    isWizardTypeValid( type ) {
-        const wizardTypes = Object.values(ZumeWizards)
-
-        if (!wizardTypes.includes(type)) {
-            return false
-        }
-
-        return true
-    }
-
-    getWizard( type ) {
-        if (!this.isWizardTypeValid(type)) {
-            return {}
-        }
-
-        const wizards = {
-            [ZumeWizards.gettingStarted]: {
-                [ZumeWizardModules.completeProfile]: this.makeModule([
-                    ZumeWizardSteps.updateName,
-                    ZumeWizardSteps.updateLocation,
-                ], true),
-                [ZumeWizardModules.planDecision]: this.makeModule([
-                    ZumeWizardSteps.planDecision
-                ], false),
-            },
-            [ZumeWizards.setProfile]: {
-                [ZumeWizardModules.completeProfile]: this.makeModule([
-                    ZumeWizardSteps.updateName,
-                    ZumeWizardSteps.updateLocation,
-                ], true),
-            },
-            [ZumeWizards.makeAGroup]: {
-                [ZumeWizardModules.makePlan]: this.makeModule([
-                    ZumeWizardSteps.howManySessions,
-                    ZumeWizardSteps.howOften,
-                    ZumeWizardSteps.startDate,
-                    ZumeWizardSteps.location,
-                    ZumeWizardSteps.review,
-                    ZumeWizardSteps.inviteFriends,
-                ], true),
-            },
-            [ZumeWizards.getACoach]: {
-                [ZumeWizardModules.completeProfile]: this.makeModule([
-                    ZumeWizardSteps.updateName,
-                    ZumeWizardSteps.updateLocation,
-                    ZumeWizardSteps.updatePhone,
-                ]),
-                [ZumeWizardModules.getACoach]: this.makeModule([
-                    ZumeWizardSteps.contactPreferences,
-                    ZumeWizardSteps.languagePreferences,
-                    ZumeWizardSteps.howCanWeServe,
-                    ZumeWizardSteps.connectingToCoach,
-                ]),
-            },
-            [ZumeWizards.joinATraining]: {
-                [ZumeWizardModules.completeProfile]: this.makeModule([
-                    ZumeWizardSteps.updateName,
-                    ZumeWizardSteps.updateLocation,
-                    ZumeWizardSteps.updatePhone,
-                ]),
-                [ZumeWizardModules.joinTraining]: this.makeModule([
-                    ZumeWizardSteps.joinTraining,
-                ], true),
-            },
-            [ZumeWizards.connectWithFriend]: {
-                [ZumeWizardModules.completeProfile]: this.makeModule([
-                    ZumeWizardSteps.updateName,
-                    ZumeWizardSteps.updateLocation,
-                ], true),
-                [ZumeWizardModules.connectFriend]: this.makeModule([
-                    ZumeWizardSteps.connectToFriend,
-                ])
-            },
-            [ZumeWizards.joinFriendsPlan]: {
-                [ZumeWizardModules.completeProfile]: this.makeModule([
-                    ZumeWizardSteps.updateName,
-                    ZumeWizardSteps.updateLocation,
-                ], true),
-                [ZumeWizardModules.joinFriendsTraining]: this.makeModule([
-                    ZumeWizardSteps.joinFriendsPlan,
-                ])
-            },
-            [ZumeWizards.joinCommunity]: {
-                [ZumeWizardModules.joinCommunity]: this.makeModule([
-                    ZumeWizardSteps.joinCommunity,
-                ], true),
-            },
-            [ZumeWizards.checkin]: {
-                [ZumeWizardModules.checkin]: this.makeModule([
-                    ZumeWizardSteps.checkinSubmit,
-                ])
-            },
-        }
-
-        return wizards[type]
-    }
-    connectedCallback() {
-        super.connectedCallback()
-        window.addEventListener('popstate', this._handleHistoryPopState)
-        window.addEventListener('plan-decision', this._handlePlanDecision)
-    }
-
-    disconnectedCallback() {
-        super.disconnectedCallback()
-        window.removeEventListener('popstate', this._handleHistoryPopState)
-        window.removeEventListener('plan-decision', this._handlePlanDecision)
     }
 
     /**

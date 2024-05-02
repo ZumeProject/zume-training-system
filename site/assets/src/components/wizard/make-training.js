@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { ZumeWizardSteps } from './wizard-constants';
+import { Steps } from './wizard-constants';
 
 export class MakeTraining extends LitElement {
     static get properties() {
@@ -59,7 +59,7 @@ export class MakeTraining extends LitElement {
 
     render() {
         return html`
-            ${this.variant === ZumeWizardSteps.planDecision ? html`
+            ${this.variant === Steps.planDecision ? html`
                 <div class="stack">
                     <span class="zume-start-group brand-light f-7"></span>
                     <h2>${this.t.join_or_start_a_training}</h2>
@@ -68,7 +68,7 @@ export class MakeTraining extends LitElement {
                     <button class="btn tight light outline" data-decision="skip" @click=${this._handlePlanDecision}>${this.t.skip_for_now}</button>
                 </div>
             ` : ''}
-            ${this.variant === ZumeWizardSteps.howManySessions ? html`
+            ${this.variant === Steps.howManySessions ? html`
                 <div class="stack">
                     <span class="zume-session-choice brand-light f-7"></span>
                     <h2>${this.t.question_which_session}</h2>
@@ -77,7 +77,7 @@ export class MakeTraining extends LitElement {
                     <button class="btn tight light outline" @click=${this._handleDone}>${this.t.hour_4_session_5}</button>
                 </div>
             ` : ''}
-            ${this.variant === ZumeWizardSteps.howOften ? html`
+            ${this.variant === Steps.howOften ? html`
                 <div class="stack">
                     <span class="zume-time brand-light f-7"></span>
                     <h2>${this.t.question_how_often}</h2>
@@ -88,7 +88,7 @@ export class MakeTraining extends LitElement {
                     <button class="btn tight light outline" @click=${this._handleDone}>${this.t.skip}</button>
                 </div>
             ` : ''}
-            ${this.variant === ZumeWizardSteps.startDate ? html`
+            ${this.variant === Steps.startDate ? html`
                 <div class="stack">
                     <span class="zume-start-date brand-light f-7"></span>
                     <h2>${this.t.question_when_will_you_start}</h2>
@@ -100,7 +100,7 @@ export class MakeTraining extends LitElement {
                     <button class="btn light outline fit-content mx-auto" @click=${this._handleDone}>${this.t.skip}</button>
                 </div>
             ` : ''}
-            ${this.variant === ZumeWizardSteps.location ? html`
+            ${this.variant === Steps.location ? html`
                 <div class="stack">
                     <span class="zume-start-date brand-light f-7"></span>
                     <h2>${this.t.question_where_will_you_meet}</h2>
@@ -110,7 +110,7 @@ export class MakeTraining extends LitElement {
                     <button class="btn tight light outline" @click=${this._handleDone}>${this.t.skip}</button>
                 </div>
             ` : ''}
-            ${this.variant === ZumeWizardSteps.review ? html`
+            ${this.variant === Steps.review ? html`
                 <div class="stack">
                     <span class="zume-overview brand-light f-7"></span>
                     <h2>${this.t.review_training}</h2>

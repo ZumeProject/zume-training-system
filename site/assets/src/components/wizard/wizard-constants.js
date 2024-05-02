@@ -1,4 +1,4 @@
-export const ZumeWizards = {
+export const Wizards = {
     gettingStarted: 'getting-started',
     makeAGroup: 'make-a-group',
     getACoach: 'get-a-coach',
@@ -9,7 +9,7 @@ export const ZumeWizards = {
     setProfile: 'set-profile',
     joinCommunity: 'join-the-community',
 }
-export const ZumeWizardModules = {
+export const Modules = {
     completeProfile: 'completeProfile',
     makePlan: 'makePlan',
     inviteFriends: 'inviteFriends',
@@ -29,7 +29,7 @@ const makeAPlanSteps = {
     location: 'what-location',
     review: 'review-training',
 }
-export const ZumeWizardSteps = {
+export const Steps = {
     updateName: 'update-your-name',
     updateLocation: 'update-your-location',
     updatePhone: 'update-your-phone',
@@ -45,12 +45,12 @@ export const ZumeWizardSteps = {
     joinCommunity: 'join-community',
     ...makeAPlanSteps,
 }
-export const ZumeWizardStepsConnectedFields = {
-    [ZumeWizardSteps.updateName]: {
+export const ConnectedFields = {
+    [Steps.updateName]: {
         field: 'name',
         testExistance: (field, profile) => profile.has_set_name
     },
-    [ZumeWizardSteps.updateLocation]: {
+    [Steps.updateLocation]: {
         field: 'location',
         testExistance: (field) => {
             if (field.source && field.source === 'ip') {
@@ -59,7 +59,7 @@ export const ZumeWizardStepsConnectedFields = {
             return true
         }
     },
-    [ZumeWizardSteps.updatePhone]: {
+    [Steps.updatePhone]: {
         field: 'phone',
         testExistance: (phone) => !!phone
     },

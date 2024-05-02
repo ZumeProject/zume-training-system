@@ -1,5 +1,7 @@
 import "./wizard-state-manager"
+import "./wizard-module-manager"
 import "./wizard-constants"
+import "./wizard-definitions"
 import "./zume-wizard"
 import "./complete-profile"
 import "./invite-friends"
