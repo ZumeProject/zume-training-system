@@ -63,29 +63,35 @@ export class MakeTraining extends LitElement {
                 <div class="stack">
                     <span class="zume-start-group brand-light f-7"></span>
                     <h2>${this.t.join_or_start_a_training}</h2>
-                    <button class="btn tight light" data-decision="make" @click=${this._handlePlanDecision}>${this.t.start_a_training}</button>
-                    <button class="btn tight light" data-decision="join" @click=${this._handlePlanDecision}>${this.t.join_a_public_training}</button>
-                    <button class="btn tight light outline" data-decision="skip" @click=${this._handlePlanDecision}>${this.t.skip_for_now}</button>
+                    <div class="stack" data-fit-content>
+                        <button class="btn tight light" data-decision="make" @click=${this._handlePlanDecision}>${this.t.start_a_training}</button>
+                        <button class="btn tight light" data-decision="join" @click=${this._handlePlanDecision}>${this.t.join_a_public_training}</button>
+                        <button class="btn tight light outline" data-decision="skip" @click=${this._handlePlanDecision}>${this.t.skip_for_now}</button>
+                    </div>
                 </div>
             ` : ''}
             ${this.variant === Steps.howManySessions ? html`
                 <div class="stack">
                     <span class="zume-session-choice brand-light f-7"></span>
                     <h2>${this.t.question_which_session}</h2>
-                    <button class="btn tight light outline" @click=${this._handleDone}>${this.t.hour_1_session_20}</button>
-                    <button class="btn tight light" @click=${this._handleDone}>${this.t.hour_2_session_10}</button>
-                    <button class="btn tight light outline" @click=${this._handleDone}>${this.t.hour_4_session_5}</button>
+                    <div class="stack" data-fit-content>
+                        <button class="btn tight light outline" @click=${this._handleDone}>${this.t.hour_1_session_20}</button>
+                        <button class="btn tight light" @click=${this._handleDone}>${this.t.hour_2_session_10}</button>
+                        <button class="btn tight light outline" @click=${this._handleDone}>${this.t.hour_4_session_5}</button>
+                    </div>
                 </div>
             ` : ''}
             ${this.variant === Steps.howOften ? html`
                 <div class="stack">
                     <span class="zume-time brand-light f-7"></span>
                     <h2>${this.t.question_how_often}</h2>
-                    <button class="btn tight light" @click=${this._handleDone}>${this.t.weekly}</button>
-                    <button class="btn tight light" @click=${this._handleDone}>${this.t.biweekly}</button>
-                    <button class="btn tight light" @click=${this._handleDone}>${this.t.monthly}</button>
-                    <button class="btn tight light" @click=${this._handleDone}>${this.t.other}</button>
-                    <button class="btn tight light outline" @click=${this._handleDone}>${this.t.skip}</button>
+                    <div class="stack" data-fit-content>
+                        <button class="btn tight light" @click=${this._handleDone}>${this.t.weekly}</button>
+                        <button class="btn tight light" @click=${this._handleDone}>${this.t.biweekly}</button>
+                        <button class="btn tight light" @click=${this._handleDone}>${this.t.monthly}</button>
+                        <button class="btn tight light" @click=${this._handleDone}>${this.t.other}</button>
+                        <button class="btn tight light outline" @click=${this._handleDone}>${this.t.skip}</button>
+                    </div>
                 </div>
             ` : ''}
             ${this.variant === Steps.startDate ? html`
@@ -96,8 +102,10 @@ export class MakeTraining extends LitElement {
                         <input type="date" class="fit-content m0">
                         <input type="time" class="fit-content m0" />
                     </div>
-                    <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
-                    <button class="btn light outline fit-content mx-auto" @click=${this._handleDone}>${this.t.skip}</button>
+                    <div class="stack" data-fit-content>
+                        <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
+                        <button class="btn light outline fit-content mx-auto" @click=${this._handleDone}>${this.t.skip}</button>
+                    </div>
                 </div>
             ` : ''}
             ${this.variant === Steps.location ? html`
@@ -106,8 +114,10 @@ export class MakeTraining extends LitElement {
                     <h2>${this.t.question_where_will_you_meet}</h2>
                     <p>${this.t.question_where_will_you_meet_help_text}</p>
                     <input type="text" />
-                    <button class="btn tight light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
-                    <button class="btn tight light outline" @click=${this._handleDone}>${this.t.skip}</button>
+                    <div class="stack" data-fit-content>
+                        <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
+                        <button class="btn light outline" @click=${this._handleDone}>${this.t.skip}</button>
+                    </div>
                 </div>
             ` : ''}
             ${this.variant === Steps.review ? html`
@@ -115,7 +125,7 @@ export class MakeTraining extends LitElement {
                     <span class="zume-overview brand-light f-7"></span>
                     <h2>${this.t.review_training}</h2>
                     <p>${this.t.you_can_change_your_choices}</p>
-                    <button class="btn tight light fit-content mx-auto" @click=${this._handleDone}>${this.t.create}</button>
+                    <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.create}</button>
                 </div>
             ` : ''}
 
