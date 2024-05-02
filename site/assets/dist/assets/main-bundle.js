@@ -292,9 +292,9 @@ var we=Object.defineProperty;var ke=(n,t,e)=>t in n?we(n,t,{enumerable:!0,config
                     <span class="zume-session-choice brand-light f-7"></span>
                     <h2>${this.t.question_which_session}</h2>
                     <div class="stack" data-fit-content>
-                        <button class="btn tight light outline" data-value="20" @click=${this._handleSelection}>${this.t.hour_1_session_20}</button>
-                        <button class="btn tight light" data-value="10" @click=${this._handleSelection}>${this.t.hour_2_session_10}</button>
-                        <button class="btn tight light outline" data-value="5" @click=${this._handleSelection}>${this.t.hour_4_session_5}</button>
+                        <button class="btn tight light outline ${this.state==="20"?"selected":""}" data-value="20" @click=${this._handleSelection}>${this.t.hour_1_session_20}</button>
+                        <button class="btn tight light ${this.state==="10"?"selected":""}" data-value="10" @click=${this._handleSelection}>${this.t.hour_2_session_10}</button>
+                        <button class="btn tight light outline ${this.state==="5"?"selected":""}" data-value="5" @click=${this._handleSelection}>${this.t.hour_4_session_5}</button>
                     </div>
                 </div>
             `:""}
@@ -303,10 +303,10 @@ var we=Object.defineProperty;var ke=(n,t,e)=>t in n?we(n,t,{enumerable:!0,config
                     <span class="zume-time brand-light f-7"></span>
                     <h2>${this.t.question_how_often}</h2>
                     <div class="stack" data-fit-content>
-                        <button class="btn tight light" data-value="weekly" @click=${this._handleSelection}>${this.t.weekly}</button>
-                        <button class="btn tight light" data-value="biweekly" @click=${this._handleSelection}>${this.t.biweekly}</button>
-                        <button class="btn tight light" data-value="monthly" @click=${this._handleSelection}>${this.t.monthly}</button>
-                        <button class="btn tight light" data-value="other" @click=${this._handleSelection}>${this.t.other}</button>
+                        <button class="btn tight light ${this.state==="weekly"?"selected":""}" data-value="weekly" @click=${this._handleSelection}>${this.t.weekly}</button>
+                        <button class="btn tight light ${this.state==="biweekly"?"selected":""}" data-value="biweekly" @click=${this._handleSelection}>${this.t.biweekly}</button>
+                        <button class="btn tight light ${this.state==="monthly"?"selected":""}" data-value="monthly" @click=${this._handleSelection}>${this.t.monthly}</button>
+                        <button class="btn tight light ${this.state==="other"?"selected":""}" data-value="other" @click=${this._handleSelection}>${this.t.other}</button>
                         <button class="btn tight light outline" data-value="" @click=${this._handleSelection}>${this.t.skip}</button>
                     </div>
                 </div>
@@ -316,8 +316,8 @@ var we=Object.defineProperty;var ke=(n,t,e)=>t in n?we(n,t,{enumerable:!0,config
                     <span class="zume-start-date brand-light f-7"></span>
                     <h2>${this.t.question_when_will_you_start}</h2>
                     <div class="cluster justify-content-center gapy-0">
-                        <input type="date" name="date" class="fit-content m0" @change=${this._handleChange}>
-                        <input type="time" name="time" class="fit-content m0" @change=${this._handleChange}/>
+                        <input type="date" name="date" class="fit-content m0" @change=${this._handleChange} value=${this.state.date} >
+                        <input type="time" name="time" class="fit-content m0" @change=${this._handleChange} value=${this.state.time} />
                     </div>
                     <div class="stack" data-fit-content>
                         <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
@@ -330,7 +330,7 @@ var we=Object.defineProperty;var ke=(n,t,e)=>t in n?we(n,t,{enumerable:!0,config
                     <span class="zume-start-date brand-light f-7"></span>
                     <h2>${this.t.question_where_will_you_meet}</h2>
                     <p>${this.t.question_where_will_you_meet_help_text}</p>
-                    <input type="text" name="location" @change=${this._handleChange} />
+                    <input type="text" name="location" @change=${this._handleChange} value=${this.state} />
                     <div class="stack" data-fit-content>
                         <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
                         <button class="btn light outline" @click=${this._handleDone}>${this.t.skip}</button>
