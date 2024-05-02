@@ -80,11 +80,11 @@ export class Wizard extends LitElement {
             this.wizard.reset()
         }
         if (properties.has('type') && this.type !== '') {
-            this.loadWizard(this.type)
+            this.loadWizard()
         }
     }
 
-    loadWizard( type ) {
+    loadWizard() {
         this.wizard = new WizardModuleManager( this.user )
         this.steps = this.wizard.getSteps(this.type)
         this._gotoStep(0)
