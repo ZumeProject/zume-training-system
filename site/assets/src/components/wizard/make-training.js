@@ -32,19 +32,6 @@ export class MakeTraining extends LitElement {
         }
     }
 
-    connectedCallback() {
-        super.connectedCallback();
-
-        this.stateManager = new WizardStateManager(Modules.makePlan)
-        this.stateManager.clear()
-    }
-
-    willUpdate(properties) {
-        if (properties.has('variant')) {
-            this.state = this.stateManager.get(this.variant) || {}
-        }
-    }
-
     constructor() {
         super()
         this.name = ''
@@ -56,6 +43,19 @@ export class MakeTraining extends LitElement {
         this.errorMessage = ''
         this.message = ''
         this.loading = false
+        this.stateManager = new WizardStateManager(Modules.makePlan)
+        this.stateManager.clear()
+        this.trainingSchedule = []
+    }
+
+    willUpdate(properties) {
+        if (properties.has('variant')) {
+            this.state = this.stateManager.get(this.variant) || {}
+
+            if (this.variant === Steps.review) {
+                this._buildTrainingSchedule()
+            }
+        }
     }
 
     setErrorMessage( message ) {
@@ -101,6 +101,73 @@ export class MakeTraining extends LitElement {
         }
 
         this.stateManager.add(this.variant, this.state)
+    }
+
+    _buildTrainingSchedule() {
+        const howManySessions = this.stateManager.get(Steps.howManySessions)
+        const howOften = this.stateManager.get(Steps.howOften)
+        const startDate = this.stateManager.get(Steps.startDate)?.date
+        const startTime = this.stateManager.get(Steps.startDate)?.time
+        const location = this.stateManager.get(Steps.location)
+
+        /* TODO: create localised time_of_day_note from startDate and startTime */
+
+        if (howManySessions && howOften && startDate) {
+            const trainingSchedule = {
+                location_note: location || '',
+                time_of_day_note: startTime || '',
+            }
+
+            let prefix = ''
+            if (howManySessions === '10') {
+                prefix = 'set_a_'
+            }
+            if (howManySessions === '20') {
+                prefix = 'set_b_'
+            }
+            if (howManySessions === '5') {
+                prefix = 'set_c_'
+            }
+            let timeInterval = 0
+            if (howOften === 'weekly') {
+                timeInterval = 60 * 60 * 24 * 7
+            }
+            if (howOften === 'biweekly') {
+                timeInterval = 60 * 60 * 24 * 7 * 2
+            }
+            if (howOften === 'monthly') {
+                timeInterval = 60 * 60 * 24 * 7 * 4
+            }
+
+            const date = Math.floor(new Date(startDate).getTime() / 1000)
+            for (let i = 1; i < Number(howManySessions) + 1; i++) {
+                const numberString = i < 10 ? `0${i}` : `${i}`
+                trainingSchedule[prefix + numberString] = date + ( i - 1 ) * timeInterval
+            }
+
+            this.trainingSchedule = trainingSchedule
+        }
+    }
+
+    _handleCreate() {
+        const postData = {
+            user_id: jsObject.profile.user_id,
+            contact_id: jsObject.profile.contact_id,
+            title: `${jsObject.profile.name}`,
+            set: this.trainingSchedule,
+        }
+
+        this.loading = true
+        makeRequest( 'POST', 'plan', postData, 'zume_system/v1' )
+            .then((data) => {
+                console.log(data)
+            })
+            .fail((error) => {
+                console.log(error)
+            })
+            .always(() => {
+                this.loading = false
+            })
     }
 
     _handleFinish() {
@@ -178,7 +245,7 @@ export class MakeTraining extends LitElement {
                         <span class="zume-overview brand-light f-7"></span>
                         <h2>${this.t.review_training}</h2>
                         <p>${this.t.you_can_change_your_choices}</p>
-                        <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.create}</button>
+                        <button class="btn light fit-content mx-auto" @click=${this._handleCreate}>${this.t.create}</button>
                     </div>
                 ` : ''}
                 ${this.variant !== Steps.planDecision ? html`

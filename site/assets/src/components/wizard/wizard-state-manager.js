@@ -15,7 +15,6 @@ export class WizardStateManager {
     #init() {
         const existingState = this.#load()
 
-        console.log(existingState, this)
         if ( existingState && !this.#isOlderThan(existingState, this.MAX_LIFESPAN) && existingState.module === this.moduleName ) {
             return existingState
         }
