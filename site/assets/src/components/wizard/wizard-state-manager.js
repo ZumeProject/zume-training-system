@@ -20,6 +20,10 @@ export class WizardStateManager {
             return existingState
         }
 
+        return this.#createEmpty()
+    }
+
+    #createEmpty() {
         return ({
             module: this.moduleName,
             data: {},
@@ -77,7 +81,7 @@ export class WizardStateManager {
     }
 
     clear() {
-        this.#wizardState = null
+        this.#wizardState = this.#createEmpty()
 
         localStorage.removeItem(this.WIZARD_STATE_NAME)
     }

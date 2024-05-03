@@ -70,7 +70,7 @@ export class ReviewSteps extends LitElement {
                         <span class="text-start bold">${this.t.question_which_session}</span>
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.howManyDict[this.howManySessions] || this.howManySessions}</span>
-                            <span class="grow-0">
+                            <span class="d-flex justify-flex-end grow-0">
                                 <button
                                     class="btn small no-outline light tight"
                                     data-step=${Steps.howManySessions}
@@ -87,7 +87,7 @@ export class ReviewSteps extends LitElement {
                         <span class="text-start bold">${this.t.question_how_often}</span>
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.howOfterDict[this.howOften] || this.howOften}</span>
-                            <span class="grow-0">
+                            <span class="d-flex justify-flex-end grow-0">
                                 <button
                                     class="btn small no-outline light tight"
                                     data-step=${Steps.howOften}
@@ -110,7 +110,7 @@ export class ReviewSteps extends LitElement {
                                 hour: "2-digit",
                                 minute: "2-digit",
                             })}</span>
-                            <span class="grow-0">
+                            <span class="d-flex justify-flex-end grow-0">
                                 <button
                                     class="btn small no-outline light tight"
                                     data-step=${Steps.startDate}
@@ -127,7 +127,7 @@ export class ReviewSteps extends LitElement {
                         <span class="text-start bold">${this.t.question_where_will_you_meet}</span>
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.whatLocation}</span>
-                            <span class="grow-0">
+                            <span class="d-flex justify-flex-end grow-0">
                                 <button
                                     class="btn small no-outline light tight"
                                     data-step=${Steps.location}

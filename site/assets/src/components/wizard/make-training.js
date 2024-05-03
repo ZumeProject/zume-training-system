@@ -36,11 +36,12 @@ export class MakeTraining extends LitElement {
         super.connectedCallback();
 
         this.stateManager = new WizardStateManager(Modules.makePlan)
+        this.stateManager.clear()
     }
 
     willUpdate(properties) {
         if (properties.has('variant')) {
-            this.state = this.stateManager.get(this.variant) || ''
+            this.state = this.stateManager.get(this.variant) || {}
         }
     }
 
@@ -127,7 +128,7 @@ export class MakeTraining extends LitElement {
                         <span class="zume-start-date brand-light f-7"></span>
                         <h2>${this.t.question_where_will_you_meet}</h2>
                         <p>${this.t.question_where_will_you_meet_help_text}</p>
-                        <input type="text" name="location" @change=${this._handleChange} value=${this.state} />
+                        <input type="text" name="location" @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
                         <div class="stack" data-fit-content>
                             <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
                             <button class="btn light outline" @click=${this._handleDone}>${this.t.skip}</button>
