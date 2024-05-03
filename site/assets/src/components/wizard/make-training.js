@@ -40,7 +40,7 @@ export class MakeTraining extends LitElement {
 
     willUpdate(properties) {
         if (properties.has('variant')) {
-            this.state = this.stateManager.get(this.variant) || {}
+            this.state = this.stateManager.get(this.variant) || ''
         }
     }
 
@@ -114,7 +114,7 @@ export class MakeTraining extends LitElement {
                         <h2>${this.t.question_when_will_you_start}</h2>
                         <div class="cluster justify-content-center gapy-0">
                             <input type="date" name="date" class="fit-content m0" @change=${this._handleChange} value=${this.state.date} >
-                            <input type="time" name="time" class="fit-content m0" @change=${this._handleChange} value=${this.state.time} />
+                            <input type="time" name="time" class="fit-content m0" @change=${this._handleChange} value=${this.state.time} min="00:00" max="23:55" step="300"/>
                         </div>
                         <div class="stack" data-fit-content>
                             <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>

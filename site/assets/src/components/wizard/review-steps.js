@@ -49,7 +49,18 @@ export class ReviewSteps extends LitElement {
         window.scrollTo(0, 0)
     }
 
+    hasData() {
+        return this.howManySessions
+            || this.howOften
+            || this.date
+            || this.time
+            || this.location
+    }
+
     render() {
+        if ( !this.hasData() ) {
+            return
+        }
 
         return html`
             <div class="stack mw-50ch mx-auto text-start">
