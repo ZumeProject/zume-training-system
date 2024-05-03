@@ -51,6 +51,7 @@ export class Wizard extends LitElement {
 
         this._handleHistoryPopState = this._handleHistoryPopState.bind(this)
         this._handlePlanDecision = this._handlePlanDecision.bind(this)
+        this._handleGotoStep = this._handleGotoStep.bind(this)
 
         this.stateManager = new WizardStateManager()
     }
@@ -58,12 +59,14 @@ export class Wizard extends LitElement {
         super.connectedCallback()
         window.addEventListener('popstate', this._handleHistoryPopState)
         window.addEventListener('plan-decision', this._handlePlanDecision)
+        window.addEventListener('wizard:goto-step', this._handleGotoStep)
     }
 
     disconnectedCallback() {
         super.disconnectedCallback()
         window.removeEventListener('popstate', this._handleHistoryPopState)
         window.removeEventListener('plan-decision', this._handlePlanDecision)
+        window.removeEventListener('wizard:goto-step', this._handleGotoStep)
     }
 
     firstUpdated() {
@@ -412,6 +415,13 @@ export class Wizard extends LitElement {
             }
         })
 
+    }
+
+    _handleGotoStep(event) {
+        const { slug } = event.detail
+
+        const index = this.steps.findIndex((step) => step.slug === slug)
+        this._gotoStep(index)
     }
 
     _handlePlanDecision(event) {

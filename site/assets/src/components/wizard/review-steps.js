@@ -43,8 +43,10 @@ export class ReviewSteps extends LitElement {
    }
 
     handleChange(event) {
-        const step = event.target.dataset.step
+        const slug = event.target.dataset.step
 
+        this.dispatchEvent(new CustomEvent( 'wizard:goto-step', { bubbles: true, detail: { slug } } ))
+        window.scrollTo(0, 0)
     }
 
     render() {
@@ -54,7 +56,7 @@ export class ReviewSteps extends LitElement {
                 <h3 class="brand-light text-center">${this.t.summary}</h3>
                 ${this.howManySessions !== '' ? html`
                     <div class="stack--1">
-                        <span class="text-start f-medium">${this.t.question_which_session}</span>
+                        <span class="text-start bold">${this.t.question_which_session}</span>
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.howManyDict[this.howManySessions] || this.howManySessions}</span>
                             <span class="grow-0">
@@ -71,7 +73,7 @@ export class ReviewSteps extends LitElement {
                 ` : ''}
                 ${this.howOften !== '' ? html`
                     <div class="stack--1">
-                        <span class="text-start f-medium">${this.t.question_how_often}</span>
+                        <span class="text-start bold">${this.t.question_how_often}</span>
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.howOfterDict[this.howOften] || this.howOften}</span>
                             <span class="grow-0">
@@ -88,7 +90,7 @@ export class ReviewSteps extends LitElement {
                 ` : ''}
                 ${this.date !== '' || this.time !== '' ? html`
                     <div class="stack--1">
-                        <span class="text-start f-medium">${this.t.question_when_will_you_start}</span>
+                        <span class="text-start bold">${this.t.question_when_will_you_start}</span>
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${(new Date(`${this.date} ${this.time}`)).toLocaleString(navigator.language || 'en-US', {
                                 day: "numeric",
@@ -111,7 +113,7 @@ export class ReviewSteps extends LitElement {
                 ` : ''}
                 ${this.whatLocation !== '' ? html`
                     <div class="stack--1">
-                        <span class="text-start f-medium">${this.t.question_where_will_you_meet}</span>
+                        <span class="text-start bold">${this.t.question_where_will_you_meet}</span>
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.whatLocation}</span>
                             <span class="grow-0">
