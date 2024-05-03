@@ -71,6 +71,44 @@ export class MakeTraining extends LitElement {
         this.dispatchEvent(new CustomEvent('plan-decision', { bubbles: true, detail: { decision } }))
     }
 
+    _handleDone(event) {
+        if ( event ) {
+            event.preventDefault()
+        }
+
+        this._sendDoneStepEvent()
+    }
+
+    _sendDoneStepEvent() {
+        const doneStepEvent = new CustomEvent( 'done-step', { bubbles: true } )
+        this.dispatchEvent(doneStepEvent)
+    }
+
+    _handleSelection(event) {
+        const value = event.target.dataset.value
+
+        this.stateManager.add(this.variant, value)
+
+        this._handleDone()
+    }
+
+    _handleChange(event) {
+        if (event.target.type === 'text') {
+            this.state = event.target.value
+        }
+        if (['date', 'time'].includes(event.target.type)) {
+            this.state[event.target.name] = event.target.value
+        }
+
+        this.stateManager.add(this.variant, this.state)
+    }
+
+    _handleFinish() {
+        setTimeout(() => {
+            this._sendDoneStepEvent()
+        }, 3000);
+    }
+
     render() {
         return html`
             <div class="stack-1">
@@ -155,44 +193,6 @@ export class MakeTraining extends LitElement {
                 ` : ''}
             </div>
         `;
-    }
-
-    _handleDone(event) {
-        if ( event ) {
-            event.preventDefault()
-        }
-
-        this._sendDoneStepEvent()
-    }
-
-    _sendDoneStepEvent() {
-        const doneStepEvent = new CustomEvent( 'done-step', { bubbles: true } )
-        this.dispatchEvent(doneStepEvent)
-    }
-
-    _handleSelection(event) {
-        const value = event.target.dataset.value
-
-        this.stateManager.add(this.variant, value)
-
-        this._handleDone()
-    }
-
-    _handleChange(event) {
-        if (event.target.type === 'text') {
-            this.state = event.target.value
-        }
-        if (['date', 'time'].includes(event.target.type)) {
-            this.state[event.target.name] = event.target.value
-        }
-
-        this.stateManager.add(this.variant, this.state)
-    }
-
-    _handleFinish() {
-        setTimeout(() => {
-            this._sendDoneStepEvent()
-        }, 3000);
     }
 
     createRenderRoot() {
