@@ -27,7 +27,7 @@ const makeAPlanSteps = {
     howOften: 'how-often',
     startDate: 'what-start-date',
     location: 'what-location',
-    review: 'review-training',
+    review: 'review-steps',
 }
 export const Steps = {
     updateName: 'update-your-name',

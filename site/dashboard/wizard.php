@@ -225,6 +225,10 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'done' => __( 'Done', 'zume' ),
                 'skip' => __( 'Skip', 'zume' ),
                 'create' => __( 'Create', 'zume' ),
+                'time' => __( 'Time', 'zume' ),
+                'date' => __( 'Date', 'zume' ),
+                'summary' => __( 'Summary', 'zume' ),
+                'change' => __( 'Change', 'zume' ),
             ],
             'share' => array_merge( [
                 'title' => __( 'Invite your friends to join your training', 'zume' ),
