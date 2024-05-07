@@ -161,6 +161,7 @@ export class MakeTraining extends LitElement {
         makeRequest( 'POST', 'plan', postData, 'zume_system/v1' )
             .then((data) => {
                 console.log(data)
+                this._handleDone()
             })
             .fail((error) => {
                 console.log(error)
