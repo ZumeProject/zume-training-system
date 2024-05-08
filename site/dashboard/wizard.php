@@ -122,8 +122,8 @@ class Zume_Training_Wizard extends Zume_Magic_Page
 
     public static function translations() {
         return [
-            'bad_wizard' => __( 'Bad Wizard', 'zume' ),
-            'found_bad_wizard' => __( 'You have fallen in with some very bad wizards!', 'zume' ),
+            'bad_wizard' => _x( 'Bad Wizard', 'This is the title for the screen where the application wizard has not been found', 'zume' ),
+            'found_bad_wizard' => _x( 'You have fallen in with some very bad wizards!', 'This is some humourous text using a play on words as the application wizard sounds like the sorcerer type of wizard.', 'zume' ),
             'completed_wizard_title' => __( 'Wizard is already completed', 'zume' ),
             'home' => __( 'Get back home', 'zume' ),
             'back' => __( 'Back', 'zume' ),
