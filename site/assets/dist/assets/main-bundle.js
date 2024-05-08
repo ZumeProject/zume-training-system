@@ -66,7 +66,7 @@ var Ce=Object.defineProperty;var xe=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
 
             ${this.variant===h.updateLocation?o`
                 <h2>${this.t.location_question}</h2>
-                <div class="form-group">
+                <div class="form-group stack--4">
                     <div class="d-flex align-items-center">
                         <label class="input-label visually-hidden" for="city">${this.t.city}</label>
                         <input
@@ -85,7 +85,6 @@ var Ce=Object.defineProperty;var xe=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
                     <span class="loading-spinner ${this.loading?"active":""}"></span>
                     <p class="input-subtext">${this.t.approximate_location}</p>
                 </div>
-                <button>${this.t.accept}</button>
                 <div id="address_results">
                     ${this.locationError}
                     ${this.locations.map(e=>o`
@@ -99,21 +98,19 @@ var Ce=Object.defineProperty;var xe=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
                             </div>
                         `)}
                 </div>
-                <div class="cluster | mx-auto">
-                    <button type="submit" class="btn tight light" ?disabled=${this.loading}>${this.t.next}</button>
-                </div>
-            `:""}
-            ${[h.updatePhone,h.updateName].includes(this.variant)?o`
-                <div class="cluster | mx-auto">
-                    <button type="submit" class="btn tight light" ?disabled=${this.loading}>${this.t.next}</button>
-                    <span class="loading-spinner ${this.loading?"active":""}"></span>
-                </div>
+
             `:""}
             <div class="info-area collapse" data-state=${this.isInfoOpen?"open":"closed"}>
                 <div class="card mw-50ch mx-auto">
                     <p>${this.infoText}</p>
                     <a class="f--1 gray-500" href=${jsObject.privacy_url+"#personal-information"} target="_blank">${this.t.privacy_page}</a>
                 </div>
+            </div>
+            <div class="cluster | mx-auto">
+                <button type="submit" class="btn tight light" ?disabled=${this.loading}>${this.t.next}</button>
+                ${[h.updatePhone,h.updateName].includes(this.variant)?o`
+                    <span class="loading-spinner ${this.loading?"active":""}"></span>
+                `:""}
             </div>
         </form>
 
