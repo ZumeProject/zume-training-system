@@ -282,8 +282,9 @@ var Ce=Object.defineProperty;var Ee=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
             <div class="warning banner" data-state=${this.errorMessage.length?"":"empty"}>${this.errorMessage}</div>
         </form>
         `}_handleDone(t){if(t&&t.preventDefault(),Object.keys(this.state).length===0){this.setErrorMessage(this.t.missing_response);return}this._sendDoneStepEvent()}_sendDoneStepEvent(){const t=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(t)}_handleFinish(){setTimeout(()=>{this._sendDoneStepEvent()},3e3)}_handleChange(t){t.target.type==="checkbox"&&(this.state[t.target.value]=t.target.checked),t.target.type==="text"&&(this.state.value=t.target.value),t.target.type==="select-one"&&(this.state.value=t.target.value),this.stateManager.add(this.variant,this.state)}createRenderRoot(){return this}}customElements.define("request-coach",Xe);class ts extends v{constructor(){super();y(this,"module");y(this,"steps");this.t={},this.howOften="",this.howManySessions="",this.whatLocation="",this.date="",this.time=""}static get properties(){return{t:{type:Object},howOften:{type:String},howManySessions:{type:String},whatLocation:{type:String},date:{type:String},time:{type:String}}}connectedCallback(){super.connectedCallback(),this.howOfterDict={weekly:this.t.weekly,biweekly:this.t.biweekly,monthly:this.t.monthly,other:this.t.other},this.howManyDict={20:this.t.hour_1_session_20,10:this.t.hour_2_session_10,5:this.t.hour_4_session_5}}handleChange(e){const s=e.target.dataset.step;this.dispatchEvent(new CustomEvent("wizard:goto-step",{bubbles:!0,detail:{slug:s}})),window.scrollTo(0,0)}hasData(){return this.howManySessions||this.howOften||this.date||this.time||this.location}render(){if(this.hasData())return o`
-            <div class="stack mw-50ch mx-auto text-start">
-                <h4 class="gray-700 text-left f-medium">${this.t.summary}</h4>
+            <div class="stack mw-50ch mx-auto text-start mt-2">
+                <hr />
+                <h5 class="gray-700 text-left f-medium mt-2">${this.t.summary}</h5>
                 ${this.howManySessions!==""?o`
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">

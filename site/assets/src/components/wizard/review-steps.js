@@ -63,8 +63,9 @@ export class ReviewSteps extends LitElement {
         }
 
         return html`
-            <div class="stack mw-50ch mx-auto text-start">
-                <h4 class="gray-700 text-left f-medium">${this.t.summary}</h4>
+            <div class="stack mw-50ch mx-auto text-start mt-2">
+                <hr />
+                <h5 class="gray-700 text-left f-medium mt-2">${this.t.summary}</h5>
                 ${this.howManySessions !== '' ? html`
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
