@@ -699,7 +699,7 @@ class Zume_Scripts_Post_Type
         );
 
         $fields['63'] = array(
-            'name'        => '(62) 3-Circles Script',
+            'name'        => '(63) 3-Circles Script',
             'description' => '',
             'type'        => 'link',
             'default'     => '',
@@ -707,7 +707,7 @@ class Zume_Scripts_Post_Type
         );
 
         $fields['68'] = array(
-            'name'        => '(62) 4-Relationships Script',
+            'name'        => '(68) 4-Relationships Script',
             'description' => '',
             'type'        => 'link',
             'default'     => '',
