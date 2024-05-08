@@ -129,6 +129,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
             'next' => __( 'Next', 'zume' ),
             'skip' => __( 'Skip', 'zume' ),
             'finish' => __( 'Finish', 'zume' ),
+            'close' => __( 'Close', 'zume' ),
             'no_locations_found' => __( 'No locations found', 'zume' ),
             'join_community' => __( 'Join the Community', 'zume' ),
             'complete_profile' => [

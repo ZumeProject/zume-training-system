@@ -408,7 +408,15 @@ var Ce=Object.defineProperty;var Ee=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
             ></${e}>
         `}headerButtons(){const{skippable:t}=this.step,e=this.stepIndex===this.steps.length-1;return o`
         <div class="cluster | inline s-3">
-            ${t&&!e?o`<button @click=${this._onSkip} class="brand">${this.t.skip}</button>`:""}
+            ${t&&!e?o`
+                    <button
+                        class="close-btn"
+                        aria-label=${jsObject.translations.close}
+                        type="button"
+                        @click=${this._onQuit}
+                    >
+                        <span class="icon zume-close"></span>
+                    </button>`:""}
             ${!t&&!e&&!this.noUrlChange?o`
                     <button @click=${this._onQuit} class="close-btn tight light">
                         <span class="icon zume-close"></span>

@@ -233,7 +233,15 @@ export class Wizard extends LitElement {
         return html`
         <div class="cluster | inline s-3">
             ${( skippable && !isLastStep )
-                ? html`<button @click=${this._onSkip} class="brand">${this.t.skip}</button>`
+                ? html`
+                    <button
+                        class="close-btn"
+                        aria-label=${jsObject.translations.close}
+                        type="button"
+                        @click=${this._onQuit}
+                    >
+                        <span class="icon zume-close"></span>
+                    </button>`
                 : ''
             }
             ${( !skippable && !isLastStep && !this.noUrlChange )
