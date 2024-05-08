@@ -37,6 +37,8 @@ export class CompleteProfile extends LitElement {
             loading: { attribute: false },
             state: { attribute: false },
             localValue: { attribute: false },
+            isInfoOpen: { type: Boolean, attribute: false },
+            infoText: { type: String, attribute: false },
         }
     }
 
@@ -53,6 +55,8 @@ export class CompleteProfile extends LitElement {
         this.loading = false
         this.localValue = ''
         this.phoneError = ''
+        this.isInfoOpen = false
+        this.infoText = ''
 
         this._clearLocations = this._clearLocations.bind(this)
         this._handleSuggestions = this._handleSuggestions.bind(this)
@@ -63,6 +67,7 @@ export class CompleteProfile extends LitElement {
     updated(properties) {
         if (properties.has('variant')) {
             this.renderRoot.querySelector('.inputs input').focus()
+            this.isInfoOpen = false
         }
     }
 
@@ -77,15 +82,18 @@ export class CompleteProfile extends LitElement {
         <form class="inputs stack" @submit=${this._handleSubmit}>
             ${ this.variant === Steps.updateName ? html`
                 <h2>${this.t.name_question}</h2>
-                <div class="">
+                <div class="d-flex align-items-center">
                     <label for="name" class="visually-hidden">${this.t.name}</label>
                     <input class="input" type="text" id="name" name="name" value=${this.localValue} ?required=${!this.skippable} placeholder=${this.t.name}>
+                    <button type="button" class="icon-btn f-1" @click=${() => this._openInfo('name')}>
+                        <span class="icon zume-info brand-light"></span>
+                    </button>
                 </div>
             ` : ''}
 
             ${ this.variant === Steps.updatePhone ? html`
                 <h2>${this.t.phone_question}</h2>
-                <div class="">
+                <div class="d-flex align-items-center">
                     <label for="phone" class="visually-hidden">${this.t.phone}</label>
                     <input
                         class="input"
@@ -99,6 +107,9 @@ export class CompleteProfile extends LitElement {
                         @input=${this._handleInput}
                         @invalid=${this._handleInvalid}
                     >
+                    <button type="button" class="icon-btn f-1" @click=${() => this._openInfo('phone')}>
+                        <span class="icon zume-info brand-light"></span>
+                    </button>
                     <div class="input-error" data-state="${this.phoneError.length ? '' : 'empty'}" >${this.phoneError}</div>
                 </div>
             ` : ''}
@@ -106,16 +117,21 @@ export class CompleteProfile extends LitElement {
             ${ this.variant === Steps.updateLocation ? html`
                 <h2>${this.t.location_question}</h2>
                 <div class="form-group">
-                    <label class="input-label visually-hidden" for="city">${this.t.city}</label>
-                    <input
-                        class="input"
-                        type="text"
-                        id="city"
-                        name="city"
-                        placeholder=${this.t.city}
-                        .value="${this.city ? live(this.city) : this.localValue?.label}"
-                        @input=${this._handleCityChange}
-                    >
+                    <div class="d-flex align-items-center">
+                        <label class="input-label visually-hidden" for="city">${this.t.city}</label>
+                        <input
+                            class="input"
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder=${this.t.city}
+                            .value="${this.city ? live(this.city) : this.localValue?.label}"
+                            @input=${this._handleCityChange}
+                        >
+                        <button type="button" class="icon-btn f-1" @click=${() => this._openInfo('location')}>
+                            <span class="icon zume-info brand-light"></span>
+                        </button>
+                    </div>
                     <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
                     <p class="input-subtext">${this.t.approximate_location}</p>
                 </div>
@@ -145,7 +161,11 @@ export class CompleteProfile extends LitElement {
                     <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
                 </div>
             ` : '' }
+            <p class="info-area collapse" data-state=${this.isInfoOpen ? 'open' : 'closed'}>
+                ${this.infoText}
+            </p>
         </form>
+
         `
     }
 
@@ -273,6 +293,23 @@ export class CompleteProfile extends LitElement {
 
     _clearLocations() {
         this.locations = []
+    }
+
+    _openInfo(type) {
+        this.isInfoOpen = true
+        switch (type) {
+            case 'name':
+                this.infoText = 'name explanation'
+                break;
+            case 'phone':
+                this.infoText = 'phone explanation'
+                break;
+            case 'location':
+                this.infoText = 'location explanation'
+                break;
+            default:
+                break;
+        }
     }
 
     createRenderRoot() {
