@@ -52,9 +52,11 @@ export class MakeTraining extends LitElement {
         const defaultState = {
             [Steps.howManySessions]: '10',
             [Steps.howOften]: 'weekly',
+            [Steps.location]: '',
+            [Steps.startDate]: {},
         }
         if (properties.has('variant')) {
-            this.state = this.stateManager.get(this.variant) || defaultState[this.variant] || {}
+            this.state = this.stateManager.get(this.variant) || defaultState[this.variant]
 
             if (this.variant === Steps.review) {
                 this._buildTrainingSchedule()
@@ -246,7 +248,6 @@ export class MakeTraining extends LitElement {
                         <input type="text" name="location" @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
                         <div class="stack" data-fit-content>
                             <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
-                            <button class="btn light outline" @click=${this._handleDone}>${this.t.skip}</button>
                         </div>
                     </div>
                 ` : ''}
