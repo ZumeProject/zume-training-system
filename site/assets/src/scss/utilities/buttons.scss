@@ -165,7 +165,7 @@ a {
             color: color('gray-400');
         }
     }
-    &[data-locked="true"] {
+    &[data-locked] {
         .icon {
             color: color('gray-400');
         }
