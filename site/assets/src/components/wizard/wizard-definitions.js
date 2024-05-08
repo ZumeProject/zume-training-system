@@ -9,7 +9,7 @@ export const wizardDefinitions = {
         [Modules.completeProfile]: makeModule([
             Steps.updateName,
             Steps.updateLocation,
-        ], true),
+        ], false),
         [Modules.planDecision]: makeModule([
             Steps.planDecision
         ], false),

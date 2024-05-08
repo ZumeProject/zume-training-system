@@ -78,15 +78,15 @@ export class CompleteProfile extends LitElement {
             ${ this.variant === Steps.updateName ? html`
                 <h2>${this.t.name_question}</h2>
                 <div class="">
-                    <label for="name">${this.t.name}</label>
-                    <input class="input" type="text" id="name" name="name" value=${this.localValue} ?required=${!this.skippable}>
+                    <label for="name" class="visually-hidden">${this.t.name}</label>
+                    <input class="input" type="text" id="name" name="name" value=${this.localValue} ?required=${!this.skippable} placeholder=${this.t.name}>
                 </div>
             ` : ''}
 
             ${ this.variant === Steps.updatePhone ? html`
                 <h2>${this.t.phone_question}</h2>
                 <div class="">
-                    <label for="phone">${this.t.phone}</label>
+                    <label for="phone" class="visually-hidden">${this.t.phone}</label>
                     <input
                         class="input"
                         type="tel"
@@ -94,6 +94,7 @@ export class CompleteProfile extends LitElement {
                         name="phone"
                         pattern="\\(?\\+?[\\(\\)\\-\\s0-9]*"
                         value=""
+                        placeholder=${this.t.phone}
                         ?required=${!this.skippable}
                         @input=${this._handleInput}
                         @invalid=${this._handleInvalid}
@@ -105,12 +106,13 @@ export class CompleteProfile extends LitElement {
             ${ this.variant === Steps.updateLocation ? html`
                 <h2>${this.t.location_question}</h2>
                 <div class="form-group">
-                    <label class="input-label" for="city">${this.t.city}</label>
+                    <label class="input-label visually-hidden" for="city">${this.t.city}</label>
                     <input
                         class="input"
                         type="text"
                         id="city"
                         name="city"
+                        placeholder=${this.t.city}
                         .value="${this.city ? live(this.city) : this.localValue?.label}"
                         @input=${this._handleCityChange}
                     >
