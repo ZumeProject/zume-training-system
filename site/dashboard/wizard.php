@@ -229,6 +229,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'date' => __( 'Date', 'zume' ),
                 'summary' => __( 'Summary', 'zume' ),
                 'change' => __( 'Change', 'zume' ),
+                'next' => __( 'Next', 'zume' ),
             ],
             'share' => array_merge( [
                 'title' => __( 'Invite your friends to join your training', 'zume' ),

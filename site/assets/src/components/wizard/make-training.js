@@ -49,8 +49,12 @@ export class MakeTraining extends LitElement {
     }
 
     willUpdate(properties) {
+        const defaultState = {
+            [Steps.howManySessions]: '10',
+            [Steps.howOften]: 'weekly',
+        }
         if (properties.has('variant')) {
-            this.state = this.stateManager.get(this.variant) || {}
+            this.state = this.stateManager.get(this.variant) || defaultState[this.variant] || {}
 
             if (this.variant === Steps.review) {
                 this._buildTrainingSchedule()
@@ -76,6 +80,8 @@ export class MakeTraining extends LitElement {
             event.preventDefault()
         }
 
+        this._saveState()
+
         this._sendDoneStepEvent()
     }
 
@@ -86,10 +92,13 @@ export class MakeTraining extends LitElement {
 
     _handleSelection(event) {
         const value = event.target.dataset.value
+        this.state = value
 
-        this.stateManager.add(this.variant, value)
+        this._saveState()
+    }
 
-        this._handleDone()
+    _saveState() {
+        this.stateManager.add(this.variant, this.state)
     }
 
     _handleChange(event) {
@@ -196,9 +205,10 @@ export class MakeTraining extends LitElement {
                         <span class="zume-session-choice brand-light f-7"></span>
                         <h2>${this.t.question_which_session}</h2>
                         <div class="stack" data-fit-content>
-                            <button class="btn tight light outline ${this.state === '20' ? 'selected' : ''}" data-value="20" @click=${this._handleSelection}>${this.t.hour_1_session_20}</button>
-                            <button class="btn tight light ${this.state === '10' ? 'selected' : ''}" data-value="10" @click=${this._handleSelection}>${this.t.hour_2_session_10}</button>
-                            <button class="btn tight light outline ${this.state === '5' ? 'selected' : ''}" data-value="5" @click=${this._handleSelection}>${this.t.hour_4_session_5}</button>
+                            <button class="btn tight light ${this.state === '20' ? '' : 'outline'}" data-value="20" @click=${this._handleSelection}>${this.t.hour_1_session_20}</button>
+                            <button class="btn tight light ${this.state === '10' ? '' : 'outline'}" data-value="10" @click=${this._handleSelection}>${this.t.hour_2_session_10}</button>
+                            <button class="btn tight light ${this.state === '5' ? '' : 'outline'}" data-value="5" @click=${this._handleSelection}>${this.t.hour_4_session_5}</button>
+                            <button class="btn tight light outline mt-2" @click=${this._handleDone}>${this.t.next}</button>
                         </div>
                     </div>
                 ` : ''}
@@ -207,11 +217,11 @@ export class MakeTraining extends LitElement {
                         <span class="zume-time brand-light f-7"></span>
                         <h2>${this.t.question_how_often}</h2>
                         <div class="stack" data-fit-content>
-                            <button class="btn tight light ${this.state === 'weekly' ? 'selected' : ''}" data-value="weekly" @click=${this._handleSelection}>${this.t.weekly}</button>
-                            <button class="btn tight light ${this.state === 'biweekly' ? 'selected' : ''}" data-value="biweekly" @click=${this._handleSelection}>${this.t.biweekly}</button>
-                            <button class="btn tight light ${this.state === 'monthly' ? 'selected' : ''}" data-value="monthly" @click=${this._handleSelection}>${this.t.monthly}</button>
-                            <button class="btn tight light ${this.state === 'other' ? 'selected' : ''}" data-value="other" @click=${this._handleSelection}>${this.t.other}</button>
-                            <button class="btn tight light outline" @click=${this._handleDone}>${this.t.skip}</button>
+                            <button class="btn tight light ${this.state === 'weekly' ? '' : 'outline'}" data-value="weekly" @click=${this._handleSelection}>${this.t.weekly}</button>
+                            <button class="btn tight light ${this.state === 'biweekly' ? '' : 'outline'}" data-value="biweekly" @click=${this._handleSelection}>${this.t.biweekly}</button>
+                            <button class="btn tight light ${this.state === 'monthly' ? '' : 'outline'}" data-value="monthly" @click=${this._handleSelection}>${this.t.monthly}</button>
+                            <button class="btn tight light ${this.state === 'other' ? '' : 'outline'}" data-value="other" @click=${this._handleSelection}>${this.t.other}</button>
+                            <button class="btn tight light outline mt-2" @click=${this._handleDone}>${this.t.next}</button>
                         </div>
                     </div>
                 ` : ''}
@@ -224,8 +234,7 @@ export class MakeTraining extends LitElement {
                             <input type="time" name="time" class="fit-content m0" @change=${this._handleChange} value=${this.state.time} min="00:00" max="23:55" step="300"/>
                         </div>
                         <div class="stack" data-fit-content>
-                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
-                            <button class="btn light outline fit-content mx-auto" @click=${this._handleDone}>${this.t.skip}</button>
+                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
                         </div>
                     </div>
                 ` : ''}
@@ -236,7 +245,7 @@ export class MakeTraining extends LitElement {
                         <p>${this.t.question_where_will_you_meet_help_text}</p>
                         <input type="text" name="location" @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
                         <div class="stack" data-fit-content>
-                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
+                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
                             <button class="btn light outline" @click=${this._handleDone}>${this.t.skip}</button>
                         </div>
                     </div>

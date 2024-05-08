@@ -131,7 +131,7 @@ var Ce=Object.defineProperty;var Ee=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
             <p>${this.message}</p>
             <span class="loading-spinner ${this.loading?"active":""}"></span>
             <div class="warning banner" data-state=${this.errorMessage.length?"":"empty"}>${this.errorMessage}</div>
-        `}createRenderRoot(){return this}}customElements.define("join-friends-training",Ge);class Ye extends v{static get properties(){return{name:{type:String},module:{type:String},skippable:{type:Boolean},t:{type:Object},variant:{type:String},state:{attribute:!1},errorMessage:{attribute:!1},message:{attribute:!1},loading:{attribute:!1}}}constructor(){super(),this.name="",this.module="",this.skippable=!1,this.variant="",this.t={},this.state={},this.errorMessage="",this.message="",this.loading=!1,this.stateManager=new Mt(S.makePlan),this.stateManager.clear(),this.trainingSchedule=[]}willUpdate(t){t.has("variant")&&(this.state=this.stateManager.get(this.variant)||{},this.variant===h.review&&this._buildTrainingSchedule())}setErrorMessage(t){this.errorMessage=t,setTimeout(()=>{this.errorMessage=""},3e3)}_handlePlanDecision(t){const e=t.target.dataset.decision;this.dispatchEvent(new CustomEvent("plan-decision",{bubbles:!0,detail:{decision:e}}))}_handleDone(t){t&&t.preventDefault(),this._sendDoneStepEvent()}_sendDoneStepEvent(){const t=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(t)}_handleSelection(t){const e=t.target.dataset.value;this.stateManager.add(this.variant,e),this._handleDone()}_handleChange(t){t.target.type==="text"&&(this.state=t.target.value),["date","time"].includes(t.target.type)&&(this.state[t.target.name]=t.target.value),this.stateManager.add(this.variant,this.state)}_buildTrainingSchedule(){var r,l;const t=this.stateManager.get(h.howManySessions),e=this.stateManager.get(h.howOften),s=(r=this.stateManager.get(h.startDate))==null?void 0:r.date,i=(l=this.stateManager.get(h.startDate))==null?void 0:l.time,a=this.stateManager.get(h.location);if(t&&e&&s){const c={location_note:a||"",time_of_day_note:i||""};let d="";t==="10"&&(d="set_a_"),t==="20"&&(d="set_b_"),t==="5"&&(d="set_c_");let m=0;e==="weekly"&&(m=60*60*24*7),e==="biweekly"&&(m=60*60*24*7*2),e==="monthly"&&(m=60*60*24*7*4);const p=Math.floor(new Date(s).getTime()/1e3);for(let u=1;u<Number(t)+1;u++){const g=u<10?`0${u}`:`${u}`;c[d+g]=p+(u-1)*m}this.trainingSchedule=c}}_handleCreate(){const t={user_id:jsObject.profile.user_id,contact_id:jsObject.profile.contact_id,title:`${jsObject.profile.name}`,set:this.trainingSchedule};this.loading=!0,makeRequest("POST","plan",t,"zume_system/v1").then(e=>{console.log(e),this._handleDone()}).fail(e=>{console.log(e)}).always(()=>{this.loading=!1})}_handleFinish(){setTimeout(()=>{this._sendDoneStepEvent()},3e3)}render(){var t,e;return o`
+        `}createRenderRoot(){return this}}customElements.define("join-friends-training",Ge);class Ye extends v{static get properties(){return{name:{type:String},module:{type:String},skippable:{type:Boolean},t:{type:Object},variant:{type:String},state:{attribute:!1},errorMessage:{attribute:!1},message:{attribute:!1},loading:{attribute:!1}}}constructor(){super(),this.name="",this.module="",this.skippable=!1,this.variant="",this.t={},this.state={},this.errorMessage="",this.message="",this.loading=!1,this.stateManager=new Mt(S.makePlan),this.stateManager.clear(),this.trainingSchedule=[]}willUpdate(t){const e={[h.howManySessions]:"10",[h.howOften]:"weekly"};t.has("variant")&&(this.state=this.stateManager.get(this.variant)||e[this.variant]||{},this.variant===h.review&&this._buildTrainingSchedule())}setErrorMessage(t){this.errorMessage=t,setTimeout(()=>{this.errorMessage=""},3e3)}_handlePlanDecision(t){const e=t.target.dataset.decision;this.dispatchEvent(new CustomEvent("plan-decision",{bubbles:!0,detail:{decision:e}}))}_handleDone(t){t&&t.preventDefault(),this._saveState(),this._sendDoneStepEvent()}_sendDoneStepEvent(){const t=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(t)}_handleSelection(t){const e=t.target.dataset.value;this.state=e,this._saveState()}_saveState(){this.stateManager.add(this.variant,this.state)}_handleChange(t){t.target.type==="text"&&(this.state=t.target.value),["date","time"].includes(t.target.type)&&(this.state[t.target.name]=t.target.value),this.stateManager.add(this.variant,this.state)}_buildTrainingSchedule(){var r,l;const t=this.stateManager.get(h.howManySessions),e=this.stateManager.get(h.howOften),s=(r=this.stateManager.get(h.startDate))==null?void 0:r.date,i=(l=this.stateManager.get(h.startDate))==null?void 0:l.time,a=this.stateManager.get(h.location);if(t&&e&&s){const c={location_note:a||"",time_of_day_note:i||""};let d="";t==="10"&&(d="set_a_"),t==="20"&&(d="set_b_"),t==="5"&&(d="set_c_");let m=0;e==="weekly"&&(m=60*60*24*7),e==="biweekly"&&(m=60*60*24*7*2),e==="monthly"&&(m=60*60*24*7*4);const p=Math.floor(new Date(s).getTime()/1e3);for(let u=1;u<Number(t)+1;u++){const g=u<10?`0${u}`:`${u}`;c[d+g]=p+(u-1)*m}this.trainingSchedule=c}}_handleCreate(){const t={user_id:jsObject.profile.user_id,contact_id:jsObject.profile.contact_id,title:`${jsObject.profile.name}`,set:this.trainingSchedule};this.loading=!0,makeRequest("POST","plan",t,"zume_system/v1").then(e=>{console.log(e),this._handleDone()}).fail(e=>{console.log(e)}).always(()=>{this.loading=!1})}_handleFinish(){setTimeout(()=>{this._sendDoneStepEvent()},3e3)}render(){var t,e;return o`
             <div class="stack-1">
                 ${this.variant===h.planDecision?o`
                     <div class="stack">
@@ -149,9 +149,10 @@ var Ce=Object.defineProperty;var Ee=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
                         <span class="zume-session-choice brand-light f-7"></span>
                         <h2>${this.t.question_which_session}</h2>
                         <div class="stack" data-fit-content>
-                            <button class="btn tight light outline ${this.state==="20"?"selected":""}" data-value="20" @click=${this._handleSelection}>${this.t.hour_1_session_20}</button>
-                            <button class="btn tight light ${this.state==="10"?"selected":""}" data-value="10" @click=${this._handleSelection}>${this.t.hour_2_session_10}</button>
-                            <button class="btn tight light outline ${this.state==="5"?"selected":""}" data-value="5" @click=${this._handleSelection}>${this.t.hour_4_session_5}</button>
+                            <button class="btn tight light ${this.state==="20"?"":"outline"}" data-value="20" @click=${this._handleSelection}>${this.t.hour_1_session_20}</button>
+                            <button class="btn tight light ${this.state==="10"?"":"outline"}" data-value="10" @click=${this._handleSelection}>${this.t.hour_2_session_10}</button>
+                            <button class="btn tight light ${this.state==="5"?"":"outline"}" data-value="5" @click=${this._handleSelection}>${this.t.hour_4_session_5}</button>
+                            <button class="btn tight light outline mt-2" @click=${this._handleDone}>${this.t.next}</button>
                         </div>
                     </div>
                 `:""}
@@ -160,11 +161,11 @@ var Ce=Object.defineProperty;var Ee=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
                         <span class="zume-time brand-light f-7"></span>
                         <h2>${this.t.question_how_often}</h2>
                         <div class="stack" data-fit-content>
-                            <button class="btn tight light ${this.state==="weekly"?"selected":""}" data-value="weekly" @click=${this._handleSelection}>${this.t.weekly}</button>
-                            <button class="btn tight light ${this.state==="biweekly"?"selected":""}" data-value="biweekly" @click=${this._handleSelection}>${this.t.biweekly}</button>
-                            <button class="btn tight light ${this.state==="monthly"?"selected":""}" data-value="monthly" @click=${this._handleSelection}>${this.t.monthly}</button>
-                            <button class="btn tight light ${this.state==="other"?"selected":""}" data-value="other" @click=${this._handleSelection}>${this.t.other}</button>
-                            <button class="btn tight light outline" @click=${this._handleDone}>${this.t.skip}</button>
+                            <button class="btn tight light ${this.state==="weekly"?"":"outline"}" data-value="weekly" @click=${this._handleSelection}>${this.t.weekly}</button>
+                            <button class="btn tight light ${this.state==="biweekly"?"":"outline"}" data-value="biweekly" @click=${this._handleSelection}>${this.t.biweekly}</button>
+                            <button class="btn tight light ${this.state==="monthly"?"":"outline"}" data-value="monthly" @click=${this._handleSelection}>${this.t.monthly}</button>
+                            <button class="btn tight light ${this.state==="other"?"":"outline"}" data-value="other" @click=${this._handleSelection}>${this.t.other}</button>
+                            <button class="btn tight light outline mt-2" @click=${this._handleDone}>${this.t.next}</button>
                         </div>
                     </div>
                 `:""}
@@ -177,8 +178,7 @@ var Ce=Object.defineProperty;var Ee=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
                             <input type="time" name="time" class="fit-content m0" @change=${this._handleChange} value=${this.state.time} min="00:00" max="23:55" step="300"/>
                         </div>
                         <div class="stack" data-fit-content>
-                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
-                            <button class="btn light outline fit-content mx-auto" @click=${this._handleDone}>${this.t.skip}</button>
+                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
                         </div>
                     </div>
                 `:""}
@@ -189,7 +189,7 @@ var Ce=Object.defineProperty;var Ee=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
                         <p>${this.t.question_where_will_you_meet_help_text}</p>
                         <input type="text" name="location" @change=${this._handleChange} value=${typeof this.state=="string"?this.state:""} />
                         <div class="stack" data-fit-content>
-                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.done}</button>
+                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
                             <button class="btn light outline" @click=${this._handleDone}>${this.t.skip}</button>
                         </div>
                     </div>
@@ -284,10 +284,9 @@ var Ce=Object.defineProperty;var Ee=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
         </form>
         `}_handleDone(t){if(t&&t.preventDefault(),Object.keys(this.state).length===0){this.setErrorMessage(this.t.missing_response);return}this._sendDoneStepEvent()}_sendDoneStepEvent(){const t=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(t)}_handleFinish(){setTimeout(()=>{this._sendDoneStepEvent()},3e3)}_handleChange(t){t.target.type==="checkbox"&&(this.state[t.target.value]=t.target.checked),t.target.type==="text"&&(this.state.value=t.target.value),t.target.type==="select-one"&&(this.state.value=t.target.value),this.stateManager.add(this.variant,this.state)}createRenderRoot(){return this}}customElements.define("request-coach",Xe);class ts extends v{constructor(){super();y(this,"module");y(this,"steps");this.t={},this.howOften="",this.howManySessions="",this.whatLocation="",this.date="",this.time=""}static get properties(){return{t:{type:Object},howOften:{type:String},howManySessions:{type:String},whatLocation:{type:String},date:{type:String},time:{type:String}}}connectedCallback(){super.connectedCallback(),this.howOfterDict={weekly:this.t.weekly,biweekly:this.t.biweekly,monthly:this.t.monthly,other:this.t.other},this.howManyDict={20:this.t.hour_1_session_20,10:this.t.hour_2_session_10,5:this.t.hour_4_session_5}}handleChange(e){const s=e.target.dataset.step;this.dispatchEvent(new CustomEvent("wizard:goto-step",{bubbles:!0,detail:{slug:s}})),window.scrollTo(0,0)}hasData(){return this.howManySessions||this.howOften||this.date||this.time||this.location}render(){if(this.hasData())return o`
             <div class="stack mw-50ch mx-auto text-start">
-                <h3 class="brand-light text-center">${this.t.summary}</h3>
+                <h4 class="gray-700 text-left f-medium">${this.t.summary}</h4>
                 ${this.howManySessions!==""?o`
                     <div class="stack--1">
-                        <span class="text-start bold">${this.t.question_which_session}</span>
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.howManyDict[this.howManySessions]||this.howManySessions}</span>
                             <span class="d-flex justify-flex-end grow-0">
@@ -304,7 +303,6 @@ var Ce=Object.defineProperty;var Ee=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
                 `:""}
                 ${this.howOften!==""?o`
                     <div class="stack--1">
-                        <span class="text-start bold">${this.t.question_how_often}</span>
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.howOfterDict[this.howOften]||this.howOften}</span>
                             <span class="d-flex justify-flex-end grow-0">
@@ -321,7 +319,6 @@ var Ce=Object.defineProperty;var Ee=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
                 `:""}
                 ${this.date!==""||this.time!==""?o`
                     <div class="stack--1">
-                        <span class="text-start bold">${this.t.question_when_will_you_start}</span>
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${new Date(`${this.date} ${this.time}`).toLocaleString(navigator.language||"en-US",{day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"})}</span>
                             <span class="d-flex justify-flex-end grow-0">
@@ -338,7 +335,6 @@ var Ce=Object.defineProperty;var Ee=(n,t,e)=>t in n?Ce(n,t,{enumerable:!0,config
                 `:""}
                 ${this.whatLocation!==""?o`
                     <div class="stack--1">
-                        <span class="text-start bold">${this.t.question_where_will_you_meet}</span>
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.whatLocation}</span>
                             <span class="d-flex justify-flex-end grow-0">
