@@ -85,7 +85,7 @@ export class CompleteProfile extends LitElement {
                 <div class="d-flex align-items-center">
                     <label for="name" class="visually-hidden">${this.t.name}</label>
                     <input class="input" type="text" id="name" name="name" value=${this.localValue} ?required=${!this.skippable} placeholder=${this.t.name}>
-                    <button type="button" class="icon-btn f-1" @click=${() => this._openInfo('name')}>
+                    <button type="button" class="icon-btn f-1" @click=${() => this._toggleInfo('name')}>
                         <span class="icon zume-info brand-light"></span>
                     </button>
                 </div>
@@ -107,7 +107,7 @@ export class CompleteProfile extends LitElement {
                         @input=${this._handleInput}
                         @invalid=${this._handleInvalid}
                     >
-                    <button type="button" class="icon-btn f-1" @click=${() => this._openInfo('phone')}>
+                    <button type="button" class="icon-btn f-1" @click=${() => this._toggleInfo('phone')}>
                         <span class="icon zume-info brand-light"></span>
                     </button>
                     <div class="input-error" data-state="${this.phoneError.length ? '' : 'empty'}" >${this.phoneError}</div>
@@ -128,7 +128,7 @@ export class CompleteProfile extends LitElement {
                             .value="${this.city ? live(this.city) : this.localValue?.label}"
                             @input=${this._handleCityChange}
                         >
-                        <button type="button" class="icon-btn f-1" @click=${() => this._openInfo('location')}>
+                        <button type="button" class="icon-btn f-1" @click=${() => this._toggleInfo('location')}>
                             <span class="icon zume-info brand-light"></span>
                         </button>
                     </div>
@@ -161,9 +161,12 @@ export class CompleteProfile extends LitElement {
                     <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
                 </div>
             ` : '' }
-            <p class="info-area collapse" data-state=${this.isInfoOpen ? 'open' : 'closed'}>
-                ${this.infoText}
-            </p>
+            <div class="info-area collapse" data-state=${this.isInfoOpen ? 'open' : 'closed'}>
+                <div class="card mw-50ch mx-auto">
+                    <p>${this.infoText}</p>
+                    <a class="f--1 gray-500" href=${jsObject.privacy_url + '#personal-information'} target="_blank">${this.t.privacy_page}</a>
+                </div>
+            </div>
         </form>
 
         `
@@ -295,17 +298,25 @@ export class CompleteProfile extends LitElement {
         this.locations = []
     }
 
+    _toggleInfo(type) {
+        if (!this.isInfoOpen) {
+            this._openInfo(type)
+        } else {
+            this.isInfoOpen = false
+        }
+    }
+
     _openInfo(type) {
         this.isInfoOpen = true
         switch (type) {
             case 'name':
-                this.infoText = 'name explanation'
+                this.infoText = this.t.user_name_disclaimer
                 break;
             case 'phone':
-                this.infoText = 'phone explanation'
+                this.infoText = this.t.user_phone_disclaimer
                 break;
             case 'location':
-                this.infoText = 'location explanation'
+                this.infoText = this.t.user_city_disclaimer
                 break;
             default:
                 break;

@@ -90,6 +90,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'translations' => $this->translations(),
                 'map_key' => DT_Mapbox_API::get_key(),
                 'profile' => $zume_user_profile,
+                'privacy_url' => zume_privacy_url(),
                 'mapbox_selected_id' => 'current',
                 'checkin_dashboard_url' => zume_checkin_dashboard_url(),
             ]) ?>][0]
@@ -143,6 +144,10 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'location_question' => __( 'What city do you live in?', 'zume' ),
                 'approximate_location' => __( 'This is your approximate location.', 'zume' ),
                 'next' => __( 'Next', 'zume' ),
+                'privacy_page' => __( 'Privacy Policy', 'zume' ),
+                'user_name_disclaimer' => __( 'A user’s real name or nickname is requested to improve the personal quality of the site and communication, as well as for customer service requests and coaching.', 'zume' ),
+                'user_phone_disclaimer' => __( 'A user’s phone number is collected and stored for supporting the free coaching service.', 'zume' ),
+                'user_city_disclaimer' => __( 'A user’s city is requested to personalize site resources and communication, and to connect users to appropriate coaching and customer service resources.', 'zume' ),
             ],
             'get_a_coach' => [
                 'contact_preference_question' => __( 'What is your contact preference?', 'zume' ),
@@ -170,6 +175,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'connecting_coach_title' => __( 'Connecting you to a Coach', 'zume' ),
                 'please_wait' => __( 'Please wait while we connect you', 'zume' ),
                 'title' => __( 'Get a Coach', 'zume' ),
+                'user_language_disclaimer' => __( 'A user’s language preference is stored to support proper site and communication functioning, and to help us connect the user with appropriate coaching and resources.', 'zume' ),
             ],
             'join_training' => [
                 'title' => __( 'Joining Plan', 'zume' ),
