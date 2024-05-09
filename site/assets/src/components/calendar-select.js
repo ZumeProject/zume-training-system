@@ -102,7 +102,6 @@ export class CalendarSelect extends LitElement {
     static properties = {
         start_timestamp: { type: String },
         end_timestamp: { type: String },
-        days: {type: Array},
         selected_times: { type: Array },
         month_to_show: { attribute: false },
     }
@@ -112,7 +111,6 @@ export class CalendarSelect extends LitElement {
         this.month_to_show = null;
         this.start_timestamp = ''
         this.end_timestamp = ''
-        this.days = []
         this.selected_times = []
     }
 
@@ -127,6 +125,7 @@ export class CalendarSelect extends LitElement {
 
         event.target.classList.add('selected-time');
     }
+
     get_days_of_the_week_initials(localeName = 'en-US', weekday = 'long') {
         const now = new Date()
         const day_in_milliseconds = 86400000
@@ -139,20 +138,17 @@ export class CalendarSelect extends LitElement {
         const now = new Date().getTime()/1000
         const month_start = month_date.startOf('month').startOf('day');
         let month_days = []
-        let this_month_days = this.days.filter(k=>k.month===month_date.toFormat('y_MM'));
         const format = new Intl.DateTimeFormat(localeName, { day: 'numeric' }).format
         for ( let i = 0; i < month_date.daysInMonth; i++ ){
             let day_date = month_start.plus({days:i})
-            let day = this_month_days.find(d=>d.key === day_date.toSeconds())
             let next_day = day_date.plus({days:1}).toSeconds()
-            if ( !day ){
-                day = {
-                    key:day_date.toSeconds(),
-                    day:i+1,
-                    formatted: format(day_date.toMillis()),
-                }
+            const disabled = next_day < now || (this.end_timestamp && day_date.toSeconds() > this.end_timestamp ) || next_day <= this.start_timestamp;
+            const day = {
+                key:day_date.toSeconds(),
+                day:i+1,
+                formatted: format(day_date.toMillis()),
+                disabled,
             }
-            day.disabled = next_day < now || (this.end_timestamp && day_date.toSeconds() > this.end_timestamp ) || next_day <= this.start_timestamp;
             month_days.push(day)
         }
         return month_days
@@ -163,10 +159,6 @@ export class CalendarSelect extends LitElement {
         return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
     }
     render() {
-        if ( !this.end_timestamp ){
-            this.end_timestamp = this.days[this.days.length - 1].key
-        }
-
         let selected_times = this.selected_times.map(t=>t.day_key);
 
         let week_day_names = this.get_days_of_the_week_initials(navigator.language, 'narrow')
