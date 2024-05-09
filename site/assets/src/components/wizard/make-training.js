@@ -255,7 +255,6 @@ export class MakeTraining extends LitElement {
                     <div class="stack">
                         <span class="zume-overview brand-light f-7"></span>
                         <h2>${this.t.review_training}</h2>
-                        <p>${this.t.you_can_change_your_choices}</p>
                         <button class="btn light fit-content mx-auto" @click=${this._handleCreate}>${this.t.create}</button>
                     </div>
                 ` : ''}
