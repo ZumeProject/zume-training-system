@@ -30,6 +30,7 @@ export class MakeTraining extends LitElement {
             selectedDays: { type: Array, attribute: false },
             calendarStart: { type: String, attribute: false },
             calendarEnd: { type: String, attribute: false },
+            calendarView: { type: String, attribute: false },
             errorMessage: { type: String, attribute: false },
             message: { type: String, attribute: false },
             loading: { type: Boolean, attribute: false },
@@ -52,7 +53,8 @@ export class MakeTraining extends LitElement {
         this.trainingSchedule = []
         this.selectedDays = []
         this.calendarStart = DateTime.now().toISODate()
-        this.calendarEnd = DateTime.now().plus({ month: 2 }).endOf('month').toISODate()
+        this.calendarEnd = DateTime.now().plus({ month: 11 }).endOf('month').toISODate()
+        this.calendarView = 'slider'
 }
 
     willUpdate(properties) {
@@ -66,6 +68,14 @@ export class MakeTraining extends LitElement {
             this.state = this.stateManager.get(this.variant) || defaultState[this.variant]
 
             if (this.variant === Steps.review) {
+                this._buildSelectedDays()
+            }
+            /* DEV only */
+            if (this.variant !== Steps.review) {
+                this.variant = Steps.review
+                this.stateManager.add(Steps.howManySessions, '20')
+                this.stateManager.add(Steps.howOften, 'biweekly')
+                //this.stateManager.add(Steps.startDate, { date: '2024-07-12' })
                 this._buildSelectedDays()
             }
         }
@@ -146,6 +156,7 @@ export class MakeTraining extends LitElement {
             this.selectedDays = selectedDays
             this.calendarStart = DateTime.fromISO(selectedDays[0]).startOf('month').toISODate()
             this.calendarEnd = DateTime.fromISO(selectedDays[selectedDays.length - 1]).endOf('month').toISODate()
+            this.calendarView = 'all'
         }
     }
     _buildSet(days) {
@@ -293,7 +304,7 @@ export class MakeTraining extends LitElement {
                             startDate=${this.calendarStart}
                             endDate=${this.calendarEnd}
                             .selectedDays=${this.selectedDays}
-                            view="all"
+                            view=${this.calendarView}
                             @day-selected=${this.selectDate}
                         ></calendar-select>
                         <button class="btn light fit-content mx-auto" @click=${this._handleCreate}>${this.t.create}</button>
