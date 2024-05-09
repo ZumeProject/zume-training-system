@@ -66,7 +66,13 @@ export class CalendarSelect extends LitElement {
             margin-block: 0;
           }
           .month-next {
-            padding: 0.25rem 0.5rem;
+            padding: 0.2rem 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .month-next svg {
+            width: 1.5rem;
           }
           button {
             padding: 0.25rem 0.5rem;
@@ -178,7 +184,6 @@ export class CalendarSelect extends LitElement {
         let previous_month = month_date.minus({months:1}).toSeconds()
         let next_month = month_start.plus({months:1}).toSeconds()
 
-        console.log(month_date)
         return html`
 
             <div class="calendar-wrapper">
@@ -188,7 +193,9 @@ export class CalendarSelect extends LitElement {
                         ?disabled="${month_start.toSeconds() < now}"
                         @click="${e=>this.next_view(previous_month)}"
                     >
-                        <
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 6L8 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </button>
                     <h3 class="month-title center">
                         ${month_date.toFormat('LLLL y')}
@@ -198,7 +205,9 @@ export class CalendarSelect extends LitElement {
                         ?disabled="${next_month > this.end_timestamp}"
                         @click="${e=>this.next_view(next_month)}"
                     >
-                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M10 6L17 12L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </button>
                     ${
                         week_day_names.map( name => html`
