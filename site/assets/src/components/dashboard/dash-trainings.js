@@ -197,6 +197,7 @@ export class DashTrainings extends DashPage {
                                 style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
                                 startDate=${DateTime.now().toISODate()}
                                 endDate=${DateTime.now().plus({ month: 2 }).toISODate()}
+                                view="all"
                             ></calendar-select>
                         `
 /*                         : html`

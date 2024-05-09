@@ -190,7 +190,7 @@ export class CalendarSelect extends LitElement {
         `
     }
 
-    render() {
+    renderSlider() {
         const now = DateTime.now({ locale: navigator.language })
         const monthDate = this.monthToShow || DateTime.max(now, DateTime.fromISO(this.startDate))
         const monthStart = monthDate.startOf('month')
@@ -236,6 +236,42 @@ export class CalendarSelect extends LitElement {
                 </div>
             </div>
         `
+    }
+
+    render() {
+        if (this.view === 'all') {
+            const monthDate = DateTime.max( DateTime.now(), DateTime.fromISO(this.startDate) )
+            const monthStart = monthDate.startOf('month')
+
+            let i = 0
+            while (true) {
+                let currentMonth = monthStart.plus({ months: i })
+                if (currentMonth < DateTime.fromISO(this.endDate)) {
+                    i = i + 1
+                } else {
+                    break
+                }
+            }
+
+            return html`
+                <div class="calendar-wrapper">
+                    ${
+                        map( range( i ), (index) => {
+                            const currentMonth = monthStart.plus({ months: index })
+                            return html`
+                                <div class="calendar">
+                                    ${
+                                        this.renderCalendar(currentMonth)
+                                    }
+                                </div>
+                            `
+                        })
+                    }
+                </div>
+            `
+        } else {
+            return this.renderSlider()
+        }
     }
 }
 customElements.define('calendar-select', CalendarSelect);
