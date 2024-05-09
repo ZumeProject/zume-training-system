@@ -2,7 +2,6 @@ import { html } from 'lit';
 import { repeat } from 'lit/directives/repeat.js'
 import { DashBoard } from './dash-board';
 import { DashPage } from './dash-page';
-import { DateTime } from 'luxon';
 
 export class DashTrainings extends DashPage {
     static get properties() {
@@ -11,6 +10,7 @@ export class DashTrainings extends DashPage {
             loading: { type: Boolean, attribute: false },
             sessions: { type: Array, attribute: false },
             filterStatus: { type: String, attribute: false },
+            selectedDates: { type: Array, attribute: false },
         };
     }
 
@@ -21,6 +21,7 @@ export class DashTrainings extends DashPage {
         this.route = DashBoard.getRoute('my-training')
 
         /* @todo remove this hardcoded section ?? maybe? */
+        this.selectedDates = []
         this.currentSession = 'set_a_06'
         this.sessions = [
             {
@@ -193,14 +194,6 @@ export class DashTrainings extends DashPage {
                             </div>
                         `
                         : html`
-                            <calendar-select
-                                style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
-                                startDate=${DateTime.now().toISODate()}
-                                endDate=${DateTime.now().plus({ month: 2 }).toISODate()}
-                                view="all"
-                            ></calendar-select>
-                        `
-/*                         : html`
                             <ul class="list">
                                 ${
                                     !this.loading && this.sessions && this.sessions.length > 0
@@ -208,7 +201,7 @@ export class DashTrainings extends DashPage {
                                     : ''
                                 }
                             </ul>
-                        ` */
+                        `
                     }
                 </div>
                 <div class="dashboard__secondary stack">

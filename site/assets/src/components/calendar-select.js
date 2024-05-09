@@ -13,6 +13,7 @@ export class CalendarSelect extends LitElement {
           }
           .calendar-wrapper {
             --cp-color: var(--primary-color, #489bfa);
+            --cp-color-darker: var(--primary-darker, #387cc9);
             --cp-hover-color: var(--hover-color, #4676fa1a);
             --cp-grid-min-size: var(--grid-min-size, 180px);
 
@@ -68,6 +69,10 @@ export class CalendarSelect extends LitElement {
             color: white;
             background-color: var(--cp-color);
           }
+          .day.cell.selected-day:hover {
+            color: white;
+            background-color: var(--cp-color-darker);
+          }
           .month-title {
             display: flex;
             justify-content: space-between;
@@ -113,12 +118,14 @@ export class CalendarSelect extends LitElement {
         `,
     ]
 
-    static properties = {
-        startDate: { type: String },
-        endDate: { type: String },
-        selectedDays: { type: Array },
-        view: { type: String },
-        monthToShow: { attribute: false },
+    static get properties() {
+        return {
+            startDate: { type: String },
+            endDate: { type: String },
+            selectedDays: { type: Array },
+            view: { type: String },
+            monthToShow: { attribute: false },
+        }
     }
 
     constructor() {
@@ -131,8 +138,8 @@ export class CalendarSelect extends LitElement {
     }
 
     nextView(month){
-        this.monthToShow = month
         this.shadowRoot.querySelectorAll('.selected-time').forEach(element => element.classList.remove('selected-time'))
+        this.monthToShow = month
     }
 
     daySelected(event, day){

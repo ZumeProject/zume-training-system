@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { Modules, Steps } from './wizard-constants';
 import { WizardStateManager } from './wizard-state-manager';
+import { DateTime } from 'luxon';
 
 export class MakeTraining extends LitElement {
     static get properties() {
@@ -26,9 +27,12 @@ export class MakeTraining extends LitElement {
              */
             variant: { type: String },
             state: { attribute: false },
-            errorMessage: { attribute: false },
-            message: { attribute: false },
-            loading: { attribute: false },
+            selectedDays: { type: Array, attribute: false },
+            calendarStart: { type: String, attribute: false },
+            calendarEnd: { type: String, attribute: false },
+            errorMessage: { type: String, attribute: false },
+            message: { type: String, attribute: false },
+            loading: { type: Boolean, attribute: false },
         }
     }
 
@@ -46,7 +50,10 @@ export class MakeTraining extends LitElement {
         this.stateManager = new WizardStateManager(Modules.makePlan)
         this.stateManager.clear()
         this.trainingSchedule = []
-    }
+        this.selectedDays = []
+        this.calendarStart = DateTime.now().toISODate()
+        this.calendarEnd = DateTime.now().plus({ month: 2 }).endOf('month').toISODate()
+}
 
     willUpdate(properties) {
         const defaultState = {
@@ -59,7 +66,7 @@ export class MakeTraining extends LitElement {
             this.state = this.stateManager.get(this.variant) || defaultState[this.variant]
 
             if (this.variant === Steps.review) {
-                this._buildTrainingSchedule()
+                this._buildSelectedDays()
             }
         }
     }
@@ -114,50 +121,62 @@ export class MakeTraining extends LitElement {
         this.stateManager.add(this.variant, this.state)
     }
 
-    _buildTrainingSchedule() {
+    _buildSelectedDays() {
         const howManySessions = this.stateManager.get(Steps.howManySessions)
         const howOften = this.stateManager.get(Steps.howOften)
         const startDate = this.stateManager.get(Steps.startDate)?.date
+
+        if (howManySessions && howOften && startDate) {
+            let weekInterval = 0
+            if (howOften === 'weekly') {
+                weekInterval = 1
+            }
+            if (howOften === 'biweekly') {
+                weekInterval = 2
+            }
+            if (howOften === 'monthly') {
+                weekInterval = 4
+            }
+
+            const selectedDays = []
+            const date = DateTime.fromISO(startDate)
+            for (let i = 1; i < Number(howManySessions) + 1; i++) {
+                selectedDays.push(date.plus({weeks: weekInterval * ( i - 1 )}).toISODate())
+            }
+            this.selectedDays = selectedDays
+            this.calendarStart = DateTime.fromISO(selectedDays[0]).startOf('month').toISODate()
+            this.calendarEnd = DateTime.fromISO(selectedDays[selectedDays.length - 1]).endOf('month').toISODate()
+        }
+    }
+    _buildSet(days) {
+        const howManySessions = this.stateManager.get(Steps.howManySessions)
         const startTime = this.stateManager.get(Steps.startDate)?.time
         const location = this.stateManager.get(Steps.location)
 
         /* TODO: create localised time_of_day_note from startDate and startTime */
-
-        if (howManySessions && howOften && startDate) {
-            const trainingSchedule = {
-                location_note: location || '',
-                time_of_day_note: startTime || '',
-            }
-
-            let prefix = ''
-            if (howManySessions === '10') {
-                prefix = 'set_a_'
-            }
-            if (howManySessions === '20') {
-                prefix = 'set_b_'
-            }
-            if (howManySessions === '5') {
-                prefix = 'set_c_'
-            }
-            let timeInterval = 0
-            if (howOften === 'weekly') {
-                timeInterval = 60 * 60 * 24 * 7
-            }
-            if (howOften === 'biweekly') {
-                timeInterval = 60 * 60 * 24 * 7 * 2
-            }
-            if (howOften === 'monthly') {
-                timeInterval = 60 * 60 * 24 * 7 * 4
-            }
-
-            const date = Math.floor(new Date(startDate).getTime() / 1000)
-            for (let i = 1; i < Number(howManySessions) + 1; i++) {
-                const numberString = i < 10 ? `0${i}` : `${i}`
-                trainingSchedule[prefix + numberString] = date + ( i - 1 ) * timeInterval
-            }
-
-            this.trainingSchedule = trainingSchedule
+        const trainingSchedule = {
+            location_note: location || '',
+            time_of_day_note: startTime || '',
         }
+
+        let prefix = ''
+        if (howManySessions === '10') {
+            prefix = 'set_a_'
+        }
+        if (howManySessions === '20') {
+            prefix = 'set_b_'
+        }
+        if (howManySessions === '5') {
+            prefix = 'set_c_'
+        }
+
+        const sortedDays = days.sort()
+        sortedDays.forEach((day, i) => {
+            const numberString = i < 10 ? `0${i}` : `${i}`
+            trainingSchedule[prefix + numberString] = DateTime(day).toSeconds()
+        });
+
+        this.trainingSchedule = trainingSchedule
     }
 
     _handleCreate() {
@@ -165,7 +184,7 @@ export class MakeTraining extends LitElement {
             user_id: jsObject.profile.user_id,
             contact_id: jsObject.profile.contact_id,
             title: `${jsObject.profile.name}`,
-            set: this.trainingSchedule,
+            set: this._buildSet(this.selectedDays)
         }
 
         this.loading = true
@@ -186,6 +205,20 @@ export class MakeTraining extends LitElement {
         setTimeout(() => {
             this._sendDoneStepEvent()
         }, 3000);
+    }
+
+    selectDate(event) {
+        const day = event.detail
+
+        if (this.selectedDays.includes(day)) {
+            const index =  this.selectedDays.indexOf(day)
+            this.selectedDays = [
+                ...this.selectedDays.slice(0, index),
+                ...this.selectedDays.slice(index + 1)
+            ]
+        } else {
+            this.selectedDays = [...this.selectedDays, day]
+        }
     }
 
     render() {
@@ -255,6 +288,14 @@ export class MakeTraining extends LitElement {
                     <div class="stack">
                         <span class="zume-overview brand-light f-7"></span>
                         <h2>${this.t.review_training}</h2>
+                        <calendar-select
+                            style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
+                            startDate=${this.calendarStart}
+                            endDate=${this.calendarEnd}
+                            .selectedDays=${this.selectedDays}
+                            view="all"
+                            @day-selected=${this.selectDate}
+                        ></calendar-select>
                         <button class="btn light fit-content mx-auto" @click=${this._handleCreate}>${this.t.create}</button>
                     </div>
                 ` : ''}
