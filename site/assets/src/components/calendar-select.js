@@ -17,7 +17,7 @@ export class CalendarSelect extends LitElement {
           }
           .calendar {
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
+            grid-template-columns: repeat(7, 14.2%);
             row-gap: 4px;
             justify-items: center;
           }
@@ -25,13 +25,14 @@ export class CalendarSelect extends LitElement {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 40px;
-            width: 40px;
+            aspect-ratio: 1;
+            max-width: 40px;
             border-radius: 50%;
             border-width: 2px;
             border-style: solid;
             border-color: transparent;
             transition: background-color 50ms linear;
+            width: 100%;
           }
           .day.cell:hover {
             background-color: var(--cp-hover-color);
@@ -64,6 +65,9 @@ export class CalendarSelect extends LitElement {
             font-weight: 600;
             grid-column: 2 / 7;
             margin-block: 0;
+          }
+          .month-title.full-width {
+            grid-column: 1 / 8;
           }
           .month-next {
             padding: 0.2rem 0.25rem;
@@ -103,6 +107,7 @@ export class CalendarSelect extends LitElement {
         startDate: { type: String },
         endDate: { type: String },
         selectedDays: { type: Array },
+        view: { type: String },
         monthToShow: { attribute: false },
     }
 
@@ -112,6 +117,7 @@ export class CalendarSelect extends LitElement {
         this.startDate = ''
         this.endDate = ''
         this.selectedDays = []
+        this.view = 'slider'
     }
 
     nextView(month){
@@ -153,18 +159,43 @@ export class CalendarSelect extends LitElement {
         return monthDays
     }
 
-    render() {
-        const selectedTimes = this.selectedDays.map(day => day.day_key);
-
+    renderCalendar(monthDate) {
         const weekDayNames = this.getDaysOfTheWeekInitials(navigator.language, 'narrow')
+        const dayOfWeekNumber = monthDate.startOf('month').weekday
+        const monthDays =  this.buildCalendarDays(navigator.language, monthDate)
+        return html`
+            ${
+                weekDayNames.map( name => html`
+                    <div class="cell week-day">
+                        ${name}
+                    </div>
+                `
+            )}
+            ${
+                map( range( dayOfWeekNumber%7 ), i => html`
+                    <div class="cell"></div>
+                `
+            )}
+            ${
+                monthDays.map(day => html`
+                    <div
+                        class="cell day ${day.disabled ? 'disabled':''} ${this.selectedDays.includes(day.key) ? 'selected-day':''}"
+                        data-day=${day.key}
+                        @click=${event => !day.disabled && this.daySelected(event, day.key)}
+                    >
+                        ${day.formatted}
+                    </div>
+                `
+            )}
+        `
+    }
 
+    render() {
         const now = DateTime.now({ locale: navigator.language })
         const monthDate = this.monthToShow || DateTime.max(now, DateTime.fromISO(this.startDate))
         const monthStart = monthDate.startOf('month')
 
-        const month_days =  this.buildCalendarDays(navigator.language, monthDate)
 
-        const dayOfWeekNumber = monthStart.weekday
         const previousMonth = monthDate.minus({ months: 1 })
         const nextMonth = monthStart.plus({ months: 1 })
 
@@ -172,50 +203,36 @@ export class CalendarSelect extends LitElement {
 
             <div class="calendar-wrapper">
                 <div class="calendar">
-                    <button
-                        class="month-next"
-                        ?disabled=${monthStart < now}
-                        @click=${() => this.nextView(previousMonth)}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                            <path d="M15 6L8 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    <h3 class="month-title center">
+                    ${
+                        this.view === 'slider' ? html`
+                            <button
+                                class="month-next"
+                                ?disabled=${monthStart < now}
+                                @click=${() => this.nextView(previousMonth)}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                    <path d="M15 6L8 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        ` : ''
+                    }
+                    <h3 class="month-title center ${this.view !== 'slider' ? 'full-width' : ''}">
                         ${monthDate.toFormat('LLLL y')}
                     </h3>
-                    <button
-                        class="month-next"
-                        ?disabled=${nextMonth > DateTime.fromISO(this.endDate)}
-                        @click=${() => this.nextView(nextMonth)}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                            <path d="M10 6L17 12L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
                     ${
-                        weekDayNames.map( name => html`
-                            <div class="cell week-day">
-                                ${name}
-                            </div>
-                        `
-                    )}
-                    ${
-                        map( range( dayOfWeekNumber%7 ), i => html`
-                            <div class="cell"></div>
-                        `
-                    )}
-                    ${
-                        month_days.map(day => html`
-                            <div
-                                class="cell day ${day.disabled ? 'disabled':''} ${selectedTimes.includes(day.key) ? 'selected-day':''}"
-                                data-day=${day.key}
-                                @click=${event => !day.disabled && this.daySelected(event, day.key)}
+                        this.view === 'slider' ? html`
+                            <button
+                                class="month-next"
+                                ?disabled=${nextMonth > DateTime.fromISO(this.endDate)}
+                                @click=${() => this.nextView(nextMonth)}
                             >
-                                ${day.formatted}
-                            </div>
-                        `
-                    )}
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                    <path d="M10 6L17 12L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        ` : ''
+                    }
+                    ${this.renderCalendar(monthDate)}
                 </div>
             </div>
         `

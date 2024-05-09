@@ -171,7 +171,7 @@ export class DashTrainings extends DashPage {
                     </div>
                 </div>
                 <dash-header-right></dash-header-right>
-                <div class="dashboard__main p-2">
+                <div class="dashboard__main p-1">
                     ${
                         this.showTeaser
                         ? html`
