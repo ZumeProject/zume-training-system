@@ -100,12 +100,11 @@ export class CalendarSelect extends LitElement {
     ]
 
     static properties = {
-        start_timestamp: {type: String},
-        end_timestamp: {type: String},
+        start_timestamp: { type: String },
+        end_timestamp: { type: String },
         days: {type: Array},
-        selected_times: {type: Array},
-        timezone: {type: String},
-        month_to_show: {attribute: false},
+        selected_times: { type: Array },
+        month_to_show: { attribute: false },
     }
 
     constructor() {
@@ -115,7 +114,6 @@ export class CalendarSelect extends LitElement {
         this.end_timestamp = ''
         this.days = []
         this.selected_times = []
-        this.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
     }
 
     next_view(month){
@@ -173,16 +171,16 @@ export class CalendarSelect extends LitElement {
 
         let week_day_names = this.get_days_of_the_week_initials(navigator.language, 'narrow')
 
-        let now_date = DateTime.now({zone: this.timezone, locale: navigator.language})
+        let now_date = DateTime.now({locale: navigator.language})
         let now = now_date.toSeconds();
-        let month_date = DateTime.fromSeconds(this.month_to_show || Math.max(now, this.start_timestamp), { zone: this.timezone, locale: navigator.language })
+        let month_date = DateTime.fromSeconds(this.month_to_show || Math.max(now, this.start_timestamp), { locale: navigator.language })
         let month_start = month_date.startOf('month')
 
         let month_days =  this.build_calendar_days(navigator.language, month_date)
 
         let first_day_is_weekday = month_start.weekday
-        let previous_month = month_date.minus({months:1}).toSeconds()
-        let next_month = month_start.plus({months:1}).toSeconds()
+        let previous_month = month_date.minus({ months: 1 }).toSeconds()
+        let next_month = month_start.plus({ months: 1 }).toSeconds()
 
         return html`
 
