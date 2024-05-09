@@ -193,6 +193,7 @@ export class DashTrainings extends DashPage {
                         `
                         : html`
                             <calendar-select
+                                style="--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)"
                                 start_timestamp=${new Date().getTime()/1000}
                                 end_timestamp=${new Date().getTime()/1000 + 60 * 60 * 24 * 60}
                             ></calendar-select>

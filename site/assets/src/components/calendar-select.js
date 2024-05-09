@@ -11,55 +11,84 @@ export class CalendarSelect extends LitElement {
             container-type: inline-size;
             container-name: calendar;
           }
+          .calendar-wrapper {
+            --cp-color: var(--primary-color, #489bfa);
+            --cp-hover-color: var(--hover-color, #4676fa1a);
+          }
           .calendar {
             display: grid;
-            grid-template-columns: repeat(7, 14cqw);
+            grid-template-columns: repeat(7, 1fr);
+            row-gap: 4px;
+            justify-items: center;
           }
-          .day-cell {
+          .cell {
             display: flex;
             align-items: center;
             justify-content: center;
             height: 40px;
             width: 40px;
-          }
-          .day-cell:hover {
-            background-color: #4676fa1a;
-            cursor: pointer;
             border-radius: 50%;
+            border-width: 2px;
+            border-style: solid;
+            border-color: transparent;
+            transition: background-color 100ms linear;
           }
-          .day-cell.disabled-calendar-day {
+          .day.cell:hover {
+            background-color: var(--cp-hover-color);
+            cursor: pointer;
+          }
+          .day.cell.disabled  {
             color:lightgrey;
-            cursor: not-allowed;
+            cursor: default;
+          }
+          .day.cell.disabled:hover {
+            background-color: transparent;
           }
           .week-day {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 40px;
-            width: 40px;
-            font-weight: bold;
+            font-weight: 600;
             font-size:clamp(0.75em, 0.65rem + 2cqi, 1em);
           }
           .selected-time {
             color: black;
-            border-radius: 50%;
-            border: 2px solid;
-            background-color: #4676fa1a;
+            border-color: var(--cp-color);
+            background-color: var(--cp-hover-color);
           }
           .selected-day {
             color: white;
-            border-radius: 50%;
-            border: 2px solid;
             background-color: var(--cp-color);
           }
           .month-title {
             display: flex;
             justify-content: space-between;
-            max-width: 280px;
             font-size: 1.2rem;
+            font-weight: 600;
+            grid-column: 2 / 7;
+            margin-block: 0;
           }
           .month-next {
             padding: 0.25rem 0.5rem;
+          }
+          button {
+            padding: 0.25rem 0.5rem;
+            color: rgb(254, 254, 254);
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid transparent;
+            font-weight: normal;
+            padding: 0.85rem 1rem;
+            cursor: pointer;
+            background-color: var(--cp-color);
+            line-height: 1;
+            transition: all 100ms linear;
+          }
+          button:not([disabled]):hover {
+            background-color: transparent;
+            border-color: var(--cp-color);
+            color: var(--cp-color);
+          }
+          button[disabled] {
+            opacity: 0.25;
+            cursor: default;
           }
         `,
     ]
@@ -102,11 +131,12 @@ export class CalendarSelect extends LitElement {
             .map((day) => format(new Date().getTime() - ( now.getDay() - day  ) * day_in_milliseconds  ))
     }
 
-    build_calendar_days(month_date){
+    build_calendar_days(localeName = 'en-US', month_date){
         const now = new Date().getTime()/1000
         const month_start = month_date.startOf('month').startOf('day');
         let month_days = []
         let this_month_days = this.days.filter(k=>k.month===month_date.toFormat('y_MM'));
+        const format = new Intl.DateTimeFormat(localeName, { day: 'numeric' }).format
         for ( let i = 0; i < month_date.daysInMonth; i++ ){
             let day_date = month_start.plus({days:i})
             let day = this_month_days.find(d=>d.key === day_date.toSeconds())
@@ -115,6 +145,7 @@ export class CalendarSelect extends LitElement {
                 day = {
                     key:day_date.toSeconds(),
                     day:i+1,
+                    formatted: format(day_date.toMillis()),
                 }
             }
             day.disabled = next_day < now || (this.end_timestamp && day_date.toSeconds() > this.end_timestamp ) || next_day <= this.start_timestamp;
@@ -136,21 +167,22 @@ export class CalendarSelect extends LitElement {
 
         let week_day_names = this.get_days_of_the_week_initials(navigator.language, 'narrow')
 
-        let now_date = DateTime.now({zone: this.timezone})
+        let now_date = DateTime.now({zone: this.timezone, locale: navigator.language})
         let now = now_date.toSeconds();
-        let month_date = DateTime.fromSeconds(this.month_to_show || Math.max(now, this.start_timestamp), { zone: this.timezone })
+        let month_date = DateTime.fromSeconds(this.month_to_show || Math.max(now, this.start_timestamp), { zone: this.timezone, locale: navigator.language })
         let month_start = month_date.startOf('month')
 
-        let month_days =  this.build_calendar_days(month_date)
+        let month_days =  this.build_calendar_days(navigator.language, month_date)
 
         let first_day_is_weekday = month_start.weekday
         let previous_month = month_date.minus({months:1}).toSeconds()
         let next_month = month_start.plus({months:1}).toSeconds()
 
+        console.log(month_date)
         return html`
 
             <div class="calendar-wrapper">
-                <h3 class="month-title center">
+                <div class="calendar">
                     <button
                         class="month-next"
                         ?disabled="${month_start.toSeconds() < now}"
@@ -158,7 +190,9 @@ export class CalendarSelect extends LitElement {
                     >
                         <
                     </button>
-                    ${month_date.toFormat('MMMM y')}
+                    <h3 class="month-title center">
+                        ${month_date.toFormat('LLLL y')}
+                    </h3>
                     <button
                         class="month-next"
                         ?disabled="${next_month > this.end_timestamp}"
@@ -166,28 +200,26 @@ export class CalendarSelect extends LitElement {
                     >
                         >
                     </button>
-                </h3>
-                <div class="calendar">
                     ${
                         week_day_names.map( name => html`
-                            <div class="day-cell week-day">
+                            <div class="cell week-day">
                                 ${name}
                             </div>
                         `
                     )}
                     ${
                         map( range( first_day_is_weekday%7 ), i => html`
-                            <div class="day-cell disabled-calendar-day"></div>
+                            <div class="cell"></div>
                         `
                     )}
                     ${
                         month_days.map(day => html`
                             <div
-                                class="day-cell ${day.disabled ? 'disabled':''} ${selected_times.includes(day.key) ? 'selected-day':''}"
+                                class="cell day ${day.disabled ? 'disabled':''} ${selected_times.includes(day.key) ? 'selected-day':''}"
                                 data-day=${this.escapeHTML(day.key)}
                                 @click=${event => !day.disabled && this.day_selected(event, day.key)}
                             >
-                                ${this.escapeHTML(day.day)}
+                                ${this.escapeHTML(day.formatted)}
                             </div>
                         `
                     )}
