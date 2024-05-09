@@ -1,4 +1,7 @@
 import { LitElement, html, css } from 'lit';
+import { range } from 'lit/directives/range.js'
+import { map } from 'lit/directives/map.js'
+import { DateTime } from 'luxon'
 
 export class CalendarSelect extends LitElement {
     static styles = [
@@ -59,7 +62,6 @@ export class CalendarSelect extends LitElement {
             padding: 0.25rem 0.5rem;
           }
         `,
-        window.campaignStyles
     ]
 
     static properties = {
@@ -67,61 +69,79 @@ export class CalendarSelect extends LitElement {
         end_timestamp: {type: String},
         days: {type: Array},
         selected_times: {type: Array},
+        timezone: {type: String},
+        month_to_show: {attribute: false},
     }
 
     constructor() {
         super();
         this.month_to_show = null;
-        this.start_timestamp = window.campaign_data.start_timestamp
-        this.end_timestamp = window.campaign_data.end_timestamp
-        this.days = window.campaign_scripts.days
+        this.start_timestamp = ''
+        this.end_timestamp = ''
+        this.days = []
         this.selected_times = []
-    }
-
-    connectedCallback(){
-        super.connectedCallback();
-        //get days from days ready event
-        window.addEventListener('campaign_days_ready', e=>{
-            this.days = e.detail
-            this.requestUpdate()
-        })
+        this.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
     }
 
     next_view(month){
         this.month_to_show = month
-        this.requestUpdate()
-        //remove all selected-time css
         this.shadowRoot.querySelectorAll('.selected-time').forEach(e=>e.classList.remove('selected-time'))
     }
 
-    day_selected(month, day){
-        //dispatch event
+    day_selected(event, day){
         this.dispatchEvent(new CustomEvent('day-selected', {detail: day}));
-        //highlight selected day
-        this.shadowRoot.querySelectorAll('.selected-time').forEach(e=>e.classList.remove('selected-time'))
+        this.shadowRoot.querySelectorAll('.selected-time').forEach(element=>element.classList.remove('selected-time'))
 
-        month.target.classList.add('selected-time');
+        event.target.classList.add('selected-time');
+    }
+    get_days_of_the_week_initials(localeName = 'en-US', weekday = 'long') {
+        const now = new Date()
+        const day_in_milliseconds = 86400000
+        const format = new Intl.DateTimeFormat(localeName, { weekday }).format
+        return [...Array(7).keys()]
+            .map((day) => format(new Date().getTime() - ( now.getDay() - day  ) * day_in_milliseconds  ))
     }
 
-
-    render() {
-        if ( this.days.length === 0 ){
-            return html`<div></div>`
+    build_calendar_days(month_date){
+        const now = new Date().getTime()/1000
+        const month_start = month_date.startOf('month').startOf('day');
+        let month_days = []
+        let this_month_days = this.days.filter(k=>k.month===month_date.toFormat('y_MM'));
+        for ( let i = 0; i < month_date.daysInMonth; i++ ){
+            let day_date = month_start.plus({days:i})
+            let day = this_month_days.find(d=>d.key === day_date.toSeconds())
+            let next_day = day_date.plus({days:1}).toSeconds()
+            if ( !day ){
+                day = {
+                    key:day_date.toSeconds(),
+                    day:i+1,
+                }
+            }
+            day.disabled = next_day < now || (this.end_timestamp && day_date.toSeconds() > this.end_timestamp ) || next_day <= this.start_timestamp;
+            month_days.push(day)
         }
+        return month_days
+    }
+    escapeHTML(str) {
+        if (typeof str === "undefined") return '';
+        if (typeof str !== "string") return str;
+        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+    }
+    render() {
         if ( !this.end_timestamp ){
             this.end_timestamp = this.days[this.days.length - 1].key
         }
 
         let selected_times = this.selected_times.map(t=>t.day_key);
 
-        let week_day_names = window.campaign_scripts.get_days_of_the_week_initials(navigator.language, 'narrow')
+        let week_day_names = this.get_days_of_the_week_initials(navigator.language, 'narrow')
 
-        let now_date = window.luxon.DateTime.now({zone:window.campaign_user_data.timezone})
+        let now_date = DateTime.now({zone: this.timezone})
         let now = now_date.toSeconds();
-        let month_date = window.luxon.DateTime.fromSeconds(this.month_to_show || Math.max(this.days[0].key, now, window.campaign_data.start_timestamp), {zone:window.campaign_user_data.timezone})
+        let month_date = DateTime.fromSeconds(this.month_to_show || Math.max(now, this.start_timestamp), { zone: this.timezone })
         let month_start = month_date.startOf('month')
 
-        let month_days =  window.campaign_scripts.build_calendar_days(month_date)
+        let month_days =  this.build_calendar_days(month_date)
 
         let first_day_is_weekday = month_start.weekday
         let previous_month = month_date.minus({months:1}).toSeconds()
@@ -131,30 +151,49 @@ export class CalendarSelect extends LitElement {
 
             <div class="calendar-wrapper">
                 <h3 class="month-title center">
-                    <button class="month-next" ?disabled="${month_start.toSeconds() < now}"
-                            @click="${e=>this.next_view(previous_month)}">
+                    <button
+                        class="month-next"
+                        ?disabled="${month_start.toSeconds() < now}"
+                        @click="${e=>this.next_view(previous_month)}"
+                    >
                         <
                     </button>
                     ${month_date.toFormat('MMMM y')}
-                    <button class="month-next" ?disabled="${next_month > this.end_timestamp}" @click="${e=>this.next_view(next_month)}">
+                    <button
+                        class="month-next"
+                        ?disabled="${next_month > this.end_timestamp}"
+                        @click="${e=>this.next_view(next_month)}"
+                    >
                         >
                     </button>
                 </h3>
                 <div class="calendar">
-                    ${week_day_names.map(name=>html`<div class="day-cell week-day">${name}</div>`)}
-                    ${map(range(first_day_is_weekday%7), i=>html`<div class="day-cell disabled-calendar-day"></div>`)}
-                    ${month_days.map(day=>{
-                        return html`
-                            <div class="day-cell ${day.disabled ? 'disabled':''} ${selected_times.includes(day.key) ? 'selected-day':''}"
-                               data-day="${window.campaign_scripts.escapeHTML(day.key)}"
-                               @click="${e=>!day.disabled&&this.day_selected(e, day.key)}"
+                    ${
+                        week_day_names.map( name => html`
+                            <div class="day-cell week-day">
+                                ${name}
+                            </div>
+                        `
+                    )}
+                    ${
+                        map( range( first_day_is_weekday%7 ), i => html`
+                            <div class="day-cell disabled-calendar-day"></div>
+                        `
+                    )}
+                    ${
+                        month_days.map(day => html`
+                            <div
+                                class="day-cell ${day.disabled ? 'disabled':''} ${selected_times.includes(day.key) ? 'selected-day':''}"
+                                data-day=${this.escapeHTML(day.key)}
+                                @click=${event => !day.disabled && this.day_selected(event, day.key)}
                             >
-                                ${window.campaign_scripts.escapeHTML(day.day)}
-                            </div>`
-                    })}
+                                ${this.escapeHTML(day.day)}
+                            </div>
+                        `
+                    )}
                 </div>
             </div>
-            `
-   }
+        `
+    }
 }
 customElements.define('calendar-select', CalendarSelect);

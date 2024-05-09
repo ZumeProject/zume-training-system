@@ -151,7 +151,6 @@ export class DashTrainings extends DashPage {
     }
 
     renderMemberItem(member) {
-        console.log(member)
         const { name } = member
         return html`
             <li>
@@ -193,6 +192,12 @@ export class DashTrainings extends DashPage {
                             </div>
                         `
                         : html`
+                            <calendar-select
+                                start_timestamp=${new Date().getTime()/1000}
+                                end_timestamp=${new Date().getTime()/1000 + 60 * 60 * 24 * 60}
+                            ></calendar-select>
+                        `
+/*                         : html`
                             <ul class="list">
                                 ${
                                     !this.loading && this.sessions && this.sessions.length > 0
@@ -200,7 +205,7 @@ export class DashTrainings extends DashPage {
                                     : ''
                                 }
                             </ul>
-                        `
+                        ` */
                     }
                 </div>
                 <div class="dashboard__secondary stack">

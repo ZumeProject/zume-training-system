@@ -94,6 +94,9 @@ export class Wizard extends LitElement {
     }
 
     render() {
+        if (!this.wizard) {
+            return
+        }
         if (!this.wizard.isTypeValid( this.type )) {
             return html`
                 <div class="cover-page">
@@ -107,7 +110,7 @@ export class Wizard extends LitElement {
             `
         }
 
-        if (!this.wizard || !this.wizard.isLoaded()) {
+        if (!this.wizard.isLoaded()) {
             return
         }
 
