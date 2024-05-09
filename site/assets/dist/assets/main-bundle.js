@@ -2273,7 +2273,7 @@ var Jn=Object.defineProperty;var Qn=(i,e,t)=>e in i?Jn(i,e,{enumerable:!0,config
                                 </svg>
                             </button>
                         `:""}
-                    <h3 class="month-title center ${this.view!=="slider"?"full-width":""}">
+                    <h3 class="month-title">
                         ${t.toFormat("LLLL y")}
                     </h3>
                     ${this.view==="slider"?c`
@@ -2294,6 +2294,9 @@ var Jn=Object.defineProperty;var Qn=(i,e,t)=>e in i?Jn(i,e,{enumerable:!0,config
                 <div class="calendar-wrapper">
                     ${bi(vi(s),n=>{const a=t.plus({months:n});return c`
                                 <div class="calendar">
+                                    <h3 class="month-title full-width">
+                                        ${a.toFormat("LLLL y")}
+                                    </h3>
                                     ${this.renderCalendar(a)}
                                 </div>
                             `})}
@@ -2307,6 +2310,16 @@ var Jn=Object.defineProperty;var Qn=(i,e,t)=>e in i?Jn(i,e,{enumerable:!0,config
           .calendar-wrapper {
             --cp-color: var(--primary-color, #489bfa);
             --cp-hover-color: var(--hover-color, #4676fa1a);
+            --cp-grid-min-size: var(--grid-min-size, 180px);
+
+            display: grid;
+            grid-gap: 1rem;
+            grid-auto-rows: 1fr;
+          }
+          @supports (width: min(250px, 100%)) {
+            .calendar-wrapper {
+              grid-template-columns: repeat(auto-fit, minmax(min(var(--cp-grid-min-size), 100%), 1fr));
+            }
           }
           .calendar {
             display: grid;

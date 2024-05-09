@@ -14,6 +14,16 @@ export class CalendarSelect extends LitElement {
           .calendar-wrapper {
             --cp-color: var(--primary-color, #489bfa);
             --cp-hover-color: var(--hover-color, #4676fa1a);
+            --cp-grid-min-size: var(--grid-min-size, 180px);
+
+            display: grid;
+            grid-gap: 1rem;
+            grid-auto-rows: 1fr;
+          }
+          @supports (width: min(250px, 100%)) {
+            .calendar-wrapper {
+              grid-template-columns: repeat(auto-fit, minmax(min(var(--cp-grid-min-size), 100%), 1fr));
+            }
           }
           .calendar {
             display: grid;
@@ -216,7 +226,7 @@ export class CalendarSelect extends LitElement {
                             </button>
                         ` : ''
                     }
-                    <h3 class="month-title center ${this.view !== 'slider' ? 'full-width' : ''}">
+                    <h3 class="month-title">
                         ${monthDate.toFormat('LLLL y')}
                     </h3>
                     ${
@@ -260,6 +270,9 @@ export class CalendarSelect extends LitElement {
                             const currentMonth = monthStart.plus({ months: index })
                             return html`
                                 <div class="calendar">
+                                    <h3 class="month-title full-width">
+                                        ${currentMonth.toFormat('LLLL y')}
+                                    </h3>
                                     ${
                                         this.renderCalendar(currentMonth)
                                     }
