@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { repeat } from 'lit/directives/repeat.js'
 import { DashBoard } from './dash-board';
 import { DashPage } from './dash-page';
+import { DateTime } from 'luxon';
 
 export class DashTrainings extends DashPage {
     static get properties() {
@@ -193,9 +194,9 @@ export class DashTrainings extends DashPage {
                         `
                         : html`
                             <calendar-select
-                                style="--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)"
-                                start_timestamp=${new Date().getTime()/1000}
-                                end_timestamp=${new Date().getTime()/1000 + 60 * 60 * 24 * 60}
+                                style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
+                                startDate=${DateTime.now().toISODate()}
+                                endDate=${DateTime.now().plus({ month: 2 }).toISODate()}
                             ></calendar-select>
                         `
 /*                         : html`

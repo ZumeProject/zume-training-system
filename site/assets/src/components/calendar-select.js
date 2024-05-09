@@ -31,7 +31,7 @@ export class CalendarSelect extends LitElement {
             border-width: 2px;
             border-style: solid;
             border-color: transparent;
-            transition: background-color 100ms linear;
+            transition: background-color 50ms linear;
           }
           .day.cell:hover {
             background-color: var(--cp-hover-color);
@@ -85,7 +85,7 @@ export class CalendarSelect extends LitElement {
             cursor: pointer;
             background-color: var(--cp-color);
             line-height: 1;
-            transition: all 100ms linear;
+            transition: all 50ms linear;
           }
           button:not([disabled]):hover {
             background-color: transparent;
@@ -100,79 +100,73 @@ export class CalendarSelect extends LitElement {
     ]
 
     static properties = {
-        start_timestamp: { type: String },
-        end_timestamp: { type: String },
-        selected_times: { type: Array },
-        month_to_show: { attribute: false },
+        startDate: { type: String },
+        endDate: { type: String },
+        selectedDays: { type: Array },
+        monthToShow: { attribute: false },
     }
 
     constructor() {
         super();
-        this.month_to_show = null;
-        this.start_timestamp = ''
-        this.end_timestamp = ''
-        this.selected_times = []
+        this.monthToShow = null;
+        this.startDate = ''
+        this.endDate = ''
+        this.selectedDays = []
     }
 
-    next_view(month){
-        this.month_to_show = month
-        this.shadowRoot.querySelectorAll('.selected-time').forEach(e=>e.classList.remove('selected-time'))
+    nextView(month){
+        this.monthToShow = month
+        this.shadowRoot.querySelectorAll('.selected-time').forEach(element => element.classList.remove('selected-time'))
     }
 
-    day_selected(event, day){
-        this.dispatchEvent(new CustomEvent('day-selected', {detail: day}));
-        this.shadowRoot.querySelectorAll('.selected-time').forEach(element=>element.classList.remove('selected-time'))
-
+    daySelected(event, day){
+        this.dispatchEvent(new CustomEvent('day-selected', { detail: day }));
+        this.shadowRoot.querySelectorAll('.selected-time').forEach(element => element.classList.remove('selected-time'))
         event.target.classList.add('selected-time');
     }
 
-    get_days_of_the_week_initials(localeName = 'en-US', weekday = 'long') {
+    getDaysOfTheWeekInitials(localeName = 'en-US', weekday = 'long') {
         const now = new Date()
-        const day_in_milliseconds = 86400000
+        const dayInMilliseconds = 86400000
         const format = new Intl.DateTimeFormat(localeName, { weekday }).format
         return [...Array(7).keys()]
-            .map((day) => format(new Date().getTime() - ( now.getDay() - day  ) * day_in_milliseconds  ))
+            .map((day) => format(new Date().getTime() - ( now.getDay() - day  ) * dayInMilliseconds  ))
     }
 
-    build_calendar_days(localeName = 'en-US', month_date){
-        const now = new Date().getTime()/1000
-        const month_start = month_date.startOf('month').startOf('day');
-        let month_days = []
+    buildCalendarDays(localeName = 'en-US', monthDate){
+        const monthStart = monthDate.startOf('month').startOf('day');
+        const monthDays = []
         const format = new Intl.DateTimeFormat(localeName, { day: 'numeric' }).format
-        for ( let i = 0; i < month_date.daysInMonth; i++ ){
-            let day_date = month_start.plus({days:i})
-            let next_day = day_date.plus({days:1}).toSeconds()
-            const disabled = next_day < now || (this.end_timestamp && day_date.toSeconds() > this.end_timestamp ) || next_day <= this.start_timestamp;
+        for ( let i = 0; i < monthDate.daysInMonth; i++ ){
+            const dayDate = monthStart.plus({ days: i })
+            const nextDay = dayDate.plus({ days: 1 })
+            const disabled = nextDay < DateTime.now()
+                || (this.endDate && dayDate > DateTime.fromISO(this.endDate))
+                || nextDay <= DateTime.fromISO(this.startDate)
             const day = {
-                key:day_date.toSeconds(),
-                day:i+1,
-                formatted: format(day_date.toMillis()),
+                key: dayDate.toISODate(),
+                formatted: format(dayDate.toMillis()),
                 disabled,
             }
-            month_days.push(day)
+            monthDays.push(day)
         }
-        return month_days
+        return monthDays
     }
-    escapeHTML(str) {
-        if (typeof str === "undefined") return '';
-        if (typeof str !== "string") return str;
-        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
-    }
+
     render() {
-        let selected_times = this.selected_times.map(t=>t.day_key);
+        const selectedTimes = this.selectedDays.map(day => day.day_key);
 
-        let week_day_names = this.get_days_of_the_week_initials(navigator.language, 'narrow')
+        const weekDayNames = this.getDaysOfTheWeekInitials(navigator.language, 'narrow')
 
-        let now_date = DateTime.now({locale: navigator.language})
-        let now = now_date.toSeconds();
-        let month_date = DateTime.fromSeconds(this.month_to_show || Math.max(now, this.start_timestamp), { locale: navigator.language })
-        let month_start = month_date.startOf('month')
+        const now = DateTime.now({ locale: navigator.language })
+        const monthDate = this.monthToShow || DateTime.max(now, DateTime.fromISO(this.startDate))
+        const monthStart = monthDate.startOf('month')
 
-        let month_days =  this.build_calendar_days(navigator.language, month_date)
+        const month_days =  this.buildCalendarDays(navigator.language, monthDate)
 
-        let first_day_is_weekday = month_start.weekday
-        let previous_month = month_date.minus({ months: 1 }).toSeconds()
-        let next_month = month_start.plus({ months: 1 }).toSeconds()
+        const dayOfWeekNumber = monthStart.weekday
+        const previousMonth = monthDate.minus({ months: 1 })
+        const nextMonth = monthStart.plus({ months: 1 })
 
         return html`
 
@@ -180,45 +174,45 @@ export class CalendarSelect extends LitElement {
                 <div class="calendar">
                     <button
                         class="month-next"
-                        ?disabled="${month_start.toSeconds() < now}"
-                        @click="${e=>this.next_view(previous_month)}"
+                        ?disabled=${monthStart < now}
+                        @click=${() => this.nextView(previousMonth)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
                             <path d="M15 6L8 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
                     <h3 class="month-title center">
-                        ${month_date.toFormat('LLLL y')}
+                        ${monthDate.toFormat('LLLL y')}
                     </h3>
                     <button
                         class="month-next"
-                        ?disabled="${next_month > this.end_timestamp}"
-                        @click="${e=>this.next_view(next_month)}"
+                        ?disabled=${nextMonth > DateTime.fromISO(this.endDate)}
+                        @click=${() => this.nextView(nextMonth)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
                             <path d="M10 6L17 12L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
                     ${
-                        week_day_names.map( name => html`
+                        weekDayNames.map( name => html`
                             <div class="cell week-day">
                                 ${name}
                             </div>
                         `
                     )}
                     ${
-                        map( range( first_day_is_weekday%7 ), i => html`
+                        map( range( dayOfWeekNumber%7 ), i => html`
                             <div class="cell"></div>
                         `
                     )}
                     ${
                         month_days.map(day => html`
                             <div
-                                class="cell day ${day.disabled ? 'disabled':''} ${selected_times.includes(day.key) ? 'selected-day':''}"
-                                data-day=${this.escapeHTML(day.key)}
-                                @click=${event => !day.disabled && this.day_selected(event, day.key)}
+                                class="cell day ${day.disabled ? 'disabled':''} ${selectedTimes.includes(day.key) ? 'selected-day':''}"
+                                data-day=${day.key}
+                                @click=${event => !day.disabled && this.daySelected(event, day.key)}
                             >
-                                ${this.escapeHTML(day.formatted)}
+                                ${day.formatted}
                             </div>
                         `
                     )}
