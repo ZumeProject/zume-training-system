@@ -233,6 +233,22 @@ export class MakeTraining extends LitElement {
     }
 
     render() {
+        const howManySessions = Number( this.stateManager.get(Steps.howManySessions) )
+        let progressText = ''
+        let progressColor = ''
+        if (this.selectedDays.length < howManySessions) {
+            progressText = this.t.x_of_total_selected.replace('%1$s', this.selectedDays.length).replace('%2$s', howManySessions)
+            progressColor = 'var(--z-brand-light)'
+        }
+        if ( this.selectedDays.length === howManySessions ) {
+            progressText = this.t.all_selected
+            progressColor = 'var(--z-success)'
+        }
+        if ( this.selectedDays.length > howManySessions ) {
+            progressText = this.t.too_many_selected.replace('%1$s', this.selectedDays.length - howManySessions)
+            progressColor = 'var(--z-error-main)'
+        }
+
         return html`
             <div class="stack-1">
                 ${this.variant === Steps.planDecision ? html`
@@ -297,8 +313,15 @@ export class MakeTraining extends LitElement {
                 ` : ''}
                 ${this.variant === Steps.review ? html`
                     <div class="stack">
-                        <span class="zume-overview brand-light f-7"></span>
-                        <h2>${this.t.review_training}</h2>
+                        <h2><span class="zume-overview brand-light"></span> ${this.t.review_training}</h2>
+                        <div class="make-training-wizard__progress-overview">
+                            <span>${progressText}</span>
+                            <progress-slider
+                                class="grow-1 mt--3"
+                                percentage=${this.selectedDays.length / howManySessions * 100}
+                                style="--primary-color: ${progressColor}"
+                            ></progress-slider>
+                        </div>
                         <calendar-select
                             style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
                             startDate=${this.calendarStart}
@@ -307,7 +330,7 @@ export class MakeTraining extends LitElement {
                             view=${this.calendarView}
                             @day-selected=${this.selectDate}
                         ></calendar-select>
-                        <button class="btn light fit-content mx-auto" @click=${this._handleCreate}>${this.t.create}</button>
+                        <button class="btn light tight fixed bottom right m-0" @click=${this._handleCreate}>${this.t.create}</button>
                     </div>
                 ` : ''}
                 ${this.variant !== Steps.planDecision ? html`
