@@ -330,7 +330,7 @@ export class MakeTraining extends LitElement {
                             view=${this.calendarView}
                             @day-selected=${this.selectDate}
                         ></calendar-select>
-                        <button class="btn light tight fixed bottom right m-0" @click=${this._handleCreate}>${this.t.create}</button>
+                        <button class="btn tight fixed bottom right m-0" @click=${this._handleCreate}>${this.t.create}</button>
                     </div>
                 ` : ''}
                 ${this.variant !== Steps.planDecision ? html`

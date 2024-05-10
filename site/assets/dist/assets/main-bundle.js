@@ -229,7 +229,7 @@ var Qn=Object.defineProperty;var Kn=(i,e,t)=>e in i?Qn(i,e,{enumerable:!0,config
                             view=${this.calendarView}
                             @day-selected=${this.selectDate}
                         ></calendar-select>
-                        <button class="btn light tight fixed bottom right m-0" @click=${this._handleCreate}>${this.t.create}</button>
+                        <button class="btn tight fixed bottom right m-0" @click=${this._handleCreate}>${this.t.create}</button>
                     </div>
                 `:""}
                 ${this.variant!==h.planDecision?c`
