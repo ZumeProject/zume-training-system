@@ -71,7 +71,7 @@ export class MakeTraining extends LitElement {
                 this._buildSelectedDays()
             }
             /* DEV only */
-            if (this.variant !== Steps.review) {
+            if (false && this.variant !== Steps.review) {
                 this.variant = Steps.review
                 this.stateManager.add(Steps.howManySessions, '10')
                 this.stateManager.add(Steps.howOften, 'weekly')
@@ -184,7 +184,7 @@ export class MakeTraining extends LitElement {
         const sortedDays = days.sort()
         sortedDays.forEach((day, i) => {
             const numberString = i < 10 ? `0${i}` : `${i}`
-            trainingSchedule[prefix + numberString] = DateTime(day).toSeconds()
+            trainingSchedule[prefix + numberString] = DateTime.fromISO(day).toSeconds()
         });
 
         this.trainingSchedule = trainingSchedule
@@ -241,11 +241,11 @@ export class MakeTraining extends LitElement {
             progressColor = 'var(--z-brand-light)'
         }
         if ( this.selectedDays.length === howManySessions ) {
-            progressText = this.t.all_selected
+            progressText = this.t.all_selected.replace('%s', howManySessions)
             progressColor = 'var(--z-success)'
         }
         if ( this.selectedDays.length > howManySessions ) {
-            progressText = this.t.too_many_selected.replace('%1$s', this.selectedDays.length - howManySessions)
+            progressText = this.t.too_many_selected.replace('%s', this.selectedDays.length - howManySessions)
             progressColor = 'var(--z-error-main)'
         }
 
