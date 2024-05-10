@@ -15,7 +15,7 @@ export class CalendarSelect extends LitElement {
             --cp-color: var(--primary-color, #489bfa);
             --cp-color-darker: var(--primary-darker, #387cc9);
             --cp-hover-color: var(--hover-color, #4676fa1a);
-            --cp-grid-min-size: var(--grid-min-size, 180px);
+            --cp-grid-min-size: var(--grid-min-size, 190px);
 
             display: grid;
             grid-gap: 1rem;
@@ -115,6 +115,28 @@ export class CalendarSelect extends LitElement {
             opacity: 0.25;
             cursor: default;
           }
+          .add-month-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            fill: var(--cp-color);
+            background-color: var(--cp-hover-color);
+            margin-inline: 10%;
+            margin-block: auto;
+            aspect-ratio: 3 / 4;
+            border-radius: 10%;
+            transition: all 50ms linear;
+            cursor: pointer;
+          }
+          .add-month-button:hover svg,
+          .add-month-button:active svg,
+          .add-month-button:focus svg {
+            transform: scale(1.2);
+          }
+          .add-month-button svg {
+            transition: transform 100ms linear;
+            width: 30%;
+          }
         `,
     ]
 
@@ -176,6 +198,11 @@ export class CalendarSelect extends LitElement {
         return monthDays
     }
 
+    addMonth() {
+        const newEndDate = DateTime.fromISO(this.endDate).plus({months: 1}).endOf('month').toISODate()
+        this.endDate = newEndDate
+    }
+
     renderCalendar(monthDate) {
         const weekDayNames = this.getDaysOfTheWeekInitials(navigator.language, 'narrow')
         const dayOfWeekNumber = monthDate.startOf('month').weekday
@@ -220,35 +247,27 @@ export class CalendarSelect extends LitElement {
 
             <div class="calendar-wrapper">
                 <div class="calendar">
-                    ${
-                        this.view === 'slider' ? html`
-                            <button
-                                class="month-next"
-                                ?disabled=${monthStart < now}
-                                @click=${() => this.nextView(previousMonth)}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                                    <path d="M15 6L8 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
-                        ` : ''
-                    }
+                    <button
+                        class="month-next"
+                        ?disabled=${monthStart < now}
+                        @click=${() => this.nextView(previousMonth)}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 6L8 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
                     <h3 class="month-title">
                         ${monthDate.toFormat('LLLL y')}
                     </h3>
-                    ${
-                        this.view === 'slider' ? html`
-                            <button
-                                class="month-next"
-                                ?disabled=${nextMonth > DateTime.fromISO(this.endDate)}
-                                @click=${() => this.nextView(nextMonth)}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                                    <path d="M10 6L17 12L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
-                        ` : ''
-                    }
+                    <button
+                        class="month-next"
+                        ?disabled=${nextMonth > DateTime.fromISO(this.endDate)}
+                        @click=${() => this.nextView(nextMonth)}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M10 6L17 12L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
                     ${this.renderCalendar(monthDate)}
                 </div>
             </div>
@@ -286,6 +305,15 @@ export class CalendarSelect extends LitElement {
                                 </div>
                             `
                         })
+                    }
+                    ${
+                        this.view !== 'slider' ? html`
+                            <div class="add-month-button" role="button" @click=${this.addMonth}>
+                                <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" color="currentColor" width="40" height="40" viewBox="0 0 40 40">
+                                    <path d="M32.104,18.262h-10.365V7.896c0-.96-.777-1.738-1.738-1.738s-1.738.778-1.738,1.738v10.366H7.896c-.961,0-1.738.778-1.738,1.738s.777,1.738,1.738,1.738h10.367v10.367c0,.96.777,1.738,1.738,1.738s1.738-.778,1.738-1.738v-10.367h10.365c.961,0,1.738-.778,1.738-1.738s-.777-1.738-1.738-1.738Z" stroke-width="0"/>
+                                </svg>
+                            </div>
+                        ` : ''
                     }
                 </div>
             `

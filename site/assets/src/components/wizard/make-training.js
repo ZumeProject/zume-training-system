@@ -73,9 +73,9 @@ export class MakeTraining extends LitElement {
             /* DEV only */
             if (this.variant !== Steps.review) {
                 this.variant = Steps.review
-                this.stateManager.add(Steps.howManySessions, '20')
-                this.stateManager.add(Steps.howOften, 'biweekly')
-                //this.stateManager.add(Steps.startDate, { date: '2024-07-12' })
+                this.stateManager.add(Steps.howManySessions, '10')
+                this.stateManager.add(Steps.howOften, 'weekly')
+                this.stateManager.add(Steps.startDate, { date: '2024-07-12' })
                 this._buildSelectedDays()
             }
         }
