@@ -279,11 +279,17 @@ export class Wizard extends LitElement {
     }
 
     footer() {
-        /* This may have a back button in it later, but for now kill the finishbutton */
-        return
-        const isLastStep = this.stepIndex === this.steps.length - 1
+        if (this.noUrlChange && this.stepIndex > 0) {
+            return html`
+                <button
+                    @click=${this._onBack}
+                    class="btn tight light outline fit-content"
+                >
+                    ${this.t.back}
+                </button>
+            `
 
-        return isLastStep ? this.finishButton() : ''
+        }
     }
 
     _onBack() {
