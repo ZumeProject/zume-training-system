@@ -267,7 +267,7 @@ export class MakeTraining extends LitElement {
         }
 
         return html`
-            <div class="stack-1">
+            <div class="stack-1 position-relative">
                 ${this.variant === Steps.planDecision ? html`
                     <div class="stack">
                         <span class="zume-start-group brand-light f-7"></span>
@@ -347,8 +347,18 @@ export class MakeTraining extends LitElement {
                             view=${this.calendarView}
                             @day-selected=${this.selectDate}
                         ></calendar-select>
-                        <button class="btn outline small tight fit-content" @click=${this._clearCalendar}>${this.t.clear_calendar}</button>
-                        <button class="btn tight fixed bottom right m-0" @click=${this._handleCreate}>${this.t.create}</button>
+                        <button
+                            class="btn outline small tight fit-content"
+                            @click=${this._clearCalendar}
+                        >
+                            ${this.t.clear_calendar}
+                        </button>
+                        <button
+                            class="btn tight light sticky bottom ms-auto"
+                            @click=${this._handleCreate}
+                        >
+                            ${this.t.create}
+                        </button>
                     </div>
                 ` : ''}
                 ${this.variant !== Steps.planDecision ? html`
