@@ -242,6 +242,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'time' => __( 'Time', 'zume' ),
                 'date' => __( 'Date', 'zume' ),
                 'summary' => __( 'Summary', 'zume' ),
+                'clear_calendar' => __( 'Clear Calendar', 'zume' ),
                 'change' => __( 'Change', 'zume' ),
                 'next' => __( 'Next', 'zume' ),
             ],

@@ -245,6 +245,10 @@ export class MakeTraining extends LitElement {
         }
     }
 
+    _clearCalendar() {
+        this.selectedDays = []
+    }
+
     render() {
         const howManySessions = Number( this.stateManager.get(Steps.howManySessions) )
         let progressText = ''
@@ -343,6 +347,7 @@ export class MakeTraining extends LitElement {
                             view=${this.calendarView}
                             @day-selected=${this.selectDate}
                         ></calendar-select>
+                        <button class="btn outline small tight fit-content" @click=${this._clearCalendar}>${this.t.clear_calendar}</button>
                         <button class="btn tight fixed bottom right m-0" @click=${this._handleCreate}>${this.t.create}</button>
                     </div>
                 ` : ''}
