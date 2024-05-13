@@ -236,7 +236,7 @@ var Kn=Object.defineProperty;var Qn=(i,e,t)=>e in i?Kn(i,e,{enumerable:!0,config
                             ${this.t.clear_calendar}
                         </button>
                         <button
-                            class="btn tight light sticky bottom ms-auto"
+                            class="btn tight light sticky bottom-0 ms-auto"
                             @click=${this._handleCreate}
                         >
                             ${this.t.create}
