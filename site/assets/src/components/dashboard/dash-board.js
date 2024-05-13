@@ -660,29 +660,51 @@ export class DashBoard extends navigator(router(LitElement)) {
                 </button>
                 <div class="container-xsm">
                     <h1>Resources</h1>
-                    <p>All the resources</p>
-                    <ul role="list">
-                        <li>in a</li>
-                        <li>great big</li>
-                        <li>list</li>
-                    </ul>
+                    <p><a href="/resources">Go Here</a></p>
                 </div>
             </div>
             <div class="reveal full" id="community-modal" data-reveal>
                 <button class="ms-auto close-btn" data-close aria-label=${jsObject.translations.close} type="button" @click=${this.closeCommunityModal}>
                     <span class="icon zume-close"></span>
                 </button>
-                <div class="container-xsm">
-                    <h1>Practitioner Community</h1>
+                <div class="container">
                     ${
                         this.hasJoinedCommunity() ? html`
                             <p>Here is all the community stuff we promised you :)</p>
                         `
                         : html`
-                            <p>There are lot's of good reasons to join the community here</p>
-                            <button class="btn" @click=${this.joinCommunity}>
-                                Join
-                            </button>
+                            <div class="container-md stack-2 center | py-2">
+                              <h1 class="text-center">${jsObject.translations.community_title}</h1>
+                              <p>${jsObject.translations.community_description}</p>
+                              <div class="switcher | training-path">
+                                <div class="stack | card | switcher-width-40">
+                                  <h2 class="f-1 text-center">${jsObject.translations.community_peer_title}</h2>
+                                  <img class="mx-auto h-6rem" src="/wp-content/plugins/zume-training-system/site/assets/images/Gather-A-Group-01.svg" alt="Peer Mentoring">
+                                  <p class="mb-0">
+                                    ${jsObject.translations.community_peer_description}
+                                  </p>
+                                </div>
+                                <div class="stack | card | switcher-width-40">
+                                  <h2 class="f-1 text-center">${jsObject.translations.community_encouragement_title}</h2>
+                                  <img class="mx-auto h-6rem" src="/wp-content/plugins/zume-training-system/site/assets/images/coach-2guys.svg" alt="Free Tools">
+                                  <p class="mb-0">
+                                    ${jsObject.translations.community_encouragement_description}
+                                  </p>
+                                </div>
+                                <div class="stack | card | switcher-width-40">
+                                  <h2 class="f-1 text-center">${jsObject.translations.community_tools_title}</h2>
+                                  <img class="mx-auto h-6rem" src="/wp-content/plugins/zume-training-system/site/assets/images/JoinTraining.svg" alt="Encouragement">
+                                  <p class="mb-0">
+                                    ${jsObject.translations.community_tools_description}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="container-md center">
+                              <button class="btn large" style="text-transform:uppercase;" @click=${this.joinCommunity}>
+                                ${jsObject.translations.community_join_free}
+                              </button>
+                            </div>
                         `
                     }
                 </div>
