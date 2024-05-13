@@ -88,7 +88,7 @@ class Zume_Training_Home extends Zume_Magic_Page
         <?php require __DIR__ . '/../parts/nav.php'; ?>
         <div class="cover-page | hero min-vh-90 position-relative">
 
-            <div class="switcher container | align-items-center gap0">
+            <div class="switcher container | align-items-center gap0 pt-4">
                 <div class="show-for-large position-relative">
                     <div class="bg-path | absolute">
                         <img class="flip-on-rtl" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Blue-Path-01.svg' ) ?>" alt="path">
