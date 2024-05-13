@@ -29,6 +29,7 @@ const makeAPlanSteps = {
     startDate: 'what-start-date',
     location: 'what-location',
     review: 'review-steps',
+    name: 'group-name',
 }
 export const Steps = {
     updateName: 'update-your-name',

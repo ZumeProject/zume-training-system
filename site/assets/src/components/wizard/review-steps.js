@@ -5,6 +5,7 @@ export class ReviewSteps extends LitElement {
     static get properties() {
         return {
             t: { type: Object },
+            name: { type: String },
             howOften: { type: String },
             howManySessions: { type: String },
             whatLocation: { type: String },
@@ -19,6 +20,7 @@ export class ReviewSteps extends LitElement {
     constructor() {
         super()
         this.t = {}
+        this.name = ''
         this.howOften = ''
         this.howManySessions = ''
         this.whatLocation = ''
@@ -66,6 +68,22 @@ export class ReviewSteps extends LitElement {
             <div class="stack mw-50ch mx-auto text-start mt-2">
                 <hr />
                 <h5 class="gray-700 text-left f-medium mt-2">${this.t.summary}</h5>
+                ${this.name !== '' ? html`
+                    <div class="stack--1">
+                        <div class="switcher switcher-width-20 justify-content-between gap--3">
+                            <span>${this.name}</span>
+                            <span class="d-flex justify-flex-end grow-0">
+                                <button
+                                    class="btn small no-outline light tight"
+                                    data-step=${Steps.name}
+                                    @click=${this.handleChange}
+                                >
+                                    ${this.t.change}
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                ` : ''}
                 ${this.howManySessions !== '' ? html`
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">

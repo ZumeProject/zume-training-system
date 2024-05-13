@@ -22,6 +22,7 @@ export const wizardDefinitions = {
     },
     [Wizards.makeAGroup]: {
         [Modules.makePlan]: makeModule([
+            Steps.name,
             Steps.howManySessions,
             Steps.howOften,
             Steps.startDate,

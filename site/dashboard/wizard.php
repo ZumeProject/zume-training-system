@@ -229,6 +229,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'biweekly' => __( 'Twice a month', 'zume' ),
                 'monthly' => __( 'Once a month', 'zume' ),
                 'other' => __( 'Other', 'zume' ),
+                'question_what_is_the_groups_name' => __( 'What is the name of the training group?', 'zume' ),
                 'question_when_will_you_start' => __( 'When do you plan to start?', 'zume' ),
                 'question_where_will_you_meet' => __( 'Where do you plan to meet?', 'zume' ),
                 'question_where_will_you_meet_help_text' => __( 'This could be online or in person', 'zume' ),

@@ -215,6 +215,7 @@ export class Wizard extends LitElement {
             case Steps.howOften:
             case Steps.startDate:
             case Steps.location:
+            case Steps.name:
             case Steps.review:
                 tag = literal`make-training`
                 translations = this.t.make_training

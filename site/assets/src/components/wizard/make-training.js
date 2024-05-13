@@ -276,6 +276,16 @@ export class MakeTraining extends LitElement {
 
         return html`
             <div class="stack-1 position-relative">
+                ${this.variant === Steps.name ? html`
+                    <div class="stack">
+                        <span class="zume-start-date brand-light f-7"></span>
+                        <h2>${this.t.question_what_is_the_groups_name}</h2>
+                        <input type="text" name="name" @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
+                        <div class="stack" data-fit-content>
+                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
+                        </div>
+                    </div>
+                ` : ''}
                 ${this.variant === Steps.planDecision ? html`
                     <div class="stack">
                         <span class="zume-start-group brand-light f-7"></span>
@@ -378,6 +388,7 @@ export class MakeTraining extends LitElement {
                 ${this.variant !== Steps.planDecision ? html`
                     <review-steps
                         .t=${this.t}
+                        name=${this.stateManager.get(Steps.name)}
                         howManySessions=${this.stateManager.get(Steps.howManySessions)}
                         howOften=${this.stateManager.get(Steps.howOften)}
                         time=${this.stateManager.get(Steps.startDate)?.time}
