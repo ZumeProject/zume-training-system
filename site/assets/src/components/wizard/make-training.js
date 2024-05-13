@@ -353,6 +353,7 @@ export class MakeTraining extends LitElement {
                             endDate=${this.calendarEnd}
                             .selectedDays=${this.selectedDays}
                             view=${this.calendarView}
+                            showToday
                             @day-selected=${this.selectDate}
                         ></calendar-select>
                         <div class="sticky bottom-0 stack">

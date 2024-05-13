@@ -69,6 +69,9 @@ export class CalendarSelect extends LitElement {
             color: white;
             background-color: var(--cp-color);
           }
+          .today {
+            border-color: black;
+          }
           .day.cell.selected-day:hover {
             color: white;
             background-color: var(--cp-color-darker);
@@ -146,6 +149,7 @@ export class CalendarSelect extends LitElement {
             endDate: { type: String },
             selectedDays: { type: Array },
             view: { type: String },
+            showToday: { type: Boolean },
             monthToShow: { attribute: false },
         }
     }
@@ -156,6 +160,8 @@ export class CalendarSelect extends LitElement {
         this.startDate = ''
         this.endDate = ''
         this.selectedDays = []
+        this.showToday = false
+        this.today = DateTime.now().toISODate()
         this.view = 'slider'
     }
 
@@ -222,7 +228,7 @@ export class CalendarSelect extends LitElement {
             ${
                 monthDays.map(day => html`
                     <div
-                        class="cell day ${day.disabled ? 'disabled':''} ${this.selectedDays.includes(day.key) ? 'selected-day':''}"
+                        class="cell day ${day.disabled ? 'disabled':''} ${this.selectedDays.includes(day.key) ? 'selected-day'  : ''} ${this.showToday && day.key === this.today ? 'today' : ''}"
                         data-day=${day.key}
                         @click=${event => !day.disabled && this.daySelected(event, day.key)}
                     >

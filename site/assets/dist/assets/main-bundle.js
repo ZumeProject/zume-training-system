@@ -227,6 +227,7 @@ var Kn=Object.defineProperty;var Qn=(i,e,t)=>e in i?Kn(i,e,{enumerable:!0,config
                             endDate=${this.calendarEnd}
                             .selectedDays=${this.selectedDays}
                             view=${this.calendarView}
+                            showToday
                             @day-selected=${this.selectDate}
                         ></calendar-select>
                         <div class="sticky bottom-0 stack">
@@ -2288,7 +2289,7 @@ var Kn=Object.defineProperty;var Qn=(i,e,t)=>e in i?Kn(i,e,{enumerable:!0,config
  * @license
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */function*bi(i,e){if(i!==void 0){let t=0;for(const s of i)yield e(s,t++)}}class Vn extends w{static get properties(){return{startDate:{type:String},endDate:{type:String},selectedDays:{type:Array},view:{type:String},monthToShow:{attribute:!1}}}constructor(){super(),this.monthToShow=null,this.startDate="",this.endDate="",this.selectedDays=[],this.view="slider"}nextView(e){this.shadowRoot.querySelectorAll(".selected-time").forEach(t=>t.classList.remove("selected-time")),this.monthToShow=e}daySelected(e,t){this.dispatchEvent(new CustomEvent("day-selected",{detail:t})),this.shadowRoot.querySelectorAll(".selected-time").forEach(s=>s.classList.remove("selected-time")),e.target.classList.add("selected-time")}getDaysOfTheWeekInitials(e="en-US",t="long"){const s=new Date,n=864e5,a=new Intl.DateTimeFormat(e,{weekday:t}).format;return[...Array(7).keys()].map(r=>a(new Date().getTime()-(s.getDay()-r)*n))}buildCalendarDays(e="en-US",t){const s=t.startOf("month").startOf("day"),n=[],a=new Intl.DateTimeFormat(e,{day:"numeric"}).format;for(let r=0;r<t.daysInMonth;r++){const o=s.plus({days:r}),l=o.plus({days:1}),d=this.endDate&&o>v.fromISO(this.endDate)||l<=v.fromISO(this.startDate),u={key:o.toISODate(),formatted:a(o.toMillis()),disabled:d};n.push(u)}return n}addMonth(){const e=v.fromISO(this.endDate).plus({months:1}).endOf("month").toISODate();this.endDate=e}renderCalendar(e){const t=this.getDaysOfTheWeekInitials(navigator.language,"narrow"),s=e.startOf("month").weekday,n=this.buildCalendarDays(navigator.language,e);return c`
+ */function*bi(i,e){if(i!==void 0){let t=0;for(const s of i)yield e(s,t++)}}class Vn extends w{static get properties(){return{startDate:{type:String},endDate:{type:String},selectedDays:{type:Array},view:{type:String},showToday:{type:Boolean},monthToShow:{attribute:!1}}}constructor(){super(),this.monthToShow=null,this.startDate="",this.endDate="",this.selectedDays=[],this.showToday=!1,this.today=v.now().toISODate(),this.view="slider"}nextView(e){this.shadowRoot.querySelectorAll(".selected-time").forEach(t=>t.classList.remove("selected-time")),this.monthToShow=e}daySelected(e,t){this.dispatchEvent(new CustomEvent("day-selected",{detail:t})),this.shadowRoot.querySelectorAll(".selected-time").forEach(s=>s.classList.remove("selected-time")),e.target.classList.add("selected-time")}getDaysOfTheWeekInitials(e="en-US",t="long"){const s=new Date,n=864e5,a=new Intl.DateTimeFormat(e,{weekday:t}).format;return[...Array(7).keys()].map(r=>a(new Date().getTime()-(s.getDay()-r)*n))}buildCalendarDays(e="en-US",t){const s=t.startOf("month").startOf("day"),n=[],a=new Intl.DateTimeFormat(e,{day:"numeric"}).format;for(let r=0;r<t.daysInMonth;r++){const o=s.plus({days:r}),l=o.plus({days:1}),d=this.endDate&&o>v.fromISO(this.endDate)||l<=v.fromISO(this.startDate),u={key:o.toISODate(),formatted:a(o.toMillis()),disabled:d};n.push(u)}return n}addMonth(){const e=v.fromISO(this.endDate).plus({months:1}).endOf("month").toISODate();this.endDate=e}renderCalendar(e){const t=this.getDaysOfTheWeekInitials(navigator.language,"narrow"),s=e.startOf("month").weekday,n=this.buildCalendarDays(navigator.language,e);return c`
             ${t.map(a=>c`
                     <div class="cell week-day">
                         ${a}
@@ -2299,7 +2300,7 @@ var Kn=Object.defineProperty;var Qn=(i,e,t)=>e in i?Kn(i,e,{enumerable:!0,config
                 `)}
             ${n.map(a=>c`
                     <div
-                        class="cell day ${a.disabled?"disabled":""} ${this.selectedDays.includes(a.key)?"selected-day":""}"
+                        class="cell day ${a.disabled?"disabled":""} ${this.selectedDays.includes(a.key)?"selected-day":""} ${this.showToday&&a.key===this.today?"today":""}"
                         data-day=${a.key}
                         @click=${r=>!a.disabled&&this.daySelected(r,a.key)}
                     >
@@ -2415,6 +2416,9 @@ var Kn=Object.defineProperty;var Qn=(i,e,t)=>e in i?Kn(i,e,{enumerable:!0,config
           .selected-day {
             color: white;
             background-color: var(--cp-color);
+          }
+          .today {
+            border-color: black;
           }
           .day.cell.selected-day:hover {
             color: white;
