@@ -79,8 +79,8 @@ export class Wizard extends LitElement {
     }
 
     willUpdate(properties) {
-        if (properties.has('type') && this.type === '' && this.wizard) {
-            this.wizard.reset()
+        if (properties.has('type') && this.type === '') {
+            this.resetWizard()
         }
         if (properties.has('type') && this.type !== '') {
             this.loadWizard()
@@ -91,6 +91,15 @@ export class Wizard extends LitElement {
         this.wizard = new WizardModuleManager( this.user )
         this.steps = this.wizard.getSteps(this.type)
         this._gotoStep(0)
+    }
+
+    resetWizard() {
+        if (this.wizard) {
+            this.wizard.reset()
+        }
+        this.steps = []
+        this.step = {}
+        this.stepIndex = 0
     }
 
     render() {
@@ -311,7 +320,7 @@ export class Wizard extends LitElement {
     }
     _onFinish(quit = false) {
         this.stateManager.clear()
-        this.wizard.reset()
+        this.resetWizard()
 
         if ( !this.finishUrl ) {
             this.dispatchEvent(new CustomEvent(
