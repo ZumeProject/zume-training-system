@@ -185,8 +185,7 @@ export class CalendarSelect extends LitElement {
         for ( let i = 0; i < monthDate.daysInMonth; i++ ){
             const dayDate = monthStart.plus({ days: i })
             const nextDay = dayDate.plus({ days: 1 })
-            const disabled = nextDay < DateTime.now()
-                || (this.endDate && dayDate > DateTime.fromISO(this.endDate))
+            const disabled = (this.endDate && dayDate > DateTime.fromISO(this.endDate))
                 || nextDay <= DateTime.fromISO(this.startDate)
             const day = {
                 key: dayDate.toISODate(),
@@ -276,7 +275,7 @@ export class CalendarSelect extends LitElement {
 
     render() {
         if (this.view === 'all') {
-            const monthDate = DateTime.max( DateTime.now(), DateTime.fromISO(this.startDate) )
+            const monthDate = DateTime.fromISO(this.startDate)
             const monthStart = monthDate.startOf('month')
 
             let i = 0

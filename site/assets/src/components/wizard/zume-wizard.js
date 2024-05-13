@@ -50,7 +50,7 @@ export class Wizard extends LitElement {
         this.t = window.SHAREDFUNCTIONS.escapeObject(jsObject.translations)
 
         this._handleHistoryPopState = this._handleHistoryPopState.bind(this)
-        this._handlePlanDecision = this._handlePlanDecision.bind(this)
+        this._handleLoadWizard = this._handleLoadWizard.bind(this)
         this._handleGotoStep = this._handleGotoStep.bind(this)
 
         this.stateManager = new WizardStateManager()
@@ -58,14 +58,14 @@ export class Wizard extends LitElement {
     connectedCallback() {
         super.connectedCallback()
         window.addEventListener('popstate', this._handleHistoryPopState)
-        window.addEventListener('plan-decision', this._handlePlanDecision)
+        window.addEventListener('wizard:load', this._handleLoadWizard)
         window.addEventListener('wizard:goto-step', this._handleGotoStep)
     }
 
     disconnectedCallback() {
         super.disconnectedCallback()
         window.removeEventListener('popstate', this._handleHistoryPopState)
-        window.removeEventListener('plan-decision', this._handlePlanDecision)
+        window.removeEventListener('wizard:load', this._handleLoadWizard)
         window.removeEventListener('wizard:goto-step', this._handleGotoStep)
     }
 
@@ -230,32 +230,18 @@ export class Wizard extends LitElement {
     }
 
     headerButtons() {
-        const { skippable } = this.step
-        const isLastStep = this.stepIndex === this.steps.length - 1
 
         return html`
-        <div class="cluster | inline s-3">
-            ${( skippable && !isLastStep )
-                ? html`
-                    <button
-                        class="close-btn"
-                        aria-label=${jsObject.translations.close}
-                        type="button"
-                        @click=${this._onQuit}
-                    >
-                        <span class="icon zume-close"></span>
-                    </button>`
-                : ''
-            }
-            ${( !skippable && !isLastStep && !this.noUrlChange )
-                ? html`
-                    <button @click=${this._onQuit} class="close-btn tight light">
-                        <span class="icon zume-close"></span>
-                    </button>
-                    `
-                : ''
-            }
-        </div>
+            <div class="cluster | inline s-3">
+                <button
+                    class="close-btn"
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                    @click=${this._onQuit}
+                >
+                    <span class="icon zume-close"></span>
+                </button>
+            </div>
         `
     }
 
@@ -435,22 +421,14 @@ export class Wizard extends LitElement {
         this._gotoStep(index)
     }
 
-    _handlePlanDecision(event) {
-        const { decision } = event.detail
+    _handleLoadWizard(event) {
+        const { wizard } = event.detail
 
-        switch (decision) {
-            case 'make':
-                this.steps = this.wizard.getSteps( Wizards.makeAGroup )
-                this._gotoStep(0)
-                break;
-            case 'join':
-                this.steps = this.wizard.getSteps( Wizards.joinATraining )
-                this._gotoStep(0)
-                break;
-            case 'skip':
-            default:
-                this._onSkip()
-                break;
+        if (Object.values(Wizards).includes(wizard)) {
+            this.steps = this.wizard.getSteps( wizard )
+            this._gotoStep(0)
+        } else {
+            this._onSkip()
         }
     }
 

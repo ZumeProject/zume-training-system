@@ -27,8 +27,12 @@ export const wizardDefinitions = {
             Steps.startDate,
             Steps.location,
             Steps.review,
-            Steps.inviteFriends,
         ], true),
+    },
+    [Wizards.inviteFriends]: {
+        [Modules.inviteFriends]: makeModule([
+            Steps.inviteFriends,
+        ], true)
     },
     [Wizards.getACoach]: {
         [Modules.completeProfile]: makeModule([
@@ -41,7 +45,7 @@ export const wizardDefinitions = {
             Steps.languagePreferences,
             Steps.howCanWeServe,
             Steps.connectingToCoach,
-        ]),
+        ], true),
     },
     [Wizards.joinATraining]: {
         [Modules.completeProfile]: makeModule([
@@ -79,7 +83,7 @@ export const wizardDefinitions = {
     [Wizards.checkin]: {
         [Modules.checkin]: makeModule([
             Steps.checkinSubmit,
-        ])
+        ], true)
     },
 }
 

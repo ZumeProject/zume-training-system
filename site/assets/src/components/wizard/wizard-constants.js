@@ -8,6 +8,7 @@ export const Wizards = {
     checkin: 'checkin',
     setProfile: 'set-profile',
     joinCommunity: 'join-the-community',
+    inviteFriends: 'invite'
 }
 export const Modules = {
     completeProfile: 'completeProfile',
@@ -40,7 +41,7 @@ export const Steps = {
     connectingToCoach: 'connecting-to-coach',
     joinTraining: 'join-training',
     connectToFriend: 'connect-friend',
-    joinFriendsPlan: 'join-friends-training',
+    joinFriendsPlan: 'join-training',
     checkinSubmit: 'checkin-submit',
     joinCommunity: 'join-community',
     ...makeAPlanSteps,

@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { Modules, Steps } from './wizard-constants';
+import { Modules, Steps, Wizards } from './wizard-constants';
 import { WizardStateManager } from './wizard-state-manager';
 import { DateTime } from 'luxon';
 
@@ -52,9 +52,9 @@ export class MakeTraining extends LitElement {
         this.stateManager.clear()
         this.trainingSchedule = []
         this.selectedDays = []
-        this.calendarStart = DateTime.now().toISODate()
-        this.calendarEnd = DateTime.now().plus({ month: 11 }).endOf('month').toISODate()
-        this.calendarView = 'slider'
+        this.calendarStart = DateTime.now().startOf('month').toISODate()
+        this.calendarEnd = DateTime.now().plus({ month: 2 }).endOf('month').toISODate()
+        this.calendarView = 'all'
 }
 
     willUpdate(properties) {
@@ -91,7 +91,22 @@ export class MakeTraining extends LitElement {
 
     _handlePlanDecision(event) {
         const decision = event.target.dataset.decision
-        this.dispatchEvent(new CustomEvent('plan-decision', { bubbles: true, detail: { decision } }))
+        let wizard = ''
+        switch (decision) {
+            case 'make':
+                wizard = Wizards.makeAGroup
+                break;
+            case 'join':
+                wizard = Wizards.joinATraining
+                break;
+            default:
+                break;
+        }
+        this._sendLoadWizardEvent(wizard)
+    }
+
+    _sendLoadWizardEvent(wizard) {
+        this.dispatchEvent(new CustomEvent('wizard:load', { bubbles: true, detail: { wizard } }))
     }
 
     _handleDone(event) {
@@ -154,7 +169,7 @@ export class MakeTraining extends LitElement {
                 selectedDays.push(date.plus({weeks: weekInterval * ( i - 1 )}).toISODate())
             }
             this.selectedDays = selectedDays
-            this.calendarStart = DateTime.fromISO(selectedDays[0]).startOf('month').toISODate()
+            this.calendarStart = DateTime.fromISO(date).startOf('month').toISODate()
             this.calendarEnd = DateTime.fromISO(selectedDays[selectedDays.length - 1]).endOf('month').toISODate()
             this.calendarView = 'all'
         }
@@ -202,7 +217,7 @@ export class MakeTraining extends LitElement {
         makeRequest( 'POST', 'plan', postData, 'zume_system/v1' )
             .then((data) => {
                 console.log(data)
-                this._handleDone()
+                this._handleFinish()
             })
             .fail((error) => {
                 console.log(error)
@@ -213,9 +228,7 @@ export class MakeTraining extends LitElement {
     }
 
     _handleFinish() {
-        setTimeout(() => {
-            this._sendDoneStepEvent()
-        }, 3000);
+        this._sendLoadWizardEvent(Wizards.inviteFriends)
     }
 
     selectDate(event) {
