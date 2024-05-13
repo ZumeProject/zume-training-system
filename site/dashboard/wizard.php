@@ -236,6 +236,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'x_of_total_selected' => _x( '%1$s of %2$s selected', '1 of 10 selected', 'zume' ),
                 'all_selected' => _x( 'All %s sessions scheduled', 'All 10 sessions scheduled', 'zume' ),
                 'too_many_selected' => _x( 'Too many selected: %s', 'Too many selected: 2', 'zume' ),
+                'incorrect_number_of_sessions' => __( 'Incorrect number of sessions selected', 'zume' ),
                 'done' => __( 'Done', 'zume' ),
                 'skip' => __( 'Skip', 'zume' ),
                 'create' => __( 'Save', 'zume' ),

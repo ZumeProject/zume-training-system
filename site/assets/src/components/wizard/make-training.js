@@ -206,6 +206,14 @@ export class MakeTraining extends LitElement {
     }
 
     _handleCreate() {
+        const howManySessions = this.stateManager.get(Steps.howManySessions)
+        if (this.selectedDays.length !== Number(howManySessions)) {
+            this.errorMessage = this.t.incorrect_number_of_sessions
+            setTimeout(() => {
+                this.errorMessage = ''
+            }, 3000)
+            return
+        }
         const postData = {
             user_id: jsObject.profile.user_id,
             contact_id: jsObject.profile.contact_id,
@@ -347,18 +355,23 @@ export class MakeTraining extends LitElement {
                             view=${this.calendarView}
                             @day-selected=${this.selectDate}
                         ></calendar-select>
-                        <button
-                            class="btn outline small tight fit-content"
-                            @click=${this._clearCalendar}
-                        >
-                            ${this.t.clear_calendar}
-                        </button>
-                        <button
-                            class="btn tight light sticky bottom-0 ms-auto"
-                            @click=${this._handleCreate}
-                        >
-                            ${this.t.create}
-                        </button>
+                        <div class="sticky bottom-0 stack">
+                            <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
+                            <div class="cluster">
+                                <button
+                                    class="btn outline small tight fit-content"
+                                    @click=${this._clearCalendar}
+                                >
+                                    ${this.t.clear_calendar}
+                                </button>
+                                <button
+                                    class="btn tight light ms-auto"
+                                    @click=${this._handleCreate}
+                                >
+                                    ${this.t.create}
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 ` : ''}
                 ${this.variant !== Steps.planDecision ? html`
