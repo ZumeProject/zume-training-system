@@ -120,11 +120,21 @@ export class MakeTraining extends LitElement {
 
         this._saveState()
 
+        if (this.variant === Steps.howManySessions && this.state === '5') {
+            this._gotoStep(Steps.review)
+            return
+        }
+
         this._sendDoneStepEvent()
     }
 
     _sendDoneStepEvent() {
         const doneStepEvent = new CustomEvent( 'done-step', { bubbles: true } )
+        this.dispatchEvent(doneStepEvent)
+    }
+
+    _gotoStep(step) {
+        const doneStepEvent = new CustomEvent( 'wizard:goto-step', { bubbles: true, detail: { slug: step } } )
         this.dispatchEvent(doneStepEvent)
     }
 
@@ -156,7 +166,7 @@ export class MakeTraining extends LitElement {
         const howOften = this.stateManager.get(Steps.howOften)
         const startDate = this.stateManager.get(Steps.startDate)?.date
 
-        if (this.selectedDay.length > 0) {
+        if (this.selectedDays.length > 0) {
             return
         }
 
