@@ -11,6 +11,7 @@ export class ReviewSteps extends LitElement {
             whatLocation: { type: String },
             date: { type: String },
             time: { type: String },
+            display: { type: Array },
         };
     }
 
@@ -20,12 +21,7 @@ export class ReviewSteps extends LitElement {
     constructor() {
         super()
         this.t = {}
-        this.name = ''
-        this.howOften = ''
-        this.howManySessions = ''
-        this.whatLocation = ''
-        this.date = ''
-        this.time = ''
+        this.display = []
     }
 
     connectedCallback() {
@@ -51,16 +47,12 @@ export class ReviewSteps extends LitElement {
         window.scrollTo(0, 0)
     }
 
-    hasData() {
-        return this.howManySessions
-            || this.howOften
-            || this.date
-            || this.time
-            || this.location
+    shouldDisplay() {
+        return this.display.length > 0
     }
 
     render() {
-        if ( !this.hasData() ) {
+        if ( !this.shouldDisplay() ) {
             return
         }
 
@@ -68,23 +60,28 @@ export class ReviewSteps extends LitElement {
             <div class="stack mw-50ch mx-auto text-start mt-2">
                 <hr />
                 <h5 class="gray-700 text-left f-medium mt-2">${this.t.summary}</h5>
-                ${this.name !== '' ? html`
-                    <div class="stack--1">
-                        <div class="switcher switcher-width-20 justify-content-between gap--3">
-                            <span>${this.name}</span>
-                            <span class="d-flex justify-flex-end grow-0">
-                                <button
-                                    class="btn small no-outline light tight"
-                                    data-step=${Steps.name}
-                                    @click=${this.handleChange}
-                                >
-                                    ${this.t.change}
-                                </button>
-                            </span>
+                ${this.display.includes(Steps.name) ? html`
+                        <div class="stack--1">
+                            <div class="switcher switcher-width-20 justify-content-between gap--3">
+                                ${this.name === ''
+                                    ? html`<button class="btn light tight small" @click=${this.handleChange} data-step=${Steps.name}>${this.t.set_group_name}</button>`
+                                    : html`<span>${this.name}</span>`
+                                }
+                                ${this.name !== '' ? html`
+                                        <span class="d-flex justify-flex-end grow-0">
+                                            <button
+                                                class="btn small no-outline light tight"
+                                                data-step=${Steps.name}
+                                                @click=${this.handleChange}
+                                            >
+                                                ${this.t.change}
+                                            </button>
+                                        </span>
+                                    ` : ''}
+                            </div>
                         </div>
-                    </div>
-                ` : ''}
-                ${this.howManySessions !== '' ? html`
+                    ` : ''}
+                ${this.display.includes(Steps.howManySessions) ? html`
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.howManyDict[this.howManySessions] || this.howManySessions}</span>
@@ -100,7 +97,7 @@ export class ReviewSteps extends LitElement {
                         </div>
                     </div>
                 ` : ''}
-                ${this.howOften !== '' ? html`
+                ${this.display.includes(Steps.howOften) ? html`
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.howOfterDict[this.howOften] || this.howOften}</span>
@@ -116,44 +113,57 @@ export class ReviewSteps extends LitElement {
                         </div>
                     </div>
                 ` : ''}
-                ${this.date !== '' || this.time !== '' ? html`
+                ${this.display.includes(Steps.startDate) ? html`
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
-                            <span>${(new Date(`${this.date} ${this.time}`)).toLocaleString(navigator.language || 'en-US', {
-                                day: "numeric",
-                                month: "short",
-                                year: "numeric",
-                                hour: "2-digit",
-                                minute: "2-digit",
-                            })}</span>
-                            <span class="d-flex justify-flex-end grow-0">
-                                <button
-                                    class="btn small no-outline light tight"
-                                    data-step=${Steps.startDate}
-                                    @click=${this.handleChange}
-                                >
-                                    ${this.t.change}
-                                </button>
-                            </span>
+                            ${this.date === '' && this.time === ''
+                                ? html`<button class="btn light tight small" @click=${this.handleChange} data-step=${Steps.startDate}>${this.t.set_start_date}</button>`
+                                : html`
+                                    <span>${(new Date(`${this.date} ${this.time === 'not-set' ? '' : this.time}`)).toLocaleString(navigator.language || 'en-US', {
+                                        day: "numeric",
+                                        month: "short",
+                                        year: "numeric",
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                    })}</span>`
+                            }
+                            ${this.date !== '' || this.time !== '' ? html`
+                                    <span class="d-flex justify-flex-end grow-0">
+                                        <button
+                                            class="btn small no-outline light tight"
+                                            data-step=${Steps.startDate}
+                                            @click=${this.handleChange}
+                                        >
+                                            ${this.t.change}
+                                        </button>
+                                    </span>
+                                ` : ''}
                         </div>
                     </div>
                 ` : ''}
-                ${this.whatLocation !== '' ? html`
+
+                ${this.display.includes(Steps.location) ? html`
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
-                            <span>${this.whatLocation}</span>
-                            <span class="d-flex justify-flex-end grow-0">
-                                <button
-                                    class="btn small no-outline light tight"
-                                    data-step=${Steps.location}
-                                    @click=${this.handleChange}
-                                >
-                                    ${this.t.change}
-                                </button>
-                            </span>
+                            ${this.whatLocation === ''
+                                ? html`<button class="btn light tight small" @click=${this.handleChange} data-step=${Steps.location}>${this.t.set_location}</button>`
+                                : html`<span>${this.whatLocation}</span>`
+                            }
+                            ${this.whatLocation !== '' ? html`
+                                <span class="d-flex justify-flex-end grow-0">
+                                    <button
+                                        class="btn small no-outline light tight"
+                                        data-step=${Steps.location}
+                                        @click=${this.handleChange}
+                                    >
+                                        ${this.t.change}
+                                    </button>
+                                </span>
+                            ` : ''}
                         </div>
                     </div>
                 ` : ''}
+
             </div>
         `;
     }

@@ -28,6 +28,7 @@ export class MakeTraining extends LitElement {
             variant: { type: String },
             state: { attribute: false },
             selectedDays: { type: Array, attribute: false },
+            completedSteps: { type: Array, attribute: false },
             calendarStart: { type: String, attribute: false },
             calendarEnd: { type: String, attribute: false },
             calendarView: { type: String, attribute: false },
@@ -52,6 +53,7 @@ export class MakeTraining extends LitElement {
         this.stateManager.clear()
         this.trainingSchedule = []
         this.selectedDays = []
+        this.completedSteps = []
         this.calendarStart = DateTime.now().startOf('month').toISODate()
         this.calendarEnd = DateTime.now().plus({ month: 2 }).endOf('month').toISODate()
         this.calendarView = 'all'
@@ -113,6 +115,8 @@ export class MakeTraining extends LitElement {
         if ( event ) {
             event.preventDefault()
         }
+
+        this.completedSteps = [...this.completedSteps, this.variant]
 
         this._saveState()
 
@@ -394,6 +398,7 @@ export class MakeTraining extends LitElement {
                         time=${this.stateManager.get(Steps.startDate)?.time}
                         date=${this.stateManager.get(Steps.startDate)?.date}
                         whatLocation=${this.stateManager.get(Steps.location)}
+                        .display=${this.completedSteps}
                     ></review-steps>
                 ` : ''}
             </div>
