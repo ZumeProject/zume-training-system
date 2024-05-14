@@ -931,7 +931,8 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     block_formats: 'Paragraph=p; Header 3=h3',
                     min_height: 500,
                     format_empty_lines: true,
-                    directionality: direction
+                    directionality: direction,
+                    content_style: 'h3 { font-weight: 500; color: #2CACE2; font-size: 23px; } strong { font-weight: 500; color: #2CACE2;}',
                 });
                 jQuery('.save_textarea').on( 'click', (e) => {
                     console.log('save')
@@ -1074,6 +1075,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                         min_height: 800,
                         format_empty_lines: true,
                         directionality: direction,
+                        content_style: 'h3 { font-weight: 500; color: #2CACE2; font-size: 23px; } strong { font-weight: 500; color: #2CACE2;}',
                     });
                     jQuery('.save_textarea').on( 'click', (e) => {
                         console.log('save')
@@ -1191,7 +1193,8 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     block_formats: 'Paragraph=p; Header 3=h3',
                     min_height: 800,
                     format_empty_lines: true,
-                    directionality: direction
+                    directionality: direction,
+                    content_style: 'h3 { font-weight: 500; color: #2CACE2; font-size: 23px; } strong { font-weight: 500; color: #2CACE2;}',
                 });
                 jQuery('.save_textarea').on( 'click', (e) => {
                     console.log('save_textarea')
