@@ -51,37 +51,54 @@ export class ReviewSteps extends LitElement {
         return this.display.length > 0
     }
 
-    render() {
-        if ( !this.shouldDisplay() ) {
-            return
-        }
-
-        return html`
-            <div class="stack mw-50ch mx-auto text-start mt-2">
-                <hr />
-                <h5 class="gray-700 text-left f-medium mt-2">${this.t.summary}</h5>
-                ${this.display.includes(Steps.name) ? html`
-                        <div class="stack--1">
-                            <div class="switcher switcher-width-20 justify-content-between gap--3">
-                                ${this.name === ''
-                                    ? html`<button class="btn light tight small" @click=${this.handleChange} data-step=${Steps.name}>${this.t.set_group_name}</button>`
-                                    : html`<span>${this.name}</span>`
-                                }
-                                ${this.name !== '' ? html`
-                                        <span class="d-flex justify-flex-end grow-0">
-                                            <button
-                                                class="btn small no-outline light tight"
-                                                data-step=${Steps.name}
-                                                @click=${this.handleChange}
-                                            >
-                                                ${this.t.change}
-                                            </button>
-                                        </span>
-                                    ` : ''}
-                            </div>
+    renderSummary(step) {
+        switch (step) {
+            case Steps.name:
+                return html`
+                    <div class="stack--1">
+                        <div class="switcher switcher-width-20 justify-content-between gap--3">
+                            ${this.name === ''
+                                ? html`<button class="btn light tight small" @click=${this.handleChange} data-step=${Steps.name}>${this.t.set_group_name}</button>`
+                                : html`<span>${this.name}</span>`
+                            }
+                            ${this.name !== '' ? html`
+                                    <span class="d-flex justify-flex-end grow-0">
+                                        <button
+                                            class="btn small no-outline light tight"
+                                            data-step=${Steps.name}
+                                            @click=${this.handleChange}
+                                        >
+                                            ${this.t.change}
+                                        </button>
+                                    </span>
+                                ` : ''}
                         </div>
-                    ` : ''}
-                ${this.display.includes(Steps.howManySessions) ? html`
+                    </div>
+                `
+            case Steps.location:
+                return html`
+                    <div class="stack--1">
+                        <div class="switcher switcher-width-20 justify-content-between gap--3">
+                            ${this.whatLocation === ''
+                                ? html`<button class="btn light tight small" @click=${this.handleChange} data-step=${Steps.location}>${this.t.set_location}</button>`
+                                : html`<span>${this.whatLocation}</span>`
+                            }
+                            ${this.whatLocation !== '' ? html`
+                                <span class="d-flex justify-flex-end grow-0">
+                                    <button
+                                        class="btn small no-outline light tight"
+                                        data-step=${Steps.location}
+                                        @click=${this.handleChange}
+                                    >
+                                        ${this.t.change}
+                                    </button>
+                                </span>
+                            ` : ''}
+                        </div>
+                    </div>
+                `
+            case Steps.howManySessions:
+                return html`
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.howManyDict[this.howManySessions] || this.howManySessions}</span>
@@ -96,8 +113,9 @@ export class ReviewSteps extends LitElement {
                             </span>
                         </div>
                     </div>
-                ` : ''}
-                ${this.display.includes(Steps.howOften) ? html`
+                `
+            case Steps.howOften:
+                return html`
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             <span>${this.howOfterDict[this.howOften] || this.howOften}</span>
@@ -112,8 +130,9 @@ export class ReviewSteps extends LitElement {
                             </span>
                         </div>
                     </div>
-                ` : ''}
-                ${this.display.includes(Steps.startDate) ? html`
+                `
+            case Steps.startDate:
+                return html`
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             ${this.date === '' && this.time === ''
@@ -140,32 +159,24 @@ export class ReviewSteps extends LitElement {
                                 ` : ''}
                         </div>
                     </div>
-                ` : ''}
+                `
+            default:
+                return ''
+        }
+    }
 
-                ${this.display.includes(Steps.location) ? html`
-                    <div class="stack--1">
-                        <div class="switcher switcher-width-20 justify-content-between gap--3">
-                            ${this.whatLocation === ''
-                                ? html`<button class="btn light tight small" @click=${this.handleChange} data-step=${Steps.location}>${this.t.set_location}</button>`
-                                : html`<span>${this.whatLocation}</span>`
-                            }
-                            ${this.whatLocation !== '' ? html`
-                                <span class="d-flex justify-flex-end grow-0">
-                                    <button
-                                        class="btn small no-outline light tight"
-                                        data-step=${Steps.location}
-                                        @click=${this.handleChange}
-                                    >
-                                        ${this.t.change}
-                                    </button>
-                                </span>
-                            ` : ''}
-                        </div>
-                    </div>
-                ` : ''}
+    render() {
+        if ( !this.shouldDisplay() ) {
+            return
+        }
 
+        return html`
+            <div class="stack mw-50ch mx-auto text-start mt-2">
+                <hr />
+                <h5 class="gray-700 text-left f-medium mt-2">${this.t.summary}</h5>
+                ${this.display.map((step) => this.renderSummary(step))}
             </div>
-        `;
+        `
     }
 
     createRenderRoot() {

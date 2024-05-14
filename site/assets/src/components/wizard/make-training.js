@@ -156,7 +156,7 @@ export class MakeTraining extends LitElement {
         const howOften = this.stateManager.get(Steps.howOften)
         const startDate = this.stateManager.get(Steps.startDate)?.date
 
-        if (this.selectedDays.length > 0) {
+        if (this.selectedDay.length > 0) {
             return
         }
 
@@ -285,6 +285,17 @@ export class MakeTraining extends LitElement {
 
         return html`
             <div class="stack-1 position-relative">
+                ${this.variant === Steps.planDecision ? html`
+                    <div class="stack">
+                        <span class="zume-start-group brand-light f-7"></span>
+                        <h2>${this.t.join_or_start_a_training}</h2>
+                        <div class="stack" data-fit-content>
+                            <button class="btn tight light" data-decision="make" @click=${this._handlePlanDecision}>${this.t.start_a_training}</button>
+                            <button class="btn tight light" data-decision="join" @click=${this._handlePlanDecision}>${this.t.join_a_public_training}</button>
+                            <button class="btn tight light outline" data-decision="skip" @click=${this._handlePlanDecision}>${this.t.skip_for_now}</button>
+                        </div>
+                    </div>
+                ` : ''}
                 ${this.variant === Steps.name ? html`
                     <div class="stack">
                         <span class="zume-start-date brand-light f-7"></span>
@@ -295,14 +306,14 @@ export class MakeTraining extends LitElement {
                         </div>
                     </div>
                 ` : ''}
-                ${this.variant === Steps.planDecision ? html`
+                ${this.variant === Steps.location ? html`
                     <div class="stack">
-                        <span class="zume-start-group brand-light f-7"></span>
-                        <h2>${this.t.join_or_start_a_training}</h2>
+                        <span class="zume-start-date brand-light f-7"></span>
+                        <h2>${this.t.question_where_will_you_meet}</h2>
+                        <p>${this.t.question_where_will_you_meet_help_text}</p>
+                        <input type="text" name="location" @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
                         <div class="stack" data-fit-content>
-                            <button class="btn tight light" data-decision="make" @click=${this._handlePlanDecision}>${this.t.start_a_training}</button>
-                            <button class="btn tight light" data-decision="join" @click=${this._handlePlanDecision}>${this.t.join_a_public_training}</button>
-                            <button class="btn tight light outline" data-decision="skip" @click=${this._handlePlanDecision}>${this.t.skip_for_now}</button>
+                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
                         </div>
                     </div>
                 ` : ''}
@@ -339,17 +350,6 @@ export class MakeTraining extends LitElement {
                             <input type="date" name="date" class="fit-content m0" @change=${this._handleChange} value=${this.state.date} >
                             <input type="time" name="time" class="fit-content m0" @change=${this._handleChange} value=${this.state.time} min="00:00" max="23:55" step="300"/>
                         </div>
-                        <div class="stack" data-fit-content>
-                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
-                        </div>
-                    </div>
-                ` : ''}
-                ${this.variant === Steps.location ? html`
-                    <div class="stack">
-                        <span class="zume-start-date brand-light f-7"></span>
-                        <h2>${this.t.question_where_will_you_meet}</h2>
-                        <p>${this.t.question_where_will_you_meet_help_text}</p>
-                        <input type="text" name="location" @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
                         <div class="stack" data-fit-content>
                             <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
                         </div>
