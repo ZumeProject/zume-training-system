@@ -280,7 +280,7 @@ export class Wizard extends LitElement {
     }
 
     footer() {
-        if (this.noUrlChange && this.stepIndex > 0) {
+        if (this.noUrlChange && this.stepIndex > 0 && this.type !== Wizards.makeAGroup) {
             return html`
                 <button
                     @click=${this._onBack}
