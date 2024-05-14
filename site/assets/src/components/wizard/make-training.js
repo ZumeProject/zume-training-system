@@ -151,9 +151,14 @@ export class MakeTraining extends LitElement {
     }
 
     _buildSelectedDays() {
+
         const howManySessions = this.stateManager.get(Steps.howManySessions)
         const howOften = this.stateManager.get(Steps.howOften)
         const startDate = this.stateManager.get(Steps.startDate)?.date
+
+        if (this.selectedDays.length > 0) {
+            return
+        }
 
         if (howManySessions && howOften && startDate) {
             let weekInterval = 0
