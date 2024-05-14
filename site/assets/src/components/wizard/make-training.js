@@ -32,6 +32,7 @@ export class MakeTraining extends LitElement {
             calendarStart: { type: String, attribute: false },
             calendarEnd: { type: String, attribute: false },
             calendarView: { type: String, attribute: false },
+            scheduleView: { type: String, attribute: false },
             errorMessage: { type: String, attribute: false },
             message: { type: String, attribute: false },
             loading: { type: Boolean, attribute: false },
@@ -57,6 +58,7 @@ export class MakeTraining extends LitElement {
         this.calendarStart = DateTime.now().startOf('month').toISODate()
         this.calendarEnd = DateTime.now().plus({ month: 2 }).endOf('month').toISODate()
         this.calendarView = 'all'
+        this.scheduleView = 'calendar'
 }
 
     willUpdate(properties) {
@@ -71,6 +73,9 @@ export class MakeTraining extends LitElement {
 
             if (this.variant === Steps.review) {
                 this._buildSelectedDays()
+            }
+            if (this.variant === Steps.review && this.isForIntensive()) {
+                this.scheduleView = 'list'
             }
             /* DEV only */
             if (false && this.variant !== Steps.review) {
@@ -116,7 +121,9 @@ export class MakeTraining extends LitElement {
             event.preventDefault()
         }
 
-        this.completedSteps = [...this.completedSteps, this.variant]
+        if (!this.completedSteps.includes(this.variant)) {
+            this.completedSteps = [...this.completedSteps, this.variant]
+        }
 
         this._saveState()
 
@@ -258,6 +265,20 @@ export class MakeTraining extends LitElement {
         this._sendLoadWizardEvent(Wizards.inviteFriends)
     }
 
+    isForIntensive() {
+        const howManySessions = this.stateManager.get(Steps.howManySessions)
+
+        return howManySessions === '5'
+    }
+
+    toggleView() {
+        if (this.scheduleView === 'calendar') {
+            this.scheduleView = 'list'
+        } else {
+            this.scheduleView = 'calendar'
+        }
+    }
+
     selectDate(event) {
         const day = event.detail
 
@@ -376,15 +397,29 @@ export class MakeTraining extends LitElement {
                                 style="--primary-color: ${progressColor}"
                             ></progress-slider>
                         </div>
-                        <calendar-select
-                            style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
-                            startDate=${this.calendarStart}
-                            endDate=${this.calendarEnd}
-                            .selectedDays=${this.selectedDays}
-                            view=${this.calendarView}
-                            showToday
-                            @day-selected=${this.selectDate}
-                        ></calendar-select>
+                        ${
+                            this.isForIntensive()
+                                ? ''
+                                : html`<button class="btn light tight" @click=${this.toggleView}>${this.scheduleView === 'calendar' ? 'list' : 'calendar'}</button>`
+                        }
+                        ${
+                            this.scheduleView === 'calendar'
+                                ? html`
+                                    <calendar-select
+                                        style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
+                                        startDate=${this.calendarStart}
+                                        endDate=${this.calendarEnd}
+                                        .selectedDays=${this.selectedDays}
+                                        view=${this.calendarView}
+                                        showToday
+                                        @day-selected=${this.selectDate}
+                                    ></calendar-select>
+                                ` : html`
+                                    <calendar-list
+                                        @day-selected=${this.selectDate}
+                                    ></calendar-list>
+                                `
+                        }
                         <div class="sticky bottom-0 stack">
                             <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
                             <div class="cluster">
