@@ -20,7 +20,16 @@ export const wizardDefinitions = {
             Steps.updateLocation,
         ], true),
     },
-    [Wizards.makeAGroup]: {
+    [Wizards.makeFirstGroup]: {
+        [Modules.makePlan]: makeModule([
+            Steps.location,
+            Steps.howManySessions,
+            Steps.howOften,
+            Steps.startDate,
+            Steps.review,
+        ], true),
+    },
+    [Wizards.makeMoreGroups]: {
         [Modules.makePlan]: makeModule([
             Steps.name,
             Steps.location,

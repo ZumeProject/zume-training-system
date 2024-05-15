@@ -57,6 +57,7 @@ export class Wizard extends LitElement {
     }
     connectedCallback() {
         super.connectedCallback()
+        this.wizard = new WizardModuleManager( this.user )
         window.addEventListener('popstate', this._handleHistoryPopState)
         window.addEventListener('wizard:load', this._handleLoadWizard)
         window.addEventListener('wizard:goto-step', this._handleGotoStep)
@@ -70,7 +71,6 @@ export class Wizard extends LitElement {
     }
 
     firstUpdated() {
-        this.loadWizard()
         this._handleHistoryPopState( true )
 
         if (this.translations) {
@@ -81,16 +81,30 @@ export class Wizard extends LitElement {
     willUpdate(properties) {
         if (properties.has('type') && this.type === '') {
             this.resetWizard()
+            return
         }
         if (properties.has('type') && this.type !== '') {
-            this.loadWizard()
+            this.loadWizard(this.type)
+            return
         }
     }
 
-    loadWizard() {
-        this.wizard = new WizardModuleManager( this.user )
-        this.steps = this.wizard.getSteps(this.type)
-        this._gotoStep(0)
+    loadWizard(wizard) {
+        let wizardToLoad = wizard
+        if (wizard === Wizards.makeAGroup) {
+            if (jsObject.has_training_group) {
+                wizardToLoad = Wizards.makeMoreGroups
+            } else {
+                wizardToLoad = Wizards.makeFirstGroup
+            }
+        }
+
+        if (Object.values(Wizards).includes(wizardToLoad)) {
+            this.steps = this.wizard.getSteps( wizardToLoad )
+            this._gotoStep(0)
+        } else {
+            this._onSkip()
+        }
     }
 
     resetWizard() {
@@ -440,12 +454,8 @@ export class Wizard extends LitElement {
     _handleLoadWizard(event) {
         const { wizard } = event.detail
 
-        if (Object.values(Wizards).includes(wizard)) {
-            this.steps = this.wizard.getSteps( wizard )
-            this._gotoStep(0)
-        } else {
-            this._onSkip()
-        }
+        this.loadWizard(wizard)
+
     }
 
     _handleLoading(event) {

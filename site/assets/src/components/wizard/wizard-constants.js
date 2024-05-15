@@ -1,6 +1,8 @@
 export const Wizards = {
     gettingStarted: 'getting-started',
     makeAGroup: 'make-a-group',
+    makeFirstGroup: 'make-first-group',
+    makeMoreGroups: 'make-more-groups',
     getACoach: 'get-a-coach',
     joinATraining: 'join-a-training',
     connectWithFriend: 'connect-with-friend',

@@ -90,6 +90,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'translations' => $this->translations(),
                 'map_key' => DT_Mapbox_API::get_key(),
                 'profile' => $zume_user_profile,
+                'has_training_group' => !empty( zume_get_user_plans( get_current_user_id() ) ),
                 'privacy_url' => zume_privacy_url(),
                 'mapbox_selected_id' => 'current',
                 'checkin_dashboard_url' => zume_checkin_dashboard_url(),
