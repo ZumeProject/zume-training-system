@@ -230,18 +230,36 @@ export class MakeTraining extends LitElement {
             prefix = 'set_c_'
         }
 
-        const sortedDays = days.sort()
-        sortedDays.forEach((day, i) => {
+        const sortedDays = days.sort(this.sortDays)
+        for (let i = 0; i < Number( howManySessions ); i++) {
             const numberString = i < 10 ? `0${i}` : `${i}`
-            trainingSchedule[prefix + numberString] = DateTime.fromISO(day).toSeconds()
-        });
+            let time
+            if (i < sortedDays.length - 1) {
+                time = DateTime.fromISO(sortedDays[i]).toSeconds()
+            } else {
+                time = ''
+            }
+            trainingSchedule[prefix + numberString] = time
+        }
 
         this.trainingSchedule = trainingSchedule
     }
 
+    sortDays(a, b) {
+        if ( a.date === b.date ) {
+            return 0
+        }
+        if ( a.date < b.date ) {
+            return -1
+        }
+        return 1
+    }
+
     _handleCreate() {
         const howManySessions = this.stateManager.get(Steps.howManySessions)
-        if (this.selectedDays.length !== Number(howManySessions)) {
+        const scheduleDecision = this.stateManager.get(Steps.scheduleDecision)
+        const name = this.stateManager.get(Steps.name)
+        if (scheduleDecision === 'yes' && this.selectedDays.length !== Number(howManySessions)) {
             this.errorMessage = this.t.incorrect_number_of_sessions
             setTimeout(() => {
                 this.errorMessage = ''
@@ -251,7 +269,7 @@ export class MakeTraining extends LitElement {
         const postData = {
             user_id: jsObject.profile.user_id,
             contact_id: jsObject.profile.contact_id,
-            title: `${jsObject.profile.name}`,
+            title: name !== '' ? name : this.t.my_first_training  + ' - ' + jsObject.profile.name,
             set: this._buildSet(this.selectedDays)
         }
 
@@ -453,7 +471,7 @@ export class MakeTraining extends LitElement {
                                         style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
                                         startDate=${this.calendarStart}
                                         endDate=${this.calendarEnd}
-                                        .selectedDays=${this.selectedDays}
+                                        .selectedDays=${this.selectedDays.sort(this.sortDays)}
                                         view=${this.calendarView}
                                         showToday
                                         @day-added=${this.addDate}

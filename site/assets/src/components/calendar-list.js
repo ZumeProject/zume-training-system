@@ -44,20 +44,6 @@ export class CalendarList extends LitElement {
         `
     }
 
-    sortDays(a, b) {
-        if ( a.date === b.date ) {
-            return 0
-        }
-        if ( a.date < b.date ) {
-            return -1
-        }
-        return 1
-    }
-
-    /*
-        Display list of editable dates and clear buttons
-        date and 'add' button to add to the list.
-    */
     render() {
         return html`
             <div class="stack">
