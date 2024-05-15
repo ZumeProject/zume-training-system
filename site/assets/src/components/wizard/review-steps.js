@@ -58,20 +58,22 @@ export class ReviewSteps extends LitElement {
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             ${this.name === ''
-                                ? html`<button class="btn light tight small" @click=${this.handleChange} data-step=${Steps.name}>${this.t.set_group_name}</button>`
+                                ? html`<span></span>`
                                 : html`<span>${this.name}</span>`
                             }
-                            ${this.name !== '' ? html`
-                                    <span class="d-flex justify-flex-end grow-0">
-                                        <button
-                                            class="btn small no-outline light tight"
-                                            data-step=${Steps.name}
-                                            @click=${this.handleChange}
-                                        >
-                                            ${this.t.change}
-                                        </button>
-                                    </span>
-                                ` : ''}
+                            <span class="d-flex justify-flex-end">
+                                <button
+                                    class="btn small no-outline light tight"
+                                    data-step=${Steps.name}
+                                    @click=${this.handleChange}
+                                >
+                                    ${
+                                        this.name !== ''
+                                            ? this.t.change
+                                            : this.t.set_group_name
+                                    }
+                                </button>
+                            </span>
                         </div>
                     </div>
                 `
@@ -80,20 +82,22 @@ export class ReviewSteps extends LitElement {
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             ${this.whatLocation === ''
-                                ? html`<button class="btn light tight small" @click=${this.handleChange} data-step=${Steps.location}>${this.t.set_location}</button>`
+                                ? html`<span></span>`
                                 : html`<span>${this.whatLocation}</span>`
                             }
-                            ${this.whatLocation !== '' ? html`
-                                <span class="d-flex justify-flex-end grow-0">
-                                    <button
-                                        class="btn small no-outline light tight"
-                                        data-step=${Steps.location}
-                                        @click=${this.handleChange}
-                                    >
-                                        ${this.t.change}
-                                    </button>
-                                </span>
-                            ` : ''}
+                            <span class="d-flex justify-flex-end">
+                                <button
+                                    class="btn small no-outline light tight"
+                                    data-step=${Steps.location}
+                                    @click=${this.handleChange}
+                                >
+                                    ${
+                                        this.whatLocation !== ''
+                                            ? this.t.change
+                                            : this.t.set_location
+                                    }
+                                </button>
+                            </span>
                         </div>
                     </div>
                 `
@@ -136,7 +140,7 @@ export class ReviewSteps extends LitElement {
                     <div class="stack--1">
                         <div class="switcher switcher-width-20 justify-content-between gap--3">
                             ${this.date === '' && this.time === ''
-                                ? html`<button class="btn light tight small" @click=${this.handleChange} data-step=${Steps.startDate}>${this.t.set_start_date}</button>`
+                                ? html`<span></span>`
                                 : html`
                                     <span>${(new Date(`${this.date} ${this.time === 'not-set' ? '' : this.time}`)).toLocaleString(navigator.language || 'en-US', {
                                         day: "numeric",
@@ -146,17 +150,19 @@ export class ReviewSteps extends LitElement {
                                         minute: "2-digit",
                                     })}</span>`
                             }
-                            ${this.date !== '' || this.time !== '' ? html`
-                                    <span class="d-flex justify-flex-end grow-0">
-                                        <button
-                                            class="btn small no-outline light tight"
-                                            data-step=${Steps.startDate}
-                                            @click=${this.handleChange}
-                                        >
-                                            ${this.t.change}
-                                        </button>
-                                    </span>
-                                ` : ''}
+                            <span class="d-flex justify-flex-end">
+                                <button
+                                    class="btn small no-outline light tight"
+                                    data-step=${Steps.startDate}
+                                    @click=${this.handleChange}
+                                >
+                                    ${
+                                        this.date !== '' || this.time !== ''
+                                            ? this.t.change
+                                            : this.t.set_start_date
+                                    }
+                                </button>
+                            </span>
                         </div>
                     </div>
                 `
