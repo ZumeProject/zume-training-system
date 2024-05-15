@@ -103,11 +103,11 @@ class Zume_Training_Home extends Zume_Magic_Page
 
                         <?php if ( is_user_logged_in() ): ?>
 
-                            <a href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn large outline uppercase w-80 px-0"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
+                            <a href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn large outline light uppercase w-80 px-0"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
 
                         <?php else : ?>
 
-                            <a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn large outline uppercase w-80 px-0"><?php echo esc_html__( 'Login', 'zume' ) ?></a>
+                            <a href="<?php echo esc_url( dt_login_url( 'login' ) ) ?>" class="btn large outline light uppercase w-80 px-0"><?php echo esc_html__( 'Login', 'zume' ) ?></a>
                             <a href="<?php echo esc_url( zume_make_a_plan_wizard_url() ) ?>" class="btn large light uppercase w-80 px-0"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
 
                         <?php endif; ?>
@@ -199,7 +199,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                     </div>
                 </div>
             </div>
-            <button class="hidden | btn large outline dark fit-content uppercase mx-auto"><?php echo esc_html__( 'Watch', 'zume' ) ?></button>
+            <button class="hidden | btn large outline dark light fit-content uppercase mx-auto"><?php echo esc_html__( 'Watch', 'zume' ) ?></button>
         </div>
 
         <div class="center container stack-3 | page">

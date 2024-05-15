@@ -424,7 +424,7 @@ export class MakeTraining extends LitElement {
                             <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
                             <div class="cluster">
                                 <button
-                                    class="btn outline small tight fit-content"
+                                    class="btn outline light small tight fit-content"
                                     @click=${this._clearCalendar}
                                 >
                                     ${this.t.clear_calendar}
