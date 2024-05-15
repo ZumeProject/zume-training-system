@@ -205,6 +205,7 @@ export class CalendarSelect extends LitElement {
 
     addMonth() {
         const newEndDate = DateTime.fromISO(this.endDate).plus({months: 1}).endOf('month').toISODate()
+        this.dispatchEvent(new CustomEvent( 'calendar-extended', { detail: { newEndDate } } ))
         this.endDate = newEndDate
     }
 

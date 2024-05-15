@@ -293,6 +293,11 @@ export class MakeTraining extends LitElement {
         }
     }
 
+    updateCalendarEnd(event) {
+        const { newEndDate } = event.detail
+        this.calendarEnd = newEndDate
+    }
+
     _clearCalendar() {
         this.selectedDays = []
     }
@@ -413,6 +418,7 @@ export class MakeTraining extends LitElement {
                                         view=${this.calendarView}
                                         showToday
                                         @day-selected=${this.selectDate}
+                                        @calendar-extended=${this.updateCalendarEnd}
                                     ></calendar-select>
                                 ` : html`
                                     <calendar-list
