@@ -23,6 +23,7 @@ export const wizardDefinitions = {
     [Wizards.makeFirstGroup]: {
         [Modules.makePlan]: makeModule([
             Steps.howManySessions,
+            Steps.scheduleDecision,
             Steps.howOften,
             Steps.startDate,
             Steps.location,
@@ -31,11 +32,12 @@ export const wizardDefinitions = {
     },
     [Wizards.makeMoreGroups]: {
         [Modules.makePlan]: makeModule([
-            Steps.name,
             Steps.howManySessions,
+            Steps.scheduleDecision,
             Steps.howOften,
             Steps.startDate,
             Steps.location,
+            Steps.name,
             Steps.review,
         ], true),
     },

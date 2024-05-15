@@ -8,6 +8,7 @@ export class ReviewSteps extends LitElement {
             name: { type: String },
             howOften: { type: String },
             howManySessions: { type: String },
+            scheduleDecision: { type: String },
             whatLocation: { type: String },
             date: { type: String },
             time: { type: String },
@@ -38,6 +39,10 @@ export class ReviewSteps extends LitElement {
             '10': this.t.hour_2_session_10,
             '5': this.t.hour_4_session_5,
         }
+        this.scheduleDecisionDict = {
+            'yes': this.t.yes,
+            'no': this.t.no,
+        }
    }
 
     handleChange(event) {
@@ -56,7 +61,7 @@ export class ReviewSteps extends LitElement {
             case Steps.name:
                 return html`
                     <div class="stack--1">
-                        <div class="switcher switcher-width-20 justify-content-between gap--3">
+                        <div class="switcher switcher-width-15 justify-content-between gap--3">
                             ${this.name === ''
                                 ? html`<span></span>`
                                 : html`<span>${this.name}</span>`
@@ -80,7 +85,7 @@ export class ReviewSteps extends LitElement {
             case Steps.location:
                 return html`
                     <div class="stack--1">
-                        <div class="switcher switcher-width-20 justify-content-between gap--3">
+                        <div class="switcher switcher-width-15 justify-content-between gap--3">
                             ${this.whatLocation === ''
                                 ? html`<span></span>`
                                 : html`<span>${this.whatLocation}</span>`
@@ -104,7 +109,7 @@ export class ReviewSteps extends LitElement {
             case Steps.howManySessions:
                 return html`
                     <div class="stack--1">
-                        <div class="switcher switcher-width-20 justify-content-between gap--3">
+                        <div class="switcher switcher-width-15 justify-content-between gap--3">
                             <span>${this.howManyDict[this.howManySessions] || this.howManySessions}</span>
                             <span class="d-flex justify-flex-end grow-0">
                                 <button
@@ -118,10 +123,27 @@ export class ReviewSteps extends LitElement {
                         </div>
                     </div>
                 `
+            case Steps.scheduleDecision:
+                return html`
+                    <div class="stack--1">
+                        <div class="switcher switcher-width-15 justify-content-between gap--3">
+                            <span>${this.scheduleDecisionDict[this.scheduleDecision] || this.scheduleDecision}</span>
+                            <span class="d-flex justify-flex-end grow-0">
+                                <button
+                                    class="btn small no-outline light tight"
+                                    data-step=${Steps.scheduleDecision}
+                                    @click=${this.handleChange}
+                                >
+                                    ${this.t.change}
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                `
             case Steps.howOften:
                 return html`
                     <div class="stack--1">
-                        <div class="switcher switcher-width-20 justify-content-between gap--3">
+                        <div class="switcher switcher-width-15 justify-content-between gap--3">
                             <span>${this.howOfterDict[this.howOften] || this.howOften}</span>
                             <span class="d-flex justify-flex-end grow-0">
                                 <button
@@ -138,7 +160,7 @@ export class ReviewSteps extends LitElement {
             case Steps.startDate:
                 return html`
                     <div class="stack--1">
-                        <div class="switcher switcher-width-20 justify-content-between gap--3">
+                        <div class="switcher switcher-width-15 justify-content-between gap--3">
                             ${this.date === '' && this.time === ''
                                 ? html`<span></span>`
                                 : html`

@@ -27,6 +27,7 @@ export const Modules = {
 const makeAPlanSteps = {
     planDecision: 'plan-decision',
     howManySessions: 'how-many-sessions',
+    scheduleDecision: 'schedule-decision',
     howOften: 'how-often',
     startDate: 'what-start-date',
     location: 'what-location',

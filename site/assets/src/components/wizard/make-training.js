@@ -64,6 +64,7 @@ export class MakeTraining extends LitElement {
     willUpdate(properties) {
         const defaultState = {
             [Steps.howManySessions]: '10',
+            [Steps.scheduleDecision]: 'yes',
             [Steps.howOften]: 'weekly',
             [Steps.location]: '',
             [Steps.startDate]: {},
@@ -71,10 +72,16 @@ export class MakeTraining extends LitElement {
         if (properties.has('variant')) {
             this.state = this.stateManager.get(this.variant) || defaultState[this.variant]
 
+            if (this.variant === Steps.howOften || this.variant === Steps.startDate) {
+                const scheduleDecision = this.stateManager.get(Steps.scheduleDecision)
+                if (this.isIntensive() || scheduleDecision === 'no') {
+                    this._sendDoneStepEvent()
+                }
+            }
             if (this.variant === Steps.review) {
                 this._buildSelectedDays()
             }
-            if (this.variant === Steps.review && this.isForIntensive()) {
+            if (this.variant === Steps.review && this.isIntensive()) {
                 this.scheduleView = 'list'
             }
             /* DEV only */
@@ -124,13 +131,11 @@ export class MakeTraining extends LitElement {
         if (!this.completedSteps.includes(this.variant)) {
             this.completedSteps = [...this.completedSteps, this.variant]
         }
+        if (this.variant === Steps.scheduleDecision && this.state === 'no') {
+            this.completedSteps = this.completedSteps.filter((step) => step !== Steps.howOften && step !== Steps.startDate)
+        }
 
         this._saveState()
-
-        if (this.variant === Steps.howManySessions && this.state === '5') {
-            this._gotoStep(Steps.location)
-            return
-        }
 
         this._sendDoneStepEvent()
     }
@@ -265,7 +270,7 @@ export class MakeTraining extends LitElement {
         this._sendLoadWizardEvent(Wizards.inviteFriends)
     }
 
-    isForIntensive() {
+    isIntensive() {
         const howManySessions = this.stateManager.get(Steps.howManySessions)
 
         return howManySessions === '5'
@@ -304,6 +309,7 @@ export class MakeTraining extends LitElement {
 
     render() {
         const howManySessions = Number( this.stateManager.get(Steps.howManySessions) )
+        const scheduleDecision = this.stateManager.get(Steps.scheduleDecision)
         let progressText = ''
         let progressColor = ''
         if (this.selectedDays.length < howManySessions) {
@@ -332,27 +338,6 @@ export class MakeTraining extends LitElement {
                         </div>
                     </div>
                 ` : ''}
-                ${this.variant === Steps.name ? html`
-                    <div class="stack">
-                        <span class="zume-start-date brand-light f-7"></span>
-                        <h2>${this.t.question_what_is_the_groups_name}</h2>
-                        <input type="text" name="name" @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
-                        <div class="stack" data-fit-content>
-                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
-                        </div>
-                    </div>
-                ` : ''}
-                ${this.variant === Steps.location ? html`
-                    <div class="stack">
-                        <span class="zume-start-date brand-light f-7"></span>
-                        <h2>${this.t.question_where_will_you_meet}</h2>
-                        <p>${this.t.question_where_will_you_meet_help_text}</p>
-                        <input type="text" name="location" @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
-                        <div class="stack" data-fit-content>
-                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
-                        </div>
-                    </div>
-                ` : ''}
                 ${this.variant === Steps.howManySessions ? html`
                     <div class="stack">
                         <span class="zume-session-choice brand-light f-7"></span>
@@ -365,6 +350,17 @@ export class MakeTraining extends LitElement {
                         </div>
                     </div>
                 ` : ''}
+                ${this.variant === Steps.scheduleDecision ? html`
+                    <div class="stack">
+                        <span class="zume-session-choice brand-light f-7"></span>
+                        <h2>${this.t.question_schedule_training}</h2>
+                        <div class="stack" data-fit-content>
+                            <button class="btn tight green ${this.state === 'yes' ? '' : 'outline'}" data-value="yes" @click=${this._handleSelection}>${this.t.yes}</button>
+                            <button class="btn tight green ${this.state === 'no' ? '' : 'outline'}" data-value="no" @click=${this._handleSelection}>${this.t.no}</button>
+                            <button class="btn tight light mt-2" @click=${this._handleDone}>${this.t.next}</button>
+                        </div>
+                    </div>
+                ` : ''}
                 ${this.variant === Steps.howOften ? html`
                     <div class="stack">
                         <span class="zume-time brand-light f-7"></span>
@@ -372,7 +368,6 @@ export class MakeTraining extends LitElement {
                         <div class="stack" data-fit-content>
                             <button class="btn tight green ${this.state === 'weekly' ? '' : 'outline'}" data-value="weekly" @click=${this._handleSelection}>${this.t.weekly}</button>
                             <button class="btn tight green ${this.state === 'biweekly' ? '' : 'outline'}" data-value="biweekly" @click=${this._handleSelection}>${this.t.biweekly}</button>
-                            <button class="btn tight green ${this.state === 'monthly' ? '' : 'outline'}" data-value="monthly" @click=${this._handleSelection}>${this.t.monthly}</button>
                             <button class="btn tight green ${this.state === 'other' ? '' : 'outline'}" data-value="other" @click=${this._handleSelection}>${this.t.other}</button>
                             <button class="btn tight light mt-2" @click=${this._handleDone}>${this.t.next}</button>
                         </div>
@@ -395,24 +390,47 @@ export class MakeTraining extends LitElement {
                         </div>
                     </div>
                 ` : ''}
+                ${this.variant === Steps.location ? html`
+                    <div class="stack">
+                        <span class="zume-start-date brand-light f-7"></span>
+                        <h2>${this.t.question_where_will_you_meet}</h2>
+                        <p>${this.t.question_where_will_you_meet_help_text}</p>
+                        <input type="text" name="location" @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
+                        <div class="stack" data-fit-content>
+                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
+                        </div>
+                    </div>
+                ` : ''}
+                ${this.variant === Steps.name ? html`
+                    <div class="stack">
+                        <span class="zume-start-date brand-light f-7"></span>
+                        <h2>${this.t.question_what_is_the_groups_name}</h2>
+                        <input type="text" name="name" @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
+                        <div class="stack" data-fit-content>
+                            <button class="btn light fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
+                        </div>
+                    </div>
+                ` : ''}
                 ${this.variant === Steps.review ? html`
                     <div class="stack">
                         <h2><span class="zume-overview brand-light"></span> ${this.t.review_training}</h2>
-                        <div class="make-training-wizard__progress-overview">
-                            <span>${progressText}</span>
-                            <progress-slider
-                                class="grow-1 mt--3"
-                                percentage=${this.selectedDays.length / howManySessions * 100}
-                                style="--primary-color: ${progressColor}"
-                            ></progress-slider>
-                        </div>
+
                         ${
-                            this.isForIntensive()
-                                ? ''
-                                : html`<button class="btn light tight" @click=${this.toggleView}>${this.scheduleView === 'calendar' ? 'list' : 'calendar'}</button>`
+                            scheduleDecision === 'yes'
+                                ? html`
+                                    <div class="cluster">
+                                        <button
+                                            class="btn outline red small tight fit-content"
+                                            @click=${this._clearCalendar}
+                                        >
+                                            ${this.t.clear_calendar}
+                                        </button>
+                                        <button class="btn light tight ms-auto fit-content" @click=${this.toggleView}>${this.scheduleView === 'calendar' ? 'list' : 'calendar'}</button>
+                                    </div>
+                                ` : ''
                         }
                         ${
-                            this.scheduleView === 'calendar'
+                            this.scheduleView === 'calendar' && scheduleDecision === 'yes'
                                 ? html`
                                     <calendar-select
                                         style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
@@ -424,21 +442,32 @@ export class MakeTraining extends LitElement {
                                         @day-selected=${this.selectDate}
                                         @calendar-extended=${this.updateCalendarEnd}
                                     ></calendar-select>
-                                ` : html`
+                                ` : ''
+                        }
+                        ${
+                            this.scheduleView === 'list' && scheduleDecision === 'yes'
+                                ? html`
                                     <calendar-list
+                                        .selectedDays=${this.selectedDays}
                                         @day-selected=${this.selectDate}
                                     ></calendar-list>
-                                `
+                                ` : ''
                         }
-                        <div class="sticky bottom-0 stack">
+                        <div class="make-training__save-area stack" ?data-absolute=${scheduleDecision === 'no'}>
                             <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
-                            <div class="cluster">
-                                <button
-                                    class="btn outline light small tight fit-content"
-                                    @click=${this._clearCalendar}
-                                >
-                                    ${this.t.clear_calendar}
-                                </button>
+                            <div class="cluster align-items-center bg-white py-0">
+                                ${
+                                    scheduleDecision === 'yes' ? html`
+                                        <div class="grow-1">
+                                            <span>${progressText}</span>
+                                            <progress-slider
+                                                class="grow-1 mt--3"
+                                                percentage=${this.selectedDays.length / howManySessions * 100}
+                                                style="--primary-color: ${progressColor}"
+                                            ></progress-slider>
+                                        </div>
+                                    ` : html`<span class="grow-1"></span>`
+                                }
                                 <button
                                     class="btn tight light ms-auto"
                                     @click=${this._handleCreate}
@@ -454,6 +483,7 @@ export class MakeTraining extends LitElement {
                         .t=${this.t}
                         name=${this.stateManager.get(Steps.name)}
                         howManySessions=${this.stateManager.get(Steps.howManySessions)}
+                        scheduleDecision=${this.stateManager.get(Steps.scheduleDecision)}
                         howOften=${this.stateManager.get(Steps.howOften)}
                         time=${this.stateManager.get(Steps.startDate)?.time}
                         date=${this.stateManager.get(Steps.startDate)?.date}

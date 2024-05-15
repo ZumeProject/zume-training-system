@@ -87,6 +87,11 @@ a {
         --secondary-btn-color: #{color('success')};
         --bg-btn-color: #{color('white')};
     }
+    &.red {
+        --primary-btn-color: #{color('error-main')};
+        --secondary-btn-color: #{color('error-main')};
+        --bg-btn-color: #{color('white')};
+    }
 
     &.outline {
         --btn-color: var(--primary-btn-color);

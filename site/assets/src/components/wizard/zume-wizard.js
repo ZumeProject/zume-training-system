@@ -226,6 +226,7 @@ export class Wizard extends LitElement {
                 break
             case Steps.planDecision:
             case Steps.howManySessions:
+            case Steps.scheduleDecision:
             case Steps.howOften:
             case Steps.startDate:
             case Steps.location:
