@@ -128,7 +128,7 @@ export class MakeTraining extends LitElement {
         this._saveState()
 
         if (this.variant === Steps.howManySessions && this.state === '5') {
-            this._gotoStep(Steps.review)
+            this._gotoStep(Steps.location)
             return
         }
 
