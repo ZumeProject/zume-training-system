@@ -67,7 +67,7 @@ export class MakeTraining extends LitElement {
             [Steps.scheduleDecision]: 'yes',
             [Steps.howOften]: 'weekly',
             [Steps.location]: '',
-            [Steps.startDate]: {},
+            [Steps.startDate]: { date: DateTime.now().toISODate() },
         }
         if (properties.has('variant')) {
             this.state = this.stateManager.get(this.variant) || defaultState[this.variant]
@@ -197,11 +197,14 @@ export class MakeTraining extends LitElement {
             const selectedDays = []
             const date = DateTime.fromISO(startDate)
             for (let i = 1; i < Number(howManySessions) + 1; i++) {
-                selectedDays.push(date.plus({weeks: weekInterval * ( i - 1 )}).toISODate())
+                selectedDays.push({
+                    date: date.plus({weeks: weekInterval * ( i - 1 )}).toISODate(),
+                    id: this.createId(),
+                })
             }
             this.selectedDays = selectedDays
             this.calendarStart = DateTime.fromISO(date).startOf('month').toISODate()
-            this.calendarEnd = DateTime.fromISO(selectedDays[selectedDays.length - 1]).endOf('month').toISODate()
+            this.calendarEnd = DateTime.fromISO(selectedDays[selectedDays.length - 1].date).endOf('month').toISODate()
             this.calendarView = 'all'
         }
     }
@@ -284,17 +287,31 @@ export class MakeTraining extends LitElement {
         }
     }
 
-    selectDate(event) {
-        const day = event.detail
+    createId() {
+        return sha256(Math.random(0,10000)).slice(0, 6)
+    }
+    addDate(event) {
+        const { date } = event.detail
 
-        if (this.selectedDays.includes(day)) {
-            const index =  this.selectedDays.indexOf(day)
+        const day = {
+            date,
+            id: this.createId(),
+        }
+
+        this.selectedDays = [...this.selectedDays, day]
+    }
+    removeDate(event) {
+        const { id } = event.detail
+
+        console.log(id)
+
+        const index =  this.selectedDays.findIndex((day) => id === day.id)
+
+        if (index > -1) {
             this.selectedDays = [
                 ...this.selectedDays.slice(0, index),
                 ...this.selectedDays.slice(index + 1)
             ]
-        } else {
-            this.selectedDays = [...this.selectedDays, day]
         }
     }
 
@@ -425,7 +442,7 @@ export class MakeTraining extends LitElement {
                                         >
                                             ${this.t.clear_calendar}
                                         </button>
-                                        <button class="btn light tight ms-auto fit-content" @click=${this.toggleView}>${this.scheduleView === 'calendar' ? 'list' : 'calendar'}</button>
+                                        <button class="btn outline light small tight ms-auto" @click=${this.toggleView}>${this.scheduleView === 'calendar' ? 'list' : 'calendar'}</button>
                                     </div>
                                 ` : ''
                         }
@@ -439,7 +456,8 @@ export class MakeTraining extends LitElement {
                                         .selectedDays=${this.selectedDays}
                                         view=${this.calendarView}
                                         showToday
-                                        @day-selected=${this.selectDate}
+                                        @day-added=${this.addDate}
+                                        @day-removed=${this.removeDate}
                                         @calendar-extended=${this.updateCalendarEnd}
                                     ></calendar-select>
                                 ` : ''
@@ -448,8 +466,10 @@ export class MakeTraining extends LitElement {
                             this.scheduleView === 'list' && scheduleDecision === 'yes'
                                 ? html`
                                     <calendar-list
+                                        .t=${this.t}
                                         .selectedDays=${this.selectedDays}
-                                        @day-selected=${this.selectDate}
+                                        @day-added=${this.addDate}
+                                        @day-removed=${this.removeDate}
                                     ></calendar-list>
                                 ` : ''
                         }

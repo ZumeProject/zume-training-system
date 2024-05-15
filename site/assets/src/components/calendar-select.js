@@ -170,8 +170,15 @@ export class CalendarSelect extends LitElement {
         this.monthToShow = month
     }
 
-    daySelected(event, day){
-        this.dispatchEvent(new CustomEvent('day-selected', { detail: day }));
+    selectDay(event, date){
+        const days = this.selectedDays.filter((day) => day.date === date)
+        if (days.length === 0) {
+            this.dispatchEvent(new CustomEvent('day-added', { detail: { date } }));
+        } else {
+            days.forEach(({ id }) => {
+                this.dispatchEvent(new CustomEvent('day-removed', { detail: { id } }));
+            })
+        }
         this.shadowRoot.querySelectorAll('.selected-time').forEach(element => element.classList.remove('selected-time'))
         event.target.classList.add('selected-time');
     }
@@ -209,6 +216,12 @@ export class CalendarSelect extends LitElement {
         this.endDate = newEndDate
     }
 
+    isSelected(date) {
+        const days = this.selectedDays.find((day) => day.date === date)
+
+        return !!days
+    }
+
     renderCalendar(monthDate) {
         const weekDayNames = this.getDaysOfTheWeekInitials(navigator.language, 'narrow')
         const dayOfWeekNumber = monthDate.startOf('month').weekday
@@ -229,9 +242,9 @@ export class CalendarSelect extends LitElement {
             ${
                 monthDays.map(day => html`
                     <div
-                        class="cell day ${day.disabled ? 'disabled':''} ${this.selectedDays.includes(day.key) ? 'selected-day'  : ''} ${this.showToday && day.key === this.today ? 'today' : ''}"
+                        class="cell day ${day.disabled ? 'disabled':''} ${this.isSelected(day.key) ? 'selected-day'  : ''} ${this.showToday && day.key === this.today ? 'today' : ''}"
                         data-day=${day.key}
-                        @click=${event => !day.disabled && this.daySelected(event, day.key)}
+                        @click=${event => !day.disabled && this.selectDay(event, day.key)}
                     >
                         ${day.formatted}
                     </div>
