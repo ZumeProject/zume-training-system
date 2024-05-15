@@ -455,7 +455,7 @@ export class MakeTraining extends LitElement {
                         }
                         <div class="make-training__save-area stack" ?data-absolute=${scheduleDecision === 'no'}>
                             <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
-                            <div class="cluster align-items-center bg-white py-0">
+                            <div class="d-flex align-items-center gap-0 bg-white py-0">
                                 ${
                                     scheduleDecision === 'yes' ? html`
                                         <div class="grow-1">

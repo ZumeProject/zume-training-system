@@ -267,7 +267,7 @@ var Qn=Object.defineProperty;var Xn=(i,e,t)=>e in i?Qn(i,e,{enumerable:!0,config
                                 `:""}
                         <div class="make-training__save-area stack" ?data-absolute=${t==="no"}>
                             <div class="warning banner" data-state=${this.errorMessage.length?"":"empty"}>${this.errorMessage}</div>
-                            <div class="cluster align-items-center bg-white py-0">
+                            <div class="d-flex align-items-center gap-0 bg-white py-0">
                                 ${t==="yes"?c`
                                         <div class="grow-1">
                                             <span>${s}</span>
