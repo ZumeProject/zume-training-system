@@ -216,6 +216,23 @@ class Zume_Training_Translator extends Zume_Magic_Page
                 .grey-back strong {
                     color: white;
                 }
+                #translator-table .button_column button.small {
+                    margin: 0;
+                    padding: .4em .8em;
+                    width: 100%
+                }
+                #translator-table .button_column button.red {
+                    background-color: #cc4b37;
+                    color: #fefefe;
+                }
+                #translator-table .button_column button.green {
+                    background-color: #3adb76;
+                    color: #0a0a0a;
+                }
+                #translator-table .button_column span {
+                    font-size: .7em;
+                    line-height: 1;
+                }
             </style>
             <?php
         }
@@ -397,7 +414,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
             return;
         }
         $language = $this->language;
-        $weblate = zume_get_weblate();
+//        $weblate = zume_get_weblate();
 
         /**
         * Template for the status tab
@@ -418,7 +435,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     $scripts_en = zume_word_count_scripts( 'en' );
                     $activities_en = zume_word_count_activities( 'en' );
                     $messages_en = zume_word_count_messages( 'en' );
-                    $strings_en = zume_word_count_english();
+//                    $strings_en = zume_word_count_english();
                     ?>
                     <strong style="text-decoration: underline;">ENGLISH WORDS</strong>:
                     <strong>Weblate: </strong> <?php echo number_format( $weblate[$language['weblate']]['total_words'] ); ?> |
@@ -635,6 +652,8 @@ class Zume_Training_Translator extends Zume_Magic_Page
         $language = $zume_languages[$this->language_code];
         $en_list = list_zume_pieces( 'en' );
         $language_list = list_zume_pieces( $language['code'] );
+        $post_type = 'zume_pieces';
+        $last_activity = zume_last_activity( $post_type );
 
         $list = [];
 
@@ -654,20 +673,24 @@ class Zume_Training_Translator extends Zume_Magic_Page
         ?>
         <div class="grid-x grid-padding-x">
             <div class="cell">
-                <table style="vertical-align: text-top;">
+                <table style="vertical-align: text-top;" id="translator-table">
                     <thead>
                         <tr>
                             <th colspan="2">
                                 ENGLISH
                             </th>
-                            <th colspan="2">
+                            <th >
                                 <span style="text-transform:uppercase;"><?php echo $language['name'] ?></span>
+                            </th>
+                            <th>
+                                Save
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
                         foreach( $list as $item ) {
+                            $pid = $item['lang']['post_id']
                              ?>
                             <tr>
                                 <td style="background-color: black; width: 10%; white-space: nowrap;"></td>
@@ -689,6 +712,11 @@ class Zume_Training_Translator extends Zume_Magic_Page
                                 </td>
                                 <td></td>
                             </tr>
+
+                            <?php
+                                $key = 'zume_piece_h1';
+                                $target = $key.$pid;
+                            ?>
                             <tr>
                                 <td>
                                     <strong>Title Override</strong>
@@ -697,13 +725,49 @@ class Zume_Training_Translator extends Zume_Magic_Page
                                     <?php echo $item['en']['zume_piece_h1'] ?? ''; ?>
                                 </td>
                                 <td>
-                                    <input type="text" id="<?php echo hash('sha256', serialize($item['lang']) . 'zume_piece_h1' ) ?>" value="<?php echo $item['lang']['zume_piece_h1'] ?? '';  ?>" class="<?php echo hash('sha256', serialize($item['lang']) . 'zume_piece_h1' ) ?>" />
+                                    <input type="text" value="<?php echo $item['lang']['zume_piece_h1'] ?? '';  ?>" class="<?php echo $target ?>" />
                                 </td>
-                                <td>
-                                    <button class="button save_text" data-target="<?php echo hash('sha256', serialize($item['lang']) . 'zume_piece_h1' ) ?>" data-key="zume_piece_h1" data-post="<?php echo $item['lang']['ID'] ?>">Save</button>
-                                    <br><span class="loading-spinner <?php echo hash('sha256', serialize($item['lang']) . 'zume_piece_h1' ) ?>"></span>
+                                <td class="button_column">
+                                    <!-- Translation Button -->
+                                    <div>
+                                        <button class="button small save_text <?php echo $target ?>log <?php echo empty( $last_activity[$target]['log']['color'] ) ? 'red' : $last_activity[$target]['log']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="log" >Translation</button>
+                                        <span class="loading-spinner small <?php echo $target ?>log"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['time'] ?? '' ?></span>
+                                    </div>
+                                    <!-- Editorial Verification -->
+                                    <div>
+                                        <button class="button small save_text <?php echo $target ?>edit <?php echo empty( $last_activity[$target]['edit']['color'] ) ? 'red' : $last_activity[$target]['edit']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="edit" >Editorial</button>
+                                        <span class="loading-spinner small <?php echo $target ?>edit"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['time'] ?? '' ?></span>
+                                    </div>
+                                    <!-- Proof Read Verification -->
+                                    <div>
+                                        <button class="button small save_text <?php echo $target ?>proof <?php echo empty( $last_activity[$target]['proof']['color'] ) ? 'red' : $last_activity[$target]['proof']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="proof" >Proof</button>
+                                        <span class="loading-spinner small <?php echo $target ?>proof"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['time'] ?? '' ?></span>
+                                    </div>
                                 </td>
                             </tr>
+
+                             <?php
+                                $key = 'zume_pre_video_content';
+                                $target = $key.$pid;
+                            ?>
                             <tr>
                                 <td>
                                     <strong>Pre-Video</strong>
@@ -712,14 +776,49 @@ class Zume_Training_Translator extends Zume_Magic_Page
                                     <?php echo $item['en']['zume_pre_video_content'] ?? '' ; ?>
                                 </td>
                                 <td>
-                                    <textarea id="<?php echo hash('sha256', serialize($item['lang']) . 'zume_pre_video_content' ) ?>" ><?php echo $item['lang']['zume_pre_video_content'] ?? '';  ?></textarea>
+                                    <textarea id="<?php echo $target ?>" ><?php echo $item['lang']['zume_pre_video_content'] ?? '';  ?></textarea>
                                 </td>
-                                <td>
-                                    <button class="button save_textarea" data-target="<?php echo hash('sha256', serialize($item['lang']) . 'zume_pre_video_content' ) ?>" data-key="zume_pre_video_content" data-post="<?php echo $item['lang']['ID'] ?>">Save</button>
-                                    <br><span class="loading-spinner <?php echo hash('sha256', serialize($item['lang']) . 'zume_pre_video_content' ) ?>"></span>
+                                 <td class="button_column">
+                                    <!-- Translation Button -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>log <?php echo empty( $last_activity[$target]['log']['color'] ) ? 'red' : $last_activity[$target]['log']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="log" >Translation</button>
+                                        <span class="loading-spinner small <?php echo $target ?>log"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['time'] ?? '' ?></span>
+                                    </div>
+                                    <!-- Editorial Verification -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>edit <?php echo empty( $last_activity[$target]['edit']['color'] ) ? 'red' : $last_activity[$target]['edit']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="edit" >Editorial</button>
+                                        <span class="loading-spinner small <?php echo $target ?>edit"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['time'] ?? '' ?></span>
+                                    </div>
+                                    <!-- Proof Read Verification -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>proof <?php echo empty( $last_activity[$target]['proof']['color'] ) ? 'red' : $last_activity[$target]['proof']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="proof" >Proof</button>
+                                        <span class="loading-spinner small <?php echo $target ?>proof"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['time'] ?? '' ?></span>
+                                    </div>
                                 </td>
                             </tr>
 
+                            <?php
+                                $key = 'zume_post_video_content';
+                                $target = $key.$pid;
+                            ?>
                             <tr>
                                 <td>
                                     <strong>Post-Video</strong>
@@ -728,14 +827,50 @@ class Zume_Training_Translator extends Zume_Magic_Page
                                     <?php echo $item['en']['zume_post_video_content'] ?? '' ; ?>
                                 </td>
                                 <td>
-                                    <textarea id="<?php echo hash('sha256', serialize($item['lang']) . 'zume_post_video_content' ) ?>" class="<?php echo hash('sha256', serialize($item['lang']) . 'zume_post_video_content' ) ?>"><?php echo $item['lang']['zume_post_video_content'] ?? '';  ?></textarea>
+                                    <textarea id="<?php echo $target ?>" class="<?php echo hash('sha256', serialize($item['lang']) . 'zume_post_video_content' ) ?>"><?php echo $item['lang']['zume_post_video_content'] ?? '';  ?></textarea>
                                 </td>
-                                <td>
-                                    <button class="button save_textarea" data-target="<?php echo hash('sha256', serialize($item['lang']) . 'zume_post_video_content' ) ?>" data-key="zume_post_video_content" data-post="<?php echo $item['lang']['ID'] ?>">Save</button>
-                                    <br><span class="loading-spinner <?php echo hash('sha256', serialize($item['lang']) . 'zume_post_video_content' ) ?>"></span>
+
+                                 <td class="button_column">
+                                    <!-- Translation Button -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>log <?php echo empty( $last_activity[$target]['log']['color'] ) ? 'red' : $last_activity[$target]['log']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="log" >Translation</button>
+                                        <span class="loading-spinner small <?php echo $target ?>log"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['time'] ?? '' ?></span>
+                                    </div>
+                                    <!-- Editorial Verification -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>edit <?php echo empty( $last_activity[$target]['edit']['color'] ) ? 'red' : $last_activity[$target]['edit']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="edit" >Editorial</button>
+                                        <span class="loading-spinner small <?php echo $target ?>edit"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['time'] ?? '' ?></span>
+                                    </div>
+                                    <!-- Proof Read Verification -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>proof <?php echo empty( $last_activity[$target]['proof']['color'] ) ? 'red' : $last_activity[$target]['proof']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="proof" >Proof</button>
+                                        <span class="loading-spinner small <?php echo $target ?>proof"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['time'] ?? '' ?></span>
+                                    </div>
                                 </td>
                             </tr>
 
+                            <?php
+                                $key = 'zume_ask_content';
+                                $target = $key.$pid;
+                            ?>
                             <tr>
                                 <td>
                                     <strong>Ask</strong>
@@ -744,13 +879,50 @@ class Zume_Training_Translator extends Zume_Magic_Page
                                     <?php echo $item['en']['zume_ask_content'] ?? '' ; ?>
                                 </td>
                                 <td>
-                                    <textarea id="<?php echo hash('sha256', serialize($item['lang']) . 'zume_ask_content' ) ?>"><?php echo  $item['lang']['zume_ask_content'] ?? '';  ?></textarea>
+                                    <textarea id="<?php echo $target ?>"><?php echo  $item['lang']['zume_ask_content'] ?? '';  ?></textarea>
                                 </td>
-                                <td>
-                                    <button class="button save_textarea" data-target="<?php echo hash('sha256', serialize($item['lang']) . 'zume_ask_content' ) ?>" data-key="zume_ask_content" data-post="<?php echo $item['lang']['ID'] ?>">Save</button>
-                                    <br><span class="loading-spinner <?php echo hash('sha256', serialize($item['lang']) . 'zume_ask_content' ) ?>"></span>
+
+                                 <td class="button_column">
+                                    <!-- Translation Button -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>log <?php echo empty( $last_activity[$target]['log']['color'] ) ? 'red' : $last_activity[$target]['log']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="log" >Translation</button>
+                                        <span class="loading-spinner small <?php echo $target ?>log"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['time'] ?? '' ?></span>
+                                    </div>
+                                    <!-- Editorial Verification -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>edit <?php echo empty( $last_activity[$target]['edit']['color'] ) ? 'red' : $last_activity[$target]['edit']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="edit" >Editorial</button>
+                                        <span class="loading-spinner small <?php echo $target ?>edit"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['time'] ?? '' ?></span>
+                                    </div>
+                                    <!-- Proof Read Verification -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>proof <?php echo empty( $last_activity[$target]['proof']['color'] ) ? 'red' : $last_activity[$target]['proof']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="proof" >Proof</button>
+                                        <span class="loading-spinner small <?php echo $target ?>proof"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['time'] ?? '' ?></span>
+                                    </div>
                                 </td>
                             </tr>
+
+                            <?php
+                                $key = 'zume_seo_meta_description';
+                                $target = $key.$pid;
+                            ?>
                             <tr>
                                 <td>
                                     <strong>SEO Description</strong>
@@ -759,11 +931,43 @@ class Zume_Training_Translator extends Zume_Magic_Page
                                     <?php echo $item['en']['zume_seo_meta_description'] ?? '' ; ?>
                                 </td>
                                 <td>
-                                    <textarea id="<?php echo hash('sha256', serialize($item['lang']) . 'zume_seo_meta_description' ) ?>"><?php echo  $item['lang']['zume_seo_meta_description'] ?? '';  ?></textarea>
+                                    <textarea id="<?php echo $target ?>"><?php echo  $item['lang']['zume_seo_meta_description'] ?? '';  ?></textarea>
                                 </td>
-                                <td>
-                                    <button class="button save_textarea" data-target="<?php echo hash('sha256', serialize($item['lang']) . 'zume_seo_meta_description' ) ?>" data-key="zume_seo_meta_description" data-post="<?php echo $item['lang']['ID'] ?>">Save</button>
-                                    <br><span class="loading-spinner <?php echo hash('sha256', serialize($item['lang']) . 'zume_seo_meta_description' ) ?>"></span>
+
+                                 <td class="button_column">
+                                    <!-- Translation Button -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>log <?php echo empty( $last_activity[$target]['log']['color'] ) ? 'red' : $last_activity[$target]['log']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="log" >Translation</button>
+                                        <span class="loading-spinner small <?php echo $target ?>log"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['time'] ?? '' ?></span>
+                                    </div>
+                                    <!-- Editorial Verification -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>edit <?php echo empty( $last_activity[$target]['edit']['color'] ) ? 'red' : $last_activity[$target]['edit']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="edit" >Editorial</button>
+                                        <span class="loading-spinner small <?php echo $target ?>edit"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['time'] ?? '' ?></span>
+                                    </div>
+                                    <!-- Proof Read Verification -->
+                                    <div>
+                                        <button class="button small save_textarea <?php echo $target ?>proof <?php echo empty( $last_activity[$target]['proof']['color'] ) ? 'red' : $last_activity[$target]['proof']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="proof" >Proof</button>
+                                        <span class="loading-spinner small <?php echo $target ?>proof"></span>
+                                    </div>
+                                    <div>
+                                        <span class="author <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['author'] ?? '' ?></span>
+                                    </div>
+                                    <div>
+                                        <span class="time <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['time'] ?? '' ?></span>
+                                    </div>
                                 </td>
                             </tr>
                             <?php
@@ -776,6 +980,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     jQuery(document).foundation();
 
                      let direction = '<?php echo ( $language['rtl'] ) ? 'rtl' : 'ltr' ?>';
+                     let lang = '<?php echo $language['weblate'] ?>';
 
                     tinymce.init({
                         selector: 'textarea',
@@ -791,50 +996,48 @@ class Zume_Training_Translator extends Zume_Magic_Page
                         block_formats: 'Paragraph=p; Header 3=h3',
                         min_height: 500,
                         format_empty_lines: true,
-                        directionality: direction
+                        directionality: direction,
+                        content_style: 'h3 { font-weight: 500; color: #2CACE2; font-size: 23px; } strong { font-weight: 500; color: #2CACE2;}',
+                        language: lang,
                     });
-
-                    jQuery('.save_textarea').on( 'click', (e) => {
-                        console.log('save')
-                        console.log(e.target.dataset.target)
-
-                        let target = e.target.dataset.target;
-                        let content = tinymce.get(target).getContent();
-                        console.log(content)
-
-                        let key = e.target.dataset.key;
-                        console.log(key)
-
-                        let postid = e.target.dataset.post;
-                        console.log(postid)
-
-                        jQuery('.loading-spinner.' + target).addClass('active');
-
-                        makeRequest('POST', 'translation/update', { key: key, postid: postid, content: content }, "zume_system/v1/" )
-                        .then( (response) => {
-                            console.log(response)
-                            jQuery('.loading-spinner.' + target).removeClass('active');
-                            jQuery('.loading-spinner.' + target).addClass('checkmark');
-                        } )
-                    } )
-                    jQuery('.save_text').on( 'click', (e) => {
-                        console.log('save_emails')
-                        console.log(e.target.dataset.target)
-
-                        let target = e.target.dataset.target;
-                        let content = jQuery('.'+target).val();
-                        let key = e.target.dataset.key;
-                        let postid = e.target.dataset.post;
-
-                        jQuery('.loading-spinner.' + target).addClass('active');
-
-                        makeRequest('POST', 'translation/update', { key: key, postid: postid, content: content }, "zume_system/v1/" )
-                        .then( (response) => {
-                            console.log(response)
-                            jQuery('.loading-spinner.' + target).removeClass('active');
-                            jQuery('.loading-spinner.' + target).addClass('checkmark');
-                        } )
+                jQuery('.save_textarea').on( 'click', (e) => {
+                    console.log('save_textarea')
+                     let content = tinymce.get(e.target.dataset.target).getContent();
+                    send_update( e, 'save_textarea', content )
                 } )
+                jQuery('.save_text').on( 'click', (e) => {
+                    console.log('save_text')
+                    let content = jQuery('.'+e.target.dataset.target).val();
+                    send_update( e, 'save_text', content )
+                } )
+                function send_update( e, field_type, content ) {
+                    let target = e.target.dataset.target;
+                    let key = e.target.dataset.key;
+                    let postid = e.target.dataset.post;
+                    let type = e.target.dataset.type;
+                    let post_type = '<?php echo $post_type ?>';
+
+                    jQuery('.loading-spinner.' + target+type).addClass('active');
+                    jQuery('.author.' + target+type).empty();
+                    jQuery('.time.' + target+type).empty();
+
+                    makeRequest('POST', 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
+                    .then( (response) => {
+                        console.log(response)
+                        jQuery('.loading-spinner.' + target+type).removeClass('active');
+
+                        if ( ! response ) {
+                            return
+                        }
+
+                        jQuery('.'+field_type+'.'+ target+'log').removeClass('red').removeClass('green').addClass(response['log'].color);
+                        jQuery('.'+field_type+'.'+ target+'edit').removeClass('red').removeClass('green').addClass(response['edit'].color);
+                        jQuery('.'+field_type+'.' + target+'proof').removeClass('red').removeClass('green').addClass(response['proof'].color);
+
+                        jQuery('.author.' + target+type).html(response[type].author);
+                        jQuery('.time.' + target+type).html(response[type].time);
+                    } )
+                }
               });
               </script>
         <?php
@@ -849,6 +1052,8 @@ class Zume_Training_Translator extends Zume_Magic_Page
         $language = $languages[$this->language_code];
         $messages_english = list_zume_messages( 'en' );
         $messages_other_language = list_zume_messages( $this->language_code );
+        $post_type = 'zume_messages';
+        $last_activity = zume_last_activity( $post_type);
 
         ob_start();
         foreach( $messages_english as $message ) {
@@ -867,19 +1072,60 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     <br><a href="<?php echo site_url() .'/'. $this->language_code . '/app/message/?m='.$pid ?>" target="_blank"><?php echo site_url() .'/'. $this->language_code . '/app/message/?m='.$pid ?></a>
                 </td>
             </tr>
+
+            <?php
+                $key = 'subject_'.$this->language_code;
+                $target = 'subject_'.$this->language_code.$pid;
+            ?>
             <tr>
                 <td style="width:10%;"><strong>Subject:</strong></td>
                 <td style="width:40%">
                     <?php echo $messages_english[$pid]['subject'] ?? '' ?><br>
                 </td>
                 <td style="width:40%;">
-                    <input type="text" class="subject_<?php echo $this->language_code ?>_<?php echo $pid ?>" value="<?php echo $messages_other_language[$pid]['subject'] ?? '' ?>" placeholder="Subject for <?php echo $language['name'] ?>" />
+                    <input type="text" class="<?php echo $target ?>" value="<?php echo $messages_other_language[$pid]['subject'] ?? '' ?>" placeholder="Subject for <?php echo $language['name'] ?>" />
                 </td>
-                <td style="width:10%;">
-                    <button class="button save_text" data-target="subject_<?php echo $this->language_code ?>_<?php echo $pid ?>" data-key="subject_<?php echo $this->language_code ?>" data-post="<?php echo $pid ?>" >Save</button>
-                    <br><span class="loading-spinner subject_<?php echo $this->language_code ?>_<?php echo $pid ?>"></span>
+                <td class="button_column">
+                    <!-- Translation Button -->
+                    <div>
+                        <button class="button small save_text <?php echo $target ?>log <?php echo empty( $last_activity[$target]['log']['color'] ) ? 'red' : $last_activity[$target]['log']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="log" >Translation</button>
+                        <span class="loading-spinner small <?php echo $target ?>log"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['time'] ?? '' ?></span>
+                    </div>
+                    <!-- Editorial Verification -->
+                    <div>
+                        <button class="button small save_text <?php echo $target ?>edit <?php echo empty( $last_activity[$target]['edit']['color'] ) ? 'red' : $last_activity[$target]['edit']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="edit" >Editorial</button>
+                        <span class="loading-spinner small <?php echo $target ?>edit"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['time'] ?? '' ?></span>
+                    </div>
+                    <!-- Proof Read Verification -->
+                    <div>
+                        <button class="button small save_text <?php echo $target ?>proof <?php echo empty( $last_activity[$target]['proof']['color'] ) ? 'red' : $last_activity[$target]['proof']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="proof" >Proof</button>
+                        <span class="loading-spinner small <?php echo $target ?>proof"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['time'] ?? '' ?></span>
+                    </div>
                 </td>
             </tr>
+
+             <?php
+                $key = 'body_'.$this->language_code;
+                $target = 'body_'.$this->language_code.$pid;
+            ?>
             <tr>
                 <td>
                     <strong>Body:</strong>
@@ -888,18 +1134,49 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     <?php echo $messages_english[$pid]['body'] ?? '' ?><br>
                 </td>
                 <td>
-                    <textarea id="body_<?php echo $this->language_code ?>_<?php echo $pid ?>" placeholder="Body for <?php echo $language['name'] ?>"><?php echo $messages_other_language[$pid]['body'] ?? '' ?></textarea>
+                    <textarea id="<?php echo $target ?>" placeholder="Body for <?php echo $language['name'] ?>"><?php echo $messages_other_language[$pid]['body'] ?? '' ?></textarea>
                 </td>
-                <td>
-                    <button class="button save_textarea" data-target="body_<?php echo $this->language_code ?>_<?php echo $pid ?>" data-post="<?php echo $pid ?>" data-key="body_<?php echo $this->language_code ?>" >Save</button>
-                    <br><span class="loading-spinner body_<?php echo $this->language_code ?>_<?php echo $pid ?>"></span>
+                <td class="button_column">
+                    <!-- Translation Button -->
+                    <div>
+                        <button class="button small save_textarea <?php echo $target ?>log <?php echo empty( $last_activity[$target]['log']['color'] ) ? 'red' : $last_activity[$target]['log']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="log" >Translation</button>
+                        <span class="loading-spinner small <?php echo $target ?>log"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['time'] ?? '' ?></span>
+                    </div>
+                    <!-- Editorial Verification -->
+                    <div>
+                        <button class="button small save_textarea <?php echo $target ?>edit <?php echo empty( $last_activity[$target]['edit']['color'] ) ? 'red' : $last_activity[$target]['edit']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="edit" >Editorial</button>
+                        <span class="loading-spinner small <?php echo $target ?>edit"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['time'] ?? '' ?></span>
+                    </div>
+                    <!-- Proof Read Verification -->
+                    <div>
+                        <button class="button small save_textarea <?php echo $target ?>proof <?php echo empty( $last_activity[$target]['proof']['color'] ) ? 'red' : $last_activity[$target]['proof']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="proof" >Proof</button>
+                        <span class="loading-spinner small <?php echo $target ?>proof"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['time'] ?? '' ?></span>
+                    </div>
                 </td>
             </tr>
             <?php
         }
         $table = ob_get_clean();
         ?>
-        <table>
+        <table id="translator-table">
             <thead>
                 <tr>
                     <th></th>
@@ -915,6 +1192,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                 jQuery(document).foundation();
 
                  let direction = '<?php echo ( $language['rtl'] ) ? 'rtl' : 'ltr' ?>';
+                 let lang = '<?php echo $language['weblate'] ?>';
 
                 tinymce.init({
                     selector: 'textarea',
@@ -930,49 +1208,48 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     block_formats: 'Paragraph=p; Header 3=h3',
                     min_height: 500,
                     format_empty_lines: true,
-                    directionality: direction
+                    directionality: direction,
+                    content_style: 'h3 { font-weight: 500; color: #2CACE2; font-size: 23px; } strong { font-weight: 500; color: #2CACE2;}',
+                    language: lang,
                 });
                 jQuery('.save_textarea').on( 'click', (e) => {
-                    console.log('save')
-                    console.log(e.target.dataset.target)
-
-                    let target = e.target.dataset.target;
-                    let content = tinymce.get(target).getContent();
-                    console.log(content)
-
-                    let key = e.target.dataset.key;
-                    console.log(key)
-
-                    let postid = e.target.dataset.post;
-                    console.log(postid)
-
-                    jQuery('.loading-spinner.' + target).addClass('active');
-
-                    makeRequest('POST', 'translation/update', { key: key, postid: postid, content: content }, "zume_system/v1/" )
-                    .then( (response) => {
-                        console.log(response)
-                        jQuery('.loading-spinner.' + target).removeClass('active');
-                        jQuery('.loading-spinner.' + target).addClass('checkmark');
-                    } )
+                    console.log('save_textarea')
+                     let content = tinymce.get(e.target.dataset.target).getContent();
+                    send_update( e, 'save_textarea', content )
                 } )
                 jQuery('.save_text').on( 'click', (e) => {
-                    console.log('save_emails')
-                    console.log(e.target.dataset.target)
-
+                    console.log('save_text')
+                    let content = jQuery('.'+e.target.dataset.target).val();
+                    send_update( e, 'save_text', content )
+                } )
+                function send_update( e, field_type, content ) {
                     let target = e.target.dataset.target;
-                    let content = jQuery('.'+target).val();
                     let key = e.target.dataset.key;
                     let postid = e.target.dataset.post;
+                    let type = e.target.dataset.type;
+                    let post_type = '<?php echo $post_type ?>';
 
-                    jQuery('.loading-spinner.' + target).addClass('active');
+                    jQuery('.loading-spinner.' + target+type).addClass('active');
+                    jQuery('.author.' + target+type).empty();
+                    jQuery('.time.' + target+type).empty();
 
-                    makeRequest('POST', 'translation/update', { key: key, postid: postid, content: content }, "zume_system/v1/" )
+                    makeRequest('POST', 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
                     .then( (response) => {
                         console.log(response)
-                        jQuery('.loading-spinner.' + target).removeClass('active');
-                        jQuery('.loading-spinner.' + target).addClass('checkmark');
+                        jQuery('.loading-spinner.' + target+type).removeClass('active');
+
+                        if ( ! response ) {
+                            return
+                        }
+
+                        jQuery('.'+field_type+'.'+ target+'log').removeClass('red').removeClass('green').addClass(response['log'].color);
+                        jQuery('.'+field_type+'.'+ target+'edit').removeClass('red').removeClass('green').addClass(response['edit'].color);
+                        jQuery('.'+field_type+'.' + target+'proof').removeClass('red').removeClass('green').addClass(response['proof'].color);
+
+                        jQuery('.author.' + target+type).html(response[type].author);
+                        jQuery('.time.' + target+type).html(response[type].time);
                     } )
-                } )
+                }
               });
               </script>
         <?php
@@ -989,6 +1266,8 @@ class Zume_Training_Translator extends Zume_Magic_Page
         $en_list = list_zume_scripts( 'en' );
         $language_list = list_zume_scripts( $language['code'] );
         $fields = Zume_Scripts_Post_Type::instance()->get_custom_fields_settings();
+        $post_type = 'zume_scripts';
+        $last_activity = zume_last_activity( $post_type);
 
         $list = [];
 
@@ -1008,7 +1287,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
         ?>
         <div class="grid-x grid-padding-x">
             <div class="cell">
-                <table style="vertical-align: text-top;">
+                <table style="vertical-align: text-top;"  id="translator-table">
                     <thead>
                         <tr>
                             <th>
@@ -1017,7 +1296,9 @@ class Zume_Training_Translator extends Zume_Magic_Page
                             <th>
                                 <span style="text-transform:uppercase;"><?php echo $language['name'] ?></span>
                             </th>
-                            <th></th>
+                            <th>
+                                Save
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1038,13 +1319,49 @@ class Zume_Training_Translator extends Zume_Magic_Page
                                 <td>
                                     <?php echo $en_list[$script_id]['content'] ?? ''  ?>
                                 </td>
+                                <?php
+                                    $pid = $language_list[$script_id]['post_id'] ;
+                                    $key = $script_id;
+                                    $target = $script_id.$pid;
+                                ?>
                                 <td>
-                                    <textarea style="height:500px;" id="<?php echo hash('sha256', $script_id . $language_list[$script_id]['post_id'] ) ?>"><?php echo $language_list[$script_id]['content'] ?? '' ;  ?></textarea>
+                                    <textarea style="height:500px;" id="<?php echo $target ?>" ><?php echo $language_list[$script_id]['content'] ?? '' ;  ?></textarea>
                                 </td>
-                                <td>
-                                    <button class="button save_textarea" data-target="<?php echo hash('sha256', $script_id . $language_list[$script_id]['post_id'] ) ?>" data-key="<?php echo $script_id ?>" data-post="<?php echo $language_list[$script_id]['post_id'] ?>">Save</button>
-                                    <br><span class="loading-spinner <?php echo hash('sha256', $script_id . $language_list[$script_id]['post_id'] ) ?>"></span>
-                                </td>
+                                 <td class="button_column">
+                                        <!-- Translation Button -->
+                                        <div>
+                                            <button class="button small save_textarea <?php echo $target ?>log <?php echo empty( $last_activity[$target]['log']['color'] ) ? 'red' : $last_activity[$target]['log']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="log" >Translation</button>
+                                            <span class="loading-spinner small <?php echo $target ?>log"></span>
+                                        </div>
+                                        <div>
+                                            <span class="author <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['author'] ?? '' ?></span>
+                                        </div>
+                                        <div>
+                                            <span class="time <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['time'] ?? '' ?></span>
+                                        </div>
+                                        <!-- Editorial Verification -->
+                                        <div>
+                                            <button class="button small save_textarea <?php echo $target ?>edit <?php echo empty( $last_activity[$target]['edit']['color'] ) ? 'red' : $last_activity[$target]['edit']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="edit" >Editorial</button>
+                                            <span class="loading-spinner small <?php echo $target ?>edit"></span>
+                                        </div>
+                                        <div>
+                                            <span class="author <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['author'] ?? '' ?></span>
+                                        </div>
+                                        <div>
+                                            <span class="time <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['time'] ?? '' ?></span>
+                                        </div>
+                                        <!-- Proof Read Verification -->
+                                        <div>
+                                            <button class="button small save_textarea <?php echo $target ?>proof <?php echo empty( $last_activity[$target]['proof']['color'] ) ? 'red' : $last_activity[$target]['proof']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="proof" >Proof</button>
+                                            <span class="loading-spinner small <?php echo $target ?>proof"></span>
+                                        </div>
+                                        <div>
+                                            <span class="author <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['author'] ?? '' ?></span>
+                                        </div>
+                                        <div>
+                                            <span class="time <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['time'] ?? '' ?></span>
+                                        </div>
+                                    </td>
                             </tr>
                             <?php
                         }
@@ -1057,6 +1374,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     jQuery(document).foundation();
 
                     let direction = '<?php echo ( $language['rtl'] ) ? 'rtl' : 'ltr' ?>';
+                    let lang = '<?php echo $language['weblate'] ?>';
 
                     tinymce.init({
                         selector: 'textarea',
@@ -1073,30 +1391,47 @@ class Zume_Training_Translator extends Zume_Magic_Page
                         min_height: 800,
                         format_empty_lines: true,
                         directionality: direction,
+                        content_style: 'h3 { font-weight: 500; color: #2CACE2; font-size: 23px; } strong { font-weight: 500; color: #2CACE2;}',
+                        language: lang,
                     });
                     jQuery('.save_textarea').on( 'click', (e) => {
-                        console.log('save')
-                        console.log(e.target.dataset.target)
-
+                        console.log('save_textarea')
+                         let content = tinymce.get(e.target.dataset.target).getContent();
+                        send_update( e, 'save_textarea', content )
+                    } )
+                    jQuery('.save_text').on( 'click', (e) => {
+                        console.log('save_text')
+                        let content = jQuery('.'+e.target.dataset.target).val();
+                        send_update( e, 'save_text', content )
+                    } )
+                    function send_update( e, field_type, content ) {
                         let target = e.target.dataset.target;
-                        let content = tinymce.get(target).getContent();
-                        console.log(content)
-
                         let key = e.target.dataset.key;
-                        console.log(key)
-
                         let postid = e.target.dataset.post;
-                        console.log(postid)
+                        let type = e.target.dataset.type;
+                        let post_type = '<?php echo $post_type ?>';
 
-                        jQuery('.loading-spinner.' + target).addClass('active');
+                        jQuery('.loading-spinner.' + target+type).addClass('active');
+                        jQuery('.author.' + target+type).empty();
+                        jQuery('.time.' + target+type).empty();
 
-                        makeRequest('POST', 'translation/update', { key: key, postid: postid, content: content }, "zume_system/v1/" )
+                        makeRequest('POST', 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
                         .then( (response) => {
                             console.log(response)
-                            jQuery('.loading-spinner.' + target).removeClass('active');
-                            jQuery('.loading-spinner.' + target).addClass('checkmark');
+                            jQuery('.loading-spinner.' + target+type).removeClass('active');
+
+                            if ( ! response ) {
+                                return
+                            }
+
+                            jQuery('.'+field_type+'.'+ target+'log').removeClass('red').removeClass('green').addClass(response['log'].color);
+                            jQuery('.'+field_type+'.'+ target+'edit').removeClass('red').removeClass('green').addClass(response['edit'].color);
+                            jQuery('.'+field_type+'.' + target+'proof').removeClass('red').removeClass('green').addClass(response['proof'].color);
+
+                            jQuery('.author.' + target+type).html(response[type].author);
+                            jQuery('.time.' + target+type).html(response[type].time);
                         } )
-                    } )
+                    }
               });
               </script>
         <?php
@@ -1111,6 +1446,8 @@ class Zume_Training_Translator extends Zume_Magic_Page
         $language = $languages[$this->language_code];
         $activities_english = list_zume_activities( 'en' );
         $activities_other_language = list_zume_activities( $this->language_code );
+        $post_type = 'zume_activities';
+        $last_activity = zume_last_activity( $post_type);
 
         ob_start();
         foreach( $activities_english as $message ) {
@@ -1124,22 +1461,65 @@ class Zume_Training_Translator extends Zume_Magic_Page
                 </td>
                 <td colspan="2">
                     <br />
-                    <a href="<?php echo site_url() . '/' . $this->language_code . '/activities/' . $activities_other_language[$pid]['post_title'] ?>" target="_blank"><?php echo site_url() . '/' . $this->language_code . '/activities/' . $activities_other_language[$pid]['post_title'] ?></a>
+                    <a href="<?php echo site_url() . '/' . $this->language_code . '/activities/' . $activities_other_language[$pid]['post_title'] ?>" target="_blank">
+                    <?php echo site_url() . '/' . $this->language_code . '/activities/' . $activities_other_language[$pid]['post_title'] ?>
+                    </a>
                 </td>
             </tr>
+
+            <?php
+                $key = 'title_'.$this->language_code;
+                $target = 'title_'.$this->language_code.$pid;
+            ?>
             <tr>
                 <td><strong>Title:</strong></td>
                 <td>
                     <?php echo $activities_english[$pid]['title'] ?? '' ?><br>
                 </td>
                 <td>
-                    <input type="text" class="title_<?php echo $this->language_code ?>_<?php echo $pid ?>" value="<?php echo $activities_other_language[$pid]['title'] ?? '' ?>" placeholder="Subject for <?php echo $language['name'] ?>" />
+                    <input type="text" class="<?php echo $target ?>" value="<?php echo $activities_other_language[$pid]['title'] ?? '' ?>" placeholder="Subject for <?php echo $language['name'] ?>" />
                 </td>
-                <td>
-                    <button class="button save_text" data-target="title_<?php echo $this->language_code ?>_<?php echo $pid ?>" data-key="title_<?php echo $this->language_code ?>" data-post="<?php echo $pid ?>" >Save</button>
-                    <br><span class="loading-spinner title_<?php echo $this->language_code ?>_<?php echo $pid ?>"></span>
+                <td class="button_column">
+                    <!-- Translation Button -->
+                    <div>
+                        <button class="button small save_text <?php echo $target ?>log <?php echo empty( $last_activity[$target]['log']['color'] ) ? 'red' : $last_activity[$target]['log']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="log" >Translation</button>
+                        <span class="loading-spinner small <?php echo $target ?>log"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['time'] ?? '' ?></span>
+                    </div>
+                    <!-- Editorial Verification -->
+                    <div>
+                        <button class="button small save_text <?php echo $target ?>edit <?php echo empty( $last_activity[$target]['edit']['color'] ) ? 'red' : $last_activity[$target]['edit']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="edit" >Editorial</button>
+                        <span class="loading-spinner small <?php echo $target ?>edit"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['time'] ?? '' ?></span>
+                    </div>
+                    <!-- Proof Read Verification -->
+                    <div>
+                        <button class="button small save_text <?php echo $target ?>proof <?php echo empty( $last_activity[$target]['proof']['color'] ) ? 'red' : $last_activity[$target]['proof']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="proof" >Proof</button>
+                        <span class="loading-spinner small <?php echo $target ?>proof"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['time'] ?? '' ?></span>
+                    </div>
                 </td>
             </tr>
+
+            <?php
+                $key = 'content_'.$this->language_code;
+                $target = 'content_'.$this->language_code.$pid;
+            ?>
             <tr>
                 <td>
                     <strong>Content:</strong>
@@ -1148,18 +1528,49 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     <?php echo $activities_english[$pid]['content'] ?? '' ?><br>
                 </td>
                 <td>
-                    <textarea id="content_<?php echo $this->language_code ?>_<?php echo $pid ?>" placeholder="Body for <?php echo $language['name'] ?>"><?php echo $activities_other_language[$pid]['content'] ?? '' ?></textarea>
+                    <textarea id="<?php echo $target ?>" placeholder="Body for <?php echo $language['name'] ?>"><?php echo $activities_other_language[$pid]['content'] ?? '' ?></textarea>
                 </td>
-                <td>
-                    <button class="button save_textarea" data-target="content_<?php echo $this->language_code ?>_<?php echo $pid ?>" data-post="<?php echo $pid ?>" data-key="content_<?php echo $this->language_code ?>" >Save</button>
-                    <br><span class="loading-spinner content_<?php echo $this->language_code ?>_<?php echo $pid ?>"></span>
+                 <td class="button_column">
+                    <!-- Translation Button -->
+                    <div>
+                        <button class="button small save_textarea <?php echo $target ?>log <?php echo empty( $last_activity[$target]['log']['color'] ) ? 'red' : $last_activity[$target]['log']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="log" >Translation</button>
+                        <span class="loading-spinner small <?php echo $target ?>log"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>log"><?php echo $last_activity[$target]['log']['time'] ?? '' ?></span>
+                    </div>
+                    <!-- Editorial Verification -->
+                    <div>
+                        <button class="button small save_textarea <?php echo $target ?>edit <?php echo empty( $last_activity[$target]['edit']['color'] ) ? 'red' : $last_activity[$target]['edit']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="edit" >Editorial</button>
+                        <span class="loading-spinner small <?php echo $target ?>edit"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>edit"><?php echo $last_activity[$target]['edit']['time'] ?? '' ?></span>
+                    </div>
+                    <!-- Proof Read Verification -->
+                    <div>
+                        <button class="button small save_textarea <?php echo $target ?>proof <?php echo empty( $last_activity[$target]['proof']['color'] ) ? 'red' : $last_activity[$target]['proof']['color'] ?>" data-target="<?php echo $target ?>" data-post="<?php echo $pid ?>" data-key="<?php echo $key ?>" data-type="proof" >Proof</button>
+                        <span class="loading-spinner small <?php echo $target ?>proof"></span>
+                    </div>
+                    <div>
+                        <span class="author <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['author'] ?? '' ?></span>
+                    </div>
+                    <div>
+                        <span class="time <?php echo $target ?>proof"><?php echo $last_activity[$target]['proof']['time'] ?? '' ?></span>
+                    </div>
                 </td>
             </tr>
             <?php
         }
         $table = ob_get_clean();
         ?>
-        <table>
+        <table id="translator-table">
             <thead>
                 <tr>
                     <th style="width:5%;"></th>
@@ -1175,6 +1586,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                 jQuery(document).foundation();
 
                  let direction = '<?php echo ( $language['rtl'] ) ? 'rtl' : 'ltr' ?>';
+                 let lang = '<?php echo $language['weblate'] ?>';
 
                 tinymce.init({
                     selector: 'textarea',
@@ -1190,49 +1602,48 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     block_formats: 'Paragraph=p; Header 3=h3',
                     min_height: 800,
                     format_empty_lines: true,
-                    directionality: direction
+                    directionality: direction,
+                    content_style: 'h3 { font-weight: 500; color: #2CACE2; font-size: 23px; } strong { font-weight: 500; color: #2CACE2;}',
+                    language: lang,
                 });
                 jQuery('.save_textarea').on( 'click', (e) => {
                     console.log('save_textarea')
-                    console.log(e.target.dataset.target)
-
-                    let target = e.target.dataset.target;
-                    let content = tinymce.get(target).getContent();
-                    console.log(content)
-
-                    let key = e.target.dataset.key;
-                    console.log(key)
-
-                    let postid = e.target.dataset.post;
-                    console.log(postid)
-
-                    jQuery('.loading-spinner.' + target).addClass('active');
-
-                    makeRequest('POST', 'translation/update', { key: key, postid: postid, content: content }, "zume_system/v1/" )
-                    .then( (response) => {
-                        console.log(response)
-                        jQuery('.loading-spinner.' + target).removeClass('active');
-                        jQuery('.loading-spinner.' + target).addClass('checkmark');
-                    } )
+                     let content = tinymce.get(e.target.dataset.target).getContent();
+                    send_update( e, 'save_textarea', content )
                 } )
                 jQuery('.save_text').on( 'click', (e) => {
                     console.log('save_text')
-                    console.log(e.target.dataset.target)
-
+                    let content = jQuery('.'+e.target.dataset.target).val();
+                    send_update( e, 'save_text', content )
+                } )
+                function send_update( e, field_type, content ) {
                     let target = e.target.dataset.target;
-                    let content = jQuery('.'+target).val();
                     let key = e.target.dataset.key;
                     let postid = e.target.dataset.post;
+                    let type = e.target.dataset.type;
+                    let post_type = '<?php echo $post_type ?>';
 
-                    jQuery('.loading-spinner.' + target).addClass('active');
+                    jQuery('.loading-spinner.' + target+type).addClass('active');
+                    jQuery('.author.' + target+type).empty();
+                    jQuery('.time.' + target+type).empty();
 
-                    makeRequest('POST', 'translation/update', { key: key, postid: postid, content: content }, "zume_system/v1/" )
+                    makeRequest('POST', 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
                     .then( (response) => {
                         console.log(response)
-                        jQuery('.loading-spinner.' + target).removeClass('active');
-                        jQuery('.loading-spinner.' + target).addClass('checkmark');
+                        jQuery('.loading-spinner.' + target+type).removeClass('active');
+
+                        if ( ! response ) {
+                            return
+                        }
+
+                        jQuery('.'+field_type+'.'+ target+'log').removeClass('red').removeClass('green').addClass(response['log'].color);
+                        jQuery('.'+field_type+'.'+ target+'edit').removeClass('red').removeClass('green').addClass(response['edit'].color);
+                        jQuery('.'+field_type+'.' + target+'proof').removeClass('red').removeClass('green').addClass(response['proof'].color);
+
+                        jQuery('.author.' + target+type).html(response[type].author);
+                        jQuery('.time.' + target+type).html(response[type].time);
                     } )
-                } )
+                }
               });
               </script>
         <?php
@@ -1542,45 +1953,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
 
 Zume_Training_Translator::instance();
 
-if (!function_exists('list_zume_pieces')) {
-    function list_zume_pieces($language_code)
-    {
-        global $wpdb, $table_prefix;
 
-        $sql = $wpdb->prepare("SELECT p.*,
-                                    pm.post_id,
-                                    pm.meta_value as zume_lang,
-                                    pm1.meta_value as zume_piece,
-                                    pm2.meta_value as zume_piece_h1,
-                                    pm3.meta_value as zume_pre_video_content,
-                                    pm4.meta_value as zume_post_video_content,
-                                    pm5.meta_value as zume_ask_content,
-                                    pm6.meta_value as zume_seo_meta_description
-                                FROM zume_posts p
-                                JOIN zume_postmeta pm ON pm.post_id=p.ID AND pm.meta_key = 'zume_lang' AND pm.meta_value = %s
-                                LEFT JOIN zume_postmeta pm1 ON pm1.post_id=p.ID AND pm1.meta_key = 'zume_piece'
-                                LEFT JOIN zume_postmeta pm2 ON pm2.post_id = p.ID AND pm2.meta_key = 'zume_piece_h1'
-                                LEFT JOIN zume_postmeta pm3 ON pm3.post_id = p.ID AND pm3.meta_key = 'zume_pre_video_content'
-                                LEFT JOIN zume_postmeta pm4 ON pm4.post_id = p.ID AND pm4.meta_key = 'zume_post_video_content'
-                                LEFT JOIN zume_postmeta pm5 ON pm5.post_id = p.ID AND pm5.meta_key = 'zume_ask_content'
-                                LEFT JOIN zume_postmeta pm6 ON pm6.post_id = p.ID AND pm6.meta_key = 'zume_seo_meta_description'
-                                WHERE p.post_type = 'zume_pieces'
-                                ORDER BY CAST(pm1.meta_value AS unsigned );",
-                            $language_code );
-        $results = $wpdb->get_results($sql, ARRAY_A);
-
-        if (empty($results) || is_wp_error($results)) {
-            return [];
-        }
-
-        $pieces = [];
-        foreach ($results as $result) {
-            $pieces[$result['post_id']] = $result;
-        }
-
-        return $pieces;
-    }
-}
 if (!function_exists('list_zume_downloads')) {
     function list_zume_downloads($language_code)
     {
@@ -1638,7 +2011,7 @@ if (!function_exists('list_zume_activities')) {
     {
         global $wpdb;
 
-        $sql = $wpdb->prepare("SELECT p.post_title, pm.post_id, %s as language_code, pm.meta_id, pm.meta_value as title, pm1.meta_value as content
+        $sql = $wpdb->prepare("SELECT p.post_title, pm.post_id, %s as language_code, pm.meta_id as title_meta_id, pm.meta_value as title, pm1.meta_id as content_meta_id, pm1.meta_value as content
                                         FROM zume_posts p
                                         LEFT JOIN zume_postmeta pm ON pm.post_id=p.ID AND pm.meta_key LIKE CONCAT( 'title_', %s )
                                         LEFT JOIN zume_postmeta pm1 ON pm1.post_id=p.ID AND pm1.meta_key LIKE CONCAT( 'content_', %s )
@@ -1655,6 +2028,86 @@ if (!function_exists('list_zume_activities')) {
         }
         return $activities;
     }
+}
+function zume_last_activity( $post_type = NULL ) {
+    global $wpdb;
+    $post_type_list = "'zume_activities','zume_pieces','zume_messages','zume_scripts'";
+    if ( ! empty( $post_type ) ) {
+        $post_type_list = "'". $post_type . "'";
+    }
+
+    $list = $wpdb->get_results(
+        "SELECT tl.id, tl.post_id, tl.meta_key, tl.timestamp, tl.type, tl.author, u.display_name
+                FROM zume_postmeta_translator_log tl
+                LEFT JOIN zume_users u ON u.ID=tl.author
+                WHERE tl.id IN (
+                    SELECT MAX(tl1.id)
+                    FROM zume_postmeta_translator_log tl1
+                    JOIN zume_posts p ON p.ID=tl1.post_id AND p.post_type IN ($post_type_list)
+                    GROUP BY tl1.meta_key, tl1.post_id, tl1.type
+                )",
+        ARRAY_A);
+    $data = [];
+    foreach( $list as $item ) {
+        if ( !isset($data[$item['meta_key'].$item['post_id']])){
+            $data[$item['meta_key'].$item['post_id']] = [
+                'log' => [
+                    'time' => '',
+                    'author' => '',
+                    'color' => 'red',
+                    'timestamp' => '',
+                ], // save
+                'edit' => [
+                    'time' => '',
+                    'author' => '',
+                    'color' => 'red',
+                    'timestamp' => '',
+                ], // editorial verification
+                'proof' => [
+                    'time' => '',
+                    'author' => '',
+                    'color' => 'red',
+                    'timestamp' => '',
+                ], // proof read
+            ];
+        }
+
+        $data[$item['meta_key'].$item['post_id']][$item['type']] = [
+            'time' => date("n-j (g:i a)", strtotime($item['timestamp'])),
+            'author' => $item['display_name'],
+            'color' => 'green',
+            'timestamp' => strtotime($item['timestamp']),
+        ];
+    }
+
+    foreach( $data as $index => $value ) {
+        $log = $value['log']['timestamp'];
+        $edit = $value['edit']['timestamp'];
+        $proof = $value['proof']['timestamp'];
+
+        // log is empty, all red
+        if ( empty( $log) ) {
+            $data[$index]['log']['color'] = 'red';
+            $data[$index]['edit']['color'] = 'red';
+            $data[$index]['proof']['color'] = 'red';
+        }
+        // log is newer than edit, then red for edit and proof
+        else if ( $log > $edit ) {
+            $data[$index]['log']['color'] = 'green';
+            $data[$index]['edit']['color'] = 'red';
+            $data[$index]['proof']['color'] = 'red';
+        }
+        // edit is newer than proof, then red
+        else if ( $edit > $proof ) {
+            $data[$index]['log']['color'] = 'green';
+            $data[$index]['edit']['color'] = 'green';
+            $data[$index]['proof']['color'] = 'red';
+        }
+    }
+
+//    dt_write_log(__METHOD__);
+//    dt_write_log($data);
+    return $data;
 }
 
 if (!function_exists('list_zume_videos')) {
@@ -1705,8 +2158,45 @@ if ( ! function_exists( 'list_zume_messages' ) ) {
             $messages[$message['post_id']] = $message;
         }
         return $messages;
+    }
+}
+if (!function_exists('list_zume_pieces')) {
+    function list_zume_pieces($language_code)
+    {
+        global $wpdb, $table_prefix;
 
+        $sql = $wpdb->prepare("SELECT p.*,
+                                    pm.post_id,
+                                    pm.meta_value as zume_lang,
+                                    pm1.meta_value as zume_piece,
+                                    pm2.meta_value as zume_piece_h1,
+                                    pm3.meta_value as zume_pre_video_content,
+                                    pm4.meta_value as zume_post_video_content,
+                                    pm5.meta_value as zume_ask_content,
+                                    pm6.meta_value as zume_seo_meta_description
+                                FROM zume_posts p
+                                JOIN zume_postmeta pm ON pm.post_id=p.ID AND pm.meta_key = 'zume_lang' AND pm.meta_value = %s
+                                LEFT JOIN zume_postmeta pm1 ON pm1.post_id=p.ID AND pm1.meta_key = 'zume_piece'
+                                LEFT JOIN zume_postmeta pm2 ON pm2.post_id = p.ID AND pm2.meta_key = 'zume_piece_h1'
+                                LEFT JOIN zume_postmeta pm3 ON pm3.post_id = p.ID AND pm3.meta_key = 'zume_pre_video_content'
+                                LEFT JOIN zume_postmeta pm4 ON pm4.post_id = p.ID AND pm4.meta_key = 'zume_post_video_content'
+                                LEFT JOIN zume_postmeta pm5 ON pm5.post_id = p.ID AND pm5.meta_key = 'zume_ask_content'
+                                LEFT JOIN zume_postmeta pm6 ON pm6.post_id = p.ID AND pm6.meta_key = 'zume_seo_meta_description'
+                                WHERE p.post_type = 'zume_pieces'
+                                ORDER BY CAST(pm1.meta_value AS unsigned );",
+            $language_code );
+        $results = $wpdb->get_results($sql, ARRAY_A);
 
+        if (empty($results) || is_wp_error($results)) {
+            return [];
+        }
+
+        $pieces = [];
+        foreach ($results as $result) {
+            $pieces[$result['post_id']] = $result;
+        }
+
+        return $pieces;
     }
 }
 
