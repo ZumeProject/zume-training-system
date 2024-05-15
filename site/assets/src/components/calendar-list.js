@@ -72,7 +72,7 @@ export class CalendarList extends LitElement {
                 </ol>
 
                 <div class="d-flex align-items-center gap-0">
-                    <input class="input" type="date" @change=${this.onChange} value=${this.date} />
+                    <input class="input fit-content" type="date" @change=${this.onChange} value=${this.date} />
                     <button class="btn light tight" @click=${this.addDate}>
                         ${this.t.add}
                     </button>

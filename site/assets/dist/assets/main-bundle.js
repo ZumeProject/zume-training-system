@@ -2581,7 +2581,7 @@ var Kn=Object.defineProperty;var Qn=(i,e,t)=>e in i?Kn(i,e,{enumerable:!0,config
                 </ol>
 
                 <div class="d-flex align-items-center gap-0">
-                    <input class="input" type="date" @change=${this.onChange} value=${this.date} />
+                    <input class="input fit-content" type="date" @change=${this.onChange} value=${this.date} />
                     <button class="btn light tight" @click=${this.addDate}>
                         ${this.t.add}
                     </button>
