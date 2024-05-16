@@ -108,13 +108,13 @@ export class InviteFriends extends LitElement {
 
 ${this.t.location}: ${location}
 ${this.t.time}: ${nextSession !== '' ? DateTime.fromISO(nextSession).toFormat('DDDD') : ''} ${this.training.time_of_day_note ?? ''} ${this.training.timezone_note ?? ''}
-${
-    this.training.zoom_link_note ? `${this.t.zoom_link}: ${this.training.zoom_link_note}\n` : ''
-}
 ${this.t.join_url}
 ${this.url}
 
-${this.t.join_key}: ${this.training.join_key}`
+${this.t.join_key}: ${this.training.join_key}
+${
+    this.training.zoom_link_note ? `\n${this.training.zoom_link_note}\n` : ''
+}`
 
         return html`
             <div class="center stack">

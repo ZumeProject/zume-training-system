@@ -123,12 +123,13 @@ var Kn=Object.defineProperty;var Qn=(i,e,t)=>e in i?Kn(i,e,{enumerable:!0,config
 
 ${this.t.location}: ${s}
 ${this.t.time}: ${e!==""?v.fromISO(e).toFormat("DDDD"):""} ${this.training.time_of_day_note??""} ${this.training.timezone_note??""}
-${this.training.zoom_link_note?`${this.t.zoom_link}: ${this.training.zoom_link_note}
-`:""}
 ${this.t.join_url}
 ${this.url}
 
-${this.t.join_key}: ${this.training.join_key}`;return c`
+${this.t.join_key}: ${this.training.join_key}
+${this.training.zoom_link_note?`
+${this.training.zoom_link_note}
+`:""}`;return c`
             <div class="center stack">
                 <span class="zume-share brand-light f-7"></span>
                 <h2>${this.t.title}</h2>
