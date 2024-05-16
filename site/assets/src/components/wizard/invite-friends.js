@@ -44,6 +44,7 @@ export class InviteFriends extends LitElement {
 
         makeRequest( 'GET', `plan/${this.inviteCode}`, {}, 'zume_system/v1' )
             .then((data) => {
+                console.log(data)
                 if (data.error_code) {
                     this.errorMessage = this.t.broken_link
                     return
@@ -53,6 +54,7 @@ export class InviteFriends extends LitElement {
             })
             .fail((error) => {
                 console.error(error)
+                this.errorMessage = this.t.broken_link
             })
             .always(() => {
                 this.loading = false
@@ -102,11 +104,17 @@ export class InviteFriends extends LitElement {
         const nextSession = this.getNextSession()
         const note = this.t.note.replace('%s', this.training.post_author_display_name)
         const location = this.t.location.replace('%s', this.training.location_note ?? '')
-        const time = this.t.time
-            .replace('%1$s', nextSession !== '' ? DateTime.fromISO(nextSession).toFormat('DDDD') : '')
-            .replace('%2$s', this.training.time_of_day_note ?? '')
-        const joinKey = this.t.join_key.replace('%s', this.training.join_key)
-        const inviteText = note + "\n\n" + location + "\n" + time + "\n\n" + this.t.join_url + "\n" + this.url + "\n\n" + joinKey
+        const inviteText = `${note}
+
+${this.t.location}: ${location}
+${this.t.time}: ${nextSession !== '' ? DateTime.fromISO(nextSession).toFormat('DDDD') : ''} ${this.training.time_of_day_note ?? ''} ${this.training.timezone_note ?? ''}
+${
+    this.training.zoom_link_note ? `${this.t.zoom_link}: ${this.training.zoom_link_note}\n` : ''
+}
+${this.t.join_url}
+${this.url}
+
+${this.t.join_key}: ${this.training.join_key}`
 
         return html`
             <div class="center stack">
