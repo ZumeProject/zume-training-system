@@ -14,6 +14,8 @@ export class InviteFriends extends LitElement {
             skippable: { type: Boolean },
             t: { type: Object },
             inviteCode: { type: String, attribute: false },
+            loading: { type: Boolean, attribute: false },
+            errorMessage: { type: String, attribute: false },
             training: { type: Object, attribute: false },
         }
     }
@@ -30,31 +32,46 @@ export class InviteFriends extends LitElement {
 
         this.training = {}
         this.inviteCode = joinKey
+        this.loading = false
+        this.errorMessage = ''
         this.url = jsObject.site_url + `/app/plan_invite${this.inviteCode !== '' ? '?code=' + this.inviteCode : ''}`
     }
 
     connectedCallback() {
         super.connectedCallback();
 
+        this.loading = true
+
         makeRequest( 'GET', `plan/${this.inviteCode}`, {}, 'zume_system/v1' )
             .then((data) => {
-                console.log(data)
+                if (data.error_code) {
+                    this.errorMessage = this.t.broken_link
+                    return
+                }
                 this.training = data
+                this.errorMessage = ''
             })
             .fail((error) => {
                 console.error(error)
             })
+            .always(() => {
+                this.loading = false
+            })
     }
 
     getNextSession() {
+        if (Object.keys(this.training).length === 0) {
+            return
+        }
+
         const { set_type } = this.training
 
-        const numberOfSessions = this.numberOfSessions(set_type)
+        const numberOfSessions = this.numberOfSessions(set_type.key)
 
         const now = DateTime.now()
         for (let i = 1; i < numberOfSessions + 1; i++) {
             const digit = i < 10 ? `0${i}` : `${i}`
-            const date = this.training[set_type + '_' + digit]
+            const date = this.training[set_type.key + '_' + digit]
 
             if (!date) {
                 continue
@@ -81,32 +98,34 @@ export class InviteFriends extends LitElement {
     }
 
     render() {
+
         const nextSession = this.getNextSession()
         const note = this.t.note.replace('%s', this.training.post_author_display_name)
-        const location = this.t.location.replace('%s', this.location_note ?? '')
+        const location = this.t.location.replace('%s', this.training.location_note ?? '')
         const time = this.t.time
-            .replace('%1$s', nextSession !== '' ? DateTime.fromISO(nextSession) : '')
+            .replace('%1$s', nextSession !== '' ? DateTime.fromISO(nextSession).toFormat('DDDD') : '')
             .replace('%2$s', this.training.time_of_day_note ?? '')
         const joinKey = this.t.join_key.replace('%s', this.training.join_key)
-        const inviteText = html`
-            ${note}
+        const inviteText = note + "\n\n" + location + "\n" + time + "\n\n" + this.t.join_url + "\n" + this.url + "\n\n" + joinKey
 
-            ${location}
-            ${time}
-
-            ${this.t.join_url}
-            ${this.url}
-
-            ${joinKey}`
         return html`
             <div class="center stack">
                 <span class="zume-share brand-light f-7"></span>
                 <h2>${this.t.title}</h2>
                 <p>${this.t.share_with_friends}</p>
-                <textarea class="input" rows="10">
-                    ${inviteText}
-                </textarea>
-                <share-links url=${this.url} title="${this.t.join_my_plan}" .t=${this.t} alwaysShow ></share-links>
+
+                ${
+                    this.loading ? html`<span class="loading-spinner active"></span>` : ''
+                }
+                ${
+                    !this.loading && this.errorMessage !== '' ? html`<span class="banner warning">${this.errorMessage}</span>` : ''
+                }
+                ${
+                    !this.loading && this.errorMessage === '' ? html`
+                        <textarea class="input" rows="9">${inviteText}</textarea>
+                        <share-links url=${this.url} title="${this.t.join_my_plan}" .t=${this.t} alwaysShow ></share-links>
+                    ` : ''
+                }
             </div>
         `
     }
