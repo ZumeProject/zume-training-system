@@ -68,6 +68,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.menuOffset = 0
         this.userProfile = jsObject.profile
         this.userState = jsObject.user_stage.state
+        this.trainingGroups = jsObject.training_groups
         this.wizardType = ''
         this.celebrationModalContent = {
             title: '',
@@ -166,7 +167,25 @@ export class DashBoard extends navigator(router(LitElement)) {
             return ''
         }
 
+        if (routeName === 'my-training') {
+            const isLocked = DashBoard.getLockedStatus(routeName, this.userState)
+
+            if (isLocked) {
+                return route.pattern.replace(':id', 'teaser')
+            }
+            const numberOfGroups = this.numberOfGroups()
+            if (numberOfGroups === 1) {
+                const id = Object.keys(this.trainingGroups)[0]
+                return route.pattern.replace(':id', id)
+            }
+        }
+
         return route.pattern
+    }
+    makeTrainingHref(id) {
+        const pattern = this.makeHrefRoute('my-training')
+
+        return pattern.replace(':id', id)
     }
 
     renderRoute() {
@@ -176,11 +195,14 @@ export class DashBoard extends navigator(router(LitElement)) {
             return ''
         }
 
+        if (this.route === 'my-training') {
+            const id = this.params.id
+            return makeComponent(id)
+        }
+
         const isLocked = DashBoard.getLockedStatus(this.route, this.userState)
 
-        const element = makeComponent(isLocked)
-
-        return element
+        return makeComponent(isLocked)
     }
 
     getOffsetTop(querySelector) {
@@ -299,6 +321,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         const modal = document.querySelector('#wizard-modal')
         jQuery(modal).foundation('close')
     }
+
     open3MonthPlan() {
         const modal = document.querySelector('#activity-3-month-plan-modal')
         jQuery(modal).foundation('_disableScroll')
@@ -314,6 +337,15 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.close3MonthPlan()
         this.navigate(this.makeHref('my-plans'))
     }
+    unlock3MonthPlan() {
+        makeRequest('POST', 'log', { type: 'training', subtype: '26_heard' }, 'zume_system/v1/' ).done( ( data ) => {
+            const stateEvent = new CustomEvent('user-state:change', { bubbles: true })
+            this.dispatchEvent(stateEvent)
+            const hostChangeEvent = new CustomEvent('user-host:change', { bubbles: true })
+            this.dispatchEvent(hostChangeEvent)
+        })
+    }
+
     refetchState() {
         this.getCtas()
         makeRequest('GET', 'user_stage', {}, 'zume_system/v1' ).done( ( data ) => {
@@ -422,13 +454,13 @@ export class DashBoard extends navigator(router(LitElement)) {
         const modal = document.querySelector('#resources-modal')
         jQuery(modal).foundation('close')
     }
-    unlock3MonthPlan() {
-        makeRequest('POST', 'log', { type: 'training', subtype: '26_heard' }, 'zume_system/v1/' ).done( ( data ) => {
-            const stateEvent = new CustomEvent('user-state:change', { bubbles: true })
-            this.dispatchEvent(stateEvent)
-            const hostChangeEvent = new CustomEvent('user-host:change', { bubbles: true })
-            this.dispatchEvent(hostChangeEvent)
-        })
+
+    numberOfGroups() {
+        return Object.keys(this.trainingGroups).length
+    }
+    toggleTrainingGroups() {
+        jQuery(document).foundation()
+        jQuery('#training-menu').foundation('toggle', jQuery('#training-groups-menu'))
     }
 
     render() {
@@ -458,50 +490,48 @@ export class DashBoard extends navigator(router(LitElement)) {
                             </button>
                             <span class="profile-name">${this.userProfile.name}</span>
                         </div>
-                        <ul
-                            class="stack-2 | progress-menu accordion-menu"
-                            data-accordion-menu
-                            data-submenu-toggle="true"
-                        >
-                            <li class="menu-section">
-                                <nav-link
-                                    href=${this.makeHref('getting-started')}
-                                    class="menu-section__title menu-btn"
-                                    icon="zume-start"
-                                    text=${jsObject.translations.getting_started}>
-                                </nav-link>
-                                ${
-                                    this.isGettingStartedActive() ? html`
-                                        <progress-circle percent=${this.getGettingStartedPercentage()} radius="12"></progress-circle>
-                                    ` : html`<span class="zume-check-mark success f-2"></span>`
-                                }
-                                <ul class="nested ${this.isGettingStartedActive() ? 'is-active' : ''}">
+                        <div class="stack-2 | progress-menu">
+                            <ul class="accordion-menu" data-accordion-menu data-submenu-toggle="true">
+                                <li class="menu-section" data-no-toggle>
+                                    <nav-link
+                                        href=${this.makeHref('getting-started')}
+                                        class="menu-section__title menu-btn"
+                                        icon="zume-start"
+                                        text=${jsObject.translations.getting_started}>
+                                    </nav-link>
                                     ${
-                                        DashBoard.childRoutesOf('getting-started')
-                                            .map((route) => html`
-                                                <li>
-                                                    <nav-link
-                                                        class="menu-btn"
-                                                        href=${this.makeHrefRoute(route.name)}
-                                                        icon=${route.icon}
-                                                        text=${route.translation}
-                                                        ?disableNavigate=${route.type === 'handled-link'}
-                                                        @click=${route.type === 'handled-link' ? (event) => {
-                                                            if (DashBoard.getCompletedStatus(route.name, this.userState)) {
-                                                                event.preventDefault()
-                                                                return
-                                                            }
-                                                            route.clickHandler(event, this.dispatchEvent)
-                                                        } : null}
-                                                        ?completed=${DashBoard.getCompletedStatus(route.name, this.userState)}
-                                                    ></nav-link>
-                                                    <span class="icon zume-check-mark success"></span>
-                                                </li>
-                                            `)
+                                        this.isGettingStartedActive() ? html`
+                                            <progress-circle percent=${this.getGettingStartedPercentage()} radius="12"></progress-circle>
+                                        ` : html`<span class="zume-check-mark success f-2"></span>`
                                     }
-                                </ul>
-                            </li>
-                            <li class="menu-section">
+                                            <ul class="nested ${this.isGettingStartedActive() ? 'is-active' : ''}">
+                                                ${
+                                                    DashBoard.childRoutesOf('getting-started')
+                                                        .map((route) => html`
+                                                            <li>
+                                                                <nav-link
+                                                                    class="menu-btn"
+                                                                    href=${this.makeHrefRoute(route.name)}
+                                                                    icon=${route.icon}
+                                                                    text=${route.translation}
+                                                                    ?disableNavigate=${route.type === 'handled-link'}
+                                                                    @click=${route.type === 'handled-link' ? (event) => {
+                                                                        if (DashBoard.getCompletedStatus(route.name, this.userState)) {
+                                                                            event.preventDefault()
+                                                                            return
+                                                                        }
+                                                                        route.clickHandler(event, this.dispatchEvent)
+                                                                    } : null}
+                                                                    ?completed=${DashBoard.getCompletedStatus(route.name, this.userState)}
+                                                                ></nav-link>
+                                                                <span class="icon zume-check-mark success"></span>
+                                                            </li>
+                                                        `)
+                                                }
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="menu-section">
                                 <nav-link
                                     href=${this.makeHref('training')}
                                     class="menu-section__title menu-btn"
@@ -509,13 +539,41 @@ export class DashBoard extends navigator(router(LitElement)) {
                                     text=${jsObject.translations.training}
                                 >
                                 </nav-link>
-                                <ul class="nested is-active">
+                                <ul id="training-menu" class="nested accordion-menu menu vertical" data-accordion-menu>
                                     ${
                                         DashBoard.childRoutesOf('training')
                                             .map((route) => {
                                                 const isLocked = DashBoard.getLockedStatus(route.name, this.userState)
                                                 const isCompleted = DashBoard.getCompletedStatus(route.name, this.userState)
                                                 const isHandledLink = route.type === 'handled-link'
+
+                                                if (route.name === 'my-training' && this.numberOfGroups() > 1) {
+                                                    return html`
+                                                        <li>
+                                                            <nav-link
+                                                                class="menu-btn"
+                                                                icon=${route.icon}
+                                                                text=${jsObject.translations.my_trainings}
+                                                                disableNavigate
+                                                                @click=${this.toggleTrainingGroups}
+                                                            ></nav-link>
+                                                            <ul id="training-groups-menu" class="menu vertical nested">
+                                                                ${
+                                                                    Object.entries(this.trainingGroups)
+                                                                        .map(([key, group]) => html`
+                                                                            <li>
+                                                                                <nav-link
+                                                                                    class="menu-btn"
+                                                                                    text=${group.title}
+                                                                                    href=${this.makeTrainingHref(key)}
+                                                                                ></nav-link>
+                                                                            </li>
+                                                                        `)
+                                                                }
+                                                            </ul>
+                                                        </li>
+                                                    `
+                                                }
                                                 return html`
                                                 <li>
                                                     <nav-link
@@ -539,7 +597,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                             `})
                                     }
                                 </ul>
-                            </li>
+                            </div>
                             <li class="menu-section">
                                 <nav-link
                                     href=${this.makeHref('practicing')}
@@ -547,7 +605,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                     icon="zume-practicing"
                                     text=${jsObject.translations.practicing}
                                 ></nav-link>
-                                <ul class="nested is-active">
+                                <ul class="nested">
                                     ${
                                         DashBoard.childRoutesOf('practicing')
                                             .map((route) => html`
@@ -565,7 +623,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                     }
                                 </ul>
                             </li>
-                        </ul>
+                        </div>
                         <div class="footer-links">
                             <nav-link
                                 class="menu-btn | f--1"
@@ -634,7 +692,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                     DashBoard.getLockedStatus('3-month-plan', this.userState)
                         ? html`
                             <div class="container-sm">
-                              <div class="dash-menu__list-item>
+                              <div class="dash-menu__list-item">
                                 <div class="dash-menu__icon-area | stack--5">
                                   <span class="icon zume-progress dash-menu__list-icon"></span>
                                 </div>
