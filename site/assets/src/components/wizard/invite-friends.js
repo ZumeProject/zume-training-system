@@ -16,6 +16,7 @@ export class InviteFriends extends LitElement {
             inviteCode: { type: String, attribute: false },
             loading: { type: Boolean, attribute: false },
             errorMessage: { type: String, attribute: false },
+            copyFeedback: { type: String, attribute: false },
             training: { type: Object, attribute: false },
         }
     }
@@ -34,6 +35,7 @@ export class InviteFriends extends LitElement {
         this.inviteCode = joinKey
         this.loading = false
         this.errorMessage = ''
+        this.copyFeedback = ''
         this.url = jsObject.site_url + `/app/plan_invite${this.inviteCode !== '' ? '?code=' + this.inviteCode : ''}`
     }
 
@@ -99,15 +101,18 @@ export class InviteFriends extends LitElement {
         }
     }
 
-    render() {
-
+    getInviteText() {
         const nextSession = this.getNextSession()
         const note = this.t.note.replace('%s', this.training.post_author_display_name)
         const location = this.t.location.replace('%s', this.training.location_note ?? '')
+        const timeOfDayNote = this.training.time_of_day_note ? `, ${this.training.time_of_day_note}` : ''
+        const timezoneNote = this.training.timezone_note ? `, ${this.training.timezone_note}` : ''
+
         const inviteText = `${note}
 
 ${this.t.location}: ${location}
-${this.t.time}: ${nextSession !== '' ? DateTime.fromISO(nextSession).toFormat('DDDD') : ''} ${this.training.time_of_day_note ?? ''} ${this.training.timezone_note ?? ''}
+${this.t.time}: ${nextSession !== '' ? DateTime.fromISO(nextSession).toFormat('DDDD') : ''}${timeOfDayNote}${timezoneNote}
+
 ${this.t.join_url}
 ${this.url}
 
@@ -115,6 +120,28 @@ ${this.t.join_key}: ${this.training.join_key}
 ${
     this.training.zoom_link_note ? `\n${this.training.zoom_link_note}\n` : ''
 }`
+
+        return inviteText
+    }
+
+    copyInvite() {
+        const inviteText = this.getInviteText()
+
+        if (navigator.clipboard) {
+            navigator.clipboard
+                .writeText(inviteText)
+                .then(() => {
+                    this.copyFeedback = this.t.copy_feedback
+
+                    setTimeout(() => {
+                        this.copyFeedback = ''
+                    }, 3000)
+                })
+        }
+    }
+
+    render() {
+        const inviteText = this.getInviteText()
 
         return html`
             <div class="center stack">
@@ -131,6 +158,15 @@ ${
                 ${
                     !this.loading && this.errorMessage === '' ? html`
                         <textarea class="input" rows="9">${inviteText}</textarea>
+                        ${
+                            navigator.clipboard ? html`
+                                <div class="position-relative">
+                                    <button class="btn light uppercase mx-auto fit-content" @click=${this.copyInvite}>${this.t.copy_invite}</button>
+                                    <p role="alert" aria-live="polite" id="copyFeedback" class="context-alert" data-state=${this.copyFeedback.length ? '' : 'empty'}>${this.copyFeedback}</p>
+                                </div>
+                            ` : ''
+                        }
+
                         <share-links url=${this.url} title="${this.t.join_my_plan}" .t=${this.t} alwaysShow ></share-links>
                     ` : ''
                 }
