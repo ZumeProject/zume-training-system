@@ -9,6 +9,7 @@ export class ShareLinks extends LitElement {
             url: { type: String },
             title: { type: String },
             t: { type: Object },
+            alwaysShow: { type: Boolean },
             shareFeedback: { attribute: false },
             copyFeedback: { attribute: false },
         };

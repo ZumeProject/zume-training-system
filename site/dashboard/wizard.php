@@ -262,6 +262,11 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'title' => __( 'Invite your friends to join your training', 'zume' ),
                 'share_with_friends' => __( 'Share the link below with your friends so that they can join your training.', 'zume' ),
                 'join_my_plan' => __( 'Join my zume plan', 'zume' ),
+                'note' => __( '%s is inviting you to a Zume Training Group', 'zume' ),
+                'location' => __( 'Location: %s', 'zume' ),
+                'time' => __( 'Time: %1$s %2$s', 'zume' ),
+                'join_url' => __( 'Join Training Group', 'zume' ),
+                'join_key' => __( 'Join key: %s', 'zume' ),
             ], Zume_Training_Share::translations() ),
         ];
     }
