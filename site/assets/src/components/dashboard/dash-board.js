@@ -270,6 +270,12 @@ export class DashBoard extends navigator(router(LitElement)) {
         return false
     }
 
+    isGettingStartedActive() {
+        const isActive = DashBoard.childRoutesOf('getting-started')
+            .some((route) => !DashBoard.getCompletedStatus(route.name, this.userState))
+        return isActive
+    }
+
     getGettingStartedPercentage() {
         const itemsToComplete = ['get-a-coach', 'set-profile', 'join-a-training'];
 
@@ -464,8 +470,12 @@ export class DashBoard extends navigator(router(LitElement)) {
                                     icon="zume-start"
                                     text=${jsObject.translations.getting_started}>
                                 </nav-link>
-                                <progress-circle percent=${this.getGettingStartedPercentage()} radius="12"></progress-circle>
-                                <ul class="nested is-active">
+                                ${
+                                    this.isGettingStartedActive() ? html`
+                                        <progress-circle percent=${this.getGettingStartedPercentage()} radius="12"></progress-circle>
+                                    ` : html`<span class="zume-check-mark success f-2"></span>`
+                                }
+                                <ul class="nested ${this.isGettingStartedActive() ? 'is-active' : ''}">
                                     ${
                                         DashBoard.childRoutesOf('getting-started')
                                             .map((route) => html`
