@@ -2,15 +2,16 @@ import { html } from 'lit';
 import { repeat } from 'lit/directives/repeat.js'
 import { DashBoard } from './dash-board';
 import { DashPage } from './dash-page';
+import { Wizards } from '../wizard/wizard-constants';
 
 export class DashTrainings extends DashPage {
     static get properties() {
         return {
             showTeaser: { type: Boolean },
+            id: { type: Number },
             loading: { type: Boolean, attribute: false },
             sessions: { type: Array, attribute: false },
             filterStatus: { type: String, attribute: false },
-            selectedDates: { type: Array, attribute: false },
         };
     }
 
@@ -20,85 +21,9 @@ export class DashTrainings extends DashPage {
         this.loading = false
         this.route = DashBoard.getRoute('my-training')
 
-        /* @todo remove this hardcoded section ?? maybe? */
-        this.selectedDates = []
         this.currentSession = 'set_a_06'
-        this.sessions = [
-            {
-                id: 'set_a_01',
-                name: 'Session 1',
-                datetime: 1712077989881,
-                completed: true,
-            },
-            {
-                id: 'set_a_02',
-                name: 'Session 2',
-                datetime: 1712077989881,
-                completed: true,
-            },
-            {
-                id: 'set_a_03',
-                name: 'Session 3',
-                datetime: 1712077989881,
-                completed: true,
-            },
-            {
-                id: 'set_a_04',
-                name: 'Session 4',
-                datetime: 1712077989881,
-                completed: true,
-            },
-            {
-                id: 'set_a_05',
-                name: 'Session 5',
-                datetime: 1712077989881,
-                completed: true,
-            },
-            {
-                id: 'set_a_06',
-                name: 'Session 6',
-                datetime: 1712077989881,
-                completed: false,
-            },
-            {
-                id: 'set_a_07',
-                name: 'Session 7',
-                datetime: 1712077989881,
-                completed: false,
-            },
-            {
-                id: 'set_a_08',
-                name: 'Session 8',
-                datetime: 1712077989881,
-                completed: false,
-            },
-            {
-                id: 'set_a_09',
-                name: 'Session 9',
-                datetime: 1712077989881,
-                completed: false,
-            },
-            {
-                id: 'set_a_10',
-                name: 'Session 10',
-                datetime: 1712077989881,
-                completed: false,
-            },
-        ]
 
         this.groupMembers = [
-            {
-                id: 1,
-                name: 'Billy Bob',
-            },
-            {
-                id: 2,
-                name: 'Sandy Lou',
-            },
-            {
-                id: 3,
-                name: 'Willy Joe',
-            },
             {
                 id: 4,
                 name: 'Bonnie Sue',
@@ -108,15 +33,65 @@ export class DashTrainings extends DashPage {
         this.renderListItem = this.renderListItem.bind(this)
     }
 
+    connectedCallback() {
+        super.connectedCallback();
+
+        this.training = jsObject.training_groups[this.id]
+        console.log(this.training)
+        this.sessions = this.getSessions()
+        this.groupMembers = []
+    }
+
     firstUpdated() {
         super.firstUpdated()
     }
 
-    editSession(id) {}
-
     updated() {
         jQuery(document).foundation();
     }
+
+    getSessions() {
+        const trainingType = this.getTrainingType()
+        const numberOfSessions = this.getNumberOfSessions()
+
+        const sessions = []
+
+        for (let i = 1; i < numberOfSessions + 1; i++) {
+            const digit = i < 10 ? `0${i}` : `${i}`
+            const id = trainingType + '_' + digit
+            const time = this.training[id]
+
+            sessions.push({
+                id,
+                name: jsObject.translations.session_x.replace('%d', i),
+                datetime: time ? Number( time.timestamp ) * 1000 : 0,
+                completed: false, /* How do we find this out? meta data? */
+            })
+        }
+
+        return sessions
+    }
+    getTrainingType() {
+        return this.training.set_type
+    }
+    getNumberOfSessions() {
+        switch (this.training.set_type) {
+            case 'set_a':
+                return 10
+            case 'set_b':
+                return 20
+            case 'set_c':
+                return 5
+            default:
+                break;
+        }
+    }
+
+    createTraining() {
+        this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.makeFirstGroup } } ))
+    }
+
+    editSession(id) {}
 
     renderListItem(session) {
         const { id, name, datetime, completed } = session
@@ -172,11 +147,11 @@ export class DashTrainings extends DashPage {
                     </div>
                 </div>
                 <dash-header-right></dash-header-right>
-                <div class="dashboard__main p-1">
+                <div class="dashboard__main">
                     ${
                         this.showTeaser
                         ? html`
-                            <div class="container-inline">
+                            <div class="container-inline p-1">
                               <div class="dash-menu__list-item">
                                 <div class="dash-menu__icon-area | stack--5">
                                   <span class="icon zume-locked dash-menu__list-icon"></span>
@@ -186,7 +161,7 @@ export class DashTrainings extends DashPage {
                                     <h3 class="f-1 bold uppercase">${jsObject.translations.my_training_locked}</h3>
                                     <p>${jsObject.translations.plan_a_training_explanation}</p>
                                   </div>
-                                  <button class="dash-menu__view-button btn tight" @click=${this.joinCommunity}>
+                                  <button class="dash-menu__view-button btn tight" @click=${this.createTraining}>
                                     ${jsObject.translations.unlock}
                                   </button>
                                 </div>
