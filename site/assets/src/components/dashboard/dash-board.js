@@ -91,6 +91,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.refetchState = this.refetchState.bind(this)
         this.refetchHost = this.refetchHost.bind(this)
         this.getCtas = this.getCtas.bind(this)
+        this.getTrainingGroups = this.getTrainingGroups.bind(this)
         this.showCelebrationModal = this.showCelebrationModal.bind(this)
     }
 
