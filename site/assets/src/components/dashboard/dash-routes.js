@@ -94,14 +94,14 @@ export function dashRoutes() {
         },
         {
             name: 'my-training',
-            pattern: `${jsObject.base_url}/my-training/:id`,
+            pattern: `${jsObject.base_url}/my-training/:code`,
             parent: 'training',
             icon: 'zume-my-training',
             type: 'dash-link',
             translation: jsObject.translations['my_training'],
             explanation: jsObject.translations['my_training_explanation'],
             data: {
-                makeComponent: (id) => html`<dash-trainings ?showTeaser=${id === 'teaser'} id=${id}></dash-trainings>`,
+                makeComponent: (code) => html`<dash-trainings ?showTeaser=${code === 'teaser'} code=${code}></dash-trainings>`,
             },
         },
         {

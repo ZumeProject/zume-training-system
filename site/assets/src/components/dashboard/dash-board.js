@@ -171,21 +171,21 @@ export class DashBoard extends navigator(router(LitElement)) {
             const isLocked = DashBoard.getLockedStatus(routeName, this.userState)
 
             if (isLocked) {
-                return route.pattern.replace(':id', 'teaser')
+                return route.pattern.replace(':code', 'teaser')
             }
             const numberOfGroups = this.numberOfGroups()
             if (numberOfGroups === 1) {
-                const id = Object.keys(this.trainingGroups)[0]
-                return route.pattern.replace(':id', id)
+                const code = Object.values(this.trainingGroups)[0].join_key
+                return route.pattern.replace(':code', code)
             }
         }
 
         return route.pattern
     }
-    makeTrainingHref(id) {
+    makeTrainingHref(code) {
         const pattern = this.makeHrefRoute('my-training')
 
-        return pattern.replace(':id', id)
+        return pattern.replace(':code', code)
     }
 
     renderRoute() {
@@ -196,8 +196,8 @@ export class DashBoard extends navigator(router(LitElement)) {
         }
 
         if (this.route === 'my-training') {
-            const id = this.params.id
-            return makeComponent(id)
+            const code = this.params.code
+            return makeComponent(code)
         }
 
         const isLocked = DashBoard.getLockedStatus(this.route, this.userState)
@@ -565,7 +565,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                                                                 <nav-link
                                                                                     class="menu-btn"
                                                                                     text=${group.title}
-                                                                                    href=${this.makeTrainingHref(key)}
+                                                                                    href=${this.makeTrainingHref(group.join_key)}
                                                                                 ></nav-link>
                                                                             </li>
                                                                         `)

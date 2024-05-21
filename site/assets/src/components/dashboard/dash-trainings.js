@@ -8,7 +8,7 @@ export class DashTrainings extends DashPage {
     static get properties() {
         return {
             showTeaser: { type: Boolean },
-            id: { type: Number },
+            code: { type: String },
             loading: { type: Boolean, attribute: false },
             training: { type: Object, attribute: false },
             sessions: { type: Array, attribute: false },
@@ -28,7 +28,7 @@ export class DashTrainings extends DashPage {
     connectedCallback() {
         super.connectedCallback();
 
-        if ( this.id !== 'teaser' ) {
+        if ( this.code !== 'teaser' ) {
             this.loading = true
             this.getTraining()
                 .then(() => {
@@ -50,9 +50,6 @@ export class DashTrainings extends DashPage {
     }
 
     getTraining() {
-        const training = jsObject.training_groups[this.id]
-
-        this.code = training.join_key
         return makeRequest( 'GET', `plan/${this.code}`, {}, 'zume_system/v1' )
             .then((result) => {
                 this.training = result
