@@ -32,8 +32,7 @@ export class DashTrainings extends DashPage {
             this.loading = true
             this.getTraining()
                 .then(() => {
-                    this.sessions = this.getSessions()
-                    this.currentSession = this.getCurrentSession()
+                    this.refreshSessions()
                     this.groupMembers = this.getParticipants()
                 })
                 .always(() => {
@@ -59,6 +58,13 @@ export class DashTrainings extends DashPage {
                 this.training = result
             })
             .promise()
+    }
+    refreshSessions(completedSessions) {
+        if (completedSessions) {
+            this.training.completed_sessions = completedSessions
+        }
+        this.sessions = this.getSessions()
+        this.currentSession = this.getCurrentSession()
     }
     getSessions() {
         const trainingType = this.getTrainingType()
@@ -125,8 +131,7 @@ export class DashTrainings extends DashPage {
     markSessionCompleted(id) {
         makeRequest( 'POST', 'plan/complete-session', { key: this.training.join_key, session_id: id }, 'zume_system/v1' )
             .then((result) => {
-                console.log(result)
-                this.training = { ...this.training, completed_sessions: result }
+                this.refreshSessions(result)
             })
         /* Update the local store to reflect this change */
     }
