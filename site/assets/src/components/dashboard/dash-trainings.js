@@ -198,6 +198,13 @@ export class DashTrainings extends DashPage {
                         <span class="icon ${this.route.icon}"></span>
                         <h1 class="h3">${this.route.translation}</h1>
                     </div>
+                    <button
+                        class="icon-btn f-2 brand-light"
+                        aria-label=${jsObject.translations.create_training_group}
+                        @click=${this.createTraining}
+                    >
+                        <span class="icon zume-plus"></span>
+                    </button>
                 </div>
                 <dash-header-right></dash-header-right>
                 <div class="dashboard__main">
