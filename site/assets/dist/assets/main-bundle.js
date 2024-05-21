@@ -1079,7 +1079,7 @@ ${this.training.zoom_link_note}
                     ${this.renderLinks(this.userState)}
                 </div>
                 <div class="dashboard__secondary">
-                    <dash-cta></dash-cta>
+                    ${this.routeName==="getting-started"?"":c`<dash-cta></dash-cta>`}
                 </div>
             </div>
         `}createRenderRoot(){return this}}customElements.define("dash-top-level",Dt);class Lo extends Dt{constructor(){super("getting-started")}createRenderRoot(){return this}}customElements.define("dash-getting-started",Lo);class Ro extends de{static get properties(){return{showTeaser:{type:Boolean}}}constructor(){super(),this.showTeaser=!1}joinCommunity(){makeRequest("POST","log",{type:"system",subtype:"join_community"},"zume_system/v1/").done(e=>{const t=new CustomEvent("user-state:change",{bubbles:!0});this.dispatchEvent(t)})}render(){return c`
