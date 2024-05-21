@@ -132,7 +132,7 @@ export class DashTrainings extends DashPage {
     }
 
     createTraining() {
-        this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.makeFirstGroup } } ))
+        this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.makeAGroup } } ))
     }
 
     editSession(id) {}

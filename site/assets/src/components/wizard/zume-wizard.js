@@ -92,7 +92,7 @@ export class Wizard extends LitElement {
     loadWizard(wizard, queryParams = {}) {
         let wizardToLoad = wizard
         if (wizard === Wizards.makeAGroup) {
-            if (jsObject.has_training_group) {
+            if (jsObject.user_stage.state.plan_created) {
                 wizardToLoad = Wizards.makeMoreGroups
             } else {
                 wizardToLoad = Wizards.makeFirstGroup
