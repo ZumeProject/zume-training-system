@@ -1383,7 +1383,7 @@ ${this.training.zoom_link_note}
             <li class="list__item | switcher | switcher-width-20 gapy0">
                 <div class="list__primary">
                     ${this.currentSession===t?c`
-                            <button class="icon-btn" @click=${()=>this.startSession(t)}>
+                            <button class="icon-btn" @click=${()=>this.startSession(t)} aria-label=${jsObject.translations.start_session}>
                                 <span class="icon zume-play brand-light"></span>
                             </button>
                         `:c`
@@ -1403,6 +1403,7 @@ ${this.training.zoom_link_note}
                     <ul>
                         <li><button class="menu-btn" @click=${()=>this.editSession(t)}><span class="icon zume-pencil"></span>${jsObject.translations.edit_time}</button></li>
                         <li><button class="menu-btn" @click=${()=>this.markSessionCompleted(t)}><span class="icon zume-pencil"></span>${jsObject.translations.mark_completed}</button></li>
+                        <li><button class="menu-btn" @click=${()=>this.startSession(t)}><span class="icon zume-play"></span>${jsObject.translations.start_session}</button></li>
                     </ul>
                 </div>
             </li>

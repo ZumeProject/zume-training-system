@@ -204,7 +204,7 @@ export class DashTrainings extends DashPage {
                 <div class="list__primary">
                     ${
                         this.currentSession === id ? html`
-                            <button class="icon-btn" @click=${() => this.startSession(id)}>
+                            <button class="icon-btn" @click=${() => this.startSession(id)} aria-label=${jsObject.translations.start_session}>
                                 <span class="icon zume-play brand-light"></span>
                             </button>
                         ` : html `
@@ -225,6 +225,7 @@ export class DashTrainings extends DashPage {
                     <ul>
                         <li><button class="menu-btn" @click=${() => this.editSession(id)}><span class="icon zume-pencil"></span>${jsObject.translations.edit_time}</button></li>
                         <li><button class="menu-btn" @click=${() => this.markSessionCompleted(id)}><span class="icon zume-pencil"></span>${jsObject.translations.mark_completed}</button></li>
+                        <li><button class="menu-btn" @click=${() => this.startSession(id)}><span class="icon zume-play"></span>${jsObject.translations.start_session}</button></li>
                     </ul>
                 </div>
             </li>
