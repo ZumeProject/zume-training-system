@@ -37,7 +37,9 @@ export class DashTrainings extends DashPage {
 
     willUpdate(properties) {
         if (properties.has('code')) {
-            this.getTraining()
+            if ( this.code !== 'teaser' ) {
+                this.getTraining()
+            }
         }
     }
 

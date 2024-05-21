@@ -477,7 +477,20 @@ export class DashBoard extends navigator(router(LitElement)) {
 
         makeRequest( 'GET', 'plans', {}, 'zume_system/v1' )
             .then((results) => {
+                const oldTrainingGroups = { ...this.trainingGroups }
+                const oldTrainingGroupKeys = Object.keys(oldTrainingGroups)
+
                 this.trainingGroups = results
+
+                const newTrainingGroupIds = Object.keys(this.trainingGroups).filter((key) => !oldTrainingGroupKeys.includes(key))
+
+                if ( newTrainingGroupIds.length === 1 ) {
+                    const newTrainingGroup = this.trainingGroups[newTrainingGroupIds[0]]
+
+                    const url = this.makeTrainingHref(newTrainingGroup.join_key)
+
+                    this.navigate(url)
+                }
             })
     }
 
