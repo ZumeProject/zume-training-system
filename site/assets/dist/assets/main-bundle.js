@@ -711,14 +711,14 @@ ${this.training.zoom_link_note}
                             </li>
                         </div>
                         <div class="footer-links">
-                            <nav-link
+                            <!-- <nav-link
                                 class="menu-btn | f--1"
                                 href=''
                                 icon='zume-community'
                                 text=${this.hasJoinedCommunity()?jsObject.translations.community:jsObject.translations.join_the_community}
                                 ?disableNavigate=${!0}
                                 @click=${this.openCommunityModal}
-                            ></nav-link>
+                            ></nav-link> -->
                             <nav-link
                                 class="menu-btn | f--1"
                                 href=''
