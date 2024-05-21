@@ -62,7 +62,7 @@ export class DashTrainings extends DashPage {
             })
             .then(() => {
                 this.refreshSessions()
-                this.groupMembers = this.getParticipants()
+                this.groupMembers = this.getGroupMembers()
             })
             .fail((error) => {
                 this.error = error.message
@@ -99,14 +99,21 @@ export class DashTrainings extends DashPage {
 
         return sessions
     }
-    getParticipants() {
-        return [
-            {
-                id: 4,
-                name: 'Bonnie Sue',
-            },
-        ]
+    getGroupMembers() {
+        if (!this.training.participants || !Array.isArray(this.training.participants)) {
+            return []
+        }
 
+        const groupMembers = []
+
+        this.training.participants.forEach((groupMember) => {
+            groupMembers.push({
+                id: groupMember.ID,
+                name: groupMember.post_title,
+            })
+        })
+
+        return groupMembers
     }
     getTrainingType() {
         return this.training.set_type.key
@@ -265,7 +272,6 @@ export class DashTrainings extends DashPage {
                     }
                 </div>
                 <div class="dashboard__secondary stack">
-                    <dash-cta></dash-cta>
                     ${this.loading && !this.error ? html`<span class="loading-spinner active"></span>` : '' }
                     ${!this.loading && !this.error && this.code !== 'teaser' ? html`
                                 <div class="card | group-members | grow-0">
@@ -289,6 +295,7 @@ export class DashTrainings extends DashPage {
                                 </div>
                             ` : ''
                     }
+                    <dash-cta></dash-cta>
                 </div>
             </div>
         `;
