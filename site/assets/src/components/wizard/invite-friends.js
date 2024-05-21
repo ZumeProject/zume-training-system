@@ -32,6 +32,7 @@ export class InviteFriends extends LitElement {
         this.loading = false
         this.errorMessage = ''
         this.copyFeedback = ''
+        this.url = ''
     }
 
     connectedCallback() {
@@ -83,8 +84,8 @@ export class InviteFriends extends LitElement {
                 continue
             }
 
-            if (DateTime.fromMillis(date.timestamp) < now) {
-                return date.formatted
+            if (DateTime.fromSeconds(date.timestamp) < now) {
+                return DateTime.fromSeconds(date.timestamp).toISODate()
             }
         }
         return ''
