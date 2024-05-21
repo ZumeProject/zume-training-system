@@ -118,6 +118,34 @@ export class DashTrainings extends DashPage {
     getTrainingType() {
         return this.training.set_type.key
     }
+    getSessionNumber(id) {
+        const type = this.getTrainingType() + '_'
+
+        const number = id.slice(type.length)
+
+        return number
+    }
+    getSessionUrl(id) {
+        const type = this.getTrainingType()
+        const sessionNumber = this.getSessionNumber(id)
+
+        let indexUrl = ''
+        if (type === 'set_a') {
+            indexUrl = jsObject.urls.launch_ten_session_course
+        }
+        if (type === 'set_b') {
+            indexUrl = jsObject.urls.launch_twenty_session_course
+        }
+        if (type === 'set_c') {
+            indexUrl = jsObject.urls.launch_intensive_session_course
+        }
+
+        const url = new URL(indexUrl)
+
+        url.searchParams.set('session', sessionNumber)
+
+        return url.href
+    }
     getNumberOfSessions() {
         const set_type = this.training.set_type.key
         switch (set_type) {
@@ -154,6 +182,11 @@ export class DashTrainings extends DashPage {
         } } } ))
     }
 
+    startSession(id) {
+        const url = this.getSessionUrl(id)
+
+        location.href = url
+    }
     editSession(id) {}
 
     markSessionCompleted(id) {
@@ -171,7 +204,7 @@ export class DashTrainings extends DashPage {
                 <div class="list__primary">
                     ${
                         this.currentSession === id ? html`
-                            <button class="icon-btn">
+                            <button class="icon-btn" @click=${() => this.startSession(id)}>
                                 <span class="icon zume-play brand-light"></span>
                             </button>
                         ` : html `
