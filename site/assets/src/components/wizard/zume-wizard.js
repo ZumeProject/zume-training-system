@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit"
+import { AttributePart, LitElement, html } from "lit"
 import { html as staticHtml, literal } from "lit/static-html.js"
 import { Steps,  Wizards } from "./wizard-constants"
 import { WizardStateManager } from "./wizard-state-manager"
@@ -176,7 +176,7 @@ export class Wizard extends LitElement {
      * but this section shouldn't have to know about the internal workings of a section
      */
     containerSize() {
-        const currentStep = {...this.steps[this.stepIndex]}
+        const currentStep = {...this.step}
 
         if (currentStep.slug = Steps.joinTraining) {
             return 'container-md'
@@ -186,7 +186,7 @@ export class Wizard extends LitElement {
     }
 
     currentStep() {
-        const currentStep = { ...this.steps[this.stepIndex] }
+        const currentStep = { ...this.step }
 
         let tag = ''
         let translations = ''
@@ -247,6 +247,7 @@ export class Wizard extends LitElement {
                 variant=${currentStep.slug}
                 ?skippable=${currentStep.skippable}
                 .t=${translations}
+                invitecode=${currentStep.joinKey}
                 @done-step=${this._onNext}
                 @loadingChange=${this._handleLoading}
                 value=${JSON.stringify(currentStep?.value)}
@@ -355,6 +356,9 @@ export class Wizard extends LitElement {
                 'wizard-finished',
                 {
                     bubbles: true,
+                    detail: {
+                        type: this.type,
+                    },
                 }
             ))
             return
@@ -410,6 +414,16 @@ export class Wizard extends LitElement {
 
             window.history.pushState( null, null, newUrl )
         }
+
+        if (this.noUrlChange && Object.keys(queryParams).length > 0) {
+            Object.entries(queryParams).forEach(([key, value]) => {
+                this.step = {
+                    ...this.step,
+                    [key]: value,
+                }
+            })
+        }
+
     }
     clampSteps(index) {
         let clampedIndex = index

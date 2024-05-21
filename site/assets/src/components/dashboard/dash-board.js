@@ -1,6 +1,8 @@
 import { LitElement, html } from 'lit';
 import { navigator, router } from 'lit-element-router';
 import { dashRoutes } from './dash-routes';
+import { repeat } from 'lit/directives/repeat.js'
+import { Wizards } from '../wizard/wizard-constants';
 
 /**
  * This highest level of the dashboard should mostly be focussed on the routing
@@ -19,6 +21,7 @@ export class DashBoard extends navigator(router(LitElement)) {
             menuOffset: { type: Number, attribute: false },
             userProfile: { type: Object, attribute: false },
             userState: { type: Object, attribute: false },
+            trainingGroups: { type: Array, attribute: false },
             wizardType: { type: String, attribute: false },
             celbrationModalContent: { type: Object, attribute: false },
         };
@@ -99,6 +102,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.addEventListener('open-wizard', this.updateWizardType)
         window.addEventListener('wizard-finished', this.closeWizard)
         window.addEventListener('wizard-finished', this.getCtas)
+        window.addEventListener('wizard-finished', this.getTrainingGroups)
         window.addEventListener('open-3-month-plan', this.open3MonthPlan)
         window.addEventListener('user-state:change', this.refetchState)
         window.addEventListener('user-state:change', this.getCtas)
@@ -118,6 +122,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.removeEventListener('open-wizard', this.updateWizardType)
         window.removeEventListener('wizard-finished', this.closeWizard)
         window.removeEventListener('wizard-finished', this.getCtas)
+        window.removeEventListener('wizard-finished', this.getTrainingGroups)
         window.removeEventListener('open-3-month-plan', this.open3MonthPlan)
         window.removeEventListener('user-state:change', this.refetchState)
         window.removeEventListener('user-state:change', this.getCtas)
@@ -462,6 +467,18 @@ export class DashBoard extends navigator(router(LitElement)) {
         jQuery(document).foundation()
         jQuery('#training-menu').foundation('toggle', jQuery('#training-groups-menu'))
     }
+    getTrainingGroups(event) {
+        const { type } = event.detail
+
+        if ( ![ Wizards.makeAGroup, Wizards.makeFirstGroup, Wizards.joinATraining, Wizards.joinFriendsPlan ].includes(type) ) {
+            return
+        }
+
+        makeRequest( 'GET', 'plans', {}, 'zume_system/v1' )
+            .then((results) => {
+                this.trainingGroups = results
+            })
+    }
 
     render() {
         return html`
@@ -559,8 +576,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                                             ></nav-link>
                                                             <ul id="training-groups-menu" class="menu vertical nested">
                                                                 ${
-                                                                    Object.entries(this.trainingGroups)
-                                                                        .map(([key, group]) => html`
+                                                                    repeat(Object.entries(this.trainingGroups), ([key]) => key, ([key, group]) => html`
                                                                             <li>
                                                                                 <nav-link
                                                                                     class="menu-btn"
