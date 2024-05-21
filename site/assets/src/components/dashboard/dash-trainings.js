@@ -10,6 +10,7 @@ export class DashTrainings extends DashPage {
             showTeaser: { type: Boolean },
             code: { type: String },
             loading: { type: Boolean, attribute: false },
+            error: { type: String, attribute: false },
             training: { type: Object, attribute: false },
             sessions: { type: Array, attribute: false },
             filterStatus: { type: String, attribute: false },
@@ -20,6 +21,7 @@ export class DashTrainings extends DashPage {
         super()
         this.showTeaser = false
         this.loading = false
+        this.error = ''
         this.route = DashBoard.getRoute('my-training')
 
         this.renderListItem = this.renderListItem.bind(this)
@@ -34,6 +36,9 @@ export class DashTrainings extends DashPage {
                 .then(() => {
                     this.refreshSessions()
                     this.groupMembers = this.getParticipants()
+                })
+                .fail((error) => {
+                    this.error = error.message
                 })
                 .always(() => {
                     this.loading = false
@@ -52,6 +57,9 @@ export class DashTrainings extends DashPage {
     getTraining() {
         return makeRequest( 'GET', `plan/${this.code}`, {}, 'zume_system/v1' )
             .then((result) => {
+                if ( result.error_code ) {
+                    throw new Error( result.error_code )
+                }
                 this.training = result
             })
             .promise()
@@ -110,8 +118,6 @@ export class DashTrainings extends DashPage {
         }
     }
     getCurrentSession() {
-        const setType = this.getTrainingType()
-
         for (let i = 0; i < this.sessions.length; i++) {
             const session = this.sessions[i];
 
@@ -195,48 +201,59 @@ export class DashTrainings extends DashPage {
                 </div>
                 <dash-header-right></dash-header-right>
                 <div class="dashboard__main">
+                    ${this.loading ? html`<span class="loading-spinner active p-1"></span>` : '' }
+                    ${!this.loading && this.error ? html`
+                        <div class="container-inline p-1">
+                            <h3 class="f-1 bold uppercase">${jsObject.translations.error}</h3>
+                            ${
+                                this.error === 'bad-plan-code' ? html`
+                                    <p>${jsObject.translations.bad_code}</p>
+                                    <p>${jsObject.translations.join_key}: ${this.code}</p>
+                                ` : ''
+                            }
+                            ${
+                                this.error === 'not-authorized' ? html`
+                                    <p>${jsObject.translations.not_authorized}</p>
+                                ` : ''
+                            }
+                        </div>
+                        ` : ''
+                    }
                     ${
-                        this.loading
-                            ? html`<span class="loading-spinner active"></span>`
-                            : html`
+                        this.showTeaser && !this.loading && !this.error
+                        ? html`
+                            <div class="container-inline p-1">
+                              <div class="dash-menu__list-item">
+                                <div class="dash-menu__icon-area | stack--5">
+                                  <span class="icon zume-locked dash-menu__list-icon"></span>
+                                </div>
+                                <div class="dash-menu__text-area | switcher | switcher-width-20">
+                                  <div>
+                                    <h3 class="f-1 bold uppercase">${jsObject.translations.my_training_locked}</h3>
+                                    <p>${jsObject.translations.plan_a_training_explanation}</p>
+                                  </div>
+                                  <button class="dash-menu__view-button btn tight" @click=${this.createTraining}>
+                                    ${jsObject.translations.unlock}
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                        `
+                        : html`
+                            <ul class="list">
                                 ${
-                                    this.showTeaser
-                                    ? html`
-                                        <div class="container-inline p-1">
-                                          <div class="dash-menu__list-item">
-                                            <div class="dash-menu__icon-area | stack--5">
-                                              <span class="icon zume-locked dash-menu__list-icon"></span>
-                                            </div>
-                                            <div class="dash-menu__text-area | switcher | switcher-width-20">
-                                              <div>
-                                                <h3 class="f-1 bold uppercase">${jsObject.translations.my_training_locked}</h3>
-                                                <p>${jsObject.translations.plan_a_training_explanation}</p>
-                                              </div>
-                                              <button class="dash-menu__view-button btn tight" @click=${this.createTraining}>
-                                                ${jsObject.translations.unlock}
-                                              </button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    `
-                                    : html`
-                                        <ul class="list">
-                                            ${
-                                                !this.loading && this.sessions && this.sessions.length > 0
-                                                ? repeat(this.sessions, (session) => session.id, this.renderListItem)
-                                                : ''
-                                            }
-                                        </ul>
-                                    `
+                                    !this.loading && this.sessions && this.sessions.length > 0
+                                    ? repeat(this.sessions, (session) => session.id, this.renderListItem)
+                                    : ''
                                 }
-                            `
+                            </ul>
+                        `
                     }
                 </div>
                 <div class="dashboard__secondary stack">
                     <dash-cta></dash-cta>
-                    ${
-                        this.loading ? html`<span class="loading-spinner active"></span>`
-                            : html`
+                    ${this.loading && !this.error ? html`<span class="loading-spinner active"></span>` : '' }
+                    ${!this.loading && !this.error && this.code !== 'teaser' ? html`
                                 <div class="card | group-members | grow-0">
                                     <button class="f-0 f-medium d-flex align-items-center gap--2 black">
                                         <span class="icon zume-group brand-light"></span> ${jsObject.translations.group_members} (${this.groupMembers.length})
@@ -256,7 +273,7 @@ export class DashTrainings extends DashPage {
                                         ${jsObject.translations.invite_friends}
                                     </button>
                                 </div>
-                            `
+                            ` : ''
                     }
                 </div>
             </div>

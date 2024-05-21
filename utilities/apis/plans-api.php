@@ -101,7 +101,7 @@ class Zume_Plans_Endpoints
             ];
         }
 
-        $user_id= get_current_user_id();
+        $user_id = get_current_user_id();
 
         $plan = DT_Posts::get_post( self::$post_type, $plan_id );
 

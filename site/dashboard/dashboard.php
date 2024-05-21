@@ -276,6 +276,9 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'community_tools_title' => __( 'Free Tools', 'zume' ),
             'community_tools_description' => __( 'Access free tools for tracking disciple-making and church planting in your area. Get a map to cast vision for saturating your city with multiplying disciples and churches.', 'zume' ),
             'community_join_free' => __( 'Join for Free', 'zume' ),
+            'join_key' => __( 'Join key', 'zume' ),
+            'bad_code' => __( 'Not a recognized code. Please check the number.', 'zume' ),
+            'not_authorized' => __( 'You are not authorized to access this page', 'zume' ),
         ];
     }
 
