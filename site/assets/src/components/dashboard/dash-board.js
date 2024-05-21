@@ -146,8 +146,8 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
 
     updateWizardType(event) {
-        const type = event.detail.type
-        this.openWizard(type)
+        const { type, params } = event.detail
+        this.openWizard(type, params)
     }
 
     router(route, params, query, data) {
@@ -317,13 +317,15 @@ export class DashBoard extends navigator(router(LitElement)) {
         return Math.round( numberCompleted / itemsToComplete.length * 100 )
     }
 
-    openWizard(type) {
+    openWizard(type, params) {
         const modal = document.querySelector('#wizard-modal')
         jQuery(modal).foundation('open')
         this.wizardType = type
+        this.wizardParams = params
     }
     closeWizard() {
         this.wizardType = ''
+        this.wizardParams = ''
         const modal = document.querySelector('#wizard-modal')
         jQuery(modal).foundation('close')
     }
@@ -709,6 +711,7 @@ export class DashBoard extends navigator(router(LitElement)) {
             <div class="reveal full" id="wizard-modal" data-reveal>
                 <zume-wizard
                     type=${this.wizardType}
+                    .params=${this.wizardParams}
                     .user=${this.userProfile}
                     .translations=${jsObject.wizard_translations}
                     noUrlChange

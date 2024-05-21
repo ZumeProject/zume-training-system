@@ -12,6 +12,10 @@ export class Wizard extends LitElement {
              */
             type: { type: String },
             /**
+             * The wizard type
+             */
+            params: { type: Object },
+            /**
              * Address to go to when the wizard is finished
              */
             finishUrl: { type: String },
@@ -47,6 +51,7 @@ export class Wizard extends LitElement {
         this.stepIndex = 0
         this.steps = []
         this.step = {}
+        this.params = {}
         this.t = window.SHAREDFUNCTIONS.escapeObject(jsObject.translations)
 
         this._handleHistoryPopState = this._handleHistoryPopState.bind(this)
@@ -84,7 +89,7 @@ export class Wizard extends LitElement {
             return
         }
         if (properties.has('type') && this.type !== '') {
-            this.loadWizard(this.type)
+            this.loadWizard(this.type, this.params)
             return
         }
     }

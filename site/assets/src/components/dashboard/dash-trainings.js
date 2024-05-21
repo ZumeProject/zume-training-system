@@ -148,6 +148,11 @@ export class DashTrainings extends DashPage {
     createTraining() {
         this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.makeAGroup } } ))
     }
+    inviteFriends() {
+        this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.inviteFriends, params: {
+            joinKey: this.code,
+        } } } ))
+    }
 
     editSession(id) {}
 
@@ -289,7 +294,10 @@ export class DashTrainings extends DashPage {
                                             : ''
                                         }
                                     </div>
-                                    <button class="btn brand tight light mt--2">
+                                    <button
+                                        @click=${this.inviteFriends}
+                                        class="btn brand tight light mt--2"
+                                    >
                                         ${jsObject.translations.invite_friends}
                                     </button>
                                 </div>
