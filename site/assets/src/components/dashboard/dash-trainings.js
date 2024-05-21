@@ -115,11 +115,17 @@ export class DashTrainings extends DashPage {
     getCurrentSession() {
         const setType = this.getTrainingType()
 
-        /* if the data isn't in the global store jsObject, fetch the session logs for this group */
+        for (let i = 0; i < this.sessions.length; i++) {
+            const session = this.sessions[i];
 
-        /* Loop through the logs, to find the latest one, and return the one after it */
+            if ( session.completed ) {
+                continue
+            }
 
-        return setType + '_' + '01'
+            return session.id
+        }
+
+        return ''
     }
 
     createTraining() {
