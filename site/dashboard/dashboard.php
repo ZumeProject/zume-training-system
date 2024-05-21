@@ -244,6 +244,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'next_slide' => __( 'Next Slide', 'zume' ),
             'group_members' => __( 'Group Members', 'zume' ),
             'mark_completed' => __( 'Mark Completed', 'zume' ),
+            'session_x' => __( 'Session %d', 'zume' ),
             'start_session' => __( 'Start Session', 'zume' ),
             'show_details' => __( 'Show details', 'zume' ),
             'edit_time' => __( 'Edit time', 'zume' ),
@@ -275,7 +276,6 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'community_tools_title' => __( 'Free Tools', 'zume' ),
             'community_tools_description' => __( 'Access free tools for tracking disciple-making and church planting in your area. Get a map to cast vision for saturating your city with multiplying disciples and churches.', 'zume' ),
             'community_join_free' => __( 'Join for Free', 'zume' ),
-            'session_x' => __( 'Session %d', 'zume' ),
         ];
     }
 

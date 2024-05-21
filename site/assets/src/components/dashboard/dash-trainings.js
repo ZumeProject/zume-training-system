@@ -21,15 +21,6 @@ export class DashTrainings extends DashPage {
         this.loading = false
         this.route = DashBoard.getRoute('my-training')
 
-        this.currentSession = 'set_a_06'
-
-        this.groupMembers = [
-            {
-                id: 4,
-                name: 'Bonnie Sue',
-            },
-        ]
-
         this.renderListItem = this.renderListItem.bind(this)
     }
 
@@ -37,9 +28,18 @@ export class DashTrainings extends DashPage {
         super.connectedCallback();
 
         this.training = jsObject.training_groups[this.id]
+
         console.log(this.training)
+
         this.sessions = this.getSessions()
-        this.groupMembers = []
+        this.currentSession = this.getCurrentSession()
+
+        this.groupMembers = [
+            {
+                id: 4,
+                name: 'Bonnie Sue',
+            },
+        ]
     }
 
     firstUpdated() {
@@ -86,6 +86,15 @@ export class DashTrainings extends DashPage {
                 break;
         }
     }
+    getCurrentSession() {
+        const setType = this.getTrainingType()
+
+        /* if the data isn't in the global store jsObject, fetch the session logs for this group */
+
+        /* Loop through the logs, to find the latest one, and return the one after it */
+
+        return setType + '_' + '01'
+    }
 
     createTraining() {
         this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.makeFirstGroup } } ))
@@ -93,10 +102,19 @@ export class DashTrainings extends DashPage {
 
     editSession(id) {}
 
+    markSessionCompleted(id) {
+        /* send API POST to complete this session */
+        makeRequest( 'POST', 'plan/complete-session', { key: this.training.join_key, session_id: id }, 'zume_system/v1' )
+            .then((result) => {
+                console.log(result)
+            })
+        /* Update the local store to reflect this change */
+    }
+
     renderListItem(session) {
         const { id, name, datetime, completed } = session
         return html`
-            <li class="list__item | switcher | switcher-width-20">
+            <li class="list__item | switcher | switcher-width-20 gapy0">
                 <div class="list__primary">
                     ${
                         this.currentSession === id ? html`
@@ -109,8 +127,8 @@ export class DashTrainings extends DashPage {
                     }
                     <span class="f-medium">${name}</span>
                 </div>
-                <div class="list__secondary | grow-0">
-                    <div class="d-flex w-6rem justify-content-center">
+                <div class="list__secondary">
+                    <div class="d-flex justify-content-center">
                         ${moment(datetime).format("MMM Do YY")}
                     </div>
                     <button class="icon-btn" data-toggle="kebab-menu-${id}">
@@ -120,6 +138,7 @@ export class DashTrainings extends DashPage {
                 <div class="dropdown-pane" id="kebab-menu-${id}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl ? 'right' : 'left'} data-close-on-click="true" data-close-on-click-inside="true">
                     <ul>
                         <li><button class="menu-btn" @click=${() => this.editSession(id)}><span class="icon zume-pencil"></span>${jsObject.translations.edit_time}</button></li>
+                        <li><button class="menu-btn" @click=${() => this.markSessionCompleted(id)}><span class="icon zume-pencil"></span>${jsObject.translations.mark_completed}</button></li>
                     </ul>
                 </div>
             </li>

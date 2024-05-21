@@ -59,6 +59,18 @@ class Zume_Plans_Endpoints
             ]
         );
         register_rest_route(
+            $this->namespace, '/plan/completed-sessions', [
+                'methods' => 'GET',
+                'callback' => [ $this, 'completed_sessions' ],
+                'permission_callback' => '__return_true',
+            ]
+        );        register_rest_route(
+            $this->namespace, '/plan/complete-session', [
+                'methods' => 'POST',
+                'callback' => [ $this, 'mark_session_complete' ],
+                'permission_callback' => '__return_true',
+            ]
+        );        register_rest_route(
             $this->namespace, '/public_plans', [
                 'methods' => 'POST',
                 'callback' => [ $this, 'public_plans' ],
@@ -89,7 +101,13 @@ class Zume_Plans_Endpoints
             ];
         }
 
+        $user_id = get_current_user_id();
+
         $plan = DT_Posts::get_post( self::$post_type, $plan_id );
+
+        $completed_sessions = $this->get_completed_sessions( $plan_id, $user_id );
+
+        $plan['completed_sessions'] = $completed_sessions;
 
         return $plan;
     }
@@ -173,10 +191,66 @@ class Zume_Plans_Endpoints
         return $delete;
     }
 
-
-    public function public_plans( WP_REST_Request $request ){
+    public function completed_sessions( WP_REST_Request $request ) {
         $params = dt_recursive_sanitize_array( $request->get_params() );
 
+        if ( !isset( $params['post_id'] ) ) {
+            return new WP_Error( __METHOD__, 'post_id required', array( 'status' => 401 ) );
+        }
+
+        $user_id = get_current_user_id();
+        $post_id = $params['post_id'];
+
+        $logs = $this->get_completed_sessions( $post_id, $user_id );
+
+        return $logs;
+    }
+
+    public function get_completed_sessions( $post_id, $user_id ) {
+
+        $logs = Disciple_Tools_Reports::where( [
+            'user_id' => $user_id,
+            'post_id' => $post_id,
+        ] );
+
+        return $logs;
+    }
+
+    public function mark_session_complete( WP_REST_Request $request ) {
+        $params = dt_recursive_sanitize_array( $request->get_params() );
+
+        if ( !isset( $params['session_id'], $params['key'] ) ) {
+            return new WP_Error( __METHOD__, 'session_id and key required', array( 'status' => 401 ) );
+        }
+
+        $session_id = $params['session_id'];
+        $key = $params['key'];
+
+        $user_id = get_current_user_id();
+        $post_id = Zume_Connect_Endpoints::test_join_key( $key );
+
+        $training_group = DT_Posts::get_post( 'zume_plans', $post_id );
+
+        if ( $training_group['assigned_to']['id'] !== "$user_id" ) {
+            return new WP_Error( __METHOD__, 'you are not authorised', array( 'status' => 400 ) );
+        }
+
+        /* Do a check that the session hasn't already been completed */
+        /* If it has, remove that log as we are unmarking it? or maybe have a seperate function or call this toggle */
+
+        zume_log_insert( 'training', 'session_completed', [
+            'payload' => $session_id,
+            'post_id' => $post_id,
+            'user_id' => $user_id,
+        ] );
+
+        /* @todo: don't just send the list of reports back, in the get function */
+        /* filter them down to just a list of the session ids */
+
+        return $this->get_completed_sessions( $post_id, $user_id );
+    }
+
+    public function public_plans( WP_REST_Request $request ){
         $result = self::get_public_plans();
 
         $posts = [];
