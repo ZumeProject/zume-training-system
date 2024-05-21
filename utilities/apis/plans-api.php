@@ -101,7 +101,7 @@ class Zume_Plans_Endpoints
             ];
         }
 
-        $user_id = get_current_user_id();
+        $user_id= get_current_user_id();
 
         $plan = DT_Posts::get_post( self::$post_type, $plan_id );
 
@@ -213,7 +213,17 @@ class Zume_Plans_Endpoints
             'post_id' => $post_id,
         ] );
 
-        return $logs;
+        $filtered_logs = [];
+
+        foreach ( $logs as $log ) {
+            if ( empty( $log['payload'] ) ) {
+                continue;
+            }
+
+            $filtered_logs[] = $log['payload'];
+        }
+
+        return $filtered_logs;
     }
 
     public function mark_session_complete( WP_REST_Request $request ) {
@@ -235,17 +245,17 @@ class Zume_Plans_Endpoints
             return new WP_Error( __METHOD__, 'you are not authorised', array( 'status' => 400 ) );
         }
 
-        /* Do a check that the session hasn't already been completed */
-        /* If it has, remove that log as we are unmarking it? or maybe have a seperate function or call this toggle */
+        $completed_sessions = $this->get_completed_sessions( $post_id, $user_id );
+
+        if ( in_array( $session_id, $completed_sessions ) ) {
+            return $completed_sessions;
+        }
 
         zume_log_insert( 'training', 'session_completed', [
             'payload' => $session_id,
             'post_id' => $post_id,
             'user_id' => $user_id,
         ] );
-
-        /* @todo: don't just send the list of reports back, in the get function */
-        /* filter them down to just a list of the session ids */
 
         return $this->get_completed_sessions( $post_id, $user_id );
     }

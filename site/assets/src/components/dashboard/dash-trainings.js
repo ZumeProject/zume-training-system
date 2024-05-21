@@ -10,6 +10,7 @@ export class DashTrainings extends DashPage {
             showTeaser: { type: Boolean },
             id: { type: Number },
             loading: { type: Boolean, attribute: false },
+            training: { type: Object, attribute: false },
             sessions: { type: Array, attribute: false },
             filterStatus: { type: String, attribute: false },
         };
@@ -27,19 +28,18 @@ export class DashTrainings extends DashPage {
     connectedCallback() {
         super.connectedCallback();
 
-        this.training = jsObject.training_groups[this.id]
-
-        console.log(this.training)
-
-        this.sessions = this.getSessions()
-        this.currentSession = this.getCurrentSession()
-
-        this.groupMembers = [
-            {
-                id: 4,
-                name: 'Bonnie Sue',
-            },
-        ]
+        if ( this.id !== 'teaser' ) {
+            this.loading = true
+            this.getTraining()
+                .then(() => {
+                    this.sessions = this.getSessions()
+                    this.currentSession = this.getCurrentSession()
+                    this.groupMembers = this.getParticipants()
+                })
+                .always(() => {
+                    this.loading = false
+                })
+        }
     }
 
     firstUpdated() {
@@ -50,6 +50,16 @@ export class DashTrainings extends DashPage {
         jQuery(document).foundation();
     }
 
+    getTraining() {
+        const training = jsObject.training_groups[this.id]
+
+        this.code = training.join_key
+        return makeRequest( 'GET', `plan/${this.code}`, {}, 'zume_system/v1' )
+            .then((result) => {
+                this.training = result
+            })
+            .promise()
+    }
     getSessions() {
         const trainingType = this.getTrainingType()
         const numberOfSessions = this.getNumberOfSessions()
@@ -65,17 +75,27 @@ export class DashTrainings extends DashPage {
                 id,
                 name: jsObject.translations.session_x.replace('%d', i),
                 datetime: time ? Number( time.timestamp ) * 1000 : 0,
-                completed: false, /* How do we find this out? meta data? */
+                completed: this.training.completed_sessions.includes(id),
             })
         }
 
         return sessions
     }
+    getParticipants() {
+        return [
+            {
+                id: 4,
+                name: 'Bonnie Sue',
+            },
+        ]
+
+    }
     getTrainingType() {
-        return this.training.set_type
+        return this.training.set_type.key
     }
     getNumberOfSessions() {
-        switch (this.training.set_type) {
+        const set_type = this.training.set_type.key
+        switch (set_type) {
             case 'set_a':
                 return 10
             case 'set_b':
@@ -103,10 +123,10 @@ export class DashTrainings extends DashPage {
     editSession(id) {}
 
     markSessionCompleted(id) {
-        /* send API POST to complete this session */
         makeRequest( 'POST', 'plan/complete-session', { key: this.training.join_key, session_id: id }, 'zume_system/v1' )
             .then((result) => {
                 console.log(result)
+                this.training = { ...this.training, completed_sessions: result }
             })
         /* Update the local store to reflect this change */
     }
@@ -168,57 +188,68 @@ export class DashTrainings extends DashPage {
                 <dash-header-right></dash-header-right>
                 <div class="dashboard__main">
                     ${
-                        this.showTeaser
-                        ? html`
-                            <div class="container-inline p-1">
-                              <div class="dash-menu__list-item">
-                                <div class="dash-menu__icon-area | stack--5">
-                                  <span class="icon zume-locked dash-menu__list-icon"></span>
-                                </div>
-                                <div class="dash-menu__text-area | switcher | switcher-width-20">
-                                  <div>
-                                    <h3 class="f-1 bold uppercase">${jsObject.translations.my_training_locked}</h3>
-                                    <p>${jsObject.translations.plan_a_training_explanation}</p>
-                                  </div>
-                                  <button class="dash-menu__view-button btn tight" @click=${this.createTraining}>
-                                    ${jsObject.translations.unlock}
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                        `
-                        : html`
-                            <ul class="list">
+                        this.loading
+                            ? html`<span class="loading-spinner active"></span>`
+                            : html`
                                 ${
-                                    !this.loading && this.sessions && this.sessions.length > 0
-                                    ? repeat(this.sessions, (session) => session.id, this.renderListItem)
-                                    : ''
+                                    this.showTeaser
+                                    ? html`
+                                        <div class="container-inline p-1">
+                                          <div class="dash-menu__list-item">
+                                            <div class="dash-menu__icon-area | stack--5">
+                                              <span class="icon zume-locked dash-menu__list-icon"></span>
+                                            </div>
+                                            <div class="dash-menu__text-area | switcher | switcher-width-20">
+                                              <div>
+                                                <h3 class="f-1 bold uppercase">${jsObject.translations.my_training_locked}</h3>
+                                                <p>${jsObject.translations.plan_a_training_explanation}</p>
+                                              </div>
+                                              <button class="dash-menu__view-button btn tight" @click=${this.createTraining}>
+                                                ${jsObject.translations.unlock}
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    `
+                                    : html`
+                                        <ul class="list">
+                                            ${
+                                                !this.loading && this.sessions && this.sessions.length > 0
+                                                ? repeat(this.sessions, (session) => session.id, this.renderListItem)
+                                                : ''
+                                            }
+                                        </ul>
+                                    `
                                 }
-                            </ul>
-                        `
+                            `
                     }
                 </div>
                 <div class="dashboard__secondary stack">
                     <dash-cta></dash-cta>
-                    <div class="card | group-members | grow-0">
-                        <button class="f-0 f-medium d-flex align-items-center gap--2 black">
-                            <span class="icon zume-group brand-light"></span> ${jsObject.translations.group_members} (${this.groupMembers.length})
-                        </button>
-                        <div class="collapse" data-state="open">
-                            <!-- The functionality of the .collapse class needs to be refactored from dash-progress.js toggleDetails function to be re-used here -->
-                            ${!this.loading && this.groupMembers && this.groupMembers.length > 0
-                                ? html`
-                                    <ol class="ps-1">
-                                        ${repeat(this.groupMembers, (member) => member.id, this.renderMemberItem)}
-                                    </ol>
-                                `
-                                : ''
-                            }
-                        </div>
-                        <button class="btn brand tight light mt--2">
-                            ${jsObject.translations.invite_friends}
-                        </button>
-                    </div>
+                    ${
+                        this.loading ? html`<span class="loading-spinner active"></span>`
+                            : html`
+                                <div class="card | group-members | grow-0">
+                                    <button class="f-0 f-medium d-flex align-items-center gap--2 black">
+                                        <span class="icon zume-group brand-light"></span> ${jsObject.translations.group_members} (${this.groupMembers.length})
+                                    </button>
+                                    <div class="collapse" data-state="open">
+                                        <!-- The functionality of the .collapse class needs to be refactored from dash-progress.js toggleDetails function to be re-used here -->
+                                        ${!this.loading && this.groupMembers && this.groupMembers.length > 0
+                                            ? html`
+                                                <ol class="ps-1">
+                                                    ${repeat(this.groupMembers, (member) => member.id, this.renderMemberItem)}
+                                                </ol>
+                                            `
+                                            : ''
+                                        }
+                                    </div>
+                                    <button class="btn brand tight light mt--2">
+                                        ${jsObject.translations.invite_friends}
+                                    </button>
+                                </div>
+                            `
+                    }
                 </div>
             </div>
         `;

@@ -1377,7 +1377,7 @@ ${this.training.zoom_link_note}
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-progress",Uo);class qo extends Dt{constructor(){super("training")}createRenderRoot(){return this}}customElements.define("dash-training",qo);class Vo extends de{static get properties(){return{showTeaser:{type:Boolean},id:{type:Number},loading:{type:Boolean,attribute:!1},sessions:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1}}}constructor(){super(),this.showTeaser=!1,this.loading=!1,this.route=_.getRoute("my-training"),this.renderListItem=this.renderListItem.bind(this)}connectedCallback(){super.connectedCallback(),this.training=jsObject.training_groups[this.id],console.log(this.training),this.sessions=this.getSessions(),this.currentSession=this.getCurrentSession(),this.groupMembers=[{id:4,name:"Bonnie Sue"}]}firstUpdated(){super.firstUpdated()}updated(){jQuery(document).foundation()}getSessions(){const e=this.getTrainingType(),t=this.getNumberOfSessions(),s=[];for(let n=1;n<t+1;n++){const a=n<10?`0${n}`:`${n}`,r=e+"_"+a,o=this.training[r];s.push({id:r,name:jsObject.translations.session_x.replace("%d",n),datetime:o?Number(o.timestamp)*1e3:0,completed:!1})}return s}getTrainingType(){return this.training.set_type}getNumberOfSessions(){switch(this.training.set_type){case"set_a":return 10;case"set_b":return 20;case"set_c":return 5}}getCurrentSession(){return this.getTrainingType()+"_01"}createTraining(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:O.makeFirstGroup}}))}editSession(e){}markSessionCompleted(e){makeRequest("POST","plan/complete-session",{key:this.training.join_key,session_id:e},"zume_system/v1").then(t=>{console.log(t)})}renderListItem(e){const{id:t,name:s,datetime:n,completed:a}=e;return c`
+        `}createRenderRoot(){return this}}customElements.define("dash-progress",Uo);class qo extends Dt{constructor(){super("training")}createRenderRoot(){return this}}customElements.define("dash-training",qo);class Vo extends de{static get properties(){return{showTeaser:{type:Boolean},id:{type:Number},loading:{type:Boolean,attribute:!1},training:{type:Object,attribute:!1},sessions:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1}}}constructor(){super(),this.showTeaser=!1,this.loading=!1,this.route=_.getRoute("my-training"),this.renderListItem=this.renderListItem.bind(this)}connectedCallback(){super.connectedCallback(),this.id!=="teaser"&&(this.loading=!0,this.getTraining().then(()=>{this.sessions=this.getSessions(),this.currentSession=this.getCurrentSession(),this.groupMembers=this.getParticipants()}).always(()=>{this.loading=!1}))}firstUpdated(){super.firstUpdated()}updated(){jQuery(document).foundation()}getTraining(){const e=jsObject.training_groups[this.id];return this.code=e.join_key,makeRequest("GET",`plan/${this.code}`,{},"zume_system/v1").then(t=>{this.training=t}).promise()}getSessions(){const e=this.getTrainingType(),t=this.getNumberOfSessions(),s=[];for(let n=1;n<t+1;n++){const a=n<10?`0${n}`:`${n}`,r=e+"_"+a,o=this.training[r];s.push({id:r,name:jsObject.translations.session_x.replace("%d",n),datetime:o?Number(o.timestamp)*1e3:0,completed:this.training.completed_sessions.includes(r)})}return s}getParticipants(){return[{id:4,name:"Bonnie Sue"}]}getTrainingType(){return this.training.set_type.key}getNumberOfSessions(){switch(this.training.set_type.key){case"set_a":return 10;case"set_b":return 20;case"set_c":return 5}}getCurrentSession(){return this.getTrainingType()+"_01"}createTraining(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:O.makeFirstGroup}}))}editSession(e){}markSessionCompleted(e){makeRequest("POST","plan/complete-session",{key:this.training.join_key,session_id:e},"zume_system/v1").then(t=>{console.log(t),this.training={...this.training,completed_sessions:t}})}renderListItem(e){const{id:t,name:s,datetime:n,completed:a}=e;return c`
             <li class="list__item | switcher | switcher-width-20 gapy0">
                 <div class="list__primary">
                     ${this.currentSession===t?c`
@@ -1420,47 +1420,51 @@ ${this.training.zoom_link_note}
                 </div>
                 <dash-header-right></dash-header-right>
                 <div class="dashboard__main">
-                    ${this.showTeaser?c`
-                            <div class="container-inline p-1">
-                              <div class="dash-menu__list-item">
-                                <div class="dash-menu__icon-area | stack--5">
-                                  <span class="icon zume-locked dash-menu__list-icon"></span>
-                                </div>
-                                <div class="dash-menu__text-area | switcher | switcher-width-20">
-                                  <div>
-                                    <h3 class="f-1 bold uppercase">${jsObject.translations.my_training_locked}</h3>
-                                    <p>${jsObject.translations.plan_a_training_explanation}</p>
-                                  </div>
-                                  <button class="dash-menu__view-button btn tight" @click=${this.createTraining}>
-                                    ${jsObject.translations.unlock}
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                        `:c`
-                            <ul class="list">
-                                ${!this.loading&&this.sessions&&this.sessions.length>0?ce(this.sessions,e=>e.id,this.renderListItem):""}
-                            </ul>
-                        `}
+                    ${this.loading?c`<span class="loading-spinner active"></span>`:c`
+                                ${this.showTeaser?c`
+                                        <div class="container-inline p-1">
+                                          <div class="dash-menu__list-item">
+                                            <div class="dash-menu__icon-area | stack--5">
+                                              <span class="icon zume-locked dash-menu__list-icon"></span>
+                                            </div>
+                                            <div class="dash-menu__text-area | switcher | switcher-width-20">
+                                              <div>
+                                                <h3 class="f-1 bold uppercase">${jsObject.translations.my_training_locked}</h3>
+                                                <p>${jsObject.translations.plan_a_training_explanation}</p>
+                                              </div>
+                                              <button class="dash-menu__view-button btn tight" @click=${this.createTraining}>
+                                                ${jsObject.translations.unlock}
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    `:c`
+                                        <ul class="list">
+                                            ${!this.loading&&this.sessions&&this.sessions.length>0?ce(this.sessions,e=>e.id,this.renderListItem):""}
+                                        </ul>
+                                    `}
+                            `}
                 </div>
                 <div class="dashboard__secondary stack">
                     <dash-cta></dash-cta>
-                    <div class="card | group-members | grow-0">
-                        <button class="f-0 f-medium d-flex align-items-center gap--2 black">
-                            <span class="icon zume-group brand-light"></span> ${jsObject.translations.group_members} (${this.groupMembers.length})
-                        </button>
-                        <div class="collapse" data-state="open">
-                            <!-- The functionality of the .collapse class needs to be refactored from dash-progress.js toggleDetails function to be re-used here -->
-                            ${!this.loading&&this.groupMembers&&this.groupMembers.length>0?c`
-                                    <ol class="ps-1">
-                                        ${ce(this.groupMembers,e=>e.id,this.renderMemberItem)}
-                                    </ol>
-                                `:""}
-                        </div>
-                        <button class="btn brand tight light mt--2">
-                            ${jsObject.translations.invite_friends}
-                        </button>
-                    </div>
+                    ${this.loading?c`<span class="loading-spinner active"></span>`:c`
+                                <div class="card | group-members | grow-0">
+                                    <button class="f-0 f-medium d-flex align-items-center gap--2 black">
+                                        <span class="icon zume-group brand-light"></span> ${jsObject.translations.group_members} (${this.groupMembers.length})
+                                    </button>
+                                    <div class="collapse" data-state="open">
+                                        <!-- The functionality of the .collapse class needs to be refactored from dash-progress.js toggleDetails function to be re-used here -->
+                                        ${!this.loading&&this.groupMembers&&this.groupMembers.length>0?c`
+                                                <ol class="ps-1">
+                                                    ${ce(this.groupMembers,e=>e.id,this.renderMemberItem)}
+                                                </ol>
+                                            `:""}
+                                    </div>
+                                    <button class="btn brand tight light mt--2">
+                                        ${jsObject.translations.invite_friends}
+                                    </button>
+                                </div>
+                            `}
                 </div>
             </div>
         `}createRenderRoot(){return this}}customElements.define("dash-trainings",Vo);class Ho extends w{firstUpdated(){const e=this.offsetTop;this.style.top=e+"px"}render(){return c`
