@@ -31,18 +31,13 @@ export class DashTrainings extends DashPage {
         super.connectedCallback();
 
         if ( this.code !== 'teaser' ) {
-            this.loading = true
             this.getTraining()
-                .then(() => {
-                    this.refreshSessions()
-                    this.groupMembers = this.getParticipants()
-                })
-                .fail((error) => {
-                    this.error = error.message
-                })
-                .always(() => {
-                    this.loading = false
-                })
+        }
+    }
+
+    willUpdate(properties) {
+        if (properties.has('code')) {
+            this.getTraining()
         }
     }
 
@@ -55,6 +50,7 @@ export class DashTrainings extends DashPage {
     }
 
     getTraining() {
+        this.loading = true
         return makeRequest( 'GET', `plan/${this.code}`, {}, 'zume_system/v1' )
             .then((result) => {
                 if ( result.error_code ) {
@@ -62,7 +58,16 @@ export class DashTrainings extends DashPage {
                 }
                 this.training = result
             })
-            .promise()
+            .then(() => {
+                this.refreshSessions()
+                this.groupMembers = this.getParticipants()
+            })
+            .fail((error) => {
+                this.error = error.message
+            })
+            .always(() => {
+                this.loading = false
+            })
     }
     refreshSessions(completedSessions) {
         if (completedSessions) {
