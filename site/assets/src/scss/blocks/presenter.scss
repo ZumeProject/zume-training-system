@@ -195,6 +195,7 @@
     max-height: 100vh;
     margin-inline: auto;
     position: relative;
+    max-width: calc( 100% - 2 * 8.125% );
 
     & > iframe {
         width: 100%;

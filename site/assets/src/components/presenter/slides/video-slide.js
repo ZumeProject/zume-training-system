@@ -60,7 +60,7 @@ export class VideoSlide extends CourseSlide {
                     </iframe>
                 </div>
 
-                ${ this.showButtons === true ? html`
+                ${ false && this.showButtons === true ? html`
                      <!-- These buttons have no click handlers. They essentially give a space to allow the
                 mouse click to trigger the click left/right side of screen event -->
                     <button
