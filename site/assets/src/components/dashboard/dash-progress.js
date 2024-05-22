@@ -55,7 +55,6 @@ export class DashProgress extends DashPage {
     filterProgress(status) {
         this.filterStatus = status
         this.filteredItems = this.filterItems(status)
-        console.log(this.filteredItems)
         ZumeStorage.save(this.filterName, status)
         this.closeFilter()
     }
