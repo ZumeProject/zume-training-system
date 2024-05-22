@@ -21,7 +21,6 @@ export class VideoSlide extends CourseSlide {
 
     openMenu() {
         const menu = document.querySelector(this.offCanvasSelector)
-        console.log(this.offCanvasId, menu)
         jQuery(menu).foundation('open')
     }
     closeMenu() {
