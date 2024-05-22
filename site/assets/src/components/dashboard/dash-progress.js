@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { repeat } from 'lit/directives/repeat.js'
 import { DashBoard } from './dash-board';
 import { DashPage } from './dash-page';
+import { zumeRequest } from '../../js/scripts';
 
 export class DashProgress extends DashPage {
     static get properties() {
@@ -88,26 +89,40 @@ export class DashProgress extends DashPage {
         const {type, subtype, key} = host
         const currentState = this.hostProgress.list[key]
 
+        console.log(host, event)
+
         if (currentState === false) {
-            this.hostProgress.list[key] = true
-            makeRequest('POST', 'host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id }, 'zume_system/v1' )
-                .done( ( data ) => {
+            const newHostProgress = { ...this.hostProgress }
+            newHostProgress.list = { ...this.hostProgress.list }
+            newHostProgress.list[key] = true
+            this.hostProgress = { ...newHostProgress }
+            return zumeRequest.post('host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id } )
+                .then( ( data ) => {
+                    console.log(data)
+                })
+                .catch((error) => {
+                    /* display error message */
+                })
+                .finally(() => {
                     this.loadHostStatus()
                 })
         }
 
         if (currentState === true) {
-            this.hostProgress.list[key] = false
-            makeRequest('DELETE', 'host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id }, 'zume_system/v1' )
-                .done( ( data ) => {
+            const newHostProgress = { ...this.hostProgress }
+            newHostProgress.list = { ...this.hostProgress.list }
+            newHostProgress.list[key] = false
+            this.hostProgress = { ...newHostProgress }
+            return zumeRequest.delete('host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id } )
+                .then( ( data ) => {
                     this.loadHostStatus()
                 })
         }
     }
 
     loadHostStatus() {
-        makeRequest('GET', 'host', { user_id: jsObject.profile.user_id }, 'zume_system/v1' )
-            .done( ( data ) => {
+        zumeRequest.get('host', { user_id: jsObject.profile.user_id } )
+            .then( ( data ) => {
                 this.hostProgress = data
             })
     }

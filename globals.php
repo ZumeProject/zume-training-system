@@ -5775,6 +5775,7 @@ if ( ! class_exists( 'Zume_Global_Endpoints' ) ) {
             return zume_get_user_host( $user_id );
         }
         public function create_host( WP_REST_Request $request ) {
+            //return new WP_Error( __METHOD__, 'User not logged in', array( 'status' => 401 ) );
             if ( ! is_user_logged_in() ) {
                 return new WP_Error( __METHOD__, 'User not logged in', array( 'status' => 401 ) );
             }
