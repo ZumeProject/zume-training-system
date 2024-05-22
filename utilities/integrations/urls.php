@@ -64,9 +64,9 @@ function zume_login_url( $type = 'login', $redirect_url = false ) {
 
 
 
-function zume_make_a_plan_wizard_url() {
+function zume_make_a_plan_wizard_url( $type = 'login' ) {
     $redirect_url = zume_wizard_url( 'start' );
-    return zume_login_url( 'register', $redirect_url );
+    return zume_login_url( $type, $redirect_url );
 }
 function zume_set_profile_wizard() {
     $redirect_url = zume_wizard_url( 'profile' );
