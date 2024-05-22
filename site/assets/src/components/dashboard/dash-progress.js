@@ -90,21 +90,17 @@ export class DashProgress extends DashPage {
         const currentState = this.hostProgress.list[key]
 
         if (currentState === false) {
+            this.hostProgress.list[key] = true
             makeRequest('POST', 'host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id }, 'zume_system/v1' )
                 .done( ( data ) => {
-                    if ( Array.isArray(data) ) {
-                        this.hostProgress.list[key] = true
-                    }
                     this.loadHostStatus()
                 })
         }
 
         if (currentState === true) {
+            this.hostProgress.list[key] = false
             makeRequest('DELETE', 'host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id }, 'zume_system/v1' )
                 .done( ( data ) => {
-                    if ( Array.isArray(data) ) {
-                        this.hostProgress.list[key] = false
-                    }
                     this.loadHostStatus()
                 })
         }
