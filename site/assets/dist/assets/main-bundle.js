@@ -2240,19 +2240,23 @@ ${this.training.zoom_link_note}
             </div>
         `}createRenderRoot(){return this}}customElements.define("share-links",$l);class kl extends w{constructor(){super();x(this,"sortAlphabetically",(t,s)=>t.page_title<s.page_title?-1:1);x(this,"sortByKey",(t,s)=>Number(t.key)<Number(s.key)?-1:1);this.items=zumeShare.share_items,this.filterType="all"}static get properties(){return{items:{type:Array},filterType:{type:String,attribute:!1},isSortedAlphabetically:{type:Boolean,attribute:!1}}}filterItems(t){this.filterType=t,this.items=this.sortItems(zumeShare.share_items.filter(({type:s})=>t==="all"?!0:s===t))}toggleSorting(){this.isSortedAlphabetically=!this.isSortedAlphabetically,this.items=this.sortItems(this.items)}sortItems(t){return t.sort((s,n)=>this.isSortedAlphabetically?this.sortAlphabetically(s,n):this.sortByKey(s,n))}renderListItem({page_url:t,page_title:s,type:n,description:a}){return c`
             <li class="share-cards" data-type=${n}>
-                <div class="stack | share card">
-                    <a class="f-1 bold mt-0" href=${t}>
-                        ${s}
-                    </a>
-                    <p class="f--1 show-for-large">
-                        ${a}
-                    </p>
-                    <div class="fit-content ms-auto">
-                        <share-links
-                            url=${t}
-                            title=${s}
-                            .t=${zumeShare.translations}>
-                        </share-links>
+                <div class="share card">
+                    <div class="switcher | switcher-width-25 align-items-center gapx--4">
+                        <div class="stack grow-2">
+                            <a class="f-1 bold mt-0" href=${t}>
+                                ${s}
+                            </a>
+                            <p class="f--1 show-for-large">
+                                ${a}
+                            </p>
+                        </div>
+                        <div class="fit-content ms-auto">
+                            <share-links
+                                url=${t}
+                                title=${s}
+                                .t=${zumeShare.translations}>
+                            </share-links>
+                        </div>
                     </div>
                 </div>
             </li>
