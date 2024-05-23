@@ -11,6 +11,7 @@ export class DashProgress extends DashPage {
             filteredItems: { type: Array, attribute: false },
             filterStatus: { type: String, attribute: false },
             hostProgress: { type: Object, attribute: false},
+            errorMessage: { type: String, attribute: false },
         };
     }
 
@@ -21,6 +22,7 @@ export class DashProgress extends DashPage {
 
         this.trainingItems = Object.values(jsObject.training_items)
         this.hostProgress = jsObject.host_progress
+        this.errorMessage = ''
 
         this.filterName = 'my-progress-filter'
         this.filterStatus = ZumeStorage.load(this.filterName)
@@ -89,8 +91,6 @@ export class DashProgress extends DashPage {
         const {type, subtype, key} = host
         const currentState = this.hostProgress.list[key]
 
-        console.log(host, event)
-
         if (currentState === false) {
             this.changeHost(key, true)
             return zumeRequest.post('host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id } )
@@ -99,7 +99,7 @@ export class DashProgress extends DashPage {
                 })
                 .catch((error) => {
                     this.changeHost(key, false)
-                    /* display error message */
+                    this.displayError(jsObject.translations.not_authorized)
                 })
                 .finally(() => {
                     this.loadHostStatus()
@@ -114,13 +114,20 @@ export class DashProgress extends DashPage {
                 })
                 .catch((error) => {
                     this.changeHost(key, false)
-                    /* display error message */
+                    this.displayError(jsObject.translations.not_authorized)
                 })
                 .finally(() => {
                     this.loadHostStatus()
                 })
 
         }
+    }
+
+    displayError(message) {
+        this.errorMessage = message
+        setTimeout(() => {
+            this.errorMessage = ''
+        }, 4000)
     }
 
     loadHostStatus() {
@@ -271,7 +278,7 @@ export class DashProgress extends DashPage {
                     </div>
                 </div>
                 <dash-header-right></dash-header-right>
-                <div class="dashboard__main content">
+                <div class="dashboard__main content position-relative">
                     ${
                         html`
                             <ul class="list">
@@ -281,6 +288,10 @@ export class DashProgress extends DashPage {
                             </ul>
                         `
                     }
+
+                    <div class="fixed bottom left right ${this.errorMessage.length ? 'p-1' : ''}">
+                        <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
+                    </div>
                 </div>
                 <div class="dashboard__secondary">
                     <dash-cta></dash-cta>
