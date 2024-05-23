@@ -80,7 +80,7 @@ export class DashCta extends LitElement {
         this.removedCtaKeys = [...goingCtaKeys, ...organisedCtaKeys.slice(DashCta.MAX_CTAS)]
         this.initialCtaKeys = organisedCtaKeys.slice(0, DashCta.MAX_CTAS)
 
-        if (this.ctas.length > 1) {
+        if (this.ctas.length > 0) {
             this.dispatchEventAfterUpdated = true
         }
     }
