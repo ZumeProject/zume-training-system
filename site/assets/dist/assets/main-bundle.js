@@ -993,6 +993,9 @@ ${this.training.zoom_link_note}
                           <p>
                             ${jsObject.translations.connecting_with_coach}
                           </p>
+                          <p>
+                            ${jsObject.translations.wait_for_coach}
+                          </p>
                       `}
                 </div>
 

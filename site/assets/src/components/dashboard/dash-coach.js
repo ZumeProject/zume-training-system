@@ -43,6 +43,9 @@ export class DashCoach extends DashPage {
                           <p>
                             ${jsObject.translations.connecting_with_coach}
                           </p>
+                          <p>
+                            ${jsObject.translations.wait_for_coach}
+                          </p>
                       `
                   }
                 </div>
