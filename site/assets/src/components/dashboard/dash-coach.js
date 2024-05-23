@@ -1,7 +1,12 @@
 import { html } from 'lit';
 import { DashPage } from './dash-page';
+import { Wizards } from '../wizard/wizard-constants';
 
 export class DashCoach extends DashPage {
+
+    getACoach() {
+      this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.getACoach } } ))
+    }
 
     render() {
         return html`
@@ -23,7 +28,7 @@ export class DashCoach extends DashPage {
                           <h3 class="f-1 bold uppercase">${jsObject.translations.get_a_coach}</h3>
                           <p>${jsObject.translations.get_a_coach_explanation}</p>
                         </div>
-                        <button class="dash-menu__view-button btn tight" @click=${this.joinCommunity}>
+                        <button class="dash-menu__view-button btn tight" @click=${this.getACoach}>
                           ${jsObject.translations.get_a_coach}
                         </button>
                       </div>
