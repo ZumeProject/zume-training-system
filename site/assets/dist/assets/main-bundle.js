@@ -897,8 +897,7 @@ ${this.training.zoom_link_note}
 
                 <div class="dashboard__main content p-2">
                     ${this.showTeaser?c`
-                            <div class="container-inline">
-                              <div class="dash-menu__list-item">
+                            <div class="dash-menu__list-item">
                                 <div class="dash-menu__icon-area | stack--5">
                                   <span class="icon zume-locked dash-menu__list-icon"></span>
                                 </div>
@@ -911,7 +910,6 @@ ${this.training.zoom_link_note}
                                     ${jsObject.translations.join}
                                   </button>
                                 </div>
-                              </div>
                             </div>
 
                         `:c`
@@ -962,7 +960,7 @@ ${this.training.zoom_link_note}
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-churches",Lo);class Ro extends de{getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:$.getACoach}}))}render(){return c`
+        `}createRenderRoot(){return this}}customElements.define("dash-churches",Lo);class Ro extends de{static get properties(){return{showTeaser:{type:Boolean}}}getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:$.getACoach}}))}render(){return c`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -971,7 +969,6 @@ ${this.training.zoom_link_note}
                 <dash-header-right></dash-header-right>
 
               <div class="dashboard__main content p-2">
-                  <div class="container-inline">
                     <div class="dash-menu__list-item">
                       <div class="dash-menu__icon-area | stack--5">
                         <span class="icon zume-locked dash-menu__list-icon"></span>
@@ -986,7 +983,6 @@ ${this.training.zoom_link_note}
                         </button>
                       </div>
                     </div>
-                  </div>
                 </div>
 
                 <div class="dashboard__secondary">
@@ -1084,22 +1080,20 @@ ${this.training.zoom_link_note}
 
                 <div class="dashboard__main content p-2">
                     ${this.showTeaser?c`
-                            <div class="container-inline">
-                              <div class="dash-menu__list-item">
-                                <div class="dash-menu__icon-area | stack--5">
-                                  <span class="icon zume-locked dash-menu__list-icon"></span>
-                                </div>
-                                <div class="dash-menu__text-area | switcher | switcher-width-20">
-                                  <div>
-                                    <h3 class="f-1 bold uppercase">${jsObject.translations.my_maps_locked}</h3>
-                                    <p>${jsObject.translations.my_maps_explanation}</p>
-                                  </div>
-                                  <button class="dash-menu__view-button btn tight" @click=${this.joinCommunity}>
-                                    ${jsObject.translations.join_the_community}
-                                  </button>
-                                </div>
-                              </div>
+                          <div class="dash-menu__list-item">
+                            <div class="dash-menu__icon-area | stack--5">
+                              <span class="icon zume-locked dash-menu__list-icon"></span>
                             </div>
+                            <div class="dash-menu__text-area | switcher | switcher-width-20">
+                              <div>
+                                <h3 class="f-1 bold uppercase">${jsObject.translations.my_maps_locked}</h3>
+                                <p>${jsObject.translations.my_maps_explanation}</p>
+                              </div>
+                              <button class="dash-menu__view-button btn tight" @click=${this.joinCommunity}>
+                                ${jsObject.translations.join_the_community}
+                              </button>
+                            </div>
+                          </div>
                         `:c`
                             <p>You can now see your vision maps here. (If you imagine them hard enough)</p>
                         `}
@@ -1202,7 +1196,7 @@ ${this.training.zoom_link_note}
                 </div>
                 <div class="dashboard__main content">
                     ${this.showTeaser?c`
-                          <div class="container-inline p-2">
+                          <div class="p-2">
                             <div class="dash-menu__list-item">
                               <div class="dash-menu__icon-area | stack--5">
                                 <span class="icon zume-locked dash-menu__list-icon"></span>
@@ -1428,7 +1422,7 @@ ${this.training.zoom_link_note}
                 <div class="dashboard__main content">
                     ${this.loading?c`<div class="p-1"><span class="loading-spinner active"></span></div>`:""}
                     ${!this.loading&&this.error?c`
-                        <div class="container-inline p-1">
+                        <div class="p-1">
                             <h3 class="f-1 bold uppercase">${jsObject.translations.error}</h3>
                             ${this.error==="bad-plan-code"?c`
                                     <p>${jsObject.translations.bad_code}</p>
@@ -1440,7 +1434,7 @@ ${this.training.zoom_link_note}
                         </div>
                         `:""}
                     ${this.showTeaser&&!this.loading&&!this.error?c`
-                            <div class="container-inline p-1">
+                            <div class="p-1">
                               <div class="dash-menu__list-item">
                                 <div class="dash-menu__icon-area | stack--5">
                                   <span class="icon zume-locked dash-menu__list-icon"></span>
@@ -1525,27 +1519,25 @@ ${this.training.zoom_link_note}
         `}}customElements.define("grid-link",Yo);class Jo extends ks{constructor(){super()}renderText(){return this.text.split(" ").map(e=>c`
             <span>${e}</span>
         `)}getIcon(){return this.locked?this.icon+"-locked":this.icon}render(){return c`
-            <div class="container-inline">
-                <div
-                    class="dash-menu__list-item"
-                    ?data-locked=${this.locked}
-                    ?data-completed=${this.completed}
-                    ?data-button=${this.disableNavigate}
-                    role="button"
-                    @click=${this.handleClick}
-                >
-                    <div class="dash-menu__icon-area | stack--5">
-                        <span class="icon ${this.getIcon()} dash-menu__list-icon"></span>
+            <div
+                class="dash-menu__list-item"
+                ?data-locked=${this.locked}
+                ?data-completed=${this.completed}
+                ?data-button=${this.disableNavigate}
+                role="button"
+                @click=${this.handleClick}
+            >
+                <div class="dash-menu__icon-area | stack--5">
+                    <span class="icon ${this.getIcon()} dash-menu__list-icon"></span>
+                </div>
+                <div class="dash-menu__text-area | switcher | switcher-width-20">
+                    <div>
+                        <h3 class="f-1 bold uppercase">${this.text}</h3>
+                        <p>${this.explanation}</p>
                     </div>
-                    <div class="dash-menu__text-area | switcher | switcher-width-20">
-                        <div>
-                            <h3 class="f-1 bold uppercase">${this.text}</h3>
-                            <p>${this.explanation}</p>
-                        </div>
-                        ${this.completed?c`
-                                <div class="grow-0"><span class="icon zume-check-mark grow-0 | dash-menu__list-success"></span></div>
-                            `:""}
-                    </div>
+                    ${this.completed?c`
+                            <div class="grow-0"><span class="icon zume-check-mark grow-0 | dash-menu__list-success"></span></div>
+                        `:""}
                 </div>
             </div>
         `}}customElements.define("list-link",Jo);class Ko extends w{static get properties(){return{translations:{type:Object},urls:{type:Object},position:{type:String},asLink:{type:Boolean}}}constructor(){super(),typeof jsObject<"u"&&(this.translations=jsObject.translations,this.urls=jsObject.urls),this.position="bottom";const t=document.querySelector("html").dataset.dir;this.isRtl=t==="rtl"}updated(){jQuery(document).foundation()}render(){return c`

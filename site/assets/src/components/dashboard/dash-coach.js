@@ -3,6 +3,11 @@ import { DashPage } from './dash-page';
 import { Wizards } from '../wizard/wizard-constants';
 
 export class DashCoach extends DashPage {
+    static get properties() {
+      return {
+        showTeaser: { type: Boolean },
+      };
+    }
 
     getACoach() {
       this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.getACoach } } ))
@@ -18,7 +23,6 @@ export class DashCoach extends DashPage {
                 <dash-header-right></dash-header-right>
 
               <div class="dashboard__main content p-2">
-                  <div class="container-inline">
                     <div class="dash-menu__list-item">
                       <div class="dash-menu__icon-area | stack--5">
                         <span class="icon zume-locked dash-menu__list-icon"></span>
@@ -33,7 +37,6 @@ export class DashCoach extends DashPage {
                         </button>
                       </div>
                     </div>
-                  </div>
                 </div>
 
                 <div class="dashboard__secondary">
