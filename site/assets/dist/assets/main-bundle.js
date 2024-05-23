@@ -617,7 +617,9 @@ ${this.training.zoom_link_note}
                                         href=${this.makeHref("getting-started")}
                                         class="menu-section__title menu-btn"
                                         icon="zume-start"
-                                        text=${jsObject.translations.getting_started}>
+                                        text=${jsObject.translations.getting_started}
+                                        as="nav"
+                                    >
                                     </nav-link>
                                     ${this.isGettingStartedActive()?c`
                                             <progress-circle percent=${this.getGettingStartedPercentage()} radius="12"></progress-circle>
@@ -646,6 +648,7 @@ ${this.training.zoom_link_note}
                                     class="menu-section__title menu-btn"
                                     icon="zume-training"
                                     text=${jsObject.translations.training}
+                                    as="nav"
                                 >
                                 </nav-link>
                                 <ul id="training-menu" class="nested accordion-menu menu vertical" data-accordion-menu>
@@ -693,6 +696,7 @@ ${this.training.zoom_link_note}
                                     class="menu-section__title menu-btn"
                                     icon="zume-practicing"
                                     text=${jsObject.translations.practicing}
+                                    as="nav"
                                 ></nav-link>
                                 <ul class="nested">
                                     ${S.childRoutesOf("practicing").map(e=>c`
@@ -703,6 +707,7 @@ ${this.training.zoom_link_note}
                                                         icon=${e.icon}
                                                         text=${e.translation}
                                                         ?locked=${S.getLockedStatus(e.name,this.userState)}
+                                                        as="nav"
                                                     ></nav-link>
                                                     <span class="icon zume-locked gray-500"></span>
                                                 </li>
@@ -969,27 +974,33 @@ ${this.training.zoom_link_note}
                 <dash-header-right></dash-header-right>
 
               <div class="dashboard__main content p-2">
-                    <div class="dash-menu__list-item">
-                      <div class="dash-menu__icon-area | stack--5">
-                        <span class="icon zume-locked dash-menu__list-icon"></span>
-                      </div>
-                      <div class="dash-menu__text-area | switcher | switcher-width-20">
-                        <div>
-                          <h3 class="f-1 bold uppercase">${jsObject.translations.get_a_coach}</h3>
-                          <p>${jsObject.translations.get_a_coach_explanation}</p>
-                        </div>
-                        <button class="dash-menu__view-button btn tight" @click=${this.getACoach}>
-                          ${jsObject.translations.get_a_coach}
-                        </button>
-                      </div>
-                    </div>
+                  ${this.showTeaser?c`
+                          <div class="dash-menu__list-item">
+                            <div class="dash-menu__icon-area | stack--5">
+                              <span class="icon zume-locked dash-menu__list-icon"></span>
+                            </div>
+                            <div class="dash-menu__text-area | switcher | switcher-width-20">
+                              <div>
+                                <h3 class="f-1 bold uppercase">${jsObject.translations.get_a_coach}</h3>
+                                <p>${jsObject.translations.get_a_coach_explanation}</p>
+                              </div>
+                              <button class="dash-menu__view-button btn tight" @click=${this.getACoach}>
+                                ${jsObject.translations.get_a_coach}
+                              </button>
+                            </div>
+                          </div>
+                      `:c`
+                          <p>
+                            ${jsObject.translations.connecting_with_coach}
+                          </p>
+                      `}
                 </div>
 
                 <div class="dashboard__secondary">
                     <dash-cta></dash-cta>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-coach",Ro);const ge=class extends w{static get properties(){return{ctas:{type:Array,attribute:!1}}}constructor(){super(),this.allCtas=[],this.ctas=[],this.celebrations=[],this.hiddenCtaKeys=[],this.initialCtaKeys=[],this.removedCtaKeys=[],this.manageCtas=this.manageCtas.bind(this),this.transitionIn=this.transitionIn.bind(this),this.transitionCtas=this.transitionCtas.bind(this),this.renderCta=this.renderCta.bind(this)}connectedCallback(){super.connectedCallback(),window.addEventListener("ctas:changed",this.manageCtas),this.addEventListener("begin-cta-transitions",this.transitionIn),this.addEventListener("cta-transition-in-ended",this.logCelebrationsSeen)}disconnectedCallback(){super.disconnectedCallback(),window.removeEventListener("ctas:changed",this.manageCtas),this.removeEventListener("begin-cta-transitions",this.transitionIn),this.removeEventListener("cta-transition-in-ended",this.logCelebrationsSeen)}firstUpdated(){this.manageCtas()}updated(){this.dispatchEventAfterUpdated&&(this.dispatchEventAfterUpdated=!1,setTimeout(()=>{this.dispatchEvent(new CustomEvent("begin-cta-transitions"))},10))}manageCtas(){const e=this.getCtas(),[t,s,n]=this.diffCtas(e,this.ctas),a=[...t,...s].filter(({content_template:u})=>u==="celebration"),r=[...t,...s].filter(({content_template:u})=>u!=="celebration"),o=[...a,...r],l=this.getCtaKeys(o),d=this.getCtaKeys(n);this.ctas=o,this.celebrations=a,this.hiddenCtaKeys=this.getCtaKeys(t),this.removedCtaKeys=[...d,...l.slice(ge.MAX_CTAS)],this.initialCtaKeys=l.slice(0,ge.MAX_CTAS),this.ctas.length>1&&(this.dispatchEventAfterUpdated=!0)}getCtas(){return jsObject.allCtas??[]}diffCtas(e,t){const s=e.filter(({key:r})=>t.findIndex(({key:o})=>o===r)===-1),n=t.filter(({key:r})=>e.findIndex(({key:o})=>o===r)===-1),a=t.filter(({key:r})=>e.findIndex(({key:o})=>o===r)>-1);return[s,a,n]}transitionIn(){this.transitionCtas(this.removedCtaKeys,this.initialCtaKeys),setTimeout(()=>{this.dispatchEvent(new CustomEvent("cta-transition-in-ended"))},ge.TRANSITION_TIMEOUT)}logCelebrationsSeen(){this.celebrations.forEach(({type:t,subtype:s})=>{makeRequest("POST","log",{type:t,subtype:s},"zume_system/v1")});const e=this.getCtaKeys(this.celebrations);jsObject.allCtas=jsObject.allCtas.filter(({key:t})=>!e.includes(t))}transitionCtas(e,t){(e.length>0?this.getCtaElements(e):[]).forEach(a=>{a&&(a.style.height=a.clientHeight+"px",setTimeout(()=>{a.classList.add("transition-out"),a.style.height=""},10))}),(t.length>0?this.getCtaElements(t):[]).forEach(a=>{a&&(a.classList.remove("hiding"),a.classList.add("showing"))})}getCtaElements(e){return this.renderRoot.querySelectorAll(e.map(t=>`[data-key="${t}"]`).join(","))}getCtaKeys(e){return e.map(({key:t})=>t)}isWizardLink(e){return e.includes("/wizard/")}openWizard(e){const t=e.split("/"),s=t[t.length-1];dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:s}}))}renderCta({content:e,content_template:t,key:s}){const n=this.hiddenCtaKeys.includes(s)?"hiding":"showing";if(t==="card")return c`
+        `}createRenderRoot(){return this}}customElements.define("dash-coach",Ro);const ge=class extends w{static get properties(){return{ctas:{type:Array,attribute:!1}}}constructor(){super(),this.allCtas=[],this.ctas=[],this.celebrations=[],this.hiddenCtaKeys=[],this.initialCtaKeys=[],this.removedCtaKeys=[],this.manageCtas=this.manageCtas.bind(this),this.transitionIn=this.transitionIn.bind(this),this.transitionCtas=this.transitionCtas.bind(this),this.renderCta=this.renderCta.bind(this)}connectedCallback(){super.connectedCallback(),window.addEventListener("ctas:changed",this.manageCtas),this.addEventListener("begin-cta-transitions",this.transitionIn),this.addEventListener("cta-transition-in-ended",this.logCelebrationsSeen)}disconnectedCallback(){super.disconnectedCallback(),window.removeEventListener("ctas:changed",this.manageCtas),this.removeEventListener("begin-cta-transitions",this.transitionIn),this.removeEventListener("cta-transition-in-ended",this.logCelebrationsSeen)}firstUpdated(){this.manageCtas()}updated(){this.dispatchEventAfterUpdated&&(this.dispatchEventAfterUpdated=!1,setTimeout(()=>{this.dispatchEvent(new CustomEvent("begin-cta-transitions"))},10))}manageCtas(){const e=this.getCtas();console.log(e);const[t,s,n]=this.diffCtas(e,this.ctas),a=[...t,...s].filter(({content_template:u})=>u==="celebration"),r=[...t,...s].filter(({content_template:u})=>u!=="celebration"),o=[...a,...r],l=this.getCtaKeys(o),d=this.getCtaKeys(n);this.ctas=o,this.celebrations=a,this.hiddenCtaKeys=this.getCtaKeys(t),this.removedCtaKeys=[...d,...l.slice(ge.MAX_CTAS)],this.initialCtaKeys=l.slice(0,ge.MAX_CTAS),this.ctas.length>1&&(this.dispatchEventAfterUpdated=!0)}getCtas(){return jsObject.allCtas??[]}diffCtas(e,t){const s=e.filter(({key:r})=>t.findIndex(({key:o})=>o===r)===-1),n=t.filter(({key:r})=>e.findIndex(({key:o})=>o===r)===-1),a=t.filter(({key:r})=>e.findIndex(({key:o})=>o===r)>-1);return[s,a,n]}transitionIn(){this.transitionCtas(this.removedCtaKeys,this.initialCtaKeys),setTimeout(()=>{this.dispatchEvent(new CustomEvent("cta-transition-in-ended"))},ge.TRANSITION_TIMEOUT)}logCelebrationsSeen(){this.celebrations.forEach(({type:t,subtype:s})=>{makeRequest("POST","log",{type:t,subtype:s},"zume_system/v1")});const e=this.getCtaKeys(this.celebrations);jsObject.allCtas=jsObject.allCtas.filter(({key:t})=>!e.includes(t))}transitionCtas(e,t){(e.length>0?this.getCtaElements(e):[]).forEach(a=>{a&&(a.style.height=a.clientHeight+"px",setTimeout(()=>{a.classList.add("transition-out"),a.style.height=""},10))}),(t.length>0?this.getCtaElements(t):[]).forEach(a=>{a&&(a.classList.remove("hiding"),a.classList.add("showing"))})}getCtaElements(e){return this.renderRoot.querySelectorAll(e.map(t=>`[data-key="${t}"]`).join(","))}getCtaKeys(e){return e.map(({key:t})=>t)}isWizardLink(e){return e.includes("/wizard/")}openWizard(e){const t=e.split("/"),s=t[t.length-1];dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:s}}))}renderCta({content:e,content_template:t,key:s}){const n=this.hiddenCtaKeys.includes(s)?"hiding":"showing";if(t==="card")return c`
                 <div class="stack | card cta ${n}" data-key=${s} style="--duration: ${ge.TRANSITION_TIMEOUT}ms">
                     <h2 class="h5 text-center">${e.title}</h2>
                     <p>${e.description}</p>
