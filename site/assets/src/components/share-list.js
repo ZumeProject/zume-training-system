@@ -4,7 +4,7 @@ import { repeat } from 'lit/directives/repeat.js'
 export class ShareList extends LitElement {
     static get properties() {
         return {
-            items: { type: Array, attribute: false },
+            items: { type: Array },
             filterType: { type: String, attribute: false },
             isSortedAlphabetically: { type: Boolean, attribute: false },
         };
