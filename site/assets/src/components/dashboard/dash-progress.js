@@ -99,7 +99,7 @@ export class DashProgress extends DashPage {
                 })
                 .catch((error) => {
                     this.changeHost(key, false)
-                    this.displayError(jsObject.translations.not_authorized)
+                    this.displayError(jsObject.translations.error_with_request)
                 })
                 .finally(() => {
                     this.loadHostStatus()
@@ -114,7 +114,7 @@ export class DashProgress extends DashPage {
                 })
                 .catch((error) => {
                     this.changeHost(key, false)
-                    this.displayError(jsObject.translations.not_authorized)
+                    this.displayError(jsObject.translations.error_with_request)
                 })
                 .finally(() => {
                     this.loadHostStatus()
@@ -134,6 +134,9 @@ export class DashProgress extends DashPage {
         zumeRequest.get('host', { user_id: jsObject.profile.user_id } )
             .then( ( data ) => {
                 this.hostProgress = data
+            })
+            .catch((error) => {
+                this.displayError(jsObject.translations.error_with_request)
             })
     }
 
