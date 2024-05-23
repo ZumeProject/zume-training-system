@@ -92,15 +92,13 @@ export class DashProgress extends DashPage {
         console.log(host, event)
 
         if (currentState === false) {
-            const newHostProgress = { ...this.hostProgress }
-            newHostProgress.list = { ...this.hostProgress.list }
-            newHostProgress.list[key] = true
-            this.hostProgress = { ...newHostProgress }
+            this.changeHost(key, true)
             return zumeRequest.post('host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id } )
                 .then( ( data ) => {
                     console.log(data)
                 })
                 .catch((error) => {
+                    this.changeHost(key, false)
                     /* display error message */
                 })
                 .finally(() => {
@@ -109,14 +107,19 @@ export class DashProgress extends DashPage {
         }
 
         if (currentState === true) {
-            const newHostProgress = { ...this.hostProgress }
-            newHostProgress.list = { ...this.hostProgress.list }
-            newHostProgress.list[key] = false
-            this.hostProgress = { ...newHostProgress }
+            this.changeHost(key, false)
             return zumeRequest.delete('host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id } )
                 .then( ( data ) => {
                     this.loadHostStatus()
                 })
+                .catch((error) => {
+                    this.changeHost(key, false)
+                    /* display error message */
+                })
+                .finally(() => {
+                    this.loadHostStatus()
+                })
+
         }
     }
 
@@ -125,6 +128,13 @@ export class DashProgress extends DashPage {
             .then( ( data ) => {
                 this.hostProgress = data
             })
+    }
+
+    changeHost(key, value) {
+        const newHostProgress = { ...this.hostProgress }
+        newHostProgress.list = { ...this.hostProgress.list }
+        newHostProgress.list[key] = value
+        this.hostProgress = { ...newHostProgress }
     }
 
     toggleDetails(key) {
