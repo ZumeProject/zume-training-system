@@ -68,7 +68,7 @@ function zume_getting_started_url( $type ) {
     $params = [ 'flow' => 'start' ];
     return zume_make_a_plan_wizard_url( $type, $params );
 }
-function zume_make_a_plan_wizard_url( $type = 'login', $params = [] ) {
+function zume_make_a_plan_wizard_url( $type = 'register', $params = [] ) {
     $redirect_url = zume_wizard_url( 'start', $params );
     return zume_login_url( $type, $redirect_url );
 }
