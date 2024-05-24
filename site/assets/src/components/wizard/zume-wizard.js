@@ -398,9 +398,11 @@ export class Wizard extends LitElement {
                 /* Get the join code for the group just joined and redirect to that page */
                 const url = new URL(location.href)
                 const joinKey = url.searchParams.get('joinKey')
-                const dashboardUrl = new URL(jsObject.training_dashboard_url + '/' + joinKey)
-                window.location.href = dashboardUrl.href
-                return
+                if (joinKey) {
+                    const dashboardUrl = new URL(jsObject.training_dashboard_url + '/' + joinKey)
+                    window.location.href = dashboardUrl.href
+                    return
+                }
             } else {
                 url.searchParams.set( 'completed', this.type )
             }
