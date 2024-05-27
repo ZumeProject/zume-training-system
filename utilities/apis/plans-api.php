@@ -104,7 +104,7 @@ class Zume_Plans_Endpoints
         $user_id = get_current_user_id();
         $user_contact_id = zume_get_user_contact_id( $user_id );
 
-        $plan = DT_Posts::get_post( self::$post_type, $plan_id );
+        $plan = DT_Posts::get_post( self::$post_type, $plan_id, true, false );
 
         $participant_ids = array_values( array_map( function ( $participant ) {
             return $participant['ID'];
