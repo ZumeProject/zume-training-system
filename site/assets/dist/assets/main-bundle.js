@@ -715,6 +715,7 @@ ${this.training.zoom_link_note}
                                                                             <li>
                                                                                 <nav-link
                                                                                     class="menu-btn"
+                                                                                    as="nav"
                                                                                     text=${r.title}
                                                                                     href=${this.makeTrainingHref(r.join_key)}
                                                                                 ></nav-link>
