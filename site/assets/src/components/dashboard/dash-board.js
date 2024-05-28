@@ -295,6 +295,9 @@ export class DashBoard extends navigator(router(LitElement)) {
         if (routeName === 'my-training' && !userState.plan_created && !userState.joined_online_training ) {
             return true
         }
+        if (routeName === 'my-coach' && !userState.requested_a_coach) {
+            return true
+        }
         return false
     }
 
