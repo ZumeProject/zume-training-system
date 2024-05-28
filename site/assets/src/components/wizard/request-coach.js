@@ -68,32 +68,23 @@ export class RequestCoach extends LitElement {
             this.loading = true
             this.requestSent = true
             this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
-            const onCoachRequested = (( data ) => {
-                if ( data === false ) {
-                    this.message = this.t.connect_fail
-                    this.setErrorMessage(this.t.error_connecting)
-                }
-
-                if (
-                    data.coach_request &&
-                    data.coach_request.errors &&
-                    Object.keys(data.coach_request.errors).length !== 0
-                ) {
-                    const errorKeys = Object.keys(data.coach_request.errors)
-
-                    if (errorKeys[0] === 'already_has_coach') {
-                        this.message = this.t.already_coached
+            zumeRequest.post('get_a_coach', { data } )
+                .then(( data ) => {
+                    if ( data === false ) {
+                        this.message = this.t.connect_fail
                         this.setErrorMessage(this.t.error_connecting)
                     }
-                }
-            }).bind(this)
-            const onFail = (() => {
-                this.message = this.t.connect_fail
-                this.setErrorMessage(this.t.error_connecting)
-            }).bind(this)
-            zumeRequest.post('get_a_coach', { data } )
-                .then(onCoachRequested)
-                .catch(onFail)
+                })
+                .catch((error) => {
+                    if (error.message === 'already_has_coach') {
+                        this.message = ''
+                        this.setErrorMessage(this.t.already_coached)
+                        return
+                    }
+
+                    this.message = this.t.connect_fail
+                    this.setErrorMessage(this.t.error_connecting)
+                })
                 .finally(() => {
                     this.loading = false
                     this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
