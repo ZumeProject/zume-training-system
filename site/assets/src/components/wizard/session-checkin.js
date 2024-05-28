@@ -68,8 +68,7 @@ export class SessionCheckin extends LitElement {
                 } else {
                     this.setErrorMessage(this.t.error)
                 }
-
-                this._sendDoneStepEvent()
+                this.dispatchEvent(new CustomEvent('wizard:finish', { bubbles: true }))
             })
             .always(() => {
                 this.loading = false
@@ -87,10 +86,6 @@ export class SessionCheckin extends LitElement {
     setErrorMessage( message ) {
         console.log(message)
         this.errorMessage = message
-
-        setTimeout(() => {
-            this.errorMessage = ''
-        }, 3000)
     }
 
     render() {

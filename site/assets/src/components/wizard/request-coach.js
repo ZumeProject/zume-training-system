@@ -95,6 +95,7 @@ export class RequestCoach extends LitElement {
                 .finally(() => {
                     this.loading = false
                     this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
+                    this.dispatchEvent(new CustomEvent('wizard:finish', { bubbles: true }))
                 })
         }
     }
@@ -181,9 +182,8 @@ export class RequestCoach extends LitElement {
             ` : '' }
             ${ this.variant !== Steps.connectingToCoach
                 ? html`
-                    <div class="cluster | mx-auto">
-                        <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
-                        <button type="submit" class="btn tight light" ?disabled=${this.loading}>${this.t.next}</button>
+                    <div class="mx-auto">
+                        <button type="submit" class="btn tight light" ?disabled=${this.loading}>${this.t.next} <span class="loading-spinner ${this.loading ? 'active' : ''}"></span></button>
                     </div>
                 `
                 : ''}

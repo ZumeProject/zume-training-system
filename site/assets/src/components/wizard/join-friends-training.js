@@ -75,6 +75,7 @@ export class JoinFriendsTraining extends LitElement {
             .finally(() => {
                 this.loading = false
                 this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
+                this.dispatchEvent(new CustomEvent('wizard:finish', { bubbles: true }))
             })
     }
 
