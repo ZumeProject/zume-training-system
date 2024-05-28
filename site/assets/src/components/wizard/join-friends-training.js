@@ -79,13 +79,6 @@ export class JoinFriendsTraining extends LitElement {
             })
     }
 
-    _sendDoneStepEvent() {
-        setTimeout(() => {
-            const doneStepEvent = new CustomEvent( 'done-step', { bubbles: true } )
-            this.dispatchEvent(doneStepEvent)
-        }, 2000);
-    }
-
     setErrorMessage( message ) {
         this.errorMessage = message
     }

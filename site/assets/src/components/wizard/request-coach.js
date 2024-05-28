@@ -211,12 +211,6 @@ export class RequestCoach extends LitElement {
         this.dispatchEvent(doneStepEvent)
     }
 
-    _handleFinish() {
-        setTimeout(() => {
-            this._sendDoneStepEvent()
-        }, 3000);
-    }
-
     _handleChange(event) {
         if ( event.target.type === 'checkbox' ) {
             this.state[event.target.value] = event.target.checked
