@@ -56,6 +56,7 @@ export class RequestCoach extends LitElement {
             'messenger',
         ]
         this.stateManager = new WizardStateManager(this.module)
+        this.stateManager.clear()
     }
 
     updated() {
@@ -110,10 +111,6 @@ export class RequestCoach extends LitElement {
                 this.state.value = jsObject.profile.preferred_language || 'en'
                 this.stateManager.add( this.variant, this.state )
             }
-            if ( this.variant === Steps.contactPreferences && Object.keys(this.state).length === 0 ) {
-                this.state = Object.fromEntries(jsObject.profile.contact_preference.map((pref) => ([ pref, 'true' ])))
-            }
-
         }
     }
 
@@ -200,10 +197,11 @@ export class RequestCoach extends LitElement {
             event.preventDefault()
         }
 
-        if ( Object.keys(this.state).length === 0 ) {
+        if ( Object.keys(this.state).length === 0 || Object.values(this.state).every((item) => !item)) {
             this.setErrorMessage(this.t.missing_response)
-
             return
+        } else {
+            this.setErrorMessage('')
         }
 
         this._sendDoneStepEvent()
