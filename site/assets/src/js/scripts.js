@@ -47,7 +47,7 @@ class ZumeRequest {
                     throw new Error(body.code)
                 }
 
-                return response.json()
+                return body
             })
     }
 
