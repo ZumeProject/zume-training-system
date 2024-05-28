@@ -55,6 +55,7 @@ export class RequestCoach extends LitElement {
             'telegram',
             'messenger',
         ]
+        this.stateManager = new WizardStateManager(this.module)
     }
 
     updated() {
@@ -100,13 +101,8 @@ export class RequestCoach extends LitElement {
         }
     }
 
-    setErrorMessage( message ) {
-        this.errorMessage = message
-    }
-
-    render() {
-        if ( !this.stateManager ) {
-            this.stateManager = new WizardStateManager(this.module)
+    willUpdate(properties) {
+        if (properties.has('variant')) {
 
             this.state = this.stateManager.get(this.variant) || {}
 
@@ -117,8 +113,15 @@ export class RequestCoach extends LitElement {
             if ( this.variant === Steps.contactPreferences && Object.keys(this.state).length === 0 ) {
                 this.state = Object.fromEntries(jsObject.profile.contact_preference.map((pref) => ([ pref, 'true' ])))
             }
-        }
 
+        }
+    }
+
+    setErrorMessage( message ) {
+        this.errorMessage = message
+    }
+
+    render() {
         return html`
         <form class="inputs stack-2" @submit=${this._handleDone}>
             ${ this.variant === Steps.contactPreferences ? html`
