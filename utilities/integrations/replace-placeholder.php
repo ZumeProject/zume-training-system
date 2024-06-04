@@ -166,13 +166,13 @@ class Zume_Replace_Placeholder {
             '[magiclink_preferences]',
         ];
         $replacement_string = [
-            '<a class="button small" href="'.$base_url.'">Zúme Annual Report</a>',
-            '<a class="button large" href="'.$base_url.'">Zúme Annual Report</a>',
-            '<a class="" href="'.$base_url.'">Zúme Annual Report</a>',
+            '<a class="button small" href="'.$base_url.'">'. __( 'Zúme Annual Report', 'zume' ) .'</a>',
+            '<a class="button large" href="'.$base_url.'">'. __( 'Zúme Annual Report', 'zume' ) .'</a>',
+            '<a class="" href="'.$base_url.'">'. __( 'Zúme Annual Report', 'zume' ) .'</a>',
 
-            '<a class="button small" href="'.$base_url.'">Update Communication Preferences</a>',
-            '<a class="button large" href="'.$base_url.'">Update Communication Preferences</a>',
-            '<a class="" href="'.$base_url.'">Update Communication Preferences</a>',
+            '<a class="button small" href="'.$base_url.'">'. __( 'Update Communication Preferences', 'zume' ) . '</a>',
+            '<a class="button large" href="'.$base_url.'">'. __( 'Update Communication Preferences', 'zume' ) . '</a>',
+            '<a class="" href="'.$base_url.'">'. __( 'Update Communication Preferences', 'zume' ) . '</a>',
         ];
 
         return str_replace( $place_holders, $replacement_string, $content );
