@@ -974,7 +974,7 @@ ${this.training.zoom_link_note}
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-churches",Po);class Ro extends he{static get properties(){return{showTeaser:{type:Boolean}}}getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:w.getACoach}}))}render(){return c`
+        `}createRenderRoot(){return this}}customElements.define("dash-churches",Po);class Ro extends he{static get properties(){return{showTeaser:{type:Boolean},coaches:{type:Array,attribute:!1}}}constructor(){super(),this.coaches=Object.values(jsObject.profile.coaches)||[]}getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:w.getACoach}}))}render(){return console.log(this.coaches),c`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -998,14 +998,34 @@ ${this.training.zoom_link_note}
                               </button>
                             </div>
                           </div>
-                      `:c`
+                      `:""}
+                  ${!this.showTeaser&&this.coaches.length===0?c`
                           <p>
                             ${jsObject.translations.connecting_with_coach}
                           </p>
                           <p>
                             ${jsObject.translations.wait_for_coach}
                           </p>
-                      `}
+                      `:""}
+                  ${!this.showTeaser&&this.coaches.length>0?this.coaches.map(e=>c`
+                              <div class="card">
+                                <h3>${e.name}</h3>
+                                <ul class="stack">
+                                  <li>Email: <a href="mailto:${e.email}">${e.email}</a></li>
+                                  <li>Phone: ${e.phone}</li>
+                                  ${e.communication_apps.map(t=>{if(console.log(t),t==="signal")return c`
+                                        <li><a class="btn light uppercase" href="sgnl://signal.me/#p/${e.phone}">${jsObject.translations.signal}</a></li>
+                                        <li><a class="btn light uppercase" href="https://signal.me/#p/+17202128535" target="_blank">Signal Chris</a></li>
+                                      `;if(t==="telegram")return c`
+                                        <li><a class="btn light uppercase" href="telegram:${e.phone}">${jsObject.translations.telegram}</a></li>
+                                      `;if(t==="whatsapp")return c`
+                                        <li><a class="btn light uppercase" href="whatsapp:${e.phone}">${jsObject.translations.whatsapp}</a></li>
+                                      `;if(t==="messenger")return c`
+                                        <li><a class="btn light uppercase" href="messenger:${e.phone}">${jsObject.translations.messenger}</a></li>
+                                      `})}
+                                </ul>
+                              </div>
+                          `):""}
                 </div>
 
                 <div class="dashboard__secondary">

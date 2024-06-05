@@ -6,7 +6,13 @@ export class DashCoach extends DashPage {
     static get properties() {
       return {
         showTeaser: { type: Boolean },
+        coaches: { type: Array, attribute: false },
       };
+    }
+
+    constructor() {
+      super()
+      this.coaches = Object.values(jsObject.profile.coaches) || []
     }
 
     getACoach() {
@@ -14,6 +20,7 @@ export class DashCoach extends DashPage {
     }
 
     render() {
+      console.log(this.coaches)
         return html`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
@@ -39,14 +46,54 @@ export class DashCoach extends DashPage {
                               </button>
                             </div>
                           </div>
-                      ` : html`
+                      ` : ''
+                  }
+                  ${
+                      !this.showTeaser && this.coaches.length === 0 ? html`
                           <p>
                             ${jsObject.translations.connecting_with_coach}
                           </p>
                           <p>
                             ${jsObject.translations.wait_for_coach}
                           </p>
-                      `
+                      ` : ''
+                  }
+                  ${
+                      !this.showTeaser && this.coaches.length > 0 ?
+                          this.coaches.map((coach) => html`
+                              <div class="card">
+                                <h3>${coach.name}</h3>
+                                <ul class="stack">
+                                  <li>Email: <a href="mailto:${coach.email}">${coach.email}</a></li>
+                                  <li>Phone: ${coach.phone}</li>
+                                  ${coach.communication_apps.map((app) => {
+                                    console.log(app)
+                                    if (app === 'signal') {
+                                      return html`
+                                        <li><a class="btn light uppercase" href="sgnl://signal.me/#p/${coach.phone}">${jsObject.translations.signal}</a></li>
+                                        <li><a class="btn light uppercase" href="https://signal.me/#p/+17202128535" target="_blank">Signal Chris</a></li>
+                                      `
+                                    }
+                                    if (app === 'telegram') {
+                                      return html`
+                                        <li><a class="btn light uppercase" href="telegram:${coach.phone}">${jsObject.translations.telegram}</a></li>
+                                      `
+                                    }
+                                    if (app === 'whatsapp') {
+                                      return html`
+                                        <li><a class="btn light uppercase" href="whatsapp:${coach.phone}">${jsObject.translations.whatsapp}</a></li>
+                                      `
+                                    }
+                                    if (app === 'messenger') {
+                                      return html`
+                                        <li><a class="btn light uppercase" href="messenger:${coach.phone}">${jsObject.translations.messenger}</a></li>
+                                      `
+                                    }
+                                  })}
+                                </ul>
+                              </div>
+                          `)
+                      : ''
                   }
                 </div>
 

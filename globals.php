@@ -73,10 +73,24 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
         $coaching_contact_id ), ARRAY_A );
         if ( ! empty( $coach_list ) ) {
             foreach ( $coach_list as $key => $value ) {
+                $communication_apps = $wpdb->get_results( $wpdb->prepare(
+                    "SELECT pm.meta_value
+                    FROM zume_3_postmeta pm
+                    WHERE pm.meta_key = 'communication_apps'
+                        AND pm.post_id = %d", $value['contact_id']
+                ), ARRAY_N );
+                $phone_number = get_user_meta( $value['user_id'], 'dt_user_work_phone', true );
+                $email_address = get_user_meta( $value['user_id'], 'dt_user_work_email', true );
+
                 $coaches[$value['user_id']] = [];
                 $coaches[$value['user_id']]['contact_id'] = $value['contact_id'];
                 $coaches[$value['user_id']]['user_id'] = $value['user_id'];
                 $coaches[$value['user_id']]['name'] = $value['name'];
+                $coaches[$value['user_id']]['phone'] = $phone_number;
+                $coaches[$value['user_id']]['email'] = $email_address;
+                $coaches[$value['user_id']]['communication_apps'] = array_map( function ( $app ) {
+                    return $app[0];
+                }, $communication_apps );
             }
         }
 
