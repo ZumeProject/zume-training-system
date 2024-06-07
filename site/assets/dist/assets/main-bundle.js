@@ -1008,20 +1008,23 @@ ${this.training.zoom_link_note}
                           </p>
                       `:""}
                   ${!this.showTeaser&&this.coaches.length>0?this.coaches.map(e=>c`
-                              <div class="card">
+                              <div class="card stack">
                                 <h3>${e.name}</h3>
                                 <ul class="stack">
-                                  <li>Email: <a href="mailto:${e.email}">${e.email}</a></li>
-                                  <li>Phone: ${e.phone}</li>
-                                  ${e.communication_apps.map(t=>{if(console.log(t),t==="signal")return c`
-                                        <li><a class="btn light uppercase" href="sgnl://signal.me/#p/${e.phone}">${jsObject.translations.signal}</a></li>
-                                        <li><a class="btn light uppercase" href="https://signal.me/#p/+17202128535" target="_blank">Signal Chris</a></li>
+                                  ${e.communication_apps.includes("email")?c`
+                                      <li>Email: <a href="mailto:${e.email}">${e.email}</a></li>
+                                    `:""}
+                                  ${e.communication_apps.includes("phone")?c`
+                                      <li>Phone: ${e.phone}</li>
+                                    `:""}
+                                  ${e.communication_apps.map(t=>{if(t==="signal")return c`
+                                        <li><a class="btn light uppercase" href="sgnl://signal.me/#p/${e.signal}">${jsObject.translations.signal}</a></li>
                                       `;if(t==="telegram")return c`
-                                        <li><a class="btn light uppercase" href="telegram:${e.phone}">${jsObject.translations.telegram}</a></li>
+                                        <li><a class="btn light uppercase" href="https://t.me/${e.telegram}" target="_blank">${jsObject.translations.telegram}</a></li>
                                       `;if(t==="whatsapp")return c`
-                                        <li><a class="btn light uppercase" href="whatsapp:${e.phone}">${jsObject.translations.whatsapp}</a></li>
+                                        <li><a class="btn light uppercase" href="https://wa.me/${e.whatsapp}" target="_blank">${jsObject.translations.whatsapp}</a></li>
                                       `;if(t==="messenger")return c`
-                                        <li><a class="btn light uppercase" href="messenger:${e.phone}">${jsObject.translations.messenger}</a></li>
+                                        <li><a class="btn light uppercase" href="https://m.me/${e.messenger}" target="_blank">${jsObject.translations.messenger}</a></li>
                                       `})}
                                 </ul>
                               </div>
