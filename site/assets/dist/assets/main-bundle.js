@@ -1010,23 +1010,26 @@ ${this.training.zoom_link_note}
                   ${!this.showTeaser&&this.coaches.length>0?this.coaches.map(e=>c`
                               <div class="card stack">
                                 <h3>${e.name}</h3>
-                                <ul class="stack">
-                                  ${e.communication_apps.includes("email")?c`
-                                      <li>Email: <a href="mailto:${e.email}">${e.email}</a></li>
-                                    `:""}
-                                  ${e.communication_apps.includes("phone")?c`
-                                      <li>Phone: ${e.phone}</li>
-                                    `:""}
-                                  ${e.communication_apps.map(t=>{if(t==="signal")return c`
-                                        <li><a class="btn light uppercase" href="sgnl://signal.me/#p/${e.signal}">${jsObject.translations.signal}</a></li>
-                                      `;if(t==="telegram")return c`
-                                        <li><a class="btn light uppercase" href="https://t.me/${e.telegram}" target="_blank">${jsObject.translations.telegram}</a></li>
-                                      `;if(t==="whatsapp")return c`
-                                        <li><a class="btn light uppercase" href="https://wa.me/${e.whatsapp}" target="_blank">${jsObject.translations.whatsapp}</a></li>
-                                      `;if(t==="messenger")return c`
-                                        <li><a class="btn light uppercase" href="https://m.me/${e.messenger}" target="_blank">${jsObject.translations.messenger}</a></li>
-                                      `})}
-                                </ul>
+                                ${e.communication_apps.length?c`
+                                    <ul class="stack">
+                                      ${e.communication_apps.includes("email")?c`
+                                          <li>Email: <a href="mailto:${e.email}">${e.email}</a></li>
+                                        `:""}
+                                      ${e.communication_apps.includes("phone")?c`
+                                          <li>Phone: ${e.phone}</li>
+                                        `:""}
+                                      ${e.communication_apps.map(t=>{if(t==="signal")return c`
+                                            <li><a class="btn light uppercase" href="sgnl://signal.me/#p/${e.signal}">${jsObject.translations.signal}</a></li>
+                                          `;if(t==="telegram")return c`
+                                            <li><a class="btn light uppercase" href="https://t.me/${e.telegram}" target="_blank">${jsObject.translations.telegram}</a></li>
+                                          `;if(t==="whatsapp")return c`
+                                            <li><a class="btn light uppercase" href="https://wa.me/${e.whatsapp}" target="_blank">${jsObject.translations.whatsapp}</a></li>
+                                          `;if(t==="messenger")return c`
+                                            <li><a class="btn light uppercase" href="https://m.me/${e.messenger}" target="_blank">${jsObject.translations.messenger}</a></li>
+                                          `})}
+                                    </ul>
+                                  `:""}
+
                               </div>
                           `):""}
                 </div>

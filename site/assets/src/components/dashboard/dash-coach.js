@@ -63,40 +63,45 @@ export class DashCoach extends DashPage {
                           this.coaches.map((coach) => html`
                               <div class="card stack">
                                 <h3>${coach.name}</h3>
-                                <ul class="stack">
-                                  ${
-                                    coach.communication_apps.includes('email') ? html`
-                                      <li>Email: <a href="mailto:${coach.email}">${coach.email}</a></li>
-                                    ` : ''
-                                  }
-                                  ${
-                                    coach.communication_apps.includes('phone') ? html`
-                                      <li>Phone: ${coach.phone}</li>
-                                    ` : ''
-                                  }
-                                  ${coach.communication_apps.map((app) => {
-                                    if (app === 'signal') {
-                                      return html`
-                                        <li><a class="btn light uppercase" href="sgnl://signal.me/#p/${coach.signal}">${jsObject.translations.signal}</a></li>
-                                      `
-                                    }
-                                    if (app === 'telegram') {
-                                      return html`
-                                        <li><a class="btn light uppercase" href="https://t.me/${coach.telegram}" target="_blank">${jsObject.translations.telegram}</a></li>
-                                      `
-                                    }
-                                    if (app === 'whatsapp') {
-                                      return html`
-                                        <li><a class="btn light uppercase" href="https://wa.me/${coach.whatsapp}" target="_blank">${jsObject.translations.whatsapp}</a></li>
-                                      `
-                                    }
-                                    if (app === 'messenger') {
-                                      return html`
-                                        <li><a class="btn light uppercase" href="https://m.me/${coach.messenger}" target="_blank">${jsObject.translations.messenger}</a></li>
-                                      `
-                                    }
-                                  })}
-                                </ul>
+                                ${
+                                  coach.communication_apps.length ? html`
+                                    <ul class="stack">
+                                      ${
+                                        coach.communication_apps.includes('email') ? html`
+                                          <li>Email: <a href="mailto:${coach.email}">${coach.email}</a></li>
+                                        ` : ''
+                                      }
+                                      ${
+                                        coach.communication_apps.includes('phone') ? html`
+                                          <li>Phone: ${coach.phone}</li>
+                                        ` : ''
+                                      }
+                                      ${coach.communication_apps.map((app) => {
+                                        if (app === 'signal') {
+                                          return html`
+                                            <li><a class="btn light uppercase" href="sgnl://signal.me/#p/${coach.signal}">${jsObject.translations.signal}</a></li>
+                                          `
+                                        }
+                                        if (app === 'telegram') {
+                                          return html`
+                                            <li><a class="btn light uppercase" href="https://t.me/${coach.telegram}" target="_blank">${jsObject.translations.telegram}</a></li>
+                                          `
+                                        }
+                                        if (app === 'whatsapp') {
+                                          return html`
+                                            <li><a class="btn light uppercase" href="https://wa.me/${coach.whatsapp}" target="_blank">${jsObject.translations.whatsapp}</a></li>
+                                          `
+                                        }
+                                        if (app === 'messenger') {
+                                          return html`
+                                            <li><a class="btn light uppercase" href="https://m.me/${coach.messenger}" target="_blank">${jsObject.translations.messenger}</a></li>
+                                          `
+                                        }
+                                      })}
+                                    </ul>
+                                  ` : ''
+                                }
+
                               </div>
                           `)
                       : ''
