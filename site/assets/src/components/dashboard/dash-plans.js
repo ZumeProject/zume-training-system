@@ -9,10 +9,12 @@ export class DashPlans extends DashPage {
         return {
             showTeaser: { type: Boolean },
             loading: { type: Boolean, attribute: false },
+            saving: { type: Boolean, attribute: false },
             commitments: { type: Array, attribute: false },
             filterStatus: { type: String, attribute: false },
             editQuestion: { type: String, attribute: false },
             editAnswer: { type: String, attribute: false },
+            editId: { type: Number, attribute: false },
         };
     }
 
@@ -20,6 +22,7 @@ export class DashPlans extends DashPage {
         super()
         this.showTeaser = false
         this.loading = true
+        this.saving = false
         this.route = DashBoard.getRoute('my-plans')
         this.filterName = 'my-plans-filter'
         this.filterStatus = ZumeStorage.load(this.filterName)
@@ -55,15 +58,19 @@ export class DashPlans extends DashPage {
     openEditCommitmentsModal(id) {
         this.closeMenu(id)
         const commitment = this.getCommitment(id)
-        this.editQuestion = commitment.question
-        this.editAnswer = commitment.answer
+
+        document.querySelector('#edit-question').value = commitment.question
+        document.querySelector('#edit-answer').value = commitment.answer
+        this.editId = id
 
         const modal = document.querySelector('#edit-commitments-form')
         jQuery(modal).foundation('open')
+
+        document.querySelector('#edit-question').focus()
     }
     closeEditCommitmentsModal() {
-        this.editQuestion = ''
-        this.editAnswer = ''
+        document.querySelector('#edit-question').value = ''
+        document.querySelector('#edit-answer').value = ''
         const modal = document.querySelector('#edit-commitments-form')
         jQuery(modal).foundation('close')
     }
@@ -90,7 +97,6 @@ export class DashPlans extends DashPage {
     }
 
     completeCommitment(id) {
-
         let data = {
             id: id,
             user_id: jsObject.profile.user_id
@@ -111,19 +117,26 @@ export class DashPlans extends DashPage {
         })
     }
 
-    editCommitment(id) {
+    editCommitment() {
+        const question = document.querySelector('#edit-question').value
+        const answer = document.querySelector('#edit-answer').value
         let data = {
-            id,
+            id: this.editId,
             user_id: jsObject.profile.user_id,
-            question: 'blah',
-            answer: 'foo',
+            question,
+            answer,
         }
+        this.saving = true
         zumeRequest.update('commitment', data)
             .then((response) => {
-                console.log(response)
+                this.closeEditCommitmentsModal()
+                this.fetchCommitments()
             })
             .catch((error) => {
                 console.log(error)
+            })
+            .finally(() => {
+                this.saving = false
             })
     }
 
@@ -276,7 +289,7 @@ export class DashPlans extends DashPage {
                             type="text"
                             rows="3"
                             placeholder=${jsObject.three_month_plan_translations.question}
-                        >${this.editQuestion}</textarea>
+                        ></textarea>
                     </div>
                     <div class="form-group">
                         <label for="edit-answer">${jsObject.three_month_plan_translations.answer}</label>
@@ -284,13 +297,15 @@ export class DashPlans extends DashPage {
                             class="input"
                             id="edit-answer"
                             type="text"
-                            value=${this.editAnswer}
                             placeholder=${jsObject.three_month_plan_translations.answer}
-                        >${this.editAnswer}</textarea>
+                        ></textarea>
                     </div>
                     <div class="cluster justify-flex-end">
                         <button class="btn outline light tight" type="button" @click=${this.closeEditCommitmentsModal}>${jsObject.three_month_plan_translations.cancel}</button>
-                        <button class="btn light tight" type="button">${jsObject.three_month_plan_translations.save}</button>
+                        <button class="btn light tight" type="button" @click=${this.editCommitment} ?disabled=${this.saving}>
+                            ${jsObject.three_month_plan_translations.save}
+                            <span class="loading-spinner ${this.saving ? 'active' : ''}"></span>
+                        </button>
                     </div>
                 </div>
             </div>
