@@ -92,7 +92,7 @@ class Zume_Activites_3monthplan extends Zume_Activites
             'save' => __( 'Save', 'zume' ),
             'cancel' => __( 'Cancel', 'zume' ),
             'question' => __( 'Question', 'zume' ),
-            'answer' => __( 'answer', 'zume' ),
+            'answer' => __( 'Answer', 'zume' ),
         ];
     }
 }
