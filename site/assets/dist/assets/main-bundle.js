@@ -1269,7 +1269,7 @@ ${this.training.zoom_link_note}
                 >
                     <ul>
                         <li><button class="menu-btn" @click=${()=>this.openEditCommitmentsModal(n)}><span class="icon z-icon-pencil"></span>${jsObject.translations.edit}</button></li>
-                        <li><button class="menu-btn" @click=${()=>this.deleteCommitment(n)}><span class="icon z-icon-trash"></span>${jsObject.translations.delete}</button></li>
+                        <li><button class="menu-btn red" @click=${()=>this.deleteCommitment(n)}><span class="icon z-icon-trash"></span>${jsObject.translations.delete}</button></li>
                     </ul>
                 </div>
             </li>
