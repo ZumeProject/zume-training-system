@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { repeat } from 'lit/directives/repeat.js'
 import { DashBoard } from './dash-board';
 import { DashPage } from './dash-page';
+import { zumeRequest } from '../../js/scripts';
 
 export class DashPlans extends DashPage {
     static get properties() {
@@ -87,7 +88,19 @@ export class DashPlans extends DashPage {
     }
 
     editCommitment(id) {
-        console.log(id)
+        let data = {
+            id,
+            user_id: jsObject.profile.user_id,
+            question: 'blah',
+            answer: 'foo',
+        }
+        zumeRequest.update('commitment', data)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     filterCommitments(status) {
@@ -111,7 +124,7 @@ export class DashPlans extends DashPage {
         const { question, answer, id, status } = commitment
         return html`
             <li class="list__item | switcher | switcher-width-30">
-                <span>${question} <b>${answer}</b></span>
+                <span>${question}: <b>${answer}</b></span>
                 <div class="list__secondary | grow-0">
                     <div class="d-flex w-6rem justify-content-center">
                         ${status === 'closed'
@@ -141,7 +154,7 @@ export class DashPlans extends DashPage {
                     data-close-on-click-inside="true"
                 >
                     <ul>
-                        <li class="hidden"><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon z-icon-pencil"></span>${jsObject.translations.edit}</button></li>
+                        <li><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon z-icon-pencil"></span>${jsObject.translations.edit}</button></li>
                         <li><button class="menu-btn" @click=${() => this.deleteCommitment(id)}><span class="icon z-icon-trash"></span>${jsObject.translations.delete}</button></li>
                     </ul>
                 </div>
@@ -232,7 +245,7 @@ export class DashPlans extends DashPage {
                 </button>
                 <activity-3-month-plan
                     .questions=${jsObject.three_month_plan_questions}
-                    .translations=${{ save: jsObject.translations.save, cancel: jsObject.translations.cancel }}
+                    .translations=${jsObject.three_month_plan_translations}
                     user_id=${jsObject.profile.user_id}
                     contact_id=${jsObject.profile.contact_id}
                     @3-month-plan-saved=${this.handleAddedCommitments}
