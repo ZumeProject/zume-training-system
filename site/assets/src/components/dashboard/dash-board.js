@@ -574,7 +574,6 @@ export class DashBoard extends navigator(router(LitElement)) {
                                                 const isHandledLink = route.type === 'handled-link'
 
                                                 if (route.name === RouteNames.myTraining && this.numberOfGroups() > 1) {
-                                                    console.log(this.trainingGroupsOpen)
                                                     return html`
                                                         <li>
                                                             <nav-link
