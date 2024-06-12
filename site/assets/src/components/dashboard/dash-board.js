@@ -386,12 +386,14 @@ export class DashBoard extends navigator(router(LitElement)) {
             .then( ( data ) => {
                 const ctas = Object.values(data)
                 let filteredCtas = ctas
+                let filteredOutCtas = []
 
                 /* If we triggered getting ctas because we unlocked something manually, let's filter out the celebrations due to that */
                 if (this.unlockedSection.length > 0) {
-                    const ctaKeys = this.unlockedSection.map((data) => data.type + '_' + data.subtype)
+                    const filteredCtaKeys = this.unlockedSection.map((data) => data.type + '_' + data.subtype)
 
-                    filteredCtas = ctas.filter((cta) => !cta.required_keys.some((key) => ctaKeys.includes(key)))
+                    filteredCtas = ctas.filter((cta) => !cta.required_keys.some((key) => filteredCtaKeys.includes(key)))
+                    filteredOutCtas = ctas.filter((cta) => cta.required_keys.some((key) => filteredCtaKeys.includes(key)))
                 }
 
                 this.allCtas = filteredCtas
@@ -412,9 +414,25 @@ export class DashBoard extends navigator(router(LitElement)) {
 
                 /* Save it globally for lower down web components to access */
                 jsObject.allCtas = this.allCtas
-                this.dispatchEvent( new CustomEvent( 'ctas:changed', { bubbles: true } ) )
 
-                /* TODO: If any celebrations were filtered out, send logs that they were seen */
+                if (filteredOutCtas.length > 0) {
+                    const promises = filteredOutCtas.map((cta) => {
+                        const key = cta.disable_keys.length > 0 ? cta.disable_keys[0] : ''
+
+                        if (!key) {
+                            return Promise.resolve()
+                        }
+                        const type = key.substr(key.indexOf('_') + 1)
+                        const subtype = key.substring(0, key.indexOf('_'))
+                        return zumeRequest.post('log', { type, subtype })
+                    })
+
+                    console.log(promises)
+                    Promise.all(promises)
+                        .finally(() => {
+                            this.dispatchEvent( new CustomEvent( 'ctas:changed', { bubbles: true } ) )
+                        })
+                }
             })
     }
     showCelebrationModal() {
@@ -439,9 +457,13 @@ export class DashBoard extends navigator(router(LitElement)) {
 
             celebrations.forEach(({type, subtype}) => {
                 makeRequest('POST', 'log', { type, subtype }, 'zume_system/v1')
+                    .done(() => {
+                        this.dispatchEvent(new CustomEvent('ctas:changed', { bubbles: true }))
+                    })
             })
             const celebrationKeys = celebrations.map(({key}) => key)
-            jsObject.allCtas = jsObject.allCtas.filter(({key}) => !celebrationKeys.includes(key))
+            this.allCtas = jsObject.allCtas.filter(({key}) => !celebrationKeys.includes(key))
+            jsObject.allCtas = this.allCtas
         }
     }
     openProfile() {
