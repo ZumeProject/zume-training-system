@@ -124,47 +124,47 @@ class Zume_Training_Checkin extends Zume_Magic_Page
                 }
 
                 const sessions = {
-                    tenSessions: {
-                        5678: '10 session 1',
-                        2468: '10 session 2',
-                        6543: '10 session 3',
-                        8764: '10 session 4',
-                        6542: '10 session 5',
-                        1235: '10 session 6',
-                        4322: '10 session 7',
-                        9870: '10 session 8',
-                        1355: '10 session 9',
-                        5430: '10 session 10',
-                    },
-                    twentySessions: {
-                        3354: '20 session 1',
-                        4568: '20 session 2',
-                        8767: '20 session 3',
-                        6787: '20 session 4',
-                        3450: '20 session 5',
-                        2344: '20 session 6',
-                        1116: '20 session 7',
-                        5431: '20 session 8',
-                        8768: '20 session 9',
-                        2347: '20 session 10',
-                        9434: '20 session 11',
-                        2348: '20 session 12',
-                        6785: '20 session 13',
-                        9872: '20 session 14',
-                        4327: '20 session 15',
-                        2871: '20 session 16',
-                        4328: '20 session 17',
-                        6548: '20 session 18',
-                        7657: '20 session 19',
-                        2767: '20 session 20',
-                    },
-                    fiveSessions: {
-                        1397: 'Intensive 1',
-                        2341: 'Intensive 2',
-                        3455: 'Intensive 3',
-                        4329: 'Intensive 4',
-                        5451: 'Intensive 5',
-                    }
+                    tenSessions: [
+                        5678,
+                        2468,
+                        6543,
+                        8764,
+                        6542,
+                        1235,
+                        4322,
+                        9870,
+                        1355,
+                        5430,
+                    ],
+                    twentySessions: [
+                        3354,
+                        4568,
+                        8767,
+                        6787,
+                        3450,
+                        2344,
+                        1116,
+                        5431,
+                        8768,
+                        2347,
+                        9434,
+                        2348,
+                        6785,
+                        9872,
+                        4327,
+                        2871,
+                        4328,
+                        6548,
+                        7657,
+                        2767,
+                    ],
+                    fiveSessions: [
+                        1397,
+                        2341,
+                        3455,
+                        4329,
+                        5451,
+                    ]
                 }
 
                 createList('tenSessions')
@@ -176,7 +176,7 @@ class Zume_Training_Checkin extends Zume_Magic_Page
                 })
 
                 function createList(id) {
-                    const sessionsCodes = Object.keys(sessions[id])
+                    const sessionsCodes = sessions[id]
 
                     const sessionList = document.querySelector('#session-list')
                     let list = ''
