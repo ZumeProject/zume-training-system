@@ -56,8 +56,9 @@ export class DashTopLevel extends DashPage {
                             if (trainingGroupIds.length === 0) {
                                 href = route.pattern.replace(':code', 'teaser')
                             } else if (trainingGroupIds.length > 0) {
-                                const trainingGroup = jsObject.training_groups[trainingGroupIds[0]]
-                                href = route.pattern.replace(':code', trainingGroup.join_key)
+                                const route = DashBoard.getRoute(RouteNames.myTrainings)
+
+                                href = route.pattern
                             }
                         }
 
