@@ -167,6 +167,12 @@ class Zume_Training_Checkin extends Zume_Magic_Page
                     ]
                 }
 
+                const chooseSessionButton = document.querySelector('#choose-session')
+                const chooseSessionContainer = document.querySelector('#session-container')
+                chooseSessionButton.addEventListener('click', () => {
+                    chooseSessionContainer.classList.toggle('hidden')
+                });
+
                 createList('tenSessions')
 
                 jQuery('input[name="schedule"]').on('change', (event) => {
@@ -239,8 +245,8 @@ class Zume_Training_Checkin extends Zume_Magic_Page
 
                         <span class="line-text f--1"><span><?php echo esc_html__( 'or', 'zume' ) ?></span></span>
 
-                        <button class="btn"><?php echo esc_html__( 'choose session to checkin', 'zume' ) ?></button>
-                        <div class="stack">
+                        <button class="btn" id="choose-session"><?php echo esc_html__( 'Choose session to checkin', 'zume' ) ?></button>
+                        <div class="stack hidden" id="session-container">
                             <h2 class="h3 brand-light"><?php echo esc_html__( 'Training Schedules', 'zume' ) ?></h2>
                             <div class="cluster">
                                 <label class="form-control label-input">
