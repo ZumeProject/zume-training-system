@@ -4,6 +4,7 @@ import { dashRoutes } from './dash-routes';
 import { repeat } from 'lit/directives/repeat.js'
 import { Wizards } from '../wizard/wizard-constants';
 import { RouteNames } from './routes';
+import { zumeRequest } from '../../js/scripts';
 
 /**
  * This highest level of the dashboard should mostly be focussed on the routing
@@ -84,6 +85,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.ctas = []
         this.userId = jsObject.profile.user_id
         this.showingCelebrationModal = false
+        this.unlockedSection = []
 
         this.languageSelectorElements = document.querySelectorAll('.language-selector')
 
@@ -352,11 +354,11 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.navigate(this.makeHref(RouteNames.myPlans))
     }
     unlock3MonthPlan() {
-        makeRequest('POST', 'log', { type: 'training', subtype: '26_heard' }, 'zume_system/v1/' ).done( ( data ) => {
-            const stateEvent = new CustomEvent('user-state:change', { bubbles: true })
-            this.dispatchEvent(stateEvent)
-            const hostChangeEvent = new CustomEvent('user-host:change', { bubbles: true })
-            this.dispatchEvent(hostChangeEvent)
+        const data = { type: 'training', subtype: '26_heard' };
+        this.unlockedSection.push(data)
+        makeRequest('POST', 'log', data, 'zume_system/v1/' ).done( ( data ) => {
+            this.dispatchEvent(new CustomEvent('user-state:change', { bubbles: true }))
+            this.dispatchEvent(new CustomEvent('user-host:change', { bubbles: true }))
         })
     }
 
@@ -380,29 +382,40 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
     getCtas() {
         /* Get ctas from api */
-        makeRequest('POST', 'user_ctas', { user_id: this.userId, language: jsObject.language }, 'zume_system/v1' ).done( ( data ) => {
-            const ctas = Object.values(data)
+        zumeRequest.post('user_ctas', { user_id: this.userId, language: jsObject.language } )
+            .then( ( data ) => {
+                const ctas = Object.values(data)
+                let filteredCtas = ctas
 
-            this.allCtas = ctas
+                /* If we triggered getting ctas because we unlocked something manually, let's filter out the celebrations due to that */
+                if (this.unlockedSection.length > 0) {
+                    const ctaKeys = this.unlockedSection.map((data) => data.type + '_' + data.subtype)
 
-            const shuffleArray = (array) => {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
+                    filteredCtas = ctas.filter((cta) => !cta.required_keys.some((key) => ctaKeys.includes(key)))
                 }
-                return array
-            }
 
-            const celebrations = this.allCtas.filter(({content_template}) => content_template === 'celebration')
-            const cards = this.allCtas.filter(({content_template}) => content_template === 'card')
+                this.allCtas = filteredCtas
 
-            const organizedCtas = [ ...celebrations, ...shuffleArray(cards) ]
-            this.allCtas = organizedCtas
+                const shuffleArray = (array) => {
+                    for (let i = array.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [array[i], array[j]] = [array[j], array[i]];
+                    }
+                    return array
+                }
 
-            /* Save it globally for lower down web components to access */
-            jsObject.allCtas = this.allCtas
-            this.dispatchEvent( new CustomEvent( 'ctas:changed', { bubbles: true } ) )
-        })
+                const celebrations = this.allCtas.filter(({content_template}) => content_template === 'celebration')
+                const cards = this.allCtas.filter(({content_template}) => content_template === 'card')
+
+                const organizedCtas = [ ...celebrations, ...shuffleArray(cards) ]
+                this.allCtas = organizedCtas
+
+                /* Save it globally for lower down web components to access */
+                jsObject.allCtas = this.allCtas
+                this.dispatchEvent( new CustomEvent( 'ctas:changed', { bubbles: true } ) )
+
+                /* TODO: If any celebrations were filtered out, send logs that they were seen */
+            })
     }
     showCelebrationModal() {
         if (this.showingCelebrationModal) {
