@@ -204,6 +204,9 @@ export class DashTrainings extends DashPage {
         }
         return false
     }
+    hasMultipleTrainingGroups() {
+        return jsObject.training_groups && Object.keys(jsObject.training_groups).length > 1
+    }
 
     renderListItem(session) {
         const { id, name, datetime, completed } = session
@@ -261,7 +264,13 @@ export class DashTrainings extends DashPage {
                     <div class="dashboard__title">
                         <dash-sidebar-toggle></dash-sidebar-toggle>
                         <span class="icon ${this.route.icon}"></span>
-                        <h1 class="h3">${this.route.translation}</h1>
+                        ${
+                            this.hasMultipleTrainingGroups() ? html`
+                                <h1 class="h3">${this.training ? this.training.title : ''}</h1>
+                            ` : html`
+                                <h1 class="h3">${this.route.translation}</h1>
+                            `
+                        }
                     </div>
                     <button
                         class="icon-btn f-2 brand-light"
