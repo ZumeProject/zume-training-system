@@ -5,6 +5,7 @@ import { DashPage } from './dash-page';
 import { Wizards } from '../wizard/wizard-constants';
 import { RouteNames } from './routes';
 import { zumeRequest } from '../../js/scripts';
+import { DateTime } from 'luxon';
 
 export class DashTrainings extends DashPage {
     static get properties() {
@@ -15,6 +16,7 @@ export class DashTrainings extends DashPage {
             error: { type: String, attribute: false },
             training: { type: Object, attribute: false },
             sessions: { type: Array, attribute: false },
+            sessionToEdit: { type: Object, attribute: false },
             filterStatus: { type: String, attribute: false },
             isEditingTitle: { type: Boolean, attribute: false },
         };
@@ -27,6 +29,7 @@ export class DashTrainings extends DashPage {
         this.isEditingTitle = false
         this.error = ''
         this.route = DashBoard.getRoute(RouteNames.myTraining)
+        this.sessionToEdit = {}
 
         this.renderListItem = this.renderListItem.bind(this)
     }
@@ -191,7 +194,32 @@ export class DashTrainings extends DashPage {
 
         location.href = url
     }
-    editSession(id) {}
+    editSession(id) {
+        const sessionToEdit = this.sessions.find((session) => session.id === id)
+
+        const date = DateTime.fromMillis(sessionToEdit.datetime)
+        sessionToEdit.date = date.toISODate()
+        sessionToEdit.time = date.toFormat('HH:mm')
+
+        this.sessionToEdit = sessionToEdit
+
+        console.log(this.sessionToEdit)
+
+        this.openEditSessionModal()
+    }
+    saveSession() {}
+    cancelEditingSession() {
+        this.sessionToEdit = {}
+        this.closeEditSessionModal()
+    }
+    openEditSessionModal() {
+        const modal = document.querySelector('#edit-session-modal')
+        jQuery(modal).foundation('open')
+    }
+    closeEditSessionModal() {
+        const modal = document.querySelector('#edit-session-modal')
+        jQuery(modal).foundation('close')
+    }
 
     editTitle() {
         this.isEditingTitle = true
@@ -430,6 +458,35 @@ export class DashTrainings extends DashPage {
                             ` : ''
                     }
                     <dash-cta></dash-cta>
+                </div>
+            </div>
+            <div class="reveal small" id="edit-session-modal" data-reveal data-v-offset="20">
+                <button class="ms-auto close-btn" data-close aria-label=${jsObject.translations.close} type="button">
+                        <span class="icon z-icon-close"></span>
+                </button>
+                <div class="stack">
+                    <h2 class="text-center">${jsObject.translations.edit}</h2>
+                    <h3 class="text-center brand-light">${this.sessionToEdit?.name}</h3>
+                    <div class="cluster justify-content-center gapy-0">
+                        <input type="date" name="date" class="fit-content m0" value=${this.sessionToEdit?.date} @change=${this._handleChange} onclick="this.showPicker()" >
+                        <input type="time" name="time" class="fit-content m0" value=${this.sessionToEdit?.time} @change=${this._handleChange} min="00:00" max="23:55" step="300" onclick="this.showPicker()" />
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center gap--1">
+                        <button
+                            class="btn tight"
+                            @click=${this.saveSession}
+                            ?disabled=${this.isSavingSession}
+                        >
+                            ${jsObject.translations.save}
+                        </button>
+                        <button
+                            class="btn outline tight"
+                            @click=${this.cancelEditingSession}
+                            ?disabled=${this.isSavingSession}
+                        >
+                            ${jsObject.translations.cancel}
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
