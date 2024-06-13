@@ -293,39 +293,44 @@ export class DashTrainings extends DashPage {
                         <span class="icon ${this.route.icon}"></span>
                         ${
                             this.hasMultipleTrainingGroups() ? html`
-                                <div class="d-flex align-items-center gap--5">
                                     ${
                                         this.isEditingTitle ? html`
-                                            <input
-                                                class="input w-100"
-                                                id="training-title-input"
-                                                type="text"
-                                                value=${this.training.title || ''}
-                                                @keydown=${this.inputSaveTitle}
-                                            />
-                                            <button
-                                                class="btn tight f--1"
-                                                @click=${this.saveTitle}
-                                                ?disabled=${this.isSavingTitle}
-                                            >
-                                                ${jsObject.translations.save}
-                                            </button>
-                                            <button
-                                                class="btn outline tight f--1"
-                                                @click=${this.cancelEditingTitle}
-                                                ?disabled=${this.isSavingTitle}
-                                            >
-                                                ${jsObject.translations.cancel}
-                                            </button>
+                                            <div class="switcher switcher-width-20 gap--5">
+                                                <input
+                                                    class="input grow-1"
+                                                    id="training-title-input"
+                                                    type="text"
+                                                    value=${this.training.title || ''}
+                                                    @keydown=${this.inputSaveTitle}
+                                                />
+                                                <div class="d-flex align-items-center gap--1 grow-0">
+                                                    <button
+                                                        class="btn tight grow-0 f--1"
+                                                        @click=${this.saveTitle}
+                                                        ?disabled=${this.isSavingTitle}
+                                                    >
+                                                        ${jsObject.translations.save}
+                                                    </button>
+                                                    <button
+                                                        class="btn outline grow-0 tight f--1"
+                                                        @click=${this.cancelEditingTitle}
+                                                        ?disabled=${this.isSavingTitle}
+                                                    >
+                                                        ${jsObject.translations.cancel}
+                                                    </button>
+                                                </div>
+                                            </div>
                                         ` : html`
-                                            <h1 class="h3">${this.training?.title ?? ''}</h1>
-                                            <button
-                                                class="icon-btn f-0 brand-light"
-                                                aria-label=${jsObject.translations.edit}
-                                                @click=${this.editTitle}
-                                            >
-                                                <span class="icon z-icon-pencil"></span>
-                                            </button>
+                                            <div class="d-flex align-items-center gap--5">
+                                                <h1 class="h3">${this.training?.title ?? ''}</h1>
+                                                <button
+                                                    class="icon-btn f-0 brand-light"
+                                                    aria-label=${jsObject.translations.edit}
+                                                    @click=${this.editTitle}
+                                                >
+                                                    <span class="icon z-icon-pencil"></span>
+                                                </button>
+                                            </div>
                                         `
                                     }
                                 </div>
