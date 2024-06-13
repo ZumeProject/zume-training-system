@@ -4,6 +4,7 @@ import { DashBoard } from './dash-board';
 import { DashPage } from './dash-page';
 import { Wizards } from '../wizard/wizard-constants';
 import { RouteNames } from './routes';
+import { zumeRequest } from '../../js/scripts';
 
 export class DashTrainings extends DashPage {
     static get properties() {
@@ -15,6 +16,7 @@ export class DashTrainings extends DashPage {
             training: { type: Object, attribute: false },
             sessions: { type: Array, attribute: false },
             filterStatus: { type: String, attribute: false },
+            isEditingTitle: { type: Boolean, attribute: false },
         };
     }
 
@@ -22,6 +24,7 @@ export class DashTrainings extends DashPage {
         super()
         this.showTeaser = false
         this.loading = false
+        this.isEditingTitle = false
         this.error = ''
         this.route = DashBoard.getRoute(RouteNames.myTraining)
 
@@ -190,6 +193,30 @@ export class DashTrainings extends DashPage {
     }
     editSession(id) {}
 
+    editTitle() {
+        this.isEditingTitle = true
+    }
+    cancelEditingTitle() {
+        this.isEditingTitle = false
+    }
+    inputSaveTitle(event) {
+        if (event.code === 'Enter') {
+            this.saveTitle()
+        }
+    }
+    saveTitle() {
+        this.isSavingTitle = true
+        const title = document.querySelector('#training-title-input').value
+        zumeRequest.put(`plan/${this.training.join_key}`, { title })
+            .then((result) => {
+                this.training.title = title
+            })
+            .finally(() => {
+                this.isEditingTitle = false
+                this.isSavingTitle = false
+            })
+    }
+
     markSessionCompleted(id) {
         makeRequest( 'POST', 'plan/complete-session', { key: this.training.join_key, session_id: id }, 'zume_system/v1' )
             .then((result) => {
@@ -266,19 +293,58 @@ export class DashTrainings extends DashPage {
                         <span class="icon ${this.route.icon}"></span>
                         ${
                             this.hasMultipleTrainingGroups() ? html`
-                                <h1 class="h3">${this.training ? this.training.title : ''}</h1>
+                                <div class="d-flex align-items-center gap--5">
+                                    ${
+                                        this.isEditingTitle ? html`
+                                            <input
+                                                class="input w-100"
+                                                id="training-title-input"
+                                                type="text"
+                                                value=${this.training.title || ''}
+                                                @keydown=${this.inputSaveTitle}
+                                            />
+                                            <button
+                                                class="btn tight f--1"
+                                                @click=${this.saveTitle}
+                                                ?disabled=${this.isSavingTitle}
+                                            >
+                                                ${jsObject.translations.save}
+                                            </button>
+                                            <button
+                                                class="btn outline tight f--1"
+                                                @click=${this.cancelEditingTitle}
+                                                ?disabled=${this.isSavingTitle}
+                                            >
+                                                ${jsObject.translations.cancel}
+                                            </button>
+                                        ` : html`
+                                            <h1 class="h3">${this.training?.title ?? ''}</h1>
+                                            <button
+                                                class="icon-btn f-0 brand-light"
+                                                aria-label=${jsObject.translations.edit}
+                                                @click=${this.editTitle}
+                                            >
+                                                <span class="icon z-icon-pencil"></span>
+                                            </button>
+                                        `
+                                    }
+                                </div>
                             ` : html`
                                 <h1 class="h3">${this.route.translation}</h1>
                             `
                         }
                     </div>
-                    <button
-                        class="icon-btn f-2 brand-light"
-                        aria-label=${jsObject.translations.create_training_group}
-                        @click=${this.createTraining}
-                    >
-                        <span class="icon z-icon-plus"></span>
-                    </button>
+                    ${
+                        this.isEditingTitle ? '' : html`
+                            <button
+                                class="icon-btn f-2 brand-light"
+                                aria-label=${jsObject.translations.create_training_group}
+                                @click=${this.createTraining}
+                            >
+                                <span class="icon z-icon-plus"></span>
+                            </button>
+                        `
+                    }
                 </div>
                 <dash-header-right></dash-header-right>
                 <div class="dashboard__main content">
