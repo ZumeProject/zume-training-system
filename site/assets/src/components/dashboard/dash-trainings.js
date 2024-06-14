@@ -4,7 +4,7 @@ import { DashBoard } from './dash-board';
 import { DashPage } from './dash-page';
 import { Wizards } from '../wizard/wizard-constants';
 import { RouteNames } from './routes';
-import { zumeRequest } from '../../js/scripts';
+import { zumeRequest } from '../../js/zumeRequest';
 import { DateTime } from 'luxon';
 
 export class DashTrainings extends DashPage {
