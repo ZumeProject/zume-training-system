@@ -6,6 +6,7 @@ import { Wizards } from '../wizard/wizard-constants';
 import { RouteNames } from './routes';
 import { zumeRequest } from '../../js/zumeRequest';
 import { DateTime } from 'luxon';
+import { zumeAttachObservers } from '../../js/zumeAttachObservers';
 
 export class DashTrainings extends DashPage {
     static get properties() {
@@ -17,6 +18,7 @@ export class DashTrainings extends DashPage {
             training: { type: Object, attribute: false },
             sessions: { type: Array, attribute: false },
             sessionToEdit: { type: Object, attribute: false },
+            openDetailStates: { type: Object, attribute: false },
             filterStatus: { type: String, attribute: false },
             isEditingTitle: { type: Boolean, attribute: false },
             isSavingTitle: { type: Boolean, attribute: false },
@@ -32,6 +34,7 @@ export class DashTrainings extends DashPage {
         this.error = ''
         this.route = DashBoard.getRoute(RouteNames.myTraining)
         this.sessionToEdit = {}
+        this.openDetailStates = {}
 
         this.renderListItem = this.renderListItem.bind(this)
     }
@@ -58,6 +61,7 @@ export class DashTrainings extends DashPage {
 
     updated() {
         jQuery(document).foundation();
+        zumeAttachObservers()
     }
 
     getTraining() {
@@ -191,7 +195,8 @@ export class DashTrainings extends DashPage {
         } } } ))
     }
 
-    startSession(id) {
+    startSession(id, event) {
+        event.stopImmediatePropagation()
         const url = this.getSessionUrl(id)
 
         location.href = url
@@ -297,30 +302,59 @@ export class DashTrainings extends DashPage {
         return jsObject.training_groups && Object.keys(jsObject.training_groups).length > 1
     }
 
+    toggleDetails(id) {
+        const open = this.openDetailStates[id]
+
+        if (open) {
+            this.openDetailStates = {
+                ...this.openDetailStates,
+                [id]: false,
+            }
+        } else {
+            this.openDetailStates = {
+                ...this.openDetailStates,
+                [id]: true,
+            }
+        }
+    }
+    toggleKebabMenu(event) {
+        event.stopImmediatePropagation()
+        const id = event.currentTarget.dataset.toggle
+        jQuery(`#${id}`).foundation('toggle')
+    }
+
     renderListItem(session) {
         const { id, name, datetime, completed } = session
         return html`
-            <li class="list__item | switcher | switcher-width-20 gapy0">
-                <div class="list__primary">
-                    ${
-                        this.currentSession === id ? html`
-                            <button class="icon-btn" @click=${() => this.startSession(id)} aria-label=${jsObject.translations.start_session}>
-                                <span class="icon z-icon-play brand-light"></span>
-                            </button>
-                        ` : html `
-                            <span class="icon z-icon-check-mark success ${completed ? '' : 'invisible'} p--2"></span>
-                        `
-                    }
-                    <span class="f-medium">${name}</span>
-                </div>
-                <div class="list__secondary">
-                    <div class="d-flex justify-content-center">
-                        ${datetime > 0 ? moment(datetime).format("MMM Do YY") : jsObject.translations.not_scheduled}
+            <li class="list__item | switcher | switcher-width-20 gapy0" @click=${() => this.toggleDetails(id)}>
+                <div>
+                    <div class="list__primary">
+                        ${
+                            this.currentSession === id ? html`
+                                <button class="icon-btn" @click=${(event) => this.startSession(id, event)} aria-label=${jsObject.translations.start_session}>
+                                    <span class="icon z-icon-play brand-light"></span>
+                                </button>
+                            ` : html `
+                                <span class="icon z-icon-check-mark success ${completed ? '' : 'invisible'} p--2"></span>
+                            `
+                        }
+                        <span class="f-medium">${name}</span>
                     </div>
-                    <button class="icon-btn" data-toggle="kebab-menu-${id}">
-                        <span class="icon z-icon-kebab brand-light"></span>
-                    </button>
+                    <div class="list__tertiary collapse" ?data-open=${this.openDetailStates[id]}>
+                        <div class="p-2">
+                            Details here
+                        </div>
+                    </div>
                 </div>
+                <div class="list__secondary" data-align-start>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <span>${datetime > 0 ? moment(datetime).format("MMM Do YY") : jsObject.translations.not_scheduled}</span>
+                        <button class="icon-btn" data-toggle="kebab-menu-${id}" @click=${this.toggleKebabMenu}>
+                            <span class="icon z-icon-kebab brand-light"></span>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="dropdown-pane" id="kebab-menu-${id}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl ? 'right' : 'left'} data-close-on-click="true" data-close-on-click-inside="true">
                     <ul>
                         ${

@@ -3,6 +3,7 @@ import { repeat } from 'lit/directives/repeat.js'
 import { DashBoard } from './dash-board';
 import { DashPage } from './dash-page';
 import { zumeRequest } from '../../js/zumeRequest';
+import { zumeAttachObservers } from '../../js/zumeAttachObservers';
 
 export class DashProgress extends DashPage {
     static get properties() {
@@ -40,6 +41,12 @@ export class DashProgress extends DashPage {
         this.renderListItem = this.renderListItem.bind(this)
         this.closeInfoModal = this.closeInfoModal.bind(this)
 
+    }
+
+    firstUpdated() {
+        super.firstUpdated()
+
+        zumeAttachObservers()
     }
 
     updated() {

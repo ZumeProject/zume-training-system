@@ -44,7 +44,3 @@ export const zumeAttachObservers = () => {
 
     }
 }
-
-jQuery(document).ready(() => {
-    zumeAttachObservers()
-})
