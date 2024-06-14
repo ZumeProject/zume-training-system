@@ -336,6 +336,9 @@ export class DashTrainings extends DashPage {
         const id = event.currentTarget.dataset.toggle
         jQuery(`#${id}`).foundation('toggle')
     }
+    stopImmediatePropagation(event) {
+        event.stopImmediatePropagation()
+    }
 
     renderListItem(session) {
         const { id, name, datetime, completed } = session
@@ -364,7 +367,10 @@ export class DashTrainings extends DashPage {
                             ${
                                 trainingItems.map((item) => html`
                                     <li>
-                                        <a href=${[ jsObject.site_url, jsObject.language, item.slug ].join('/')}>
+                                        <a
+                                            @click=${this.stopImmediatePropagation}
+                                            href=${[ jsObject.site_url, jsObject.language, item.slug ].join('/')}
+                                        >
                                             ${item.title}
                                         </a>
                                     </li>
