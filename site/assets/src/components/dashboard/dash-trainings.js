@@ -19,6 +19,7 @@ export class DashTrainings extends DashPage {
             sessionToEdit: { type: Object, attribute: false },
             filterStatus: { type: String, attribute: false },
             isEditingTitle: { type: Boolean, attribute: false },
+            isSavingSession: { type: Boolean, attribute: false },
         };
     }
 
@@ -203,11 +204,40 @@ export class DashTrainings extends DashPage {
 
         this.sessionToEdit = sessionToEdit
 
-        console.log(this.sessionToEdit)
+        document.querySelector('#session-date-picker').value = sessionToEdit.date
+        document.querySelector('#session-time-picker').value = sessionToEdit.time
 
         this.openEditSessionModal()
     }
-    saveSession() {}
+    saveSession() {
+        if (this.isSavingSession) {
+            return
+        }
+        this.isSavingSession = true
+        const date = document.querySelector('#session-date-picker').value
+        const time = document.querySelector('#session-time-picker').value
+        const sessionTime = DateTime.fromFormat(`${date} ${time}`, 'y-LL-dd HH:mm')
+        zumeRequest.post( 'plan/edit-session', {
+            key: this.training.join_key,
+            session_id: this.sessionToEdit.id,
+            session_time: sessionTime.toSeconds(),
+        } )
+            .then((res) => {
+                this.training = {
+                    ...this.training,
+                    [this.sessionToEdit.id]: {
+                        timestamp: sessionTime.toSeconds(),
+                        formatted: sessionTime.toISODate(),
+                    },
+                }
+                this.refreshSessions()
+
+                this.closeEditSessionModal()
+            })
+            .finally(() => {
+                this.isSavingSession = false
+            })
+    }
     cancelEditingSession() {
         this.sessionToEdit = {}
         this.closeEditSessionModal()
@@ -233,6 +263,9 @@ export class DashTrainings extends DashPage {
         }
     }
     saveTitle() {
+        if (this.isSavingTitle) {
+            return
+        }
         this.isSavingTitle = true
         const title = document.querySelector('#training-title-input').value
         zumeRequest.put(`plan/${this.training.join_key}`, { title })
@@ -465,24 +498,44 @@ export class DashTrainings extends DashPage {
                         <span class="icon z-icon-close"></span>
                 </button>
                 <div class="stack">
-                    <h2 class="text-center">${jsObject.translations.edit}</h2>
-                    <h3 class="text-center brand-light">${this.sessionToEdit?.name}</h3>
+                    <div class="d-flex gap-0 flex-wrap">
+                        <h2>${jsObject.translations.edit}:</h2>
+                        <h3 class="h2 brand-light">${this.sessionToEdit?.name}</h3>
+                    </div>
                     <div class="cluster justify-content-center gapy-0">
-                        <input type="date" name="date" class="fit-content m0" value=${this.sessionToEdit?.date} @change=${this._handleChange} onclick="this.showPicker()" >
-                        <input type="time" name="time" class="fit-content m0" value=${this.sessionToEdit?.time} @change=${this._handleChange} min="00:00" max="23:55" step="300" onclick="this.showPicker()" />
+                        <input
+                            id="session-date-picker"
+                            type="date"
+                            name="date"
+                            class="fit-content m0"
+                            onclick="this.showPicker()"
+                        >
+                        <input
+                            id="session-time-picker"
+                            type="time"
+                            name="time"
+                            class="fit-content m0"
+                            min="00:00"
+                            max="23:55"
+                            step="300"
+                            onclick="this.showPicker()"
+                        >
                     </div>
                     <div class="d-flex align-items-center justify-content-center gap--1">
                         <button
                             class="btn tight"
                             @click=${this.saveSession}
                             ?disabled=${this.isSavingSession}
+                            aria-disabled=${this.isSavingSession ? 'true' : 'false'}
                         >
                             ${jsObject.translations.save}
+                            <span class="loading-spinner ${this.isSavingSession ? 'active' : ''}"></span>
                         </button>
                         <button
                             class="btn outline tight"
                             @click=${this.cancelEditingSession}
                             ?disabled=${this.isSavingSession}
+                            aria-disabled=${this.isSavingSession ? 'true' : 'false'}
                         >
                             ${jsObject.translations.cancel}
                         </button>
