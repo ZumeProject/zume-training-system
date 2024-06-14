@@ -19,6 +19,7 @@ export class DashTrainings extends DashPage {
             sessionToEdit: { type: Object, attribute: false },
             filterStatus: { type: String, attribute: false },
             isEditingTitle: { type: Boolean, attribute: false },
+            isSavingTitle: { type: Boolean, attribute: false },
             isSavingSession: { type: Boolean, attribute: false },
         };
     }
@@ -357,18 +358,24 @@ export class DashTrainings extends DashPage {
                                     ${
                                         this.isEditingTitle ? html`
                                             <div class="switcher switcher-width-20 gap--5">
-                                                <input
-                                                    class="input grow-1"
-                                                    id="training-title-input"
-                                                    type="text"
-                                                    value=${this.training.title || ''}
-                                                    @keydown=${this.inputSaveTitle}
-                                                />
+                                                <div class="position-relative">
+                                                    <input
+                                                        class="input grow-1"
+                                                        id="training-title-input"
+                                                        type="text"
+                                                        value=${this.training.title || ''}
+                                                        @keydown=${this.inputSaveTitle}
+                                                    />
+                                                    <div class="absolute ${this.isRtl ? 'left' : 'right'} top bottom d-flex align-items-center mx-0">
+                                                        <span class="loading-spinner ${this.isSavingTitle ? 'active' : ''}"></span>
+                                                    </div>
+                                                </div>
                                                 <div class="d-flex align-items-center gap--1 grow-0">
                                                     <button
                                                         class="btn tight grow-0 f--1"
                                                         @click=${this.saveTitle}
                                                         ?disabled=${this.isSavingTitle}
+                                                        aria-disabled=${this.isSavingTitle ? 'true' : 'false'}
                                                     >
                                                         ${jsObject.translations.save}
                                                     </button>
