@@ -348,8 +348,8 @@ export class DashTrainings extends DashPage {
         const trainingItems = zumeTrainingPieces[numberOfSessions][slideKey]?.pieces ?? []
 
         return html`
-            <li class="list__item | switcher | switcher-width-20 gapy0" @click=${() => this.toggleDetails(id)}>
-                <div>
+            <li class="list__item" data-no-flex @click=${() => this.toggleDetails(id)}>
+                <div class="switcher | switcher-width-20 gapy0">
                     <div class="list__primary">
                         ${
                             this.currentSession === id ? html`
@@ -360,34 +360,34 @@ export class DashTrainings extends DashPage {
                                 <span class="icon z-icon-check-mark success ${completed ? '' : 'invisible'} p--2"></span>
                             `
                         }
-                        <span class="f-medium">${name}</span>
+                                <span class="f-medium">${name}</span>
                     </div>
-                    <div class="list__tertiary collapse" ?data-open=${this.openDetailStates[id]}>
-                        <ul class="bullets py-1">
-                            ${
-                                trainingItems.map((item) => html`
-                                    <li>
-                                        <a
-                                            @click=${this.stopImmediatePropagation}
-                                            href=${[ jsObject.site_url, jsObject.language, item.slug ].join('/')}
-                                        >
-                                            ${item.title}
-                                        </a>
-                                    </li>
-                                `)
-                            }
-                        </ul>
-                    </div>
-                </div>
-                <div class="list__secondary" data-align-start>
-                    <div class="d-flex justify-content-center align-items-center gap--2">
-                        <span>${datetime > 0 ? moment(datetime).format("MMM Do YY") : jsObject.translations.not_scheduled}</span>
-                        <button class="icon-btn" data-toggle="kebab-menu-${id}" @click=${this.toggleKebabMenu}>
-                            <span class="icon z-icon-kebab brand-light"></span>
-                        </button>
-                    </div>
-                </div>
 
+                    <div class="list__secondary" data-align-start>
+                        <div class="d-flex justify-content-center align-items-center gap--2">
+                            <span>${datetime > 0 ? moment(datetime).format("MMM Do YY") : jsObject.translations.not_scheduled}</span>
+                            <button class="icon-btn" data-toggle="kebab-menu-${id}" @click=${this.toggleKebabMenu}>
+                                <span class="icon z-icon-kebab brand-light"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="list__tertiary collapse" ?data-open=${this.openDetailStates[id]}>
+                    <ul class="pt-0 ps-2" role="list" data-brand-light>
+                        ${
+                            trainingItems.map((item) => html`
+                                <li>
+                                    <a
+                                        @click=${this.stopImmediatePropagation}
+                                        href=${[ jsObject.site_url, jsObject.language, item.slug ].join('/')}
+                                    >
+                                        ${item.title}
+                                    </a>
+                                </li>
+                            `)
+                        }
+                    </ul>
+                </div>
                 <div class="dropdown-pane" id="kebab-menu-${id}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl ? 'right' : 'left'} data-close-on-click="true" data-close-on-click-inside="true">
                     <ul>
                         ${
