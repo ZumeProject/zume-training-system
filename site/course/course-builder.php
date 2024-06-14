@@ -65,7 +65,34 @@ class Zume_Course_Builder {
         return $menu;
     }
     public static function pieces( $session_type, $lang_code ) {
+        $pieces = [];
 
+        $content = self::builder( $session_type, $lang_code );
+
+        foreach ( $content as $slides ) {
+            $key = $slides[0]['key'];
+            $pieces[$key] = [
+                'title' => $slides[0]['menu'][0],
+                'key' => $key,
+                'pieces' => [],
+            ];
+            foreach ( $slides as $slide ) {
+                if ( $slide['type'] !== 'video' ) {
+                    continue;
+                }
+
+                /* Get the video script id, and get the slug from training_items list by script id */
+                $script_id = $slide['script_id'];
+                $training_items = zume_training_items_by_script();
+                $training_item = $training_items[$script_id];
+                $pieces[$key]['pieces'][] = [
+                    'title' => $training_item['title'],
+                    'slug' => $training_item['slug'],
+                ];
+            }
+        }
+
+        return $pieces;
     }
     private static function _build( $session_type = '10', $lang_code = 'en', $session_number = '1' ) {
 

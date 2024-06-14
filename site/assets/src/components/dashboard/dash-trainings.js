@@ -172,6 +172,20 @@ export class DashTrainings extends DashPage {
                 break;
         }
     }
+    getSlideKey(id) {
+        const idParts = id.split('_')
+        if (idParts.length !== 3) {
+            return ''
+        }
+        switch (idParts[1]) {
+            case 'a':
+                return `s1_${Number(idParts[2])}_1`
+            case 'b':
+                return `s2_${Number(idParts[2])}_1`
+            case 'c':
+                return `s3_${Number(idParts[2])}_1`
+        }
+    }
     getCurrentSession() {
         for (let i = 0; i < this.sessions.length; i++) {
             const session = this.sessions[i];
@@ -325,6 +339,11 @@ export class DashTrainings extends DashPage {
 
     renderListItem(session) {
         const { id, name, datetime, completed } = session
+
+        const numberOfSessions = this.getNumberOfSessions()
+        const slideKey = this.getSlideKey(id)
+        const trainingItems = zumeTrainingPieces[numberOfSessions][slideKey]?.pieces ?? []
+
         return html`
             <li class="list__item | switcher | switcher-width-20 gapy0" @click=${() => this.toggleDetails(id)}>
                 <div>
@@ -341,9 +360,17 @@ export class DashTrainings extends DashPage {
                         <span class="f-medium">${name}</span>
                     </div>
                     <div class="list__tertiary collapse" ?data-open=${this.openDetailStates[id]}>
-                        <div class="p-2">
-                            Details here
-                        </div>
+                        <ul class="bullets py-1">
+                            ${
+                                trainingItems.map((item) => html`
+                                    <li>
+                                        <a href=${[ jsObject.site_url, jsObject.language, item.slug ].join('/')}>
+                                            ${item.title}
+                                        </a>
+                                    </li>
+                                `)
+                            }
+                        </ul>
                     </div>
                 </div>
                 <div class="list__secondary" data-align-start>

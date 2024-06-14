@@ -2338,6 +2338,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'title' => $training_item['title'],
                 'video_title' => $training_item['video_title'],
                 'video' => $training_item['video'],
+                'slug' => $training_item['slug'],
                 'script' => $training_item['script'],
                 'description' => $training_item['description'],
                 'host' => $training_item['host'] ? [
