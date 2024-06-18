@@ -304,6 +304,10 @@ not of the 2 column section */
     text-align: center;
     background-color: white !important;
     margin-bottom: calc( 0.5 * var(--slide-unit) );
+
+    .course-slideshow[data-index="0"] & {
+        display: none;
+    }
 }
 .progress-bar-wrapper {
     width: fit-content;

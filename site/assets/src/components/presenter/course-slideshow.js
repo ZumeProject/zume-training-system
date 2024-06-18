@@ -170,7 +170,7 @@ export class CourseSlideshow extends LitElement {
             this.setSlide(0)
         }
         return html`
-            <div class="cover-page course-slideshow">
+            <div class="cover-page course-slideshow" data-index=${this.sectionIndex}>
                 <div>
                     <slide-switcher .slide=${this.currentSlide} showControls></slide-switcher>
                 </div>
