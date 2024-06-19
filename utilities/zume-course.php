@@ -57,7 +57,7 @@ class Zume_Course {
             return $video_id;
         }
 
-        $query_params = '?transcript=falsepip=false';
+        $query_params = '?transcript=false&pip=false';
         return 'https://player.vimeo.com/video/' . $video_id . $query_params;
     }
 
