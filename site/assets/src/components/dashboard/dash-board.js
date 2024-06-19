@@ -26,7 +26,7 @@ export class DashBoard extends navigator(router(LitElement)) {
             trainingGroups: { type: Array, attribute: false },
             wizardType: { type: String, attribute: false },
             celbrationModalContent: { type: Object, attribute: false },
-            myTrainingsOpen: { type: Boolean, attribute: false },
+            trainingGroupsOpen: { type: Boolean, attribute: false },
         }
     }
 
@@ -668,6 +668,12 @@ export class DashBoard extends navigator(router(LitElement)) {
 
         return false
     }
+    isChildRouteActive(routeName) {
+        return routeName === this.route
+    }
+    isTrainingRouteActive(key) {
+        return key === this.params.code
+    }
 
     render() {
         return html`
@@ -745,6 +751,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                                         href=${this.makeHrefRoute(
                                                             route.name
                                                         )}
+                                                        ?active=${this.isChildRouteActive(route.name)}
                                                         icon=${route.icon}
                                                         text=${route.translation}
                                                         as=${route.type ===
@@ -825,6 +832,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                                     <nav-link
                                                         class="menu-btn"
                                                         icon=${route.icon}
+                                                        ?active=${this.isChildRouteActive(RouteNames.myTrainings) || !this.trainingGroupsOpen && this.isChildRouteActive(RouteNames.myTraining)}
                                                         text=${jsObject
                                                             .translations
                                                             .my_trainings}
@@ -861,6 +869,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                                                 <li>
                                                                     <nav-link
                                                                         class="menu-btn"
+                                                                        ?active=${this.isTrainingRouteActive(group.join_key)}
                                                                         as="nav"
                                                                         text=${group.title}
                                                                         href=${this.makeTrainingHref(
@@ -881,6 +890,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                                     href=${this.makeHrefRoute(
                                                         route.name
                                                     )}
+                                                    ?active=${this.isChildRouteActive(route.name)}
                                                     icon=${route.icon}
                                                     text=${route.translation}
                                                     ?locked=${isLocked}
@@ -931,6 +941,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                                     href=${this.makeHrefRoute(
                                                         route.name
                                                     )}
+                                                    ?active=${this.isChildRouteActive(route.name)}
                                                     icon=${route.icon}
                                                     text=${route.translation}
                                                     ?locked=${DashBoard.getLockedStatus(
