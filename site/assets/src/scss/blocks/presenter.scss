@@ -2,6 +2,7 @@
     border-radius: 100px;
     background-color: color('white');
     padding: 0.3em;
+    height: 2.5rem;
 
     .hamburger, .hamburger::after, .hamburger::before {
         background-color: color('brand');
@@ -27,6 +28,10 @@
         transition: opacity 50ms linear;
         cursor: pointer;
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         &.left {
             left: 0;
         }
@@ -34,8 +39,15 @@
             right: 0;
         }
 
+        &.show {
+            opacity: 0.2;
+        }
+        &.off {
+            opacity: 0 !important;
+        }
+
         &:hover {
-            opacity: 0.1;
+            opacity: 0.4;
         }
     }
 }
@@ -292,6 +304,10 @@ not of the 2 column section */
     text-align: center;
     background-color: white !important;
     margin-bottom: calc( 0.5 * var(--slide-unit) );
+
+    .course-slideshow[data-index="0"] & {
+        display: none;
+    }
 }
 .progress-bar-wrapper {
     width: fit-content;
@@ -354,7 +370,7 @@ not of the 2 column section */
 }
 .information-flyout,
 .activity-flyout {
-    width: min( 100vw, 500px );
+    width: min( 100vw, 800px );
     height: unset;
 
     iframe {

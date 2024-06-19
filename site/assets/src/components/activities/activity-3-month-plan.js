@@ -53,11 +53,10 @@ export class Activity3MonthPlan extends LitElement {
                  * TODO: refactor the POST commitment API to take a list of commitments
                  * then we can safely fetch all the commitments once the single API request has completed
                  */
+                /* TODO: should the note be created by the API rather than by the POSTer? */
+                /* TODO: same with the category */
                 const request = makeRequest('POST', 'commitment', {
-                    "user_id": this.user_id,
-                    "post_id": this.contact_id,
-                    "meta_key": "tasks",
-                    "note": 'Question: ' + question + ' Answer: ' + answer,
+                    "note": `${this.translations.question}: ${question} ${this.translations.answer}: ${answer}`,
                     "question": question,
                     "answer": answer,
                     "date": date,
@@ -108,7 +107,7 @@ export class Activity3MonthPlan extends LitElement {
                     ${
                         this.showCancel ? html`
                             <button
-                                class="btn light outline uppercase"
+                                class="btn outline uppercase"
                                 @click=${this.handleCancel}
                             >
                                 ${this.translations.cancel}
@@ -118,7 +117,7 @@ export class Activity3MonthPlan extends LitElement {
                     <button
                         ?disabled=${disabled}
                         aria-disabled=${disabled ? 'true' : 'false'}
-                        class="btn light uppercase"
+                        class="btn"
                         @click=${this.handleSave}
                     >
                         ${this.translations.save}

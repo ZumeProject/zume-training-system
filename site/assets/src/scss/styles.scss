@@ -42,7 +42,6 @@
 @import 'blocks/progress-circle';
 @import 'blocks/card';
 @import 'blocks/dropdown';
-@import 'blocks/home';
 @import 'blocks/list';
 @import 'blocks/dash-menu';
 @import 'blocks/training-progress';
@@ -116,6 +115,9 @@ ul[role="list"] {
     left: 0;
     top: 0;
     line-height: 0.9;
+  }
+  &[data-brand-light] li:before {
+    color: color('brand-light');
   }
   &.check-list li:before {
     font-family: 'Zume-Icons-Square';
@@ -228,6 +230,7 @@ input::-webkit-calendar-picker-indicator {
   padding-inline: spacing(0);
   padding-block: spacing(-5);
   font-weight: 400;
+  text-transform: none;
 }
 .nav__link {
   display: flex;
@@ -734,7 +737,7 @@ input::-webkit-calendar-picker-indicator {
   padding: spacing(0);
   line-height: 1;
   border-radius: 0.5rem;
-  font-size: font-size(0);
+  font-size: font-size(1);
 }
 .concepts__tick {
   color: color('brand-light');
@@ -760,6 +763,12 @@ input::-webkit-calendar-picker-indicator {
 }
 .share-list__wrapper {
   background-color: color('gray-200');
+}
+.token {
+    border-radius: 100px;
+    padding: 0.1rem 0.6rem;
+    background-color: color('brand-fade');
+    color: color('brand-light');
 }
 
 @media (min-width: $break-lg) {

@@ -45,7 +45,7 @@ export class InviteFriends extends LitElement {
             this.invitecode = joinKey
         }
 
-        this.url = jsObject.site_url + `/app/plan_invite${this.invitecode !== '' ? '?code=' + this.invitecode : ''}`
+        this.url = jsObject.site_url + `/app/plan-invite${this.invitecode !== '' ? '?code=' + this.invitecode : ''}`
         this.loading = true
 
         makeRequest( 'GET', `plan/${this.invitecode}`, {}, 'zume_system/v1' )
@@ -166,7 +166,7 @@ ${
                         ${
                             navigator.clipboard ? html`
                                 <div class="position-relative">
-                                    <button class="btn light uppercase mx-auto fit-content" @click=${this.copyInvite}>${this.t.copy_invite}</button>
+                                    <button class="btn mx-auto fit-content" @click=${this.copyInvite}>${this.t.copy_invite}</button>
                                     <p role="alert" aria-live="polite" id="copyFeedback" class="context-alert" data-state=${this.copyFeedback.length ? '' : 'empty'}>${this.copyFeedback}</p>
                                 </div>
                             ` : ''

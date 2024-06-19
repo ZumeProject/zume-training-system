@@ -126,14 +126,48 @@ class Zume_Training_Kitchen_Sink extends Zume_Magic_Page
             </div>
 
             <div class="container stack">
+                <h2 class="brand">Forms</h2>
+                <div class="stack">
+                    <input class="input" type="text" placeholder="text input">
+                    <div class="form-group">
+                        <label for="this-input" class="input-label">A label</label>
+                        <input id="this-input" type="text">
+                    </div>
+                    <div class="form-control">
+                        <input id="checkbox-1" type="checkbox">
+                        <label for="checkbox-1">Checkbox 1</label>
+                    </div>
+                    <div class="form-control f-1 brand-light">
+                        <input id="larger-checkbox" type="checkbox" checked>
+                        <label for="larger-checkbox">larger checkbox</label>
+                    </div>
+                    <div class="form-control f-1 brand-light">
+                        <input id="disabled-checkbox" type="checkbox" checked disabled>
+                        <label for="disabled-checkbox">disabled checkbox</label>
+                    </div>
+                    <div class="form-control f-1">
+                        <input name="radio" id="radio-1" type="radio" checked>
+                        <label for="radio-1">Radio 1</label>
+                    </div>
+                    <div class="form-control f-1">
+                        <input name="radio" id="radio-2" type="radio">
+                        <label for="radio-2">Radio 2</label>
+                    </div>
+                    <div class="form-control f-1">
+                        <input name="radio" id="radio-3" type="radio" disabled>
+                        <label for="radio-3">Radio 3</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container stack">
                 <h2 class="brand">Buttons and links</h2>
                 <div class="cluster">
                     <a class="d-block" href="#">Normal links in a page</a>
                     <button class="btn d-block">.btn</button>
-                    <button class="btn light d-block">.btn.light</button>
+                    <button class="btn d-block">.btn.light</button>
                     <button class="btn outline d-block">.btn.outline</button>
                     <button class="btn large">.btn.large</button>
-                    <button class="btn uppercase">.btn.uppercase</button>
                 </div>
             </div>
             <div class="bg-brand py-4">
@@ -144,7 +178,6 @@ class Zume_Training_Kitchen_Sink extends Zume_Magic_Page
                         <button class="btn dark d-block">.btn.dark</button>
                         <button class="btn outline dark d-block">.btn.outline.dark</button>
                         <button class="btn dark large">.btn.dark.large</button>
-                        <button class="btn dark uppercase">.btn.dark.uppercase</button>
                     </div>
                 </div>
             </div>

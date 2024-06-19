@@ -103,6 +103,10 @@ export class ProfileForm extends LitElement {
         }
     }
 
+    isSSOUser() {
+        return this.userProfile.sso_identities !== ''
+    }
+
     render() {
         return html`
             <form action="" class="stack--2" id="profile-form" @submit=${this.submitProfileForm}>
@@ -138,7 +142,7 @@ export class ProfileForm extends LitElement {
                 <div class="">
                     <label for="email">${jsObject.translations.email}</label>
                     <div class="d-flex align-items-center">
-                        <input class="input" type="email" id="email" name="email" value=${this.userProfile.email}>
+                        <input class="input" ?disabled=${this.isSSOUser()} type="email" id="email" name="email" value=${this.userProfile.email}>
                         <button type="button" class="icon-btn f-1" @click=${() => this._toggleInfo('email')}>
                             <span class="icon z-icon-info brand-light"></span>
                         </button>
@@ -149,6 +153,18 @@ export class ProfileForm extends LitElement {
                         </div>
                     </div>
                 </div>
+                    ${
+                        this.userProfile.sign_in_providers && Array.isArray(this.userProfile.sign_in_providers) ? html`
+                            <label>${jsObject.translations.linked_accounts}</label>
+                            <div class="cluster">
+                                ${
+                                    this.userProfile.sign_in_providers.map((profile) => html`
+                                        <span class="token">${profile}</span>
+                                    `)
+                                }
+                            </div>
+                        ` : ''
+                    }
                 <div class="">
                     <label for="communications_email">${jsObject.translations.communications_email}</label>
                     <div class="d-flex align-items-center">
@@ -187,10 +203,10 @@ export class ProfileForm extends LitElement {
                     ${
                         Array.isArray(this.locations) && this.locations.length > 0
                         ? html`
-                            <div id="address_results" class="stack my-0">
+                            <div id="address_results" class="stack--3 fit-content mx-auto my-0">
                                 ${ this.locations.map((feature) => html`
                                     <div
-                                        class="card-btn | text-center"
+                                        class="btn rounded"
                                         role="button"
                                         id="${feature.id}"
                                         data-place-name="${feature.place_name}"
@@ -230,7 +246,10 @@ export class ProfileForm extends LitElement {
 
                 </div>
 
-                <button class="btn my-0 fit-content" id="submit-profile" ?disabled=${this.loading}>${jsObject.translations.save}</button>
+                <div class="stack my-0" data-fit-content>
+                    <button class="btn" id="submit-profile" ?disabled=${this.loading}>${jsObject.translations.save}</button>
+                    <a href=${jsObject.urls.logout} class="btn outline">${jsObject.translations.logout}</a>
+                </div>
                 <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
 
             </form>

@@ -89,9 +89,12 @@ class Zume_System_CTA_API
         }
         if ( ! empty( $ctas ) ) {
             foreach ( $ctas as $key => $cta ) {
+                $show_cta = false;
                 foreach ( $cta['required_keys'] as $required_key ) {
-                    if ( ! in_array( $required_key, $log_keys ) ) {
+                    if (  !$show_cta && ! in_array( $required_key, $log_keys ) ) {
                         unset( $ctas[$key] );
+                    } else {
+                        $show_cta = true;
                     }
                 }
                 foreach ( $cta['disable_keys'] as $disable_key ) {
@@ -154,7 +157,7 @@ class Zume_System_CTA_API
             ],
             [
                 'stages' => [2, 3, 4, 5, 6],
-                'required_keys' => ['system_joined_online_training'],
+                'required_keys' => ['system_joined_friends_training', 'system_joined_online_training'],
                 'disable_keys' => ['system_celebrated_joining_training'],
                 'key' => 'system_celebrated_joining_training',
                 'type' => 'system',
@@ -196,6 +199,20 @@ class Zume_System_CTA_API
                 'content_template' => 'celebration',
             ],
             [
+                'stages' => [1, 2, 3, 4, 5, 6],
+                'required_keys' => ['system_connected_to_coach'],
+                'disable_keys' => ['system_celebrated_coach_connect'],
+                'key' => 'system_celebrated_coach_connect',
+                'type' => 'system',
+                'subtype' => 'celebrated_coach_connect',
+                'content' => [
+                    'title' => __( 'Connected to Coach!', 'zume' ),
+                    'description' => __( 'Congratulations', 'zume' ),
+                    'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
+                ],
+                'content_template' => 'celebration',
+            ],
+            [
                 'stages' => [1],
                 'required_keys' => [],
                 'disable_keys' => ['system_plan_created'],
@@ -224,9 +241,7 @@ class Zume_System_CTA_API
                 ],
                 'content_template' => 'celebration',
             ],
-            /* Mute for the user testing */
-            /* This needs an upgrade to work properly when you have 1 or more trainings */
-            /* The url needs to be set by the dashboard to load the correct invite wizard, or to take them to a list of their trainings */
+            /* Mute for Go live: this one is for inviting people to become friends with you. */
 /*             [
                 'stages' => [1, 2],
                 'required_keys' => [],

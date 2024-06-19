@@ -135,7 +135,7 @@ class Zume_Training_Page extends Zume_Magic_Page
                     <p class="mb-0">
                         <?php echo esc_html__( 'Gather a few friends or go through the course with an existing small group. Create your own training group and track your progress.', 'zume' ) ?>
                     </p>
-                    <a href="<?php echo esc_url( zume_make_a_group_wizard_url() ) ?>" class="btn light uppercase mt-auto"><?php echo esc_html__( 'Create', 'zume' ) ?></a>
+                    <a href="<?php echo esc_url( zume_make_a_group_wizard_url() ) ?>" class="btn mt-auto"><?php echo esc_html__( 'Create', 'zume' ) ?></a>
                 </div>
                 <div class="stack | card | switcher-width-40">
                     <h2 class="f-1 text-center"><?php echo esc_html__( 'Join a training group', 'zume' ) ?></h2>
@@ -143,7 +143,7 @@ class Zume_Training_Page extends Zume_Magic_Page
                     <p class="mb-0">
                         <?php echo esc_html__( 'If you can‘t gather a group right now, consider joining one of our online training groups lead by an experienced Zúme coach.', 'zume' ) ?>
                     </p>
-                    <a href="<?php echo esc_url( zume_join_a_public_plan_wizard_url() ) ?>" class="btn light uppercase mt-auto"><?php echo esc_html__( 'Join', 'zume' ) ?></a>
+                    <a href="<?php echo esc_url( zume_join_a_public_plan_wizard_url() ) ?>" class="btn mt-auto"><?php echo esc_html__( 'Join', 'zume' ) ?></a>
                 </div>
                 <div class="stack | card | switcher-width-40">
                     <h2 class="f-1 text-center"><?php echo esc_html__( 'Request a coach', 'zume' ) ?></h2>
@@ -151,7 +151,7 @@ class Zume_Training_Page extends Zume_Magic_Page
                     <p class="mb-0">
                         <?php echo esc_html__( 'We can connect you with free Zúme coach who is committed to helping you understand the training and become a fruitful disciple.', 'zume' ) ?>
                     </p>
-                    <a href="<?php echo esc_url( zume_get_a_coach_wizard_url() ) ?>" class="btn light uppercase mt-auto"><?php echo esc_html__( 'Get Help', 'zume' ) ?></a>
+                    <a href="<?php echo esc_url( zume_get_a_coach_wizard_url() ) ?>" class="btn mt-auto"><?php echo esc_html__( 'Get Help', 'zume' ) ?></a>
                 </div>
             </div>
         </div>
@@ -216,7 +216,7 @@ class Zume_Training_Page extends Zume_Magic_Page
                         <?php echo esc_html__( 'Zúme is 20 hours of training. But those 20 hours can be broken up differently depending on your training group‘s availability.', 'zume' ) ?>
                     </p>
                     <div class="stack-1">
-                        <div class="switcher | switcher-width-40 align-items-center mx-auto gapx-2">
+                        <div class="switcher | switcher-width-40 align-items-center gapx-2">
                             <a href="<?php echo esc_url( zume_10_session_url() ) ?>" class="card-btn training-card" role="button">
                                 <h3 class="training-card__title h1"><?php echo esc_html__( '10 Sessions', 'zume' ) ?></h3>
                                 <div class="w-6rem brand-light">
@@ -228,7 +228,7 @@ class Zume_Training_Page extends Zume_Magic_Page
                                 <?php echo esc_html__( 'The original Zúme course format is 10 two hour sessions. Each session finishes with practical obedience steps and ways to share in-between sessions. This format is often run once a week for 10 weeks.', 'zume' ) ?>
                             </p>
                         </div>
-                        <div class="switcher | switcher-width-40 align-items-center mx-auto gapx-2">
+                        <div class="switcher | switcher-width-40 align-items-center gapx-2">
                             <a href="<?php echo esc_url( zume_20_session_url() ) ?>" class="card-btn training-card" role="button">
                                 <h3 class="training-card__title h1"><?php echo esc_html__( '20 Sessions', 'zume' ) ?></h3>
                                 <div class="w-6rem brand-light">
@@ -240,7 +240,7 @@ class Zume_Training_Page extends Zume_Magic_Page
                                 <?php echo esc_html__( 'For a longer slower pace course with more opportunity for gaining competence in the concepts and skills, the 20 session format has more practice opportunities for each of the concepts and tools.', 'zume' ) ?>
                             </p>
                         </div>
-                        <div class="switcher | switcher-width-40 align-items-center mx-auto gapx-2">
+                        <div class="switcher | switcher-width-40 align-items-center gapx-2">
                             <a href="<?php echo esc_url( zume_intensive_session_url() ) ?>" class="card-btn training-card" role="button">
                                 <h3 class="training-card__title h1"><?php echo esc_html__( 'Intensive', 'zume' ) ?></h3>
                                 <div class="w-6rem brand-light">

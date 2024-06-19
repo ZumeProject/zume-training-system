@@ -114,6 +114,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'share_translations' => Zume_Training_Share::translations(),
                 'translations' => $this->translations(),
                 'wizard_translations' => Zume_Training_Wizard::translations(),
+                'three_month_plan_translations' => Zume_Activites_3monthplan::translations(),
                 'three_month_plan_questions' => self::three_month_plan_questions(),
                 'urls' => [
                     'logout' => esc_url( dt_login_url( 'logout' ) ),
@@ -125,6 +126,11 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                     'get_coach_wizard' => esc_url( zume_get_a_coach_wizard_url() ),
                     'resources' => esc_url( zume_resources_url() ),
                 ],
+            ]) ?>][0]
+            const zumeTrainingPieces = [<?php echo json_encode([
+                5 => Zume_Course_Builder::pieces( 'intensive', $this->lang_code ),
+                10 => Zume_Course_Builder::pieces( '10', $this->lang_code ),
+                20 => Zume_Course_Builder::pieces( '20', $this->lang_code ),
             ]) ?>][0]
         </script>
 
@@ -172,6 +178,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'name' => __( 'Name', 'zume' ),
             'phone' => __( 'Phone', 'zume' ),
             'email' => __( 'Email', 'zume' ),
+            'linked_accounts' => __( 'Linked Accounts', 'zume' ),
             'communications_email' => __( 'Communications Email', 'zume' ),
             'city' => __( 'City', 'zume' ),
             'no_locations' => __( 'No Locations found', 'zume' ),

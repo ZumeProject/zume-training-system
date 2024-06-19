@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { Steps } from './wizard-constants';
 import { WizardStateManager } from './wizard-state-manager';
-import { zumeRequest } from '../../js/scripts';
+import { zumeRequest } from '../../js/zumeRequest';
 
 export class RequestCoach extends LitElement {
     static get properties() {
@@ -59,38 +59,38 @@ export class RequestCoach extends LitElement {
         this.stateManager.clear()
     }
 
-    updated() {
-        this.message = this.t.connect_success
-
+    requestCoach() {
+        this.message = this.t.please_wait
         const data = this.stateManager.getAll()
 
-        if ( this.variant === Steps.connectingToCoach && this.requestSent === false ) {
-            this.loading = true
-            this.requestSent = true
-            this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
-            zumeRequest.post('get_a_coach', { data } )
-                .then(( data ) => {
-                    if ( data === false ) {
-                        this.message = this.t.connect_fail
-                        this.setErrorMessage(this.t.error_connecting)
-                    }
-                })
-                .catch((error) => {
-                    if (error.message === 'already_has_coach') {
-                        this.message = ''
-                        this.setErrorMessage(this.t.already_coached)
-                        return
-                    }
+        this.loading = true
+        this.requestSent = true
+        this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
+        zumeRequest.post('get_a_coach', { data } )
+            .then(( data ) => {
+                console.log(data, this)
+                this.message = this.t.connect_success
 
+                if ( data === false ) {
                     this.message = this.t.connect_fail
                     this.setErrorMessage(this.t.error_connecting)
-                })
-                .finally(() => {
-                    this.loading = false
-                    this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
-                    this.dispatchEvent(new CustomEvent('wizard:finish', { bubbles: true }))
-                })
-        }
+                }
+            })
+            .catch((error) => {
+                if (error.message === 'already_has_coach') {
+                    this.message = ''
+                    this.setErrorMessage(this.t.already_coached)
+                    return
+                }
+
+                this.message = this.t.connect_fail
+                this.setErrorMessage(this.t.error_connecting)
+            })
+            .finally(() => {
+                this.loading = false
+                this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
+                this.dispatchEvent(new CustomEvent('wizard:finish', { bubbles: true }))
+            })
     }
 
     willUpdate(properties) {
@@ -110,13 +110,17 @@ export class RequestCoach extends LitElement {
     }
 
     render() {
+        if ( this.variant === Steps.connectingToCoach && this.requestSent === false ) {
+            this.requestCoach()
+        }
+
         return html`
         <form class="inputs stack-2" @submit=${this._handleDone}>
             ${ this.variant === Steps.contactPreferences ? html`
                 <h2>${this.t.contact_preference_question}</h2>
                 <div class="stack center container-sm | align-items-start text-start">
                     ${this.contactPreferences.map((preference) => html`
-                        <div>
+                        <div class="form-control brand-light">
                             <input type="checkbox" name="contact-preference" id=${'prefer_' + preference} value=${preference} @change=${this._handleChange} ?checked=${!!this.state[preference]} />
                             <label for=${'prefer_' + preference}>${this.t[preference]}</label>
                         </div>
@@ -143,23 +147,23 @@ export class RequestCoach extends LitElement {
             ${ this.variant === Steps.howCanWeServe ? html`
                 <h2>${this.t.how_can_we_serve}</h2>
                 <div class="stack center | container-sm align-items-start text-start">
-                    <div class="d-flex align-items-center">
+                    <div class="form-control brand-light">
                         <input type="checkbox" name="how-can-we-serve" id="coaching" value="coaching-request" @change=${this._handleChange} ?checked=${!!this.state.coaching} />
                         <label for="coaching">${this.t.coaching}</label>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="form-control brand-light">
                         <input type="checkbox" name="how-can-we-serve" id="technical" value="technical-assistance" @change=${this._handleChange} ?checked=${!!this.state.technical} />
                         <label for="technical">${this.t.technical_assistance}</label>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="form-control brand-light">
                         <input type="checkbox" name="how-can-we-serve" id="implementation" value="question-about-implementation" @change=${this._handleChange} ?checked=${!!this.state.implementation} />
                         <label for="implementation">${this.t.question_implementation}</label>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="form-control brand-light">
                         <input type="checkbox" name="how-can-we-serve" id="content" value="question-about-content" @change=${this._handleChange} ?checked=${!!this.state.content} />
                         <label for="content">${this.t.question_content}</label>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="form-control brand-light">
                         <input type="checkbox" name="how-can-we-serve" id="group-started" value="help-with-group" @change=${this._handleChange} ?checked=${!!this.state['group-started']} />
                         <label for="group-started">${this.t.help_with_group}</label>
                     </div>
@@ -174,7 +178,7 @@ export class RequestCoach extends LitElement {
             ${ this.variant !== Steps.connectingToCoach
                 ? html`
                     <div class="mx-auto">
-                        <button type="submit" class="btn tight light" ?disabled=${this.loading}>${this.t.next} <span class="loading-spinner ${this.loading ? 'active' : ''}"></span></button>
+                        <button type="submit" class="btn tight" ?disabled=${this.loading}>${this.t.next} <span class="loading-spinner ${this.loading ? 'active' : ''}"></span></button>
                     </div>
                 `
                 : ''}

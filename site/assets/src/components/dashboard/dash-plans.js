@@ -2,14 +2,19 @@ import { html } from 'lit';
 import { repeat } from 'lit/directives/repeat.js'
 import { DashBoard } from './dash-board';
 import { DashPage } from './dash-page';
+import { zumeRequest } from '../../js/zumeRequest';
 
 export class DashPlans extends DashPage {
     static get properties() {
         return {
             showTeaser: { type: Boolean },
             loading: { type: Boolean, attribute: false },
+            saving: { type: Boolean, attribute: false },
             commitments: { type: Array, attribute: false },
             filterStatus: { type: String, attribute: false },
+            editQuestion: { type: String, attribute: false },
+            editAnswer: { type: String, attribute: false },
+            editId: { type: Number, attribute: false },
         };
     }
 
@@ -17,9 +22,13 @@ export class DashPlans extends DashPage {
         super()
         this.showTeaser = false
         this.loading = true
+        this.saving = false
         this.route = DashBoard.getRoute('my-plans')
         this.filterName = 'my-plans-filter'
         this.filterStatus = ZumeStorage.load(this.filterName)
+        this.commitments = []
+        this.editQuestion = ''
+        this.editAnswer = ''
 
         this.renderListItem = this.renderListItem.bind(this)
         this.closeCommitmentsModal = this.closeCommitmentsModal.bind(this)
@@ -46,17 +55,37 @@ export class DashPlans extends DashPage {
             })
     }
 
-    openCommitmentsModal() {
+    openEditCommitmentsModal(id) {
+        this.closeMenu(id)
+        const commitment = this.getCommitment(id)
+
+        document.querySelector('#edit-question').value = commitment.question
+        document.querySelector('#edit-answer').value = commitment.answer
+        this.editId = id
+
+        this.openCommitmentsModal('edit')
+
+        document.querySelector('#edit-question').focus()
+    }
+    closeCommitmentsModal() {
+        document.querySelector('#edit-question').value = ''
+        document.querySelector('#edit-answer').value = ''
+        const modal = document.querySelector('#commitments-form')
+        jQuery(modal).foundation('close')
+    }
+
+    handleOpenCommitmentsModal(event) {
+        this.openCommitmentsModal('add')
+    }
+
+    openCommitmentsModal(mode = 'add') {
         if (this.showTeaser) {
             return
         }
-        const modal = document.querySelector('#new-commitments-form')
-        jQuery(modal).foundation('open')
-    }
+        this.mode = mode
 
-    closeCommitmentsModal() {
-        const modal = document.querySelector('#new-commitments-form')
-        jQuery(modal).foundation('close')
+        const modal = document.querySelector('#commitments-form')
+        jQuery(modal).foundation('open')
     }
 
     handleAddedCommitments() {
@@ -64,8 +93,11 @@ export class DashPlans extends DashPage {
         this.closeCommitmentsModal()
     }
 
-    completeCommitment(id) {
+    getCommitment(commitmentId) {
+        return this.commitments.find(({id}) => id === commitmentId)
+    }
 
+    completeCommitment(id) {
         let data = {
             id: id,
             user_id: jsObject.profile.user_id
@@ -85,9 +117,63 @@ export class DashPlans extends DashPage {
             this.fetchCommitments()
         })
     }
+    saveCommitment(event) {
+        event.preventDefault()
+        this.saving = true
+        if (this.mode === 'add') {
+            this.addCommitment()
+        } else {
+            this.editCommitment()
+        }
+    }
+    addCommitment() {
+        const question = document.querySelector('#edit-question').value
+        const answer = document.querySelector('#edit-answer').value
 
-    editCommitment(id) {
-        console.log(id)
+        const date = new Date(); // Now
+        date.setDate(date.getDate() + 30);
+
+        let data = {
+            question,
+            answer,
+            note: `${jsObject.translations.question}: ${question} ${jsObject.translations.answer}: ${answer}`,
+            date,
+            category: 'post_training_plan',
+        }
+        zumeRequest.post('commitment', data)
+            .then(() => {
+                this.fetchCommitments()
+                this.closeCommitmentsModal()
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+            .finally(() => {
+                this.saving = false
+            })
+    }
+
+    editCommitment() {
+        const question = document.querySelector('#edit-question').value
+        const answer = document.querySelector('#edit-answer').value
+        let data = {
+            id: this.editId,
+            user_id: jsObject.profile.user_id,
+            question,
+            answer,
+        }
+        this.saving = true
+        zumeRequest.update('commitment', data)
+            .then((response) => {
+                this.closeCommitmentsModal()
+                this.fetchCommitments()
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+            .finally(() => {
+                this.saving = false
+            })
     }
 
     filterCommitments(status) {
@@ -106,6 +192,9 @@ export class DashPlans extends DashPage {
         const menu = this.querySelector(`#kebab-menu-${id}`)
         jQuery(menu).foundation('close')
     }
+    open3MonthPlan() {
+        this.dispatchEvent(new CustomEvent('open-3-month-plan', { bubbles: true }))
+    }
 
     renderListItem(commitment) {
         const { question, answer, id, status } = commitment
@@ -118,7 +207,7 @@ export class DashPlans extends DashPage {
                             ? html`<span class="icon z-icon-check-mark success"></span>`
                             : html`
                                 <button
-                                    class="btn light uppercase tight break-anywhere"
+                                    class="btn tight break-anywhere"
                                     @click=${() => this.completeCommitment(id)}
                                 >
                                     ${jsObject.translations.done}
@@ -141,8 +230,8 @@ export class DashPlans extends DashPage {
                     data-close-on-click-inside="true"
                 >
                     <ul>
-                        <li class="hidden"><button class="menu-btn" @click=${() => this.editCommitment(id)}><span class="icon z-icon-pencil"></span>${jsObject.translations.edit}</button></li>
-                        <li><button class="menu-btn" @click=${() => this.deleteCommitment(id)}><span class="icon z-icon-trash"></span>${jsObject.translations.delete}</button></li>
+                        <li><button class="menu-btn" @click=${() => this.openEditCommitmentsModal(id)}><span class="icon z-icon-pencil"></span>${jsObject.translations.edit}</button></li>
+                        <li><button class="menu-btn red" @click=${() => this.deleteCommitment(id)}><span class="icon z-icon-trash"></span>${jsObject.translations.delete}</button></li>
                     </ul>
                 </div>
             </li>
@@ -166,7 +255,7 @@ export class DashPlans extends DashPage {
                                 <span class="visually-hidden">${jsObject.translations.filter}</span>
                                 <span class="icon z-icon-filter" aria-hidden="true"></span>
                             </button>
-                            <button class="icon-btn f-2" @click=${this.openCommitmentsModal} ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser ? 'true' : 'false'}>
+                            <button class="icon-btn f-2" @click=${this.handleOpenCommitmentsModal} ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser ? 'true' : 'false'}>
                                 <span class="visually-hidden">${jsObject.translations.add_commitments}</span>
                                 <span class="icon z-icon-plus" aria-hidden="true"></span>
                             </button>
@@ -208,7 +297,7 @@ export class DashPlans extends DashPage {
                                   <h3 class="f-1 bold uppercase">${jsObject.translations.my_plans_locked}</h3>
                                   <p>${jsObject.translations.my_plans_locked_explanation}</p>
                                 </div>
-                                <button class="dash-menu__view-button btn tight" @click=${this.joinCommunity}>
+                                <button class="dash-menu__view-button btn tight" @click=${this.open3MonthPlan}>
                                   ${jsObject.translations.create_3_month_plan}
                                 </button>
                               </div>
@@ -226,19 +315,40 @@ export class DashPlans extends DashPage {
                     }
                 </div>
             </div>
-            <div class="reveal large" id="new-commitments-form" data-reveal data-v-offset="20">
-                <button class="ms-auto close-btn" data-close aria-label=${jsObject.translations.close} type="button" @click=${this.clearCommitmentsModal}>
+            <div class="reveal small" id="commitments-form" data-reveal data-v-offset="20">
+                <button class="ms-auto close-btn" data-close aria-label=${jsObject.translations.close} type="button" @click=${this.closeCommitmentsModal}>
                         <span class="icon z-icon-close"></span>
                 </button>
-                <activity-3-month-plan
-                    .questions=${jsObject.three_month_plan_questions}
-                    .translations=${{ save: jsObject.translations.save, cancel: jsObject.translations.cancel }}
-                    user_id=${jsObject.profile.user_id}
-                    contact_id=${jsObject.profile.contact_id}
-                    @3-month-plan-saved=${this.handleAddedCommitments}
-                    @3-month-plan-cancelled=${this.closeCommitmentsModal}
-                    showCancel
-                ></activity-3-month-plan>
+                <form @submit=${this.saveCommitment} class="stack">
+                    <div class="form-group">
+                        <label for="edit-question">${jsObject.three_month_plan_translations.question}*</label>
+                        <textarea
+                            class="input"
+                            id="edit-question"
+                            type="text"
+                            rows="3"
+                            placeholder=${jsObject.three_month_plan_translations.question}
+                            required
+                        ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-answer">${jsObject.three_month_plan_translations.answer}*</label>
+                        <textarea
+                            class="input"
+                            id="edit-answer"
+                            type="text"
+                            placeholder=${jsObject.three_month_plan_translations.answer}
+                            required
+                        ></textarea>
+                    </div>
+                    <div class="cluster justify-flex-end">
+                        <button type="button" class="btn outline tight" type="button" @click=${this.closeCommitmentsModal}>${jsObject.three_month_plan_translations.cancel}</button>
+                        <button type="submit" class="btn tight" type="button" ?disabled=${this.saving}>
+                            ${jsObject.three_month_plan_translations.save}
+                            <span class="loading-spinner ${this.saving ? 'active' : ''}"></span>
+                        </button>
+                    </div>
+                </form>
             </div>
         `;
     }

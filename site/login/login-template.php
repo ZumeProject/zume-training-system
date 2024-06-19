@@ -131,7 +131,7 @@ switch ( $request_action ) {
                                  */
                                 do_action( 'lostpassword_form' ); ?>
                                 <input type="hidden" name="redirect_to" value="<?php echo esc_attr( $redirect_to ); ?>" />
-                                <input type="submit" name="wp-submit" id="wp-submit" class="btn light uppercase" value="<?php echo esc_html__( 'Get New Password', 'zume' ); ?>" />
+                                <input type="submit" name="wp-submit" id="wp-submit" class="btn" value="<?php echo esc_html__( 'Get New Password', 'zume' ); ?>" />
                             </form>
 
                         <?php elseif ( $sent ): ?>
@@ -292,7 +292,7 @@ switch ( $request_action ) {
 
                             <input type="hidden" name="wp-submit" id="wp-submit" value="" />
 
-                            <button class="btn light">
+                            <button class="btn">
                                 <?php esc_html_e( 'Reset Password', 'zume' ); ?>
                             </button>
 
@@ -460,18 +460,40 @@ switch ( $request_action ) {
                                                 </div>
                                                 <?php wp_nonce_field( 'login_form', 'login_form_nonce' ) ?>
                                                 <div>
-                                                    <div class="g-recaptcha" id="g-recaptcha"></div>
-                                                    <button class="btn light w-100" id="submit">
+                                                    <button
+                                                        class="btn w-100 g-recaptcha"
+                                                        id="submit"
+                                                        data-sitekey="<?php echo esc_attr( isset( $dt_login['google_captcha_client_key'] ) ? $dt_login['google_captcha_client_key'] : '' ) ?>"
+                                                        data-callback="onRegister"
+                                                        data-action="submit"
+                                                    >
                                                         <?php esc_html_e( 'Register', 'zume' ) ?>
                                                     </button>
                                                 </div>
                                             </form>
                                         </div>
+                                        <script>
+                                            const submitElement = document.getElementById('submit')
+                                            function onRegister(token) {
+
+                                                if ( submitElement.getAttribute('aria-disabled') === 'true' ) {
+                                                    return
+                                                }
+
+                                                submitElement.setAttribute('disabled', true)
+                                                submitElement.setAttribute('aria-disabled', 'true')
+                                                submitElement.classList.add('disabled')
+                                                const recaptchaResponseInput = document.querySelector('#g-recaptcha-response')
+                                                recaptchaResponseInput.value = token
+
+                                                document.getElementById('loginform').requestSubmit()
+                                            }
+                                        </script>
 
                                         <?php // @codingStandardsIgnoreStart
                                         if ( isset( $dt_login['google_captcha_client_key'] ) && !empty( $dt_login['google_captcha_client_key'] ) ) :
                                             ?>
-                                            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+                                            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                                         <?php // @codingStandardsIgnoreEnd
                                         endif;
                                         ?>
@@ -854,7 +876,7 @@ function zume_login_form( $args = array() ) {
         $login_form_middle .
         ( $args['remember'] ?
             sprintf(
-                '<p class="login-remember text-start"><label class="input-label"><input class="input" name="rememberme" type="checkbox" id="%1$s" value="forever"%2$s /> %3$s</label></p>',
+                '<p class="login-remember text-start"><label class="input-label form-control"><input class="input" name="rememberme" type="checkbox" id="%1$s" value="forever"%2$s /> %3$s</label></p>',
                 esc_attr( $args['id_remember'] ),
                 ( $args['value_remember'] ? ' checked="checked"' : '' ),
                 esc_html( $args['label_remember'] )
@@ -862,7 +884,7 @@ function zume_login_form( $args = array() ) {
         ) .
         sprintf(
             '<p class="login-submit">
-                <input type="submit" name="wp-submit" id="%1$s" class="btn light uppercase w-100" value="%2$s" />
+                <input type="submit" name="wp-submit" id="%1$s" class="btn w-100" value="%2$s" />
                 <input type="hidden" name="redirect_to" value="%3$s" />
             </p>',
             esc_attr( $args['id_submit'] ),

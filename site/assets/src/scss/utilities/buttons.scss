@@ -1,7 +1,7 @@
 @mixin button {
     color: inherit;
     display: inline-block;
-    font-weight: 400;
+    font-weight: 600;
     text-decoration: none;
     border: solid 2px transparent;
     border-radius: 100px;
@@ -9,9 +9,10 @@
     cursor: pointer;
     transition: all 150ms linear;
     text-align: center;
+    text-transform: uppercase;
 
-    --primary-btn-color: #{color('brand')};
-    --secondary-btn-color: #{color('brand-light')};
+    --primary-btn-color: #{color('brand-light')};
+    --secondary-btn-color: #{color('brand')};
     --bg-btn-color: #{color('white')};
 
     --btn-color: var(--bg-btn-color);
@@ -57,6 +58,8 @@ a {
 
 
     &.dark {
+        --btn-bg-color: #{color('brand')};
+        --btn-border-color: #{color('brand')};
         --btn-hover-border-color: #{color('white')};
         --btn-hover-bg-color: transparent;
     }
@@ -74,6 +77,12 @@ a {
         --btn-border-color: #{color('gray-500')};
         --btn-hover-bg-color: #{color('gray-600')};
         --btn-hover-border-color: #{color('gray-600')};
+    }
+
+    &.brand {
+        --primary-btn-color: #{color('brand')};
+        --secondary-btn-color: #{color('brand-light')};
+        --bg-btn-color: #{color('white')};
     }
 
     &.light {
@@ -133,6 +142,7 @@ a {
 
     &[aria-disabled="true"],
     &.disabled {
+        --btn-color: #{color('white')};
         --btn-bg-color: #{color('gray-700')};
         --btn-border-color: #{color('gray-700')};
         --btn-hover-bg-color: #{color('gray-600')};
@@ -148,6 +158,7 @@ a {
     padding: spacing(-3);
     font-weight: 500;
     text-align: start;
+    text-transform: none;
 
     display: flex;
     align-items: center;
@@ -161,6 +172,10 @@ a {
 
     &.selected {
         background-color: color('brand-fade');
+    }
+
+    &.red {
+        --btn-hover-color: #{color('error-main')};
     }
 
     &:hover {
@@ -187,6 +202,11 @@ a {
         margin-inline-end: 0.5em;
         font-size: 1.3em;
     }
+
+    &[data-active] {
+        color: var(--btn-hover-color);
+        font-weight: 600;
+    }
 }
 
 .card-btn[role="button"],
@@ -194,12 +214,15 @@ button.card-btn {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     cursor: pointer;
     padding: spacing(0);
     box-shadow: var(--z-box-shadow-medium);
     border-radius: var(--border-radius);
     transition: color, background-color 100ms linear;
+    color: color('black');
+    background-color: color('white');
 
     & > * {
         pointer-events: none;
@@ -237,6 +260,32 @@ button.card-btn {
 
     & .icon {
         font-size: 6rem;
+    }
+
+    &[data-completed],
+    &[data-locked] {
+        & .icon {
+            color: color('gray-500');
+        }
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        &[data-completed] {
+            background-color: color('white');
+            color: color('gray-500');
+
+            & .icon {
+                color: color('gray-500');
+            }
+        }
+        &[data-locked] {
+            background-color: color('gray-700');
+
+            & .icon {
+                color: color('white');
+            }
+        }
     }
 }
 
