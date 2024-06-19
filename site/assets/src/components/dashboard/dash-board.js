@@ -31,6 +31,21 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
 
     static get routes() {
+        const redirectRoute = DashBoard.rootRoute
+        const { makeComponent } = redirectRoute.data
+        /* Setup the route of the /dashboard url to point to the appropriate landing stage of the user */
+        const routes = dashRoutes().map((route) => {
+            if (route.name === 'root') {
+                route.data = { makeComponent }
+            }
+
+            return route
+        })
+
+        return routes
+    }
+
+    static get rootRoute() {
         const redirectRoutes = {
             1: 'getting-started',
             2: 'training',
@@ -42,18 +57,8 @@ export class DashBoard extends navigator(router(LitElement)) {
         const redirectRoute = dashRoutes().find(
             ({ name }) => name === redirectRoutes[redirectRouteIndex]
         )
-        const { makeComponent } = redirectRoute.data
 
-        /* Setup the route of the /dashboard url to point to the appropriate landing stage of the user */
-        const routes = dashRoutes().map((route) => {
-            if (route.name === 'root') {
-                route.data = { makeComponent }
-            }
-
-            return route
-        })
-
-        return routes
+        return redirectRoute
     }
 
     static getRoute(name) {
@@ -646,6 +651,24 @@ export class DashBoard extends navigator(router(LitElement)) {
         })
     }
 
+    isParentSectionActive(parentRoute) {
+        let route = DashBoard.getRoute(this.route)
+
+        if (this.route === 'root') {
+            route = DashBoard.rootRoute
+        }
+
+        if (route.name === parentRoute) {
+            return true
+        }
+
+        if (route.parent === parentRoute) {
+            return true
+        }
+
+        return false
+    }
+
     render() {
         return html`
             <div
@@ -685,7 +708,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                 data-accordion-menu
                                 data-submenu-toggle="true"
                             >
-                                <li class="menu-section" data-no-toggle>
+                                <li class="menu-section" data-no-toggle ?data-active=${this.isParentSectionActive(RouteNames.gettingStarted)}>
                                     <nav-link
                                         href=${this.makeHref(
                                             RouteNames.gettingStarted
@@ -762,7 +785,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                     </ul>
                                 </li>
                             </ul>
-                            <div class="menu-section">
+                            <div class="menu-section" ?data-active=${this.isParentSectionActive(RouteNames.training)}>
                                 <nav-link
                                     href=${this.makeHref(RouteNames.training)}
                                     class="menu-section__title menu-btn"
@@ -889,7 +912,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                     })}
                                 </ul>
                             </div>
-                            <li class="menu-section">
+                            <li class="menu-section" ?data-active=${this.isParentSectionActive(RouteNames.practicing)}>
                                 <nav-link
                                     href=${this.makeHref(RouteNames.practicing)}
                                     class="menu-section__title menu-btn"
