@@ -142,6 +142,7 @@ a {
 
     &[aria-disabled="true"],
     &.disabled {
+        --btn-color: #{color('white')};
         --btn-bg-color: #{color('gray-700')};
         --btn-border-color: #{color('gray-700')};
         --btn-hover-bg-color: #{color('gray-600')};
@@ -201,6 +202,11 @@ a {
         margin-inline-end: 0.5em;
         font-size: 1.3em;
     }
+
+    &[data-active] {
+        color: var(--btn-hover-color);
+        font-weight: 600;
+    }
 }
 
 .card-btn[role="button"],
@@ -254,6 +260,32 @@ button.card-btn {
 
     & .icon {
         font-size: 6rem;
+    }
+
+    &[data-completed],
+    &[data-locked] {
+        & .icon {
+            color: color('gray-500');
+        }
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        &[data-completed] {
+            background-color: color('white');
+            color: color('gray-500');
+
+            & .icon {
+                color: color('gray-500');
+            }
+        }
+        &[data-locked] {
+            background-color: color('gray-700');
+
+            & .icon {
+                color: color('white');
+            }
+        }
     }
 }
 

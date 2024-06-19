@@ -153,6 +153,18 @@ export class ProfileForm extends LitElement {
                         </div>
                     </div>
                 </div>
+                    ${
+                        this.userProfile.sign_in_providers && Array.isArray(this.userProfile.sign_in_providers) ? html`
+                            <label>${jsObject.translations.linked_accounts}</label>
+                            <div class="cluster">
+                                ${
+                                    this.userProfile.sign_in_providers.map((profile) => html`
+                                        <span class="token">${profile}</span>
+                                    `)
+                                }
+                            </div>
+                        ` : ''
+                    }
                 <div class="">
                     <label for="communications_email">${jsObject.translations.communications_email}</label>
                     <div class="d-flex align-items-center">
@@ -234,7 +246,10 @@ export class ProfileForm extends LitElement {
 
                 </div>
 
-                <button class="btn my-0 fit-content" id="submit-profile" ?disabled=${this.loading}>${jsObject.translations.save}</button>
+                <div class="stack my-0" data-fit-content>
+                    <button class="btn" id="submit-profile" ?disabled=${this.loading}>${jsObject.translations.save}</button>
+                    <a href=${jsObject.urls.logout} class="btn outline">${jsObject.translations.logout}</a>
+                </div>
                 <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
 
             </form>
