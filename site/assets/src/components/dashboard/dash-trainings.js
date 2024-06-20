@@ -293,6 +293,44 @@ export class DashTrainings extends DashPage {
         jQuery(modal).foundation('close')
     }
 
+    editSessionDetails() {
+        document.querySelector('#location-note').value = this.training.location_note
+        document.querySelector('#time-of-day-note').value = this.training.time_of_day_note
+
+        this.openEditSessionDetailsModal()
+    }
+    openEditSessionDetailsModal() {
+        const modal = document.querySelector('#edit-session-details-modal')
+        jQuery(modal).foundation('open')
+    }
+    closeEditSessionDetailsModal() {
+        const modal = document.querySelector('#edit-session-details-modal')
+        jQuery(modal).foundation('close')
+    }
+    saveSessionDetails() {
+        if (this.isSavingSession) {
+            return
+        }
+        this.isSavingSession = true
+
+        const locationNote = document.querySelector('#location-note').value
+        const timeNote = document.querySelector('#time-of-day-note').value
+
+        zumeRequest.put(`plan/${this.training.join_key}`, {
+            location_note: locationNote,
+            time_of_day_note: timeNote,
+        })
+            .then((result) => {
+                this.training.location_note = locationNote
+                this.training.time_of_day_note = timeNote
+            })
+            .finally(() => {
+                this.isSavingSession = false
+                this.closeEditSessionDetailsModal()
+            })
+
+    }
+
     editTitle() {
         this.isEditingTitle = true
     }
@@ -710,6 +748,44 @@ export class DashTrainings extends DashPage {
                         <button
                             class="btn outline tight"
                             @click=${this.cancelEditingSession}
+                            ?disabled=${this.isSavingSession}
+                            aria-disabled=${this.isSavingSession ? 'true' : 'false'}
+                        >
+                            ${jsObject.translations.cancel}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal small" id="edit-session-details-modal" data-reveal data-v-offset="20">
+                <button class="ms-auto close-btn" data-close aria-label=${jsObject.translations.close} type="button">
+                        <span class="icon z-icon-close"></span>
+                </button>
+                <div class="stack">
+                    <div class="d-flex gap-0 flex-wrap justify-content-center">
+                        <h2>${jsObject.translations.edit}:</h2>
+                        <h3 class="h2 brand-light">${jsObject.translations.group_details}</h3>
+                    </div>
+                    <div>
+                        <label for="location-note">${jsObject.translations.location}</label>
+                        <input class="input" type="text" id="location-note"/>
+                    </div>
+                    <div>
+                        <label for="time-of-day-note">${jsObject.translations.time}</label>
+                        <input class="input" type="text" id="time-of-day-note"/>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center gap--1">
+                        <button
+                            class="btn tight"
+                            @click=${this.saveSessionDetails}
+                            ?disabled=${this.isSavingSession}
+                            aria-disabled=${this.isSavingSession ? 'true' : 'false'}
+                        >
+                            ${jsObject.translations.save}
+                            <span class="loading-spinner ${this.isSavingSession ? 'active' : ''}"></span>
+                        </button>
+                        <button
+                            class="btn outline tight"
+                            @click=${this.closeEditSessionDetailsModal}
                             ?disabled=${this.isSavingSession}
                             aria-disabled=${this.isSavingSession ? 'true' : 'false'}
                         >
