@@ -56,7 +56,9 @@ export class MakeTraining extends LitElement {
         this.selectedDays = []
         this.completedSteps = []
         this.calendarStart = DateTime.now().startOf('month').toISODate()
+        this.calendarStartMinusOneYear = DateTime.now().minus({ year: 1 }).startOf('month').toISODate()
         this.calendarEnd = DateTime.now().plus({ month: 2 }).endOf('month').toISODate()
+        this.calendarEndTwoYears = DateTime.now().plus({ years: 2 }).endOf('month').toISODate()
         this.calendarView = 'all'
         this.scheduleView = 'calendar'
 }
@@ -428,14 +430,12 @@ export class MakeTraining extends LitElement {
                     <div class="stack">
                         <span class="z-icon-start-date brand-light f-7"></span>
                         <h2>${this.t.question_when_will_you_start}</h2>
-                        <div class="cluster justify-content-center gapy-0">
-                            <input type="date" name="date" class="fit-content m0" @change=${this._handleChange} value=${this.state.date} onclick="this.showPicker()" >
-                            ${
-                                this.state.date ? html`
-                                    <input type="time" name="time" class="fit-content m0" @change=${this._handleChange} value=${this.state.time} min="00:00" max="23:55" step="300" onclick="this.showPicker()" />
-                                ` : ''
-                            }
-                        </div>
+                        <calendar-select
+                            style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
+                            showToday
+                            @day-added=${this.addDate}
+                        ></calendar-select>
+                        <input type="text" name="time" placeholder=${this.t.time} @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
                         <div class="stack mx-auto" data-fit-content>
                             <button class="btn fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
                         </div>

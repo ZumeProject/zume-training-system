@@ -156,7 +156,7 @@ export class CalendarSelect extends LitElement {
 
     constructor() {
         super();
-        this.monthToShow = null;
+        this.monthToShow = DateTime.now({ locale: navigator.language });
         this.startDate = ''
         this.endDate = ''
         this.selectedDays = []
@@ -255,7 +255,7 @@ export class CalendarSelect extends LitElement {
 
     renderSlider() {
         const now = DateTime.now({ locale: navigator.language })
-        const monthDate = this.monthToShow || DateTime.max(now, DateTime.fromISO(this.startDate))
+        const monthDate = this.monthToShow || DateTime.fromISO(this.startDate)
         const monthStart = monthDate.startOf('month')
 
 
@@ -268,7 +268,7 @@ export class CalendarSelect extends LitElement {
                 <div class="calendar">
                     <button
                         class="month-next"
-                        ?disabled=${monthStart < now}
+                        ?disabled=${this.startDate ? monthStart <= DateTime.fromISO(this.startDate).startOf('month') : false}
                         @click=${() => this.nextView(previousMonth)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -280,7 +280,7 @@ export class CalendarSelect extends LitElement {
                     </h3>
                     <button
                         class="month-next"
-                        ?disabled=${nextMonth > DateTime.fromISO(this.endDate)}
+                        ?disabled=${this.endDate ? nextMonth > DateTime.fromISO(this.endDate) : false}
                         @click=${() => this.nextView(nextMonth)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
