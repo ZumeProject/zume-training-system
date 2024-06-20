@@ -293,6 +293,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'set_group_name' => sprintf( __( 'Set %s', 'zume' ), __( 'Group Name', 'zume' ) ),
                 'group_name' => __( 'Group name', 'zume' ),
                 'set_start_date' => sprintf( __( 'Set %s', 'zume' ), __( 'Start Date', 'zume' ) ),
+                'set_start_time' => sprintf( __( 'Set %s', 'zume' ), __( 'Time', 'zume' ) ),
                 'done' => __( 'Done', 'zume' ),
                 'skip' => __( 'Skip', 'zume' ),
                 'create' => __( 'Save', 'zume' ),
