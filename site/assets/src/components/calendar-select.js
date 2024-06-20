@@ -73,6 +73,9 @@ export class CalendarSelect extends LitElement {
             border-color: var(--cp-color);
             background-color: var(--cp-hover-color);
           }
+          .highlighted-day {
+            background-color: var(--cp-hover-color);
+          }
           .selected-day {
             color: white;
             background-color: var(--cp-color);
@@ -159,6 +162,7 @@ export class CalendarSelect extends LitElement {
             startDate: { type: String },
             endDate: { type: String },
             selectedDays: { type: Array },
+            highlightedDays: { type: Array },
             view: { type: String },
             showToday: { type: Boolean },
             showTodayButton: { type: Boolean },
@@ -173,11 +177,19 @@ export class CalendarSelect extends LitElement {
         this.startDate = ''
         this.endDate = ''
         this.selectedDays = []
+        this.highlightedDays = []
         this.showToday = false
         this.showTodayButton = false
         this.showClearButton = false
         this.today = DateTime.now().toISODate()
         this.view = 'slider'
+    }
+
+    willUpdate(properties) {
+        if (properties.has('selectedDays') && this.selectedDays.length > 0) {
+            const firstSelectedDay = this.selectedDays[0]
+            this.monthToShow = DateTime.fromFormat(`${firstSelectedDay.date}`, 'y-LL-dd')
+        }
     }
 
     nextView(month){
@@ -237,9 +249,13 @@ export class CalendarSelect extends LitElement {
         this.endDate = newEndDate
     }
 
+    isHighlighted(date) {
+        const days = this.highlightedDays.find((day) => day.date === date)
+        return !!days
+    }
+
     isSelected(date) {
         const days = this.selectedDays.find((day) => day.date === date)
-
         return !!days
     }
 
@@ -264,7 +280,7 @@ export class CalendarSelect extends LitElement {
                 monthDays.map(day => html`
                     <div
                         role="button"
-                        class="cell day ${day.disabled ? 'disabled':''} ${this.isSelected(day.key) ? 'selected-day'  : ''} ${this.showToday && day.key === this.today ? 'today' : ''}"
+                        class="cell day ${day.disabled ? 'disabled':''} ${this.isHighlighted(day.key) ? 'highlighted-day' : ''} ${this.isSelected(day.key) ? 'selected-day'  : ''} ${this.showToday && day.key === this.today ? 'today' : ''}"
                         data-day=${day.key}
                         @click=${event => !day.disabled && this.handleSelectDay(event, day.key)}
                     >

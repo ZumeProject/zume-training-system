@@ -119,6 +119,16 @@ export class DashTrainings extends DashPage {
 
         return sessions
     }
+    getHighlightedDays() {
+        if (!this.sessions) {
+            return []
+        }
+        return this.sessions.map((session) => {
+            return {
+                date: DateTime.fromMillis(session.datetime).toISODate()
+            }
+        })
+    }
     getGroupMembers() {
         if (!this.training.participants || !Array.isArray(this.training.participants)) {
             return []
@@ -341,7 +351,6 @@ export class DashTrainings extends DashPage {
         }
     }
     closeKebabMenu(sessionId) {
-        console.log(sessionId)
         jQuery(`#kebab-menu-${sessionId}`).foundation('close')
     }
     toggleKebabMenu(event) {
@@ -645,7 +654,8 @@ export class DashTrainings extends DashPage {
                     <calendar-select
                         style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
                         showToday
-                        .selectedDays=${this.sessionToEdit ? [{ date: this.sessionToEdit.date }] : []}
+                        .selectedDays=${this.sessionToEdit?.date ? [{ date: this.sessionToEdit.date }] : []}
+                        .highlightedDays=${this.getHighlightedDays()}
                         @day-added=${this.saveSession}
                     ></calendar-select>
                     <div class="d-flex align-items-center justify-content-center gap--1">
