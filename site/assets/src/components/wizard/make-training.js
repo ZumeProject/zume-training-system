@@ -326,6 +326,12 @@ export class MakeTraining extends LitElement {
     createId() {
         return sha256(Math.random(0,10000)).slice(0, 6)
     }
+    selectStartDate(event) {
+        const { date } = event.detail
+    }
+    clearStartDate(event) {
+
+    }
     addDate(event) {
         const { date } = event.detail
 
@@ -433,7 +439,8 @@ export class MakeTraining extends LitElement {
                         <calendar-select
                             style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
                             showToday
-                            @day-added=${this.addDate}
+                            @day-added=${this.selectStartDate}
+                            @clear=${this.clearStartDate}
                         ></calendar-select>
                         <input type="text" name="time" placeholder=${this.t.time} @change=${this._handleChange} value=${typeof this.state === 'string' ? this.state : ''} />
                         <div class="stack mx-auto" data-fit-content>

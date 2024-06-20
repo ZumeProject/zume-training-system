@@ -16,13 +16,21 @@ export class CalendarSelect extends LitElement {
             --cp-color-darker: var(--primary-darker, #387cc9);
             --cp-hover-color: var(--hover-color, #4676fa1a);
             --cp-grid-min-size: var(--grid-min-size, 190px);
-
+          }
+          .calendar-footer {
+            margin-inline: 3rem;
+          }
+          .repel {
+            display: flex;
+            justify-content: space-between;
+          }
+          .grid {
             display: grid;
             grid-gap: 1rem;
             grid-auto-rows: 1fr;
           }
           @supports (width: min(250px, 100%)) {
-            .calendar-wrapper {
+            .grid {
               grid-template-columns: repeat(auto-fit, minmax(min(var(--cp-grid-min-size), 100%), 1fr));
             }
           }
@@ -118,6 +126,9 @@ export class CalendarSelect extends LitElement {
             opacity: 0.25;
             cursor: default;
           }
+          .small {
+            padding: 0.4rem 0.5rem;
+          }
           .add-month-button {
             display: flex;
             align-items: center;
@@ -170,7 +181,11 @@ export class CalendarSelect extends LitElement {
         this.monthToShow = month
     }
 
-    selectDay(event, date){
+    handleSelectDay(event, date){
+        const target = event.target
+        this.selectDay(date, target)
+    }
+    selectDay(date, target) {
         const days = this.selectedDays.filter((day) => day.date === date)
         if (days.length === 0) {
             this.dispatchEvent(new CustomEvent('day-added', { detail: { date } }));
@@ -180,7 +195,9 @@ export class CalendarSelect extends LitElement {
             })
         }
         this.shadowRoot.querySelectorAll('.selected-time').forEach(element => element.classList.remove('selected-time'))
-        event.target.classList.add('selected-time');
+        if (target) {
+            target.classList.add('selected-time');
+        }
     }
 
     getDaysOfTheWeekInitials(localeName = 'en-US', weekday = 'long') {
@@ -242,15 +259,29 @@ export class CalendarSelect extends LitElement {
             ${
                 monthDays.map(day => html`
                     <div
+                        role="button"
                         class="cell day ${day.disabled ? 'disabled':''} ${this.isSelected(day.key) ? 'selected-day'  : ''} ${this.showToday && day.key === this.today ? 'today' : ''}"
                         data-day=${day.key}
-                        @click=${event => !day.disabled && this.selectDay(event, day.key)}
+                        @click=${event => !day.disabled && this.handleSelectDay(event, day.key)}
                     >
                         ${day.formatted}
                     </div>
                 `
             )}
         `
+    }
+
+    clearCalendar() {
+        this.dispatchEvent(new CustomEvent('clear'))
+        this.shadowRoot.querySelectorAll('.selected-time').forEach((element) => {
+            element.classList.remove('selected-time')
+        })
+    }
+    selectToday() {
+        this.monthToShow = DateTime.now({ locale: navigator.language})
+        const nowDate = this.monthToShow.toISODate()
+        const target = this.shadowRoot.querySelector(`.day[data-day="${nowDate}"]`)
+        this.selectDay(nowDate, target)
     }
 
     renderSlider() {
@@ -289,6 +320,20 @@ export class CalendarSelect extends LitElement {
                     </button>
                     ${this.renderCalendar(monthDate)}
                 </div>
+                <div class="calendar-footer repel">
+                    <button
+                        class="small"
+                        @click=${() => this.clearCalendar()}
+                    >
+                        Clear
+                    </button>
+                    <button
+                        class="small"
+                        @click=${() => this.selectToday()}
+                    >
+                        Today
+                    </button>
+                </div>
             </div>
         `
     }
@@ -309,7 +354,7 @@ export class CalendarSelect extends LitElement {
             }
 
             return html`
-                <div class="calendar-wrapper">
+                <div class="calendar-wrapper grid">
                     ${
                         map( range( i ), (index) => {
                             const currentMonth = monthStart.plus({ months: index })
