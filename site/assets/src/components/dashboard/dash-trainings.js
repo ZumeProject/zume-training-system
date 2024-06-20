@@ -24,6 +24,8 @@ export class DashTrainings extends DashPage {
             isEditingTitle: { type: Boolean, attribute: false },
             isSavingTitle: { type: Boolean, attribute: false },
             isSavingSession: { type: Boolean, attribute: false },
+            groupMembersOpen: { type: Boolean, attribute: false },
+            groupDetailsOpen: { type: Boolean, attribute: false },
         };
     }
 
@@ -37,6 +39,8 @@ export class DashTrainings extends DashPage {
         this.sessionToEdit = {}
         this.openDetailStates = {}
         this.filteredItems = []
+        this.groupMembersOpen = false
+        this.groupDetailsOpen = false
 
         this.filterName = 'my-trainings-filter'
         this.filterStatus = ZumeStorage.load(this.filterName)
@@ -62,6 +66,8 @@ export class DashTrainings extends DashPage {
 
     firstUpdated() {
         super.firstUpdated()
+
+        zumeAttachObservers()
     }
 
     updated() {
@@ -385,6 +391,12 @@ export class DashTrainings extends DashPage {
         const menu = this.querySelector('#filter-menu')
         jQuery(menu).foundation('close')
     }
+    toggleGroupMembers() {
+        this.groupMembersOpen = !this.groupMembersOpen
+    }
+    toggleGroupDetails() {
+        this.groupDetailsOpen = !this.groupDetailsOpen
+    }
 
     renderListItem(session) {
         const { id, name, datetime, completed } = session
@@ -616,11 +628,13 @@ export class DashTrainings extends DashPage {
                     ${this.loading && !this.error ? html`<span class="loading-spinner active"></span>` : '' }
                     ${!this.loading && !this.error && this.code !== 'teaser' ? html`
                                 <div class="card | group-members | grow-0">
-                                    <button class="f-0 f-medium d-flex align-items-center gap--2 black">
+                                    <button
+                                        class="f-0 f-medium d-flex align-items-center gap--2 black"
+                                        @click=${this.toggleGroupMembers}
+                                    >
                                         <span class="icon z-icon-group brand-light"></span> ${jsObject.translations.group_members} (${this.groupMembers.length})
                                     </button>
-                                    <div class="collapse" data-state="open">
-                                        <!-- The functionality of the .collapse class needs to be refactored from dash-progress.js toggleDetails function to be re-used here -->
+                                    <div class="collapse" ?data-open=${this.groupMembersOpen}>
                                         ${!this.loading && this.groupMembers && this.groupMembers.length > 0
                                             ? html`
                                                 <ol class="ps-1">
@@ -636,6 +650,31 @@ export class DashTrainings extends DashPage {
                                     >
                                         ${jsObject.translations.invite_friends}
                                     </button>
+                                </div>
+                                <div class="card | group-members | grow-0">
+                                    <button
+                                        class="f-0 f-medium d-flex align-items-center gap--2 black"
+                                        @click=${this.toggleGroupDetails}
+                                    >
+                                        <span class="icon z-icon-overview brand-light"></span> ${jsObject.translations.group_details}
+                                    </button>
+                                    <div class="collapse" ?data-open=${this.groupDetailsOpen}>
+                                        <div class="stack--2">
+                                            <p class="text-left"><span class="f-medium">${jsObject.translations.location}:</span> ${this.training.location_note}</p>
+                                            <p class="text-left"><span class="f-medium">${jsObject.translations.time}:</span> ${this.training.time_of_day_note}</p>
+                                            ${
+                                                this.isGroupLeader() ? html`
+                                                    <button
+                                                        @click=${this.editSessionDetails}
+                                                        class="btn brand tight mt--2"
+                                                    >
+                                                        ${jsObject.translations.edit}
+                                                    </button>
+                                                ` : ''
+                                            }
+                                        </div>
+                                    </div>
+
                                 </div>
                             ` : ''
                     }
