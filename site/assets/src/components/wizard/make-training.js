@@ -448,6 +448,8 @@ export class MakeTraining extends LitElement {
                         <calendar-select
                             style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
                             showToday
+                            showClearButton
+                            showTodayButton
                             .selectedDays=${typeof this.state === 'string' && this.state ? [{ date: this.state}] : []}
                             @day-added=${this.selectStartDate}
                             @clear=${this.clearStartDate}

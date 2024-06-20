@@ -161,6 +161,8 @@ export class CalendarSelect extends LitElement {
             selectedDays: { type: Array },
             view: { type: String },
             showToday: { type: Boolean },
+            showTodayButton: { type: Boolean },
+            showClearButton: { type: Boolean },
             monthToShow: { attribute: false },
         }
     }
@@ -172,6 +174,8 @@ export class CalendarSelect extends LitElement {
         this.endDate = ''
         this.selectedDays = []
         this.showToday = false
+        this.showTodayButton = false
+        this.showClearButton = false
         this.today = DateTime.now().toISODate()
         this.view = 'slider'
     }
@@ -320,20 +324,32 @@ export class CalendarSelect extends LitElement {
                     </button>
                     ${this.renderCalendar(monthDate)}
                 </div>
-                <div class="calendar-footer repel">
-                    <button
-                        class="small"
-                        @click=${() => this.clearCalendar()}
-                    >
-                        Clear
-                    </button>
-                    <button
-                        class="small"
-                        @click=${() => this.selectToday()}
-                    >
-                        Today
-                    </button>
-                </div>
+                ${ this.showClearButton || this.showTodayButton ? html`
+                        <div class="calendar-footer repel">
+                            ${
+                                this.showClearButton ? html`
+                                    <button
+                                        class="small"
+                                        @click=${() => this.clearCalendar()}
+                                    >
+                                        Clear
+                                    </button>
+                                ` : ''
+                            }
+                            ${
+                                this.showTodayButton ? html`
+                                    <button
+                                        class="small"
+                                        @click=${() => this.selectToday()}
+                                    >
+                                        Today
+                                    </button>
+                                ` : ''
+                            }
+                        </div>
+                    ` : ''
+                }
+
             </div>
         `
     }

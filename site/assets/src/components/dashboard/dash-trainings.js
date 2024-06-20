@@ -229,23 +229,20 @@ export class DashTrainings extends DashPage {
 
         const date = DateTime.fromMillis(sessionToEdit.datetime)
         sessionToEdit.date = date.toISODate()
-        sessionToEdit.time = date.toFormat('HH:mm')
 
         this.sessionToEdit = sessionToEdit
 
-        document.querySelector('#session-date-picker').value = sessionToEdit.date
-        document.querySelector('#session-time-picker').value = sessionToEdit.time
-
         this.openEditSessionModal()
     }
-    saveSession() {
+    saveSession(event) {
         if (this.isSavingSession) {
             return
         }
         this.isSavingSession = true
-        const date = document.querySelector('#session-date-picker').value
-        const time = document.querySelector('#session-time-picker').value
-        const sessionTime = DateTime.fromFormat(`${date} ${time}`, 'y-LL-dd HH:mm')
+
+        const { date } = event.detail
+
+        const sessionTime = DateTime.fromFormat(`${date}`, 'y-LL-dd')
         zumeRequest.post( 'plan/edit-session', {
             key: this.training.join_key,
             session_id: this.sessionToEdit.id,
@@ -645,25 +642,12 @@ export class DashTrainings extends DashPage {
                         <h2>${jsObject.translations.edit}:</h2>
                         <h3 class="h2 brand-light">${this.sessionToEdit?.name}</h3>
                     </div>
-                    <div class="cluster justify-content-center gapy-0">
-                        <input
-                            id="session-date-picker"
-                            type="date"
-                            name="date"
-                            class="fit-content m0"
-                            onclick="this.showPicker()"
-                        >
-                        <input
-                            id="session-time-picker"
-                            type="time"
-                            name="time"
-                            class="fit-content m0"
-                            min="00:00"
-                            max="23:55"
-                            step="300"
-                            onclick="this.showPicker()"
-                        >
-                    </div>
+                    <calendar-select
+                        style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
+                        showToday
+                        .selectedDays=${this.sessionToEdit ? [{ date: this.sessionToEdit.date }] : []}
+                        @day-added=${this.saveSession}
+                    ></calendar-select>
                     <div class="d-flex align-items-center justify-content-center gap--1">
                         <button
                             class="btn tight"
