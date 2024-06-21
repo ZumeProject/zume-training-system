@@ -450,6 +450,10 @@ export class MakeTraining extends LitElement {
                             showToday
                             showClearButton
                             showTodayButton
+                            .translations=${{
+                                clear: this.t.clear,
+                                today: this.t.today,
+                            }}
                             .selectedDays=${typeof this.state === 'string' && this.state ? [{ date: this.state}] : []}
                             @day-added=${this.selectStartDate}
                             @clear=${this.clearStartDate}
@@ -509,6 +513,10 @@ export class MakeTraining extends LitElement {
                                         .selectedDays=${this.selectedDays.sort(this.sortDays)}
                                         view=${this.calendarView}
                                         showToday
+                                        .translations=${{
+                                            clear: this.t.clear,
+                                            today: this.t.today,
+                                        }}
                                         @day-added=${this.addDate}
                                         @day-removed=${this.removeDate}
                                         @calendar-extended=${this.updateCalendarEnd}

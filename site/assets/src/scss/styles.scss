@@ -771,6 +771,10 @@ input::-webkit-calendar-picker-indicator {
     background-color: color('brand-fade');
     color: color('brand-light');
 }
+.zume-date-picker {
+  max-width: 250px;
+  width: 100%;
+}
 
 @media (min-width: $break-lg) {
     #share-button,

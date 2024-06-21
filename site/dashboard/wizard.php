@@ -301,6 +301,8 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'date' => __( 'Date', 'zume' ),
                 'summary' => __( 'Summary', 'zume' ),
                 'clear_calendar' => __( 'Clear Calendar', 'zume' ),
+                'clear' => __( 'Clear', 'zume' ),
+                'today' => __( 'Today', 'zume' ),
                 'add' => __( 'Add', 'zume' ),
                 'no_days_selected' => __( 'Add some dates to your schedule', 'zume' ),
                 'change' => __( 'Change', 'zume' ),

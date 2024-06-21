@@ -462,7 +462,7 @@ export class DashTrainings extends DashPage {
                     <div class="list__secondary" data-align-start>
                         <div class="d-flex justify-content-center align-items-center gap--2">
                             <!-- TODO: only use the YY if it's not in the current year -->
-                            <span>${datetime > 0 ? moment(datetime).format("MMM Do, YY") : jsObject.translations.not_scheduled}</span>
+                            <span>${datetime > 0 ? DateTime.fromMillis(datetime).toFormat("DDD") : jsObject.translations.not_scheduled}</span>
                             <button class="icon-btn" data-toggle="kebab-menu-${id}" @click=${this.toggleKebabMenu}>
                                 <span class="icon z-icon-kebab brand-light"></span>
                             </button>

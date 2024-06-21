@@ -18,7 +18,7 @@ export class CalendarSelect extends LitElement {
             --cp-grid-min-size: var(--grid-min-size, 190px);
           }
           .calendar-footer {
-            margin-inline: 3rem;
+            margin-inline: 5%;
           }
           .repel {
             display: flex;
@@ -164,6 +164,7 @@ export class CalendarSelect extends LitElement {
             selectedDays: { type: Array },
             highlightedDays: { type: Array },
             view: { type: String },
+            translations: { type: Object },
             showToday: { type: Boolean },
             showTodayButton: { type: Boolean },
             showClearButton: { type: Boolean },
@@ -173,7 +174,7 @@ export class CalendarSelect extends LitElement {
 
     constructor() {
         super();
-        this.monthToShow = DateTime.now({ locale: navigator.language });
+        this.monthToShow = DateTime.now();
         this.startDate = ''
         this.endDate = ''
         this.selectedDays = []
@@ -183,6 +184,10 @@ export class CalendarSelect extends LitElement {
         this.showClearButton = false
         this.today = DateTime.now().toISODate()
         this.view = 'slider'
+        this.translations = {
+            'clear': 'Clear',
+            'today': 'Today',
+        }
     }
 
     willUpdate(properties) {
@@ -348,7 +353,7 @@ export class CalendarSelect extends LitElement {
                                         class="small"
                                         @click=${() => this.clearCalendar()}
                                     >
-                                        Clear
+                                        ${this.translations.clear}
                                     </button>
                                 ` : ''
                             }
@@ -358,7 +363,7 @@ export class CalendarSelect extends LitElement {
                                         class="small"
                                         @click=${() => this.selectToday()}
                                     >
-                                        Today
+                                        ${this.translations.today}
                                     </button>
                                 ` : ''
                             }

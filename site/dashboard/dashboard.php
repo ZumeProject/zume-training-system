@@ -294,6 +294,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'signal' => __( 'Signal', 'zume' ),
             'telegram' => __( 'Telegram', 'zume' ),
             'messenger' => __( 'Facebook Messenger', 'zume' ),
+            'clear' => __( 'Clear', 'zume' ),
+            'today' => __( 'Today', 'zume' ),
         ];
     }
 
