@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { range } from 'lit/directives/range.js'
 import { map } from 'lit/directives/map.js'
-import { DateTime } from 'luxon'
+import { DateTime, Info } from 'luxon'
 
 export class CalendarSelect extends LitElement {
     static styles = [
@@ -222,9 +222,10 @@ export class CalendarSelect extends LitElement {
     }
 
     getDaysOfTheWeekInitials(localeName = 'en-US', weekday = 'long') {
+        console.log(DateTime.now().toLocaleString({ 'weekday': 'long' }))
         const now = new Date()
         const dayInMilliseconds = 86400000
-        const format = new Intl.DateTimeFormat(localeName, { weekday }).format
+        const format = (millis) => DateTime.fromMillis(millis).toLocaleString({ weekday })
         return [...Array(7).keys()]
             .map((day) => format(new Date().getTime() - ( now.getDay() - day  ) * dayInMilliseconds  ))
     }
@@ -232,7 +233,7 @@ export class CalendarSelect extends LitElement {
     buildCalendarDays(localeName = 'en-US', monthDate){
         const monthStart = monthDate.startOf('month').startOf('day');
         const monthDays = []
-        const format = new Intl.DateTimeFormat(localeName, { day: 'numeric' }).format
+        const format = (millis) => DateTime.fromMillis(millis).toLocaleString({ day: 'numeric' })
         for ( let i = 0; i < monthDate.daysInMonth; i++ ){
             const dayDate = monthStart.plus({ days: i })
             const nextDay = dayDate.plus({ days: 1 })
