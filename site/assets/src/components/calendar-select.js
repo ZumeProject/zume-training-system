@@ -11,6 +11,15 @@ export class CalendarSelect extends LitElement {
             container-type: inline-size;
             container-name: calendar;
           }
+          button {
+            background-color: transparent;
+            color: inherit;
+            font-size: inherit;
+            font-family: inherit
+          }
+          button:hover {
+            color: inherit
+          }
           .calendar-wrapper {
             --cp-color: var(--primary-color, #489bfa);
             --cp-color-darker: var(--primary-darker, #387cc9);
@@ -107,29 +116,28 @@ export class CalendarSelect extends LitElement {
           .month-next svg {
             width: 1.5rem;
           }
-          button {
+          .button {
             padding: 0.25rem 0.5rem;
             color: rgb(254, 254, 254);
             font-size: 1rem;
             border-radius: 5px;
             border: 1px solid transparent;
             font-weight: normal;
-            padding: 0.85rem 1rem;
             cursor: pointer;
             background-color: var(--cp-color);
             line-height: 1;
             transition: all 50ms linear;
           }
-          button:not([disabled]):hover {
+          .button:not([disabled]):hover {
             background-color: transparent;
             border-color: var(--cp-color);
             color: var(--cp-color);
           }
-          button[disabled] {
+          .button[disabled] {
             opacity: 0.25;
             cursor: default;
           }
-          .small {
+          .button.small {
             padding: 0.4rem 0.5rem;
           }
           .add-month-button {
@@ -222,7 +230,6 @@ export class CalendarSelect extends LitElement {
     }
 
     getDaysOfTheWeekInitials(localeName = 'en-US', weekday = 'long') {
-        console.log(DateTime.now().toLocaleString({ 'weekday': 'long' }))
         const now = new Date()
         const dayInMilliseconds = 86400000
         const format = (millis) => DateTime.fromMillis(millis).toLocaleString({ weekday })
@@ -284,14 +291,13 @@ export class CalendarSelect extends LitElement {
             )}
             ${
                 monthDays.map(day => html`
-                    <div
-                        role="button"
+                    <button
                         class="cell day ${day.disabled ? 'disabled':''} ${this.isHighlighted(day.key) ? 'highlighted-day' : ''} ${this.isSelected(day.key) ? 'selected-day'  : ''} ${this.showToday && day.key === this.today ? 'today' : ''}"
                         data-day=${day.key}
                         @click=${event => !day.disabled && this.handleSelectDay(event, day.key)}
                     >
                         ${day.formatted}
-                    </div>
+                    </button>
                 `
             )}
         `
@@ -324,7 +330,7 @@ export class CalendarSelect extends LitElement {
             <div class="calendar-wrapper">
                 <div class="calendar">
                     <button
-                        class="month-next"
+                        class="button month-next"
                         ?disabled=${this.startDate ? monthStart <= DateTime.fromISO(this.startDate).startOf('month') : false}
                         @click=${() => this.nextView(previousMonth)}
                     >
@@ -336,7 +342,7 @@ export class CalendarSelect extends LitElement {
                         ${monthDate.toFormat('LLLL y')}
                     </h3>
                     <button
-                        class="month-next"
+                        class="button month-next"
                         ?disabled=${this.endDate ? nextMonth > DateTime.fromISO(this.endDate) : false}
                         @click=${() => this.nextView(nextMonth)}
                     >
@@ -351,7 +357,7 @@ export class CalendarSelect extends LitElement {
                             ${
                                 this.showClearButton ? html`
                                     <button
-                                        class="small"
+                                        class="button small"
                                         @click=${() => this.clearCalendar()}
                                     >
                                         ${this.translations.clear}
@@ -361,7 +367,7 @@ export class CalendarSelect extends LitElement {
                             ${
                                 this.showTodayButton ? html`
                                     <button
-                                        class="small"
+                                        class="button small"
                                         @click=${() => this.selectToday()}
                                     >
                                         ${this.translations.today}

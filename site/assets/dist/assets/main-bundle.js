@@ -3011,7 +3011,7 @@ ${this.training.zoom_link_note}
  * @license
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */function*wi(i,t){if(i!==void 0){let e=0;for(const s of i)yield t(s,e++)}}class Bn extends k{static get properties(){return{startDate:{type:String},endDate:{type:String},selectedDays:{type:Array},highlightedDays:{type:Array},view:{type:String},translations:{type:Object},showToday:{type:Boolean},showTodayButton:{type:Boolean},showClearButton:{type:Boolean},monthToShow:{attribute:!1}}}constructor(){super(),this.monthToShow=f.now(),this.startDate="",this.endDate="",this.selectedDays=[],this.highlightedDays=[],this.showToday=!1,this.showTodayButton=!1,this.showClearButton=!1,this.today=f.now().toISODate(),this.view="slider",this.translations={clear:"Clear",today:"Today"}}willUpdate(t){if(t.has("selectedDays")&&this.selectedDays.length>0){const e=this.selectedDays[0];this.monthToShow=f.fromFormat(`${e.date}`,"y-LL-dd")}}nextView(t){this.shadowRoot.querySelectorAll(".selected-time").forEach(e=>e.classList.remove("selected-time")),this.monthToShow=t}handleSelectDay(t,e){const s=t.target;this.selectDay(e,s)}selectDay(t,e){const s=this.selectedDays.filter(n=>n.date===t);s.length===0?this.dispatchEvent(new CustomEvent("day-added",{detail:{date:t}})):s.forEach(({id:n})=>{this.dispatchEvent(new CustomEvent("day-removed",{detail:{id:n}}))}),this.shadowRoot.querySelectorAll(".selected-time").forEach(n=>n.classList.remove("selected-time")),e&&e.classList.add("selected-time")}getDaysOfTheWeekInitials(t="en-US",e="long"){console.log(f.now().toLocaleString({weekday:"long"}));const s=new Date,n=864e5,a=r=>f.fromMillis(r).toLocaleString({weekday:e});return[...Array(7).keys()].map(r=>a(new Date().getTime()-(s.getDay()-r)*n))}buildCalendarDays(t="en-US",e){const s=e.startOf("month").startOf("day"),n=[],a=r=>f.fromMillis(r).toLocaleString({day:"numeric"});for(let r=0;r<e.daysInMonth;r++){const o=s.plus({days:r}),c=o.plus({days:1}),d=this.endDate&&o>f.fromISO(this.endDate)||c<=f.fromISO(this.startDate),u={key:o.toISODate(),formatted:a(o.toMillis()),disabled:d};n.push(u)}return n}addMonth(){const t=f.fromISO(this.endDate).plus({months:1}).endOf("month").toISODate();this.dispatchEvent(new CustomEvent("calendar-extended",{detail:{newEndDate:t}})),this.endDate=t}isHighlighted(t){return!!this.highlightedDays.find(s=>s.date===t)}isSelected(t){return!!this.selectedDays.find(s=>s.date===t)}renderCalendar(t){const e=this.getDaysOfTheWeekInitials(navigator.language,"narrow"),s=t.startOf("month").weekday,n=this.buildCalendarDays(navigator.language,t);return l`
+ */function*wi(i,t){if(i!==void 0){let e=0;for(const s of i)yield t(s,e++)}}class Bn extends k{static get properties(){return{startDate:{type:String},endDate:{type:String},selectedDays:{type:Array},highlightedDays:{type:Array},view:{type:String},translations:{type:Object},showToday:{type:Boolean},showTodayButton:{type:Boolean},showClearButton:{type:Boolean},monthToShow:{attribute:!1}}}constructor(){super(),this.monthToShow=f.now(),this.startDate="",this.endDate="",this.selectedDays=[],this.highlightedDays=[],this.showToday=!1,this.showTodayButton=!1,this.showClearButton=!1,this.today=f.now().toISODate(),this.view="slider",this.translations={clear:"Clear",today:"Today"}}willUpdate(t){if(t.has("selectedDays")&&this.selectedDays.length>0){const e=this.selectedDays[0];this.monthToShow=f.fromFormat(`${e.date}`,"y-LL-dd")}}nextView(t){this.shadowRoot.querySelectorAll(".selected-time").forEach(e=>e.classList.remove("selected-time")),this.monthToShow=t}handleSelectDay(t,e){const s=t.target;this.selectDay(e,s)}selectDay(t,e){const s=this.selectedDays.filter(n=>n.date===t);s.length===0?this.dispatchEvent(new CustomEvent("day-added",{detail:{date:t}})):s.forEach(({id:n})=>{this.dispatchEvent(new CustomEvent("day-removed",{detail:{id:n}}))}),this.shadowRoot.querySelectorAll(".selected-time").forEach(n=>n.classList.remove("selected-time")),e&&e.classList.add("selected-time")}getDaysOfTheWeekInitials(t="en-US",e="long"){const s=new Date,n=864e5,a=r=>f.fromMillis(r).toLocaleString({weekday:e});return[...Array(7).keys()].map(r=>a(new Date().getTime()-(s.getDay()-r)*n))}buildCalendarDays(t="en-US",e){const s=e.startOf("month").startOf("day"),n=[],a=r=>f.fromMillis(r).toLocaleString({day:"numeric"});for(let r=0;r<e.daysInMonth;r++){const o=s.plus({days:r}),c=o.plus({days:1}),d=this.endDate&&o>f.fromISO(this.endDate)||c<=f.fromISO(this.startDate),u={key:o.toISODate(),formatted:a(o.toMillis()),disabled:d};n.push(u)}return n}addMonth(){const t=f.fromISO(this.endDate).plus({months:1}).endOf("month").toISODate();this.dispatchEvent(new CustomEvent("calendar-extended",{detail:{newEndDate:t}})),this.endDate=t}isHighlighted(t){return!!this.highlightedDays.find(s=>s.date===t)}isSelected(t){return!!this.selectedDays.find(s=>s.date===t)}renderCalendar(t){const e=this.getDaysOfTheWeekInitials(navigator.language,"narrow"),s=t.startOf("month").weekday,n=this.buildCalendarDays(navigator.language,t);return l`
             ${e.map(a=>l`
                     <div class="cell week-day">
                         ${a}
@@ -3021,21 +3021,20 @@ ${this.training.zoom_link_note}
                     <div class="cell"></div>
                 `)}
             ${n.map(a=>l`
-                    <div
-                        role="button"
+                    <button
                         class="cell day ${a.disabled?"disabled":""} ${this.isHighlighted(a.key)?"highlighted-day":""} ${this.isSelected(a.key)?"selected-day":""} ${this.showToday&&a.key===this.today?"today":""}"
                         data-day=${a.key}
                         @click=${r=>!a.disabled&&this.handleSelectDay(r,a.key)}
                     >
                         ${a.formatted}
-                    </div>
+                    </button>
                 `)}
         `}clearCalendar(){this.dispatchEvent(new CustomEvent("clear")),this.shadowRoot.querySelectorAll(".selected-time").forEach(t=>{t.classList.remove("selected-time")})}selectToday(){this.monthToShow=f.now({locale:navigator.language});const t=this.monthToShow.toISODate(),e=this.shadowRoot.querySelector(`.day[data-day="${t}"]`);this.selectDay(t,e)}renderSlider(){f.now({locale:navigator.language});const t=this.monthToShow||f.fromISO(this.startDate),e=t.startOf("month"),s=t.minus({months:1}),n=e.plus({months:1});return l`
 
             <div class="calendar-wrapper">
                 <div class="calendar">
                     <button
-                        class="month-next"
+                        class="button month-next"
                         ?disabled=${this.startDate?e<=f.fromISO(this.startDate).startOf("month"):!1}
                         @click=${()=>this.nextView(s)}
                     >
@@ -3047,7 +3046,7 @@ ${this.training.zoom_link_note}
                         ${t.toFormat("LLLL y")}
                     </h3>
                     <button
-                        class="month-next"
+                        class="button month-next"
                         ?disabled=${this.endDate?n>f.fromISO(this.endDate):!1}
                         @click=${()=>this.nextView(n)}
                     >
@@ -3061,7 +3060,7 @@ ${this.training.zoom_link_note}
                         <div class="calendar-footer repel">
                             ${this.showClearButton?l`
                                     <button
-                                        class="small"
+                                        class="button small"
                                         @click=${()=>this.clearCalendar()}
                                     >
                                         ${this.translations.clear}
@@ -3069,7 +3068,7 @@ ${this.training.zoom_link_note}
                                 `:""}
                             ${this.showTodayButton?l`
                                     <button
-                                        class="small"
+                                        class="button small"
                                         @click=${()=>this.selectToday()}
                                     >
                                         ${this.translations.today}
@@ -3102,6 +3101,15 @@ ${this.training.zoom_link_note}
             display: block;
             container-type: inline-size;
             container-name: calendar;
+          }
+          button {
+            background-color: transparent;
+            color: inherit;
+            font-size: inherit;
+            font-family: inherit
+          }
+          button:hover {
+            color: inherit
           }
           .calendar-wrapper {
             --cp-color: var(--primary-color, #489bfa);
@@ -3199,29 +3207,28 @@ ${this.training.zoom_link_note}
           .month-next svg {
             width: 1.5rem;
           }
-          button {
+          .button {
             padding: 0.25rem 0.5rem;
             color: rgb(254, 254, 254);
             font-size: 1rem;
             border-radius: 5px;
             border: 1px solid transparent;
             font-weight: normal;
-            padding: 0.85rem 1rem;
             cursor: pointer;
             background-color: var(--cp-color);
             line-height: 1;
             transition: all 50ms linear;
           }
-          button:not([disabled]):hover {
+          .button:not([disabled]):hover {
             background-color: transparent;
             border-color: var(--cp-color);
             color: var(--cp-color);
           }
-          button[disabled] {
+          .button[disabled] {
             opacity: 0.25;
             cursor: default;
           }
-          .small {
+          .button.small {
             padding: 0.4rem 0.5rem;
           }
           .add-month-button {
@@ -3286,6 +3293,7 @@ ${this.training.zoom_link_note}
                     data-dropdown
                     data-close-on-click="true"
                     data-position="bottom"
+                    data-alignment="center"
                 >
                     <calendar-select
                         showToday

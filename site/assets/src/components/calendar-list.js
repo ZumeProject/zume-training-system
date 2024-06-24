@@ -108,6 +108,7 @@ export class CalendarList extends LitElement {
                     data-dropdown
                     data-close-on-click="true"
                     data-position="bottom"
+                    data-alignment="center"
                 >
                     <calendar-select
                         showToday
