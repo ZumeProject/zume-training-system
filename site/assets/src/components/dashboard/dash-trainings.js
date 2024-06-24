@@ -250,13 +250,22 @@ export class DashTrainings extends DashPage {
 
         this.openEditSessionModal()
     }
+    selectDay(event) {
+        const { date } = event.detail
+
+        const newSession = {
+            ...this.sessionToEdit,
+            date
+        }
+        this.sessionToEdit = newSession
+    }
     saveSession(event) {
         if (this.isSavingSession) {
             return
         }
         this.isSavingSession = true
 
-        const { date } = event.detail
+        const { date } = this.sessionToEdit
 
         const sessionTime = DateTime.fromFormat(`${date}`, 'y-LL-dd')
         zumeRequest.post( 'plan/edit-session', {
@@ -733,7 +742,7 @@ export class DashTrainings extends DashPage {
                         showToday
                         .selectedDays=${this.sessionToEdit?.date ? [{ date: this.sessionToEdit.date }] : []}
                         .highlightedDays=${this.getHighlightedDays()}
-                        @day-added=${this.saveSession}
+                        @day-added=${this.selectDay}
                     ></calendar-select>
                     <div class="d-flex align-items-center justify-content-center gap--1">
                         <button
