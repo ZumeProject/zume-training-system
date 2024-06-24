@@ -111,6 +111,7 @@ export class CalendarList extends LitElement {
                     data-alignment="center"
                 >
                     <calendar-select
+                        style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
                         showToday
                         showTodayButton
                         showClearButton

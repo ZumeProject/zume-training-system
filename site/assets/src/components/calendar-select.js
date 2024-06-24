@@ -25,6 +25,7 @@ export class CalendarSelect extends LitElement {
             --cp-color-darker: var(--primary-darker, #387cc9);
             --cp-hover-color: var(--hover-color, #4676fa1a);
             --cp-grid-min-size: var(--grid-min-size, 190px);
+            font-size: min(6cqw, 18px);
           }
           .calendar-footer {
             margin-inline: 5%;
@@ -99,7 +100,7 @@ export class CalendarSelect extends LitElement {
           .month-title {
             display: flex;
             justify-content: space-between;
-            font-size: 1.2rem;
+            font-size: 1.1em;
             font-weight: 600;
             grid-column: 2 / 7;
             margin-block: 0;
@@ -114,12 +115,12 @@ export class CalendarSelect extends LitElement {
             justify-content: center;
           }
           .month-next svg {
-            width: 1.5rem;
+            width: 1.5em;
           }
           .button {
-            padding: 0.25rem 0.5rem;
+            padding: 0.25em 0.5em;
             color: rgb(254, 254, 254);
-            font-size: 1rem;
+            font-size: 1em;
             border-radius: 5px;
             border: 1px solid transparent;
             font-weight: normal;
