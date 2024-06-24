@@ -117,6 +117,9 @@ export class CalendarSelect extends LitElement {
           .month-next svg {
             width: 1.5em;
           }
+          [dir="rtl"] .month-next svg {
+            transform: rotate(180deg);
+          }
           .button {
             padding: 0.25em 0.5em;
             color: rgb(254, 254, 254);
@@ -197,6 +200,8 @@ export class CalendarSelect extends LitElement {
             'clear': 'Clear',
             'today': 'Today',
         }
+        const htmlElement = document.querySelector('html')
+        this.isRtl = htmlElement.getAttribute('dir') === 'rtl'
     }
 
     willUpdate(properties) {
@@ -328,7 +333,7 @@ export class CalendarSelect extends LitElement {
 
         return html`
 
-            <div class="calendar-wrapper">
+            <div class="calendar-wrapper" dir=${this.isRtl ? 'rtl' : 'ltr'}>
                 <div class="calendar">
                     <button
                         class="button month-next"
@@ -399,7 +404,7 @@ export class CalendarSelect extends LitElement {
             }
 
             return html`
-                <div class="calendar-wrapper grid">
+                <div class="calendar-wrapper grid" dir=${this.isRtl ? 'rtl' : 'ltr'}>
                     ${
                         map( range( i ), (index) => {
                             const currentMonth = monthStart.plus({ months: index })
