@@ -253,7 +253,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                         <div class="video-player responsive-embed widescreen m0" data-video-src="<?php echo esc_url( Zume_Course::get_video_by_key( '70', true, null, true ) ) ?>">
                             <iframe width="640" height="360" src="" frameborder="0"></iframe>
                             <div class="video-trigger absolute inset">
-                                <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/HowZumeWorks-videothumbnail-01.svg' ) ?>" alt="zume video">
+                                <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Howitworks-thumbnail.png' ) ?>" alt="zume video">
                                 <button class="icon-btn absolute inset">
                                     <play-button
                                         style="--play-button-color: var(--z-brand-light); --play-button-hover-color: var(--z-brand); --play-button-size: 5rem"
