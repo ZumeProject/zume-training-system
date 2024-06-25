@@ -67,19 +67,6 @@ class Zume_Training_Home extends Zume_Magic_Page
         <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
-
-                const videoPlayers = document.querySelectorAll('.video-player')
-                videoPlayers.forEach((videoPlayer) => {
-                    const videoSrc = videoPlayer.getAttribute('data-video-src')
-                    const iframe = videoPlayer.querySelector('iframe')
-                    const videoTrigger = videoPlayer.querySelector('.video-trigger')
-
-                    videoTrigger.addEventListener('click', loadVideo)
-                    function loadVideo(event) {
-                        iframe.src = videoSrc
-                        videoTrigger.style.display = 'none'
-                    }
-                })
             });
         </script>
         <style>
