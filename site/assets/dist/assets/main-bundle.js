@@ -1817,10 +1817,15 @@ ${this.training.zoom_link_note}
                     ${!this.loading&&!this.error&&this.code!=="teaser"?l`
                                 <div class="card | group-members | grow-0">
                                     <button
-                                        class="f-0 f-medium d-flex align-items-center gap--2 black"
+                                        class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
                                         @click=${this.toggleGroupMembers}
                                     >
-                                        <span class="icon z-icon-group brand-light"></span> ${jsObject.translations.group_members} (${this.groupMembers.length})
+                                        <span class="icon z-icon-group brand-light"></span>
+                                        <span>${jsObject.translations.group_members} (${this.groupMembers.length})</span>
+                                        <img
+                                            class="chevron | svg w-1rem h-1rem ${this.groupMembersOpen?"rotate-180":""}"
+                                            src=${jsObject.images_url+"/chevron.svg"}
+                                        />
                                     </button>
                                     <div class="collapse" ?data-open=${this.groupMembersOpen}>
                                         ${!this.loading&&this.groupMembers&&this.groupMembers.length>0?l`
@@ -1838,10 +1843,15 @@ ${this.training.zoom_link_note}
                                 </div>
                                 <div class="card | group-members | grow-0">
                                     <button
-                                        class="f-0 f-medium d-flex align-items-center gap--2 black"
+                                        class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
                                         @click=${this.toggleGroupDetails}
                                     >
-                                        <span class="icon z-icon-overview brand-light"></span> ${jsObject.translations.group_details}
+                                        <span class="icon z-icon-overview brand-light"></span>
+                                        <span>${jsObject.translations.group_details}</span>
+                                        <img
+                                            class="chevron | svg w-1rem h-1rem ${this.groupDetailsOpen?"rotate-180":""}"
+                                            src=${jsObject.images_url+"/chevron.svg"}
+                                        />
                                     </button>
                                     <div class="collapse" ?data-open=${this.groupDetailsOpen}>
                                         <div class="stack--2">
