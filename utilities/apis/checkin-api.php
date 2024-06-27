@@ -29,7 +29,7 @@ class Zume_Checkin
             $this->namespace, '/checkin', [
                 'methods' => [ 'GET', 'POST' ],
                 'callback' => [ $this, 'checkin_rest' ],
-                'permission_callback' => '__return_true',
+                'permission_callback' => 'is_user_logged_in',
             ]
         );
     }

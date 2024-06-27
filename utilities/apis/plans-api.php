@@ -27,56 +27,56 @@ class Zume_Plans_Endpoints
             $this->namespace, '/plans', [
                 'methods' => 'GET',
                 'callback' => [ $this, 'list_plans' ],
-                'permission_callback' => '__return_true',
+                'permission_callback' => 'is_user_logged_in',
             ]
         );
         register_rest_route(
             $this->namespace, '/plan/(?P<code>\w+)', [
                 'methods' => 'GET',
                 'callback' => [ $this, 'get_plan' ],
-                'permission_callback' => '__return_true',
+                'permission_callback' => 'is_user_logged_in',
             ]
         );
         register_rest_route(
             $this->namespace, '/plan', [
                 'methods' => 'POST',
                 'callback' => [ $this, 'create_plan' ],
-                'permission_callback' => '__return_true',
+                'permission_callback' => 'is_user_logged_in',
             ]
         );
         register_rest_route(
             $this->namespace, '/plan/(?P<code>\w+)', [
                 'methods' => 'PUT',
                 'callback' => [ $this, 'update_plan' ],
-                'permission_callback' => '__return_true',
+                'permission_callback' => 'is_user_logged_in',
             ]
         );
         register_rest_route(
             $this->namespace, '/plan', [
                 'methods' => 'DELETE',
                 'callback' => [ $this, 'delete_plan' ],
-                'permission_callback' => '__return_true',
+                'permission_callback' => 'is_user_logged_in',
             ]
         );
         register_rest_route(
             $this->namespace, '/plan/completed-sessions', [
                 'methods' => 'GET',
                 'callback' => [ $this, 'completed_sessions' ],
-                'permission_callback' => '__return_true',
+                'permission_callback' => 'is_user_logged_in',
             ]
         );
         register_rest_route(
             $this->namespace, '/plan/edit-session', [
                 'methods' => 'POST',
                 'callback' => [ $this, 'edit_session' ],
-                'permission_callback' => '__return_true',
+                'permission_callback' => 'is_user_logged_in',
             ]
         );
         register_rest_route(
             $this->namespace, '/plan/complete-session', [
                 'methods' => 'POST',
                 'callback' => [ $this, 'mark_session_complete' ],
-                'permission_callback' => '__return_true',
+                'permission_callback' => 'is_user_logged_in',
             ]
         );
         register_rest_route(
@@ -181,6 +181,8 @@ class Zume_Plans_Endpoints
                 'error_code' => 'bad-plan-code',
             ];
         }
+
+        /* TODO: check that current user can edit this plan */
 
         $params = dt_recursive_sanitize_array( $request->get_params() );
 

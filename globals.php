@@ -6005,14 +6005,14 @@ if ( ! class_exists('Zume_System_Log_API') ) {
                 $namespace, '/log', [
                     'methods' => ['POST'],
                     'callback' => [$this, 'rest_log'],
-                    'permission_callback' => '__return_true'
+                    'permission_callback' => 'is_user_logged_in'
                 ]
             );
             register_rest_route(
                 $namespace, '/log', [
                     'methods' => ['GET'],
                     'callback' => [$this, 'get_log'],
-                    'permission_callback' => '__return_true'
+                    'permission_callback' => 'is_user_logged_in'
                 ]
             );
         }
