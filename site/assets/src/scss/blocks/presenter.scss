@@ -77,7 +77,8 @@
 
     aspect-ratio: 16 / 9;
     max-height: 100vh;
-    margin-inline: auto;
+    margin-inline-start: auto;
+  margin-inline-end: auto;
 
     background-color: color(white);
 
@@ -205,7 +206,8 @@
     overflow: hidden;
     background-color: #2DADE2;
     max-height: 100vh;
-    margin-inline: auto;
+    margin-inline-start: auto;
+  margin-inline-end: auto;
     position: relative;
     max-width: calc( 100% - 2 * 8.125% );
 

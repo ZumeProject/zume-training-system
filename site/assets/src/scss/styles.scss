@@ -170,19 +170,22 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .container {
-  margin-inline: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
   width: calc(90% + ( 10 / 100 * $min-width ) - ( 2 * $small-margin ) );
   max-width: $max-width;
 }
 
 .container-md {
-  margin-inline: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
   width: calc(70% + ( 30 / 100 * $min-width ) - ( 2 * $small-margin ) );
   max-width: $width-lg;
 }
 
 .container-sm {
-  margin-inline: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
   width: calc(50% + ( 50 / 100 * $min-width ) - ( 2 * $small-margin ) );
   max-width: $width-md;
 
@@ -192,13 +195,15 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .container-xsm {
-  margin-inline: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
   width: calc(30% + ( 80 / 100 * $min-width ) - ( 2 * $small-margin ) );
   max-width: $width-sm;
 }
 
 .container-xsm {
-  margin-inline: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
   width: calc(30% + ( 80 / 100 * $min-width ) - ( 2 * $small-margin ) );
   max-width: $break-lg;
 }
@@ -673,7 +678,8 @@ input::-webkit-calendar-picker-indicator {
   grid-template-columns: auto 1fr;
   width: 100%;
   max-width: $max-width;
-  margin-inline: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
 
   & .left-menu {
     display: flex;
@@ -756,7 +762,8 @@ input::-webkit-calendar-picker-indicator {
   color: color('black');
   justify-content: center;
   aspect-ratio: 1;
-  margin-inline: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
   padding: spacing(1);
   max-width: 16rem;
   width: 100%;

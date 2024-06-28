@@ -29,7 +29,8 @@
 .profile-area {
     display: flex;
     flex-direction: column;
-    margin-inline: auto;
+    margin-inline-start: auto;
+  margin-inline-end: auto;
     margin-block-end: spacing(1);
 }
 .profile-btn {
@@ -41,7 +42,8 @@
     font-weight: bold;
     line-height: 1;
     width: fit-content;
-    margin-inline: auto;
+    margin-inline-start: auto;
+  margin-inline-end: auto;
     padding: var(--s-1);
 }
 .profile-name {
