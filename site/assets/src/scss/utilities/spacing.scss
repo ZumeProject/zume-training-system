@@ -56,7 +56,8 @@
         margin-inline: spacing($i);
     }
     .my-#{$i} {
-        margin-block: spacing($i);
+        margin-top: spacing($i);
+        margin-bottom: spacing($i);
     }
     .mt-#{$i} {
         margin-top: spacing($i);
@@ -69,10 +70,10 @@
     margin: 0 !important;
 }
 .mt0 {
-    margin-block-start: 0;
+    margin-top: 0;
 }
 .mb0 {
-    margin-block-end: 0;
+    margin-bottom: 0;
 }
 
 .mx-auto {
@@ -83,7 +84,7 @@
     margin-inline-start: auto;
 }
 .mt-auto {
-    margin-block-start: auto
+    margin-top: auto
 }
 
 @for $i from -5 through 5 {

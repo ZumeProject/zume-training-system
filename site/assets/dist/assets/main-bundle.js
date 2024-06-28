@@ -3225,7 +3225,8 @@ ${this.training.zoom_link_note}
             font-size: 1.1em;
             font-weight: 600;
             grid-column: 2 / 7;
-            margin-block: 0;
+            margin-top: 0;
+            margin-bottom: 0;
           }
           .month-title.full-width {
             grid-column: 1 / 8;
@@ -3273,7 +3274,8 @@ ${this.training.zoom_link_note}
             fill: var(--cp-color);
             background-color: var(--cp-hover-color);
             margin-inline: 10%;
-            margin-block: auto;
+            margin-top: auto;
+            margin-bottom: auto;
             aspect-ratio: 3 / 4;
             border-radius: 10%;
             transition: all 50ms linear;

@@ -16,7 +16,7 @@
     gap: spacing(0);
 
     /* Prevent double width borders by pulling each list item up to overlap their borders */
-    margin-block-start: -2px;
+    margin-top: -2px;
 
     &.tight {
         padding-block: spacing(-2);

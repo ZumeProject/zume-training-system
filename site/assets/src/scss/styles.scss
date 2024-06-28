@@ -342,7 +342,7 @@ input::-webkit-calendar-picker-indicator {
   padding-block: spacing(4)
 }
 .content {
-  margin-block-end: spacing(7);
+  margin-bottom: spacing(7);
 }
 
 .line-text {
@@ -478,7 +478,7 @@ input::-webkit-calendar-picker-indicator {
 
 .resources-cover {
   margin-inline: -1rem;
-  margin-block-end: -1rem;
+  margin-bottom: -1rem;
 
   background: linear-gradient( transparent, color('gray-100') 50% );
 }

@@ -15,7 +15,7 @@
     }
 
     .firebaseui-idp-list> * + *, .firebaseui-tenant-list> * + * {
-        margin-block-start: spacing(-1);
+        margin-top: spacing(-1);
     }
 
     .firebaseui-idp-list>.firebaseui-list-item, .firebaseui-tenant-list>.firebaseui-list-item {

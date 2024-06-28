@@ -6,19 +6,21 @@
 }
 
 .cover-page > * {
-  margin-block: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .cover-page > :first-child:not(div) {
-  margin-block-start: 0;
+  margin-top: 0;
 }
 
 .cover-page > :last-child:not(div) {
-  margin-block-end: 0;
+  margin-bottom: 0;
 }
 
 .cover-page > div {
-  margin-block: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .cover-img,
@@ -31,16 +33,17 @@
 
 .cover-img > :first-child:not(img),
 .cover > :first-child:not(div) {
-  margin-block-start: 0;
+  margin-top: 0;
 }
 
 .cover-img > :last-child:not(img),
 .cover > :last-child:not(div) {
-  margin-block-end: 0;
+  margin-bottom: 0;
 }
 
 .cover-img > img,
 .cover > div {
-  margin-block: auto;
+  margin-top: auto;
+  margin-bottom: auto;
   padding-block: var(--space, 1rem);
 }
