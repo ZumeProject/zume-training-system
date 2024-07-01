@@ -200,8 +200,13 @@ a {
     }
 
     .icon {
-        margin-inline-end: 0.5em;
+        margin-right: 0.5em;
         font-size: 1.3em;
+
+        [dir="rtl"] & {
+            margin-right: unset;
+            margin-left: 0.5em;
+        }
     }
 
     &[data-active] {

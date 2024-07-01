@@ -684,7 +684,7 @@ input::-webkit-calendar-picker-indicator {
   position: absolute;
 }
 .course-index {
-  min-block-size: 100vh;
+  min-height: 100vh;
   padding-top: spacing(2);
   padding-bottom: spacing(2);
   position: absolute;
@@ -874,7 +874,7 @@ input::-webkit-calendar-picker-indicator {
     }
 
     launch-course {
-        margin-inline-end: calc( -1 * var(--s0, 1em) );
+        margin-right: calc( -1 * var(--s0, 1em) );
     }
 }
 @media (max-width: $break-lg) {

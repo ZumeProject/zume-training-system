@@ -13,7 +13,12 @@
 
 .dashboard__sidebar {
     grid-area: sidebar;
-    border-inline-end: 2px solid var(--border-color-main);
+    border-right: 2px solid var(--border-color-main);
+
+    [dir="rtl"] & {
+        border-right: unset;
+        border-left: 2px solid var(--border-color-main);
+    }
 
     .footer-links {
         margin-top: spacing(0);
@@ -82,7 +87,7 @@ dash-sidebar-toggle {
 
 .dashboard__header {
     background-color: var(--bg-color-main);
-    border-block-end: 2px solid var(--border-color-main);
+    border-bottom: 2px solid var(--border-color-main);
     padding: spacing(0);
     display: flex;
     justify-content: space-between;

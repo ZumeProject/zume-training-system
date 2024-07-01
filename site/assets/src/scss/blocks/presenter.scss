@@ -78,7 +78,7 @@
     aspect-ratio: 16 / 9;
     max-height: 100vh;
     margin-left: auto;
-  margin-right: auto;
+    margin-right: auto;
 
     background-color: color(white);
 
@@ -97,13 +97,18 @@
         font-weight: 600;
     }
     ul.bullets {
-        margin-inline-start: spacing(2);
+        margin-left: spacing(2);
+
+        [dir="rtl"] & {
+            margin-left: unset;
+            margin-right: spacing(2);
+        }
     }
 
     /* Composition */
     & > :nth-child(2) {
         height: calc( var(--slide-height, 100%) - calc( 3.5 * var(--slide-unit) ) );
-        min-block-size: calc( var(--slide-height, 100%) - calc( 3.5 * var(--slide-unit) ) );
+        min-height: calc( var(--slide-height, 100%) - calc( 3.5 * var(--slide-unit) ) );
         position: relative;
     }
 
@@ -115,7 +120,7 @@
         flex-direction: column;
     }
     .cover-page {
-        min-block-size: var(--slide-height, 100%);
+        min-height: var(--slide-height, 100%);
     }
 
     /* Blocks */
@@ -184,7 +189,7 @@
 
         & > .two-column {
             position: static;
-            min-block-size: auto;
+            min-height: auto;
             flex-grow: 0;
 
             & > *::after {
@@ -335,12 +340,21 @@ not of the 2 column section */
     align-items: center;
 
     & > * {
-        border-inline-end: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
+        border-right: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
         border-top: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
         border-bottom: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
+
+        [dir="rtl"] & {
+            border-right: unset;
+            border-left: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
+        }
     }
     & > :first-child {
-        border-inline-start: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
+        border-left: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
+
+        [dir="rtl"] & {
+            border-right: calc( 0.1 * var(--slide-unit) )solid color('gray-300');
+        }
     }
 }
 .progress-bar-item {

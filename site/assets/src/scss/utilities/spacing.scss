@@ -89,7 +89,12 @@
   margin-right: auto;
 }
 .ms-auto {
-    margin-inline-start: auto;
+    margin-left: auto;
+
+    [dir="rtl"] & {
+        margin-left: unset;
+        margin-right: auto;
+    }
 }
 .mt-auto {
     margin-top: auto
