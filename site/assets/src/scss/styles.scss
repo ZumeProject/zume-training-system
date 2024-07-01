@@ -99,7 +99,12 @@ ul {
 .activity-page ul,
 ul.bullets {
   list-style: disc;
-  margin-inline-start: spacing(3);
+  left: spacing(3);
+
+  [dir="rtl"] & {
+    left: unset;
+    right: spacing(3);
+  }
 }
 
 ul[role="list"] {
@@ -116,6 +121,18 @@ ul[role="list"] {
     left: 0;
     top: 0;
     line-height: 0.9;
+  }
+
+  [dir="rtl"] & {
+    li {
+      padding-left: unset;
+      padding-right: 1.7em;
+    }
+
+    li:before {
+      left: unset;
+      right: 0;
+    }
   }
   &[data-brand-light] li:before {
     color: color('brand-light');
