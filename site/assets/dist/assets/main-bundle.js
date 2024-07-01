@@ -3150,7 +3150,8 @@ ${this.training.zoom_link_note}
             font-size: min(6cqw, 18px);
           }
           .calendar-footer {
-            margin-inline: 5%;
+            margin-left: 5%;
+            margin-right: 5%;
           }
           .repel {
             display: flex;
@@ -3273,7 +3274,8 @@ ${this.training.zoom_link_note}
             justify-content: center;
             fill: var(--cp-color);
             background-color: var(--cp-hover-color);
-            margin-inline: 10%;
+            margin-left: 10%;
+            margin-right: 10%;
             margin-top: auto;
             margin-bottom: auto;
             aspect-ratio: 3 / 4;

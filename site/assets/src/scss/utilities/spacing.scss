@@ -25,27 +25,34 @@
         padding: spacing($i);
     }
     .px-#{$i} {
-        padding-inline: spacing($i);
+        padding-left: spacing($i);
+        padding-right: spacing($i);
     }
     .py-#{$i} {
-        padding-block: spacing($i);
+        padding-top: spacing($i);
+        padding-bottom: spacing($i);
     }
     .pt-#{$i} {
-        padding-block-start: spacing($i);
+        padding-top: spacing($i);
     }
 }
 .pt-4 {
-    padding-block-start: spacing(4);
+    padding-top: spacing(4);
 }
 .ps-2 {
-    padding-inline-start: spacing(2);
+    padding-left: spacing(2);
+
+    [dir="rtl"] & {
+        padding-left: unset;
+        padding-right: spacing(2);
+    }
 }
 
 .p0 {
     padding: 0 !important;
 }
 .pt0{
-    padding-block-start: 0 !important;
+    padding-top: 0 !important;
 }
 
 @for $i from -5 through 5 {
@@ -53,7 +60,8 @@
         margin: spacing($i);
     }
     .mx-#{$i} {
-        margin-inline: spacing($i);
+        margin-left: spacing($i);
+        margin-right: spacing($i);
     }
     .my-#{$i} {
         margin-top: spacing($i);
@@ -77,8 +85,8 @@
 }
 
 .mx-auto {
-    margin-inline-start: auto;
-  margin-inline-end: auto;
+    margin-left: auto;
+  margin-right: auto;
 }
 .ms-auto {
     margin-inline-start: auto;

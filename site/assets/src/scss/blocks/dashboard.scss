@@ -29,8 +29,8 @@
 .profile-area {
     display: flex;
     flex-direction: column;
-    margin-inline-start: auto;
-  margin-inline-end: auto;
+    margin-left: auto;
+  margin-right: auto;
     margin-bottom: spacing(1);
 }
 .profile-btn {
@@ -42,8 +42,8 @@
     font-weight: bold;
     line-height: 1;
     width: fit-content;
-    margin-inline-start: auto;
-  margin-inline-end: auto;
+    margin-left: auto;
+  margin-right: auto;
     padding: var(--s-1);
 }
 .profile-name {
@@ -62,8 +62,6 @@ dash-sidebar-toggle {
 .sidebar-wrapper {
     position: sticky;
     overflow-y: auto;
-    padding-inline-end: 4px;
-    padding-block-end: 4px;
     background-color: color('white');
     padding: spacing(0);
 }
@@ -237,7 +235,10 @@ dash-header-right {
     .sidebar__trigger-close-background {
         background-color: rgba(0,0,0,0.5);
         position: fixed;
-        inset: 0px;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
         transition: opacity 200ms ease-in-out;
         z-index: 99;
         opacity: 0;

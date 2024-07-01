@@ -71,13 +71,13 @@ class Zume_Scripts extends Zume_Magic_Page
                 padding: 1em;
                 max-width: 800px;
                 width: 100%;
-                margin-inline-start: auto;
-  margin-inline-end: auto;
+                margin-left: auto;
+                margin-right: auto;
             }
             .activity__content {
                 max-width: 600px;
-                margin-inline-start: auto;
-  margin-inline-end: auto;
+                margin-left: auto;
+                margin-right: auto;
             }
         </style>
         <?php

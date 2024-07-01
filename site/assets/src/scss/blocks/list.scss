@@ -19,11 +19,13 @@
     margin-top: -2px;
 
     &.tight {
-        padding-block: spacing(-2);
+        padding-top: spacing(-2);
+        padding-bottom: spacing(-2);
     }
 
     & .btn {
-        padding-block: spacing(-2);
+        padding-top: spacing(-2);
+        padding-bottom: spacing(-2);
         line-height: 1;
     }
 

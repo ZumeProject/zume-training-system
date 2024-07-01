@@ -45,5 +45,6 @@
 .cover > div {
   margin-top: auto;
   margin-bottom: auto;
-  padding-block: var(--space, 1rem);
+  padding-top: var(--space, 1rem);
+  padding-bottom: var(--space, 1rem);
 }
