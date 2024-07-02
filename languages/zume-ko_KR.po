@@ -2,9 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme Project\n"
 "POT-Creation-Date: 2024-06-18 18:03+0100\n"
-"PO-Revision-Date: 2024-06-20 16:12+0000\n"
-"Last-Translator: Google Cloud Translation Basic <noreply-mt-google-"
-"translate@weblate.org>\n"
+"PO-Revision-Date: 2024-07-02 05:39+0000\n"
+"Last-Translator: Zack Han <suburbanideal@gmail.com>\n"
 "Language-Team: Korean <https://translate.disciple.tools/projects/"
 "zume-training/zume-training-system/ko_KR/>\n"
 "Language: ko_KR\n"
@@ -12,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.6\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #: appearance/style-override/navigation.php:75
 #: appearance/style-override/navigation.php:79 site/dashboard/dashboard.php:206
@@ -22,7 +21,6 @@ msgid "Training"
 msgstr "훈련"
 
 #: appearance/style-override/navigation.php:85 site/pages/home.php:207
-#, fuzzy
 msgid "How it Works"
 msgstr "줌 작동 방식"
 
@@ -55,7 +53,6 @@ msgid "Groups"
 msgstr "그룹"
 
 #: appearance/style-override/navigation.php:129
-#, fuzzy
 msgid "Trainings"
 msgstr "훈련"
 
@@ -127,7 +124,6 @@ msgid "Hearing and Obeying God"
 msgstr "하나님의 말씀을 듣고 순종함"
 
 #: globals.php:1975 globals.php:1977
-#, fuzzy
 msgid "S.O.A.P.S. Bible Study"
 msgstr "S.O.A.P.S. 성경 읽기"
 
@@ -279,9 +275,8 @@ msgstr ""
 "는 간단한 패턴을 배우십시오."
 
 #: globals.php:2085
-#, fuzzy
 msgid "Great, Greater, and Greatest Blessing"
-msgstr "가장 큰 축복"
+msgstr "가장 위대한 축복"
 
 #: globals.php:2095 site/pages/follow-jesus.php:272
 msgid "Duckling Discipleship – Leading Immediately"
@@ -329,7 +324,6 @@ msgstr ""
 #: site/course/course-content.php:1344 site/course/course-content.php:1353
 #: site/course/course-content.php:1409 site/course/course-content.php:4358
 #: site/course/course-content.php:4379
-#, fuzzy
 msgid "The Lord’s Supper"
 msgstr "성찬"
 
@@ -357,11 +351,9 @@ msgid "A Person of Peace and How To Find One"
 msgstr "평화의 사람과 그를 찾는 방법"
 
 #: globals.php:2144
-#, fuzzy
 msgid ""
 "Learn who a person of peace might be and how to know when you‘ve found one."
-msgstr ""
-"평화의 사람은 누구인지, 그들을 발견했을 때 알아보는 방법을 배우게 됩니다."
+msgstr "평화의 사람은 누구인지, 그들을 발견했을 때 알아보는 방법을 배우게 됩니다."
 
 #: globals.php:2145 site/course/course-content.php:1515
 #: site/course/course-content.php:1557 site/course/course-content.php:1566
@@ -374,13 +366,11 @@ msgid "Faithfulness is Better Than Knowledge"
 msgstr "신실함이 지식보다 낫습니다"
 
 #: globals.php:2156
-#, fuzzy
 msgid ""
 "It‘s important what disciples know — but it‘s much more important what they "
 "DO with what they know."
-msgstr ""
-"제자들이 무엇을 알고 있는냐는 중요합니다. 그러나 그들이 알고 있는 지식으로 무"
-"엇을 하는지는 더욱 중요합니다."
+msgstr "제자들이 무엇을 알고 있는냐는 중요합니다. 그러나 그들이 알고 있는 지식으로 "
+"무엇을 하는지는 더욱 중요합니다."
 
 #: globals.php:2157 site/course/course-content.php:1765
 #: site/course/course-content.php:1774 site/course/course-content.php:4730
@@ -487,7 +477,6 @@ msgid "Always Part of Two Churches"
 msgstr "항상 두 교회의 한 부분"
 
 #: globals.php:2240
-#, fuzzy
 msgid "Learn how to obey Jesus‘ commands by going AND staying."
 msgstr "가서 머물면서 예수님의 명령에 순종하는 방법을 배우십시오."
 
@@ -627,7 +616,6 @@ msgid "Close"
 msgstr "닫기"
 
 #: globals.php:7305
-#, fuzzy
 msgid "No Results"
 msgstr "결과 없음"
 
@@ -857,9 +845,8 @@ msgstr "자기 평가"
 
 #: site/activities/coaching-checklist.php:127
 #: site/activities/coaching-checklist.php:263
-#, fuzzy
 msgid "Mentee Development Level"
-msgstr "리더십 소그룹"
+msgstr "멘티의 성장 수준"
 
 #: site/activities/coaching-checklist.php:133
 #: site/activities/coaching-checklist.php:266
@@ -908,7 +895,7 @@ msgstr "그들을 동료로 이해하기"
 
 #: site/activities/coaching-checklist.php:167
 msgid "Mentor’s Behaviors"
-msgstr "멘토의 행동들"
+msgstr "멘토의 행동"
 
 #: site/activities/coaching-checklist.php:173
 msgid "Direct and inform"
@@ -967,9 +954,8 @@ msgstr "멘티가 자신감이 있으며 도구를 효과적으로 훈련시킬 
 
 #: site/activities/list-of-100-printable.php:89
 #: site/activities/list-of-100.php:87
-#, fuzzy
 msgid "Disciple"
-msgstr "새끼오리 제자훈련"
+msgstr "제자"
 
 #: site/activities/list-of-100-printable.php:89
 #: site/activities/list-of-100.php:87
@@ -978,13 +964,11 @@ msgstr "비신자"
 
 #: site/activities/list-of-100-printable.php:89
 #: site/activities/list-of-100.php:87
-#, fuzzy
 msgid "Unknown"
 msgstr "알 수 없음"
 
 #: site/activities/three-month-plan-printable.php:46
 #: site/activities/three-month-plan.php:66 site/dashboard/dashboard.php:213
-#, fuzzy
 msgid "3-Month Plan"
 msgstr "3 개월 계획"
 
@@ -993,9 +977,8 @@ msgid "Switch to Printable Version"
 msgstr "인쇄 가능한 버전으로 전환하기"
 
 #: site/activities/three-month-plan.php:80
-#, fuzzy
 msgid "Scripts are off"
-msgstr "성경"
+msgstr ""
 
 #: site/activities/three-month-plan.php:81
 msgid ""
@@ -1011,7 +994,6 @@ msgid "Save"
 msgstr "저장"
 
 #: site/activities/three-month-plan.php:93
-#, fuzzy
 msgid "Cancel"
 msgstr "취소"
 
@@ -1027,7 +1009,6 @@ msgstr ""
 
 #: site/course/_strings-3-circle-gospel-presentation.php:13
 #: site/course/course-content.php:858
-#, fuzzy
 msgid ""
 "There’s no one “best way” to tell God’s story (also called the gospel), "
 "because the best way will depend on who you’re sharing with. Every disciple "
@@ -1035,7 +1016,7 @@ msgid ""
 "connects with the audience they’re sharing with."
 msgstr ""
 "하나님의 이야기(복음)를 전하는 \"최고의 방법\"은 없습니다. \"최고의 방법\"은 "
-"누구하고 전하느냐에 달렸기 때문입니다. 모든 제자들은 하나님의 이야기를 전할 "
+"누구에게 전하느냐에 달렸기 때문입니다. 모든 제자들은 하나님의 이야기를 전할 "
 "때 성경에 충실하고 듣는 자와 연결하여 전하는 방법을 배워야 합니다."
 
 #: site/course/_strings-3-circle-gospel-presentation.php:22
@@ -1059,33 +1040,27 @@ msgstr "토론"
 #: site/course/_strings-3-circle-gospel-presentation.php:23
 #: site/course/_strings-3-circle-gospel-presentation.php:61
 #: site/course/course-builder.php:196
-#, fuzzy
 msgid "(10 min)"
-msgstr "10 분"
+msgstr "(10 분)"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:27
 #: site/course/course-content.php:873
-#, fuzzy
 msgid ""
 "What comes to mind when you hear God’s command to be His \"witness\" and to "
 "tell His story?"
-msgstr ""
-"그 분의 “증인”이 되고, 그 분의 이야기를 전하라는 하나님의 명령을 듣고 어떤 생"
-"각이 들었나요?"
+msgstr "그 분의 “증인”이 되어 그 분의 이야기를 전하라는 하나님의 명령을 듣고 어떤 "
+"생각이 들었나요?"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:28
 #: site/course/course-content.php:874
-#, fuzzy
 msgid ""
 "Why do you think Jesus chose ordinary people instead of some other way to "
 "share His good news?"
-msgstr ""
-"예수님은 왜 다른 방법이 아닌 평범한 사람들을 선택해 자신의 좋은 소식을 전하도"
-"록 했을까요?"
+msgstr "예수님은 왜 다른 방법이 아닌 평범한 사람들을 선택해 자신의 좋은 소식을 "
+"전하도록 했을까요?"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:29
 #: site/course/course-content.php:875
-#, fuzzy
 msgid ""
 "What would it take for you to feel more comfortable sharing God’s story?"
 msgstr "어떻게 하면 하나님의 이야기를 더 편하게 나눌 수 있을까요?"
@@ -1110,9 +1085,8 @@ msgstr "보기"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:39
 #: site/course/course-builder.php:195
-#, fuzzy
 msgid "(5 min)"
-msgstr "5 분"
+msgstr "(5 분)"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:42
 #: site/course/course-content.php:800 site/course/course-content.php:851
@@ -1141,12 +1115,10 @@ msgstr "하나님에 대해 무엇을 배웠나요?"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:67
 #: site/course/course-content.php:918
-#, fuzzy
 msgid ""
 "Do you think it would be easier or harder to share God’s story by telling a "
 "story like this?"
-msgstr ""
-"이런 이야기를 나눔으로써 하나님의 이야기를 나누는 것이 더 쉬워질까요 아니면 "
+msgstr "이런 이야기를 나눔으로써 하나님의 이야기를 나누는 것이 더 쉬워질까요 아니면 "
 "더 어려워질까요?"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:78
@@ -1226,9 +1198,8 @@ msgid "(25 min)"
 msgstr "25 분"
 
 #: site/course/course-builder.php:200
-#, fuzzy
 msgid "(30 min)"
-msgstr "30 분"
+msgstr "(30 분)"
 
 #: site/course/course-builder.php:201
 msgid "(35 min)"
@@ -1239,9 +1210,8 @@ msgid "(40 min)"
 msgstr "40 분"
 
 #: site/course/course-builder.php:203
-#, fuzzy
 msgid "(45 min)"
-msgstr "45 분"
+msgstr "(45 분)"
 
 #: site/course/course-builder.php:204
 msgid "(50 min)"
@@ -1252,9 +1222,8 @@ msgid "(55 min)"
 msgstr "55 분"
 
 #: site/course/course-builder.php:206
-#, fuzzy
 msgid "(60 min)"
-msgstr "60 분"
+msgstr "(60 분)"
 
 #: site/course/course-builder.php:207
 msgid "(65 min)"
@@ -1265,9 +1234,8 @@ msgid "(70 min)"
 msgstr "70 분"
 
 #: site/course/course-builder.php:209
-#, fuzzy
 msgid "(75 min)"
-msgstr "75 분"
+msgstr "(75 분)"
 
 #: site/course/course-builder.php:210
 msgid "(80 min)"
@@ -1425,7 +1393,6 @@ msgid "In this session, we will hear and discuss these concepts:"
 msgstr "이 세션에서 우리는 다음과 같은 개념에 대해 배우고 토론할 것입니다:"
 
 #: site/course/course-content.php:87 site/course/course-content.php:355
-#, fuzzy
 msgid "Simple Definition of Disciple & Church"
 msgstr "제자와 교회의 간단한 정의"
 
@@ -1447,11 +1414,8 @@ msgid "S.O.A.P.S. Bible Reading"
 msgstr "S.O.A.P.S. 성경 읽기"
 
 #: site/course/course-content.php:111
-#, fuzzy
 msgid "God uses ordinary people doing simple things to make a big impact."
-msgstr ""
-"하나님이 평범한 사람들을 사용하여 간단한 일을 함으로써 큰 영향을 이루는 방법"
-"을 알게 됩니다."
+msgstr "하나님은 일반적이고 평범한 사람들을 사용하여 큰 변화를 만들어내십니다."
 
 #: site/course/course-content.php:136
 msgid ""
@@ -1466,30 +1430,25 @@ msgid "When you think of a church, what comes to mind?"
 msgstr "교회를 생각하면 무엇이 떠오르는가요?"
 
 #: site/course/course-content.php:180
-#, fuzzy
 msgid ""
 "What’s the difference between that picture and what’s described in the video "
 "as a \"Simple Church\"?"
-msgstr "그 그림과 영상에서 묘사한 \"간단한 교회\"의 차이점은 무엇인가요?"
+msgstr "그 이미지와 영상에서 \"간단한 교회\"라고 표현한 것의 차이점은 무엇인가요?"
 
 #: site/course/course-content.php:181
 msgid "Which one do you think would be easier to multiply and why?"
 msgstr "어느 것이 더 쉽게 배가할까요? 이유는 무엇인가요?"
 
 #: site/course/course-content.php:199
-#, fuzzy
 msgid ""
 "Spiritual breathing. We breathe in. We breathe out. We’re alive. Hearing and "
 "obeying God is like that, too."
-msgstr ""
-"우리는 숨을 들이 쉽니다. 우리는 숨을 내쉽니다. 우리에겐 생명이 있지요. 영적 "
-"호흡도 마찬가지입니다."
+msgstr "영적인 호흡. 우리는 숨을 들이마시고 내쉼으로 삽니다. 영적 호흡도 "
+"마찬가지입니다."
 
 #: site/course/course-content.php:225
-#, fuzzy
 msgid "Why is it essential to learn to hear and recognize God’s voice?"
-msgstr ""
-"하나님의 음성을 듣고 인식하는 법을 배우는 것이 중요한 이유는 무엇입니까?"
+msgstr "하나님의 음성을 듣고 구별하는 법을 배우는 것이 중요한 이유는 무엇입니까?"
 
 #: site/course/course-content.php:226
 msgid ""
@@ -1597,9 +1556,8 @@ msgstr ""
 #: site/course/course-content.php:5044 site/course/course-content.php:5170
 #: site/course/course-content.php:5301 site/course/course-content.php:5444
 #: site/course/course-content.php:5567
-#, fuzzy
 msgid "REVIEW"
-msgstr "개요"
+msgstr "검토"
 
 #: site/course/course-content.php:352 site/course/course-content.php:664
 #: site/course/course-content.php:1014 site/course/course-content.php:1400
@@ -1689,11 +1647,8 @@ msgstr ""
 "나님께 감사합시다."
 
 #: site/course/course-content.php:442
-#, fuzzy
 msgid "Ask God’s Holy Spirit to lead your time together."
-msgstr ""
-"결과에 대해 하나님께 감사 기도드리고, 함께 하는 시간동안 인도해주시도록 성령"
-"님을 초대하십시오."
+msgstr "성령이 함께 하는 시간 동안 인도해주시도록 기도하십시오."
 
 #: site/course/course-content.php:452 site/course/course-content.php:776
 #: site/course/course-content.php:1120 site/course/course-content.php:1495
@@ -1726,9 +1681,8 @@ msgstr "돌아보기"
 #: site/course/course-content.php:5015 site/course/course-content.php:5140
 #: site/course/course-content.php:5269 site/course/course-content.php:5402
 #: site/course/course-content.php:5539 site/course/course-content.php:5665
-#, fuzzy
 msgid "Before getting started, take some time to look back."
-msgstr "시작하기 전에 잠시 점검의 시간을 가지십시오."
+msgstr "시작하기 전에 잠시 되돌아보는 시간을 가지십시오."
 
 #: site/course/course-content.php:456 site/course/course-content.php:780
 #: site/course/course-content.php:1124 site/course/course-content.php:1499
@@ -1805,12 +1759,11 @@ msgid "Persecution and Suffering"
 msgstr "핍박과 고난"
 
 #: site/course/course-content.php:527
-#, fuzzy
 msgid ""
 "Of the four areas detailed above (prayer, God’s Word, etc.), which ones do "
 "you already practice?"
-msgstr ""
-"위에서 네 가지 자세한 영역(기도, 성경 등)중 이미 연습한 부분은 어떤 것인가요?"
+msgstr "위에서 제시된 네 가지 자세한 영역(기도, 성경 등)중 이미 연습한 부분은 어떤 "
+"것인가요?"
 
 #: site/course/course-content.php:528
 msgid "Which ones do you feel unsure about?"
@@ -1907,9 +1860,8 @@ msgstr ""
 "한 사람인지 표시해보세요."
 
 #: site/course/course-content.php:682
-#, fuzzy
 msgid "Obey"
-msgstr "순종함"
+msgstr "순종"
 
 #: site/course/course-content.php:683 site/dashboard/dashboard.php:164
 #: site/pages/_strings-mobile-pwa.php:36 site/pages/share.php:81
@@ -1938,9 +1890,8 @@ msgstr ""
 "하십시오."
 
 #: site/course/course-content.php:697 site/course/course-content.php:6020
-#, fuzzy
 msgid "To saturate the world with multiplying disciples in our generation."
-msgstr "제자 배가를 통해 온 세상에 충만하기"
+msgstr "제자 배가를 통해 온 세상에 충만하기."
 
 #: site/course/course-content.php:699 site/course/course-content.php:6022
 msgid ""
@@ -1964,28 +1915,24 @@ msgstr ""
 "인도해주시도록 성령님을 초대하십시오."
 
 #: site/course/course-content.php:819
-#, fuzzy
 msgid ""
 "In this broken world, people feel rewarded when they take, when they receive "
 "and when they gain more than those around them. But God’s Spiritual Economy "
 "is different – God invests more in those who are faithful with what they’ve "
 "already been given."
 msgstr ""
-"이 깨어진 세상에서 사람들은 무언가를 받을 때, 주변 사람들보다 더 많이 얻을 "
-"때, 보상받았다고 느낍니다. 그러나 하나님의 영적 경제는 다릅니다- 하나님은 이"
-"미 받은 것에 충실한 사람들에게 더 많은 것을 투자합니다."
+"이 깨어진 세상에서 사람들은 주변 사람들보다 더 많이 얻을 때 보상받았다고 "
+"느낍니다. 그러나 하나님의 영적 경제는 다릅니다- 이미 받은 것에 충실한 "
+"사람들에게 하나님은 더 많은 것을 투자하십니다."
 
 #: site/course/course-content.php:844
-#, fuzzy
 msgid ""
 "What are some differences you see between God’s Spiritual Economy and our "
 "earthly way of getting things done?"
-msgstr ""
-"하나님의 영적 경제와 우리가 세상에서 문제를 해결하는 방법 사이에는 어떤 차이"
-"점들이 있습니까?"
+msgstr "하나님의 영적 경제와 우리가 세상에서 문제를 해결하는 방법 사이에는 어떤 "
+"차이점들이 있습니까?"
 
 #: site/course/course-content.php:890
-#, fuzzy
 msgid ""
 "One way to share God’s good news is by telling God’s story from Creation to "
 "Judgement – from the beginning of humankind all the way to the end of this "
@@ -1999,9 +1946,8 @@ msgid "Share the Gospel"
 msgstr "복음을 전하기"
 
 #: site/course/course-content.php:934
-#, fuzzy
 msgid "Break into groups of two or three people."
-msgstr "같은 성별의 2 ~ 3 명 그룹으로 나눕니다."
+msgstr "2 ~ 3 명 그룹으로 나눕니다."
 
 #: site/course/course-content.php:935
 msgid "Take turns telling the Gospel to each other."
@@ -2046,40 +1992,35 @@ msgstr ""
 "함께 축하하십시오."
 
 #: site/course/course-content.php:1016 site/pages/follow-jesus.php:249
-#, fuzzy
 msgid "The Spiritual Economy"
 msgstr "영적 경제"
 
 #: site/course/course-content.php:1036 site/course/course-content.php:3984
-#, fuzzy
 msgid ""
 "Ask God who He wants you to train to use the Creation to Judgment story (or "
 "some other way to share God’s story). Share this person’s name with the "
 "group before you go."
 msgstr ""
 "하나님께 창조부터 심판까지의 이야기(또는 하나님의 이야기를 나누는 다른 방법)"
-"로 누구를 훈련시키기를 원하시는지 물어보십시오. 가기 전에 그 사람의 이름을 그"
-"룹과 공유하십시오."
+"로 누구를 훈련시키기를 원하시는지 물어보십시오. 가기 전에 그 사람의 이름을 "
+"그룹과 공유하십시오."
 
 #: site/course/course-content.php:1037 site/course/course-content.php:3985
-#, fuzzy
 msgid ""
 "Spend time this week practicing God’s story, and then share it with at least "
 "one person from your List of 100 that you marked as \"Unbeliever\" or "
 "\"Unknown.\""
 msgstr ""
-"이번 주엔 하나님의 이야기를 나누는 연습을 한 다음 100 인 명단에서 \"불신자\" "
-"혹은 \"불분명한 자\"로 표시한 사람 중에서 적어도 한 명을 선택해 이야기를 나누"
-"십시오."
+"이번 주엔 하나님의 이야기를 나누는 연습을 한 다음, 100 인 명단에서 \"불신자\""
+" 혹은 \"불분명한 자\"로 표시한 사람 중에서 적어도 한 명을 선택해 이야기를 "
+"나누십시오."
 
 #: site/course/course-content.php:1038
-#, fuzzy
 msgid ""
 "IMPORTANT REMINDER – Your group will be celebrating the Lord’s Supper next "
 "session. Be sure to remember the supplies (bread and wine / juice)."
-msgstr ""
-"중요 알림 – 다음 과정 때 그룹내에서 성찬식을 합니다. 필요한 용품(빵과 와인/주"
-"스)을 가져오는 것을 잊지 마십시오."
+msgstr "중요 알림 – 다음 과정 때 그룹내에서 성찬식을 합니다. 필요한 용품(빵과 "
+"와인/주스)을 가져오는 것을 잊지 마십시오."
 
 #: site/course/course-content.php:1048 site/course/course-content.php:4261
 #, fuzzy
@@ -2096,12 +2037,9 @@ msgid "SESSION 4"
 msgstr "세션4"
 
 #: site/course/course-content.php:1109
-#, fuzzy
 msgid ""
 "Pray and thank God that He invites us to share His Good News with others."
-msgstr ""
-"결과에 대해 하나님께 감사 기도드리고, 함께 하는 시간동안 인도해주시도록 성령"
-"님을 초대하십시오."
+msgstr "하나님이 우리를 복음을 나누는 일에 초대하신 것에 대해 감사하십시오."
 
 #: site/course/course-content.php:1110
 msgid ""
@@ -2115,12 +2053,10 @@ msgstr ""
 #: site/course/course-content.php:1164 site/course/course-content.php:1408
 #: site/course/course-content.php:4077 site/course/course-content.php:4094
 #: site/course/course-content.php:4200 site/course/course-content.php:4235
-#, fuzzy
 msgid "Three-Minute Testimony"
 msgstr "3 분 간증"
 
 #: site/course/course-content.php:1165
-#, fuzzy
 msgid ""
 "As followers of Jesus, we are “witnesses\" for Him, because we “testify” "
 "about the impact Jesus has had on our lives. Your story of your relationship "
@@ -2128,14 +2064,13 @@ msgid ""
 "can share better than you."
 msgstr ""
 "예수님을 따르는 사람들인 우리는 그 분의 \"증인\"입니다. 우리가 예수님이 우리 "
-"삶에 행하신 영향을 증거하고 있기 때문입니다. 하나님과 당신의 관계는 당신의 간"
-"증이라고 합니다. 이는 강력한 것으로, 다른 어떤 사람도 당신보다 더 잘 나눌 수 "
-"없습니다."
+"삶에 행하신 영향을 \"증거\"하고 있기 때문입니다. 하나님과 당신의 관계는 "
+"당신의 간증이라고 합니다. 이는 강력한 것으로, 다른 어떤 사람도 당신보다 더 "
+"잘 나눌 수 없습니다."
 
 #: site/course/course-content.php:1189
-#, fuzzy
 msgid "Practice sharing your testimony"
-msgstr "연습-당신의 간증을 나눠주세요"
+msgstr "간증을 나누는 연습을 해보세요"
 
 #: site/course/course-content.php:1192
 msgid ""
@@ -2181,14 +2116,13 @@ msgstr ""
 "다."
 
 #: site/course/course-content.php:1288
-#, fuzzy
 msgid ""
 "What is one area of discipleship (reading/understanding the Bible, praying, "
 "sharing God’s story, etc.) that you want to learn more about? Who is someone "
 "that could help you learn?"
 msgstr ""
-"제자 훈련 (성경 읽기 및 이해, 기도, 하나님의 이야기 등)에서 더 배우고 싶은 영"
-"역은 무엇입니까? 배우는 데 도움을 줄 수 사람은 누구인가요?"
+"제자 훈련 (성경 읽기 및 이해, 기도, 하나님의 이야기 등)에서 더 배우고 싶은 "
+"영역은 무엇입니까? 배우는 데 도움을 줄 수 사람은 누구인가요?"
 
 #: site/course/course-content.php:1289
 msgid ""
@@ -2199,9 +2133,8 @@ msgstr ""
 "구하고 나눌 수 있는가요?"
 
 #: site/course/course-content.php:1307
-#, fuzzy
 msgid "Have you ever stopped to think about where God’s Kingdom... isn’t?"
-msgstr "하나님의 나라가 없는 곳에 대해 더이상 생각하지 않았던 적이 있나요?"
+msgstr "하나님의 나라가 없는 곳에 대해 더 이상 생각하지 않았던 적이 있나요?"
 
 #: site/course/course-content.php:1308
 msgid ""
@@ -2213,23 +2146,20 @@ msgstr ""
 "들은 하나님이 가장 일하고 싶어하시는 곳입니다. "
 
 #: site/course/course-content.php:1334
-#, fuzzy
 msgid ""
 "Who are you more comfortable sharing with -- people you already know or "
 "people you haven’t met, yet?"
-msgstr ""
-"이미 알고있는 사람 혹은 아직 만나보지 못한 사람, 당신은 이들 중 누구하고 더"
-"욱 편하게 나눌 수 있나요?"
+msgstr "이미 알고있는 사람 혹은 아직 만나보지 못한 사람, 당신은 이들 중 누구하고 "
+"더욱 편하게 나눌 수 있나요?"
 
 #: site/course/course-content.php:1335
 msgid "Why do you think that is?"
 msgstr "그렇게 생각하는 이유는 무엇인가요?"
 
 #: site/course/course-content.php:1336
-#, fuzzy
 msgid ""
 "How could you get better at sharing with people you’re less comfortable with?"
-msgstr "덜 편한 사람들과 잘 나누려면 어떻게 해야 할까요?"
+msgstr "어색한 사람들과 잘 나누려면 어떻게 해야 할까요?"
 
 #: site/course/course-content.php:1354
 msgid ""
@@ -2241,36 +2171,31 @@ msgstr ""
 "먹으면 영생하리라. 내가 줄 떡은 곧 세상의 생명을 위한 내 살이니라 하시니라.\""
 
 #: site/course/course-content.php:1378
-#, fuzzy
 msgid "Celebrate the Lord’s Supper"
-msgstr "연습- 성찬"
+msgstr "주의 만찬을 기념하십시다"
 
 #: site/course/course-content.php:1381
-#, fuzzy
 msgid ""
 "Spend the next 10 minutes celebrating the Lord’s Supper with your group."
-msgstr ""
-"다음 10 분 동안에는 줌 가이드 북 15 페이지의 패턴을 사용하여, 그룹과 함께 성"
-"찬을 축하하십시오."
+msgstr "다음 10 분 동안에는 줌 가이드 북 15 페이지의 패턴을 사용하여, 그룹과 함께 "
+"성찬을 기념하십시오."
 
 #: site/course/course-content.php:1424
-#, fuzzy
 msgid ""
 "Spend time this week practicing your Three-Minute Testimony, and then share "
 "it with at least one person from your List of 100 that you marked as "
 "\"Unbeliever\" or \"Unknown.\""
 msgstr ""
-"이번 주엔 당신의 3 분 간증을 훈련하고, 100인 명단에서 \"불신자\" 혹은 \"불분"
-"명한 자\"로 표시한 사람들 중 한 명 이상에게 나누십시오. "
+"이번 주엔 당신의 3 분 간증을 훈련하여 100인 명단에서 \"불신자\" 혹은 "
+"\"불분명한 자\"로 표시한 사람들 중 한 명 이상에게 나누십시오."
 
 #: site/course/course-content.php:1425 site/course/course-content.php:4251
-#, fuzzy
 msgid ""
 "Ask God who He wants you to train with the Three-Minute Testimony tool. "
 "Share this person’s name with the group before you go."
 msgstr ""
-"하나님께 당신의 3 분 간증 도구로 누구를 훈련시키기를 원하시는지 물어보십시"
-"오. 가기 전에 그 사람의 이름을 그룹과 공유하십시오."
+"하나님께 당신의 3 분 간증 도구로 누구를 훈련시키기를 원하시는지 "
+"물어보십시오. 가기 전에 그 사람의 이름을 그룹과 공유하십시오."
 
 #: site/course/course-content.php:1446 site/course/course-content.php:1451
 #: site/course/course-content.php:3592 site/course/course-content.php:3597
@@ -2278,19 +2203,16 @@ msgid "SESSION 5"
 msgstr "세션5"
 
 #: site/course/course-content.php:1485
-#, fuzzy
 msgid ""
 "Pray and thank God for the ways He works through the testimony of His "
 "people. Invite His Holy Spirit to lead your time together."
-msgstr ""
-"결과에 대해 하나님께 감사 기도드리고, 함께 하는 시간동안 인도해주시도록 성령"
-"님을 초대하십시오."
+msgstr "하나님께서 그분의 백성들의 간증을 통해 일하심을 감사합시다. 함께 하는 "
+"시간동안 인도해주시도록 성령님을 초대하십시오."
 
 #: site/course/course-content.php:1519 site/course/course-content.php:4603
 #: site/course/course-content.php:4623
-#, fuzzy
 msgid "B.L.E.S.S. Prayer"
-msgstr "B.L.E.S.S. 기도 연습 (15 분)"
+msgstr "B.L.E.S.S. 기도 연습"
 
 #: site/course/course-content.php:1538
 #, fuzzy
@@ -2302,14 +2224,11 @@ msgstr ""
 "법입니다. 말 그대로- 걸으면서 하나님께 기도드리는 것입니다!"
 
 #: site/course/course-content.php:1567
-#, fuzzy
 msgid ""
 "Disciple-making can be rapidly advanced by finding a person of peace, even "
 "in a place where followers of Jesus are few and far between."
-msgstr ""
-"예수님을 따르는 사람들이 거의 없이 극히 드문 곳에서도 평화의 사람을 찾음으로"
-"써 제자 삼기는 신속히 진행될 수 있습니다. 어떻게 평화의 사람을 알아볼 수 있으"
-"며, 찾은 뒤에는 무엇을 하나요?"
+msgstr "예수님을 따르는 사람들이 거의 없이 극히 드문 곳에서도 평화의 사람을 "
+"찾음으로써 제자 삼기는 신속히 진행될 수 있습니다."
 
 #: site/course/course-content.php:1593
 msgid ""
@@ -2343,16 +2262,13 @@ msgid "Practice the B.L.E.S.S. Prayer"
 msgstr "B.L.E.S.S. 기도 연습 (15 분)"
 
 #: site/course/course-content.php:1614
-#, fuzzy
 msgid ""
 "Break into groups of two or three and practice praying the five areas of the "
 "B.L.E.S.S. Prayer over each other."
-msgstr ""
-"2-3명 그룹으로 나뉘어 B.L.E.S.S.기도를 연습하십시오. 기도 패턴은 줌 가이드북"
-"에서 찾을 수 있습니다. B.L.E.S.S.기도의 다섯 영역 기도를 연습하십시오. "
+msgstr "2-3명 그룹으로 나뉘어 다섯 영역의 B.L.E.S.S.기도를 연습하십시오. 그리고 "
+"서로를 위해 기도하세요."
 
 #: site/course/course-content.php:1627
-#, fuzzy
 msgid "Prayer Walking Activity"
 msgstr "걷기 기도"
 
@@ -2377,7 +2293,6 @@ msgstr ""
 "오."
 
 #: site/course/course-content.php:1641
-#, fuzzy
 msgid "This session ends with the prayer walking activity."
 msgstr "본 과정은 걷기 기도 활동으로 마무리합니다."
 
@@ -2409,17 +2324,16 @@ msgid "SESSION 6"
 msgstr "세션6"
 
 #: site/course/course-content.php:1723 site/course/course-content.php:4569
-#, fuzzy
 msgid ""
 "Pray and thank God for what He did in the last session, ask Him to help when "
 "you find it hard to obey, and invite His Holy Spirit to lead your time "
 "together."
 msgstr ""
-"결과에 대해 하나님께 감사 기도드리고, 순종하는 것에 어려움을 느낄 때 그 분께 "
-"도움을 청하십시오. 함께 하는 시간을 인도해주시도록 성령님을 초대하십시오."
+"지난 세션에 역사하신 하나님께 감사 기도드리고, 순종하는 것에 어려움을 느낄 "
+"때 그 분께 도움을 청하십시오. 함께 하는 시간을 인도해주시도록 성령님을 "
+"초대하십시오."
 
 #: site/course/course-content.php:1753 site/course/course-content.php:1860
-#, fuzzy
 msgid "Faithfulness is Better than Knowledge"
 msgstr "신실함이 지식보다 낫습니다"
 
@@ -2439,29 +2353,25 @@ msgstr "우리는 오늘 다음과 같은 도구들을 얻게 될 것입니다:"
 #: site/course/course-content.php:4778 site/course/course-content.php:4884
 #: site/course/course-content.php:4892 site/course/course-content.php:4899
 #: site/course/course-content.php:4925
-#, fuzzy
 msgid "3/3 Group Meeting"
-msgstr "3/3 그룹 모임 패턴"
+msgstr "3/3 그룹 모임"
 
 #: site/course/course-content.php:1775
-#, fuzzy
 msgid ""
 "When we help multiply disciples, we need to make sure we’re reproducing the "
 "right things. It’s important what disciples know – but it’s much more "
 "important what they DO with what they know."
 msgstr ""
-"우리는 제자의 배가를 도우면서, 바른 것을 재생하고 있는지 꼭 확인해야 합니다. "
-"제자들이 아는 것도 중요하지만, 그들이 아는 것으로 무엇을 하는지가 더욱 중요합"
-"니다."
+"우리는 제자의 배가를 도우면서, 바른 것을 재생산해내고 있는지 꼭 확인해야 "
+"합니다. 제자들이 무엇을 알고 있는지도 중요하지만, 아는 것으로 무엇을 "
+"하는지가 더욱 중요합니다."
 
 #: site/course/course-content.php:1800
-#, fuzzy
 msgid ""
 "Think about God’s commands that you already know. How \"faithful\" are you "
 "in terms of obeying and sharing those things?"
-msgstr ""
-"당신이 이미 알고 있는 하나님의 명령에 대해 생각해보십시오. 그 명령들에 순종하"
-"며 나누는 면에서 당신은 얼마나“신실”한가요?"
+msgstr "당신이 이미 알고 있는 하나님의 명령에 대해 생각해보십시오. 당신은 얼마나 "
+"신실하게 그 명령들에 순종하며 나누고 있나요?"
 
 #: site/course/course-content.php:1817 site/course/course-content.php:4746
 msgid ""
@@ -2473,27 +2383,24 @@ msgstr ""
 "정지\" 버튼을 누르고 그룹과 함께 연습하십시오."
 
 #: site/course/course-content.php:1843 site/course/course-content.php:4760
-#, fuzzy
 msgid ""
 "Did you notice any differences between a 3/3 Group and a Bible Study or "
 "Small Group you’ve been a part of (or have heard about) in the past? If so, "
 "how would those differences impact the group?"
 msgstr ""
-"3/3 그룹과 당신이 참여했던(혹은 들었던) 성경 공부나 소그룹의 차이점을 발견했"
-"나요? 그렇다면, 그런 차이점이 그룹에 어떤 영향을 미치는가요?"
+"3/3 그룹과 당신이 참여했던(혹은 들었던) 일반적인 성경 공부나 소그룹 사이의 "
+"차이점을 발견했나요? 그렇다면, 그런 차이점이 그룹에 어떤 영향을 미치는가요?"
 
 #: site/course/course-content.php:1844 site/course/course-content.php:4761
 msgid "Could a 3/3 Group be considered a Simple Church? Why or why not?"
 msgstr "3/3 그룹을 단순한 교회로 보아도 될까요? 이유는 무엇인가요?"
 
 #: site/course/course-content.php:1879 site/course/course-content.php:4793
-#, fuzzy
 msgid ""
 "Spend time this week obeying, training, and sharing based on the commitments "
 "you’ve made during your 3/3 Group practice."
-msgstr ""
-"이번 주에는 3/3 그룹 연습에서 한 약속에 따라 순종, 훈련 및 나눔의 시간을 보내"
-"십시오."
+msgstr "이번 주에는 3/3 그룹 연습에서 한 약속에 따라 순종, 훈련 및 나눔의 시간을 "
+"보내십시오."
 
 #: site/course/course-content.php:1880 site/course/course-content.php:4794
 msgid ""
@@ -2510,19 +2417,17 @@ msgid "SESSION 7"
 msgstr "세션7"
 
 #: site/course/course-content.php:1944 site/course/course-content.php:4854
-#, fuzzy
 msgid ""
 "Pray and thank God for the group’s commitment to faithfully following Jesus "
 "and invite God’s Holy Spirit to lead your time together."
 msgstr ""
-"신실하게 예수님을 따르려는 그룹의 헌신에 대하여 하나님께 감사 기도를 드리십시"
-"오. 모임을 인도해주시도록 하나님의 성령을 초대하십시오."
+"신실하게 예수님을 따르려는 그룹의 헌신에 대하여 하나님께 감사 기도를 "
+"드리십시오. 모임을 인도해주시도록 하나님의 성령을 초대하십시오."
 
 #: site/course/course-content.php:1974 site/course/course-content.php:1986
 #: site/course/course-content.php:1995 site/course/course-content.php:2080
-#, fuzzy
 msgid "The Training Cycle"
-msgstr "훈련 사이클"
+msgstr "훈련 주기"
 
 #: site/course/course-content.php:1996
 msgid ""
