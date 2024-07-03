@@ -473,6 +473,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .sticker {
+  svg {
+    display: none;
+  }
+
   border-radius: 50%;
   color: color('white');
   background-color: color('brand-light');
@@ -482,6 +486,17 @@ input::-webkit-calendar-picker-indicator {
 
   &[data-free] {
     transform: translate( 110%, -25% );
+  }
+}
+@supports not (aspect-ratio: 1 / 1) {
+  .sticker {
+    svg {
+      display: block;
+    }
+    display: grid;
+  }
+  .sticker > * {
+    grid-area: 1 / 1 / 2 / 2;
   }
 }
 

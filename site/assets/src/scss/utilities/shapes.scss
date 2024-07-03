@@ -37,13 +37,29 @@
 }
 .circle-end,
 .circle-end-small {
-    border-start-end-radius: 1000px;
-    border-end-end-radius: 1000px;
+    border-top-right-radius: 1000px;
+    border-bottom-right-radius: 1000px;
+
+    [dir="rtl"] & {
+        border-top-right-radius: unset;
+        border-bottom-right-radius: unset;
+
+        border-top-left-radius: 1000px;
+        border-bottom-left-radius: 1000px;
+    }
 }
 @media (max-width: $break-sm) {
     .circle-end-small {
-        border-start-end-radius: 100px;
-        border-end-end-radius: 100px;
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+
+        [dir="rtl"] & {
+            border-top-right-radius: unset;
+            border-bottom-right-radius: unset;
+
+            border-top-left-radius: 100px;
+            border-bottom-left-radius: 100px;
+        }
     }
 }
 
