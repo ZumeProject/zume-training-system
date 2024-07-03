@@ -132,14 +132,16 @@ class Zume_Training_Home extends Zume_Magic_Page
             <h2 class="text-center h1"><?php echo esc_html__( 'Becoming more like Jesus... Together', 'zume' ) ?></h2>
             <div class="grid | grid-min-24rem">
                 <div class="stack | left tail circle-end-small bg-brand-light white p-2">
-                    <h3 class="h2"><?php echo esc_html__( 'Overview', 'zume' ) ?></h3>
-                    <ul role="list" class="check-list f-2 bold lh-md">
-                        <li><?php echo esc_html__( 'Group Discussions', 'zume' ) ?></li>
-                        <li><?php echo esc_html__( 'Self-Facilitated', 'zume' ) ?></li>
-                        <li><?php echo esc_html__( 'Practice-Oriented', 'zume' ) ?></li>
-                        <li><?php echo esc_html__( '32 Concepts and Skills', 'zume' ) ?></li>
-                        <li><?php echo esc_html__( '20 hours of Training', 'zume' ) ?></li>
-                    </ul>
+                    <div class="my-auto">
+                        <h3 class="h2"><?php echo esc_html__( 'Overview', 'zume' ) ?></h3>
+                        <ul role="list" class="check-list f-2 bold lh-md">
+                            <li><?php echo esc_html__( 'Group Discussions', 'zume' ) ?></li>
+                            <li><?php echo esc_html__( 'Self-Facilitated', 'zume' ) ?></li>
+                            <li><?php echo esc_html__( 'Practice-Oriented', 'zume' ) ?></li>
+                            <li><?php echo esc_html__( '32 Concepts and Skills', 'zume' ) ?></li>
+                            <li><?php echo esc_html__( '20 hours of Training', 'zume' ) ?></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="cover">
                     <div class="center stack">
