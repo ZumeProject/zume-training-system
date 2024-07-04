@@ -543,6 +543,12 @@ input::-webkit-calendar-picker-indicator {
   transform: translate(-50%, -50%);
   opacity: 0.2;
 }
+@supports not (aspect-ratio: 1) {
+  .app-bg-circle {
+    display: none;
+  }
+}
+
 .tail {
   position: relative;
 
