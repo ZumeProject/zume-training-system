@@ -82,8 +82,8 @@ class Zume_Training_Home extends Zume_Magic_Page
         $current_language_code = zume_current_language();
         ?>
 
-        <div class="stack | s0 justify-content-center absolute top left mx-0 my-3 p--1 hard-shadow | sticker">
-            <svg viewBox="0 0 1 1"></svg>
+        <div class="stack | s0 justify-content-center absolute top left mx-0 my-3 p--1 hard-shadow aspect-ratio | sticker">
+            <svg class="aspect-ratio__fallback" viewBox="0 0 1 1"></svg>
             <div class="my-auto">
                 <h2 class="f-3 lh-sm"><?php echo esc_html__( '45+', 'zume' ) ?></h2>
                 <h3 class="uppercase f--2 lh-sm"><?php echo esc_html__( 'Languages', 'zume' ) ?></h3>

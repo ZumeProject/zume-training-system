@@ -473,10 +473,6 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .sticker {
-  svg {
-    display: none;
-  }
-
   border-radius: 50%;
   color: color('white');
   background-color: color('brand-light');
@@ -488,14 +484,20 @@ input::-webkit-calendar-picker-indicator {
     transform: translate( 110%, -25% );
   }
 }
+
+.aspect-ratio {
+  &__fallback {
+    display: none;
+  }
+}
 @supports not (aspect-ratio: 1 / 1) {
-  .sticker {
-    svg {
+  .aspect-ratio {
+    &__fallback {
       display: block;
     }
     display: grid;
   }
-  .sticker > * {
+  .aspect-ratio > * {
     grid-area: 1 / 1 / 2 / 2;
   }
 }

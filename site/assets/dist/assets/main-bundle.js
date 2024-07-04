@@ -3186,6 +3186,12 @@ ${this.training.zoom_link_note}
             transition: background-color 50ms linear;
             width: 100%;
           }
+          @supports not ( aspect-ratio: 1 ) {
+            .cell {
+                line-height: 1.7;
+            }
+          }
+
           .day.cell:hover {
             background-color: var(--cp-hover-color);
             cursor: pointer;
