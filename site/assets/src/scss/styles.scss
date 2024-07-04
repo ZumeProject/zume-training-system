@@ -591,8 +591,15 @@ input::-webkit-calendar-picker-indicator {
     z-index: -1;
     border-radius: 500px;
     aspect-ratio: 1;
-
   }
+
+  @supports not (aspect-ratio: 1 ) {
+    &::before {
+      content: unset;
+    }
+  }
+
+
   &.right::before {
     transform: translateX(-50%);
     left: 0;
