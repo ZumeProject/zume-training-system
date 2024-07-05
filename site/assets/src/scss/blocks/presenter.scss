@@ -256,6 +256,19 @@ not of the 2 column section */
     position: relative;
     flex-grow: 2;
 
+    /* We can't specify flex-box gap property, so using inset as a close approximation of compatibility versions */
+    /* see https://caniuse.com/?search=gap and https://caniuse.com/?search=inset */
+    @supports not (inset: 1rem) {
+        & > :first-child {
+            margin-right: var(--gap-width);
+
+            [dir="rtl"] & {
+                margin-right: unset;
+                margin-left: var(--gap-width);
+            }
+        }
+    }
+
     & > * {
         display: flex;
         align-items: center;
