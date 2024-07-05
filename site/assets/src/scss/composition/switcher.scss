@@ -2,6 +2,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: spacing(1);
+
+  @supports not (inset: 0) {
+    & > * {
+      margin: spacing(0);
+    }
+  }
+
 }
 
 .switcher[data-reverse] {

@@ -260,12 +260,7 @@ not of the 2 column section */
     /* see https://caniuse.com/?search=gap and https://caniuse.com/?search=inset */
     @supports not (inset: 1rem) {
         & > :first-child {
-            margin-right: var(--gap-width);
-
-            [dir="rtl"] & {
-                margin-right: unset;
-                margin-left: var(--gap-width);
-            }
+            margin-inline-end: var(--gap-width);
         }
     }
 

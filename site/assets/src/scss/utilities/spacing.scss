@@ -2,6 +2,8 @@
     .gap-#{$i} {
         gap: spacing($i);
         grid-gap: spacing($i);
+
+        @include gap-fallback($i);
     }
     .gapx-#{$i} {
         column-gap: spacing($i);

@@ -194,6 +194,8 @@ dash-header-right {
     gap: spacing(0);
     font-size: font-size(3);
 
+    @include gap-fallback(0);
+
     & .icon {
         color: color('brand-light');
     }
@@ -206,8 +208,9 @@ dash-header-right {
         display: flex;
         align-items: center;
         gap: var(--space, spacing(0));
-    }
 
+        @include gap-fallback(0);
+    }
 }
 
 @media (max-width: $break-lg) {
