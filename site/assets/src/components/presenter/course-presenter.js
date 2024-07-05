@@ -44,6 +44,8 @@ export class CoursePresenter extends LitElement {
 
         this.changeSession(lessonIndex, false, sessions)
 
+        this.dir = document.querySelector('html').dir
+
         window.addEventListener('popstate', this.handleHistoryPopState)
     }
     disconnectedCallback() {
