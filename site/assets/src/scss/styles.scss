@@ -798,8 +798,16 @@ input::-webkit-calendar-picker-indicator {
 
   &.active {
     background-color: color('gray-100');
-    border-end-end-radius: 5px;
-    border-start-end-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    [dir="rtl"] & {
+      border-top-right-radius: unset;
+      border-bottom-right-radius: unset;
+
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
 
     position: relative;
 
@@ -814,9 +822,18 @@ input::-webkit-calendar-picker-indicator {
       left: 0;
       top: 0;
       bottom: 0;
-      border-end-end-radius: 5px;
-      border-start-end-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
       background-color: color('brand-light');
+
+      [dir="rtl"] & {
+        border-top-right-radius: unset;
+        border-bottom-right-radius: unset;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        left: unset;
+        right: 0;
+      }
     }
   }
 }

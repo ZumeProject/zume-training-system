@@ -336,12 +336,26 @@ not of the 2 column section */
     align-items: center;
 
     & > .progress-bar-stage:first-child > :first-child {
-        border-end-start-radius: calc( 3 * var(--slide-unit) );
-        border-start-start-radius: calc( 3 * var(--slide-unit) );
+        border-top-left-radius: calc( 3 * var(--slide-unit) );
+        border-bottom-left-radius: calc( 3 * var(--slide-unit) );
+
+        [dir="rtl"] & {
+            border-top-left-radius: unset;
+            border-bottom-left-radius: unset;
+            border-top-right-radius: calc( 3 * var(--slide-unit) );
+            border-bottom-right-radius: calc( 3 * var(--slide-unit) );
+        }
     }
     & > .progress-bar-stage:last-child > :last-child {
-        border-end-end-radius: calc( 3 * var(--slide-unit) );
-        border-start-end-radius: calc( 3 * var(--slide-unit) );
+        border-top-right-radius: calc( 3 * var(--slide-unit) );
+        border-bottom-right-radius: calc( 3 * var(--slide-unit) );
+
+        [dir="rtl"] & {
+            border-top-right-radius: unset;
+            border-bottom-right-radius: unset;
+            border-top-left-radius: calc( 3 * var(--slide-unit) );
+            border-bottom-left-radius: calc( 3 * var(--slide-unit) );
+        }
     }
 }
 .progress-bar-stage {
