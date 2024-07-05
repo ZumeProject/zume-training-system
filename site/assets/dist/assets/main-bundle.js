@@ -2827,7 +2827,7 @@ ${this.training.zoom_link_note}
                     <p><code>${this.url}</code></p>
                   </div>
               `:l`
-                  <div :class="cluster gap--1">
+                  <div class="stack--1">
                     ${this.webShareSupported?l`
                         <div class="position-relative">
                           <button class="btn" @click=${this.share}>
@@ -2840,7 +2840,7 @@ ${this.training.zoom_link_note}
                     ${this.clipboardSupported?l`
                         <div class="stack--2">
                           ${this.alwaysShow?l`<p><code>${this.url}</code></p>`:""}
-                          <div class="position-relative fit-content mx-auto">
+                          <div class="position-relative">
                             <button class="btn fit-content mx-auto" @click=${this.copyLink}>
                               <!-- Link icon -->
                               <span>${this.t.copy_link}</span>
@@ -2859,7 +2859,7 @@ ${this.training.zoom_link_note}
                 <div class="share card">
                     <div class="switcher | switcher-width-25 align-items-center gapx--4">
                         <div class="stack grow-2">
-                            <a class="f-1 bold mt-0" href=${e}>
+                            <a class="f-1 bold" href=${e}>
                                 ${s}
                             </a>
                             <p class="f--1 show-for-large">
