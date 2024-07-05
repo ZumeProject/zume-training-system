@@ -2545,7 +2545,7 @@ ${this.training.zoom_link_note}
                 </button>
 
                 <div class="widescreen flex-video">
-                    <iframe src="${this.slide.center[0]}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                    <iframe src="${this.slide.center[0]}"
                             frameborder="0"
                             allow="autoplay; fullscreen; picture-in-picture"
                     >
@@ -2578,7 +2578,6 @@ ${this.training.zoom_link_note}
                     <div>
                         <div class="title-area">
                             <div class="title-icon">
-                                <span class="icon z-icon-watch"></span>
                             </div>
                             <div class="stack">
                                 <h2 class="title">${this.slide.left[0]}</h2>
@@ -2589,6 +2588,12 @@ ${this.training.zoom_link_note}
                     <div class="content-area">
                         <div class="stack content-area__text">
                             ${this.renderContent(this.slide.right,!0)}
+                            <div>
+                                <button class="btn tight d-flex align-items-center gap--1" type="button">
+                                    <span>${this.slide.left[0]}</span>
+                                    <span class="icon z-icon-watch f-3"></span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
