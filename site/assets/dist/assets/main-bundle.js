@@ -2385,6 +2385,7 @@ ${this.training.zoom_link_note}
                         <p>${this.slide.center[1]}</p>
                         <div class="w-30"><img src="${this.slide.center[2]}" /></div>
                         <p>${this.slide.center[3]}</p>
+                        <a class="btn tight" href="${jsObject.home_url}">${jsObject.translations.home}</a>
                     </div>
                 </div>
             </div>
