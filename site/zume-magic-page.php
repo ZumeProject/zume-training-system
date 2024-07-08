@@ -8,6 +8,14 @@ class Zume_Magic_Page extends DT_Magic_Url_Base {
 
         add_action( 'dt_blank_head', [ $this, 'consistent_head' ], 5 );
         add_filter( 'dt_custom_dir_attr_override', '__return_true' );
+        add_filter( 'dt_templates_for_urls', [ $this, 'register_url' ], 199, 1 ); // registers url as valid once tests are passed
+    }
+
+    public function register_url( $template_for_url ){
+        $url = dt_get_url_path( true );
+        $url_parts = explode( '/', $url );
+        $template_for_url[join( '/', $url_parts )] = 'template-blank.php';
+        return $template_for_url;
     }
 
     public function consistent_head() {
