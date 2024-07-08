@@ -22,10 +22,11 @@ class Zume_Training_About extends Zume_Magic_Page
     }
 
     public function __construct() {
-        parent::__construct();
-        $this->lang = get_locale();
 
         $this->page_title = esc_html__( 'About', 'zume' );
+
+        parent::__construct();
+        $this->lang = get_locale();
 
         [
             'url_parts' => $url_parts,
