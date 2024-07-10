@@ -112,7 +112,7 @@ class Zume_Course {
             //phpcs:disable
             $sql                 = $wpdb->prepare(
                 "SELECT ID
-                FROM {$table_prefix}posts
+                FROM zume_posts
                 WHERE post_title = %s
                 AND post_type IN ($post_type_in_string)",
                 $page_title
@@ -121,7 +121,7 @@ class Zume_Course {
         } else {
             $sql = $wpdb->prepare(
                 "SELECT ID
-                FROM {$table_prefix}posts
+                FROM zume_posts
                 WHERE post_title = %s
                 AND post_type = %s",
                 $page_title,

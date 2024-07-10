@@ -380,10 +380,10 @@ class Zume_Training {
 
         global $wpdb, $table_prefix;
         $user_friend_key = substr( md5( rand( 10000, 100000 ) ), 0, 3 ) . substr( md5( rand( 10000, 100000 ) ), 0, 3 );
-        $key_exists = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM {$table_prefix}postmeta WHERE meta_key = 'user_friend_key' AND meta_value = %s", $user_friend_key ) );
+        $key_exists = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM zume_postmeta WHERE meta_key = 'user_friend_key' AND meta_value = %s", $user_friend_key ) );
         while ( $key_exists ){
             $user_friend_key = substr( md5( rand( 10000, 100000 ) ), 0, 3 ) . substr( md5( rand( 10000, 100000 ) ), 0, 3 );
-            $key_exists = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM {$table_prefix}postmeta WHERE meta_key = 'user_friend_key' AND meta_value = %s", $user_friend_key ) );
+            $key_exists = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM zume_postmeta WHERE meta_key = 'user_friend_key' AND meta_value = %s", $user_friend_key ) );
         }
 
         $fields = [

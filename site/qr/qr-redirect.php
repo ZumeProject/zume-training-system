@@ -70,8 +70,8 @@ class Zume_QR_Redirect
 
             $result = $wpdb->get_var( $wpdb->prepare( "
                 SELECT p.post_name, pm.meta_value as zume_lang
-                FROM {$table_prefix}posts p
-                LEFT JOIN {$table_prefix}postmeta pm ON p.ID = pm.post_id AND pm.meta_key = 'zume_lang'
+                FROM zume_posts p
+                LEFT JOIN zume_postmeta pm ON p.ID = pm.post_id AND pm.meta_key = 'zume_lang'
                 WHERE p.ID = %d
             ", $post_id ) );
 
@@ -432,8 +432,8 @@ class Zume_QR_Redirect
 
         $list = $wpdb->get_results( $wpdb->prepare( "
                     SELECT pm.meta_key, pm.meta_value
-                    FROM {$table_prefix}posts p
-                    JOIN {$table_prefix}postmeta pm ON pm.post_id=p.ID
+                    FROM zume_posts p
+                    JOIN zume_postmeta pm ON pm.post_id=p.ID
                     WHERE p.post_title = %s
                       AND p.post_type = 'zume_download'
                       AND pm.meta_key != '_edit_last'
@@ -449,8 +449,8 @@ class Zume_QR_Redirect
 
         $list = $wpdb->get_results( $wpdb->prepare( "
                     SELECT pm.meta_key, pm.meta_value
-                    FROM {$table_prefix}posts p
-                    JOIN {$table_prefix}postmeta pm ON pm.post_id=p.ID
+                    FROM zume_posts p
+                    JOIN zume_postmeta pm ON pm.post_id=p.ID
                     WHERE p.post_title = %s
                       AND p.post_type = 'zume_video'
                       AND pm.meta_key != '_edit_last'
@@ -466,8 +466,8 @@ class Zume_QR_Redirect
 
         $list = $wpdb->get_results( $wpdb->prepare( "
                     SELECT pm.meta_key, pm.meta_value
-                    FROM {$table_prefix}posts p
-                    JOIN {$table_prefix}postmeta pm ON pm.post_id=p.ID
+                    FROM zume_posts p
+                    JOIN zume_postmeta pm ON pm.post_id=p.ID
                     WHERE p.post_title = %s
                       AND p.post_type = 'zume_qr_redirect'
                       AND pm.meta_key != '_edit_last'
@@ -483,8 +483,8 @@ class Zume_QR_Redirect
 
         $list = $wpdb->get_results( $wpdb->prepare( "
                     SELECT pm.meta_key, pm.meta_value
-                    FROM {$table_prefix}posts p
-                    JOIN {$table_prefix}postmeta pm ON pm.post_id=p.ID
+                    FROM zume_posts p
+                    JOIN zume_postmeta pm ON pm.post_id=p.ID
                     WHERE p.post_title = %s
                       AND p.post_type = 'zume_qr_redirect'
                       AND pm.meta_key != '_edit_last'
