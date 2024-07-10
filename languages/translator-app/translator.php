@@ -343,7 +343,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                             if ( 'en' === $k && ! in_array( 'administrator', $this->user->roles ) ) {
                                 continue;
                             }
-                            if ( empty( $approved_languages ) || ! in_array( $k, $approved_languages ) && ! in_array( 'administrator', $this->user->roles ) ) {
+                            if ( empty( $approved_languages ) || ( ! in_array( $k, $approved_languages ) && ! in_array( 'administrator', $this->user->roles ) ) ) {
                                 continue;
                             }
                             ?>

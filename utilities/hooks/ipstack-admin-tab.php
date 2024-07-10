@@ -59,7 +59,7 @@ if ( is_admin() ) {
         /**
          * Packages and prints tab page
          *
-         * @param $tab
+         * @param string $tab
          */
         public function content( $tab ) {
             if ( $tab == 'ipstack' ) :
@@ -74,8 +74,8 @@ if ( is_admin() ) {
         /**
          * Display admin notice
          *
-         * @param $notice string
-         * @param $type string error|success|warning
+         * @param string $notice
+         * @param string $type error|success|warning
          */
         public static function admin_notice( string $notice, string $type ) {
             ?>

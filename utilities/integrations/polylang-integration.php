@@ -48,7 +48,7 @@ function zume_get_translation( $post_id, $slug = 'en' ) {
 }
 
 /**
- * @param        $page_title
+ * @param string $page_title
  * @param string $lang_code
  *
  * @return string|\WP_Error
