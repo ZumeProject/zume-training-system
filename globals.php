@@ -696,7 +696,7 @@ if ( ! function_exists( 'zume_get_user_log' ) ) {
 }
 if ( ! function_exists( 'zume_languages' ) ) {
     /**
-     * @param $type string 'code' or 'locale' or 'full'
+     * @param string $type 'code' or 'locale' or 'full'
      * @return array
      */
     function zume_languages( $type = 'code' ) {
