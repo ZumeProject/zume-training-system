@@ -38,7 +38,6 @@ class Zume_Activites_List100_Printable extends Zume_Activites
                 exit;
             }
         }
-
     }
     public function dt_magic_url_base_allowed_js( $allowed_js ) {
         return [];
@@ -83,7 +82,7 @@ class Zume_Activites_List100_Printable extends Zume_Activites
             <div>
                 <table class="unstriped print_table" >
                 <?php
-                for ($x = 1; $x <= 100; $x++) {
+                for ( $x = 1; $x <= 100; $x++ ) {
                     ?>
                     <tr class="print_table_row">
                         <td class="print_cell print_table_number"><?php echo $x; ?></td>

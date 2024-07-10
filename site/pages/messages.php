@@ -78,15 +78,15 @@ class Zume_Messages extends Zume_Magic_Page
         <?php
     }
     public function body(){
-        if(!is_user_logged_in()) { // test if logged in
+        if ( !is_user_logged_in() ) { // test if logged in
             $param = '';
             if ( isset( $_GET['m'] ) ) {
                 $param = '?m=' . $_GET['m'];
             }
-            if ( $this->language_code === 'en'  ) {
-                wp_redirect( zume_login_url( 'login', site_url() . '/' . $this->root . '/' . $this->type . $param) );
+            if ( $this->language_code === 'en' ) {
+                wp_redirect( zume_login_url( 'login', site_url() . '/' . $this->root . '/' . $this->type . $param ) );
             } else {
-                wp_redirect( zume_login_url( 'login', site_url() . '/' . $this->language_code . '/' . $this->root . '/' . $this->type . $param  ) );
+                wp_redirect( zume_login_url( 'login', site_url() . '/' . $this->language_code . '/' . $this->root . '/' . $this->type . $param ) );
             }
         }
         global $zume_user_profile;
@@ -100,9 +100,8 @@ class Zume_Messages extends Zume_Magic_Page
         $language_code = $this->language_code;
         foreach ( $messages as $message_id ) {
             $message = $this->query_message( $language_code, $message_id );
-            $this->print_message( $message);
+            $this->print_message( $message );
         }
-
     }
 
     public function print_message( $message ) {
@@ -235,7 +234,7 @@ class Zume_Messages extends Zume_Magic_Page
                     <?php echo zume_replace_placeholder( $message['body'], $this->language_code ) ?>
                 </div>
                 <div class="zmail-footer-divider"></div>
-                <div class="zmail-footer"><?php echo zume_replace_placeholder( $this->email_footer(), $this->language_code, get_current_user_id()  ) ?></div>
+                <div class="zmail-footer"><?php echo zume_replace_placeholder( $this->email_footer(), $this->language_code, get_current_user_id() ) ?></div>
             </div> <!-- activity page -->
             </body>
             </html>
@@ -247,7 +246,7 @@ class Zume_Messages extends Zume_Magic_Page
     public function email_footer( $echo = false ) {
         ob_start();
         ?>
-        <p><img src="<?php echo  zume_mirror_url() . 'images/zume-training-logo.svg' ?>" alt="logo" style="height:40px; margin: 1em auto;"></p>
+        <p><img src="<?php echo zume_mirror_url() . 'images/zume-training-logo.svg' ?>" alt="logo" style="height:40px; margin: 1em auto;"></p>
         <p><?php echo __( 'Zúme Training exists to saturate the globe with multiplying disciples in our generation.', 'zume' ) ?></p>
         <p>
             [link_dashboard]<br>
@@ -285,7 +284,7 @@ class Zume_Messages extends Zume_Magic_Page
                                           ", $subject_key, $body_key, $message_id );
         $message = $wpdb->get_row( $sql, ARRAY_A );
 
-        if ( empty($message) ) {
+        if ( empty( $message ) ) {
             return false;
         }
         return $message;
@@ -296,7 +295,7 @@ class Zume_Messages extends Zume_Magic_Page
 
         $messages = $wpdb->get_col( "SELECT p.ID FROM zume_posts p WHERE p.post_type = 'zume_messages';" );
 
-        if ( empty($messages) ) {
+        if ( empty( $messages ) ) {
             return false;
         }
         return $messages;
@@ -319,6 +318,5 @@ class Zume_Messages extends Zume_Magic_Page
         </div>
         <?php
     }
-
 }
 Zume_Messages::instance();

@@ -10,8 +10,8 @@ function zume_i18n() : void {
     load_plugin_textdomain( $domain, false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ). '../../languages' );
 }
 
-add_filter( 'determine_locale', 'zume_determine_locale'  );
-add_filter( 'locale', 'zume_determine_locale'  );
+add_filter( 'determine_locale', 'zume_determine_locale' );
+add_filter( 'locale', 'zume_determine_locale' );
 
 /**
  * Filters the locale for the current request.

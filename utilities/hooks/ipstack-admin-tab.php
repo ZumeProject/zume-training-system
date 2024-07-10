@@ -63,10 +63,10 @@ if ( is_admin() ) {
          */
         public function content( $tab ) {
             if ( $tab == 'ipstack' ) :
-            $this->template( 'begin' );
+                $this->template( 'begin' );
                 DT_Ipstack_API::metabox_for_admin();
-            $this->box( 'bottom' );
-            $this->template( 'end' );
+                $this->box( 'bottom' );
+                $this->template( 'end' );
             endif;
         }
 

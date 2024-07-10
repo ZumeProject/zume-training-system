@@ -1,5 +1,5 @@
 <?php
-if (!defined('ABSPATH')) {
+if ( !defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly.
 
@@ -186,17 +186,17 @@ class Zume_Training_Translations extends Zume_Magic_Page
         <?php
     }
     public function body_checker() {
-        if(!is_user_logged_in()) { // test if logged in
+        if ( !is_user_logged_in() ) { // test if logged in
             if ( $this->language_code === 'en' ) {
-                wp_redirect( zume_login_url( 'login', site_url() . '/' . $this->root . '/' . $this->type  ) );
+                wp_redirect( zume_login_url( 'login', site_url() . '/' . $this->root . '/' . $this->type ) );
             } else {
-                wp_redirect( zume_login_url( 'login', site_url() . '/' . $this->language_code . '/' . $this->root . '/' . $this->type  ) );
+                wp_redirect( zume_login_url( 'login', site_url() . '/' . $this->language_code . '/' . $this->root . '/' . $this->type ) );
             }
         }
         $this->user = wp_get_current_user();
 
         if ( ! in_array( 'administrator', (array) $this->user->roles ) ) {  // test if approved translator role
-            echo "User " . $this->user->user_email . " is not an administrator.";
+            echo 'User ' . $this->user->user_email . ' is not an administrator.';
             return;
         }
 
@@ -281,13 +281,13 @@ class Zume_Training_Translations extends Zume_Magic_Page
                     </thead>
                     <tbody>
                     <?php
-                    $column = array_column( $zume_languages_full_list, 'code' , 'name' );
+                    $column = array_column( $zume_languages_full_list, 'code', 'name' );
                     ksort( $column );
-                    foreach( $column as $name => $code ) {
+                    foreach ( $column as $name => $code ) {
                         ?>
                         <tr>
                             <td><a href="/<?php echo $code ?>/app/translator/?tab=status"><?php echo $name ?></a></td>
-                            <td><?php echo number_format( zume_word_count_scripts( $code) ) ?></td>
+                            <td><?php echo number_format( zume_word_count_scripts( $code ) ) ?></td>
                             <td><?php echo number_format( zume_word_count_activities( $code ) ) ?></td>
                             <td><?php echo number_format( zume_word_count_messages( $code ) ) ?></td>
                             <td><?php echo number_format( zume_word_count_pieces( $code ) ) ?></td>
@@ -317,7 +317,7 @@ class Zume_Training_Translations extends Zume_Magic_Page
                     <tbody>
                     <?php
 
-                    foreach( $zume_languages_full_list as $language ) {
+                    foreach ( $zume_languages_full_list as $language ) {
                         ?>
                         <tr>
                             <td><?php echo $language['name'] ?></td>

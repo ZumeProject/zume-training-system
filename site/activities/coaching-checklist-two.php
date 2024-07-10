@@ -38,7 +38,6 @@ class Zume_Activites_Coaching_Two extends Zume_Activites
                 exit;
             }
         }
-
     }
     public function dt_magic_url_base_allowed_js( $allowed_js ) {
         return [];
@@ -159,7 +158,7 @@ class Zume_Activites_Coaching_Two extends Zume_Activites
                     </tr>
                     <?php
                     $training_items = zume_training_items();
-                    foreach( $training_items as $training_item ) {
+                    foreach ( $training_items as $training_item ) {
                         ?>
                         <tr class="coaching_row">
                             <td class="coaching_title coaching_bottom">

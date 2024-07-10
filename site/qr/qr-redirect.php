@@ -38,7 +38,7 @@ class Zume_QR_Redirect
         }
 
         // show instructions if no url params
-        if ( empty( $_GET) ) {
+        if ( empty( $_GET ) ) {
             $this->instructions();
         }
 
@@ -80,7 +80,7 @@ class Zume_QR_Redirect
             if ( $this->development_display ) {
                 echo '<span style="font-size: 3em;">' . $link . '</span>';
             } else {
-                header("Location: ".$link, true, 302);
+                header( 'Location: '.$link, true, 302 );
             }
 
             exit();
@@ -91,7 +91,7 @@ class Zume_QR_Redirect
          *
          * https://zume.training/app/qr/?v=2342343
          */
-        else if( isset( $_GET['v'] ) && !isset( $_GET['l'] ) ) {
+        else if ( isset( $_GET['v'] ) && !isset( $_GET['l'] ) ) {
 //            dt_write_log( 'Video: ' . $_GET['v'] );
 
             $link = site_url() . '/app/video/?id=';
@@ -102,7 +102,7 @@ class Zume_QR_Redirect
             if ( $this->development_display ) {
                 echo '<span style="font-size: 3em;">' . $link . '</span>';
             } else {
-                header("Location: ".$link, true, 302);
+                header( 'Location: '.$link, true, 302 );
             }
 
             exit();
@@ -125,7 +125,7 @@ class Zume_QR_Redirect
                 $this->instructions();
             }
 
-            foreach( $list as $item ) {
+            foreach ( $list as $item ) {
                 if ( $item['meta_key'] === $requested_video_id ) {
                     $video_id = $item['meta_value'];
                     break;
@@ -137,7 +137,7 @@ class Zume_QR_Redirect
             if ( $this->development_display ) {
                 echo '<span style="font-size: 3em;">' . $link . '</span>';
             } else {
-                header("Location: ".$link, true, 302);
+                header( 'Location: '.$link, true, 302 );
             }
 
             exit();
@@ -148,7 +148,7 @@ class Zume_QR_Redirect
          * https://zume.training/app/qr/?l=en&d=33
          * Returns the download link according to the language code and download id.
          */
-        else if( isset( $_GET['l'], $_GET['d'] ) ) {
+        else if ( isset( $_GET['l'], $_GET['d'] ) ) {
 //            dt_write_log( 'QR Redirect: ' . $_GET['d'] . ' ' . $_GET['l'] );
 
             $requested_download_id = esc_attr( $_GET['d'] );
@@ -161,7 +161,7 @@ class Zume_QR_Redirect
                 $this->instructions();
             }
 
-            foreach( $list as $item ) {
+            foreach ( $list as $item ) {
                 if ( $item['meta_key'] === $requested_download_id ) {
                     $asset_name = $item['meta_value'];
                     break;
@@ -173,7 +173,7 @@ class Zume_QR_Redirect
             if ( $this->development_display ) {
                 echo '<span style="font-size: 3em;">' . $link . '</span>';
             } else {
-                header("Location: ".$link, true, 302);
+                header( 'Location: '.$link, true, 302 );
             }
 
             exit();
@@ -197,7 +197,7 @@ class Zume_QR_Redirect
                 $this->instructions();
             }
 
-            foreach( $list as $item ) {
+            foreach ( $list as $item ) {
                 if ( $item['meta_key'] === $tool_id ) {
                     $params = $item['meta_value'];
                     break;
@@ -209,7 +209,7 @@ class Zume_QR_Redirect
             if ( $this->development_display ) {
                 echo '<span style="font-size: 3em;">' . $link . '</span>';
             } else {
-                header("Location: ".$link, true, 302);
+                header( 'Location: '.$link, true, 302 );
             }
 
             exit();
@@ -230,7 +230,7 @@ class Zume_QR_Redirect
             if ( $this->development_display ) {
                 echo '<span style="font-size: 3em;">' . $link . '</span>';
             } else {
-                header("Location: ".$link, true, 302);
+                header( 'Location: '.$link, true, 302 );
             }
 
             exit();
@@ -251,7 +251,7 @@ class Zume_QR_Redirect
             if ( $this->development_display ) {
                 echo '<span style="font-size: 3em;">' . $link . '</span>';
             } else {
-                header("Location: ".$link, true, 302);
+                header( 'Location: '.$link, true, 302 );
             }
 
             exit();
@@ -272,7 +272,7 @@ class Zume_QR_Redirect
             if ( $this->development_display ) {
                 echo '<span style="font-size: 3em;">' . $link . '</span>';
             } else {
-                header("Location: ".$link, true, 302);
+                header( 'Location: '.$link, true, 302 );
             }
 
             exit();
@@ -288,7 +288,7 @@ class Zume_QR_Redirect
             $other_page_redirect = esc_attr( $_GET['o'] );
             $language_slug = esc_attr( $_GET['l'] );
 
-            switch( $other_page_redirect ) {
+            switch ( $other_page_redirect ) {
                 case 'coaching':
                     $link = zume_get_a_coach_wizard_url();
                     break;
@@ -302,7 +302,7 @@ class Zume_QR_Redirect
             if ( $this->development_display ) {
                 echo '<span style="font-size: 3em;">' . $link . '</span>';
             } else {
-                header("Location: ".$link, true, 302);
+                header( 'Location: '.$link, true, 302 );
             }
 
             exit();
@@ -325,10 +325,10 @@ class Zume_QR_Redirect
     public function show_qr()
     {
         $url = dt_get_url_path();
-        $url = str_replace('?showqr=true&', '', $url);
-        $url = str_replace('&showqr=true&', '', $url);
-        $url = str_replace('&showqr=true', '', $url);
-        $url = str_replace( site_url(), '', $url);
+        $url = str_replace( '?showqr=true&', '', $url );
+        $url = str_replace( '&showqr=true&', '', $url );
+        $url = str_replace( '&showqr=true', '', $url );
+        $url = str_replace( site_url(), '', $url );
 
         $link = $this->root_url . $url;
 
@@ -363,31 +363,31 @@ class Zume_QR_Redirect
     public function list_all_qr_codes_by_language( $language_slug ) {
         // get list of videos for language
 
-        echo "<pre>";
+        echo '<pre>';
 
         $training_items = zume_training_items();
-        foreach( $training_items as $item ) {
+        foreach ( $training_items as $item ) {
             $link = site_url() . '/app/qr/?l=' . $language_slug  . '&v='. (int) $item['key'];
             echo '<a href="'.$link.'">'.$link.'</a>' . PHP_EOL;
         }
 
         echo PHP_EOL . PHP_EOL;
 
-        foreach( $training_items as $item ) {
+        foreach ( $training_items as $item ) {
             $link = site_url() . '/app/qr/?l=' . $language_slug  . '&d='. (int) $item['key'];
             echo '<a href="'.$link.'">'.$link.'</a>' . PHP_EOL;
         }
 
         echo PHP_EOL . PHP_EOL;
 
-        foreach( $training_items as $item ) {
+        foreach ( $training_items as $item ) {
             $link = site_url() . '/zume_app/qr/?l=' . $language_slug  . '&t='. (int) $item['key'];
             echo '<a href="'.$link.'">'.$link.'</a>' . PHP_EOL;
         }
 
         echo PHP_EOL . PHP_EOL;
 
-        foreach( $training_items as $item ) {
+        foreach ( $training_items as $item ) {
             $link = site_url() . '/zume_app/qr/?l=' . $language_slug  . '&a='. (int) $item['key'];
             echo '<a href="'.$link.'">'.$link.'</a>' . PHP_EOL;
         }
@@ -395,7 +395,7 @@ class Zume_QR_Redirect
         echo PHP_EOL . PHP_EOL;
 
         $video_list = $this->query_videos_by_language( $language_slug );
-        foreach( $video_list as $item ) {
+        foreach ( $video_list as $item ) {
             if ( ! is_numeric( $item['meta_key'] ) ) {
                 continue;
             }
@@ -406,7 +406,7 @@ class Zume_QR_Redirect
         echo PHP_EOL . PHP_EOL;
 
         $download_list = $this->query_downloads_by_language( $language_slug );
-        foreach( $download_list as $item ) {
+        foreach ( $download_list as $item ) {
             if ( ! is_numeric( $item['meta_key'] ) ) {
                 continue;
             }
@@ -416,16 +416,14 @@ class Zume_QR_Redirect
 
         echo PHP_EOL . PHP_EOL;
 
-        foreach( $training_items as $activity ) {
+        foreach ( $training_items as $activity ) {
             echo site_url() . '/' . $language_slug . '/zume_activity/'. $activity['slug'] . PHP_EOL;
         }
 
         echo PHP_EOL . PHP_EOL;
 
 
-        echo "</pre>";
-
-
+        echo '</pre>';
     }
 
     public function query_downloads_by_language( $language_slug ) {
@@ -479,7 +477,7 @@ class Zume_QR_Redirect
         return $list;
     }
 
-    public function query_qr_redirect( $language_slug) {
+    public function query_qr_redirect( $language_slug ) {
         global $wpdb;
         global $table_prefix;
 

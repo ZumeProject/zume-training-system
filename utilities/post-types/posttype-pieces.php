@@ -65,7 +65,6 @@ class Zume_Training_Pieces_Post_Type
                 }
             }
         }
-
     }
     public function remove_slug( $permalink, $post, $leavename ) {
         global $wp_post_types;
@@ -100,7 +99,7 @@ class Zume_Training_Pieces_Post_Type
         <select name="zume_piece">
             <option></option>
             <?php
-            foreach( $training_items as $item ) {
+            foreach ( $training_items as $item ) {
                 $selected = false;
                 if ( $item['key'] == $number ) {
                     $selected = true;
@@ -118,7 +117,7 @@ class Zume_Training_Pieces_Post_Type
             <?php
             global $zume_languages_full_list;
             $zume_languages = $zume_languages_full_list;
-            foreach( $zume_languages as $languages ) {
+            foreach ( $zume_languages as $languages ) {
                 $selected = false;
                 if ( isset( $values['zume_lang'][0] ) && $languages['code'] == $values['zume_lang'][0] ) {
                     $selected = true;
@@ -207,7 +206,6 @@ class Zume_Training_Pieces_Post_Type
             $my_data = wp_kses_post( wp_unslash( $_POST['zume_seo_meta_description'] ) );
             update_post_meta( $post_id, 'zume_seo_meta_description', $my_data );
         }
-
     }
 
 
@@ -234,7 +232,7 @@ class Zume_Training_Pieces_Post_Type
                     'search_items' => 'Search '.$this->plural, /* Search Custom Type Title */
                     'not_found' => 'Nothing found in the Database.', /* This displays if there are no entries yet */
                     'not_found_in_trash' => 'Nothing found in Trash', /* This displays if there is nothing in the trash */
-                    'parent_item_colon' => ''
+                    'parent_item_colon' => '',
                 ), /* end of arrays */
                 'description' => $this->singular, /* Custom Type Description */
                 'public' => true,
@@ -262,7 +260,7 @@ class Zume_Training_Pieces_Post_Type
                 'capability_type' => 'page',
                 'hierarchical' => false,
                 'show_in_rest' => true,
-                'supports' => array( 'title',  'thumbnail',  'wp-block-styles' , 'align-wide', )
+                'supports' => array( 'title', 'thumbnail', 'wp-block-styles', 'align-wide' ),
             )
         );
     }
@@ -298,8 +296,8 @@ class Zume_Training_Pieces_Post_Type
         unset( $columns['date'] );
 
         // add your column as new array element and give it table header text
-        $columns['zume_piece'] = __('Piece');
-        $columns['zume_lang'] = __('Language');
+        $columns['zume_piece'] = __( 'Piece' );
+        $columns['zume_lang'] = __( 'Language' );
 
         $columns['date'] = $date; // set the 'date' column again, after the custom column
 
@@ -347,6 +345,5 @@ class Zume_Training_Pieces_Post_Type
         $vars[] .= 'zume_lang';
         return $vars;
     }
-
 } // End Class
 Zume_Training_Pieces_Post_Type::instance();

@@ -56,7 +56,6 @@ class Zume_QR_Video extends Zume_Magic_Page
     }
 
     public function header_style(){
-
     }
 
     public function body(){
