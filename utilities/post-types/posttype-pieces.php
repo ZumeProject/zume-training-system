@@ -123,7 +123,7 @@ class Zume_Training_Pieces_Post_Type
                     $selected = true;
                 }
                 ?>
-                <option value="<?php echo esc_attr( $languages['code'] ) ?>" <?php echo ( $selected ) ? 'selected' : ''; ?> ><?php echo esc_html( $languages['name'] ) ?> (<?php echo $languages['code'] ?>)</option>
+                <option value="<?php echo esc_attr( $languages['code'] ) ?>" <?php echo ( $selected ) ? 'selected' : ''; ?> ><?php echo esc_html( $languages['name'] ) ?> (<?php echo esc_html( $languages['code'] ) ?>)</option>
                 <?php
             }
             ?>
@@ -317,7 +317,7 @@ class Zume_Training_Pieces_Post_Type
         }
     }
 
-    function set_sortable_columns( $columns )
+    public function set_sortable_columns( $columns )
     {
         $columns['zume_piece'] = 'Piece';
         $columns['zume_lang'] = 'Langugaes';
@@ -328,11 +328,11 @@ class Zume_Training_Pieces_Post_Type
         switch ( $column_name ) {
             case 'zume_piece':
                 $piece = get_post_meta( $post_id, 'zume_piece', true );
-                echo $piece;
+                echo esc_html( $piece );
                 break;
             case 'zume_lang':
                 $piece = get_post_meta( $post_id, 'zume_lang', true );
-                echo $piece;
+                echo esc_html( $piece );
                 break;
 
             default:

@@ -97,7 +97,7 @@ class Zume_System_Encouragement_API
     public static function _get_current_plan( $user_id ) {
         global $wpdb, $table_prefix;
         $raw_plan = $wpdb->get_results( $wpdb->prepare(
-            "SELECT * FROM zume_dt_zume_message_plan WHERE user_id = %d",
+            'SELECT * FROM zume_dt_zume_message_plan WHERE user_id = %d',
         $user_id ), ARRAY_A );
 
         $log = zume_get_user_log( $user_id );
@@ -135,7 +135,7 @@ class Zume_System_Encouragement_API
     }
     public static function _delete_current_plan( $user_id ) {
         global $wpdb, $table_prefix;
-        $wpdb->query( $wpdb->prepare( "DELETE FROM zume_dt_zume_message_plan WHERE user_id = %s AND sent IS NULL", $user_id ) );
+        $wpdb->query( $wpdb->prepare( 'DELETE FROM zume_dt_zume_message_plan WHERE user_id = %s AND sent IS NULL', $user_id ) );
     }
     public static function _install_plan( $user_id, $plan ) {
         global $wpdb, $table_prefix;

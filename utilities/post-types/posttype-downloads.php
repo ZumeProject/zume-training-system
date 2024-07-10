@@ -285,7 +285,7 @@ class Zume_Downloads_Post_Type
     public function load_downloads_meta_box() {
         global $post_id;
 
-        echo 'Scripts content must be edited in <a href="'. site_url().'/app/translator">app/translator</a><br><hr>';
+        echo 'Scripts content must be edited in <a href="'. esc_html( site_url() ) .'/app/translator">app/translator</a><br><hr>';
         $this->meta_box_content( 'downloads' ); // prints
 
         // make sure fields exist
@@ -354,7 +354,7 @@ class Zume_Downloads_Post_Type
                         case 'textarea':
                             echo '<tr valign="top"><td style="padding:2px;vertical-align: top;font-weight:bold;"><label for="' . esc_attr( $k ) . '">' . esc_html( $v['name'] ) . '</label></td>
                                 <td style="padding:2px;">';
-                            echo $data;
+                            echo esc_html( $data );
                             echo '</td></tr>' . "\n";
                             break;
                         case 'select':

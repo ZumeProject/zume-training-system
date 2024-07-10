@@ -16,7 +16,7 @@ function create_qr_url( $data, $options = [] ) {
 
     $query = http_build_query( $options );
 
-    return trailingslashit( site_url() ) . 'make/qr' . '?' . $query;
+    return trailingslashit( site_url() ) . 'make/qr?' . $query;
 }
 
 
@@ -45,8 +45,8 @@ class DT_Make_QR extends DT_Magic_Url_Base
         parent::__construct();
 
         $url = dt_get_url_path();
-        if ( 'make/qr' === substr( $url, 0, 7 ) ) {
-            $generator = new QR_Generator( $_REQUEST['d'], $_REQUEST );
+        if ( 'make/qr' === substr( $url, 0, 7 ) && isset( $_REQUEST['d'] ) ) {
+            $generator = new QR_Generator( sanitize_text_field( wp_unslash( $_REQUEST['d'] ) ), $_REQUEST );
             $generator->output_image();
             exit( 0 );
         }
@@ -56,6 +56,7 @@ class DT_Make_QR extends DT_Magic_Url_Base
 DT_Make_QR::instance();
 
 
+// phpcs:ignore
 class QR_Generator {
     private $data;
     private $options;

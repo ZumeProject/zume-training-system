@@ -120,10 +120,10 @@ class Zume_Course {
             //phpcs:enable
         } else {
             $sql = $wpdb->prepare(
-                "SELECT ID
+                'SELECT ID
                 FROM zume_posts
                 WHERE post_title = %s
-                AND post_type = %s",
+                AND post_type = %s',
                 $page_title,
                 $post_type
             );

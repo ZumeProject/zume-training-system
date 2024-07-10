@@ -86,7 +86,7 @@ class Zume_Activites_List100 extends Zume_Activites
                         <tr class="print_table_row">
                             <td class="print_cell print_table_number"><?php echo $x; ?></td>
                             <td class="print_cell print_table_line"></td>
-                            <td class="print_cell print_table_check_column">&#9744; <?php echo __( 'Disciple', 'zume' ) ?>&nbsp;&nbsp; &#9744; <?php echo __( 'Unbeliever', 'zume' ) ?>&nbsp;&nbsp;  &#9744; <?php echo __( 'Unknown', 'zume' ) ?></td>
+                            <td class="print_cell print_table_check_column">&#9744; <?php echo esc_html__( 'Disciple', 'zume' ) ?>&nbsp;&nbsp; &#9744; <?php echo esc_html__( 'Unbeliever', 'zume' ) ?>&nbsp;&nbsp;  &#9744; <?php echo esc_html__( 'Unknown', 'zume' ) ?></td>
                         </tr>
                         <?php
                     }

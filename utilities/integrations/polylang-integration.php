@@ -108,10 +108,10 @@ function zume_get_post_by_slug( $post_slug, $post_type = 'zume_page' ) {
     global $wpdb, $table_prefix;
 
     $post = $wpdb->get_row( $wpdb->prepare(
-        " SELECT * FROM zume_posts
+        ' SELECT * FROM zume_posts
             WHERE post_name = %s
             AND post_type = %s
-        ",
+        ',
         $post_slug,
         $post_type,
     ) );

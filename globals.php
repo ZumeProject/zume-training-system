@@ -358,6 +358,7 @@ if ( ! function_exists( 'zume_get_user_timezone' ) ) {
             'offset_hours' => 0,
             'offset_minutes' => 0,
             'offset_seconds' => 0,
+            // phpcs:ignore
             'current_time' => date( 'Y-m-d H:i:s' ),
         ];
 

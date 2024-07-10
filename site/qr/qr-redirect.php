@@ -66,7 +66,7 @@ class Zume_QR_Redirect
         if ( isset( $_GET['p'] ) ) {
 //            dt_write_log( 'Post: ' . $_GET['p'] );
 
-            $post_id = esc_attr( $_GET['p'] );
+            $post_id = esc_attr( sanitize_text_field( wp_unslash( $_GET['p'] ) ) );
 
             $result = $wpdb->get_var( $wpdb->prepare( "
                 SELECT p.post_name, pm.meta_value as zume_lang
@@ -78,7 +78,7 @@ class Zume_QR_Redirect
             $link = $link . $result['zume_lang'] . '/' . $result['post_name'];
 
             if ( $this->development_display ) {
-                echo '<span style="font-size: 3em;">' . $link . '</span>';
+                echo '<span style="font-size: 3em;">' . esc_html( $link ) . '</span>';
             } else {
                 header( 'Location: '.$link, true, 302 );
             }
@@ -95,12 +95,12 @@ class Zume_QR_Redirect
 //            dt_write_log( 'Video: ' . $_GET['v'] );
 
             $link = site_url() . '/app/video/?id=';
-            $video_id = esc_attr( $_GET['v'] );
+            $video_id = esc_attr( sanitize_text_field( wp_unslash( $_GET['v'] ) ) );
 
             $link = $link . $video_id;
 
             if ( $this->development_display ) {
-                echo '<span style="font-size: 3em;">' . $link . '</span>';
+                echo '<span style="font-size: 3em;">' . esc_html( $link ) . '</span>';
             } else {
                 header( 'Location: '.$link, true, 302 );
             }
@@ -115,13 +115,13 @@ class Zume_QR_Redirect
         else if ( isset( $_GET['l'], $_GET['v'] ) ) {
 //            dt_write_log( 'Video Language: ' . $_GET['l'] . ' ' . $_GET['v'] );
 
-            $requested_video_id = esc_attr( $_GET['v'] );
-            $language_slug = esc_attr( $_GET['l'] );
+            $requested_video_id = esc_attr( sanitize_text_field( wp_unslash( $_GET['v'] ) ) );
+            $language_slug = esc_attr( sanitize_text_field( wp_unslash( $_GET['l'] ) ) );
 
             $list = $this->query_videos_by_language( $language_slug );
 
             if ( empty( $list ) ) {
-                echo 'No video found for language code: ' . $language_slug;
+                echo 'No video found for language code: ' . esc_html( $language_slug );
                 $this->instructions();
             }
 
@@ -135,7 +135,7 @@ class Zume_QR_Redirect
             $link = $this->root_url . 'app/video/?id=' . $video_id;
 
             if ( $this->development_display ) {
-                echo '<span style="font-size: 3em;">' . $link . '</span>';
+                echo '<span style="font-size: 3em;">' . esc_html( $link ) . '</span>';
             } else {
                 header( 'Location: '.$link, true, 302 );
             }
@@ -151,13 +151,13 @@ class Zume_QR_Redirect
         else if ( isset( $_GET['l'], $_GET['d'] ) ) {
 //            dt_write_log( 'QR Redirect: ' . $_GET['d'] . ' ' . $_GET['l'] );
 
-            $requested_download_id = esc_attr( $_GET['d'] );
-            $language_slug = esc_attr( $_GET['l'] );
+            $requested_download_id = esc_attr( sanitize_text_field( wp_unslash( $_GET['d'] ) ) );
+            $language_slug = esc_attr( sanitize_text_field( wp_unslash( $_GET['l'] ) ) );
 
             $list = $this->query_downloads_by_language( $language_slug );
 
             if ( empty( $list ) ) {
-                echo 'No download found for language code: ' . $language_slug;
+                echo 'No download found for language code: ' . esc_html( $language_slug );
                 $this->instructions();
             }
 
@@ -171,7 +171,7 @@ class Zume_QR_Redirect
             $link = $this->mirror_url . $language_slug . '/' . $asset_name;
 
             if ( $this->development_display ) {
-                echo '<span style="font-size: 3em;">' . $link . '</span>';
+                echo '<span style="font-size: 3em;">' . esc_html( $link ) . '</span>';
             } else {
                 header( 'Location: '.$link, true, 302 );
             }
@@ -187,13 +187,13 @@ class Zume_QR_Redirect
         else if ( isset( $_GET['l'], $_GET['t'] ) ) {
 //            dt_write_log( 'Resource: ' . $_GET['l'] . ' ' . $_GET['t'] );
 
-            $tool_id = esc_attr( $_GET['t'] );
-            $language_slug = esc_attr( $_GET['l'] );
+            $tool_id = esc_attr( sanitize_text_field( wp_unslash( $_GET['t'] ) ) );
+            $language_slug = esc_attr( sanitize_text_field( wp_unslash( $_GET['l'] ) ) );
 
             $list = $this->query_tools_by_language( $language_slug );
 
             if ( empty( $list ) ) {
-                echo 'No tool found for language code: ' . $language_slug;
+                echo 'No tool found for language code: ' . esc_html( $language_slug );
                 $this->instructions();
             }
 
@@ -207,7 +207,7 @@ class Zume_QR_Redirect
             $link = $this->root_url . $params;
 
             if ( $this->development_display ) {
-                echo '<span style="font-size: 3em;">' . $link . '</span>';
+                echo '<span style="font-size: 3em;">' . esc_html( $link ) . '</span>';
             } else {
                 header( 'Location: '.$link, true, 302 );
             }
@@ -222,13 +222,13 @@ class Zume_QR_Redirect
         else if ( isset( $_GET['l'], $_GET['a'] ) ) {
 //            dt_write_log( 'Activity: ' . $_GET['l'] . ' ' . $_GET['a'] );
 
-            $activity_id = esc_attr( $_GET['a'] );
-            $language_slug = esc_attr( $_GET['l'] );
+            $activity_id = esc_attr( sanitize_text_field( wp_unslash( $_GET['a'] ) ) );
+            $language_slug = esc_attr( sanitize_text_field( wp_unslash( $_GET['l'] ) ) );
 
             $link = $this->root_url . $language_slug . '/activities/' . $activity_id;
 
             if ( $this->development_display ) {
-                echo '<span style="font-size: 3em;">' . $link . '</span>';
+                echo '<span style="font-size: 3em;">' . esc_html( $link ) . '</span>';
             } else {
                 header( 'Location: '.$link, true, 302 );
             }
@@ -243,13 +243,13 @@ class Zume_QR_Redirect
         else if ( isset( $_GET['l'], $_GET['s'] ) ) {
 //            dt_write_log( 'Activity: ' . $_GET['l'] . ' ' . $_GET['s'] );
 
-            $script_id = esc_attr( $_GET['s'] );
-            $language_code = esc_attr( $_GET['l'] );
+            $script_id = esc_attr( sanitize_text_field( wp_unslash( $_GET['s'] ) ) );
+            $language_code = esc_attr( sanitize_text_field( wp_unslash( $_GET['l'] ) ) );
 
             $link = $this->root_url . $language_code . '/app/script/?s=' . $script_id;
 
             if ( $this->development_display ) {
-                echo '<span style="font-size: 3em;">' . $link . '</span>';
+                echo '<span style="font-size: 3em;">' . esc_html( $link ) . '</span>';
             } else {
                 header( 'Location: '.$link, true, 302 );
             }
@@ -264,13 +264,13 @@ class Zume_QR_Redirect
         else if ( isset( $_GET['l'], $_GET['c'] ) ) {
 //            dt_write_log( 'Activity: ' . $_GET['l'] . ' ' . $_GET['c'] );
 
-            $checkin_code = esc_attr( $_GET['c'] );
-            $language_slug = esc_attr( $_GET['l'] );
+            $checkin_code = esc_attr( sanitize_text_field( wp_unslash( $_GET['c'] ) ) );
+            $language_slug = esc_attr( sanitize_text_field( wp_unslash( $_GET['l'] ) ) );
 
             $link = $this->root_url . $language_slug . '/checkin/?code=' . $checkin_code;
 
             if ( $this->development_display ) {
-                echo '<span style="font-size: 3em;">' . $link . '</span>';
+                echo '<span style="font-size: 3em;">' . esc_html( $link ) . '</span>';
             } else {
                 header( 'Location: '.$link, true, 302 );
             }
@@ -285,8 +285,8 @@ class Zume_QR_Redirect
         else if ( isset( $_GET['l'], $_GET['o'] ) ) {
 //            dt_write_log( 'Activity: ' . $_GET['l'] . ' ' . $_GET['o'] );
 
-            $other_page_redirect = esc_attr( $_GET['o'] );
-            $language_slug = esc_attr( $_GET['l'] );
+            $other_page_redirect = esc_attr( sanitize_text_field( wp_unslash( $_GET['o'] ) ) );
+            $language_slug = esc_attr( sanitize_text_field( wp_unslash( $_GET['l'] ) ) );
 
             switch ( $other_page_redirect ) {
                 case 'coaching':
@@ -300,7 +300,7 @@ class Zume_QR_Redirect
             }
 
             if ( $this->development_display ) {
-                echo '<span style="font-size: 3em;">' . $link . '</span>';
+                echo '<span style="font-size: 3em;">' . esc_html( $link ) . '</span>';
             } else {
                 header( 'Location: '.$link, true, 302 );
             }
@@ -311,7 +311,7 @@ class Zume_QR_Redirect
          * Blank match
          */
         else if ( isset( $_GET['l'] ) ) {
-            $language_slug = esc_attr( $_GET['l'] );
+            $language_slug = esc_attr( sanitize_text_field( wp_unslash( $_GET['l'] ) ) );
             $this->list_all_qr_codes_by_language( $language_slug );
         }
         else {
@@ -332,7 +332,7 @@ class Zume_QR_Redirect
 
         $link = $this->root_url . $url;
 
-        echo '<div style="width:1000px;"><a href="' . $link . '"><img src="https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=' . $link . '" title="' . $link . '" alt="' . $link . '" style="width:100%;"/></a><br>' . $link . '</div>';
+        echo '<div style="width:1000px;"><a href="' . esc_html( $link ) . '"><img src="https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=' . esc_html( $link ) . '" title="' . esc_html( $link ) . '" alt="' . esc_html( $link ) . '" style="width:100%;"/></a><br>' . esc_html( $link ) . '</div>';
 
         exit();
     }
@@ -345,14 +345,14 @@ class Zume_QR_Redirect
 
                     <strong>Main redirect examples:</strong>
                     <ul>
-                        <li>Redirect by Language Code & Video ID: <a href="' . $this->root_url . 'app/qr/?l=en&v=33">' . $this->root_url . 'app/qr/?l=en&v=33</a></li>
-                        <li>Redirect by Language Code & Download ID: <a href="' . $this->root_url . 'app/qr/?l=en&d=33">' . $this->root_url . 'app/qr/?l=en&d=33</a></li>
-                        <li>Redirect by Language Code & Tool ID: <a href="' . $this->root_url . 'app/qr/?l=en&t=4">' . $this->root_url . 'app/qr/?l=en&t=4</a></li>
+                        <li>Redirect by Language Code & Video ID: <a href="' . esc_html( $this->root_url ) . 'app/qr/?l=en&v=33">' . esc_html( $this->root_url ) . 'app/qr/?l=en&v=33</a></li>
+                        <li>Redirect by Language Code & Download ID: <a href="' . esc_html( $this->root_url ) . 'app/qr/?l=en&d=33">' . esc_html( $this->root_url ) . 'app/qr/?l=en&d=33</a></li>
+                        <li>Redirect by Language Code & Tool ID: <a href="' . esc_html( $this->root_url ) . 'app/qr/?l=en&t=4">' . esc_html( $this->root_url ) . 'app/qr/?l=en&t=4</a></li>
                     </ul>
                     <strong>Direct link examples (deprecated, do not use)</strong>
                     <ul>
-                        <li>Redirect by POST ID : <a href="' . $this->root_url . 'app/qr/?p=20740">' . $this->root_url . 'app/qr/?p=20740</a></li>
-                        <li>Redirect by Video ID : <a href="' . $this->root_url . 'app/qr/?v=247062938">' . $this->root_url . 'app/qr/?v=247062938</a></li>
+                        <li>Redirect by POST ID : <a href="' . esc_html( $this->root_url ) . 'app/qr/?p=20740">' . esc_html( $this->root_url ) . 'app/qr/?p=20740</a></li>
+                        <li>Redirect by Video ID : <a href="' . esc_html( $this->root_url ) . 'app/qr/?v=247062938">' . esc_html( $this->root_url ) . 'app/qr/?v=247062938</a></li>
                     </ul>
 
                 </div>
@@ -368,28 +368,28 @@ class Zume_QR_Redirect
         $training_items = zume_training_items();
         foreach ( $training_items as $item ) {
             $link = site_url() . '/app/qr/?l=' . $language_slug  . '&v='. (int) $item['key'];
-            echo '<a href="'.$link.'">'.$link.'</a>' . PHP_EOL;
+            echo '<a href="'.esc_url( $link ) .'">'.esc_html( $link ) .'</a>' . PHP_EOL;
         }
 
         echo PHP_EOL . PHP_EOL;
 
         foreach ( $training_items as $item ) {
             $link = site_url() . '/app/qr/?l=' . $language_slug  . '&d='. (int) $item['key'];
-            echo '<a href="'.$link.'">'.$link.'</a>' . PHP_EOL;
+            echo '<a href="'.esc_url( $link ) .'">'.esc_html( $link ) .'</a>' . PHP_EOL;
         }
 
         echo PHP_EOL . PHP_EOL;
 
         foreach ( $training_items as $item ) {
             $link = site_url() . '/zume_app/qr/?l=' . $language_slug  . '&t='. (int) $item['key'];
-            echo '<a href="'.$link.'">'.$link.'</a>' . PHP_EOL;
+            echo '<a href="'.esc_url( $link ) .'">'.esc_html( $link ) .'</a>' . PHP_EOL;
         }
 
         echo PHP_EOL . PHP_EOL;
 
         foreach ( $training_items as $item ) {
             $link = site_url() . '/zume_app/qr/?l=' . $language_slug  . '&a='. (int) $item['key'];
-            echo '<a href="'.$link.'">'.$link.'</a>' . PHP_EOL;
+            echo '<a href="'.esc_url( $link ) .'">'.esc_html( $link ) .'</a>' . PHP_EOL;
         }
 
         echo PHP_EOL . PHP_EOL;
@@ -400,7 +400,7 @@ class Zume_QR_Redirect
                 continue;
             }
             $link = site_url() . '/zume_app/video/?id=' . $item['meta_value'];
-            echo '<a href="'.$link.'">'.$link.'</a>' . PHP_EOL;
+            echo '<a href="'.esc_url( $link ) .'">'.esc_html( $link ) .'</a>' . PHP_EOL;
         }
 
         echo PHP_EOL . PHP_EOL;
@@ -411,13 +411,13 @@ class Zume_QR_Redirect
                 continue;
             }
             $link = $this->mirror_url . $language_slug . '/' . $item['meta_value'];
-            echo '<a href="'.$link.'">'.$link.'</a>' . PHP_EOL;
+            echo '<a href="'.esc_url( $link ) .'">'.esc_html( $link ) .'</a>' . PHP_EOL;
         }
 
         echo PHP_EOL . PHP_EOL;
 
         foreach ( $training_items as $activity ) {
-            echo site_url() . '/' . $language_slug . '/zume_activity/'. $activity['slug'] . PHP_EOL;
+            echo esc_html( site_url() . '/' . $language_slug . '/zume_activity/'. $activity['slug'] ) . PHP_EOL;
         }
 
         echo PHP_EOL . PHP_EOL;

@@ -100,6 +100,7 @@ class Zume_Training_Translations extends Zume_Magic_Page
             <?php
         } else {
             ?>
+            <?php //phpcs:ignore ?>
             <script src="https://cdn.tiny.cloud/1/q7cy7hksisjrvfcglos9jqi7xvy0orfu9w2ydbfig0x37ylw/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
             <style>
                 table tr td {
@@ -196,7 +197,7 @@ class Zume_Training_Translations extends Zume_Magic_Page
         $this->user = wp_get_current_user();
 
         if ( ! in_array( 'administrator', (array) $this->user->roles ) ) {  // test if approved translator role
-            echo 'User ' . $this->user->user_email . ' is not an administrator.';
+            echo 'User ' . esc_html( $this->user->user_email ) . ' is not an administrator.';
             return;
         }
 
@@ -286,7 +287,7 @@ class Zume_Training_Translations extends Zume_Magic_Page
                     foreach ( $column as $name => $code ) {
                         ?>
                         <tr>
-                            <td><a href="/<?php echo $code ?>/app/translator/?tab=status"><?php echo $name ?></a></td>
+                            <td><a href="/<?php echo esc_attr( $code ) ?>/app/translator/?tab=status"><?php echo esc_attr( $name ) ?></a></td>
                             <td><?php echo number_format( zume_word_count_scripts( $code ) ) ?></td>
                             <td><?php echo number_format( zume_word_count_activities( $code ) ) ?></td>
                             <td><?php echo number_format( zume_word_count_messages( $code ) ) ?></td>
@@ -320,9 +321,9 @@ class Zume_Training_Translations extends Zume_Magic_Page
                     foreach ( $zume_languages_full_list as $language ) {
                         ?>
                         <tr>
-                            <td><?php echo $language['name'] ?></td>
-                            <td><?php echo $language['code'] ?></td>
-                            <td><?php echo $language['locale'] ?></td>
+                            <td><?php echo esc_html( $language['name'] ) ?></td>
+                            <td><?php echo esc_html( $language['code'] ) ?></td>
+                            <td><?php echo esc_html( $language['locale'] ) ?></td>
                             <td><?php echo ( $language['enable_flags']['version_4_available'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $language['enable_flags']['translator_enabled'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $language['enable_flags']['version_5_ready'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>

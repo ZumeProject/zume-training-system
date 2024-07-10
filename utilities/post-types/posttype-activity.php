@@ -189,13 +189,13 @@ class Zume_Training_Activity_Post_Type
             case 'delay':
                 $days = get_post_meta( $post_id, 'delay', true );
                 if ( $days ) {
-                    echo $days;
+                    echo esc_html( $days );
                 } else {
                     echo '0';
                 }
                 break;
             case 'logic':
-                echo get_post_meta( $post_id, 'logic', true );
+                echo esc_html( get_post_meta( $post_id, 'logic', true ) );
                 break;
 
             default:
@@ -355,7 +355,7 @@ class Zume_Training_Activity_Post_Type
                             break;
                         case 'textarea':
                             echo '<tr valign="top"><td style="padding:2px;vertical-align: top;"><label for="' . esc_attr( $k ) . '">' . esc_html( $v['name'] ) . '</label></td>
-                                <td style="padding:2px;"><textarea name="' . esc_attr( $k ) . '" type="text" id="' . esc_attr( $k ) . '" class="regular-text" style="width:100%;height:150px;" />' .  $data  . '</textarea>';
+                                <td style="padding:2px;"><textarea name="' . esc_attr( $k ) . '" type="text" id="' . esc_attr( $k ) . '" class="regular-text" style="width:100%;height:150px;" />' .  esc_html( $data )  . '</textarea>';
                             echo '</td></tr>' . "\n";
                             break;
                         case 'link':
@@ -446,7 +446,7 @@ class Zume_Training_Activity_Post_Type
                 continue;
             }
 
-            ${$f} = trim( wp_unslash( $_POST[ $f ] ) );
+            ${$f} = trim( sanitize_text_field( wp_unslash( $_POST[ $f ] ) ) );
 
             // Escape the URLs.
             if ( 'url' == $field_data[ $f ]['type'] ) {
@@ -454,7 +454,7 @@ class Zume_Training_Activity_Post_Type
             }
 
             if ( 'textarea' == $field_data[ $f ]['type'] ) {
-                update_post_meta( $post_id, $f, trim( wp_unslash( $_POST[ $f ] ) ) );
+                update_post_meta( $post_id, $f, trim( sanitize_text_field( wp_unslash( $_POST[ $f ] ) ) ) );
             } elseif ( get_post_meta( $post_id, $f ) == '' ) {
                 add_post_meta( $post_id, $f, ${$f}, true );
             } elseif ( ${$f} != get_post_meta( $post_id, $f, true ) ) {
