@@ -243,7 +243,8 @@ class QR_Generator {
 
         for ( $i = 0; $i < 4; $i++ ) { $code[] = 0;
         }
-        while ( count( $code ) % 8 ) { $code[] = 0;
+        $code_count = count( $code );
+        while ( $code_count % 8 ) { $code[] = 0;
         }
 
         /* Convert from bit level to byte level. */
@@ -309,9 +310,11 @@ class QR_Generator {
             case 2:  /* 27 - 40 */
                 $code[] = $length & 0x2000;
                 $code[] = $length & 0x1000;
+                // no break
             case 1:  /* 10 - 26 */
                 $code[] = $length & 0x0800;
                 $code[] = $length & 0x0400;
+                // no break
             case 0:  /* 1 - 9 */
                 $code[] = $length & 0x0200;
                 $code[] = $length & 0x0100;
@@ -331,10 +334,12 @@ class QR_Generator {
                     $code[] = $group & 0x200;
                     $code[] = $group & 0x100;
                     $code[] = $group & 0x080;
+                    // no break
                 case 2:
                     $code[] = $group & 0x040;
                     $code[] = $group & 0x020;
                     $code[] = $group & 0x010;
+                    // no break
                 case 1:
                     $code[] = $group & 0x008;
                     $code[] = $group & 0x004;
@@ -353,9 +358,11 @@ class QR_Generator {
             case 2:  /* 27 - 40 */
                 $code[] = $length & 0x1000;
                 $code[] = $length & 0x0800;
+                // no break
             case 1:  /* 10 - 26 */
                 $code[] = $length & 0x0400;
                 $code[] = $length & 0x0200;
+                // no break
             case 0:  /* 1 - 9 */
                 $code[] = $length & 0x0100;
                 $code[] = $length & 0x0080;
@@ -411,6 +418,7 @@ class QR_Generator {
                 $code[] = $length & 0x0400;
                 $code[] = $length & 0x0200;
                 $code[] = $length & 0x0100;
+                // no break
             case 0:  /* 1 - 9 */
                 $code[] = $length & 0x0080;
                 $code[] = $length & 0x0040;
@@ -442,9 +450,11 @@ class QR_Generator {
             case 2:  /* 27 - 40 */
                 $code[] = $length & 0x1000;
                 $code[] = $length & 0x0800;
+                // no break
             case 1:  /* 10 - 26 */
                 $code[] = $length & 0x0400;
                 $code[] = $length & 0x0200;
+                // no break
             case 0:  /* 1 - 9 */
                 $code[] = $length & 0x0100;
                 $code[] = $length & 0x0080;

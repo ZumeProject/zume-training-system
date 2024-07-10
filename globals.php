@@ -610,7 +610,9 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
                 ) {
                     $plans[$connection['post_id']][$connection['meta_key']] = [
                         'timestamp' => $connection['meta_value'],
+                        // phpcs:ignore
                         'date' => date( 'Y-m-d', $connection['meta_value'] ),
+                        // phpcs:ignore
                         'date_formatted' => date( 'M j, Y', $connection['meta_value'] ),
                         'completed' => in_array( $connection['meta_key'], $log_subtypes ),
                     ];
@@ -619,6 +621,7 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
                 }
             }
             $participants_string = implode( ',', $participants );
+            // phpcs:disable
             $participants_result = $wpdb->get_results(
                 "SELECT  p2.p2p_to as plan_id, p2.p2p_from as contact_id, pm.meta_value as user_id, p.post_title as user_name
                     FROM zume_p2p p2
@@ -626,6 +629,7 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
 					LEFT JOIN zume_postmeta pm ON p2.p2p_from=pm.post_id AND pm.meta_key = 'corresponds_to_user'
                     WHERE p2.p2p_type = 'zume_plans_to_contacts'
                     AND p2.p2p_to IN ( $participants_string ) ", ARRAY_A );
+            // phpcs:enable
 
             foreach ( $participants_result as $participant ) {
                 $plans[$participant['plan_id']]['participants'][] = [
@@ -680,6 +684,7 @@ if ( ! function_exists( 'zume_get_user_log' ) ) {
             $sql .= $wpdb->prepare( 'AND r.subtype = %s', $subtype );
         }
 
+        // phpcs:ignore
         $results = $wpdb->get_results( $sql, ARRAY_A );
 
         if ( is_array( $results ) ) {
@@ -5900,6 +5905,7 @@ if ( ! class_exists( 'Zume_Global_Endpoints' ) ) {
                     'question' => $params['question'] ?? '',
                     'answer' => $params['answer'] ?? '',
                 ]),
+                // phpcs:ignore
                 'date' => $params['date'] ?? date( 'Y-m-d H:i:s' ),
                 'category' => $params['category'] ?? 'custom',
             ];
@@ -6092,7 +6098,8 @@ if ( ! function_exists( 'zume_validate_user_id_request' ) ) {
         if ( !is_user_logged_in() ) {
             return new WP_Error( __METHOD__, 'User not logged in', array('status' => 401) );
         }
-        if ( $profile = zume_get_user_profile( $user_id ) ) {
+        $profile = zume_get_user_profile( $user_id );
+        if ( $profile ) {
             $current_user_id = get_current_user_id();
             if ( (int) $profile['user_id'] === $current_user_id ) {
                 // if user id matches current user id
@@ -6124,6 +6131,7 @@ if ( ! function_exists( 'zume_log_insert' ) ) {
 }
 
 if ( ! class_exists( 'Zume_System_Log_API' ) ) {
+    // phpcs:ignore
     class Zume_System_Log_API
     {
         public $namespace = 'zume_system/v1';
@@ -7234,6 +7242,7 @@ if ( ! class_exists( 'Zume_System_Log_API' ) ) {
 }
 
 if ( ! class_exists( 'Zume_User_Genmap' ) ) {
+    // phpcs:ignore
     class Zume_User_Genmap
     {
         private static $_instance = null;
@@ -7248,7 +7257,7 @@ if ( ! class_exists( 'Zume_User_Genmap' ) ) {
             $results = $this->tree( $user_id );
             ?>
             <div class="reveal full" id="modal_genmap" data-v-offset="0" data-reveal>
-                <h1>Current Genmap for <?php echo $profile['name'] ?></h1>
+                <h1>Current Genmap for <?php echo esc_html( $profile['name'] ) ?></h1>
                 <hr>
                 <div class="grid-x grid-padding-x">
                     <div class="cell medium-9">

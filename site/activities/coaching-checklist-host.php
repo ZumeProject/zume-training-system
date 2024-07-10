@@ -95,14 +95,14 @@ class Zume_Activites_Coaching_Host extends Zume_Activites
         </style>
         <div class="activity-page">
             <div class="activity-title">
-                <h2><?php echo __( 'Coaching Checklist', 'zume' ) ?> ( <?php echo __( 'H.O.S.T.', 'zume' ) ?> )</h2>
-                <?php echo __( 'Self-evaluate yourself using Heard, Obeyed, Shared, Trained.', 'zume' ) ?><br>
+                <h2><?php echo esc_html__( 'Coaching Checklist', 'zume' ) ?> ( <?php echo esc_html__( 'H.O.S.T.', 'zume' ) ?> )</h2>
+                <?php echo esc_html__( 'Self-evaluate yourself using Heard, Obeyed, Shared, Trained.', 'zume' ) ?><br>
             </div>
             <div class="activity-content">
                 <table class="coaching-table">
                     <tr>
                         <td>
-                            <strong class="coaching_table_title"><?php echo __( 'Training Tools/Concepts', 'zume' ) ?></strong>
+                            <strong class="coaching_table_title"><?php echo esc_html__( 'Training Tools/Concepts', 'zume' ) ?></strong>
                         </td>
                         <td>
                         </td>
@@ -117,22 +117,22 @@ class Zume_Activites_Coaching_Host extends Zume_Activites
                     </tr>
                     <tr class="coaching_header">
                         <td class="coaching_right">
-                            <em><?php echo __( 'Ask yourself, have I', 'zume' ) ?> ...</em>
+                            <em><?php echo esc_html__( 'Ask yourself, have I', 'zume' ) ?> ...</em>
                         </td>
                         <td>
 
                         </td>
                         <td class="coaching_column coaching_bottom">
-                            <?php echo __( 'Heard', 'zume' ) ?>
+                            <?php echo esc_html__( 'Heard', 'zume' ) ?>
                         </td>
                         <td class="coaching_column coaching_bottom">
-                            <?php echo __( 'Obeyed', 'zume' ) ?>
+                            <?php echo esc_html__( 'Obeyed', 'zume' ) ?>
                         </td>
                         <td class="coaching_column coaching_bottom">
-                            <?php echo __( 'Shared', 'zume' ) ?>
+                            <?php echo esc_html__( 'Shared', 'zume' ) ?>
                         </td>
                         <td class="coaching_column coaching_bottom">
-                            <?php echo __( 'Trained', 'zume' ) ?>
+                            <?php echo esc_html__( 'Trained', 'zume' ) ?>
                         </td>
                     </tr>
                     <?php
@@ -141,7 +141,7 @@ class Zume_Activites_Coaching_Host extends Zume_Activites
                         ?>
                         <tr class="coaching_row">
                             <td class="coaching_title coaching_bottom">
-                                <?php echo $training_item['title']; ?>
+                                <?php echo esc_html( $training_item['title'] ); ?>
                             </td>
                             <td class="coaching_bottom">
                             </td>
@@ -161,21 +161,21 @@ class Zume_Activites_Coaching_Host extends Zume_Activites
             </div>
             <br>
             <div>
-                <strong><?php echo __( 'Heard', 'zume' ) ?></strong>
+                <strong><?php echo esc_html__( 'Heard', 'zume' ) ?></strong>
                 <p>
-                    <?php echo __( 'Have I heard about this tool or concept?', 'zume' ) ?>
+                    <?php echo esc_html__( 'Have I heard about this tool or concept?', 'zume' ) ?>
                 </p>
-                <strong><?php echo __( 'Obeyed', 'zume' ) ?></strong>
+                <strong><?php echo esc_html__( 'Obeyed', 'zume' ) ?></strong>
                 <p>
-                    <?php echo __( 'Have I obeyed this tool or concept? If a tool, have I practiced it on my own? If a concept, have you reflected on how it changes your perspective?', 'zume' ) ?>
+                    <?php echo esc_html__( 'Have I obeyed this tool or concept? If a tool, have I practiced it on my own? If a concept, have you reflected on how it changes your perspective?', 'zume' ) ?>
                 </p>
-                <strong><?php echo __( 'Shared', 'zume' ) ?></strong>
+                <strong><?php echo esc_html__( 'Shared', 'zume' ) ?></strong>
                 <p>
-                    <?php echo __( 'Have I shared this tool or concept? If a tool, have you shown anyone how to use this tool? If a concept, have you shared this concept with anyone?', 'zume' ) ?>
+                    <?php echo esc_html__( 'Have I shared this tool or concept? If a tool, have you shown anyone how to use this tool? If a concept, have you shared this concept with anyone?', 'zume' ) ?>
                 </p>
-                <strong><?php echo __( 'Trained', 'zume' ) ?></strong>
+                <strong><?php echo esc_html__( 'Trained', 'zume' ) ?></strong>
                 <p>
-                    <?php echo __( 'Have I trained others to share this tool or concept? If a tool, have I trained someone to share the tool with someone else? If a concept, have I trained someone to share the concept with someone else?', 'zume' ) ?>
+                    <?php echo esc_html__( 'Have I trained others to share this tool or concept? If a tool, have I trained someone to share the tool with someone else? If a concept, have I trained someone to share the concept with someone else?', 'zume' ) ?>
                 </p>
             </div>
         </div>

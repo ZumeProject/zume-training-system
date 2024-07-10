@@ -142,7 +142,7 @@ class Zume_Activites_Coaching_Mawl extends Zume_Activites
                         ?>
                         <tr class="coaching_row">
                             <td class="coaching_title coaching_bottom">
-                                <?php echo $training_item['title']; ?>
+                                <?php echo esc_html( $training_item['title'] ); ?>
                             </td>
                             <td class="coaching_bottom">
                             </td>
