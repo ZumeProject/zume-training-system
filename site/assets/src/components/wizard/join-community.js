@@ -31,6 +31,10 @@ export class JoinCommunity extends LitElement {
     }
 
     render() {
+        if (this.hasNextStep && !this.loading && !this.success) {
+          this.joinCommunity()
+        }
+
         return html`
             <div class="container-md stack-2 center | py-2">
               <h1 class="text-center">${this.t.community_title}</h1>
