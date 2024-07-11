@@ -3,18 +3,7 @@ import { LitElement, html } from 'lit';
 export class JoinCommunity extends LitElement {
     static get properties() {
         return {
-            /**
-             * The step name
-             */
-            name: { type: String },
-            /**
-             * The module name that this step is part of
-             */
-            module: { type: String },
-            /**
-             * Is this step skippable
-             */
-            skippable: { type: Boolean },
+            hasNextStep: { type: Boolean },
             /**
              * Translation strings
              */
@@ -28,7 +17,6 @@ export class JoinCommunity extends LitElement {
         this.loading = true
         makeRequest('POST', 'log', { type: 'system', subtype: 'join_community' }, 'zume_system/v1/' )
             .done( ( data ) => {
-                console.log(data)
                 this.success = true
             })
             .always(() => {
@@ -71,7 +59,7 @@ export class JoinCommunity extends LitElement {
                 </div>
               </div>
             </div>
-            <div class="container-md center">
+            <div class="container-md center stack">
                 ${
                     !this.success ? html`
                       <button class="btn large uppercase" @click=${this.joinCommunity}>
@@ -98,7 +86,13 @@ export class JoinCommunity extends LitElement {
                         </div>
                     ` : ''
                 }
-
+                ${
+                  this.success && this.hasNextStep ? html`
+                    <button class="btn" @click=${this._sendDoneStepEvent}>
+                      ${this.t.next}
+                    </button>
+                  ` : ''
+                }
             </div>
         `;
     }
