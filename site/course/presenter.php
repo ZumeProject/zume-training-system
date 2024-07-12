@@ -26,6 +26,7 @@ class Zume_Training_Presenter extends Zume_Magic_Page
         parent::__construct();
 
         $this->page_title = esc_html__( 'Presenter', 'zume' );
+        $this->page_description = esc_html__( 'Train disciples how to make disciples with 20 hours of course content', 'zume' );
 
         $this->lang = get_locale();
 

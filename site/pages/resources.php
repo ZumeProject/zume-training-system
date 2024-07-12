@@ -26,6 +26,7 @@ class Zume_Training_Resources extends Zume_Magic_Page
         $this->lang = get_locale();
 
         $this->page_title = esc_html__( 'Resources', 'zume' );
+        $this->page_description = esc_html__( 'Downloadable resources to help with running a zume training.', 'zume' );
 
         [
             'url_parts' => $url_parts,

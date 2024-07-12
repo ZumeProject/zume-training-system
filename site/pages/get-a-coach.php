@@ -26,6 +26,7 @@ class Zume_Training_Get_A_Coach extends Zume_Magic_Page
         $this->lang = get_locale();
 
         $this->page_title = esc_html__( 'Get A Coach', 'zume' );
+        $this->page_description = esc_html__( 'All our coaches are trained and practicing the concepts and tools found in Zûme. All our coaches can help you over barriers and make steps in your journey.', 'zume' );
 
         [
             'url_parts' => $url_parts,
