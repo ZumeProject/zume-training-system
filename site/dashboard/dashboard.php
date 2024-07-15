@@ -294,6 +294,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'today' => __( 'Today', 'zume' ),
             'question' => __( 'Question', 'zume' ),
             'answer' => __( 'Answer', 'zume' ),
+            'note' => __( 'Note', 'zume' ),
         ];
     }
 
