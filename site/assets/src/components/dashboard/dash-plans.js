@@ -137,11 +137,9 @@ export class DashPlans extends DashPage {
         date.setDate(date.getDate() + 30);
 
         let data = {
-            question,
-            answer,
             note: `${jsObject.translations.question}: ${question} ${jsObject.translations.answer}: ${answer}`,
             date,
-            category: 'post_training_plan',
+            category: 'custom',
         }
         zumeRequest.post('commitment', data)
             .then(() => {
