@@ -13,10 +13,6 @@ function zume_training_magic_url_base_allowed_js( $allowed_js = [] ) {
     $allowed_js[] = 'vite_bundle_js';
     $allowed_js[] = 'svg-loader';
 
-    unset( $allowed_js[array_search( 'shared-functions', $allowed_js )] );
-    unset( $allowed_js[array_search( 'lodash', $allowed_js )] );
-    unset( $allowed_js[array_search( 'site-js', $allowed_js )] );
-
     return array_unique( $allowed_js );
 }
 function zume_training_magic_url_base_allowed_css( $allowed_css = [] ) {
@@ -41,9 +37,9 @@ function zume_training_load_scripts( $hook ) {
     wp_register_style( 'vite_bundle_css', plugin_dir_url( __DIR__ ) . 'site/assets/dist/assets/main.css', array( 'foundation_css' ), filemtime( plugin_dir_path( __DIR__ ) . 'site/assets/dist/assets/main.css' ) );
     wp_enqueue_style( 'vite_bundle_css' );
 
-    wp_register_script( 'vite_bundle_js', plugin_dir_url( __DIR__ ) . 'site/assets/dist/assets/main-bundle.js', array(), filemtime( plugin_dir_path( __DIR__ ) . 'site/assets/dist/assets/main-bundle.js' ) );
+    wp_register_script( 'vite_bundle_js', plugin_dir_url( __DIR__ ) . 'site/assets/dist/assets/main-bundle.js', array( 'jquery' ), filemtime( plugin_dir_path( __DIR__ ) . 'site/assets/dist/assets/main-bundle.js' ) );
     wp_enqueue_script( 'vite_bundle_js' );
-    wp_localize_script( 'vite_bundle_js', 'zumeShare', [
+    wp_localize_script( 'vite_bundle_js', 'zumeApiShare', [
         'root' => esc_url_raw( rest_url() ),
         'nonce' => wp_create_nonce( 'wp_rest' ),
     ] );

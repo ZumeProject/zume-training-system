@@ -107,7 +107,7 @@ class Zume_Training_Plan_Invite extends Zume_Magic_Page
                 });
 
                 function show_error( message ) {
-                    warningBanner.innerHTML = zumeShare.escapeHTML(message)
+                    warningBanner.innerHTML = zumeApiShare.escapeHTML(message)
                     jQuery(warningBanner).show()
                 }
 

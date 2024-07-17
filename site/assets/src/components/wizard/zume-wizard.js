@@ -258,8 +258,6 @@ export class Wizard extends LitElement {
                 break;
         }
 
-        console.log(this.stepIndex, this.steps.length)
-
         return staticHtml`
             <${tag}
                 class="w-100"

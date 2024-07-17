@@ -112,6 +112,6 @@ class ZumeRequest {
     }
 }
 
-export const zumeRequest = new ZumeRequest(window.zumeShare.root, 'zume_system/v1', window.zumeShare.nonce)
+export const zumeRequest = new ZumeRequest(window.zumeApiShare.root, 'zume_system/v1', window.zumeApiShare.nonce)
 // only for use in PHP files ;)
 window.zumeRequest = zumeRequest

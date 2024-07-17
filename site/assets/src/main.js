@@ -99,6 +99,6 @@ export function setCookie(cname, cvalue, path = '', exdays = 0) {
     document.cookie = cookie;
 }
 
-window.zumeShare.escapeObject = escapeObject
-window.zumeShare.escapeHTML = escapeHTML
-window.zumeShare.setCookie = setCookie
+window.zumeApiShare.escapeObject = escapeObject
+window.zumeApiShare.escapeHTML = escapeHTML
+window.zumeApiShare.setCookie = setCookie
