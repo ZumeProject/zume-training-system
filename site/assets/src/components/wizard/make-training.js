@@ -2,6 +2,7 @@ import { LitElement, html } from 'lit';
 import { Modules, Steps, Wizards } from './wizard-constants';
 import { WizardStateManager } from './wizard-state-manager';
 import { DateTime } from 'luxon';
+import { sha256 } from '../../js/sha256';
 
 export class MakeTraining extends LitElement {
     static get properties() {
