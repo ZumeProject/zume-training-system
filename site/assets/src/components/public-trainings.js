@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import { zumeRequest } from '../js/zumeRequest';
 
 export class PublicTrainings extends LitElement {
     static get properties() {

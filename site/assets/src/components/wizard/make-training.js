@@ -3,6 +3,7 @@ import { Modules, Steps, Wizards } from './wizard-constants';
 import { WizardStateManager } from './wizard-state-manager';
 import { DateTime } from 'luxon';
 import { sha256 } from '../../js/sha256';
+import { zumeRequest } from '../../js/zumeRequest';
 
 export class MakeTraining extends LitElement {
     static get properties() {

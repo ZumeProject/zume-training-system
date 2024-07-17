@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { DashBoard } from './dash-board';
 import { DashPage } from './dash-page';
 import { RouteNames } from './routes';
+import { zumeRequest } from '../../js/zumeRequest';
 
 export class DashTopLevel extends DashPage {
     static get properties() {

@@ -113,3 +113,5 @@ class ZumeRequest {
 }
 
 export const zumeRequest = new ZumeRequest(window.zumeShare.root, 'zume_system/v1', window.zumeShare.nonce)
+// only for use in PHP files ;)
+window.zumeRequest = zumeRequest
