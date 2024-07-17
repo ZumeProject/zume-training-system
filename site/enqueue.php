@@ -13,6 +13,16 @@ function zume_training_magic_url_base_allowed_js( $allowed_js = [] ) {
     $allowed_js[] = 'vite_bundle_js';
     $allowed_js[] = 'svg-loader';
 
+    if ( array_search( 'shared-functions', $allowed_js ) !== false ) {
+        unset( $allowed_js[ array_search( 'shared-functions', $allowed_js ) ] );
+    }
+    if ( array_search( 'lodash', $allowed_js ) !== false ) {
+        unset( $allowed_js[ array_search( 'lodash', $allowed_js ) ] );
+    }
+    if ( array_search( 'site-js', $allowed_js ) !== false ) {
+        unset( $allowed_js[ array_search( 'site-js', $allowed_js ) ] );
+    }
+
     return array_unique( $allowed_js );
 }
 function zume_training_magic_url_base_allowed_css( $allowed_css = [] ) {
