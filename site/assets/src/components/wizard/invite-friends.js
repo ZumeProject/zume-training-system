@@ -40,7 +40,7 @@ export class InviteFriends extends LitElement {
         this.url = jsObject.site_url + `/app/plan-invite${this.invitecode !== '' ? '?code=' + this.invitecode : ''}`
         this.loading = true
 
-        makeRequest( 'GET', `plan/${this.invitecode}`, {}, 'zume_system/v1' )
+        zumeRequest.get( `plan/${this.invitecode}`, {})
             .then((data) => {
                 if (data.error_code) {
                     this.errorMessage = this.t.broken_link
@@ -49,11 +49,11 @@ export class InviteFriends extends LitElement {
                 this.training = data
                 this.errorMessage = ''
             })
-            .fail((error) => {
+            .catch((error) => {
                 console.error(error)
                 this.errorMessage = this.t.broken_link
             })
-            .always(() => {
+            .finally(() => {
                 this.loading = false
             })
 

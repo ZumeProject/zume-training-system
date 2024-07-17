@@ -111,7 +111,7 @@ export class DashCta extends LitElement {
     }
     logCelebrationsSeen() {
         this.celebrations.forEach(({type, subtype}) => {
-            makeRequest('POST', 'log', { type, subtype }, 'zume_system/v1')
+            zumeRequest.post( 'log', { type, subtype })
         })
         const celebrationKeys = this.getCtaKeys(this.celebrations)
         jsObject.allCtas = jsObject.allCtas.filter(({key}) => !celebrationKeys.includes(key))

@@ -6,15 +6,16 @@ function zume_training_magic_url_base_allowed_js( $allowed_js = [] ) {
     $allowed_js[] = 'jquery';
     $allowed_js[] = 'jquery-core';
     $allowed_js[] = 'jquery-migrate';
-    $allowed_js[] = 'lodash';
-    $allowed_js[] = 'lodash-core';
     $allowed_js[] = 'moment';
     $allowed_js[] = 'datepicker';
-    $allowed_js[] = 'shared-functions';
     $allowed_js[] = 'foundation_js';
     $allowed_js[] = 'foundation_reveal_js';
     $allowed_js[] = 'vite_bundle_js';
     $allowed_js[] = 'svg-loader';
+
+    unset( $allowed_js[array_search( 'shared-functions', $allowed_js )] );
+    unset( $allowed_js[array_search( 'lodash', $allowed_js )] );
+    unset( $allowed_js[array_search( 'site-js', $allowed_js )] );
 
     return array_unique( $allowed_js );
 }
@@ -40,8 +41,12 @@ function zume_training_load_scripts( $hook ) {
     wp_register_style( 'vite_bundle_css', plugin_dir_url( __DIR__ ) . 'site/assets/dist/assets/main.css', array( 'foundation_css' ), filemtime( plugin_dir_path( __DIR__ ) . 'site/assets/dist/assets/main.css' ) );
     wp_enqueue_style( 'vite_bundle_css' );
 
-    wp_register_script( 'vite_bundle_js', plugin_dir_url( __DIR__ ) . 'site/assets/dist/assets/main-bundle.js', array( 'lodash', 'shared-functions' ), filemtime( plugin_dir_path( __DIR__ ) . 'site/assets/dist/assets/main-bundle.js' ) );
+    wp_register_script( 'vite_bundle_js', plugin_dir_url( __DIR__ ) . 'site/assets/dist/assets/main-bundle.js', array(), filemtime( plugin_dir_path( __DIR__ ) . 'site/assets/dist/assets/main-bundle.js' ) );
     wp_enqueue_script( 'vite_bundle_js' );
+    wp_localize_script( 'vite_bundle_js', 'zumeShare', [
+        'root' => esc_url_raw( rest_url() ),
+        'nonce' => wp_create_nonce( 'wp_rest' ),
+    ] );
 }
 
 add_filter( 'gutenberg_can_edit_post_type', '__return_true' );

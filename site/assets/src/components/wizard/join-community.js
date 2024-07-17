@@ -15,11 +15,11 @@ export class JoinCommunity extends LitElement {
 
     joinCommunity() {
         this.loading = true
-        makeRequest('POST', 'log', { type: 'system', subtype: 'join_community' }, 'zume_system/v1/' )
-            .done( ( data ) => {
+        zumeRequest.post( 'log', { type: 'system', subtype: 'join_community' }, 'zume_system/v1/' )
+            .then( ( data ) => {
                 this.success = true
             })
-            .always(() => {
+            .finally(() => {
                 this.loading = false
                 this.dispatchEvent(new CustomEvent('wizard:finish', { bubbles: true }))
             })

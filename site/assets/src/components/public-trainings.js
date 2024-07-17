@@ -28,14 +28,14 @@ export class PublicTrainings extends LitElement {
     }
 
     getTrainings() {
-        makeRequest( 'POST', 'public_plans', {}, 'zume_system/v1' )
+        zumeRequest.post( 'public_plans', {})
             .then((plans) => {
                 this.plans = plans
             })
             .catch((error) => {
                 console.log(error)
             })
-            .always(() => {
+            .finally(() => {
                 this.loading = false
             })
     }

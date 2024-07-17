@@ -37,7 +37,7 @@ export class DashChurches extends DashPage {
     }
 
     joinCommunity() {
-        makeRequest('POST', 'log', { type: 'system', subtype: 'join_community' }, 'zume_system/v1/' ).done( ( data ) => {
+        zumeRequest.post( 'log', { type: 'system', subtype: 'join_community' }, 'zume_system/v1/' ).then( ( data ) => {
             const stateEvent = new CustomEvent('user-state:change', { bubbles: true })
             this.dispatchEvent(stateEvent)
         })

@@ -282,14 +282,14 @@ export class MakeTraining extends LitElement {
         }
 
         this.loading = true
-        makeRequest( 'POST', 'plan', postData, 'zume_system/v1' )
+        zumeRequest.post( 'plan', postData)
             .then((data) => {
                 this._handleFinish(data.join_key)
             })
-            .fail((error) => {
+            .catch((error) => {
                 console.log(error)
             })
-            .always(() => {
+            .finally(() => {
                 this.loading = false
             })
     }

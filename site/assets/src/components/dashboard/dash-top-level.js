@@ -34,7 +34,7 @@ export class DashTopLevel extends DashPage {
         this.view = view
     }
     refetchState() {
-        makeRequest('GET', 'user_stage', {}, 'zume_system/v1' ).done( ( data ) => {
+        zumeRequest.get( 'user_stage', {}).then( ( data ) => {
             if (!data || !data.state) {
                 console.error('Stage or state data not returned from api')
             }

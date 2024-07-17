@@ -879,7 +879,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                         jQuery('.author.' + target+type).empty();
                         jQuery('.time.' + target+type).empty();
 
-                        makeRequest('POST', 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
+                        zumeRequest.post( 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
                         .then( (response) => {
                             console.log(response)
                             jQuery('.loading-spinner.' + target+type).removeClass('active');
@@ -1060,7 +1060,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                         jQuery('.author.' + target+type).empty();
                         jQuery('.time.' + target+type).empty();
 
-                        makeRequest('POST', 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
+                        zumeRequest.post( 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
                         .then( (response) => {
                             console.log(response)
                             jQuery('.loading-spinner.' + target+type).removeClass('active');
@@ -1272,7 +1272,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     jQuery('.author.' + target+type).empty();
                     jQuery('.time.' + target+type).empty();
 
-                    makeRequest('POST', 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
+                    zumeRequest.post( 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
                     .then( (response) => {
                         console.log(response)
                         jQuery('.loading-spinner.' + target+type).removeClass('active');
@@ -1484,7 +1484,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     jQuery('.author.' + target+type).empty();
                     jQuery('.time.' + target+type).empty();
 
-                    makeRequest('POST', 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
+                    zumeRequest.post( 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
                     .then( (response) => {
                         console.log(response)
                         jQuery('.loading-spinner.' + target+type).removeClass('active');
@@ -1884,7 +1884,7 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     jQuery('.author.' + target+type).empty();
                     jQuery('.time.' + target+type).empty();
 
-                    makeRequest('POST', 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
+                    zumeRequest.post( 'translation/update', { key: key, postid: postid, type: type, post_type: post_type, content: content }, "zume_system/v1/" )
                     .then( (response) => {
                         console.log(response)
                         jQuery('.loading-spinner.' + target+type).removeClass('active');
