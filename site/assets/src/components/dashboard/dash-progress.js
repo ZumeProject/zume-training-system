@@ -116,23 +116,14 @@ export class DashProgress extends DashPage {
 
                     this.displayError(jsObject.translations.error_with_request)
                 })
-                .finally(() => {
-                    this.loadHostStatus()
-                })
         }
 
         if (currentState === true) {
             this.changeHost(key, false)
             return zumeRequest.delete('host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id } )
-                .then( ( data ) => {
-                    this.loadHostStatus()
-                })
                 .catch((error) => {
                     this.changeHost(key, false)
                     this.displayError(jsObject.translations.error_with_request)
-                })
-                .finally(() => {
-                    this.loadHostStatus()
                 })
 
         }
@@ -156,7 +147,6 @@ export class DashProgress extends DashPage {
     }
 
     changeHost(key, value) {
-        console.log(key, value)
         const newHostProgress = { ...this.hostProgress }
         newHostProgress.list = { ...this.hostProgress.list }
         newHostProgress.list[key] = value
