@@ -6,7 +6,6 @@ function zume_training_magic_url_base_allowed_js( $allowed_js = [] ) {
     $allowed_js[] = 'jquery';
     $allowed_js[] = 'jquery-core';
     $allowed_js[] = 'jquery-migrate';
-    $allowed_js[] = 'moment';
     $allowed_js[] = 'datepicker';
     $allowed_js[] = 'foundation_js';
     $allowed_js[] = 'foundation_reveal_js';

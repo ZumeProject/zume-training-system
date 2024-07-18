@@ -97,7 +97,6 @@ export class DashTrainings extends DashPage {
                 this.error = error.message
             })
             .finally(() => {
-                console.log('finally')
                 this.loading = false
             })
     }
