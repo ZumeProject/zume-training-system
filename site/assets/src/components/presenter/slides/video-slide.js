@@ -45,6 +45,10 @@ export class VideoSlide extends CourseSlide {
             return videoUrl
         }
 
+        if (!videoUrl) {
+            return ''
+        }
+
         const url = new URL(videoUrl)
 
         url.searchParams.delete('autoplay')
