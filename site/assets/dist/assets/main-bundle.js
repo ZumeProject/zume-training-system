@@ -1715,6 +1715,7 @@ ${this.training.zoom_link_note}
                                 <li>
                                     <a
                                         href=${this.makeTrainingItemHref(p,e)}
+                                        @click=${this.stopImmediatePropagation}
                                     >
                                         ${p.title}
                                     </a>

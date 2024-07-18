@@ -528,6 +528,7 @@ export class DashTrainings extends DashPage {
                                 <li>
                                     <a
                                         href=${this.makeTrainingItemHref(item, id)}
+                                        @click=${this.stopImmediatePropagation}
                                     >
                                         ${item.title}
                                     </a>
