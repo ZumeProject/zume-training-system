@@ -2628,7 +2628,7 @@ ${this.training.zoom_link_note}
                             ${this.renderContent(this.slide.right,!0)}
                             <div>
                                 <button
-                                    class="btn tight d-flex align-items-center gap--1"
+                                    class="watch-btn | btn tight d-flex align-items-center gap--1"
                                     type="button"
                                     @click=${this.nextSlide}
                                 >
