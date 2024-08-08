@@ -44,4 +44,15 @@ function zume_training_load_scripts( $hook ) {
     wp_enqueue_script( 'vite_bundle_js' );
 }
 
+add_filter( 'script_loader_tag', 'add_type_attribute', 10, 3 );
+function add_type_attribute( $tag, $handle, $src ) {
+    // if not your script, do nothing and return original $tag
+    if ( 'vite_bundle_js' !== $handle ) {
+        return $tag;
+    }
+    // change the script tag by adding type="module" and return it.
+    $tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+    return $tag;
+}
+
 add_filter( 'gutenberg_can_edit_post_type', '__return_true' );
