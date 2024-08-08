@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme Project\n"
 "POT-Creation-Date: 2024-06-18 18:03+0100\n"
-"PO-Revision-Date: 2024-07-30 02:59+0000\n"
+"PO-Revision-Date: 2024-08-05 18:59+0000\n"
 "Last-Translator: Alli Khalidu Halidu <khalidhassan1759@gmail.com>\n"
 "Language-Team: Hausa <https://translate.disciple.tools/projects/"
 "zume-training/zume-training-system/ha_NG/>\n"
@@ -2980,13 +2980,12 @@ msgstr ""
 "Filin Tsari: A ina ko wa kuke wa’azin bisharar Mulki? Yaya kuke yin haka?"
 
 #: site/course/course-content.php:2659
-#, fuzzy
 msgid ""
 "Growing Field: How are you equipping people and growing them spiritually, "
 "individually and in their natural networks?"
 msgstr ""
-"Filin Haɓaka: Ta yaya kuke ba mutane kayan aiki da haɓaka su cikin ruhaniya, "
-"ɗaiɗaiku kuma a cikin hanyoyin sadarwar su na halitta?"
+"/Filin Haɓaka: Ta yaya kuke ba mutane kayan aiki da haɓaka su cikin "
+"ruhaniya, ɗaiɗaiku kuma a cikin hanyoyin sadarwar su na halitta?"
 
 #: site/course/course-content.php:2660
 #, fuzzy
@@ -4681,9 +4680,8 @@ msgid ""
 msgstr "Zan ƙarfafa mutanen da ke biye da su shiga wannan makarantar ta Zúme:"
 
 #: site/dashboard/dashboard.php:312
-#, fuzzy
 msgid "Other commitments:"
-msgstr "Sauran alkawura:"
+msgstr "Sauran alkawurra:"
 
 #: site/dashboard/wizard.php:162
 msgctxt ""
