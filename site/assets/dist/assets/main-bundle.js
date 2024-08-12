@@ -1252,7 +1252,7 @@ ${this.training.zoom_link_note}
                     ${this.routeName==="getting-started"?"":l`<dash-cta></dash-cta>`}
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-top-level",ze);class qo extends ze{constructor(){super("getting-started")}createRenderRoot(){return this}}customElements.define("dash-getting-started",qo);class Wo extends pt{static get properties(){return{showTeaser:{type:Boolean},scriptUrl:{type:String,attribute:!1},loading:{type:Boolean,attribute:!1}}}constructor(){super(),this.showTeaser=!1,this.scriptUrl=""}connectedCallback(){super.connectedCallback(),this.openModal=this.openModal.bind(this),this.handleLoad=this.handleLoad.bind(this)}firstUpdated(){jQuery(this.renderRoot).foundation()}joinCommunity(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:$.joinCommunity}}))}openModal(t){this.loading=!0;let e=t.target.dataset.map;e==="hundred-hour-map"?this.scriptUrl="https://zume.training/coaching/zume_app/last100_hours/":e==="vision-map"?this.scriptUrl="https://zume.training/coaching/zume_app/heatmap_practitioners/":e==="church-map"?this.scriptUrl="https://zume.training/coaching/zume_app/heatmap_churches/":this.scriptUrl="",e="map";const s=document.querySelector("#map-iframe");s.onload=this.handleLoad;const n=document.querySelector(`#${e}-modal`);jQuery(n).foundation("open")}handleLoad(){this.loading=!1}render(){return l`
+        `}createRenderRoot(){return this}}customElements.define("dash-top-level",ze);class qo extends ze{constructor(){super("getting-started")}createRenderRoot(){return this}}customElements.define("dash-getting-started",qo);class Wo extends pt{static get properties(){return{showTeaser:{type:Boolean},scriptUrl:{type:String,attribute:!1},loading:{type:Boolean,attribute:!1}}}constructor(){super(),this.showTeaser=!1,this.scriptUrl=""}connectedCallback(){super.connectedCallback(),this.openModal=this.openModal.bind(this),this.handleLoad=this.handleLoad.bind(this)}firstUpdated(){jQuery(this.renderRoot).foundation()}joinCommunity(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:$.joinCommunity}}))}openModal(t){this.loading=!0;let e=t.target.dataset.map;e==="hundred-hour-map"?this.scriptUrl="https://zume.training/zume_app/last100_hours/":e==="vision-map"?this.scriptUrl="https://zume.training/zume_app/heatmap_trainees/":e==="church-map"?this.scriptUrl="https://zume.training/zume_app/heatmap_churches/":this.scriptUrl="",e="map";const s=document.querySelector("#map-iframe");s.onload=this.handleLoad;const n=document.querySelector(`#${e}-modal`);jQuery(n).foundation("open")}handleLoad(){this.loading=!1}render(){return l`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -1279,7 +1279,7 @@ ${this.training.zoom_link_note}
                         `:l`
                             <div class="stack">
                                 <button class="btn" data-map="hundred-hour-map" @click=${this.openModal}>
-                                    ${jsObject.translations.thousand_hour_map}
+                                    ${jsObject.translations.hundred_hour_map}
                                 </button>
                                 <!-- <button class="btn" data-map="vision-map" @click=${this.openModal}>
                                     ${jsObject.translations.training_vision_map}
@@ -1322,7 +1322,7 @@ ${this.training.zoom_link_note}
                     <span class="icon z-icon-close"></span>
                 </button>
                 <iframe
-                    src='https://zume.training/coaching/zume_app/last100_hours/'
+                    src='https://zume.training/zume_app/last100_hours/'
                     frameborder="0"
                     width="100%"
                     height="100%"
@@ -1339,7 +1339,7 @@ ${this.training.zoom_link_note}
                     <span class="icon z-icon-close"></span>
                 </button>
                 <iframe
-                    src='https://zume.training/coaching/zume_app/heatmap_practitioners/'
+                    src='https://zume.training/zume_app/heatmap_trainees/'
                     frameborder="0"
                     width="100%"
                     height="100%"
@@ -1355,7 +1355,7 @@ ${this.training.zoom_link_note}
                     <span class="icon z-icon-close"></span>
                 </button>
                 <iframe
-                    src='https://zume.training/coaching/zume_app/heatmap_churches/'
+                    src='https://zume.training/zume_app/heatmap_churches/'
                     frameborder="0"
                     width="100%"
                     height="100%"
