@@ -55,4 +55,4 @@ function add_type_attribute( $tag, $handle, $src ) {
     return $tag;
 }
 
-add_filter( 'gutenberg_can_edit_post_type', '__return_true' );
+//add_filter( 'gutenberg_can_edit_post_type', '__return_true' );
