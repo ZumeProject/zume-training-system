@@ -29,11 +29,6 @@ export class DashMaps extends DashPage {
 
     joinCommunity() {
         this.dispatchEvent(new CustomEvent('open-wizard', { bubbles: true, detail: { type: Wizards.joinCommunity } }))
-
-        /* makeRequest('POST', 'log', { type: 'system', subtype: 'join_community' }, 'zume_system/v1/' ).done( ( data ) => {
-            const stateEvent = new CustomEvent('user-state:change', { bubbles: true })
-            this.dispatchEvent(stateEvent)
-        }) */
     }
 
     openModal(event) {
@@ -117,11 +112,17 @@ export class DashMaps extends DashPage {
             </div>
             <div
                 class="reveal full"
+                style="padding: 0 !important; overflow: hidden;"
                 data-reveal
                 id="map-modal"
             >
-                <button class="close-btn | ms-auto mb--1" aria-label=${jsObject.translations.close} type="button" data-close>
-                    <span class="icon z-icon-close"></span>
+                <button
+                    class="exit-btn tight | absolute top center mt-0 z-2"
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                    data-close
+                >
+                    <span>${jsObject.translations.close}</span><span class="icon z-icon-close"></span>
                 </button>
                 ${this.loading ? html`<span class="loading-spinner active"></span>` : ''}
                 <iframe
@@ -134,7 +135,7 @@ export class DashMaps extends DashPage {
                 >
                 </iframe>
             </div>
-            <div
+<!--             <div
                 class="reveal full"
                 data-reveal
                 id="hundred-hour-map-modal"
@@ -165,7 +166,7 @@ export class DashMaps extends DashPage {
                     height="100%"
                 >
                 </iframe>
-            </div>
+            </div> -->
             <!--
             <div
                 class="reveal full"
