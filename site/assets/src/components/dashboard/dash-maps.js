@@ -32,8 +32,9 @@ export class DashMaps extends DashPage {
     }
 
     openModal(event) {
-        this.loading = true
         let map = event.target.dataset.map
+
+        const currentUrl = this.scriptUrl
 
         /* use this to load the iframes by src into one iframe tag in one modal */
         /* This works but the heatmap sites don't load the heatmap properly */
@@ -50,8 +51,11 @@ export class DashMaps extends DashPage {
             map = 'map'
         }
 
-        const iframe = document.querySelector('#map-iframe')
-        iframe.onload = this.handleLoad
+        if (currentUrl !== this.scriptUrl) {
+            this.loading = true
+            const iframe = document.querySelector('#map-iframe')
+            iframe.onload = this.handleLoad
+        }
 
         /* Having 3 iframes in 3 modals should work, but all 3 have trouble loading for some reason i haven't pushed into yet */
 
@@ -124,7 +128,13 @@ export class DashMaps extends DashPage {
                 >
                     <span>${jsObject.translations.close}</span><span class="icon z-icon-close"></span>
                 </button>
-                ${this.loading ? html`<span class="loading-spinner active"></span>` : ''}
+                ${this.loading ? html`
+                    <div class="cover-page">
+                        <div class="center">
+                            <span class="loading-spinner active"></span>
+                        </div>
+                    </div>
+                ` : ''}
                 <iframe
                     id="map-iframe"
                     class="${this.loading ? 'opacity-0' : ''}"
