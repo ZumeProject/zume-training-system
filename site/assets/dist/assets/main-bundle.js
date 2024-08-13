@@ -1529,52 +1529,65 @@ ${this.training.zoom_link_note}
                 </form>
             </div>
         `}createRenderRoot(){return this}}customElements.define("dash-plans",Ho);class Zo extends ze{constructor(){super("practicing")}createRenderRoot(){return this}}customElements.define("dash-practicing",Zo);class Bo extends pt{static get properties(){return{loading:{type:Boolean,attribute:!1},filteredItems:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1},hostProgress:{type:Object,attribute:!1},errorMessage:{type:String,attribute:!1},openStates:{type:Object,attribute:!1}}}constructor(){super(),this.loading=!1,this.route=_.getRoute("my-progress"),this.trainingItems=Object.values(jsObject.training_items),this.hostProgress=jsObject.host_progress,this.errorMessage="",this.filterName="my-progress-filter",this.filterStatus=ZumeStorage.load(this.filterName),this.filteredItems=this.filterItems(this.filterStatus),this.openStates={},this.trainingItems.forEach(t=>{this.openStates[t.key]=!1}),this.renderListItem=this.renderListItem.bind(this),this.closeInfoModal=this.closeInfoModal.bind(this),document.querySelectorAll(".reveal-overlay #progress-modal").forEach(t=>{t.parentElement.remove()})}firstUpdated(){super.firstUpdated(),ts()}updated(){jQuery(this.renderRoot).foundation()}openInfoModal(){const t=document.querySelector("#progress-modal");jQuery(t).foundation("open")}closeInfoModal(){const t=document.querySelector("#progress-modal");jQuery(t).foundation("close")}filterProgress(t){this.filterStatus=t,this.filteredItems=this.filterItems(t),ZumeStorage.save(this.filterName,t),this.closeFilter()}filterItems(t){switch(t){case"heard":return this.trainingItems.filter(e=>{const s=e.host[0].key;return!!(this.hostProgress.list[s]||!1)});case"not-heard":return this.trainingItems.filter(e=>{const s=e.host[0].key;return!(this.hostProgress.list[s]||!1)});default:return[...this.trainingItems]}}closeFilter(){const t=this.querySelector("#filter-menu");jQuery(t).foundation("close")}toggleHost(t,e,s=[]){e.stopImmediatePropagation();const{type:n,subtype:a,key:r}=t,o=this.hostProgress.list[r];if(o===!1)return this.changeHost(r,!0),s.forEach(({key:c})=>this.changeHost(c,!0)),L.post("host",{type:n,subtype:a,user_id:jsObject.profile.user_id}).then(c=>{}).catch(c=>{this.changeHost(r,!1),s.forEach(({key:d})=>this.changeHost(d,!1)),this.displayError(jsObject.translations.error_with_request)});if(o===!0)return this.changeHost(r,!1),L.delete("host",{type:n,subtype:a,user_id:jsObject.profile.user_id}).catch(c=>{this.changeHost(r,!1),this.displayError(jsObject.translations.error_with_request)})}displayError(t){this.errorMessage=t,setTimeout(()=>{this.errorMessage=""},4e3)}loadHostStatus(){L.get("host",{user_id:jsObject.profile.user_id}).then(t=>{this.hostProgress=t}).catch(t=>{this.displayError(jsObject.translations.error_with_request)})}changeHost(t,e){const s={...this.hostProgress};s.list={...this.hostProgress.list},s.list[t]=e,this.hostProgress={...s}}toggleDetails(t){this.openStates[t]===!1?this.openStates={...this.openStates,[t]:!0}:this.openStates={...this.openStates,[t]:!1}}renderListItem(t){const{title:e,description:s,host:n,slug:a,key:r}=t;let o=[jsObject.site_url,jsObject.language,a].join("/");return jsObject.language==="en"&&(o=[jsObject.site_url,a].join("/")),l`
-            <li class="switcher | switcher-width-30 list__item tight" @click=${()=>this.toggleDetails(r)} role="button">
-                <div>
-                    <h2 class="h5 bold m0">${e}</h2>
-                    <div class="zume-collapse" id="details-${r}" ?data-expand=${this.openStates[r]}>
-                        <div class="stack--2 mt--2">
-                            <p class="f--1 gray-700">${s}</p>
-                            <div class="cluster">
-                                <share-links url=${o} title=${e} .t=${jsObject.share_translations}></share-links>
-
-                                ${jsObject.has_pieces_pages?l`
-                                        <a class="btn" href=${o} @click=${c=>c.stopImmediatePropagation()}>${jsObject.translations.view}</a>
-                                    `:""}
-                            </div>
+            <li class=" list__item tight" role="button" data-no-flex>
+                <div class="switcher | switcher-width-30">
+                    <div>
+                        <h2 class="h5 bold m0">${e}</h2>
+                    </div>
+                    <div class="list__secondary" data-align-start>
+                        <div class="training-progress">
+                            <button
+                                data-subtype=${n[0].subtype}
+                                class=${this.hostProgress.list[n[0].key]?"active":""}
+                                @click=${c=>this.toggleHost(n[0],c)}
+                            >
+                                <span class="icon z-icon-heard-concept"></span>
+                            </button>
+                            <button
+                                data-subtype=${n[1].subtype}
+                                class=${this.hostProgress.list[n[1].key]?"active":""}
+                                @click=${c=>this.toggleHost(n[1],c,[n[0]])}
+                            >
+                                <span class="icon z-icon-obey-concept"></span>
+                            </button>
+                            <button
+                                data-subtype=${n[2].subtype}
+                                class=${this.hostProgress.list[n[2].key]?"active":""}
+                                @click=${c=>this.toggleHost(n[2],c,[n[0],n[1]])}
+                            >
+                                <span class="icon z-icon-share-concept"></span>
+                            </button>
+                            <button
+                                data-subtype=${n[3].subtype}
+                                class=${this.hostProgress.list[n[3].key]?"active":""}
+                                @click=${c=>this.toggleHost(n[3],c,[n[0],n[1],n[2]])}
+                            >
+                                <span class="icon z-icon-train-concept"></span>
+                            </button>
                         </div>
+                        <button
+                            class="icon-btn"
+                            aria-label=${jsObject.translations.show_details}
+                            aria-pressed=${this.openStates[r]?"true":"false"}
+                            @click=${()=>this.toggleDetails(r)}
+                        >
+                            <img
+                                class="chevron | svg w-1rem h-1rem ${this.openStates[r]?"rotate-180":""}"
+                                src=${jsObject.images_url+"/chevron.svg"}
+                            />
+                        </button>
                     </div>
                 </div>
-                <div class="list__secondary grow-0" data-align-start>
-                    <div class="training-progress">
-                        <button
-                            data-subtype=${n[0].subtype}
-                            class=${this.hostProgress.list[n[0].key]?"active":""}
-                            @click=${c=>this.toggleHost(n[0],c)}
-                        >
-                            <span class="icon z-icon-heard-concept"></span>
-                        </button>
-                        <button
-                            data-subtype=${n[1].subtype}
-                            class=${this.hostProgress.list[n[1].key]?"active":""}
-                            @click=${c=>this.toggleHost(n[1],c,[n[0]])}
-                        >
-                            <span class="icon z-icon-obey-concept"></span>
-                        </button>
-                        <button
-                            data-subtype=${n[2].subtype}
-                            class=${this.hostProgress.list[n[2].key]?"active":""}
-                            @click=${c=>this.toggleHost(n[2],c,[n[0],n[1]])}
-                        >
-                            <span class="icon z-icon-share-concept"></span>
-                        </button>
-                        <button
-                            data-subtype=${n[3].subtype}
-                            class=${this.hostProgress.list[n[3].key]?"active":""}
-                            @click=${c=>this.toggleHost(n[3],c,[n[0],n[1],n[2]])}
-                        >
-                            <span class="icon z-icon-train-concept"></span>
-                        </button>
+                <div class="list__tertiary zume-collapse" id="details-${r}" ?data-expand=${this.openStates[r]}>
+                    <div class="stack--2 mt--2">
+                        <p class="f--1 gray-700">${s}</p>
+                        <div class="cluster">
+                            <share-links url=${o} title=${e} .t=${jsObject.share_translations}></share-links>
+
+                            ${jsObject.has_pieces_pages?l`
+                                    <a class="btn" href=${o} @click=${c=>c.stopImmediatePropagation()}>${jsObject.translations.view}</a>
+                                `:""}
+                        </div>
                     </div>
                 </div>
             </li>
@@ -3381,6 +3394,7 @@ ${this.training.zoom_link_note}
                         <button
                             data-toggle="date-picker"
                             class="icon-btn brand-light f-3 gap--3"
+                            aria-pressed=${this.datePickerOpen?"true":"false"}
                             @click=${this.toggleDatePicker}
                         >
                             <span class="icon z-icon-start-date"></span>
