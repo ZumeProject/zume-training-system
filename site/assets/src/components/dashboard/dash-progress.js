@@ -48,11 +48,12 @@ export class DashProgress extends DashPage {
     firstUpdated() {
         super.firstUpdated()
 
-        zumeAttachObservers()
+        zumeAttachObservers(this.renderRoot, 'dash-progress')
     }
 
     updated() {
         jQuery(this.renderRoot).foundation();
+        zumeAttachObservers(this.renderRoot, 'dash-progress')
     }
 
     openInfoModal() {
@@ -184,7 +185,7 @@ export class DashProgress extends DashPage {
                     <div>
                         <h2 class="h5 bold m0">${title}</h2>
                     </div>
-                    <div class="list__secondary" data-align-start>
+                    <div class="list__secondary">
                         <div class="training-progress">
                             <button
                                 data-subtype=${host[0].subtype}
