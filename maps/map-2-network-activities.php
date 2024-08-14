@@ -74,7 +74,7 @@ class Zume_Funnel_Public_Heatmap_Activity extends DT_Magic_Url_Base
 
     public function body(){
         DT_Mapbox_API::geocoder_scripts();
-        include( 'heatmap.html' );
+        include( 'html/heatmap-html.php' );
     }
 
     public function footer_javascript(){
@@ -88,10 +88,7 @@ class Zume_Funnel_Public_Heatmap_Activity extends DT_Magic_Url_Base
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'parts' => $this->parts,
                 'post_type' => $this->post_type,
-                'translation' => [
-                    'add' => __( 'Zume', 'zume_funnels' ),
-                    'title' => 'Activities',
-                ],
+                'translation' => zume_map_translation_strings(),
                 'grid_data' => [ 'data' => [], 'highest_value' => 1 ],
                 'custom_marks' => [],
                 'zoom' => 12,
