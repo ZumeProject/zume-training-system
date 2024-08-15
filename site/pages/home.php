@@ -124,7 +124,7 @@ class Zume_Training_Home extends Zume_Magic_Page
         <div class="container stack-4 | page pt0">
             <h2 class="text-center h1"><?php echo esc_html__( 'Becoming more like Jesus... Together', 'zume' ) ?></h2>
             <div class="switcher">
-                <div class="stack | left tail circle-end-small bg-brand-light white p-2 mw-100">
+                <div class="stack | overview-banner | left tail circle-end-small">
                     <div class="my-auto">
                         <h3 class="h2"><?php echo esc_html__( 'Overview', 'zume' ) ?></h3>
                         <ul role="list" class="check-list f-2 bold lh-md">
