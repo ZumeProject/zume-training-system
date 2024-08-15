@@ -941,10 +941,9 @@ input::-webkit-calendar-picker-indicator {
         }
     }
 
-    @supports (inset: 0) {
-      launch-course {
-          margin-right: calc( -1 * var(--s0, 1em) );
-      }
+    launch-course {
+        margin-right: calc( -1 * var(--s0, 1em) );
+        margin-left: calc( -1 * var(--s0, 1em) );
     }
 }
 @media (max-width: $break-lg) {
