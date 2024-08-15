@@ -958,9 +958,16 @@ input::-webkit-calendar-picker-indicator {
 
   .footer .footer-links {
     justify-content: center;
+
+    &[data-top] {
+      flex-direction: column;
+    }
+  }
+
+  .footer .footer-links-list {
+    justify-content: center;
   }
 }
-
 @media (max-width: $break-md) {
   .footer .footer-links-list {
     width: 100%;
