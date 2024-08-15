@@ -63,8 +63,8 @@
 
             <?php if ( is_user_logged_in() ) : ?>
 
-                <a role="listitem" href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn dark nav__link"><span class="icon z-icon-dashboard"></span><span><?php echo esc_html__( 'Dashboard', 'zume' ) ?></span></a>
-                <a role="listitem" href="<?php echo esc_url( zume_resources_url() ) ?>" class="btn dark nav__link"><span class="icon z-icon-resources"></span><span><?php echo esc_html__( 'Resources', 'zume' ) ?></span></a>
+                <a role="listitem" href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="link-light nav__link"><span class="icon z-icon-dashboard"></span><span><?php echo esc_html__( 'Dashboard', 'zume' ) ?></span></a>
+                <a role="listitem" href="<?php echo esc_url( zume_resources_url() ) ?>" class="link-light nav__link"><span class="icon z-icon-resources"></span><span><?php echo esc_html__( 'Resources', 'zume' ) ?></span></a>
 
                 <?php $user_stage = zume_get_user_stage() ?>
 
