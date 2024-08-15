@@ -42,7 +42,7 @@
     padding-top: spacing(4);
 }
 .ps-2 {
-    :not([dir="rtl"]) & {
+    [dir="ltr"] & {
         padding-left: spacing(2);
     }
 
@@ -51,7 +51,7 @@
     }
 }
 .ps-0 {
-    :not([dir="rtl"]) & {
+    [dir="ltr"] & {
         padding-left: spacing(0);
     }
 
@@ -105,10 +105,10 @@
     margin-bottom: auto;
 }
 .ms-auto {
-    margin-left: auto;
-
+    [dir="ltr"] & {
+        margin-left: auto;
+    }
     [dir="rtl"] & {
-        margin-left: unset;
         margin-right: auto;
     }
 }

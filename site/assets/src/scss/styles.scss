@@ -100,17 +100,17 @@ ul {
 .activity-page ul,
 ul.bullets {
   list-style: disc;
-  left: spacing(3);
 
+  [dir="ltr"] & {
+    left: spacing(3);
+  }
   [dir="rtl"] & {
-    left: unset;
     right: spacing(3);
   }
 }
 
 ul[role="list"] {
   li {
-      padding-left: 1.7em;
       padding-bottom: .5em;
       position: relative;
   }
@@ -119,19 +119,25 @@ ul[role="list"] {
     content: "●";
     font-size: 1.5em;
     position: absolute;
-    left: 0;
     top: 0;
     line-height: 0.9;
   }
 
+  [dir="ltr"] & {
+    li {
+      padding-left: 1.7em;
+    }
+
+    li:before {
+      left: 0;
+    }
+  }
   [dir="rtl"] & {
     li {
-      padding-left: unset;
       padding-right: 1.7em;
     }
 
     li:before {
-      left: unset;
       right: 0;
     }
   }
@@ -432,7 +438,7 @@ input::-webkit-calendar-picker-indicator {
   word-break: break-word;
   hyphens: auto;
 
-  :not([dir="rtl"]) & {
+  [dir="ltr"] & {
     padding-left: 0;
   }
   [dir="rtl"] & {
@@ -582,21 +588,21 @@ input::-webkit-calendar-picker-indicator {
     background-color: inherit;
   }
   &.right::after {
-    right: 1px;
-    transform: translateX(100%);
-
+    [dir="ltr"] & {
+      right: 1px;
+      transform: translateX(100%);
+    }
     [dir="rtl"] & {
-      right: unset;
       left: 1px;
       transform: translateX(-100%);
     }
   }
   &.left::after {
-    left: 1px;
-    transform: translateX(-100%);
-
+    [dir="ltr"] & {
+      left: 1px;
+      transform: translateX(-100%);
+    }
     [dir="rtl"] & {
-      left: unset;
       right: 1px;
       transform: translateX(100%);
     }
@@ -624,20 +630,22 @@ input::-webkit-calendar-picker-indicator {
 
   &.right::before {
     transform: translateX(-50%);
-    left: 0;
 
+    [dir="ltr"] & {
+      left: 0;
+    }
     [dir="rtl"] & {
-      left: unset;
       right: 0;
       transform: translateX(50%);
     }
   }
   &.left::before {
     transform: translateX(50%);
-    right: 0;
 
+    [dir="ltr"] & {
+      right: 0;
+    }
     [dir="rtl"] & {
-      right: unset;
       left: 0;
       transform: translateX(-50%);
     }
@@ -809,13 +817,12 @@ input::-webkit-calendar-picker-indicator {
 
   &.active {
     background-color: color('gray-100');
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
 
+    [dir="ltr"] & {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
     [dir="rtl"] & {
-      border-top-right-radius: unset;
-      border-bottom-right-radius: unset;
-
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
     }
@@ -830,20 +837,19 @@ input::-webkit-calendar-picker-indicator {
       content: '';
       width: 7px;
       position: absolute;
-      left: 0;
       top: 0;
       bottom: 0;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
       background-color: color('brand-light');
 
+      [dir="ltr"] & {
+        left: 0;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
       [dir="rtl"] & {
-        border-top-right-radius: unset;
-        border-bottom-right-radius: unset;
+        right: 0;
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
-        left: unset;
-        right: 0;
       }
     }
   }
