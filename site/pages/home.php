@@ -286,7 +286,7 @@ class Zume_Training_Home extends Zume_Magic_Page
 
         <div class="page bg-gray-300 | real-stories">
             <div class="position-relative">
-                <h2 class="white absolute z-1 top left right px-3 py-1"><?php echo esc_html__( 'Real people ... real stories.', 'zume' ) ?></h2>
+                <h2 class="white absolute z-1 top left right ps-0 px-3 py-1"><?php echo esc_html__( 'Real people ... real stories.', 'zume' ) ?></h2>
                 <div class="absolute top right bottom w-40 bg-world show-for-extra-large"></div>
                 <img class="clip-rounded-end real-people" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/RealPeople.jpg' ) ?>" alt="Real people">
                 <div class="reel absolute | story-reel overflowing">

@@ -427,11 +427,17 @@ input::-webkit-calendar-picker-indicator {
   background-color: color('brand-light');
   color: color('white');
   padding: spacing(2);
-  padding-inline-start: 0;
   max-width: 100%;
   word-break: break-all;
   word-break: break-word;
   hyphens: auto;
+
+  :not([dir="rtl"]) & {
+    padding-left: 0;
+  }
+  [dir="rtl"] & {
+    padding-right: 0;
+  }
 }
 .banner[data-state='empty'] {
   opacity: 0;
