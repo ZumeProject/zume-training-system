@@ -99,13 +99,13 @@ class Zume_Training_About extends Zume_Magic_Page
                     </p>
                 </div>
                 <div class="center">
-                    <img class="w-60" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/PeopleOnGlobesvg.svg' ) ?>" alt="people on globe">
+                    <img class="w-60 mw-30vw" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/PeopleOnGlobesvg.svg' ) ?>" alt="people on globe">
                 </div>
             </div>
 
-            <div class="switcher align-items-center">
+            <div class="switcher align-items-center" data-reverse>
                 <div class="center">
-                    <img class="w-70" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/CellPhone.svg' ) ?>" alt="computer devices">
+                    <img class="w-70 mw-30vw min-12rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/CellPhone.svg' ) ?>" alt="computer devices">
                 </div>
                 <p>
                     <?php echo esc_html__( 'Launched on February 14, 2017, through Kingdom collaboration, Zúme Training remains an open initiative without formal organizational control or a separate entity. Since Zúme is not run by an organization, there is no formal statement of faith. All involved, however, would agree with the Lausanne Covenant.', 'zume' ) ?>
@@ -118,7 +118,7 @@ class Zume_Training_About extends Zume_Magic_Page
                     <?php echo esc_html__( 'The vision of Zúme is comparable to yeast working through the entire dough, spreading basic Kingdom tools into neighborhoods worldwide.', 'zume' ) ?><br></br>
                 </p>
                 <div class="center">
-                    <img class="w-70" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/WorldGroups.svg' ) ?>" alt="groups around the globe">
+                    <img class="w-70 mw-30vw min-12rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/WorldGroups.svg' ) ?>" alt="groups around the globe">
                 </div>
             </div>
 
@@ -200,7 +200,7 @@ class Zume_Training_About extends Zume_Magic_Page
 
                 <div class="switcher align-items-center">
                     <div class="center | position-relative z-2">
-                        <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/BeforeYouStart.svg' ) ?>" alt="group around a table" class="w-70">
+                        <img class="w-70 mw-30vw min-12rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/BeforeYouStart.svg' ) ?>" alt="group around a table">
                     </div>
                     <div class="stack-2 | bg-white p-2 right z-1 | tail circle-head">
                         <h3 class="f-0 bold"><?php echo esc_html__( 'Zúme is NOT like other trainings!', 'zume' ) ?></h3>
@@ -229,7 +229,7 @@ class Zume_Training_About extends Zume_Magic_Page
                         </ul>
                     </div>
                     <div class="center">
-                        <img class="w-70" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Whats-Required-NEW.svg' ) ?>" alt="group discussion">
+                        <img class="w-70 mw-30vw min-12rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Whats-Required-NEW.svg' ) ?>" alt="group discussion">
                     </div>
                 </div>
                 <div class="switcher align-items-center">
@@ -241,7 +241,7 @@ class Zume_Training_About extends Zume_Magic_Page
                         </ul>
                     </div>
                     <div class="center">
-                        <img class="w-50" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/WhatsNOTRequired.svg' ) ?>" alt="group discussion">
+                        <img class="w-50 min-8rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/WhatsNOTRequired.svg' ) ?>" alt="group discussion">
                     </div>
                 </div>
             </div>
@@ -252,7 +252,7 @@ class Zume_Training_About extends Zume_Magic_Page
 
                 <div class="switcher align-items-center">
                     <div class="center">
-                        <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/coach-2guys.svg' ) ?>" alt="guy with a coach" class="w-50">
+                        <img class="w-50 mw-20vw min-8rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/coach-2guys.svg' ) ?>" alt="guy with a coach">
                     </div>
                     <div class="stack-2">
                         <p><?php echo esc_html__( 'All along the way, the Zúme community is eager to support you by providing a COACH to help you and your group successfully implement the training. Don’t hesitate to reach out with questions or concerns!', 'zume' ) ?></p>
@@ -267,7 +267,7 @@ class Zume_Training_About extends Zume_Magic_Page
             <div class="page container-md center stack-3">
                 <h2 class="t-3 text-center"><?php echo esc_html__( 'Are you ready? Register today.', 'zume' ) ?></h2>
                 <div class="center">
-                    <img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Register-About.svg' ) ?>" alt="person Registering" class="w-50">
+                    <img class="w-50 mw-20vw min-8rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Register-About.svg' ) ?>" alt="person Registering">
                 </div>
                 <a href="<?php echo esc_url( zume_start_wizard_url() ) ?>" class="btn large fit-content"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
             </div>
