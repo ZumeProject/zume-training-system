@@ -123,8 +123,8 @@ class Zume_Training_Home extends Zume_Magic_Page
 
         <div class="container stack-4 | page pt0">
             <h2 class="text-center h1"><?php echo esc_html__( 'Becoming more like Jesus... Together', 'zume' ) ?></h2>
-            <div class="grid | grid-min-24rem">
-                <div class="stack | left tail circle-end-small bg-brand-light white p-2">
+            <div class="switcher">
+                <div class="stack | left tail circle-end-small bg-brand-light white p-2 mw-100">
                     <div class="my-auto">
                         <h3 class="h2"><?php echo esc_html__( 'Overview', 'zume' ) ?></h3>
                         <ul role="list" class="check-list f-2 bold lh-md">
@@ -138,7 +138,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                 </div>
                 <div class="cover">
                     <div class="center stack">
-                        <img class="" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Whats-Required-NEW.svg' ) ?>" alt="Group doing zume">
+                        <img class="min-12rem w-100 mw-30vw " src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Whats-Required-NEW.svg' ) ?>" alt="Group doing zume">
                         <h3 class="text-center f-1 mx-2"><?php echo esc_html__( 'Free. Anytime. Anywhere.', 'zume' ) ?></h3>
                     </div>
                 </div>

@@ -99,7 +99,7 @@ class Zume_Training_About extends Zume_Magic_Page
                     </p>
                 </div>
                 <div class="center">
-                    <img class="w-60 mw-30vw" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/PeopleOnGlobesvg.svg' ) ?>" alt="people on globe">
+                    <img class="w-60 mw-30vw min-8rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/PeopleOnGlobesvg.svg' ) ?>" alt="people on globe">
                 </div>
             </div>
 
