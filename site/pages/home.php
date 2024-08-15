@@ -339,13 +339,12 @@ class Zume_Training_Home extends Zume_Magic_Page
         </div>
 
         <div class="bg-brand-gradient">
-            <div class="container stack-2 | py-2 white text-center">
-                <h2 class="position-relative px-4 fit-content mx-auto"><?php echo esc_html( sprintf( __( '%s = Yeast', 'zume' ), 'Zúme' ) ) ?>
-                    <div class="d-flex justify-content-center absolute right top bottom h-125 w-20">
-                        <?php //phpcs:ignore ?>
-                        <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . '/assets/images/yeast.svg' ) ?>
-                    </div>
-                </h2>
+            <div class="container stack--2 | py-2 white text-center">
+                <h2><?php echo esc_html( sprintf( __( '%s = Yeast', 'zume' ), 'Zúme' ) ) ?></h2>
+                <div class="w-3rem mx-auto">
+                    <?php //phpcs:ignore ?>
+                    <?php echo file_get_contents( plugin_dir_path( __DIR__ ) . '/assets/images/yeast.svg' ) ?>
+                </div>
                 <p class="bold"><?php echo esc_html__( 'Zúme means yeast in Greek. In Matthew 13:33, Jesus is quoted as saying, "The Kingdom of Heaven is like a woman who took yeast and mixed it into a large amount of flour until it was all leavened." This illustrates how ordinary people, using ordinary resources, can have an extraordinary impact for the Kingdom of God. Zúme aims to equip and empower ordinary believers to saturate the globe with multiplying disciples in our generation.', 'zume' ) ?></p>
             </div>
         </div>
