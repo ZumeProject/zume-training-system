@@ -180,7 +180,7 @@ class Zume_Training_Home extends Zume_Magic_Page
         <div class="stack-3 | py-3 text-center bg-brand-gradient">
             <h2 class="container-md | white"><?php echo esc_html__( 'Ordinary People. Simple Steps.', 'zume' ) ?></h2>
             <div class="container-md | align-items-center">
-                <div class="w-80 video-frame mx-auto position-relative bg-white rounded hard-shadow">
+                <div class="container-md video-frame mx-auto position-relative bg-white rounded hard-shadow">
                     <div class="video-player mx-auto position-relative" data-video-src="<?php echo esc_url( Zume_Course::get_video_by_key( '69', true, null, true ) ) ?>">
                         <div class="responsive-embed widescreen m0">
                             <iframe width="640" height="360" src="" frameborder="0"></iframe>
@@ -223,8 +223,8 @@ class Zume_Training_Home extends Zume_Magic_Page
                         <p class="w-80"><?php printf( esc_html__( '%1$sSession Challenges%2$s help your group keep learning and growing between sessions.', 'zume' ), '<b>', '</b>' ) ?></p>
                     </div>
                 </div>
-                <div class="px-3">
-                    <div class="position-relative">
+                <div>
+                    <div class="position-relative mx-auto mw-20rem">
                         <div class="video-player responsive-embed widescreen m0" data-video-src="<?php echo esc_url( Zume_Course::get_video_by_key( '70', true, null, true ) ) ?>">
                             <iframe width="640" height="360" src="" frameborder="0"></iframe>
                             <div class="video-trigger absolute inset">

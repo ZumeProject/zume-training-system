@@ -34,6 +34,9 @@ $widths: (100, 90, 80, 75, 70, 60, 50, 40, 30, 25, 20, 15, 10);
 .mw-30vw {
     max-width: 30vw;
 }
+.mw-20rem {
+    max-width: 20rem;
+}
 
 @for $i from -5 through 5 {
     .h-#{$i} {
