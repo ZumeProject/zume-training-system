@@ -205,11 +205,12 @@ a {
     }
 
     .icon {
-        margin-right: 0.5em;
         font-size: 1.3em;
 
+        [dir="ltr"] & {
+            margin-right: 0.5em;
+        }
         [dir="rtl"] & {
-            margin-right: unset;
             margin-left: 0.5em;
         }
     }
@@ -315,6 +316,12 @@ button.card-btn {
     line-height: 1;
     padding: spacing(-2);
     border-radius: 100px;
+    border: 2px solid transparent;
+    transition: border-color 100ms linear;
+
+    &:hover, &:active, &:focus {
+        border-color: color('brand-light');
+    }
 }
 
 .icon-btn-group {
@@ -366,4 +373,13 @@ button.card-btn {
             color: var(--close-btn-hover-color);
         }
     }
+}
+.exit-btn {
+    @include button;
+
+    display: flex;
+    align-items: center;
+    gap: spacing(0);
+    padding-left: spacing(0);
+    padding-right: spacing(0);
 }

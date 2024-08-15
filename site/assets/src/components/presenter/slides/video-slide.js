@@ -9,14 +9,22 @@ export class VideoSlide extends CourseSlide {
             id: { type: String },
             scriptUrl: { type: String, attribute: false },
             offCanvasId: { type: String, attribute: false },
+            loading: { type: Boolean, attribute: false },
         };
     }
-    firstUpdated() {
+    connectedCallback() {
+        super.connectedCallback()
+
+        this.handleLoad = this.handleLoad.bind(this)
+    }
+    async firstUpdated() {
         jQuery(this.renderRoot).foundation();
 
         this.offCanvasId = 'informationOffCanvas' + this.id
+        this.iframeId = 'iframe' + this.id
         this.offCanvasSelector = '#' + this.offCanvasId
-        this.loadScriptIntoFrame()
+
+        await this.loadScriptIntoFrame()
     }
 
     openMenu() {
@@ -28,7 +36,8 @@ export class VideoSlide extends CourseSlide {
         jQuery(menu).foundation('close')
     }
 
-    loadScriptIntoFrame() {
+    async loadScriptIntoFrame() {
+        this.loading = true
         const scriptId = this.slide.script_id
         const lang_code = jsObject.language
 
@@ -37,7 +46,20 @@ export class VideoSlide extends CourseSlide {
         scriptUrl.pathname = [ lang_code, 'app', 'script' ].join('/')
         scriptUrl.searchParams.append('s', scriptId)
 
+
+        await this.updateComplete
+
+        const iframe = this.renderRoot.querySelector(`#${this.offCanvasId} iframe`)
+        if (iframe) {
+            iframe.onload = this.handleLoad
+        } else {
+            console.error('no iframe to attach onload to')
+        }
+
         this.scriptUrl = scriptUrl.href
+    }
+    handleLoad() {
+        this.loading = false
     }
 
     maybeRemoveAutoplay(videoUrl) {
@@ -62,7 +84,7 @@ export class VideoSlide extends CourseSlide {
 
                 <button
                     type="button"
-                    class="btn icon-btn absolute top ${this.dir === 'rtl' ? 'left' : 'right'} z-1 m--1 bypass-nav-click d-flex gap--2"
+                    class="btn tight outline align-items-center absolute top ${this.dir === 'rtl' ? 'left' : 'right'} z-1 m--1 bypass-nav-click d-flex gap--2"
                     @click=${this.openMenu}
                 >
                     <span class="icon z-icon-info"></span>
@@ -83,11 +105,20 @@ export class VideoSlide extends CourseSlide {
                 data-off-canvas
                 data-transition="overlap"
             >
-                <button class="close-btn | ms-auto m--1" aria-label=${jsObject.translations.close} type="button" data-close>
-                    <span class="icon z-icon-close"></span>
-                </button>
-
+                <div class="ms-auto absolute ${this.dir === 'rtl' ? 'left' : 'right'} top">
+                    <button class="close-btn | my--2 mx-1 f-0" aria-label=${jsObject.translations.close} type="button" data-close>
+                        <span class="icon z-icon-close"></span>
+                    </button>
+                </div>
+                ${
+                    this.loading ? html`
+                        <div class="cover-page">
+                            <div class="center"><span class="loading-spinner active"></span></div>
+                        </div>
+                    ` : ''
+                }
                 <iframe
+                    id=${this.iframeId || 'iframe'}
                     src=${this.scriptUrl || ''}
                     frameborder="0"
                     width="100%"

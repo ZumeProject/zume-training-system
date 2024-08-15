@@ -7,16 +7,39 @@ export class ActivitySlide extends CourseSlide {
             slide: { type: Object },
             id: { type: String },
             offCanvasId: { type: String, attribute: false },
+            activityUrl: { type: String, attribute: false },
+            loading: { type: Boolean, attribute: false },
         };
     }
+    connectedCallback() {
+        super.connectedCallback()
 
-    firstUpdated() {
+        this.handleLoad = this.handleLoad.bind(this)
+    }
+
+    async firstUpdated() {
+        this.loading = true
         jQuery(this.renderRoot).foundation();
 
         this.offCanvasId = 'activityOffCanvas' + this.id
         this.offCanvasSelector = '#' + this.offCanvasId
 
         super.firstUpdated()
+
+        await this.updateComplete
+
+        const iframe = document.querySelector(this.offCanvasSelector + ' iframe')
+        if (iframe) {
+            iframe.onload = this.handleLoad
+        } else {
+            console.error('no iframe to attach onload to')
+        }
+
+        this.activityUrl = this.slide['right'][0]
+    }
+
+    handleLoad() {
+        this.loading = false
     }
 
     openMenu() {
@@ -29,6 +52,12 @@ export class ActivitySlide extends CourseSlide {
         jQuery(menu).foundation('close')
     }
 
+    closeButtonStyles() {
+        if (['t8_c'].includes(this.id)) {
+            return ''
+        }
+        return 'invert'
+    }
 
     render() {
         return html`
@@ -63,16 +92,24 @@ export class ActivitySlide extends CourseSlide {
                     data-off-canvas
                     data-transition="overlap"
                 >
-                    <button class="close-btn | ms-auto absolute ${this.dir === 'rtl' ? 'left' : 'right'} top my--2 mx-1 f-0 invert" aria-label=${jsObject.translations.close} type="button" data-close>
-                        <span class="icon z-icon-close"></span>
-                    </button>
+                    <div class="ms-auto absolute ${this.dir === 'rtl' ? 'left' : 'right'} top">
+                        <button class="close-btn | my--2 mx-1 f-0 ${this.closeButtonStyles()}" aria-label=${jsObject.translations.close} type="button" data-close>
+                            <span class="icon z-icon-close"></span>
+                        </button>
+                    </div>
 
+                    ${
+                        this.loading ? html`
+                            <div class="cover-page">
+                                <div class="center"><span class="loading-spinner active"></span></div>
+                            </div>
+                        ` : ''
+                    }
                     <iframe
-                        src=${this.slide['right'][0] || ''}
+                        src=${this.activityUrl || ''}
                         frameborder="0"
                         width="100%"
-                    >
-                    </iframe>
+                    ></iframe>
                 </div>
             </div>
         `

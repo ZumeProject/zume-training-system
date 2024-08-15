@@ -30,34 +30,33 @@ export class DashMaps extends DashPage {
 
     joinCommunity() {
         this.dispatchEvent(new CustomEvent('open-wizard', { bubbles: true, detail: { type: Wizards.joinCommunity } }))
-
-/*         zumeRequest.post( 'log', { type: 'system', subtype: 'join_community' }, 'zume_system/v1/' ).then( ( data ) => {
-            const stateEvent = new CustomEvent('user-state:change', { bubbles: true })
-            this.dispatchEvent(stateEvent)
-        }) */
     }
 
     openModal(event) {
-        this.loading = true
         let map = event.target.dataset.map
+
+        const currentUrl = this.scriptUrl
 
         /* use this to load the iframes by src into one iframe tag in one modal */
         /* This works but the heatmap sites don't load the heatmap properly */
         if (true) {
             if (map === 'hundred-hour-map') {
-                this.scriptUrl = 'https://zume.training/coaching/zume_app/last100_hours/'
+                this.scriptUrl = 'https://zume.training/zume_app/last100_hours/'
             } else if (map === 'vision-map') {
-                this.scriptUrl = 'https://zume.training/coaching/zume_app/heatmap_practitioners/'
+                this.scriptUrl = 'https://zume.training/zume_app/heatmap_trainees/'
             } else if (map === 'church-map') {
-                this.scriptUrl = 'https://zume.training/coaching/zume_app/heatmap_churches/'
+                this.scriptUrl = 'https://zume.training/zume_app/heatmap_churches/'
             } else {
                 this.scriptUrl = ''
             }
             map = 'map'
         }
 
-        const iframe = document.querySelector('#map-iframe')
-        iframe.onload = this.handleLoad
+        if (currentUrl !== this.scriptUrl) {
+            this.loading = true
+            const iframe = document.querySelector('#map-iframe')
+            iframe.onload = this.handleLoad
+        }
 
         /* Having 3 iframes in 3 modals should work, but all 3 have trouble loading for some reason i haven't pushed into yet */
 
@@ -99,15 +98,15 @@ export class DashMaps extends DashPage {
                         `
                         : html`
                             <div class="stack">
-                                <!-- <button class="btn" data-map="hundred-hour-map" @click=${this.openModal}>
+                                <button class="btn" data-map="hundred-hour-map" @click=${this.openModal}>
                                     ${jsObject.translations.hundred_hour_map}
-                                </button> -->
+                                </button>
                                 <button class="btn" data-map="vision-map" @click=${this.openModal}>
                                     ${jsObject.translations.training_vision_map}
                                 </button>
-                                <button class="btn" data-map="church-map" @click=${this.openModal}>
+                                <!-- <button class="btn" data-map="church-map" @click=${this.openModal}>
                                     ${jsObject.translations.simple_church_planting_map}
-                                </button>
+                                </button> -->
                             </div>
                         `
                     }
@@ -118,13 +117,25 @@ export class DashMaps extends DashPage {
             </div>
             <div
                 class="reveal full"
+                style="padding: 0 !important; overflow: hidden;"
                 data-reveal
                 id="map-modal"
             >
-                <button class="close-btn | ms-auto mb--1" aria-label=${jsObject.translations.close} type="button" data-close>
-                    <span class="icon z-icon-close"></span>
+                <button
+                    class="exit-btn tight | absolute top center mt-0 z-2"
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                    data-close
+                >
+                    <span>${jsObject.translations.close}</span><span class="icon z-icon-close"></span>
                 </button>
-                ${this.loading ? html`<span class="loading-spinner active"></span>` : ''}
+                ${this.loading ? html`
+                    <div class="cover-page">
+                        <div class="center">
+                            <span class="loading-spinner active"></span>
+                        </div>
+                    </div>
+                ` : ''}
                 <iframe
                     id="map-iframe"
                     class="${this.loading ? 'opacity-0' : ''}"
@@ -135,7 +146,7 @@ export class DashMaps extends DashPage {
                 >
                 </iframe>
             </div>
-            <!-- <div
+<!--             <div
                 class="reveal full"
                 data-reveal
                 id="hundred-hour-map-modal"
@@ -144,13 +155,13 @@ export class DashMaps extends DashPage {
                     <span class="icon z-icon-close"></span>
                 </button>
                 <iframe
-                    src='https://zume.training/coaching/zume_app/last100_hours/'
+                    src='https://zume.training/zume_app/last100_hours/'
                     frameborder="0"
                     width="100%"
                     height="100%"
                 >
                 </iframe>
-            </div> -->
+            </div>
             <div
                 class="reveal full"
                 data-reveal
@@ -160,13 +171,14 @@ export class DashMaps extends DashPage {
                     <span class="icon z-icon-close"></span>
                 </button>
                 <iframe
-                    src='https://zume.training/coaching/zume_app/heatmap_practitioners/'
+                    src='https://zume.training/zume_app/heatmap_trainees/'
                     frameborder="0"
                     width="100%"
                     height="100%"
                 >
                 </iframe>
-            </div>
+            </div> -->
+            <!--
             <div
                 class="reveal full"
                 data-reveal
@@ -176,13 +188,14 @@ export class DashMaps extends DashPage {
                     <span class="icon z-icon-close"></span>
                 </button>
                 <iframe
-                    src='https://zume.training/coaching/zume_app/heatmap_churches/'
+                    src='https://zume.training/zume_app/heatmap_churches/'
                     frameborder="0"
                     width="100%"
                     height="100%"
                 >
                 </iframe>
             </div>
+            -->
         `;
     }
 

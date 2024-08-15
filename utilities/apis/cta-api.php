@@ -57,8 +57,11 @@ class Zume_System_CTA_API
 
     public function user( $params )
     {
-        if ( ! isset( $params['user_id'], $params['language'] ) ) {
-            return new WP_Error( 'no_user_id', 'Missing parames user_id or language', array( 'status' => 400 ) );
+        if ( ! isset( $params['user_id'] ) ) {
+            return new WP_Error( 'no_user_id', 'Missing params user_id', array( 'status' => 400 ) );
+        }
+        if ( ! isset( $params['language'] ) ) {
+            return new WP_Error( 'no_language', 'Missing params language', array( 'status' => 400 ) );
         }
 
         return self::_get_ctas( $params['user_id'] );
@@ -172,9 +175,9 @@ class Zume_System_CTA_API
             [
                 'stages' => [1, 2, 3, 4, 5, 6],
                 'required_keys' => [],
-                'disable_keys' => ['system_requested_a_coach'],
-                'key' => 'system_requested_a_coach',
-                'type' => 'system',
+                'disable_keys' => ['coaching_requested_a_coach'],
+                'key' => 'coaching_requested_a_coach',
+                'type' => 'coaching',
                 'subtype' => 'requested_a_coach',
                 'content' => [
                     'title' => __( 'Get a Coach', 'zume' ),
@@ -186,7 +189,7 @@ class Zume_System_CTA_API
             ],
             [
                 'stages' => [1, 2, 3, 4, 5, 6],
-                'required_keys' => ['system_requested_a_coach'],
+                'required_keys' => ['coaching_requested_a_coach'],
                 'disable_keys' => ['system_celebrated_coach_request'],
                 'key' => 'system_celebrated_coach_request',
                 'type' => 'system',

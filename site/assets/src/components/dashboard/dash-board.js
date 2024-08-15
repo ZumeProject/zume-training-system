@@ -80,7 +80,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.data = {}
         this.menuOffset = 0
         this.userProfile = jsObject.profile
-        this.userState = jsObject.user_stage.state ?? {}
+        this.userState = jsObject?.user_stage?.state ?? {}
         this.trainingGroups = jsObject.training_groups
         this.wizardType = ''
         this.celebrationModalContent = {
@@ -284,11 +284,20 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.languageSelectorElements.forEach((element) => {
             const pageUrl = location.href
             const currentUrl = element.dataset.url
-            const indexOfDashboard = currentUrl.indexOf('dashboard')
-            const pageIndexOfDashboard = pageUrl.indexOf('dashboard')
-            const newUrl =
-                currentUrl.slice(0, indexOfDashboard + 'dashboard/'.length) +
-                pageUrl.slice(pageIndexOfDashboard + 'dashboard/'.length)
+
+            if (currentUrl.includes('legacy.zume.training')) {
+                return
+            }
+
+            const pageUrlParts = pageUrl.split('/')
+            const currentUrlParts = currentUrl.split('/')
+
+            const indexOfDashboard = currentUrlParts.findIndex((part) => part === 'dashboard')
+            const pageIndexOfDashboard = pageUrlParts.findIndex((part) => part === 'dashboard')
+            const newUrl = [
+                ...currentUrlParts.slice(0, indexOfDashboard),
+                ...pageUrlParts.slice(pageIndexOfDashboard),
+            ].join('/')
             element.dataset.url = newUrl
         })
     }
@@ -313,6 +322,7 @@ export class DashBoard extends navigator(router(LitElement)) {
     static getCompletedStatus(routeName, userState) {
         if (
             routeName === RouteNames.setProfile &&
+            userState &&
             userState.set_profile_location &&
             userState.set_profile_name
         ) {

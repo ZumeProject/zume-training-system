@@ -53,5 +53,3 @@ function zume_training_load_scripts( $hook ) {
         'nonce' => wp_create_nonce( 'wp_rest' ),
     ] );
 }
-
-add_filter( 'gutenberg_can_edit_post_type', '__return_true' );
