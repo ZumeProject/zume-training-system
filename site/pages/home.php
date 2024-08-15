@@ -146,7 +146,7 @@ class Zume_Training_Home extends Zume_Magic_Page
             <h2 class="text-center"><?php echo esc_html__( 'Gain insight into...', 'zume' ) ?></h2>
             <div class="switcher | s-3">
                 <div class="stack">
-                    <img class="mx-auto w-25" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Being-A-Disciple-01.svg' ) ?>" alt="Being a disciple">
+                    <img class="min-8rem mw-20 mx-auto w-25" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Being-A-Disciple-01.svg' ) ?>" alt="Being a disciple">
                     <div class="mx-auto">
                         <h3 class="h2 brand"><?php echo esc_html__( 'Being A Disciple', 'zume' ) ?></h3>
                         <ul role="list" class="f-1 f-medium | check-list" data-check-size="1" data-check-color="brand">
@@ -160,7 +160,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                     </div>
                 </div>
                 <div class="stack">
-                    <img class="mx-auto w-25" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Making-Disciples-01.svg' ) ?>" alt="Being a disciple">
+                    <img class="min-8rem mw-30vw mx-auto w-25" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Making-Disciples-01.svg' ) ?>" alt="Being a disciple">
                     <div class="mx-auto">
                         <h3 class="h2 brand"><?php echo esc_html__( 'Making Disciples', 'zume' ) ?></h3>
                         <ul role="list" class="f-1 f-medium | check-list" data-check-size="1" data-check-color="brand">
@@ -178,7 +178,7 @@ class Zume_Training_Home extends Zume_Magic_Page
         </div>
 
         <div class="stack-3 | py-3 text-center bg-brand-gradient">
-            <h2 class="white"><?php echo esc_html__( 'Ordinary People. Simple Steps.', 'zume' ) ?></h2>
+            <h2 class="container-md | white"><?php echo esc_html__( 'Ordinary People. Simple Steps.', 'zume' ) ?></h2>
             <div class="container-md | align-items-center">
                 <div class="w-80 video-frame mx-auto position-relative bg-white rounded hard-shadow">
                     <div class="video-player mx-auto position-relative" data-video-src="<?php echo esc_url( Zume_Course::get_video_by_key( '69', true, null, true ) ) ?>">
