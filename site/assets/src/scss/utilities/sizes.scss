@@ -19,6 +19,9 @@ $widths: (100, 90, 80, 75, 70, 60, 50, 40, 30, 25, 20, 15, 10);
 .mw-20 {
     max-width: 20%;
 }
+.min-4rem {
+    min-width: 4rem;
+}
 .min-8rem {
     min-width: 8rem;
 }
