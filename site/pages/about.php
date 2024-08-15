@@ -160,23 +160,23 @@ class Zume_Training_About extends Zume_Magic_Page
                 <div class="switcher | switcher-width-40 align-items-center">
                     <div class="stack px-0">
                         <div class="d-flex align-items-center gap-0">
-                            <img class="w-4rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/free-01.svg' ) ?>" alt="play button">
+                            <img class="w-4rem h-4rem min-4rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/free-01.svg' ) ?>" alt="play button">
                             <p class="w-80"><?php printf( esc_html__( '%1$sFree Registration%2$s gives you full access to all training materials and online coaching.', 'zume' ), '<b>', '</b>' ) ?></p>
                         </div>
                         <div class="d-flex align-items-center gap-0">
-                            <img class="w-4rem " src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Play-Button.svg' ) ?>" alt="play button">
+                            <img class="w-4rem h-4rem min-4rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/Play-Button.svg' ) ?>" alt="play button">
                             <p class="w-80"><?php printf( esc_html__( '%1$sInstructional Videos%2$s help your group understand basic principles of multiplying disciples.', 'zume' ), '<b>', '</b>' ) ?></p>
                         </div>
                         <div class="d-flex align-items-center gap-0">
-                            <img class="w-4rem " src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/GroupDiscussions.svg' ) ?>" alt="play button">
+                            <img class="w-4rem h-4rem min-4rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/GroupDiscussions.svg' ) ?>" alt="play button">
                             <p class="w-80"><?php printf( esc_html__( '%1$sGroup Discussions%2$s help your group think through what is being shared.', 'zume' ), '<b>', '</b>' ) ?></p>
                         </div>
                         <div class="d-flex align-items-center gap-0">
-                            <img class="w-4rem " src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/SimpleExercises.svg' ) ?>" alt="play button">
+                            <img class="w-4rem h-4rem min-4rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/SimpleExercises.svg' ) ?>" alt="play button">
                             <p class="w-80"><?php printf( esc_html__( '%1$sSimple Exercises%2$s help your group put what you are learning into practice.', 'zume' ), '<b>', '</b>' ) ?></p>
                         </div>
                         <div class="d-flex align-items-center gap-0">
-                            <img class="w-4rem " src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/SessionChallenges.svg' ) ?>" alt="play button">
+                            <img class="w-4rem h-4rem min-4rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/SessionChallenges.svg' ) ?>" alt="play button">
                             <p class="w-80"><?php printf( esc_html__( '%1$sSession Challenges%2$s help your group keep learning and growing between sessions.', 'zume' ), '<b>', '</b>' ) ?></p>
                         </div>
                     </div>
