@@ -654,7 +654,7 @@ ${this.training.zoom_link_note}
             <div class="cluster">
                 ${this.steps.map((e,s)=>{const n=s<=this.stepIndex;return c`<div class="step-circle ${t?"hidden":""} ${n?"complete":""}"></div>`})}
             </div>
-        `}footer(){let t="";return this.noUrlChange&&this.stepIndex>0&&this.type!==$.makeAGroup&&(t=c`
+        `}footer(){let t="";return this.noUrlChange&&this.stepIndex>0&&this.type!==$.makeAGroup&&this.step.slug!==h.connectingToCoach&&(t=c`
                 <button
                     @click=${this._onBack}
                     class="btn tight outline fit-content"
