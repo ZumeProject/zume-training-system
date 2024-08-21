@@ -61,7 +61,6 @@ export class CourseSlide extends LitElement {
         }
     }
     resizeSlide(target) {
-
         const normalSlides = document.querySelectorAll('.slides-card')
 
         const videoSlides = document.querySelectorAll('.video-slide')
