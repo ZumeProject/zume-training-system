@@ -214,6 +214,12 @@
         }
     }
 }
+.activity-slide {
+    .activity-btn {
+        min-height: 1.8rem;
+        font-size: font-size(-1);
+    }
+}
 
 .video-slide {
     --slide-unit: calc( 1 * var(--slide-unit) );
@@ -226,10 +232,11 @@
     margin-right: auto;
     position: relative;
     max-width: calc( 100% - 2 * 8.125% );
-    font-size: calc( 2 * var(--slide-unit) );
+    font-size: calc( 1.5 * var(--slide-unit) );
 
     .btn {
-        min-height: 32px;
+        min-height: 1.8rem;
+        font-size: font-size(-1);
     }
 
     & > iframe {
