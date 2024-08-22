@@ -2042,10 +2042,12 @@ ${this.training.zoom_link_note}
                                 <label for="timezone-note">${jsObject.translations.timezone}</label>
                                 <input class="input" type="text" id="timezone-note"/>
                             </div>
-                            <div>
-                                <label for="zoom-link-note">${jsObject.translations.zoom_link}</label>
-                                <input class="input" type="text" id="zoom-link-note"/>
-                            </div>
+                        `:""}
+                    <div>
+                        <label for="zoom-link-note">${jsObject.translations.zoom_link}</label>
+                        <input class="input" type="text" id="zoom-link-note"/>
+                    </div>
+                    ${this.isCoach()?c`
                             <div class="cluster">
                                 <label class="form-control label-input">
                                     <input name="visibility" type="radio" id="public">
