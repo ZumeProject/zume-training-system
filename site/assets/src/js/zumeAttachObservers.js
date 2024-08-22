@@ -3,8 +3,6 @@ import { DataWatcher } from "./DataWatcher"
 const dataWatchers = {}
 
 export const zumeAttachObservers = (element, id, refresh) => {
-    console.log(dataWatchers)
-
     const collapseElements = element.querySelectorAll('.zume-collapse')
 
     if (refresh || !Object.prototype.hasOwnProperty.call(dataWatchers, id) || dataWatchers[id].length === 0) {

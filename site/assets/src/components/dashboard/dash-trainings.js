@@ -318,6 +318,12 @@ export class DashTrainings extends DashPage {
         document.querySelector('#location-note').value = this.training.location_note
         document.querySelector('#time-of-day-note').value = this.training.time_of_day_note
 
+        if (this.isCoach()) {
+            document.querySelector('#language-note').value = this.training.language_note || ''
+            document.querySelector('#timezone-note').value = this.training.timezone_note || ''
+            document.querySelector('#zoom-link-note').value = this.training.zoom_link_note || ''
+        }
+
         this.openEditSessionDetailsModal()
     }
     openEditSessionDetailsModal() {
@@ -337,13 +343,32 @@ export class DashTrainings extends DashPage {
         const locationNote = document.querySelector('#location-note').value
         const timeNote = document.querySelector('#time-of-day-note').value
 
-        zumeRequest.put(`plan/${this.training.join_key}`, {
+        const trainingUpdate = {
             location_note: locationNote,
             time_of_day_note: timeNote,
-        })
+        }
+        let languageNote, timezoneNote, zoomLinkNote
+
+        if (this.isCoach()) {
+            languageNote = document.querySelector('#language-note').value
+            timezoneNote = document.querySelector('#timezone-note').value
+            zoomLinkNote = document.querySelector('#zoom-link-note').value
+
+            trainingUpdate.language_note = languageNote
+            trainingUpdate.timezone_note = timezoneNote
+            trainingUpdate.zoom_link_note = zoomLinkNote
+        }
+
+        zumeRequest.put(`plan/${this.training.join_key}`, trainingUpdate)
             .then((result) => {
                 this.training.location_note = locationNote
                 this.training.time_of_day_note = timeNote
+
+                if (this.isCoach()) {
+                    this.training.language_note = languageNote
+                    this.training.timezone_note = timezoneNote
+                    this.training.zoom_link_note = zoomLinkNote
+                }
             })
             .finally(() => {
                 this.isSavingSession = false
@@ -396,8 +421,17 @@ export class DashTrainings extends DashPage {
         }
         return false
     }
+    isCoach() {
+        return jsObject.is_coach
+    }
     hasMultipleTrainingGroups() {
         return jsObject.training_groups && Object.keys(jsObject.training_groups).length > 1
+    }
+    groupVisibility() {
+        if (this.training.visibility === 'private') {
+            return jsObject.translations.private_group
+        }
+        return jsObject.translations.public_group
     }
 
     toggleDetails(id) {
@@ -752,7 +786,7 @@ export class DashTrainings extends DashPage {
                                         ${jsObject.translations.invite_friends}
                                     </button>
                                 </div>
-                                <div class="card | group-members | grow-0">
+                                <div class="card | group-details | grow-0">
                                     <button
                                         class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
                                         @click=${this.toggleGroupDetails}
@@ -769,6 +803,14 @@ export class DashTrainings extends DashPage {
                                         <div class="stack--2">
                                             <p class="text-left"><span class="f-medium">${jsObject.translations.location}:</span> ${this.training.location_note}</p>
                                             <p class="text-left"><span class="f-medium">${jsObject.translations.time}:</span> ${this.training.time_of_day_note}</p>
+                                            ${
+                                                this.isCoach() ? html`
+                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.language}:</span> ${this.training.language_note}</p>
+                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.timezone}:</span> ${this.training.timezone_note}</p>
+                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.zoom_link}:</span> ${this.training.zoom_link_note}</p>
+                                                    <p class="text-left"><span class="f-medium">${this.groupVisibility()}</span></p>
+                                                ` : ''
+                                            }
                                             ${
                                                 this.isGroupLeader() ? html`
                                                     <button
@@ -842,6 +884,22 @@ export class DashTrainings extends DashPage {
                         <label for="time-of-day-note">${jsObject.translations.time}</label>
                         <input class="input" type="text" id="time-of-day-note"/>
                     </div>
+                    ${
+                        this.isCoach() ? html`
+                            <div>
+                                <label for="language-note">${jsObject.translations.language}</label>
+                                <input class="input" type="text" id="language-note"/>
+                            </div>
+                            <div>
+                                <label for="timezone-note">${jsObject.translations.timezone}</label>
+                                <input class="input" type="text" id="timezone-note"/>
+                            </div>
+                            <div>
+                                <label for="zoom-link-note">${jsObject.translations.zoom_link}</label>
+                                <input class="input" type="text" id="zoom-link-note"/>
+                            </div>
+                        ` : ''
+                    }
                     <div class="d-flex align-items-center justify-content-center gap--1">
                         <button
                             class="btn outline tight"
