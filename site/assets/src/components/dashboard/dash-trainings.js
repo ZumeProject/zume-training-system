@@ -322,6 +322,12 @@ export class DashTrainings extends DashPage {
             document.querySelector('#language-note').value = this.training.language_note || ''
             document.querySelector('#timezone-note').value = this.training.timezone_note || ''
             document.querySelector('#zoom-link-note').value = this.training.zoom_link_note || ''
+
+            if (this.isPublic()) {
+                document.querySelector('#edit-session-details-modal #public[type="radio"]').checked = true
+            } else {
+                document.querySelector('#edit-session-details-modal #private[type="radio"]').checked = true
+            }
         }
 
         this.openEditSessionDetailsModal()
@@ -342,32 +348,39 @@ export class DashTrainings extends DashPage {
 
         const locationNote = document.querySelector('#location-note').value
         const timeNote = document.querySelector('#time-of-day-note').value
+        const zoomLinkNote = document.querySelector('#zoom-link-note').value
 
         const trainingUpdate = {
             location_note: locationNote,
             time_of_day_note: timeNote,
+            zoom_link_note: zoomLinkNote,
         }
-        let languageNote, timezoneNote, zoomLinkNote
+        let languageNote
+        let timezoneNote
+        let visibility
 
         if (this.isCoach()) {
             languageNote = document.querySelector('#language-note').value
             timezoneNote = document.querySelector('#timezone-note').value
-            zoomLinkNote = document.querySelector('#zoom-link-note').value
+            visibility = document.querySelector('#edit-session-details-modal #public').checked ? 'public' : 'private'
 
             trainingUpdate.language_note = languageNote
             trainingUpdate.timezone_note = timezoneNote
-            trainingUpdate.zoom_link_note = zoomLinkNote
+            trainingUpdate.visibility = visibility
         }
 
         zumeRequest.put(`plan/${this.training.join_key}`, trainingUpdate)
             .then((result) => {
                 this.training.location_note = locationNote
                 this.training.time_of_day_note = timeNote
+                this.training.zoom_link_note = zoomLinkNote
 
                 if (this.isCoach()) {
                     this.training.language_note = languageNote
                     this.training.timezone_note = timezoneNote
-                    this.training.zoom_link_note = zoomLinkNote
+                    this.training.visibility = {
+                        key: visibility
+                    }
                 }
             })
             .finally(() => {
@@ -427,11 +440,8 @@ export class DashTrainings extends DashPage {
     hasMultipleTrainingGroups() {
         return jsObject.training_groups && Object.keys(jsObject.training_groups).length > 1
     }
-    groupVisibility() {
-        if (this.training.visibility === 'private') {
-            return jsObject.translations.private_group
-        }
-        return jsObject.translations.public_group
+    isPublic() {
+        return this.training.visibility.key === 'public'
     }
 
     toggleDetails(id) {
@@ -769,7 +779,7 @@ export class DashTrainings extends DashPage {
                                             '/chevron.svg'}
                                         />
                                     </button>
-                                    <div class="zume-collapse" ?data-expand=${this.groupMembersOpen}>
+                                    <div class="zume-collapse | mt-0" ?data-expand=${this.groupMembersOpen}>
                                         ${!this.loading && this.groupMembers && this.groupMembers.length > 0
                                             ? html`
                                                 <ol class="ps-1">
@@ -800,15 +810,27 @@ export class DashTrainings extends DashPage {
                                         />
                                     </button>
                                     <div class="zume-collapse" ?data-expand=${this.groupDetailsOpen}>
-                                        <div class="stack--2">
+                                        <div class="stack--2 | mt-0">
                                             <p class="text-left"><span class="f-medium">${jsObject.translations.location}:</span> ${this.training.location_note}</p>
                                             <p class="text-left"><span class="f-medium">${jsObject.translations.time}:</span> ${this.training.time_of_day_note}</p>
                                             ${
-                                                this.isCoach() ? html`
+                                                this.training.language_note && this.training.language_note.length ? html`
                                                     <p class="text-left"><span class="f-medium">${jsObject.translations.language}:</span> ${this.training.language_note}</p>
+                                                ` : ''
+                                            }
+                                            ${
+                                                this.training.timezone_note && this.training.timezone_note.length ? html`
                                                     <p class="text-left"><span class="f-medium">${jsObject.translations.timezone}:</span> ${this.training.timezone_note}</p>
+                                                ` : ''
+                                            }
+                                            ${
+                                                this.training.zoom_link_note && this.training.zoom_link_note.length ? html`
                                                     <p class="text-left"><span class="f-medium">${jsObject.translations.zoom_link}:</span> ${this.training.zoom_link_note}</p>
-                                                    <p class="text-left"><span class="f-medium">${this.groupVisibility()}</span></p>
+                                                ` : ''
+                                            }
+                                            ${
+                                                this.isPublic() ? html`
+                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.public_group}</span></p>
                                                 ` : ''
                                             }
                                             ${
@@ -897,6 +919,16 @@ export class DashTrainings extends DashPage {
                             <div>
                                 <label for="zoom-link-note">${jsObject.translations.zoom_link}</label>
                                 <input class="input" type="text" id="zoom-link-note"/>
+                            </div>
+                            <div class="cluster">
+                                <label class="form-control label-input">
+                                    <input name="visibility" type="radio" id="public">
+                                    ${jsObject.translations.public_group}
+                                </label>
+                                <label class="form-control label-input">
+                                    <input name="visibility" type="radio" id="private">
+                                    ${jsObject.translations.private_group}
+                                </label>
                             </div>
                         ` : ''
                     }
