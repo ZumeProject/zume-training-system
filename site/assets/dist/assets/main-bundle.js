@@ -131,7 +131,7 @@ ${this.url}
 
 ${this.t.join_key}: ${this.training.join_key}
 ${this.training.zoom_link_note?`
-${this.t.zoom}: ${this.training.zoom_link_note}
+${this.t.meeting_link}: ${this.training.zoom_link_note}
 `:""}`}copyInvite(){const t=this.getInviteText();navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>{this.copyFeedback=this.t.copy_feedback,setTimeout(()=>{this.copyFeedback=""},3e3)})}render(){const t=this.getInviteText();return c`
             <div class="center stack">
                 <span class="z-icon-share brand-light f-7"></span>
@@ -1958,7 +1958,7 @@ ${this.t.zoom}: ${this.training.zoom_link_note}
                                                     <p class="text-left"><span class="f-medium">${jsObject.translations.timezone}:</span> ${this.training.timezone_note}</p>
                                                 `:""}
                                             ${this.training.zoom_link_note&&this.training.zoom_link_note.length?c`
-                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.zoom_link}:</span> ${this.training.zoom_link_note}</p>
+                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.meeting_link}:</span> ${this.training.zoom_link_note}</p>
                                                 `:""}
                                             ${this.isPublic()?c`
                                                     <p class="text-left"><span class="f-medium">${jsObject.translations.public_group}</span></p>
@@ -2044,7 +2044,7 @@ ${this.t.zoom}: ${this.training.zoom_link_note}
                             </div>
                         `:""}
                     <div>
-                        <label for="zoom-link-note">${jsObject.translations.zoom_link}</label>
+                        <label for="zoom-link-note">${jsObject.translations.meeting_link} (${jsObject.translations.meeting_link_examples})</label>
                         <input class="input" type="text" id="zoom-link-note"/>
                     </div>
                     ${this.isCoach()?c`

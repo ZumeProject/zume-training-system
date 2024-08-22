@@ -833,7 +833,7 @@ export class DashTrainings extends DashPage {
                                             }
                                             ${
                                                 this.training.zoom_link_note && this.training.zoom_link_note.length ? html`
-                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.zoom_link}:</span> ${this.training.zoom_link_note}</p>
+                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.meeting_link}:</span> ${this.training.zoom_link_note}</p>
                                                 ` : ''
                                             }
                                             ${
@@ -927,7 +927,7 @@ export class DashTrainings extends DashPage {
                         ` : ''
                     }
                     <div>
-                        <label for="zoom-link-note">${jsObject.translations.zoom_link}</label>
+                        <label for="zoom-link-note">${jsObject.translations.meeting_link} (${jsObject.translations.meeting_link_examples})</label>
                         <input class="input" type="text" id="zoom-link-note"/>
                     </div>
                     ${
