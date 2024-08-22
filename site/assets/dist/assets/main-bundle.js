@@ -131,7 +131,7 @@ ${this.url}
 
 ${this.t.join_key}: ${this.training.join_key}
 ${this.training.zoom_link_note?`
-${this.training.zoom_link_note}
+${this.t.zoom}: ${this.training.zoom_link_note}
 `:""}`}copyInvite(){const t=this.getInviteText();navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>{this.copyFeedback=this.t.copy_feedback,setTimeout(()=>{this.copyFeedback=""},3e3)})}render(){const t=this.getInviteText();return c`
             <div class="center stack">
                 <span class="z-icon-share brand-light f-7"></span>
