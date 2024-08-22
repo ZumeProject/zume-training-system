@@ -1958,7 +1958,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                                     <p class="text-left"><span class="f-medium">${jsObject.translations.timezone}:</span> ${this.training.timezone_note}</p>
                                                 `:""}
                                             ${this.training.zoom_link_note&&this.training.zoom_link_note.length?c`
-                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.meeting_link}:</span> ${this.training.zoom_link_note}</p>
+                                                    <p class="text-left"><a class="link f-medium" href=${this.training.zoom_link_note} target="_blank">${jsObject.translations.meeting_link}</a> </p>
                                                 `:""}
                                             ${this.isPublic()?c`
                                                     <p class="text-left"><span class="f-medium">${jsObject.translations.public_group}</span></p>
