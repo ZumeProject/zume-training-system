@@ -362,16 +362,18 @@ export class DashTrainings extends DashPage {
         const locationNote = document.querySelector('#location-note').value
         const timeNote = document.querySelector('#time-of-day-note').value
         const zoomLinkNote = document.querySelector('#zoom-link-note').value
+        const status = document.querySelector('#edit-session-details-modal #active').checked ? 'active' : 'inactive'
 
         const trainingUpdate = {
             location_note: locationNote,
             time_of_day_note: timeNote,
             zoom_link_note: zoomLinkNote,
+            status,
         }
+
         let languageNote
         let timezoneNote
         let visibility
-
         if (this.isCoach()) {
             languageNote = document.querySelector('#language-note').value
             timezoneNote = document.querySelector('#timezone-note').value
