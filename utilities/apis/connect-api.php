@@ -258,7 +258,7 @@ class Zume_Connect_Endpoints
             $fields = [
                 'tags' => [
                     'values' => [
-                        [ 'value' => $plan['title'] ],
+                        [ 'value' => $plan['join_key'] ],
                     ],
                 ],
                 'coached_by' => [
@@ -311,7 +311,7 @@ class Zume_Connect_Endpoints
                 'trainee_contact_id' => $profile['contact_id'],
                 'tags' => [
                     'values' => [
-                        [ 'value' => $plan['title'] ],
+                        [ 'value' => $plan['join_key'] ],
                     ],
                 ],
                 'coached_by' => [
