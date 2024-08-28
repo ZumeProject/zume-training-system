@@ -853,6 +853,11 @@ export class DashTrainings extends DashPage {
                                             }
                                             ${
                                                 this.isGroupLeader() ? html`
+                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.status}:</span> ${this.isActive ? jsObject.translations.active : jsObject.translations.inactive}</p>
+                                                ` : ''
+                                            }
+                                            ${
+                                                this.isGroupLeader() ? html`
                                                     <button
                                                         @click=${this.editSessionDetails}
                                                         class="btn brand tight mt--2"
