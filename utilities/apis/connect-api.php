@@ -256,7 +256,7 @@ class Zume_Connect_Endpoints
 
         if ( $coaching_contact_id ) {
             $fields = [
-                'tags' => [
+                'connected_plans' => [
                     'values' => [
                         [ 'value' => $plan['join_key'] ],
                     ],
@@ -309,7 +309,7 @@ class Zume_Connect_Endpoints
                 'language_preference' => $preferred_language,
                 'trainee_user_id' => $profile['user_id'],
                 'trainee_contact_id' => $profile['contact_id'],
-                'tags' => [
+                'connected_plans' => [
                     'values' => [
                         [ 'value' => $plan['join_key'] ],
                     ],
