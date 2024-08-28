@@ -82,6 +82,12 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.userProfile = jsObject.profile
         this.userState = jsObject?.user_stage?.state ?? {}
         this.trainingGroups = jsObject.training_groups
+        this.sortedTrainingGroups = Object.entries(this.trainingGroups)
+            .map(([key, group]) => ({
+                ...group,
+                trainingGroupId: key,
+            }))
+        this.sortedTrainingGroups.sort((a, b) => b.timestamp - a.timestamp )
         this.wizardType = ''
         this.celebrationModalContent = {
             title: '',
@@ -865,10 +871,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                                                         class="menu vertical nested"
                                                     >
                                                         ${repeat(
-                                                            Object.entries(
-                                                                this
-                                                                    .trainingGroups
-                                                            ),
+                                                            Object.entries(this.sortedTrainingGroups),
                                                             ([key]) => key,
                                                             ([
                                                                 key,
