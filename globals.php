@@ -705,7 +705,6 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
                 ];
 //                $user_ids[] = $participant['user_id'];
             }
-
         }
 
 //        dt_write_log( __METHOD__);
