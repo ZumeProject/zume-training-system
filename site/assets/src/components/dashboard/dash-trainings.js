@@ -323,8 +323,8 @@ export class DashTrainings extends DashPage {
 
     editSessionDetails(event) {
         event.stopImmediatePropagation()
-        document.querySelector('#location-note').value = this.training.location_note
-        document.querySelector('#time-of-day-note').value = this.training.time_of_day_note
+        document.querySelector('#location-note').value = this.training.location_note || ''
+        document.querySelector('#time-of-day-note').value = this.training.time_of_day_note || ''
 
         if (this.isCoach()) {
             document.querySelector('#language-note').value = this.training.language_note || ''
@@ -335,6 +335,11 @@ export class DashTrainings extends DashPage {
                 document.querySelector('#edit-session-details-modal #public[type="radio"]').checked = true
             } else {
                 document.querySelector('#edit-session-details-modal #private[type="radio"]').checked = true
+            }
+            if (this.isActive()) {
+                document.querySelector('#edit-session-details-modal #active[type="radio"]').checked = true
+            } else {
+                document.querySelector('#edit-session-details-modal #inactive[type="radio"]').checked = true
             }
         }
 
@@ -450,6 +455,9 @@ export class DashTrainings extends DashPage {
     }
     isPublic() {
         return this.training.visibility.key === 'public'
+    }
+    isActive() {
+        return this.training.status.key === 'active'
     }
 
     toggleDetails(id) {
@@ -932,18 +940,34 @@ export class DashTrainings extends DashPage {
                     </div>
                     ${
                         this.isCoach() ? html`
-                            <div class="cluster">
-                                <label class="form-control label-input">
-                                    <input name="visibility" type="radio" id="public">
-                                    ${jsObject.translations.public_group}
-                                </label>
-                                <label class="form-control label-input">
-                                    <input name="visibility" type="radio" id="private">
-                                    ${jsObject.translations.private_group}
-                                </label>
+                            <div>
+                                <label>${jsObject.translations.visibility}</label>
+                                <div class="cluster">
+                                    <label class="form-control label-input">
+                                        <input name="visibility" type="radio" id="public">
+                                        ${jsObject.translations.public_group}
+                                    </label>
+                                    <label class="form-control label-input">
+                                        <input name="visibility" type="radio" id="private">
+                                        ${jsObject.translations.private_group}
+                                    </label>
+                                </div>
                             </div>
                         ` : ''
                     }
+                    <div>
+                        <label>${jsObject.translations.status}</label>
+                        <div class="cluster">
+                            <label class="form-control label-input">
+                                <input name="status" type="radio" id="active">
+                                ${jsObject.translations.active}
+                            </label>
+                            <label class="form-control label-input">
+                                <input name="status" type="radio" id="inactive">
+                                ${jsObject.translations.inactive}
+                            </label>
+                        </div>
+                    </div>
                     <div class="d-flex align-items-center justify-content-center gap--1">
                         <button
                             class="btn outline tight"
