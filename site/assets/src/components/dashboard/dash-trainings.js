@@ -7,6 +7,7 @@ import { RouteNames } from './routes';
 import { zumeRequest } from '../../js/zumeRequest';
 import { DateTime } from 'luxon';
 import { zumeAttachObservers, zumeDetachObservers } from '../../js/zumeAttachObservers';
+import { encodeJSON } from '../../js/Base64';
 
 export class DashTrainings extends DashPage {
     static get properties() {
@@ -453,7 +454,7 @@ export class DashTrainings extends DashPage {
     isCoach() {
         return jsObject.is_coach
     }
-    hasMultipleTrainingGroups() {
+    canEditTitle() {
         return jsObject.training_groups && Object.keys(jsObject.training_groups).length > 1
     }
     isPublic() {
@@ -524,6 +525,35 @@ export class DashTrainings extends DashPage {
 
         const href = this.getSessionUrl(sessionId) + '&slide=' + item.slide_key
         return href
+    }
+    makeGroupMembersHref() {
+        const query = {
+            fields: [
+                {
+                    connected_plans: [
+                        this.training.join_key,
+                    ],
+                }
+            ],
+        }
+        const encodedQuery = encodeJSON(query)
+
+        const labels = [
+            {
+                field: 'connected_plans',
+                id: this.training.join_key,
+                name: `Connected Plans: ${this.training.join_key}`
+            }
+        ]
+        const encodedLabels = encodeJSON(labels)
+
+        const url = new URL(jsObject.urls.coaching_contact_list)
+
+        url.searchParams.set('query', encodedQuery)
+        url.searchParams.set('labels', encodedLabels)
+        url.searchParams.set('filter_name', 'Custom Filter')
+
+        return url.href
     }
 
     renderListItem(session) {
@@ -647,7 +677,7 @@ export class DashTrainings extends DashPage {
                         <dash-sidebar-toggle></dash-sidebar-toggle>
                         <span class="icon ${this.route.icon}"></span>
                         ${
-                            this.hasMultipleTrainingGroups() ? html`
+                            this.canEditTitle() ? html`
                                     ${
                                         this.isEditingTitle ? html`
                                             <div class="switcher switcher-width-20 gap--5">
@@ -812,6 +842,11 @@ export class DashTrainings extends DashPage {
                                             : ''
                                         }
                                     </div>
+                                    ${
+                                        this.isCoach() ? html`
+                                            <a href=${this.makeGroupMembersHref()} target="_blank">${jsObject.translations.group_members_link}</a>
+                                        ` : ''
+                                    }
                                     <button
                                         @click=${this.inviteFriends}
                                         class="btn brand tight mt--2"

@@ -122,6 +122,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                     'plan_training_wizard' => esc_url( zume_start_wizard_url() ),
                     'get_coach_wizard' => esc_url( zume_get_a_coach_wizard_url() ),
                     'resources' => esc_url( zume_resources_url() ),
+                    'coaching_contact_list' => zume_coaching_url( 'contacts' ),
                 ],
             ]) ?>][0]
             const zumeTrainingPieces = [<?php echo json_encode([
@@ -255,6 +256,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'previous_slide' => __( 'Previous Slide', 'zume' ),
             'next_slide' => __( 'Next Slide', 'zume' ),
             'group_members' => __( 'Group Members', 'zume' ),
+            'group_members_link' => __( 'Group Members Link', 'zume' ),
             'group_details' => __( 'Group Details', 'zume' ),
             'mark_completed' => __( 'Mark Completed', 'zume' ),
             'session_x' => __( 'Session %d', 'zume' ),
