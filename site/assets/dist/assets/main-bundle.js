@@ -1825,13 +1825,15 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                         `:c`
                                             <div class="d-flex align-items-center s--3">
                                                 <h1 class="h3">${(t=(e=this.training)===null||e===void 0?void 0:e.title)!==null&&t!==void 0?t:""}</h1>
-                                                <button
-                                                    class="icon-btn f-0 brand-light"
-                                                    aria-label=${jsObject.translations.edit}
-                                                    @click=${this.editTitle}
-                                                >
-                                                    <span class="icon z-icon-pencil"></span>
-                                                </button>
+                                                ${this.isGroupLeader()?c`
+                                                        <button
+                                                            class="icon-btn f-0 brand-light"
+                                                            aria-label=${jsObject.translations.edit}
+                                                            @click=${this.editTitle}
+                                                        >
+                                                            <span class="icon z-icon-pencil"></span>
+                                                        </button>
+                                                    `:""}
                                                 ${this.renderFilterButton()}
                                             </div>
                                         `}

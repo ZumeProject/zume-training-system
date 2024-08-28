@@ -683,13 +683,17 @@ export class DashTrainings extends DashPage {
                                         ` : html`
                                             <div class="d-flex align-items-center s--3">
                                                 <h1 class="h3">${this.training?.title ?? ''}</h1>
-                                                <button
-                                                    class="icon-btn f-0 brand-light"
-                                                    aria-label=${jsObject.translations.edit}
-                                                    @click=${this.editTitle}
-                                                >
-                                                    <span class="icon z-icon-pencil"></span>
-                                                </button>
+                                                ${
+                                                    this.isGroupLeader() ? html`
+                                                        <button
+                                                            class="icon-btn f-0 brand-light"
+                                                            aria-label=${jsObject.translations.edit}
+                                                            @click=${this.editTitle}
+                                                        >
+                                                            <span class="icon z-icon-pencil"></span>
+                                                        </button>
+                                                    ` : ''
+                                                }
                                                 ${this.renderFilterButton()}
                                             </div>
                                         `
