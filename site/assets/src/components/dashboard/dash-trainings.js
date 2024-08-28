@@ -401,6 +401,7 @@ export class DashTrainings extends DashPage {
             .finally(() => {
                 this.isSavingSession = false
                 this.closeEditSessionDetailsModal()
+                this.dispatchEvent(new CustomEvent('training:changed', { bubbles: true }))
             })
 
     }
