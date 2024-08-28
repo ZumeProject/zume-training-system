@@ -2080,7 +2080,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-trainings",tl);class el extends k{static get properties(){return{trainingGroups:{type:Object,attribute:!1}}}constructor(){super(),this.trainingGroups=jsObject.training_groups,this.routeName=b.myTrainings,this.route=_.getRoute(this.routeName)}makeTrainingHref(t){return _.routes.find(({name:n})=>n===b.myTraining).pattern.replace(":code",t)}createTraining(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:$.makeAGroup}}))}render(){return c`
+        `}createRenderRoot(){return this}}customElements.define("dash-trainings",tl);class el extends k{static get properties(){return{trainingGroups:{type:Object,attribute:!1}}}constructor(){super(),this.trainingGroups=jsObject.training_groups,this.sortedTrainingGroups=Object.entries(this.trainingGroups).map(([t,e])=>({...e,trainingGroupId:t})).sort((t,e)=>e.timestamp-t.timestamp),this.routeName=b.myTrainings,this.route=_.getRoute(this.routeName)}makeTrainingHref(t){return _.routes.find(({name:n})=>n===b.myTraining).pattern.replace(":code",t)}createTraining(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:$.makeAGroup}}))}render(){return console.log(this.trainingGroups,this.sortedTrainingGroups),c`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <div class="dashboard__title">
@@ -2101,11 +2101,11 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 <dash-header-right></dash-header-right>
                 <div class="dashboard__main p-1">
                     <div class="stack">
-                        ${it(Object.entries(this.trainingGroups),([t])=>t,([t,e])=>c`
+                        ${it(this.sortedTrainingGroups,({key:t})=>t,t=>c`
                                 <training-link
                                     as="nav"
-                                    text=${e.title}
-                                    href=${this.makeTrainingHref(e.join_key)}
+                                    text=${t.title}
+                                    href=${this.makeTrainingHref(t.join_key)}
                                 ></training-link>
                             `)}
                     </div>

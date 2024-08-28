@@ -611,7 +611,7 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
         global $wpdb, $table_prefix;
         $contact_id = zume_get_user_contact_id( $user_id );
         $connected_plans = $wpdb->get_results( $wpdb->prepare(
-            "SELECT p.ID as post_id, p.post_title as title, pm.meta_key, pm.meta_value
+            "SELECT p.ID as post_id, UNIX_TIMESTAMP(p.post_date) as post_date, p.post_title as title, pm.meta_key, pm.meta_value
                     FROM zume_p2p p2
                     LEFT JOIN zume_posts p ON p.ID=p2.p2p_to
                     LEFT JOIN zume_postmeta pm ON pm.post_id=p2.p2p_to
@@ -627,6 +627,7 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
                 if ( ! isset( $plans[$connection['post_id']] ) ) {
                     $plans[$connection['post_id']] = [];
                     $plans[$connection['post_id']]['title'] = $connection['title'];
+                    $plans[$connection['post_id']]['timestamp'] = (int) $connection['post_date'];
                     $plans[$connection['post_id']]['participants'] = [];
                     $participants[] = $connection['post_id'];
                 }

@@ -14,6 +14,12 @@ export class DashTrainingsList extends LitElement {
     constructor() {
         super()
         this.trainingGroups = jsObject.training_groups
+        this.sortedTrainingGroups = Object.entries(this.trainingGroups)
+            .map(([key, group]) => ({
+                ...group,
+                trainingGroupId: key,
+            }))
+        this.sortedTrainingGroups.sort((a, b) => b.timestamp - a.timestamp )
         this.routeName = RouteNames.myTrainings
         this.route = DashBoard.getRoute(this.routeName)
     }
@@ -52,7 +58,7 @@ export class DashTrainingsList extends LitElement {
                 <div class="dashboard__main p-1">
                     <div class="stack">
                         ${
-                            repeat(Object.entries(this.trainingGroups), ([key]) => key, ([key, group]) => html`
+                            repeat(this.sortedTrainingGroups, ({ key }) => key, (group) => html`
                                 <training-link
                                     as="nav"
                                     text=${group.title}
