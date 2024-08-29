@@ -6524,9 +6524,9 @@ if ( ! class_exists( 'Zume_System_Log_API' ) ) {
              */
             if ( 'system' === $type & str_contains( $subtype, 'set_profile_' ) ) {
                 if (
-                    self::_already_logged( $log, 'system', 'set_profile_name' ) &&
-                    self::_already_logged( $log, 'system', 'set_profile_phone' ) &&
-                    self::_already_logged( $log, 'system', 'set_profile_location' ) &&
+                    self::_already_logged( $log, 'system', 'set_profile_name', $type, $subtype ) &&
+                    self::_already_logged( $log, 'system', 'set_profile_phone', $type, $subtype ) &&
+                    self::_already_logged( $log, 'system', 'set_profile_location', $type, $subtype ) &&
                     self::_needs_to_be_logged( $log, 'system', 'set_profile' )
                 ) {
                     $data_item = $data;
@@ -7484,9 +7484,9 @@ if ( ! class_exists( 'Zume_System_Log_API' ) ) {
             return $already_logged;
         }
 
-        private static function _already_logged( $log, $type, $subtype ): bool
+        private static function _already_logged( $log, $type, $subtype, $type_to_log, $subtype_to_log ): bool
         {
-            return !self::_needs_to_be_logged( $log, $type, $subtype );
+            return !self::_needs_to_be_logged( $log, $type, $subtype ) || ( $type === $type_to_log && $subtype === $subtype_to_log );
         }
 
         public static function _check_for_stage_change( &$added_log, $user_id, $report, $log = null )
