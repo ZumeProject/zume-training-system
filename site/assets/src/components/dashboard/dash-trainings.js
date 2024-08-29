@@ -387,17 +387,24 @@ export class DashTrainings extends DashPage {
 
         zumeRequest.put(`plan/${this.training.join_key}`, trainingUpdate)
             .then((result) => {
-                this.training.location_note = locationNote
-                this.training.time_of_day_note = timeNote
-                this.training.zoom_link_note = zoomLinkNote
+                const newTraining = {
+                    ...this.training
+                }
+                newTraining.location_note = locationNote
+                newTraining.time_of_day_note = timeNote
+                newTraining.zoom_link_note = zoomLinkNote
+                newTraining.status = {
+                    key: status
+                }
 
                 if (this.isCoach()) {
-                    this.training.language_note = languageNote
-                    this.training.timezone_note = timezoneNote
-                    this.training.visibility = {
+                    newTraining.language_note = languageNote
+                    newTraining.timezone_note = timezoneNote
+                    newTraining.visibility = {
                         key: visibility
                     }
                 }
+                this.training = newTraining
             })
             .finally(() => {
                 this.isSavingSession = false
@@ -461,6 +468,7 @@ export class DashTrainings extends DashPage {
         return this.training.visibility.key === 'public'
     }
     isActive() {
+        console.log(this.training.status)
         return this.training.status.key === 'active'
     }
 
@@ -893,7 +901,7 @@ export class DashTrainings extends DashPage {
                                             }
                                             ${
                                                 this.isGroupLeader() ? html`
-                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.status}:</span> ${this.isActive ? jsObject.translations.active : jsObject.translations.inactive}</p>
+                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.status}:</span> ${this.isActive() ? jsObject.translations.active : jsObject.translations.inactive}</p>
                                                 ` : ''
                                             }
                                             ${
