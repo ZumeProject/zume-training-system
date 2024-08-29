@@ -67,7 +67,7 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
                     FROM zume_3_postmeta
                     WHERE meta_key = 'trainee_user_id'
                       AND meta_value = %s",
-                $user_id )
+            $user_id )
         );
 
         $coach_list = [];
@@ -627,7 +627,7 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
         if ( ! empty( $connected_plans ) ) {
             $plan_post_ids = [];
             // initialize loop
-            foreach( $connected_plans as $row ) {
+            foreach ( $connected_plans as $row ) {
                 if ( ! isset( $plans[$row['post_id']] ) ) {
                     $plans[$row['post_id']] = [];
                     $plans[$row['post_id']]['title'] = $row['title'];
@@ -637,14 +637,14 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
                     $plan_post_ids[] = $row['post_id'];
                 }
 
-                if ( str_ends_with( $row['meta_key'], '_completed') ) {
+                if ( str_ends_with( $row['meta_key'], '_completed' ) ) {
                     continue;
                 }
 
                 if ( str_starts_with( $row['meta_key'], 'set_' )
-                    && ! str_ends_with( $row['meta_key'], '_type')
+                    && ! str_ends_with( $row['meta_key'], '_type' )
                 ) {
-                    $key_array = explode('_', $row['meta_key'] );
+                    $key_array = explode( '_', $row['meta_key'] );
                     $plans[$row['post_id']]['sessions'][$row['meta_key']] = [
                         'key' => $row['meta_key'],
                         'title' => 'Session ' . $key_array[2] ?? '?',
@@ -654,7 +654,7 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
                         'completed' => 0,
                         'completed_timestamp' => 0,
                         'completed_date' => '',
-                        'completed_date_formatted' => ''
+                        'completed_date_formatted' => '',
                     ];
                 }
                 else {
@@ -663,8 +663,8 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
                 }
             }
             // completions loop
-            foreach( $connected_plans as $row ) {
-                if ( str_ends_with( $row['meta_key'], '_completed') ) {
+            foreach ( $connected_plans as $row ) {
+                if ( str_ends_with( $row['meta_key'], '_completed' ) ) {
                     if ( empty( $row['meta_value'] ) ) {
                         continue;
                     }
@@ -701,7 +701,6 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
                 ];
 //                $user_ids[] = $participant['user_id'];
             }
-
         }
 
 //        dt_write_log( __METHOD__);
