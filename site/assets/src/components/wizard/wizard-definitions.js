@@ -63,6 +63,7 @@ export const wizardDefinitions = {
         [Modules.completeProfile]: makeModule([
             Steps.updateName,
             Steps.updateLocation,
+            Steps.contactPreferences,
             Steps.updatePhone,
         ]),
         [Modules.joinTraining]: makeModule([
