@@ -64,9 +64,13 @@ class Zume_Course {
         return 'https://player.vimeo.com/video/' . $video_id . $query_params;
     }
 
-    public static function get_alt_video_by_key( $meta_key ) {
+    public static function get_alt_video_by_key( $meta_key, $lang = null ) {
         // get language
-        $current_lang = zume_current_language();
+        if ( empty( $lang ) ) {
+            $current_lang = zume_current_language();
+        } else {
+            $current_lang = $lang;
+        }
         // get custom post type by language title
         $page = self::get_page_by_title( $current_lang, OBJECT, 'zume_video' );
         if ( ! $page ) {

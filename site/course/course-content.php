@@ -114,6 +114,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't1_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '1', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '1' ),
             'menu' => [],
             'length' => [],
@@ -156,6 +157,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't2_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '2', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '2' ),
             'menu' => [],
             'length' => [],
@@ -202,6 +204,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't3_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '3', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '3' ),
             'menu' => [],
             'length' => [],
@@ -247,6 +250,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't4_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '4', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '4' ),
             'menu' => [],
             'length' => [],
@@ -308,6 +312,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't5_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '5', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '5' ),
             'menu' => [],
             'length' => [],
@@ -504,6 +509,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't6_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '6', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '6' ),
             'menu' => [],
             'length' => [],
@@ -550,6 +556,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't7_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '7', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '7' ),
             'menu' => [],
             'length' => [],
@@ -618,6 +625,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't8_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '8', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '8' ),
             'menu' => [],
             'length' => [],
@@ -822,6 +830,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't9_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '9', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '9' ),
             'menu' => [],
             'length' => [],
@@ -893,6 +902,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't10_d',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '10', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '10' ),
             'menu' => [],
             'length' => [],
@@ -962,6 +972,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't11_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '11', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '11' ),
             'menu' => [],
             'length' => [],
@@ -1168,6 +1179,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't12_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '12', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '12' ),
             'menu' => [],
             'length' => [],
@@ -1219,6 +1231,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't13_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '13', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '13' ),
             'menu' => [],
             'length' => [],
@@ -1265,6 +1278,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't14_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '14', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '14' ),
             'menu' => [],
             'length' => [],
@@ -1311,6 +1325,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't15_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '15', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '15' ),
             'menu' => [],
             'length' => [],
@@ -1357,6 +1372,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't16_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '16', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '16' ),
             'menu' => [],
             'length' => [],
@@ -1541,6 +1557,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't17_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '17', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '17' ),
             'menu' => [],
             'length' => [],
@@ -1570,6 +1587,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't18_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '18', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '18' ),
             'menu' => [],
             'length' => [],
@@ -1778,6 +1796,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't20_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '19', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '19' ),
             'menu' => [],
             'length' => [],
@@ -1820,6 +1839,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't21_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '21', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '21' ),
             'menu' => [],
             'length' => [],
@@ -1999,6 +2019,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't22_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '22', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '22' ),
             'menu' => [],
             'length' => [],
@@ -2216,6 +2237,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't23_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '23', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '23' ),
             'menu' => [],
             'length' => [],
@@ -2418,6 +2440,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't24_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '24', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '24' ),
             'menu' => [],
             'length' => [],
@@ -2463,6 +2486,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't25_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '25', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '25' ),
             'menu' => [],
             'length' => [],
@@ -2510,6 +2534,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't26_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '26', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '26' ),
             'menu' => [],
             'length' => [],
@@ -2552,6 +2577,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't28_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '28', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '28' ),
             'menu' => [],
             'length' => [],
@@ -2921,6 +2947,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't29_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '29', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '29' ),
             'menu' => [],
             'length' => [],
@@ -2965,6 +2992,7 @@ function zume_content( $lang_code = 'en' ) {
         [
             'key' => 't30_b',
             'type' => 'video',
+            'alt_video' => Zume_Course::get_alt_video_by_key( '30', $lang_code ),
             'script_id' => Zume_Course::get_transcript_by_key( '30' ),
             'menu' => [],
             'length' => [],
