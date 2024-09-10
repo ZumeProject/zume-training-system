@@ -2689,7 +2689,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     </div>
                 </div>
             </div>
-        `}}customElements.define("title-slide",Sl);class jl extends N{static get properties(){return{slide:{type:Object},showButtons:{type:Boolean},id:{type:String},scriptUrl:{type:String,attribute:!1},offCanvasId:{type:String,attribute:!1},loading:{type:Boolean,attribute:!1}}}connectedCallback(){super.connectedCallback(),this.handleLoad=this.handleLoad.bind(this)}async firstUpdated(){jQuery(this.renderRoot).foundation(),this.offCanvasId="informationOffCanvas"+this.id,this.iframeId="iframe"+this.id,this.offCanvasSelector="#"+this.offCanvasId,await this.loadScriptIntoFrame(),super.firstUpdated()}openMenu(){const t=document.querySelector(this.offCanvasSelector);jQuery(t).foundation("open")}closeMenu(){const t=document.querySelector(this.offCanvasSelector);jQuery(t).foundation("close")}async loadScriptIntoFrame(){this.loading=!0;const t=this.slide.script_id,e=jsObject.language,s=new URL(location.href),n=new URL(s.origin);n.pathname=[e,"app","script"].join("/"),n.searchParams.append("s",t),await this.updateComplete;const a=this.renderRoot.querySelector(`#${this.offCanvasId} iframe`);a?a.onload=this.handleLoad:console.error("no iframe to attach onload to"),this.scriptUrl=n.href}handleLoad(){this.loading=!1}maybeRemoveAutoplay(t){if(!this.inContainer)return t;if(!t)return"";const e=new URL(t);return e.searchParams.delete("autoplay"),e.href}render(){return c`
+        `}}customElements.define("title-slide",Sl);class jl extends N{static get properties(){return{slide:{type:Object},showButtons:{type:Boolean},id:{type:String},scriptUrl:{type:String,attribute:!1},altVideoUrl:{type:String,attribute:!1},offCanvasId:{type:String,attribute:!1},loading:{type:Boolean,attribute:!1}}}connectedCallback(){super.connectedCallback(),this.useAltVideo=!0,this.handleLoad=this.handleLoad.bind(this)}async firstUpdated(){jQuery(this.renderRoot).foundation(),this.offCanvasId="informationOffCanvas"+this.id,this.iframeId="iframe"+this.id,this.offCanvasSelector="#"+this.offCanvasId,this.altVideoUrl=jsObject.mirror_url+jsObject.language+"/"+this.slide.alt_video_id+".mp4",await this.loadScriptIntoFrame(),super.firstUpdated()}openMenu(){const t=document.querySelector(this.offCanvasSelector);jQuery(t).foundation("open")}closeMenu(){const t=document.querySelector(this.offCanvasSelector);jQuery(t).foundation("close")}async loadScriptIntoFrame(){this.loading=!0;const t=this.slide.script_id,e=jsObject.language,s=new URL(location.href),n=new URL(s.origin);n.pathname=[e,"app","script"].join("/"),n.searchParams.append("s",t),await this.updateComplete;const a=this.renderRoot.querySelector(`#${this.offCanvasId} iframe`);a?a.onload=this.handleLoad:console.error("no iframe to attach onload to"),this.scriptUrl=n.href}handleLoad(){this.loading=!1}shouldAutoplay(){return!this.inContainer}maybeRemoveAutoplay(t){if(this.shouldAutoplay())return t;if(!t)return"";const e=new URL(t);return e.searchParams.delete("autoplay"),e.href}render(){return c`
             <div class="video-slide">
 
                 <button
@@ -2702,11 +2702,24 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 </button>
 
                 <div class="widescreen flex-video">
-                    <iframe src="${this.maybeRemoveAutoplay(this.slide.center[0])}"
-                            frameborder="0"
-                            allow="autoplay; fullscreen; picture-in-picture"
-                    >
-                    </iframe>
+                    ${this.useAltVideo?c`
+                            <video
+                                style="border: 1px solid lightgrey;max-width:100%;"
+                                poster=${jsObject.images_url+"/video-thumb.jpg"}
+                                controls
+                                ?autoplay=${this.shouldAutoplay()}
+                            >
+                                <source src=${this.altVideoUrl||""} type="video/mp4">
+                                Your browser does not support the video tag.
+                                <a href=${this.altVideoUrl||""}>${jsObject.translations.watch_this_video}</a>
+                            </video>
+                        `:c`
+                            <iframe src="${this.maybeRemoveAutoplay(this.slide.center[0])}"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture"
+                            >
+                            </iframe>
+                        `}
                 </div>
             </div>
             <div
