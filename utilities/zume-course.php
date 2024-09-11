@@ -83,6 +83,16 @@ class Zume_Course {
         return $video_url;
     }
 
+    public static function create_alt_video_by_key( $meta_key, $lang = null ) {
+        if ( empty( $lang ) ) {
+            $current_lang = zume_current_language();
+        } else {
+            $current_lang = $lang;
+        }
+
+        return zume_mirror_url() . $current_lang . '/' . $meta_key . '.mp4';
+    }
+
     public static function get_download_by_key( $meta_key, $lang = null ) {
         // get language
         if ( empty( $lang ) ) {

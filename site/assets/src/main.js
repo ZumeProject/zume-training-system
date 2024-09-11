@@ -56,6 +56,7 @@ jQuery(document).ready(() => {
     const videoPlayers = document.querySelectorAll('.video-player')
     videoPlayers.forEach((videoPlayer) => {
         const videoSrc = videoPlayer.getAttribute('data-video-src')
+        const videoAltSrc = videoPlayer.getAttribute('data-video-alt-src')
         const iframe = videoPlayer.querySelector('iframe')
         const videoTrigger = videoPlayer.querySelector('.video-trigger')
 
@@ -72,7 +73,19 @@ jQuery(document).ready(() => {
         videoTrigger.addEventListener('click', loadVideo)
         function loadVideo(event) {
             console.log(event, videoSrc)
-            refreshedIframe.src = videoSrc
+
+            if (getCookie('zume_video_available')) {
+                refreshedIframe.src = videoSrc
+            } else {
+                const videoElement = document.createElement('video')
+                videoElement.src = videoAltSrc
+                videoElement.controls = true
+                videoElement.autoplay = true
+
+                refreshedIframe.parentNode.insertBefore(videoElement, refreshedIframe)
+                refreshedIframe.remove()
+            }
+
             videoTrigger.style.display = 'none'
         }
     })
