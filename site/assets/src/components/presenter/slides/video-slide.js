@@ -16,7 +16,7 @@ export class VideoSlide extends CourseSlide {
     connectedCallback() {
         super.connectedCallback()
 
-        this.useAltVideo = true
+        this.useAltVideo = window.zumeApiShare.getCookie('zume_video_available') ? false : true
 
         this.handleLoad = this.handleLoad.bind(this)
     }
