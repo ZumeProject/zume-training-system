@@ -38,6 +38,22 @@ jQuery(document).ready(() => {
 
     Settings.defaultLocale = locale
 
+    /* Check if Vimeo is available. If not we will have to use html5 players */
+    if ( !cookies.zume_video_available ) {
+        fetch('https://api.vimeo.com/tutorial', {
+            headers: {
+                'Authorization': 'bearer deca0d7adc9ee17a1b35a42906c48fba'
+            }
+        })
+            .then((result) => {
+                if (result.ok) {
+                    /* Set short lived cookie so the user doesn't get stuck with broken videos if they travel/vpn
+                     to another country */
+                    setCookie('zume_video_available', 1, '', 1)
+                }
+            })
+    }
+
     const videoPlayers = document.querySelectorAll('.video-player')
     videoPlayers.forEach((videoPlayer) => {
         const videoSrc = videoPlayer.getAttribute('data-video-src')
