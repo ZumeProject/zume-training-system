@@ -41,7 +41,7 @@ jQuery(document).ready(() => {
     if ( !getCookie('zume_video_available') ) {
         fetch('https://api.vimeo.com/tutorial', {
             headers: {
-                'Authorization': 'bearer deca0d7adc9ee17a1b35a42906c48fba'
+                'Authorization': `bearer ${window.zumeApiShare.zume_vimeo_api_key}`
             }
         })
             .then((result) => {
