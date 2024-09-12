@@ -9,11 +9,13 @@ export class JoinTraining extends LitElement {
              * Translation strings
              */
             t: { type: Object },
+            hasNextStep: { type: Boolean },
 
             code: { attribute: false },
             message: { attribute: false },
             errorMessage: { attribute: false },
             loading: { attribute: false },
+            success: { attribute: false },
         };
     }
 
@@ -49,6 +51,7 @@ export class JoinTraining extends LitElement {
         zumeRequest.post('connect/public-plan', { code })
             .then((data) => {
                 this.message = this.t.success.replace('%s', data.name);
+                this.success = true
 
                 const url = new URL(location.href)
                 url.searchParams.set('joinKey', code)
@@ -84,6 +87,11 @@ export class JoinTraining extends LitElement {
         this.connectToPlan(code)
     }
 
+    _sendDoneStepEvent() {
+        const doneStepEvent = new CustomEvent( 'done-step', { bubbles: true } )
+        this.dispatchEvent(doneStepEvent)
+    }
+
     render() {
         return html`
             <h1>${this.t.title}</h1>
@@ -93,6 +101,13 @@ export class JoinTraining extends LitElement {
             `: ''}
             <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
             <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
+            ${
+                this.success && this.hasNextStep ? html`
+                    <button class="btn" @click=${this._sendDoneStepEvent}>
+                        ${this.t.next}
+                    </button>
+                ` : ''
+            }
         `;
     }
 
