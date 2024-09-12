@@ -277,10 +277,10 @@ class Zume_System_CTA_API
             [
                 'stages' => [1, 2, 3, 4, 5, 6],
                 'required_keys' => [],
-                'disable_keys' => ['system_set_profile'],
-                'key' => 'system_set_profile',
+                'disable_keys' => ['system_set_partial_profile', 'system_set_profile'],
+                'key' => 'system_set_partial_profile',
                 'type' => 'system',
-                'subtype' => 'set_profile',
+                'subtype' => 'set_partial_profile',
                 'content' => [
                     'title' => __( 'Set Profile', 'zume' ),
                     'description' => __( 'Set your profile to help others know you', 'zume' ),
@@ -291,11 +291,11 @@ class Zume_System_CTA_API
             ],
             [
                 'stages' => [1, 2, 3, 4, 5, 6],
-                'required_keys' => ['system_set_profile'],
-                'disable_keys' => ['system_celebrated_set_profile'],
-                'key' => 'system_celebrated_set_profile',
+                'required_keys' => ['system_set_partial_profile'],
+                'disable_keys' => ['system_celebrated_set_partial_profile'],
+                'key' => 'system_celebrated_set_partial_profile',
                 'type' => 'system',
-                'subtype' => 'celebrated_set_profile',
+                'subtype' => 'celebrated_set_partial_profile',
                 'content' => [
                     'title' => __( 'Profile Set', 'zume' ),
                     'description' => __( 'Congratulations!', 'zume' ),
