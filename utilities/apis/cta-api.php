@@ -94,11 +94,12 @@ class Zume_System_CTA_API
             foreach ( $ctas as $key => $cta ) {
                 $show_cta = false;
                 foreach ( $cta['required_keys'] as $required_key ) {
-                    if ( !$show_cta && ! in_array( $required_key, $log_keys ) ) {
-                        unset( $ctas[$key] );
-                    } else {
+                    if ( !$show_cta && in_array( $required_key, $log_keys ) ) {
                         $show_cta = true;
                     }
+                }
+                if ( !$show_cta ) {
+                    unset( $ctas[$key] );
                 }
                 foreach ( $cta['disable_keys'] as $disable_key ) {
                     if ( in_array( $disable_key, $log_keys ) ) {
@@ -247,9 +248,9 @@ class Zume_System_CTA_API
             [
                 'stages' => [1, 2],
                 'required_keys' => ['training_plan_created'],
-                'disable_keys' => ['training_celebrate_plan_created'],
-                'key' => 'training_celebrate_plan_created',
-                'type' => 'training',
+                'disable_keys' => ['system_celebrate_plan_created'],
+                'key' => 'system_celebrate_plan_created',
+                'type' => 'system',
                 'subtype' => 'celebrate_plan_created',
                 'content' => [
                     'title' => __( 'Created Training!', 'zume' ),
