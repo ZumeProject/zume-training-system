@@ -1552,25 +1552,25 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 </div>
                 <div class="dashboard__main content">
                     ${this.showTeaser?c`
-                          <div class="p-2">
-                            <div class="dash-menu__list-item">
-                              <div class="dash-menu__icon-area | stack--5">
-                                <span class="icon z-icon-locked dash-menu__list-icon"></span>
-                              </div>
-                              <div class="dash-menu__text-area | switcher | switcher-width-20">
-                                <div>
-                                  <h3 class="f-1 bold uppercase">${jsObject.translations.my_plans_locked}</h3>
-                                  <p>${jsObject.translations.my_plans_locked_explanation}</p>
+                            <div class="p-2">
+                                <div class="dash-menu__list-item">
+                                    <div class="dash-menu__icon-area | stack--5">
+                                        <span class="icon z-icon-locked dash-menu__list-icon"></span>
+                                    </div>
+                                    <div class="dash-menu__text-area | switcher | switcher-width-20">
+                                        <div>
+                                            <h3 class="f-1 bold uppercase">${jsObject.translations.my_plans_locked}</h3>
+                                            <p>${jsObject.translations.my_plans_locked_explanation}</p>
+                                        </div>
+                                        <button class="dash-menu__view-button btn tight" @click=${this.open3MonthPlan}>
+                                            ${jsObject.translations.create_3_month_plan}
+                                        </button>
+                                    </div>
                                 </div>
-                                <button class="dash-menu__view-button btn tight" @click=${this.open3MonthPlan}>
-                                  ${jsObject.translations.create_3_month_plan}
-                                </button>
-                              </div>
                             </div>
-                          </div>
-                        `:c`
+                            `:c`
                                 <ul class="list">
-                                  ${!this.loading&&this.commitments&&this.commitments.length>0?G(this.commitments,t=>t.id,this.renderListItem):""}
+                                    ${!this.loading&&this.commitments&&this.commitments.length>0?G(this.commitments,t=>t.id,this.renderListItem):""}
                                 </ul>
                             `}
                 </div>
