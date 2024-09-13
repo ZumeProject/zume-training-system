@@ -6069,7 +6069,7 @@ if ( ! class_exists( 'Zume_Global_Endpoints' ) ) {
                 $log = zume_get_user_log( $user_id );
                 $subtypes = array_column( $log, 'subtype' );
                 if ( ! in_array( 'made_post_training_plan', $subtypes ) ) {
-                    zume_log_insert( 'system', 'made_post_training_plan', [ 'user_id' => $user_id ], true );
+                    zume_log_insert( 'training', 'made_post_training_plan', [ 'user_id' => $user_id ], true );
                 }
             }
 
