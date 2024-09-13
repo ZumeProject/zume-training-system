@@ -98,7 +98,7 @@ class Zume_System_CTA_API
                         $show_cta = true;
                     }
                 }
-                if ( !$show_cta ) {
+                if ( !empty( $cta['required_keys'] ) && !$show_cta ) {
                     unset( $ctas[$key] );
                 }
                 foreach ( $cta['disable_keys'] as $disable_key ) {
@@ -144,6 +144,37 @@ class Zume_System_CTA_API
                 ],
                 'content_template' => 'card',
             ],
+            // Profile CTAs
+            [
+                'stages' => [1, 2, 3, 4, 5, 6],
+                'required_keys' => [],
+                'disable_keys' => ['system_set_partial_profile', 'system_set_profile'],
+                'key' => 'system_set_partial_profile',
+                'type' => 'system',
+                'subtype' => 'set_partial_profile',
+                'content' => [
+                    'title' => __( 'Set Profile', 'zume' ),
+                    'description' => __( 'Set your profile to help others know you', 'zume' ),
+                    'link_text' => __( 'Set Profile', 'zume' ),
+                    'link' => zume_wizard_url( 'profile' ),
+                ],
+                'content_template' => 'card',
+            ],
+            [
+                'stages' => [1, 2, 3, 4, 5, 6],
+                'required_keys' => ['system_set_partial_profile'],
+                'disable_keys' => ['system_celebrated_set_partial_profile'],
+                'key' => 'system_celebrated_set_partial_profile',
+                'type' => 'system',
+                'subtype' => 'celebrated_set_partial_profile',
+                'content' => [
+                    'title' => __( 'Profile Set', 'zume' ),
+                    'description' => __( 'Congratulations!', 'zume' ),
+                    'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
+                ],
+                'content_template' => 'celebration',
+            ],
+            // Join training CTAs
             [
                 'stages' => [0, 1],
                 'required_keys' => [],
@@ -173,6 +204,36 @@ class Zume_System_CTA_API
                 ],
                 'content_template' => 'celebration',
             ],
+            [
+                'stages' => [1],
+                'required_keys' => [],
+                'disable_keys' => ['training_plan_created'],
+                'key' => 'training_plan_created',
+                'type' => 'training',
+                'subtype' => 'plan_created',
+                'content' => [
+                    'title' => __( 'Create a Training', 'zume' ),
+                    'description' => __( 'Create a training to help you grow', 'zume' ),
+                    'link_text' => __( 'Create a Training', 'zume' ),
+                    'link' => zume_wizard_url( 'start' ),
+                ],
+                'content_template' => 'card',
+            ],
+            [
+                'stages' => [1, 2],
+                'required_keys' => ['training_plan_created'],
+                'disable_keys' => ['system_celebrate_plan_created'],
+                'key' => 'system_celebrate_plan_created',
+                'type' => 'system',
+                'subtype' => 'celebrate_plan_created',
+                'content' => [
+                    'title' => __( 'Created Training!', 'zume' ),
+                    'description' => __( 'Congratulations', 'zume' ),
+                    'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
+                ],
+                'content_template' => 'celebration',
+            ],
+            // Coaching CTAs
             [
                 'stages' => [1, 2, 3, 4, 5, 6],
                 'required_keys' => [],
@@ -216,49 +277,6 @@ class Zume_System_CTA_API
                 ],
                 'content_template' => 'celebration',
             ],
-            [
-                'stages' => [1, 2, 3, 4, 5, 6],
-                'required_keys' => ['practicing_join_community'],
-                'disable_keys' => ['system_celebrated_join_community'],
-                'key' => 'system_celebrated_join_community',
-                'type' => 'system',
-                'subtype' => 'celebrated_join_community',
-                'content' => [
-                    'title' => __( 'Joined Community', 'zume' ),
-                    'description' => __( 'Congratulations', 'zume' ),
-                    'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
-                ],
-                'content_template' => 'celebration',
-            ],
-            [
-                'stages' => [1],
-                'required_keys' => [],
-                'disable_keys' => ['training_plan_created'],
-                'key' => 'training_plan_created',
-                'type' => 'training',
-                'subtype' => 'plan_created',
-                'content' => [
-                    'title' => __( 'Create a Training', 'zume' ),
-                    'description' => __( 'Create a training to help you grow', 'zume' ),
-                    'link_text' => __( 'Create a Training', 'zume' ),
-                    'link' => zume_wizard_url( 'start' ),
-                ],
-                'content_template' => 'card',
-            ],
-            [
-                'stages' => [1, 2],
-                'required_keys' => ['training_plan_created'],
-                'disable_keys' => ['system_celebrate_plan_created'],
-                'key' => 'system_celebrate_plan_created',
-                'type' => 'system',
-                'subtype' => 'celebrate_plan_created',
-                'content' => [
-                    'title' => __( 'Created Training!', 'zume' ),
-                    'description' => __( 'Congratulations', 'zume' ),
-                    'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
-                ],
-                'content_template' => 'celebration',
-            ],
             /* Mute for Go live: this one is for inviting people to become friends with you. */
 /*             [
                 'stages' => [1, 2],
@@ -275,37 +293,10 @@ class Zume_System_CTA_API
                 ],
                 'content_template' => 'card',
             ], */
+
+            // Post Training Plan CTAs
             [
-                'stages' => [1, 2, 3, 4, 5, 6],
-                'required_keys' => [],
-                'disable_keys' => ['system_set_partial_profile', 'system_set_profile'],
-                'key' => 'system_set_partial_profile',
-                'type' => 'system',
-                'subtype' => 'set_partial_profile',
-                'content' => [
-                    'title' => __( 'Set Profile', 'zume' ),
-                    'description' => __( 'Set your profile to help others know you', 'zume' ),
-                    'link_text' => __( 'Set Profile', 'zume' ),
-                    'link' => zume_wizard_url( 'profile' ),
-                ],
-                'content_template' => 'card',
-            ],
-            [
-                'stages' => [1, 2, 3, 4, 5, 6],
-                'required_keys' => ['system_set_partial_profile'],
-                'disable_keys' => ['system_celebrated_set_partial_profile'],
-                'key' => 'system_celebrated_set_partial_profile',
-                'type' => 'system',
-                'subtype' => 'celebrated_set_partial_profile',
-                'content' => [
-                    'title' => __( 'Profile Set', 'zume' ),
-                    'description' => __( 'Congratulations!', 'zume' ),
-                    'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
-                ],
-                'content_template' => 'celebration',
-            ],
-            [
-                'stages' => [2],
+                'stages' => [2, 3],
                 'required_keys' => ['training_26_heard'],
                 'disable_keys' => ['training_made_post_training_plan'],
                 'key' => 'training_made_post_training_plan',
@@ -315,12 +306,12 @@ class Zume_System_CTA_API
                     'title' => __( 'Create 3 Month Plan', 'zume' ),
                     'description' => __( 'Create a 3 month plan to help you grow', 'zume' ),
                     'link_text' => __( 'Create 3 Month Plan', 'zume' ),
-                    'link' => '/create-3-month-plan',
+                    'link' => 'modal/open-3-month-plan',
                 ],
                 'content_template' => 'card',
             ],
             [
-                'stages' => [1, 2],
+                'stages' => [1, 2, 3],
                 'required_keys' => ['training_26_heard'],
                 'disable_keys' => ['system_celebrated_plan_unlocked'],
                 'key' => 'system_celebrated_plan_unlocked',
@@ -334,7 +325,7 @@ class Zume_System_CTA_API
                 'content_template' => 'celebration',
             ],
             [
-                'stages' => [1, 2],
+                'stages' => [1, 2, 3],
                 'required_keys' => ['training_made_post_training_plan'],
                 'disable_keys' => ['system_made_post_training_plan_celebrated'],
                 'key' => 'system_made_post_training_plan_celebrated',
@@ -349,7 +340,7 @@ class Zume_System_CTA_API
             ],
             [
                 'stages' => [3],
-                'required_keys' => [],
+                'required_keys' => ['training_made_post_training_plan'],
                 'disable_keys' => ['training_completed_3_month_plan'],
                 'key' => 'training_completed_3_month_plan',
                 'type' => 'training',
@@ -358,7 +349,7 @@ class Zume_System_CTA_API
                     'title' => __( 'Complete 3 Month Plan', 'zume' ),
                     'description' => __( 'Complete your 3 month plan to help you grow', 'zume' ),
                     'link_text' => __( 'Complete 3 Month Plan', 'zume' ),
-                    'link' => '/complete-3-month-plan',
+                    'link' => zume_dashboard_page_url( 'my-plans' ),
                 ],
                 'content_template' => 'card',
             ],
@@ -407,6 +398,7 @@ class Zume_System_CTA_API
                 ],
                 'content_template' => 'card',
             ], */
+            // Join Community CTAs
             [
                 'stages' => [4, 5, 6],
                 'required_keys' => [],
@@ -420,6 +412,20 @@ class Zume_System_CTA_API
                     'link' => zume_wizard_url( 'join_the_community' ),
                 ],
                 'content_template' => 'card',
+            ],
+            [
+                'stages' => [1, 2, 3, 4, 5, 6],
+                'required_keys' => ['practicing_join_community'],
+                'disable_keys' => ['system_celebrated_join_community'],
+                'key' => 'system_celebrated_join_community',
+                'type' => 'system',
+                'subtype' => 'celebrated_join_community',
+                'content' => [
+                    'title' => __( 'Joined Community', 'zume' ),
+                    'description' => __( 'Congratulations', 'zume' ),
+                    'image_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '../site/assets/images/thumbs-up.svg' ),
+                ],
+                'content_template' => 'celebration',
             ],
 
             // HOST triggers
