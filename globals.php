@@ -6157,6 +6157,11 @@ if ( ! class_exists( 'Zume_Global_Endpoints' ) ) {
             ];
 
             $update = $wpdb->update( 'zume_dt_post_user_meta', [ 'meta_value' => $data ], $where );
+
+            if ( $this->check_post_training_plan_completed() ) {
+                zume_log_insert( 'training', 'completed_3_month_plan', log_once: true );
+            }
+
             return $update;
         }
         public function delete_commitment( WP_REST_Request $request )
@@ -6176,9 +6181,22 @@ if ( ! class_exists( 'Zume_Global_Endpoints' ) ) {
 
             $delete = $wpdb->delete( 'zume_dt_post_user_meta', $fields );
 
+            if ( $this->check_post_training_plan_completed() ) {
+                zume_log_insert( 'training', 'completed_3_month_plan', log_once: true );
+            }
+
             return $delete;
         }
 
+        public function check_post_training_plan_completed(): bool {
+            $commitments = zume_get_user_commitments( category: 'post_training_plan' );
+
+            if ( empty( $commitments ) ) {
+                return true;
+            }
+
+            return false;
+        }
 
         /** Host */
         public function list_host( WP_REST_Request $request ) {
