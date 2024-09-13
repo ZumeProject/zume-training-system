@@ -124,6 +124,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.addEventListener('user-state:change', this.getCtas)
         window.addEventListener('user-host:change', this.refetchHost)
         window.addEventListener('training:changed', this.updateTrainingGroups)
+        window.addEventListener('commitments:change', this.getCtas)
 
         window.addEventListener('load', this.showCelebrationModal)
         window.addEventListener('ctas:changed', this.showCelebrationModal)

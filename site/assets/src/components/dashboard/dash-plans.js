@@ -132,7 +132,12 @@ export class DashPlans extends DashPage {
         }
         zumeRequest.put('commitment', data).then( ( data ) => {
             this.fetchCommitments()
+            this.dispatchCommitmentsChangedEvent();
         })
+    }
+
+    dispatchCommitmentsChangedEvent() {
+        this.dispatchEvent(new CustomEvent('commitments:change', { bubbles: true }));
     }
 
     deleteCommitment(id) {
@@ -143,6 +148,7 @@ export class DashPlans extends DashPage {
         zumeRequest.delete('commitment', data).then( ( data ) => {
             this.closeMenu(id)
             this.fetchCommitments()
+            this.dispatchCommitmentsChangedEvent();
         })
     }
     saveCommitment(event) {
