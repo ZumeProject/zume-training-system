@@ -61,13 +61,12 @@ export const wizardDefinitions = {
     },
     [Wizards.joinATraining]: {
         [Modules.joinTraining]: makeModule([
-            Steps.joinTraining,
-        ], true),
-        [Modules.completeProfile]: makeModule([
+            Steps.joinTrainingSelection,
             Steps.updateName,
             Steps.updateLocation,
             Steps.contactPreferences,
             Steps.updatePhone,
+            Steps.joinTraining,
         ]),
     },
     [Wizards.connectWithFriend]: {
