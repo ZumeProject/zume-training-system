@@ -141,7 +141,7 @@ class Zume_Training_Checkin_Dashboard extends Zume_Magic_Page
 
         ?>
 
-            <?php require __DIR__ . '/../parts/nav.php'; ?>
+            <?php require __DIR__ . '/../parts/checkin-nav.php'; ?>
 
             <div class="container-xsm">
                 <checkin-dashboard></checkin-dashboard>
