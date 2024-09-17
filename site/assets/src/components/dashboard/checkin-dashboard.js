@@ -1,10 +1,13 @@
 import { LitElement, html } from 'lit';
+import { repeat } from 'lit/directives/repeat.js'
 
 export class CheckinDashboard extends LitElement {
     static get properties() {
         return {
             error: { type: Boolean, attribute: false },
             sessionNumber: { type: Number, attribute: false },
+            hostProgress: { type: Object, attribute: false},
+            errorMessage: { type: String, attribute: false },
         };
     }
 
@@ -12,6 +15,12 @@ export class CheckinDashboard extends LitElement {
         super()
         this.error = false
         this.getSessionNumber()
+
+        this.hostProgress = jsObject.host_progress
+        this.trainingItems = Object.values(jsObject.training_items)
+        this.errorMessage = ''
+
+        this.renderListItem = this.renderListItem.bind(this)
     }
 
     firstUpdated() {
@@ -64,6 +73,27 @@ export class CheckinDashboard extends LitElement {
         return 0
     }
 
+    toggleHost(event) {
+        const { host, additionalHostToCredit } = event.detail
+
+        console.log(host, additionalHostToCredit)
+    }
+
+    renderListItem(trainingItem) {
+        const { title, description, host, slug, key } = trainingItem
+
+        return html`
+            <li class="stack">
+                <p class="f-medium">${title}</p>
+                <host-progress-bar
+                    .host=${host}
+                    .hostProgressList=${this.hostProgress.list}
+                    @host:toggle=${this.toggleHost}
+                ></host-progress-bar>
+            </li>
+        `
+    }
+
     render() {
         if (this.error) {
             return html`
@@ -78,6 +108,11 @@ export class CheckinDashboard extends LitElement {
         return html`
             <div class="text-center">
                 <p class="my-0">${jsObject.translations.check_off_items}</p>
+
+                <ul>
+                    ${repeat(this.trainingItems, (item) => item.key, this.renderListItem)}
+                </ul>
+
             </div>
 
             <div
