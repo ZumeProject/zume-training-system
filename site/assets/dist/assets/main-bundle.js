@@ -896,6 +896,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 class="stack | reveal tiny card celebration showing | border-none"
                 id="celebration-modal"
                 data-reveal
+                data-initial-top
             >
                 <button
                     class="ms-auto close-btn"
@@ -2389,7 +2390,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
             >
                 <h3 class="title">${this.text}</h3>
             </div>
-        `}}customElements.define("training-link",pl);class ml extends k{static get properties(){return{error:{type:Boolean,attribute:!1}}}constructor(){super(),this.error=!1,this.getSessionNumber()}getSessionNumber(){var t;const s=new URL(location.href).searchParams.get("code"),a=(t=jsObject.session_keys[s])!==null&&t!==void 0?t:"";if(!a)return this.error=!0,0;const r=a.split("_");return r[1]==="a"?10:r[1]==="b"?20:r[1]==="c"?5:(this.error=!0,0)}render(){return this.error?c`
+        `}}customElements.define("training-link",pl);class ml extends k{static get properties(){return{error:{type:Boolean,attribute:!1},sessionNumber:{type:Number,attribute:!1}}}constructor(){super(),this.error=!1,this.getSessionNumber()}firstUpdated(){jQuery(this.renderRoot).foundation(),this.error||(this.showCongratulationsModal(),setTimeout(()=>{this.closeCelebrationModal()},1400))}showCongratulationsModal(){const t=document.querySelector("#celebration-modal");console.log(t),jQuery(t).foundation("open")}closeCelebrationModal(){const t=document.querySelector("#celebration-modal");jQuery(t).foundation("close")}getSessionNumber(){var t;const s=new URL(location.href).searchParams.get("code"),a=(t=jsObject.session_keys[s])!==null&&t!==void 0?t:"";if(!a)return this.error=!0,0;const r=a.split("_");return r[1]==="a"?10:r[1]==="b"?20:r[1]==="c"?5:(this.error=!0,0)}render(){return this.error?c`
                 <div class="text-center">
                     <h1 class="h2 brand-light mb0">${jsObject.translations.woops}</h1>
                     <hr class="mt0">
@@ -2399,6 +2400,46 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
             `:c`
             <div class="text-center">
                 <p class="my-0">${jsObject.translations.check_off_items}</p>
+            </div>
+
+            <div
+                class="stack | reveal tiny card celebration showing | border-none"
+                id="celebration-modal"
+                data-reveal
+                data-initial-top
+            >
+                <button
+                    class="ms-auto close-btn"
+                    data-close
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                    @click=${this.closeCelebrationModal}
+                >
+                    <span class="icon z-icon-close"></span>
+                </button>
+                <h2 class="h5 text-center bold">
+                    ${jsObject.translations.congratulations}
+                </h2>
+                <p class="f-medium">
+                    ${jsObject.translations.checked_in}
+                </p>
+                <div class="d-flex align-items-center justify-content-between">
+                    <img
+                        class="w-30"
+                        src="${jsObject.images_url+"/fireworks-2.svg"}"
+                        alt=""
+                    />
+                    <img
+                        class="w-40"
+                        src="${jsObject.images_url+"/thumbs-up.svg"}"
+                        alt=""
+                    />
+                    <img
+                        class="w-30"
+                        src="${jsObject.images_url+"/fireworks-2.svg"}"
+                        alt=""
+                    />
+                </div>
             </div>
         `}createRenderRoot(){return this}}customElements.define("checkin-dashboard",ml);class N extends k{static get properties(){return{slide:{type:Object},id:{type:String},inContainer:{type:Boolean}}}constructor(){super(),this.maxPercentage=80,this.inContainer=!1,this.resizeCallback=this.resizeCallback.bind(this)}connectedCallback(){super.connectedCallback(),this.dir=document.querySelector("html").dir,window.addEventListener("resize",this.resizeCallback)}disconnectedCallback(){super.disconnectedCallback(),window.removeEventListener("resize",this.resizeCallback)}firstUpdated(){this.resizeSlide(window),this.fitContentToSlide(".activity-card"),this.fitContentToSlide(".content-area__text")}resizeCallback(t){this.resizeSlide(t.currentTarget)}fitContentToSlide(t){const e=this.renderRoot.querySelector(t),s=this.renderRoot.querySelector(".slides-card");if(!e||!s)return;const n=e.getBoundingClientRect().height,a=e.parentElement.getBoundingClientRect().top,r=s.getBoundingClientRect().top,l=s.getBoundingClientRect().height-(a-r),d=n/l*100;if(d>this.maxPercentage){const p=2*this.maxPercentage/d;e.style.fontSize=`calc( var(--slide-unit) * ${p} )`}}resizeSlide(t){const e=document.querySelectorAll(".slides-card"),s=document.querySelectorAll(".video-slide"),n=[...e,...s],{innerWidth:a,innerHeight:r}=t,o=this.inContainer?a/r>16/10:a/r>16/9;let l,d;o?(l=r,d=r*16/9,this.inContainer&&d>a*90/100+12&&(d=a*90/100+12,l=d*9/16)):(d=a,this.inContainer&&(d=a*90/100+12),l=d*9/16);const u=d/100;n.forEach(p=>{p.style=`
                 --slide-unit: ${u}px;

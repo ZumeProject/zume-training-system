@@ -91,6 +91,7 @@ class Zume_Training_Checkin_Dashboard extends Zume_Magic_Page
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'language' => $this->lang_code,
                 'site_url' => get_site_url(),
+                'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '/assets/images' ),
                 'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
                 'user_stage' => zume_get_user_stage(),
                 'training_items' => zume_training_items(),
@@ -142,15 +143,8 @@ class Zume_Training_Checkin_Dashboard extends Zume_Magic_Page
 
             <?php require __DIR__ . '/../parts/nav.php'; ?>
 
-            <checkin-dashboard></checkin-dashboard>
-            <div class="text-center">
-
-                <?php if ( $error ) : ?>
-
-                <?php else : ?>
-
-                <?php endif; ?>
-
+            <div class="container-xsm">
+                <checkin-dashboard></checkin-dashboard>
             </div>
 
         <?php
@@ -162,6 +156,9 @@ class Zume_Training_Checkin_Dashboard extends Zume_Magic_Page
             'something_went_wrong' => __( 'Something went wrong with your checkin process.', 'zume' ),
             'dashboard' => __( 'Dashboard', 'zume' ),
             'check_off_items' => __( 'Check off any tools or concepts you have obeyed, shared or trained others with.', 'zume' ),
+            'close' => __( 'Close', 'zume' ),
+            'congratulations' => __( 'Congratulations', 'zume' ),
+            'checked_in' => __( "You're checked in", 'zume' ),
         ];
     }
 }
