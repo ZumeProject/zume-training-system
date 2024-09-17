@@ -94,6 +94,7 @@ class Zume_Training_Checkin_Dashboard extends Zume_Magic_Page
                 'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
                 'user_stage' => zume_get_user_stage(),
                 'training_items' => zume_training_items(),
+                'session_keys' => zume_session_alias_keys(),
                 'host_progress' => zume_get_user_host(),
                 'share_translations' => Zume_Training_Share::translations(),
                 'translations' => $this->translations(),
@@ -140,31 +141,13 @@ class Zume_Training_Checkin_Dashboard extends Zume_Magic_Page
         ?>
 
             <?php require __DIR__ . '/../parts/nav.php'; ?>
+
+            <checkin-dashboard></checkin-dashboard>
             <div class="text-center">
 
                 <?php if ( $error ) : ?>
 
-                    <h1 class="h2 brand-light mb0"><?php echo esc_html__( 'Woops', 'zume' ) ?></h1>
-                    <hr class="mt0">
-                    <p><?php echo esc_html__( 'Something went wrong with your checkin process.', 'zume' ) ?></p>
-                    <a href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn "><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
-
                 <?php else : ?>
-
-                    <h1 class="h2 brand-light mb0"><?php echo esc_html__( 'Congratulations!', 'zume' ) ?></h1>
-                    <hr class="mt0">
-                    <div class="container-md stack-2 | py-0">
-                        <div><span class="icon z-icon-check-mark success f-7 border-circle p--2" data-border-color="success" data-border-width="7"></span></div>
-                        <div class="stack">
-                            <h2 class="h3 brand-light"><?php echo esc_html__( 'Checked into session:', 'zume' ) ?></h2>
-                            <p class="bold f-5"><?php echo esc_html( sprintf( __( '%1$d of %2$d', 'zume' ), $session_number, $number_of_sessions ) ) ?></p>
-                        </div>
-                        <div class="stack">
-                            <h2 class="h3 brand-light"><?php echo esc_html__( 'Course Progress:', 'zume' ) ?></h2>
-                            <p class="bold f-5"><?php echo esc_html( sprintf( __( '%d%%', 'zume' ), $percentage_progress ) ) ?></p>
-                        </div>
-                        <a href="<?php echo esc_url( zume_dashboard_page_url( 'my-progress' ) ) ?>" class="btn "><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
-                    </div>
 
                 <?php endif; ?>
 
@@ -174,7 +157,12 @@ class Zume_Training_Checkin_Dashboard extends Zume_Magic_Page
     }
 
     public static function translations() {
-        return [];
+        return [
+            'woops' => __( 'Woops', 'zume' ),
+            'something_went_wrong' => __( 'Something went wrong with your checkin process.', 'zume' ),
+            'dashboard' => __( 'Dashboard', 'zume' ),
+            'check_off_items' => __( 'Check off any tools or concepts you have obeyed, shared or trained others with.', 'zume' ),
+        ];
     }
 }
 Zume_Training_Checkin_Dashboard::instance();
