@@ -2365,8 +2365,8 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
             >
                 <h3 class="title">${this.text}</h3>
             </div>
-        `}}customElements.define("training-link",pl);class ml extends _{static get properties(){return{error:{type:Boolean,attribute:!1},sessionNumber:{type:Number,attribute:!1},hostProgress:{type:Object,attribute:!1},errorMessage:{type:String,attribute:!1}}}constructor(){super(),this.error=!1,this.getSessionNumber(),this.hostProgress=jsObject.host_progress,this.trainingItems=Object.values(jsObject.training_items),this.errorMessage="",this.renderListItem=this.renderListItem.bind(this)}firstUpdated(){jQuery(this.renderRoot).foundation(),this.error||(this.showCongratulationsModal(),setTimeout(()=>{this.closeCelebrationModal()},1400))}showCongratulationsModal(){const t=document.querySelector("#celebration-modal");console.log(t),jQuery(t).foundation("open")}closeCelebrationModal(){const t=document.querySelector("#celebration-modal");jQuery(t).foundation("close")}getSessionNumber(){var t;const s=new URL(location.href).searchParams.get("code"),a=(t=jsObject.session_keys[s])!==null&&t!==void 0?t:"";if(!a)return this.error=!0,0;const r=a.split("_");return r[1]==="a"?10:r[1]==="b"?20:r[1]==="c"?5:(this.error=!0,0)}toggleHost(t){const{host:e,additionalHostToCredit:s}=t.detail;console.log(e,s)}renderListItem(t){const{title:e,description:s,host:n,slug:a,key:r}=t;return c`
-            <li class="stack">
+        `}}customElements.define("training-link",pl);class ml extends _{static get properties(){return{error:{type:Boolean,attribute:!1},sessionNumber:{type:Number,attribute:!1},hostProgress:{type:Object,attribute:!1},errorMessage:{type:String,attribute:!1},showHelp:{type:Boolean,attribute:!1}}}constructor(){super(),this.error=!1,this.showHelp=!0,this.getSessionNumber(),this.hostProgress=jsObject.host_progress,this.trainingItems=Object.values(jsObject.training_items),this.errorMessage="",this.renderListItem=this.renderListItem.bind(this)}firstUpdated(){jQuery(this.renderRoot).foundation(),this.error||(this.showCongratulationsModal(),setTimeout(()=>{this.closeCelebrationModal()},1400))}openModal(t){const e=document.querySelector(t);jQuery(e).foundation("open")}closeModal(t){const e=document.querySelector(t);jQuery(e).foundation("close")}showCongratulationsModal(){this.openModal("#celebration-modal")}closeCelebrationModal(){this.closeModal("#celebration-modal")}closeHelp(){this.showHelp=!1}openInfo(){this.openModal("#info-modal")}closeInfo(){this.closeModal("#info-modal")}getSessionNumber(){var t;const s=new URL(location.href).searchParams.get("code"),a=(t=jsObject.session_keys[s])!==null&&t!==void 0?t:"";if(!a)return this.error=!0,0;const r=a.split("_");return r[1]==="a"?10:r[1]==="b"?20:r[1]==="c"?5:(this.error=!0,0)}toggleHost(t){const{host:e,additionalHostToCredit:s}=t.detail;console.log(e,s)}renderListItem(t){const{title:e,description:s,host:n,slug:a,key:r}=t;return c`
+            <li class="stack--2 center py-1">
                 <p class="f-medium">${e}</p>
                 <host-progress-bar
                     .host=${n}
@@ -2374,19 +2374,33 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     @host:toggle=${this.toggleHost}
                 ></host-progress-bar>
             </li>
-        `}render(){return this.error?c`
+        `}render(){var t,e,s,n;return this.error?c`
                 <div class="text-center">
                     <h1 class="h2 brand-light mb0">${jsObject.translations.woops}</h1>
                     <hr class="mt0">
                     <p>${jsObject.translations.something_went_wrong}</p>
-                    <a href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn ">${jsObject.translations.dashboard}</a>
+                    <a href="" class="btn ">${jsObject.translations.dashboard}</a>
                 </div>
             `:c`
-            <div class="text-center">
-                <p class="my-0">${jsObject.translations.check_off_items}</p>
+            <div class="text-center position-relative">
+                <div class="fixed bottom left right bg-white p--1 hard-shadow ${this.showHelp?"":"hidden"}">
+                    <button
+                        class="ms-auto close-btn"
+                        data-close
+                        aria-label=${jsObject.translations.close}
+                        type="button"
+                        @click=${this.closeHelp}
+                    >
+                        <span class="icon z-icon-close"></span>
+                    </button>
+                    <p>
+                        ${jsObject.translations.check_off_items}
+                    </p>
+                    <button class="link brand-light" @click=${this.openInfo}><span class="icon z-icon-info"></span> ${jsObject.translations.learn_more}</button>
+                </div>
 
-                <ul>
-                    ${q(this.trainingItems,t=>t.key,this.renderListItem)}
+                <ul class="border-between">
+                    ${q(this.trainingItems,a=>a.key,this.renderListItem)}
                 </ul>
 
             </div>
@@ -2396,6 +2410,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 id="celebration-modal"
                 data-reveal
                 data-initial-top
+                data-not-fullscreen
             >
                 <button
                     class="ms-auto close-btn"
@@ -2428,6 +2443,42 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                         src="${jsObject.images_url+"/fireworks-2.svg"}"
                         alt=""
                     />
+                </div>
+            </div>
+            <div class="reveal large" id="info-modal" data-reveal data-v-offset="20">
+                <button class="ms-auto close-btn" data-close aria-label=${jsObject.translations.close} type="button">
+                        <span class="icon z-icon-close"></span>
+                </button>
+                <div class="stack-2 host-info mx-2">
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="heard" percent=${((t=this.hostProgress)===null||t===void 0||(t=t.percent)===null||t===void 0?void 0:t.h)||0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${jsObject.translations.heard}</h3>
+                            <p class="italic">${jsObject.translations.heard_explanation}</p>
+                        </div>
+                    </div>
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="obeyed" percent=${((e=this.hostProgress)===null||e===void 0||(e=e.percent)===null||e===void 0?void 0:e.o)||0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${jsObject.translations.obeyed}</h3>
+                            <p class="italic">${jsObject.translations.obeyed_explanation}</p>
+                        </div>
+                    </div>
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="shared" percent=${((s=this.hostProgress)===null||s===void 0||(s=s.percent)===null||s===void 0?void 0:s.s)||0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${jsObject.translations.shared}</h3>
+                            <p class="italic">${jsObject.translations.shared_explanation}</p>
+                        </div>
+                    </div>
+
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="trained" percent=${((n=this.hostProgress)===null||n===void 0||(n=n.percent)===null||n===void 0?void 0:n.t)||0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${jsObject.translations.trained}</h3>
+                            <p class="italic">${jsObject.translations.trained_explanation}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         `}createRenderRoot(){return this}}customElements.define("checkin-dashboard",ml);class fl extends _{static get properties(){return{host:{type:Object},hostProgressList:{type:Object}}}toggleHost(t,e=[]){this.dispatchEvent(new CustomEvent("host:toggle",{detail:{host:t,additionalHostToCredit:e}}))}render(){return c`

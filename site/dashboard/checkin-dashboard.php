@@ -159,6 +159,15 @@ class Zume_Training_Checkin_Dashboard extends Zume_Magic_Page
             'close' => __( 'Close', 'zume' ),
             'congratulations' => __( 'Congratulations', 'zume' ),
             'checked_in' => __( "You're checked in", 'zume' ),
+            'learn_more' => __( 'Learn more', 'zume' ),
+            'heard' => __( 'Heard', 'zume' ),
+            'heard_explanation' => __( 'Have I heard about this tool or concept?', 'zume' ),
+            'obeyed' => __( 'Obeyed', 'zume' ),
+            'obeyed_explanation' => __( 'Have I obeyed this tool or concept? If a tool, have I practiced it on my own? If a concept, have you reflected on how it changes your perspective?', 'zume' ),
+            'shared' => __( 'Shared', 'zume' ),
+            'shared_explanation' => __( 'Have I shared this tool or concept? If a tool, have you shown anyone how to use this tool? If a concept, have you shared this concept with anyone?', 'zume' ),
+            'trained' => __( 'Trained', 'zume' ),
+            'trained_explanation' => __( 'Have I trained others to share this tool or concept? If a tool, have I trained someone to share the tool with someone else? If a concept, have I trained someone to share the concept with someone else?', 'zume' ),
         ];
     }
 }

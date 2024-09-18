@@ -8,12 +8,14 @@ export class CheckinDashboard extends LitElement {
             sessionNumber: { type: Number, attribute: false },
             hostProgress: { type: Object, attribute: false},
             errorMessage: { type: String, attribute: false },
+            showHelp: { type: Boolean, attribute: false },
         };
     }
 
     constructor() {
         super()
         this.error = false
+        this.showHelp = true
         this.getSessionNumber()
 
         this.hostProgress = jsObject.host_progress
@@ -34,14 +36,32 @@ export class CheckinDashboard extends LitElement {
         }
     }
 
-    showCongratulationsModal() {
-        const modal = document.querySelector('#celebration-modal')
-        console.log(modal)
+    openModal(selector) {
+        const modal = document.querySelector(selector)
         jQuery(modal).foundation('open')
     }
-    closeCelebrationModal() {
-        const modal = document.querySelector('#celebration-modal')
+    closeModal(selector) {
+        const modal = document.querySelector(selector)
         jQuery(modal).foundation('close')
+    }
+
+    showCongratulationsModal() {
+        this.openModal('#celebration-modal')
+    }
+    closeCelebrationModal() {
+        this.closeModal('#celebration-modal')
+    }
+
+    closeHelp() {
+        this.showHelp = false
+    }
+
+    openInfo() {
+        this.openModal('#info-modal')
+    }
+
+    closeInfo() {
+        this.closeModal('#info-modal')
     }
 
     getSessionNumber() {
@@ -83,7 +103,7 @@ export class CheckinDashboard extends LitElement {
         const { title, description, host, slug, key } = trainingItem
 
         return html`
-            <li class="stack">
+            <li class="stack--2 center py-1">
                 <p class="f-medium">${title}</p>
                 <host-progress-bar
                     .host=${host}
@@ -101,15 +121,29 @@ export class CheckinDashboard extends LitElement {
                     <h1 class="h2 brand-light mb0">${jsObject.translations.woops}</h1>
                     <hr class="mt0">
                     <p>${jsObject.translations.something_went_wrong}</p>
-                    <a href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn ">${jsObject.translations.dashboard}</a>
+                    <a href="" class="btn ">${jsObject.translations.dashboard}</a>
                 </div>
             `
         }
         return html`
-            <div class="text-center">
-                <p class="my-0">${jsObject.translations.check_off_items}</p>
+            <div class="text-center position-relative">
+                <div class="fixed bottom left right bg-white p--1 hard-shadow ${this.showHelp ? '' : 'hidden'}">
+                    <button
+                        class="ms-auto close-btn"
+                        data-close
+                        aria-label=${jsObject.translations.close}
+                        type="button"
+                        @click=${this.closeHelp}
+                    >
+                        <span class="icon z-icon-close"></span>
+                    </button>
+                    <p>
+                        ${jsObject.translations.check_off_items}
+                    </p>
+                    <button class="link brand-light" @click=${this.openInfo}><span class="icon z-icon-info"></span> ${jsObject.translations.learn_more}</button>
+                </div>
 
-                <ul>
+                <ul class="border-between">
                     ${repeat(this.trainingItems, (item) => item.key, this.renderListItem)}
                 </ul>
 
@@ -120,6 +154,7 @@ export class CheckinDashboard extends LitElement {
                 id="celebration-modal"
                 data-reveal
                 data-initial-top
+                data-not-fullscreen
             >
                 <button
                     class="ms-auto close-btn"
@@ -152,6 +187,42 @@ export class CheckinDashboard extends LitElement {
                         src="${jsObject.images_url + '/fireworks-2.svg'}"
                         alt=""
                     />
+                </div>
+            </div>
+            <div class="reveal large" id="info-modal" data-reveal data-v-offset="20">
+                <button class="ms-auto close-btn" data-close aria-label=${jsObject.translations.close} type="button">
+                        <span class="icon z-icon-close"></span>
+                </button>
+                <div class="stack-2 host-info mx-2">
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="heard" percent=${this.hostProgress?.percent?.h || 0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${jsObject.translations.heard}</h3>
+                            <p class="italic">${jsObject.translations.heard_explanation}</p>
+                        </div>
+                    </div>
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="obeyed" percent=${this.hostProgress?.percent?.o || 0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${jsObject.translations.obeyed}</h3>
+                            <p class="italic">${jsObject.translations.obeyed_explanation}</p>
+                        </div>
+                    </div>
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="shared" percent=${this.hostProgress?.percent?.s || 0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${jsObject.translations.shared}</h3>
+                            <p class="italic">${jsObject.translations.shared_explanation}</p>
+                        </div>
+                    </div>
+
+                    <div class="switcher gap-1 align-items-center switcher-width-20">
+                        <host-progress-circle class="grow-0" type="trained" percent=${this.hostProgress?.percent?.t || 0}></host-progress-circle>
+                        <div class="stack--2">
+                            <h3 class="bold">${jsObject.translations.trained}</h3>
+                            <p class="italic">${jsObject.translations.trained_explanation}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
