@@ -16,24 +16,30 @@ export class CheckinDashboard extends LitElement {
         super()
         this.error = false
         this.showHelp = true
-        this.getSessionNumber()
+        this.numberOfSessions = this.getNumberOfSessions()
+        this.sessionNumber = this.getSessionNumber()
 
         this.hostProgress = jsObject.host_progress
         this.trainingItems = Object.values(jsObject.training_items)
         this.errorMessage = ''
 
         this.renderListItem = this.renderListItem.bind(this)
+        this.scrollToLastItem = this.scrollToLastItem.bind(this)
     }
 
     firstUpdated() {
         jQuery(this.renderRoot).foundation();
+
+        this.scrollToLastItem()
         if (!this.error) {
-            this.showCongratulationsModal()
+            this.showCelebrationModal()
 
             setTimeout(() => {
                 this.closeCelebrationModal()
             }, 1400)
         }
+        const modal = document.querySelector('#celebration-modal')
+        jQuery(modal).on('closed.zf.reveal', this.scrollToLastItem)
     }
 
     openModal(selector) {
@@ -45,11 +51,30 @@ export class CheckinDashboard extends LitElement {
         jQuery(modal).foundation('close')
     }
 
-    showCongratulationsModal() {
+    showCelebrationModal() {
         this.openModal('#celebration-modal')
     }
     closeCelebrationModal() {
         this.closeModal('#celebration-modal')
+    }
+
+    scrollToLastItem() {
+        const sessionNumber = this.getSessionNumber()
+        if (sessionNumber === 1) {
+            return
+        }
+
+        const lastSession = sessionNumber - 1
+
+        const lastSessionTrainingItems = jsObject.session_items[lastSession]
+
+        const scrollItem = document.querySelector(`#key-${lastSessionTrainingItems[0] }`)
+
+        console.log(scrollItem, scrollItem.offsetTop)
+
+        window.scrollTo({ top: scrollItem.offsetTop })
+
+        location.hash = lastSession
     }
 
     closeHelp() {
@@ -64,13 +89,18 @@ export class CheckinDashboard extends LitElement {
         this.closeModal('#info-modal')
     }
 
-    getSessionNumber() {
+    getSessionKey() {
         const url = new URL(location.href)
         const code = url.searchParams.get('code')
 
         const sessionKeys = jsObject.session_keys
 
         const sessionKey = sessionKeys[code] ?? ''
+
+        return sessionKey
+    }
+    getNumberOfSessions() {
+        const sessionKey = this.getSessionKey()
 
         if (!sessionKey) {
             this.error = true
@@ -93,6 +123,23 @@ export class CheckinDashboard extends LitElement {
         return 0
     }
 
+    getSessionNumber() {
+        const sessionKey = this.getSessionKey()
+
+        if (!sessionKey) {
+            return 0
+        }
+
+        const keyParts = sessionKey.split('_')
+        const sessionNumber = Number( keyParts[2] )
+
+        if (Number.isNaN(sessionNumber)) {
+            return 0
+        }
+
+        return sessionNumber
+    }
+
     toggleHost(event) {
         const { host, additionalHostToCredit } = event.detail
 
@@ -103,7 +150,7 @@ export class CheckinDashboard extends LitElement {
         const { title, description, host, slug, key } = trainingItem
 
         return html`
-            <li class="stack--2 center py-1">
+            <li class="stack--2 center py-1" id=${`key-${key}`}>
                 <p class="f-medium">${title}</p>
                 <host-progress-bar
                     .host=${host}

@@ -2682,6 +2682,82 @@ if ( ! function_exists( 'zume_training_items_by_script' ) ) {
         return $list;
     }
 }
+if ( ! function_exists( 'zume_training_items_for_session' ) ) {
+    function zume_training_items_for_session( string $session_type, int $session_number = null ): array {
+        $session_numbers_by_type = [
+            'a' => [
+                1 => [ 1, 2, 3, 4, 5 ],
+                2 => [ 6, 7, 8 ],
+                3 => [ 9, 10, 11 ],
+                4 => [ 12, 13, 14, 15, 16 ],
+                5 => [ 17, 18, 19 ],
+                6 => [ 20, 21 ],
+                7 => [ 22 ],
+                8 => [ 23 ],
+                9 => [ 24, 25, 26, 27 ],
+                10 => [ 28, 29, 30, 31, 32 ],
+            ],
+            'b' => [
+                1 => [ 1, 2, 3 ],
+                2 => [ 4 ],
+                3 => [ 5 ],
+                4 => [ 6, 8 ],
+                5 => [ 7 ],
+                6 => [ 9, 10, 13 ],
+                7 => [ 10 ],
+                8 => [ 11, 12 ],
+                9 => [ 10 ],
+                10 => [ 14, 15, 16 ],
+                11 => [ 17 ],
+                12 => [ 18, 19 ],
+                13 => [ 20, 21 ],
+                14 => [ 21 ],
+                15 => [ 22, 23 ],
+                16 => [ 24, 25, 26 ],
+                17 => [ 27 ],
+                18 => [ 28, 29 ],
+                19 => [ 30 ],
+                20 => [ 31, 32 ],
+            ],
+        ];
+        $session_numbers_by_type['c'][1] = [
+            ...$session_numbers_by_type['a'][1],
+            ...$session_numbers_by_type['a'][2],
+        ];
+        $session_numbers_by_type['c'][2] = [
+            ...$session_numbers_by_type['a'][3],
+            ...$session_numbers_by_type['a'][4],
+        ];
+        $session_numbers_by_type['c'][3] = [
+            ...$session_numbers_by_type['a'][5],
+            ...$session_numbers_by_type['a'][6],
+        ];
+        $session_numbers_by_type['c'][4] = [
+            ...$session_numbers_by_type['a'][7],
+            ...$session_numbers_by_type['a'][8],
+        ];
+        $session_numbers_by_type['c'][5] = [
+            ...$session_numbers_by_type['a'][9],
+            ...$session_numbers_by_type['a'][10],
+        ];
+
+        if ( !isset( $session_numbers_by_type[$session_type] ) ) {
+            return [];
+        }
+
+        if ( is_null( $session_number ) ) {
+            return $session_numbers_by_type[$session_type];
+        }
+
+        if ( !isset( $session_numbers_by_type[$session_type][$session_number] ) ) {
+            return [];
+        }
+
+        $training_items = $session_numbers_by_type[$session_type][$session_number];
+
+        return $training_items;
+    }
+}
 if ( ! function_exists( 'zume_funnel_stages' ) ) {
     function zume_funnel_stages(): array {
         return [

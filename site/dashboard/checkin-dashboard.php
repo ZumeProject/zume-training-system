@@ -97,12 +97,30 @@ class Zume_Training_Checkin_Dashboard extends Zume_Magic_Page
                 'training_items' => zume_training_items(),
                 'session_keys' => zume_session_alias_keys(),
                 'host_progress' => zume_get_user_host(),
+                'session_items' => zume_training_items_for_session( $this->get_session_type() ),
                 'share_translations' => Zume_Training_Share::translations(),
                 'translations' => $this->translations(),
             ]) ?>][0]
         </script>
 
         <?php
+    }
+
+    private function get_session_type() {
+        /* Get the session that we have just checked into */
+        $url = new DT_URL( dt_get_url_path() );
+        $code = $url->query_params->get( 'code' );
+
+        $checkin_keys = zume_session_alias_keys();
+
+        $session_key = isset( $checkin_keys[$code] ) ? $checkin_keys[$code] : '';
+
+        if ( empty( $session_key ) ) {
+            return '';
+        }
+        $key_parts = explode( '_', $session_key );
+
+        return $key_parts[1];
     }
 
     public function body(){
