@@ -66,7 +66,7 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
                 "SELECT post_id
                     FROM zume_3_postmeta
                     WHERE meta_key = 'trainee_user_id'
-                      AND meta_value = %s",
+                        AND meta_value = %s",
             $user_id )
         );
 
@@ -79,7 +79,7 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
                     LEFT JOIN zume_3_posts p ON p2.p2p_to=p.ID
                     LEFT JOIN zume_3_postmeta pm ON pm.post_id = p.ID AND pm.meta_key = 'corresponds_to_user'
                     WHERE p2p_from = %d
-                      AND p2p_type = 'contacts_to_contacts'",
+                        AND p2p_type = 'contacts_to_contacts'",
                 $coaching_contact_id ), ARRAY_A
             );
         }
