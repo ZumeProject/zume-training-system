@@ -10,21 +10,19 @@
 
             <nav class="d-flex align-items-center gap-0">
                 <div class="cluster | s--2 | nav nav__list" role="list">
+                    <a role="listitem" href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
+                    <a role="listitem" href="<?php echo esc_url( zume_resources_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Resources', 'zume' ) ?></a>
+                </div>
+                <span class="nav__bar | bar bg-white"></span>
+                <div class="d-flex align-items-center">
 
-                    <?php if ( is_user_logged_in() ) : ?>
+                    <?php $code = zume_current_language() ?>
+                    <?php $display_code = zume_get_language_display_code( $code ) ?>
 
-                        <a role="listitem" href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
-                        <a role="listitem" href="<?php echo esc_url( zume_resources_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Resources', 'zume' ) ?></a>
-
-                    <?php else : ?>
-
-                        <a role="listitem" href="<?php echo esc_url( zume_about_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'About', 'zume' ) ?></a>
-                        <a role="listitem" href="<?php echo esc_url( zume_training_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Training', 'zume' ) ?></a>
-                        <a role="listitem" href="<?php echo esc_url( zume_resources_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Resources', 'zume' ) ?></a>
-                        <a role="listitem" href="<?php echo esc_url( zume_getting_started_url( 'register' ) ) ?>" class="btn outline dark nav__button"><?php echo esc_html__( 'Register', 'zume' ) ?></a>
-                        <a role="listitem" href="<?php echo esc_url( zume_getting_started_url( 'login' ) ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Login', 'zume' ) ?></a>
-
-                    <?php endif; ?>
+                    <button class="nav__link" data-open="language-menu-reveal" data-tool>
+                        <?php require plugin_dir_path( __DIR__ ) . 'assets/images/globe-outline.svg' ?>
+                        <span><?php echo esc_html( strtoupper( $display_code ) ) ?></span>
+                    </button>
                 </div>
             </nav>
         </div>
