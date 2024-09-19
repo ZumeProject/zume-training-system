@@ -98,6 +98,7 @@ class Zume_Training_Checkin_Dashboard extends Zume_Magic_Page
                 'session_keys' => zume_session_alias_keys(),
                 'host_progress' => zume_get_user_host(),
                 'session_items' => zume_training_items_for_session( $this->get_session_type() ),
+                'profile' => zume_get_user_profile(),
                 'share_translations' => Zume_Training_Share::translations(),
                 'translations' => $this->translations(),
             ]) ?>][0]

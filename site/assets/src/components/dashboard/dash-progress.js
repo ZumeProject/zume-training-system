@@ -145,16 +145,6 @@ export class DashProgress extends DashPage {
         }, 4000)
     }
 
-    loadHostStatus() {
-        zumeRequest.get('host', { user_id: jsObject.profile.user_id } )
-            .then( ( data ) => {
-                this.hostProgress = data
-            })
-            .catch((error) => {
-                this.displayError(jsObject.translations.error_with_request)
-            })
-    }
-
     changeHost(key, value) {
         const newHostProgress = { ...this.hostProgress }
         newHostProgress.list = { ...this.hostProgress.list }

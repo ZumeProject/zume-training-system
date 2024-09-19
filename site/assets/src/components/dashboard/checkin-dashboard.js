@@ -141,9 +141,52 @@ export class CheckinDashboard extends LitElement {
     }
 
     toggleHost(event) {
-        const { host, additionalHostToCredit } = event.detail
 
-        console.log(host, additionalHostToCredit)
+        const { host, additionalHostToCredit } = event.detail
+        event.stopImmediatePropagation()
+        const {type, subtype, key} = host
+        const currentState = this.hostProgress.list[key]
+
+        if (currentState === false) {
+            this.changeHost(key, true)
+
+            additionalHostToCredit.forEach(({key}) => this.changeHost(key, true))
+
+            return zumeRequest.post('host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id } )
+                .then( ( data ) => {
+                    //console.log(data)
+                })
+                .catch((error) => {
+                    this.changeHost(key, false)
+                    additionalHostToCredit.forEach(({key}) => this.changeHost(key, false))
+
+                    this.displayError(jsObject.translations.error_with_request)
+                })
+        }
+
+        if (currentState === true) {
+            this.changeHost(key, false)
+            return zumeRequest.delete('host', { type: type, subtype: subtype, user_id: jsObject.profile.user_id } )
+                .catch((error) => {
+                    this.changeHost(key, true)
+                    this.displayError(jsObject.translations.error_with_request)
+                })
+
+        }
+    }
+
+    displayError(message) {
+        this.errorMessage = message
+        setTimeout(() => {
+            this.errorMessage = ''
+        }, 4000)
+    }
+
+    changeHost(key, value) {
+        const newHostProgress = { ...this.hostProgress }
+        newHostProgress.list = { ...this.hostProgress.list }
+        newHostProgress.list[key] = value
+        this.hostProgress = { ...newHostProgress }
     }
 
     renderListItem(trainingItem) {
