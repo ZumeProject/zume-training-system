@@ -38,20 +38,7 @@ jQuery(document).ready(() => {
     Settings.defaultLocale = locale
 
     /* Check if Vimeo is available. If not we will have to use html5 players */
-    if ( !getCookie('zume_video_available') ) {
-        fetch('https://api.vimeo.com/tutorial', {
-            headers: {
-                'Authorization': `bearer ${window.zumeApiShare.zume_vimeo_api_key}`
-            }
-        })
-            .then((result) => {
-                if (result.ok) {
-                    /* Set short lived cookie so the user doesn't get stuck with broken videos if they travel/vpn
-                     to another country */
-                    setCookie('zume_video_available', 1, '', 1)
-                }
-            })
-    }
+    checkVimeoAvailability()
 
     const videoPlayers = document.querySelectorAll('.video-player')
     videoPlayers.forEach((videoPlayer) => {
@@ -91,6 +78,25 @@ jQuery(document).ready(() => {
     })
 })
 
+export function checkVimeoAvailability() {
+    if ( !getCookie('zume_video_available') ) {
+        return fetch('https://api.vimeo.com/tutorial', {
+            headers: {
+                'Authorization': `bearer ${window.zumeApiShare.zume_vimeo_api_key}`
+            }
+        })
+            .then((result) => {
+                if (result.ok) {
+                    /* Set short lived cookie so the user doesn't get stuck with broken videos if they travel/vpn
+                     to another country */
+                    setCookie('zume_video_available', 1, '', 1)
+                }
+                return true
+            })
+    } else {
+        return Promise.resolve(true)
+    }
+}
 
 /**
 * Lodash escape all string values in a simple key, value object.

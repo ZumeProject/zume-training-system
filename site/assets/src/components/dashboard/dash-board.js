@@ -5,6 +5,7 @@ import { repeat } from 'lit/directives/repeat.js'
 import { Wizards } from '../wizard/wizard-constants'
 import { RouteNames } from './routes'
 import { zumeRequest } from '../../js/zumeRequest'
+import { checkVimeoAvailability } from '../../main'
 
 /**
  * This highest level of the dashboard should mostly be focussed on the routing
@@ -94,6 +95,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.userId = jsObject.profile.user_id
         this.showingCelebrationModal = false
         this.unlockedSection = []
+        this.isVimeoAvailable = false
 
         this.languageSelectorElements =
             document.querySelectorAll('.language-selector')
@@ -108,6 +110,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.showCelebrationModal = this.showCelebrationModal.bind(this)
         this.updateTrainingGroups = this.updateTrainingGroups.bind(this)
         this.renderTrainingGroupLink = this.renderTrainingGroupLink.bind(this)
+        this.openVideoModal = this.openVideoModal.bind(this)
     }
 
     connectedCallback() {
@@ -120,6 +123,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.addEventListener('wizard-finished', this.getCtas)
         window.addEventListener('wizard-finished', this.redirectToPage)
         window.addEventListener('open-3-month-plan', this.open3MonthPlan)
+        window.addEventListener('open-video-modal', this.openVideoModal)
         window.addEventListener('user-state:change', this.refetchState)
         window.addEventListener('user-state:change', this.getCtas)
         window.addEventListener('user-host:change', this.refetchHost)
@@ -148,6 +152,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.removeEventListener('wizard-finished', this.getCtas)
         window.removeEventListener('wizard-finished', this.redirectToPage)
         window.removeEventListener('open-3-month-plan', this.open3MonthPlan)
+        window.removeEventListener('open-video-modal', this.openVideoModal)
         window.removeEventListener('user-state:change', this.refetchState)
         window.removeEventListener('user-state:change', this.getCtas)
         window.removeEventListener('user-host:change', this.refetchHost)
@@ -159,7 +164,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.removeEventListener('route', this.updateLanguageSwitcher)
     }
 
-    firstUpdated() {
+    async firstUpdated() {
         this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
         this.getCtas()
 
@@ -173,6 +178,10 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.trainingGroupsOpen = jQuery('#training-groups-menu').hasClass(
             'is-active'
         )
+
+        this.isVimeoAvailable = await checkVimeoAvailability()
+
+        jQuery('#video-modal').on('closed.zf.reveal', this.stopVideoModal)
     }
 
     updateWizardType(event) {
@@ -435,6 +444,28 @@ export class DashBoard extends navigator(router(LitElement)) {
         jQuery(modal).foundation('_enableScroll')
         jQuery(modal).foundation('close')
     }
+    openVideoModal(event) {
+        const { videoSrc, videoSrcAlt } = event.detail
+
+        const modal = document.querySelector('#video-modal')
+        if (this.isVimeoAvailable) {
+            modal.querySelector('iframe').src = videoSrc
+            modal.querySelector('video').classList.add('hidden')
+        } else {
+            modal.querySelector('iframe').classList.add('hidden')
+            modal.querySelector('video').src = videoSrcAlt
+        }
+        jQuery(modal).foundation('open')
+    }
+    closeVideoModal() {
+        const modal = document.querySelector('#video-modal')
+        jQuery(modal).foundation('open')
+    }
+    stopVideoModal() {
+        const modal = document.querySelector('#video-modal')
+        modal.querySelector('iframe').src = ''
+        modal.querySelector('video').src = ''
+    }
     handleCreated3MonthPlan() {
         this.dispatchEvent(
             new CustomEvent('user-state:change', { bubbles: true })
@@ -518,7 +549,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                     ({ content_template }) => content_template === 'celebration'
                 )
                 const cards = this.allCtas.filter(
-                    ({ content_template }) => content_template === 'card'
+                    ({ content_template }) => content_template !== 'celebration'
                 )
 
                 const organizedCtas = [...celebrations, ...shuffleArray(cards)]
@@ -1099,6 +1130,21 @@ export class DashBoard extends navigator(router(LitElement)) {
                     .translations=${jsObject.wizard_translations}
                     noUrlChange
                 ></zume-wizard>
+            </div>
+            <div class="reveal full" id="video-modal" data-reveal>
+                <button
+                    class="ms-auto close-btn"
+                    data-close
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                    @click=${this.closeVideoModal}
+                >
+                    <span class="icon z-icon-close"></span>
+                </button>
+                <div class="video-player responsive-embed widescreen m0">
+                    <iframe width="640" height="360" frameborder="0"></iframe>
+                    <video controls autoplay></video>
+                </div>
             </div>
             <div
                 class="reveal full"
