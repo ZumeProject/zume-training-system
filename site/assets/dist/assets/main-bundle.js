@@ -995,7 +995,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                             </ul>
                         </div>
                     </div>
-                    <div class="course-explorer__wrapper cover">
+                    <div class="course-explorer__wrapper cover container">
                         <div class="center"><span class="loading-spinner"></span></div>
                         <iframe width="100%" height="100%" src=${jsObject.urls.launch_ten_session_course_1+"&training"} frameborder="0"></iframe>
                     </div>

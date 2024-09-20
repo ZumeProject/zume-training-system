@@ -1188,7 +1188,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                             </ul>
                         </div>
                     </div>
-                    <div class="course-explorer__wrapper cover">
+                    <div class="course-explorer__wrapper cover container">
                         <div class="center"><span class="loading-spinner"></span></div>
                         <iframe width="100%" height="100%" src=${jsObject.urls.launch_ten_session_course_1 + '&training' } frameborder="0"></iframe>
                     </div>

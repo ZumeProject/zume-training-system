@@ -215,7 +215,8 @@ dash-header-right {
 }
 
 .course-explorer__wrapper {
-    height: 100vw;
+    height: 40vw;
+    min-height: 500px;
 }
 
 @media (max-width: $break-lg) {
