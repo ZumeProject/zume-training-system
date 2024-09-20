@@ -125,6 +125,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'three_month_plan_questions' => self::three_month_plan_questions(),
                 'urls' => [
                     'logout' => esc_url( dt_login_url( 'logout' ) ),
+                    'launch_ten_session_course_1' => zume_10_session_url( 1 ),
                     'launch_ten_session_course' => zume_10_session_url(),
                     'launch_twenty_session_course' => zume_20_session_url(),
                     'launch_intensive_session_course' => zume_intensive_session_url(),
@@ -210,6 +211,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'getting_started' => __( 'Getting Started', 'zume' ),
             'set_profile' => __( 'Set Profile', 'zume' ),
             'set_profile_explanation' => __( 'Complete a short Profile Wizard to set your profile', 'zume' ),
+            'explore_sessions' => __( 'Explore Course', 'zume' ),
+            'explore_sessions_profile_explanation' => __( 'Explore one or more sessions and get familiar with the training content and the course presenter.', 'zume' ),
             'plan_a_training' => __( 'Join or create a training group', 'zume' ),
             'plan_a_training_explanation' => __( 'Join one of our online trainings or create your own training group with our easy to set up wizard', 'zume' ),
             'create_training_group' => __( 'Create Training Group', 'zume' ),

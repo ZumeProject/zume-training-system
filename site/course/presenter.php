@@ -117,7 +117,6 @@ class Zume_Training_Presenter extends Zume_Magic_Page
 
                 <course-presenter
                     languageCode="<?php echo esc_html( strtoupper( $display_code ) ) ?>"
-                    assetsPath="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images' ) ?>"
                 ></course-presenter>
             </div>
 

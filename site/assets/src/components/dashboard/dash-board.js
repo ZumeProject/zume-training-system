@@ -111,6 +111,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.updateTrainingGroups = this.updateTrainingGroups.bind(this)
         this.renderTrainingGroupLink = this.renderTrainingGroupLink.bind(this)
         this.openVideoModal = this.openVideoModal.bind(this)
+        this.openCourseExplorer = this.openCourseExplorer.bind(this)
     }
 
     connectedCallback() {
@@ -124,6 +125,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.addEventListener('wizard-finished', this.redirectToPage)
         window.addEventListener('open-3-month-plan', this.open3MonthPlan)
         window.addEventListener('open-video-modal', this.openVideoModal)
+        window.addEventListener('open-course-explorer', this.openCourseExplorer)
         window.addEventListener('user-state:change', this.refetchState)
         window.addEventListener('user-state:change', this.getCtas)
         window.addEventListener('user-host:change', this.refetchHost)
@@ -148,6 +150,7 @@ export class DashBoard extends navigator(router(LitElement)) {
             this.toggleSidebar
         )
         window.removeEventListener('open-wizard', this.updateWizardType)
+        window.removeEventListener('open-course-explorer', this.openCourseExplorer)
         window.removeEventListener('wizard-finished', this.closeWizard)
         window.removeEventListener('wizard-finished', this.getCtas)
         window.removeEventListener('wizard-finished', this.redirectToPage)
@@ -442,6 +445,14 @@ export class DashBoard extends navigator(router(LitElement)) {
     close3MonthPlan() {
         const modal = document.querySelector('#activity-3-month-plan-modal')
         jQuery(modal).foundation('_enableScroll')
+        jQuery(modal).foundation('close')
+    }
+    openCourseExplorer() {
+        const modal = document.querySelector('#course-explorer')
+        jQuery(modal).foundation('open')
+    }
+    closeCourseExplorer() {
+        const modal = document.querySelector('#course-explorer')
         jQuery(modal).foundation('close')
     }
     openVideoModal(event) {
@@ -1130,6 +1141,20 @@ export class DashBoard extends navigator(router(LitElement)) {
                     .translations=${jsObject.wizard_translations}
                     noUrlChange
                 ></zume-wizard>
+            </div>
+            <div class="reveal full" id="course-explorer" data-reveal>
+                <button
+                    class="ms-auto close-btn"
+                    data-close
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                    @click=${this.closeCourseExplorer}
+                >
+                    <span class="icon z-icon-close"></span>
+                </button>
+                <div class="m0 h-100">
+                    <iframe width="100%" height="100%" src=${jsObject.urls.launch_ten_session_course_1 + '&training' } frameborder="0"></iframe>
+                </div>
             </div>
             <div class="reveal full" id="video-modal" data-reveal>
                 <button

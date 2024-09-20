@@ -171,8 +171,8 @@ function zume_donate_url() {
 function zume_privacy_url() {
     return zume_url( 'privacy' );
 }
-function zume_10_session_url() {
-    return zume_url( 'presenter?session=index' );
+function zume_10_session_url( $session = 'index' ) {
+    return zume_url( "presenter?session=$session" );
 }
 function zume_20_session_url() {
     return zume_url( 'presenter?type=20&session=index' );

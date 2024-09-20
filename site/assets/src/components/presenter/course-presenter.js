@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
 
 const courseViews = [
     'slideshow',
@@ -9,7 +9,6 @@ export class CoursePresenter extends LitElement {
     static get properties() {
         return {
             languageCode: { type: String },
-            assetsPath: { type: String },
             zumeSessions: { attribute: false },
             menu: { attribute: false },
             lessonIndex: { attribute: false },
