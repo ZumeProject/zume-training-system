@@ -64,7 +64,7 @@ class Zume_Training_Presenter extends Zume_Magic_Page
     }
 
     public function dt_magic_url_base_allowed_css( $allowed_css ) {
-        $allowed_css[] = 'introjs-css';
+        $allowed_css = [ 'introjs-css' ];
         return zume_training_magic_url_base_allowed_css( $allowed_css );
     }
 
