@@ -28,6 +28,7 @@ export class DashBoard extends navigator(router(LitElement)) {
             wizardType: { type: String, attribute: false },
             celbrationModalContent: { type: Object, attribute: false },
             trainingGroupsOpen: { type: Boolean, attribute: false },
+            loadingExploreCourse: { type: Boolean, attribute: false },
         }
     }
 
@@ -89,6 +90,7 @@ export class DashBoard extends navigator(router(LitElement)) {
             title: '',
             content: [],
         }
+        this.loadingExploreCourse = false
 
         this.allCtas = []
         this.ctas = []
@@ -177,6 +179,12 @@ export class DashBoard extends navigator(router(LitElement)) {
                 this.showingCelebrationModal = false
             })
         }
+        const courseExplorerModal = document.querySelector('#course-explorer')
+        const courseExplorerIframe = courseExplorerModal.querySelector('iframe')
+        courseExplorerIframe.addEventListener('load', () => {
+            this.loadingExploreCourse = false
+            courseExplorerModal.querySelector('.loading-spinner').classList.remove('active')
+        })
 
         this.trainingGroupsOpen = jQuery('#training-groups-menu').hasClass(
             'is-active'
@@ -449,7 +457,9 @@ export class DashBoard extends navigator(router(LitElement)) {
         jQuery(modal).foundation('close')
     }
     openCourseExplorer() {
+        this.loadingExploreCourse = true
         const modal = document.querySelector('#course-explorer')
+        modal.querySelector('.loading-spinner').classList.add('active')
         jQuery(modal).foundation('open')
     }
     closeCourseExplorer() {
@@ -1178,7 +1188,8 @@ export class DashBoard extends navigator(router(LitElement)) {
                             </ul>
                         </div>
                     </div>
-                    <div class="course-explorer__wrapper">
+                    <div class="course-explorer__wrapper cover">
+                        <div class="center"><span class="loading-spinner"></span></div>
                         <iframe width="100%" height="100%" src=${jsObject.urls.launch_ten_session_course_1 + '&training' } frameborder="0"></iframe>
                     </div>
                 </div>
