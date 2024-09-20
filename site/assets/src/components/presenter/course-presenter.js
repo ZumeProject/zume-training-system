@@ -82,7 +82,7 @@ export class CoursePresenter extends LitElement {
                     ],
                     nextLabel: jsObject.translations.next,
                     prevLabel: jsObject.translations.previous,
-                    skipLabel: 'x',
+                    skipLabel: '<span class="icon z-icon-close"></span>',
                     doneLabel: jsObject.translations.done,
                     buttonClass: 'btn tight bypass-nav-click'
                 }).start();
