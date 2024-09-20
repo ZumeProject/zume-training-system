@@ -214,6 +214,10 @@ dash-header-right {
     }
 }
 
+.course-explorer__wrapper {
+    height: 60vw;
+}
+
 @media (max-width: $break-lg) {
     .dashboard {
         grid-template-areas:"content";

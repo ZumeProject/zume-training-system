@@ -185,6 +185,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.isVimeoAvailable = await checkVimeoAvailability()
 
         jQuery('#video-modal').on('closed.zf.reveal', this.stopVideoModal)
+        jQuery('#course-explorer').on('closed.zf.reveal', this.clearCourseExplorer)
     }
 
     updateWizardType(event) {
@@ -454,6 +455,12 @@ export class DashBoard extends navigator(router(LitElement)) {
     closeCourseExplorer() {
         const modal = document.querySelector('#course-explorer')
         jQuery(modal).foundation('close')
+    }
+    clearCourseExplorer() {
+        const modal = document.querySelector('#course-explorer')
+        modal.querySelector('iframe').src = ''
+        const explorerURL = new URL( jsObject.urls.launch_ten_session_course_1 + '&training' )
+        modal.querySelector('iframe').src = explorerURL.pathname + explorerURL.search + explorerURL.hash
     }
     openVideoModal(event) {
         const { videoSrc, videoSrcAlt } = event.detail
@@ -1152,10 +1159,31 @@ export class DashBoard extends navigator(router(LitElement)) {
                 >
                     <span class="icon z-icon-close"></span>
                 </button>
-                <div class="m0 h-100">
-                    <iframe width="100%" height="100%" src=${jsObject.urls.launch_ten_session_course_1 + '&training' } frameborder="0"></iframe>
+                <div class="stack">
+                    <h2 class="text-center brand-light">${jsObject.translations.explore_course}</h2>
+                    <div class="switcher container gap-0 ">
+                        <div>
+                            <h3>${jsObject.translations.needed_for_course}</h3>
+                            <ul class="bullets">
+                                <li>${jsObject.translations.at_least_3_people}</li>
+                                <li>${jsObject.translations.twenty_hour_commitment}</li>
+                                <li>${jsObject.translations.a_facilitator}</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>${jsObject.translations.not_needed_for_course}</h3>
+                            <ul class="bullets">
+                                <li>${jsObject.translations.more_experience_than_group}</li>
+                                <li>${jsObject.translations.special_permission_to_run_group}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="course-explorer__wrapper">
+                        <iframe width="100%" height="100%" src=${jsObject.urls.launch_ten_session_course_1 + '&training' } frameborder="0"></iframe>
+                    </div>
                 </div>
             </div>
+
             <div class="reveal full" id="video-modal" data-reveal>
                 <button
                     class="ms-auto close-btn"

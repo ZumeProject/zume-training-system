@@ -140,7 +140,7 @@ export function setCookie(cname, cvalue, path = '', exdays = 0) {
     document.cookie = cookie;
 }
 
-function getCookie(key) {
+export function getCookie(key) {
     const cookies = document.cookie ? Object.fromEntries(document.cookie.split(';').map((cookie) => cookie.trim().split('='))) : {}
     if (key in cookies) {
         return cookies[key]

@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit';
+import { getCookie, setCookie } from '../../main';
 
 const courseViews = [
     'slideshow',
@@ -54,6 +55,40 @@ export class CoursePresenter extends LitElement {
         window.removeEventListener('popstate', this.handleHistoryPopState)
     }
     firstUpdated() {
+        window.addEventListener('load', () => {
+            const url = new URL(location.href)
+            if (url.searchParams.has('training')) {
+                window.introJs().setOptions({
+                    steps: [
+                        {
+                            title: 'Welcome',
+                            intro: 'Here you can learn how to use the course presenter',
+                        },
+                        {
+                            title: 'Tips',
+                            intro: 'We recommend a group size of 4-12 people in order to make sure everyone gets a chance to participate in the discussions.',
+                        },
+                        {
+                            element: document.querySelector('#hamburger-menu'),
+                            intro: 'Using the menu you can navigate around the course and change language',
+                        },
+                        {
+                            element: document.querySelector('.visual-indicator.right'),
+                            intro: 'Click towards the edges of the screen to change slides',
+                        },
+                        {
+                            intro: 'If you are on mobile, it is recommended to view the course presenter in landscape',
+                        }
+                    ],
+                    nextLabel: jsObject.translations.next,
+                    prevLabel: jsObject.translations.previous,
+                    skipLabel: 'x',
+                    doneLabel: jsObject.translations.done,
+                    buttonClass: 'btn tight bypass-nav-click'
+                }).start();
+            }
+        })
+
         const languageSelectors = document.querySelectorAll('.language-selector')
         languageSelectors.forEach(function(languageSelector) {
             languageSelector.addEventListener('click', () => {

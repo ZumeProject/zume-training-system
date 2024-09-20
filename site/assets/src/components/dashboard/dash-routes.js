@@ -55,8 +55,8 @@ export function dashRoutes() {
             icon: 'z-icon-course',
             type: 'handled-link',
             clickHandler: makeClickHandler('open-course-explorer'),
-            translation: jsObject.translations['explore_sessions'],
-            explanation: jsObject.translations['explore_sessions_profile_explanation'],
+            translation: jsObject.translations['explore_course'],
+            explanation: jsObject.translations['explore_course_profile_explanation'],
             data: {
                 makeComponent: () => '',
             },

@@ -211,8 +211,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'getting_started' => __( 'Getting Started', 'zume' ),
             'set_profile' => __( 'Set Profile', 'zume' ),
             'set_profile_explanation' => __( 'Complete a short Profile Wizard to set your profile', 'zume' ),
-            'explore_sessions' => __( 'Explore Course', 'zume' ),
-            'explore_sessions_profile_explanation' => __( 'Explore one or more sessions and get familiar with the training content and the course presenter.', 'zume' ),
+            'explore_course' => __( 'Explore Course', 'zume' ),
+            'explore_course_profile_explanation' => __( 'Explore one or more sessions and get familiar with the training content and the course presenter.', 'zume' ),
             'plan_a_training' => __( 'Join or create a training group', 'zume' ),
             'plan_a_training_explanation' => __( 'Join one of our online trainings or create your own training group with our easy to set up wizard', 'zume' ),
             'create_training_group' => __( 'Create Training Group', 'zume' ),
@@ -335,6 +335,13 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'visibility' => __( 'Visibility', 'zume' ),
             'private_group' => sprintf( _x( '%s group', 'public/private group', 'zume' ), __( 'Private', 'zume' ) ),
             'public_group' => sprintf( _x( '%s group', 'public/private group', 'zume' ), __( 'Public', 'zume' ) ),
+            'needed_for_course' => __( 'Needed for the course:', 'zume' ),
+            'at_least_3_people' => __( 'At least 3 people, but ideally less than 12.', 'zume' ),
+            'twenty_hour_commitment' => __( 'Commitment to spend 20 hours learning and practicing the concepts and tools in the course.', 'zume' ),
+            'a_facilitator' => __( 'A person to facilitate (potentially you) the meeting time and location, to guide the follow-up discussion, and facilitate action prompts.', 'zume' ),
+            'not_needed_for_course' => __( 'NOT needed for the course:', 'zume' ),
+            'more_experience_than_group' => __( 'More knowledge or experience than the rest of your group is not needed! If you can click next, you can lead a Zúme Training.', 'zume' ),
+            'special_permission_to_run_group' => __( 'Special permission to lead a course is not needed! Zúme is self-facilitated, self-initiated, and you can start today.', 'zume' ),
         ];
     }
 
