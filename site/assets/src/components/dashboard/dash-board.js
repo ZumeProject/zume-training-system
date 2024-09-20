@@ -461,6 +461,8 @@ export class DashBoard extends navigator(router(LitElement)) {
         const modal = document.querySelector('#course-explorer')
         modal.querySelector('.loading-spinner').classList.add('active')
         jQuery(modal).foundation('open')
+        const explorerURL = new URL( jsObject.urls.launch_ten_session_course_1 + '&training' )
+        modal.querySelector('iframe').src = explorerURL.pathname + explorerURL.search + explorerURL.hash
     }
     closeCourseExplorer() {
         const modal = document.querySelector('#course-explorer')
@@ -469,8 +471,6 @@ export class DashBoard extends navigator(router(LitElement)) {
     clearCourseExplorer() {
         const modal = document.querySelector('#course-explorer')
         modal.querySelector('iframe').src = ''
-        const explorerURL = new URL( jsObject.urls.launch_ten_session_course_1 + '&training' )
-        modal.querySelector('iframe').src = explorerURL.pathname + explorerURL.search + explorerURL.hash
     }
     openVideoModal(event) {
         const { videoSrc, videoSrcAlt } = event.detail
