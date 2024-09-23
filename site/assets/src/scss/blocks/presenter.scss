@@ -448,6 +448,14 @@ not of the 2 column section */
     &[data-subitem] {
         font-weight: normal;
     }
+
+    &[disabled] {
+        color: color('gray-500');
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
 .menu .is-active>a {
     background-color: unset;

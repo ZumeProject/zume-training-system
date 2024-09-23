@@ -43,7 +43,11 @@ function zume_training_load_scripts( $hook ) {
     wp_register_style( 'foundation_css', 'https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.5/css/foundation.min.css', array(), '6.7.5' );
     wp_enqueue_style( 'foundation_css' );
 
-    wp_register_style( 'vite_bundle_css', plugin_dir_url( __DIR__ ) . 'site/assets/dist/assets/main.css', array( 'foundation_css' ), filemtime( plugin_dir_path( __DIR__ ) . 'site/assets/dist/assets/main.css' ) );
+    /* intro js */
+    wp_enqueue_script( 'introjs-js', trailingslashit( plugin_dir_url( __DIR__ ) ) . 'site/assets/introjs/intro.min.js', [ 'jquery' ], filemtime( trailingslashit( plugin_dir_path( __FILE__ ) ) .'intro.min.js' ), true );
+    wp_enqueue_style( 'introjs-css', trailingslashit( plugin_dir_url( __DIR__ ) ) . 'site/assets/introjs/introjs.min.css', [], filemtime( trailingslashit( plugin_dir_path( __FILE__ ) ) .'introjs.min.css' ) );
+
+    wp_register_style( 'vite_bundle_css', plugin_dir_url( __DIR__ ) . 'site/assets/dist/assets/main.css', array( 'foundation_css', 'introjs-css' ), filemtime( plugin_dir_path( __DIR__ ) . 'site/assets/dist/assets/main.css' ) );
     wp_enqueue_style( 'vite_bundle_css' );
 
     wp_register_script( 'vite_bundle_js', plugin_dir_url( __DIR__ ) . 'site/assets/dist/assets/main-bundle.js', array( 'jquery' ), filemtime( plugin_dir_path( __DIR__ ) . 'site/assets/dist/assets/main-bundle.js' ) );

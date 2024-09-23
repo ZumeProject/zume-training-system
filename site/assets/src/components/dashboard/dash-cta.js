@@ -174,8 +174,11 @@ export class DashCta extends navigator(LitElement) {
 
         this.dispatchEvent(new CustomEvent(modalEvent, { bubbles: true }))
     }
+    openVideoModal(videoSrc, videoSrcAlt) {
+        this.dispatchEvent(new CustomEvent('open-video-modal', { bubbles: true, detail: { videoSrc, videoSrcAlt } }))
+    }
 
-    renderLink(content) {
+    renderLink(content, content_template = '') {
         if (this.isWizardLink(content.link)) {
             return html`
                 <button class="btn" @click=${() => this.openWizard(content.link)}>${content.link_text}</button>
@@ -192,6 +195,11 @@ export class DashCta extends navigator(LitElement) {
                     e.preventDefault()
                     this.navigate(content.link)
                 }}>${content.link_text}</a>
+            `
+        }
+        if (content_template === 'video') {
+            return html`
+                <button class="btn" @click=${() => this.openVideoModal(content.link, content.link_alt)}>${content.link_text}</button>
             `
         }
         return html`
@@ -220,6 +228,14 @@ export class DashCta extends navigator(LitElement) {
                         <img src="${jsObject.images_url + '/fireworks-2.svg'}" alt="" />
                     </div>
                     <p>${content.description}</p>
+                </div>
+            `
+        }
+        if (content_template === 'video') {
+            return html`
+                <div class="stack | card cta ${classes}" data-key=${key} style="--duration: ${DashCta.TRANSITION_TIMEOUT}ms">
+                    <h2 class="h5 text-center">${content.title}</h2>
+                    ${this.renderLink(content, content_template)}
                 </div>
             `
         }

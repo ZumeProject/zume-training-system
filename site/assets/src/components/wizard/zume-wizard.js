@@ -515,7 +515,7 @@ export class Wizard extends LitElement {
             window.history.pushState( null, null, newUrl )
         }
 
-        if ( pushState && this.noUrlChange ) {
+        if ( pushState && this.noUrlChange === true ) {
             /* Add steps to # in url to allow user to reverse navigate through the wizard */
             const url = new URL(window.location.href)
 

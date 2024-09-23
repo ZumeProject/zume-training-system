@@ -1,0 +1,24 @@
+.introjs-tooltipReferenceLayer * {
+    font-family: var(--font-family);
+}
+.introjs-tooltip {
+    border-radius: var(--border-radius);
+}
+.introjs-tooltip-title {
+    font-weight: 500;
+}
+.introjs-bullets ul li a {
+    background: color('brand-lighter');
+}
+.introjs-bullets ul li a.active {
+    background: color('brand');
+}
+.introjs-bullets ul li a:focus, .introjs-bullets ul li a:hover {
+    background: color('brand');
+}
+.introjs-skipbutton {
+    transition: color 120ms linear;
+}
+.introjs-skipbutton:focus, .introjs-skipbutton:hover {
+    color: color('brand-light');
+}

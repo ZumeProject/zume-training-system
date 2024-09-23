@@ -2,6 +2,7 @@ export const RouteNames = {
     root: 'root',
     gettingStarted: 'getting-started',
     setProfile: 'set-profile',
+    exploreSessions: 'explore-sessions',
     createATraining: 'create-a-training',
     joinATraining: 'join-a-training',
     getACoach: 'get-a-coach',

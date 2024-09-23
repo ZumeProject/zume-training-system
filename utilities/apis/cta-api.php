@@ -144,6 +144,21 @@ class Zume_System_CTA_API
                 ],
                 'content_template' => 'card',
             ],
+            [
+                'stages' => [0, 1, 2],
+                'required_keys' => [],
+                'disable_keys' => ['system_how_does_zume_work_watched'],
+                'key' => 'system_how_does_zume_work_watched',
+                'type' => 'system',
+                'subtype' => 'how_does_zume_work_watched',
+                'content' => [
+                    'title' => __( 'How does Zúme Training Work?', 'zume' ),
+                    'link_text' => __( 'Watch This Video', 'zume' ),
+                    'link' => esc_url( Zume_Course::get_video_by_key( '70', true, null, true ) ),
+                    'link_alt' => esc_url( Zume_Course::create_alt_video_by_key( '70' ) ),
+                ],
+                'content_template' => 'video',
+            ],
             // Profile CTAs
             [
                 'stages' => [1, 2, 3, 4, 5, 6],

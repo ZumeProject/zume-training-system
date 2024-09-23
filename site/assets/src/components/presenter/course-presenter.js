@@ -1,4 +1,5 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
+import { getCookie, setCookie } from '../../main';
 
 const courseViews = [
     'slideshow',
@@ -9,7 +10,6 @@ export class CoursePresenter extends LitElement {
     static get properties() {
         return {
             languageCode: { type: String },
-            assetsPath: { type: String },
             zumeSessions: { attribute: false },
             menu: { attribute: false },
             lessonIndex: { attribute: false },
@@ -46,6 +46,8 @@ export class CoursePresenter extends LitElement {
         this.changeSession(lessonIndex, false, sessions)
 
         this.dir = document.querySelector('html').dir
+        this.isTrainingMode = url.searchParams.has('training')
+        this.numberOfTrainingSessions = 3
 
         window.addEventListener('popstate', this.handleHistoryPopState)
         window.addEventListener('presenter:open-menu', this.openMenu)
@@ -55,6 +57,39 @@ export class CoursePresenter extends LitElement {
         window.removeEventListener('popstate', this.handleHistoryPopState)
     }
     firstUpdated() {
+        window.addEventListener('load', () => {
+            if (this.isTrainingMode) {
+                window.introJs().setOptions({
+                    steps: [
+                        {
+                            title: 'Welcome',
+                            intro: 'Here you can learn how to use the course presenter',
+                        },
+                        {
+                            title: 'Tips',
+                            intro: 'We recommend a group size of 4-12 people in order to make sure everyone gets a chance to participate in the discussions.',
+                        },
+                        {
+                            element: document.querySelector('#hamburger-menu'),
+                            intro: 'Using the menu you can navigate around the course and change language',
+                        },
+                        {
+                            element: document.querySelector('.visual-indicator.right'),
+                            intro: 'Click towards the edges of the screen to change slides',
+                        },
+                        {
+                            intro: 'If you are on mobile, it is recommended to view the course presenter in landscape',
+                        }
+                    ],
+                    nextLabel: jsObject.translations.next,
+                    prevLabel: jsObject.translations.previous,
+                    skipLabel: '<span class="icon z-icon-close"></span>',
+                    doneLabel: jsObject.translations.done,
+                    buttonClass: 'btn tight bypass-nav-click'
+                }).start();
+            }
+        })
+
         const languageSelectors = document.querySelectorAll('.language-selector')
         languageSelectors.forEach(function(languageSelector) {
             languageSelector.addEventListener('click', () => {
@@ -333,31 +368,40 @@ export class CoursePresenter extends LitElement {
                                     <a
                                         class="session-link"
                                         data-session-number="${sessionNumber}"
-                                        @click=${this.handleSessionLink}
+                                        ?disabled=${this.isTrainingMode && sessionNumber > this.numberOfTrainingSessions - 1}
+                                        @click=${(event) => this.isTrainingMode && sessionNumber > this.numberOfTrainingSessions - 1 ? '' : this.handleSessionLink(event) }
                                     >
                                         ${title}
                                     </a>
-                                    <ul class="menu vertical nested ${this.lessonIndex === sessionNumber ? 'is-active' : ''}">
-                                        ${
-                                            submenu.map(({ key, title, length }) => html`
-                                                <a
-                                                    class="session-link"
-                                                    data-subitem
-                                                    href="#"
-                                                    @click=${() => this.handleSubSectionLink(sessionNumber, key)}
-                                                >
-                                                    <span>${title}</span> <span>${length}</span>
-                                                </a>
-                                            `)
-                                        }
-                                    </ul>
+                                    ${
+                                        this.isTrainingMode && sessionNumber > this.numberOfTrainingSessions - 1 ? '' : html`
+                                            <ul class="menu vertical nested ${this.lessonIndex === sessionNumber ? 'is-active' : ''}">
+                                                ${
+                                                    submenu.map(({ key, title, length }) => html`
+                                                        <a
+                                                            class="session-link"
+                                                            data-subitem
+                                                            href="#"
+                                                            @click=${() => this.handleSubSectionLink(sessionNumber, key)}
+                                                        >
+                                                            <span>${title}</span> <span>${length}</span>
+                                                        </a>
+                                                    `)
+                                                }
+                                            </ul>
+                                        `
+                                    }
                                 </li>
                             `)}
                         </ul>
                     </div>
                     <div class="">
                         <div class="cluster">
-                            <a class="btn tight" href="${jsObject.home_url}">${jsObject.translations.home}</a>
+                            ${
+                                !this.isTrainingMode ? html`
+                                    <a class="btn tight" href="${jsObject.home_url}">${jsObject.translations.home}</a>
+                                ` : ''
+                            }
                             <button class="btn d-flex align-items-center justify-content-center gap--4 tight" data-open="language-menu-reveal">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" class="ionicon" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path d="M256 48c-58.07 0-112.67 93.13-112.67 208S197.93 464 256 464s112.67-93.13 112.67-208S314.07 48 256 48z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path d="M117.33 117.33c38.24 27.15 86.38 43.34 138.67 43.34s100.43-16.19 138.67-43.34M394.67 394.67c-38.24-27.15-86.38-43.34-138.67-43.34s-100.43 16.19-138.67 43.34" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M256 48v416M464 256H48"/></svg>
                                 ${this.languageCode}
@@ -385,13 +429,15 @@ export class CoursePresenter extends LitElement {
                     this.view === 'guide'
                     ? html`
                         <course-guide
-                            .sections=${this.getSessionSections()
-                        }></course-guide>`
+                            .sections=${this.getSessionSections()}
+                            ?trainingMode=${this.isTrainingMode}
+                        ></course-guide>`
                     : html`
                         <course-slideshow
                             .sections=${this.getSessionSections()}
                             slideKey=${this.slideKey}
                             @set-slide=${this.handleSetSlide}
+                            ?trainingMode=${this.isTrainingMode}
                         ></course-slideshow>`
                 }
             </div>
