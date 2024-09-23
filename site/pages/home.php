@@ -184,7 +184,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                     <div
                         class="video-player mx-auto position-relative"
                         data-video-src="<?php echo esc_url( Zume_Course::get_video_by_key( '69', true, null, true ) ) ?>"
-                        data-video-alt-src="<?php echo esc_url( Zume_Course::get_alt_video_by_key( '69' ) ) ?>"
+                        data-video-alt-src="<?php echo esc_url( Zume_Course::create_alt_video_by_key( '69' ) ) ?>"
                     >
                         <div class="responsive-embed widescreen m0">
                             <iframe width="640" height="360" src="" frameborder="0"></iframe>
