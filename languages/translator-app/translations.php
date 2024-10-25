@@ -384,10 +384,13 @@ class Zume_Training_Translations extends Zume_Magic_Page
                         <th style="width:3%">10s key</th>
                         <th style="width:3%">10s ppt</th>
 
+                        <th style="width:1%; border-left:1px solid grey;"></th>
 
                         <th style="width:3%">20s bk</th>
                         <th style="width:3%">20s key</th>
                         <th style="width:3%">20s ppt</th>
+
+                        <th style="width:1%; border-left:1px solid grey;"></th>
 
                         <th style="width:3%">Int bk</th>
                         <th style="width:3%">Int key</th>
@@ -415,9 +418,13 @@ class Zume_Training_Translations extends Zume_Magic_Page
                             <td><?php echo ( $elements['key_10_session'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $elements['ppt_10_session'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
 
+                            <td></td>
+
                             <td><?php echo ( $elements['guidebook_20_session'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $elements['key_20_session'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $elements['ppt_20_session'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+
+                            <td></td>
 
                             <td><?php echo ( $elements['guidebook_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $elements['key_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
