@@ -100,7 +100,7 @@ class Zume_Training_Resources extends Zume_Magic_Page
 
     public function body(){
         $zume_current_language = zume_current_language();
-        $store_url = zume_download_url( 'store_url', $zume_current_language );
+        $store_url = zume_raw_download_url( 'store_url', $zume_current_language );
         $guidebook_10_session = zume_download_url( 'guidebook_10_session', $zume_current_language );
         $guidebook_20_session = zume_download_url( 'guidebook_20_session', $zume_current_language );
         $guidebook_intensive = zume_download_url( 'guidebook_intensive', $zume_current_language );
