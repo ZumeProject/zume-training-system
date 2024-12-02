@@ -237,7 +237,7 @@ function zume_download_url( $meta_key, $current_language = false ) {
 
     return zume_mirror_url() . $current_language . '/' . $file_name;
 }
-function zume_raw_download_url() {
+function zume_raw_download_url( $meta_key, $current_language = false) {
     global $wpdb;
     if ( ! $current_language ) {
         $current_language = zume_current_language();
