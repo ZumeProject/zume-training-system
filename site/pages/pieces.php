@@ -112,7 +112,7 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
     public function header_style(){
 
         // dt_reports logger
-        $logger_type = 'studying';
+        $logger_type = ( is_user_logged_in() ) ? 'training' : 'studying';
         $zume_piece_id = get_post_meta( $this->postid, 'zume_piece', true );
         $logger_subtype = $zume_piece_id.'_heard';
         zume_content_logger( $logger_type, $logger_subtype, $this->lang_code );
