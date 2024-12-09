@@ -5,7 +5,7 @@ vendor/wp-coding-standards
 vendor/phpcsstandards
 vendor/composer/*
 vendor/composer/installed.php
-
+vendor/php-stubs/*
 
 composer.lock
 .idea

@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '7615d4a94225b803cfea528e5ee8cf0609465efe',
+    'reference' => 'dadbf6a9e12cee4689d073c9c7a31149fcc05d46',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '7615d4a94225b803cfea528e5ee8cf0609465efe',
+      'reference' => 'dadbf6a9e12cee4689d073c9c7a31149fcc05d46',
     ),
     'dealerdirect/phpcodesniffer-composer-installer' => 
     array (
@@ -97,6 +97,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '1bcbb2179f97633e98bbbc87044ee2611c7d7999',
+    ),
+    'php-stubs/wordpress-stubs' => 
+    array (
+      'pretty_version' => 'v6.7.1',
+      'version' => '6.7.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '83448e918bf06d1ed3d67ceb6a985fc266a02fd1',
     ),
     'phpcsstandards/phpcsextra' => 
     array (
