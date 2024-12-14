@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2024-10-18 16:00+0000\n"
+"PO-Revision-Date: 2024-11-07 19:00+0000\n"
 "Last-Translator: Buleleng Team <bulelengteam@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.disciple.tools/projects/"
 "zume-training/zume-training-system/id_ID/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.8.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
@@ -89,7 +89,7 @@ msgstr "Pelatihan"
 
 #: appearance/style-override/navigation.php:85 site/pages/home.php:206
 msgid "How it Works"
-msgstr "Cara Kerjanya"
+msgstr "Bagaimana Cara Kerjanya"
 
 #: appearance/style-override/navigation.php:91
 msgid "Download Guidebook"
@@ -148,8 +148,8 @@ msgid ""
 "You'll see how God uses ordinary people doing simple things to make a big "
 "impact."
 msgstr ""
-"Anda akan melihat bagaimana Allah memakai orang biasa yang melakukan hal-hal "
-"sederhana untuk membuat dampak yang besar."
+"Anda akan melihat bagaimana Allah memakai orang-orang biasa melakukan hal-"
+"hal sederhana untuk membuat dampak yang besar."
 
 #: globals.php:2213 site/course/course-content.php:3285
 #: site/course/course-content.php:3303 site/pages/follow-jesus.php:173
@@ -162,7 +162,7 @@ msgid ""
 "Discover the essence of being a disciple, making a disciple, and what is the "
 "church."
 msgstr ""
-"Temukan esensi dari menjadi seorang murid, memuridkan, dan apakah jemaah "
+"Temukan inti dari menjadi seorang murid, memuridkan, dan apa arti jemaah "
 "Allah itu."
 
 #: globals.php:2215 site/course/course-content.php:147
@@ -193,8 +193,8 @@ msgid ""
 "A tool for daily Bible study that helps you understand, obey, and share "
 "God’s Word."
 msgstr ""
-"Alat untuk belajar Kitab Suci setiap hari yang membantu anda mengerti, "
-"menaati, dan membagikan Firman Allah."
+"Sebuah alat untuk belajar Kitab Suci setiap hari yang membantu anda untuk "
+"mengerti, menaati, dan membagikan Firman Allah."
 
 #: globals.php:2249 globals.php:2251 site/course/course-content.php:94
 #: site/course/course-content.php:307 site/course/course-content.php:316
@@ -210,9 +210,8 @@ msgid ""
 "correction."
 msgstr ""
 "Sebuah alat untuk dua atau tiga orang dengan jenis kelamin yang sama untuk "
-"berkumpul setiap minggu dan saling menguatkan satu sama yang lain di bagian "
-"yang sudah berjalan dengan baik dan mengungkapkan bagian yang perlu "
-"diperbaiki."
+"berkumpul setiap minggu dan saling menguatkan satu sama lain di bagian yang "
+"sudah berjalan dengan baik dan mengungkapkan bagian yang perlu diperbaiki."
 
 #: globals.php:2261 site/pages/follow-jesus.php:189
 msgid "Consumer vs Producer Lifestyle"
@@ -223,8 +222,8 @@ msgid ""
 "You'll discover the four main ways God makes everyday followers more like "
 "Jesus."
 msgstr ""
-"Anda akan menemukan empat cara utama Allah membuat para pengikut menjadi "
-"lebih seperti Isa setiap harinya."
+"Anda akan menemukan empat cara utama Allah membuat pengikut menjadi lebih "
+"seperti Isa setiap harinya."
 
 #: globals.php:2263
 msgid "Producer not Consumer"
@@ -264,32 +263,31 @@ msgstr "Daftar 100"
 #: site/course/course-content.php:845 site/course/course-content.php:854
 #: site/course/course-content.php:3929 site/course/course-content.php:3948
 msgid "Spiritual Economy"
-msgstr "Kebutuhan atau Ekonomi Rohani"
+msgstr "Kebutuhan Ekonomi Rohani"
 
 #: globals.php:2298 site/pages/follow-jesus.php:245
 msgid ""
 "Learn how God's economy is different from the world's. God invests more in "
 "those who are faithful with what they've already been given."
 msgstr ""
-"Pelajari bagaimana kebutuhan Allah berbeda dari kebutuhan dunia. Allah "
-"berinvestasi lebih dalam diri mereka yang setia dengan apa yang sudah "
-"diberikan."
+"Pelajari bagaimana kebutuhan Allah berbeda dari kebutuhan dunia. Allah lebih "
+"berinvestasi pada mereka yang setia dengan apa yang sudah diberikan."
 
 #: globals.php:2309 site/pages/follow-jesus.php:290
 msgid "The Gospel and How to Share It"
-msgstr "Kabar Baik dan Bagaimana Membagikannya"
+msgstr "Kabar Baik dan Bagaimana Cara Membagikannya"
 
 #: globals.php:2310 site/pages/follow-jesus.php:291
 msgid ""
 "Learn a way to share God’s Good News from the beginning of humanity all the "
 "way to the end of this age."
 msgstr ""
-"Pelajari cara untuk membagikan Kabar Baik dari awal peradaban manusia sampai "
-"pada akhir jaman."
+"Pelajari cara untuk membagikan Kabar Baik Allah dari awal peradaban manusia "
+"sampai pada akhir jaman."
 
 #: globals.php:2311
 msgid "Sharing God‘s Story"
-msgstr "Bagikan Kisah Allah"
+msgstr "Membagikan Kisah Allah"
 
 #: globals.php:2321 site/pages/follow-jesus.php:237
 msgid "Baptism and How To Do It"
@@ -322,7 +320,7 @@ msgid ""
 "impacted your life."
 msgstr ""
 "Pelajari cara untuk membagikan kesaksian Anda dalam tiga menit dengan "
-"berbagi kisah bagaimana Isa telah mempengaruhi hidup Anda."
+"menceritakan bagaimana Isa telah mempengaruhi hidup Anda."
 
 #: globals.php:2335
 msgid "3-Minute Testimony"
@@ -349,7 +347,7 @@ msgstr "Berkah Besar, Lebih Besar dan Terbesar"
 
 #: globals.php:2357 site/pages/follow-jesus.php:267
 msgid "Duckling Discipleship – Leading Immediately"
-msgstr "Pemuridan Anak Bebek - Memimpin Segera"
+msgstr "Pemuridan Anak Bebek - Memimpin Secepatnya"
 
 #: globals.php:2358
 msgid "Learn what ducklings have to do with disciple-making."
@@ -374,12 +372,12 @@ msgid ""
 "Begin to see where God’s Kingdom isn’t. These are usually the places where "
 "God wants to work the most."
 msgstr ""
-"Mulailah melihat di mana Kerajaan Allah belum hadir. Ini biasanya tempat di "
-"mana Allah paling ingin bekerja."
+"Mulailah melihat di mana Kerajaan Allah belum hadir. Ini biasanya adalah "
+"tempat di mana Allah paling ingin bekerja."
 
 #: globals.php:2381 site/pages/follow-jesus.php:233
 msgid "The Lord’s Supper and How To Lead It"
-msgstr "Perjamuan Kudus dan Bagaimana Memimpinnya"
+msgstr "Perjamuan Allah dan Bagaimana Cara Memimpinnya"
 
 #: globals.php:2382
 msgid ""
@@ -398,16 +396,16 @@ msgstr "Perjamuan Allah"
 
 #: globals.php:2393 site/pages/follow-jesus.php:305
 msgid "Prayer Walking and How To Do It"
-msgstr "Doa Keliling dan Bagaimana Melakukannya"
+msgstr "Doa Keliling dan Bagaimana Cara Melakukannya"
 
 #: globals.php:2394
 msgid ""
 "It‘s a simple way to obey God’s command to pray for others. And it‘s just "
 "what it sounds like — praying to God while walking around!"
 msgstr ""
-"Ini cara sederhana untuk menaati perintah Allah untuk berdoa bagi orang "
-"lain. Dan sama seperti sebutannya - berdoa kepada Allah sambil berjalan "
-"mengelilingi sekitar!"
+"Ini adalah cara sederhana untuk menaati perintah Allah untuk berdoa bagi "
+"orang lain. Dan sama seperti sebutannya - berdoa kepada Allah sambil "
+"berjalan mengelilingi sekitar!"
 
 #: globals.php:2395 site/activities/activities.php:319
 #: site/course/course-content.php:1588 site/course/course-content.php:1596
@@ -418,7 +416,7 @@ msgstr "Doa Keliling"
 
 #: globals.php:2405 site/pages/follow-jesus.php:301
 msgid "A Person of Peace and How To Find One"
-msgstr "Orang Damai dan Bagaimana Menemukannya"
+msgstr "Orang Damai dan Bagaimana Cara Menemukannya"
 
 #: globals.php:2406
 msgid ""
@@ -458,8 +456,8 @@ msgstr "Pola Doa BLESS"
 #: globals.php:2430 site/pages/follow-jesus.php:204
 msgid "Practice a simple mnemonic to remind you of ways to pray for others."
 msgstr ""
-"Berlatih pengingat sederhana untuk mengingatkan Anda cara berdoa bagi orang "
-"lain."
+"Berlatih sebuah pengingat sederhana untuk mengingatkan Anda cara berdoa bagi "
+"orang lain."
 
 #: globals.php:2431 site/course/course-content.php:1677
 msgid "The B.L.E.S.S. Prayer"
@@ -486,13 +484,13 @@ msgstr "Kelompok 3/3"
 
 #: globals.php:2453 site/pages/follow-jesus.php:271
 msgid "Training Cycle for Maturing Disciples"
-msgstr "Siklus Pelatihan untuk Mendewasakan Pengikut"
+msgstr "Siklus Pelatihan untuk Mendewasakan para Murid"
 
 #: globals.php:2454 site/pages/follow-jesus.php:272
 msgid ""
 "Learn the training cycle and consider how it applies to disciple making."
 msgstr ""
-"Pelajari siklus pelatihan dan pertimbangkan bagaimana itu berlaku untuk "
+"Pelajari siklus pelatihan dan pertimbangkan bagaimana itu diterapkan untuk "
 "pemuridan."
 
 #: globals.php:2455 site/course/course-content.php:5166
@@ -526,13 +524,13 @@ msgid ""
 "See how disciple making doesn‘t have to be linear. Multiple things can "
 "happen at the same time."
 msgstr ""
-"Lihat bagaimana memuridkan tidak harus terjadi secara berurutan. Beberapa "
-"hal dapat terjadi pada waktu yang bersamaan."
+"Lihat bagaimana pemuridan tidak harus terjadi secara berurutan. Beberapa hal "
+"dapat terjadi pada waktu yang bersamaan."
 
 #: globals.php:2489 site/course/course-content.php:2882
 #: site/pages/follow-jesus.php:279
 msgid "Pace of Multiplication Matters"
-msgstr "Pentingnya Kecepatan Pelipatgandaan"
+msgstr "Kecepatan dari Pelipatgandaan itu Penting"
 
 #: globals.php:2490 site/pages/follow-jesus.php:280
 msgid ""
@@ -570,8 +568,8 @@ msgid ""
 "Create and share your plan for how you will implement the Zúme tools over "
 "the next three months."
 msgstr ""
-"Buat dan bagikan rencana Anda tentang bagaimana Anda akan menerapkan "
-"aplikasi Zúme selama tiga bulan."
+"Buat dan bagikan rencana Anda tentang bagaimana Anda akan menerapkan alat "
+"Zúme selama tiga bulan kedepan."
 
 #: globals.php:2525 globals.php:2527
 #: site/activities/coaching-checklist-host.php:22
@@ -600,8 +598,8 @@ msgid ""
 "A powerful tool you can use to quickly assess your own strengths and "
 "vulnerabilities when it comes to making disciples who multiply."
 msgstr ""
-"Alat yang ampuh yang dapat Anda gunakan untuk dengan cepat menilai kekuatan "
-"dan kerentanan Anda berkaitan dengan membuat murid yang berlipat ganda."
+"Alat ampuh yang dapat Anda gunakan untuk dengan cepat menilai kekuatan dan "
+"kerentanan Anda saat membuat murid yang berlipat ganda."
 
 #: globals.php:2537 globals.php:2539 site/course/course-content.php:3009
 #: site/course/course-content.php:3022 site/course/course-content.php:3031
@@ -633,7 +631,7 @@ msgid ""
 msgstr ""
 "Ini adalah sebuah kelompok yang terdiri dari orang-orang yang memimpin dan "
 "memulai Kelompok 3/3. Ini juga mengikuti format 3/3 dan merupakan cara yang "
-"ampuh untuk menilai kesehatan rohani dari pekerjaan Allah di bidang Anda."
+"ampuh untuk menilai kesehatan rohani dari pekerjaan Allah di daerah Anda."
 
 #: globals.php:2551 site/activities/activities.php:342
 #: site/dashboard/wizard.php:182
@@ -729,12 +727,12 @@ msgstr "Kelompok pelatihan baru dijadwalkan pada %1$s. %2$s"
 #: maps/heatmap.php:3216
 #, php-format
 msgid "A %1$s is starting SESSION %2$s in %3$s. %4$s"
-msgstr "%1$s memulai SESI %2$s di %3$s. %4$s"
+msgstr "%1$s sedang memulai SESI %2$s di %3$s. %4$s"
 
 #: maps/heatmap.php:3254
 #, php-format
 msgid "A %1$s is studying \"%2$s\" in %3$s. %4$s"
-msgstr "%1$s sedang mempelajari \"%2$s\" dalam %3$s. %4$s"
+msgstr "Seorang %1$s sedang mempelajari \"%2$s\" dalam %3$s. %4$s"
 
 #: maps/heatmap.php:3296
 #, php-format
@@ -744,7 +742,8 @@ msgstr "%1$s membagikan \"%2$s\" dengan seseorang di %3$s. %4$s"
 #: maps/heatmap.php:3334
 #, php-format
 msgid "A %1$s trained someone to use \"%2$s\" in %3$s. %4$s"
-msgstr "%1$s sudah melatih seseorang untuk menggunakan \"%2$s\" di %3$s. %4$s"
+msgstr ""
+"Seorang %1$s sudah melatih seseorang untuk menggunakan \"%2$s\" di %3$s. %4$s"
 
 #: maps/heatmap.php:3373
 #, php-format
@@ -779,7 +778,7 @@ msgstr ""
 #: maps/heatmap.php:3496
 #, php-format
 msgid "A %1$s created at post training plan in %2$s. %3$s"
-msgstr "%1$s dibuat pada rencana pasca pelatihan di %2$s. %3$s"
+msgstr "Sebuah %1$s dibuat pada rencana pasca pelatihan di %2$s. %3$s"
 
 #: maps/html/heatmap-html.php:37
 msgid "Loading the planet"
@@ -787,7 +786,7 @@ msgstr "Memuat planet"
 
 #: maps/html/heatmap-html.php:38
 msgid "Locating world population"
-msgstr "Menemukan kependudukan dunia"
+msgstr "Mengalokasikan kependudukan dunia"
 
 #: maps/html/heatmap-html.php:39
 msgid "Calculating movement activity"
@@ -981,7 +980,7 @@ msgid ""
 "making through Zúme around the world. The 100 hours begins now and covers "
 "activity over roughly the last 4 days."
 msgstr ""
-"Peta 100 Jam Terakhir menunjukkan Roh Kudus menggerakkan umat-Nya untuk "
+"Peta 100 Jam Terakhir menunjukkan Roh Suci menggerakkan umat-Nya untuk "
 "membuat murid melalui Zúme di seluruh dunia. 100 jam tersebut dimulai "
 "sekarang dan mencakup kegiatan selama sekitar 4 hari terakhir."
 
@@ -1024,7 +1023,7 @@ msgstr ""
 #: maps/js-translation-strings.php:37 maps/map-3-trainees.php:153
 #: maps/map-5-churches.php:153
 msgid "How to Get on The Map"
-msgstr "Cara Mendapatkannya di Peta"
+msgstr "Cara Masuk ke Peta"
 
 #: maps/js-translation-strings.php:38
 msgid "Always sign in when you are studying the content."
@@ -2917,7 +2916,7 @@ msgid ""
 "people. Invite His Holy Spirit to lead your time together."
 msgstr ""
 "Berdoa dan bersyukurlah kepada Allah atas caraNya bekerja melalui kesaksian "
-"umat-Nya. Undanglah Roh Kudus untuk memimpin waktu Anda bersama."
+"umat-Nya. Undanglah Roh Suci untuk memimpin waktu Anda bersama."
 
 #: site/course/course-content.php:1606
 msgid ""
@@ -6400,7 +6399,7 @@ msgstr "Bagaimana Mengikuti Isa Almasih AS"
 
 #: site/pages/follow-jesus.php:90 site/pages/pieces.php:137
 msgid "Ask Yourself"
-msgstr "Tanyakan Dirimu Sendiri"
+msgstr "Tanyakan Diri Anda Sendiri"
 
 #: site/pages/follow-jesus.php:91 site/pages/pieces.php:138
 msgid "Download Free Guidebook"
@@ -6487,9 +6486,8 @@ msgstr ""
 "Isa mendekati mereka dan bersabda, \"Segala wewenang dan kuasa baik di surga "
 "maupun di bumi sudah diberikan kepada-Ku. Sebab itu pergilah, jadikanlah "
 "semua bangsa murid-Ku dan permandikanlah mereka dalam nama Sang Bapa, Anak, "
-"dan Roh Kudus, ajarlah mereka menaati segala sesuatu yang telah "
-"Kuperintahkan kepadamu dan ingatlah, Aku menyertai kamu sampai kesudahan "
-"zaman.\""
+"dan Roh Suci, ajarlah mereka menaati segala sesuatu yang telah Kuperintahkan "
+"kepadamu dan ingatlah, Aku menyertai kamu sampai kesudahan zaman.\""
 
 #: site/pages/follow-jesus.php:262
 msgid "Matthew 28:18-20"
