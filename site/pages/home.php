@@ -28,7 +28,7 @@ class Zume_Training_Home extends Zume_Magic_Page
             'url_parts' => $url_parts,
         ] = zume_get_url_pieces();
 
-        if ( empty( $url_parts[0] ?? '' ) && ! dt_is_rest() ) {
+        if ( empty( $url_parts[0] ?? '' ) && ! dt_is_rest() && !wp_doing_cron() ) {
 
             $this->register_url_and_access();
             $this->header_content();
