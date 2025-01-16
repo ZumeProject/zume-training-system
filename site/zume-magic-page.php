@@ -31,8 +31,18 @@ class Zume_Magic_Page extends DT_Magic_Url_Base {
     }
 
     public function consistent_head() {
-        require_once trailingslashit( __DIR__ ) . 'parts/head.php';
         ?>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-N27P3H7SBT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-N27P3H7SBT');
+        </script>
+
+        <?php require_once trailingslashit( __DIR__ ) . 'parts/head.php'; ?>
 
         <?php if ( isset( $this->page_description ) && !empty( $this->page_description ) ) : ?>
 
