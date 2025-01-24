@@ -167,8 +167,8 @@ class Zume_Training_Resources extends Zume_Magic_Page
                 </div>
                 <div class="stack center | text-center">
                     <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?session=index' ) ?>"><?php echo esc_html__( '10 Session Course', 'zume' ) ?></a>
-                    <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?session=index' ) ?>"><?php echo esc_html__( '20 Session Course', 'zume' ) ?></a>
-                    <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?session=index' ) ?>"><?php echo esc_html__( 'Intensive Course', 'zume' ) ?></a>
+                    <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?type=20&session=index' ) ?>"><?php echo esc_html__( '20 Session Course', 'zume' ) ?></a>
+                    <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?type=intensive&session=index' ) ?>"><?php echo esc_html__( 'Intensive Course', 'zume' ) ?></a>
                 </div>
             </div>
         </div>
