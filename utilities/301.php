@@ -28,9 +28,6 @@ class Zume_301_Redirects
 
         $list = $this->list_of_urls();
 
-        // dt_write_log('Zume_301_Redirects');
-        // dt_write_log( $url );
-
         if ( isset( $list[$url] ) ) {
             $this->redirect( $list[$url] );
         }
@@ -398,6 +395,26 @@ class Zume_301_Redirects
             'overview-zhcn' => 'zhcn/training',
             'overview-zhtw' => 'zhtw/training',
             'overview' => 'training',
+            'am/overview-am' => 'am/training',
+            'ar/overview-ar' => 'ar/training',
+            'bn/overview-bn' => 'bn/training',
+            'es/overview-es' => 'es/training',
+            'fa/overview-fa' => 'fa/training',
+            'fr/overview-fr' => 'fr/training',
+            'hi/overview-hi' => 'hi/training',
+            'in/overview-in' => 'in/training',
+            'it/overview-it' => 'it/training',
+            'ku/overview-ku' => 'ku/training',
+            'mr/overview-mr' => 'mr/training',
+            'or/overview-or' => 'or/training',
+            'so/overview-so' => 'so/training',
+            'sw/overview-sw' => 'sw/training',
+            'ta/overview-ta' => 'ta/training',
+            'te/overview-te' => 'te/training',
+            'th/overview-th' => 'th/training',
+            'zhcn/overview-zhcn' => 'zhcn/training',
+            'zhtw/overview-zhtw' => 'zhtw/training',
+            'en/overview' => 'training',
 
 
             'profile-am' => 'am/dashboard',
@@ -612,6 +629,9 @@ class Zume_301_Redirects
             'translation-progress-sl' => 'sl/translation-progress',
             'translation-progress-tr' => 'tr/translation-progress',
 
+
+            // independent 404
+            '3_3-group-meeting-pattern-gu/' => 'gu/3-3-group-meeting-pattern',
 
         ];
         return $pages;
