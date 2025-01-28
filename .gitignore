@@ -6,6 +6,9 @@ vendor/phpcsstandards
 vendor/composer/*
 vendor/composer/installed.php
 vendor/php-stubs/*
+vendor/gettext/*
+vendor/nikic/*
+vendor/composer/*
 
 composer.lock
 .idea
