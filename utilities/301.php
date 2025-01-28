@@ -1274,14 +1274,9 @@ class Zume_301_Redirects
         //     '(fa/privacy-policy-fa' => '',
         //     'pt/soaps-bible-reading-pt//1000' => '',
         //     'prayer-walking/?gclid=CjwKCAjw34n5BRA9EiwA2u9k3y5b0pZ512wjrOygSMwUeim3LxdusUOjIxu7iSIGSlc5ZRy6g9f1bRoChCQQAvD_BwE&utm_campaign=later-linkinbio-serve_asia_us&utm_content=later-9057416&utm_medium=social&utm_source=instagram' => '',
-
-
-
-
-
-
-
         // ];
+
+
     }
 
     public function redirect( $redirect ) {
