@@ -7,7 +7,7 @@ class Zume_Activites_3monthplan extends Zume_Activites
     public $root = 'activities';
     public $type = '3monthplan';
     public $lang = 'en';
-
+    public $lang_code = 'en';
     private static $_instance = null;
     public static function instance() {
         if ( is_null( self::$_instance ) ) {
@@ -34,14 +34,7 @@ class Zume_Activites_3monthplan extends Zume_Activites
 
         /* Redirect /checkin to /{lang_code}/checkin */
         /* This facilitates QR codes sending users to /checkin not knowing what language they may have previously been using */
-//        $url = dt_get_url_path();
-//        if ( $url === $this->type ) {
-//            $lang_code_from_cookie = zume_get_language_cookie();
-//            if ( $lang_code_from_cookie !== 'en' ) {
-//                wp_redirect( $lang_code_from_cookie . '/' . $this->type );
-//                exit;
-//            }
-//        }
+
     }
     public function body(){
         $questions = Zume_Training_Dashboard::three_month_plan_questions();

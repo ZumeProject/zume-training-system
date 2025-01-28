@@ -71,8 +71,7 @@ class Zume_Training_Page extends Zume_Magic_Page
 
 
         ?>
-         <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
-
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
         <script>
             jQuery(document).ready(function($){
                 jQuery(document).foundation();

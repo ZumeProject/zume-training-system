@@ -66,8 +66,7 @@ class Zume_Training_Login extends Zume_Magic_Page {
     public function header_javascript(){
 
         ?>
-         <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
-
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
         <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
