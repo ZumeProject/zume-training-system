@@ -1281,7 +1281,7 @@ class Zume_301_Redirects
 
 
 
-        ];
+        // ];
     }
 
     public function redirect( $redirect ) {
