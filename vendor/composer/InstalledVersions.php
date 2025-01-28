@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'dadbf6a9e12cee4689d073c9c7a31149fcc05d46',
+    'reference' => 'af68893d092592ff5d1503833990bc122cd44ce9',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'dadbf6a9e12cee4689d073c9c7a31149fcc05d46',
+      'reference' => 'af68893d092592ff5d1503833990bc122cd44ce9',
     ),
     'dealerdirect/phpcodesniffer-composer-installer' => 
     array (
@@ -55,12 +55,12 @@ private static $installed = array (
     ),
     'gettext/gettext' => 
     array (
-      'pretty_version' => 'v5.7.0',
-      'version' => '5.7.0.0',
+      'pretty_version' => 'v5.7.3',
+      'version' => '5.7.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8657e580747bb3baacccdcebe69cac094661e404',
+      'reference' => '95820f020e4f2f05e0bbaa5603e4c6ec3edc50f1',
     ),
     'gettext/languages' => 
     array (
@@ -91,12 +91,12 @@ private static $installed = array (
     ),
     'nikic/php-parser' => 
     array (
-      'pretty_version' => 'v4.18.0',
-      'version' => '4.18.0.0',
+      'pretty_version' => 'v4.19.4',
+      'version' => '4.19.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '1bcbb2179f97633e98bbbc87044ee2611c7d7999',
+      'reference' => '715f4d25e225bc47b293a8b997fe6ce99bf987d2',
     ),
     'php-stubs/wordpress-stubs' => 
     array (
@@ -118,30 +118,30 @@ private static $installed = array (
     ),
     'phpcsstandards/phpcsutils' => 
     array (
-      'pretty_version' => '1.0.9',
-      'version' => '1.0.9.0',
+      'pretty_version' => '1.0.12',
+      'version' => '1.0.12.0',
       'aliases' => 
       array (
       ),
-      'reference' => '908247bc65010c7b7541a9551e002db12e9dae70',
+      'reference' => '87b233b00daf83fb70f40c9a28692be017ea7c6c',
     ),
     'squizlabs/php_codesniffer' => 
     array (
-      'pretty_version' => '3.8.1',
-      'version' => '3.8.1.0',
+      'pretty_version' => '3.11.3',
+      'version' => '3.11.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '14f5fff1e64118595db5408e946f3a22c75807f7',
+      'reference' => 'ba05f990e79cbe69b9f35c8c1ac8dca7eecc3a10',
     ),
     'wp-coding-standards/wpcs' => 
     array (
-      'pretty_version' => '3.0.1',
-      'version' => '3.0.1.0',
+      'pretty_version' => '3.1.0',
+      'version' => '3.1.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b4caf9689f1a0e4a4c632679a44e638c1c67aff1',
+      'reference' => '9333efcbff231f10dfd9c56bb7b65818b4733ca7',
     ),
   ),
 );

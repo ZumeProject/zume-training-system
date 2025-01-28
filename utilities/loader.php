@@ -8,7 +8,7 @@ require_once( 'integrations/urls.php' );
 require_once( 'integrations/i18n.php' );
 
 $skip_folders = [
-//    'integrations',
+
 ];
 
 // Load all other files

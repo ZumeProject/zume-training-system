@@ -11,6 +11,7 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
     public $type = 'home';
     public $postid = false;
     public $lang_code = 'en';
+    public $canonical_url = 'https://zume.training/';
     public static $token = 'starter_app_home';
 
     private static $_instance = null;
@@ -79,7 +80,7 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
             }
 
             // set page title
-            $this->page_title = get_post_meta( $this->postid , 'zume_piece_h1', true );
+            $this->page_title = get_post_meta( $this->postid, 'zume_piece_h1', true );
             if ( empty( $this->page_title ) ) {
                 $this->page_title = get_the_title( $this->postid );
             }
@@ -117,12 +118,14 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
         $logger_subtype = $zume_piece_id.'_heard';
         zume_content_logger( $logger_type, $logger_subtype, $this->lang_code );
         ?>
-
         <script>
             jQuery(document).ready(() => {
                 jQuery(document).foundation()
             })
         </script>
+
+        <?php $current_post = get_post( $this->postid ); ?>
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $current_post->post_name ); ?>" />
 
         <?php
     }

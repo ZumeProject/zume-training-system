@@ -28,4 +28,5 @@ if ( $server_name === 'zume.training' ) {
     });
 </script>
 
+<!-- action zume_head -->
 <?php do_action( 'zume_head' ) ?>
