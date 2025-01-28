@@ -11,6 +11,7 @@ class Zume_Training_Checkin extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'checkin';
     public $lang = 'en';
+    public $lang_code = 'en';
     public static $token = 'app_checkin';
 
     private static $_instance = null;
@@ -31,6 +32,7 @@ class Zume_Training_Checkin extends Zume_Magic_Page
             'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
+
         $key_code = $this->get_checkin_code();
         /* Redirect /checkin to /{lang_code}/checkin */
         /* This facilitates QR codes sending users to /checkin not knowing what language they may have previously been using */
@@ -48,6 +50,8 @@ class Zume_Training_Checkin extends Zume_Magic_Page
         } */
 
         if ( isset( $url_parts[0] ) && ( ( $this->root === $url_parts[0] && $this->type === $url_parts[1] ) || 'checkin' === $url_parts[0] ) && ! dt_is_rest() ) {
+
+            $this->lang_code = $lang_code;
 
             if ( $key_code !== false ) {
                 if ( is_user_logged_in() ) {
@@ -86,6 +90,9 @@ class Zume_Training_Checkin extends Zume_Magic_Page
     public function header_style(){
         global $zume_user_profile;
         ?>
+
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/checkin' ); ?>" />
+
         <script>
             const jsObject = [<?php echo json_encode([
                 'nonce' => wp_create_nonce( 'wp_rest' ),
