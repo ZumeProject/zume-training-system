@@ -11,6 +11,7 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'friend-invite';
     public $lang = 'en';
+    public $lang_code = 'en';
     public static $token = 'app_friend_invite';
 
     private static $_instance = null;
@@ -29,9 +30,12 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         if ( isset( $url_parts[0] ) && ( $this->root === $url_parts[0] && $this->type === $url_parts[1] ) && ! dt_is_rest() ) {
+
+            $this->lang_code = $lang_code;
 
             $this->register_url_and_access();
             $this->header_content();
@@ -61,6 +65,8 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
     public function header_style(){
         global $zume_user_profile;
         ?>
+         <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
+
         <script>
             const jsObject = [<?php echo json_encode([
                 'nonce' => wp_create_nonce( 'wp_rest' ),
@@ -73,8 +79,7 @@ class Zume_Training_Friend_Invite extends Zume_Magic_Page
                     'bad_code' => __( 'Not a recognized code. Please check the number.', 'zume' ),
                 ],
             ]) ?>][0]
-        </script>
-        <script>
+
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
 

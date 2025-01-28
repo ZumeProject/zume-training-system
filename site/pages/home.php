@@ -11,6 +11,7 @@ class Zume_Training_Home extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'home';
     public $lang = 'en_US';
+    public $lang_code = 'en';
     public static $token = 'app_home';
 
     private static $_instance = null;
@@ -26,11 +27,14 @@ class Zume_Training_Home extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         $cli_running = defined( 'WP_CLI' ) && WP_CLI;
 
         if ( empty( $url_parts[0] ?? '' ) && ! dt_is_rest() && !wp_doing_cron() && !$cli_running ) {
+
+            $this->lang_code = $lang_code;
 
             $this->register_url_and_access();
             $this->header_content();
@@ -57,7 +61,7 @@ class Zume_Training_Home extends Zume_Magic_Page
         return zume_training_magic_url_base_allowed_css();
     }
 
-    public function header_style(){
+    public function header_style() {
         ?>
         <script>
             jQuery(document).ready(function(){
@@ -69,7 +73,13 @@ class Zume_Training_Home extends Zume_Magic_Page
         </style>
         <?php //phpcs:ignore ?>
         <link rel="stylesheet" href="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/fonts/BebasKai/stylesheet.css' ) ?>">
-        <?php
+
+        <?php if ( $lang_code !== 'en' ) { ?>
+            <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->type ); ?>" />
+        <?php } else { ?>
+            <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code ); ?>" />
+            <?php
+        }
     }
 
     public function body(){

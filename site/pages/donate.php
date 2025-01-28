@@ -11,6 +11,7 @@ class Zume_Training_Donate extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'donate';
     public $lang = 'en';
+    public $lang_code = 'en';
     public static $token = 'app_donate';
 
     private static $_instance = null;
@@ -29,11 +30,14 @@ class Zume_Training_Donate extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         $page_slug = $url_parts[0] ?? '';
 
         if ( str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
+
+            $this->lang_code = $lang_code;
 
             $this->register_url_and_access();
             $this->header_content();
@@ -67,6 +71,9 @@ class Zume_Training_Donate extends Zume_Magic_Page
                 jQuery(document).foundation();
             });
         </script>
+
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
+
         <?php
     }
 

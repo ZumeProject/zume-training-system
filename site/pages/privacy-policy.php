@@ -11,6 +11,7 @@ class Zume_Training_Privacy_Policy extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'privacy';
     public $lang = 'en';
+    public $lang_code = 'en';
     public static $token = 'app_privacy';
 
     private static $_instance = null;
@@ -30,12 +31,15 @@ class Zume_Training_Privacy_Policy extends Zume_Magic_Page
         [
             'url_parts' => $url_parts,
             'path' => $path,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         $page_slug = $url_parts[0] ?? '';
         dt_write_log( $page_slug );
 
         if ( str_contains( $page_slug, $this->type ) && ! str_contains( $page_slug, 'privacy-policy' )  && ! dt_is_rest() ) {
+
+            $this->lang_code = $lang_code;
 
             $this->register_url_and_access();
             $this->header_content();
@@ -69,6 +73,7 @@ class Zume_Training_Privacy_Policy extends Zume_Magic_Page
                 jQuery(document).foundation();
             });
         </script>
+         <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
         <?php
     }
 
