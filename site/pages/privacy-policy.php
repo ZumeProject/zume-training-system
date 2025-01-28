@@ -29,11 +29,13 @@ class Zume_Training_Privacy_Policy extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'path' => $path,
         ] = zume_get_url_pieces();
 
         $page_slug = $url_parts[0] ?? '';
+        dt_write_log( $page_slug );
 
-        if ( str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
+        if ( str_contains( $page_slug, $this->type ) && ! str_contains( $page_slug, 'privacy-policy' )  && ! dt_is_rest() ) {
 
             $this->register_url_and_access();
             $this->header_content();
