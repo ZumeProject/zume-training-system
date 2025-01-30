@@ -55,6 +55,22 @@ class Zume_Training_404 extends Zume_Magic_Page
     }
 
     public function header_style(){
+        // if is v4.0, then redirect to legacy
+        global $zume_languages_by_locale;
+        $locale = get_locale();
+        if ( isset( $zume_languages_by_locale[$locale] ) ) {
+            // dt_write_log( $zume_languages_by_locale[$locale] );
+            $is_v4 = ( ! $zume_languages_by_locale[$locale]['enable_flags']['version_5_ready'] && $zume_languages_by_locale[$locale]['enable_flags']['version_4_available'] );
+            if ( $is_v4 ) {
+                $url_pieces = zume_get_url_pieces();
+                $requested_path = $url_pieces['path'];
+                $url = 'https://legacy.zume.training/' . $zume_languages_by_locale[$locale]['code'] . '/' . $requested_path;
+                // dt_write_log( $requested_path );
+                wp_redirect(  $url );
+                exit;
+            }
+        }
+
         ?>
         <script>
             jQuery(document).ready(function(){
