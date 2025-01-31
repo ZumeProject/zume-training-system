@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme Project\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2024-10-25 13:00+0000\n"
+"PO-Revision-Date: 2024-10-29 15:00+0000\n"
 "Last-Translator: nesrine <nesrine0325@gmail.com>\n"
 "Language-Team: Arabic <https://translate.disciple.tools/projects/"
 "zume-training/zume-training-system/ar_TN/>\n"
@@ -4549,7 +4549,7 @@ msgstr ""
 "تعاون خرائطي في توضيح رؤية زومّيه المتمثلة في وجود متدرّب واحد وكنيستين لكلّ "
 "5,000 شخص في الولايات المتحدة، و 50,000 شخص على مستوى العالم.باش تحلّ خرائطي، "
 "إنضم لمجموعة زومّيه وتواصل مع صنّاع التّلامذة المتحمّسين باش يشوفوا تحقيق "
-"الرسالة العظيمة."
+"الرسالة العضيمة."
 
 #: site/dashboard/dashboard.php:248
 msgid "My Training is Locked"
@@ -6946,7 +6946,7 @@ msgstr "سجّل لبداية التّدريب الخاصّ بيك"
 
 #: utilities/apis/cta-api.php:157
 msgid "Set your profile to help others know you"
-msgstr "قوم بتعيين ملفّك الشخصي باش تعاون النّاس يتعرّفوا عليك"
+msgstr "عيّن ملفّك الشخصي باش تعاون النّاس يتعرّفوا عليك"
 
 #: utilities/apis/cta-api.php:171
 msgid "Profile Set"
