@@ -95,15 +95,26 @@ class Zume_Training_Donate extends Zume_Magic_Page
                 <div class="stack-1">
                     <h2 class="brand h3 uppercase d-flex align-items-center gap-1"></h2>
                     <p><?php echo esc_html__( 'We are crowdfunded, and we love that you want to be part of the Zúme vision.', 'zume' ) ?></p>
+
                     <div>
-                        <div class="grassroot-project-widget" data-handle="default"></div>
-                        <?php //phpcs:ignore ?>
-                        <script src="https://give.zume.vision/-/project-embed.js"></script>
+                        <!--spinner-->
+                        <div class="cover-page" id="give-loading-spinner">
+                            <div class="center"><span class="loading-spinner active"></span></div>
+                        </div>
+
+                        <iframe height="650"
+                                src="https://axiainternational.net/embed/giving/662-2892CRE" width="100%" id="givingWidget662-2892CRE"
+                                style="border: none" scrolling="no"
+                                onload="document.querySelector('#give-loading-spinner').remove()"
+                        ></iframe>
+                        <script>window.addEventListener("message", function (event) {if (event.origin ==='https://axiainternational.net' && (typeof event.data == "number" || typeof event.data == "string")) {
+                            document.getElementById("givingWidget662-2892CRE").height = event.data;
+                          }});</script>
                     </div>
                 </div>
             </div>
 
-            <a href="https://give.zume.vision/projects" class="btn uppercase fit-content mx-auto"><?php echo esc_html__( 'View All Giving Opportunities', 'zume' ) ?> <?php require plugin_dir_path( __DIR__ ) . 'assets/images/external-link.svg' ?></a>
+            <!--<a href="https://give.zume.vision/projects" class="btn uppercase fit-content mx-auto">--><?php //echo esc_html__( 'View All Giving Opportunities', 'zume' ) ?><!-- --><?php //require plugin_dir_path( __DIR__ ) . 'assets/images/external-link.svg' ?><!--</a>-->
 
         </div>
         <?php
