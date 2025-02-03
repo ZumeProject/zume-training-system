@@ -818,7 +818,7 @@ class Zume_301_Redirects
     }
 
     public function redirect( $redirect ) {
-        header( 'Location: '.$redirect, true, 302 );
+        header( 'Location: '.$redirect, true, 301 );
         exit();
     }
 }
