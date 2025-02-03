@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2024-10-16 02:00+0000\n"
+"PO-Revision-Date: 2024-12-14 03:00+0000\n"
 "Last-Translator: Philip Yuen <philipyuen@channelnetwork.org>\n"
 "Language-Team: Chinese (Traditional Han script, Hong Kong) <https://translate"
 ".disciple.tools/projects/zume-training/zume-training-system/zh_Hant_HK/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: 404.php:73
 msgid "Epic 404 - Not Found"
-msgstr "錯誤 404 - 網頁不存在"
+msgstr "錯誤 404──網頁不存在"
 
 #: 404.php:74
 msgid "The page you were looking for was not found or was deleted"
@@ -113,7 +113,7 @@ msgstr "小組"
 
 #: appearance/style-override/navigation.php:129
 msgid "Trainings"
-msgstr "培訓課程"
+msgstr "培訓"
 
 #: appearance/style-override/navigation.php:135
 msgid "Metrics"
@@ -188,7 +188,7 @@ msgstr "「肥皂讀經法」"
 msgid ""
 "A tool for daily Bible study that helps you understand, obey, and share "
 "God’s Word."
-msgstr "運用每日研讀聖經的工具，更多明白、順服、分享神的話。"
+msgstr "一種每日研讀聖經的方法，讓您更多明白、順服、分享神的話。"
 
 #: globals.php:2249 globals.php:2251 site/course/course-content.php:94
 #: site/course/course-content.php:307 site/course/course-content.php:316
@@ -212,7 +212,7 @@ msgstr "「消費者」與「生產者」的生活方式"
 msgid ""
 "You'll discover the four main ways God makes everyday followers more like "
 "Jesus."
-msgstr "瞭解神所使用的四個主要方式，讓每一個跟隨主的門徒更像耶穌。"
+msgstr "了解神所使用的四個主要方式，讓天天跟隨基督的門徒更像耶穌。"
 
 #: globals.php:2263
 msgid "Producer not Consumer"
@@ -256,7 +256,7 @@ msgstr "「屬靈經濟學」"
 msgid ""
 "Learn how God's economy is different from the world's. God invests more in "
 "those who are faithful with what they've already been given."
-msgstr "瞭解屬靈與屬世的經濟學有何不同。凡忠心於神所託的人，神會更加給他們。"
+msgstr "了解屬靈與屬世的經濟學有何不同。凡忠心於神所託的人，神會加倍的添給他們。"
 
 #: globals.php:2309 site/pages/follow-jesus.php:290
 msgid "The Gospel and How to Share It"
@@ -266,7 +266,7 @@ msgstr "「神的故事」︰如何分享福音"
 msgid ""
 "Learn a way to share God’s Good News from the beginning of humanity all the "
 "way to the end of this age."
-msgstr "學習如何分享好消息，神救贖從人類起源直到世界結束的故事。"
+msgstr "學習如何分享福音，神救贖從人類起源直到世界結束的故事。"
 
 #: globals.php:2311
 msgid "Sharing God‘s Story"
@@ -316,8 +316,8 @@ msgstr "異象：「最好的祝福」"
 msgid ""
 "Learn a simple pattern of making not just one follower of Jesus but entire "
 "spiritual families who multiply for generations to come."
-msgstr "一個簡單的模式，不僅建立一個人成為耶穌的門徒，並且讓整個屬靈家庭世世代代倍增"
-"延續下去。"
+msgstr "一種簡單的模式，不僅建立一個人成為跟隨耶穌的門徒，並且讓整個屬靈家庭世世代代"
+"倍增延續下去。"
 
 #: globals.php:2347
 msgid "Great, Greater, and Greatest Blessing"
@@ -359,7 +359,7 @@ msgstr "聖餐：如何領「主的晚餐」"
 msgid ""
 "It’s a simple way to celebrate our intimate connection and ongoing "
 "relationship with Jesus. Learn a simple way to celebrate."
-msgstr "一個簡單的教會禮儀，為了慶祝我們與耶穌之間彼此連結和親密的關係。讓我們學習透"
+msgstr "一種簡單的教會禮儀，為了慶祝我們與耶穌之間彼此連結和親密的關係。讓我們學習透"
 "過守聖餐去記念主。"
 
 #: globals.php:2383 site/activities/activities.php:250
@@ -377,8 +377,8 @@ msgstr "「步行禱告」：如何運作"
 msgid ""
 "It‘s a simple way to obey God’s command to pray for others. And it‘s just "
 "what it sounds like — praying to God while walking around!"
-msgstr "一個簡單的禱告方式，遵守神要我們為別人禱告的命令。顧名思義，就是一邊步行一邊"
-"向上帝祈禱！"
+msgstr "一種簡單的禱告方式，遵守神要我們為別人禱告的命令。顧名思義，就是一邊步行，一"
+"邊向神禱告的意思！"
 
 #: globals.php:2395 site/activities/activities.php:319
 #: site/course/course-content.php:1588 site/course/course-content.php:1596
@@ -435,14 +435,13 @@ msgid "3/3 Group Meeting Pattern"
 msgstr "「三分三小組」的聚會模式"
 
 #: globals.php:2442
-#, fuzzy
 msgid ""
 "A 3/3 Group is a way for followers of Jesus to meet, pray, learn, grow, "
 "fellowship and practice obeying and sharing what they‘ve learned. In this "
 "way, a 3/3 Group is not just a small group but a Simple Church."
 msgstr ""
-"「三分三小組」讓一羣耶穌的跟隨者聚在一起禱告、學習、成長與交通，並操練順服主"
-"道、分享所學。於此，「三分三小組」不僅僅是一個小組，也是個簡約教會。"
+"一種聚會的模式，讓一羣耶穌的跟隨者聚在一起、禱告、學習、成長與交通，並操練順"
+"服主道、實踐分享所學。於此，「三分三小組」不僅僅是一個小組，也是個簡約教會。"
 
 #: globals.php:2443
 msgid "3/3 Group"
@@ -455,7 +454,7 @@ msgstr "「培訓循環」︰培育門徒邁向成熟"
 #: globals.php:2454 site/pages/follow-jesus.php:272
 msgid ""
 "Learn the training cycle and consider how it applies to disciple making."
-msgstr "學習循環培訓模式如何應用在門徒訓練上，以致不斷倍增建立門徒者。"
+msgstr "學習如何應用「培訓循環」於門徒訓練上，以致不斷倍育建立門徒者。"
 
 #: globals.php:2455 site/course/course-content.php:5166
 #: site/course/course-content.php:5183
@@ -486,7 +485,7 @@ msgstr "「非順序成長」的思維模式"
 msgid ""
 "See how disciple making doesn‘t have to be linear. Multiple things can "
 "happen at the same time."
-msgstr "學習突破傳統順序模式成長的門徒訓練方式。而以非順序模式成長，並進式同時發生。"
+msgstr "學習突破傳統順序模式成長的門徒訓練方式。而以「非順序成長」，並進式同時發生。"
 
 #: globals.php:2489 site/course/course-content.php:2882
 #: site/pages/follow-jesus.php:279
@@ -497,7 +496,7 @@ msgstr "「加快倍增的步伐」"
 msgid ""
 "Multiplying matters and multiplying quickly matters even more. See why pace "
 "matters."
-msgstr "倍增很重要，加快倍增更重要！讓我們一起來看看「加快步伐」的重要。"
+msgstr "倍增很重要，加快倍增更重要，關鍵是速度。讓我們一起來看看「加快步伐」的重要。"
 
 #: globals.php:2491 site/course/course-content.php:2484
 #: site/course/course-content.php:2547 site/course/course-content.php:2556
@@ -509,9 +508,8 @@ msgstr "「加快步伐」"
 #: site/course/course-content.php:2596 site/course/course-content.php:2605
 #: site/course/course-content.php:2883 site/course/course-content.php:5293
 #: site/course/course-content.php:5311 site/pages/follow-jesus.php:229
-#, fuzzy
 msgid "Always Part of Two Churches"
-msgstr "兩個教會並進"
+msgstr "「兩個教會並進」"
 
 #: globals.php:2502
 #, fuzzy
@@ -521,18 +519,16 @@ msgstr "透過去和留來學習如何遵守耶穌的命令。"
 #: globals.php:2514 globals.php:2516 site/course/course-content.php:3014
 #: site/course/course-content.php:3126 site/course/course-content.php:3132
 #: site/course/course-content.php:3198 site/course/course-content.php:5829
-#, fuzzy
 msgid "Three-Month Plan"
-msgstr "三個月規劃"
+msgstr "「三個月規畫」"
 
 #: globals.php:2515
 #, fuzzy
 msgid ""
 "Create and share your plan for how you will implement the Zúme tools over "
 "the next three months."
-msgstr ""
-"制定您在接下來三個月裡的規劃，會如何施行應用「天國酵母」Zúme 工具，再與組員分"
-"享。"
+msgstr "制定您在接下來三個月裡的規畫，會如何施行應用「天國酵母」的工具，再與組員分享"
+"。"
 
 #: globals.php:2525 globals.php:2527
 #: site/activities/coaching-checklist-host.php:22
@@ -553,9 +549,8 @@ msgstr ""
 #: utilities/integrations/replace-placeholder.php:102
 #: utilities/integrations/replace-placeholder.php:103
 #: utilities/integrations/replace-placeholder.php:104
-#, fuzzy
 msgid "Coaching Checklist"
-msgstr "教練指南"
+msgstr "「教練指南」"
 
 #: globals.php:2526 site/pages/follow-jesus.php:323
 #, fuzzy
@@ -569,16 +564,15 @@ msgstr ""
 #: site/course/course-content.php:3022 site/course/course-content.php:3031
 #: site/course/course-content.php:3193 site/course/course-content.php:5420
 #: site/course/course-content.php:5440 site/pages/follow-jesus.php:330
-#, fuzzy
 msgid "Leadership in Networks"
-msgstr "領袖聯絡網"
+msgstr "「領袖聯絡網」"
 
 #: globals.php:2538 site/pages/follow-jesus.php:331
 #, fuzzy
 msgid ""
 "Learn how multiplying churches stay connected and live life together as an "
 "extended, spiritual family."
-msgstr "瞭解倍增的教會如何彼此保持聯繫並學習一起成長，成為屬靈的大家庭。"
+msgstr "了解倍增的教會如何彼此保持聯繫並學習一起成長，成為屬靈的大家庭。"
 
 #: globals.php:2549 site/course/course-content.php:3013
 #: site/course/course-content.php:3068 site/course/course-content.php:3077
@@ -603,7 +597,7 @@ msgstr "「朋輩指導」"
 
 #: globals.php:2561 globals.php:2563
 msgid "Four Fields Tool"
-msgstr "「四個領域診斷圖」"
+msgstr "「四個領域」診斷圖"
 
 #: globals.php:2562
 #, fuzzy
@@ -611,8 +605,7 @@ msgid ""
 "The four fields diagnostic chart is a simple tool to be used by a leadership "
 "cell to reflect on the status of current efforts and the kingdom activity "
 "around them."
-msgstr ""
-"帶領者可以使用「四個領域診斷圖」這個簡單的工具，來檢視羣體當前的狀態以及周遭"
+msgstr "帶領者可以使用「四個領域」診斷圖這個簡單的工具，來檢視羣體當前的狀態以及周遭"
 "的神國事工。"
 
 #: globals.php:2573 globals.php:2575 site/activities/activities.php:388
@@ -627,26 +620,23 @@ msgstr "「屬靈世代」"
 msgid ""
 "Generation mapping is another simple tool to help leaders in a movement "
 "understand the growth around them."
-msgstr ""
-"微型教會族譜是另一個簡單的工具，可以幫助當中的帶領者們了解小組教會的成長狀"
-"況。"
+msgstr "「屬靈世代」是另一個簡單的工具，可以幫助當中的帶領者們了解小組教會的成長狀況"
+"。"
 
 #: globals.php:2585
-#, fuzzy
 msgid "3-Circles Gospel Presentation"
-msgstr "三圈福音演講"
+msgstr "「三圈佈道法」"
 
 #: globals.php:2586
 #, fuzzy
 msgid ""
 "The 3-Circles gospel presentation is a way to tell the gospel using a simple "
 "illustration that can be drawn on a piece of paper."
-msgstr "三圈福音示範是一種使用可以畫在紙上的簡單插圖來講述福音的方式。"
+msgstr "「三圈佈道法」是一種使用可以畫在紙上的簡單插圖來講述福音的方式。"
 
 #: globals.php:2587
-#, fuzzy
 msgid "3-Circles"
-msgstr "3圈"
+msgstr "「三圈佈道法」"
 
 #: globals.php:7933 maps/html/heatmap-html.php:56 maps/html/heatmap-html.php:59
 #: maps/js-translation-strings.php:43 site/course/presenter.php:165
@@ -654,28 +644,24 @@ msgstr "3圈"
 #: site/dashboard/wizard.php:176 site/pages/follow-jesus.php:341
 #: site/parts/footer.php:77 site/parts/footer.php:84 site/parts/footer.php:91
 #: site/parts/language-menu.php:4 utilities/apis/pieces-api.php:151
-#, fuzzy
 msgid "Close"
 msgstr "關閉"
 
 #: globals.php:8135
-#, fuzzy
 msgid "No Results"
 msgstr "沒有結果"
 
 #: maps/heatmap.php:3150
-#, fuzzy
 msgid "trainee"
-msgstr "培訓"
+msgstr "受訓者"
 
 #: maps/heatmap.php:3153
-#, fuzzy
 msgid "practitioner"
-msgstr "練習"
+msgstr "實踐者"
 
 #: maps/heatmap.php:3156
 msgid "visitor"
-msgstr ""
+msgstr "訪客"
 
 #: maps/heatmap.php:3166
 #, php-format
@@ -742,7 +728,7 @@ msgstr ""
 #: maps/html/heatmap-html.php:37
 #, fuzzy
 msgid "Loading the planet"
-msgstr "規畫"
+msgstr "載入星球"
 
 #: maps/html/heatmap-html.php:38
 msgid "Locating world population"
@@ -758,74 +744,73 @@ msgstr ""
 
 #: maps/html/heatmap-html.php:41
 msgid "Let‘s do this"
-msgstr ""
+msgstr "讓我們開始吧"
 
 #: maps/html/heatmap-html.php:73 maps/html/heatmap-html.php:177
 #: maps/js-translation-strings.php:5
-#, fuzzy
 msgid "Population"
-msgstr "應用"
+msgstr "人口"
 
 #: maps/html/heatmap-html.php:80 maps/js-translation-strings.php:6
 msgid "Needed"
-msgstr ""
+msgstr "需要"
 
 #: maps/html/heatmap-html.php:83
 msgid "Reported"
-msgstr ""
+msgstr "已報"
 
 #: maps/html/heatmap-html.php:89
 msgid "Goal"
-msgstr ""
+msgstr "目標"
 
 #: maps/html/heatmap-html.php:100 maps/html/heatmap-html.php:124
 #: maps/map-2-network-activities.php:137
 msgid "Search"
-msgstr ""
+msgstr "搜尋"
 
 #: maps/html/heatmap-html.php:101 maps/html/heatmap-html.php:125
 #: maps/map-2-network-activities.php:138
 msgid "Search for any city or place with the search input."
-msgstr ""
+msgstr "使用搜尋輸入搜尋任何城市或地點。"
 
 #: maps/html/heatmap-html.php:105 maps/html/heatmap-html.php:129
 #: maps/map-2-network-activities.php:142
 msgid "Zoom"
-msgstr ""
+msgstr "縮放"
 
 #: maps/html/heatmap-html.php:106 maps/html/heatmap-html.php:130
 #: maps/map-2-network-activities.php:143
 msgid ""
 "Scroll zoom with your mouse or pinch zoom with track pads and phones to "
 "focus on sections of the map."
-msgstr ""
+msgstr "使用滑鼠捲動放大，或觸控板和手機以雙指捏合放大，即可聚焦於地圖上的某個地區。"
 
 #: maps/html/heatmap-html.php:110 maps/html/heatmap-html.php:134
 #: maps/map-2-network-activities.php:147
 msgid "Drag"
-msgstr ""
+msgstr "拖拉"
 
 #: maps/html/heatmap-html.php:111 maps/html/heatmap-html.php:135
 #: maps/map-2-network-activities.php:148
 msgid ""
 "Click and drag the map any direction to look at a different part of the map."
-msgstr ""
+msgstr "點擊並拖拉地圖往任何一方，即可檢視地圖的不同部分。"
 
 #: maps/html/heatmap-html.php:115 maps/html/heatmap-html.php:139
 #: maps/map-2-network-activities.php:152
 msgid "Click"
-msgstr ""
+msgstr "點擊"
 
 #: maps/html/heatmap-html.php:116 maps/html/heatmap-html.php:140
 #: maps/map-2-network-activities.php:153
 msgid ""
 "Click a single section and reveal a details panel with more information "
 "about the location."
-msgstr ""
+msgstr "點擊單一地區，即可顯示更多關於該位置的詳細資料。"
 
 #: maps/html/heatmap-html.php:187
 msgid "PROGRESS BREAKDOWN"
-msgstr ""
+msgstr "進度細節"
 
 #: maps/html/heatmap-html.php:204 site/activities/activities.php:29
 #: site/activities/activities.php:158 site/activities/activities.php:181
@@ -846,111 +831,102 @@ msgstr ""
 #: site/course/course-content.php:3795 site/course/course-content.php:4067
 #: site/course/course-content.php:4338 site/course/course-content.php:4623
 #: site/course/course-content.php:5028
-#, fuzzy
 msgid "ACTIVITY"
 msgstr "活動"
 
 #: maps/js-translation-strings.php:7 maps/js-translation-strings.php:12
 msgid "Goal Reached"
-msgstr ""
+msgstr "目標達到"
 
 #: maps/js-translation-strings.php:8
-#, fuzzy
 msgid "Churches Needed"
-msgstr "教會名稱"
+msgstr "需要教會"
 
 #: maps/js-translation-strings.php:9
 msgid "Churches Reported"
-msgstr ""
+msgstr "已報教會"
 
 #: maps/js-translation-strings.php:10
-#, fuzzy
 msgid "Trainees Needed"
-msgstr "培訓"
+msgstr "需要受訓者"
 
 #: maps/js-translation-strings.php:11
 msgid "Trainees Reported"
-msgstr ""
+msgstr "已報受訓者"
 
 #: maps/js-translation-strings.php:13
-#, fuzzy
 msgid "Activities Reported"
-msgstr "活動來源"
+msgstr "已報活動"
 
 #: maps/js-translation-strings.php:14
 msgid "Practitioners Needed"
-msgstr ""
+msgstr "需要實踐者"
 
 #: maps/js-translation-strings.php:15
-#, fuzzy
 msgid "Practitioners Reported"
-msgstr "實踐導向"
+msgstr "已報實踐者"
 
 #: maps/js-translation-strings.php:17
 msgid "Last 100 Hours of Movement Activity"
-msgstr ""
+msgstr "過去一百小時的運動活動"
 
 #: maps/js-translation-strings.php:18
-#, fuzzy
 msgid "Countries"
-msgstr "故事"
+msgstr "國家"
 
 #: maps/js-translation-strings.php:19 site/pages/home.php:82
-#, fuzzy
 msgid "Languages"
 msgstr "語言"
 
 #: maps/js-translation-strings.php:20
 msgid "All Types"
-msgstr ""
+msgstr "所有類型"
 
 #: maps/js-translation-strings.php:21
 msgid "All Countries"
-msgstr ""
+msgstr "所有國家"
 
 #: maps/js-translation-strings.php:22
-#, fuzzy
 msgid "All Languages"
-msgstr "語言"
+msgstr "所有語言"
 
 #: maps/js-translation-strings.php:23
-#, fuzzy
 msgid "Results"
-msgstr "沒有結果"
+msgstr "結果"
 
 #: maps/js-translation-strings.php:24
 msgid "Additional Records. (Zoom or Filter map to focus results)"
-msgstr ""
+msgstr "其他記錄。 （縮放或篩選地圖以聚焦結果）"
 
 #: maps/js-translation-strings.php:25
 msgid "Studying"
-msgstr ""
+msgstr "學習中"
 
 #: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:234
-#, fuzzy
 msgid "Practicing"
-msgstr "練習"
+msgstr "實踐"
 
 #: maps/js-translation-strings.php:28 site/dashboard/wizard.php:223
-#, fuzzy
 msgid "Coaching"
-msgstr "輔導課程"
+msgstr "輔導中"
 
 #: maps/js-translation-strings.php:30 maps/map-3-trainees.php:141
 #: maps/map-5-churches.php:141
 msgid "Purpose of the Map"
-msgstr ""
+msgstr "地圖目的"
 
 #: maps/js-translation-strings.php:31
+#, fuzzy
 msgid ""
 "The Last 100 Hours map shows the Holy Spirit moving his people to disciple "
 "making through Zúme around the world. The 100 hours begins now and covers "
 "activity over roughly the last 4 days."
-msgstr ""
+msgstr "過去一百小時地圖顯示聖靈透過 Zúme 在世界各地感動祂的子民造就門徒。這 100 "
+"小時從現在開始，涵蓋過去 4 天的活動。"
 
 #: maps/js-translation-strings.php:32
 msgid "Types of Activities"
-msgstr ""
+msgstr "活動類型"
 
 #: maps/js-translation-strings.php:33
 msgid ""
@@ -1004,23 +980,19 @@ msgid "Activities"
 msgstr "活動"
 
 #: maps/map-3-trainees.php:123
-#, fuzzy
 msgid "Trainees"
-msgstr "培訓"
+msgstr "受訓者"
 
 #: maps/map-3-trainees.php:124
-#, fuzzy
 msgid "Map of Zúme Trainees"
-msgstr "什麼是 Zúme 培訓？"
+msgstr "「天國酵母」受訓者的地圖"
 
 #: maps/map-3-trainees.php:125
-#, fuzzy
 msgid ""
 "Saturation Goal: 1 trainee per 5,000 people in the United States; and 1 "
 "trainee per 50,000 people globally."
-msgstr ""
-"在北美，每 5,000 人中至少有一名門徒訓練者； 在全球，每 50,000 人中至少有一名"
-"門徒訓練者。"
+msgstr "飽和目標：在北美，每 5,000 人中至少有一名受訓者； 在全球，每 50,000 "
+"人中至少有一名受訓者。"
 
 #: maps/map-3-trainees.php:142
 msgid ""
@@ -1031,15 +1003,15 @@ msgstr ""
 
 #: maps/map-3-trainees.php:143 maps/map-5-churches.php:143
 msgid "Saturation Goal"
-msgstr ""
+msgstr "飽和目標"
 
 #: maps/map-3-trainees.php:145
 msgid "1 trained multiplying disciple per 5,000 in the United States"
-msgstr ""
+msgstr "在北美，每 5,000 人中至少有一名受訓者"
 
 #: maps/map-3-trainees.php:146
 msgid "1 trained multiplying disciple per 50,000 globally"
-msgstr ""
+msgstr "在全球，每 50,000 人中至少有一名受訓者"
 
 #: maps/map-3-trainees.php:148 maps/map-5-churches.php:148
 msgid "Measurements Used"
@@ -1058,46 +1030,42 @@ msgid ""
 msgstr ""
 
 #: maps/map-3-trainees.php:155 maps/map-5-churches.php:155
-#, fuzzy
 msgid "Join the Zúme community."
-msgstr "加入 Zúme 社羣"
+msgstr "加入「天國酵母」的社羣。"
 
 #: maps/map-3-trainees.php:156
 msgid "Update your profile with your location."
-msgstr ""
+msgstr "更新您的個人資料，註明您的位置。"
 
 #: maps/map-4-practitioners.php:121
-#, fuzzy
 msgid "Practitioners"
-msgstr "練習"
+msgstr "實踐者"
 
 #: maps/map-4-practitioners.php:122
 msgid "Map of Zúme Practitioners"
-msgstr ""
+msgstr "「天國酵母」實踐者的地圖"
 
 #: maps/map-4-practitioners.php:123
 msgid ""
 "Saturation Goal: 1 trainee per 5,000 in the United States, 1 trainee per "
 "50,000 globally"
-msgstr ""
+msgstr "飽和目標：在北美，每 5,000 人中至少有一名受訓者； 在全球，每 50,000 "
+"人中至少有一名受訓者。"
 
 #: maps/map-5-churches.php:123
-#, fuzzy
 msgid "Churches"
 msgstr "教會"
 
 #: maps/map-5-churches.php:124
-#, fuzzy
 msgid "Map of Zúme Churches"
-msgstr "兩個微型教會"
+msgstr "「天國酵母」教會的地圖"
 
 #: maps/map-5-churches.php:125
-#, fuzzy
 msgid ""
 "Saturation Goal: 2 simple churches per 5,000 people in the United States, "
 "and 2 simple churches per 50,000 people globally"
-msgstr "讓訓練有素的門徒訓練者在北美每 5,000 人中建立至少兩個簡約教會，並在全球每 "
-"50,000 人建立兩個簡約教會。"
+msgstr "飽和目標：在北美，每 5,000 人中至少有兩間簡約教會； 在全球，每 50,000 "
+"人中至少有兩間簡約教會。"
 
 #: maps/map-5-churches.php:142
 msgid ""
@@ -1108,11 +1076,11 @@ msgstr ""
 
 #: maps/map-5-churches.php:145
 msgid "2 simple churches per 5,000 people in the United States"
-msgstr ""
+msgstr "在北美，每 5,000 人中至少有兩間簡約教會"
 
 #: maps/map-5-churches.php:146
 msgid "2 simple churches per 50,000 people globally"
-msgstr ""
+msgstr "在全球，每 50,000 人中至少有兩間簡約教會"
 
 #: maps/map-5-churches.php:151
 msgid ""
@@ -1127,34 +1095,30 @@ msgstr "在個人主頁的「我的教會」區段中加入您的教會。"
 
 #: site/activities/activities.php:158
 msgid "SOAPS"
-msgstr ""
+msgstr "「肥皂讀經法」"
 
 #: site/activities/activities.php:181 site/course/course-content.php:495
 #: site/course/course-content.php:559 site/course/course-content.php:568
 #: site/course/course-content.php:596 site/course/course-content.php:706
-#, fuzzy
 msgid "Prayer Cycle"
 msgstr "「禱告輪」"
 
 #: site/activities/activities.php:204 site/course/course-content.php:975
-#, fuzzy
 msgid "Share the Gospel"
-msgstr "分享福音"
+msgstr "「神的故事」"
 
 #: site/activities/activities.php:227 site/course/course-content.php:1195
 #: site/course/course-content.php:1204 site/course/course-content.php:1213
 #: site/course/course-content.php:1476 site/course/course-content.php:4205
 #: site/course/course-content.php:4222 site/course/course-content.php:4328
 #: site/course/course-content.php:4363
-#, fuzzy
 msgid "Three-Minute Testimony"
-msgstr "三分鐘見證"
+msgstr "「我的故事」"
 
 #: site/activities/activities.php:273 site/course/course-content.php:1587
 #: site/course/course-content.php:4733 site/course/course-content.php:4753
-#, fuzzy
 msgid "B.L.E.S.S. Prayer"
-msgstr "B.L.E.S.S. 祝福禱告"
+msgstr "「祝福禱告法」"
 
 #: site/activities/activities.php:296 site/course/course-content.php:1835
 #: site/course/course-content.php:1888 site/course/course-content.php:1897
@@ -1165,25 +1129,21 @@ msgstr "B.L.E.S.S. 祝福禱告"
 #: site/course/course-content.php:4875 site/course/course-content.php:4910
 #: site/course/course-content.php:5016 site/course/course-content.php:5024
 #: site/course/course-content.php:5031 site/course/course-content.php:5059
-#, fuzzy
 msgid "3/3 Group Meeting"
-msgstr "「三分三小組」聚會模式"
+msgstr "「三分三小組」聚會"
 
 #: site/activities/activities.php:365 site/course/course-content.php:2490
 #: site/course/course-content.php:2746 site/course/course-content.php:2752
 #: site/course/course-content.php:2888 site/course/course-content.php:5553
 #: site/course/course-content.php:5583
-#, fuzzy
 msgid "Four Fields"
-msgstr "四個領域"
+msgstr "「四個領域」"
 
 #: site/activities/coaching-checklist-host.php:22
-#, fuzzy
 msgid "H.O.S.T"
 msgstr "H.O.S.T."
 
 #: site/activities/coaching-checklist-host.php:100
-#, fuzzy
 msgid "H.O.S.T."
 msgstr "H.O.S.T."
 
@@ -1241,7 +1201,7 @@ msgstr "已分享"
 #: site/activities/coaching-checklist.php:282
 #: site/dashboard/checkin-dashboard.php:188 site/dashboard/dashboard.php:264
 msgid "Trained"
-msgstr "已教導"
+msgstr "受訓"
 
 #: site/activities/coaching-checklist-host.php:168
 #: site/activities/coaching-checklist-two.php:189
@@ -1287,14 +1247,12 @@ msgstr ""
 #: site/activities/coaching-checklist-mawl.php:22
 #: site/activities/coaching-checklist-mawl.php:51
 #: site/activities/coaching-checklist-mawl.php:101
-#, fuzzy
 msgid "M.A.W.L."
 msgstr "M.A.W.L."
 
 #: site/activities/coaching-checklist-mawl.php:102
-#, fuzzy
 msgid "Coach others by using Model, Assist, Watch, Leave."
-msgstr "透過「示範」、「輔助」、「守護」、「放手」等方式引導他人。"
+msgstr "透過「示範」、「輔助」、「守護」、「放手」等方式指導別人。"
 
 #: site/activities/coaching-checklist-mawl.php:124
 #: site/activities/coaching-checklist-two.php:143
@@ -1349,14 +1307,13 @@ msgid ""
 "giving a general idea of what it looks like. Modeling repeatedly is not an "
 "effective way to equip someone."
 msgstr ""
-"示範只是提供練習或工具的範例。這是培訓週期中最簡短的部分。通常只需要進行一"
-"次。它只是讓人們意識到練習或工具的存在，讓人們對其有一個大致的了解。反覆示範"
-"並不是裝備一個人的有效方法。"
+"示範只是提供練習或工具的範例。這是「培訓循環」中最簡短的部分。通常只需要進行"
+"一次。它只是讓人們意識到練習或工具的存在，讓人們對其有一個大致的了解。反覆示"
+"範並不是裝備一個人的有效方法。"
 
 #: site/activities/coaching-checklist-mawl.php:173
 #: site/activities/coaching-checklist-two.php:212
 #: site/activities/coaching-checklist.php:308
-#, fuzzy
 msgid ""
 "Assisting is allowing the learner to practice the skill. This takes longer "
 "than the modeling phase. It requires “hand-holding” on the part of the "
@@ -1366,10 +1323,10 @@ msgid ""
 "continued too long, then the learner will develop a dependence on the mentor "
 "and never advance to full competence."
 msgstr ""
-"協助是讓學習者練習技能。這比示範階段花費的時間更長。這需要指導者的「手把手」"
-"教學。導師需要具有指導性，並在指導學習者的過程中發揮積極作用。這個階段不會持"
-"續到學習者完全勝任，而只會持續到他們了解該技能的基本要素為止。如果這個階段持"
-"續過長，學習者就會對指導者產生依賴，永遠無法達到完全勝任的能力。"
+"「輔助」是讓學習者練習技能。這比示範階段花費的時間更長。這需要的「手牽手」教"
+"學。導師需要具有指導性，並在培訓學習者的過程中發揮積極作用。這個階段不會持續"
+"到學習者完全勝任，而只會持續到他們了解該技能的基本要素為止。如果這個階段持續"
+"過長，學習者就會對導師產生依賴，永遠無法達到完全勝任的能力。"
 
 #: site/activities/coaching-checklist-mawl.php:177
 #: site/activities/coaching-checklist-two.php:216
@@ -1383,32 +1340,31 @@ msgid ""
 "regular and more ad hoc."
 msgstr ""
 "觀看是時間最長的階段。它涉及與學習者更多的間接接觸。它旨在培養學習者掌握各方"
-"面技能的能力。所費時間可能是前兩個階段總和的十倍或更多。隨着學習者技能的進"
-"步，與指導者的接觸可能會變得不那麼定期，而是變得具有臨時性。"
+"面技能的能力。所費時間可能是前兩個階段總和的十倍或更多。隨着學員技能的進步，"
+"與導師的接觸可能會變得不那麼定期，而是變得具有臨時性。"
 
 #: site/activities/coaching-checklist-mawl.php:181
 #: site/activities/coaching-checklist-two.php:220
 #: site/activities/coaching-checklist.php:314
-#, fuzzy
 msgid ""
 "Leaving is a sort of graduation when the learner becomes a peer of the "
 "mentor. Periodic contact and peer mentoring may continue to take place if "
 "the learner and mentor are in the same network. When a parent releases a "
 "child to ride their bicycle completely unsupervised, that is the LEAVE phase."
 msgstr ""
-"當學習者成為指導者的同伴時，放手就是一種畢業。如果學習者和指導者處於同一網絡"
-"中，則可以繼續進行定期聯繫和朋輩指導。當父母讓孩子在完全無人監督的情況下騎自"
-"行車時，這就是「放手」階段。"
+"當學員成為導師的朋輩時，放手就是一種畢業。如果學員和導師處於同一網絡中，則可"
+"以繼續進行定期聯繫和朋輩指導。當父母讓孩子在完全無人監督的情況下騎自行車時，"
+"這就是「放手」階段。"
 
 #: site/activities/coaching-checklist-two.php:101
+#, fuzzy
 msgid "1. Self-evaluate yourself using Heard, Obeyed, Shared, Trained."
 msgstr "1. 以知曉、順服、分享、教導方面來進行自我評估。"
 
 #: site/activities/coaching-checklist-two.php:102
 #, fuzzy
 msgid "2. Coach others by using Model, Assist, Watch, Leave."
-msgstr ""
-"2. 教導他人從「示範」、「輔助」、「守護」、「放手」的觀點來評估一個門徒。"
+msgstr "2. 教導別人從「示範」、「輔助」、「守護」、「放手」的觀點來評估一個門徒。"
 
 #: site/activities/coaching-checklist.php:127
 #: site/activities/coaching-checklist.php:270
@@ -1417,9 +1373,8 @@ msgstr "自我評估"
 
 #: site/activities/coaching-checklist.php:147
 #: site/activities/coaching-checklist.php:286
-#, fuzzy
 msgid "Mentee Development Level"
-msgstr "發展領袖能力"
+msgstr "學員的發展能力"
 
 #: site/activities/coaching-checklist.php:153
 #: site/activities/coaching-checklist.php:289
@@ -1443,7 +1398,6 @@ msgstr "已熟練"
 
 #: site/activities/coaching-checklist.php:167
 #: site/activities/coaching-checklist.php:302
-#, fuzzy
 msgid "Mentor’s Role"
 msgstr "導師的角色"
 
@@ -1472,7 +1426,6 @@ msgid "Relate to them as co-laborer"
 msgstr "將他們視為合作夥伴"
 
 #: site/activities/coaching-checklist.php:187
-#, fuzzy
 msgid "Mentor’s Behaviors"
 msgstr "導師的行為"
 
@@ -1492,34 +1445,28 @@ msgid "Support and encourage"
 msgstr "支持和鼓勵"
 
 #: site/activities/coaching-checklist.php:202
-#, fuzzy
 msgid "Receive updates"
 msgstr "接收更新"
 
 #: site/activities/coaching-checklist.php:207
-#, fuzzy
 msgid "Planning Responsibilities"
 msgstr "規劃職責"
 
 #: site/activities/coaching-checklist.php:213
-#, fuzzy
 msgid "Mentor decides"
-msgstr "導師決定"
+msgstr "導師設定"
 
 #: site/activities/coaching-checklist.php:216
-#, fuzzy
 msgid "Discuss and Mentor decides"
-msgstr "討論並由導師決定"
+msgstr "討論並由導師設定"
 
 #: site/activities/coaching-checklist.php:219
-#, fuzzy
 msgid "Discuss and Mentee decides"
-msgstr "討論並由學員決定"
+msgstr "討論並由學員設定"
 
 #: site/activities/coaching-checklist.php:222
-#, fuzzy
 msgid "Mentee decides"
-msgstr "學員決定"
+msgstr "學員設定"
 
 #: site/activities/coaching-checklist.php:289
 #, fuzzy
@@ -1541,7 +1488,7 @@ msgstr "3. 學員是否了解該工具並能夠培訓該工具的基礎知識？
 #: site/activities/coaching-checklist.php:298
 #, fuzzy
 msgid "Does the Mentee feel confident and able to effectively train the tool?"
-msgstr "4. 如果您對這工具很有把握，而且能有效培訓別人使用，請在綠色欄位底下打勾。"
+msgstr "4. 如果學員對這工具很有把握，而且能有效培訓別人使用，請在綠色欄位底下打勾。"
 
 #: site/activities/list-of-100-printable.php:110
 #: site/activities/list-of-100.php:92 site/course/course-book-generator.php:594
@@ -1557,9 +1504,8 @@ msgstr "未信者"
 
 #: site/activities/list-of-100-printable.php:110
 #: site/activities/list-of-100.php:92 site/course/course-book-generator.php:594
-#, fuzzy
 msgid "Unknown"
-msgstr "不知"
+msgstr "未知"
 
 #: site/activities/three-month-plan-printable.php:22
 #: site/activities/three-month-plan.php:22
@@ -1572,30 +1518,25 @@ msgid "3-Month Plan"
 msgstr "三個月規畫"
 
 #: site/activities/three-month-plan.php:69
-#, fuzzy
 msgid "Switch to Printable Version"
 msgstr "切換到列印版本"
 
 #: site/activities/three-month-plan.php:82
-#, fuzzy
 msgid "Scripts are off"
-msgstr "腳本已關閉"
+msgstr "字幕已關閉"
 
 #: site/activities/three-month-plan.php:83
-#, fuzzy
 msgid ""
 "Please turn on scripts to use this interactive page. Otherwise you may use "
 "the printable version using the link above."
-msgstr "請開啓腳本以使用此互動網頁。否則，您可以透過上面的連結使用可列印版本。"
+msgstr "請開啓字幕使用此互動網頁。或者，您可以透過以上的連結使用列印版本。"
 
 #: site/activities/three-month-plan.php:94 site/dashboard/dashboard.php:171
 #: site/dashboard/wizard.php:310 site/profile/profile.php:148
-#, fuzzy
 msgid "Save"
 msgstr "儲存"
 
 #: site/activities/three-month-plan.php:95
-#, fuzzy
 msgid "Cancel"
 msgstr "取消"
 
@@ -1604,13 +1545,12 @@ msgid "Question"
 msgstr "問題"
 
 #: site/activities/three-month-plan.php:97 site/dashboard/dashboard.php:329
-#, fuzzy
 msgid "Answer"
 msgstr "答案"
 
 #: site/activities/three-month-plan.php:98 site/dashboard/dashboard.php:330
 msgid "Note"
-msgstr ""
+msgstr "備註"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:13
 #: site/course/course-content.php:896
@@ -1649,14 +1589,12 @@ msgstr ""
 #: site/course/course-content.php:2632 site/course/course-content.php:2700
 #: site/course/course-content.php:3057 site/course/course-content.php:3174
 #: site/course/course-content.php:4888
-#, fuzzy
 msgid "DISCUSS"
 msgstr "討論"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:24
 #: site/course/_strings-3-circle-gospel-presentation.php:62
 #: site/course/course-builder.php:411
-#, fuzzy
 msgid "(10 min)"
 msgstr "（10 分鐘）"
 
@@ -1674,7 +1612,7 @@ msgstr "當您聽見神命令您作祂的見證人，並宣揚祂的故事，您
 msgid ""
 "Why do you think Jesus chose ordinary people instead of some other way to "
 "share His good news?"
-msgstr "您認為耶穌為什麼選擇平凡的人而不是其他方式來分享祂的好消息？"
+msgstr "您認為耶穌為什麼選擇平凡的人而不是其他方式來分享福音？"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:30
 #: site/course/course-content.php:916
@@ -1698,13 +1636,11 @@ msgstr "怎麼樣才能讓您更自在地分享上帝的故事？"
 #: site/course/course-content.php:2553 site/course/course-content.php:2602
 #: site/course/course-content.php:2648 site/course/course-content.php:3028
 #: site/course/course-content.php:3074
-#, fuzzy
 msgid "WATCH"
-msgstr "看影片"
+msgstr "看片"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:40
 #: site/course/course-builder.php:407
-#, fuzzy
 msgid "(5 min)"
 msgstr "（5 分鐘）"
 
@@ -1712,16 +1648,15 @@ msgstr "（5 分鐘）"
 #: site/course/course-content.php:836 site/course/course-content.php:890
 #: site/course/course-content.php:930 site/course/course-content.php:1069
 #: site/course/course-content.php:3931 site/course/course-content.php:3950
-#, fuzzy
 msgid "The Gospel"
-msgstr "簡述福音"
+msgstr "「神的故事」"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:44
 #, fuzzy
 msgid ""
 "One way to share God‘s good news is by using a visual presentation called 3 "
 "Circles."
-msgstr "分享上帝好消息的一種方法是使用叫做「3 個圓圈」的視覺演示。"
+msgstr "分享福音的一種方法是使用叫做「三圈佈道法」的視覺演示。"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:66
 #: site/course/course-content.php:960
@@ -1749,26 +1684,24 @@ msgstr "您認為透過講述這樣的故事來分享神的故事會更容易還
 #: site/course/_strings-3-circle-gospel-presentation.php:84
 #: site/course/_strings-3-circle-gospel-presentation.php:109
 #: site/course/course-content.php:2681
-#, fuzzy
 msgid "Scan the QR code or find a piece of paper."
 msgstr "掃描 QR code 或找一張紙。"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:85
-#, fuzzy
 msgid "Select a person from your list of 100."
-msgstr "從「百人名單」選出一人"
+msgstr "從您的「百人名單」中選出一人。"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:86
 #, fuzzy
 msgid ""
 "Use the coaching checklist and evaluate your selected person. Ask yourself, "
 "\"What does this person need for each of the tools and concepts?\""
-msgstr "使用輔導清單並評估您選擇的人。問問自己「這個人需要什麼工具和概念？」"
+msgstr "使用「教練指南」並評估您選擇的人。問問自己「這個人需要什麼工具和概念？」"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:87
 #, fuzzy
 msgid "Check off the checklist."
-msgstr "檢查清單。"
+msgstr "檢查「教練指南」。"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:94
 #: site/course/_strings-3-circle-gospel-presentation.php:116
@@ -1790,7 +1723,7 @@ msgstr "活動資源"
 msgid ""
 "Assess Yourself - Evaluate yourself and mark the corresponding columns on "
 "the Coaching Checklist."
-msgstr "評估自己 - 評估自己並在輔導清單上的對應欄做標記。"
+msgstr "評估自己──評估自己並在「教練指南」上的對應欄做標記。"
 
 #: site/course/course-book-generator.php:295
 msgid "READ"
@@ -1802,124 +1735,100 @@ msgid "NEXT STEP"
 msgstr "下一步"
 
 #: site/course/course-builder.php:403
-#, fuzzy
 msgid "(1 min)"
 msgstr "（1 分鐘）"
 
 #: site/course/course-builder.php:404
-#, fuzzy
 msgid "(2 min)"
-msgstr "（20 分鐘）"
+msgstr "（2 分鐘）"
 
 #: site/course/course-builder.php:405
-#, fuzzy
 msgid "(3 min)"
-msgstr "（30 分鐘）"
+msgstr "（3 分鐘）"
 
 #: site/course/course-builder.php:406
-#, fuzzy
 msgid "(4 min)"
-msgstr "（40 分鐘）"
+msgstr "（4 分鐘）"
 
 #: site/course/course-builder.php:408
-#, fuzzy
 msgid "(6 min)"
-msgstr "（60 分鐘）"
+msgstr "（6 分鐘）"
 
 #: site/course/course-builder.php:409
-#, fuzzy
 msgid "(7 min)"
-msgstr "（70 分鐘）"
+msgstr "（7 分鐘）"
 
 #: site/course/course-builder.php:410
-#, fuzzy
 msgid "(8 min)"
-msgstr "（80 分鐘）"
+msgstr "（8 分鐘）"
 
 #: site/course/course-builder.php:412
-#, fuzzy
 msgid "(15 min)"
 msgstr "（15 分鐘）"
 
 #: site/course/course-builder.php:413
-#, fuzzy
 msgid "(20 min)"
 msgstr "（20 分鐘）"
 
 #: site/course/course-builder.php:414
-#, fuzzy
 msgid "(25 min)"
 msgstr "（25 分鐘）"
 
 #: site/course/course-builder.php:415
-#, fuzzy
 msgid "(30 min)"
 msgstr "（30 分鐘）"
 
 #: site/course/course-builder.php:416
-#, fuzzy
 msgid "(35 min)"
 msgstr "（35 分鐘）"
 
 #: site/course/course-builder.php:417
-#, fuzzy
 msgid "(40 min)"
 msgstr "（40 分鐘）"
 
 #: site/course/course-builder.php:418
-#, fuzzy
 msgid "(45 min)"
 msgstr "（45 分鐘）"
 
 #: site/course/course-builder.php:419
-#, fuzzy
 msgid "(50 min)"
 msgstr "（50 分鐘）"
 
 #: site/course/course-builder.php:420
-#, fuzzy
 msgid "(55 min)"
 msgstr "（55 分鐘）"
 
 #: site/course/course-builder.php:421
-#, fuzzy
 msgid "(60 min)"
 msgstr "（60 分鐘）"
 
 #: site/course/course-builder.php:422
-#, fuzzy
 msgid "(65 min)"
 msgstr "（65 分鐘）"
 
 #: site/course/course-builder.php:423
-#, fuzzy
 msgid "(70 min)"
 msgstr "（70 分鐘）"
 
 #: site/course/course-builder.php:424
-#, fuzzy
 msgid "(75 min)"
 msgstr "（75 分鐘）"
 
 #: site/course/course-builder.php:425
-#, fuzzy
 msgid "(80 min)"
 msgstr "（80 分鐘）"
 
 #: site/course/course-builder.php:426
-#, fuzzy
 msgid "(85 min)"
 msgstr "（85 分鐘）"
 
 #: site/course/course-builder.php:427
-#, fuzzy
 msgid "(90 min)"
 msgstr "（90 分鐘）"
 
 #: site/course/course-builder.php:428
-#, fuzzy
 msgid "(60 - 90 min)"
-msgstr "（60 - 90 分鐘）"
+msgstr "（60 至 90 分鐘）"
 
 #: site/course/course-content.php:33 site/course/course-content.php:38
 #: site/course/course-content.php:3230 site/course/course-content.php:3235
@@ -2004,9 +1913,8 @@ msgstr "讓所有參與者和輔導員簽到。"
 #: site/course/course-content.php:5879 site/course/course-content.php:5930
 #: site/course/course-content.php:5979 site/course/course-content.php:6028
 #: site/course/course-content.php:6077
-#, fuzzy
 msgid "Or zume.training/checkin and use code:"
-msgstr "或到 zume.training/checkin 並使用代碼："
+msgstr "或到 zume.training/checkin 使用代碼："
 
 #: site/course/course-content.php:69 site/course/course-content.php:456
 #: site/course/course-content.php:799 site/course/course-content.php:1155
@@ -2024,7 +1932,6 @@ msgstr "或到 zume.training/checkin 並使用代碼："
 #: site/course/course-content.php:5258 site/course/course-content.php:5387
 #: site/course/course-content.php:5520 site/course/course-content.php:5565
 #: site/course/course-content.php:5657 site/course/course-content.php:5781
-#, fuzzy
 msgid "PRAY"
 msgstr "禱告"
 
@@ -2070,9 +1977,8 @@ msgid "Simple Definition of Disciple & Church"
 msgstr "「門徒」與「教會」的簡單定義"
 
 #: site/course/course-content.php:89 site/course/course-content.php:374
-#, fuzzy
 msgid "Spiritual Breathing"
-msgstr "屬靈的呼吸"
+msgstr "「屬靈呼吸」"
 
 #: site/course/course-content.php:91 site/course/course-content.php:493
 #: site/course/course-content.php:834 site/course/course-content.php:1193
@@ -2086,7 +1992,7 @@ msgstr "我們將把這些工具加入我們的工具包："
 #: site/course/course-content.php:3412 site/course/course-content.php:3428
 #: site/pages/follow-jesus.php:210
 msgid "S.O.A.P.S. Bible Reading"
-msgstr "「S.O.A.P.S. 肥皂讀經法」"
+msgstr "「肥皂讀經法」"
 
 #: site/course/course-content.php:112
 msgid "God uses ordinary people doing simple things to make a big impact."
@@ -2097,8 +2003,7 @@ msgstr "使用「平凡的人」藉着微不足道的小事造成巨大的影響
 msgid ""
 "If Jesus intended every one of His followers to obey His Great Commission, "
 "why do so few actually make disciples?"
-msgstr ""
-"如果耶穌要每一位跟隨祂的人遵守祂的大使命，為什麼只有少數人起來帶領門徒？"
+msgstr "如果耶穌要每一位跟隨者遵守祂的大使命，為什麼只有少數人起來帶領門徒？"
 
 #: site/course/course-content.php:186
 #, fuzzy
@@ -2145,9 +2050,8 @@ msgstr "每日聆聽神的話語，是我們與神建立關係的重要因素，
 "神在我們身上的作為。"
 
 #: site/course/course-content.php:277 site/course/course-content.php:286
-#, fuzzy
 msgid "Practice S.O.A.P.S."
-msgstr "練習 S.O.A.P.S."
+msgstr "練習「S.O.A.P.S. 肥皂讀經法」"
 
 #: site/course/course-content.php:288 site/course/course-content.php:347
 #: site/course/course-content.php:598 site/course/course-content.php:977
@@ -2156,24 +2060,20 @@ msgstr "練習 S.O.A.P.S."
 #: site/course/course-content.php:2127 site/course/course-content.php:2347
 #: site/course/course-content.php:3108 site/course/course-content.php:3153
 #: site/course/course-content.php:4072 site/course/course-content.php:5033
-#, fuzzy
 msgid "Scan the QR code."
 msgstr "掃描 QR code。"
 
 #: site/course/course-content.php:290
-#, fuzzy
 msgid ""
 "Work individually through the SOAPS Bible study pattern using Matthew "
 "6:9-13. (20 min)"
-msgstr ""
-"掃描 QR code 並用馬太福音 6:9-13 透過 S.O.A.P.S. 聖經學習模式單獨工作。 （20 "
-"分鐘）"
+msgstr "透過「肥皂讀經法」以馬太福音 6:9-13 進行個別研習。 （20 分鐘）"
 
 #: site/course/course-content.php:291
 #, fuzzy
 msgid ""
 "Return together and share your S.O.A.P.S. in groups of two or three. (10 min)"
-msgstr "兩人或三人一組，一起返回並分享您們的 S.O.A.P.S.。 （10 分鐘）"
+msgstr "兩人或三人一組，一起返回並分享您們的「S.O.A.P.S. 肥皂讀經法」。 （10 分鐘）"
 
 #: site/course/course-content.php:317
 #, fuzzy
@@ -2229,17 +2129,15 @@ msgstr "重温"
 #: site/course/course-content.php:4500 site/course/course-content.php:4907
 #: site/course/course-content.php:5181 site/course/course-content.php:5307
 #: site/course/course-content.php:5581
-#, fuzzy
 msgid "Concepts heard in this session:"
-msgstr "本課堂中學到的概念："
+msgstr "本堂課中學到的概念："
 
 #: site/course/course-content.php:376 site/course/course-content.php:704
 #: site/course/course-content.php:1067 site/course/course-content.php:1474
 #: site/course/course-content.php:1946 site/course/course-content.php:2885
 #: site/course/course-content.php:3195
-#, fuzzy
 msgid "Tools heard in this session:"
-msgstr "本課堂中學到的工具："
+msgstr "本堂課中學到的工具："
 
 #: site/course/course-content.php:390 site/course/course-content.php:1081
 #: site/course/course-content.php:1488 site/course/course-content.php:1959
@@ -2254,9 +2152,8 @@ msgstr "本課堂中學到的工具："
 #: site/course/course-content.php:5195 site/course/course-content.php:5322
 #: site/course/course-content.php:5455 site/course/course-content.php:5595
 #: site/course/course-content.php:5717
-#, fuzzy
 msgid "OBEY"
-msgstr "順從"
+msgstr "順服"
 
 #: site/course/course-content.php:391 site/course/course-content.php:1082
 #: site/course/course-content.php:1489 site/course/course-content.php:1960
@@ -2281,9 +2178,8 @@ msgid ""
 "meeting. Focus on Matthew 5-7, read it at least once a day. Keep a daily "
 "journal using the S.O.A.P.S. format."
 msgstr ""
-"開始操練 S.O.A.P.S. "
-"香皂讀經法吧！下次聚會前，專注在馬太福音五到七章，每日至少讀過一遍，"
-"並且要每天寫下 S.O.A.P.S. 香皂讀經日誌。"
+"開始操練「S.O.A.P.S. 肥皂讀經法」吧！下次聚會前，專注在馬太福音五到七章，每日"
+"至少讀過一遍，並且要每日以「S.O.A.P.S. 」讀經寫下日誌。"
 
 #: site/course/course-content.php:395 site/course/course-content.php:3564
 #, fuzzy
@@ -2298,9 +2194,8 @@ msgid ""
 "Ask the Lord to guide you to challenge at least five people you know who are "
 "believers to begin their own S.O.A.P.S. Bible reading practice daily, and "
 "then do so."
-msgstr ""
-"求主引導您挑戰至少五個您認識的信徒，開始他們自己的每日 S.O.A.P.S. 讀經練習，"
-"然後這樣做。"
+msgstr "求主引導您挑戰至少五個您認識的信徒，開始他們自己的每日以「S.O.A.P.S. "
+"肥皂讀經法」讀經練習，然後這樣做。"
 
 #: site/course/course-content.php:420 site/course/course-content.php:425
 #: site/course/course-content.php:3341 site/course/course-content.php:3346
@@ -2410,9 +2305,8 @@ msgstr "在本次課堂中，我們將聽到並討論這個概念："
 #: site/course/course-content.php:491 site/course/course-content.php:504
 #: site/course/course-content.php:513 site/course/course-content.php:702
 #: site/course/course-content.php:3655 site/course/course-content.php:3675
-#, fuzzy
 msgid "Producer Not Consumer"
-msgstr "生產者而非消費者"
+msgstr "「生產者」而非「消費者」"
 
 #: site/course/course-content.php:514
 #, fuzzy
@@ -2420,36 +2314,31 @@ msgid ""
 "If we want to make disciples who multiply – spiritual producers and not just "
 "consumers – then we need to learn and share four main ways God makes "
 "everyday followers more like Jesus:"
-msgstr ""
-"如果我們希望培養出倍增的門徒——靈性生產型而非消費型的門徒，那麼我們必須學習並"
-"分享以下四種方式，好使我們這些天天跟隨基督的門徒更像耶穌："
+msgstr "如果我們希望培育建立門徒者成為靈性生產型而非消費型的門徒，那麼我們必須學習並"
+"分享神所使用的四個主要方式，讓天天跟隨基督的門徒更像耶穌："
 
 #: site/course/course-content.php:516 site/pages/follow-jesus.php:193
-#, fuzzy
 msgid "Prayer"
-msgstr "靈修禱告"
+msgstr "與神禱告"
 
 #: site/course/course-content.php:517
-#, fuzzy
 msgid "Scripture"
-msgstr "查詢聖經"
+msgstr "查考聖經"
 
 #: site/course/course-content.php:518
-#, fuzzy
 msgid "Body Life"
 msgstr "肢體生活"
 
 #: site/course/course-content.php:519
-#, fuzzy
 msgid "Persecution and Suffering"
-msgstr "逼迫與受苦"
+msgstr "患難逼迫"
 
 #: site/course/course-content.php:549
 #, fuzzy
 msgid ""
 "Of the four areas detailed above (prayer, God’s Word, etc.), which ones do "
 "you already practice?"
-msgstr "上面詳細描述的四種方式﹙靈修禱告、查考聖經⋯等﹚，您操練了哪幾種？"
+msgstr "上面詳細描述的四種方式﹙禱告、讀經⋯等﹚，您操練了哪幾種？"
 
 #: site/course/course-content.php:550
 #, fuzzy
@@ -2459,7 +2348,7 @@ msgstr "哪種是您沒有把握的？"
 #: site/course/course-content.php:551
 #, fuzzy
 msgid "How ready do you feel when it comes to training others?"
-msgstr "在訓練他人的事上，您覺得您準備得如何？"
+msgstr "在培訓別人的事上，您覺得您準備得如何？"
 
 #: site/course/course-content.php:569
 #, fuzzy
@@ -2511,11 +2400,10 @@ msgid ""
 msgstr "神已經給了我們「使人作門徒」所需的人際關係。"
 
 #: site/course/course-content.php:645
-#, fuzzy
 msgid ""
 "These are our family, friends, neighbors, co-workers and classmates – people "
 "we’ve known all our lives or maybe just met."
-msgstr "他們是我們的家人、朋友、鄰居、同事和同學——我們認識一輩子或剛認識的人。"
+msgstr "他們是我們的家人、朋友、鄰居、同事和同學，即是我們認識了一輩子或剛認識的人。"
 
 #: site/course/course-content.php:646
 #, fuzzy
@@ -2523,9 +2411,8 @@ msgid "Stewarding the relationships you have is the best place to start."
 msgstr "管理您所擁有的關係是最好的起點。"
 
 #: site/course/course-content.php:668 site/course/course-content.php:675
-#, fuzzy
 msgid "Create your own list of 100"
-msgstr "每人擬出自己的「百人名單」"
+msgstr "擬出您自己的「百人名單」"
 
 #: site/course/course-content.php:677
 #, fuzzy
@@ -2547,7 +2434,6 @@ msgid ""
 msgstr "然後標出您對他們與神的關係的最佳理解：門徒、非信徒或未知。"
 
 #: site/course/course-content.php:718
-#, fuzzy
 msgid "Obey"
 msgstr "遵守"
 
@@ -2576,9 +2462,8 @@ msgstr "求神讓您明白接下來該去跟誰分享「百人名單」這個工
 "個人的名字，然後在下一堂課以前，聯繫那個人並與他分享。"
 
 #: site/course/course-content.php:733 site/course/course-content.php:6155
-#, fuzzy
 msgid "To saturate the world with multiplying disciples in our generation."
-msgstr "讓我們這一代的門徒數量不斷增加，從而充滿世界。"
+msgstr "在我們這一代中達致門徒倍增遍佈全球。"
 
 #: site/course/course-content.php:735 site/course/course-content.php:6157
 #, fuzzy
@@ -2609,12 +2494,11 @@ msgid ""
 "is different – God invests more in those who are faithful with what they’ve "
 "already been given."
 msgstr ""
-"在這個支離破碎的世界裡，人們只有在比其他人獲取得多、接受更多、獲益更大時才肯"
-"罷休，覺得自己有獲得回報。但是神的屬靈經濟學不一樣──那些在已得的事上忠心的人"
-"，神會加倍的添給他們。"
+"在這個支離破碎的世界裡，人們只有在比別人獲取得多、接受更多、獲益更大時才肯罷"
+"休，覺得自己有獲得回報。但是神的「屬靈經濟學」並不一樣：凡忠心於神所託的人，"
+"神會加倍的添給他們。"
 
 #: site/course/course-content.php:883
-#, fuzzy
 msgid ""
 "What are some differences you see between God’s Spiritual Economy and our "
 "earthly way of getting things done?"
@@ -2626,9 +2510,8 @@ msgid ""
 "One way to share God’s good news is by telling God’s story from Creation to "
 "Judgement – from the beginning of humankind all the way to the end of this "
 "age."
-msgstr ""
-"分享上帝好消息的一種方法是講述上帝從創造到審判的故事——從人類的開始直到這個世"
-"代的結束。"
+msgstr "分享福音的一種方法是講述上帝從創造到審判的故事──從人類的開始直到這個世代的結"
+"束。"
 
 #: site/course/course-content.php:978
 #, fuzzy
@@ -2685,9 +2568,8 @@ msgstr ""
 "「是的！我願意跟隨主！」"
 
 #: site/course/course-content.php:1065 site/pages/follow-jesus.php:244
-#, fuzzy
 msgid "The Spiritual Economy"
-msgstr "屬靈經濟學"
+msgstr "「屬靈經濟學」"
 
 #: site/course/course-content.php:1085 site/course/course-content.php:4112
 #, fuzzy
@@ -2713,9 +2595,8 @@ msgstr "這星期花時間練習上帝的故事，然後與您的「百人名單
 msgid ""
 "IMPORTANT REMINDER – Your group will be celebrating the Lord’s Supper next "
 "session. Be sure to remember the supplies (bread and wine / juice)."
-msgstr ""
-"重要提醒︰下一次的門徒訓練小組，將會在小組裡守聖餐。請記得帶聖餐的餅與酒﹙或"
-"葡萄汁﹚。"
+msgstr "重要提醒︰下一次的培訓小組，將會在小組裡守聖餐。請記得帶聖餐的餅與酒﹙或葡萄"
+"汁﹚。"
 
 #: site/course/course-content.php:1097 site/course/course-content.php:4389
 #, fuzzy
@@ -2735,7 +2616,7 @@ msgstr "第四堂課"
 #, fuzzy
 msgid ""
 "Pray and thank God that He invites us to share His Good News with others."
-msgstr "禱告並感謝上帝邀請我們與他人分享祂的好消息。"
+msgstr "禱告並感謝上帝邀請我們與別人分享福音。"
 
 #: site/course/course-content.php:1159
 #, fuzzy
@@ -2752,9 +2633,9 @@ msgid ""
 "with God is called your Testimony. It’s powerful, and it’s something no one "
 "can share better than you."
 msgstr ""
-"我們是跟隨耶穌的人，也是耶穌的「見證人」，「見證」耶穌帶給我們生命何等巨大的"
-"改變。您認識神，跟神之間有了嶄新的關係，這故事就是您們自己的見證，是很有能力"
-"的見證，而且沒有别人可以講得比您自己講得更好。"
+"作為耶穌的跟隨者，也是耶穌的「見證人」，「見證」耶穌帶給我們生命何等巨大的改"
+"變。您認識神，跟神之間有了嶄新的關係，這故事就是您們自己的見證，是很有能力的"
+"見證，而且沒有别人可以講得比您自己講得更好。"
 
 #: site/course/course-content.php:1241
 #, fuzzy
@@ -2790,7 +2671,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "After you came to faith, how long was it before you began to disciple others?"
-msgstr "您們在信耶穌多久之後，才開始帶其他人來成為門徒？"
+msgstr "您們在信耶穌多久之後，才開始建立別人成為門徒？"
 
 #: site/course/course-content.php:1301
 #, fuzzy
@@ -2844,7 +2725,7 @@ msgstr "您是否曾去過某個家庭、某個社區或是某個城市，在那
 msgid ""
 "Who are you more comfortable sharing with -- people you already know or "
 "people you haven’t met, yet?"
-msgstr "通常您在哪些人面前比較能自在地交流分享？是熟識的人呢？還是陌生人呢？"
+msgstr "通常您在哪些人面前比較能自在地交流分享──熟識的人呢？還是陌生人呢？"
 
 #: site/course/course-content.php:1398
 #, fuzzy
@@ -2911,20 +2792,18 @@ msgstr ""
 "時光。"
 
 #: site/course/course-content.php:1606
-#, fuzzy
 msgid ""
 "Prayer Walking is a simple way to obey God’s command to pray for others. And "
 "it’s just what it sounds like – praying to God while walking around!"
-msgstr "「步行禱告」是順服神的命令為他人禱告的一種簡單方式。顧名思義，「步行禱告」就"
-"是邊走路、邊禱告！"
+msgstr "「步行禱告」是一種簡單的禱告方式，遵守神要我們為別人禱告的命令。顧名思義，就"
+"是一邊步行，一邊向神禱告的意思！"
 
 #: site/course/course-content.php:1638
 #, fuzzy
 msgid ""
 "Disciple-making can be rapidly advanced by finding a person of peace, even "
 "in a place where followers of Jesus are few and far between."
-msgstr ""
-"即使在耶穌的追隨者稀少且相距遙遠的地方，找到一個和藹可親的人也能迅速推進門徒"
+msgstr "即使在耶穌的跟隨者稀少且相距遙遠的地方，找到一個和藹可親的人也能迅速推進門徒"
 "訓練。"
 
 #: site/course/course-content.php:1667
@@ -2949,22 +2828,20 @@ msgstr "您附近的哪個社區或社會階層似乎很少（或根本沒有）
 msgid ""
 "How could a Person of Peace (someone who is OPEN, HOSPITABLE, KNOWS OTHERS "
 "and SHARES) accelerate the spread of the Gospel in that community?"
-msgstr ""
-"一個和平的人（一個開放、好客、了解他人並樂於分享的人）如何加速福音在該社區的"
+msgstr "一個和平的人（一個開放、好客、了解別人並樂於分享的人）如何加速福音在該社區的"
 "傳播？"
 
 #: site/course/course-content.php:1685
-#, fuzzy
 msgid "Practice the B.L.E.S.S. Prayer"
-msgstr "練習 B.L.E.S.S. 祝福禱告法"
+msgstr "練習「B.L.E.S.S. 祝福禱告法」"
 
 #: site/course/course-content.php:1688
 #, fuzzy
 msgid ""
 "Break into groups of two or three and practice praying the five areas of the "
 "B.L.E.S.S. Prayer over each other."
-msgstr ""
-"兩三個人分成一組，練習為 B.L.E.S.S. 祝福禱告法的五個領域禱告，彼此互相代禱。"
+msgstr "兩三個人分成一組，練習為「B.L.E.S.S. "
+"祝福禱告法」的五個領域禱告，彼此互相代禱。"
 
 #: site/course/course-content.php:1703
 #, fuzzy
@@ -2988,7 +2865,7 @@ msgstr "您們可以在聚會地點就近進行，或者計劃好到特定地點
 #: site/course/course-content.php:1716 site/course/course-content.php:4630
 #, fuzzy
 msgid "Go as God leads, and plan on spending 60-90 minutes on this activity."
-msgstr "安排 60 到 90 分鐘的時間，由神帶領來進行這個操練。"
+msgstr "安排 60 至 90 分鐘的時間，由神帶領來進行這個操練。"
 
 #: site/course/course-content.php:1717
 #, fuzzy
@@ -3027,8 +2904,7 @@ msgid ""
 "Pray and thank God for what He did in the last session, ask Him to help when "
 "you find it hard to obey, and invite His Holy Spirit to lead your time "
 "together."
-msgstr ""
-"為神在上一次課堂中所做的事禱告並感謝祂，當您發現很難服從時求神幫助，並邀請祂"
+msgstr "為神在上一次課堂中所做的事禱告並感謝祂，當您發現很難順服時求神幫助，並邀請祂"
 "的聖靈帶領您們一起度過這段時間。"
 
 #: site/course/course-content.php:1831 site/course/course-content.php:1944
@@ -3050,7 +2926,7 @@ msgid ""
 "When we help multiply disciples, we need to make sure we’re reproducing the "
 "right things. It’s important what disciples know – but it’s much more "
 "important what they DO with what they know."
-msgstr "我們在協助倍增門徒時，固然需要確定我們所傳遞的是正確的，門徒所知所學很重要，"
+msgstr "在培育建立門徒者的過程中，需要確定我們所傳遞的是正確的。門徒所知所學很重要，"
 "但更重要的是門徒行出神所吩咐的。"
 
 #: site/course/course-content.php:1881
@@ -3058,7 +2934,7 @@ msgstr "我們在協助倍增門徒時，固然需要確定我們所傳遞的是
 msgid ""
 "Think about God’s commands that you already know. How \"faithful\" are you "
 "in terms of obeying and sharing those things?"
-msgstr "回想一下您們已經知道了哪些神的命令？在遵守並分享這些命令上，您們有多「忠心」"
+msgstr "回想一下您們已經知道了哪些神的命令？在順服主道、實踐分享上，您們有多「忠心」"
 "？"
 
 #: site/course/course-content.php:1898 site/course/course-content.php:4876
@@ -3089,8 +2965,8 @@ msgstr "「三分三小組」聚會能不能當成簡約教會來看待？為什
 msgid ""
 "Spend time this week obeying, training, and sharing based on the commitments "
 "you’ve made during your 3/3 Group practice."
-msgstr "在這星期撥出時間操練您們在「三分三小組」要求的順服、訓練、分享裡面所承諾的事"
-"項。"
+msgstr "在這星期撥出時間操練您們在「三分三小組」要求的「順服」、「教導」和「分享」裡"
+"面所承諾的事項。"
 
 #: site/course/course-content.php:1964 site/course/course-content.php:4926
 #, fuzzy
@@ -3115,22 +2991,20 @@ msgstr "為大家竭力忠心跟隨耶穌來禱告感謝神，並求聖靈繼續
 
 #: site/course/course-content.php:2058 site/course/course-content.php:2070
 #: site/course/course-content.php:2079 site/course/course-content.php:2169
-#, fuzzy
 msgid "The Training Cycle"
-msgstr "培訓循環"
+msgstr "「培訓循環」"
 
 #: site/course/course-content.php:2080
-#, fuzzy
 msgid ""
 "Have you ever learned how to ride a bicycle? Have you ever helped someone "
 "else learn? If so, chances are you already know the Training Cycle."
-msgstr "學過騎自行車嗎？還是教過別人騎自行車？如果都有，那您們對「培訓循環不息」的模"
-"式多少已經有個概念了。"
+msgstr "學過騎自行車嗎？還是教過別人騎自行車？如果都有，那您們對「培訓循環」多少已經"
+"有個概念了。"
 
 #: site/course/course-content.php:2109
 #, fuzzy
 msgid "Have you ever been a part of a Training Cycle?"
-msgstr "您參加過循環培訓嗎？"
+msgstr "您參加過「培訓循環」嗎？"
 
 #: site/course/course-content.php:2110
 #, fuzzy
@@ -3155,7 +3029,7 @@ msgstr "以這個方式去裝備人，會產生什麼果效？"
 msgid ""
 "LOOK BACK – Use last session’s Obey, Train, and Share challenges to check-in "
 "with each other. (30 min)"
-msgstr "回望 - 使用上一課的「服從」、「訓練」和「分享」挑戰來互相檢視。 （30 分鐘）"
+msgstr "回望 - 使用上一課的「順服」、「教導」和「分享」挑戰來互相檢視。 （30 分鐘）"
 
 #: site/course/course-content.php:2129
 #, fuzzy
@@ -3171,8 +3045,8 @@ msgstr ""
 msgid ""
 "LOOK FORWARD – Use questions 5, 6, and 7 in the Look Forward section to "
 "develop how you will Obey, Train and Share. (30 min)"
-msgstr "前望 - 使用「前望」部分中的問題 5、6 和 7 來製定您將如何服從、訓練和分享。 （"
-"30 分鐘）"
+msgstr "前望 - 使用「前望」部分中的問題 5、6 和 7 "
+"來製定您將如何「順服」、「教導」和「分享」。 （30 分鐘）"
 
 #: site/course/course-content.php:2152
 #, fuzzy
@@ -3246,8 +3120,8 @@ msgstr "耶穌說︰「你們中間誰願為大，就必做你們的用人。」
 msgid ""
 "Is there a group of followers of Jesus you know that are already meeting or "
 "would be willing to meet and form a Leadership Cell to learn Zúme Training?"
-msgstr "您可知，有哪些弟兄姊妹已經穩定參與聚會，或願意另外組成一個「帶領者培訓小組」"
-"，一同來學習「天國酵母」門徒訓練？"
+msgstr "您可知，有哪些跟隨耶穌的門徒已經穩定參與聚會，或願意另外組成一個「帶領者培訓"
+"小組」，一同來學習「天國酵母」門徒訓練？"
 
 #: site/course/course-content.php:2332
 #, fuzzy
@@ -3259,14 +3133,15 @@ msgstr "要怎麼把這些人聚集起來呢？"
 msgid ""
 "LOOK UP – Use Acts 2:42-47 as your group’s reading passage and answer "
 "questions 1- 4. (30 min)"
-msgstr "仰望 – 使用使徒行傳 2:42-47 作為小組的閱讀文章並回答問題 1-4。（30 分鐘）"
+msgstr "仰望 – 使用使徒行傳 2:42-47 作為小組的閱讀文章並回答問題 1-4。 （30 分鐘）"
 
 #: site/course/course-content.php:2350
 #, fuzzy
 msgid ""
 "LOOK FORWARD – Use questions 5, 6, and 7 to develop how you will Obey, Train "
 "and Share. (30 min)"
-msgstr "前望 – 用問題 5、6 和 7 來發展您將如何服從、訓練和分享。 （30 分鐘）"
+msgstr "前望 – 用問題 5、6 和 7 來發展您將如何「順服」、「教導」和「分享」。 （30 "
+"分鐘）"
 
 #: site/course/course-content.php:2371
 #, fuzzy
@@ -3293,9 +3168,8 @@ msgid ""
 "Pray and ask God who He wants you to share the Leadership Cell tool with "
 "before your group meets again. Challenge them to then share it with someone "
 "else."
-msgstr ""
-"禱告並詢問上帝，在您的小組再次聚會之前，祂希望您與誰分享領導小組工具。挑戰他"
-"們然後與其他人分享。"
+msgstr "禱告並詢問上帝，在您的小組再次聚會之前，祂希望您與誰分享領導小組工具。挑戰他"
+"們然後與別人分享。"
 
 #: site/course/course-content.php:2414 site/course/course-content.php:2419
 #: site/course/course-content.php:4259 site/course/course-content.php:4264
@@ -3311,7 +3185,7 @@ msgid ""
 "together and make it the best session yet."
 msgstr ""
 "禱告感謝神，祂的道路高過我們的道路，祂的意念非同我們的意念，求祂給每一位組員"
-"都有基督的心——總是專注在天父的事上。求聖靈繼續幫助引導，讓這堂課成為您們到目"
+"都有基督的心──總是專注在天父的事上。求聖靈繼續幫助引導，讓這堂課成為您們到目"
 "前為止最棒的一堂。"
 
 #: site/course/course-content.php:2483 site/course/course-content.php:2499
@@ -3326,7 +3200,7 @@ msgid ""
 "When people think about disciples multiplying, they often think of it as a "
 "step-by-step process. The problem with that is — that’s not how it works "
 "best!"
-msgstr "一說到倍增門徒，大家通常想到的是按部就班去做，但這並非最好的方式。"
+msgstr "一說到門徒倍增，大家通常想到的是按部就班去做，但這並非最好的方式。"
 
 #: site/course/course-content.php:2538
 #, fuzzy
@@ -3344,8 +3218,8 @@ msgid ""
 "Multiplying matters and multiplying quickly matters even more. Pace matters "
 "because where we all spend our eternity — an existence that outlasts time — "
 "is determined in the very short time we call “life.“"
-msgstr "倍增很重要，快速地倍增更是重要，速度是關鍵，因為永生超越時間的存在，而我們永"
-"生會居住在哪裡，是在一段短暫我們稱之為「生命」的時間裡面決定的。"
+msgstr "倍增很重要，加快倍增更重要，關鍵是速度，因為永生超越時間的存在，而我們永生會"
+"居住在哪裡，是在一段短暫我們稱之為「生命」的時間裡面決定的。"
 
 #: site/course/course-content.php:2586
 #, fuzzy
@@ -3400,16 +3274,15 @@ msgstr ""
 msgid ""
 "The Coaching Checklist is a simple tool you can use to help guide you as you "
 "assist others through various parts of becoming a fully equipped disciple."
-msgstr ""
-"輔導清單是一個簡單的工具，可以用來幫助引導當您幫助他人成為裝備齊全的門徒的各"
-"個環節。"
+msgstr "「教練指南」是一個簡單的工具，可以用來幫助引導當您幫助別人成為裝備齊全的門徒"
+"的各個環節。"
 
 #: site/course/course-content.php:2682
 #, fuzzy
 msgid ""
 "Self-Evaluate yourself using line 1 and mark the corresponding columns on "
 "the Coaching Checklist."
-msgstr "評估自己 - 評估自己並在輔導清單上的對應欄做標記。"
+msgstr "評估自己──評估自己並在「教練指南」上的對應欄做標記。"
 
 #: site/course/course-content.php:2704
 #, fuzzy
@@ -3433,13 +3306,13 @@ msgstr "您是否需要從清單中新增或刪除任何工具或概念？為什
 msgid ""
 "REMEMBER - Be sure to share your Coaching Checklist results with a training "
 "partner or other mentor."
-msgstr "請記住 - 請務必與培訓夥伴或其他導師分享您的輔導清單結果。"
+msgstr "請記住──請務必與培訓夥伴或其他導師分享您的「教練指南」結果。"
 
 #: site/course/course-content.php:2718
 #, fuzzy
 msgid ""
 "If you don’t have a coach or mentor, scan the QR code and request one now."
-msgstr "如果您沒有教練或導師，請掃描 QR Code 馬上申請。"
+msgstr "如果您沒有教練或導師，請掃描 QR code 馬上申請。"
 
 #: site/course/course-content.php:2723 site/dashboard/dashboard.php:219
 #: site/dashboard/wizard.php:236 site/pages/about.php:263
@@ -3457,14 +3330,14 @@ msgstr "安排教練"
 msgid ""
 "Four Fields and Generational Mapping are tools designed to serve growing "
 "movement efforts."
-msgstr "「四個領域」和「世代分布圖」主旨是替不斷增長的運動提供服務的工具。"
+msgstr "「四個領域」和「屬靈世代」主旨是替不斷增長的運動提供服務的工具。"
 
 #: site/course/course-content.php:2736
 #, fuzzy
 msgid ""
 "REMINDER: Zúme coaches are available to help you apply these tools in your "
 "local area."
-msgstr "提醒：Zúme 教練可以幫助您在所屬社區中運用這些工具。"
+msgstr "提醒：「天國酵母」的教練可以幫助您在所屬社區中運用這些工具。"
 
 #: site/course/course-content.php:2753
 #, fuzzy
@@ -3479,13 +3352,13 @@ msgid ""
 "Four Fields is used by a leadership cell to reflect on current efforts and "
 "Kingdom activity around them. It especially helps leaders balance efforts, "
 "so that no field is overlooked."
-msgstr ""
-"領導小組使用四個領域來反思當前的努力和周圍的神國活動。它特別有助於領導者平衡"
-"工作，以不忽視任何領域。"
+msgstr "領導小組使用「四個領域」來反思當前的努力和周遭的神國事工。它特別有助於領導者"
+"平衡工作，以不忽視任何領域。"
 
 #: site/course/course-content.php:2755
+#, fuzzy
 msgid "Review the next two slides: Field Descriptions and Four Fields Example"
-msgstr "重温下兩張投影片：領域描述和四個領域的範例"
+msgstr "重温下兩張投影片：領域描述和「四個領域」的範例"
 
 #: site/course/course-content.php:2766
 #, fuzzy
@@ -3530,9 +3403,8 @@ msgstr ""
 "倍增領域：您與誰、如何以及何時篩選忠誠的人並裝備他們且讓他們對倍增負責？"
 
 #: site/course/course-content.php:2786 site/course/course-content.php:2789
-#, fuzzy
 msgid "Four Fields Example"
-msgstr "四個領域範例"
+msgstr "「四個領域」的範例"
 
 #: site/course/course-content.php:2805 site/course/course-content.php:2857
 #, fuzzy
@@ -3544,7 +3416,7 @@ msgstr "討論"
 msgid ""
 "Identify an empty field around you. What communities or people groups that "
 "you are connected to have no gospel activity?"
-msgstr "找出您周圍的空白領域。您所聯絡的哪些社區或人羣沒有福音活動？"
+msgstr "找出您周遭的空白領域。您所聯絡的哪些社區或人羣沒有福音活動？"
 
 #: site/course/course-content.php:2810
 #, fuzzy
@@ -3556,14 +3428,14 @@ msgstr "如果其中一個領域被忽視，長期增長會受到怎樣的影響
 #: site/course/course-content.php:2811
 #, fuzzy
 msgid "Which Zúme tools could help in which field?"
-msgstr "哪種 Zúme 工具可以在哪個領域提供協助？"
+msgstr "哪種「天國酵母」的工具可以在哪個領域提供協助？"
 
 #: site/course/course-content.php:2826
 #, fuzzy
 msgid ""
 "Generational mapping (a.k.a. generation mapping or gen mapping) is another "
 "simple tool to help leaders in a movement understand the growth around them."
-msgstr "世代分布圖是另一個簡單的工具，可以幫助活動中的領導者了解周圍的成長。"
+msgstr "世代分布圖是另一個簡單的工具，可以幫助活動中的領導者了解周遭的成長。"
 
 #: site/course/course-content.php:2827
 #, fuzzy
@@ -3577,19 +3449,18 @@ msgstr ""
 "訓練的地方。活動的健康是領導者最關心的問題，而成果是衡量健康的首要標準。"
 
 #: site/course/course-content.php:2828
-#, fuzzy
 msgid "See the example on the next slide."
-msgstr "請參閱下一張投影片上的範例。"
+msgstr "參閱下一張投影片上的範例。"
 
 #: site/course/course-content.php:2841
 #, fuzzy
 msgid "Generational Mapping Example"
-msgstr "世代分布圖範例"
+msgstr "「屬靈世代」範例"
 
 #: site/course/course-content.php:2860
 #, fuzzy
 msgid "Use the Generational Mapping example to discuss the following:"
-msgstr "使用世代分布圖範例討論以下內容："
+msgstr "使用「屬靈世代」範例討論以下內容："
 
 #: site/course/course-content.php:2862
 #, fuzzy
@@ -3599,7 +3470,7 @@ msgstr "哪些領導人看到了倍增？"
 #: site/course/course-content.php:2863
 #, fuzzy
 msgid "Which groups would you expect to multiply next?"
-msgstr "您預計接下來哪些羣體會增加？"
+msgstr "您預計接下來哪些羣體會倍增？"
 
 #: site/course/course-content.php:2864
 #, fuzzy
@@ -3700,10 +3571,9 @@ msgstr "簡約教會之間、信徒之間形成互動頻繁、關係深厚的關
 "上想到哪些例子嗎？"
 
 #: site/course/course-content.php:3078
-#, fuzzy
 msgid ""
 "Making disciples who make disciples means making leaders who make leaders."
-msgstr "培育門徒就是培育領袖，培養領袖。"
+msgstr "培育建立門徒者就是培育建立領袖的人。"
 
 #: site/course/course-content.php:3079
 #, fuzzy
@@ -3729,9 +3599,7 @@ msgstr "兩到三人分成一組。使用「三分三小組」模式的「朋輩
 msgid ""
 "Choose one person in the group to be the \"mentee\" and have the other "
 "members work through the suggested questions list as peer mentors."
-msgstr ""
-"在小組中選擇一個人作為“被指導者”，並讓其他組員作為同儕導師解決建議的問題清"
-"單。"
+msgstr "在小組中選擇一個人作為「學員」，並讓其他組員作為朋輩指導解決建議的問題清單。"
 
 #: site/course/course-content.php:3133
 #, fuzzy
@@ -3753,20 +3621,20 @@ msgid ""
 "A Three Month Plan is a tool you can use to help focus your attention and "
 "efforts and keep them aligned with God’s priorities for making disciples who "
 "multiply."
-msgstr ""
-"三個月規劃是一個工具，您可以用它來幫助集中您的注意力和努力，並使它們與神培育"
-"門徒倍增的優先事項保持一致。"
+msgstr "「三個月規畫」是一個工具，您可以用它來幫助集中您的注意力和努力，並使它們與神"
+"培育門徒倍增的優先事項保持一致。"
 
 #: site/course/course-content.php:3136
+#, fuzzy
 msgid ""
 "The next slide will show you how to make your Three Month Plan. We recommend "
 "using the online tool."
-msgstr "下一張投影片將向您展示如何制定三個月規劃。我們建議使用網上工具。"
+msgstr "下一張投影片將向您展示如何制定「三個月規畫」。我們建議使用網上工具。"
 
 #: site/course/course-content.php:3151
 #, fuzzy
 msgid "Make your Three Month Plan"
-msgstr "制定您的三個月規劃"
+msgstr "制定您的「三個月規畫」"
 
 #: site/course/course-content.php:3154
 #, fuzzy
@@ -3782,24 +3650,23 @@ msgstr ""
 msgid ""
 "Listen - Take time to be as quiet as possible and listen to what God chooses "
 "to reveal. (10 min)"
-msgstr "傾聽－花時間盡可能安靜，傾聽上帝的啓示。 （10 分鐘）"
+msgstr "傾聽──花時間盡可能安靜，傾聽上帝的啓示。 （10 分鐘）"
 
 #: site/course/course-content.php:3156
 #, fuzzy
 msgid ""
 "Record Your Plan - Write commitments on a piece of paper or use the online "
 "tool to save your answers. (15 min)"
-msgstr "記錄您的計劃 - 將承諾寫在紙上或使用網上工具儲存您的答案。 （15 分鐘）"
+msgstr "記錄您的計劃──將承諾寫在紙上或使用網上工具儲存您的答案。 （15 分鐘）"
 
 #: site/course/course-content.php:3162
-#, fuzzy
 msgid "Online Plan Tool"
 msgstr "網上規劃工具"
 
 #: site/course/course-content.php:3177
 #, fuzzy
 msgid "Take turns sharing your Three Month Plans with each other."
-msgstr "輪流互相分享您的三個月規劃。"
+msgstr "輪流互相分享您的「三個月規畫」。"
 
 #: site/course/course-content.php:3178
 #, fuzzy
@@ -3823,7 +3690,7 @@ msgstr ""
 msgid ""
 "Share the definitions with whomever the Lord impresses on you to do so with. "
 "Then equip them to share it with someone else."
-msgstr "無論主讓您與誰分享這些定義，您都要這樣做。然後讓他們與其他人分享。"
+msgstr "無論主讓您與誰分享這些定義，您都要這樣做。然後讓他們與別人分享。"
 
 #: site/course/course-content.php:3382
 #, fuzzy
@@ -3842,9 +3709,8 @@ msgstr "在本堂課中，我們將會把此工具新增至我們的工具包：
 msgid ""
 "Pray and thank God for His presence in our lives. Pray for each person in "
 "the group to have ears to hear His voice and grace to obey what He says."
-msgstr ""
-"禱告並感謝上帝出現在我們的生活中。為小組中的每個人祈禱，讓他們有耳朵聆聽祂的"
-"聲音，並有恩典服從祂的話語。"
+msgstr "禱告並感謝上帝出現在我們的生活中。為小組中的每個人祈禱，讓他們有耳朵聆聽祂的"
+"聲音，並有恩典順服主道。"
 
 #: site/course/course-content.php:3565
 #, fuzzy
@@ -3871,9 +3737,8 @@ msgstr "在本堂課中，我們將聽到並討論這個概念："
 msgid ""
 "Pray and thank God for His love for all of the people in our lives. Pray for "
 "each person in the group to see those around you the way God sees them."
-msgstr ""
-"祈禱並感謝上帝對我們生活中所有人的愛。為小組中的每個人禱告，讓他們能以神看待"
-"他們的方式來看待您周圍的人。"
+msgstr "祈禱並感謝上帝對我們生活中所有人的愛。為小組中的每個人禱告，讓他們能以神看待"
+"他們的方式來看待您周遭的人。"
 
 #: site/course/course-content.php:3785 site/course/course-content.php:3823
 #, fuzzy
@@ -3907,7 +3772,7 @@ msgstr "使用「禱告輪」來指引您在這星期的某段時間禱告一個
 msgid ""
 "Share the prayer cycle with whomever the Lord directs you. Challenge them to "
 "share it with others as well."
-msgstr "與主指示您的任何人分享「禱告輪」。挑戰他們也與其他人分享。"
+msgstr "與主指示您的任何人分享「禱告輪」。挑戰他們也與別人分享。"
 
 #: site/course/course-content.php:3965
 #, fuzzy
@@ -3915,9 +3780,8 @@ msgid ""
 "Practice sharing the Spiritual Economy concept with a friend and pray for "
 "the Lord to ingrain it deeply within your heart and soul. Ask the Lord whom "
 "He would have you share it with."
-msgstr ""
-"練習與朋友分享屬靈經濟的概念，並祈求主將其深深根植於您的內心和靈魂中。求主讓"
-"您與人分享。"
+msgstr "練習與朋友分享「屬靈經濟學」的概念，並祈求主將其深深根植於您的內心和靈魂中。"
+"求主讓您與人分享。"
 
 #: site/course/course-content.php:3966
 #, fuzzy
@@ -3977,9 +3841,8 @@ msgid ""
 "Pray and thank God that He invites us to share His Good News with others. "
 "Ask Him to give each member of your group the mind of Christ — and to fill "
 "each one with His Spirit."
-msgstr ""
-"禱告並感謝上帝邀請我們與他人分享祂的好消息。求神賜給您團體中的每一位組員基督"
-"的心，並用祂的靈充滿每個人。"
+msgstr "禱告並感謝上帝邀請我們與別人分享福音。求神賜給您團體中的每一位組員基督的心，"
+"並用祂的靈充滿每個人。"
 
 #: site/course/course-content.php:4202
 #, fuzzy
@@ -4089,9 +3952,8 @@ msgid ""
 "Share \"Duckling Discipleship\" and \"Eyes to See Where the Kingdom Isn’t\" "
 "with whomever the Lord impresses on you. Then equip them to share it with "
 "someone else."
-msgstr ""
-"與主給您留下深刻印象的人分享《小鴨門徒訓練》和《用眼睛看看天國不在的地方》。"
-"然後讓他們與其他人分享。"
+msgstr "與主給您留下深刻印象的人分享《小鴨門徒訓練》和《用眼睛看看天國不在的地方》。"
+"然後讓他們與其別人分享。"
 
 #: site/course/course-content.php:4544 site/course/course-content.php:4549
 msgid "SESSION 11"
@@ -4103,9 +3965,8 @@ msgid ""
 "Pray and thank God for how He is at work in your life and the lives of "
 "others around you. Pray for the group to have eyes to see where the Kingdom "
 "isn‘t, yet."
-msgstr ""
-"為神在您的生活以及您周圍其他人的生活中所做的工作而禱告並感謝祂。為小組禱告，"
-"讓他們能夠看見神國還沒有出現的地方。"
+msgstr "為神在您的生活以及您周遭別人的生活中所做的工作而禱告並感謝祂。為小組禱告，讓"
+"他們能夠看見神國還沒有出現的地方。"
 
 #: site/course/course-content.php:4660 site/course/course-content.php:4665
 msgid "SESSION 12"
@@ -4114,14 +3975,14 @@ msgstr "第十二堂課"
 #: site/course/course-content.php:4768
 #, fuzzy
 msgid "Pray for someone in their presence using the BLESS pattern this week."
-msgstr "這星期使用 B.L.E.S.S. 祝福模式為在場的人禱告。"
+msgstr "這星期使用「B.L.E.S.S. 祝福禱告法」為在場的人禱告。"
 
 #: site/course/course-content.php:4769
 #, fuzzy
 msgid ""
 "Equip someone else to pray for others using the BLESS pattern and go with "
 "them as they do it."
-msgstr "裝備其他人使用B.L.E.S.S.祝福模式為他人禱告，並與他們一起做。"
+msgstr "裝備別人使用「B.L.E.S.S. 祝福禱告法」為別人禱告，並與他們一起做。"
 
 #: site/course/course-content.php:4791 site/course/course-content.php:4796
 msgid "SESSION 13"
@@ -4145,7 +4006,7 @@ msgstr "第十四堂課"
 msgid ""
 "LOOK BACK – Use last session’s Obey, Train, and Share challenges to check-in "
 "with each other. (15 min)"
-msgstr "回望 - 使用上一課的「服從」、「訓練」和「分享」挑戰來互相檢視。 （15 分鐘）"
+msgstr "回望 - 使用上一課的「順服」、「訓練」和「分享」挑戰來互相檢視。 （15 分鐘）"
 
 #: site/course/course-content.php:5035
 #, fuzzy
@@ -4161,8 +4022,8 @@ msgstr ""
 msgid ""
 "LOOK FORWARD – Use questions 5, 6, and 7 in the Look Forward section to "
 "develop how you will Obey, Train and Share. (15 min)"
-msgstr "前望 - 使用「前望」部分中的問題 5、6 和 7 來製定您將如何服從、訓練和分享。 （"
-"15 分鐘）"
+msgstr "前望 - 使用「前望」部分中的問題 5、6 和 7 "
+"來製定您將如何「順服」、「教導」和「分享」。 （15 分鐘）"
 
 #: site/course/course-content.php:5074
 #, fuzzy
@@ -4200,7 +4061,7 @@ msgstr ""
 #: site/course/course-content.php:5200
 #, fuzzy
 msgid "Share the \"Training Cycle\" with a believer on your list of 100."
-msgstr "與您名單上的「百人名單」信徒分享「培訓循環」。"
+msgstr "與您「百人名單」上的信徒分享「培訓循環」。"
 
 #: site/course/course-content.php:5222 site/course/course-content.php:5227
 msgid "SESSION 16"
@@ -4225,9 +4086,8 @@ msgid ""
 "Pray and thank God for how He continues to speak through the word, prayer, "
 "the body, and persecution and suffering. Pray for each person in the group "
 "to have ears to hear His voice and grace to obey what He says."
-msgstr ""
-"禱告並感謝神如何繼續透過話語、禱告、身體、迫害和苦難來說話。為小組中的每個人"
-"祈禱，讓他們有耳朵聆聽祂的聲音，並有恩典服從祂的話語。"
+msgstr "禱告並感謝神如何繼續透過話語、禱告、身體、迫害和苦難來說話。為小組中的每個人"
+"祈禱，讓他們有耳朵聆聽祂的聲音，並有恩典順服主道。"
 
 #: site/course/course-content.php:5459
 #, fuzzy
@@ -4235,16 +4095,15 @@ msgid ""
 "Identify one next step for yourself, either Modeling, Assisting, Watching, "
 "or Leaving, that you need to take with the disciple you assessed with the "
 "coaching checklist."
-msgstr ""
-"為自己確定下一步，無論是示範、協助、觀察或放手，您需要與您使用輔導清單評估的"
-"門徒一起採取這些步驟。"
+msgstr "為自己確定下一步，無論是「示範」、「輔助」、「守護」或「放手」，您需要與您使"
+"用「教練指南」評估的門徒一起採取這些步驟。"
 
 #: site/course/course-content.php:5460
 #, fuzzy
 msgid ""
 "Share the concept of “Leadership in Networks” with someone else. Then train "
 "them to share it with someone else."
-msgstr "與其他人分享「領袖聯絡網」的概念。然後訓練他們與其他人分享。"
+msgstr "與別人分享「領袖聯絡網」的概念。然後訓練他們與其他人分享。"
 
 #: site/course/course-content.php:5484 site/course/course-content.php:5489
 msgid "SESSION 18"
@@ -4255,24 +4114,23 @@ msgstr "第十八堂課"
 msgid ""
 "Take a moment to listen to God and ask if there are any action steps you or "
 "your group needs to take based on the Four Fields discussion you just had."
-msgstr ""
-"花點時間聆聽上帝的聲音，並詢問根據您剛剛進行的四個領域的討論，您或您的團隊是"
-"否需要採取任何行動步驟。"
+msgstr "花點時間聆聽上帝的聲音，並詢問根據您剛剛進行的「四個領域」的討論，您或您的團"
+"隊是否需要採取任何行動步驟。"
 
 #: site/course/course-content.php:5599
+#, fuzzy
 msgid ""
 "Go through each of the Zúme training items and determine which field(s) each "
 "is relevant to and label a four fields chart with the items."
-msgstr ""
-"仔細檢查每個「天國酵母」培訓項目，確定每個項目與哪些欄位相關，並用這些項目標"
-"記四個欄位圖表。"
+msgstr "仔細檢查每個「天國酵母」培訓項目，確定每個項目與哪些欄位相關，並用這些項目標"
+"記「四個領域」診斷圖。"
 
 #: site/course/course-content.php:5600
 #, fuzzy
 msgid ""
 "Share the Generational Mapping tool with another believer you know as a "
 "vision casting exercise."
-msgstr "與您認識的另一位信徒分享世代分布圖工具，作為異象投射練習。"
+msgstr "與您認識的另一位信徒分享「屬靈世代」工具，作為分享異象的練習。"
 
 #: site/course/course-content.php:5621 site/course/course-content.php:5626
 msgid "SESSION 19"
@@ -4294,8 +4152,8 @@ msgid ""
 "Discuss with your Zúme training group whether or not the members are open to "
 "continuing to meet after the conclusion of the training as a Peer Mentoring "
 "Group."
-msgstr "與您的 Zúme "
-"培訓小組討論組員是否願意在訓練結束後作為「朋輩指導小組」繼續會面。"
+msgstr "與「天國酵母」的培訓小組討論組員是否願意在訓練結束後作為「朋輩指導小組」繼續"
+"會面。"
 
 #: site/course/course-content.php:5722
 #, fuzzy
@@ -4343,7 +4201,6 @@ msgstr "密集課程 第五堂課"
 
 #: site/course/course-content.php:6112 site/course/course-content.php:6120
 #: site/dashboard/dashboard.php:266 site/parts/mobile-nav.php:20
-#, fuzzy
 msgid "Join the Community"
 msgstr "加入社羣"
 
@@ -4359,9 +4216,8 @@ msgid "Don‘t do it alone. Find a community for encouragement and growth."
 msgstr "不要自己單獨做。尋找一個鼓勵和成長的社羣。"
 
 #: site/course/course-content.php:6115
-#, fuzzy
 msgid "Join Zume community using the QR code."
-msgstr "使用 QR code 加入 Zúme 社羣。"
+msgstr "使用 QR code 加入「天國酵母」的社羣。"
 
 #: site/course/course-content.php:6131
 #, fuzzy
@@ -4373,18 +4229,16 @@ msgid "TAKE A BREAK"
 msgstr "休息一下"
 
 #: site/course/presenter.php:28
-#, fuzzy
 msgid "Presenter"
-msgstr "Zúme 課程展示工具"
+msgstr "展示工具"
 
 #: site/course/presenter.php:29
 msgid "Train disciples how to make disciples with 20 hours of course content"
 msgstr ""
 
 #: site/course/presenter.php:128
-#, fuzzy
 msgid "Course Presenter"
-msgstr "Zúme 課程展示工具"
+msgstr "課程展示工具"
 
 #: site/course/presenter.php:136
 msgid "Links"
@@ -4437,9 +4291,8 @@ msgstr "顯示活動"
 
 #: site/course/presenter.php:168 site/pages/follow-jesus.php:89
 #: site/pages/pieces.php:136
-#, fuzzy
 msgid "Watch This Video"
-msgstr "觀賞影片"
+msgstr "觀看影片"
 
 #: site/dashboard/checkin-dashboard.php:29 site/pages/checkin.php:27
 #: site/pages/checkin.php:255
@@ -4469,15 +4322,13 @@ msgid "Congratulations"
 msgstr "恭喜！"
 
 #: site/dashboard/checkin-dashboard.php:180
-#, fuzzy
 msgid "You're checked in"
 msgstr "已成功簽到"
 
 #: site/dashboard/checkin-dashboard.php:181
 #: site/pages/_strings-mobile-pwa.php:41
-#, fuzzy
 msgid "Learn more"
-msgstr "學到更多"
+msgstr "了解更多"
 
 #: site/dashboard/dashboard.php:169 site/dashboard/wizard.php:308
 msgid "Done"
@@ -4600,9 +4451,8 @@ msgid "Timezone"
 msgstr "時區"
 
 #: site/dashboard/dashboard.php:200 site/dashboard/wizard.php:329
-#, fuzzy
 msgid "Meeting link"
-msgstr "辦理登記手續"
+msgstr "聚會連結"
 
 #: site/dashboard/dashboard.php:201
 msgid "Zoom, Google Meet, Microsoft Teams etc."
@@ -4653,13 +4503,11 @@ msgid "Link copied"
 msgstr "連結已複製"
 
 #: site/dashboard/dashboard.php:210
-#, fuzzy
 msgid "Getting Started"
 msgstr "開始"
 
 #: site/dashboard/dashboard.php:211 utilities/apis/cta-api.php:156
 #: utilities/apis/cta-api.php:158
-#, fuzzy
 msgid "Set Profile"
 msgstr "設定簡介"
 
@@ -4679,7 +4527,6 @@ msgstr ""
 "加入我們的其中一個網上培訓，或使用我們的引導式設定來建立您自己的培訓小組"
 
 #: site/dashboard/dashboard.php:215
-#, fuzzy
 msgid "Create Training Group"
 msgstr "建立培訓小組"
 
@@ -4703,7 +4550,6 @@ msgid ""
 msgstr "在訓練之前、期間或之後與教練聯繫以獲得任何幫助或鼓勵。"
 
 #: site/dashboard/dashboard.php:222 site/parts/checkin-nav.php:8
-#, fuzzy
 msgid "My Progress"
 msgstr "我的進度"
 
@@ -4712,13 +4558,11 @@ msgstr "我的進度"
 msgid ""
 "Track your course progress with this interactive view. Learn to listen, "
 "obey, share and train others with what you have learned."
-msgstr ""
-"此互動式視窗可以追蹤您的課程進度。學習傾聽、順服、分享、教導他人您已學會的。"
+msgstr "此互動式視窗可以追蹤您的課程進度。學習傾聽、順服、分享、教導別人您已學會的。"
 
 #: site/dashboard/dashboard.php:224
-#, fuzzy
 msgid "Information about progress"
-msgstr "關於進度的資訊"
+msgstr "關於進度的詳情"
 
 #: site/dashboard/dashboard.php:225
 #, fuzzy
@@ -4727,24 +4571,22 @@ msgstr "我的課程"
 
 #: site/dashboard/dashboard.php:226
 msgid "My Trainings"
-msgstr "我的課程"
+msgstr "我的培訓"
 
 #: site/dashboard/dashboard.php:227
 #, fuzzy
 msgid ""
 "Full access to your training content, schedule, group details and sharing "
 "tools."
-msgstr "您的課程內容、排程、小組詳情、共享工具可完整存取。"
+msgstr "您的培訓內容、排程、小組詳情、共享工具可完整存取。"
 
 #: site/dashboard/dashboard.php:229
-#, fuzzy
 msgid "Create Your Plan"
-msgstr "制定您的計劃"
+msgstr "制定規畫"
 
 #: site/dashboard/dashboard.php:231
-#, fuzzy
 msgid "Three Month Plan Locked"
-msgstr "三個月規劃尚未開放"
+msgstr "「三個月規畫」未開放"
 
 #: site/dashboard/dashboard.php:232
 #, fuzzy
@@ -4752,17 +4594,14 @@ msgid ""
 "The three month plan is a tool to help you take action and implement the "
 "tools and concepts learned through the Zúme course. It is most useful, once "
 "you have completed the training."
-msgstr ""
-"三個月規劃是幫助您採取行動並實施透過「天國酵母」門徒訓練課程學到的工具和概念"
-"的工具。一旦您完成培訓，它就會非常有用。"
+msgstr "「三個月規畫」是幫助您採取行動並實施透過「天國酵母」門徒訓練課程學到的工具和"
+"概念的工具。一旦您完成培訓，它就會非常有用。"
 
 #: site/dashboard/dashboard.php:233
-#, fuzzy
 msgid "Unlock now"
-msgstr "現在解鎖"
+msgstr "現在開放"
 
 #: site/dashboard/dashboard.php:235
-#, fuzzy
 msgid "My Coach"
 msgstr "我的教練"
 
@@ -4772,7 +4611,6 @@ msgid "Quick access to your coach at all times."
 msgstr "隨時快速聯繫您的教練。"
 
 #: site/dashboard/dashboard.php:237
-#, fuzzy
 msgid "My Tools"
 msgstr "我的工具"
 
@@ -4781,11 +4619,10 @@ msgstr "我的工具"
 msgid ""
 "Your My Tools area will unlock as you move through the course, practicing "
 "and developing essential discipleship skills"
-msgstr ""
-"當您完成課程、練習和發展基本的門徒訓練技能時，您的「我的工具」區域將會解鎖"
+msgstr "當您完成課程、練習和發展基本的門徒訓練技能時，您的「我的工具」區域將會逐步開"
+"放"
 
 #: site/dashboard/dashboard.php:239
-#, fuzzy
 msgid "My Plans"
 msgstr "我的規畫"
 
@@ -4794,22 +4631,20 @@ msgstr "我的規畫"
 msgid ""
 "Unlock the My Plans area by completing your 3-Month plan in the final "
 "session."
-msgstr "透過在最後一次課程中完成您的三個月規劃來解鎖「我的規畫」區域。"
+msgstr "透過在最後一次課程中完成您的「三個月規畫」，才能開放「我的規畫」區域。"
 
 #: site/dashboard/dashboard.php:241
-#, fuzzy
 msgid "My Plans are Locked"
-msgstr "我的規畫被鎖定"
+msgstr "「我的規畫」未開放"
 
 #: site/dashboard/dashboard.php:242
 #, fuzzy
 msgid ""
 "Unlock this area by creating your Three-Month Plan or adding a commitment of "
 "your own."
-msgstr "透過制定您的三個月規劃或添加自己的承諾來解鎖這個領域。"
+msgstr "透過制定您的「三個月規畫」，或添加自己的承諾，才能開放這區域。"
 
 #: site/dashboard/dashboard.php:243
-#, fuzzy
 msgid "My Churches"
 msgstr "我的教會"
 
@@ -4820,55 +4655,47 @@ msgid ""
 msgstr ""
 
 #: site/dashboard/dashboard.php:245
-#, fuzzy
 msgid "My Maps"
 msgstr "我的地圖"
 
 #: site/dashboard/dashboard.php:246
-#, fuzzy
 msgid "My Maps are Locked"
-msgstr "我的地圖被鎖定"
+msgstr "「我的地圖」未開放"
 
 #: site/dashboard/dashboard.php:247
-#, fuzzy
 msgid ""
 "My maps help clarify the Zúme vision of 1 trainee and 2 churches for every "
 "5,000 people in the US, and 50,000 globally. To unlock My Maps, join the "
 "Zúme community and connect with other disciple makers passionate about "
 "seeing the great commission fulfilled."
 msgstr ""
-"我的地圖有助於闡明 Zúme 的願景：美國每 5,000 人以及全球每 50,000 人擁有 1 名"
-"學員和 2 座教堂。要解鎖「我的地圖」，請加入 Zúme 社羣，並與其他熱衷於完成大使"
-"命的建立門徒者聯繫。"
+"我的地圖有助於闡明「天國酵母」的異象：在北美每 5,000 人中，以及在全球每 "
+"50,000 人中，至少有一名受訓者和兩間簡約教會。請加入「天國酵母」的社羣才能開放"
+"「我的地圖」，並與其他熱衷於完成大使命的建立門徒者聯繫。"
 
 #: site/dashboard/dashboard.php:248
 msgid "My Training is Locked"
-msgstr "我的培訓被鎖定"
+msgstr "「我的培訓」未開放"
 
 #: site/dashboard/dashboard.php:249
-#, fuzzy
 msgid "Present Course"
-msgstr "Zúme 課程展示工具"
+msgstr "目前課程"
 
 #: site/dashboard/dashboard.php:251
-#, fuzzy
 msgid "Course Content"
-msgstr "課程概念"
+msgstr "課程內容"
 
 #: site/dashboard/dashboard.php:252
-#, fuzzy
 msgid "Course"
 msgstr "課程"
 
 #: site/dashboard/dashboard.php:253
-#, fuzzy
 msgid "Enter Course"
-msgstr "退出課程"
+msgstr "進入課程"
 
 #: site/dashboard/dashboard.php:254
-#, fuzzy
 msgid "Course Slides"
-msgstr "Zúme 課程展示工具"
+msgstr "課程投影片"
 
 #: site/dashboard/dashboard.php:257 site/pages/resources.php:148
 #: site/parts/download-slides.php:37 site/parts/download-slides.php:49
@@ -4882,34 +4709,28 @@ msgid "Join"
 msgstr "加入"
 
 #: site/dashboard/dashboard.php:268
-#, fuzzy
 msgid "Join the community to get access to this area."
-msgstr "加入社羣即可造訪該區域。"
+msgstr "加入社羣才能開放這區域。"
 
 #: site/dashboard/dashboard.php:269
-#, fuzzy
 msgid "Community links"
 msgstr "社羣連結"
 
 #: site/dashboard/dashboard.php:271
-#, fuzzy
 msgid "Previous Slide"
 msgstr "上一張"
 
 #: site/dashboard/dashboard.php:272
-#, fuzzy
 msgid "Next Slide"
 msgstr "下一張"
 
 #: site/dashboard/dashboard.php:273
-#, fuzzy
 msgid "Group Members"
 msgstr "小組成員"
 
 #: site/dashboard/dashboard.php:274
-#, fuzzy
 msgid "Group Members Link"
-msgstr "小組成員"
+msgstr "組員連結"
 
 #: site/dashboard/dashboard.php:275
 msgid "Group Details"
@@ -4920,12 +4741,11 @@ msgid "Mark Completed"
 msgstr "標為完成"
 
 #: site/dashboard/dashboard.php:277
-#, fuzzy, php-format
+#, php-format
 msgid "Session %d"
 msgstr "課程 %d"
 
 #: site/dashboard/dashboard.php:278 site/pages/_strings-mobile-pwa.php:31
-#, fuzzy
 msgid "Start Session"
 msgstr "開始課程"
 
@@ -4938,32 +4758,26 @@ msgid "Edit time"
 msgstr "更改時間"
 
 #: site/dashboard/dashboard.php:282
-#, fuzzy
 msgid "Invite Friends"
 msgstr "邀請朋友"
 
 #: site/dashboard/dashboard.php:283
-#, fuzzy
 msgid "My Churches are Locked"
-msgstr "我的地圖被鎖定"
+msgstr "「我的教會」未開放"
 
 #: site/dashboard/dashboard.php:285
-#, fuzzy
 msgid "Unlock the My Churches area by joining the community."
-msgstr "透過加入社羣來解鎖「我的教會」區域。"
+msgstr "透過加入社羣才能開放「我的教會」區域。"
 
 #: site/dashboard/dashboard.php:286
-#, fuzzy
 msgid "Click to add your first church"
-msgstr "新增您的第一個教會"
+msgstr "點擊新增您的第一個教會"
 
 #: site/dashboard/dashboard.php:287
-#, fuzzy
 msgid "Church Name"
 msgstr "教會名稱"
 
 #: site/dashboard/dashboard.php:288
-#, fuzzy
 msgid "Number of People"
 msgstr "人數"
 
@@ -4972,7 +4786,6 @@ msgid "Church Location"
 msgstr "教會地點"
 
 #: site/dashboard/dashboard.php:290
-#, fuzzy
 msgid "Parent Church"
 msgstr "母會"
 
@@ -4989,12 +4802,10 @@ msgid "Mark Inactive"
 msgstr "標為停止"
 
 #: site/dashboard/dashboard.php:294
-#, fuzzy
 msgid "Church"
 msgstr "教會"
 
 #: site/dashboard/dashboard.php:295
-#, fuzzy
 msgid "cancel"
 msgstr "取消"
 
@@ -5005,29 +4816,26 @@ msgid "Congratulations!"
 msgstr "恭喜！"
 
 #: site/dashboard/dashboard.php:297
-#, fuzzy
 msgid "You have requested a coach"
-msgstr "您已請求教練"
+msgstr "您已申請教練"
 
 #: site/dashboard/dashboard.php:298
 msgid "You have joined a training"
-msgstr "您已加入一個培訓課程"
+msgstr "您已加入培訓課程"
 
 #: site/dashboard/dashboard.php:299
-#, fuzzy
 msgid "You have set your profile"
 msgstr "您已設定個人資料"
 
 #: site/dashboard/dashboard.php:300
-#, fuzzy, php-format
+#, php-format
 msgctxt "3-month plan unlocked"
 msgid "%s unlocked"
 msgstr "%s 已開放"
 
 #: site/dashboard/dashboard.php:300 utilities/apis/cta-api.php:321
-#, fuzzy
 msgid "3 month plan"
-msgstr "3個月規劃"
+msgstr "「三個月規畫」"
 
 #: site/dashboard/dashboard.php:301
 msgid "You have joined the community"
@@ -5040,16 +4848,15 @@ msgid ""
 "A user’s real name or nickname is requested to improve the personal quality "
 "of the site and communication, as well as for customer service requests and "
 "coaching."
-msgstr ""
-"要求使用者提供真實姓名或暱稱是為了提高網站和溝通的個人質量，以及客戶服務請求"
-"和指導。"
+msgstr "要求使用者提供真實姓名或暱稱是為了提高網站和溝通的個人質量，以及客戶服務請求"
+"和培訓。"
 
 #: site/dashboard/dashboard.php:304 site/pages/privacy-policy.php:109
 #, fuzzy
 msgid ""
 "A user’s email address is required to establish an account and is used for "
 "transactional communication as part of site operation."
-msgstr "建立帳戶需要使用者的電郵地址，並用於作為網站運營的一部分進行交易通訊。"
+msgstr "建立帳戶需要使用者的電郵地址，並用於作為網站營運的一部分進行交易通訊。"
 
 #: site/dashboard/dashboard.php:305 site/dashboard/wizard.php:208
 #: site/pages/privacy-policy.php:112
@@ -5057,7 +4864,7 @@ msgstr "建立帳戶需要使用者的電郵地址，並用於作為網站運營
 msgid ""
 "A user’s phone number is collected and stored for supporting the free "
 "coaching service."
-msgstr "收集並儲存使用者的電話號碼以支援免費輔導服務。"
+msgstr "收集並儲存使用者的電話號碼以支援免費培訓服務。"
 
 #: site/dashboard/dashboard.php:306 site/dashboard/wizard.php:209
 #: site/pages/privacy-policy.php:115
@@ -5065,8 +4872,7 @@ msgstr "收集並儲存使用者的電話號碼以支援免費輔導服務。"
 msgid ""
 "A user’s city is requested to personalize site resources and communication, "
 "and to connect users to appropriate coaching and customer service resources."
-msgstr ""
-"使用者的所屬城市需要個性化站點資源和通信，並將使用者連接到適當的輔導和客戶服"
+msgstr "使用者的所屬城市需要個性化站點資源和通信，並將使用者連接到適當的培訓和客戶服"
 "務資源。"
 
 #: site/dashboard/dashboard.php:307 site/dashboard/wizard.php:237
@@ -5076,9 +4882,8 @@ msgid ""
 "A user’s language preference is stored to support proper site and "
 "communication functioning, and to help us connect the user with appropriate "
 "coaching and resources."
-msgstr ""
-"儲存使用者的語言偏好是為了支援正確的網站和通訊功能，並幫助我們為使用者提供適"
-"當的指導和資源。"
+msgstr "儲存使用者的語言設定是為了支援正確的網站和通訊功能，並幫助我們為使用者提供適"
+"當的培訓和資源。"
 
 #: site/dashboard/dashboard.php:308 site/dashboard/wizard.php:331
 msgid "Join key"
@@ -5087,9 +4892,8 @@ msgstr "加入代碼"
 #: site/dashboard/dashboard.php:309 site/pages/checkin.php:97
 #: site/pages/friend-invite.php:73 site/pages/plan-invite.php:73
 #: site/pages/plan-invite.php:169
-#, fuzzy
 msgid "Not a recognized code. Please check the number."
-msgstr "不是認證過的代號，請檢查。"
+msgstr "不是認證過的代碼，請檢查。"
 
 #: site/dashboard/dashboard.php:310
 #, fuzzy
@@ -5105,33 +4909,30 @@ msgstr "您的申請出現錯誤"
 msgid ""
 "Thank you for your coaching request. Our team will be working to connect you "
 "with an available coach in your language and region."
-msgstr "感謝您的輔導申請。我們的團隊將努力為您聯繫適合您的語言和區域的教練。"
+msgstr "感謝您的培訓申請。我們的團隊將努力為您聯繫適合您的語言和區域的教練。"
 
 #: site/dashboard/dashboard.php:313
 #, fuzzy
 msgid ""
 "Please watch for communication from your coach within the communication "
 "preference you indicated."
-msgstr "請注意您的教練在您指定的通訊偏好範圍內的聯繫。"
+msgstr "請注意您的教練在您指定的通訊設定範圍內的聯繫。"
 
 #: site/dashboard/dashboard.php:314
-#, fuzzy
 msgid "100 Hour Map"
-msgstr "100 小時地圖"
+msgstr "一百小時地圖"
 
 #: site/dashboard/dashboard.php:315
-#, fuzzy
 msgid "Trainee vision map"
-msgstr "培訓視力圖"
+msgstr "受訓者的異象圖"
 
 #: site/dashboard/dashboard.php:316
-#, fuzzy
 msgid "Simple church vision map"
-msgstr "簡約教會的植堂地圖"
+msgstr "簡約教會的異象圖"
 
 #: site/dashboard/dashboard.php:317
 msgid "Missing answer"
-msgstr ""
+msgstr "缺少答案"
 
 #: site/dashboard/dashboard.php:318 site/dashboard/wizard.php:190
 #: site/dashboard/wizard.php:244 site/dashboard/wizard.php:261
@@ -5150,9 +4951,8 @@ msgid "No"
 msgstr "不要"
 
 #: site/dashboard/dashboard.php:321
-#, fuzzy
 msgid "No date"
-msgstr "無日期"
+msgstr "沒有日期"
 
 #: site/dashboard/dashboard.php:322 site/dashboard/wizard.php:216
 #: zume-training-system.php:365
@@ -5185,7 +4985,7 @@ msgstr ""
 #: site/dashboard/dashboard.php:331
 #, fuzzy
 msgid "Coaching Portal"
-msgstr "輔導課程"
+msgstr "培訓課程"
 
 #: site/dashboard/dashboard.php:332
 msgid "Visibility"
@@ -5248,7 +5048,7 @@ msgstr "我將邀請以下人員參加三分三希望小組或探索小組："
 #, fuzzy
 msgid ""
 "I will invite the following people to participate in Prayer Walking with me:"
-msgstr "我要邀請以下的人，與我一起來做「步行禱告」︰"
+msgstr "我要邀請以下的人，與我一起來「步行禱告」︰"
 
 #: site/dashboard/dashboard.php:347
 #, fuzzy
@@ -5260,9 +5060,8 @@ msgstr "我要每隔___﹙日／星期／月﹚做一次「步行禱告」。"
 msgid ""
 "I will equip the following people to share their story and God‘s Story and "
 "make a List of 100 of the people in their relational network:"
-msgstr ""
-"我將裝備以下人員來分享他們的故事和上帝的故事，並列出他們關係網絡中的 100 個"
-"人："
+msgstr "我將裝備以下人員來分享他們的故事和上帝的故事，並列出他們關係網絡中的「百人名"
+"單」："
 
 #: site/dashboard/dashboard.php:349
 #, fuzzy
@@ -5334,12 +5133,10 @@ msgid "Next"
 msgstr "下一頁"
 
 #: site/dashboard/wizard.php:174 site/dashboard/wizard.php:309
-#, fuzzy
 msgid "Skip"
 msgstr "跳過"
 
 #: site/dashboard/wizard.php:175 site/pages/_strings-mobile-pwa.php:36
-#, fuzzy
 msgid "Finish"
 msgstr "完成"
 
@@ -5348,20 +5145,19 @@ msgid "No locations found"
 msgstr "地點不存在"
 
 #: site/dashboard/wizard.php:180
-#, fuzzy
 msgid "Zúme Community"
-msgstr "Zúme 社羣"
+msgstr "「天國酵母」的社羣"
 
 #: site/dashboard/wizard.php:181
-#, fuzzy
 msgid ""
 "Zúme is a community of practice and encouragement for those who want to see "
 "disciple making movements. The Zúme vision is to see one trainee and two "
 "simple churches for every 5,000 people in the United States and 50,000 "
 "people globally."
 msgstr ""
-"Zúme 是一個為那些希望看到門徒訓練運動的人提供實踐和鼓勵的社羣。 Zúme "
-"的願景是為美國每 5,000 人以及全球每 50,000 人提供一名實習生和兩座簡約教會。"
+"「天國酵母」是一個為那些希望看到門徒訓練運動的人提供實踐和鼓勵的社羣。「天國"
+"酵母」的異象是在北美每 5,000 人中，以及在全球每 50,000 "
+"人中，至少有一名受訓者和兩間簡約教會。"
 
 #: site/dashboard/wizard.php:183
 #, fuzzy
@@ -5369,8 +5165,7 @@ msgid ""
 "Connect with others like you who want to see a disciple making movement in "
 "their area. Share your experience with others, and learn from others who are "
 "discovering new things."
-msgstr ""
-"與其他像您一樣希望看到門徒在他們的領域開展活動的人聯繫。與他人分享您的經驗，"
+msgstr "與其他像您一樣希望看到門徒在他們的領域開展活動的人聯繫。與別人分享您的經驗，"
 "並向發現新事物的其他人學習。"
 
 #: site/dashboard/wizard.php:184
@@ -5388,7 +5183,6 @@ msgstr ""
 "和面對面的聚會。"
 
 #: site/dashboard/wizard.php:186
-#, fuzzy
 msgid "Free Tools"
 msgstr "免費工具"
 
@@ -5398,9 +5192,8 @@ msgid ""
 "Access free tools for tracking disciple-making and church planting in your "
 "area. Get a map to cast vision for saturating your city with multiplying "
 "disciples and churches."
-msgstr ""
-"使用免費工具來追蹤在您所屬社區的門徒訓練和植堂。取得一張地圖，描繪出讓您的城"
-"市充滿門徒和教會的願景。"
+msgstr "使用免費工具來追蹤在您所屬社區的門徒訓練和植堂。取得一張地圖作為異象分享，以"
+"達致門徒和教會倍增遍佈您的城市為目標。"
 
 #: site/dashboard/wizard.php:188
 msgid "Join for Free"
@@ -5418,7 +5211,6 @@ msgid "Please wait while we connect you"
 msgstr "我們正在為您連接，請稍候"
 
 #: site/dashboard/wizard.php:196
-#, fuzzy
 msgid "Complete your profile"
 msgstr "完成您的個人資料"
 
@@ -5452,18 +5244,16 @@ msgid "Privacy Policy"
 msgstr "「天國酵母」Zúme 隱私權政策"
 
 #: site/dashboard/wizard.php:212
-#, fuzzy
 msgid "What is your contact preference?"
-msgstr "您偏好的聯絡方式是什麼？"
+msgstr "您首選的聯絡方式是什麼？"
 
 #: site/dashboard/wizard.php:214 zume-training-system.php:363
 msgid "Text"
 msgstr "短訊"
 
 #: site/dashboard/wizard.php:220
-#, fuzzy
 msgid "What is your language preference?"
-msgstr "您偏好的語言是什麼？"
+msgstr "您首選的語言是什麼？"
 
 #: site/dashboard/wizard.php:222
 #, fuzzy
@@ -5504,7 +5294,6 @@ msgid "Sorry. We were unable to submit your request. Please try again later."
 msgstr "對不起。我們無法提交您的申請，請稍後再試。"
 
 #: site/dashboard/wizard.php:232
-#, fuzzy
 msgid "You have already requested a coach"
 msgstr "您已經申請了教練"
 
@@ -5513,9 +5302,8 @@ msgid "Error connecting with a coach"
 msgstr "聯繫教練時出現錯誤"
 
 #: site/dashboard/wizard.php:234
-#, fuzzy
 msgid "Connecting you to a Coach"
-msgstr "為您連接教練"
+msgstr "為您聯繫教練中"
 
 #: site/dashboard/wizard.php:240
 #, fuzzy
@@ -5548,7 +5336,7 @@ msgstr "目前沒有公開的培訓小組。"
 msgid ""
 "Please make sure that your profile is up to date, so that group leaders can "
 "contact you."
-msgstr ""
+msgstr "請確保您的個人資料是最新的，以便小組帶領者能與您聯絡。"
 
 #: site/dashboard/wizard.php:257
 msgid "Connecting with friend"
@@ -5720,11 +5508,11 @@ msgstr "清空日曆"
 
 #: site/dashboard/wizard.php:317
 msgid "Add"
-msgstr "增加"
+msgstr "新增"
 
 #: site/dashboard/wizard.php:318
 msgid "Add some dates to your schedule"
-msgstr "在您的時間表中增加日期"
+msgstr "在您的時間表中新增日期"
 
 #: site/dashboard/wizard.php:319
 msgid "Change"
@@ -5741,13 +5529,14 @@ msgid ""
 msgstr "與您的朋友分享以下的邀請或連結，讓他們可以參加您的培訓小組。"
 
 #: site/dashboard/wizard.php:325
+#, fuzzy
 msgid "Join my zume plan"
-msgstr "加入我的 Zúme 計劃"
+msgstr "加入我的「天國酵母」計劃"
 
 #: site/dashboard/wizard.php:326
-#, php-format
+#, fuzzy, php-format
 msgid "%s is inviting you to a Zume Training Group"
-msgstr "%s 邀請您參加 Zúme 培訓小組"
+msgstr "%s 邀請您參加「天國酵母」的培訓小組"
 
 #: site/dashboard/wizard.php:333
 msgid "Copy Invite"
@@ -5757,11 +5546,11 @@ msgstr "複製邀請"
 msgid ""
 "Your password reset link appears to be invalid. Please request a new link "
 "below."
-msgstr "您的密碼重設連結已失效，請在以下重新申請新的連結。"
+msgstr "重設密碼的連結已失效，請在以下重新申請新的連結。"
 
 #: site/login/login-template.php:70
 msgid "Your password reset link has expired. Please request a new link below."
-msgstr "您的密碼重設連結已過期，請在以下重新申請新的連結。"
+msgstr "重設密碼的連結已過期，請在以下重新申請新的連結。"
 
 #: site/login/login-template.php:80
 msgid "Missing form verification. Refresh and try again."
@@ -5769,11 +5558,11 @@ msgstr "遺漏了格式驗證，請重新載入並再試一次。"
 
 #: site/login/login-template.php:81
 msgid "Missing username or email address."
-msgstr "遺漏了用戶名稱或電子郵址。"
+msgstr "遺漏了用戶名稱或電郵地址。"
 
 #: site/login/login-template.php:82
 msgid "ERROR: Enter a username or email address."
-msgstr "錯誤﹕請輸入用戶名稱或電郵地址。"
+msgstr "錯誤﹕輸入用戶名稱或電郵地址。"
 
 #: site/login/login-template.php:83
 msgid "ERROR: There is no user registered with that email address."
@@ -5785,7 +5574,7 @@ msgstr "錯誤﹕沒有該用戶名稱的用戶登記。"
 
 #: site/login/login-template.php:85
 msgid "ERROR: Invalid username or email."
-msgstr "錯誤：無效的用戶名稱或電子郵址。"
+msgstr "錯誤：無效的用戶名稱或電郵地址。"
 
 #: site/login/login-template.php:98 site/login/login-template.php:134
 msgid "Get New Password"
@@ -5797,13 +5586,10 @@ msgid "Email Address"
 msgstr "電郵地址"
 
 #: site/login/login-template.php:139
-#, fuzzy
 msgid ""
 "Your password reset email has been sent. Check your email or junk mail for "
 "the link to reset your password."
-msgstr ""
-"重設密碼的電子郵件已寄出，請至您的電子信箱收件匣或垃圾郵件資料匣查看連結以重"
-"設您的密碼。"
+msgstr "重設密碼的電郵已寄出，請至您的電子信箱收件箱或垃圾箱查看連結以重設您的密碼。"
 
 #: site/login/login-template.php:190 site/login/login-template.php:276
 #: site/login/login-template.php:468
@@ -5813,7 +5599,7 @@ msgstr "密碼並不一致，請再試一次。"
 #: site/login/login-template.php:217
 #, php-format
 msgid "Your password is reset. %1$s You can login here %2$s"
-msgstr "您的密碼已重設。 %1$s 您可以在這裡登入 %2$s"
+msgstr "已重設您的密碼。 %1$s 您可以在這裡登入 %2$s"
 
 #: site/login/login-template.php:253 site/login/login-template.php:296
 msgid "Reset Password"
@@ -5839,13 +5625,12 @@ msgid "Re-enter Password"
 msgstr "重新輸入密碼"
 
 #: site/login/login-template.php:378
-#, fuzzy
 msgid "Hello!"
 msgstr "您好！"
 
 #: site/login/login-template.php:379
 msgid "Create a Zume Account"
-msgstr "建立一個 Zúme 帳戶"
+msgstr "建立「天國酵母」的帳戶"
 
 #: site/login/login-template.php:387 site/login/login-template.php:483
 #: site/login/login-template.php:757 site/pages/follow-jesus.php:153
@@ -5855,7 +5640,6 @@ msgid "Register"
 msgstr "登記"
 
 #: site/login/login-template.php:413
-#, fuzzy
 msgid "Or"
 msgstr "或者"
 
@@ -5880,14 +5664,12 @@ msgid "User action confirmed."
 msgstr "用戶行動已確認。"
 
 #: site/login/login-template.php:649
-#, fuzzy
 msgid "Welcome back!"
 msgstr "歡迎回來！"
 
 #: site/login/login-template.php:656 site/login/login-template.php:705
 #: site/login/login-template.php:780 site/login/login.php:31
 #: site/pages/home.php:108 site/parts/mobile-nav.php:30 site/parts/nav.php:28
-#, fuzzy
 msgid "Login"
 msgstr "登入"
 
@@ -6018,9 +5800,8 @@ msgid "Install"
 msgstr "安裝"
 
 #: site/pages/_strings-mobile-pwa.php:39
-#, fuzzy
 msgid "This app can be installed to your device. Click to install this app."
-msgstr "該應用程式可以安裝到您的裝置上。點擊以安裝此應用程式。"
+msgstr "該應用程式可以安裝到您的裝置上。點擊安裝此應用程式。"
 
 #: site/pages/_strings-mobile-pwa.php:40
 #, fuzzy
@@ -6033,7 +5814,7 @@ msgstr "該應用可以安裝到您的設備上。請使用Chrome瀏覽器執行
 #, fuzzy
 msgid ""
 "Tap on Safari's share icon and tap 'Add to Home Screen' to install this app."
-msgstr "點擊Safari的共享圖標，然後點擊“新增到桌面”以安裝此應用程式。"
+msgstr "點擊 Safari 的共享圖標，然後點擊「新增到桌面」以安裝此應用程式。"
 
 #: site/pages/_strings-mobile-pwa.php:43
 #, fuzzy
@@ -6041,9 +5822,8 @@ msgid "Update"
 msgstr "更新"
 
 #: site/pages/_strings-mobile-pwa.php:44
-#, fuzzy
 msgid "A new version of this app is available. Click to update this app."
-msgstr "該應用程序有新版本可用。單擊以更新此應用程序。"
+msgstr "該應用程式有新版本可用。單擊更新此應用程式。"
 
 #: site/pages/_strings-mobile-pwa.php:45
 #, fuzzy
@@ -6051,11 +5831,10 @@ msgid "Storage"
 msgstr "存儲"
 
 #: site/pages/about.php:27 site/pages/about.php:92 site/pages/messages.php:251
-#, fuzzy
 msgid ""
 "Zúme Training exists to saturate the globe with multiplying disciples in our "
 "generation."
-msgstr "「天國酵母」門徒訓練的存在是為了讓我們這一代的門徒遍佈全球。"
+msgstr "「天國酵母」門徒訓練的存在是為了達致在我們這一代中門徒倍增遍佈全球。"
 
 #: site/pages/about.php:84
 #, fuzzy
@@ -6071,9 +5850,9 @@ msgid ""
 "ordinary people, using ordinary resources, can have exponential impact for "
 "the Kingdom of God."
 msgstr ""
-"Zúme，希臘文的“酵母”，具有重要的意義。在馬太福音13:33中，耶穌將天國比喻為酵母"
-"混入大量麪粉中，滲透到整個麪團中。這個比喻說明了平凡的人如何使用普通的資源，"
-"可以對神的國度產生指數級的影響。"
+"Zúme，希臘文的“酵母”，具有重要的意義。在馬太福音 13:33 中，耶穌將天國比喻為酵"
+"母混入大量麪粉中，滲透到整個麪團中。這個比喻說明了平凡的人如何使用普通的資源"
+"，可以對神的國度產生指數級的影響。"
 
 #: site/pages/about.php:97
 #, fuzzy
@@ -6092,6 +5871,7 @@ msgstr ""
 "想法演變成現在的 Zúme。"
 
 #: site/pages/about.php:98
+#, fuzzy
 msgid ""
 "The foundational disciple-making principles in Zúme Training come straight "
 "from the Bible and have been tested globally for over thirty years. These "
@@ -6100,8 +5880,8 @@ msgid ""
 "spiritually dark places."
 msgstr ""
 "「天國酵母」培訓的門徒訓練基本原則直接源自於聖經，並已在全球經過了三十多年的"
-"檢驗。這些原則使普通人成為門徒，而門徒又反過來使普通人成為門徒，從而使數以百"
-"萬計的門徒在靈性黑暗的地方推進神國的發展。"
+"檢驗。這些原則使普通信徒成為門徒，而門徒又反過來使普通人成為門徒，從而使數以"
+"百萬計的門徒在靈性黑暗的地方推進神國的發展。"
 
 #: site/pages/about.php:111
 #, fuzzy
@@ -6122,23 +5902,20 @@ msgid ""
 "The goal is to saturate the globe with multiplying disciples in our "
 "generation. The Biblical principles found in this training are simple. The "
 "world changing potential is in the practice of these principles."
-msgstr ""
-"我們的目標是在我們這一代的人中使門徒倍增遍佈全球。這次培訓中的聖經原則很簡"
-"單。改變世界的潛力在於實踐這些原則。"
+msgstr "我們以達致在我們這一代中門徒倍增遍佈全球為目標。這次培訓中的聖經原則很簡單。"
+"改變世界的潛力在於實踐這些原則。"
 
 #: site/pages/about.php:118
 #, fuzzy
 msgid ""
 "The vision of Zúme is comparable to yeast working through the entire dough, "
 "spreading basic Kingdom tools into neighborhoods worldwide."
-msgstr ""
-"Zúme 的願景就像酵母在整個麪團中發揮作用，將基本的神國工具傳播到世界各地的社"
-"羣。"
+msgstr "「天國酵母」的異象就像酵母在整個麪團中發揮作用，將基本的神國工具傳播到世界各"
+"地的社羣。"
 
 #: site/pages/about.php:125
-#, fuzzy
 msgid "The vision of Zúme has two parts:"
-msgstr "Zúme 的願景分為兩部分："
+msgstr "「天國酵母」的異象分為兩部分："
 
 #: site/pages/about.php:129
 #, fuzzy
@@ -6151,13 +5928,11 @@ msgid "Part 1:"
 msgstr "第1部分："
 
 #: site/pages/about.php:134
-#, fuzzy
 msgid ""
 "To train at least one disciple maker for every 5,000 people in North America "
 "and one disciple maker for every 50,000 people globally."
-msgstr ""
-"在北美，每 5,000 人中至少有一名門徒訓練者； 在全球，每 50,000 人中至少有一名"
-"門徒訓練者。"
+msgstr "在北美，每 5,000 人中至少有一名建立門徒者； 在全球，每 50,000 "
+"人中至少有一名建立門徒者。"
 
 #: site/pages/about.php:140
 #, fuzzy
@@ -6170,22 +5945,20 @@ msgid "Part 2:"
 msgstr "第2部分："
 
 #: site/pages/about.php:145
-#, fuzzy
 msgid ""
 "For trained disciple makers to start at least 2 simple multiplying churches "
 "for every 5,000 people in North America and 2 simple churches for every "
 "50,000 people globally."
-msgstr "讓訓練有素的建立門徒者在北美每 5,000 人中建立至少兩個簡單的倍增教會，"
-"並在全球每 50,000 人建立兩個簡約教會。"
+msgstr "讓受過訓練的建立門徒者在北美，每 5,000 人中至少有兩間簡約教會； 在全球，每 "
+"50,000 人中至少有兩間簡約教會。"
 
 #: site/pages/about.php:151
-#, fuzzy
 msgid ""
 "With these small beginnings ... what the Bible calls yeast ... we could see "
 "the world covered with multiplying disciples and churches. Explore Zúme "
 "Training and find out how!"
-msgstr "有了這些小小的開始⋯聖經稱之為酵母⋯我們可以看到世界上佈滿了不斷增加的門徒和教"
-"會。探索「天國酵母」門徒訓練並了解具體方法！"
+msgstr "有了這些小小的開始⋯聖經稱之為「酵母」⋯我們可以看到門徒和教會倍增遍佈全球。探"
+"索「天國酵母」門徒訓練並了解具體方法！"
 
 #: site/pages/about.php:154
 #, fuzzy
@@ -6201,14 +5974,14 @@ msgstr "「天國酵母」門徒訓練如何進行？"
 msgid ""
 "%1$sFree Registration%2$s gives you full access to all training materials "
 "and online coaching."
-msgstr "%1$s免費登記%2$s 讓您可以完全存取所有培訓材料和網上輔導。"
+msgstr "%1$s免費登記%2$s 讓您可以完全存取所有培訓材料和網上培訓。"
 
 #: site/pages/about.php:168 site/pages/home.php:215
 #, fuzzy, php-format
 msgid ""
 "%1$sInstructional Videos%2$s help your group understand basic principles of "
 "multiplying disciples."
-msgstr "%1$s教學影片%2$s幫助您的小組了解倍增門徒的基本原則。"
+msgstr "%1$s教學影片%2$s 幫助您的小組了解倍增門徒的基本原則。"
 
 #: site/pages/about.php:172 site/pages/home.php:219
 #, fuzzy, php-format
@@ -6250,9 +6023,8 @@ msgid ""
 "Zúme is designed to be done as a group. Group exercise, discussions, and "
 "practicing of skills all will be better with others, so gather a group, if "
 "possible."
-msgstr ""
-"Zúme 旨在以團隊形式完成。小組練習、討論和技能練習與其他人一起會更好，所以如果"
-"可以的話，參加一個小組。"
+msgstr "「天國酵母」旨在以團隊形式完成。小組練習、討論和技能練習與其他人一起會更好，"
+"所以如果可以的話，參加一個小組。"
 
 #: site/pages/about.php:216
 #, fuzzy
@@ -6305,9 +6077,8 @@ msgstr "培訓不須："
 msgid ""
 "More knowledge or experience than the rest of your group is not needed! If "
 "you can click next, you can lead a Zúme Training."
-msgstr ""
-"不需要比小組其他組員更多的知識或經驗！如果您可以按一下“下一步”，您就可以進行"
-"「天國酵母」門徒訓練。"
+msgstr "不需要比小組其他組員更多的知識或經驗！如果您可以按一下「下一步」，您就可以進"
+"行「天國酵母」門徒訓練。"
 
 #: site/pages/about.php:244
 msgid ""
@@ -6319,7 +6090,7 @@ msgstr ""
 
 #: site/pages/about.php:255
 msgid "Connecting with a Coach."
-msgstr "聯繫教練。"
+msgstr "聯繫一位教練。"
 
 #: site/pages/about.php:262
 #, fuzzy
@@ -6327,9 +6098,8 @@ msgid ""
 "All along the way, the Zúme community is eager to support you by providing a "
 "COACH to help you and your group successfully implement the training. Don’t "
 "hesitate to reach out with questions or concerns!"
-msgstr ""
-"一路上，Zúme 社羣都渴望為您提供支持，提供教練來幫助您和您的團隊成功實施培訓。"
-"如有問題或疑慮，請隨時與我們聯繫！"
+msgstr "一路上，「天國酵母」的社羣都渴望為您提供支持，提供教練來幫助您和您的團隊成功"
+"實施培訓。如有問題或疑慮，請隨時與我們聯繫！"
 
 #: site/pages/about.php:272
 msgid "Are you ready? Register today."
@@ -6344,23 +6114,19 @@ msgid "Please enter a friend code."
 msgstr "請輸入朋友代碼。"
 
 #: site/pages/checkin.php:257
-#, fuzzy
 msgid "Use the code on the screen or in the book"
-msgstr "使用螢幕或書中的代碼"
+msgstr "使用螢幕上或書中的代碼"
 
 #: site/pages/checkin.php:262 site/pages/friend-invite.php:171
 #: site/pages/plan-invite.php:177
-#, fuzzy
 msgid "Connect"
-msgstr "連接"
+msgstr "聯繫"
 
 #: site/pages/checkin.php:266
-#, fuzzy
 msgid "or"
 msgstr "或"
 
 #: site/pages/checkin.php:268
-#, fuzzy
 msgid "Choose session to checkin"
 msgstr "選擇課程來簽到"
 
@@ -6390,7 +6156,7 @@ msgstr "奉獻"
 #, fuzzy
 msgid ""
 "We are crowdfunded, and we love that you want to be part of the Zúme vision."
-msgstr "我們是眾籌的，我們很高興您想成為 Zúme 願景的一部分。"
+msgstr "我們是眾籌的，我們很高興您想成為「天國酵母」異象的一部分。"
 
 #: site/pages/donate.php:99
 msgid "View All Giving Opportunities"
@@ -6406,7 +6172,6 @@ msgstr "個人資料"
 
 #: site/pages/follow-jesus.php:30 site/pages/follow-jesus.php:140
 #: site/parts/footer.php:17
-#, fuzzy
 msgid "How to Follow Jesus"
 msgstr "如何跟隨耶穌"
 
@@ -6416,7 +6181,7 @@ msgstr "問問自己"
 
 #: site/pages/follow-jesus.php:91 site/pages/pieces.php:138
 msgid "Download Free Guidebook"
-msgstr "免費下載手冊"
+msgstr "下載免費手冊"
 
 #: site/pages/follow-jesus.php:92 site/pages/pieces.php:139
 #, fuzzy
@@ -6459,27 +6224,24 @@ msgid ""
 msgstr "所知所學很重要，但更重要的是，真正的門徒是在「知道」之後會「做」出來。"
 
 #: site/pages/follow-jesus.php:222
-#, fuzzy
 msgid ""
 "A 3/3 Group is a way for followers of Jesus to meet, pray, learn, grow, "
 "fellowship and practice obeying and sharing what they've learned. In this "
 "way, a 3/3 Group is not just a small group but a Simple Church."
 msgstr ""
-"「三分三小組」讓一羣耶穌的跟隨者聚在一起禱告、學習、成長與團契，並操練順服主"
-"道、分享所學。於此，「三分三小組」不僅僅是一個小組，也是個簡約教會。"
+"一種聚會的模式，讓一羣耶穌的跟隨者聚在一起、禱告、學習、成長與交通，並操練順"
+"服主道、實踐分享所學。於此，「三分三小組」不僅僅是一個小組，也是個簡約教會。"
 
 #: site/pages/follow-jesus.php:230
-#, fuzzy
 msgid "Learn how to obey Jesus' commands by going AND staying."
-msgstr "學習如何透過去和留來服從遵守主的命令。"
+msgstr "學習如何透過去和留來遵守耶穌的命令。"
 
 #: site/pages/follow-jesus.php:234
-#, fuzzy
 msgid ""
 "It's a simple way to celebrate our intimate connection and ongoing "
 "relationship with Jesus. Learn a simple way to celebrate."
-msgstr "領聖餐是又簡單又隆重的教會禮儀，是為記念主，並慶祝我們與耶穌之間那親密愈恆的"
-"關係。讓我們學習這個禮儀吧。"
+msgstr "一種簡單的教會禮儀，為了慶祝我們與耶穌之間彼此連結和親密的關係。讓我們學習透"
+"過守聖餐去記念主。"
 
 #: site/pages/follow-jesus.php:242
 #, fuzzy
@@ -6489,7 +6251,7 @@ msgstr "犧牲並受苦"
 #: site/pages/follow-jesus.php:256
 #, fuzzy
 msgid "How do I obey Jesus and help others become followers with me?"
-msgstr "我要如何順服耶穌並幫助他人和我一起成為耶穌的跟隨者？"
+msgstr "我要如何順服耶穌並幫助別人和我一起成為耶穌的跟隨者？"
 
 #: site/pages/follow-jesus.php:261
 #, fuzzy
@@ -6507,7 +6269,7 @@ msgstr ""
 #: site/pages/follow-jesus.php:262
 #, fuzzy
 msgid "Matthew 28:18-20"
-msgstr "馬太福音二十八章18-20節"
+msgstr "馬太福音 28:18-20"
 
 #: site/pages/follow-jesus.php:265
 #, fuzzy
@@ -6515,28 +6277,22 @@ msgid "Teaching others to obey and follow Jesus with you"
 msgstr "教導別人和您一起順服耶穌並跟隨他"
 
 #: site/pages/follow-jesus.php:268
-#, fuzzy
 msgid "Learn what ducklings have to do with disciple-making"
-msgstr "了解小鴨跟培養門徒有什麼關聯？"
+msgstr "學習小鴨與建立門徒之間有何關係。"
 
 #: site/pages/follow-jesus.php:276
-#, fuzzy
 msgid ""
 "See how disciple making doesn't have to be linear. Multiple things can "
 "happen at the same time."
-msgstr ""
-"一起學習突破傳統直綫模式成長的門徒訓練方式，而以多管齊下、同步進行帶動倍數增"
-"長。"
+msgstr "學習突破傳統順序模式成長的門徒訓練方式。而以「非順序成長」，並進式同時發生。"
 
 #: site/pages/follow-jesus.php:284
-#, fuzzy
 msgid "Speaking to people YOU KNOW about Jesus"
-msgstr "和「您認識的人」談論耶穌"
+msgstr "與「您認識的人」談論耶穌"
 
 #: site/pages/follow-jesus.php:299
-#, fuzzy
 msgid "Speaking to people YOU DON'T KNOW about Jesus"
-msgstr "和「您不認識的人」談論耶穌"
+msgstr "與「您不認識的人」談論耶穌"
 
 #: site/pages/follow-jesus.php:302
 #, fuzzy
@@ -6545,18 +6301,16 @@ msgid ""
 msgstr "學習分辨誰是「平安之人」，以及如何知道您已經找到這人。"
 
 #: site/pages/follow-jesus.php:306
-#, fuzzy
 msgid ""
 "It's a simple way to obey God’s command to pray for others. And it's just "
 "what it sounds like — praying to God while walking around!"
-msgstr ""
-"是一個簡單的禱告方式，學習順服神要我們為他人禱告的命令。「行走禱告」從字面就"
-"知道，是「一邊走路，一邊禱告」的意思。"
+msgstr "一種簡單的禱告方式，遵守神要我們為別人禱告的命令。顧名思義，就是一邊步行，一"
+"邊向神禱告的意思！"
 
 #: site/pages/follow-jesus.php:313
 #, fuzzy
 msgid "What if many friends, family and others start following Jesus with me?"
-msgstr "如果許多朋友、家人和其他人開始和我一起跟隨耶穌，我應該怎麼做？"
+msgstr "如果許多朋友、家人和別人開始和我一起跟隨耶穌，我應該怎麼做？"
 
 #: site/pages/friend-invite.php:28 site/pages/friend-invite.php:164
 msgid "Friend Invitation"
@@ -6578,9 +6332,8 @@ msgid ""
 "All our coaches are trained and practicing the concepts and tools found in "
 "Zûme. All our coaches can help you over barriers and make steps in your "
 "journey."
-msgstr ""
-"我們所有的教練都經過培訓並在實踐中運用 Zúme 中的概念和工具。我們所有的教練都"
-"可以幫助您跨越障礙並在您的旅程中邁出步伐。"
+msgstr "我們所有的教練都受過培訓並在實踐中運用 Zúme "
+"中的概念和工具。我們所有的教練都可以幫助您跨越障礙並在您的旅程中邁出步伐。"
 
 #: site/pages/get-a-coach.php:85
 #, fuzzy
@@ -6589,8 +6342,8 @@ msgid ""
 "olympic athletes have coaches, and often more than one. Disciple making can "
 "equally benefit from coaching by those who have more experience."
 msgstr ""
-"每一項運動，尤其是高水準的體育運動，都需要教練的幫助。即使是奧運選手也有教"
-"練，而且往往不只一名。門徒訓練同樣可以從那些有更多經驗的人的指導中受益。"
+"每一項運動，尤其是高水準的體育運動，都需要教練的幫助。即使是奧運選手也有教練"
+"，而且往往不只一名。門徒訓練同樣可以從那些有更多經驗的人的培訓中受益。"
 
 #: site/pages/get-a-coach.php:88
 msgid "No Cost"
@@ -6608,7 +6361,7 @@ msgstr "加入培訓小組"
 msgid ""
 "Our network of volunteer coaches are not paid, but are driven rather by a "
 "passion for loving God, loving others, and obeying the Great Commission."
-msgstr "我們的志工教練網絡沒有報酬，而是由愛神、愛他人和服從大使命的熱情驅動。"
+msgstr "我們的志工教練網絡沒有報酬，而是由愛神、愛人和遵守大使命的熱情驅動。"
 
 #: site/pages/get-a-coach.php:95
 msgid "Localized"
@@ -6702,7 +6455,7 @@ msgstr "屬靈成長的關鍵"
 #: site/pages/home.php:156
 #, fuzzy
 msgid "Personal Bible Study"
-msgstr "個人聖經學習"
+msgstr "個人研讀聖經"
 
 #: site/pages/home.php:157
 #, fuzzy
@@ -6737,7 +6490,7 @@ msgstr "吸引探索者"
 #: site/pages/home.php:170
 #, fuzzy
 msgid "Vision Casting Multiplication"
-msgstr "異象鑄造倍增"
+msgstr "分享異象的倍增"
 
 #: site/pages/home.php:171
 #, fuzzy
@@ -6745,9 +6498,8 @@ msgid "Leading a Simple Church"
 msgstr "帶領一個簡約教會"
 
 #: site/pages/home.php:172
-#, fuzzy
 msgid "Training Others"
-msgstr "培訓他人"
+msgstr "培訓別人"
 
 #: site/pages/home.php:177
 msgid "I'm Ready!"
@@ -6761,10 +6513,9 @@ msgstr "平凡的人。簡單的步驟。"
 #: site/pages/home.php:248
 #, fuzzy
 msgid "More about zume"
-msgstr "關於Zúme的更多信息"
+msgstr "關於「天國酵母」的更多信息"
 
 #: site/pages/home.php:254 site/pages/training.php:129
-#, fuzzy
 msgid "Create your own training group"
 msgstr "建立您自己的培訓小組"
 
@@ -6778,7 +6529,7 @@ msgstr ""
 
 #: site/pages/home.php:259 site/pages/training.php:134
 msgid "Create"
-msgstr "創建"
+msgstr "建立"
 
 #: site/pages/home.php:265 site/pages/training.php:140
 #, fuzzy
@@ -6789,18 +6540,16 @@ msgstr ""
 "如果您現在無法組隊，請考慮參加我們由經驗豐富的 Zúme 教練帶領的網上培訓小組。"
 
 #: site/pages/home.php:270 site/pages/training.php:145
-#, fuzzy
 msgid "Request a coach"
-msgstr "請求教練"
+msgstr "申請教練"
 
 #: site/pages/home.php:273 site/pages/training.php:148
 #, fuzzy
 msgid ""
 "We can connect you with free Zúme coach who is committed to helping you "
 "understand the training and become a fruitful disciple."
-msgstr ""
-"我們可以為您聯繫免費的 Zúme 教練，他會致力於幫助您接受培訓並成為一名富有成效"
-"的門徒。"
+msgstr "我們可以為您聯繫「天國酵母」免費的教練，他會致力於幫助您接受培訓並成為一名富"
+"有成效的門徒。"
 
 #: site/pages/home.php:275 site/pages/training.php:150
 #, fuzzy
@@ -6828,12 +6577,12 @@ msgid "Anyone can do this. You don‘t need any special skills or training. ~ J"
 msgstr "任何人都可以做到這一點。您不需要任何特殊技能或培訓。 〜J"
 
 #: site/pages/home.php:330
+#, fuzzy
 msgid ""
 "This is for all disciples who want to obey the Great Commission. Zúme "
 "training outlines a normal Christian lifestyle. ~ D"
-msgstr ""
-"這是寫給所有想要遵守大使命的門徒的。「天國酵母」門徒訓練概述了正常的基督徒生"
-"活方式。 〜D"
+msgstr "這是寫給所有想要遵守大使命的門徒。「天國酵母」門徒訓練概述了正常的基督徒生活"
+"方式。 〜D"
 
 #: site/pages/home.php:341
 #, fuzzy
@@ -6857,11 +6606,10 @@ msgid ""
 "for the Kingdom of God. Zúme aims to equip and empower ordinary believers to "
 "saturate the globe with multiplying disciples in our generation."
 msgstr ""
-"Zúme 是希臘文，意思是酵母。在馬太福音十三章 33 節裡，耶穌說︰「天國好像麪酵﹐"
-"有婦人拿來，藏在三斗麪裡，直等全團都發起來。」這段經文描繪了平凡的人類，如何"
-"憑藉平凡的資源，卻為神的國度帶來無比非凡的影響力。這就是「天國酵母」Zúme 的目"
-"標：裝備一般信徒，在這個世代成為「天國酵母」，帶出生生不息的主門徒，充滿這個"
-"世界，使神的國度降臨萬邦。"
+"Zúme 是希臘文，意思是「酵母」。在馬太福音十三章 33 節裡，耶穌說︰「天國好像麪"
+"酵﹐有婦人拿來，藏在三斗麪裡，直等全團都發起來。」這段經文描繪了平凡的人類，"
+"如何憑藉平凡的資源，卻為神的國度帶來無比非凡的影響力。這就是「天國酵母」的目"
+"標：裝備普通信徒，以達致在我們這一代中門徒倍增遍佈全球。"
 
 #: site/pages/home.php:361
 msgid "Ready to take your next steps?"
@@ -6931,12 +6679,10 @@ msgid "Great for areas where internet access is restricted or limited"
 msgstr "非常適合網路存取受限或有限的區域"
 
 #: site/pages/plan-invite.php:28 site/pages/plan-invite.php:165
-#, fuzzy
 msgid "Plan Invitation"
 msgstr "規畫邀請"
 
 #: site/pages/plan-invite.php:72
-#, fuzzy
 msgid "Please enter a code."
 msgstr "請輸入代碼。"
 
@@ -6961,15 +6707,14 @@ msgstr ""
 "Personally Identifiable Information）的人提供更好的服務。「個人可識別資訊」（"
 "PII），正如美國資訊安全及隱私權法中所描述的，是指單獨資訊或其他輔助資訊，用以"
 "辨識、聯絡、定位單一人士，或者根據其內容辨識出個別使用者。請仔細閱讀我們的隱"
-"私權政策，以瞭解我們如何在網站裡收集、使用、保護或運用您的個人可識別資訊。"
+"私權政策，以了解我們如何在本網頁裡收集、使用、保護或運用您的個人可識別資訊。"
 
 #: site/pages/privacy-policy.php:85
 #, fuzzy
 msgid "What permissions do the social sign-on logins ask for?"
-msgstr "經由社羣網站帳戶登入時，會要求開放哪些權限？"
+msgstr "經由社羣帳戶登入時，會要求開放哪些權限？"
 
 #: site/pages/privacy-policy.php:86
-#, fuzzy
 msgid ""
 "The profile elements below change depending on if Facebook or Google sign on "
 "is used."
@@ -6979,8 +6724,8 @@ msgstr "以下的個人資料會根據是否使用 Facebook 或 Google 登入而
 msgid ""
 "Public Profile. This includes certain User’s Data such as id, name, picture, "
 "gender, and their locale."
-msgstr "個人公開檔案，包括使用者的某些個人資料，例如：帳戶、名字、照片、性別，以及使"
-"用者的所屬社區等。"
+msgstr "公開的個人資料，包括一些使用者的資料，例如：帳戶、名字、照片、性別，以及使用"
+"者的所屬社區等。"
 
 #: site/pages/privacy-policy.php:92
 msgid "Email Address."
@@ -6990,7 +6735,7 @@ msgstr "電郵地址。"
 #, fuzzy
 msgid ""
 "What personal information do we collect from the people through our website?"
-msgstr "本網站收集哪些用戶個人資料？"
+msgstr "本網頁收集哪些用戶個人資料？"
 
 #: site/pages/privacy-policy.php:100
 msgid ""
@@ -7032,24 +6777,22 @@ msgstr "我們如何使用您的個人資料呢？"
 msgid ""
 "We use your information to create a user account in the zume system based on "
 "your email address."
-msgstr ""
-"我們會根據您的電郵地址，在「天國酵母」Zúme 系統裡使用您的資訊來建立一個用戶帳"
-"號。"
+msgstr "我們會根據您的電郵地址，在「天國酵母」的系統裡使用您的資訊來建立一個用戶帳號"
+"。"
 
 #: site/pages/privacy-policy.php:144
 msgid ""
 "We will email you with basic transactional emails like password reset "
 "requests and other system notifications."
-msgstr ""
-"我們也會用您的電郵地址來發送基本事務性質的電子郵件給您，例如請求重設密碼或者"
-"其它系統通知郵件。"
+msgstr "我們也會用您的電郵地址來發送基本事務性質的電郵給您，例如：請求重設密碼或者其"
+"它系統通知。"
 
 #: site/pages/privacy-policy.php:147
 #, fuzzy
 msgid ""
 "We email occasional reminders and encouragements depending on your progress "
 "through the training."
-msgstr "我們會視您訓練的情況，不定期發送郵件提醒與鼓勵您。"
+msgstr "我們會視您訓練的進度，不定期發送郵件提醒與鼓勵您。"
 
 #: site/pages/privacy-policy.php:154
 #, fuzzy
@@ -7065,8 +6808,8 @@ msgid ""
 "customer service) are granted access to personally identifiable information."
 msgstr ""
 "我們會使用加密技術保護在網路上傳輸的資訊，也會保護您的離綫資訊。只有團隊成員"
-"（例如：網路管理人員或客服人員）在需要資訊來行使特定作業時，才會獲得授權取用"
-"個人識別資訊（PII）。"
+"（例如：網路管理員或客戶服務）在需要資訊來行使特定作業時，才會獲得授權取用個"
+"人識別資訊（PII）。"
 
 #: site/pages/privacy-policy.php:159
 #, fuzzy
@@ -7100,9 +6843,8 @@ msgid ""
 "Any use of Cookies - or of other tracking tools - unless stated otherwise, "
 "serves to identify Users and remember their preferences, for the sole "
 "purpose of providing the service required by the User."
-msgstr ""
-"除非另有說明，否則對 Cookie 或其他追蹤工具的任何使用均用於識別使用者並記住他"
-"們的偏好，其唯一目的是提供使用者所需的服務。"
+msgstr "除非另有說明，否則對 Cookie 或其他追蹤工具的任何使用均用於識別使用者並記住他"
+"們的設定，其唯一目的是提供使用者所需的服務。"
 
 #: site/pages/privacy-policy.php:176
 #, fuzzy
@@ -7170,8 +6912,8 @@ msgid ""
 "content as well!"
 msgstr ""
 "「天國酵母」門徒訓練現在提供完整的訓練操作手冊。培訓中的所有概念、工具、討論"
-"問題和挑戰現在都掌握在您的手中。每個會話的 QR Code 都可以讓您讀取所有影片內"
-"容！"
+"問題和挑戰現在都掌握在您的手中。每個會話的 QR codes "
+"都可以讓您讀取所有影片內容！"
 
 #: site/pages/resources.php:123
 #, fuzzy
@@ -7179,20 +6921,19 @@ msgid "Free Download (PDF)"
 msgstr "免費下載（PDF）"
 
 #: site/pages/resources.php:125
-#, fuzzy
 msgid "Order print copy"
 msgstr "訂購印刷本"
 
 #: site/pages/resources.php:139
-#, fuzzy
 msgid "Course Slides Online"
-msgstr "Zúme 課程展示工具"
+msgstr "網上課程投影片"
 
 #: site/pages/resources.php:142
+#, fuzzy
 msgid ""
 "The Zúme course content, videos and activities, can be presented from the "
 "online presenter in your web browser."
-msgstr ""
+msgstr "「天國酵母」的課程內容、視訊和活動，都可以從網路瀏覽器中的展示工具呈現。"
 
 #: site/pages/share.php:29
 msgid "Links to share the concepts and tools of the zume training course"
@@ -7204,41 +6945,35 @@ msgid "Copy this link and send it to your friends."
 msgstr "複製此連結並將其發送給您的朋友。"
 
 #: site/pages/share.php:80
-#, fuzzy
 msgid "Copied"
 msgstr "已複製"
 
 #: site/pages/share.php:117
-#, fuzzy
 msgid "Tools"
 msgstr "工具"
 
 #: site/pages/share.php:118
-#, fuzzy
 msgid "Concepts"
 msgstr "概念"
 
 #: site/pages/share.php:120
-#, fuzzy
 msgid "Sort"
-msgstr "分類"
+msgstr "順序"
 
 #: site/pages/share.php:121
-#, fuzzy
 msgid "Items"
 msgstr "項目"
 
 #: site/pages/share.php:129
-#, fuzzy
 msgid "Sharing with Others"
-msgstr "與他人分享"
+msgstr "與人分享"
 
 #: site/pages/share.php:136
 #, fuzzy
 msgid ""
 "When we are faithful to obey and share what the Lord has shared with us, "
 "then he promises to share even more."
-msgstr "當我們忠誠地服從並分享主與我們分享的東西時，祂就會承諾分享更多。"
+msgstr "當我們忠心順服並分享主與我們分享的東西時，祂就會承諾分享更多。"
 
 #: site/pages/training.php:29 site/pages/training.php:212
 msgid ""
@@ -7290,9 +7025,8 @@ msgid ""
 "The original Zúme course format is 10 two hour sessions. Each session "
 "finishes with practical obedience steps and ways to share in-between "
 "sessions. This format is often run once a week for 10 weeks."
-msgstr ""
-"最初的 Zúme 培訓形式是十堂兩小時的課程。每堂課都以實際的服從步驟和課間分享的"
-"方法結束。這種形式通常每星期進行一次，持續十個星期。"
+msgstr "最初的「天國酵母」培訓形式是十堂兩小時的課程。每堂課都以實際的順服步驟和課間"
+"分享的方法結束。這種形式通常每星期進行一次，持續十個星期。"
 
 #: site/pages/training.php:236
 #, fuzzy
@@ -7300,9 +7034,8 @@ msgid ""
 "For a longer slower pace course with more opportunity for gaining competence "
 "in the concepts and skills, the 20 session format has more practice "
 "opportunities for each of the concepts and tools."
-msgstr ""
-"對於較長時間、較慢節奏的培訓，並有更多機會獲得概念和技能方面的能力，20 堂課程"
-"的形式為每個概念和工具提供了更多練習機會。"
+msgstr "對於較長時間、較慢節奏的培訓，並有更多機會獲得概念和技能方面的能力，二十堂課"
+"程的形式為每個概念和工具提供了更多練習機會。"
 
 #: site/pages/training.php:248
 #, fuzzy
@@ -7327,19 +7060,19 @@ msgstr "課程不須："
 msgid ""
 "Special permission to lead a course is not needed! Zúme is self-facilitated, "
 "self-initiated, and you can start today."
-msgstr ""
-"領導培訓不需要特別許可！ Zúme 是自行組織、自行發起的，您可以從今日就開始。"
+msgstr "領導培訓不需要特別許可！「天國酵母」是自行組織、自行發起的，您可以從今日就開"
+"始。"
 
 #: site/parts/download-slides.php:18
-#, fuzzy
 msgid "Download Course Slides"
-msgstr "免費下載手冊"
+msgstr "下載課程投影片"
 
 #: site/parts/download-slides.php:21
 msgid "Large file download. (1 gigabyte)"
 msgstr ""
 
 #: site/parts/download-slides.php:24
+#, fuzzy
 msgid ""
 "The entire Zúme course can be downloaded and run through Powerpoint or "
 "Keynote. This is a great solution for training in areas with weak internet. "
@@ -7349,16 +7082,16 @@ msgid ""
 msgstr ""
 "整個「天國酵母」門徒訓練課程可以下載，並透過 Powerpoint 或 Keynote 執行。對於"
 "網際網路較弱的地區而言，這是一個很棒的訓練解決方案。影片內嵌在投影片中，沒有"
-"網路也能輕鬆播放。QR code 系統仍需要網上存取，才能取得受訓者的簽到和活動資"
-"源。"
+"網路也能輕鬆播放。QR code "
+"系統仍需要網上存取，才能取得受訓者的簽到和活動資源。"
 
 #: site/parts/download-slides.php:29
 msgid "Powerpoint"
-msgstr ""
+msgstr "Powerpoint"
 
 #: site/parts/download-slides.php:41
 msgid "Keynote"
-msgstr ""
+msgstr "Keynote"
 
 #: site/parts/mobile-nav.php:36 site/parts/nav.php:36
 #: utilities/integrations/replace-placeholder.php:106
@@ -7368,12 +7101,10 @@ msgid "Check-in"
 msgstr "簽到"
 
 #: site/parts/noscript.php:2
-#, fuzzy
 msgid "Oops you have javascript turned off"
-msgstr "哎呀，您已經關閉了 JavaScript"
+msgstr "哎呀！您已經關閉了 JavaScript"
 
 #: site/parts/noscript.php:3
-#, fuzzy
 msgid "Please enable javascript to use this page"
 msgstr "請啓用 JavaScript 才能使用此網頁"
 
@@ -7382,37 +7113,30 @@ msgstr "請啓用 JavaScript 才能使用此網頁"
 #: utilities/integrations/replace-placeholder.php:181
 #: utilities/integrations/replace-placeholder.php:182
 #: utilities/integrations/replace-placeholder.php:183
-#, fuzzy
 msgid "Update Communication Preferences"
-msgstr "更新通訊偏好設定"
+msgstr "更新通訊設定"
 
 #: site/profile/communication-preferences.php:76
-#, fuzzy
 msgid "Recieve emails for:"
-msgstr "接收電子郵件："
+msgstr "接收以下的電郵："
 
 #: site/profile/communication-preferences.php:79
-#, fuzzy
 msgid "Training session reminders"
-msgstr "培訓課程提醒"
+msgstr "培訓課程的提醒"
 
 #: site/profile/communication-preferences.php:83
-#, fuzzy
 msgid "Annual reporting reminders"
-msgstr "年度報告提醒"
+msgstr "年度報告的提醒"
 
 #: site/profile/communication-preferences.php:87
-#, fuzzy
 msgid "Community updates"
 msgstr "社羣更新"
 
 #: site/profile/communication-preferences.php:91
-#, fuzzy
 msgid "Encouragements"
 msgstr "鼓勵"
 
 #: site/profile/profile.php:27 site/profile/profile.php:106
-#, fuzzy
 msgid "Profile"
 msgstr "個人資料"
 
@@ -7428,7 +7152,6 @@ msgid "your friend"
 msgstr "您的朋友"
 
 #: utilities/apis/connect-api.php:237
-#, fuzzy
 msgid "the plan"
 msgstr "規畫"
 
@@ -7437,12 +7160,10 @@ msgid "Register to start your training"
 msgstr "登記並開始您的培訓"
 
 #: utilities/apis/cta-api.php:157
-#, fuzzy
 msgid "Set your profile to help others know you"
-msgstr "設定您的個人資料以幫助其他人了解您"
+msgstr "設定您的個人資料讓別人認識您"
 
 #: utilities/apis/cta-api.php:171
-#, fuzzy
 msgid "Profile Set"
 msgstr "設定簡介"
 
@@ -7451,38 +7172,32 @@ msgid "Join Online Training"
 msgstr "加入網上培訓"
 
 #: utilities/apis/cta-api.php:187
-#, fuzzy
 msgid "Join the online training to learn more"
-msgstr "加入網上培訓以了解更多信息"
+msgstr "加入網上培訓來了解更多"
 
 #: utilities/apis/cta-api.php:201
 msgid "Joined Training!"
-msgstr "已加入培訓課程！"
+msgstr "已加入培訓！"
 
 #: utilities/apis/cta-api.php:215 utilities/apis/cta-api.php:217
-#, fuzzy
 msgid "Create a Training"
-msgstr "建立培訓"
+msgstr "建立培訓課程"
 
 #: utilities/apis/cta-api.php:216
-#, fuzzy
 msgid "Create a training to help you grow"
-msgstr "建立培訓來幫助您成長"
+msgstr "建立培訓課程來幫助您成長"
 
 #: utilities/apis/cta-api.php:230
-#, fuzzy
 msgid "Created Training!"
-msgstr "建立培訓！"
+msgstr "已建立培訓課程！"
 
 #: utilities/apis/cta-api.php:246
-#, fuzzy
 msgid "Get a coach to help you on your journey"
 msgstr "安排教練來幫助您完成旅程"
 
 #: utilities/apis/cta-api.php:260
-#, fuzzy
 msgid "Requested Coach!"
-msgstr "教練請求！"
+msgstr "已申請教練！"
 
 #: utilities/apis/cta-api.php:274
 msgid "Connected to Coach!"
@@ -7490,36 +7205,32 @@ msgstr "已聯繫教練！"
 
 #: utilities/apis/cta-api.php:306 utilities/apis/cta-api.php:308
 msgid "Create 3 Month Plan"
-msgstr "制定三個月規畫"
+msgstr "制定「三個月規畫」"
 
 #: utilities/apis/cta-api.php:307
-#, fuzzy
 msgid "Create a 3 month plan to help you grow"
-msgstr "制定三個月規畫來幫助您成長"
+msgstr "制定「三個月規畫」來幫助您成長"
 
 #: utilities/apis/cta-api.php:321
-#, fuzzy, php-format
+#, php-format
 msgid "%s unlocked"
-msgstr "%s 已解鎖"
+msgstr "%s 已開放"
 
 #: utilities/apis/cta-api.php:335
 msgid "3-Month Plan Created"
-msgstr "三個月規畫已制定"
+msgstr "已制定「三個月規畫」"
 
 #: utilities/apis/cta-api.php:349 utilities/apis/cta-api.php:351
-#, fuzzy
 msgid "Complete 3 Month Plan"
-msgstr "完成三個月規畫"
+msgstr "完成「三個月規畫」"
 
 #: utilities/apis/cta-api.php:350
-#, fuzzy
 msgid "Complete your 3 month plan to help you grow"
-msgstr "完成您的三個月規畫以幫助您成長"
+msgstr "完成您的「三個月規畫」來幫助您成長"
 
 #: utilities/apis/cta-api.php:364
-#, fuzzy
 msgid "3 Month Plan Completed"
-msgstr "三個月規畫已完成"
+msgstr "已完成「三個月規畫」"
 
 #: utilities/apis/cta-api.php:410
 msgid "Join the community"
@@ -7533,32 +7244,31 @@ msgstr "已加入社羣"
 #, php-format
 msgctxt "My first training - username"
 msgid "My first training - %s"
-msgstr "我的第一次培訓 - %s"
+msgstr "我的第一次培訓︰%s"
 
 #: utilities/apis/plans-api.php:128
-#, fuzzy, php-format
+#, php-format
 msgctxt "Training 2 - username"
 msgid "Training %1$d - %2$s"
-msgstr "訓練 %1$d - %2$s"
+msgstr "培訓課程 %1$d︰%2$s"
 
 #: utilities/hooks/ipstack-admin-tab.php:47
 msgid "Ipstack"
-msgstr ""
+msgstr "Ipstack"
 
 #: utilities/hooks/ipstack-admin-tab.php:54
 msgid "IPStack"
-msgstr ""
+msgstr "IPStack"
 
 #: utilities/hooks/roles-and-permissions.php:56
-#, fuzzy
 msgid "Porch Admin"
-msgstr "門廊管理員"
+msgstr "管理員"
 
 #: utilities/integrations/replace-placeholder.php:86
 #: utilities/integrations/replace-placeholder.php:87
 #: utilities/integrations/replace-placeholder.php:88
 msgid "Join the Zúme Community"
-msgstr "加入 Zúme 社羣"
+msgstr "加入「天國酵母」的社羣"
 
 #: utilities/integrations/replace-placeholder.php:90
 #: utilities/integrations/replace-placeholder.php:91
@@ -7569,35 +7279,30 @@ msgstr "Zúme 個人主頁"
 #: utilities/integrations/replace-placeholder.php:94
 #: utilities/integrations/replace-placeholder.php:95
 #: utilities/integrations/replace-placeholder.php:96
-#, fuzzy
 msgid "Zúme Online Training Groups"
-msgstr "Zúme 網上培訓小組"
+msgstr "「天國酵母」的網上培訓小組"
 
 #: utilities/integrations/replace-placeholder.php:118
 #: utilities/integrations/replace-placeholder.php:119
 #: utilities/integrations/replace-placeholder.php:120
-#, fuzzy
 msgid "Download Slide Presentation"
-msgstr "下載投影片簡報"
+msgstr "下載投影片的文件"
 
 #: utilities/integrations/replace-placeholder.php:122
 #: utilities/integrations/replace-placeholder.php:123
 #: utilities/integrations/replace-placeholder.php:124
-#, fuzzy
 msgid "Share Zúme Page"
-msgstr "分享 Zúme 網頁"
+msgstr "分享「天國酵母」的網頁"
 
 #: utilities/integrations/replace-placeholder.php:177
 #: utilities/integrations/replace-placeholder.php:178
 #: utilities/integrations/replace-placeholder.php:179
-#, fuzzy
 msgid "Zúme Annual Report"
-msgstr "Zúme年度報告"
+msgstr "「天國酵母」的年度報告"
 
 #: utilities/post-types/posttype-downloads.php:201
-#, fuzzy
 msgid "Slides"
-msgstr "Zúme 課程展示工具"
+msgstr "投影片"
 
 #: utilities/post-types/posttype-pieces.php:299
 #, fuzzy
@@ -7605,13 +7310,12 @@ msgid "Piece"
 msgstr "一塊"
 
 #: zume-training-system.php:237
-#, fuzzy
 msgid "Someone has requested a password reset for the following account:"
-msgstr "有人要求重設以下帳戶的密碼:"
+msgstr "有人要求重設以下帳戶的密碼："
 
 #. translators: %s: site name
 #: zume-training-system.php:239
-#, fuzzy, php-format
+#, php-format
 msgid "Site Name: %s"
 msgstr "網站名稱︰ %s"
 
@@ -7622,12 +7326,10 @@ msgid "Username: %s"
 msgstr "用戶名稱︰ %s"
 
 #: zume-training-system.php:242
-#, fuzzy
 msgid "If this was a mistake, just ignore this email and nothing will happen."
-msgstr "如果您沒要求重設，請忽略此電子郵件，不會發生任何變更。"
+msgstr "如果您沒有要求重設，請忽略此電郵，不會作任何變更。"
 
 #: zume-training-system.php:243
-#, fuzzy
 msgid "To reset your password, visit the following address:"
 msgstr "請到以下的網址重設您的密碼:"
 
@@ -7666,31 +7368,29 @@ msgid "User Preferred Email"
 msgstr "使用者的首選電郵"
 
 #: zume-training-system.php:350
-#, fuzzy
 msgid "Coaching Contact ID"
-msgstr "輔導課程"
+msgstr "教練聯絡資料"
 
 #: zume-training-system.php:358
 msgid "Preferred Contact Methods"
 msgstr "首選聯絡方式"
 
 #: zume-training-system.php:368
-#, fuzzy
 msgid "Messenger"
-msgstr "訊息"
+msgstr "短訊"
 
 #. Plugin Name of the plugin/theme
 msgid "Zúme - Training System"
-msgstr "「天國酵母」門徒訓練系統"
+msgstr "「天國酵母」的門徒訓練系統"
 
 #. Plugin URI of the plugin/theme
 #. Author URI of the plugin/theme
 msgid "https://github.com/ZumeProject/zume-training-system"
-msgstr ""
+msgstr "https://github.com/ZumeProject/zume-training-system"
 
 #. Description of the plugin/theme
 msgid "Zume Training System"
-msgstr "「天國酵母」門徒訓練系統"
+msgstr "「天國酵母」門徒訓練的系統"
 
 #, fuzzy
 #~ msgid "Observation"
