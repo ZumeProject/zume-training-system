@@ -88,18 +88,22 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
 
                         piecesContent.innerHTML = `<span class="loading-spinner active"></span>`
 
-                        zumeRequest.get( 'piece', { id: value, lang, strings: [<?php echo json_encode([
+                        zumeRequest.get( 'piece', { id: value, lang, strings: JSON.stringify([<?php echo json_encode([
                             'wtv' => esc_html__( 'Watch This Video', 'zume' ),
                             'ay' => esc_html__( 'Ask Yourself', 'zume' ),
                             'd' => esc_html__( 'Download Free Guidebook', 'zume' ),
                             'lra' => esc_html__( 'Listen and Read Along', 'zume' ),
                             'vt' => esc_html__( 'View Transcript', 'zume' ),
-                        ]) ?>][0] })
+                        ]) ?>][0] ), limited: true } )
                             .then(function (data) {
+                                console.log(data)
                                 piecesContent.innerHTML = data
+
+                                jQuery('#transcript-offcanvas').foundation('open')
                             })
 
                         jQuery('#pieces-wrapper').foundation('open')
+
 
                     })
                 })

@@ -42,11 +42,12 @@ class Zume_Pieces_Endpoints
         }
 
         $postid = sanitize_text_field( wp_unslash( $params['id'] ) );
-        $strings = dt_recursive_sanitize_array( $params['strings'] );
+        $strings = dt_recursive_sanitize_array( json_decode( $params['strings'], true ) );
+        $limited = $params['limited'] ?? false;
 
         ob_start();
 
-        pieces_content( $postid, $lang, $strings );
+        pieces_content( $postid, $lang, $strings, $limited );
 
         $contents = ob_get_contents();
         ob_end_clean();
@@ -56,12 +57,22 @@ class Zume_Pieces_Endpoints
 Zume_Pieces_Endpoints::instance();
 
 
-function pieces_content( $postid, $lang, $strings ) {
+function pieces_content( $postid, $lang, $strings, $limited = false ) {
 
     $meta = get_post_meta( (int) $postid );
 
     if ( $meta['zume_lang'][0] !== $lang ) {
-        $translated_postid = get_piece_translation_id( $postid, $lang );
+        // $translated_postid = get_piece_translation_id( $postid, $lang );
+        global $wpdb;
+        $translated_postid = $wpdb->get_var( $wpdb->prepare(
+            "SELECT p.ID
+            FROM zume_posts p
+            JOIN zume_postmeta pm ON pm.post_id=p.ID AND pm.meta_key = 'zume_lang' AND pm.meta_value = %s
+            JOIN zume_postmeta pm1 ON pm1.post_id=p.ID AND pm1.meta_key = 'zume_piece' AND pm1.meta_value = %s
+            WHERE post_type = 'zume_pieces'
+            LIMIT 1",
+            $lang, $meta['zume_piece'][0]
+        ) );
 
         if ( $translated_postid !== $postid ) {
             $meta = get_post_meta( $translated_postid );
@@ -73,6 +84,8 @@ function pieces_content( $postid, $lang, $strings ) {
     $post_video_content = zume_replace_placeholder( $meta['zume_post_video_content'][0] ?? '', $lang );
     $ask_content = zume_replace_placeholder( $meta['zume_ask_content'][0] ?? '', $lang );
     $h1_title = empty( $meta['zume_piece_h1'][0] ) ? get_the_title( $postid ) : $meta['zume_piece_h1'][0];
+
+   // limited is used on the follow jesus piece to limit the modals in that evironment
 
     $args = Zume_V5_Pieces::vars( $tool_number );
 
@@ -124,9 +137,12 @@ function pieces_content( $postid, $lang, $strings ) {
                         </iframe>
                     </div>
                 <?php endif; ?>
+
+                <?php if ( ! $limited ) : ?>
                     <button class="btn large fit-content mx-auto" data-toggle="transcript-offcanvas">
                         <?php echo esc_html( $strings['vt'] ) ?? 'View Transcript' ?>
                     </button>
+                <?php endif; ?>
 
 
             </div>
@@ -141,29 +157,33 @@ function pieces_content( $postid, $lang, $strings ) {
             <?php echo wp_kses_post( wpautop( $ask_content ) ) ?>
         </div>
     </div>
-    <div
-        class="bg-white | information-flyout bypass-nav-click off-canvas position-right z-20"
-        id="transcript-offcanvas"
-        data-off-canvas
-        data-transition="overlap"
-    >
-        <div class="ms-auto absolute right top">
-            <button class="close-btn | my--2 mx-1 f-0" aria-label="<?php esc_attr( __( 'Close', 'zume' ) ) ?>" type="button" data-close>
-                <span class="icon z-icon-close"></span>
-            </button>
-        </div>
-        <div class="cover-page" id="transcript-loading-spinner">
-            <div class="center"><span class="loading-spinner active"></span></div>
-        </div>
-        <iframe
-            id='iframe'
-            src="<?php echo esc_url( $script_url ) ?>"
-            frameborder="0"
-            width="100%"
-            onload="document.querySelector('#transcript-loading-spinner').remove()"
+
+    <?php if ( ! $limited ) : ?>
+        <div
+            class="bg-white | information-flyout bypass-nav-click off-canvas position-right z-20"
+            id="transcript-offcanvas"
+            data-off-canvas
+            data-transition="overlap"
         >
-        </iframe>
-    </div>
+            <div class="ms-auto absolute right top">
+                <button class="close-btn | my--2 mx-1 f-0" aria-label="<?php esc_attr( __( 'Close', 'zume' ) ) ?>" type="button" data-close>
+                    <span class="icon z-icon-close"></span>
+                </button>
+            </div>
+            <div class="cover-page" id="transcript-loading-spinner">
+                <div class="center"><span class="loading-spinner active"></span></div>
+            </div>
+            <iframe
+                id='iframe'
+                src="<?php echo esc_url( $script_url ) ?>"
+                frameborder="0"
+                width="100%"
+                onload="document.querySelector('#transcript-loading-spinner').remove()"
+            >
+            </iframe>
+        </div>
+    <?php endif; ?>
+
     <?php
 }
 
