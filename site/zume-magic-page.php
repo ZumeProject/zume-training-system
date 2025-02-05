@@ -57,7 +57,6 @@ class Zume_Magic_Page extends DT_Magic_Url_Base {
         [
             'lang_code' => $lc,
         ] = zume_get_url_pieces();
-        dt_write_log( $lc );
         if ( isset( $zume_languages_by_code[$lc]['enable_flags']['version_5_ready'] )
             && empty( $zume_languages_by_code[$lc]['enable_flags']['version_5_ready'] ) ) {
             ?><meta name="robots" content="noindex, nofollow"><?php
