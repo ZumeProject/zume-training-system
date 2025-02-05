@@ -187,6 +187,91 @@ function pieces_content( $postid, $lang, $strings, $limited = false ) {
     <?php
 }
 
+function pieces_content_script( $video_id, $lang, $strings ) {
+    global $wpdb;
+
+    $training_items = zume_training_items();
+
+    // video by language
+    $sql = $wpdb->prepare(
+        "SELECT pm.meta_value
+            FROM zume_posts p
+            JOIN zume_postmeta pm ON pm.post_id=p.ID AND pm.meta_key = %s
+            WHERE p.post_type = 'zume_videos'
+            AND p.post_title = %s
+        ", $video_id, $lang );
+    $vimeo_id = $wpdb->get_var( $sql );
+
+
+    $script_id = $training_items[$video_id]['script'];
+    // scripts by language
+    $sql = $wpdb->prepare(
+    "SELECT pm.meta_value
+        FROM zume_posts p
+        JOIN zume_postmeta pm ON pm.post_id=p.ID AND pm.meta_key = %s
+        WHERE p.post_type = 'zume_scripts'
+        AND p.post_title = %s
+    ", $script_id, $lang );
+    $body = $wpdb->get_var( $sql );
+
+    // titles
+    $training_items = zume_training_items_by_script();
+    $args = Zume_V5_Pieces::vars( $video_id );
+    $alt_video = $args['alt_video'];
+    $image_url = $args['image_url'];
+    $audio = $args['audio'];
+    $has_video = $args['has_video'];
+    $video_id = $args['video_id'];
+
+
+    if ( empty( $body ) ) {
+        ?>
+            <div class="activity__wrapper">
+                <div class="text-center">
+                    <h1>Script not yet translated</h1><hr>
+                </div>
+                <div class="activity__content">
+                </div>
+            </div>
+        <?php
+        return;
+    } else {
+        ?>
+
+    <div class="container-xsm stack-2 | py-2 f-1 | pieces-page activity content">
+
+        <div class="stack-1">
+
+            <div class="text-center">
+                <h1><?php echo esc_html( $training_items[$script_id]['title'] ) ?? '' ?></h1>
+                <hr>
+            </div>
+
+            <?php if ( $alt_video ) : ?>
+                <video width="960" style="border: 1px solid lightgrey;max-width: 960px;width:100%;" controls>
+                    <source src="<?php echo esc_url( zume_mirror_url() . zume_current_language() . '/'.$video_id.'.mp4' ) ?>" type="video/mp4" >
+                    Your browser does not support the video tag.
+                </video>
+            <?php else : ?>
+                <div class="responsive-embed widescreen">
+                    <iframe style="border: 1px solid lightgrey;"  src="<?php echo esc_url( Zume_Course::get_video_by_key( $video_id ) ) ?>" width="560" height="315"
+                            frameborder="1" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+                    </iframe>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <div class="activity__wrapper activity content">
+            <div class="activity__content">
+                <?php echo wp_kses( zume_replace_placeholder( $body, $lang ), 'post' ) ?>
+            </div>
+        </div>
+
+    </div>
+    <?php
+    }
+}
+
 function get_piece_translation_id( $postid, $lang_code ) {
     global $zume_languages_by_code;
     $post = get_post( $postid );

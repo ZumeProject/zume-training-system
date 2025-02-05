@@ -36,14 +36,10 @@
                         <span><?php echo esc_html__( 'Check-in', 'zume' ) ?></span>
                     </a>
 
-                    <?php if ( zume_feature_flag( 'pieces_pages', zume_current_language() ) ) : ?>
-
-                        <a class="nav__link" role="listitem" id="share-button" href="<?php echo esc_url( zume_share_url() ) ?>" aria-label="Share" data-tool>
-                            <div class="icon z-icon-share"></div>
-                            <span><?php echo esc_html__( 'Share', 'zume' ) ?></span>
-                        </a>
-
-                    <?php endif; ?>
+                    <a class="nav__link" role="listitem" id="share-button" href="<?php echo esc_url( zume_share_url() ) ?>" aria-label="Share" data-tool>
+                        <div class="icon z-icon-share"></div>
+                        <span><?php echo esc_html__( 'Share', 'zume' ) ?></span>
+                    </a>
 
 
                     <?php $code = zume_current_language() ?>

@@ -10,6 +10,7 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
     public $root = 'starter_app';
     public $type = 'home';
     public $postid = false;
+    public $piece_id = false;
     public $lang_code = 'en';
     public $canonical_url = 'https://zume.training/';
     public static $token = 'starter_app_home';
@@ -79,6 +80,8 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
                 return;
             }
 
+            $this->piece_id = get_post_meta( $this->postid, 'zume_piece', true );
+
             // set page title
             $this->page_title = get_post_meta( $this->postid, 'zume_piece_h1', true );
             if ( empty( $this->page_title ) ) {
@@ -136,13 +139,29 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
     public function body(){
         require __DIR__ . '/../parts/nav.php';
 
-        pieces_content( $this->postid, $this->lang_code, [
-            'wtv' => esc_html__( 'Watch This Video', 'zume' ),
-            'ay' => esc_html__( 'Ask Yourself', 'zume' ),
-            'd' => esc_html__( 'Download Free Guidebook', 'zume' ),
-            'lra' => esc_html__( 'Listen and Read Along', 'zume' ),
-            'vt' => esc_html__( 'View Transcript', 'zume' ),
-        ] );
+        global $zume_languages_by_code;
+        if ( ! isset( $zume_languages_by_code[ $this->lang_code ] ) ) {
+            return;
+        }
+
+        if ( $zume_languages_by_code[ $this->lang_code ]['enable_flags']['pieces_pages'] ) {
+            pieces_content( $this->postid, $this->lang_code, [
+                'wtv' => esc_html__( 'Watch This Video', 'zume' ),
+                'ay' => esc_html__( 'Ask Yourself', 'zume' ),
+                'd' => esc_html__( 'Download Free Guidebook', 'zume' ),
+                'lra' => esc_html__( 'Listen and Read Along', 'zume' ),
+                'vt' => esc_html__( 'View Transcript', 'zume' ),
+            ] );
+        } else {
+            $piece_id = get_post_meta( $this->postid, 'zume_piece', true );
+            pieces_content_script( $piece_id, $this->lang_code, [
+                'wtv' => esc_html__( 'Watch This Video', 'zume' ),
+                'ay' => esc_html__( 'Ask Yourself', 'zume' ),
+                'd' => esc_html__( 'Download Free Guidebook', 'zume' ),
+                'lra' => esc_html__( 'Listen and Read Along', 'zume' ),
+                'vt' => esc_html__( 'View Transcript', 'zume' ),
+            ] );
+        }
     }
 }
 Zume_Training_Pieces_URL::instance();
