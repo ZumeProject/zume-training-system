@@ -74,11 +74,11 @@ class Zume_Training_Home extends Zume_Magic_Page
         <?php //phpcs:ignore ?>
         <link rel="stylesheet" href="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/fonts/BebasKai/stylesheet.css' ) ?>">
 
-        <?php if ( $lang_code !== 'en' ) { ?>
-            <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->type ); ?>" />
+        <?php if ( $this->lang_code == 'en' || empty( $this->lang_code ) ) { ?>
+            <link rel="canonical" href="<?php echo esc_url( site_url() ); ?>" />
         <?php } else { ?>
             <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code ); ?>" />
-            <?php
+        <?php
         }
     }
 
