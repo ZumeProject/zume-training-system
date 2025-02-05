@@ -58,6 +58,25 @@ Zume_Pieces_Endpoints::instance();
 
 
 function pieces_content( $postid, $lang, $strings, $limited = false ) {
+    global $zume_languages_by_code;
+
+    if ( ! isset( $zume_languages_by_code[$lang] ) ) {
+        return;
+    }
+
+    if ( ! isset( $strings['wtv'], $strings['vt'], $strings['ay'], $strings['lra'] ) ) {
+        return;
+    }
+
+    $meta = get_post_meta( (int) $postid );
+    if ( ! empty( $meta['zume_pre_video_content'][0] ) && ! empty( $meta['zume_post_video_content'][0] ) && ! empty( $meta['zume_ask_content'][0] ) ) {
+        pieces_content_has_pieces( $postid, $lang, $strings, $limited );
+    } else {
+        pieces_content_has_no_pieces( $postid, $lang, $strings );
+    }
+}
+
+function pieces_content_has_pieces( $postid, $lang, $strings, $limited = false ) {
 
     $meta = get_post_meta( (int) $postid );
 
@@ -79,14 +98,12 @@ function pieces_content( $postid, $lang, $strings, $limited = false ) {
         }
     }
 
+    $training_items = zume_training_items();
     $tool_number = $meta['zume_piece'][0] ?? 0;
     $pre_video_content = zume_replace_placeholder( $meta['zume_pre_video_content'][0] ?? '', $lang );
     $post_video_content = zume_replace_placeholder( $meta['zume_post_video_content'][0] ?? '', $lang );
     $ask_content = zume_replace_placeholder( $meta['zume_ask_content'][0] ?? '', $lang );
-    $h1_title = empty( $meta['zume_piece_h1'][0] ) ? get_the_title( $postid ) : $meta['zume_piece_h1'][0];
-
-   // limited is used on the follow jesus piece to limit the modals in that evironment
-
+    $h1_title = empty( $meta['zume_piece_h1'][0] ) ? $training_items[$tool_number]['title'] ?? get_the_title( $postid ) : $meta['zume_piece_h1'][0];
     $args = Zume_V5_Pieces::vars( $tool_number );
 
     if ( empty( $args ) ) {
@@ -187,9 +204,10 @@ function pieces_content( $postid, $lang, $strings, $limited = false ) {
     <?php
 }
 
-function pieces_content_script( $video_id, $lang, $strings ) {
+function pieces_content_has_no_pieces( $post_id, $lang, $strings ) {
     global $wpdb;
 
+    $video_id = get_post_meta( $post_id, 'zume_piece', true );
     $training_items = zume_training_items();
 
     // video by language
@@ -202,16 +220,15 @@ function pieces_content_script( $video_id, $lang, $strings ) {
         ", $video_id, $lang );
     $vimeo_id = $wpdb->get_var( $sql );
 
-
-    $script_id = $training_items[$video_id]['script'];
     // scripts by language
+    $script_id = $training_items[$video_id]['script'];
     $sql = $wpdb->prepare(
-    "SELECT pm.meta_value
-        FROM zume_posts p
-        JOIN zume_postmeta pm ON pm.post_id=p.ID AND pm.meta_key = %s
-        WHERE p.post_type = 'zume_scripts'
-        AND p.post_title = %s
-    ", $script_id, $lang );
+        "SELECT pm.meta_value
+            FROM zume_posts p
+            JOIN zume_postmeta pm ON pm.post_id=p.ID AND pm.meta_key = %s
+            WHERE p.post_type = 'zume_scripts'
+            AND p.post_title = %s
+        ", $script_id, $lang );
     $body = $wpdb->get_var( $sql );
 
     // titles
@@ -234,40 +251,35 @@ function pieces_content_script( $video_id, $lang, $strings ) {
                 </div>
             </div>
         <?php
-        return;
     } else {
         ?>
-
-    <div class="container-xsm stack-2 | py-2 f-1 | pieces-page activity content">
-
-        <div class="stack-1">
-
-            <div class="text-center">
-                <h1><?php echo esc_html( $training_items[$script_id]['title'] ) ?? '' ?></h1>
-                <hr>
-            </div>
-
-            <?php if ( $alt_video ) : ?>
-                <video width="960" style="border: 1px solid lightgrey;max-width: 960px;width:100%;" controls>
-                    <source src="<?php echo esc_url( zume_mirror_url() . zume_current_language() . '/'.$video_id.'.mp4' ) ?>" type="video/mp4" >
-                    Your browser does not support the video tag.
-                </video>
-            <?php else : ?>
-                <div class="responsive-embed widescreen">
-                    <iframe style="border: 1px solid lightgrey;"  src="<?php echo esc_url( Zume_Course::get_video_by_key( $video_id ) ) ?>" width="560" height="315"
-                            frameborder="1" webkitallowfullscreen mozallowfullscreen allowfullscreen>
-                    </iframe>
+        <div class="container-xsm stack-2 | py-2 f-1 | pieces-page activity content">
+            <div class="stack-1">
+                <div class="text-center">
+                    <h1><?php echo esc_html( $training_items[$script_id]['title'] ) ?? '' ?></h1>
+                    <hr>
                 </div>
-            <?php endif; ?>
-        </div>
 
-        <div class="activity__wrapper activity content">
-            <div class="activity__content">
-                <?php echo wp_kses( zume_replace_placeholder( $body, $lang ), 'post' ) ?>
+                <?php if ( $alt_video ) : ?>
+                    <video width="960" style="border: 1px solid lightgrey;max-width: 960px;width:100%;" controls>
+                        <source src="<?php echo esc_url( zume_mirror_url() . zume_current_language() . '/'.$video_id.'.mp4' ) ?>" type="video/mp4" >
+                        Your browser does not support the video tag.
+                    </video>
+                <?php else : ?>
+                    <div class="responsive-embed widescreen">
+                        <iframe style="border: 1px solid lightgrey;"  src="<?php echo esc_url( Zume_Course::get_video_by_key( $video_id ) ) ?>" width="560" height="315"
+                                frameborder="1" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+                        </iframe>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <div class="activity__wrapper activity content">
+                <div class="activity__content">
+                    <?php echo wp_kses( zume_replace_placeholder( $body, $lang ), 'post' ) ?>
+                </div>
             </div>
         </div>
-
-    </div>
     <?php
     }
 }

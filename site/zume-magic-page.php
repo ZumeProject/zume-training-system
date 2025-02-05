@@ -46,7 +46,7 @@ class Zume_Magic_Page extends DT_Magic_Url_Base {
 
         <?php if ( isset( $this->page_description ) && !empty( $this->page_description ) ) : ?>
 
-            <meta name="description" content="<?php echo esc_attr( $this->page_description ) ?>">
+            <meta name="description" content="<?php echo esc_attr( wp_strip_all_tags( trim( $this->page_description ), true ) ) ?>">
 
         <?php else : ?>
 

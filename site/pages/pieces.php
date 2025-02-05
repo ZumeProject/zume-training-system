@@ -12,6 +12,7 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
     public $postid = false;
     public $piece_id = false;
     public $lang_code = 'en';
+    public $page_description = '';
     public $canonical_url = 'https://zume.training/';
     public static $token = 'starter_app_home';
 
@@ -80,13 +81,12 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
                 return;
             }
 
-            $this->piece_id = get_post_meta( $this->postid, 'zume_piece', true );
-
             // set page title
             $this->page_title = get_post_meta( $this->postid, 'zume_piece_h1', true );
             if ( empty( $this->page_title ) ) {
                 $this->page_title = get_the_title( $this->postid );
             }
+            $this->page_description = get_post_meta( $this->postid, 'zume_seo_meta_description', true );
 
             $this->register_url_and_access();
             $this->header_content();
@@ -115,9 +115,11 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
 
     public function header_style(){
 
+
         // dt_reports logger
         $logger_type = ( is_user_logged_in() ) ? 'training' : 'studying';
         $zume_piece_id = get_post_meta( $this->postid, 'zume_piece', true );
+
         $logger_subtype = $zume_piece_id.'_heard';
         zume_content_logger( $logger_type, $logger_subtype, $this->lang_code );
         ?>
@@ -139,29 +141,13 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
     public function body(){
         require __DIR__ . '/../parts/nav.php';
 
-        global $zume_languages_by_code;
-        if ( ! isset( $zume_languages_by_code[ $this->lang_code ] ) ) {
-            return;
-        }
-
-        if ( $zume_languages_by_code[ $this->lang_code ]['enable_flags']['pieces_pages'] ) {
-            pieces_content( $this->postid, $this->lang_code, [
-                'wtv' => esc_html__( 'Watch This Video', 'zume' ),
-                'ay' => esc_html__( 'Ask Yourself', 'zume' ),
-                'd' => esc_html__( 'Download Free Guidebook', 'zume' ),
-                'lra' => esc_html__( 'Listen and Read Along', 'zume' ),
-                'vt' => esc_html__( 'View Transcript', 'zume' ),
-            ] );
-        } else {
-            $piece_id = get_post_meta( $this->postid, 'zume_piece', true );
-            pieces_content_script( $piece_id, $this->lang_code, [
-                'wtv' => esc_html__( 'Watch This Video', 'zume' ),
-                'ay' => esc_html__( 'Ask Yourself', 'zume' ),
-                'd' => esc_html__( 'Download Free Guidebook', 'zume' ),
-                'lra' => esc_html__( 'Listen and Read Along', 'zume' ),
-                'vt' => esc_html__( 'View Transcript', 'zume' ),
-            ] );
-        }
+        pieces_content( $this->postid, $this->lang_code, [
+            'wtv' => esc_html__( 'Watch This Video', 'zume' ),
+            'ay' => esc_html__( 'Ask Yourself', 'zume' ),
+            'd' => esc_html__( 'Download Free Guidebook', 'zume' ),
+            'lra' => esc_html__( 'Listen and Read Along', 'zume' ),
+            'vt' => esc_html__( 'View Transcript', 'zume' ),
+        ] );
     }
 }
 Zume_Training_Pieces_URL::instance();
