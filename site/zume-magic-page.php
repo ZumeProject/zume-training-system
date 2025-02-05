@@ -31,6 +31,7 @@ class Zume_Magic_Page extends DT_Magic_Url_Base {
     }
 
     public function consistent_head() {
+
         ?>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-N27P3H7SBT"></script>
@@ -45,16 +46,22 @@ class Zume_Magic_Page extends DT_Magic_Url_Base {
         <?php require_once trailingslashit( __DIR__ ) . 'parts/head.php'; ?>
 
         <?php if ( isset( $this->page_description ) && !empty( $this->page_description ) ) : ?>
-
             <meta name="description" content="<?php echo esc_attr( wp_strip_all_tags( trim( $this->page_description ), true ) ) ?>">
-
         <?php else : ?>
-
             <meta name="description" content="<?php echo esc_attr__( 'Zúme Training is an on-line and in-life learning experience designed for small groups who follow Jesus. An online, in-life disciple making movement training', 'zume' ) ?>">
-
         <?php endif; ?>
 
         <?php
+        // keep not ready version 5 languages from being indexed
+        global $zume_languages_by_code;
+        [
+            'lang_code' => $lc,
+        ] = zume_get_url_pieces();
+        dt_write_log( $lc );
+        if ( isset( $zume_languages_by_code[$lc]['enable_flags']['version_5_ready'] )
+            && empty( $zume_languages_by_code[$lc]['enable_flags']['version_5_ready'] ) ) {
+            ?><meta name="robots" content="noindex, nofollow"><?php
+        }
     }
 
     /**
