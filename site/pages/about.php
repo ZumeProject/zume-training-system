@@ -79,6 +79,7 @@ class Zume_Training_About extends Zume_Magic_Page
         <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
 
         <?php
+        zume_hreflang_fixed( $this->lang_code, $this->type );
     }
 
     public function body(){

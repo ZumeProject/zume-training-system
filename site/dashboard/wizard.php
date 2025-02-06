@@ -77,6 +77,9 @@ class Zume_Training_Wizard extends Zume_Magic_Page
     public function enqueue_scripts() {}
 
     public function header_style(){
+
+
+
         global $zume_user_profile, $zume_languages_by_code;
         ?>
         <?php //phpcs:ignore ?>

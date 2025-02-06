@@ -110,6 +110,7 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
             });
         </script>
         <?php
+        zume_hreflang_fixed( $this->lang_code, $this->type );
     }
 
     private function display_link( $value, $tool, $id, $title ) {

@@ -78,7 +78,7 @@ class Zume_Training_Plan_Invite extends Zume_Magic_Page
                     'bad_code' => __( 'Not a recognized code. Please check the number.', 'zume' ),
                 ],
             ]) ?>][0]
-        
+
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
 
@@ -133,6 +133,7 @@ class Zume_Training_Plan_Invite extends Zume_Magic_Page
         </script>
 
         <?php
+        zume_hreflang_fixed( $this->lang_code, $this->type );
     }
 
     public function body(){

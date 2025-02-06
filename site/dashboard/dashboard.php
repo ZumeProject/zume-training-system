@@ -143,6 +143,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
         </script>
 
         <?php
+        zume_hreflang_fixed( $this->lang_code, $this->root );
     }
 
     public function body(){

@@ -9,6 +9,7 @@ require_once( __DIR__ . '/zume-magic-page.php' );
 require_once( __DIR__ . '/login/login.php' );
 require_once( __DIR__ . '/login/login-functions.php' );
 require_once( __DIR__ . '/parts/anonymous-logger.php' );
+require_once( __DIR__ . '/parts/hreflang.php' );
 
 $skip_folders = [
     'parts',

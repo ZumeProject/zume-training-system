@@ -225,6 +225,7 @@ class Zume_Training_Checkin extends Zume_Magic_Page
             });
         </script>
         <?php
+        zume_hreflang_fixed( $this->lang_code, $this->type );
     }
 
     public function get_checkin_code() {

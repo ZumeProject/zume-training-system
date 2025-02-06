@@ -115,7 +115,6 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
 
     public function header_style(){
 
-
         // dt_reports logger
         $logger_type = ( is_user_logged_in() ) ? 'training' : 'studying';
         $zume_piece_id = get_post_meta( $this->postid, 'zume_piece', true );
@@ -130,9 +129,15 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
         </script>
 
         <?php $current_post = get_post( $this->postid ); ?>
-        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $current_post->post_name ); ?>" />
 
+        <?php if ( $this->lang_code == 'en' || empty( $this->lang_code ) ) { ?>
+            <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $current_post->post_name ); ?>" />
+        <?php } else { ?>
+            <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $current_post->post_name ); ?>" />
         <?php
+        }
+
+        zume_hreflang_with_slug( $this->lang_code, $this->postid );
     }
 
     public function header_script() {
