@@ -79,8 +79,9 @@ class Zume_Activites extends Zume_Magic_Page
                 jQuery(document).foundation()
             });
         </script>
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' .  $this->root . '/' . $this->type ); ?>" />
         <?php
-         zume_hreflang_fixed( $this->lang_code, $this->type );
+         zume_hreflang_fixed( $this->lang_code, $this->root . '/' . $this->type );
     }
     public function body(){
         global $wpdb;
