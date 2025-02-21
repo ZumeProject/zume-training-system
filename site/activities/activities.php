@@ -44,6 +44,7 @@ class Zume_Activites extends Zume_Magic_Page
             // page content
             add_action( 'dt_blank_head', [ $this, '_header' ] );
             add_action( 'dt_blank_head', [ $this, 'consistent_head' ], 5 );
+            add_action( 'dt_blank_head', [ $this, 'meta' ], 5 );
             add_action( 'dt_blank_body', [ $this, 'body' ] );
 //            add_action( 'dt_blank_footer', [ $this, '_footer' ] );
 
@@ -71,6 +72,12 @@ class Zume_Activites extends Zume_Magic_Page
         return zume_training_magic_url_base_allowed_css();
     }
 
+    public function meta() {
+        ?>
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->language_code . '/' .  $this->root . '/' . $this->type ); ?>" />
+        <?php
+         zume_hreflang_fixed( $this->language_code, $this->root . '/' . $this->type );
+    }
     public function header_style(){
         ?>
         <script>
@@ -79,9 +86,7 @@ class Zume_Activites extends Zume_Magic_Page
                 jQuery(document).foundation()
             });
         </script>
-        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' .  $this->root . '/' . $this->type ); ?>" />
         <?php
-         zume_hreflang_fixed( $this->lang_code, $this->root . '/' . $this->type );
     }
     public function body(){
         global $wpdb;
