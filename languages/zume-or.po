@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2025-01-31 10:00+0000\n"
+"PO-Revision-Date: 2025-02-21 12:00+0000\n"
 "Last-Translator: Manikumar Miriyala <mani@zume.training>\n"
 "Language-Team: Odia <https://translate.disciple.tools/projects/zume-training/"
 "zume-training-system/or/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.10\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
@@ -27,11 +27,11 @@ msgstr ""
 
 #: 404.php:73
 msgid "Epic 404 - Not Found"
-msgstr ""
+msgstr "ଅତି ଅଦ୍ଭୁତ ୪୦୪ - ମିଳୁ ନାହିଁ"
 
 #: 404.php:74
 msgid "The page you were looking for was not found or was deleted"
-msgstr ""
+msgstr "ଆପଣ ଖୋଜୁଥିବା ପୃଷ୍ଠାଟି ମିଳୁ ନାହିଁ ଅଥବା ବିଲୋପ କରି ଦିଆଗଲା"
 
 #: 404.php:76 site/course/presenter.php:138
 #: site/pages/_strings-mobile-pwa.php:12
@@ -89,7 +89,7 @@ msgstr "ପ୍ରଶିକ୍ଷଣ"
 
 #: appearance/style-override/navigation.php:85 site/pages/home.php:206
 msgid "How it Works"
-msgstr ""
+msgstr "ଏହା କିପରି କାର୍ଯ୍ୟ କରେ"
 
 #: appearance/style-override/navigation.php:91
 msgid "Download Guidebook"
@@ -688,52 +688,52 @@ msgid "No Results"
 msgstr "କୌଣସି ଫଳାଫଳ ନାହିଁ"
 
 #: maps/heatmap.php:3150
-#, fuzzy
 msgid "trainee"
-msgstr "ତାଲିମ୍ ଦେଲେ"
+msgstr "ପ୍ରଶିକ୍ଷାର୍ଥୀ"
 
 #: maps/heatmap.php:3153
 msgid "practitioner"
-msgstr ""
+msgstr "ଅଭ୍ୟାସକାରୀ"
 
 #: maps/heatmap.php:3156
 msgid "visitor"
-msgstr ""
+msgstr "ପରିଦର୍ଶକ"
 
 #: maps/heatmap.php:3166
 #, php-format
 msgid "A new trainee from %1$s has registered!"
-msgstr ""
+msgstr "%1$s ରୁ ଜଣେ ନୂତନ ଶିକ୍ଷାର୍ଥୀ ପଞ୍ଜିକୃତ ହୋଇଛନ୍ତି!"
 
 #: maps/heatmap.php:3170
 #, php-format
 msgid "A %1$s in %2$s has requested %3$s coaching!"
-msgstr ""
+msgstr "%2$s ରେ ଥିବା %1$s %3$s କୋଚିଂ ପାଇଁ ଅନୁରୋଧ କରିଛନ୍ତି!"
 
 #: maps/heatmap.php:3174
-#, php-format
+#, fuzzy, php-format
 msgid "New training group scheduled in %1$s. %2$s"
-msgstr ""
+msgstr "%1$sରେ ନିର୍ଦ୍ଧାରିତ ନୂତନ ପ୍ରଶିକ୍ଷଣ ଗୋଷ୍ଠୀ। %2$"
 
 #: maps/heatmap.php:3216
 #, php-format
 msgid "A %1$s is starting SESSION %2$s in %3$s. %4$s"
-msgstr ""
+msgstr "ଜଣେ %1$s %3$sରେ ଅଧିବେଶନ %2$s ଆରମ୍ଭ କରୁଛନ୍ତି। %4$s"
 
 #: maps/heatmap.php:3254
-#, php-format
+#, fuzzy, php-format
 msgid "A %1$s is studying \"%2$s\" in %3$s. %4$s"
-msgstr ""
+msgstr "ଜଣେ 1%1$s 3%3$s ରେ \"2%2$s\" ଅଧ୍ୟୟନ କରୁଛନ୍ତି"
 
 #: maps/heatmap.php:3296
-#, php-format
+#, fuzzy, php-format
 msgid "A %1$s shared \"%2$s\" with someone in %3$s. %4$s"
-msgstr ""
+msgstr "1%1$s 3%3$s ରେ କେହି ଜଣକଙ୍କ ସହିତ \"2%2$s\" ବାଣ୍ଟିଛନ୍ତି। 4$s"
 
 #: maps/heatmap.php:3334
 #, php-format
 msgid "A %1$s trained someone to use \"%2$s\" in %3$s. %4$s"
 msgstr ""
+"ଜଣେ %1$s କେହି ବ୍ୟକ୍ତିଙ୍କୁ %3$sରେ \"%2$s\" ବ୍ୟବହାର କରିବାକୁ ତାଲିମ ଦେଇଛିନ୍ତି। %4$s"
 
 #: maps/heatmap.php:3373
 #, php-format
@@ -744,6 +744,7 @@ msgstr ""
 #, php-format
 msgid "A coach is assisting with \"%1$s\" for a trainee in %2$s. %3$s"
 msgstr ""
+"ଜଣେ କୋଚ୍ %2$s. %3$s ରେ ଜଣେ ପ୍ରଶିକ୍ଷାର୍ଥୀଙ୍କ ପାଇଁ \"%1$s\" ସହାୟତା କରୁଛନ୍ତି"
 
 #: maps/heatmap.php:3451
 #, php-format
@@ -751,69 +752,71 @@ msgid ""
 "A coach has entered a watching stage for a trainee regarding \"%1$s\" in "
 "%2$s. %3$s"
 msgstr ""
+"%2$s ରେ \"%1$s\" ବିଷୟରେ ଜଣେ ପ୍ରଶିକ୍ଷାର୍ଥୀଙ୍କ ପାଇଁ ଏକ କୋଚ୍ ଏକ ଦେଖିବା ପର୍ଯ୍ୟାୟରେ ପ୍ରବେଶ "
+"କରିଛନ୍ତି। %3$s"
 
 #: maps/heatmap.php:3490
-#, php-format
+#, fuzzy, php-format
 msgid "A coach has fully launched a trainee regarding \"%1$s\" in %2$s. %3$s"
 msgstr ""
+"ଜଣେ କୋଚ୍ %2$s ରେ \"%1$s\" ବିଷୟରେ ଜଣେ ପ୍ରଶିକ୍ଷାର୍ଥୀଙ୍କୁ ସମ୍ପୂର୍ଣ୍ଣ ଭାବରେ ଶୁଭାରମ୍ଭ କରିଛନ୍ତି"
 
 #: maps/heatmap.php:3496
-#, php-format
+#, fuzzy, php-format
 msgid "A %1$s created at post training plan in %2$s. %3$s"
-msgstr ""
+msgstr "%2$s ରେ ପ୍ରଶିକ୍ଷଣ ପରବର୍ତ୍ତୀ ଯୋଜନାର ଏକ %1$s ସୃଷ୍ଟି କରିଛନ୍ତି"
 
 #: maps/html/heatmap-html.php:37
 msgid "Loading the planet"
-msgstr ""
+msgstr "ଗ୍ରହକୁ ଭର୍ତ୍ତିକରିବ"
 
 #: maps/html/heatmap-html.php:38
 msgid "Locating world population"
-msgstr ""
+msgstr "ବିଶ୍ୱ ଜନସଂଖ୍ୟାକୁ ଚିହ୍ନଟ କରିବ"
 
 #: maps/html/heatmap-html.php:39
 msgid "Calculating movement activity"
-msgstr ""
+msgstr "ଆନ୍ଦୋଳନ ଗତିବିଧିକୁ ହିସାବ କରି"
 
 #: maps/html/heatmap-html.php:40
 msgid "Shamelessly brewing coffee"
-msgstr ""
+msgstr "ନିର୍ଲଜ୍ଜ ଭାବେ କଫି ପ୍ରସ୍ତୁତ କରିବ"
 
 #: maps/html/heatmap-html.php:41
 msgid "Let‘s do this"
-msgstr ""
+msgstr "ଚାଲନ୍ତୁ ଏହା କରିବ"
 
 #: maps/html/heatmap-html.php:73 maps/html/heatmap-html.php:177
 #: maps/js-translation-strings.php:5
-#, fuzzy
 msgid "Population"
-msgstr "ସ୍ଥାନ"
+msgstr "ଜନସଂଖ୍ୟା"
 
 #: maps/html/heatmap-html.php:80 maps/js-translation-strings.php:6
 msgid "Needed"
-msgstr ""
+msgstr "ଆବଶ୍ୟକ"
 
 #: maps/html/heatmap-html.php:83
 msgid "Reported"
-msgstr ""
+msgstr "ରିପୋର୍ଟ କରାଯାଇଛି"
 
 #: maps/html/heatmap-html.php:89
 msgid "Goal"
-msgstr ""
+msgstr "ଲକ୍ଷ୍ୟ"
 
 #: maps/html/heatmap-html.php:100 maps/html/heatmap-html.php:124
 #: maps/map-2-network-activities.php:137
 msgid "Search"
-msgstr ""
+msgstr "ସନ୍ଧାନ"
 
 #: maps/html/heatmap-html.php:101 maps/html/heatmap-html.php:125
 #: maps/map-2-network-activities.php:138
 msgid "Search for any city or place with the search input."
-msgstr ""
+msgstr "ସର୍ଚ୍ଚ ଇନପୁଟ୍ ସହିତ ଯେକୌଣସି ସହର କିମ୍ବା ସ୍ଥାନ ପାଇଁ ସନ୍ଧାନ କରନ୍ତୁ।"
 
 #: maps/html/heatmap-html.php:105 maps/html/heatmap-html.php:129
 #: maps/map-2-network-activities.php:142
 msgid "Zoom"
-msgstr ""
+msgstr "ଜୁମ୍ କରିବା"
 
 #: maps/html/heatmap-html.php:106 maps/html/heatmap-html.php:130
 #: maps/map-2-network-activities.php:143
@@ -821,22 +824,26 @@ msgid ""
 "Scroll zoom with your mouse or pinch zoom with track pads and phones to "
 "focus on sections of the map."
 msgstr ""
+"ମାନଚିତ୍ରର କିଛି ଅଂଶ ଉପରେ ଧ୍ୟାନ କେନ୍ଦ୍ରିତ କରିବା ପାଇଁ ମାଉସ୍ ସାହାଯ୍ୟରେ ସ୍କ୍ରୋଲ୍ ଜୁମ୍ କରନ୍ତୁ କିମ୍ବା "
+"ଟ୍ରାକ୍ ପ୍ୟାଡ୍ ଏବଂ ଫୋନ୍ ସାହାଯ୍ୟରେ ପିନ୍ଚ ଜୁମ୍ କରନ୍ତୁ ।"
 
 #: maps/html/heatmap-html.php:110 maps/html/heatmap-html.php:134
 #: maps/map-2-network-activities.php:147
 msgid "Drag"
-msgstr ""
+msgstr "ଟାଣି ନିଅନ୍ତୁ"
 
 #: maps/html/heatmap-html.php:111 maps/html/heatmap-html.php:135
 #: maps/map-2-network-activities.php:148
 msgid ""
 "Click and drag the map any direction to look at a different part of the map."
 msgstr ""
+"ମାନଚିତ୍ରର କିଛି ଅଂଶ ଉପରେ ଧ୍ୟାନ କେନ୍ଦ୍ରିତ କରିବା ପାଇଁ ମାଉସ୍ ସାହାଯ୍ୟରେ ସ୍କ୍ରୋଲ୍ ଜୁମ୍ କରନ୍ତୁ କିମ୍ବା "
+"ଟ୍ରାକ୍ ପ୍ୟାଡ୍ ଏବଂ ଫୋନ୍ ସାହାଯ୍ୟରେ ପିନ୍ଚ ଜୁମ୍ କରନ୍ତୁ ।"
 
 #: maps/html/heatmap-html.php:115 maps/html/heatmap-html.php:139
 #: maps/map-2-network-activities.php:152
 msgid "Click"
-msgstr ""
+msgstr "କ୍ଲିକ୍ କରନ୍ତୁ"
 
 #: maps/html/heatmap-html.php:116 maps/html/heatmap-html.php:140
 #: maps/map-2-network-activities.php:153
@@ -844,10 +851,11 @@ msgid ""
 "Click a single section and reveal a details panel with more information "
 "about the location."
 msgstr ""
+"ଗୋଟିଏ ବିଭାଗକୁ କ୍ଲିକ୍ କରନ୍ତୁ ଏବଂ ଅବସ୍ଥାନ ବିଷୟରେ ଅଧିକ ସୂଚନା ସହିତ ଏକ ବିବରଣୀ ପ୍ୟାନେଲ ପ୍ରକାଶ କରନ୍ତୁ।"
 
 #: maps/html/heatmap-html.php:187
 msgid "PROGRESS BREAKDOWN"
-msgstr ""
+msgstr "ଅଗ୍ରଗତିର ବିଭାଜନ"
 
 #: maps/html/heatmap-html.php:204 site/activities/activities.php:29
 #: site/activities/activities.php:158 site/activities/activities.php:181
@@ -869,48 +877,47 @@ msgstr ""
 #: site/course/course-content.php:4338 site/course/course-content.php:4623
 #: site/course/course-content.php:5028
 msgid "ACTIVITY"
-msgstr "କାର୍ଯ୍ୟକଳାପ"
+msgstr "ଲକ୍ଷ୍ୟ ପ୍ରାପ୍ତ ହେଲା"
 
 #: maps/js-translation-strings.php:7 maps/js-translation-strings.php:12
 msgid "Goal Reached"
-msgstr ""
+msgstr "ଲକ୍ଷ୍ୟ ପ୍ରାପ୍ତ ହେଲା"
 
 #: maps/js-translation-strings.php:8
 msgid "Churches Needed"
-msgstr ""
+msgstr "ମଣ୍ଡଳୀର ଆବଶ୍ୟକ"
 
 #: maps/js-translation-strings.php:9
 msgid "Churches Reported"
-msgstr ""
+msgstr "ମଣ୍ଡଳୀଗୁଡ଼ିକ ରିପୋର୍ଟ କରାଗଲା"
 
 #: maps/js-translation-strings.php:10
-#, fuzzy
 msgid "Trainees Needed"
-msgstr "ତାଲିମ୍ ଦେଲେ"
+msgstr "ପ୍ରଶିକ୍ଷାର୍ଥୀ ଆବଶ୍ୟକ"
 
 #: maps/js-translation-strings.php:11
 msgid "Trainees Reported"
-msgstr ""
+msgstr "ପ୍ରଶିକ୍ଷାର୍ଥୀମାନେ ରିପୋର୍ଟ କଲେ"
 
 #: maps/js-translation-strings.php:13
 msgid "Activities Reported"
-msgstr ""
+msgstr "କାର୍ଯ୍ୟକଳାପ ରିପୋର୍ଟ କରାଗଲା"
 
 #: maps/js-translation-strings.php:14
 msgid "Practitioners Needed"
-msgstr ""
+msgstr "ଅଭ୍ୟାସକାରୀ ଆବଶ୍ୟକ"
 
 #: maps/js-translation-strings.php:15
 msgid "Practitioners Reported"
-msgstr ""
+msgstr "ଅଭ୍ୟାସକାରୀ ରିପୋର୍ଟ କଲେ"
 
 #: maps/js-translation-strings.php:17
 msgid "Last 100 Hours of Movement Activity"
-msgstr ""
+msgstr "ଗତ ୧୦୦ ଘଣ୍ଟାର ଆନ୍ଦୋଳନ କାର୍ଯ୍ୟକଳାପ"
 
 #: maps/js-translation-strings.php:18
 msgid "Countries"
-msgstr ""
+msgstr "ଦେଶଗୁଡ଼ିକ"
 
 #: maps/js-translation-strings.php:19 site/pages/home.php:82
 msgid "Languages"
@@ -918,28 +925,28 @@ msgstr "ଭାଷା"
 
 #: maps/js-translation-strings.php:20
 msgid "All Types"
-msgstr ""
+msgstr "ସମସ୍ତ ପ୍ରକାର"
 
 #: maps/js-translation-strings.php:21
 msgid "All Countries"
-msgstr ""
+msgstr "ସମସ୍ତ ଦେଶ"
 
 #: maps/js-translation-strings.php:22
-#, fuzzy
 msgid "All Languages"
-msgstr "ଭାଷା"
+msgstr "ସମସ୍ତ ଭାଷା"
 
 #: maps/js-translation-strings.php:23
 msgid "Results"
-msgstr ""
+msgstr "ଫଳାଫଳ"
 
 #: maps/js-translation-strings.php:24
 msgid "Additional Records. (Zoom or Filter map to focus results)"
 msgstr ""
+"ଅତିରିକ୍ତ ରେକର୍ଡ (ଫଳାଫଳ ଫୋକସ୍ କରିବାକୁ ମାନଚିତ୍ର ଜୁମ୍ କିମ୍ୱା ଫିଲ୍ଟର କରନ୍ତୁ)"
 
 #: maps/js-translation-strings.php:25
 msgid "Studying"
-msgstr ""
+msgstr "ଅଧ୍ୟୟନ କରୁଛନ୍ତି"
 
 #: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:234
 msgid "Practicing"
@@ -952,7 +959,7 @@ msgstr "କୋଚିଂ"
 #: maps/js-translation-strings.php:30 maps/map-3-trainees.php:141
 #: maps/map-5-churches.php:141
 msgid "Purpose of the Map"
-msgstr ""
+msgstr "ମାନଚିତ୍ରର ଉଦ୍ଦେଶ୍ୟ"
 
 #: maps/js-translation-strings.php:31
 msgid ""
@@ -960,65 +967,76 @@ msgid ""
 "making through Zúme around the world. The 100 hours begins now and covers "
 "activity over roughly the last 4 days."
 msgstr ""
+"ଶେଷ ୧୦୦ ଘଣ୍ଟାର ମାନଚିତ୍ର ପବିତ୍ରଆତ୍ମା ତାଙ୍କ ଲୋକମାନଙ୍କୁ ଯୁମେ ମାଧ୍ୟମରେ ସମଗ୍ର ବିଶ୍ୱରେ ଶିଷ୍ୟ କରିବାକୁ "
+"ପ୍ରେରିତ କରୁଥିବା ପ୍ରଦର୍ଶନ କରେ । ଏହି ୧୦୦ ଘଣ୍ଟା ବର୍ତ୍ତମାନ ଆରମ୍ଭ ହୋଇଛି ଏବଂ ପ୍ରାୟ ଗତ ୪ ଦିନର "
+"କାର୍ଯ୍ୟକଳାପ କୁ ଅନ୍ତର୍ଭୁକ୍ତ କରେ ।"
 
 #: maps/js-translation-strings.php:32
 msgid "Types of Activities"
-msgstr ""
+msgstr "କାର୍ଯ୍ୟକଳାପର ପ୍ରକାର"
 
 #: maps/js-translation-strings.php:33
 msgid ""
 "Someone who is \"studying\" is not logged into the system, but is studying "
 "the course material."
 msgstr ""
+"ଜଣେ ବ୍ୟକ୍ତି ଯିଏ \"ଅଧ୍ୟୟନ କରୁଛନ୍ତି\" ସିଷ୍ଟମରେ ଲଗ୍ ଇନ୍ ହୋଇନାହାନ୍ତି, କିନ୍ତୁ ପାଠ୍ୟକ୍ରମର ବିଷୟବସ୍ତୁ ଅଧ୍"
+"ୟୟନ କରୁଛନ୍ତି ।"
 
 #: maps/js-translation-strings.php:34
 msgid ""
 "Someone who is \"training\" is logged into to the system and is going "
 "through the training process."
 msgstr ""
+"ଜଣେ ବ୍ୟକ୍ତି ଯିଏ \"ପ୍ରଶିକ୍ଷଣ\" ନେଉଛିନ୍ତି ତାଙ୍କୁ ସିଷ୍ଟମରେ ଲଗ୍ ଇନ୍ କରାଯାଇଛି ଏବଂ ସେ ପ୍ରଶିକ୍ଷଣ ପ୍ରକ୍ରିୟା "
+"ଦେଇ ଗତି କରୁଛନ୍ତି।"
 
 #: maps/js-translation-strings.php:35
 msgid ""
 "Someone who is \"practicing\" is taking action by sharing tools and "
 "concepts, training others to share, reporting on movement growth, etc."
 msgstr ""
+"ଜଣେ ବ୍ୟକ୍ତି ଯିଏ \"ଅଭ୍ୟାସ\" କରୁଛନ୍ତି ସିଏ ଉପକରଣ ଓ ଧାରଣା ବାଣ୍ଟିବା, ଅନ୍ୟମାନଙ୍କୁ ବାଣ୍ଟିବା ପାଇଁ ତାଲି"
+"ମ ଦେବା, ଆନ୍ଦୋଳନ ବୃଦ୍ଧି ଉପରେ ରିପୋର୍ଟ କରିବା ଇତ୍ୟାଦି ମାଧ୍ୟମରେ ପଦକ୍ଷେପ ନେଉଛନ୍ତି ।"
 
 #: maps/js-translation-strings.php:36
 msgid ""
 "Someone who is in \"coaching\" is interacting with a peer mentor Zúme coach."
 msgstr ""
+"କେହି ଜଣେ \"କୋଚିଂ\"ରେ ଜଣେ ସହପାଠୀ ମାର୍ଗଦର୍ଶକ ଯୁମେ କୋଚ୍ ଙ୍କ ସହିତ କଥାବାର୍ତ୍ତା କରୁଛନ୍ତି ।"
 
 #: maps/js-translation-strings.php:37 maps/map-3-trainees.php:153
 #: maps/map-5-churches.php:153
 msgid "How to Get on The Map"
-msgstr ""
+msgstr "ମାନଚିତ୍ରରେ କିପରି ସ୍ଥାନ ପାଇବେ"
 
 #: maps/js-translation-strings.php:38
 msgid "Always sign in when you are studying the content."
-msgstr ""
+msgstr "ବିଷୟବସ୍ତୁ ଅଧ୍ୟୟନ କରିବା ସମୟରେ ସର୍ବଦା ସାଇନ୍ ଇନ୍ କରନ୍ତୁ ।"
 
 #: maps/js-translation-strings.php:39
 msgid "Always checkin when you are going through a session."
-msgstr ""
+msgstr "ଆପଣ ଏକ ଅଧିବେଶନ ଦେଇ ଯାଉଥିବା ସମୟରେ ସର୍ବଦା ଚେକ୍ ଇନ୍ କରନ୍ତୁ।"
 
 #: maps/js-translation-strings.php:40
 msgid ""
 "Always update your progress in the training section as you are sharing and "
 "training others."
 msgstr ""
+"ଆପଣ ଅନ୍ୟମାନଙ୍କ ସହ ବାଣ୍ଟିବା ଓ ପ୍ରଶିକ୍ଷଣ ଦେଉଥିବା ବେଳେ ପ୍ରଶିକ୍ଷଣ ବିଭାଗରେ ନିଜର ଅଗ୍ରଗତି ବିଷୟରେ "
+"ସବୁବେଳେ ଅପଡେଟ୍ କରନ୍ତୁ ।"
 
 #: maps/js-translation-strings.php:41
 msgid "Always report new simple churches that you are starting."
-msgstr ""
+msgstr "ଆପଣ ପ୍ରାରମ୍ଭ କରୁଥିବା ନୂତନ ସରଳ ଚର୍ଚ୍ଚଗୁଡିକ ସର୍ବଦା ରିପୋର୍ଟ କରନ୍ତୁ।"
 
 #: maps/map-2-network-activities.php:158
 msgid "Activities"
-msgstr ""
+msgstr "କାର୍ଯ୍ୟକଳାପ"
 
 #: maps/map-3-trainees.php:123
-#, fuzzy
 msgid "Trainees"
-msgstr "ତାଲିମ୍ ଦେଲେ"
+msgstr "ପ୍ରଶିକ୍ଷାର୍ଥୀ"
 
 #: maps/map-3-trainees.php:124
 msgid "Map of Zúme Trainees"
@@ -1029,6 +1047,8 @@ msgid ""
 "Saturation Goal: 1 trainee per 5,000 people in the United States; and 1 "
 "trainee per 50,000 people globally."
 msgstr ""
+"ପରିପୂର୍ଣ୍ଣତା ଲକ୍ଷ୍ୟ: ଯୁକ୍ତରାଷ୍ଟ୍ର ଆମେରିକାରେ ପ୍ରତି ୫,୦୦୦ ଲୋକରେ ଜଣେ ପ୍ରଶିକ୍ଷାର୍ଥୀ ଏବଂ ବିଶ୍ୱରେ ପ୍ରତି "
+"୫୦,୦୦୦ ଲୋକରେ ଜଣେ ପ୍ରଶିକ୍ଷାର୍ଥୀ ।"
 
 #: maps/map-3-trainees.php:142
 msgid ""
@@ -1036,72 +1056,80 @@ msgid ""
 "Trainees\" shows what is needed and what is reported for global saturation "
 "of trained multiplying disciples."
 msgstr ""
+"ଆମେ ବହୁଗୁଣିତ ହେଉଥିବା ଶିଷ୍ୟମାନଙ୍କ ସହିତ ଜଗତକୁ ପରିପୂର୍ଣ୍ଣ କରିବାକୁ ଚାହୁଁ । "
+"\"ଯୁମେ ପ୍ରଶିକ୍ଷାର୍ଥୀ ମାନଚିତ୍ର\" ପ୍ରଶିକ୍ଷିତ ଶିଷ୍ୟମାନଙ୍କର ବିଶ୍ୱସ୍ତରୀୟ ପରିପୂର୍ଣ୍ଣତା ପାଇଁ କ'ଣ ଆବଶ୍ୟକ ଏବଂ"
+" କ'ଣ ରିପୋର୍ଟ କରାଯାଏ ତାହା ଦର୍ଶାଏ ।"
 
 #: maps/map-3-trainees.php:143 maps/map-5-churches.php:143
 msgid "Saturation Goal"
-msgstr ""
+msgstr "ପରିପୂର୍ଣ୍ଣତା ଲକ୍ଷ୍ୟ"
 
 #: maps/map-3-trainees.php:145
 msgid "1 trained multiplying disciple per 5,000 in the United States"
 msgstr ""
+"ଯୁକ୍ତରାଷ୍ଟ୍ର ଆମେରିକାରେ ପ୍ରତି ୫,୦୦୦ ଲୋକରେ ଜଣେ ପ୍ରଶିକ୍ଷିତ ବହୁଗୁଣିତ ହେଉଥିବା ଶିଷ୍ୟ"
 
 #: maps/map-3-trainees.php:146
 msgid "1 trained multiplying disciple per 50,000 globally"
-msgstr ""
+msgstr "ବିଶ୍ୱସ୍ତରରେ ପ୍ରତି ୫୦,୦୦୦ରେ ଜଣେ ପ୍ରଶିକ୍ଷିତ ବହୁଗୁଣିତ ହେଉଥିବା ଶିଷ୍ୟ"
 
 #: maps/map-3-trainees.php:148 maps/map-5-churches.php:148
 msgid "Measurements Used"
-msgstr ""
+msgstr "ବ୍ୟବହୃତ ମାପ"
 
 #: maps/map-3-trainees.php:150 maps/map-5-churches.php:150
 msgid ""
 "\"Needed\" refers to what is missing in the location listed according to "
 "population."
-msgstr ""
+msgstr "ଜନସଂଖ୍ୟା ଅନୁସାରେ ତାଲିକାଭୁକ୍ତ ସ୍ଥାନର ଅଭାବକୁ \"ଆବଶ୍ୟକ\" କୁହାଯାଏ।"
 
 #: maps/map-3-trainees.php:151
 msgid ""
 "\"Reported\" refers to trainees who have registered themselves to the Zúme "
 "community."
 msgstr ""
+"\"ରିପୋର୍ଟ କରାଗଲେ\" ସେହି ଶିକ୍ଷାର୍ଥୀମାନଙ୍କୁ ବୁଝାଏ ଯେଉଁମାନେ ଯୁମେ ସମ୍ପ୍ରଦାୟରେ ନିଜକୁ ପଞ୍ଜୀକୃତ "
+"କରିଛନ୍ତି।"
 
 #: maps/map-3-trainees.php:155 maps/map-5-churches.php:155
 msgid "Join the Zúme community."
-msgstr ""
+msgstr "ଯୁମେ ସମ୍ପ୍ରଦାୟରେ ଯୋଗ ଦିଅନ୍ତୁ।"
 
 #: maps/map-3-trainees.php:156
 msgid "Update your profile with your location."
-msgstr ""
+msgstr "ନିଜର ଅବସ୍ଥାନ ସହିତ ନିଜର ପ୍ରୋଫାଇଲ୍ ଅପଡେଟ୍ କରନ୍ତୁ।"
 
 #: maps/map-4-practitioners.php:121
 msgid "Practitioners"
-msgstr ""
+msgstr "ଅଭ୍ୟାସକାରୀ"
 
 #: maps/map-4-practitioners.php:122
 msgid "Map of Zúme Practitioners"
-msgstr ""
+msgstr "ଯୁମେ ଅଭ୍ୟାସକାରୀଙ୍କ ମାନଚିତ୍ର"
 
 #: maps/map-4-practitioners.php:123
 msgid ""
 "Saturation Goal: 1 trainee per 5,000 in the United States, 1 trainee per "
 "50,000 globally"
 msgstr ""
+"ପରିପୂର୍ଣ୍ଣତା ଲକ୍ଷ୍ୟ: ଯୁକ୍ତରାଷ୍ଟ୍ର ଆମେରିକାରେ ପ୍ରତି ୫,୦୦୦ ଲୋକରେ ଜଣେ ପ୍ରଶିକ୍ଷାର୍ଥୀ ଏବଂ ବିଶ୍ୱରେ ପ୍ରତି "
+"୫୦,୦୦୦ ଲୋକରେ ଜଣେ ପ୍ରଶିକ୍ଷାର୍ଥୀ"
 
 #: maps/map-5-churches.php:123
-#, fuzzy
 msgid "Churches"
-msgstr "୨ ସରଳ ମଣ୍ଡଳୀ"
+msgstr "ମଣ୍ଡଳୀଗୁଡ଼ିକ"
 
 #: maps/map-5-churches.php:124
-#, fuzzy
 msgid "Map of Zúme Churches"
-msgstr "୨ ସରଳ ମଣ୍ଡଳୀ"
+msgstr "ଯୁମେ ମଣ୍ଡଳୀର ମାନଚିତ୍ର"
 
 #: maps/map-5-churches.php:125
 msgid ""
 "Saturation Goal: 2 simple churches per 5,000 people in the United States, "
 "and 2 simple churches per 50,000 people globally"
 msgstr ""
+"ପରିପୂର୍ଣ୍ଣତା ଲକ୍ଷ୍ୟ: ଯୁକ୍ତରାଷ୍ଟ୍ର ଆମେରିକାରେ ପ୍ରତି ୫,୦୦୦ ଲୋକରେ ୨ଟି ସରଳ ମଣ୍ଡଳୀ ଏବଂ ବିଶ୍ୱବ୍ୟାପୀ "
+"ପ୍ରତି ୫୦,୦୦୦ ଲୋକରେ ୨ଟି ସରଳ ମଣ୍ଡଳୀ"
 
 #: maps/map-5-churches.php:142
 msgid ""
@@ -1109,28 +1137,32 @@ msgid ""
 "\"Map of Zúme Churches\" shows what is needed and what is reported for "
 "global saturation of multiplying simple churches."
 msgstr ""
+"ଆମେ ବହୁଗୁଣିତ ହେଉଥିବା ଶିଷ୍ୟ ଏବଂ ମଣ୍ଡଳୀଗୁଡ଼ିକ ଦ୍ୱାରା ଜଗତକୁ ପରିପୂର୍ଣ୍ଣ କରିବାକୁ ଚାହୁଁ । "
+"\"ଯୁମେ ମଣ୍ଡଳୀର ମାନଚିତ୍ର\" ବହୁଗୁଣିତ ହେଉଥିବା ସାଧାରଣ ମଣ୍ଡଳୀଗୁଡିକର ବିଶ୍ୱସ୍ତରୀୟ ପରିପୂର୍ଣ୍ଣତା ପାଇଁ "
+"କ'ଣ ଆବଶ୍ୟକ ଏବଂ କ'ଣ ରିପୋର୍ଟ କରାଯାଏ ତାହା ଦର୍ଶାଏ।"
 
 #: maps/map-5-churches.php:145
 msgid "2 simple churches per 5,000 people in the United States"
-msgstr ""
+msgstr "ଯୁକ୍ତରାଷ୍ଟ୍ର ଆମେରିକାରେ ପ୍ରତି ୫,୦୦୦ ଲୋକରେ ୨ଟି ସରଳ ମଣ୍ଡଳୀ"
 
 #: maps/map-5-churches.php:146
 msgid "2 simple churches per 50,000 people globally"
-msgstr ""
+msgstr "ବିଶ୍ବବ୍ୟାପୀ ପ୍ରତି ୫୦,୦୦୦ ଲୋକରେ ୨ଟି ସାଧାରଣ ମଣ୍ଡଳୀ"
 
 #: maps/map-5-churches.php:151
 msgid ""
 "\"Reported\" refers to churches who have registered themselves to the Zúme "
 "community."
 msgstr ""
+"ରିପୋର୍ଟ କରାଗଲା ସେହି ମଣ୍ଡଳୀଗୁଡ଼ିକୁ ବୁଝାଏ ଯେଉଁମାନେ ଯୁମେ ସମ୍ପ୍ରଦାୟରେ ନିଜକୁ ପଞ୍ଜୀକୃତ କରିଛନ୍ତି ।"
 
 #: maps/map-5-churches.php:156
 msgid "Add your churches in the \"My Churches\" section of the dashboard."
-msgstr ""
+msgstr "ଡ୍ୟାଶବୋର୍ଡର \"ମୋର ମଣ୍ଡଳୀ\" ବିଭାଗରେ ଆପଣଙ୍କର ମଣ୍ଡଳୀକୁ ଯୋଡନ୍ତୁ।"
 
 #: site/activities/activities.php:158
 msgid "SOAPS"
-msgstr ""
+msgstr "ଏସ୍.ଓ.ଏ.ପି.ଏସ୍"
 
 #: site/activities/activities.php:181 site/course/course-content.php:495
 #: site/course/course-content.php:559 site/course/course-content.php:568
@@ -1176,15 +1208,16 @@ msgstr "ଚାରୋଟି କ୍ଷେତ୍ର"
 
 #: site/activities/coaching-checklist-host.php:22
 msgid "H.O.S.T"
-msgstr ""
+msgstr "ହେଚ୍.ଓ.ଏସ.ଟି"
 
 #: site/activities/coaching-checklist-host.php:100
 msgid "H.O.S.T."
-msgstr ""
+msgstr "ହେଚ୍.ଓ.ଏସ.ଟି"
 
 #: site/activities/coaching-checklist-host.php:101
 msgid "Self-evaluate yourself using Heard, Obeyed, Shared, Trained."
 msgstr ""
+"ଶୁଣିବା, ଆଜ୍ଞାବହହେବା, ବାଣ୍ଟିବା, ପ୍ରଶିକ୍ଷିଣଦେବା କୁ ବ୍ୟବହାର କରି ନିଜକୁ ମୂଲ୍ୟାଙ୍କନ କରନ୍ତୁ।"
 
 #: site/activities/coaching-checklist-host.php:107
 #: site/activities/coaching-checklist-mawl.php:109
@@ -1285,16 +1318,17 @@ msgstr ""
 #: site/activities/coaching-checklist-mawl.php:51
 #: site/activities/coaching-checklist-mawl.php:101
 msgid "M.A.W.L."
-msgstr ""
+msgstr "ଏମ.ଏ.ଡବ୍ଲ୍ୟୁ.ଏଲ"
 
 #: site/activities/coaching-checklist-mawl.php:102
 msgid "Coach others by using Model, Assist, Watch, Leave."
 msgstr ""
+"ଆଦର୍ଶ ହେବା, ସହାୟକହେବା, ଦେଖିବା ଓ ଛାଡ଼ିବା ବ୍ୟବହାର କରି ଅନ୍ୟମାନଙ୍କୁ ପ୍ରଶିକ୍ଷଣ ଦିଅନ୍ତୁ।"
 
 #: site/activities/coaching-checklist-mawl.php:124
 #: site/activities/coaching-checklist-two.php:143
 msgid "Ask yourself, what does my disciple need"
-msgstr ""
+msgstr "ନିଜକୁ ପଚାରନ୍ତୁ, ମୋ ଶିଷ୍ୟ କ'ଣ ଆବଶ୍ୟକ କରନ୍ତି"
 
 #: site/activities/coaching-checklist-mawl.php:129
 #: site/activities/coaching-checklist-mawl.php:167
@@ -1343,6 +1377,11 @@ msgid ""
 "giving a general idea of what it looks like. Modeling repeatedly is not an "
 "effective way to equip someone."
 msgstr ""
+"'ଆଦର୍ଶ ହେବା' ହେଉଛି କେବଳ ଏକ ଅଭ୍ୟାସ କିମ୍ବା ଉପକରଣର ଏକ ଉଦାହରଣ ପ୍ରଦାନ କରିବା। ଏହା ପ୍ରଶିକ୍ଷଣ "
+"ଚକ୍ରର ସବୁଠାରୁ ସଂକ୍ଷିପ୍ତ ଅଂଶ ଅଟେ । ଏହା ସାଧାରଣତଃ କେବଳ ଥରେ କରିବା ଆବଶ୍ୟକ । ଏହା କେବଳ ଏକ "
+"ସଚେତନତା ସୃଷ୍ଟି କରେ ଯେ ଏକ ଅଭ୍ୟାସ କିମ୍ବା ଏକ ଉପକରଣ ଅଛି ଏବଂ ଏହା କିପରି ଦେଖାଯାଏ ତାହାର ଏକ "
+"ସାଧାରଣ ଧାରଣା ଦେଇଥାଏ ।ବାରମ୍ବାର 'ଆଦର୍ଶ ହେବା' କୌଣସି ବ୍ୟକ୍ତିକୁ ସଜ୍ଜିତ କରିବା ପାଇଁ ଏକ "
+"ପ୍ରଭାବଶାଳୀ ଉପାୟ ନୁହେଁ ।"
 
 #: site/activities/coaching-checklist-mawl.php:173
 #: site/activities/coaching-checklist-two.php:212
@@ -1356,6 +1395,12 @@ msgid ""
 "continued too long, then the learner will develop a dependence on the mentor "
 "and never advance to full competence."
 msgstr ""
+"'ସହାୟକ ହେବା' ହେଉଛି ଶିକ୍ଷାର୍ଥୀଙ୍କୁ କୌଶଳ ପ୍ରୟୋଗ କରିବା ପାଇଁ ଅନୁମତି ଦେବା । ଏହା 'ଆଦର୍ଶ ହେବା' "
+"ପର୍ଯ୍ୟାୟଠାରୁ ଅଧିକ ସମୟ ନେଇଥାଏ । ଏଥିପାଇଁ ମାର୍ଗଦର୍ଶକଙ୍କର 'ହାତ ଧରି ଚାଲିବା'ର ଆବଶ୍ୟକତା ରହିଛି । "
+"ମାର୍ଗଦର୍ଶକ ଦିଶାତ୍ମକ ହେବା ଏବଂ ଶିକ୍ଷାର୍ଥୀଙ୍କୁ ପ୍ରଶିକ୍ଷଣ ଦେବାରେ ସକ୍ରିୟ ଭୂମିକା ଗ୍ରହଣ କରିବା ଆବଶ୍ୟକ । "
+"ଶିକ୍ଷାର୍ଥୀ ସମ୍ପୂର୍ଣ୍ଣ ଦକ୍ଷ ନ ହେବା ପର୍ଯ୍ୟନ୍ତ ଏହି ପର୍ଯ୍ୟାୟ ଚାଲିନଥାଏ, କିନ୍ତୁ କେବଳ ସେ ପର୍ଯ୍ୟନ୍ତ ଚାଲିଥା"
+"ଏ ଯେ ପର୍ଯ୍ୟନ୍ତ ସେମାନେ କୌଶଳର ମୂଳଦୁଆକୁ ବୁଝି ନଥାନ୍ତି । ଯଦି ଏହି ପର୍ଯ୍ୟାୟ ଅଧିକ ସମୟ ପର୍ଯ୍ୟନ୍ତ ଜାରି ରହେ"
+", ତେବେ ଶିକ୍ଷାର୍ଥୀ ମାର୍ଗଦର୍ଶକ ଉପରେ ନିର୍ଭରଶୀଳତା ବିକଶିତ କରିବ ଏବଂ ପୂର୍ଣ୍ଣ ଦକ୍ଷତା ହାସଲ କରିବ ନାହିଁ ।"
 
 #: site/activities/coaching-checklist-mawl.php:177
 #: site/activities/coaching-checklist-two.php:216
@@ -1367,6 +1412,10 @@ msgid ""
 "learner progresses in skill, the contact with the mentor may become less "
 "regular and more ad hoc."
 msgstr ""
+"ଦେଖିବା - ନିରୀକ୍ଷଣ କରିବା ହେଉଛି ଦୀର୍ଘତମ ପର୍ଯ୍ୟାୟ । ଏଥିରେ ଶିକ୍ଷାର୍ଥୀଙ୍କ ସହ ଅଧିକ ପରୋକ୍ଷ ଯୋଗାଯୋଗ "
+"ଅନ୍ତର୍ଭୁକ୍ତ । ଏହା ଦକ୍ଷତାର ସମସ୍ତ ଦିଗରେ ପୂର୍ଣ୍ଣ ଦକ୍ଷତା ବିକଶିତ କରିବାକୁ ଚେଷ୍ଟା କରେ । ପ୍ରଥମ ଦୁଇଟି "
+"ପର୍ଯ୍ୟାୟକୁ ମିଶାଇଲେ ଏହା ଦଶ ଗୁଣ କିମ୍ବା ତା'ଠାରୁ ଅଧିକ ହୋଇପାରେ । ଶିକ୍ଷାର୍ଥୀ ଦକ୍ଷତା ରେ ଅଗ୍ରଗତି "
+"କରିବା ସହିତ ପରାମର୍ଶଦାତାଙ୍କ ସହ ଯୋଗାଯୋଗ କମ୍ ନିୟମିତ ଏବଂ ଅଧିକ ଅସ୍ଥାୟୀ ହୋଇପାରେ ।"
 
 #: site/activities/coaching-checklist-mawl.php:181
 #: site/activities/coaching-checklist-two.php:220
@@ -1377,85 +1426,92 @@ msgid ""
 "the learner and mentor are in the same network. When a parent releases a "
 "child to ride their bicycle completely unsupervised, that is the LEAVE phase."
 msgstr ""
+"ଛାଡ଼ିବା ହେଉଛି ଏକ ପ୍ରକାର ସ୍ନାତକୋତ୍ତର, ଯେତେବେଳେ ଶିକ୍ଷାର୍ଥୀ ମାର୍ଗଦର୍ଶକଙ୍କ ସମକକ୍ଷ ହୋଇଯାଆନ୍ତି । "
+"ଯଦି ଶିକ୍ଷାର୍ଥୀ ଏବଂ ମାର୍ଗଦର୍ଶକ ସମାନ ନେଟୱାର୍କରେ ଥାଆନ୍ତି ତେବେ ସମୟସମୟରେ ଯୋଗାଯୋଗ ଏବଂ ସହପାଠୀ"
+" ପରାମର୍ଶ ଜାରି ରହିପାରେ । ଯେତେବେଳେ ପିତାମାତା ଏକ ଶିଶୁକୁ ବିନା ତତ୍ତ୍ୱାବଧାନରେ ସାଇକେଲ ଚଳାଇବା "
+"ପାଇଁ ଛାଡ଼ନ୍ତି, ତାହା ହେଉଛି ତ୍ୟାଗ କରିବାର ପର୍ଯ୍ୟାୟ ।"
 
 #: site/activities/coaching-checklist-two.php:101
 msgid "1. Self-evaluate yourself using Heard, Obeyed, Shared, Trained."
 msgstr ""
+"୧. ଶୁଣିବା, ଆଜ୍ଞାବହହେବା, ବାଣ୍ଟିବା, ପ୍ରଶିକ୍ଷିଣଦେବା କୁ ବ୍ୟବହାର କରି ନିଜକୁ ମୂଲ୍ୟାଙ୍କନ କରନ୍ତୁ ।"
 
 #: site/activities/coaching-checklist-two.php:102
 msgid "2. Coach others by using Model, Assist, Watch, Leave."
 msgstr ""
+"୨. ଆଦର୍ଶ ହେବା, ସହାୟକହେବା, ଦେଖିବା ଓ ଛାଡ଼ିବା ବ୍ୟବହାର କରି ଅନ୍ୟମାନଙ୍କୁ ପ୍ରଶିକ୍ଷଣ ଦିଅନ୍ତୁ।"
 
 #: site/activities/coaching-checklist.php:127
 #: site/activities/coaching-checklist.php:270
 msgid "Self-Evaluation"
-msgstr ""
+msgstr "ଆତ୍ମ-ମୂଲ୍ୟାଙ୍କନ"
 
 #: site/activities/coaching-checklist.php:147
 #: site/activities/coaching-checklist.php:286
 msgid "Mentee Development Level"
-msgstr ""
+msgstr "ପରାମର୍ଶଗ୍ରାହୀ ବିକାଶ ସ୍ତର"
 
 #: site/activities/coaching-checklist.php:153
 #: site/activities/coaching-checklist.php:289
 msgid "Unaware"
-msgstr ""
+msgstr "ଅଜ୍ଞ"
 
 #: site/activities/coaching-checklist.php:156
 #: site/activities/coaching-checklist.php:292
 msgid "Unskilled"
-msgstr ""
+msgstr "ଅକୁଶଳୀ"
 
 #: site/activities/coaching-checklist.php:159
 #: site/activities/coaching-checklist.php:295
 msgid "Competent"
-msgstr ""
+msgstr "ଦକ୍ଷ"
 
 #: site/activities/coaching-checklist.php:162
 #: site/activities/coaching-checklist.php:298
 msgid "Skilled"
-msgstr ""
+msgstr "କୁଶଳୀ"
 
 #: site/activities/coaching-checklist.php:167
 #: site/activities/coaching-checklist.php:302
 msgid "Mentor’s Role"
-msgstr ""
+msgstr "ମାର୍ଗଦର୍ଶକଙ୍କ ଭୂମିକା"
 
 #: site/activities/coaching-checklist.php:173
 #: site/activities/coaching-checklist.php:305
 msgid "Train new information and ensure understanding"
-msgstr ""
+msgstr "ନୂତନ ସୂଚନା ପ୍ରଶିକ୍ଷଣ ଦିଅନ୍ତୁ ଏବଂ ବୁଝାମଣା ସୁନିଶ୍ଚିତ କରନ୍ତୁ"
 
 #: site/activities/coaching-checklist.php:176
 #: site/activities/coaching-checklist.php:308
 msgid "Stop and stay with them until they have the basics"
 msgstr ""
+"ଅଟକି ଯାଆନ୍ତୁ ଓ ସେମାନେ ମୌଳିକ ଶିକ୍ଷା ଲାଭ ନକରିବା ପର୍ଯ୍ୟନ୍ତ ସେମାନଙ୍କ ସହିତ ରୁହନ୍ତୁ"
 
 #: site/activities/coaching-checklist.php:179
 #: site/activities/coaching-checklist.php:311
 msgid "Stay engaged until consistently competent"
-msgstr ""
+msgstr "ନିରନ୍ତର ଭାବେ ଦକ୍ଷ ହେବା ପର୍ଯ୍ୟନ୍ତ ନିୟୋଜିତ ରୁହନ୍ତୁ"
 
 #: site/activities/coaching-checklist.php:182
 #: site/activities/coaching-checklist.php:314
 msgid "Relate to them as co-laborer"
-msgstr ""
+msgstr "ସହକର୍ମୀ ଭାବେ ସେମାନଙ୍କ ସହ ସମ୍ପର୍କ ରଖନ୍ତୁ"
 
 #: site/activities/coaching-checklist.php:187
 msgid "Mentor’s Behaviors"
-msgstr ""
+msgstr "ମାର୍ଗଦର୍ଶକଙ୍କ ଆଚରଣ"
 
 #: site/activities/coaching-checklist.php:193
 msgid "Direct and inform"
-msgstr ""
+msgstr "ନିର୍ଦ୍ଦେଶନା ଦିଅନ୍ତୁ ଏବଂ ସୂଚନା ଦିଅନ୍ତୁ"
 
 #: site/activities/coaching-checklist.php:196
 msgid "Direct and support"
-msgstr ""
+msgstr "ନିର୍ଦ୍ଦେଶନା ଦିଅନ୍ତୁ ଏବଂ ସମର୍ଥନ ଦିଅନ୍ତୁ"
 
 #: site/activities/coaching-checklist.php:199
 msgid "Support and encourage"
-msgstr ""
+msgstr "ସମର୍ଥନ ଦିଅନ୍ତୁ ଏବଂ ପ୍ରୋତ୍ସାହନ ଦିଅନ୍ତୁ"
 
 #: site/activities/coaching-checklist.php:202
 msgid "Receive updates"
