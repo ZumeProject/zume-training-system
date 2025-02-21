@@ -27,17 +27,6 @@ class Zume_Activites_Coaching_Host extends Zume_Activites
         ] = zume_get_url_pieces();
 
         $this->lang = $lang_code;
-
-        /* Redirect /checkin to /{lang_code}/checkin */
-        /* This facilitates QR codes sending users to /checkin not knowing what language they may have previously been using */
-//        $url = dt_get_url_path();
-//        if ( $url === $this->type ) {
-//            $lang_code_from_cookie = zume_get_language_cookie();
-//            if ( $lang_code_from_cookie !== 'en' ) {
-//                wp_redirect( $lang_code_from_cookie . '/' . $this->type );
-//                exit;
-//            }
-//        }
     }
     public function dt_magic_url_base_allowed_js( $allowed_js ) {
         return [

@@ -57,6 +57,7 @@ class Zume_Activites extends Zume_Magic_Page
     public function url_matches_this_activity() {
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         return isset( $url_parts[0] ) && $this->root === $url_parts[0] && isset( $url_parts[1] ) && $this->type === $url_parts[1] && ! dt_is_rest();
@@ -79,6 +80,7 @@ class Zume_Activites extends Zume_Magic_Page
             });
         </script>
         <?php
+         zume_hreflang_fixed( $this->lang_code, $this->type );
     }
     public function body(){
         global $wpdb;

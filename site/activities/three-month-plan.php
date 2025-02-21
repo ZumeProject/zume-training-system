@@ -32,8 +32,6 @@ class Zume_Activites_3monthplan extends Zume_Activites
 
         $this->lang = $lang_code;
 
-        /* Redirect /checkin to /{lang_code}/checkin */
-        /* This facilitates QR codes sending users to /checkin not knowing what language they may have previously been using */
 
     }
     public function body(){
