@@ -161,7 +161,6 @@ function pieces_content_has_pieces( $postid, $lang, $strings, $limited = false )
                     </button>
                 <?php endif; ?>
 
-
             </div>
         <?php endif; ?>
 
@@ -173,6 +172,25 @@ function pieces_content_has_pieces( $postid, $lang, $strings, $limited = false )
             <h3 class="center"><?php echo esc_html( $strings['ay'] ) ?? '' ?></h3>
             <?php echo wp_kses_post( wpautop( $ask_content ) ) ?>
         </div>
+
+        <div class="grid-container margin-top-2 margin-bottom-2">
+            <div class="grid-x grid-padding-x">
+                <div class="cell">
+                    <div class="callout secondary">
+                        <h3><?php echo esc_html__( 'Get started with Zúme Training', 'zume' ) ?></h3>
+                        <p><?php echo esc_html__( 'Gather a few friends or go through the course with an existing small group. Create your own training group and track your progress.', 'zume' ) ?></p>
+                        <div class="button-group center">
+                            <?php if ( is_user_logged_in() ): ?>
+                                <a href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn large outline w-80 px-0"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
+                            <?php else : ?>
+                                <a href="<?php echo esc_url( zume_getting_started_url( 'register' ) ) ?>" class="btn large w-80 px-0"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <?php if ( ! $limited ) : ?>
