@@ -1584,7 +1584,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'code' => 'pl',
                 'displayCode' => 'pl',
                 'locale' => 'pl_PL',
-                'weblate' => 'pl_PL',
+                'weblate' => 'pl',
                 'nativeName' => 'Polski',
                 'rtl' => false,
                 'flag' => '🇵🇱',
