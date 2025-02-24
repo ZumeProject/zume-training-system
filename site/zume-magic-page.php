@@ -53,14 +53,16 @@ class Zume_Magic_Page extends DT_Magic_Url_Base {
 
         <?php
         // keep not ready version 5 languages from being indexed
+        /*
         global $zume_languages_by_code;
         [
             'lang_code' => $lc,
         ] = zume_get_url_pieces();
         if ( isset( $zume_languages_by_code[$lc]['enable_flags']['version_5_ready'] )
             && empty( $zume_languages_by_code[$lc]['enable_flags']['version_5_ready'] ) ) {
-            ?><meta name="robots" content="noindex, nofollow"><?php
+             ?><meta name="robots" content="noindex, nofollow"><?php  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         }
+         */
     }
 
     /**
