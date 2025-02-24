@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2025-02-21 12:00+0000\n"
+"PO-Revision-Date: 2025-02-24 05:00+0000\n"
 "Last-Translator: Manikumar Miriyala <mani@zume.training>\n"
 "Language-Team: Odia <https://translate.disciple.tools/projects/zume-training/"
 "zume-training-system/or/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10\n"
+"X-Generator: Weblate 5.10.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
@@ -1523,33 +1523,36 @@ msgstr ""
 
 #: site/activities/coaching-checklist.php:213
 msgid "Mentor decides"
-msgstr ""
+msgstr "ମାର୍ଗଦର୍ଶକ ନିଷ୍ପତ୍ତି ନିଅନ୍ତି"
 
 #: site/activities/coaching-checklist.php:216
 msgid "Discuss and Mentor decides"
-msgstr ""
+msgstr "ଆଲୋଚନା କରନ୍ତୁ ଏବଂ ମାର୍ଗଦର୍ଶକ ନିଷ୍ପତ୍ତି ନିଅନ୍ତି"
 
 #: site/activities/coaching-checklist.php:219
 msgid "Discuss and Mentee decides"
-msgstr ""
+msgstr "ଆଲୋଚନା କରନ୍ତୁ ଏବଂ ପରାମର୍ଶିଗ୍ରାହୀ ନିଷ୍ପତ୍ତି ନିଅନ୍ତି"
 
 #: site/activities/coaching-checklist.php:222
 msgid "Mentee decides"
-msgstr ""
+msgstr "ପରାମର୍ଶିଗ୍ରାହୀ ନିଷ୍ପତ୍ତି ନିଅନ୍ତି"
 
 #: site/activities/coaching-checklist.php:289
 msgid "Is the Mentee unaware, unfamiliar, or misunderstanding the tool?"
-msgstr ""
+msgstr "କ'ଣ ପରାମର୍ଶିଗ୍ରାହୀ ଅଜ୍ଞ, ଅପରିଚିତ, କିମ୍ବା ଏହି ଉପକରଣକୁ ଭୁଲ ବୁ?"
 
 #: site/activities/coaching-checklist.php:292
 msgid "Is the Mentee somewhat familiar with but still not sure about the tool?"
 msgstr ""
+"କ'ଣ ପରାମର୍ଶିଗ୍ରାହୀ ଏହି ସାଧନ ବିଷୟରେ କିଛିଟା ପରିଚିତ କିନ୍ତୁ ସେ ବିଷୟରେ ନିଶ୍ଚିତ ନୁହଁନ୍ତି କି?"
 
 #: site/activities/coaching-checklist.php:295
 msgid ""
 "Does the Mentee understand the tool and is able to train the basics of the "
 "tool?"
 msgstr ""
+"Does the Mentee understand the tool and is able to train the basics of the "
+"tool?"
 
 #: site/activities/coaching-checklist.php:298
 msgid "Does the Mentee feel confident and able to effectively train the tool?"
