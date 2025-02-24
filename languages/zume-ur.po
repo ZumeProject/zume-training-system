@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2025-02-21 12:00+0000\n"
+"PO-Revision-Date: 2025-02-24 05:00+0000\n"
 "Last-Translator: Manikumar Miriyala <mani@zume.training>\n"
 "Language-Team: Urdu <https://translate.disciple.tools/projects/zume-training/"
 "zume-training-system/ur/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10\n"
+"X-Generator: Weblate 5.10.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
@@ -4595,11 +4595,11 @@ msgstr ""
 #: site/dashboard/dashboard.php:324 site/dashboard/wizard.php:218
 #: zume-training-system.php:367
 msgid "Telegram"
-msgstr ""
+msgstr "ٹیلی گرام"
 
 #: site/dashboard/dashboard.php:325 site/dashboard/wizard.php:219
 msgid "Facebook Messenger"
-msgstr ""
+msgstr "فیس بک میسنجر"
 
 #: site/dashboard/dashboard.php:326 site/dashboard/wizard.php:315
 msgid "Clear"
@@ -4607,7 +4607,7 @@ msgstr ""
 
 #: site/dashboard/dashboard.php:327 site/dashboard/wizard.php:316
 msgid "Today"
-msgstr ""
+msgstr "آج"
 
 #: site/dashboard/dashboard.php:331
 #, fuzzy
@@ -4626,11 +4626,11 @@ msgstr ""
 
 #: site/dashboard/dashboard.php:333
 msgid "Private"
-msgstr ""
+msgstr "نجی"
 
 #: site/dashboard/dashboard.php:334
 msgid "Public"
-msgstr ""
+msgstr "عوامی پ"
 
 #: site/dashboard/dashboard.php:340
 msgid ""
@@ -4671,6 +4671,7 @@ msgid ""
 "I will invite the following people to participate in a 3/3 Hope or Discover "
 "Group:"
 msgstr ""
+":میں مندرجہ ذیل عوام کو 3/3 ہوپ یا ڈسکور گروپ میں شرکت کے لئے مدعو كیجئےں گا"
 
 #: site/dashboard/dashboard.php:346
 msgid ""
@@ -4686,13 +4687,15 @@ msgid ""
 "I will equip the following people to share their story and God‘s Story and "
 "make a List of 100 of the people in their relational network:"
 msgstr ""
+"میں مندرجہ ذیل عوام کو اپنی کہانی اور خدا کی کہانی کا اشتراک کرنے کے لئے "
+"تیار كیجئےں گا اور ان کے رشتہ دار نیٹ ورک میں 100 عوام کی فہرست بنائے گا:"
 
 #: site/dashboard/dashboard.php:349
 msgid ""
 "I will challenge the following people to use the Prayer Cycle tool on a "
 "periodic basis:"
 msgstr ""
-"میں مندرجہ ذیل عوام کو وقتا فوقتاعبادات كا دور  ٹول کا استعمال کرنے کے لئے "
+"میں مندرجہ ذیل عوام کو وقتا فوقتاعبادات كا دور ٹول کا استعمال کرنے کے لئے "
 "چیلنج دوں گا۔"
 
 #: site/dashboard/dashboard.php:350
@@ -4746,18 +4749,18 @@ msgstr ""
 
 #: site/dashboard/wizard.php:172 site/login/login-template.php:421
 msgid "Back"
-msgstr ""
+msgstr "پیچھے کی"
 
 #: site/dashboard/wizard.php:173 site/dashboard/wizard.php:192
 #: site/dashboard/wizard.php:205 site/dashboard/wizard.php:228
 #: site/dashboard/wizard.php:252 site/dashboard/wizard.php:320
 #: site/pages/_strings-mobile-pwa.php:35
 msgid "Next"
-msgstr "اگلا"
+msgstr "آئندہ"
 
 #: site/dashboard/wizard.php:174 site/dashboard/wizard.php:309
 msgid "Skip"
-msgstr ""
+msgstr "چھوڑیں۔"
 
 #: site/dashboard/wizard.php:175 site/pages/_strings-mobile-pwa.php:36
 msgid "Finish"
@@ -4788,7 +4791,7 @@ msgstr ""
 
 #: site/dashboard/wizard.php:184
 msgid "Encouragement"
-msgstr ""
+msgstr "حوصلہ افزائی"
 
 #: site/dashboard/wizard.php:185
 msgid ""
@@ -4840,7 +4843,7 @@ msgstr ""
 
 #: site/dashboard/wizard.php:203
 msgid "What city do you live in?"
-msgstr ""
+msgstr "آپ کس شہر میں رہتے ہیں؟"
 
 #: site/dashboard/wizard.php:204
 msgid "This is your approximate location."
@@ -4848,11 +4851,11 @@ msgstr ""
 
 #: site/dashboard/wizard.php:206 site/parts/footer.php:57
 msgid "Privacy Policy"
-msgstr ""
+msgstr "رازداری کی پالیسی"
 
 #: site/dashboard/wizard.php:212
 msgid "What is your contact preference?"
-msgstr ""
+msgstr "آپ کی رابطہ ترجیح کیا ہے؟"
 
 #: site/dashboard/wizard.php:214 zume-training-system.php:363
 msgid "Text"
@@ -4860,7 +4863,7 @@ msgstr "متن"
 
 #: site/dashboard/wizard.php:220
 msgid "What is your language preference?"
-msgstr ""
+msgstr "آپ کی زبان کی ترجیح کیا ہے؟"
 
 #: site/dashboard/wizard.php:222
 msgid "How can we serve you?"
@@ -4909,7 +4912,7 @@ msgstr ""
 
 #: site/dashboard/wizard.php:240
 msgid "Joining Plan"
-msgstr ""
+msgstr "شمولیت کا منصوبہ"
 
 #: site/dashboard/wizard.php:242 site/dashboard/wizard.php:332
 msgid "The training link is broken. Please try again."
@@ -4940,7 +4943,7 @@ msgstr ""
 
 #: site/dashboard/wizard.php:257
 msgid "Connecting with friend"
-msgstr ""
+msgstr "دوست کے ساتھ جڑنا"
 
 #: site/dashboard/wizard.php:259
 msgid "The friend link is broken. Please try again."
@@ -4997,19 +5000,19 @@ msgstr ""
 
 #: site/dashboard/wizard.php:282
 msgid "What time of day?"
-msgstr ""
+msgstr "دن کے کس وقت؟"
 
 #: site/dashboard/wizard.php:283
 msgid "Morning"
-msgstr ""
+msgstr "صبح"
 
 #: site/dashboard/wizard.php:284
 msgid "Afternoon"
-msgstr ""
+msgstr "دوپہر"
 
 #: site/dashboard/wizard.php:285
 msgid "Evening"
-msgstr ""
+msgstr "شام"
 
 #: site/dashboard/wizard.php:286
 msgid "How often will you meet?"
