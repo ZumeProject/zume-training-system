@@ -410,7 +410,12 @@ class Zume_Plans_Endpoints
         return $posts;
     }
     public static function get_public_plans() {
-        return DT_Posts::list_posts( self::$post_type, [ 'fields' => [ [ 'visibility' => [ 'public' ] ] ] ], false );
+        $result = DT_Posts::list_posts( self::$post_type, [ 'fields' => [ [ 'visibility' => [ 'public' ] ], [ 'status' => [ 'active' ] ] ] ], false );
+        if ( is_wp_error( $result ) ) {
+            error_log( 'Error in get_public_plans: ' . $result->get_error_message() );
+            return [ 'posts' => [] ];
+        }
+        return $result;
     }
 }
 Zume_Plans_Endpoints::instance();
