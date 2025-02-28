@@ -64,6 +64,10 @@ function zume_join_the_community_wizard_url() {
     $redirect_url = zume_wizard_url( 'join_the_community' );
     return zume_login_url( 'login', $redirect_url );
 }
+function zume_join_a_public_plan_url( $code = null ) {
+    $lang_slug = empty( $code ) ? '' : $code . '/';
+    return site_url() . $lang_slug . '/join-a-training';
+}
 function zume_join_a_public_plan_wizard_url( $code = null ) {
     $params = empty( $code ) ? [] : [ 'code' => $code ];
     $redirect_url = zume_wizard_url( 'join', $params );

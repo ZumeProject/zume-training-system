@@ -12,6 +12,7 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
     public $type = 'join-a-training';
     public $lang = 'en';
     public $lang_code = 'en';
+    public $post_type = 'zume_plans';
     public static $token = 'app_get_a_coach';
 
     private static $_instance = null;
@@ -39,6 +40,7 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
         if ( str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
 
             $this->lang_code = $lang_code;
+            $lang_slug = empty( $code ) ? '' : $code . '/';
 
             $this->register_url_and_access();
             $this->header_content();
@@ -66,6 +68,12 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
     }
 
     public function header_style(){
+        if ( $this->lang_code === 'en' || empty( $this->lang_code ) ) {
+            $canon_url = trailingslashit( site_url() ) . $this->type;
+        } else {
+            $canon_url =  trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ;
+        }
+
         ?>
         <script>
             jQuery(document).ready(function(){
@@ -73,7 +81,7 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
             });
         </script>
 
-        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
+        <link rel="canonical" href="<?php echo esc_url( $canon_url ); ?>" />
 
         <?php
         zume_hreflang_fixed( $this->lang_code, $this->type );
@@ -87,82 +95,107 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
 
         <div class="container stack-2 | page">
             <div class="container-md stack-2 center | py-2">
-                <h1 class="text-center"><?php echo esc_html__( 'Join a Training', 'zume' ) ?></h1>
-                <p><?php echo esc_html__( 'Every athletic sport, especially at higher levels, uses coaching. Even olympic athletes have coaches, and often more than one. Disciple making can equally benefit from coaching by those who have more experience.', 'zume' ) ?></p>
-                <div class="switcher | training-path">
-                <table>
-                <thead>
-                    <tr>
-                        <td><!--?lit$4923634952$-->Name</td>
-                        <td><!--?lit$4923634952$-->Session</td>
-                        <td><!--?lit$4923634952$-->Next Session Date</td>
-                        <td><!--?lit$4923634952$-->Start Time</td>
-                        <td><!--?lit$4923634952$-->Timezone</td>
-                        <td><!--?lit$4923634952$-->Language</td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!--?lit$4923634952$--><!---->
-            <tr>
-                <td data-label="Name"><!--?lit$4923634952$-->Online Zume (1hr sessions)</td>
-                <td data-label="Session"><!--?lit$4923634952$-->6 / <!--?lit$4923634952$-->20</td>
-                <td data-label="Next Session Date"><!--?lit$4923634952$-->Mar 4, 2025</td>
-                <td data-label="Start Time"><!--?lit$4923634952$-->1:00 PM</td>
-                <td data-label="Timezone"><!--?lit$4923634952$-->Central Chicago</td>
-                <td data-label="Language"><!--?lit$4923634952$-->English</td>
-                <td><button class="btn" data-code="882093"><!--?lit$4923634952$-->Join</button></td>
-            </tr>
-        <!----><!---->
-            <tr>
-                <td data-label="Name"><!--?lit$4923634952$-->For Africans Only</td>
-                <td data-label="Session"><!--?lit$4923634952$-->7 / <!--?lit$4923634952$-->10</td>
-                <td data-label="Next Session Date"><!--?lit$4923634952$-->Mar 5, 2025</td>
-                <td data-label="Start Time"><!--?lit$4923634952$-->8 a.m. - 10 a.m.</td>
-                <td data-label="Timezone"><!--?lit$4923634952$-->Pacific Time Zone</td>
-                <td data-label="Language"><!--?lit$4923634952$-->English</td>
-                <td><button class="btn" data-code="f0b764"><!--?lit$4923634952$-->Join</button></td>
-            </tr>
-        <!----><!---->
-            <tr>
-                <td data-label="Name"><!--?lit$4923634952$-->Shepherd Farsi</td>
-                <td data-label="Session"><!--?lit$4923634952$-->12 / <!--?lit$4923634952$-->20</td>
-                <td data-label="Next Session Date"><!--?lit$4923634952$-->Mar 4, 2025</td>
-                <td data-label="Start Time"><!--?lit$4923634952$-->7:00 pm</td>
-                <td data-label="Timezone"><!--?lit$4923634952$-->Pacific Time Zone</td>
-                <td data-label="Language"><!--?lit$4923634952$-->Farsi</td>
-                <td><button class="btn" data-code="7f0a2c"><!--?lit$4923634952$-->Join</button></td>
-            </tr>
-        <!----><!---->
-            <tr>
-                <td data-label="Name"><!--?lit$4923634952$-->BH</td>
-                <td data-label="Session"><!--?lit$4923634952$-->10 / <!--?lit$4923634952$-->10</td>
-                <td data-label="Next Session Date"><!--?lit$4923634952$-->Nov 27, 2024</td>
-                <td data-label="Start Time"><!--?lit$4923634952$-->10:00am</td>
-                <td data-label="Timezone"><!--?lit$4923634952$-->Mountain</td>
-                <td data-label="Language"><!--?lit$4923634952$-->English</td>
-                <td><button class="btn" data-code="zume_group_6594127c715c4"><!--?lit$4923634952$-->Join</button></td>
-            </tr>
-        <!----><!---->
-            <tr>
-                <td data-label="Name"><!--?lit$4923634952$-->Implenter with Tony Japan (6:45Am)</td>
-                <td data-label="Session"><!--?lit$4923634952$-->10 / <!--?lit$4923634952$-->10</td>
-                <td data-label="Next Session Date"><!--?lit$4923634952$-->Mar 28, 2022</td>
-                <td data-label="Start Time"><!--?lit$4923634952$--></td>
-                <td data-label="Timezone"><!--?lit$4923634952$--></td>
-                <td data-label="Language"><!--?lit$4923634952$--></td>
-                <td><button class="btn" data-code="zume_group_61e61dead22a5"><!--?lit$4923634952$-->Join</button></td>
-            </tr>
-        <!---->
-               </tbody>
-            </table>
+                <h1 class="text-center"><?php echo esc_html__( 'Join a training group', 'zume' ) ?></h1>
+                <p><?php echo esc_html__( 'If you can‘t gather a group right now, consider joining one of our online training groups lead by an experienced Zúme coach.', 'zume' ) ?></p>
+                <div class="switcher ">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td><?php echo esc_html__( 'Name', 'zume' ) ?></td>
+                                <td><?php echo esc_html__( 'Session', 'zume' ) ?></td>
+                                <td><?php echo esc_html__( 'Next Session Date', 'zume' ) ?></td>
+                                <td><?php echo esc_html__( 'Start Time', 'zume' ) ?></td>
+                                <td><?php echo esc_html__( 'Timezone', 'zume' ) ?></td>
+                                <td><?php echo esc_html__( 'Language', 'zume' ) ?></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $trainings = DT_Posts::list_posts( $this->post_type, [
+                                'fields' => [
+                                    [ 'visibility' => [ 'public' ] ],
+                                    [ 'status' => [ 'active' ] ]
+                                ]
+                            ], false );
+
+                            if ( !empty( $trainings['posts'] ) ) {
+                                foreach ( $trainings['posts'] as $training ) {
+                                    $session_info = $this->get_current_session($training);
+                                    $next_session = $this->get_next_session_date($training);
+                                    ?>
+                                    <tr>
+                                        <td data-label="Name"><?php echo esc_html( $training['post_title'] ?? '' ); ?></td>
+                                        <td data-label="Session"><?php echo esc_html( $session_info['current'] ); ?> / <?php echo esc_html( $session_info['total'] ); ?></td>
+                                        <td data-label="Next Session Date"><?php echo esc_html( $next_session ); ?></td>
+                                        <td data-label="Start Time"><?php echo esc_html( $training['time_of_day_note'] ?? '' ); ?></td>
+                                        <td data-label="Timezone"><?php echo esc_html( $training['timezone_note'] ?? '' ); ?></td>
+                                        <td data-label="Language"><?php echo esc_html( $training['language_note'] ?? '' ); ?></td>
+                                        <td>
+                                            <a href="/app/plan-invite?code=<?php echo esc_html( $training['join_key'] ?? '' ); ?>" class="btn" data-code="<?php echo esc_attr( $training['join_key'] ?? '' ); ?>">
+                                                <?php echo esc_html__( 'Join', 'zume' ); ?>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            } else {
+                                ?>
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        <?php echo esc_html__( 'No active trainings available at this time.', 'zume' ); ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <a href="<?php echo esc_url( zume_get_a_coach_wizard_url() ) ?>" class="btn large uppercase fit-content mx-auto"><?php echo esc_html__( 'Get A Coach', 'zume' ) ?></a>
-
+            <!-- <a href="<?php echo esc_url( zume_get_a_coach_wizard_url() ) ?>" class="btn large uppercase fit-content mx-auto">
+                <?php echo esc_html__( 'Notify me about future trainings', 'zume' ) ?>
+            </a> -->
         </div>
         <?php
+    }
+
+    private function get_current_session($training) {
+        $set_type = $training['set_type']['key'] ?? '';
+        $total = intval($training['set_type']['label'] ?? 0);
+        $current = 1;
+
+        if ($set_type) {
+            $today = time();
+            for ($i = 1; $i <= $total; $i++) {
+                $session_key = sprintf('%s_%02d', $set_type, $i);
+                if (isset($training[$session_key]['timestamp']) && $training[$session_key]['timestamp'] > $today) {
+                    break;
+                }
+                $current = $i;
+            }
+        }
+
+        return array(
+            'current' => $current,
+            'total' => $total
+        );
+    }
+
+    // Add this function to get the next session date
+    private function get_next_session_date($training) {
+        $set_type = $training['set_type']['key'] ?? '';
+        $total = intval($training['set_type']['label'] ?? 0);
+
+        $today = time();
+        for ($i = 1; $i <= $total; $i++) {
+            $session_key = sprintf('%s_%02d', $set_type, $i);
+            if (isset($training[$session_key]['timestamp']) && $training[$session_key]['timestamp'] > $today) {
+                return date('Y-m-d', $training[$session_key]['timestamp']);
+            }
+        }
+        return '';
     }
 }
 Zume_Join_A_Training_Public::instance();
