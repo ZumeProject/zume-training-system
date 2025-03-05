@@ -11,8 +11,11 @@ export class VideoSlide extends CourseSlide {
             altVideoUrl: { type: String, attribute: false },
             offCanvasId: { type: String, attribute: false },
             loading: { type: Boolean, attribute: false },
+            showTitleMessage: { type: Boolean },
+            titleMessage: { type: String },
         };
     }
+
     connectedCallback() {
         super.connectedCallback()
 
@@ -20,6 +23,7 @@ export class VideoSlide extends CourseSlide {
 
         this.handleLoad = this.handleLoad.bind(this)
     }
+
     async firstUpdated() {
         jQuery(this.renderRoot).foundation();
 
@@ -27,6 +31,11 @@ export class VideoSlide extends CourseSlide {
         this.iframeId = 'iframe' + this.id
         this.offCanvasSelector = '#' + this.offCanvasId
         this.altVideoUrl = jsObject.mirror_url + jsObject.language + '/' + this.slide.alt_video_id + '.mp4'
+
+        if (this.isScreenshotMode && this.slide) {
+            console.log('VideoSlide firstUpdated - setting title message');
+            this.setTitleMessage();
+        }
 
         await this.loadScriptIntoFrame()
 
@@ -117,7 +126,11 @@ export class VideoSlide extends CourseSlide {
 
                 <div class="widescreen flex-video">
                     ${
-                        this.useAltVideo ? html`
+                        this.showTitleMessage ? html`
+                            <div class="video-replacement-message">
+                                <h1>${this.titleMessage} - Video ID: ${this.slide.alt_video_id}</h1>
+                            </div>
+                        ` : this.useAltVideo ? html`
                             <video
                                 style="border: 1px solid lightgrey;max-width:100%;"
                                 poster=${jsObject.images_url + '/video-thumb.jpg'}

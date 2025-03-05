@@ -100,6 +100,8 @@ class Zume_Training_Presenter extends Zume_Magic_Page
 
             const zumeIntensiveSessions = [<?php echo json_encode( Zume_Course_Builder::builder( 'intensive', $this->lang_code ) ) ?>][0]
             const zumeIntensiveSessionsMenu = [<?php echo json_encode( Zume_Course_Builder::menu( 'intensive', $this->lang_code ) ) ?>][0]
+
+            const zumeTrainingItems = [<?php echo json_encode( zume_training_items() ) ?>][0]
         </script>
 
         <?php

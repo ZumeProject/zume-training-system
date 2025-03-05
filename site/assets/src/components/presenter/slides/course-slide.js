@@ -4,8 +4,14 @@ export class CourseSlide extends LitElement {
     static get properties() {
         return {
             slide: { type: Object },
+            showButtons: { type: Boolean },
             id: { type: String },
+            dir: { type: String },
             inContainer: { type: Boolean },
+            isScreenshotMode: { type: Boolean, attribute: false },
+            videoInfo: { type: Object, attribute: false },
+            showTitleMessage: { type: Boolean, attribute: false },
+            titleMessage: { type: String, attribute: false },
         };
     }
 
@@ -14,6 +20,12 @@ export class CourseSlide extends LitElement {
 
         this.maxPercentage = 80
         this.inContainer = false
+        this.showButtons = true
+        this.dir = 'ltr'
+        this.isScreenshotMode = false
+        this.videoInfo = {}
+        this.showTitleMessage = false
+        this.titleMessage = ''
 
         this.resizeCallback = this.resizeCallback.bind(this)
     }
@@ -22,12 +34,23 @@ export class CourseSlide extends LitElement {
         super.connectedCallback()
         this.dir = document.querySelector('html').dir
         window.addEventListener('resize', this.resizeCallback)
+
+        // Get video information first
+        this.getVideoInfo()
+
+        // Then check for screenshot mode - this will also handle title message functionality
+        this.checkScreenshotMode()
     }
     disconnectedCallback() {
         super.disconnectedCallback()
         window.removeEventListener('resize', this.resizeCallback)
     }
     firstUpdated() {
+        // If screenshot mode is enabled, set the title message now that slide data is available
+        if (this.isScreenshotMode) {
+            this.setTitleMessage()
+        }
+
         this.resizeSlide(window)
         this.fitContentToSlide('.activity-card')
         this.fitContentToSlide('.content-area__text')
@@ -172,6 +195,73 @@ export class CourseSlide extends LitElement {
 
     createRenderRoot() {
         return this
+    }
+
+    checkScreenshotMode() {
+        const url = new URL(window.location.href);
+        this.isScreenshotMode = url.searchParams.has('screenshot');
+
+        if (this.isScreenshotMode) {
+            this.addScreenshotStyles();
+            this.showTitleMessage = true;
+        }
+    }
+
+    addScreenshotStyles() {
+        if (document.getElementById('screenshot-styles')) {
+            return;
+        }
+
+        const styleElement = document.createElement('style');
+        styleElement.id = 'screenshot-styles';
+
+        styleElement.textContent = `
+            .btn { display: none !important; }
+            #hamburger-menu { display: none !important; }
+            .flex-video iframe { display: none !important; }
+            .visual-indicator { display: none !important; }
+            .video-replacement-message h1 { font-size: 3rem !important; }
+        `;
+
+        document.head.appendChild(styleElement);
+
+        console.log('Screenshot mode enabled');
+    }
+
+    getVideoInfo() {
+        // Initialize empty video info map
+        this.videoInfo = {};
+
+        // First try to use zumeTrainingItems from presenter.php
+        if (zumeTrainingItems) {
+            try {
+                // Process each item in zumeTrainingItems
+                Object.keys(zumeTrainingItems).forEach(key => {
+                    const item = zumeTrainingItems[key];
+
+                    // Store video info if video_id and title exist
+                    if (item && item.video_id && item.title_en) {
+                        this.videoInfo[item.video_id] = {
+                            title: item.title_en,
+                            title_en: item.title_en || item.title
+                        };
+                    }
+                });
+            } catch (error) {
+                console.error('Error processing video information:', error);
+            }
+        }
+    }
+
+    setTitleMessage() {
+        let message = 'Video content is not available in this view.';
+
+        if (this.slide) {
+            let videoId = this.slide.alt_video_id;
+            message = zumeTrainingItems[videoId].title_en;
+        }
+
+        this.titleMessage = message;
     }
 }
 customElements.define('course-slide', CourseSlide);
