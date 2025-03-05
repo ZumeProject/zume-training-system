@@ -46,9 +46,20 @@ export class CourseSlide extends LitElement {
         window.removeEventListener('resize', this.resizeCallback)
     }
     firstUpdated() {
-        // If screenshot mode is enabled, set the title message now that slide data is available
-        if (this.isScreenshotMode) {
-            this.setTitleMessage()
+        // Only call setTitleMessage if this.slide exists
+        if (this.showTitleMessage && this.slide) {
+            try {
+                this.setTitleMessage();
+            } catch (error) {
+                console.warn("Error setting title message:", error);
+                // Fallback to a default message if there's an error
+                this.titleMessage = "Content is not available in this view.";
+            }
+        } else if (this.showTitleMessage) {
+            // If we need to show a title message but slide data isn't available,
+            // set a default message
+            console.warn("CourseSlide: Cannot set title message - slide data not available");
+            this.titleMessage = "Content is not available in this view.";
         }
 
         this.resizeSlide(window)
@@ -256,7 +267,7 @@ export class CourseSlide extends LitElement {
     setTitleMessage() {
         let message = 'Video content is not available in this view.';
 
-        if (this.slide) {
+        if (this.slide && this.slide.alt_video_id && zumeTrainingItems[this.slide.alt_video_id] ) {
             let videoId = this.slide.alt_video_id;
             message = zumeTrainingItems[videoId].title_en;
         }
