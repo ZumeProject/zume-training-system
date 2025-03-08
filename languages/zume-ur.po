@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2025-02-24 05:00+0000\n"
+"PO-Revision-Date: 2025-02-27 12:00+0000\n"
 "Last-Translator: Manikumar Miriyala <mani@zume.training>\n"
 "Language-Team: Urdu <https://translate.disciple.tools/projects/zume-training/"
 "zume-training-system/ur/>\n"
@@ -5020,19 +5020,19 @@ msgstr ""
 
 #: site/dashboard/wizard.php:287
 msgid "Every day"
-msgstr ""
+msgstr "ہر روز"
 
 #: site/dashboard/wizard.php:288
 msgid "Once a week"
-msgstr ""
+msgstr "ہفتے میں ایک بار"
 
 #: site/dashboard/wizard.php:289
 msgid "Twice a month"
-msgstr ""
+msgstr "مہینے میں دو بار"
 
 #: site/dashboard/wizard.php:290
 msgid "Once a month"
-msgstr ""
+msgstr "مہینے میں ایک بار"
 
 #: site/dashboard/wizard.php:291
 msgid "Other"
@@ -5044,15 +5044,15 @@ msgstr ""
 
 #: site/dashboard/wizard.php:293
 msgid "My first training group"
-msgstr ""
+msgstr "میرا پہلا تربیتی گروپ"
 
 #: site/dashboard/wizard.php:294
 msgid "When do you plan to start?"
-msgstr ""
+msgstr "آپ کب شروع کرنے کا ارادہ رکھتے ہیں؟"
 
 #: site/dashboard/wizard.php:295
 msgid "Where do you plan to meet?"
-msgstr ""
+msgstr "کہاں ملنے کا ارادہ ہے؟"
 
 #: site/dashboard/wizard.php:296
 msgid "This could be online or in person"
@@ -5071,7 +5071,7 @@ msgstr ""
 #: site/dashboard/wizard.php:299
 msgctxt "All 10 sessions scheduled"
 msgid "Ready"
-msgstr ""
+msgstr "تیار"
 
 #: site/dashboard/wizard.php:300
 #, php-format
@@ -5095,7 +5095,7 @@ msgstr "گروہ کا نام"
 
 #: site/dashboard/wizard.php:305
 msgid "Group name"
-msgstr ""
+msgstr "گروہ کا نام"
 
 #: site/dashboard/wizard.php:312
 msgid "Date"
@@ -5111,7 +5111,7 @@ msgstr ""
 
 #: site/dashboard/wizard.php:317
 msgid "Add"
-msgstr "شامل كیجئے"
+msgstr "شامل کریں۔"
 
 #: site/dashboard/wizard.php:318
 msgid "Add some dates to your schedule"
@@ -5119,7 +5119,7 @@ msgstr ""
 
 #: site/dashboard/wizard.php:319
 msgid "Change"
-msgstr ""
+msgstr "تبدیلی"
 
 #: site/dashboard/wizard.php:323
 msgid "Invite your friends to join your training"
@@ -5180,7 +5180,7 @@ msgstr "غلطی اس یوزر کے نام کے ساتھ کوئی یوزر رج�
 
 #: site/login/login-template.php:85
 msgid "ERROR: Invalid username or email."
-msgstr "غلطی : غیر مطلق ای میل یا یوزر كا نام"
+msgstr "غیر متعلق یوزر کا نام یا ای میل: غلطی"
 
 #: site/login/login-template.php:98 site/login/login-template.php:134
 msgid "Get New Password"
@@ -5189,7 +5189,7 @@ msgstr "نیا پاس ورڈ حاصل كیجئے"
 #: site/login/login-template.php:123 site/login/login-template.php:124
 #: site/login/login-template.php:702
 msgid "Email Address"
-msgstr "ای میل اڈریس"
+msgstr "ی میل اڈریس."
 
 #: site/login/login-template.php:139
 msgid ""
@@ -5221,7 +5221,7 @@ msgstr "پاس ورڈ ضروری ہے"
 #: site/login/login-template.php:458 site/login/login-template.php:703
 #: site/login/login-template.php:836
 msgid "Password"
-msgstr "پاس ورڈ"
+msgstr "پاس ورڈ ض"
 
 #: site/login/login-template.php:267
 msgid "Please choose a stronger password. This one is too weak."
@@ -5230,7 +5230,7 @@ msgstr ""
 #: site/login/login-template.php:273 site/login/login-template.php:274
 #: site/login/login-template.php:465 site/login/login-template.php:466
 msgid "Re-enter Password"
-msgstr "پاس ورڈ دوبارہ داخل کریں"
+msgstr "پاس ورڈ دوبارہ داخل كیجئے"
 
 #: site/login/login-template.php:378
 msgid "Hello!"
@@ -5249,11 +5249,11 @@ msgstr "رجسٹر/ اندراج"
 
 #: site/login/login-template.php:413
 msgid "Or"
-msgstr ""
+msgstr "یا"
 
 #: site/login/login-template.php:415
 msgid "Register with Email"
-msgstr ""
+msgstr "ای میل کے ساتھ رجسٹر کریں"
 
 #: site/login/login-template.php:453
 msgid "Badly formatted email address"
@@ -5265,7 +5265,7 @@ msgstr ""
 
 #: site/login/login-template.php:472
 msgid "There are some errors in your form."
-msgstr "آپ کے فارم میں چند غلطیاں ہیں"
+msgstr "آپ کے فارم میں چند غلطیاں ہیں"
 
 #: site/login/login-template.php:637
 msgid "User action confirmed."
@@ -5273,7 +5273,7 @@ msgstr "صارف کی کارروائی کی تصدیق ہوگئی۔"
 
 #: site/login/login-template.php:649
 msgid "Welcome back!"
-msgstr ""
+msgstr "دوبارہ آپ کا خیر مقدم!"
 
 #: site/login/login-template.php:656 site/login/login-template.php:705
 #: site/login/login-template.php:780 site/login/login.php:31
@@ -5283,7 +5283,7 @@ msgstr "لاگ ان"
 
 #: site/login/login-template.php:679
 msgid "or sign in with email"
-msgstr ""
+msgstr "یا ای میل کے ساتھ سائن ان کریں"
 
 #: site/login/login-template.php:685
 msgid "Username or password does not match. Try again."
@@ -5291,11 +5291,11 @@ msgstr "یورز / مستعمل كا نام اور پاسورڈ میل نهیں 
 
 #: site/login/login-template.php:704 site/login/login-template.php:837
 msgid "Remember Me"
-msgstr "مجهے یاد ركهئے"
+msgstr "مجھے یاد رکھیں"
 
 #: site/login/login-template.php:756
 msgid "Don't have an account?"
-msgstr ""
+msgstr "اکاؤنٹ نہیں ہے؟"
 
 #: site/login/login-template.php:768
 msgid "Lost your password?"
@@ -5303,19 +5303,19 @@ msgstr "اپنا پاس ورڈ کھو گئے؟"
 
 #: site/login/login-template.php:779
 msgid "Already have an account?"
-msgstr ""
+msgstr "پہلے سے ہی اکاؤنٹ ہے؟"
 
 #: site/login/login-template.php:835
 msgid "Username or Email Address"
-msgstr ""
+msgstr "یوزر کانام یاای میل پتی"
 
 #: site/login/login-template.php:838
 msgid "Log In"
-msgstr ""
+msgstr "لاگ ان کریں"
 
 #: site/pages/_strings-mobile-pwa.php:13
 msgid "Account"
-msgstr "اکاونٹ"
+msgstr "اکاؤنٹ"
 
 #: site/pages/_strings-mobile-pwa.php:15
 msgid "Settings"
@@ -5323,11 +5323,11 @@ msgstr "ترتیبات"
 
 #: site/pages/_strings-mobile-pwa.php:16
 msgid "Downloads"
-msgstr "ڈاؤن لوڈ"
+msgstr "ڈائونلوڈ"
 
 #: site/pages/_strings-mobile-pwa.php:18
 msgid "Reset App"
-msgstr "ایپ كی تجدید / دوباره تنصیب"
+msgstr "یپ کو ری سیٹ کریں۔"
 
 #: site/pages/_strings-mobile-pwa.php:19
 msgid ""
@@ -5342,23 +5342,23 @@ msgstr "مدد"
 
 #: site/pages/_strings-mobile-pwa.php:21
 msgid "Workbook"
-msgstr "ورك بك"
+msgstr "ورک بک"
 
 #: site/pages/_strings-mobile-pwa.php:22
 msgid "Sign Out"
-msgstr "سائن آؤٹ"
+msgstr "سائن آؤٹ کریں"
 
 #: site/pages/_strings-mobile-pwa.php:23
 msgid "Download All"
-msgstr ""
+msgstr "تمام ڈاؤن لوڈ کریں"
 
 #: site/pages/_strings-mobile-pwa.php:24
 msgid "Download"
-msgstr "ڈاؤن لوڈ"
+msgstr "ڈاؤن لوڈ کیجئے"
 
 #: site/pages/_strings-mobile-pwa.php:25
 msgid "Downloading"
-msgstr "داون لوڈ هورها هے"
+msgstr "ڈاؤن لوڈ ہو رہا ہے"
 
 #: site/pages/_strings-mobile-pwa.php:26
 msgid "Queued"
@@ -5374,11 +5374,11 @@ msgstr "جمے رهنے كے لئے دبایئے"
 
 #: site/pages/_strings-mobile-pwa.php:30
 msgid "Select Language"
-msgstr "لینگویج / زبان كا انتخاب كیجئے"
+msgstr "زبان منتخب کریں"
 
 #: site/pages/_strings-mobile-pwa.php:32
 msgid "No sessions available"
-msgstr "كوئی سیشن دستیاب نهیں"
+msgstr "کوئی سیشن دستیاب نہیں ہے"
 
 #: site/pages/_strings-mobile-pwa.php:33
 msgid "Exit"
@@ -5390,7 +5390,7 @@ msgstr "گزشتہ"
 
 #: site/pages/_strings-mobile-pwa.php:38
 msgid "Install"
-msgstr "تنصیب"
+msgstr "انسٹال کریں"
 
 #: site/pages/_strings-mobile-pwa.php:39
 msgid "This app can be installed to your device. Click to install this app."
@@ -5412,7 +5412,7 @@ msgstr ""
 
 #: site/pages/_strings-mobile-pwa.php:43
 msgid "Update"
-msgstr "اپڈیٹکریں۔"
+msgstr "اپ ڈیٹ"
 
 #: site/pages/_strings-mobile-pwa.php:44
 msgid "A new version of this app is available. Click to update this app."
@@ -5420,7 +5420,7 @@ msgstr "اس ایپ كی جدید شكل دستیاب هے اس ایپ پر كل
 
 #: site/pages/_strings-mobile-pwa.php:45
 msgid "Storage"
-msgstr "ذخیره"
+msgstr "ذخیرہ"
 
 #: site/pages/about.php:27 site/pages/about.php:92 site/pages/messages.php:251
 msgid ""
@@ -5493,7 +5493,7 @@ msgstr "1 تربیت"
 
 #: site/pages/about.php:133
 msgid "Part 1:"
-msgstr ""
+msgstr "حصہ 1:"
 
 #: site/pages/about.php:134
 msgid ""
@@ -5503,11 +5503,11 @@ msgstr ""
 
 #: site/pages/about.php:140
 msgid "2 Simple Churches"
-msgstr "2 ساداہ چرچ"
+msgstr "2 سادہ چرچ"
 
 #: site/pages/about.php:144
 msgid "Part 2:"
-msgstr ""
+msgstr "حصہ 2:"
 
 #: site/pages/about.php:145
 msgid ""
@@ -5575,7 +5575,7 @@ msgstr ""
 
 #: site/pages/about.php:212
 msgid "First:"
-msgstr ""
+msgstr ":پہلا"
 
 #: site/pages/about.php:213
 msgid ""
@@ -5586,7 +5586,7 @@ msgstr ""
 
 #: site/pages/about.php:216
 msgid "Second:"
-msgstr ""
+msgstr "دوسرا:"
 
 #: site/pages/about.php:217
 msgid ""
@@ -5602,7 +5602,7 @@ msgstr ""
 
 #: site/pages/about.php:228
 msgid "Needed for the training:"
-msgstr ""
+msgstr "تربیت کے لیے درکار ہے:"
 
 #: site/pages/about.php:230 site/pages/training.php:258
 msgid "At least 3 people, but ideally less than 12."
@@ -5638,7 +5638,7 @@ msgstr ""
 
 #: site/pages/about.php:255
 msgid "Connecting with a Coach."
-msgstr ""
+msgstr "کوچ کے ساتھ جڑنا۔"
 
 #: site/pages/about.php:262
 msgid ""
@@ -5649,11 +5649,11 @@ msgstr ""
 
 #: site/pages/about.php:272
 msgid "Are you ready? Register today."
-msgstr ""
+msgstr "کیا آپ تیار ہیں؟ آج ہی رجسٹر کریں۔"
 
 #: site/pages/about.php:276 site/pages/home.php:109
 msgid "Register Free"
-msgstr ""
+msgstr "مفت رجسٹر کریں"
 
 #: site/pages/checkin.php:96 site/pages/friend-invite.php:72
 msgid "Please enter a friend code."
@@ -5666,11 +5666,11 @@ msgstr ""
 #: site/pages/checkin.php:262 site/pages/friend-invite.php:171
 #: site/pages/plan-invite.php:177
 msgid "Connect"
-msgstr ""
+msgstr "جڑیں"
 
 #: site/pages/checkin.php:266
 msgid "or"
-msgstr ""
+msgstr "یا"
 
 #: site/pages/checkin.php:268
 msgid "Choose session to checkin"
@@ -5679,24 +5679,24 @@ msgstr ""
 #: site/pages/checkin.php:270 site/pages/training.php:159
 #: site/pages/training.php:210
 msgid "Training Schedules"
-msgstr ""
+msgstr "تربیتی نظام الاوقات"
 
 #: site/pages/checkin.php:274 site/pages/training.php:217
 msgid "10 Sessions"
-msgstr ""
+msgstr "10 سیشنز"
 
 #: site/pages/checkin.php:278 site/pages/training.php:229
 msgid "20 Sessions"
-msgstr ""
+msgstr "20 سیشن"
 
 #: site/pages/checkin.php:282 site/pages/training.php:241
 msgid "Intensive"
-msgstr ""
+msgstr "شدید"
 
 #: site/pages/donate.php:28 site/pages/donate.php:81
 #: site/pages/messages.php:261 site/parts/footer.php:42
 msgid "Donate"
-msgstr ""
+msgstr "عطیہ کریں"
 
 #: site/pages/donate.php:90
 msgid ""
@@ -5709,28 +5709,28 @@ msgstr ""
 
 #: site/pages/faq.php:81
 msgid "FAQ"
-msgstr ""
+msgstr "عمومی سوالنامہ"
 
 #: site/pages/faq.php:83 site/profile/profile.php:157
 msgid "User Profile"
-msgstr ""
+msgstr "صارف پروفائل"
 
 #: site/pages/follow-jesus.php:30 site/pages/follow-jesus.php:140
 #: site/parts/footer.php:17
 msgid "How to Follow Jesus"
-msgstr "حضرت عیسی علیه السلام كی پیروی كس طرح هو ؟"
+msgstr "یسوع کی پیروی کیسے کریں"
 
 #: site/pages/follow-jesus.php:90 site/pages/pieces.php:137
 msgid "Ask Yourself"
-msgstr "اپنے آپ سے دریافت كیجئے"
+msgstr "پنے آپ سے پوچھیں۔"
 
 #: site/pages/follow-jesus.php:91 site/pages/pieces.php:138
 msgid "Download Free Guidebook"
-msgstr "گائیڈ ببک / ہدایت نامہ ڈاون لوڈ کیجئے"
+msgstr "مفت گائیڈ بک ڈاؤن لوڈ کریں"
 
 #: site/pages/follow-jesus.php:92 site/pages/pieces.php:139
 msgid "Listen and Read Along"
-msgstr "سنئے اور ساتھ دہرائیے"
+msgstr "سنیں اور ساتھ ساتھ مطالعه كیجئے"
 
 #: site/pages/follow-jesus.php:146
 msgid ""
@@ -5745,23 +5745,23 @@ msgstr ""
 
 #: site/pages/follow-jesus.php:164
 msgid "What is a follower of Jesus?"
-msgstr "حضرت عیسی علیه السلام كے پیروكار كیا هیں"
+msgstr "یسوع کا پیروکار کیا ہے؟"
 
 #: site/pages/follow-jesus.php:184
 msgid "What are the activities of a follower of Jesus?"
-msgstr "حضرت عیسی علیه السلام كے پیروكار كی سرگرمیاں كیا هیں"
+msgstr "یسوع کے پیروکار کی سرگرمیاں کیا ہیں؟"
 
 #: site/pages/follow-jesus.php:208
 msgid "Bible Reading"
-msgstr "انجیل كا مطالعه"
+msgstr "بائبل كا مطالعه"
 
 #: site/pages/follow-jesus.php:215
 msgid ""
 "It's important what disciples know — but it's much more important what they "
 "DO with what they know."
 msgstr ""
-"یه اهم هے جو شاگرد جانتے هیں تاهم یه اس سے بهی زیاده اهم هے كه وه كیا كرتے "
-"هیں اور وه كیا جانتے هیں"
+"یہ اہم ہے کہ شاگرد کیا جانتے ہیں - لیکن یہ اس سے بھی زیادہ اہم ہے کہ وہ جو "
+"کچھ جانتے ہیں اس کے ساتھ وہ کیا کرتے ہیں۔"
 
 #: site/pages/follow-jesus.php:222
 msgid ""
@@ -5769,10 +5769,10 @@ msgid ""
 "fellowship and practice obeying and sharing what they've learned. In this "
 "way, a 3/3 Group is not just a small group but a Simple Church."
 msgstr ""
-"ایك 3/3 گروپ حضرت عیسی علیه السلام كے پیروكاروں كے ملاقات، عبادت ، تربیت اور "
-"مرافقت میں اضافے كا طریقه هے اور جو كچه سیكها هے اس كی اطاعت تشهیر كرنے كا "
-"بهی طریقه هے اس طریقے میں 3/3 گروپ ایك چهوٹا سا گروپ هی نهیں هے بلكه ایك "
-"ساده چرچ هے"
+"ایک 3/3 گروپ حضرت عیسی علیه السلام کے پیروکاروں کے لئے ملنے ، دعا کرنے ، "
+"سیکھنے ، بڑھنے ، رفاقت اور عمل پیرا ہونے اور جو کچھ سیکھا ہے اس کی اطاعت اور "
+"اشتراک کرنے کا ایک طریقہ ہے۔ اس طرح سے ، ایک 3/3 گروپ صرف ایک چھوٹا گروپ "
+"نہیں ہے بلکہ ایک سادہ چرچ ہے"
 
 #: site/pages/follow-jesus.php:230
 msgid "Learn how to obey Jesus' commands by going AND staying."
@@ -5788,13 +5788,13 @@ msgstr ""
 
 #: site/pages/follow-jesus.php:242
 msgid "Sacrifice and Suffering"
-msgstr "قربانی اور تكالیف"
+msgstr "قربانی اور مصائب"
 
 #: site/pages/follow-jesus.php:256
 msgid "How do I obey Jesus and help others become followers with me?"
 msgstr ""
-"میں حضرت عیسی علیه السلام كی  پیروی كیسے كروں ؟ اور دوسروں كواپنے ساته  "
-"پیروكار بنانے میں مددگار بنوں"
+"میں کس طرح یسوع کی اطاعت کروں اور دوسروں کو میرے ساتھ پیروکار بننے میں مدد "
+"کروں؟"
 
 #: site/pages/follow-jesus.php:261
 msgid ""
@@ -5812,13 +5812,11 @@ msgstr ""
 
 #: site/pages/follow-jesus.php:262
 msgid "Matthew 28:18-20"
-msgstr "میتهیو 28:18-20"
+msgstr "میتھیو 28:18-20"
 
 #: site/pages/follow-jesus.php:265
 msgid "Teaching others to obey and follow Jesus with you"
-msgstr ""
-"دوسروں كو تعلیم دینا كه وه آپ كی اور حضرت عیسی علیه السلام كی اطاعت اور "
-"پیروی كریں"
+msgstr "دوسروں کو اپنے ساتھ یسوع کی اطاعت اور پیروی کرنے کی تعلیم دینا"
 
 #: site/pages/follow-jesus.php:268
 msgid "Learn what ducklings have to do with disciple-making"
@@ -5829,12 +5827,12 @@ msgid ""
 "See how disciple making doesn't have to be linear. Multiple things can "
 "happen at the same time."
 msgstr ""
-"دیكهئے شاگردسازی كیوں خطی انداز میں نهیں هونی چاهئےیكساں وقت میں كثیر باتیں "
-"هوسكتی هیں"
+"دیکھیں کہ کس طرح شاگرد بنانے کو لکیری نہیں ہونا پڑتا ہے۔ ایک ہی وقت میں "
+"متعدد چیزیں ہوسکتی ہیں۔"
 
 #: site/pages/follow-jesus.php:284
 msgid "Speaking to people YOU KNOW about Jesus"
-msgstr "آپ حضرت عیسی علیه السلام كے بارے میں جاننے والی عوام میں بات كیجئے"
+msgstr "ن لوگوں سے بات کرنا جو آپ یسوع کے بارے میں جانتے ہیں۔"
 
 #: site/pages/follow-jesus.php:299
 msgid "Speaking to people YOU DON'T KNOW about Jesus"
@@ -5845,7 +5843,8 @@ msgstr ""
 msgid ""
 "Learn who a person of peace might be and how to know when you've found one."
 msgstr ""
-"سیكهیئ كه كون امن كا شخص هو سكتا هے اور كیسے علم هوگا كه آپ نے اسے پا لیا هے"
+"یہ سیکھیں کہ امن کا فرد کون ہوسکتا ہے اور جب آپ کو مل جاتا ہے تو اسے کیسے "
+"جاننا چاہئے۔"
 
 #: site/pages/follow-jesus.php:306
 msgid ""
@@ -5859,7 +5858,7 @@ msgstr ""
 
 #: site/pages/friend-invite.php:28 site/pages/friend-invite.php:164
 msgid "Friend Invitation"
-msgstr ""
+msgstr "دوست کی دعوت"
 
 #: site/pages/friend-invite.php:166 site/pages/plan-invite.php:172
 msgid "Use the code your friend sent you."
@@ -5868,7 +5867,7 @@ msgstr ""
 #: site/pages/get-a-coach.php:28 site/pages/get-a-coach.php:84
 #: site/pages/get-a-coach.php:111
 msgid "Get A Coach"
-msgstr ""
+msgstr "کوچ حاصل كیجئے"
 
 #: site/pages/get-a-coach.php:29 site/pages/get-a-coach.php:105
 msgid ""
@@ -5886,14 +5885,14 @@ msgstr ""
 
 #: site/pages/get-a-coach.php:88
 msgid "No Cost"
-msgstr ""
+msgstr "کوئی لاگت نہیں"
 
 #: site/pages/get-a-coach.php:89 site/pages/get-a-coach.php:96
 #: site/pages/home.php:255 site/pages/home.php:262 site/pages/home.php:263
 #: site/pages/training.php:130 site/pages/training.php:137
 #: site/pages/training.php:138
 msgid "Join a training group"
-msgstr ""
+msgstr "تربیتی گروپ میں شامل ہوں"
 
 #: site/pages/get-a-coach.php:91
 msgid ""
@@ -5918,15 +5917,15 @@ msgstr ""
 #: site/pages/get-a-coach.php:103 site/pages/home.php:271
 #: site/pages/training.php:146
 msgid "Join a training"
-msgstr ""
+msgstr "تربیت میں شامل ہوں"
 
 #: site/pages/home.php:81
 msgid "45+"
-msgstr ""
+msgstr "45+"
 
 #: site/pages/home.php:125
 msgid "Becoming more like Jesus... Together"
-msgstr ""
+msgstr "مزید یسوع جیسا بننا... ایک ساتھ"
 
 #: site/pages/home.php:129
 msgid "Overview"
@@ -5934,27 +5933,27 @@ msgstr "جائزہ"
 
 #: site/pages/home.php:131
 msgid "Group Discussions"
-msgstr ""
+msgstr "گروپ ڈسکشنز"
 
 #: site/pages/home.php:132
 msgid "Self-Facilitated"
-msgstr ""
+msgstr "خود سہولت"
 
 #: site/pages/home.php:133
 msgid "Practice-Oriented"
-msgstr ""
+msgstr "پریکٹس پر مبنی"
 
 #: site/pages/home.php:134
 msgid "32 Concepts and Skills"
-msgstr ""
+msgstr "32 تصورات اور ہنر"
 
 #: site/pages/home.php:135
 msgid "20 hours of Training"
-msgstr ""
+msgstr "20 گھنٹے کی تربیت"
 
 #: site/pages/home.php:142
 msgid "Free. Anytime. Anywhere."
-msgstr ""
+msgstr "مفت. کسی بھی وقت۔ کہیں بھی۔"
 
 #: site/pages/home.php:146
 msgid "Gain insight into..."
@@ -5962,43 +5961,43 @@ msgstr ""
 
 #: site/pages/home.php:151
 msgid "Being A Disciple"
-msgstr ""
+msgstr "شاگرد ہونا"
 
 #: site/pages/home.php:153
 msgid "What's a Disciple?"
-msgstr ""
+msgstr "شاگرد کیا ہے؟"
 
 #: site/pages/home.php:154
 msgid "What's a Church?"
-msgstr ""
+msgstr "چرچ کیا ہے؟"
 
 #: site/pages/home.php:155
 msgid "Keys to Spiritual Growth"
-msgstr ""
+msgstr "روحانی ترقی کی چابیاں"
 
 #: site/pages/home.php:156
 msgid "Personal Bible Study"
-msgstr ""
+msgstr "ذاتی بائبل مطالعہ"
 
 #: site/pages/home.php:157
 msgid "Strong Prayer Life"
-msgstr ""
+msgstr "مضبوط نماز کی زندگی"
 
 #: site/pages/home.php:158
 msgid "The Power of Obedient Faith"
-msgstr ""
+msgstr "فرمانبردار ایمان کی طاقت"
 
 #: site/pages/home.php:165
 msgid "Making Disciples"
-msgstr ""
+msgstr "شاگرد بنانا"
 
 #: site/pages/home.php:167
 msgid "Sharing God's Story"
-msgstr ""
+msgstr "خدا کی کہانی شیئر کرنا"
 
 #: site/pages/home.php:168
 msgid "Telling Your Story"
-msgstr ""
+msgstr "اپنی کہانی بتانا"
 
 #: site/pages/home.php:169
 msgid "Engaging Seekers"
@@ -6010,15 +6009,15 @@ msgstr ""
 
 #: site/pages/home.php:171
 msgid "Leading a Simple Church"
-msgstr ""
+msgstr "ایک سادہ چرچ کی قیادت کرنا"
 
 #: site/pages/home.php:172
 msgid "Training Others"
-msgstr ""
+msgstr "دوسروں کو تربیت دینا"
 
 #: site/pages/home.php:177
 msgid "I'm Ready!"
-msgstr ""
+msgstr "میں تیار ہوں!"
 
 #: site/pages/home.php:181
 msgid "Ordinary People. Simple Steps."
@@ -6026,11 +6025,11 @@ msgstr ""
 
 #: site/pages/home.php:248
 msgid "More about zume"
-msgstr ""
+msgstr "زیوم کے بارے میں مزید"
 
 #: site/pages/home.php:254 site/pages/training.php:129
 msgid "Create your own training group"
-msgstr ""
+msgstr "اپنا تربیتی گروپ بنائیں"
 
 #: site/pages/home.php:257 site/pages/training.php:132
 msgid ""
@@ -6040,7 +6039,7 @@ msgstr ""
 
 #: site/pages/home.php:259 site/pages/training.php:134
 msgid "Create"
-msgstr ""
+msgstr "بنائیں"
 
 #: site/pages/home.php:265 site/pages/training.php:140
 msgid ""
@@ -6050,7 +6049,7 @@ msgstr ""
 
 #: site/pages/home.php:270 site/pages/training.php:145
 msgid "Request a coach"
-msgstr ""
+msgstr "ایک کوچ کی درخواست کریں"
 
 #: site/pages/home.php:273 site/pages/training.php:148
 msgid ""
@@ -6064,7 +6063,7 @@ msgstr ""
 
 #: site/pages/home.php:297
 msgid "Real people ... real stories."
-msgstr ""
+msgstr "حقیقی لوگ... حقیقی کہانیاں۔"
 
 #: site/pages/home.php:308
 msgid ""
@@ -6117,23 +6116,23 @@ msgstr ""
 
 #: site/pages/home.php:365
 msgid "Register Free."
-msgstr ""
+msgstr "مفت رجسٹر کریں۔"
 
 #: site/pages/home.php:369
 msgid "Gather a Group."
-msgstr ""
+msgstr "ایک گروپ جمع کریں۔"
 
 #: site/pages/home.php:373
 msgid "Change the World."
-msgstr ""
+msgstr "دنیا کو بدل دیں۔"
 
 #: site/pages/home.php:376
 msgid "Get started"
-msgstr ""
+msgstr "ابتدا"
 
 #: site/pages/messages.php:229
 msgid "Friend"
-msgstr ""
+msgstr "دوست"
 
 #: site/pages/mobile-app.php:28 site/pages/mobile-app.php:130
 msgid "Zúme Training App"
@@ -6145,35 +6144,35 @@ msgstr ""
 
 #: site/pages/mobile-app.php:132
 msgid "Access the full training wherever you go"
-msgstr ""
+msgstr "جہاں بھی جائیں مکمل تربیت تک رسائی حاصل کریں"
 
 #: site/pages/mobile-app.php:137 site/pages/mobile-app.php:161
 msgid "Get it on Google Play"
-msgstr ""
+msgstr "اسے Google Play پر حاصل کریں"
 
 #: site/pages/mobile-app.php:152
 msgid "Offline App"
-msgstr ""
+msgstr "آف لائن ایپ"
 
 #: site/pages/mobile-app.php:154
 msgid "Full Training with no internet required"
-msgstr ""
+msgstr "انٹرنیٹ کی ضرورت کے بغیر مکمل تربیت"
 
 #: site/pages/mobile-app.php:155
 msgid "Download the course and video content to your phone"
-msgstr ""
+msgstr "کورس اور ویڈیو مواد کو اپنے فون پر ڈاؤن لوڈ کریں"
 
 #: site/pages/mobile-app.php:156
 msgid "Great for areas where internet access is restricted or limited"
-msgstr ""
+msgstr "ان علاقوں کے لیے بہت اچھا ہے جہاں انٹرنیٹ تک رسائی محدود یا محدود ہے"
 
 #: site/pages/plan-invite.php:28 site/pages/plan-invite.php:165
 msgid "Plan Invitation"
-msgstr ""
+msgstr "منصوبہ دعوت"
 
 #: site/pages/plan-invite.php:72
 msgid "Please enter a code."
-msgstr ""
+msgstr "براہ کرم ایک کوڈ درج کریں۔"
 
 #: site/pages/privacy-policy.php:28 site/pages/privacy-policy.php:79
 msgid "Zúme Privacy Policy"
@@ -6344,7 +6343,7 @@ msgstr ""
 
 #: site/pages/privacy-policy.php:183
 msgid "See what data we've aggregated from your activities with us."
-msgstr "دیكهیں آپ كی سرگرمیوں سے هم نے كون سی معلومات یكجا كی هیں"
+msgstr "دیکھیں کہ ہم نے آپ کے ساتھ آپ کی سرگرمیوں سے کونسا ڈیٹا جمع کیا ہے۔"
 
 #: site/pages/privacy-policy.php:186
 msgid "Change/correct any data we have about you."
@@ -6363,7 +6362,7 @@ msgstr ""
 
 #: site/pages/privacy-policy.php:195
 msgid "Opt out of any future contact from us."
-msgstr ""
+msgstr "ہم سے مستقبل کے کسی بھی رابطے سے آپٹ آؤٹ کریں۔"
 
 #: site/pages/privacy-policy.php:202
 msgid "Updates"
@@ -6383,7 +6382,7 @@ msgstr ""
 
 #: site/pages/resources.php:116
 msgid "Training Guidebook"
-msgstr ""
+msgstr "تربیتی گائیڈ بک"
 
 #: site/pages/resources.php:119
 msgid ""
@@ -6395,15 +6394,15 @@ msgstr ""
 
 #: site/pages/resources.php:123
 msgid "Free Download (PDF)"
-msgstr ""
+msgstr "مفت ڈاؤن لوڈ (پی ڈی ایف)"
 
 #: site/pages/resources.php:125
 msgid "Order print copy"
-msgstr ""
+msgstr "پرنٹ کاپی آرڈر کریں"
 
 #: site/pages/resources.php:139
 msgid "Course Slides Online"
-msgstr ""
+msgstr "کورس سلائیڈز آن لائن"
 
 #: site/pages/resources.php:142
 msgid ""
@@ -6417,11 +6416,11 @@ msgstr ""
 
 #: site/pages/share.php:78
 msgid "Copy this link and send it to your friends."
-msgstr ""
+msgstr "اس لنک کو کاپی کریں اور اپنے دوستوں کو بھیجیں۔"
 
 #: site/pages/share.php:80
 msgid "Copied"
-msgstr ""
+msgstr "کاپی"
 
 #: site/pages/share.php:117
 msgid "Tools"
@@ -6433,15 +6432,15 @@ msgstr "تصورات"
 
 #: site/pages/share.php:120
 msgid "Sort"
-msgstr ""
+msgstr "چھانٹنا"
 
 #: site/pages/share.php:121
 msgid "Items"
-msgstr ""
+msgstr "اشیاء"
 
 #: site/pages/share.php:129
 msgid "Sharing with Others"
-msgstr ""
+msgstr "دوسروں کے ساتھ اشتراک کرنا"
 
 #: site/pages/share.php:136
 msgid ""
@@ -6461,15 +6460,15 @@ msgstr ""
 
 #: site/pages/training.php:156
 msgid "Course Overview"
-msgstr "كورس كا جائزه"
+msgstr "کورس کا جائزہ"
 
 #: site/pages/training.php:158 site/pages/training.php:170
 msgid "Course Concepts"
-msgstr ""
+msgstr "کورس کے تصورات"
 
 #: site/pages/training.php:160 site/pages/training.php:255
 msgid "What is required?"
-msgstr ""
+msgstr "کیا ضرورت ہے؟"
 
 #: site/pages/training.php:173
 msgid ""
@@ -6480,11 +6479,11 @@ msgstr ""
 
 #: site/pages/training.php:177
 msgid "Discipleship Concepts"
-msgstr ""
+msgstr "شاگردی کے تصورات"
 
 #: site/pages/training.php:191
 msgid "Spiritual Practices"
-msgstr ""
+msgstr "روحانی مشقیں"
 
 #: site/pages/training.php:224
 msgid ""
@@ -6509,11 +6508,11 @@ msgstr ""
 
 #: site/pages/training.php:256
 msgid "Needed for the course:"
-msgstr ""
+msgstr "کورس کے لیے درکار ہے:"
 
 #: site/pages/training.php:262
 msgid "NOT needed for the course:"
-msgstr ""
+msgstr "کورس کے لیے ضروری نہیں:"
 
 #: site/pages/training.php:265
 msgid ""
@@ -6522,13 +6521,12 @@ msgid ""
 msgstr ""
 
 #: site/parts/download-slides.php:18
-#, fuzzy
 msgid "Download Course Slides"
-msgstr "گائیڈ ببک / ہدایت نامہ ڈاون لوڈ کیجئے"
+msgstr "کورس سلائیڈز ڈاؤن لوڈ کریں"
 
 #: site/parts/download-slides.php:21
 msgid "Large file download. (1 gigabyte)"
-msgstr ""
+msgstr "بڑی فائل ڈاؤن لوڈ۔ (1 گیگا بائٹ)"
 
 #: site/parts/download-slides.php:24
 msgid ""
@@ -6541,26 +6539,26 @@ msgstr ""
 
 #: site/parts/download-slides.php:29
 msgid "Powerpoint"
-msgstr ""
+msgstr "پاورپوائنٹ"
 
 #: site/parts/download-slides.php:41
 msgid "Keynote"
-msgstr ""
+msgstr "کلیدی بات"
 
 #: site/parts/mobile-nav.php:36 site/parts/nav.php:36
 #: utilities/integrations/replace-placeholder.php:106
 #: utilities/integrations/replace-placeholder.php:107
 #: utilities/integrations/replace-placeholder.php:108
 msgid "Check-in"
-msgstr ""
+msgstr "جانچئے"
 
 #: site/parts/noscript.php:2
 msgid "Oops you have javascript turned off"
-msgstr ""
+msgstr "افوہ آپ نے جاوا اسکرپٹ کو آف کر دیا ہے"
 
 #: site/parts/noscript.php:3
 msgid "Please enable javascript to use this page"
-msgstr ""
+msgstr "براہ کرم اس صفحہ کو استعمال کرنے کے لیے جاوا اسکرپٹ کو فعال کریں"
 
 #: site/profile/communication-preferences.php:27
 #: site/profile/communication-preferences.php:74
@@ -6568,27 +6566,27 @@ msgstr ""
 #: utilities/integrations/replace-placeholder.php:182
 #: utilities/integrations/replace-placeholder.php:183
 msgid "Update Communication Preferences"
-msgstr ""
+msgstr "مواصلات کی ترجیحات کو اپ ڈیٹ کریں"
 
 #: site/profile/communication-preferences.php:76
 msgid "Recieve emails for:"
-msgstr ""
+msgstr "اس کے لیے ای میلز موصول کریں:"
 
 #: site/profile/communication-preferences.php:79
 msgid "Training session reminders"
-msgstr ""
+msgstr "ٹریننگ سیشن کی یاددہانی"
 
 #: site/profile/communication-preferences.php:83
 msgid "Annual reporting reminders"
-msgstr ""
+msgstr "سالانہ رپورٹنگ یاددہانی"
 
 #: site/profile/communication-preferences.php:87
 msgid "Community updates"
-msgstr ""
+msgstr "کمیونٹی اپ ڈیٹس"
 
 #: site/profile/communication-preferences.php:91
 msgid "Encouragements"
-msgstr ""
+msgstr "حوصلہ افزائی"
 
 #: site/profile/profile.php:27 site/profile/profile.php:106
 msgid "Profile"
@@ -6603,67 +6601,67 @@ msgstr ""
 
 #: utilities/apis/connect-api.php:86
 msgid "your friend"
-msgstr ""
+msgstr "آپ کا دوست"
 
 #: utilities/apis/connect-api.php:237
 msgid "the plan"
-msgstr ""
+msgstr "منصوبہ"
 
 #: utilities/apis/cta-api.php:141
 msgid "Register to start your training"
-msgstr ""
+msgstr "پنی تربیت شروع کرنے کے لیے رجسٹر ہوں۔"
 
 #: utilities/apis/cta-api.php:157
 msgid "Set your profile to help others know you"
-msgstr ""
+msgstr "دوسروں کو آپ کو جاننے میں مدد کرنے کے لیے اپنا پروفائل سیٹ کریں"
 
 #: utilities/apis/cta-api.php:171
 msgid "Profile Set"
-msgstr ""
+msgstr "پروفائل سیٹ"
 
 #: utilities/apis/cta-api.php:186
 msgid "Join Online Training"
-msgstr ""
+msgstr "ن لائن ٹریننگ میں شامل ہوں۔"
 
 #: utilities/apis/cta-api.php:187
 msgid "Join the online training to learn more"
-msgstr ""
+msgstr "مزید جاننے کے لیے آن لائن ٹریننگ میں شامل ہوں"
 
 #: utilities/apis/cta-api.php:201
 msgid "Joined Training!"
-msgstr ""
+msgstr "تربیت میں شمولیت اختیار کی!"
 
 #: utilities/apis/cta-api.php:215 utilities/apis/cta-api.php:217
 msgid "Create a Training"
-msgstr ""
+msgstr "ایک تربیت بنائیں"
 
 #: utilities/apis/cta-api.php:216
 msgid "Create a training to help you grow"
-msgstr ""
+msgstr "آپ کو بڑھنے میں مدد کے لیے ایک تربیت بنائیں"
 
 #: utilities/apis/cta-api.php:230
 msgid "Created Training!"
-msgstr ""
+msgstr "تشکیل دی گئی تربیت!"
 
 #: utilities/apis/cta-api.php:246
 msgid "Get a coach to help you on your journey"
-msgstr ""
+msgstr "پنے سفر میں آپ کی مدد کے لیے کوچ حاصل کریں۔"
 
 #: utilities/apis/cta-api.php:260
 msgid "Requested Coach!"
-msgstr ""
+msgstr "کوچ کی درخواست کی!"
 
 #: utilities/apis/cta-api.php:274
 msgid "Connected to Coach!"
-msgstr ""
+msgstr "کوچ سے منسلک!"
 
 #: utilities/apis/cta-api.php:306 utilities/apis/cta-api.php:308
 msgid "Create 3 Month Plan"
-msgstr ""
+msgstr "3 ماہ کا منصوبہ بنائیں"
 
 #: utilities/apis/cta-api.php:307
 msgid "Create a 3 month plan to help you grow"
-msgstr ""
+msgstr "اپنی ترقی میں مدد کے لیے 3 ماہ کا منصوبہ بنائیں"
 
 #: utilities/apis/cta-api.php:321
 #, php-format
@@ -6672,15 +6670,15 @@ msgstr ""
 
 #: utilities/apis/cta-api.php:335
 msgid "3-Month Plan Created"
-msgstr ""
+msgstr "3 ماہ کا منصوبہ بنایا گیا"
 
 #: utilities/apis/cta-api.php:349 utilities/apis/cta-api.php:351
 msgid "Complete 3 Month Plan"
-msgstr ""
+msgstr "3 ماہ کا منصوبہ مکمل کریں"
 
 #: utilities/apis/cta-api.php:350
 msgid "Complete your 3 month plan to help you grow"
-msgstr ""
+msgstr "پنی ترقی میں مدد کے لیے اپنا 3 ماہ کا منصوبہ مکمل کریں۔"
 
 #: utilities/apis/cta-api.php:364
 msgid "3 Month Plan Completed"
@@ -6688,12 +6686,11 @@ msgstr ""
 
 #: utilities/apis/cta-api.php:410
 msgid "Join the community"
-msgstr ""
+msgstr "کمیونٹی میں شامل ہوں"
 
 #: utilities/apis/cta-api.php:424
-#, fuzzy
 msgid "Joined Community"
-msgstr "معاشره"
+msgstr "کمیونٹی میں شمولیت اختیار کی"
 
 #: utilities/apis/plans-api.php:126
 #, php-format
@@ -6741,7 +6738,7 @@ msgstr ""
 #: utilities/integrations/replace-placeholder.php:119
 #: utilities/integrations/replace-placeholder.php:120
 msgid "Download Slide Presentation"
-msgstr ""
+msgstr "سلائیڈ پریزنٹیشن ڈاؤن لوڈ کریں"
 
 #: utilities/integrations/replace-placeholder.php:122
 #: utilities/integrations/replace-placeholder.php:123
@@ -6756,13 +6753,12 @@ msgid "Zúme Annual Report"
 msgstr ""
 
 #: utilities/post-types/posttype-downloads.php:201
-#, fuzzy
 msgid "Slides"
-msgstr "گائیڈ ببک / ہدایت نامہ ڈاون لوڈ کیجئے"
+msgstr "سلائیڈز"
 
 #: utilities/post-types/posttype-pieces.php:299
 msgid "Piece"
-msgstr ""
+msgstr "ٹکڑا"
 
 #: zume-training-system.php:237
 msgid "Someone has requested a password reset for the following account:"
@@ -6773,17 +6769,17 @@ msgstr ""
 #: zume-training-system.php:239
 #, php-format
 msgid "Site Name: %s"
-msgstr "سائٹ کا نام  %s"
+msgstr "سائٹ کا نام %s"
 
 #. translators: %s: user login
 #: zume-training-system.php:241
 #, php-format
 msgid "Username: %s"
-msgstr "یوزر کا نام  %s"
+msgstr "یوزر کا نام %s"
 
 #: zume-training-system.php:242
 msgid "If this was a mistake, just ignore this email and nothing will happen."
-msgstr "اگر یہ ایک غلطی تھی،تو اس ای میل کو نظر انداز کریں اورکچھ نہیں ہوگا"
+msgstr "اگر یہ ایک غلطی تھی،تو اس ای میل کو نظر انداز كیجئے اورکچھ نہیں ہوگ"
 
 #: zume-training-system.php:243
 msgid "To reset your password, visit the following address:"
@@ -6797,44 +6793,43 @@ msgstr "[%s]پاس ورڈ کی بوبارہ تنصیب"
 
 #: zume-training-system.php:289
 msgid "Profile Details"
-msgstr ""
+msgstr "پروفائل کی تفصیلات"
 
 #: zume-training-system.php:301
 msgid "User Email"
-msgstr ""
+msgstr "صارف کا ای میل"
 
 #: zume-training-system.php:310
 msgid "User Phone"
-msgstr ""
+msgstr "صارف کا فون"
 
 #: zume-training-system.php:318
 msgid "User Timezone"
-msgstr ""
+msgstr "صارف کا ٹائم زون"
 
 #: zume-training-system.php:326
 msgid "User Friend Key"
-msgstr ""
+msgstr "صارف دوست کلید"
 
 #: zume-training-system.php:334
 msgid "User Preferred Language"
-msgstr ""
+msgstr "صارف کی ترجیحی زبان"
 
 #: zume-training-system.php:342
 msgid "User Preferred Email"
-msgstr ""
+msgstr "صارف کی ترجیحی ای میل"
 
 #: zume-training-system.php:350
-#, fuzzy
 msgid "Coaching Contact ID"
-msgstr "کوچنگ چیک لسٹ"
+msgstr "کوچنگ رابطہ ID"
 
 #: zume-training-system.php:358
 msgid "Preferred Contact Methods"
-msgstr ""
+msgstr "ترجیحی رابطے کے طریقے"
 
 #: zume-training-system.php:368
 msgid "Messenger"
-msgstr ""
+msgstr "میسنجر"
 
 #. Plugin Name of the plugin/theme
 msgid "Zúme - Training System"
