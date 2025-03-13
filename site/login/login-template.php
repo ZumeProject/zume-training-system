@@ -493,11 +493,6 @@ switch ( $request_action ) {
 
                                                 recaptchaResponseInput.value = token
 
-                                                const submitButtenElement = document.querySelector('#form-submit')
-                                                submitButtenElement.classList.add('disabled')
-                                                submitButtenElement.setAttribute('disabled', '')
-                                                submitButtenElement.querySelector('.loading-spinner').classList.add('active')
-
                                                 if (document.getElementById('loginform').requestSubmit) {
                                                     document.getElementById('loginform').requestSubmit()
                                                 } else {
@@ -558,6 +553,11 @@ switch ( $request_action ) {
                                                     event.preventDefault()
                                                     return
                                                 }
+
+                                                const submitButtenElement = document.querySelector('#form-submit')
+                                                submitButtenElement.classList.add('disabled')
+                                                submitButtenElement.setAttribute('disabled', '')
+                                                submitButtenElement.querySelector('.loading-spinner').classList.add('active')
 
                                                 isSubmitting = true
 
