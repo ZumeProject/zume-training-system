@@ -99,7 +99,7 @@ class Zume_Training_Donate extends Zume_Magic_Page
 
                     <div>
                         <!--spinner-->
-                        <div class="cover-page" id="give-loading-spinner">
+                        <div id="give-loading-spinner">
                             <div class="center"><span class="loading-spinner active"></span></div>
                         </div>
 
