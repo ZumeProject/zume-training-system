@@ -2397,7 +2397,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
             ],
             '16' => [
                 'key' => 16,
-                'title' => __( 'The Lord\'s Supper and How To Lead It', 'zume' ),
+                'title' => __( 'The Lord’s Supper and How To Lead It', 'zume' ),
                 'title_en' => "The Lord's Supper and How To Lead It",
                 'description' => __( 'It’s a simple way to celebrate our intimate connection and ongoing relationship with Jesus. Learn a simple way to celebrate.', 'zume' ),
                 'video_title' => __( 'The Lord’s Supper', 'zume' ),
@@ -2425,7 +2425,7 @@ if ( ! function_exists( 'zume_training_items' ) ) {
                 'key' => 18,
                 'title' => __( "A Person of Peace and How To Find One", 'zume' ),
                 'title_en' => 'A Person of Peace and How To Find One',
-                'description' => __( "Learn who a person of peace might be and how to know when you have found one.", 'zume' ),
+                'description' => __( 'Learn who a person of peace might be and how to know when you‘ve found one.', 'zume' ),
                 'video_title' => __( "Person of Peace", 'zume' ),
                 'slug' => 'a-person-of-peace-and-how-to-find-one',
                 'video' => 18,
