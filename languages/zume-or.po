@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2025-03-03 09:00+0000\n"
+"PO-Revision-Date: 2025-03-25 13:02+0000\n"
 "Last-Translator: Manikumar Miriyala <mani@zume.training>\n"
 "Language-Team: Odia <https://translate.disciple.tools/projects/zume-training/"
 "zume-training-system/or/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.2\n"
+"X-Generator: Weblate 5.10.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
@@ -56,7 +56,7 @@ msgstr "ଡ୍ୟାଶ୍‌ବୋର୍ଡ"
 #: 404.php:83 site/dashboard/dashboard.php:250 site/parts/footer.php:25
 #: site/parts/footer.php:28
 msgid "Launch Course"
-msgstr "ପାଠ୍ୟକ୍ରମ ଆରମ୍ଭ କରନ୍ତୁ |"
+msgstr "ପାଠ୍ୟକ୍ରମ ଆରମ୍ଭ କରନ୍ତୁ"
 
 #: 404.php:84 site/dashboard/dashboard.php:255 site/pages/resources.php:146
 #: site/parts/download-slides.php:31 site/parts/download-slides.php:43
@@ -361,7 +361,7 @@ msgstr "ବତକଛୁଆ ଶିଷ୍ୟତ୍ୱ"
 #: site/course/course-content.php:1472 site/course/course-content.php:4482
 #: site/course/course-content.php:4503 site/pages/follow-jesus.php:248
 msgid "Eyes to See Where the Kingdom Isn’t"
-msgstr "ଯେଉଁଠି ଈଶ୍ୱରଙ୍କ ରାଜ୍ୟ ନାହିଁ ତାହା ଦେଖିବାକୁ ଚକ୍ଷୁ ।"
+msgstr "ଯେଉଁଠି ଈଶ୍ୱରଙ୍କ ରାଜ୍ୟ ନାହିଁ ତାହା ଦେଖିବାକୁ ଚକ୍ଷୁ"
 
 #: globals.php:2370 site/pages/follow-jesus.php:249
 msgid ""
@@ -478,13 +478,13 @@ msgstr "୩/୩ ଗୋଷ୍ଠୀ"
 
 #: globals.php:2453 site/pages/follow-jesus.php:271
 msgid "Training Cycle for Maturing Disciples"
-msgstr "ପରିପକ୍ୱ ହେଉଥିବା ଶିଷ୍ୟମାନଙ୍କ ପାଇଁ ପ୍ରଶିକ୍ଷଣ ଚକ୍ର |"
+msgstr "ପରିପକ୍ୱ ହେଉଥିବା ଶିଷ୍ୟମାନଙ୍କ ପାଇଁ ପ୍ରଶିକ୍ଷଣ ଚକ୍ର"
 
 #: globals.php:2454 site/pages/follow-jesus.php:272
 msgid ""
 "Learn the training cycle and consider how it applies to disciple making."
 msgstr ""
-"ପ୍ରଶିକ୍ଷଣ  ଚକ୍ର ବିଷୟରେ ଜାଣନ୍ତୁ ଏବଂ ଶିଷ୍ୟ ତିଆରି କରିବାରେ ଏହା କିପରି ପ୍ରଯୁଜ୍ୟ ତାହା ବିଚାର କରନ୍ତୁ ।"
+"ପ୍ରଶିକ୍ଷଣ ଚକ୍ର ବିଷୟରେ ଜାଣନ୍ତୁ ଏବଂ ଶିଷ୍ୟ ତିଆରି କରିବାରେ ଏହା କିପରି ପ୍ରଯୁଜ୍ୟ ତାହା ବିଚାର କରନ୍ତୁ।"
 
 #: globals.php:2455 site/course/course-content.php:5166
 #: site/course/course-content.php:5183
@@ -605,7 +605,7 @@ msgid ""
 "Learn how multiplying churches stay connected and live life together as an "
 "extended, spiritual family."
 msgstr ""
-"ବହୁଗୁଣିତ ହେଉଥିବା ମଣ୍ଡଳୀଗୁଡ଼ିକ  କିଭଳି ପରସ୍ପର ସହିତ ସଂଯୁକ୍ତ ହୋଇ ରୁହନ୍ତି ଏବଂ ବିସ୍ତାରିତ ଓ ଆଧ୍ୟାତ୍ମିକ ପରିବା"
+"ବହୁଗୁଣିତ ହେଉଥିବା ମଣ୍ଡଳୀଗୁଡ଼ିକ କିଭଳି ପରସ୍ପର ସହିତ ସଂଯୁକ୍ତ ହୋଇ ରୁହନ୍ତି ଏବଂ ବିସ୍ତାରିତ ଓ ଆଧ୍ୟାତ୍ମିକ ପରିବା"
 "ର ରୁପେ ଏକତ୍ର ଜୀବନ ଯାପନ କରନ୍ତି ଜାଣନ୍ତୁ ।"
 
 #: globals.php:2549 site/course/course-content.php:3013
@@ -1041,7 +1041,7 @@ msgstr "ପ୍ରଶିକ୍ଷାର୍ଥୀ"
 
 #: maps/map-3-trainees.php:124
 msgid "Map of Zúme Trainees"
-msgstr ""
+msgstr "ଯୁମେ ପ୍ରଶିକ୍ଷାର୍ଥୀ ମାନଚିତ୍ର"
 
 #: maps/map-3-trainees.php:125
 msgid ""
@@ -1230,7 +1230,7 @@ msgstr "ପ୍ରଶିକ୍ଷଣ ଉପକରଣ / ଧାରଣା"
 #: site/activities/coaching-checklist-host.php:122
 #: site/activities/coaching-checklist-two.php:123
 msgid "Ask yourself, have I"
-msgstr ""
+msgstr "ନିଜକୁ ପଚାରନ୍ତୁ, ମୁଁ ...... ଅଛି କି ?"
 
 #: site/activities/coaching-checklist-host.php:128
 #: site/activities/coaching-checklist-host.php:166
@@ -1516,11 +1516,11 @@ msgstr "ସମର୍ଥନ ଦିଅନ୍ତୁ ଏବଂ ପ୍ରୋତ୍ସ
 
 #: site/activities/coaching-checklist.php:202
 msgid "Receive updates"
-msgstr ""
+msgstr "ଅପଡେଟ୍ ପ୍ରାପ୍ତ କରନ୍ତୁ"
 
 #: site/activities/coaching-checklist.php:207
 msgid "Planning Responsibilities"
-msgstr ""
+msgstr "ଦାୟିତ୍ବ ସବୁର ଯୋଜନା କରିବା"
 
 #: site/activities/coaching-checklist.php:213
 msgid "Mentor decides"
@@ -1562,7 +1562,7 @@ msgstr ""
 #: site/activities/list-of-100-printable.php:110
 #: site/activities/list-of-100.php:92 site/course/course-book-generator.php:594
 msgid "Disciple"
-msgstr "ବାତିଲ୍‌ କରିବା"
+msgstr "ଶିଷ୍ୟ"
 
 #: site/activities/list-of-100-printable.php:110
 #: site/activities/list-of-100.php:92 site/course/course-book-generator.php:594
@@ -1628,6 +1628,9 @@ msgid ""
 "you will be my witnesses, telling people about me everywhere – in Jerusalem, "
 "throughout Judea, in Samaria, and to the ends of the earth.”"
 msgstr ""
+"ଯୀଶୁ କହିଲେ, \"କିନ୍ତୁ ପବିତ୍ର ଆତ୍ମା ତୁମ୍ଭମାନଙ୍କ ଉପରେ ଅବତୀର୍ଣ୍ଣ ହୁଅନ୍ତେ, ତୁମ୍ଭେମାନେ ଶକ୍ତିପ୍ରାପ୍ତ ହେ"
+"ବ, ଆଉ ଯିରୂଶାଲମ, ସମସ୍ତ ଯିହୁଦା ପ୍ରଦେଶ ଓ ଶମିରୋଣ,, ପୁଣି ପୃଥିବୀର ପ୍ରା; ପର୍ଯ୍ୟନ୍ତ ସୁଦ୍ଧା ମୋହର "
+"ସାକ୍ଷୀ ହେବ।\""
 
 #: site/course/_strings-3-circle-gospel-presentation.php:14
 #: site/course/course-content.php:897
@@ -1637,6 +1640,10 @@ msgid ""
 "should learn to tell God’s story in a way that’s true to scripture and "
 "connects with the audience they’re sharing with."
 msgstr ""
+"ଈଶ୍ବରଙ୍କ କାହାଣୀ (ଯାହାକୁ ମଧ୍ୟ ସୁସମାଚାର କୁହାଯାଏ) କହିବା ପାଇଁ କୌଣସି ଗୋଟିଏ \"ସର୍ବୋତ୍ତମ ଉପାୟ\" "
+"ନାହିଁ, କାରଣ ସର୍ବୋତ୍ତମ ଉପାୟ ଏହା ଉପରେ ନିର୍ଭର କରେ ଯେ ଆପଣ କାହା ନିକଟରେ ସାକ୍ଷ୍ୟ ଦେଉଛନ୍ତି । "
+"ପ୍ରତ୍ୟେକ ଶିଷ୍ୟ ଈଶ୍ବରଙ୍କ କାହାଣୀକୁ ଏପରି ଭାବରେ କହିବା ଶିଖିବା ଉଚିତ୍ ଯାହା ଶାସ୍ତ୍ର ସମ୍ମତ ଏବଂ ଶ୍ରୋତା "
+"ଯାହା ନିକଟରେ ସେମାନେ ସାକ୍ଷ୍ୟ ଦେଉଛନ୍ତି ତାଙ୍କ ସହିତ ଜଡ଼ିତ ହୋଇପାରେ ।"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:23
 #: site/course/_strings-3-circle-gospel-presentation.php:61
@@ -1684,7 +1691,7 @@ msgstr ""
 #: site/course/course-content.php:916
 msgid ""
 "What would it take for you to feel more comfortable sharing God’s story?"
-msgstr "କ'ଣ କଲେ ଆପଣ ଈଶ୍ୱରଙ୍କ କାହାଣୀ ବାଣ୍ଟିବାକୁ  ସହଜସାଧ୍ୟ ଅନୁଭବ କରିବେ ?"
+msgstr "କ'ଣ କଲେ ଆପଣ ଈଶ୍ୱରଙ୍କ କାହାଣୀ ବାଣ୍ଟିବାକୁ ସହଜସାଧ୍ୟ ଅନୁଭବ କରିବେ ?"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:39
 #: site/course/course-content.php:108 site/course/course-content.php:153
@@ -1762,7 +1769,7 @@ msgstr ""
 
 #: site/course/_strings-3-circle-gospel-presentation.php:87
 msgid "Check off the checklist."
-msgstr "ଯାଞ୍ଚ ତାଲିକାରୁ ତନଖି କରନ୍ତୁ"
+msgstr "ଯାଞ୍ଚ ତାଲିକାରୁ ତନଖି କରନ୍ତୁ।"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:94
 #: site/course/_strings-3-circle-gospel-presentation.php:116
@@ -2087,7 +2094,7 @@ msgid ""
 "Spiritual breathing. We breathe in. We breathe out. We’re alive. Hearing and "
 "obeying God is like that, too."
 msgstr ""
-"ଆଧ୍ୟାତ୍ମିକ ଶ୍ବାସକ୍ରିୟା । ଆମେ ଶ୍ବାସ ନେଉ । ଆମେ ନିଃଶ୍ବାସ ତ୍ୟାଗ କରୁ । ଆମେ ଜୀବିତ ଅଟୁ  । ଈଶ୍ବରଙ୍କ "
+"ଆଧ୍ୟାତ୍ମିକ ଶ୍ବାସକ୍ରିୟା । ଆମେ ଶ୍ବାସ ନେଉ । ଆମେ ନିଃଶ୍ବାସ ତ୍ୟାଗ କରୁ । ଆମେ ଜୀବିତ ଅଟୁ । ଈଶ୍ବରଙ୍କ "
 "କଥା ଶୁଣିବା ଓ ତାଙ୍କ ଆଜ୍ଞା ପାଳନ କରିବା ମଧ୍ୟ ସେହିପରି ଅଟେ ।"
 
 #: site/course/course-content.php:235
@@ -2128,11 +2135,14 @@ msgid ""
 "Work individually through the SOAPS Bible study pattern using Matthew "
 "6:9-13. (20 min)"
 msgstr ""
+"ମାଥିଉ ୬:୯-୧୩କୁ ବ୍ୟବହାର କରି ବ୍ୟକ୍ତିଗତ ଭାବରେ ଏସ୍.ଓ.ଏ.ପି.ଏସ୍. ବାଇବଲ ଅଧ୍ୟୟନ ପଦ୍ଧତିକୁ ବ୍ୟବହାର "
+"କରନ୍ତୁ (୨୦ ମିନିଟ)"
 
 #: site/course/course-content.php:291
 msgid ""
 "Return together and share your S.O.A.P.S. in groups of two or three. (10 min)"
 msgstr ""
+"ଫେରିଆସି ଏକତ୍ରହୁଅନ୍ତୁ ଏବଂ ଦୁଇ ବା ତିନି ଜଣିଆ ଦଳରେ ନିଜର ଏସ୍.ଓ.ଏ.ପି.ଏସ୍. କୁ ବାଣ୍ଟନ୍ତୁ । (୧୦ ମିନିଟ)"
 
 #: site/course/course-content.php:317
 msgid ""
@@ -2643,8 +2653,8 @@ msgid ""
 "\"Unknown.\""
 msgstr ""
 "ଏହି ସପ୍ତାହରେ ଈଶ୍ବରଙ୍କ କାହାଣୀ ଅଭ୍ୟାସ କରିବାରେ ସମୟ ବିତାନ୍ତୁ, ଏବଂ ତା'ପରେ ଆପଣଙ୍କ ୧୦୦ର "
-"ତାଲିକାରେ ଅତି କମରେ ଜଣଙ୍କୁ ଏହା କୁହନ୍ତୁ  ଯାହାକୁ ଆପଣ \"ଅବିଶ୍ବାସୀ\" କିମ୍ବା \"ଅଜଣା\" ଭାବରେ ଚିହ୍ନି"
-"ତ କରିଛନ୍ତି ।"
+"ତାଲିକାରେ ଅତି କମରେ ଜଣଙ୍କୁ ଏହା କୁହନ୍ତୁ ଯାହାକୁ ଆପଣ \"ଅବିଶ୍ବାସୀ\" କିମ୍ବା \"ଅଜଣା\" ଭାବରେ ଚିହ୍ନିତ "
+"କରିଛନ୍ତି ।"
 
 #: site/course/course-content.php:1087
 msgid ""
@@ -2660,7 +2670,7 @@ msgid ""
 "session. Be sure to remember the supplies (bread and wine / juice)."
 msgstr ""
 "ଗୁରୁତ୍ୱପୁର୍ଣ୍ଣ ସ୍ମାରକ: ଆପଣଙ୍କ ଦଳ ପରବର୍ତ୍ତୀ ଅଧିବେଶନରେ ପ୍ରଭୁଭୋଜ ପାଳନ କରିବ । ଭୋଜପଦାର୍ଥ ଗୁଡ଼ିକ "
-"ମନେରଖିବାରେ ସୁନିଶ୍ଚିତ କରନ୍ତୁ (ରୋଟି ଏବଂ ଦ୍ରାକ୍ଷାରସ)"
+"ମନେରଖିବାରେ ସୁନିଶ୍ଚିତ କରନ୍ତୁ (ରୋଟି ଏବଂ ଦ୍ରାକ୍ଷାରସ)।"
 
 #: site/course/course-content.php:1119 site/course/course-content.php:1124
 #: site/course/course-content.php:3586 site/course/course-content.php:3591
@@ -2797,7 +2807,7 @@ msgid ""
 "the life of the world.”"
 msgstr ""
 "ଯୀଶୁ କହିଲେ, \"ମୁଁ ସ୍ବର୍ଗରୁ ଓହ୍ଲାଇଥିବା ସେହି ଜୀବନ୍ତ ଆହାର । ଯିଏ ଏହି ରୋଟୀ ଖାଇବ ସେ ଅନନ୍ତକାଳ "
-"ପର୍ଯ୍ୟନ୍ତ ଜୀବିତ ରହିବ। ମୁଁ ଯେଉଁ ରୋଟୀ ଦେବି, ତାହା ମୋର ମାଂସ,  ତାହା ଜଗତର ଜୀବନ ନିମନ୍ତେ ଦେବି।\""
+"ପର୍ଯ୍ୟନ୍ତ ଜୀବିତ ରହିବ। ମୁଁ ଯେଉଁ ରୋଟୀ ଦେବି, ତାହା ମୋର ମାଂସ, ତାହା ଜଗତର ଜୀବନ ନିମନ୍ତେ ଦେବି।\""
 
 #: site/course/course-content.php:1444
 msgid "Celebrate the Lord’s Supper"
@@ -3095,7 +3105,7 @@ msgid ""
 "develop how you will Obey, Train and Share. (30 min)"
 msgstr ""
 "ଆଗକୁ ଦେଖନ୍ତୁ - ଆପଣ କିପରି ଆଜ୍ଞାବହ ହେବେ, ପ୍ରଶିକ୍ଷଣ ଦେବେ ଏବଂ ବାଣ୍ଟିବେ ତାହା ବିକଶିତ କରିବାକୁ 'ଆଗକୁ "
-"ଦେଖନ୍ତୁ' ବିଭାଗରେ ପ୍ରଶ୍ନ 5, 6, ଏବଂ 7 କୁ ବ୍ୟବହାର କରନ୍ତୁ।"
+"ଦେଖନ୍ତୁ' ବିଭାଗରେ ପ୍ରଶ୍ନ 5, 6, ଏବଂ 7 କୁ ବ୍ୟବହାର କରନ୍ତୁ। (୩୦ ମିନିଟ୍‍)"
 
 #: site/course/course-content.php:2152
 msgid "What did you like best about the 3/3 Group? Why?"
@@ -3180,14 +3190,14 @@ msgid ""
 "questions 1- 4. (30 min)"
 msgstr ""
 "ଉପରକୁ ଦେଖନ୍ତୁ - ପ୍ରେରିତ ୨:୪୨-୪୭ ଦଳର ପାଠ୍ୟ ଅଂଶ ରୁପେ ବ୍ୟବହାର କରନ୍ତୁ ଏବଂ ପ୍ରଶ୍ନ ୧-୪ ର ଉତ୍ତର "
-"ଦିଅନ୍ତୁ ।"
+"ଦିଅନ୍ତୁ । (୩୦ ମିନିଟ୍‍)"
 
 #: site/course/course-content.php:2350
 msgid ""
 "LOOK FORWARD – Use questions 5, 6, and 7 to develop how you will Obey, Train "
 "and Share. (30 min)"
 msgstr ""
-"ଆଗକୁ ଦେଖନ୍ତୁ - ଆପଣ କିପରି ଆଜ୍ଞାବହ ହେବେ, ପ୍ରଶିକ୍ଷଣ ଦେବେ ଏବଂ ବାଣ୍ଟିବେ ତାହା ବିକଶିତ କରିବାକୁ  ୫,୬ "
+"ଆଗକୁ ଦେଖନ୍ତୁ - ଆପଣ କିପରି ଆଜ୍ଞାବହ ହେବେ, ପ୍ରଶିକ୍ଷଣ ଦେବେ ଏବଂ ବାଣ୍ଟିବେ ତାହା ବିକଶିତ କରିବାକୁ ୫,୬ "
 "ଏବଂ ୭ ପ୍ରଶ୍ନଗୁଡ଼ିକର ବ୍ୟବହାର କରନ୍ତୁ । (୩୦ ମିନିଟ)"
 
 #: site/course/course-content.php:2371
@@ -3702,7 +3712,7 @@ msgid ""
 "to reveal. (10 min)"
 msgstr ""
 "ଅତି କମ୍‍‍ରେ ୧୦ମିନିଟ୍ ନିଅନ୍ତୁ ଓ ‌ଯେତେ ସମ୍ଭବ ନିଶବ୍ଦ ହୋଇ ଈଶ୍ୱର ଯାହା କହିବାକୁ ଓ ସେ ଯାହା ପ୍ରକଟ କରିବାକୁ "
-"ଚାହାନ୍ତି ତାହା ଗଭୀର ରୁପେ ଶୁଣିବାକୁ ଚେଷ୍ଟା କରନ୍ତୁ । ତାଙ୍କ ସ୍ୱର ଶୁଣିବାକୁ ଉଦ୍ୟମ କରନ୍ତୁ ।"
+"ଚାହାନ୍ତି ତାହା ଗଭୀର ରୁପେ ଶୁଣିବାକୁ ଚେଷ୍ଟା କରନ୍ତୁ । ତାଙ୍କ ସ୍ୱର ଶୁଣିବାକୁ ଉଦ୍ୟମ କରନ୍ତୁ । (୧୦ ମିନିଟ୍)"
 
 #: site/course/course-content.php:3156
 msgid ""
@@ -4295,10 +4305,11 @@ msgstr "ଉପସ୍ଥାପକ"
 #: site/course/presenter.php:29
 msgid "Train disciples how to make disciples with 20 hours of course content"
 msgstr ""
+"ଶିଷ୍ୟମାନଙ୍କୁ ୨୦ ଘଣ୍ଟାର ପାଠ୍ୟକ୍ରମର ବିଷୟବସ୍ତୁ ସହିତ ଶିଷ୍ୟ କିପରି ନିର୍ମାଣ କରିବେ ପ୍ରଶିକ୍ଷଣ ଦିଅନ୍ତୁ"
 
 #: site/course/presenter.php:128
 msgid "Course Presenter"
-msgstr ""
+msgstr "ପାଠ୍ୟକ୍ରମର ଉପସ୍ଥାପକ"
 
 #: site/course/presenter.php:136
 msgid "Links"
@@ -5008,7 +5019,7 @@ msgstr "କିଛି ତ୍ରୁଟି ଘଟିଛି"
 #: site/dashboard/dashboard.php:319 site/dashboard/wizard.php:280
 #: site/pages/_strings-mobile-pwa.php:10
 msgid "Yes"
-msgstr ""
+msgstr "ହଁ"
 
 #: site/dashboard/dashboard.php:320 site/dashboard/wizard.php:281
 #: site/pages/_strings-mobile-pwa.php:11
@@ -5601,7 +5612,7 @@ msgid ""
 "Your password reset link appears to be invalid. Please request a new link "
 "below."
 msgstr ""
-"ଆପଣଙ୍କ ପାସ୍‍ୱାର୍ଡ଼୍  ରିସେଟ୍ ଲିଙ୍କ୍ ଅବୈଧ ବୋଲି ଜଣାପଡ଼ୁଛି। ଦୟାକରି ନିମ୍ନରେ ଏକ ନୂତନ ଲିଙ୍କ୍ ପାଇଁ ଅନୁରୋଧ "
+"ଆପଣଙ୍କ ପାସ୍‍ୱାର୍ଡ଼୍ ରିସେଟ୍ ଲିଙ୍କ୍ ଅବୈଧ ବୋଲି ଜଣାପଡ଼ୁଛି। ଦୟାକରି ନିମ୍ନରେ ଏକ ନୂତନ ଲିଙ୍କ୍ ପାଇଁ ଅନୁରୋଧ "
 "କରନ୍ତୁ।"
 
 #: site/login/login-template.php:70
@@ -6216,7 +6227,7 @@ msgstr ""
 
 #: site/pages/donate.php:99
 msgid "View All Giving Opportunities"
-msgstr "ଦାନ ଦେବାର ସମସ୍ତ ସୁଯୋଗ ଦେଖନ୍ତୁ।"
+msgstr "ଦାନ ଦେବାର ସମସ୍ତ ସୁଯୋଗ ଦେଖନ୍ତୁ"
 
 #: site/pages/faq.php:81
 msgid "FAQ"
@@ -6289,7 +6300,7 @@ msgstr ""
 
 #: site/pages/follow-jesus.php:230
 msgid "Learn how to obey Jesus' commands by going AND staying."
-msgstr "ଯିବା ଏବଂ ରହିବା ଦ୍ୱାରା କିପରି ଯୀଶୁଙ୍କ ଆଜ୍ଞାମାନିବା ଶିକ୍ଷା କରନ୍ତୁ"
+msgstr "ଯିବା ଏବଂ ରହିବା ଦ୍ୱାରା କିପରି ଯୀଶୁଙ୍କ ଆଜ୍ଞାମାନିବା ଶିକ୍ଷା କରନ୍ତୁ।"
 
 #: site/pages/follow-jesus.php:234
 msgid ""
@@ -6360,7 +6371,7 @@ msgid ""
 "what it sounds like — praying to God while walking around!"
 msgstr ""
 "ଅନ୍ୟମାନଙ୍କ ପାଇଁ ପ୍ରାର୍ଥନା କରିବା ପାଇଁ ଈଶ୍ୱରଙ୍କ ଆଦେଶ ପାଳନ କରିବାର ଏହା ଏକ ସରଳ ଉପାୟ । ଏବଂ "
-"ଏହା ଯେମିତି ଶୁଭୁଛି ଠିକ୍ ସେହିଭଳି ଅଟେ --  ଈଶ୍ୱରଙ୍କୁ ପ୍ରାର୍ଥନା କରିବା ସମୟରେ ଚଲାବୁଲା କରିବା!"
+"ଏହା ଯେମିତି ଶୁଭୁଛି ଠିକ୍ ସେହିଭଳି ଅଟେ -- ଈଶ୍ୱରଙ୍କୁ ପ୍ରାର୍ଥନା କରିବା ସମୟରେ ଚଲାବୁଲା କରିବା!"
 
 #: site/pages/follow-jesus.php:313
 msgid "What if many friends, family and others start following Jesus with me?"
@@ -6790,7 +6801,7 @@ msgstr ""
 #: site/pages/privacy-policy.php:131
 msgid ""
 "We request neccissary information through various sign up and request forms."
-msgstr ""
+msgstr "ଆମେ ବିଭିନ୍ନ ପଞ୍ଜୀକରଣ ଏବଂ ଅନୁରୋଧ ଫର୍ମ ମାଧ୍ୟମରେ ଆବଶ୍ୟକୀୟ ସୂଚନା ମାଗିଥାଉ ।"
 
 #: site/pages/privacy-policy.php:138
 msgid "How do we use your information?"
@@ -7163,7 +7174,7 @@ msgid ""
 "small groups who follow Jesus. An online, in-life disciple making movement "
 "training"
 msgstr ""
-"ଯୁମେ ପ୍ରଶିକ୍ଷଣ ହେଉଛି ଯୀଶୁଙ୍କୁ ଅନୁସରଣ କରୁଥିବା ଛୋଟ ଛୋଟ ଗୋଷ୍ଠୀମାନଙ୍କ ପାଇଁ  ପରିକଳ୍ପନା କରାଯାଇଥିବା "
+"ଯୁମେ ପ୍ରଶିକ୍ଷଣ ହେଉଛି ଯୀଶୁଙ୍କୁ ଅନୁସରଣ କରୁଥିବା ଛୋଟ ଛୋଟ ଗୋଷ୍ଠୀମାନଙ୍କ ପାଇଁ ପରିକଳ୍ପନା କରାଯାଇଥିବା "
 "ଏକ ଅନ୍-ଲାଇନ୍ ଏବଂ ବାସ୍ତବ ଜୀବନର ଶିକ୍ଷଣ ଅନୁଭୂତି । ଏକ ଅନ୍-ଲାଇନ୍, ବାସ୍ତବ ଜୀବନରେ ଶିଷ୍ୟ କରିବା ଆନ୍ଦୋ"
 "ଳନ ପ୍ରଶିକ୍ଷଣ"
 
