@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2024-11-21 06:00+0000\n"
+"PO-Revision-Date: 2025-04-11 11:40+0000\n"
 "Last-Translator: Manikumar Miriyala <mani@zume.training>\n"
 "Language-Team: Kannada <https://translate.disciple.tools/projects/"
 "zume-training/zume-training-system/kn/>\n"
@@ -11,14 +11,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.8.3\n"
+"X-Generator: Weblate 5.10.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;es"
-"c_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_n"
-"x_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,"
+"2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
@@ -31,7 +31,7 @@ msgstr "ಎಪಿಕ್ 404 - ಕಂಡುಬಂದಿಲ್ಲ"
 
 #: 404.php:74
 msgid "The page you were looking for was not found or was deleted"
-msgstr "ನೀವು ಹುಡುಕುತ್ತಿರುವ ಪುಟ ಕಂಡುಬರಲಿಲ್ಲ ಅಥವಾ ಅಳಿಸಲಾಗಿದೆ"
+msgstr "ನೀವು ಹುಡುಕುತ್ತಿರುವ ಪುಟ ಕಂಡುಬಂದಿಲ್ಲ ಅಥವಾ ಅಳಿಸಲಾಗಿಲ್ಲ"
 
 #: 404.php:76 site/course/presenter.php:138
 #: site/pages/_strings-mobile-pwa.php:12
@@ -117,7 +117,7 @@ msgstr "ತರಬೇತಿಗಳು"
 
 #: appearance/style-override/navigation.php:135
 msgid "Metrics"
-msgstr "ಛಂದಶ್ಯಾಸ್ತ್ರ"
+msgstr "ಮೆಟ್ರಿಕ್ಸ್"
 
 #: appearance/style-override/navigation.php:143 site/pages/follow-jesus.php:219
 msgid "Community"
@@ -679,7 +679,7 @@ msgstr "ಮುಕ್ತಾಯಗೊಳಿಸು"
 
 #: globals.php:8135
 msgid "No Results"
-msgstr "ಯಾವುದೇ ಫಲಿತಾಂಶಗಳಿಲ್ಲ"
+msgstr "ಫಲಿತಾಂಶಗಳಿಲ್ಲ"
 
 #: maps/heatmap.php:3150
 msgid "trainee"
@@ -704,9 +704,9 @@ msgid "A %1$s in %2$s has requested %3$s coaching!"
 msgstr "%2$s ನಲ್ಲಿ %1$s %3$s ತರಬೇತಿಯನ್ನು ಕೋರಿದ್ದಾರೆ!"
 
 #: maps/heatmap.php:3174
-#, fuzzy, php-format
+#, php-format
 msgid "New training group scheduled in %1$s. %2$s"
-msgstr "ಹೊಸ ತರಬೇತಿ ಗುಂಪನ್ನು %1$s ರಲ್ಲಿ ನಿಗದಿಪಡಿಸಲಾಗಿದೆ. %2$"
+msgstr "ಹೊಸ ತರಬೇತಿ ಗುಂಪನ್ನು %1$s ರಲ್ಲಿ ನಿಗದಿಪಡಿಸಲಾಗಿದೆ.%2$s"
 
 #: maps/heatmap.php:3216
 #, php-format
@@ -716,7 +716,7 @@ msgstr "%3$s ರಲ್ಲಿ %2$s ಪ್ರಾರಂಭದ ಅಧಿವೇಶನ
 #: maps/heatmap.php:3254
 #, php-format
 msgid "A %1$s is studying \"%2$s\" in %3$s. %4$s"
-msgstr "%3$s ರಲ್ಲಿ \"%2$s\" ಅಧ್ಯಯನ ಮಾಡುವದು   %1$s ಆಗಿದೆ. %4$s"
+msgstr "%3$s ರಲ್ಲಿ \"%2$s\" ಅಧ್ಯಯನ ಮಾಡುವದು %1$s ಆಗಿದೆ. %4$s"
 
 #: maps/heatmap.php:3296
 #, php-format
@@ -800,7 +800,7 @@ msgstr "ಗುರಿ"
 #: maps/html/heatmap-html.php:100 maps/html/heatmap-html.php:124
 #: maps/map-2-network-activities.php:137
 msgid "Search"
-msgstr "ಹುಡುಕು"
+msgstr "ಹುಡುಕಿ Kannada"
 
 #: maps/html/heatmap-html.php:101 maps/html/heatmap-html.php:125
 #: maps/map-2-network-activities.php:138
@@ -942,7 +942,7 @@ msgstr "ವಿದ್ಯಾಭ್ಯಾಸ ಮಾಡುವುದು"
 
 #: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:234
 msgid "Practicing"
-msgstr "ಅಭ್ಯಾಸ ಮಾಡಿ"
+msgstr "ಅಭ್ಯಾಸ"
 
 #: maps/js-translation-strings.php:28 site/dashboard/wizard.php:223
 msgid "Coaching"
@@ -1196,7 +1196,7 @@ msgstr "ಹೆಸ್.ಓ.ಎಸ್.ಟಿ"
 
 #: site/activities/coaching-checklist-host.php:100
 msgid "H.O.S.T."
-msgstr "ಹೆಸ್.ಓ.ಎಸ್.ಟಿ"
+msgstr "ಹೆಸ್.ಓ.ಎಸ್.ಟಿ."
 
 #: site/activities/coaching-checklist-host.php:101
 msgid "Self-evaluate yourself using Heard, Obeyed, Shared, Trained."
@@ -1339,7 +1339,7 @@ msgstr "ಸಹಾಯ"
 #: site/activities/coaching-checklist.php:311
 #: site/course/course-content.php:1894 site/course/course-content.php:4872
 msgid "Watch"
-msgstr "ಗಮನಿಸಿ"
+msgstr "ವೀಕ್ಷಿಸಿ"
 
 #: site/activities/coaching-checklist-mawl.php:138
 #: site/activities/coaching-checklist-mawl.php:179
@@ -1348,7 +1348,7 @@ msgstr "ಗಮನಿಸಿ"
 #: site/activities/coaching-checklist.php:182
 #: site/activities/coaching-checklist.php:314
 msgid "Leave"
-msgstr "ಬಿಟ್ಟುಬಿಡಿ"
+msgstr "ಬಿಡಿ"
 
 #: site/activities/coaching-checklist-mawl.php:169
 #: site/activities/coaching-checklist-two.php:208
@@ -1360,10 +1360,11 @@ msgid ""
 "giving a general idea of what it looks like. Modeling repeatedly is not an "
 "effective way to equip someone."
 msgstr ""
-"ಮಾದರಿಯಾಗಿರುವುದು ಕೇವಲ ಅಭ್ಯಾಸ ಅಥವಾ ಸಾಧನದ ಉದಾಹರಣೆಯನ್ನು ಕೊಡುತ್ತದೆ. ಇದು ತರಬೇತಿ ಕಾಲಚಕ್ರದ ಅತಿ ಸಂಕ್ಷಿಪ್ತ ಭಾಗವಾಗಿದೆ. "
-"ಇದನ್ನು ಸಾಮಾನ್ಯವಾಗಿ ಒಂದು ಸಾರಿ  ಮಾತ್ರ ಮಾಡಬೇಕಾಗಿರುತ್ತದೆ. ಇದು ಕೇವಲ ಒಂದು ಅಭ್ಯಾಸ ಅಥವಾ ಸಾಧನ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ ಎಂಬ ಅರಿವನ್ನು "
-"ಸೃಷ್ಟಿಸುತ್ತದೆ ಮತ್ತು ಅದು ಹೇಗೆ ಕಾಣುತ್ತದೆ ಎಂಬುದನ್ನು ಕುರಿತು ಸಾಮಾನ್ಯ ಕಲ್ಪನೆಯನ್ನು ಕೊಡುತ್ತದೆ. ಪದೇ ಪದೇ ಮಾದರಿಯಾಗಿರುವುದು ಯಾರನ್ನಾದರೂ "
-"ಸಜ್ಜುಗೊಳಿಸಲು ಪರಿಣಾಮಕಾರಿ ಮಾರ್ಗವಲ್ಲ."
+"ಮಾದರಿಯಾಗಿರುವುದು ಕೇವಲ ಅಭ್ಯಾಸ ಅಥವಾ ಸಾಧನದ ಉದಾಹರಣೆಯನ್ನು ಕೊಡುತ್ತದೆ. ಇದು ತರಬೇತಿ ಕಾಲಚಕ್ರದ ಅತಿ "
+"ಸಂಕ್ಷಿಪ್ತ ಭಾಗವಾಗಿದೆ. ಇದನ್ನು ಸಾಮಾನ್ಯವಾಗಿ ಒಂದು ಸಾರಿ ಮಾತ್ರ ಮಾಡಬೇಕಾಗಿರುತ್ತದೆ. ಇದು ಕೇವ��� ಒಂದು "
+"ಅಭ್ಯಾಸ ಅಥವಾ ಸಾಧನ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ ಎಂಬ ಅರಿವನ್ನು ಸೃಷ್ಟಿಸುತ್ತದೆ ಮತ್ತು ಅದು ಹೇಗೆ ಕಾಣುತ್ತದೆ ಎಂಬುದನ್ನು "
+"ಕುರಿತು ಸಾಮಾನ್ಯ ಕಲ್ಪನೆಯನ್ನು ಕೊಡುತ್ತದೆ. ಪದೇ ಮಾದರಿಯಾಗಿರುವುದು ಯಾರನ್ನಾದರೂ ಸಜ್ಜುಗೊಳಿಸಲು "
+"ಪರಿಣಾಮಕಾರಿ ಮಾರ್ಗವಲ್ಲ."
 
 #: site/activities/coaching-checklist-mawl.php:173
 #: site/activities/coaching-checklist-two.php:212
@@ -1541,7 +1542,7 @@ msgstr ""
 #: site/activities/list-of-100-printable.php:110
 #: site/activities/list-of-100.php:92 site/course/course-book-generator.php:594
 msgid "Disciple"
-msgstr "ಶಿಷ್ಯನು"
+msgstr "ಶಿಷ್ಯ"
 
 #: site/activities/list-of-100-printable.php:110
 #: site/activities/list-of-100.php:92 site/course/course-book-generator.php:594
@@ -1551,7 +1552,7 @@ msgstr "ಅವಿಶ್ವಾಸಿ"
 #: site/activities/list-of-100-printable.php:110
 #: site/activities/list-of-100.php:92 site/course/course-book-generator.php:594
 msgid "Unknown"
-msgstr "ತಿಳಿಯದ"
+msgstr "ಅಜ್ಞಾತ"
 
 #: site/activities/three-month-plan-printable.php:22
 #: site/activities/three-month-plan.php:22
@@ -1772,7 +1773,7 @@ msgstr ""
 
 #: site/course/course-book-generator.php:295
 msgid "READ"
-msgstr "ಓದಿದೆ"
+msgstr "ಓದಿ"
 
 #: site/course/course-book-generator.php:418
 #: site/course/course-content.php:6109
@@ -2218,8 +2219,9 @@ msgid ""
 "meeting. Focus on Matthew 5-7, read it at least once a day. Keep a daily "
 "journal using the S.O.A.P.S. format."
 msgstr ""
-"ಈಗ ಮತ್ತು ನಿಮ್ಮ ಮುಂದಿನ ಸಭೆಯ ನಡುವೆ ಎಸ್.ಓ.ಎ.ಪಿ.ಎಸ್.  ಸತ್ಯವೇದ ಓದುವದನ್ನು ಅಭ್ಯಾಸ ಮಾಡಲು ಪ್ರಾರಂಭಿಸಿ. ಮತ್ತಾಯ 5-7ನ್ನು "
-"ಕೇಂದ್ರೀಕರಿಸಿ, ದಿನಕ್ಕೆ ಒಮ್ಮೆಯಾದರೂ ಅದನ್ನು ಓದಿ. ಎಸ್.ಓ.ಎ.ಪಿ.ಎಸ್. ಮಾದರಿ ಉಪಯೋಗಿಸಿಕೊಂಡು ದೈನಂದಿನ ದಿನಚರಿಯನ್ನು ಮಾಡಿ."
+"ಈಗ ಮತ್ತು ನಿಮ್ಮ ಮುಂದಿನ ಸಭೆಯ ನಡುವೆ ಎಸ್.ಓ.ಎ.ಪಿ.ಎಸ್. ಸತ್ಯವೇದ ಓದುವದನ್ನು ಅಭ್ಯಾಸ ಮಾಡಲು ಪ್ರಾರಂಭಿಸಿ. "
+"ಮತ್ತಾಯ 5-7ನ್ನು ಕೇಂದ್ರೀಕರಿಸಿ, ದಿನಕ್ಕೆ ಒಮ್ಮೆಯಾದರೂ ಅದನ್ನು ಓದಿ. ಎಸ್.ಓ.ಎ.ಪಿ.ಎಸ್. ಮಾದರಿ ಉಪಯೋಗಿಸಿಕೊಂಡು"
+" ದೈನಂದಿನ ದಿನಚರಿಯನ್ನು ಮಾಡಿ."
 
 #: site/course/course-content.php:395 site/course/course-content.php:3564
 msgid ""
@@ -2943,8 +2945,8 @@ msgid ""
 "Think about God’s commands that you already know. How \"faithful\" are you "
 "in terms of obeying and sharing those things?"
 msgstr ""
-"ನೀವು ಈಗಾಗಲೇ ತಿಳಿದಿರುವ ದೇವರ ಆಜ್ಞೆಗಳನ್ನು ಕುರಿತು ಆಲೋಚಿಸಿರಿ. ನೀವು ಈ ಸಂಗತಿಗಳಿಗೆ ವಿಧೇಯತೆ ಮತ್ತು ಹಂಚಿಕೊಳ್ಳುವ ವಿಷಯದಲ್ಲಿ ಎಷ್ಟಾಗಿ "
-"“ನಂಬಿಗಸ್ತರಾಗಿದ್ದೀರಿ?”"
+"ನೀವು ಈಗಾಗಲೇ ತಿಳಿದಿರುವ ದೇವರ ಆಜ್ಞೆಗಳನ್ನು ಕುರಿತು ಆಲೋಚಿಸಿರಿ. ನೀವು ಈ ಸಂಗತಿಗಳಿಗೆ ವಿಧೇಯತೆ ಮತ್ತು "
+"ಹಂಚಿಕೊಳ್ಳುವ ವಿಷಯದಲ್ಲಿ ಎಷ್ಟಾಗಿ “ನಂಬಿಗಸ್ತರಾಗಿದ್ದೀರಿ\"?"
 
 #: site/course/course-content.php:1898 site/course/course-content.php:4876
 msgid ""
@@ -2967,7 +2969,7 @@ msgstr ""
 
 #: site/course/course-content.php:1928 site/course/course-content.php:4893
 msgid "Could a 3/3 Group be considered a Simple Church? Why or why not?"
-msgstr "3/3 ಗುಂಪನ್ನು ಸರಳವಾದ ಸಭೆಯೆಂದು ಪರಿಗಣಿಸಬಹುದೋ?  ಯಾಕೆ ಅಥವಾ ಇಲ್ಲ?"
+msgstr "3/3 ಗುಂಪನ್ನು ಸರಳವಾದ ಸಭೆಯೆಂದು ಪರಿಗಣಿಸಬಹುದೋ? ಯಾಕೆ ಅಥವಾ ಇಲ್ಲ?"
 
 #: site/course/course-content.php:1963 site/course/course-content.php:4925
 msgid ""
@@ -3263,8 +3265,8 @@ msgid ""
 "gives birth to new ones that grow and multiply, instead of continually "
 "growing a family and splitting it in order to grow?"
 msgstr ""
-"ಸತತವಾಗಿ ಬೆಳೆಯುವ ಕುಟುಂಬ ಮತ್ತು ಬೆಳೆಯುವದಕ್ಕಾಗಿ ಅದನ್ನು ಬೇರೆ ಬೇರೆ ಮಾಡುವದಕ್ಕೆ ಬದಲಾಗಿ ಬೆಳೆಯುವ ಮತ್ತು ಹೆಚ್ಚಿಸುವ ಆತ್ಮೀಕ ಕುಟುಂಬಗಳಿಗೆ"
-" ಸತತವಾಗಿ ಜನ್ಮ ಕೊಡುವದನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳುವದರ ಕೆಲವು ಪ್ರಯೋಜನಗಳೇನು?"
+"ಸತತವಾಗಿ ಬೆಳೆಯುವ ಕುಟುಂಬ ಮತ್ತು ಬೆಳೆಯುವದಕ್ಕಾಗಿ ಅದನ್ನು ಬೇರೆ ಮಾಡುವದಕ್ಕೆ ಬದಲಾಗಿ ಬೆಳೆಯುವ ಮತ್ತು ಹೆಚ್ಚಿಸು"
+"ವ ಆತ್ಮೀಕ ಕುಟುಂಬಗಳಿಗೆ ಸತತವಾಗಿ ಜನ್ಮ ಕೊಡುವದನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳುವದರ ಕೆಲವು ಪ್ರಯೋಜನಗಳೇನು?"
 
 #: site/course/course-content.php:2652
 msgid ""
@@ -3284,7 +3286,7 @@ msgstr ""
 
 #: site/course/course-content.php:2704
 msgid "Which tools and concepts did you feel you would be able to train well?"
-msgstr "ಉತ್ತಮವಾಗಿ ತರಬೇತಿ ಕೊಡಲು ಸಾಧ್ಯವೆಂದು ನೀವು ಭಾವಿಸುವ ತರಬೇತಿ ಸಾಧನ ಯಾವುದು."
+msgstr "ಉತ್ತಮವಾಗಿ ತರಬೇತಿ ಕೊಡಲು ಸಾಧ್ಯವೆಂದು ನೀವು ಭಾವಿಸುವ ತರಬೇತಿ ಸಾಧನ ಯಾವು?"
 
 #: site/course/course-content.php:2705
 msgid "Which tools and concepts did you feel you would struggle to train well?"
@@ -3791,7 +3793,7 @@ msgstr ""
 
 #: site/course/course-content.php:4057 site/course/course-content.php:4097
 msgid "Sharing the Gospel"
-msgstr "ಸುವಾರ್ತೆಯನ್ನು ಸಾರುವುದು"
+msgstr "ಸುವಾರ್ತೆಯನ್ನು ಹಂಚಿಕೊಳ್ಳುವುದು"
 
 #: site/course/course-content.php:4070
 msgid "Practice Sharing the Gospel"
@@ -4208,7 +4210,7 @@ msgstr "ಕೋರ್ಸ್ ಪ್ರಸ್ತುತಪಡಿಸುವವರು"
 
 #: site/course/presenter.php:136
 msgid "Links"
-msgstr "ಜೋಡಣೆಗಳು"
+msgstr "ಲಿಂಕ್‌ಗಳು"
 
 #: site/course/presenter.php:144 site/dashboard/dashboard.php:270
 #: site/pages/resources.php:28 site/pages/resources.php:102
@@ -4224,7 +4226,7 @@ msgstr "ಕೋರ್ಸ್ ನಿರ್ಗಮನ"
 
 #: site/course/presenter.php:159 site/dashboard/dashboard.php:188
 msgid "Menu"
-msgstr "ಪಟ್ಟಿ"
+msgstr "ಮೆನು"
 
 #: site/course/presenter.php:160
 msgid "Slide View"
@@ -4313,7 +4315,7 @@ msgstr "ಸ್ಥಿತಿ"
 
 #: site/dashboard/dashboard.php:175
 msgid "Active"
-msgstr "ಸಕ್ರಿಯವಾಗಿದೆ"
+msgstr "ಸಕ್ರಿಯ"
 
 #: site/dashboard/dashboard.php:176
 msgid "Inactive"
@@ -4341,7 +4343,7 @@ msgstr "ಲಾಗ್ಔಟ್"
 
 #: site/dashboard/dashboard.php:182 site/pages/share.php:119
 msgid "Filter"
-msgstr "ಶೋಧಕ"
+msgstr "ಫಿಲ್ಟರ್"
 
 #: site/dashboard/dashboard.php:184
 msgid "Grid View"
@@ -4357,7 +4359,7 @@ msgstr "ಈಗ ಪೂರ್ಣಗೊಳಿಸಿದೆ"
 
 #: site/dashboard/dashboard.php:187
 msgid "View"
-msgstr "ವೀಕ್ಷಿಸಿ"
+msgstr "ನೋಟ"
 
 #: site/dashboard/dashboard.php:189 site/dashboard/wizard.php:199
 #: site/dashboard/wizard.php:245 site/profile/profile.php:111
@@ -4436,9 +4438,9 @@ msgstr "ಪೂರ್ವವೀಕ್ಷಣೆ"
 
 #: site/dashboard/dashboard.php:205 site/dashboard/dashboard.php:281
 #: site/dashboard/dashboard.php:294
-#, fuzzy, php-format
+#, php-format
 msgid "Add new %s"
-msgstr "ಹೊಸ % ಸೇರಿಸಿ"
+msgstr "ಹೊಸ %s ಸೇರಿಸಿ"
 
 #: site/dashboard/dashboard.php:205
 msgid "Commitment"
@@ -4751,7 +4753,7 @@ msgstr "ತಾಯಿ ಸಭೆ"
 
 #: site/dashboard/dashboard.php:291 site/dashboard/wizard.php:306
 msgid "Start Date"
-msgstr "ಪ್ರಾರಂಭದ ದಿನಾಂಕ"
+msgstr "ಪ್ರಾರಂಭ ದಿನಾಂಕ"
 
 #: site/dashboard/dashboard.php:292
 msgid "Mark Active"
@@ -4763,7 +4765,7 @@ msgstr "ನಿಷ್ಕ್ರಿಯ ಎಂದು ಗುರುತಿಸಿ"
 
 #: site/dashboard/dashboard.php:294
 msgid "Church"
-msgstr "ಸಭೆ"
+msgstr "ಚರ್ಚ್"
 
 #: site/dashboard/dashboard.php:295
 msgid "cancel"
@@ -4918,12 +4920,12 @@ msgstr "ದಿನಾಂಕವಿಲ್ಲ"
 #: site/dashboard/dashboard.php:322 site/dashboard/wizard.php:216
 #: zume-training-system.php:365
 msgid "Whatsapp"
-msgstr "ವಾಟ್ಸ್ಅಪ್"
+msgstr "ವಾಟ್ಸಾಪ್"
 
 #: site/dashboard/dashboard.php:323 site/dashboard/wizard.php:217
 #: zume-training-system.php:366
 msgid "Signal"
-msgstr "ಸಂಕೇತ"
+msgstr "ಸಿಗ್ನಲ್"
 
 #: site/dashboard/dashboard.php:324 site/dashboard/wizard.php:218
 #: zume-training-system.php:367
@@ -4936,7 +4938,7 @@ msgstr "ಫೇಸ್ಬುಕ್ ಮೆಸೆಂಜರ್"
 
 #: site/dashboard/dashboard.php:326 site/dashboard/wizard.php:315
 msgid "Clear"
-msgstr "ಅಳಿಸಿಬಿಡು"
+msgstr "ಸ್ಪಷ್ಟ"
 
 #: site/dashboard/dashboard.php:327 site/dashboard/wizard.php:316
 msgid "Today"
@@ -5417,7 +5419,7 @@ msgstr "%2$s ರಲ್ಲಿ %1$s ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ"
 #: site/dashboard/wizard.php:299
 msgctxt "All 10 sessions scheduled"
 msgid "Ready"
-msgstr "ಸಿದ್ಧವಾಗಿದೆ"
+msgstr "ಸಿದ್ಧ"
 
 #: site/dashboard/wizard.php:300
 #, php-format
@@ -5656,7 +5658,7 @@ msgstr "ಬಳಕೆದಾರರ ಹೆಸರು ಅಥವಾ ಇಮೇಲ್ �
 
 #: site/login/login-template.php:838
 msgid "Log In"
-msgstr "ಲಾಗ್ ಇನ್ ಮಾಡಿ"
+msgstr "ಲಾಗಿನ್ ಮಾಡಿ"
 
 #: site/pages/_strings-mobile-pwa.php:13
 msgid "Account"
@@ -6098,11 +6100,11 @@ msgstr "ಕೊಡುವ ಎಲ್ಲಾ ಅವಕಾಶಗಳನ್ನು ನೋ
 
 #: site/pages/faq.php:81
 msgid "FAQ"
-msgstr "ಪದೇ ಪದೇ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು"
+msgstr "ಪದೇ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು"
 
 #: site/pages/faq.php:83 site/profile/profile.php:157
 msgid "User Profile"
-msgstr "ಬಳಕೆದಾರರ ಸಂಕ್ಷಿಪ್ತ ವ್ಯಕ್ತಿಚಿತ್ರ"
+msgstr "ಬಳಕೆದಾರರ ಪ್ರೊಫೈಲ್"
 
 #: site/pages/follow-jesus.php:30 site/pages/follow-jesus.php:140
 #: site/parts/footer.php:17
@@ -6852,7 +6854,7 @@ msgstr "ವಿಂಗಡಿಸಿ"
 
 #: site/pages/share.php:121
 msgid "Items"
-msgstr "ವಿಷಯಗಳು"
+msgstr "ವಸ್ತುಗಳು"
 
 #: site/pages/share.php:129
 msgid "Sharing with Others"
@@ -7209,7 +7211,7 @@ msgstr "ಸೈಟ್ ಹೆಸರು: %s"
 #: zume-training-system.php:241
 #, php-format
 msgid "Username: %s"
-msgstr "ಬಳಕೆದಾರರ ಹೆಸರು: %s"
+msgstr "ಬಳಕೆದಾರ ಹೆಸರು: %s"
 
 #: zume-training-system.php:242
 msgid "If this was a mistake, just ignore this email and nothing will happen."
