@@ -1643,7 +1643,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'locale' => 'pa_PK',
                 'weblate' => 'pa_PK',
                 'nativeName' => 'ਪੰਜਾਬੀ (ਪੱਛਮੀ)',
-                'rtl' => false,
+                'rtl' => true,
                 'flag' => '🇵🇰',
                 'population' => 80000000,
                 'enable_flags' => [
