@@ -2720,7 +2720,7 @@ if ( ! function_exists( 'zume_training_items_by_script' ) ) {
     }
 }
 if ( ! function_exists( 'zume_training_items_for_session' ) ) {
-    function zume_training_items_for_session( string $session_type, int $session_number = null ): array {
+    function zume_training_items_for_session( string $session_type, ?int $session_number = null ): array {
         $session_numbers_by_type = [
             'a' => [
                 1 => [ 1, 2, 3, 4, 5 ],
@@ -3084,7 +3084,7 @@ if ( ! function_exists( 'zume_get_percent' ) ) {
     }
 }
 if ( ! function_exists( 'zume_get_timezones' ) ) {
-    function zume_get_timezones( string $key = null ): array {
+    function zume_get_timezones( ?string $key = null ): array {
         $timezones = [
             'Africa/Abidjan' => [
                 'timezone' => 'Africa/Abidjan',
@@ -6599,7 +6599,7 @@ if ( ! class_exists( 'Zume_System_Log_API' ) ) {
             ];
             self::_check_for_stage_change( $added_log, $report['user_id'], $report, $log );
 
-            do_action( 'zume_verify_encouragement_plan', $report['user_id'], $report['type'], $report['subtype'] );
+            do_action( 'zume_update_encouragement_plan', $report['user_id'], $report['type'], $report['subtype'] );
 
             return $added_log;
         }
