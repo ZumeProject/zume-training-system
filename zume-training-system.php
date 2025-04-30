@@ -122,7 +122,7 @@ class Zume_Training {
             $language_code = zume_get_language_cookie();
             if ( $language_code !== $lang_code ) {
                 zume_set_language_cookie( $lang_code );
-            }
+            } 
         }
 
     }
@@ -478,7 +478,7 @@ class Zume_Training {
             'language_code' => $user_language['code'] ?? 'en',
         ], true );
 
-        Zume_System_Encouragement_API::_install_plan( $user->ID, Zume_System_Encouragement_API::_get_recommended_plan( $user->ID, 'training', 'registered' ) );
+        // Zume_System_Encouragement_API::update_plan( $user->ID, 'training', 'registered' ); @todo remove this
     }
     public function dt_update_users_corresponding_contact( mixed $contact, WP_User $user ) {
         $current_user = wp_get_current_user();
@@ -636,4 +636,24 @@ class Zume_Training {
         unset( $method, $args );
         return null;
     }
+}
+function log_call_stack() {
+    if ( dt_is_rest() ) {
+        return;
+    }
+    if ( wp_doing_cron() ) {
+        return;
+    }
+    // Add call stack to the log
+    $backtrace = debug_backtrace();
+    $call_stack = [];
+
+    foreach ($backtrace as $index => $trace) {
+        $file = isset($trace['file']) ? basename($trace['file']) : 'unknown';
+        $line = isset($trace['line']) ? $trace['line'] : 'unknown';
+        $function = isset($trace['function']) ? $trace['function'] : 'unknown';
+        $call_stack[] = "#{$index} {$file}:{$line} - {$function}()";
+    }
+    dt_write_log('Call Stack:');
+    dt_write_log($call_stack);
 }

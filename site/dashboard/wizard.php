@@ -122,7 +122,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
             isset( $user_stage['state'] ) &&
             $user_stage['state']['set_profile_name'] && // @todo throwing log error that set_profile_name is not set
             $user_stage['state']['set_profile_location'] &&
-            $user_stage['state']['plan_created']
+            $user_stage['state']['plan_created'] ?? false
         );
     }
 

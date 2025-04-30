@@ -77,7 +77,7 @@ class Zume_Messages extends Zume_Magic_Page
             }
         </style>
         <?php
-        zume_hreflang_fixed( $this->lang_code, $this->type );
+        zume_hreflang_fixed( $this->language_code, $this->type );
     }
     public function body(){
         if ( !is_user_logged_in() ) { // test if logged in
