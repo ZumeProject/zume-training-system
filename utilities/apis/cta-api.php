@@ -47,7 +47,7 @@ class Zume_System_CTA_API
         zume_i18n();
 
         $params = dt_recursive_sanitize_array( $request->get_params() );
-        dt_write_log( $params );
+        // dt_write_log( $params );
 
         if ( is_user_logged_in() ) {
             return $this->user( $params );

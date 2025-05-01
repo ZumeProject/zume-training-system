@@ -15,8 +15,9 @@ class Zume_System_Encouragement_API
     }
     public function __construct()
     {
-        add_action( 'zume_update_encouragement_plan', ['Zume_System_Encouragement_API', 'update_plan'], 10, 3 );
-       
+        if ( ! has_action( 'zume_update_encouragement_plan', ['Zume_System_Encouragement_API', 'update_plan'] ) ) {
+            add_action( 'zume_update_encouragement_plan', ['Zume_System_Encouragement_API', 'update_plan'], 10, 3 );
+        }
     }
     
     public static function create_plan( $user_id, $new_plan ) {
@@ -30,8 +31,8 @@ class Zume_System_Encouragement_API
 
             // if immediate is true, send the email immediately
             if ( 0 === $message['drop_date'] ) {
-                dt_schedule_mail( $message['to'], $message['subject'], $message['message'], $message['headers'] );
-                $message['sent'] = true;
+                $sent = wp_mail( $message['to'], $message['subject'], $message['message'], $message['headers'] );
+                $message['sent'] = $sent;
             }
 
             if ( isset( $message['id'] ) ) {
@@ -70,44 +71,42 @@ class Zume_System_Encouragement_API
         return $current_plan;
     }
 
-    
     public static function update_plan( $user_id, $type, $subtype ) {
         if ( wp_doing_cron() ) {
             dt_write_log( __METHOD__ . " is running as a cron job" );
             return false;
         }
+        dt_write_log( __METHOD__ );
+        dt_write_log( $user_id );
+        dt_write_log( $type );
+        dt_write_log( $subtype );
 
         // get the recommended plan
         $potential_plans = self::_get_recommended_plan( $user_id, $type, $subtype );
         if ( empty( $potential_plans ) ) {
+            dt_write_log( "No plan suggested" );
             return false; // no plan suggested
         }
         $potential_plan_ids = array_unique(array_column($potential_plans, 'message_post_id'));
+        dt_write_log( $potential_plan_ids );
 
         // compare the potential plan to the raw plan
         $raw_plan = self::_query_user_messages( $user_id );
         $raw_plan_ids = array_unique(array_column( $raw_plan, 'message_post_id' ));
-        
-        $new_plan = array_diff( $potential_plan_ids, $raw_plan_ids );
-        if ( empty( $new_plan ) ) {
+        dt_write_log( $raw_plan_ids );
+
+        $plan_diff = array_diff( $potential_plan_ids, $raw_plan_ids );
+        if ( empty( $plan_diff ) ) {
+            dt_write_log( "No new plan to install" );
             return false; // no new plan to install
         }
 
-        $new_plan = array_filter( $potential_plans, function( $message ) use ( $new_plan ) {
-            return in_array( $message['message_post_id'], $new_plan );
+        $new_plan = array_filter( $potential_plans, function( $message ) use ( $plan_diff ) {
+            return in_array( $message['message_post_id'], $plan_diff );
         });
 
         self::delete_plan( $user_id );
         self::create_plan( $user_id, $new_plan );
-
-        // check for immediate messages
-        $immediate_messages = array_filter( $new_plan, function( $message ) {
-            return $message['drop_date'] === 0;
-        });
-
-        if ( !empty( $immediate_messages ) ) {
-            self::send_encouragement( $user_id, $immediate_messages );
-        }
 
         return true; // plan installed
     }
@@ -169,40 +168,25 @@ class Zume_System_Encouragement_API
             ];
         }
         else if ( 'system' === $type && 'plan_created' === $subtype ) {
-
-            
             $plan = [
                 [
-                    'user_id' => $user_id,
-                    'message_post_id' => 100046,
+                    'message_post_id' => 100046, // New Training Created
                     'message_type' => 'email',
-                    'to' =>  $email,
-                    'subject' => $messages[100046]['subject_'.$profile['preferred_language']],
-                    'message' => $messages[100046]['body_'.$profile['preferred_language']],
-                    'headers' => $headers,
                     'drop_date' => 0, // 0 means immediate
                 ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 100046,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'Plan Created Post 1 Day',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+1 day' ),
-                // ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23632,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'Plan Created Post 2 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
+                [
+                    'message_post_id' => 100049, // Finish Strong #1
+                    'message_type' => 'email',
+                    'drop_date' => strtotime( '+2 day' ),
+                ],
+                [
+                    'message_post_id' => 100050, // Finish Strong #2
+                    'message_type' => 'email',
+                    'drop_date' => strtotime( '+4 day' ),
+                ],
+                
             ];
+            dt_write_log( $plan );
             
         }
         else if ( 'system' === $type && 'training_completed' === $subtype ) {
