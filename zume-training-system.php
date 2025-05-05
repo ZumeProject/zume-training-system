@@ -386,6 +386,9 @@ class Zume_Training {
     }
     public function dt_create_users_corresponding_contact( $new_user_contact, $user ) {
         // adds support fields after registration
+        dt_write_log( 'dt_create_users_corresponding_contact' );
+        dt_write_log( $new_user_contact );
+        dt_write_log( $user );
 
         $ip_address = DT_Ipstack_API::get_real_ip_address();
         $ip_result = DT_Ipstack_API::geocode_ip_address( $ip_address );
@@ -477,7 +480,7 @@ class Zume_Training {
             'time_end' => time(),
             'language_code' => $user_language['code'] ?? 'en',
         ], true );
-
+        
         // Zume_System_Encouragement_API::update_plan( $user->ID, 'training', 'registered' ); @todo remove this
     }
     public function dt_update_users_corresponding_contact( mixed $contact, WP_User $user ) {
@@ -503,6 +506,7 @@ class Zume_Training {
         }
     }
     public function dt_login_url( $dt_login_url ) {
+        
         $dt_login_url = str_replace( $this->builtin_login_url, $this->login_url, $dt_login_url );
 
         $current_language = 'en';
@@ -536,6 +540,7 @@ class Zume_Training {
         return $current_language . '/' . $dt_login_url;
     }
     public function dt_login_redirect_url( $redirect_url ) {
+        
         $url = new DT_URL( $redirect_url );
 
         $parsed_url = $url->parsed_url;

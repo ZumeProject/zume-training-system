@@ -3,6 +3,9 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 class Zume_System_Encouragement_API
 {
+    public $language_code;
+    public $user_id;
+
     public function __construct()
     {
         if ( ! has_action( 'zume_update_encouragement_plan', ['Zume_System_Encouragement_API', 'update_plan'] ) ) {
@@ -11,7 +14,22 @@ class Zume_System_Encouragement_API
             add_action( 'wp_mail_succeeded', ['Zume_System_Encouragement_API', 'log_mail_success'], 10, 1 );
         }
     }
-    
+    public static function log_mail_success( $mail_data ) {
+        dt_write_log( 'Mail sent: ' );
+        dt_write_log( $mail_data );
+    }
+    public static function log_mail_failure( $error ) {
+        dt_write_log( 'Mail failed: ' );
+        dt_write_log( $error );
+    }
+
+    /**
+     * Create a new plan for a user
+     * 
+     * @param int $user_id The ID of the user to create the plan for
+     * @param array $new_plan The new plan to create
+     * 
+     */
     public static function create_plan( $user_id, $new_plan ) {
         global $wpdb;
 
@@ -22,47 +40,58 @@ class Zume_System_Encouragement_API
         $profile = zume_get_user_profile( $user_id );
         $email = $profile['communications_email'];
         $language_code = $profile['preferred_language'];
-        $headers = ['Content-Type: text/html; charset=UTF-8; X-Zume-Email-System: Zume'];
-        $templates = self::_query_messages( $language_code );
+        $headers = ['Content-Type' => 'text/html', 'charset' => 'UTF-8', 'X-Zume-Email-System' => true ]; // TODO: fix this
+        
+        $templates = self::_build_user_templates( $language_code, $user_id );
+
+        dt_write_log( $new_plan );
 
         foreach ( $new_plan as $message ) {
+            
             $message['to'] = $email;
             $message['headers'] = $headers;
             $message['user_id'] = $user_id;
-            // $message['body'] = $templates[$message['message_post_id']]['body'];
-            $message['message'] = Encouragement_Email_Template::build_email( $templates[$message['message_post_id']]['body'] );
+            $message['message'] = self::build_email( $templates[$message['message_post_id']]['body'], $language_code, $user_id );
             $message['subject'] = $templates[$message['message_post_id']]['subject'];
             
             // dt_write_log( $message );
            
             // if immediate is true, send the email immediately
-            if ( 0 === $message['drop_date'] ) {
+            if ( empty($message['drop_date'] ) ) {
                 dt_write_log( 'Sending email immediately' );
                 $sent = wp_mail( $message['to'], $message['subject'], $message['message'], $message['headers'] );
                 $message['sent'] = $sent;
+                dt_write_log( '$sent' );
+                dt_write_log( $sent );
+                dt_write_log( $message );
             }
 
             if ( isset( $message['id'] ) ) {
                 $wpdb->update( 'zume_dt_zume_message_plan', $message, [ 'id' => $message['id'] ] );
+                dt_write_log( 'Updated message' );
+                // dt_write_log( $message );
             } else {
                 $wpdb->insert( 'zume_dt_zume_message_plan', $message );
+                dt_write_log( 'Inserted message' );
+                // dt_write_log( $message );
             }
         }
     }
-    public static function log_mail_success( $mail_data ) {
-        dt_write_log( 'Mail sent: ' . $mail_data['to'] );
-    }
-    public static function log_mail_failure( $error ) {
-        dt_write_log( 'Mail failed: ' . $error );
-    }
     
+    /**
+     * Read the plan for a user
+     * 
+     * @param int $user_id The ID of the user to read the plan for
+     * @return array The plan for the user
+     * 
+     */
     public static function read_plan( $user_id ) {
 
         // Query the message queue in the zume_dt_zume_message_plan table
         // Exclude any sent messages and return the current plan for communication
         global $wpdb;
         
-        $current_plan = $wpdb->get_results($wpdb->prepare(
+        $current_plan = $wpdb->get_results( $wpdb->prepare(
             "SELECT * 
             FROM zume_dt_zume_message_plan 
             WHERE user_id = %d 
@@ -85,40 +114,61 @@ class Zume_System_Encouragement_API
         return $current_plan;
     }
 
+    /**
+     * Update the plan for a user
+     * 
+     * @param int $user_id The ID of the user to update the plan for
+     * @param string $type The type of plan to update
+     * @param string $subtype The subtype of plan to update
+     *  
+     * @return bool True if the plan was updated, false otherwise
+     * 
+     */
     public static function update_plan( $user_id, $type, $subtype ) {
         if ( wp_doing_cron() ) {
             dt_write_log( __METHOD__ . " is running as a cron job" );
             return false;
         }
-        dt_write_log( __METHOD__ );
-        // check for plans for type and subtype
-        $potential_plans = self::_get_recommended_plan( $user_id, $type, $subtype );
-        if ( empty( $potential_plans ) ) {
+   
+        // get suggested plan from type and subtype 
+        $new_plan = self::_get_recommended_plan( $user_id, $type, $subtype );
+        // if no plan, return false
+        if ( empty( $new_plan ) ) {
             dt_write_log( "No plan suggested for type: $type, subtype: $subtype" );
-            return false; // no plan suggested
+            return false;
         }
-        $potential_plan_ids = array_unique( array_column( $potential_plans, 'message_post_id' ) );
-        
-        // get current sent messages and plan messages
-        $raw_plan = self::_query_user_messages( $user_id );
-        $raw_plan_ids = array_unique( array_column( $raw_plan, 'message_post_id' ) );
-        
-        // compare the two arrays
-        $plan_diff = array_diff( $potential_plan_ids, $raw_plan_ids );
-        
-        // if there are no differences, return false
-        if ( empty( $plan_diff ) ) {
+        dt_write_log( __METHOD__ );
+
+        // get send messages from user
+        $messages = self::_query_user_queue( $user_id );
+        $sent_messages = $messages['sent'];
+        $scheduled_messages = $messages['scheduled'];
+
+        // remove sent messages from the new plan
+        $new_plan = array_filter( $new_plan, function( $message ) use ( $sent_messages ) {
+            return !in_array( $message['message_post_id'], array_column( $sent_messages, 'message_post_id' ) );
+        });
+
+        // if there are no new messages, return false
+        if ( empty( $new_plan ) ) {
             dt_write_log( "No new messages to add to the plan" );
             return false;
         }
 
-        dt_write_log( $plan_diff );
-        
-        // if there are differences, get the differences
-        $new_plan = array_filter( $potential_plans, function( $message ) use ( $plan_diff ) {
-            return in_array( $message['message_post_id'], $plan_diff );
+        // check if the new plan and scheduled messages are the same via message_post_id
+        $new_plan_ids = array_column( $new_plan, 'message_post_id' );
+        $scheduled_ids = array_column( $scheduled_messages, 'message_post_id' );
+        // remove duplicates from the new plan that already exist in the scheduled messages
+        $new_plan = array_filter( $new_plan, function( $message ) use ( $scheduled_ids ) {
+            return !in_array( $message['message_post_id'], $scheduled_ids );
         });
-        
+
+        // if there are no new messages, return false
+        if ( empty( $new_plan ) ) {
+            dt_write_log( "No new messages to add to the plan that are not already scheduled" );
+            return false;
+        }
+
         // delete the plan
         self::delete_plan( $user_id );
         
@@ -127,12 +177,17 @@ class Zume_System_Encouragement_API
         
         // return true
         return true; // plan updated successfully
-
     }
 
+    /**
+     * Delete the plan for a user
+     * 
+     * @param int $user_id The ID of the user to delete the plan for
+     * 
+     */
     public static function delete_plan( $user_id ) {
         global $wpdb, $table_prefix;
-        $wpdb->query( $wpdb->prepare( 'DELETE FROM zume_dt_zume_message_plan WHERE user_id = %s AND sent IS NULL', $user_id ) );
+        $wpdb->query( $wpdb->prepare( 'DELETE FROM zume_dt_zume_message_plan WHERE user_id = %s AND sent != 1', $user_id ) );
     }
 
     public static function _get_recommended_plan( $user_id, $type, $subtype ) {
@@ -143,9 +198,24 @@ class Zume_System_Encouragement_API
             $plan = [
                 
                 [
-                    'message_post_id' => 100017, // New Training Created
+                    'message_post_id' => 100044, // New Training Created
                     'message_type' => 'email',
                     'drop_date' => 0, // 0 means immediate
+                ],
+                [
+                    'message_post_id' => 100017, // New Training Created
+                    'message_type' => 'email',
+                    'drop_date' => strtotime( '+1 day' ), // 0 means immediate
+                ],
+                [
+                    'message_post_id' => 100018, // New Training Created
+                    'message_type' => 'email',
+                    'drop_date' => strtotime( '+2 day' ), // 0 means immediate
+                ],
+                [
+                    'message_post_id' => 100019, // New Training Created
+                    'message_type' => 'email',
+                    'drop_date' => strtotime( '+4 day' ), // 0 means immediate
                 ],
                 
             ];
@@ -166,6 +236,17 @@ class Zume_System_Encouragement_API
                     'message_post_id' => 100050, // Finish Strong #2
                     'message_type' => 'email',
                     'drop_date' => strtotime( '+4 day' ),
+                ],
+                
+            ];
+        }
+        else if ( 'coaching' === $type && 'requested_a_coach' === $subtype ) {
+            $plan = [
+                
+                [
+                    'message_post_id' => 100045, 
+                    'message_type' => 'email',
+                    'drop_date' => 0, // 0 means immediate
                 ],
                 
             ];
@@ -222,7 +303,7 @@ class Zume_System_Encouragement_API
      * 
      * @since 1.0
      */
-    public static function _query_messages( $language_code ) {
+    public static function _build_user_templates( $language_code, $user_id ) {
         global $wpdb;
         $raw_messages = $wpdb->get_results( "
             SELECT pm.post_id, pm.meta_key, pm.meta_value
@@ -240,103 +321,232 @@ class Zume_System_Encouragement_API
                 $messages[$message['post_id']][$new_key] = $message['meta_value'];
             }
             if ( 'body' === $message['meta_key'] ) {
-                $messages[$message['post_id']]['body'] = Encouragement_Email_Template::build_email( $message['meta_value'] );
+                $messages[$message['post_id']]['body'] = self::build_email( $message['meta_value'], $language_code, $user_id );
             }
         }
         // dt_write_log($messages);
        
         return $messages;
     }
-    /**
-     * Query all messages sent to a user from the database
-     *
-     * @param int $user_id The user ID to get messages for
-     * @return array Array of messages sent to the user
-     * 
-     * @since 1.0
-     */
-    public static function _query_user_messages( $user_id ) {
+   /**
+    * Query all messages sent to a user from the database
+    *
+    * @param int $user_id The ID of the user to get messages for
+    * @return array Array of messages sent to the user
+    * 
+    * @since 1.0
+    */
+    public static function _query_user_queue( $user_id ) {
         global $wpdb, $table_prefix;
+        $messages = [
+            'sent' => [],
+            'scheduled' => [],
+        ];
+
         $sent_messages = $wpdb->get_results( $wpdb->prepare(
             'SELECT * FROM zume_dt_zume_message_plan WHERE user_id = %d',
             $user_id
         ), ARRAY_A );
 
-        return $sent_messages;
+        foreach ( $sent_messages as $value ) {
+            if ( $value['sent'] ) {
+                $messages['sent'][] = $value;
+            } else {
+                $messages['scheduled'][] = $value;
+            }
+        }
+        
+        return $messages;
     } 
+
+
+    public static function build_email( $message, $language_code, $user_id ){
+        
+        $email = self::email_head_part();
+        $email .= self::email_content_part( $message );
+        $email .= self::email_footer_part();
+
+        $email_with_placeholders = zume_replace_placeholder( $email, $language_code, $user_id );
+
+        return $email_with_placeholders;
+    }
+
+    public static function email_head_part(){
+        global $zume_user_profile;
+        ob_start();
+        ?>
+        <html>
+        <head>
+            <style>
+                #zmail {}
+                #zmail .zmail-body {
+                    padding: .5em;
+                }
+                #zmail .zmail-header {}
+                #zmail .zmail-footer {
+                    padding: 1em .5em;
+                    background-color: #f5f5f5;
+                    border-top: 1px solid #ccc;
+                    font-size: .8em;
+                    text-align: center;
+                }
+                #zmail h3 {
+                    font-size: 1.5em;
+                    margin: 0;
+                    font-weight: 700;
+                    padding-bottom: .8em;
+                }
+                #zmail .zmail-topbar {
+                    background-color: #008cc7;
+                    color: white;
+                    padding-top: .3em;
+                    padding-bottom: .3em;
+                    display: flex;
+                    align-items: center;
+                }
+                #zmail .zmail-logo {
+                    margin: 0 auto;
+                }
+                #zmail .zmail-logo img {
+                    max-width: 100%;
+                    display: block;
+                    vertical-align: middle;
+                    height: 3em;
+                }
+                #zmail .button.primary-button-hollow {
+                    color: white;
+                    background-color: #008cc7;
+                    border: 1px solid #008cc7;
+                    padding: .5em 1em;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    border-radius: 5px;
+                    font-size: .9rem;
+                    transition: background-color .25s ease-out, color .25s ease-out;
+                }
+                #zmail .button.primary-button-hollow.large {
+                    background-color: #008cc7;
+                    color: white;
+                    border: 1px solid #008cc7;
+                    padding: .5em 1em;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    border-radius: 5px;
+                    font-size: 1.5em;
+                    transition: background-color .25s ease-out, color .25s ease-out;
+                }
+                
+                #zmail .button {
+                    color: inherit;
+                    display: inline-block;
+                    font-weight: 600;
+                    text-decoration: none;
+                    border: solid 2px transparent;
+                        border-top-color: transparent;
+                        border-right-color: transparent;
+                        border-bottom-color: transparent;
+                        border-left-color: transparent;
+                    border-radius: 100px !important;
+                    padding: .25em 3em;
+                    cursor: pointer;
+                    transition: all .15s linear;
+                    text-align: center;
+                    text-transform: uppercase;
+                    color:  #008cc7;
+                    background-color: #fff;
+                    border-color: #008cc7;
+                }
+                #zmail .button.small {
+                    font-size: .75rem;
+                }
+                #zmail ul {
+                    margin-bottom: 1em;
+                }
+                #zmail ul li {
+                    padding: 0 1em;
+                    margin-left: 50px;
+                    margin-right: 50px;
+                    list-style-type: disc;
+                    list-style-position: outside;
+                    line-height: 1.5;
+                }
+                #zmail strong {
+                    font-weight: 600;
+                    color: #008cc7;
+                }
+            </style>
+        </head>
+        <?php
+        $html = ob_get_contents();
+        ob_end_clean();
+        return $html;
+    }
+
+    public static function email_content_part( $message ){
+        global $zume_user_profile;
+        ob_start();
+        ?>
+        <body>
+            <div id="zmail">
+                <header class="zmail-header">
+                    <div class="zmail-topbar" style="margin-bottom:20px;">
+                        <div class="zmail-logo"><img src="<?php echo esc_url( zume_mirror_url() . 'images/zume-training-logo-white-short.svg' ) ?>" alt="logo"></div>
+                    </div>
+                </header>
+                <?php
+                if ( isset( $zume_user_profile['has_set_name'] ) && $zume_user_profile['has_set_name'] ) {
+                    ?>
+                    <div class="zmail-body">
+                        <?php echo wp_kses( $zume_user_profile['name'], 'post' ) ?>,
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <div class="zmail-body">
+                        <?php echo esc_html__( 'Friend', 'zume' ) ?>
+                    </div>
+                    <?php
+                }
+                ?>
+                <div class="zmail-body">
+                    <?php echo wp_kses( $message, 'post' ) ?>
+                </div>
+                <div class="zmail-footer-divider"></div>
+                <div class="zmail-footer">
+                    <p><img src="<?php echo esc_url( zume_mirror_url() . 'images/zume-training-logo.svg' ) ?>" alt="logo" style="height:40px; margin: 1em auto;"></p>
+                    <p><?php echo esc_html__( 'Zúme Training exists to saturate the globe with multiplying disciples in our generation.', 'zume' ) ?></p>
+                    <p>
+                        [link_dashboard]<br>
+                        [magiclink_preferences]<br>
+                    </p>
+                    <p style="width:60%;margin:0 auto;">
+                        [link_getacoach]
+                        | [link_joincommunity]
+                        | [link_checkin]
+                        | <a href="<?php echo esc_url( zume_donate_url() ); ?>"><?php echo esc_html__( 'Donate', 'zume' ) ?></a>
+                        | 109 S. Main Street, Mooreland, OK 73852 USA
+                    </p>
+                </div>
+            </div> <!-- activity page -->
+        </body>
+        <?php
+        $html = ob_get_contents();
+        ob_end_clean();
+        return $html;
+    }
+
+    public static function email_footer_part(){
+        ob_start();
+        ?>
+        </html>
+        <?php
+        $html = ob_get_contents();
+        ob_end_clean();
+        return $html;
+    }
 }
 new Zume_System_Encouragement_API;
 
 
-class Encouragement_Email_Template {
-
-
-    public static function build_email( $content ){
-
-        $email = self::email_head_part();
-        $email .= $content;
-        $email .= self::email_footer_part();
-        return $email;
-    }
-
-
-    public static function email_head_part(){
-        return '';
-
-        ob_start();
-        ?>
-        
-        <?php
-        $part = ob_get_clean();
-        return $part;
-    }
-
-    public static function email_logo_part( $campaign_id, $logo_url = null ){
-        $logo_url = self::get_email_logo_url( $campaign_id, $logo_url );
-        ob_start();
-        ?>
-        
-        <?php
-        $part = ob_get_clean();
-        return $part;
-    }
-
-    public static function email_content_part( $content ){
-        ob_start();
-        ?>
-
-        <?php
-        $part = ob_get_clean();
-        return $part;
-    }
-
-    public static function email_greeting_part( $content ){
-        ob_start();
-        ?>
-        
-        <?php
-        $part = ob_get_clean();
-        return $part;
-    }
-
-    public static function email_button_part( $button_text, $button_url, $button_color = '#dc3822' ){
-
-        ob_start();
-        ?>
-        
-        <?php
-        $part = ob_get_clean();
-        return $part;
-    }
-
-    public static function email_footer_part(){
-        return '';
-
-        ob_start();
-        ?>
-        
-        <?php
-        $part = ob_get_clean();
-        return $part;
-    }
-}
