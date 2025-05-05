@@ -386,9 +386,6 @@ class Zume_Training {
     }
     public function dt_create_users_corresponding_contact( $new_user_contact, $user ) {
         // adds support fields after registration
-        dt_write_log( 'dt_create_users_corresponding_contact' );
-        dt_write_log( $new_user_contact );
-        dt_write_log( $user );
 
         $ip_address = DT_Ipstack_API::get_real_ip_address();
         $ip_result = DT_Ipstack_API::geocode_ip_address( $ip_address );
