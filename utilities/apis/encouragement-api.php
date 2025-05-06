@@ -48,7 +48,7 @@ class Zume_System_Encouragement_API
         
         $templates = self::_build_user_templates( $language_code, $user_id );
 
-        dt_write_log( $new_plan );
+        // dt_write_log( $new_plan );
 
         foreach ( $new_plan as $message ) {
             unset( $message['replace_plan'] );
@@ -130,7 +130,7 @@ class Zume_System_Encouragement_API
      */
     public static function update_plan( $user_id, $type, $subtype ) {
         if ( wp_doing_cron() ) {
-            dt_write_log( __METHOD__ . " is running as a cron job" );
+            // dt_write_log( __METHOD__ . " is running as a cron job" );
             return false;
         }
    
@@ -138,10 +138,10 @@ class Zume_System_Encouragement_API
         $new_plan = self::_get_recommended_plan( $user_id, $type, $subtype );
         // if no plan, return false
         if ( empty( $new_plan ) ) {
-            dt_write_log( "No plan suggested for type: $type, subtype: $subtype" );
+            // dt_write_log( "No plan suggested for type: $type, subtype: $subtype" );
             return false;
         }
-        dt_write_log( __METHOD__ );
+        // dt_write_log( __METHOD__ );
 
         // get send messages from user
         $messages = self::_query_user_queue( $user_id );
@@ -155,7 +155,7 @@ class Zume_System_Encouragement_API
 
         // if there are no new messages, return false
         if ( empty( $new_plan ) ) {
-            dt_write_log( "No new messages to add to the plan" );
+            // dt_write_log( "No new messages to add to the plan" );
             return false;
         }
 
@@ -169,7 +169,7 @@ class Zume_System_Encouragement_API
 
         // if there are no new messages, return false
         if ( empty( $new_plan ) ) {
-            dt_write_log( "No new messages to add to the plan that are not already scheduled" );
+            // dt_write_log( "No new messages to add to the plan that are not already scheduled" );
             return false;
         }
 
@@ -213,24 +213,24 @@ class Zume_System_Encouragement_API
                     'drop_date' => 0, // 0 means immediate
                     'replace_plan' => true,
                 ],
-                [
-                    'message_post_id' => 100017, // New Training Created
-                    'message_type' => 'email',
-                    'drop_date' => strtotime( '+1 day' ), // 0 means immediate
-                    'replace_plan' => true,
-                ],
-                [
-                    'message_post_id' => 100018, // New Training Created
-                    'message_type' => 'email',
-                    'drop_date' => strtotime( '+2 day' ), // 0 means immediate
-                    'replace_plan' => true,
-                ],
-                [
-                    'message_post_id' => 100019, // New Training Created
-                    'message_type' => 'email',
-                    'drop_date' => strtotime( '+4 day' ), // 0 means immediate
-                    'replace_plan' => true,
-                ],
+                // [
+                //     'message_post_id' => 100017, // New Training Created
+                //     'message_type' => 'email',
+                //     'drop_date' => strtotime( '+1 day' ), // 0 means immediate
+                //     'replace_plan' => true,
+                // ],
+                // [
+                //     'message_post_id' => 100018, // New Training Created
+                //     'message_type' => 'email',
+                //     'drop_date' => strtotime( '+2 day' ), // 0 means immediate
+                //     'replace_plan' => true,
+                // ],
+                // [
+                //     'message_post_id' => 100019, // New Training Created
+                //     'message_type' => 'email',
+                //     'drop_date' => strtotime( '+4 day' ), // 0 means immediate
+                //     'replace_plan' => true,
+                // ],
                 
             ];
         }
@@ -242,18 +242,18 @@ class Zume_System_Encouragement_API
                     'drop_date' => 0, // 0 means immediate
                     'replace_plan' => true,
                 ],
-                [
-                    'message_post_id' => 100049, // Finish Strong #1
-                    'message_type' => 'email',
-                    'drop_date' => strtotime( '+2 day' ),
-                    'replace_plan' => true,
-                ],
-                [
-                    'message_post_id' => 100050, // Finish Strong #2
-                    'message_type' => 'email',
-                    'drop_date' => strtotime( '+4 day' ),
-                    'replace_plan' => true,
-                ],
+                // [
+                //     'message_post_id' => 100049, // Finish Strong #1
+                //     'message_type' => 'email',
+                //     'drop_date' => strtotime( '+2 day' ),
+                //     'replace_plan' => true,
+                // ],
+                // [
+                //     'message_post_id' => 100050, // Finish Strong #2
+                //     'message_type' => 'email',
+                //     'drop_date' => strtotime( '+4 day' ),
+                //     'replace_plan' => true,
+                // ],
                 
             ];
         }
@@ -381,28 +381,30 @@ class Zume_System_Encouragement_API
             <style>
                
                 #zmail{
-                    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",
-                                Arial,sans-serif;
+                    font-family:Arial,Helvetica,sans-serif;
                     color:#333;
-                    font-size:16px;               /* 1 rem baseline for accessibility   */
+                    font-size:16px;
                     line-height:1.55;
-                    -webkit-text-size-adjust:100%;/* prevent iOS font blow‑up           */
+                    -webkit-text-size-adjust:100%;
+                    width:100%;
+                    max-width:600px;
+                    margin:0 auto;
                 }
 
                 /*—Body copy container—*/
                 #zmail .zmail-body{
-                    padding:1.25rem 1rem;
+                    padding:16px;
                 }
 
                 /*—Top bar—*/
                 #zmail .zmail-topbar{
                     background:#008cc7;
                     color:#fff;
-                    padding:0.75rem 1rem;
+                    padding:12px 16px;
                     text-align:center;
                 }
                 #zmail .zmail-logo img{
-                    max-height:3rem;
+                    max-height:48px;
                     width:auto;
                     display:block;
                     margin:0 auto;
@@ -410,8 +412,8 @@ class Zume_System_Encouragement_API
 
                 /*—Headings—*/
                 #zmail h3{
-                    margin:1.5rem 0 0.5rem;
-                    font-size:1.25rem;            /* ≈ 20 px                            */
+                    margin:24px 0 8px;
+                    font-size:20px;
                     font-weight:700;
                     color:#008cc7;
                 }
@@ -422,31 +424,30 @@ class Zume_System_Encouragement_API
                     text-decoration:none;
                     text-transform:uppercase;
                     font-weight:600;
-                    font-size:.875rem;            /* ≈ 14 px                            */
-                    padding:.55em 2.5em;
+                    font-size:14px;
+                    padding:8px 40px;
                     border-radius:999px;
                     cursor:pointer;
-                    transition:background .15s ease,color .15s ease;
                 }
                 /* primary (filled) */
                 #zmail .button--primary{
                     background:#008cc7;
-                    color:#fff    !important;
+                    color:#fff !important;
                     border:2px solid #008cc7;
                 }
                 #zmail .button.small {
                     background:#008cc7;
-                    color:#fff    !important;
+                    color:#fff !important;
                     border:2px solid #008cc7;
                 }
                 #zmail .button.medium {
                     background:#008cc7;
-                    color:#fff    !important;
+                    color:#fff !important;
                     border:2px solid #008cc7;
                 }
                 #zmail .button.large {
                     background:#008cc7;
-                    color:#fff    !important;
+                    color:#fff !important;
                     border:2px solid #008cc7;
                 }
                 /* secondary (outline) */
@@ -455,25 +456,17 @@ class Zume_System_Encouragement_API
                     color:#008cc7 !important;
                     border:2px solid #008cc7;
                 }
-                #zmail .button--primary:hover,
-                #zmail .button--primary:focus{
-                    background:#006fa0;
-                }
-                #zmail .button--secondary:hover,
-                #zmail .button--secondary:focus{
-                    background:#f0f8fc;
-                }
 
                 /*—Lists—*/
                 #zmail ul{
-                    margin:0 0 1rem 0;
-                    padding:0;                    /* reset Gmail default                */
+                    margin:0 0 16px 0;
+                    padding:0;
                 }
                 #zmail ul li{
-                    margin:0 0 .5rem 1.25rem;
+                    margin:0 0 8px 20px;
                     padding:0;
                     line-height:1.5;
-                    list-style-type: disc;
+                    list-style-type:disc;
                 }
 
                 /*—Strong / emphasis—*/
@@ -487,8 +480,8 @@ class Zume_System_Encouragement_API
                     background:#f2f7fa;
                     border-top:1px solid #dfe7ec;
                     text-align:center;
-                    padding:1.5rem .75rem;
-                    font-size:.8125rem;           /* ≈ 13 px                            */
+                    padding:24px 12px;
+                    font-size:13px;
                     color:#666;
                 }
                 #zmail .zmail-footer a{
@@ -543,12 +536,12 @@ class Zume_System_Encouragement_API
                         [link_dashboard]<br>
                         [magiclink_preferences]<br>
                     </p>
-                    <p style="width:60%;margin:0 auto;">
+                    <p style="width:90%;margin:0 auto;">
                         [link_getacoach]
                         | [link_joincommunity]
                         | [link_checkin]
-                        | <a href="<?php echo esc_url( zume_donate_url() ); ?>"><?php echo esc_html__( 'Donate', 'zume' ) ?></a>
-                        | 109 S. Main Street, Mooreland, OK 73852 USA
+                        | <a href="<?php echo esc_url( zume_donate_url() ); ?>"><?php echo esc_html__( 'Donate', 'zume' ) ?></a><br>
+                        109 S. Main Street, Mooreland, OK 73852 USA
                     </p>
                 </div>
             </div> 
