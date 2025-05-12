@@ -133,82 +133,127 @@ class Zume_Messages extends Zume_Magic_Page
         <div class="email-wrapper">
             <html>
             <head>
-                <style>
-                    #zmail {}
-                    #zmail .zmail-body {
-                        padding: .5em;
-                    }
-                    #zmail .zmail-header {}
-                    #zmail .zmail-footer {
-                        padding: 1em .5em;
-                        background-color: #f5f5f5;
-                        border-top: 1px solid #ccc;
-                        font-size: .8em;
-                        text-align: center;
-                    }
-                    #zmail h3 {
-                        font-size: 1.5em;
-                        margin: 0;
-                        font-weight: 700;
-                        padding-bottom: .8em;
-                    }
-                    #zmail .zmail-topbar {
-                        background-color: #008cc7;
-                        color: white;
-                        padding-top: .3em;
-                        padding-bottom: .3em;
-                        display: flex;
-                        align-items: center;
-                    }
-                    #zmail .zmail-logo {
-                        margin: 0 auto;
-                    }
-                    #zmail .zmail-logo img {
-                        max-width: 100%;
-                        display: block;
-                        vertical-align: middle;
-                        height: 3em;
-                    }
-                    #zmail .button.primary-button-hollow {
-                        color: white;
-                        background-color: #008cc7;
-                        border: 1px solid #008cc7;
-                        padding: .5em 1em;
-                        text-align: center;
-                        text-decoration: none;
-                        display: inline-block;
-                        border-radius: 5px;
-                        font-size: .9rem;
-                        transition: background-color .25s ease-out, color .25s ease-out;
-                    }
-                    #zmail .button.primary-button-hollow.large {
-                        background-color: #008cc7;
-                        color: white;
-                        border: 1px solid #008cc7;
-                        padding: .5em 1em;
-                        text-align: center;
-                        text-decoration: none;
-                        display: inline-block;
-                        border-radius: 5px;
-                        font-size: 1.5em;
-                        transition: background-color .25s ease-out, color .25s ease-out;
-                    }
-                    #zmail ul {
-                        margin-bottom: 1em;
-                    }
-                    #zmail ul li {
-                        padding: 0 1em;
-                        margin-left: 50px;
-                        margin-right: 50px;
-                        list-style-type: disc;
-                        list-style-position: outside;
-                        line-height: 1.5;
-                    }
-                    #zmail strong {
-                        font-weight: 600;
-                        color: #008cc7;
-                    }
-                </style>
+            <style>
+               
+               #zmail{
+                   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",
+                               Arial,sans-serif;
+                   color:#333;
+                   font-size:16px;               /* 1 rem baseline for accessibility   */
+                   line-height:1.55;
+                   -webkit-text-size-adjust:100%;/* prevent iOS font blow‑up           */
+               }
+
+               /*—Body copy container—*/
+               #zmail .zmail-body{
+                   padding:1.25rem 1rem;
+               }
+
+               /*—Top bar—*/
+               #zmail .zmail-topbar{
+                   background:#008cc7;
+                   color:#fff;
+                   padding:0.75rem 1rem;
+                   text-align:center;
+               }
+               #zmail .zmail-logo img{
+                   max-height:3rem;
+                   width:auto;
+                   display:block;
+                   margin:0 auto;
+               }
+
+               /*—Headings—*/
+               #zmail h3{
+                   margin:1.5rem 0 0.5rem;
+                   font-size:1.25rem;            /* ≈ 20 px                            */
+                   font-weight:700;
+                   color:#008cc7;
+               }
+
+               /*—Buttons—*/
+               #zmail .button{
+                   display:inline-block;
+                   text-decoration:none;
+                   text-transform:uppercase;
+                   font-weight:600;
+                   font-size:.875rem;            /* ≈ 14 px                            */
+                   padding:.55em 2.5em;
+                   border-radius:999px;
+                   cursor:pointer;
+                   transition:background .15s ease,color .15s ease;
+               }
+               /* primary (filled) */
+               #zmail .button--primary{
+                   background:#008cc7;
+                   color:#fff    !important;
+                   border:2px solid #008cc7;
+               }
+               #zmail .button.small {
+                   background:#008cc7;
+                   color:#fff    !important;
+                   border:2px solid #008cc7;
+               }
+               #zmail .button.medium {
+                   background:#008cc7;
+                   color:#fff    !important;
+                   border:2px solid #008cc7;
+               }
+               #zmail .button.large {
+                   background:#008cc7;
+                   color:#fff    !important;
+                   border:2px solid #008cc7;
+               }
+               /* secondary (outline) */
+               #zmail .button--secondary{
+                   background:#ffffff;
+                   color:#008cc7 !important;
+                   border:2px solid #008cc7;
+               }
+               #zmail .button--primary:hover,
+               #zmail .button--primary:focus{
+                   background:#006fa0;
+               }
+               #zmail .button--secondary:hover,
+               #zmail .button--secondary:focus{
+                   background:#f0f8fc;
+               }
+
+               /*—Lists—*/
+               #zmail ul{
+                   margin:0 0 1rem 0;
+                   padding:0;                    /* reset Gmail default                */
+               }
+               #zmail ul li{
+                   margin:0 0 .5rem 1.25rem;
+                   padding:0;
+                   line-height:1.5;
+                   list-style-type: disc;
+               }
+
+               /*—Strong / emphasis—*/
+               #zmail strong{
+                   font-weight:700;
+                   color:#008cc7;
+               }
+
+               /*—Footer—*/
+               #zmail .zmail-footer{
+                   background:#f2f7fa;
+                   border-top:1px solid #dfe7ec;
+                   text-align:center;
+                   padding:1.5rem .75rem;
+                   font-size:.8125rem;           /* ≈ 13 px                            */
+                   color:#666;
+               }
+               #zmail .zmail-footer a{
+                   color:#008cc7;
+                   text-decoration:none;
+               }
+               #zmail .zmail-footer a:hover{
+                   text-decoration:underline;
+               }
+           </style>
             </head>
             <body>
             <div id="zmail">

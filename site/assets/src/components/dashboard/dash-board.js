@@ -162,17 +162,28 @@ export class DashBoard extends navigator(router(LitElement)) {
     firstUpdated() {
         this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
         this.getCtas()
-
         const celebrationModal = this.renderRoot.querySelector('#celebration-modal')
         if (celebrationModal) {
             jQuery(celebrationModal).on('closed.zf.reveal', () => {
                 this.showingCelebrationModal = false
             })
         }
+        this.trainingGroupsOpen = jQuery('#training-groups-menu').hasClass('is-active')
 
-        this.trainingGroupsOpen = jQuery('#training-groups-menu').hasClass(
-            'is-active'
-        )
+        // Initialize Foundation
+        jQuery(this.renderRoot).foundation()
+
+        // Check for profile parameter in URL
+        const urlParams = new URLSearchParams(window.location.search)
+        if (urlParams.get('profile') === 'true') {
+            // Wait for Foundation to be ready
+            setTimeout(() => {
+                this.openProfile()
+                // Remove the parameter from URL without reloading
+                const newUrl = window.location.pathname + window.location.hash
+                window.history.replaceState({}, '', newUrl)
+            }, 0)
+        }
     }
 
     updateWizardType(event) {

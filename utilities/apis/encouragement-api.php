@@ -3,23 +3,33 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
 class Zume_System_Encouragement_API
 {
-    public $namespace = 'zume_system/v1';
-    private static $_instance = null;
+    public $language_code;
+    public $user_id;
 
-    public static function instance()
-    {
-        if ( is_null( self::$_instance ) ) {
-            self::$_instance = new self();
-        }
-        return self::$_instance;
-    }
     public function __construct()
     {
         if ( ! has_action( 'zume_update_encouragement_plan', ['Zume_System_Encouragement_API', 'update_plan'] ) ) {
             add_action( 'zume_update_encouragement_plan', ['Zume_System_Encouragement_API', 'update_plan'], 10, 3 );
+            // add_action( 'wp_mail_failed', ['Zume_System_Encouragement_API', 'log_mail_failure'], 10, 1 );
+            // add_action( 'wp_mail_succeeded', ['Zume_System_Encouragement_API', 'log_mail_success'], 10, 1 );
         }
     }
-    
+    // public static function log_mail_success( $mail_data ) {
+    //     dt_write_log( 'Mail sent: ' );
+    //     dt_write_log( $mail_data );
+    // }
+    // public static function log_mail_failure( $error ) {
+    //     dt_write_log( 'Mail failed: ' );
+    //     dt_write_log( $error );
+    // }
+
+    /**
+     * Create a new plan for a user
+     * 
+     * @param int $user_id The ID of the user to create the plan for
+     * @param array $new_plan The new plan to create
+     * 
+     */
     public static function create_plan( $user_id, $new_plan ) {
         global $wpdb;
 
@@ -27,28 +37,65 @@ class Zume_System_Encouragement_API
             return;
         }
 
-        foreach ( $new_plan as $message ) {
+        $profile = zume_get_user_profile( $user_id );
+        $email = $profile['communications_email'];
+        $language_code = $profile['preferred_language'];
+        $headers = array(
+            'Content-Type: text/html; charset=UTF-8',
+            'MIME-Version: 1.0',
+            'X-Zume-Email-System: 1.0'
+        );
+        
+        $templates = self::_build_user_templates( $language_code, $user_id );
 
+        // dt_write_log( $new_plan );
+
+        foreach ( $new_plan as $message ) {
+            unset( $message['replace_plan'] );
+            $message['to'] = $email;
+            $message['headers'] = $headers;
+            $message['user_id'] = $user_id;
+            $message['message'] = self::build_email( $templates[$message['message_post_id']]['body'], $language_code, $user_id );
+            $message['subject'] = $templates[$message['message_post_id']]['subject'];
+            
+            // dt_write_log( $message );
+           
             // if immediate is true, send the email immediately
-            if ( 0 === $message['drop_date'] ) {
+            if ( empty($message['drop_date'] ) ) {
+                // dt_write_log( 'Sending email immediately' );
                 $sent = wp_mail( $message['to'], $message['subject'], $message['message'], $message['headers'] );
                 $message['sent'] = $sent;
+                // dt_write_log( '$sent' );
+                // dt_write_log( $sent );
+                // dt_write_log( $message );
             }
 
             if ( isset( $message['id'] ) ) {
                 $wpdb->update( 'zume_dt_zume_message_plan', $message, [ 'id' => $message['id'] ] );
+                // dt_write_log( 'Updated message' );
+                // dt_write_log( $message );
             } else {
                 $wpdb->insert( 'zume_dt_zume_message_plan', $message );
+                // dt_write_log( 'Inserted message' );
+                // dt_write_log( $message );
             }
         }
     }
+    
+    /**
+     * Read the plan for a user
+     * 
+     * @param int $user_id The ID of the user to read the plan for
+     * @return array The plan for the user
+     * 
+     */
     public static function read_plan( $user_id ) {
 
         // Query the message queue in the zume_dt_zume_message_plan table
         // Exclude any sent messages and return the current plan for communication
         global $wpdb;
         
-        $current_plan = $wpdb->get_results($wpdb->prepare(
+        $current_plan = $wpdb->get_results( $wpdb->prepare(
             "SELECT * 
             FROM zume_dt_zume_message_plan 
             WHERE user_id = %d 
@@ -71,100 +118,120 @@ class Zume_System_Encouragement_API
         return $current_plan;
     }
 
+    /**
+     * Update the plan for a user
+     * 
+     * @param int $user_id The ID of the user to update the plan for
+     * @param string $type The type of plan to update
+     * @param string $subtype The subtype of plan to update
+     *  
+     * @return bool True if the plan was updated, false otherwise
+     * 
+     */
     public static function update_plan( $user_id, $type, $subtype ) {
         if ( wp_doing_cron() ) {
-            dt_write_log( __METHOD__ . " is running as a cron job" );
+            // dt_write_log( __METHOD__ . " is running as a cron job" );
             return false;
         }
-        dt_write_log( __METHOD__ );
-        dt_write_log( $user_id );
-        dt_write_log( $type );
-        dt_write_log( $subtype );
-
-        // get the recommended plan
-        $potential_plans = self::_get_recommended_plan( $user_id, $type, $subtype );
-        if ( empty( $potential_plans ) ) {
-            dt_write_log( "No plan suggested" );
-            return false; // no plan suggested
+   
+        // get suggested plan from type and subtype 
+        $new_plan = self::_get_recommended_plan( $user_id, $type, $subtype );
+        // if no plan, return false
+        if ( empty( $new_plan ) ) {
+            // dt_write_log( "No plan suggested for type: $type, subtype: $subtype" );
+            return false;
         }
-        $potential_plan_ids = array_unique(array_column($potential_plans, 'message_post_id'));
-        dt_write_log( $potential_plan_ids );
+        // dt_write_log( __METHOD__ );
 
-        // compare the potential plan to the raw plan
-        $raw_plan = self::_query_user_messages( $user_id );
-        $raw_plan_ids = array_unique(array_column( $raw_plan, 'message_post_id' ));
-        dt_write_log( $raw_plan_ids );
+        // get send messages from user
+        $messages = self::_query_user_queue( $user_id );
+        $sent_messages = $messages['sent'];
+        $scheduled_messages = $messages['scheduled'];
 
-        $plan_diff = array_diff( $potential_plan_ids, $raw_plan_ids );
-        if ( empty( $plan_diff ) ) {
-            dt_write_log( "No new plan to install" );
-            return false; // no new plan to install
-        }
-
-        $new_plan = array_filter( $potential_plans, function( $message ) use ( $plan_diff ) {
-            return in_array( $message['message_post_id'], $plan_diff );
+        // remove sent messages from the new plan
+        $new_plan = array_filter( $new_plan, function( $message ) use ( $sent_messages ) {
+            return !in_array( $message['message_post_id'], array_column( $sent_messages, 'message_post_id' ) );
         });
 
-        self::delete_plan( $user_id );
-        self::create_plan( $user_id, $new_plan );
+        // if there are no new messages, return false
+        if ( empty( $new_plan ) ) {
+            // dt_write_log( "No new messages to add to the plan" );
+            return false;
+        }
 
-        return true; // plan installed
+        // check if the new plan and scheduled messages are the same via message_post_id
+        $new_plan_ids = array_column( $new_plan, 'message_post_id' );
+        $scheduled_ids = array_column( $scheduled_messages, 'message_post_id' );
+        // remove duplicates from the new plan that already exist in the scheduled messages
+        $new_plan = array_filter( $new_plan, function( $message ) use ( $scheduled_ids ) {
+            return !in_array( $message['message_post_id'], $scheduled_ids );
+        });
+
+        // if there are no new messages, return false
+        if ( empty( $new_plan ) ) {
+            // dt_write_log( "No new messages to add to the plan that are not already scheduled" );
+            return false;
+        }
+
+        // check if new plan has replace_plan set to true
+        $replace_plan = array_column( $new_plan, 'replace_plan' );
+        $replace_plan = in_array( true, $replace_plan );
+
+        // delete the plan
+        if ( $replace_plan ) {
+            self::delete_plan( $user_id );
+        }
+        
+        // create the new plan, with the differences
+        self::create_plan( $user_id, $new_plan );
+        
+        // return true
+        return true; // plan updated successfully
     }
+
+    /**
+     * Delete the plan for a user
+     * 
+     * @param int $user_id The ID of the user to delete the plan for
+     * 
+     */
     public static function delete_plan( $user_id ) {
-        global $wpdb, $table_prefix;
-        $wpdb->query( $wpdb->prepare( 'DELETE FROM zume_dt_zume_message_plan WHERE user_id = %s AND sent IS NULL', $user_id ) );
+        global $wpdb;
+        $wpdb->query( $wpdb->prepare( 'DELETE FROM zume_dt_zume_message_plan WHERE user_id = %d AND ( sent < 1 OR sent IS NULL )', $user_id ) );
     }
 
     public static function _get_recommended_plan( $user_id, $type, $subtype ) {
         $plan = [];
-        $profile = zume_get_user_profile( $user_id );
-        $messages = self::_query_messages();
-        $email = $profile['communications_email'];
-        $language_code = $profile['preferred_language'];
-        $headers = ['Content-Type: text/html; charset=UTF-8'];
+        
 
         if ( 'training' === $type && 'registered' === $subtype ) {
             $plan = [
+                
                 [
-                    'user_id' => $user_id,
-                    'message_post_id' => 100017, // new registration email
+                    'message_post_id' => 100044, // New Training Created
                     'message_type' => 'email',
-                    'to' => $email,
-                    'subject' => get_post_meta( 100017, 'subject_'.$language_code, true ),
-                    'message' => get_post_meta( 100017, 'body_'.$language_code, true ),
-                    'headers' => '',
                     'drop_date' => 0, // 0 means immediate
+                    'replace_plan' => true,
                 ],
                 // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23606,
+                //     'message_post_id' => 100017, // New Training Created
                 //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'Registered Post 2 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
+                //     'drop_date' => strtotime( '+1 day' ), // 0 means immediate
+                //     'replace_plan' => true,
                 // ],
                 // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23607,
+                //     'message_post_id' => 100018, // New Training Created
                 //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'Registered Post 3 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+3 day' ),
+                //     'drop_date' => strtotime( '+2 day' ), // 0 means immediate
+                //     'replace_plan' => true,
                 // ],
                 // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23608,
+                //     'message_post_id' => 100019, // New Training Created
                 //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'Registered Post 4 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+1 week' ),
+                //     'drop_date' => strtotime( '+4 day' ), // 0 means immediate
+                //     'replace_plan' => true,
                 // ],
+                
             ];
         }
         else if ( 'system' === $type && 'plan_created' === $subtype ) {
@@ -173,198 +240,60 @@ class Zume_System_Encouragement_API
                     'message_post_id' => 100046, // New Training Created
                     'message_type' => 'email',
                     'drop_date' => 0, // 0 means immediate
+                    'replace_plan' => true,
                 ],
+                // [
+                //     'message_post_id' => 100049, // Finish Strong #1
+                //     'message_type' => 'email',
+                //     'drop_date' => strtotime( '+2 day' ),
+                //     'replace_plan' => true,
+                // ],
+                // [
+                //     'message_post_id' => 100050, // Finish Strong #2
+                //     'message_type' => 'email',
+                //     'drop_date' => strtotime( '+4 day' ),
+                //     'replace_plan' => true,
+                // ],
+                
+            ];
+        }
+        else if ( 'coaching' === $type && 'requested_a_coach' === $subtype ) {
+            $plan = [
+                
                 [
-                    'message_post_id' => 100049, // Finish Strong #1
+                    'message_post_id' => 100045, 
                     'message_type' => 'email',
-                    'drop_date' => strtotime( '+2 day' ),
-                ],
-                [
-                    'message_post_id' => 100050, // Finish Strong #2
-                    'message_type' => 'email',
-                    'drop_date' => strtotime( '+4 day' ),
+                    'drop_date' => 0, // 0 means immediate
+                    'replace_plan' => false,
                 ],
                 
             ];
-            dt_write_log( $plan );
-            
         }
-        else if ( 'system' === $type && 'training_completed' === $subtype ) {
+        else if ( 'training' === $type && in_array( $subtype, ['set_a_01', 'set_b_01', 'set_c_01'] ) ) {
             $plan = [
+                
                 [
-                    'user_id' => $user_id,
-                    'message_post_id' => 23631,
+                    'message_post_id' => 100047, 
                     'message_type' => 'email',
-                    'to' => '',
-                    'subject' => 'Training Completed Post 1 Day',
-                    'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                    'headers' => '',
-                    'drop_date' => strtotime( '+1 day' ),
+                    'drop_date' => 0, // 0 means immediate
+                    'replace_plan' => false,
                 ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 236382,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'Training Completed Post 2 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 236933,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'Training Completed Post 3 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
+                
             ];
         }
-        else if ( 'system' === $type && 'first_practitioner_report' === $subtype ) {
+        else if ( 'training' === $type && 'made_post_training_plan' === $subtype ) {
             $plan = [
+                
                 [
-                    'user_id' => $user_id,
-                    'message_post_id' => 2343,
+                    'message_post_id' => 100055, 
                     'message_type' => 'email',
-                    'to' => '',
-                    'subject' => 'Post First Practitioner Report  1 Day',
-                    'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                    'headers' => '',
-                    'drop_date' => strtotime( '+1 day' ),
+                    'drop_date' => 0, // 0 means immediate
+                    'replace_plan' => false,
                 ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23644,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'Post First Practitioner Report 2 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23634,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'Post First Practitioner Report 3 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23624,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'Post First Practitioner Report 2 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23643,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'Post First Practitioner Report 3 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
+                
             ];
         }
-        else if ( 'system' === $type && 'mawl_completed' === $subtype ) {
-            $plan = [
-                [
-                    'user_id' => $user_id,
-                    'message_post_id' => 23645,
-                    'message_type' => 'email',
-                    'to' => '',
-                    'subject' => 'MAWL Completed 1 Day',
-                    'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                    'headers' => '',
-                    'drop_date' => strtotime( '+1 day' ),
-                ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23655,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'MAWL Completed 2 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23656,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'MAWL Completed 3 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23657,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'MAWL Completed 4 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23658,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'MAWL Completed 5 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
-            ];
-        }
-        else if ( 'system' === $type && 'seeing_generational_fruit' === $subtype ) {
-            $plan = [
-                [
-                    'user_id' => $user_id,
-                    'message_post_id' => 23667,
-                    'message_type' => 'email',
-                    'to' => '',
-                    'subject' => 'seeing_generational_fruit 1 Day',
-                    'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                    'headers' => '',
-                    'drop_date' => strtotime( '+1 day' ),
-                ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23677,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'seeing_generational_fruit2 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
-                // [
-                //     'user_id' => $user_id,
-                //     'message_post_id' => 23678,
-                //     'message_type' => 'email',
-                //     'to' => '',
-                //     'subject' => 'seeing_generational_fruit 3 Days',
-                //     'message' => 'laskjdf ;laskd jf;alskj df;aslkd jf;laskj df;laskj d;flaskj d;flaks djf;l',
-                //     'headers' => '',
-                //     'drop_date' => strtotime( '+2 day' ),
-                // ],
-            ];
-        }
+        
 
         return $plan;
     }
@@ -375,7 +304,7 @@ class Zume_System_Encouragement_API
      * 
      * @since 1.0
      */
-    public static function _query_messages() {
+    public static function _build_user_templates( $language_code, $user_id ) {
         global $wpdb;
         $raw_messages = $wpdb->get_results( "
             SELECT pm.post_id, pm.meta_key, pm.meta_value
@@ -388,39 +317,251 @@ class Zume_System_Encouragement_API
             if ( !isset( $messages[$message['post_id']] ) ) {
                 $messages[$message['post_id']] = [];
             }
-            $messages[$message['post_id']][$message['meta_key']] = $message['meta_value'];
+            if ( str_ends_with( $message['meta_key'], $language_code ) ) {
+                $new_key = str_replace( '_'.$language_code, '', $message['meta_key'] );
+                $messages[$message['post_id']][$new_key] = $message['meta_value'];
+            }
+            if ( 'body' === $message['meta_key'] ) {
+                $messages[$message['post_id']]['body'] = self::build_email( $message['meta_value'], $language_code, $user_id );
+            }
         }
         // dt_write_log($messages);
-
+       
         return $messages;
     }
-    /**
-     * Query all messages sent to a user from the database
-     *
-     * @param int $user_id The user ID to get messages for
-     * @return array Array of messages sent to the user
-     * 
-     * @since 1.0
-     */
-    public static function _query_user_messages( $user_id ) {
+   /**
+    * Query all messages sent to a user from the database
+    *
+    * @param int $user_id The ID of the user to get messages for
+    * @return array Array of messages sent to the user
+    * 
+    * @since 1.0
+    */
+    public static function _query_user_queue( $user_id ) {
         global $wpdb, $table_prefix;
+        $messages = [
+            'sent' => [],
+            'scheduled' => [],
+        ];
+
         $sent_messages = $wpdb->get_results( $wpdb->prepare(
             'SELECT * FROM zume_dt_zume_message_plan WHERE user_id = %d',
             $user_id
         ), ARRAY_A );
 
-        return $sent_messages;
+        foreach ( $sent_messages as $value ) {
+            if ( $value['sent'] ) {
+                $messages['sent'][] = $value;
+            } else {
+                $messages['scheduled'][] = $value;
+            }
+        }
+        
+        return $messages;
     } 
 
-    // public function _update_encouragement_plan( $user_id, $type, $subtype ) {
-    //     self::update_plan( $user_id, $type, $subtype );
-    // }
-    // public function authorize_url( $authorized )
-    // {
-    //     if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), $this->namespace ) !== false ) {
-    //         $authorized = true;
-    //     }
-    //     return $authorized;
-    // }
+
+    public static function build_email( $message, $language_code, $user_id ){
+        
+        $email = self::email_head_part();
+        $email .= self::email_content_part( $message );
+        $email .= self::email_footer_part();
+
+        $email_with_placeholders = zume_replace_placeholder( $email, $language_code, $user_id );
+
+        return $email_with_placeholders;
+    }
+
+    public static function email_head_part(){
+        global $zume_user_profile;
+        ob_start();
+        ?>
+        <html>
+        <head>
+            <style>
+               
+                #zmail{
+                    font-family:Arial,Helvetica,sans-serif;
+                    color:#333;
+                    font-size:16px;
+                    line-height:1.55;
+                    -webkit-text-size-adjust:100%;
+                    width:100%;
+                    max-width:600px;
+                    margin:0 auto;
+                }
+
+                /*—Body copy container—*/
+                #zmail .zmail-body{
+                    padding:16px;
+                }
+
+                /*—Top bar—*/
+                #zmail .zmail-topbar{
+                    background:#008cc7;
+                    color:#fff;
+                    padding:12px 16px;
+                    text-align:center;
+                }
+                #zmail .zmail-logo img{
+                    max-height:48px;
+                    width:auto;
+                    display:block;
+                    margin:0 auto;
+                }
+
+                /*—Headings—*/
+                #zmail h3{
+                    margin:24px 0 8px;
+                    font-size:20px;
+                    font-weight:700;
+                    color:#008cc7;
+                }
+
+                /*—Buttons—*/
+                #zmail .button{
+                    display:inline-block;
+                    text-decoration:none;
+                    text-transform:uppercase;
+                    font-weight:600;
+                    font-size:14px;
+                    padding:8px 40px;
+                    border-radius:999px;
+                    cursor:pointer;
+                }
+                /* primary (filled) */
+                #zmail .button--primary{
+                    background:#008cc7;
+                    color:#fff !important;
+                    border:2px solid #008cc7;
+                }
+                #zmail .button.small {
+                    background:#008cc7;
+                    color:#fff !important;
+                    border:2px solid #008cc7;
+                }
+                #zmail .button.medium {
+                    background:#008cc7;
+                    color:#fff !important;
+                    border:2px solid #008cc7;
+                }
+                #zmail .button.large {
+                    background:#008cc7;
+                    color:#fff !important;
+                    border:2px solid #008cc7;
+                }
+                /* secondary (outline) */
+                #zmail .button--secondary{
+                    background:#ffffff;
+                    color:#008cc7 !important;
+                    border:2px solid #008cc7;
+                }
+
+                /*—Lists—*/
+                #zmail ul{
+                    margin:0 0 16px 0;
+                    padding:0;
+                }
+                #zmail ul li{
+                    margin:0 0 8px 20px;
+                    padding:0;
+                    line-height:1.5;
+                    list-style-type:disc;
+                }
+
+                /*—Strong / emphasis—*/
+                #zmail strong{
+                    font-weight:700;
+                    color:#008cc7;
+                }
+
+                /*—Footer—*/
+                #zmail .zmail-footer{
+                    background:#f2f7fa;
+                    border-top:1px solid #dfe7ec;
+                    text-align:center;
+                    padding:24px 12px;
+                    font-size:13px;
+                    color:#666;
+                }
+                #zmail .zmail-footer a{
+                    color:#008cc7;
+                    text-decoration:none;
+                }
+                #zmail .zmail-footer a:hover{
+                    text-decoration:underline;
+                }
+            </style>
+        </head>
+        <?php
+        $html = ob_get_contents();
+        ob_end_clean();
+        return $html;
+    }
+
+    public static function email_content_part( $message ){
+        global $zume_user_profile;
+        ob_start();
+        ?>
+        <body>
+            <div id="zmail">
+                <header class="zmail-header">
+                    <div class="zmail-topbar" style="margin-bottom:20px;">
+                        <div class="zmail-logo"><img src="<?php echo esc_url( zume_mirror_url() . 'images/zume-training-logo-white-short.svg' ) ?>" alt="logo"></div>
+                    </div>
+                </header>
+                <?php
+                if ( isset( $zume_user_profile['has_set_name'] ) && $zume_user_profile['has_set_name'] ) {
+                    ?>
+                    <div class="zmail-body">
+                        <?php echo wp_kses( $zume_user_profile['name'], 'post' ) ?>,
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <div class="zmail-body">
+                        <?php echo esc_html__( 'Friend', 'zume' ) ?>
+                    </div>
+                    <?php
+                }
+                ?>
+                <div class="zmail-body">
+                    <?php echo wp_kses( $message, 'post' ) ?>
+                </div>
+                <div class="zmail-footer-divider"></div>
+                <div class="zmail-footer">
+                    <p><img src="<?php echo esc_url( zume_mirror_url() . 'images/zume-training-logo.svg' ) ?>" alt="logo" style="height:40px; margin: 1em auto;"></p>
+                    <p><?php echo esc_html__( 'Zúme Training exists to saturate the globe with multiplying disciples in our generation.', 'zume' ) ?></p>
+                    <p>
+                        [link_dashboard]<br>
+                        [magiclink_preferences]<br>
+                    </p>
+                    <p style="width:90%;margin:0 auto;">
+                        [link_getacoach]
+                        | [link_joincommunity]
+                        | [link_checkin]
+                        | <a href="<?php echo esc_url( zume_donate_url() ); ?>"><?php echo esc_html__( 'Donate', 'zume' ) ?></a><br>
+                        109 S. Main Street, Mooreland, OK 73852 USA
+                    </p>
+                </div>
+            </div> 
+        </body>
+        <?php
+        $html = ob_get_contents();
+        ob_end_clean();
+        return $html;
+    }
+
+    public static function email_footer_part(){
+        ob_start();
+        ?>
+        </html>
+        <?php
+        $html = ob_get_contents();
+        ob_end_clean();
+        return $html;
+    }
 }
-Zume_System_Encouragement_API::instance();
+new Zume_System_Encouragement_API;
+
+

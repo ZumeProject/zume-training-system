@@ -180,6 +180,37 @@ class Zume_Training {
         if ( class_exists( 'DT_Login_Fields' ) ) { // if outside DT context, don't run this
             DT_Login_Fields::update( $fields );
         }
+
+        add_action( 'wp_head', [ $this, 'insert_head_scripts' ] );
+
+    }
+
+    public function insert_head_scripts() {
+        [
+            'lang_code' => $lang_code,
+            'url_parts' => $url_parts,
+        ] = zume_get_url_pieces();
+
+        // if ( ! in_array( $lang_code, [ '', 'en' ] ) ) {
+        //     return;
+        // }
+
+        if ( ! in_array( $url_parts[0], [ 'dashboard' ] ) ) {
+            return;
+        }
+        
+        ?>
+            <!-- Chipp Chat Widget -->
+            <script>
+            window.CHIPP_APP_URL = "https://zmecopilot-44723.chipp.ai";
+            window.CHIPP_APP_ID = 44723;
+            </script>
+            
+            <link rel="stylesheet" href="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.css" />
+            
+            <script defer src="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.js"></script>
+            
+        <?php
     }
 
     /**
@@ -477,7 +508,7 @@ class Zume_Training {
             'time_end' => time(),
             'language_code' => $user_language['code'] ?? 'en',
         ], true );
-
+        
         // Zume_System_Encouragement_API::update_plan( $user->ID, 'training', 'registered' ); @todo remove this
     }
     public function dt_update_users_corresponding_contact( mixed $contact, WP_User $user ) {
@@ -503,6 +534,7 @@ class Zume_Training {
         }
     }
     public function dt_login_url( $dt_login_url ) {
+        
         $dt_login_url = str_replace( $this->builtin_login_url, $this->login_url, $dt_login_url );
 
         $current_language = 'en';
@@ -536,6 +568,7 @@ class Zume_Training {
         return $current_language . '/' . $dt_login_url;
     }
     public function dt_login_redirect_url( $redirect_url ) {
+        
         $url = new DT_URL( $redirect_url );
 
         $parsed_url = $url->parsed_url;

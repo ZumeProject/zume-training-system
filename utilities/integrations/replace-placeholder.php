@@ -103,9 +103,9 @@ class Zume_Replace_Placeholder {
             '<a class="button large" href="'.$base_url.'activities/coachingchecklist">'. __( 'Coaching Checklist', 'zume' ) .'</a>',
             '<a class="" href="'.$base_url.'activities/coachingchecklist">'. __( 'Coaching Checklist', 'zume' ) .'</a>',
 
-            '<a class="button small" href="'.$base_url.$wizard_root.'checkin">'. __( 'Check-in', 'zume' ) .'</a>',
-            '<a class="button large" href="'.$base_url.$wizard_root.'checkin">'. __( 'Check-in', 'zume' ) .'</a>',
-            '<a class="" href="'.$base_url.$wizard_root.'checkin">'. __( 'Check-in', 'zume' ) .'</a>',
+            '<a class="button small" href="'.$base_url.'checkin">'. __( 'Check-in', 'zume' ) .'</a>',
+            '<a class="button large" href="'.$base_url.'checkin">'. __( 'Check-in', 'zume' ) .'</a>',
+            '<a class="" href="'.$base_url.'checkin">'. __( 'Check-in', 'zume' ) .'</a>',
 
             '<a class="button small" href="'.$base_url.'presenter?session=index">'. __( '10 Session Course', 'zume' ) .'</a>',
             '<a class="button large" href="'.$base_url.'presenter?session=index">'. __( '10 Session Course', 'zume' ) .'</a>',
@@ -178,9 +178,9 @@ class Zume_Replace_Placeholder {
             '<a class="button large" href="'.$base_url.'">'. __( 'Zúme Annual Report', 'zume' ) .'</a>',
             '<a class="" href="'.$base_url.'">'. __( 'Zúme Annual Report', 'zume' ) .'</a>',
 
-            '<a class="button small" href="'.$base_url.'">'. __( 'Update Communication Preferences', 'zume' ) . '</a>',
-            '<a class="button large" href="'.$base_url.'">'. __( 'Update Communication Preferences', 'zume' ) . '</a>',
-            '<a class="" href="'.$base_url.'">'. __( 'Update Communication Preferences', 'zume' ) . '</a>',
+            '<a class="button small" href="'.$base_url.'dashboard?profile=true">'. __( 'Update Communication Preferences', 'zume' ) . '</a>',
+            '<a class="button large" href="'.$base_url.'dashboard?profile=true">'. __( 'Update Communication Preferences', 'zume' ) . '</a>',
+            '<a class="" href="'.$base_url.'dashboard?profile=true">'. __( 'Update Communication Preferences', 'zume' ) . '</a>',
         ];
 
         return str_replace( $place_holders, $replacement_string, $content );

@@ -6599,7 +6599,7 @@ if ( ! class_exists( 'Zume_System_Log_API' ) ) {
             ];
             self::_check_for_stage_change( $added_log, $report['user_id'], $report, $log );
 
-            do_action( 'zume_update_encouragement_plan', $report['user_id'], $report['type'], $report['subtype'] );
+            Zume_System_Encouragement_API::update_plan( $report['user_id'], $report['type'], $report['subtype'] );
 
             return $added_log;
         }
