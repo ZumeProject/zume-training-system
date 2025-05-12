@@ -180,6 +180,31 @@ class Zume_Training {
         if ( class_exists( 'DT_Login_Fields' ) ) { // if outside DT context, don't run this
             DT_Login_Fields::update( $fields );
         }
+
+        add_action( 'wp_head', [ $this, 'insert_head_scripts' ] );
+
+    }
+
+    public function insert_head_scripts() {
+        [
+            'lang_code' => $lang_code,
+            'url_parts' => $url_parts,
+        ] = zume_get_url_pieces();
+        // Add your JavaScript code here
+        if ( in_array( $url_parts[0], [ 'dashboard' ] ) ) {
+            ?>
+                <!-- Chipp Chat Widget -->
+                <script>
+                window.CHIPP_APP_URL = "https://zmecopilot-44723.chipp.ai";
+                window.CHIPP_APP_ID = 44723;
+                </script>
+                
+                <link rel="stylesheet" href="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.css" />
+                
+                <script defer src="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.js"></script>
+                
+            <?php
+        }
     }
 
     /**
