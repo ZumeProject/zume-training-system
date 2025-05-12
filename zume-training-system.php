@@ -191,11 +191,11 @@ class Zume_Training {
             'url_parts' => $url_parts,
         ] = zume_get_url_pieces();
 
-        if ( ! in_array( $lang_code, [ 'en' ] ) ) {
-            return;
-        }
+        // if ( ! in_array( $lang_code, [ '', 'en' ] ) ) {
+        //     return;
+        // }
 
-        if ( in_array( $url_parts[0], [ 'dashboard' ] ) ) {
+        if ( ! in_array( $url_parts[0], [ 'dashboard' ] ) ) {
             return;
         }
         
