@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2025-05-09 14:33+0000\n"
+"PO-Revision-Date: 2025-05-12 12:03+0000\n"
 "Last-Translator: Kevin Fallah <kevin@christianlingua.com>\n"
 "Language-Team: Kurdish (Central) <https://translate.disciple.tools/projects/"
 "zume-training/zume-training-system/ckb/>\n"
@@ -713,24 +713,24 @@ msgid "New training group scheduled in %1$s. %2$s"
 msgstr "گرووپی نوێی ڕاهێنان دیارکرا لە %1$s. %2$s"
 
 #: maps/heatmap.php:3216
-#, fuzzy, php-format
+#, php-format
 msgid "A %1$s is starting SESSION %2$s in %3$s. %4$s"
-msgstr "‎%2 $ sوانە  s‏$‎ ‏  1%لە s$3% ‎دەستپێدەکات s$4%"
+msgstr "%1$s وانە %2$s لە %3$s دەستپێدەکات %4$s"
 
 #: maps/heatmap.php:3254
 #, fuzzy, php-format
 msgid "A %1$s is studying \"%2$s\" in %3$s. %4$s"
-msgstr "‎%1$s ‎لە  \"%2$s\" لە‎ s$3% ‎دەخوێنێت s$4%"
+msgstr "%1$sلە %2$لە %3$s دەخوێنێت %4$s"
 
 #: maps/heatmap.php:3296
-#, fuzzy, php-format
+#, php-format
 msgid "A %1$s shared \"%2$s\" with someone in %3$s. %4$s"
-msgstr "‎\"%2$s\"%1$sی لەگەڵ کەسێک s$3% ‎هاوبەشکردووە s$4%"
+msgstr "%2$s\" %1$s\"ی لەگەڵ کەسێک %3$s هاوبەشکردووە %4$s"
 
 #: maps/heatmap.php:3334
-#, fuzzy, php-format
+#, php-format
 msgid "A %1$s trained someone to use \"%2$s\" in %3$s. %4$s"
-msgstr "%1‏s$sبەکارهێنانی کەسێک بۆ ڕاهێنان \"%2$s\" ‎لە %3$s. %4$s"
+msgstr "%1$s بەکارهێنانی کەسێک بۆ ڕاهێنان %2$s لە %4$s. %3$s"
 
 #: maps/heatmap.php:3373
 #, php-format
@@ -743,21 +743,21 @@ msgid "A coach is assisting with \"%1$s\" for a trainee in %2$s. %3$s"
 msgstr "ڕاهێنەرێک هاوکاری دەکات بە \"%1$s\"بۆ ڕاهێنراوێک لە %2$s. %3$s"
 
 #: maps/heatmap.php:3451
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "A coach has entered a watching stage for a trainee regarding \"%1$s\" in "
 "%2$s. %3$s"
-msgstr "ڕاهێنەرێک تەواو مەشقیکردووە بە راهێنراوێک سەبارەت بە s$1%لە s.$2%%3$s"
+msgstr "ڕاهێنەرێک تەواو مەشقیکردووە بە راهێنراوێک سەبارەت بە %1$s لە %3$s .%2$s"
 
 #: maps/heatmap.php:3490
-#, fuzzy, php-format
+#, php-format
 msgid "A coach has fully launched a trainee regarding \"%1$s\" in %2$s. %3$s"
-msgstr "دەستپێکردنی ڕاهێنراوێک لەلایەن ڕاهێنەرێک سەبارەت بە\"%1$s\"لە s.%3$s$2%"
+msgstr "دەستپێکردنی ڕاهێنراوێک لەلایەن ڕاهێنەرێک سەبارەت بە%1$s لە %3$s .%2$s"
 
 #: maps/heatmap.php:3496
-#, fuzzy, php-format
+#, php-format
 msgid "A %1$s created at post training plan in %2$s. %3$s"
-msgstr "%1$‏sکە لە پلانی ڕاهێنانی دوای ڕاهێنان لە s$2% ‎دروستکردووە %3$s"
+msgstr "%1$s کە لە پلانی ڕاهێنانی دوای ڕاهێنان لە دروستکردووە %3$s .%2$s"
 
 #: maps/html/heatmap-html.php:37
 msgid "Loading the planet"
@@ -2038,7 +2038,7 @@ msgstr "لەم دانیشتنەدا گوێ لەم چەمکانە دەبیستی�
 
 #: site/course/course-content.php:88 site/course/course-content.php:373
 msgid "Simple Definition of Disciple & Church"
-msgstr ""
+msgstr "پێناسەیەکی سادەی قوتابی و کڵێسا"
 
 #: site/course/course-content.php:89 site/course/course-content.php:374
 msgid "Spiritual Breathing"
@@ -4926,10 +4926,10 @@ msgid "You have set your profile"
 msgstr "تۆ پڕۆفایلی خۆتت داناوە"
 
 #: site/dashboard/dashboard.php:300
-#, fuzzy, php-format
+#, php-format
 msgctxt "3-month plan unlocked"
 msgid "%s unlocked"
-msgstr "S%‎قوفڵی نەکراوە"
+msgstr "%s  کراوەتەوە"
 
 #: site/dashboard/dashboard.php:300 utilities/apis/cta-api.php:321
 msgid "3 month plan"
@@ -5094,10 +5094,10 @@ msgid "Visibility"
 msgstr "بینین"
 
 #: site/dashboard/dashboard.php:333 site/dashboard/dashboard.php:334
-#, fuzzy, php-format
+#, php-format
 msgctxt "public/private group"
 msgid "%s group"
-msgstr "S%‎گرووپ"
+msgstr "%s گرووپ"
 
 #: site/dashboard/dashboard.php:333
 msgid "Private"
@@ -5417,9 +5417,9 @@ msgid "The training link is broken. Please try again."
 msgstr "پەیوەندی ڕاهێنانکە شکاوە تکایە هەوڵدە."
 
 #: site/dashboard/wizard.php:243
-#, fuzzy, php-format
+#, php-format
 msgid "Successfully joined training %s"
-msgstr "بەسەرکەوتوویی پەیوەندیت بە ڕاهێناوەکرد"
+msgstr "بەسەرکەوتوویی پەیوەندیت بە ڕاهێناوەکرد %s"
 
 #: site/dashboard/wizard.php:246
 msgid "Next Session Date"
@@ -5450,9 +5450,9 @@ msgid "The friend link is broken. Please try again."
 msgstr "لینکی پەیوەندی هاوڕێ شکاوە تکایە دووبارە هەوڵدە پەیوەندی بکە."
 
 #: site/dashboard/wizard.php:260
-#, fuzzy, php-format
+#, php-format
 msgid "Successfully connected with friend %s"
-msgstr "بە سەرکەوتوویی پەیوەندیت کرد لەگەڵ هاوڕێکەت"
+msgstr "بە سەرکەوتوویی پەیوەندیت کرد لەگەڵ هاوڕێکەت %s"
 
 #: site/dashboard/wizard.php:264
 msgid "Checking in"
@@ -5566,7 +5566,7 @@ msgstr "خشتەی پێداچوونەوە"
 #, fuzzy, php-format
 msgctxt "1 of 10 selected"
 msgid "%1$s of %2$s selected"
-msgstr "%1$‏sلە s$2%هەڵبژێردزاوە"
+msgstr "$s لە%2$s  هەڵبژێردزاوە"
 
 #: site/dashboard/wizard.php:299
 msgctxt "All 10 sessions scheduled"
@@ -5574,10 +5574,10 @@ msgid "Ready"
 msgstr "ئامادە"
 
 #: site/dashboard/wizard.php:300
-#, fuzzy, php-format
+#, php-format
 msgctxt "Too many selected: 2"
 msgid "Too many selected: %s"
-msgstr "زۆر هەڵبژێردراونs%"
+msgstr "زۆر هەڵبژێردراون %s"
 
 #: site/dashboard/wizard.php:301
 msgid "Incorrect number of sessions selected"
@@ -5585,9 +5585,9 @@ msgstr "ژمارەی هەڵەی دانیشتنەکان هەڵبژێرە"
 
 #: site/dashboard/wizard.php:302 site/dashboard/wizard.php:304
 #: site/dashboard/wizard.php:306 site/dashboard/wizard.php:307
-#, fuzzy, php-format
+#, php-format
 msgid "Set %s"
-msgstr "S%‎دابنێ"
+msgstr "دابنێ %s"
 
 #: site/dashboard/wizard.php:304
 msgid "Group Name"
@@ -6074,47 +6074,47 @@ msgid "How does Zúme Training Work?"
 msgstr "ڕاهێنانی Zúme چۆن کاردەکات؟"
 
 #: site/pages/about.php:164 site/pages/home.php:211
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "%1$sFree Registration%2$s gives you full access to all training materials "
 "and online coaching."
 msgstr ""
-"%1$ناو تۆمارکردنی بێبەرامبەر%2$s دەستڕاگەیشتنێکی تەواوت پێدەدات بۆ هەموو "
+"%1$sناو تۆمارکردنی بێبەرامبەر%2$s دەستڕاگەیشتنێکی تەواوت پێدەدات بۆ هەموو "
 "کەرەستەی ڕاهێنان و ڕاهێنەرایەتی ئۆنلاین."
 
 #: site/pages/about.php:168 site/pages/home.php:215
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "%1$sInstructional Videos%2$s help your group understand basic principles of "
 "multiplying disciples."
 msgstr ""
-"%1$ڤیدیۆی فێرکاری%2$ یارمەتی گروپەکەت دەدەن لە بنەما سەرەکییەکانی زۆرکردنی "
+"%1$sڤیدیۆی فێرکاری%2$s یارمەتی گروپەکەت دەدەن لە بنەما سەرەکییەکانی زۆرکردنی "
 "شاگردەکان تێبگەن."
 
 #: site/pages/about.php:172 site/pages/home.php:219
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "%1$sGroup Discussions%2$s help your group think through what is being shared."
 msgstr ""
-"%1$باسەکانی گروپ%2$ یارمەتی گروپەکەت دەدەن بیر لەوە بکەنەوە کە چی هاوبەش "
+"%1$sباسەکانی گروپ%2$s یارمەتی گروپەکەت دەدەن بیر لەوە بکەنەوە کە چی هاوبەش "
 "دەکرێت."
 
 #: site/pages/about.php:176 site/pages/home.php:223
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "%1$sSimple Exercises%2$s help your group put what you are learning into "
 "practice."
 msgstr ""
-"%1$‏sمەشقی سادە%2$ یارمەتی گروپەکەت دەدەن ئەوەی فێری دەبیت بیخەنە بواری "
+"%1$sمەشقی سادە%2$s یارمەتی گروپەکەت دەدەن ئەوەی فێری دەبیت بیخەنە بواری "
 "جێبەجێکردنەوە."
 
 #: site/pages/about.php:180 site/pages/home.php:227
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "%1$sSession Challenges%2$s help your group keep learning and growing between "
 "sessions."
 msgstr ""
-"%1$‏sتەحەددیاتی دانیشتن%2$s یارمەتی گروپەکەت دەدات بەردەوام بێت لە فێربوون و "
+"%1$sتەحەددیاتی دانیشتن%2$s یارمەتی گروپەکەت دەدات بەردەوام بێت لە فێربوون و "
 "گەشەکردن لە نێوان دانیشتنەکاندا."
 
 #: site/pages/about.php:203
@@ -6688,9 +6688,9 @@ msgstr ""
 "ئەم چەمک و لێهاتووییانە کڵێساکەمان و کاریگەرییەکانمان لەسەر جیهان گۆڕی. ~ ڕ"
 
 #: site/pages/home.php:351
-#, fuzzy, php-format
+#, php-format
 msgid "%s = Yeast"
-msgstr "%= هەویرترش"
+msgstr "%s = هەویرترش"
 
 #: site/pages/home.php:356
 msgid ""
@@ -7307,9 +7307,9 @@ msgid "Create a 3 month plan to help you grow"
 msgstr "پلانی سێ مانگ دروست بکە بۆ ئەوەی یارمەتی بدات گەشە بکەن"
 
 #: utilities/apis/cta-api.php:321
-#, fuzzy, php-format
+#, php-format
 msgid "%s unlocked"
-msgstr "S%‎قوفڵی نەکراوە"
+msgstr "%s قوفڵی نەکراوە"
 
 #: utilities/apis/cta-api.php:335
 msgid "3-Month Plan Created"
@@ -7336,16 +7336,16 @@ msgid "Joined Community"
 msgstr "پەیوەندی بە کۆمەڵگەکردووە"
 
 #: utilities/apis/plans-api.php:126
-#, fuzzy, php-format
+#, php-format
 msgctxt "My first training - username"
 msgid "My first training - %s"
-msgstr "یەکەم ڕاهێنانم s%"
+msgstr "یەکەم ڕاهێنانم %s"
 
 #: utilities/apis/plans-api.php:128
-#, fuzzy, php-format
+#, php-format
 msgctxt "Training 2 - username"
 msgid "Training %1$d - %2$s"
-msgstr "ڕاهێنان d-%2$s$1%"
+msgstr "ڕاهێنان %2$s - %1$d"
 
 #: utilities/hooks/ipstack-admin-tab.php:47
 msgid "Ipstack"
@@ -7409,15 +7409,15 @@ msgstr "کەسێک داوای ڕێستکردنی وشەی نهێنی کردوو�
 
 #. translators: %s: site name
 #: zume-training-system.php:239
-#, fuzzy, php-format
+#, php-format
 msgid "Site Name: %s"
-msgstr "ناوی ماڵپەرs%"
+msgstr "ناوی ماڵپەر%s"
 
 #. translators: %s: user login
 #: zume-training-system.php:241
-#, fuzzy, php-format
+#, php-format
 msgid "Username: %s"
-msgstr "نای بەکارهێنەرs%"
+msgstr "نای بەکارهێنەر%s"
 
 #: zume-training-system.php:242
 msgid "If this was a mistake, just ignore this email and nothing will happen."
@@ -7429,9 +7429,9 @@ msgstr "بۆ ڕێستکردنی وشەی نهێنی خۆت سەردانی ئەم
 
 #. translators: Password reset email subject. %s: Site name
 #: zume-training-system.php:261
-#, fuzzy, php-format
+#, php-format
 msgid "[%s] Password Reset"
-msgstr "ڕێستکردنی وشەی نەهێنیs%"
+msgstr "\\[%s]  ڕێستکردنی وشەی نەهێنی"
 
 #: zume-training-system.php:289
 msgid "Profile Details"
