@@ -1,10 +1,10 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
-
+return;
 /**
  * Class DT_Porch_Menu
  */
-class DT_Porch_Landing_Media_Tab {
+class Zume_Landing_Media {
 
     public $token = 'disciple_tools_porch';
     public $title = 'Porch';
@@ -55,4 +55,4 @@ class DT_Porch_Landing_Media_Tab {
         <?php
     }
 }
-DT_Porch_Landing_Media_Tab::instance();
+Zume_Landing_Media::instance();
