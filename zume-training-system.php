@@ -195,7 +195,7 @@ class Zume_Training {
         //     return;
         // }
 
-        if ( ! in_array( $url_parts[0], [ 'dashboard' ] ) ) {
+        if ( ! in_array( $url_parts[0], [ 'share', 'resources', 'training', 'about', 'how-to-follow-jesus'] ) ) {
             return;
         }
         
