@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme Project\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2024-11-18 12:00+0000\n"
+"PO-Revision-Date: 2025-05-26 10:03+0000\n"
 "Last-Translator: Kyle Koval <kyle.koval@gmail.com>\n"
 "Language-Team: Italian <https://translate.disciple.tools/projects/"
 "zume-training/zume-training-system/it_IT/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.3\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: 404.php:73
 msgid "Epic 404 - Not Found"
@@ -1356,7 +1356,7 @@ msgstr "Assistere"
 #: site/activities/coaching-checklist.php:311
 #: site/course/course-content.php:1894 site/course/course-content.php:4872
 msgid "Watch"
-msgstr "Guardate"
+msgstr "Vegliare"
 
 #: site/activities/coaching-checklist-mawl.php:138
 #: site/activities/coaching-checklist-mawl.php:179
@@ -1721,7 +1721,7 @@ msgstr ""
 #: site/course/course-content.php:2648 site/course/course-content.php:3028
 #: site/course/course-content.php:3074
 msgid "WATCH"
-msgstr "GUARDARE"
+msgstr "GUARDATE"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:40
 #: site/course/course-builder.php:407
@@ -4454,7 +4454,7 @@ msgstr "Visualizza Attività"
 #: site/course/presenter.php:168 site/pages/follow-jesus.php:89
 #: site/pages/pieces.php:136
 msgid "Watch This Video"
-msgstr "Guardare questo video"
+msgstr "Guardate questo video"
 
 #: site/dashboard/checkin-dashboard.php:29 site/pages/checkin.php:27
 #: site/pages/checkin.php:255
@@ -6369,7 +6369,7 @@ msgstr "Come seguire Gesù"
 
 #: site/pages/follow-jesus.php:90 site/pages/pieces.php:137
 msgid "Ask Yourself"
-msgstr "Chiedilo a te stesso"
+msgstr "Chiedi a te stesso"
 
 #: site/pages/follow-jesus.php:91 site/pages/pieces.php:138
 msgid "Download Free Guidebook"
@@ -6680,7 +6680,7 @@ msgstr "Formare Altri"
 
 #: site/pages/home.php:177
 msgid "I'm Ready!"
-msgstr "Sono pronto/a!"
+msgstr "Sono pronto!"
 
 #: site/pages/home.php:181
 msgid "Ordinary People. Simple Steps."
@@ -6791,7 +6791,7 @@ msgstr ""
 
 #: site/pages/home.php:361
 msgid "Ready to take your next steps?"
-msgstr "Sei pronto/a a fare i tuoi prossimi passi?"
+msgstr "Sei pronto a fare i tuoi prossimi passi?"
 
 #: site/pages/home.php:365
 msgid "Register Free."
