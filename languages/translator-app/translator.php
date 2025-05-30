@@ -5,7 +5,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 // phpcs:disable
 
-use Gettext\Loader\PoLoader;
+use Gettext\Loader\PoLoader; 
 
 class Zume_Training_Translator extends Zume_Magic_Page
 {
