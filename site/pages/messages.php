@@ -13,6 +13,8 @@ class Zume_Messages extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'message';
     public static $token = 'app_message';
+    public $email = '';
+    public $user_id = '';
 
     private static $_instance = null;
     public static function instance() {
@@ -49,6 +51,12 @@ class Zume_Messages extends Zume_Magic_Page
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
 
             add_filter( 'wp_enqueue_scripts', [ $this, 'enqueue_zume_training_scripts' ] );
+
+            if ( isset( $_GET['email'], $_GET['user_id'] ) && ! empty( $_GET['email'] ) && ! empty( $_GET['user_id'] ) && current_user_can( 'administrator' ) ) {
+                $this->email = sanitize_text_field( wp_unslash( $_GET['email'] ) );
+                $this->user_id = sanitize_text_field( wp_unslash( $_GET['user_id'] ) );
+                $this->send_dev_email( $this->email, $this->user_id );
+            }
         }
     }
 
@@ -287,6 +295,40 @@ class Zume_Messages extends Zume_Magic_Page
             </html>
         </div> <!-- wrapper-->
         <br><br><br></br></br></br>
+
+        <?php if (  current_user_can( 'administrator' ) ) { ?>
+            
+            <div style="width: 800px; margin: 0 auto;">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="" style="margin-right: 20px;">
+                
+                <label for="user_id">User ID:</label>
+                <input type="text" id="user_id" name="user_id" value="">
+
+                <button onclick="sendDevEmail()" class="button">Send Dev Email</button>
+
+                <script>
+                    function sendDevEmail() {
+                        const email = document.getElementById('email').value;
+                        const userId = document.getElementById('user_id').value;
+                        
+                        if (!email || !userId) {
+                            alert('Please enter both email and user ID');
+                            return;
+                        }
+
+                        const currentUrl = window.location.href;
+                        const separator = currentUrl.includes('?') ? '&' : '?';
+                        const newUrl = `${currentUrl}${separator}email=${encodeURIComponent(email)}&user_id=${encodeURIComponent(userId)}`;
+                        
+                        window.location.href = newUrl;
+                    }
+                </script>
+            </div>
+            
+        <?php } ?>
+        
+        
         <?php
     }
 
@@ -311,6 +353,40 @@ class Zume_Messages extends Zume_Magic_Page
         $html = ob_get_contents();
         ob_end_clean();
         return $html;
+    }
+
+    public function send_dev_email( $email, $user_id ) {
+        $user = get_user_by( 'id', $user_id );
+
+        // get language code from url
+        $language_code = zume_get_url_pieces()['lang_code'] ?? 'en';
+
+        // get message id from url
+        $message_id = isset( $_GET['m'] ) ? sanitize_key( $_GET['m'] ) : '';
+
+        // get message
+        $messages = Zume_System_Encouragement_API::_build_user_templates( $language_code, $user_id );
+        $message = $messages[$message_id];
+
+        // send email
+        // dt_write_log( $message );
+        // dt_write_log( zume_replace_placeholder( $message['body'], $language_code, $user_id ) );
+        // dt_write_log( $email );
+        // dt_write_log( $user );
+        // dt_write_log( $user_id );
+        // dt_write_log( $language_code );
+        // dt_write_log( $message_id );
+        
+       $headers = array(
+           'Content-Type: text/html; charset=UTF-8',
+           'From: Zúme Training <noreply@zume.training>'
+       );
+       $send = wp_mail( $email, $message['subject'], zume_replace_placeholder( $message['body'], $language_code, $user_id ), $headers );
+       
+       dt_write_log( $send );
+       dt_write_log( $message['subject'] );
+       dt_write_log( zume_replace_placeholder( $message['body'], $language_code, $user_id ) );
+    
     }
 
     public function query_message( $language_code, $message_id ) {
