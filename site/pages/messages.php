@@ -294,7 +294,7 @@ class Zume_Messages extends Zume_Magic_Page
             </body>
             </html>
         </div> <!-- wrapper-->
-        <br><br><br></br></br></br>
+        <br><br><br>
 
         <?php if (  current_user_can( 'administrator' ) ) { ?>
             
@@ -325,6 +325,7 @@ class Zume_Messages extends Zume_Magic_Page
                     }
                 </script>
             </div>
+            </br></br></br>
             
         <?php } ?>
         
@@ -357,9 +358,10 @@ class Zume_Messages extends Zume_Magic_Page
 
     public function send_dev_email( $email, $user_id ) {
         $user = get_user_by( 'id', $user_id );
-
-        // get language code from url
-        $language_code = zume_get_url_pieces()['lang_code'] ?? 'en';
+        [
+            'lang_code' => $language_code,
+            'url_parts' => $url_parts,
+        ] = zume_get_url_pieces();
 
         // get message id from url
         $message_id = isset( $_GET['m'] ) ? sanitize_key( $_GET['m'] ) : '';
@@ -368,25 +370,16 @@ class Zume_Messages extends Zume_Magic_Page
         $messages = Zume_System_Encouragement_API::_build_user_templates( $language_code, $user_id );
         $message = $messages[$message_id];
 
+        // build email body
+        $email_body = Zume_System_Encouragement_API::build_email( zume_replace_placeholder( $message['body'], $language_code, $user_id ), $language_code, $user_id );
+
         // send email
-        // dt_write_log( $message );
-        // dt_write_log( zume_replace_placeholder( $message['body'], $language_code, $user_id ) );
-        // dt_write_log( $email );
-        // dt_write_log( $user );
-        // dt_write_log( $user_id );
-        // dt_write_log( $language_code );
-        // dt_write_log( $message_id );
-        
        $headers = array(
            'Content-Type: text/html; charset=UTF-8',
            'From: Zúme Training <noreply@zume.training>'
        );
-       $send = wp_mail( $email, $message['subject'], zume_replace_placeholder( $message['body'], $language_code, $user_id ), $headers );
+       $send = wp_mail( $email, $message['subject'], $email_body, $headers );
        
-       dt_write_log( $send );
-       dt_write_log( $message['subject'] );
-       dt_write_log( zume_replace_placeholder( $message['body'], $language_code, $user_id ) );
-    
     }
 
     public function query_message( $language_code, $message_id ) {

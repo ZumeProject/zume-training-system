@@ -313,6 +313,8 @@ class Zume_System_Encouragement_API
             WHERE p.post_type = 'zume_messages'", ARRAY_A
         );
 
+        $messages = [];
+
         foreach ( $raw_messages as $message ) {
             if ( !isset( $messages[$message['post_id']] ) ) {
                 $messages[$message['post_id']] = [];
@@ -393,7 +395,6 @@ class Zume_System_Encouragement_API
 
                 /*—Body copy container—*/
                 #zmail .zmail-body{
-                    padding:16px;
                 }
 
                 /*—Top bar—*/
