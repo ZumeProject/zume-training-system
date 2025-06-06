@@ -213,24 +213,24 @@ class Zume_System_Encouragement_API
                     'drop_date' => 0, // 0 means immediate
                     'replace_plan' => true,
                 ],
-                // [
-                //     'message_post_id' => 100017, // New Training Created
-                //     'message_type' => 'email',
-                //     'drop_date' => strtotime( '+1 day' ), // 0 means immediate
-                //     'replace_plan' => true,
-                // ],
-                // [
-                //     'message_post_id' => 100018, // New Training Created
-                //     'message_type' => 'email',
-                //     'drop_date' => strtotime( '+2 day' ), // 0 means immediate
-                //     'replace_plan' => true,
-                // ],
-                // [
-                //     'message_post_id' => 100019, // New Training Created
-                //     'message_type' => 'email',
-                //     'drop_date' => strtotime( '+4 day' ), // 0 means immediate
-                //     'replace_plan' => true,
-                // ],
+                [
+                    'message_post_id' => 100017, // New Training Created
+                    'message_type' => 'email',
+                    'drop_date' => strtotime( '+1 day' ), // 0 means immediate
+                    'replace_plan' => true,
+                ],
+                [
+                    'message_post_id' => 100018, // New Training Created
+                    'message_type' => 'email',
+                    'drop_date' => strtotime( '+2 day' ), // 0 means immediate
+                    'replace_plan' => true,
+                ],
+                [
+                    'message_post_id' => 100019, // New Training Created
+                    'message_type' => 'email',
+                    'drop_date' => strtotime( '+4 day' ), // 0 means immediate
+                    'replace_plan' => true,
+                ],
                 
             ];
         }
@@ -242,18 +242,18 @@ class Zume_System_Encouragement_API
                     'drop_date' => 0, // 0 means immediate
                     'replace_plan' => true,
                 ],
-                // [
-                //     'message_post_id' => 100049, // Finish Strong #1
-                //     'message_type' => 'email',
-                //     'drop_date' => strtotime( '+2 day' ),
-                //     'replace_plan' => true,
-                // ],
-                // [
-                //     'message_post_id' => 100050, // Finish Strong #2
-                //     'message_type' => 'email',
-                //     'drop_date' => strtotime( '+4 day' ),
-                //     'replace_plan' => true,
-                // ],
+                [
+                    'message_post_id' => 100049, // Finish Strong #1
+                    'message_type' => 'email',
+                    'drop_date' => strtotime( '+2 day' ),
+                    'replace_plan' => true,
+                ],
+                [
+                    'message_post_id' => 100050, // Finish Strong #2
+                    'message_type' => 'email',
+                    'drop_date' => strtotime( '+4 day' ),
+                    'replace_plan' => true,
+                ],
                 
             ];
         }
@@ -561,6 +561,76 @@ class Zume_System_Encouragement_API
         $html = ob_get_contents();
         ob_end_clean();
         return $html;
+    }
+
+    /**
+     * Query messages by date and get the oldest message per user
+     * 
+     * @param string $date The date to query messages for (format: Y-m-d)
+     * @return array Array of messages with one message per user (the oldest one)
+     */
+    public static function query_messages_by_date($date) {
+        global $wpdb;
+        
+        // Convert date to timestamp for comparison
+        $timestamp = strtotime($date);
+        if (!$timestamp) {
+            return [];
+        }
+        
+        // Query to get the oldest message per user for the given date
+        $sql = $wpdb->prepare(
+            "SELECT m1.* 
+            FROM zume_dt_zume_message_plan m1
+            INNER JOIN (
+                SELECT user_id, MIN(drop_date) as oldest_drop_date
+                FROM zume_dt_zume_message_plan
+                WHERE DATE(FROM_UNIXTIME(drop_date)) = DATE(FROM_UNIXTIME(%d))
+                GROUP BY user_id
+            ) m2 ON m1.user_id = m2.user_id AND m1.drop_date = m2.oldest_drop_date
+            WHERE DATE(FROM_UNIXTIME(m1.drop_date)) = DATE(FROM_UNIXTIME(%d))
+            ORDER BY m1.drop_date ASC",
+            $timestamp,
+            $timestamp
+        );
+        
+        $messages = $wpdb->get_results($sql, ARRAY_A);
+        
+        // If we have messages, enrich them with message content
+        if (!empty($messages)) {
+            $message_templates = self::_query_messages();
+            
+            foreach ($messages as $key => $message) {
+                if (isset($message_templates[$message['message_post_id']])) {
+                    $messages[$key]['message_content'] = $message_templates[$message['message_post_id']];
+                }
+            }
+        }
+        
+        return $messages;
+    }
+
+    /**
+     * Query message templates from the database
+     * 
+     * @return array Array of message templates indexed by post_id
+     */
+    private static function _query_messages() {
+        global $wpdb;
+        
+        $sql = "SELECT ID, post_content 
+                FROM {$wpdb->posts} 
+                WHERE post_type = 'zume_message' 
+                AND post_status = 'publish'";
+        
+        $results = $wpdb->get_results($sql, ARRAY_A);
+        
+        $messages = [];
+        foreach ($results as $result) {
+            $messages[$result['ID']] = $result['post_content'];
+        }
+        
+        return $messages;
     }
 }
 new Zume_System_Encouragement_API;
