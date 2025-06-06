@@ -320,8 +320,13 @@ class Zume_System_Encouragement_API
                 $messages[$message['post_id']] = [];
             }
             if ( str_ends_with( $message['meta_key'], $language_code ) ) {
-                $new_key = str_replace( '_'.$language_code, '', $message['meta_key'] );
-                $messages[$message['post_id']][$new_key] = $message['meta_value'];
+                if ( 'es_es' === $language_code ) {
+                    $new_key = str_replace( '_es_es', '', $message['meta_key'] );
+                    $messages[$message['post_id']][$new_key] = $message['meta_value'];
+                } else {
+                    $new_key = str_replace( '_'.$language_code, '', $message['meta_key'] );
+                    $messages[$message['post_id']][$new_key] = $message['meta_value'];
+                }
             }
             if ( 'body' === $message['meta_key'] ) {
                 $messages[$message['post_id']]['body'] = self::build_email( $message['meta_value'], $language_code, $user_id );
