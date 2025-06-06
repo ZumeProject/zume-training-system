@@ -6,12 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Ensure this script only runs in the admin area
 
-
 class Zume_Email_Test_Admin {
     /**
-     * @var string The test date for email testing
+     * @var Zume_Encouragement_Cron The cron instance for testing
      */
-    private $test_date;
+    private $cron_instance;
 
     /**
      * Constructor
@@ -20,6 +19,18 @@ class Zume_Email_Test_Admin {
         if ( ! is_admin() ) {
             return;
         }
+        
+        // Make sure the cron class is available
+        if ( ! class_exists( 'Zume_Encouragement_Cron' ) ) {
+            add_action( 'admin_notices', function() {
+                echo '<div class="notice notice-error"><p>Zume_Encouragement_Cron class not found. Please ensure the encouragement-cron.php file is loaded.</p></div>';
+            });
+            return;
+        }
+        
+        // Get the global cron instance
+        $this->cron_instance = new Zume_Encouragement_Cron();
+        
         add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
         add_action( 'admin_init', array( $this, 'handle_form_submission' ) );
@@ -37,135 +48,89 @@ class Zume_Email_Test_Admin {
         if ( isset( $_POST['run_cron_test'] ) && isset( $_POST['cron_test_date'] ) ) {
             $this->run_cron_test( sanitize_text_field( $_POST['cron_test_date'] ) );
         }
+
+        // Handle regular cron test (no date - processes oldest messages)
+        if ( isset( $_POST['run_regular_cron_test'] ) ) {
+            $this->run_regular_cron_test();
+        }
     }
 
     /**
-     * Run a test of the encouragement cron job
+     * Run a test of the encouragement cron job with a specific date
      * 
      * @param string $test_date The date to test with
      */
     private function run_cron_test( $test_date ) {
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'dt_zume_message_plan';
-
-        // Convert date to timestamp for comparison
-        $timestamp = strtotime($test_date);
-        if (!$timestamp) {
+        if ( empty( $test_date ) ) {
             add_action( 'admin_notices', function() {
-                echo '<div class="notice notice-error"><p>Invalid date format provided.</p></div>';
+                echo '<div class="notice notice-error"><p>Please provide a test date.</p></div>';
             });
             return;
         }
 
-        // Debug information
-        $debug_info = array(
-            'test_date' => $test_date,
-            'timestamp' => $timestamp,
-            'formatted_date' => date('Y-m-d', $timestamp),
-            'raw_messages' => $wpdb->get_results("SELECT * FROM {$table_name} WHERE sent = 0 LIMIT 5")
-        );
-
-        // Query to get messages for the test date, handling both null and 0 values
-        $query = $wpdb->prepare(
-            "SELECT m.* 
-            FROM {$table_name} m
-            INNER JOIN (
-                SELECT user_id, 
-                       MIN(CASE 
-                           WHEN drop_date IS NULL OR drop_date = 0 THEN 0 
-                           ELSE drop_date 
-                       END) as oldest_date
-                FROM {$table_name}
-                WHERE sent = 0
-                AND (
-                    drop_date IS NULL 
-                    OR drop_date = 0 
-                    OR DATE(FROM_UNIXTIME(drop_date)) = DATE(FROM_UNIXTIME(%d))
-                )
-                GROUP BY user_id
-            ) sub ON m.user_id = sub.user_id 
-            AND (
-                (m.drop_date IS NULL AND sub.oldest_date = 0) OR
-                (m.drop_date = 0 AND sub.oldest_date = 0) OR
-                (m.drop_date = sub.oldest_date)
-            )
-            WHERE m.sent = 0
-            ORDER BY m.drop_date ASC",
-            $timestamp
-        );
-
-        $messages = $wpdb->get_results($query);
+        // Use the encouragement cron to run the test
+        $results = $this->cron_instance->run_test( $test_date );
         
-        // Add debug information about the query
-        $debug_info['query'] = $query;
-        $debug_info['messages_found'] = count($messages);
-        $debug_info['last_error'] = $wpdb->last_error;
-        
-        if ( empty( $messages ) ) {
-            add_action( 'admin_notices', function() use ($debug_info) {
-                echo '<div class="notice notice-warning">';
-                echo '<p>No messages found for the selected date.</p>';
-                echo '<p>Debug Information:</p>';
-                echo '<pre>' . print_r($debug_info, true) . '</pre>';
-                echo '</div>';
-            });
-            return;
-        }
-
-        // Process messages as if they were being sent by the cron
-        $processed = 0;
-        $errors = array();
-
-        foreach ( $messages as $message ) {
-            try {
-                // Get user data
-                $user = get_user_by( 'id', $message->user_id );
-                if ( !$user ) {
-                    $errors[] = "User not found for ID: {$message->user_id}";
-                    continue;
-                }
-
-                // Get user's language code
-                $language_code = get_user_meta( $message->user_id, 'zume_language', true );
-                if ( empty( $language_code ) ) {
-                    $language_code = 'en';
-                }
-
-                // Build the email content with proper wrapping
-                $email_content = Zume_System_Encouragement_API::build_email(
-                    $message->message,
-                    $language_code,
-                    $message->user_id
-                );
-
-                // Send test email
-                $sent = wp_mail( $message->to, $message->subject, $email_content, $message->headers );
-                
-                if ( $sent ) {
-                    $processed++;
-                } else {
-                    $errors[] = "Failed to send email to: {$message->to}";
-                }
-            } catch ( Exception $e ) {
-                $errors[] = "Error processing message ID {$message->id}: " . $e->getMessage();
-            }
-        }
-
         // Display results
-        add_action( 'admin_notices', function() use ( $processed, $errors, $debug_info ) {
-            if ( $processed > 0 ) {
-                echo '<div class="notice notice-success"><p>Successfully processed ' . $processed . ' messages.</p></div>';
+        $this->display_test_results( $results, "Date-specific Test ($test_date)" );
+    }
+
+    /**
+     * Run a test of the regular encouragement cron job (processes oldest messages)
+     */
+    private function run_regular_cron_test() {
+        // Use the encouragement cron to process unsent messages with results
+        $results = $this->cron_instance->process_unsent_messages( null, true );
+        
+        // Display results
+        $this->display_test_results( $results, "Regular Cron Test (Oldest Messages)" );
+    }
+
+    /**
+     * Display test results in admin notices
+     * 
+     * @param array $results The results from the cron test
+     * @param string $test_type The type of test that was run
+     */
+    private function display_test_results( $results, $test_type ) {
+        add_action( 'admin_notices', function() use ( $results, $test_type ) {
+            echo '<h3>' . esc_html( $test_type ) . ' Results</h3>';
+            
+            // Success messages
+            if ( $results['processed'] > 0 ) {
+                echo '<div class="notice notice-success"><p>Successfully processed ' . $results['processed'] . ' messages.</p></div>';
+            } else {
+                echo '<div class="notice notice-warning"><p>No messages were processed.</p></div>';
             }
-            if ( !empty( $errors ) ) {
-                echo '<div class="notice notice-error"><p>Errors encountered:</p><ul>';
-                foreach ( $errors as $error ) {
+            
+            // Error messages
+            if ( !empty( $results['errors'] ) ) {
+                echo '<div class="notice notice-error">';
+                echo '<p><strong>Errors encountered:</strong></p>';
+                echo '<ul>';
+                foreach ( $results['errors'] as $error ) {
                     echo '<li>' . esc_html( $error ) . '</li>';
                 }
-                echo '</ul></div>';
+                echo '</ul>';
+                echo '</div>';
             }
+            
+            // Debug information
+            if ( !empty( $results['debug_info'] ) ) {
+                echo '<div class="notice notice-info">';
+                echo '<p><strong>Debug Information:</strong></p>';
+                echo '<details>';
+                echo '<summary>Click to view debug details</summary>';
+                echo '<pre style="background: #f1f1f1; padding: 10px; margin: 10px 0; overflow-x: auto;">';
+                echo esc_html( print_r( $results['debug_info'], true ) );
+                echo '</pre>';
+                echo '</details>';
+                echo '</div>';
+            }
+            
+            // Summary
             echo '<div class="notice notice-info">';
-            echo '<p>Debug Information:</p>';
-            echo '<pre>' . print_r($debug_info, true) . '</pre>';
+            echo '<p><strong>Summary:</strong> Found ' . $results['messages_found'] . ' eligible messages, processed ' . $results['processed'] . ' successfully.</p>';
             echo '</div>';
         });
     }
@@ -210,8 +175,10 @@ class Zume_Email_Test_Admin {
             <div class="metabox-holder">
                 <div class="postbox-container" style="width: 100%;">
                     <div class="meta-box-sortables">
+                        
+                        <!-- Date-specific Cron Test -->
                         <div class="postbox">
-                            <h2 class="hndle"><span>Cron Job Test</span></h2>
+                            <h2 class="hndle"><span>Date-Specific Cron Job Test</span></h2>
                             <div class="inside">
                                 <form method="post" action="">
                                     <?php wp_nonce_field( 'zume_email_test_action', 'zume_email_test_nonce' ); ?>
@@ -226,7 +193,11 @@ class Zume_Email_Test_Admin {
                                                        name="cron_test_date" 
                                                        value="<?php echo isset( $_POST['cron_test_date'] ) ? esc_attr( $_POST['cron_test_date'] ) : ''; ?>" 
                                                        class="regular-text">
-                                                <p class="description">This will simulate the cron job running for the selected date and attempt to send emails. It will also process any messages with null or 0 drop_date values.</p>
+                                                <p class="description">
+                                                    This will simulate the cron job running for the selected date and attempt to send emails. 
+                                                    It will process messages scheduled for this date, plus any messages with null or 0 drop_date values.
+                                                    <br><strong>Note:</strong> This actually sends emails and marks messages as sent!
+                                                </p>
                                             </td>
                                         </tr>
                                     </table>
@@ -235,11 +206,34 @@ class Zume_Email_Test_Admin {
                                                name="run_cron_test" 
                                                id="run_cron_test" 
                                                class="button button-primary" 
-                                               value="Run Cron Test">
+                                               value="Run Date-Specific Test">
                                     </p>
                                 </form>
                             </div>
                         </div>
+
+                        <!-- Regular Cron Test -->
+                        <div class="postbox">
+                            <h2 class="hndle"><span>Regular Cron Job Test</span></h2>
+                            <div class="inside">
+                                <form method="post" action="">
+                                    <?php wp_nonce_field( 'zume_email_test_action', 'zume_email_test_nonce' ); ?>
+                                    <p class="description">
+                                        This will run the regular cron job logic, processing the oldest unsent message for each user.
+                                        This is the same logic that runs automatically twice daily.
+                                        <br><strong>Note:</strong> This actually sends emails and marks messages as sent!
+                                    </p>
+                                    <p class="submit">
+                                        <input type="submit" 
+                                               name="run_regular_cron_test" 
+                                               id="run_regular_cron_test" 
+                                               class="button button-secondary" 
+                                               value="Run Regular Cron Test">
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -53,8 +53,8 @@ class Zume_System_Encouragement_API
         foreach ( $new_plan as $message ) {
             unset( $message['replace_plan'] );
             $message['to'] = $email;
-            $message['headers'] = $headers;
             $message['user_id'] = $user_id;
+            $message['lang_code'] = $language_code;
             $message['message'] = self::build_email( $templates[$message['message_post_id']]['body'], $language_code, $user_id );
             $message['subject'] = $templates[$message['message_post_id']]['subject'];
             
@@ -63,7 +63,7 @@ class Zume_System_Encouragement_API
             // if immediate is true, send the email immediately
             if ( empty($message['drop_date'] ) ) {
                 // dt_write_log( 'Sending email immediately' );
-                $sent = wp_mail( $message['to'], $message['subject'], $message['message'], $message['headers'] );
+                $sent = wp_mail( $message['to'], $message['subject'], $message['message'], $headers );
                 $message['sent'] = $sent;
                 // dt_write_log( '$sent' );
                 // dt_write_log( $sent );
