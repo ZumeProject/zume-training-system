@@ -55,8 +55,8 @@ class Zume_Local_Map extends Zume_Magic_Page
             add_action( 'dt_blank_head', [ $this, '_header' ] );
             add_action( 'dt_blank_head', [ $this, 'consistent_head' ], 5 );
             add_action( 'dt_blank_body', [ $this, 'body' ] );
-            add_action( 'dt_blank_footer', [ $this, '_footer' ] );
-            add_action( 'wp_footer', [ $this, 'action_wp_footer' ] );
+            add_action( 'dt_blank_footer', [ $this, '_footer' ] ); // Removed standard Zume footer
+            // add_action( 'wp_footer', [ $this, 'action_wp_footer' ] );
             add_action( 'wp_footer', [ $this, 'footer_javascript' ] );
 
             add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
@@ -327,6 +327,115 @@ class Zume_Local_Map extends Zume_Magic_Page
             .stats-card::-webkit-scrollbar-thumb:hover {
                 background: #a8a8a8;
             }
+
+            .vision-card {
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                border: none;
+                overflow: hidden;
+                margin-bottom: 2rem;
+            }
+            
+            .vision-section {
+                margin-bottom: 3rem;
+            }
+            
+            .vision-content {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .vision-description {
+                flex: 1;
+                min-width: 300px;
+            }
+            
+            .vision-description p {
+                margin: 0;
+                color: #495057;
+                line-height: 1.6;
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+            
+            .vision-goals {
+                display: flex;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+            
+            .vision-goal {
+                background: #f8f9fa;
+                border-radius: 8px;
+                border-left: 4px solid #4154f1;
+                padding: 1rem 1.5rem;
+                min-width: 200px;
+                text-align: center;
+            }
+            
+            .vision-goal strong {
+                color: #4154f1;
+                display: block;
+                margin-bottom: 0.5rem;
+                font-size: 1rem;
+            }
+            
+            /* Recent Activity Card Styles */
+            .recent-activity-section {
+                margin-top: 3rem;
+            }
+            
+            .activity-card {
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                border: none;
+                overflow: hidden;
+                transition: transform 0.3s ease;
+            }
+            
+            .activity-card:hover {
+                transform: translateY(-2px);
+            }
+            
+            .activity-card .card-header {
+                background: linear-gradient(135deg, #6f42c1 0%, #563d7c 100%);
+                color: white;
+            }
+            
+            .activity-content {
+                text-align: center;
+                padding: 1rem 0;
+            }
+            
+            .activity-stat {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .activity-number {
+                font-size: 3rem;
+                font-weight: 700;
+                color: #6f42c1;
+                line-height: 1;
+            }
+            
+            .activity-label {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #495057;
+            }
+            
+            .activity-period {
+                font-size: 0.9rem;
+                color: #6c757d;
+                opacity: 0.8;
+            }
         </style>
         <script>
             const localMapObject = <?php echo json_encode([
@@ -374,7 +483,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 // Initialize the map
                 const map = new mapboxgl.Map({
                     container: 'map',
-                    style: 'mapbox://styles/discipletools/cl1qp8vuf002l15ngm5a7up59', // Zume's custom style
+                    style: 'mapbox://styles/mapbox/streets-v12', // Zume's custom style
                     center: [parseFloat(locationData.longitude), parseFloat(locationData.latitude)],
                     zoom: getZoomLevel(locationData.level),
                     minZoom: 2,
@@ -432,33 +541,12 @@ class Zume_Local_Map extends Zume_Magic_Page
                         const containerRect = mapContainer.getBoundingClientRect();
                         const sectionRect = mapSection.getBoundingClientRect();
                         
-                        console.log('Map container dimensions:', {
-                            container: {
-                                width: containerRect.width,
-                                height: containerRect.height,
-                                top: containerRect.top,
-                                left: containerRect.left,
-                                bottom: containerRect.bottom,
-                                right: containerRect.right
-                            },
-                            section: {
-                                width: sectionRect.width,
-                                height: sectionRect.height,
-                                top: sectionRect.top,
-                                left: sectionRect.left,
-                                bottom: sectionRect.bottom,
-                                right: sectionRect.right
-                            },
-                            viewport: {
-                                width: window.innerWidth,
-                                height: window.innerHeight
-                            }
-                        });
+                    
                         
                         // Force map to resize to ensure it fills the container
                         setTimeout(() => {
                             map.resize();
-                            console.log('Map resized to fit container');
+
                         }, 100);
                     }
                 }
@@ -580,10 +668,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                         }
                     });
 
-                    console.log('Grid name label added:', {
-                        name: locationName,
-                        center: [centerLng, centerLat]
-                    });
+              
                 }
 
                 /**
@@ -592,7 +677,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 function loadGridPolygon() {
                     const gridId = localMapObject.grid_id;
                     if (!gridId) {
-                        console.log('No grid_id available for polygon loading');
+          
                         return;
                     }
 
@@ -639,12 +724,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                             const polygonBounds = calculatePolygonBounds(geojsonData);
                             
                             if (polygonBounds) {
-                                console.log('Polygon bounds calculated:', {
-                                    north: polygonBounds.north,
-                                    south: polygonBounds.south,
-                                    east: polygonBounds.east,
-                                    west: polygonBounds.west
-                                });
+                               
                                 
                                 // Add grid name label at the center of the polygon
                                 addGridNameLabel(polygonBounds);
@@ -655,7 +735,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                                     [polygonBounds.east, polygonBounds.north]  // Northeast corner
                                 );
 
-                                console.log('LngLatBounds created:', bounds);
+                               
 
                                 // Fit the map to the polygon bounds with padding
                                 map.fitBounds(bounds, {
@@ -670,12 +750,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                                     checkMapContainerDimensions();
                                     
                                     const currentBounds = map.getBounds();
-                                    console.log('Map bounds after fitting:', {
-                                        north: currentBounds.getNorth(),
-                                        south: currentBounds.getSouth(),
-                                        east: currentBounds.getEast(),
-                                        west: currentBounds.getWest()
-                                    });
+                                   
                                     
                                     // Check if polygon bounds are within visible area
                                     const isNorthVisible = polygonBounds.north <= currentBounds.getNorth();
@@ -683,38 +758,14 @@ class Zume_Local_Map extends Zume_Magic_Page
                                     const isEastVisible = polygonBounds.east <= currentBounds.getEast();
                                     const isWestVisible = polygonBounds.west >= currentBounds.getWest();
                                     
-                                    console.log('Polygon visibility check:', {
-                                        northVisible: isNorthVisible,
-                                        southVisible: isSouthVisible,
-                                        eastVisible: isEastVisible,
-                                        westVisible: isWestVisible,
-                                        allVisible: isNorthVisible && isSouthVisible && isEastVisible && isWestVisible
-                                    });
+                                   
                                     
                                     // Check if the map canvas is clipped
                                     const canvas = map.getCanvas();
                                     const canvasRect = canvas.getBoundingClientRect();
                                     const containerRect = document.getElementById('map').getBoundingClientRect();
                                     
-                                    console.log('Canvas vs Container comparison:', {
-                                        canvas: {
-                                            width: canvasRect.width,
-                                            height: canvasRect.height,
-                                            top: canvasRect.top,
-                                            bottom: canvasRect.bottom
-                                        },
-                                        container: {
-                                            width: containerRect.width,
-                                            height: containerRect.height,
-                                            top: containerRect.top,
-                                            bottom: containerRect.bottom
-                                        },
-                                        isCanvasClipped: {
-                                            width: canvasRect.width !== containerRect.width,
-                                            height: canvasRect.height !== containerRect.height,
-                                            bottom: canvasRect.bottom > containerRect.bottom
-                                        }
-                                    });
+                                   
                                 }, 2100);
                             }
 
@@ -943,7 +994,7 @@ class Zume_Local_Map extends Zume_Magic_Page
             <?php else : ?>
                 <div class="local-map-header">
                     <div class="container-md py-1">
-                        <h1><?php echo esc_html( $this->location_data['name'] ?? 'Location' ) ?></h1>
+                        <h1><?php echo esc_html( $this->location_data['full_name'] ?? $this->location_data['name'] ?? 'Location' ) ?></h1>
                         <p class="location-meta">
                             <?php echo esc_html__( 'Grid ID:', 'zume' ) ?> <?php echo esc_html( $this->grid_id ) ?> | 
                             <?php echo esc_html__( 'Population:', 'zume' ) ?> <?php echo number_format( $this->location_data['population'] ?? 0 ) ?> |
@@ -961,10 +1012,47 @@ class Zume_Local_Map extends Zume_Magic_Page
                     <!-- Infographic Section -->
                     <div class="infographic-section">
                         <div class="container-md">
+                            <!-- Vision Card - Full Width -->
+                            <div class="vision-section mb-4">
+                                <div class="card vision-card">
+                                    <div class="card-header">
+                                        <h3><?php echo esc_html__( 'Zúme Vision', 'zume' ) ?></h3>
+                                        <div class="icon-wrapper">
+                                            <span class="icon z-icon-target"></span>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="vision-content">
+                                            <div class="vision-description">
+                                                <p><?php echo esc_html__( 'The Zúme vision is to saturate the world with multiplying disciples in our generation.', 'zume' ) ?></p>
+                                            </div>
+                                            <div class="vision-goals">
+                                                <div class="vision-goal">
+                                                    <strong><?php echo esc_html__( 'Trainees Goal:', 'zume' ) ?></strong><br>
+                                                    <?php if ( $this->location_data['country_code'] === 'US' ) : ?>
+                                                        1 <?php echo esc_html__( 'per 5,000 people', 'zume' ) ?>
+                                                    <?php else : ?>
+                                                        1 <?php echo esc_html__( 'per 50,000 people', 'zume' ) ?>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="vision-goal">
+                                                    <strong><?php echo esc_html__( 'Churches Goal:', 'zume' ) ?></strong><br>
+                                                    <?php if ( $this->location_data['country_code'] === 'US' ) : ?>
+                                                        2 <?php echo esc_html__( 'per 5,000 people', 'zume' ) ?>
+                                                    <?php else : ?>
+                                                        2 <?php echo esc_html__( 'per 50,000 people', 'zume' ) ?>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Stats Cards Grid -->
                             <div class="grid-x grid-margin-x">
-                                
                                 <!-- Trainees Card -->
-                                <div class="cell medium-6 large-4">
+                                <div class="cell medium-6">
                                     <div class="card stats-card trainees-card">
                                         <div class="card-header">
                                             <h3><?php echo esc_html__( 'Trainees', 'zume' ) ?></h3>
@@ -996,7 +1084,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                                 </div>
 
                                 <!-- Churches Card -->
-                                <div class="cell medium-6 large-4">
+                                <div class="cell medium-6">
                                     <div class="card stats-card churches-card">
                                         <div class="card-header">
                                             <h3><?php echo esc_html__( 'Simple Churches', 'zume' ) ?></h3>
@@ -1026,39 +1114,33 @@ class Zume_Local_Map extends Zume_Magic_Page
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Vision Card -->
-                                <div class="cell medium-12 large-4">
-                                    <div class="card vision-card">
-                                        <div class="card-header">
-                                            <h3><?php echo esc_html__( 'Zúme Vision', 'zume' ) ?></h3>
+                            <!-- Recent Activity Section -->
+                            <div class="recent-activity-section">
+                                <div class="card activity-card">
+                                    <div class="card-header">
+                                        <h3><?php echo esc_html__( 'Recent Growth', 'zume' ) ?></h3>
+                                        <div class="icon-wrapper">
+                                            <span class="icon z-icon-trending-up"></span>
                                         </div>
-                                        <div class="card-body">
-                                            <div class="vision-goals">
-                                                <div class="vision-goal">
-                                                    <strong><?php echo esc_html__( 'Trainees Goal:', 'zume' ) ?></strong><br>
-                                                    <?php if ( $this->location_data['country_code'] === 'US' ) : ?>
-                                                        1 <?php echo esc_html__( 'per 5,000 people', 'zume' ) ?>
-                                                    <?php else : ?>
-                                                        1 <?php echo esc_html__( 'per 50,000 people', 'zume' ) ?>
-                                                    <?php endif; ?>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="activity-content">
+                                            <div class="activity-stat">
+                                                <div class="activity-number">
+                                                    <?php echo number_format( $this->get_new_trainees_last_year() ) ?>
                                                 </div>
-                                                <div class="vision-goal">
-                                                    <strong><?php echo esc_html__( 'Churches Goal:', 'zume' ) ?></strong><br>
-                                                    <?php if ( $this->location_data['country_code'] === 'US' ) : ?>
-                                                        2 <?php echo esc_html__( 'per 5,000 people', 'zume' ) ?>
-                                                    <?php else : ?>
-                                                        2 <?php echo esc_html__( 'per 50,000 people', 'zume' ) ?>
-                                                    <?php endif; ?>
+                                                <div class="activity-label">
+                                                    <?php echo esc_html__( 'New Trainees in Last Year', 'zume' ) ?>
                                                 </div>
-                                            </div>
-                                            <div class="vision-description">
-                                                <p><?php echo esc_html__( 'The Zúme vision is to saturate the world with multiplying disciples in our generation.', 'zume' ) ?></p>
+                                                <div class="activity-period">
+                                                    <?php echo esc_html__( '(Last 365 days)', 'zume' ) ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -1214,24 +1296,107 @@ class Zume_Local_Map extends Zume_Magic_Page
                 box-shadow: 0 4px 20px rgba(0,0,0,0.1);
                 border: none;
                 overflow: hidden;
+                margin-bottom: 2rem;
             }
             
-            .vision-goals {
-                margin-bottom: 1.5rem;
+            .vision-section {
+                margin-bottom: 3rem;
             }
             
-            .vision-goal {
-                margin-bottom: 1rem;
-                padding: 1rem;
-                background: #f8f9fa;
-                border-radius: 8px;
-                border-left: 4px solid #4154f1;
+            .vision-content {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .vision-description {
+                flex: 1;
+                min-width: 300px;
             }
             
             .vision-description p {
                 margin: 0;
-                color: #6c757d;
+                color: #495057;
                 line-height: 1.6;
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+            
+            .vision-goals {
+                display: flex;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+            
+            .vision-goal {
+                background: #f8f9fa;
+                border-radius: 8px;
+                border-left: 4px solid #4154f1;
+                padding: 1rem 1.5rem;
+                min-width: 200px;
+                text-align: center;
+            }
+            
+            .vision-goal strong {
+                color: #4154f1;
+                display: block;
+                margin-bottom: 0.5rem;
+                font-size: 1rem;
+            }
+            
+            /* Recent Activity Card Styles */
+            .recent-activity-section {
+                margin-top: 3rem;
+            }
+            
+            .activity-card {
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                border: none;
+                overflow: hidden;
+                transition: transform 0.3s ease;
+            }
+            
+            .activity-card:hover {
+                transform: translateY(-2px);
+            }
+            
+            .activity-card .card-header {
+                background: linear-gradient(135deg, #6f42c1 0%, #563d7c 100%);
+                color: white;
+            }
+            
+            .activity-content {
+                text-align: center;
+                padding: 1rem 0;
+            }
+            
+            .activity-stat {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .activity-number {
+                font-size: 3rem;
+                font-weight: 700;
+                color: #6f42c1;
+                line-height: 1;
+            }
+            
+            .activity-label {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #495057;
+            }
+            
+            .activity-period {
+                font-size: 0.9rem;
+                color: #6c757d;
+                opacity: 0.8;
             }
             
             @media (max-width: 768px) {
@@ -1261,6 +1426,31 @@ class Zume_Local_Map extends Zume_Magic_Page
                     padding: 2rem 0;
                     margin-top: 1rem;
                 }
+                
+                .vision-content {
+                    flex-direction: column;
+                    text-align: center;
+                }
+                
+                .vision-goals {
+                    justify-content: center;
+                }
+                
+                .vision-goal {
+                    min-width: 180px;
+                }
+                
+                .recent-activity-section {
+                    margin-top: 2rem;
+                }
+                
+                .activity-number {
+                    font-size: 2.5rem;
+                }
+                
+                .activity-label {
+                    font-size: 1rem;
+                }
             }
         </style>
 
@@ -1276,13 +1466,60 @@ class Zume_Local_Map extends Zume_Magic_Page
         }
 
         $result = $wpdb->get_row( $wpdb->prepare(
-            "SELECT lg.grid_id, lg.name, lg.population, lg.country_code, lg.longitude, lg.latitude, lg.level
+            "SELECT 
+                lg.grid_id, 
+                lg.name, 
+                lg.population, 
+                lg.country_code, 
+                lg.longitude, 
+                lg.latitude, 
+                lg.level,
+                admin0.name as admin0_name,
+                admin1.name as admin1_name,
+                admin2.name as admin2_name
              FROM zume_dt_location_grid lg 
+             LEFT JOIN zume_dt_location_grid admin0 ON lg.admin0_grid_id = admin0.grid_id
+             LEFT JOIN zume_dt_location_grid admin1 ON lg.admin1_grid_id = admin1.grid_id
+             LEFT JOIN zume_dt_location_grid admin2 ON lg.admin2_grid_id = admin2.grid_id
              WHERE lg.grid_id = %d",
             $grid_id
         ), ARRAY_A );
 
+        if ( $result ) {
+            // Build full hierarchical name
+            $result['full_name'] = $this->build_hierarchical_name( $result );
+        }
+
         return $result;
+    }
+
+    private function build_hierarchical_name( $location_data ) {
+        $name_parts = [];
+        
+        // Add the primary location name
+        if ( !empty( $location_data['name'] ) ) {
+            $name_parts[] = $location_data['name'];
+        }
+        
+        // Add admin1 name (state/province level)
+        if ( !empty( $location_data['admin1_name'] ) && 
+             $location_data['admin1_name'] !== $location_data['name'] ) {
+            $name_parts[] = $location_data['admin1_name'];
+        }
+        
+        // Add admin0 name (country level) 
+        if ( !empty( $location_data['admin0_name'] ) && 
+             $location_data['admin0_name'] !== $location_data['name'] &&
+             $location_data['admin0_name'] !== $location_data['admin1_name'] ) {
+            $name_parts[] = $location_data['admin0_name'];
+        }
+        
+        // If we don't have admin0_name but have country_code, use that
+        if ( empty( $location_data['admin0_name'] ) && !empty( $location_data['country_code'] ) ) {
+            $name_parts[] = $location_data['country_code'];
+        }
+        
+        return implode( ', ', $name_parts );
     }
 
     private function calculate_trainees_needed() {
@@ -1350,6 +1587,35 @@ class Zume_Local_Map extends Zume_Magic_Page
             WHERE r.grid_id IN ($prepared_list)
             AND r.type = 'church_report'
         " );
+
+        return intval( $count );
+    }
+
+    private function get_new_trainees_last_year() {
+        global $wpdb;
+        
+        if ( empty( $this->grid_id ) ) {
+            return 0;
+        }
+
+        // Get children grid IDs for this location
+        $children_ids = $this->get_child_grid_ids( $this->grid_id );
+        $all_ids = array_merge( [ $this->grid_id ], $children_ids );
+        $prepared_list = dt_array_to_sql( $all_ids );
+
+        // Calculate timestamp for 365 days ago
+        $one_year_ago = time() - (365 * 24 * 60 * 60);
+
+        $count = $wpdb->get_var( $wpdb->prepare("
+            SELECT COUNT(DISTINCT r.user_id)
+            FROM zume_dt_reports r
+            LEFT JOIN zume_dt_location_grid lg ON lg.grid_id = r.grid_id
+            WHERE r.grid_id IN ($prepared_list)
+            AND r.type = 'system' 
+            AND r.subtype = 'current_level'
+            AND r.value > 0
+            AND r.timestamp >= %d
+        ", $one_year_ago) );
 
         return intval( $count );
     }
