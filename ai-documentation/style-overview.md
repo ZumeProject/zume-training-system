@@ -2,9 +2,10 @@
 
 ## Brand Colors
 
-- **brand**: #008CC7 (Main brand color)
+- **brand**: #00aeff (Main brand color)
 - **brand-light**: #2CACE2
 - **brand-lighter**: #8ACDEA
+- **brand-dark**: #323a68
 - **brand-fade**: #E5F3F9
 
 ## Grayscale Colors
