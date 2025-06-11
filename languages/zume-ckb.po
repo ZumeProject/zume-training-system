@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2025-05-12 12:03+0000\n"
+"PO-Revision-Date: 2025-06-09 14:03+0000\n"
 "Last-Translator: Kevin Fallah <kevin@christianlingua.com>\n"
 "Language-Team: Kurdish (Central) <https://translate.disciple.tools/projects/"
 "zume-training/zume-training-system/ckb/>\n"
@@ -307,7 +307,7 @@ msgstr "لە ئاوهەڵکێشان"
 
 #: globals.php:2333 site/pages/follow-jesus.php:294
 msgid "Prepare Your 3-Minute Testimony"
-msgstr "٣ خولەکی شایەتحاڵی خۆت ئامادەبکە"
+msgstr "٣ خولەک شایەتیدانی خۆت ئامادەبکە"
 
 #: globals.php:2334 site/pages/follow-jesus.php:295
 msgid ""
@@ -319,13 +319,13 @@ msgstr ""
 
 #: globals.php:2335
 msgid "3-Minute Testimony"
-msgstr "٣ خولەکی شایەتحاڵی"
+msgstr "٣ خولەک شایەتیدان"
 
 #: globals.php:2345 site/course/course-content.php:1189
 #: site/course/course-content.php:1470 site/course/course-content.php:3930
 #: site/course/course-content.php:3949 site/pages/follow-jesus.php:177
 msgid "Vision Casting the Greatest Blessing"
-msgstr "گەورەترین بەرەکەتی دیدگەی کاستیک"
+msgstr "مەزنترین بەرەکەتی دیدگەی کاستیک"
 
 #: globals.php:2346 site/course/course-content.php:1270
 #: site/pages/follow-jesus.php:178
@@ -2154,11 +2154,11 @@ msgstr ""
 
 #: site/course/course-content.php:318
 msgid "Accountability Groups are a great way to get ready!"
-msgstr "گروپەکانی بەرپرسیاریەتی ڕێگەیەکی زۆر باشە بۆ ئامادەکاری!"
+msgstr "گروپەکانی بەرپرسیاریەتیلێپرسینەوە ڕێگەیەکی زۆر باشە بۆ ئامادەکاری!"
 
 #: site/course/course-content.php:345
 msgid "Practice Accountability Groups"
-msgstr "گروپەکانی بەرپرسیاریەتی ڕاهێنان بکەن"
+msgstr "گروپەکانی لێپرسینەوە ڕاهێنان بکەن"
 
 #: site/course/course-content.php:348
 msgid "Break into groups of two or three people of the same gender."
@@ -2719,7 +2719,7 @@ msgstr "دابەشبوون بەسەر گروپی دوو بۆ سێ کەسی و ڕ
 
 #: site/course/course-content.php:1260 site/course/course-content.php:1269
 msgid "Great - Greater - Greatest Blessings"
-msgstr "گەورە - گەورەتر - گەورەترین بەرەکەتەکان"
+msgstr "مەزن - مەزنتر - مەزنترین بەرەکەتەکان"
 
 #: site/course/course-content.php:1299
 msgid ""
@@ -3878,9 +3878,9 @@ msgid ""
 "them practice it as well. Share this person‘s name with the group before you "
 "go and reach out to them."
 msgstr ""
-"لە خودا بپرسە کە دەیەوێت لەگەڵ کێدا باسی گەورەترین بەرەکەت بکەیت. با ئەوانیش "
-"مەشقی بکەن. پێش ئەوەی بچیتە لای ناوی کەسەکە لەگەڵ گروپەکەدا باسبکە بەر لە "
-"دانیشتنی داهاتوو."
+"لە خودا بپرسە کە دەیەوێت لەگەڵ کێدا باسی مەزنترین بەرەکەتەکان بکەیت. با "
+"ئەوانیش مەشقی بکەن. پێش ئەوەی بچیتە لای ناوی کەسەکە لەگەڵ گروپەکەدا باسبکە "
+"بەر لە دانیشتنی داهاتوو."
 
 #: site/course/course-content.php:4027
 msgid ""
@@ -4035,9 +4035,10 @@ msgid ""
 "with whomever the Lord impresses on you. Then equip them to share it with "
 "someone else."
 msgstr ""
-"سەیری قوتابی ڕۆحی بکە بۆ ئەوەی بزانن شانشینی لە کوێ نییە لەگەڵ هەر کەسێکدا "
-"بەشی بکە کە پەروەردگار کاریگەری لەسەرت دروست بکات. پاشان ئامێریان بۆ دابین "
-"بکە بۆ ئەوەی لەگەڵ کەسێکی تردا بەشی بکەن."
+"باسی \"بەقوتابیکردنی مراوی ئاسا\" هەروەها "
+"\"چاوەکان بۆ ئەوەی بزانن شانشین لە کوێ نییە\" لەگەڵ هەر کەسێکدا بەشی بکە کە "
+"پەروەردگار کاریگەری لەسەرت دروست بکات. پاشان ئامێریان بۆ دابین بکە بۆ ئەوەی "
+"لەگەڵ کەسێکی تردا بەشی بکەن."
 
 #: site/course/course-content.php:4544 site/course/course-content.php:4549
 msgid "SESSION 11"
@@ -4050,8 +4051,8 @@ msgid ""
 "isn‘t, yet."
 msgstr ""
 "نوێژبکە و سوپاسی خودا بکە چۆن لە ژیانت و ژیانی کەسانی دیکەی دەوروبەرتدا "
-"کاردەکات. نوێژبکە بۆ ئەوەی گروپەکە چاویان بکرێتەوە بۆ ئەوەی بزانن شانشینی لە "
-"کوێ نییە، هێشتا."
+"کاردەکات. نوێژبکە بۆ گروپەکە تاکو "
+"\"چاویان هەبێت بۆ ئەوەی بزانن شانشین لە کوێ نییە\". هێشتا."
 
 #: site/course/course-content.php:4660 site/course/course-content.php:4665
 msgid "SESSION 12"
@@ -5155,14 +5156,11 @@ msgstr ""
 msgid ""
 "I will invite the following people to participate in Prayer Walking with me:"
 msgstr ""
-"بانگهێشتی ئەم کەسانەی خوارەوە دەکەم بۆ ئەوەی لەگەڵمدا بەشداری لە ڕێپێوانی "
-"نوێژ بکەن:"
+"بانگهێشتی ئەم کەسانەی خوارەوە دەکەم بۆ ئەوەی لەگەڵمدا بەشداری نوێژەڕۆ بکەن:"
 
 #: site/dashboard/dashboard.php:347
 msgid "I will Prayer Walk once every [days / weeks / months]."
-msgstr ""
-"من جارێک لە [ڕۆژێک یان هەفتەیەک یان مانگ] کاتێک بە پێ دەڕۆم. بەڕۆیشتنەوە "
-"نوێژدەکەم."
+msgstr "من جارێک نوێژەڕۆ دەکەم لە /[ڕۆژێک یان هەفتەیەک یان مانگ]."
 
 #: site/dashboard/dashboard.php:348
 msgid ""
