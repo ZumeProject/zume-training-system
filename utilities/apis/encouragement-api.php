@@ -57,6 +57,11 @@ class Zume_System_Encouragement_API
             $message['lang_code'] = $language_code;
             $message['message'] = self::build_email( $templates[$message['message_post_id']]['body'], $language_code, $user_id );
             $message['subject'] = $templates[$message['message_post_id']]['subject'];
+
+            // for languages not translated, we don't have a subject or message.
+            if ( empty( $message['subject'] ) || empty( $message['message'] ) ) {
+                continue;
+            }
             
             // dt_write_log( $message );
            
