@@ -1108,10 +1108,10 @@ class Zume_Local_Map extends Zume_Magic_Page
              LEFT JOIN zume_dt_location_grid admin0 ON lg.admin0_grid_id = admin0.grid_id
              LEFT JOIN zume_dt_location_grid admin1 ON lg.admin1_grid_id = admin1.grid_id
              LEFT JOIN zume_dt_location_grid admin2 ON lg.admin2_grid_id = admin2.grid_id
-             LEFT JOIN zume_5_sndd.zume_location_grid_names lgn ON lg.grid_id = lgn.grid_id AND lgn.language_code = %s
-             LEFT JOIN zume_5_sndd.zume_location_grid_names admin0_gn ON admin0.grid_id = admin0_gn.grid_id AND admin0_gn.language_code = %s
-             LEFT JOIN zume_5_sndd.zume_location_grid_names admin1_gn ON admin1.grid_id = admin1_gn.grid_id AND admin1_gn.language_code = %s
-             LEFT JOIN zume_5_sndd.zume_location_grid_names admin2_gn ON admin2.grid_id = admin2_gn.grid_id AND admin2_gn.language_code = %s
+             LEFT JOIN zume_location_grid_names lgn ON lg.grid_id = lgn.grid_id AND lgn.language_code = %s
+             LEFT JOIN zume_location_grid_names admin0_gn ON admin0.grid_id = admin0_gn.grid_id AND admin0_gn.language_code = %s
+             LEFT JOIN zume_location_grid_names admin1_gn ON admin1.grid_id = admin1_gn.grid_id AND admin1_gn.language_code = %s
+             LEFT JOIN zume_location_grid_names admin2_gn ON admin2.grid_id = admin2_gn.grid_id AND admin2_gn.language_code = %s
              WHERE lg.grid_id = %d",
             $this->lang_code,
             $this->lang_code,
