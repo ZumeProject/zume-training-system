@@ -1100,16 +1100,34 @@ class Zume_Local_Map extends Zume_Magic_Page
                 lg.level,
                 admin0.name as admin0_name,
                 admin1.name as admin1_name,
-                admin2.name as admin2_name
+                admin2.name as admin2_name,
+                lgn.name as localized_name,
+                admin0_gn.name as admin0_localized_name,
+                admin1_gn.name as admin1_localized_name,
+                admin2_gn.name as admin2_localized_name
              FROM zume_dt_location_grid lg 
              LEFT JOIN zume_dt_location_grid admin0 ON lg.admin0_grid_id = admin0.grid_id
              LEFT JOIN zume_dt_location_grid admin1 ON lg.admin1_grid_id = admin1.grid_id
              LEFT JOIN zume_dt_location_grid admin2 ON lg.admin2_grid_id = admin2.grid_id
+             LEFT JOIN zume_5_sndd.zume_location_grid_names lgn ON lg.grid_id = lgn.grid_id AND lgn.language_code = %s
+             LEFT JOIN zume_5_sndd.zume_location_grid_names admin0_gn ON admin0.grid_id = admin0_gn.grid_id AND admin0_gn.language_code = %s
+             LEFT JOIN zume_5_sndd.zume_location_grid_names admin1_gn ON admin1.grid_id = admin1_gn.grid_id AND admin1_gn.language_code = %s
+             LEFT JOIN zume_5_sndd.zume_location_grid_names admin2_gn ON admin2.grid_id = admin2_gn.grid_id AND admin2_gn.language_code = %s
              WHERE lg.grid_id = %d",
+            $this->lang_code,
+            $this->lang_code,
+            $this->lang_code,
+            $this->lang_code,
             $grid_id
         ), ARRAY_A );
 
         if ( $result ) {
+            // Use localized names if available, fall back to default names
+            $result['name'] = $result['localized_name'] ?? $result['name'];
+            $result['admin0_name'] = $result['admin0_localized_name'] ?? $result['admin0_name'];
+            $result['admin1_name'] = $result['admin1_localized_name'] ?? $result['admin1_name'];
+            $result['admin2_name'] = $result['admin2_localized_name'] ?? $result['admin2_name'];
+            
             // Build full hierarchical name
             $result['full_name'] = $this->build_hierarchical_name( $result );
         }
