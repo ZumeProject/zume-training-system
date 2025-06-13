@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2025-05-26 12:13+0000\n"
+"PO-Revision-Date: 2025-06-11 13:03+0000\n"
 "Last-Translator: Kevin Fallah <kevin@christianlingua.com>\n"
 "Language-Team: Lao <https://translate.disciple.tools/projects/zume-training/"
 "zume-training-system/lo/>\n"
@@ -219,7 +219,7 @@ msgid ""
 "You'll discover the four main ways God makes everyday followers more like "
 "Jesus."
 msgstr ""
-"ທ່ານຈະຄົ້ນພົບ 4 ທາງຫຼັກທີ່ພຣະເຈົ້າເຮັດໃຫ້ຜູ້ຕິດຕາມໃນແຕ່ລະມື້ຂອງພຣະອົງເປັນເໝືອນກັບພຣະເຢຊູຄຣິດຫຼາຍຂຶ້ນ."
+"ທ່ານຈະຄົ້ນພົບ 4 ທາງຫຼັກທີ່ພຣະເຈົ້າເຮັດໃຫ້ຜູ້ຕິດຕາມໃນແຕ່ລະມື້ຂອງພຣະອົງເປັນເໝືອນກັບພຣະເຢຊູຄຣິສຫຼາຍຂຶ້ນ."
 
 #: globals.php:2263
 msgid "Producer not Consumer"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: globals.php:2347
 msgid "Great, Greater, and Greatest Blessing"
-msgstr "ພຣະພອນທີ່ດີ, ດີເລີດ ແລະ ດີທີ່ສຸດ"
+msgstr "ພຣະພອນອັນຍິ່ງໃຫຍ່, ຍິ່ງໃຫຍ່ກວ່າ ແລະ ຍິ່ງໃຫຍ່ທີ່ສຸດ"
 
 #: globals.php:2357 site/pages/follow-jesus.php:267
 msgid "Duckling Discipleship – Leading Immediately"
@@ -358,7 +358,7 @@ msgstr "ສາວົກລູກເປັດ"
 #: site/course/course-content.php:1472 site/course/course-content.php:4482
 #: site/course/course-content.php:4503 site/pages/follow-jesus.php:248
 msgid "Eyes to See Where the Kingdom Isn’t"
-msgstr "ສາຍຕາໄດ້ເບິ່ງເຫັນວ່າອານາຈັກບໍ່ໄດ້ຢູ່ທີ່ໃດ"
+msgstr "ຕາທີ່ເບິ່ງເຫັນວ່າອານາຈັກບໍ່ໄດ້ຢູ່ທີ່ໃດ"
 
 #: globals.php:2370 site/pages/follow-jesus.php:249
 msgid ""
@@ -444,11 +444,11 @@ msgstr "ຮູບແບບການອະທິຖານອວຍພອນ"
 
 #: globals.php:2430 site/pages/follow-jesus.php:204
 msgid "Practice a simple mnemonic to remind you of ways to pray for others."
-msgstr "ຝຶກຝົນຈື່ວິທີການອະທິຖານເພື່ອຜູ້ອື່ນ"
+msgstr "ຝຶກຄວາມຈື່ຈຳງ່າຍໆ ເພື່ອເຕື່ອນທ່ານເຖິງວິທີການອະທິຖານເພື່ອຜູ້ອື່ນ."
 
 #: globals.php:2431 site/course/course-content.php:1677
 msgid "The B.L.E.S.S. Prayer"
-msgstr "ການອະທິຖານ The B.L.E.S.S."
+msgstr "ການອະທິຖານອວຍພອນ (The B.L.E.S.S.)"
 
 #: globals.php:2441 site/pages/follow-jesus.php:221
 msgid "3/3 Group Meeting Pattern"
@@ -488,7 +488,7 @@ msgstr "ວົງຈອນການຝຶກອົບຮົມ"
 #: site/course/course-content.php:2373 site/course/course-content.php:5167
 #: site/course/course-content.php:5184 site/pages/follow-jesus.php:326
 msgid "Leadership Cells"
-msgstr "ເຊວຄວາມເປັນຜູ້ນຳ"
+msgstr "ຜູ້ນຳກຸ່ມເຊວ"
 
 #: globals.php:2466 site/course/course-content.php:2302
 #: site/pages/follow-jesus.php:327
@@ -496,7 +496,7 @@ msgid ""
 "A Leadership Cell is a way someone who feels called to lead can develop "
 "their leadership by practicing serving."
 msgstr ""
-"ເຊວຄວາມເປັນຜູ້ນຳແມ່ນການທີ່ບຸກຄົນໜຶ່ງຮູ້ສຶກເຖິງການຊົງເອີ້ນເພື່ອທີ່ຈະເປັນຜູ້ນຳພາ "
+"ຜູ້ນຳກຸ່ມເຊວແມ່ນການທີ່ບຸກຄົນໜຶ່ງຮູ້ສຶກເຖິງການຊົງເອີ້ນເພື່ອທີ່ຈະເປັນຜູ້ນຳພາ "
 "ແລ້ວສາມາດພັດທະນາທັກສະຄວາມເປັນຜູ້ນຳດ້ວຍການຝຶກຝົນການຮັບໃຊ້."
 
 #: globals.php:2477 globals.php:2479 site/course/course-content.php:5291
@@ -535,11 +535,11 @@ msgstr "ບາດກ້າວ"
 #: site/course/course-content.php:2883 site/course/course-content.php:5293
 #: site/course/course-content.php:5311 site/pages/follow-jesus.php:229
 msgid "Always Part of Two Churches"
-msgstr "ເປັນສ່ວນໜຶ່ງຂອງສອງຄຣິສຕະຈັກຢູ່ສະເໝີ"
+msgstr "ເປັນສ່ວນໜຶ່ງຂອງຄຣິສຕະຈັກສອງແຫ່ງຢູ່ສະເໝີ"
 
 #: globals.php:2502
 msgid "Learn how to obey Jesus‘ commands by going AND staying."
-msgstr "ຮຽນຮູ້ວິທີການເຊື່ອຟັງຄຳສັ່ງຂອງພຣະເຢຊູຜ່ານການໄປ ແລະ ການຢູ່"
+msgstr "ເພື່ອຮຽນຮູ້ວິທີການເຊື່ອຟັງຄຳສັ່ງຂອງພຣະເຢຊູໂດຍການໄປ ແລະ ການຢູ່."
 
 #: globals.php:2514 globals.php:2516 site/course/course-content.php:3014
 #: site/course/course-content.php:3126 site/course/course-content.php:3132
@@ -589,7 +589,7 @@ msgstr ""
 #: site/course/course-content.php:3193 site/course/course-content.php:5420
 #: site/course/course-content.php:5440 site/pages/follow-jesus.php:330
 msgid "Leadership in Networks"
-msgstr "ຄວາມເປັນຜູ້ນຳໃນເຄືອຂ່າຍ"
+msgstr "ຜູ້ນຳໃນເຄືອຂ່າຍ"
 
 #: globals.php:2538 site/pages/follow-jesus.php:331
 msgid ""
@@ -618,7 +618,7 @@ msgstr ""
 #: globals.php:2551 site/activities/activities.php:342
 #: site/dashboard/wizard.php:182
 msgid "Peer Mentoring"
-msgstr "ການໃຫ້ຄຳປຶກສາແບບໝູ່"
+msgstr "ເພື່ອນທີ່ປຶກສາ"
 
 #: globals.php:2561 globals.php:2563
 msgid "Four Fields Tool"
@@ -630,7 +630,7 @@ msgid ""
 "cell to reflect on the status of current efforts and the kingdom activity "
 "around them."
 msgstr ""
-"ແຜນພູມວິໄຈນາສີ່ທົ່ງແມ່ນອຸປະກອນງ່າຍໆທີ່ເຊວຜູ້ນຳໃຊ້ເພື່ອສະທ້ອນເຖິງສະຖານະຄວາມພະຍາຍາມໃນປັດຈຸບັນ ແລະ "
+"ແຜນພູມວິໄຈນາສີ່ທົ່ງແມ່ນອຸປະກອນງ່າຍໆທີ່ຜູ້ນຳກຸ່ມເຊວໃຊ້ເພື່ອສະທ້ອນເຖິງສະຖານະຄວາມພະຍາຍາມໃນປັດຈຸບັນ ແລະ "
 "ກິດຈະກຳຂອງອານາຈັກອ້ອມໂຕພວກເຂົາ."
 
 #: globals.php:2573 globals.php:2575 site/activities/activities.php:388
@@ -983,16 +983,16 @@ msgstr ""
 msgid ""
 "Someone who is in \"coaching\" is interacting with a peer mentor Zúme coach."
 msgstr ""
-"ບາງຄົນຄືຜູ້ທີ່ຢູ່ໃນກຸ່ມການຝຶກສອນກຳລັງໂຕ້ຕອບກັບຜູ້ສອນຂອງຊູເມ. ເຊິ່ງເປັນເພື່ອນທີ່ປຶກສາ."
+"ບາງຄົນຄືຜູ້ທີ່ຢູ່ໃນກຸ່ມການຝຶກສອນກຳລັງໂຕ້ຕອບກັບຜູ້ຝຶກສອນຂອງຊູເມທີ່ເປັນເພື່ອນທີ່ປຶກສາ."
 
 #: maps/js-translation-strings.php:37 maps/map-3-trainees.php:153
 #: maps/map-5-churches.php:153
 msgid "How to Get on The Map"
-msgstr "ເຂົ້າສູ່ແຜນທີ່ດ້ວຍວິທີໃດ"
+msgstr "ວິທີການເຂົ້າສູ່ແຜນທີ່"
 
 #: maps/js-translation-strings.php:38
 msgid "Always sign in when you are studying the content."
-msgstr "ໃຫ້ທ່ານເຂົ້າສູ່ລະບົບຢູ່ຕະຫຼອດເມືຶຶຶຶ່ອທ່ານກຳລັງຢູ່ໃນເນື້ອຫາບົດຮຽນ."
+msgstr "ໃຫ້ທ່ານເຂົ້າສູ່ລະບົບຢູ່ຕະຫຼອດເມືຶຶຶຶ່ອທ່ານກຳລັງສຶກສາເນື້ອຫາບົດຮຽນ."
 
 #: maps/js-translation-strings.php:39
 msgid "Always checkin when you are going through a session."
@@ -1396,7 +1396,7 @@ msgid ""
 "child to ride their bicycle completely unsupervised, that is the LEAVE phase."
 msgstr ""
 "ການປ່ອຍ ຄືການຈົບການສຶກສາແບບສັ້ນ ເມື່ອຜູ້ຮຽນໄດ້ກາຍເປັນເພື່ອນຂອງທີ່ປຶກສາ. ການຕິດຕໍ່ເປັນຊ່ວງໆ ແລະ "
-"ການໃຫ້ຄຳປຶກສາກັບເພື່ອນອາດຈະສືບຕໍ່ເກີດຂຶ້ນຫາກຜູ້ຮຽນ ແລະ ທີ່ປຶກສາຢູ່ໃນເຄືອຂ່າຍດຽວກັນ. "
+"ເພື່ອນທີ່ປຶກສາອາດຈະສືບຕໍ່ເກີດຂຶ້ນຫາກຜູ້ຮຽນ ແລະ ທີ່ປຶກສາຢູ່ໃນເຄືອຂ່າຍດຽວກັນ. "
 "ເມື່ອພໍ່ແມ່ປ່ອຍໃຫ້ລູກຂອງຕົນຂີ່ລົດຖີບໂດຍທີ່ບໍ່ມີການເບິ່ງແຍງ. ນັ້ນຄືຂັ້ນຕອນການປ່ອຍ."
 
 #: site/activities/coaching-checklist-two.php:101
@@ -1405,7 +1405,7 @@ msgstr "1. ປະເມີນຕົນເອງດ້ວຍການໃຊ້ກ
 
 #: site/activities/coaching-checklist-two.php:102
 msgid "2. Coach others by using Model, Assist, Watch, Leave."
-msgstr "2. ຝຶກສອນຜູ້ອື່ນດ້ວຍການເປັນແບບຢ່າງ, ຊ່ວຍເຫຼືອ, ເບິ່ງ, ປ່ອຍ"
+msgstr "2. ຝຶກສອນຜູ້ອື່ນດ້ວຍການໃຊ້ແບບຈຳລອງ, ຊ່ວຍເຫຼືອ, ເບິ່ງ, ປ່ອຍ"
 
 #: site/activities/coaching-checklist.php:127
 #: site/activities/coaching-checklist.php:270
@@ -2327,7 +2327,8 @@ msgid ""
 "everyday followers more like Jesus:"
 msgstr ""
 "ຖ້າພວກເຮົາຕ້ອງການສ້າງສາວົກທີ່ທະວີຄູນ - ຜູ້ຜະລິດຝ່າຍຈິດວິນຍານ ແລະ ບໍ່ແມ່ນພຽງຜູ້ບໍລິໂພກເທົ່ານັ້ນ - "
-"ພວກເຮົາຈຳເປັນຕ້ອງຮຽນຮູ້ 4 ເສັ້ນທາງຫຼັກທີ່ພຣະເຈົ້າເຮັດໃຫ້ທຸກມື້ຂອງຜູ້ຕິດຕາມພຣະອົງເປັນເໝືອນພຣະເຢຊູ:"
+"ພວກເຮົາຈຳເປັນຕ້ອງຮຽນຮູ້ ແລະແບ່ງປັນ 4 "
+"ເສັ້ນທາງຫຼັກທີ່ພຣະເຈົ້າເຮັດໃຫ້ຜູ້ຕິດຕາມໃນແຕ່ລະມື້ເປັນເໝືອນພຣະເຢຊູຫຼາຍຂຶ້ນ:"
 
 #: site/course/course-content.php:516 site/pages/follow-jesus.php:193
 msgid "Prayer"
@@ -2551,8 +2552,8 @@ msgid ""
 "If the Great Commission is for every follower of Jesus, does that mean every "
 "follower is allowed to baptize others? Why or why not?"
 msgstr ""
-"ຖ້າຫາກພັນທະກິດສຳຄັນນັ້ນແມ່ນສຳລັບຜູ້ຕິດຕາມພຣະເຢຊທຸກໆຄົນ, "
-"ນັ້ນໝາຍຄວາມວ່າຜູ້ຕິດຕາມພຣະອົງສາມາດຮັບບັບຕິສະມາໃຫ້ຄົນອື່ນໄດ້ບໍ? ຍ້ອນຫຍັງ? ຍ້ອນຫຍັງຈຶ່ງບໍ່ແມ່ນ?"
+"ຖ້າຫາກພັນທະກິດສຳຄັນນັ້ນແມ່ນສຳລັບຜູ້ຕິດຕາມພຣະເຢຊູທຸກໆຄົນ, "
+"ນັ້ນໝາຍຄວາມວ່າຜູ້ຕິດຕາມພຣະອົງສາມາດຮັບບັບຕິສະມາໃຫ້ຄົນອື່ນໄດ້ບໍ? ຍ້ອນຫຍັງ? ຍ້ອນຫຍັງຈຶ່ງບໍ່ໄດ້?"
 
 #: site/course/course-content.php:1047
 msgid "IMPORTANT REMINDER – Have you been baptized?"
@@ -2564,8 +2565,8 @@ msgid ""
 "this training. Invite your group to be a part of this important day when you "
 "celebrate saying \"yes\" to Jesus."
 msgstr ""
-"ຖ້າບໍ່ໄດ້ຮັບ, ພວກເຮົາຂໍໜຸນໃຈໃຫ້ທ່ານວາງແຜນກ່ອນທີ່ຈະເລີ່ມພາກຕໍ່ໄປໃນການຝຶກອົບຮົມນີ້. "
-"ເຊີນຊວນກຸ່ມຂອງທ່ານໃຫ້ມີສ່ວນໃນມື້ສຳຄັນນີ້ມື້ທີ່ຕອບໄດ້ຕອບຕົກລົງກັບພຣະເຢຊູຄຣິດ."
+"ຖ້າບໍ່ໄດ້ຮັບ, ພວກເຮົາຂໍໜູນໃຈໃຫ້ທ່ານວາງແຜນກ່ອນທີ່ຈະເລີ່ມພາກຕໍ່ໄປໃນການຝຶກອົບຮົມນີ້. "
+"ເຊີນຊວນກຸ່ມຂອງທ່ານໃຫ້ມີສ່ວນໃນມື້ສຳຄັນນີ້ມື້ທີ່ທ່ານຕອບໄດ້ຕອບຕົກລົງກັບພຣະເຢຊູຄຣິດ."
 
 #: site/course/course-content.php:1065 site/pages/follow-jesus.php:244
 msgid "The Spiritual Economy"
@@ -2651,7 +2652,7 @@ msgstr "ແບ່ງເປັນກຸ່ມກຸ່ມລະ 2 ຫຼື 3 ຄ
 
 #: site/course/course-content.php:1260 site/course/course-content.php:1269
 msgid "Great - Greater - Greatest Blessings"
-msgstr "ດີ - ດິເລີດ- ດີທີ່ສຸດຂອງພຣະພອນ"
+msgstr "ພຣະພອນອັນຍິ່ງໃຫຍ່ - ຍິ່ງໃຫຍ່ກວ່າ - ຍິ່ງໃຫຍ່ທີ່ສຸດ"
 
 #: site/course/course-content.php:1299
 msgid ""
@@ -2706,8 +2707,8 @@ msgid ""
 "seemed as if God was just... missing? These are usually the places where God "
 "wants to work the most."
 msgstr ""
-"ທ່ານເຄີຍໄປຢ້ຽມຢາມບ້ານ ຫຼື ເພື່ອນບ້ານ ຫຼື ເມືອງທີ່ເບິ່ງຄືວ່າພຣະເຈົ້າໄດ້ແນມຄ້າມບໍ? "
-"ສະຖານທີ່ເຫຼົ່ານັ້ນຄືບ່ອນທີ່ພຣະເຈົ້າຕ້ອງການທຳງານຫຼາຍທີ່ສຸດ."
+"ທ່ານເຄີຍໄປຢ້ຽມຢາມບ້ານ ຫຼື ເພື່ອນບ້ານ ຫຼື ເມືອງທີ່ເບິ່ງຄືວ່າພຣະເຈົ້າໄດ້ແນມຂ້າມບໍ? ໂດຍທົ່ວໄປແລ້ວ "
+"ສະຖານທີ່ເຫຼົ່ານີ້ຄືບ່ອນທີ່ພຣະເຈົ້າຕ້ອງການທຳງານຫຼາຍທີ່ສຸດ."
 
 #: site/course/course-content.php:1397
 msgid ""
@@ -2758,7 +2759,7 @@ msgid ""
 "Share this person’s name with the group before you go."
 msgstr ""
 "ອະທິຖານຂໍກັບພຣະເຈົ້າວ່າແມ່ນໃຜທີ່ພຣະອົງຕ້ອງການໃຫ້ທ່ານຝຶກຝົນໃນການເປັນພະຍານ 3 ນາທີຈາກອຸປະກອນ. "
-"ບອກຊື່ຂອງບຸກຄົນນີ້ກັບກຸ່ມກ່ອນທີ່ທ່ານຈະອອກໄປ."
+"ແບ່ງປັນຊື່ຂອງບຸກຄົນນີ້ກັບກຸ່ມກ່ອນທີ່ທ່ານຈະອອກໄປ."
 
 #: site/course/course-content.php:1514 site/course/course-content.php:1519
 #: site/course/course-content.php:3716 site/course/course-content.php:3721
@@ -2815,14 +2816,14 @@ msgstr ""
 
 #: site/course/course-content.php:1685
 msgid "Practice the B.L.E.S.S. Prayer"
-msgstr "ຝຶກຝົນການອະທິຖານ the B.L.E.S.S."
+msgstr "ຝຶກຝົນການອະທິຖານອວຍພອນ (the B.L.E.S.S.)"
 
 #: site/course/course-content.php:1688
 msgid ""
 "Break into groups of two or three and practice praying the five areas of the "
 "B.L.E.S.S. Prayer over each other."
 msgstr ""
-"ແບ່ງກຸ່ມເປັນກຸ່ມລະ 2 ຫຼື 3 ຄົນ ແລ້ວຝຶກຝົນການອະທິຖານ 5 ດ້ານຂອງ the B.L.E.S.S. "
+"ແບ່ງກຸ່ມເປັນກຸ່ມລະ 2 ຫຼື 3 ຄົນ ແລ້ວຝຶກຝົນການອະທິຖານ 5 ດ້ານຂອງການອວຍພອນ (the B.L.E.S.S.) "
 "ອະທິຖານໃຫ້ກັນແລະກັນ."
 
 #: site/course/course-content.php:1703
@@ -2906,8 +2907,8 @@ msgid ""
 "right things. It’s important what disciples know – but it’s much more "
 "important what they DO with what they know."
 msgstr ""
-"ເມື່ອພວກເຮົາຊ່ວຍທະວີຄູນສາວົກ, ພວກເຮົາຈຳເປັນຕ້ອງໝັ້ນໃຈວ່າພວກເຮົາກຳລັງເຮັດໃນທາງທີ່ຖືກຕ້ອງ. "
-"ມັນເປັນເລື່ອງສຳຄັນວ່າສາວົກໄດ້ຮູ້ຫຍັງ - ແຕ່ສຳຄັນກວ່າແມ່ນພວກເຂົາຈະຕອບສະໜອງກັບສິ່ງທີ່ພວກເຂົາຮູ້ແນວໃດ."
+"ເມື່ອພວກເຮົາຊ່ວຍທະວີຄູນສາວົກ, ພວກເຮົາຈຳເປັນຕ້ອງໝັ້ນໃຈວ່າພວກເຮົາຖ່າຍທອດສິ່ງທີ່ຖືກຕ້ອງອອກມາ. "
+"ມັນເປັນເລື່ອງສຳຄັນວ່າສາວົກໄດ້ຮູ້ຫຍັງ - ແຕ່ສຳຄັນກວ່າແມ່ນພວກເຂົາຈະເຮັດຫຍັງກັບສິ່ງທີ່ພວກເຂົາຮູ້."
 
 #: site/course/course-content.php:1881
 msgid ""
@@ -2954,7 +2955,7 @@ msgid ""
 "go."
 msgstr ""
 "ອະທິຖານ ແລະ ຖາມພຣະເຈົ້າວ່າແມ່ນໃຜທີ່ພຣະອົງຕ້ອງການໃຫ້ທ່ານແບ່ງປັນຮູບແບບກຸ່ມ 3/3 "
-"ກ່ອນທີ່ກຸ່ມຂອງທ່ານຈະມາພົບກັນອີກຄັ້ງ. ບອກຊື່ບຸກຄົນນີ້ໃນກຸ່ມຂອງທ່ານກ່ອນທີ່ທ່ານຈະອອກໄປ."
+"ກ່ອນທີ່ກຸ່ມຂອງທ່ານຈະມາພົບກັນອີກຄັ້ງ. ແບ່ງປັນຊື່ບຸກຄົນນີ້ໃນກຸ່ມຂອງທ່ານກ່ອນທີ່ທ່ານຈະອອກໄປ."
 
 #: site/course/course-content.php:1989 site/course/course-content.php:1994
 #: site/course/course-content.php:3988 site/course/course-content.php:3993
@@ -3093,7 +3094,7 @@ msgid ""
 "would be willing to meet and form a Leadership Cell to learn Zúme Training?"
 msgstr ""
 "ມີກຸ່ມຜູ້ຕິດຕາມພຣະເຢຊູທີ່ທ່ານຮູ້ຈັກທີ່ກຳລັງນັດພົບກັນຢູ່ ຫຼື ເຕັມໃຈທີ່ຈະພົບກັນ ແລະ "
-"ສ້າງກຸ່ມເຊວຜູ້ນຳເພື່ອຮຽນການຝຶກອົບຮົມຂອງຊູເມບໍ?"
+"ສ້າງຜູ້ນຳກຸ່ມເຊວເພື່ອຮຽນການຝຶກອົບຮົມຂອງຊູເມບໍ?"
 
 #: site/course/course-content.php:2332
 msgid "What would it take to bring them together?"
@@ -3128,8 +3129,8 @@ msgid ""
 "Leadership Cells to them and see if they would be interested to be part of "
 "one."
 msgstr ""
-"ເລືອກບາງຄົນໃນລາຍຊື່ 100 ຄົນຂອງທ່ານ ຜູ້ທີ່ເຊື່ອແລ້ວ. ອະທິບາຍກຸ່ມເຊວຜູ້ນຳໃຫ້ກັບພວກເຂົາຟັງ ແລະ "
-"ເບິ່ງວ່າພວກເຂົາສົນໃຈທີ່ຈະມາເປັນສ່ວນໜຶ່ງຂອງເຊວຜູ້ນຳຫຼືບໍ່."
+"ເລືອກບາງຄົນໃນລາຍຊື່ 100 ຄົນຂອງທ່ານ ຜູ້ທີ່ເຊື່ອແລ້ວ. ອະທິບາຍເລື່ອງຜູ້ນຳກຸ່ມເຊວໃຫ້ກັບພວກເຂົາຟັງ ແລະ "
+"ເບິ່ງວ່າພວກເຂົາສົນໃຈທີ່ຈະມາເປັນສ່ວນໜຶ່ງຂອງຜູ້ນຳກຸ່ມເຊວຫຼືບໍ່."
 
 #: site/course/course-content.php:2393
 msgid ""
@@ -3137,9 +3138,8 @@ msgid ""
 "before your group meets again. Challenge them to then share it with someone "
 "else."
 msgstr ""
-"ອະທິຖານ ແລະ "
-"ຖາມພຣະເຈົ້າວ່າແມ່ນໃຜທີ່ພຣະອົງຕ້ອງການໃຫ້ທ່ານແບ່ງປັນອຸປະກອນກຸ່ມເຊວຜູ້ນຳນີ້ກ່ອນທີ່ກຸ່ມຂອງທ່ານຈະມາພົບກັນອີກ. "
-"ທ້າທາຍພວກເຂົາໃຫ້ແບ່ງປັນກັບຜູ້ອື່ນ."
+"ອະທິຖານ ແລະ ຖາມພຣະເຈົ້າວ່າແມ່ນໃຜທີ່ພຣະອົງຕ້ອງການໃຫ້ທ່ານແບ່ງປັນອຸປະກອນຜູ້ນຳກຸ່ມເຊວນີ້ "
+"ກ່ອນທີ່ກຸ່ມຂອງທ່ານຈະມາພົບກັນອີກ. ທ້າທາຍພວກເຂົາໃຫ້ແບ່ງປັນກັບຜູ້ອື່ນ."
 
 #: site/course/course-content.php:2414 site/course/course-content.php:2419
 #: site/course/course-content.php:4259 site/course/course-content.php:4264
@@ -3319,7 +3319,7 @@ msgid ""
 "Kingdom activity around them. It especially helps leaders balance efforts, "
 "so that no field is overlooked."
 msgstr ""
-"ນາສີ່ທົ່ງໃຊ້ໂດຍຜູ້ນຳເຊວເພື່ອສະທ້ອນເຖິງຄວາມພະຍາຍາມໃນປັດຈຸບັນ ແລະ "
+"ນາສີ່ທົ່ງຖືກໃຊ້ໂດຍຜູ້ນຳກຸ່ມເຊວເພື່ອສະທ້ອນເຖິງຄວາມພະຍາຍາມໃນປັດຈຸບັນ ແລະ "
 "ກິດຈະກຳຂອງລາດຊະອານາຈັກອ້ອມຮອບໂຕພວກເຂົາ. ໂດຍສະເພາະຊ່ວຍໃຫ້ຜູ້ນຳສ້າງສົມດຸນຄວາມພະຍາຍາມ, "
 "ເພື່ອບໍ່ໃຫ້ນາໃດໆຖືກເບິ່ງຂ້າມ."
 
@@ -3459,8 +3459,8 @@ msgid ""
 "“Always a Part of Two Churches” with the people in it. If not, share it with "
 "another believer you know."
 msgstr ""
-"ຖ້າທ່ານໄດ້ເລີ່ມເຮັດຄຣິສຕະຈັກຂອງຕົນເອງແລ້ວ, ແບ່ງປັນແນວຄິດນີ້ ໃຫ້ເປັນສ່ວນໜຶ່ງໃນສອງຄຣິສຕະຈັກສະເໝີ "
-"ພ້ອມກັບສະມາຊິກໃນໂບດນັ້ນ. ຫຼື ແບ່ງປັນກັບຜູ້ເຊື່ອຄົນອື່ນທີ່ທ່ານຮູ້ຈັກ."
+"ຖ້າທ່ານໄດ້ເລີ່ມເຮັດຄຣິສຕະຈັກຂອງຕົນເອງແລ້ວ, ແບ່ງປັນແນວຄິດນີ້ ໃຫ້ເປັນສ່ວນໜຶ່ງໃນ "
+"‘‘ຄຣິສຕະຈັກທັງສອງຢ່າງສະເໝີ’’ ພ້ອມກັບສະມາຊິກໃນໂບດນັ້ນ. ຫຼື ແບ່ງປັນກັບຜູ້ເຊື່ອຄົນອື່ນທີ່ທ່ານຮູ້ຈັກ."
 
 #: site/course/course-content.php:2925 site/course/course-content.php:2930
 #: site/course/course-content.php:4412 site/course/course-content.php:4417
@@ -3546,7 +3546,7 @@ msgstr ""
 
 #: site/course/course-content.php:3106
 msgid "Peer Mentoring Group Practice"
-msgstr "ກຸ່ມຝຶກຝົນເພື່ອນທີ່ປຶກສາ"
+msgstr "ຝຶກຝົນກຸ່ມເພື່ອນທີ່ປຶກສາ"
 
 #: site/course/course-content.php:3109
 msgid ""
@@ -3560,7 +3560,7 @@ msgid ""
 "members work through the suggested questions list as peer mentors."
 msgstr ""
 "ເລືອກຄົນໜຶ່ງໃນກຸ່ມເພື່ອເປັນ ‘‘ຜູ້ໃຫ້ຄຳປຶກສາ’’ "
-"ແລ້ວໃຫ້ສະມາຊິກຄົນອື່ນໆເຮັດວຽກຜ່ານລາຍການຄຳຖາມທີ່ແນະນຳໃນຖານະຜູ້ໃຫ້ຄຳປຶກສາເພື່ອນ."
+"ແລ້ວໃຫ້ສະມາຊິກຄົນອື່ນໆເຮັດວຽກຜ່ານລາຍການຄຳຖາມທີ່ແນະນຳໃນຖານະເພື່ອນທີ່ປຶກສາ."
 
 #: site/course/course-content.php:3133
 msgid ""
@@ -3743,8 +3743,8 @@ msgid ""
 "them practice it as well. Share this person‘s name with the group before you "
 "go and reach out to them."
 msgstr ""
-"ອະທິຖານຂໍກັບພຣະເຈົ້າວ່າແມ່ນໃຜທີ່ພຣະອົງຕ້ອງການໃຫ້ທ່ານແບ່ງປັນພຣະພອນທີ່ດີທີ່ສຸດ. "
-"ພ້ອມໃຫ້ພວກເຂົາຝຶກຝົນມັນເຊັ່ນດຽວກັນ. ບອກຊື່ບຸກຄົນນີ້ໃນກຸ່ມຂອງທ່ານກ່ອນທີ່ທ່ານຈະອອກໄປຫາພວກເຂົາ."
+"ອະທິຖານຂໍກັບພຣະເຈົ້າວ່າແມ່ນໃຜທີ່ພຣະອົງຕ້ອງການໃຫ້ທ່ານແບ່ງປັນພຣະພອນທີ່ຍິ່ງໃຫຍ່ທີ່ສຸດ. "
+"ພ້ອມໃຫ້ພວກເຂົາຝຶກຝົນມັນເຊັ່ນດຽວກັນ. ແບ່ງປັນຊື່ບຸກຄົນນີ້ໃນກຸ່ມຂອງທ່ານກ່ອນທີ່ທ່ານຈະອອກໄປຫາພວກເຂົາ."
 
 #: site/course/course-content.php:4027
 msgid ""
@@ -3891,8 +3891,8 @@ msgid ""
 "with whomever the Lord impresses on you. Then equip them to share it with "
 "someone else."
 msgstr ""
-"ແບ່ງປັນ ‘‘ສາວົກລູກເປັດ’’ ແລະ ‘‘ບ່ອນທີ່ບໍ່ມີລາດຊະອານາຈັກຂອງພຣະເຈົ້າ’’ "
-"ກັບຜູ້ໃດກໍໄດ້ຜູ້ທີ່ພຣະເຈົ້າຊົງນຳໃຫ້ທ່ານແບ່ງປັນ. ແລ້ວຈັດຕຽມພວກເຂົາໃຫ້ແບ່ງປັນກັບຜູ້ອື່ນໆຕໍ່ໄປ."
+"ແບ່ງປັນ ‘‘ສາວົກລູກເປັດ’’ ແລະ ‘‘ຕາທີ່ເບິ່ງເຫັນວ່າອານາຈັກຂອງພຣະເຈົ້າບໍ່ໄດ້ຢູ່ທີ່ໃດ’’ "
+"ກັບຜູ້ໃດກໍໄດ້ທີ່ພຣະເຈົ້າຊົງນຳໃຫ້ທ່ານແບ່ງປັນ. ແລ້ວຈັດຕຽມພວກເຂົາໃຫ້ແບ່ງປັນກັບຜູ້ອື່ນໆຕໍ່ໄປ."
 
 #: site/course/course-content.php:4544 site/course/course-content.php:4549
 msgid "SESSION 11"
@@ -3905,7 +3905,7 @@ msgid ""
 "isn‘t, yet."
 msgstr ""
 "ອະທິຖານ ແລະ ຂອບຄຸນພຣະເຈົ້າສຳລັບວິທີທີ່ພຣະອົງຊົງທຳງານໃນຊີວິດຂອງທ່ານ ແລະ ຊີວິດຂອງຄົນອື່ນໆອ້ອມຮອບໂຕທ່"
-"ານ. ອະທິຖານເພື່ອກຸ່ມຂອງທ່ານເພື່ອໃຫ້ເຫັນບ່ອນທີ່ບໍ່ມີລາດຊະອານາຈັກຂອງພຣະເຈົ້າ."
+"ານ. ອະທິຖານເພື່ອກຸ່ມຂອງທ່ານໃຫ້ມີຕາເບິ່ງເຫັນວ່າອານາຈັກຂອງພຣະເຈົ້າບໍ່ໄດ້ຢູ່ທີ່ໃດ."
 
 #: site/course/course-content.php:4660 site/course/course-content.php:4665
 msgid "SESSION 12"
@@ -3914,14 +3914,14 @@ msgstr "ພາກທີ 12"
 #: site/course/course-content.php:4768
 msgid "Pray for someone in their presence using the BLESS pattern this week."
 msgstr ""
-"ອະທິຖານເພື່ອໃຜບາງຄົນທີ່ຢູ່ຕໍ່ໜ້າພວກເຂົາດ້ວຍການໃຊ້ຮູບແບບ the BLESS ໃນອາທິດນີ້."
+"ອະທິຖານເພື່ອໃຜບາງຄົນທີ່ຢູ່ຕໍ່ໜ້າພວກເຂົາດ້ວຍການໃຊ້ຮູບແບບອວຍພອນ (the BLESS) ໃນອາທິດນີ້."
 
 #: site/course/course-content.php:4769
 msgid ""
 "Equip someone else to pray for others using the BLESS pattern and go with "
 "them as they do it."
 msgstr ""
-"ຈັດຕຽມບາງຄົນໃຫ້ສາມາດອະທິຖານເພື່ອຄົນອື່ນໆໂດຍໃຊ້ຮູບແບບ the BLESS "
+"ຈັດຕຽມບາງຄົນໃຫ້ສາມາດອະທິຖານເພື່ອຄົນອື່ນໆໂດຍໃຊ້ຮູບແບບອວຍພອນ (the BLESS) "
 "ແລ້ວອອກໄປກັບພວກເຂົາເໝືອນກັບທີ່ພວກເຂົາເຮັດ."
 
 #: site/course/course-content.php:4791 site/course/course-content.php:4796
@@ -4010,7 +4010,7 @@ msgid ""
 "of Two Churches\" pattern with the people in it. If not, share it with "
 "another believer you know."
 msgstr ""
-"ຖ້າທ່ານໄດ້ເລີ່ມເຮັດຄຣິສຕະຈັກທີ່ລຽບງ່າຍແລ້ວ, ແບ່ງປັນຮູບແບບ ການເປັນສ່ວນໜຶ່ງຂອງສອງຄຣິສຕະຈັກຢູ່ສະເໝີ "
+"ຖ້າທ່ານໄດ້ເລີ່ມເຮັດຄຣິສຕະຈັກທີ່ລຽບງ່າຍແລ້ວ, ແບ່ງປັນຮູບແບບ ‘‘ເປັນສ່ວນໜຶ່ງຂອງຄຣິສຕະຈັກສອງແຫ່ງຢູ່ສະເໝີ’’ "
 "ກັບສະມາຊິກໃນໂບດນັ້ນ. ຫຼືບໍ່ກໍແບ່ງປັນກັບຜູ້ເຊື່ອຄົນອື່ນທີ່ທ່ານຮູ້ຈັກ."
 
 #: site/course/course-content.php:5351 site/course/course-content.php:5356
@@ -4041,8 +4041,7 @@ msgid ""
 "Share the concept of “Leadership in Networks” with someone else. Then train "
 "them to share it with someone else."
 msgstr ""
-"ແບ່ງປັນແນວຄິດຂອງ ‘‘ເຄືອຂ່າຍຄວາມເປັນຜູ້ນຳ’’ ກັບຄົນອື່ນໆ. "
-"ຈາກນັ້ນຝືກຝົນພວກເຂົາໃຫ້ແບ່ງປັນແນວຄິດນີ້ກັບຄົນອື່ນໆ."
+"ແບ່ງປັນແນວຄິດຂອງ ‘‘ຜູ້ນຳໃນເຄືອຂ່າຍ’’ ກັບຄົນອື່ນໆ. ຈາກນັ້ນຝືກຝົນພວກເຂົາໃຫ້ແບ່ງປັນແນວຄິດນີ້ກັບຄົນອື່ນໆ."
 
 #: site/course/course-content.php:5484 site/course/course-content.php:5489
 msgid "SESSION 18"
@@ -4091,13 +4090,14 @@ msgid ""
 "Group."
 msgstr ""
 "ສົນທະນາກັບກຸ່ມຝຶກອົບຮົມຊູເມຂອງທ່ານວ່າສະມາຊິກໃນກຸ່ມຈະສືບຕໍ່ນັດພົບກັນຫຼືບໍ່ "
-"ຫຼັງຈາກການສະຫຼຸບການຝຶກອົບຮົມໃນກຸ່ມເພື່ອນທີ່ປຶກສາ."
+"ຫຼັງຈາກການສະຫຼຸບການຝຶກອົບຮົມໃນຖານະກຸ່ມເພື່ອນທີ່ປຶກສາ."
 
 #: site/course/course-content.php:5722
 msgid ""
 "Share the concept of the \"Peer Mentoring Group\" with two believers on your "
 "list of 100."
-msgstr "ແບ່ງປັນແນວຄິດ ‘‘ກຸ່ມເພື່ອນທີ່ປຶກສາ’’ ກັບ 2 ຄົນໃນລາຍຊື່ 100 ຄົນຂອງທ່ານ."
+msgstr ""
+"ແບ່ງປັນແນວຄິດ ‘‘ກຸ່ມເພື່ອນທີ່ປຶກສາ’’ ກັບຜູ້ທີ່ເຊື່ອ 2 ຄົນໃນລາຍຊື່ 100 ຄົນຂອງທ່ານ."
 
 #: site/course/course-content.php:5745 site/course/course-content.php:5750
 msgid "SESSION 20"
@@ -5001,7 +5001,7 @@ msgid ""
 "I will invite the following people to be part of a Leadership Cell that I "
 "will lead:"
 msgstr ""
-"ຂ້ອຍຈະເຊີນຊວນຜູ້ຕິດຕາມໃຫ້ເປັນສ່ວນໜຶ່ງຂອງກຸ່ມເຊວຜູ້ນຳທີ່ຂ້ອຍຈະເປັນຜູ້ນຳພາ:"
+"ຂ້ອຍຈະເຊີນຊວນຜູ້ຕິດຕາມໃຫ້ເປັນສ່ວນໜຶ່ງຂອງຜູ້ນຳກຸ່ມເຊວທີ່ຂ້ອຍຈະເປັນຜູ້ນຳພາ:"
 
 #: site/dashboard/dashboard.php:352
 msgid ""
