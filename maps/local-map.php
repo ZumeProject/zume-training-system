@@ -35,7 +35,7 @@ class Zume_Local_Map extends Zume_Magic_Page
 
         $this->lang = $lang_code ?? $this->lang;
         
-        dt_write_log('outside' );
+        
         if ( isset( $url_parts[0] ) && $this->root === $url_parts[0] && isset( $url_parts[1] ) && $this->type === $url_parts[1] && ! dt_is_rest() ) {
             
             $this->lang_code = $lang_code;
