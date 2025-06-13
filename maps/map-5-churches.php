@@ -92,6 +92,7 @@ class Zume_Funnel_Public_Heatmap_Churches extends Zume_Magic_Page
                 jQuery('#custom-paragraph').html(`
 
                     `)
+                    jQuery('#vision-map-link').html('<a href="https://zume.training/map/local?grid_id=<?php echo $this->grid_id; ?>" target="_blank" class="small clear"><?php echo esc_html__( 'Vision Map', 'zume' ) ?></a>');
             }
 
             /* custom level content */
@@ -123,6 +124,7 @@ class Zume_Funnel_Public_Heatmap_Churches extends Zume_Magic_Page
                 jQuery('#panel-type-title').html('<?php echo esc_html__( 'Churches', 'zume' ) ?>');
                 jQuery('#map-header-title').html('<?php echo esc_html__( 'Map of Zúme Churches', 'zume' ) ?>');
                 jQuery('#map-header-description').html('<p style="max-width: 400px;"><?php echo esc_html__( 'Saturation Goal: 2 simple churches per 5,000 people in the United States, and 2 simple churches per 50,000 people globally', 'zume' ) ?></p>');
+                
 
             })
         </script>

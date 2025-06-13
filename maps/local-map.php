@@ -24,24 +24,22 @@ class Zume_Local_Map extends Zume_Magic_Page
 
     public function __construct() {
         parent::__construct();
-        $this->lang = get_locale();
 
         $this->page_title = esc_html__( 'Local Map', 'zume' );
         $this->page_description = esc_html__( 'Local map showing Zúme training progress and church planting activity for a specific location.', 'zume' );
 
         [
-            'url_parts' => $url_parts,
             'lang_code' => $lang_code,
+            'url_parts' => $url_parts,
         ] = zume_get_url_pieces();
 
-        $page_slug = $url_parts[0] ?? '';
-
-        // Get grid_id from URL parameter
-        $this->grid_id = sanitize_text_field( $_GET['grid_id'] ?? '' );
-
-        if ( str_contains( $page_slug, $this->root ) && ! dt_is_rest() ) {
-
+        $this->lang = $lang_code ?? $this->lang;
+        
+        dt_write_log('outside' );
+        if ( isset( $url_parts[0] ) && $this->root === $url_parts[0] && isset( $url_parts[1] ) && $this->type === $url_parts[1] && ! dt_is_rest() ) {
+            
             $this->lang_code = $lang_code;
+            $this->grid_id = sanitize_text_field( $_GET['grid_id'] ?? '' );
 
             // Query location data if grid_id is provided
             if ( !empty( $this->grid_id ) ) {
@@ -49,14 +47,13 @@ class Zume_Local_Map extends Zume_Magic_Page
             }
 
             $this->register_url_and_access();
-            // $this->header_content();
+            $this->header_content();
 
             // page content
             add_action( 'dt_blank_head', [ $this, '_header' ] );
             add_action( 'dt_blank_head', [ $this, 'consistent_head' ], 5 );
             add_action( 'dt_blank_body', [ $this, 'body' ] );
             add_action( 'dt_blank_footer', [ $this, '_footer' ] ); // Removed standard Zume footer
-            // add_action( 'wp_footer', [ $this, 'action_wp_footer' ] );
             add_action( 'wp_footer', [ $this, 'footer_javascript' ] );
 
             add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
@@ -944,10 +941,10 @@ class Zume_Local_Map extends Zume_Magic_Page
         <?php if ( empty( $this->grid_id ) ) : ?>
             <div class="container-md stack-2 center py-2">
                 <div class="card stack-1 p-2">
-                    <h1 class="text-center"><?php echo esc_html__( 'Local Map', 'zume' ) ?></h1>
-                    <p class="text-center"><?php echo esc_html__( 'Please provide a grid_id parameter to view location data.', 'zume' ) ?></p>
+                    <h1 class="text-center"><?php echo esc_html__( 'Global Map', 'zume' ) ?></h1>
+                    <p class="text-center"><?php echo esc_html__( 'Getting Started', 'zume' ) ?></p>
                     <p class="text-center">
-                        <strong><?php echo esc_html__( 'Example:', 'zume' ) ?></strong> 
+                        <strong><?php echo esc_html__( 'Location', 'zume' ) ?></strong> 
                         <?php echo esc_url( site_url() . '/map/local?grid_id=100364199' ) ?>
                     </p>
                 </div>
@@ -955,46 +952,46 @@ class Zume_Local_Map extends Zume_Magic_Page
         <?php elseif ( empty( $this->location_data ) ) : ?>
             <div class="container-md stack-2 center py-2">
                 <div class="card stack-1 p-2">
-                    <h1 class="text-center"><?php echo esc_html__( 'Location Not Found', 'zume' ) ?></h1>
-                    <p class="text-center"><?php echo esc_html__( 'No data found for grid_id:', 'zume' ) ?> <?php echo esc_html( $this->grid_id ) ?></p>
+                    <h1 class="text-center"><?php echo esc_html__( 'No Locations found', 'zume' ) ?></h1>
+                    <p class="text-center"><?php echo esc_html__( 'No locations found', 'zume' ) ?> <?php echo esc_html( $this->grid_id ) ?></p>
                 </div>
             </div>
         <?php else : ?>
             <div class="container">
                 <div class="header">
                     <div class="title-section">
-                        <h1><span class="zume">ZÚME</span> VISION MAP</h1>
-                        <h2><?php echo esc_html( $this->location_data['full_name'] ?? $this->location_data['name'] ?? 'Location' ) ?></h2>
+                        <h1><span class="zume">ZÚME</span> <span style="text-transform: uppercase;"><?php echo esc_html__( 'Vision', 'zume' ) ?></span></h1>
+                        <h2><?php echo esc_html( $this->location_data['full_name'] ?? $this->location_data['name'] ?? esc_html__( 'Location', 'zume' ) ) ?></h2>
                     </div>
                     <div class="population">
-                        <h3>Population</h3>
+                        <h3><?php echo esc_html__( 'Population', 'zume' ) ?></h3>
                         <div class="number"><?php echo $this->format_population( $this->location_data['population'] ?? 0 ) ?></div>
                     </div>
                 </div>
 
                 <div class="map-container">
-                    <div id="map" class="map-placeholder">MAP</div>
+                    <div id="map" class="map-placeholder"><?php echo esc_html__( 'Global Map', 'zume' ) ?></div>
                 </div>
 
                 <div class="goals-section">
-                    <h2 class="goals-title">Goals</h2>
+                    <h2 class="goals-title"><?php echo esc_html__( 'Goal', 'zume' ) ?></h2>
                     
                     <div class="goals-container">
                         <!-- Trainees Section -->
                         <div class="goal-item">
                             <div class="goal-left">
-                                <div class="goal-title">Trainees</div>
+                                <div class="goal-title"><?php echo esc_html__( 'Trainees', 'zume' ) ?></div>
                                 <div class="goal-icon">
-                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/countriesandterritories-groups.svg?raw=true', dirname( __FILE__ ) ) ); ?>" alt="Trainees Icon" />
+                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/countriesandterritories-groups.svg?raw=true', dirname( __FILE__ ) ) ); ?>" alt="<?php echo esc_attr__( 'Trainees', 'zume' ) ?>" />
                                 </div>
                             </div>
                             
                             <div class="goal-middle">
                                 <div class="goal-subtitle">
                                     <?php if ( $this->location_data['country_code'] === 'US' ) : ?>
-                                        1 Trainee per 5000 people
+                                        <?php echo esc_html__( '1 trained multiplying disciple per 5,000 in the United States', 'zume' ) ?>
                                     <?php else : ?>
-                                        1 Trainee per 50000 people
+                                        <?php echo esc_html__( '1 trained multiplying disciple per 50,000 globally', 'zume' ) ?>
                                     <?php endif; ?>
                                 </div>
                                 <div class="stats-section">
@@ -1002,8 +999,8 @@ class Zume_Local_Map extends Zume_Magic_Page
                                         <!-- Progress dots will be generated dynamically -->
                                     </div>
                                     <div class="stat-labels">
-                                        <span class="stat-label">Current Trainees</span>
-                                        <span class="stat-label">Trainees Needed</span>
+                                        <span class="stat-label"><?php echo esc_html__( 'Trainees Reported', 'zume' ) ?></span>
+                                        <span class="stat-label"><?php echo esc_html__( 'Trainees Needed', 'zume' ) ?></span>
                                     </div>
                                     <div class="stat-numbers">
                                         <span class="stat-number"><?php echo number_format( $this->get_trainees_count() ) ?></span>
@@ -1027,18 +1024,18 @@ class Zume_Local_Map extends Zume_Magic_Page
                         <!-- Churches Section -->
                         <div class="goal-item">
                             <div class="goal-left">
-                                <div class="goal-title">New Churches</div>
+                                <div class="goal-title"><?php echo esc_html__( 'Churches', 'zume' ) ?></div>
                                 <div class="goal-icon">
-                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/GroupsFormed.svg?raw=true', dirname( __FILE__ ) ) ); ?>" alt="Churches Icon" />
+                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/GroupsFormed.svg?raw=true', dirname( __FILE__ ) ) ); ?>" alt="<?php echo esc_attr__( 'Churches', 'zume' ) ?>" />
                                 </div>
                             </div>
                             
                             <div class="goal-middle">
                                 <div class="goal-subtitle">
                                     <?php if ( $this->location_data['country_code'] === 'US' ) : ?>
-                                        2 New Simple Churches per 5000 People
+                                        <?php echo esc_html__( '2 simple churches per 5,000 people in the United States', 'zume' ) ?>
                                     <?php else : ?>
-                                        2 New Simple Churches per 50000 People
+                                        <?php echo esc_html__( '2 simple churches per 50,000 people globally', 'zume' ) ?>
                                     <?php endif; ?>
                                 </div>
                                 <div class="stats-section">
@@ -1046,8 +1043,8 @@ class Zume_Local_Map extends Zume_Magic_Page
                                         <!-- Progress dots will be generated dynamically -->
                                     </div>
                                     <div class="stat-labels">
-                                        <span class="stat-label">Simple Churches Started</span>
-                                        <span class="stat-label">Simple Churches Needed</span>
+                                        <span class="stat-label"><?php echo esc_html__( 'Churches Reported', 'zume' ) ?></span>
+                                        <span class="stat-label"><?php echo esc_html__( 'Churches Needed', 'zume' ) ?></span>
                                     </div>
                                     <div class="stat-numbers">
                                         <span class="stat-number"><?php echo number_format( $this->get_churches_count() ) ?></span>
@@ -1069,12 +1066,12 @@ class Zume_Local_Map extends Zume_Magic_Page
                 </div>
 
                 <div class="footer">
-                    <div class="footer-text">What can you do?</div>
+                    <div class="footer-text"><?php echo esc_html__( 'Getting Started', 'zume' ) ?></div>
                     <div class="qr-code">
-                        <img src="<?php echo esc_url( plugins_url( 'site/assets/images/zt-qr-code.png', dirname( __FILE__ ) ) ); ?>" alt="Zume Training QR Code" />
+                        <img src="<?php echo esc_url( plugins_url( 'site/assets/images/zt-qr-code.png', dirname( __FILE__ ) ) ); ?>" alt="<?php echo esc_attr__( 'Training', 'zume' ) ?>" />
                     </div>
                     <div class="footer-link">
-                        <div class="check-out">Check out:</div>
+                        <div class="check-out"><?php echo esc_html__( 'Vision', 'zume' ) ?>:</div>
                         <div class="url">https://zume.training</div>
                     </div>
                 </div>
@@ -1103,16 +1100,34 @@ class Zume_Local_Map extends Zume_Magic_Page
                 lg.level,
                 admin0.name as admin0_name,
                 admin1.name as admin1_name,
-                admin2.name as admin2_name
+                admin2.name as admin2_name,
+                lgn.name as localized_name,
+                admin0_gn.name as admin0_localized_name,
+                admin1_gn.name as admin1_localized_name,
+                admin2_gn.name as admin2_localized_name
              FROM zume_dt_location_grid lg 
              LEFT JOIN zume_dt_location_grid admin0 ON lg.admin0_grid_id = admin0.grid_id
              LEFT JOIN zume_dt_location_grid admin1 ON lg.admin1_grid_id = admin1.grid_id
              LEFT JOIN zume_dt_location_grid admin2 ON lg.admin2_grid_id = admin2.grid_id
+             LEFT JOIN zume_5_sndd.zume_location_grid_names lgn ON lg.grid_id = lgn.grid_id AND lgn.language_code = %s
+             LEFT JOIN zume_5_sndd.zume_location_grid_names admin0_gn ON admin0.grid_id = admin0_gn.grid_id AND admin0_gn.language_code = %s
+             LEFT JOIN zume_5_sndd.zume_location_grid_names admin1_gn ON admin1.grid_id = admin1_gn.grid_id AND admin1_gn.language_code = %s
+             LEFT JOIN zume_5_sndd.zume_location_grid_names admin2_gn ON admin2.grid_id = admin2_gn.grid_id AND admin2_gn.language_code = %s
              WHERE lg.grid_id = %d",
+            $this->lang_code,
+            $this->lang_code,
+            $this->lang_code,
+            $this->lang_code,
             $grid_id
         ), ARRAY_A );
 
         if ( $result ) {
+            // Use localized names if available, fall back to default names
+            $result['name'] = $result['localized_name'] ?? $result['name'];
+            $result['admin0_name'] = $result['admin0_localized_name'] ?? $result['admin0_name'];
+            $result['admin1_name'] = $result['admin1_localized_name'] ?? $result['admin1_name'];
+            $result['admin2_name'] = $result['admin2_localized_name'] ?? $result['admin2_name'];
+            
             // Build full hierarchical name
             $result['full_name'] = $this->build_hierarchical_name( $result );
         }
