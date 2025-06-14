@@ -1367,6 +1367,9 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                           </div>
                         `:c`
                             <div class="stack">
+                                <a class="btn" data-map="local-map" target="_blank" href="/maps/local?grid_id=${jsObject.profile.location.grid_id||""}">
+                                    ${jsObject.translations.local_map}
+                                </a>
                                 <button class="btn" data-map="hundred-hour-map" @click=${this.openModal}>
                                     ${jsObject.translations.hundred_hour_map}
                                 </button>
