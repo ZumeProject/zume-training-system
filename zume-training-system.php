@@ -158,6 +158,8 @@ class Zume_Training {
         add_filter( 'pre_redirect_guess_404_permalink', '__return_false' );
         add_filter( '404_template_hierarchy', [ $this, 'filter_404_template_hierarchy' ], 100, 3 );
         add_filter( 'language_attributes', [ $this, 'filter_language_attributes' ], 10, 2 );
+        add_filter( 'dt_set_roles_and_permissions', [ $this, 'filter_set_roles_and_permissions' ], 10, 1 );
+        add_filter( 'dt_filter_access_permissions', [ $this, 'filter_access_permissions' ], 10, 2 );
 
         /* Ensure that Login is enabled and settings set to the correct values */
         $fields = [
@@ -182,7 +184,28 @@ class Zume_Training {
         }
 
         add_action( 'wp_head', [ $this, 'insert_head_scripts' ] );
+    }
 
+    public function filter_set_roles_and_permissions( $expected_roles ) {
+        $permissions = [
+            'access_contacts' => true,
+        ];
+
+        if ( !isset( $expected_roles['zume_admin'] ) ) {
+            $expected_roles['zume_admin'] = [
+                'label' => __( 'Zume Admin', 'zume' ),
+                'description' => 'Administrates Zume',
+                'permissions' => $permissions,
+            ];
+        }
+        return $expected_roles;
+    }
+
+    public function filter_access_permissions( $permissions, $post_type ) {
+        if ( $post_type === 'contacts' && current_user_can( 'zume_admin' ) ) {
+            $permissions = [];
+        }
+        return $permissions;
     }
 
     public function insert_head_scripts() {
