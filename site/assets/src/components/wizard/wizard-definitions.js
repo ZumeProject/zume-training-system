@@ -104,6 +104,11 @@ export const wizardDefinitions = {
             Steps.checkinSubmit,
         ], true)
     },
+    [Wizards.notifyOfFutureTrainings]: {
+        [Modules.notifyOfFutureTrainings]: makeModule([
+            Steps.notifyOfFutureTrainings,
+        ], true)
+    },
 }
 
 function makeModule( stepNames = [], skippable = false ) {

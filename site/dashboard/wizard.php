@@ -322,6 +322,13 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'change' => __( 'Change', 'zume' ),
                 'next' => __( 'Next', 'zume' ),
             ],
+            'notify_of_future_trainings' => [
+                'title' => __( 'Notify me about future trainings', 'zume' ),
+                'please_wait' => __( 'Please wait while we connect you', 'zume' ),
+                'broken_link' => __( 'The notify me about future trainings link is broken. Please try again.', 'zume' ),
+                'success' => __( 'You have been added to the list to be notified about future trainings.', 'zume' ),
+                'error' => __( 'Something went wrong', 'zume' ),
+            ],
             'share' => array_merge( [
                 'title' => __( 'Invite your friends to join your training', 'zume' ),
                 'share_with_friends' => __( 'Share the invite or link below with your friends so that they can join your training.', 'zume' ),

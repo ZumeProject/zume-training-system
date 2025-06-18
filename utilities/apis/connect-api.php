@@ -47,6 +47,22 @@ class Zume_Connect_Endpoints
                 'permission_callback' => 'is_user_logged_in',
             ]
         );
+        register_rest_route(
+            $this->namespace, '/connect/notify-of-future-trainings', [
+                'methods' => 'POST',
+                'callback' => [ $this, 'notify_of_future_trainings_callback' ],
+                'permission_callback' => 'is_user_logged_in',
+            ]
+        );
+    }
+
+    public function notify_of_future_trainings_callback( WP_REST_Request $request ){
+        $params = dt_recursive_sanitize_array( $request->get_params() );
+
+        $user_id = get_current_user_id();
+
+        // now we either save this on the user as meta, or as contact meta.
+        // it would make sense to save it as contact meta as
     }
     public function connect_to_friend_callback( WP_REST_Request $request ){
         $params = dt_recursive_sanitize_array( $request->get_params() );
