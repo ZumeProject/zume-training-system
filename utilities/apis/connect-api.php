@@ -57,12 +57,17 @@ class Zume_Connect_Endpoints
     }
 
     public function notify_of_future_trainings_callback( WP_REST_Request $request ){
-        $params = dt_recursive_sanitize_array( $request->get_params() );
-
         $user_id = get_current_user_id();
 
-        // now we either save this on the user as meta, or as contact meta.
-        // it would make sense to save it as contact meta as
+        $contact_id = zume_get_user_contact_id( $user_id );
+
+        $fields = [
+            'notify_of_future_trainings' => true,
+        ];
+
+        $result = DT_Posts::update_post( 'contacts', $contact_id, $fields, true, false );
+
+        return $result;
     }
     public function connect_to_friend_callback( WP_REST_Request $request ){
         $params = dt_recursive_sanitize_array( $request->get_params() );

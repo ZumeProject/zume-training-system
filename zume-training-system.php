@@ -122,7 +122,7 @@ class Zume_Training {
             $language_code = zume_get_language_cookie();
             if ( $language_code !== $lang_code ) {
                 zume_set_language_cookie( $lang_code );
-            } 
+            }
         }
 
     }
@@ -198,18 +198,18 @@ class Zume_Training {
         if ( ! in_array( $url_parts[0], [ 'share', 'resources', 'training', 'about', 'how-to-follow-jesus'] ) ) {
             return;
         }
-        
+
         ?>
             <!-- Chipp Chat Widget -->
             <script>
             window.CHIPP_APP_URL = "https://zmecopilot-44723.chipp.ai";
             window.CHIPP_APP_ID = 44723;
             </script>
-            
+
             <link rel="stylesheet" href="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.css" />
-            
+
             <script defer src="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.js"></script>
-            
+
         <?php
     }
 
@@ -388,6 +388,14 @@ class Zume_Training {
                     'only_for_types' => [ 'user' ],
                 ];
             }
+            if ( !isset( $fields['notify_of_future_trainings'] ) ){
+                $fields['notify_of_future_trainings'] = [
+                    'name' => __( 'Notify of Future Trainings', 'zume' ),
+                    'type' => 'boolean',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
             if ( !isset( $fields['coaching_contact_id'] ) ){
                 $fields['coaching_contact_id'] = [
                     'name' => __( 'Coaching Contact ID', 'zume' ),
@@ -508,7 +516,7 @@ class Zume_Training {
             'time_end' => time(),
             'language_code' => $user_language['code'] ?? 'en',
         ], true );
-        
+
         // Zume_System_Encouragement_API::update_plan( $user->ID, 'training', 'registered' ); @todo remove this
     }
     public function dt_update_users_corresponding_contact( mixed $contact, WP_User $user ) {
@@ -534,7 +542,7 @@ class Zume_Training {
         }
     }
     public function dt_login_url( $dt_login_url ) {
-        
+
         $dt_login_url = str_replace( $this->builtin_login_url, $this->login_url, $dt_login_url );
 
         $current_language = 'en';
@@ -568,7 +576,7 @@ class Zume_Training {
         return $current_language . '/' . $dt_login_url;
     }
     public function dt_login_redirect_url( $redirect_url ) {
-        
+
         $url = new DT_URL( $redirect_url );
 
         $parsed_url = $url->parsed_url;
