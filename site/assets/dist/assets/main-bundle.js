@@ -398,11 +398,24 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     ></review-steps>
                 `:""}
             </div>
-        `}createRenderRoot(){return this}}customElements.define("make-training",No);class Po extends _{static get properties(){return{t:{type:Object},code:{attribute:!1},message:{attribute:!1},errorMessage:{attribute:!1},loading:{attribute:!1}}}constructor(){super(),this.code="",this.errorMessage="",this.loading=!1}firstUpdated(){this.loading=!0,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.message=this.t.please_wait,k.post("connect/notify-of-future-trainings").then(t=>{this.message=this.t.success}).catch(t=>{console.log(t),this.message="",this.setErrorMessage(this.t.error)}).finally(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.dispatchEvent(new CustomEvent("wizard:finish",{bubbles:!0}))})}setErrorMessage(t){this.errorMessage=t}render(){return c`
+        `}createRenderRoot(){return this}}customElements.define("make-training",No);class Po extends _{static get properties(){return{t:{type:Object},code:{attribute:!1},message:{attribute:!1},errorMessage:{attribute:!1},successMessage:{attribute:!1},loading:{attribute:!1}}}constructor(){super(),this.code="",this.errorMessage="",this.successMessage="",this.loading=!1}firstUpdated(){this.loading=!0,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.message=this.t.please_wait,k.post("connect/notify-of-future-trainings").then(t=>{this.message="",this.successMessage=this.t.success}).catch(t=>{console.log(t),this.message="",this.setErrorMessage(this.t.error)}).finally(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.dispatchEvent(new CustomEvent("wizard:finish",{bubbles:!0}))})}setErrorMessage(t){this.errorMessage=t}render(){return c`
             <h1>${this.t.title}</h1>
             <p>${this.message}</p>
-            <span class="loading-spinner ${this.loading?"active":""}"></span>
-            <div class="warning banner" data-state=${this.errorMessage.length?"":"empty"}>${this.errorMessage}</div>
+            <span
+                class="loading-spinner ${this.loading?"active":""}"
+            ></span>
+            <div
+                class="warning banner"
+                data-state=${this.errorMessage.length?"":"empty"}
+            >
+                ${this.errorMessage}
+            </div>
+            <div
+                class="success banner"
+                data-state=${this.successMessage.length?"":"empty"}
+            >
+                ${this.successMessage}
+            </div>
         `}createRenderRoot(){return this}}customElements.define("notify-of-future-trainings",Po);class Ro extends _{static get properties(){return{hasNextStep:{type:Boolean},t:{type:Object},variant:{type:String},state:{attribute:!1},errorMessage:{attribute:!1},message:{attribute:!1},loading:{attribute:!1},requestSent:{attribute:!1}}}constructor(){super(),this.hasNextStep=!1,this.variant="",this.t={},this.state={},this.errorMessage="",this.message="",this.loading=!1,this.requestSent=!1,this.contactPreferences=["email","text","phone","whatsapp","signal","telegram","messenger"],this.stateManager=At.getInstance(P.getACoach),this.stateManager.clear()}requestCoach(){this.message=this.t.please_wait;const t=this.stateManager.getAll();this.loading=!0,this.requestSent=!0,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),k.post("get_a_coach",{data:t}).then(e=>{console.log(e,this),this.message=this.t.connect_success,e===!1&&(this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting))}).catch(e=>{if(e.code==="coach_request_failed"){this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_with_request);return}else if(e.code==="already_has_coach"){this.message="",this.setErrorMessage(this.t.already_coached);return}this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting)}).finally(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.dispatchEvent(new CustomEvent("wizard:finish",{bubbles:!0}))})}willUpdate(t){t.has("variant")&&(this.state=this.stateManager.get(this.variant)||{},this.variant===h.languagePreferences&&!this.state.value&&(this.state.value=jsObject.profile.preferred_language||"en",this.stateManager.add(this.variant,this.state)))}setErrorMessage(t){this.errorMessage=t}render(){return this.variant===h.connectingToCoach&&this.requestSent===!1&&this.requestCoach(),c`
         <form class="inputs stack-2" @submit=${this._handleDone}>
             ${this.variant===h.contactPreferences?c`
