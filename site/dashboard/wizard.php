@@ -107,6 +107,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'checkin_dashboard_url' => zume_checkin_dashboard_url(),
                 'training_dashboard_url' => zume_dashboard_page_url( 'my-training' ),
                 'coaching_dashboard_url' => zume_dashboard_page_url( 'my-coach' ),
+                'notify_of_future_trainings_url' => zume_notify_of_future_trainings_url(),
                 'site_url' => zume_home_url(),
             ]) ?>][0]
         </script>
@@ -255,6 +256,10 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'next' => __( 'Next', 'zume' ),
                 'no_plans' => __( 'There are currently no public trainings available.', 'zume' ),
                 'complete_profile' => __( 'Please make sure that your profile is up to date, so that group leaders can contact you.', 'zume' ),
+                'notify_of_future_trainings_title' => __( 'Would you like to be notified about future trainings?', 'zume' ),
+                'notify_of_future_trainings_description' => __( 'We will send you an email when a new training is available.', 'zume' ),
+                'notify_of_future_trainings_button' => __( 'Notify me about future trainings', 'zume' ),
+                'notify_of_future_trainings_unsubscribe' => __( 'You can always unsubscribe from these emails at any time.', 'zume' ),
             ],
             'connect_friend' => [
                 'title' => __( 'Connecting with friend', 'zume' ),

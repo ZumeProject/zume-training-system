@@ -161,15 +161,36 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
             <h1>${this.t.title}</h1>
             <p>${this.message}</p>
             ${this.showTrainings&&this.variant===h.joinTrainingSelection?c`
-                <public-trainings .t=${this.t} @chosen-training=${this._handleChosenTraining}></public-trainings>
-            `:""}
-            <span class="loading-spinner ${this.loading?"active":""}"></span>
-            <div class="warning banner" data-state=${this.errorMessage.length?"":"empty"}>${this.errorMessage}</div>
+                      <public-trainings
+                          .t=${this.t}
+                          @chosen-training=${this._handleChosenTraining}
+                      ></public-trainings>
+                  `:""}
+            <div class="stack">
+                <h3>${this.t.notify_of_future_trainings_title}</h3>
+                <p>${this.t.notify_of_future_trainings_description}</p>
+                <p>${this.t.notify_of_future_trainings_unsubscribe}</p>
+                <a
+                    href="${jsObject.notify_of_future_trainings_url}"
+                    class="btn large uppercase fit-content mx-auto"
+                >
+                    ${this.t.notify_of_future_trainings_button}
+                </a>
+            </div>
+            <span
+                class="loading-spinner ${this.loading?"active":""}"
+            ></span>
+            <div
+                class="warning banner"
+                data-state=${this.errorMessage.length?"":"empty"}
+            >
+                ${this.errorMessage}
+            </div>
             ${this.showNextStep||this.success&&this.hasNextStep?c`
-                    <button class="btn" @click=${this._sendDoneStepEvent}>
-                        ${this.t.next}
-                    </button>
-                `:""}
+                      <button class="btn" @click=${this._sendDoneStepEvent}>
+                          ${this.t.next}
+                      </button>
+                  `:""}
         `}createRenderRoot(){return this}}customElements.define("join-training",zo);class Ao extends _{static get properties(){return{hasNextStep:{type:Boolean},t:{type:Object},variant:{type:String},loading:{type:Boolean,attribute:!1},success:{type:Boolean,atrtibute:!1}}}joinCommunity(){this.loading=!0,k.post("join_community").then(t=>{this.success=!0}).finally(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("wizard:finish",{bubbles:!0}))})}_sendDoneStepEvent(){const t=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(t)}render(){if(this.variant===h.joinCommunityExplanation)return c`
                 <div class="container-md stack-2 center | py-2">
                   <h1 class="text-center">${this.t.community_title}</h1>

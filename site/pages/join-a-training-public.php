@@ -152,13 +152,13 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
                         </tbody>
                     </table>
                 </div>
-                <div class="stack-2">
+                <div class="stack text-center">
                     <h3><?php echo esc_html__( 'Would you like to be notified about future trainings?', 'zume' ); ?></h3>
                     <p><?php echo esc_html__( 'We will send you an email when a new training is available.', 'zume' ); ?></p>
+                    <p><?php echo esc_html__( 'You can always unsubscribe from these emails at any time.', 'zume' ); ?></p>
                     <a href="<?php echo esc_url( zume_notify_of_future_trainings_url() ) ?>" class="btn large uppercase fit-content mx-auto">
                         <?php echo esc_html__( 'Notify me about future trainings', 'zume' ) ?>
                     </a>
-                    <p><?php echo esc_html__( 'You can always unsubscribe from these emails at any time.', 'zume' ); ?></p>
                 </div>
             </div>
 
