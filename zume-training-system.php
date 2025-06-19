@@ -419,6 +419,14 @@ class Zume_Training {
                     'only_for_types' => [ 'user' ],
                 ];
             }
+            if ( !isset( $fields['notify_of_future_trainings_date_subscribed'] ) ){
+                $fields['notify_of_future_trainings_date_subscribed'] = [
+                    'name' => __( 'Notify of Future Trainings Date Subscribed', 'zume' ),
+                    'type' => 'date',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
             if ( !isset( $fields['coaching_contact_id'] ) ){
                 $fields['coaching_contact_id'] = [
                     'name' => __( 'Coaching Contact ID', 'zume' ),

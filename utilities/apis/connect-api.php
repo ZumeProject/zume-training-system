@@ -63,6 +63,7 @@ class Zume_Connect_Endpoints
 
         $fields = [
             'notify_of_future_trainings' => true,
+            'notify_of_future_trainings_date_subscribed' => gmdate( 'Y-m-d' ),
         ];
 
         $result = DT_Posts::update_post( 'contacts', $contact_id, $fields, true, false );
