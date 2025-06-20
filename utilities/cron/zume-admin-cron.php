@@ -54,12 +54,38 @@ class Zume_Admin_Cron {
         $contacts = DT_Posts::list_posts( 'contacts', array(
             'notify_of_future_trainings' => [ '1' ],
         ) );
+
+        $message = '';
+
+        $message .= '<p>Dear Zume Admin,</p>';
         if ( is_wp_error( $contacts ) ) {
-            $message = 'Error getting contacts: ' . $contacts->get_error_message();
+            $message .= '<p>Error getting contacts: ' . $contacts->get_error_message() . '</p>';
         } else {
             $contacts = count( $contacts );
-            $message = 'There are ' . $contacts . ' contacts who have the \'notify of future trainings\' flag turned on.';
+            $message .= '<p>There are ' . $contacts . ' contacts who have the \'notify of future trainings\' flag turned on.</p>';
         }
+
+        // we also want to know how many of these contacts have joined or created a training group since they subscribed.
+        global $wpdb;
+        $number_of_contacts_that_joined_online_training = $wpdb->get_var( $wpdb->prepare( "
+        SELECT COUNT(DISTINCT(pm3.meta_value))
+            FROM zume_postmeta pm
+            JOIN zume_postmeta pm2 ON pm.post_id = pm2.post_id
+            JOIN zume_postmeta pm3 ON pm.post_id = pm3.post_id
+            JOIN zume_dt_reports r ON r.user_id = pm3.meta_value
+            WHERE pm.meta_key = 'notify_of_future_trainings'
+            AND pm.meta_value = '1'
+            AND pm2.meta_key = 'notify_of_future_trainings_date_subscribed'
+            AND pm3.meta_key = 'corresponds_to_user'
+            AND r.subtype = 'joined_online_training'
+            AND r.timestamp > pm2.meta_value
+        " ) );
+        $message .= '<p>There are ' . $number_of_contacts_that_joined_online_training . ' contacts that have joined an online training group since they subscribed.</p>';
+
+        $message .= '<p>That means that ' . $contacts - $number_of_contacts_that_joined_online_training . ' users are still waiting for a training group to join.</p>';
+        $message .= '<p>Best regards,</p>';
+        $message .= '<p>The Zume Team</p>';
+
         $messages[] = [
             'subject' => 'Zume Admin Message',
             'message' => $message,
