@@ -62,7 +62,7 @@ class Zume_Admin_Cron {
             $message .= '<p>Error getting contacts: ' . $contacts->get_error_message() . '</p>';
         } else {
             $contacts = count( $contacts );
-            $message .= '<p>There are ' . $contacts . ' contacts who have the \'notify of future trainings\' flag turned on.</p>';
+            $message .= '<p>' . $contacts . ' contacts have the \'notify of future trainings\' flag turned on.</p>';
         }
 
         // we also want to know how many of these contacts have joined or created a training group since they subscribed.
@@ -80,9 +80,9 @@ class Zume_Admin_Cron {
             AND r.subtype = 'joined_online_training'
             AND r.timestamp > pm2.meta_value
         " ) );
-        $message .= '<p>There are ' . $number_of_contacts_that_joined_online_training . ' contacts that have joined an online training group since they subscribed.</p>';
+        $message .= '<p>' . $number_of_contacts_that_joined_online_training . ' contacts have joined an online training group since they subscribed.</p>';
 
-        $message .= '<p>That means that ' . $contacts - $number_of_contacts_that_joined_online_training . ' users are still waiting for a training group to join.</p>';
+        $message .= '<p>' . $contacts - $number_of_contacts_that_joined_online_training . ' contacts are still waiting for a training group to join.</p>';
         $message .= '<p>Best regards,</p>';
         $message .= '<p>The Zume Team</p>';
 
