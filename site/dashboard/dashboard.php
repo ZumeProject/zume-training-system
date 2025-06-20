@@ -123,6 +123,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'wizard_translations' => Zume_Training_Wizard::translations(),
                 'three_month_plan_translations' => Zume_Activites_3monthplan::translations(),
                 'three_month_plan_questions' => self::three_month_plan_questions(),
+                'notify_of_future_trainings_url' => zume_notify_of_future_trainings_url(),
                 'urls' => [
                     'logout' => esc_url( dt_login_url( 'logout' ) ),
                     'launch_ten_session_course' => zume_10_session_url(),

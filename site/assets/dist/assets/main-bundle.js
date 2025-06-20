@@ -163,20 +163,10 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
             ${this.showTrainings&&this.variant===h.joinTrainingSelection?c`
                       <public-trainings
                           .t=${this.t}
+                          notifyUrl=${jsObject.notify_of_future_trainings_url}
                           @chosen-training=${this._handleChosenTraining}
                       ></public-trainings>
                   `:""}
-            <div class="stack">
-                <h3>${this.t.notify_of_future_trainings_title}</h3>
-                <p>${this.t.notify_of_future_trainings_description}</p>
-                <p>${this.t.notify_of_future_trainings_unsubscribe}</p>
-                <a
-                    href="${jsObject.notify_of_future_trainings_url}"
-                    class="btn large uppercase fit-content mx-auto"
-                >
-                    ${this.t.notify_of_future_trainings_button}
-                </a>
-            </div>
             <span
                 class="loading-spinner ${this.loading?"active":""}"
             ></span>
@@ -3303,9 +3293,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     </ul>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("share-list",Fl);class Ul extends _{static get properties(){return{t:{type:Object},joinLink:{type:String},loading:{attribute:!1},posts:{attribute:!1}}}constructor(){super(),this.loading=!0,this.plans=[],this.getTrainings(),this.renderRow=this.renderRow.bind(this)}getTrainings(){k.post("public_plans",{}).then(t=>{this.plans=t}).catch(t=>{console.log(t)}).finally(()=>{this.loading=!1})}render(){return this.loading?c`<span class="loading-spinner active"></span>`:this.plans.length===0?c`
-                <p>${this.t.no_plans}</p>
-            `:c`
+        `}createRenderRoot(){return this}}customElements.define("share-list",Fl);class Ul extends _{static get properties(){return{t:{type:Object},joinLink:{type:String},notifyUrl:{type:String},loading:{attribute:!1},posts:{attribute:!1}}}constructor(){super(),this.loading=!0,this.plans=[],this.notifyUrl="",this.getTrainings(),this.renderRow=this.renderRow.bind(this)}getTrainings(){k.post("public_plans",{}).then(t=>{this.plans=t}).catch(t=>{console.log(t)}).finally(()=>{this.loading=!1})}render(){return this.loading?c`<span class="loading-spinner active"></span>`:this.plans.length===0?c` <p>${this.t.no_plans}</p> `:c`
             <table>
                 <thead>
                     <tr>
@@ -3320,17 +3308,38 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 </thead>
                 <tbody>
                     ${this.plans.map(this.renderRow)}
-               </tbody>
+                </tbody>
             </table>
+            <div class="stack">
+                <h3>${this.t.notify_of_future_trainings_title}</h3>
+                <p>${this.t.notify_of_future_trainings_description}</p>
+                <p>${this.t.notify_of_future_trainings_unsubscribe}</p>
+                <a
+                    href=${this.notifyUrl}
+                    class="btn large uppercase fit-content mx-auto"
+                >
+                    ${this.t.notify_of_future_trainings_button}
+                </a>
+            </div>
         `}renderRow({join_key:t,language_note:e,post_title:s,time_of_day_note:n,timezone_note:a,set_type:r,...o}){let l;switch(r.key){case"set_a":l=10;break;case"set_b":l=20;break;case"set_c":l=5;break}const d=r.key+"_",u=Date.now()/1e3;let p="",m;for(let y=1;y<l+1;y++){const j=y<10?`0${y}`:`${y}`,T=o[d+j];if(p=T.timestamp,m=y,u<T.timestamp)break}const f=g.fromMillis(p*1e3).toFormat("DD");return c`
             <tr>
                 <td data-label="${this.t.name}">${s}</td>
-                <td data-label="${this.t.session}">${m} / ${l}</td>
+                <td data-label="${this.t.session}">
+                    ${m} / ${l}
+                </td>
                 <td data-label="${this.t.next_date}">${f}</td>
                 <td data-label="${this.t.start_time}">${n}</td>
                 <td data-label="${this.t.timezone}">${a}</td>
                 <td data-label="${this.t.language}">${e}</td>
-                <td><button class="btn" data-code=${t} @click=${this._handleJoinTraining}>${this.t.join}</button></td>
+                <td>
+                    <button
+                        class="btn"
+                        data-code=${t}
+                        @click=${this._handleJoinTraining}
+                    >
+                        ${this.t.join}
+                    </button>
+                </td>
             </tr>
         `}_handleJoinTraining(t){const e=t.target.dataset.code,s=new CustomEvent("chosen-training",{bubbles:!0,detail:{code:e}});this.dispatchEvent(s)}createRenderRoot(){return this}}customElements.define("public-trainings",Ul);class na extends _{static get properties(){return{radius:{type:Number},lineWidth:{type:Number},percent:{type:Number}}}constructor(){super(),this.radius=100,this.lineWidth=10,this.percent=30}width(){return this.radius*2+this.lineWidth}widthPx(){return this.appendPx(this.width())}center(){return this.width()/2}circumference(){return this.radius*2*Math.PI}circumferencePx(){return this.appendPx(this.circumference())}appendPx(t){return`${t}px`}rotate(t){return`rotate(${t}, ${this.center()}, ${this.center()})`}render(){return c`
             <div

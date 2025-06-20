@@ -31,7 +31,6 @@ export class JoinTraining extends LitElement {
         this.showTrainings = false
         this.showNextStep = false
         this.loading = false
-
         this.stateManager = WizardStateManager.getInstance(Modules.joinTraining)
     }
 
@@ -136,21 +135,11 @@ export class JoinTraining extends LitElement {
                 ? html`
                       <public-trainings
                           .t=${this.t}
+                          notifyUrl=${jsObject.notify_of_future_trainings_url}
                           @chosen-training=${this._handleChosenTraining}
                       ></public-trainings>
                   `
                 : ''}
-            <div class="stack">
-                <h3>${this.t.notify_of_future_trainings_title}</h3>
-                <p>${this.t.notify_of_future_trainings_description}</p>
-                <p>${this.t.notify_of_future_trainings_unsubscribe}</p>
-                <a
-                    href="${jsObject.notify_of_future_trainings_url}"
-                    class="btn large uppercase fit-content mx-auto"
-                >
-                    ${this.t.notify_of_future_trainings_button}
-                </a>
-            </div>
             <span
                 class="loading-spinner ${this.loading ? 'active' : ''}"
             ></span>
