@@ -8210,5 +8210,41 @@ if ( ! class_exists( 'Zume_User_Genmap' ) ) {
     Zume_User_Genmap::instance();
 }
 
+if ( !function_exists( 'zume_get_notification_subscribers' ) ) {
+    function zume_get_notification_subscribers() {
+        $contacts = DT_Posts::list_posts( 'contacts', array(
+            'notify_of_future_trainings' => [ 1 ],
+        ) );
+        return $contacts;
+    }
+}
+
+if ( !function_exists( 'zume_get_notification_subscribers_count' ) ) {
+    function zume_get_notification_subscribers_count() {
+        $contacts = zume_get_notification_subscribers();
+        return $contacts['total'];
+    }
+}
+
+if ( !function_exists( 'zume_get_subscribers_in_online_trainings' ) ) {
+    function zume_get_subscribers_in_online_trainings() {
+        global $wpdb;
+        $number_of_contacts_that_joined_online_training = $wpdb->get_var( $wpdb->prepare( "
+        SELECT COUNT(DISTINCT(pm3.meta_value))
+            FROM zume_postmeta pm
+            JOIN zume_postmeta pm2 ON pm.post_id = pm2.post_id
+            JOIN zume_postmeta pm3 ON pm.post_id = pm3.post_id
+            JOIN zume_dt_reports r ON r.user_id = pm3.meta_value
+            WHERE pm.meta_key = 'notify_of_future_trainings'
+            AND pm.meta_value = '1'
+            AND pm2.meta_key = 'notify_of_future_trainings_date_subscribed'
+            AND pm3.meta_key = 'corresponds_to_user'
+            AND r.subtype = 'joined_online_training'
+            AND r.timestamp > pm2.meta_value
+        " ) );
+        return $number_of_contacts_that_joined_online_training;
+    }
+}
+
 // must be last for initialization
 zume_get_user_profile();
