@@ -1,5 +1,5 @@
-import { html } from 'lit';
-import { DashPage } from './dash-page';
+import { html } from 'lit'
+import { DashPage } from './dash-page'
 import { Wizards } from '../wizard/wizard-constants'
 // import { zumeRequest } from '../../js/zumeRequest';
 
@@ -9,7 +9,7 @@ export class DashMaps extends DashPage {
             showTeaser: { type: Boolean },
             scriptUrl: { type: String, attribute: false },
             loading: { type: Boolean, attribute: false },
-        };
+        }
     }
 
     constructor() {
@@ -19,20 +19,25 @@ export class DashMaps extends DashPage {
     }
 
     connectedCallback() {
-        super.connectedCallback();
+        super.connectedCallback()
         this.openModal = this.openModal.bind(this)
         this.handleLoad = this.handleLoad.bind(this)
     }
 
     firstUpdated() {
-        jQuery(this.renderRoot).foundation();
+        jQuery(this.renderRoot).foundation()
 
         const iframe = document.querySelector('#map-iframe')
         iframe.addEventListener('load', this.handleLoad)
     }
 
     joinCommunity() {
-        this.dispatchEvent(new CustomEvent('open-wizard', { bubbles: true, detail: { type: Wizards.joinCommunity } }))
+        this.dispatchEvent(
+            new CustomEvent('open-wizard', {
+                bubbles: true,
+                detail: { type: Wizards.joinCommunity },
+            })
+        )
     }
 
     openModal(event) {
@@ -91,38 +96,65 @@ export class DashMaps extends DashPage {
                 <dash-header-right></dash-header-right>
 
                 <div class="dashboard__main content p-2">
-                    ${
-                        this.showTeaser
+                    ${this.showTeaser
                         ? html`
-                          <div class="dash-menu__list-item">
-                            <div class="dash-menu__icon-area | stack--5">
-                              <span class="icon z-icon-locked dash-menu__list-icon"></span>
-                            </div>
-                            <div class="dash-menu__text-area | switcher | switcher-width-20">
-                              <div>
-                                <h3 class="f-1 bold uppercase">${jsObject.translations.my_maps_locked}</h3>
-                                <p>${jsObject.translations.my_maps_explanation}</p>
+                              <div class="dash-menu__list-item">
+                                  <div class="dash-menu__icon-area | stack--5">
+                                      <span
+                                          class="icon z-icon-locked dash-menu__list-icon"
+                                      ></span>
+                                  </div>
+                                  <div
+                                      class="dash-menu__text-area | switcher | switcher-width-20"
+                                  >
+                                      <div>
+                                          <h3 class="f-1 bold uppercase">
+                                              ${jsObject.translations
+                                                  .my_maps_locked}
+                                          </h3>
+                                          <p>
+                                              ${jsObject.translations
+                                                  .my_maps_explanation}
+                                          </p>
+                                      </div>
+                                      <button
+                                          class="dash-menu__view-button btn tight"
+                                          @click=${this.joinCommunity}
+                                      >
+                                          ${jsObject.translations
+                                              .join_the_community}
+                                      </button>
+                                  </div>
                               </div>
-                              <button class="dash-menu__view-button btn tight" @click=${this.joinCommunity}>
-                                ${jsObject.translations.join_the_community}
-                              </button>
-                            </div>
-                          </div>
-                        `
+                          `
                         : html`
-                            <div class="stack">
-                                <button class="btn" data-map="hundred-hour-map" @click=${this.openModal}>
-                                    ${jsObject.translations.hundred_hour_map}
-                                </button>
-                                <button class="btn" data-map="vision-map" @click=${this.openModal}>
-                                    ${jsObject.translations.training_vision_map}
-                                </button>
-                                <button class="btn" data-map="church-map" @click=${this.openModal}>
-                                    ${jsObject.translations.simple_church_planting_map}
-                                </button>
-                            </div>
-                        `
-                    }
+                              <div class="nav-grid" data-full-width>
+                                  <grid-link
+                                      data-map="hundred-hour-map"
+                                      @click=${this.openModal}
+                                      text=${jsObject.translations
+                                          .hundred_hour_map}
+                                      ?noRenderText=${true}
+                                  >
+                                  </grid-link>
+                                  <grid-link
+                                      data-map="vision-map"
+                                      @click=${this.openModal}
+                                      text=${jsObject.translations
+                                          .training_vision_map}
+                                      ?noRenderText=${true}
+                                  >
+                                  </grid-link>
+                                  <grid-link
+                                      data-map="church-map"
+                                      @click=${this.openModal}
+                                      text=${jsObject.translations
+                                          .simple_church_planting_map}
+                                      ?noRenderText=${true}
+                                  >
+                                  </grid-link>
+                              </div>
+                          `}
                 </div>
                 <div class="dashboard__secondary">
                     <dash-cta></dash-cta>
@@ -134,13 +166,15 @@ export class DashMaps extends DashPage {
                 data-reveal
                 id="map-modal"
             >
-                ${this.loading ? html`
-                    <div class="cover-page">
-                        <div class="center">
-                            <span class="loading-spinner active"></span>
-                        </div>
-                    </div>
-                ` : ''}
+                ${this.loading
+                    ? html`
+                          <div class="cover-page">
+                              <div class="center">
+                                  <span class="loading-spinner active"></span>
+                              </div>
+                          </div>
+                      `
+                    : ''}
                 <iframe
                     id="map-iframe"
                     class="${this.loading ? 'opacity-0' : ''}"
@@ -151,11 +185,11 @@ export class DashMaps extends DashPage {
                 >
                 </iframe>
             </div>
-        `;
+        `
     }
 
     createRenderRoot() {
         return this
     }
 }
-customElements.define('dash-maps', DashMaps);
+customElements.define('dash-maps', DashMaps)
