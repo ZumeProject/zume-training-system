@@ -54,14 +54,12 @@ class Zume_Communications_API
 
         $subscribers = zume_get_notification_subscribers();
 
-        $email_results = [];
         foreach ( $subscribers['posts'] as $subscriber ) {
             $email = $subscriber['user_email'];
             $name = $subscriber['name'];
             $message = $this->create_email_message( $training, $name );
 
-            $email_result = wp_mail( $email, $message['subject'], $message['body'] );
-            $email_results[] = $email_result;
+            wp_queue()->push( new Zume_Email_Job( $email, $message ) );
         }
 
         zume_log_insert( 'system', 'email_notification', [
@@ -71,7 +69,6 @@ class Zume_Communications_API
         DT_Posts::add_post_comment( 'zume_plans', $post_id, 'Email notification sent to subscribers of new public plans' );
 
         return [
-            'email_results' => $email_results,
             'timestamp' => time(),
         ];
     }
