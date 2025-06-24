@@ -280,6 +280,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'group_communication' => __( 'Group Communication', 'zume' ),
             'subscribers' => __( 'Subscribers', 'zume' ),
             'has_joined_a_group' => __( 'Has joined a group', 'zume' ),
+            'last_emailed_notification' => __( 'Emailed on', 'zume' ),
             'send_email_to_subscribers' => __( 'Send Email to Subscribers', 'zume' ),
             'mark_completed' => __( 'Mark Completed', 'zume' ),
             'session_x' => __( 'Session %d', 'zume' ),

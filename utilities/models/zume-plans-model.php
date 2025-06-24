@@ -9,6 +9,12 @@ class Zume_Plans_Model {
 
         $training_group['completed_sessions'] = $completed_sessions;
 
+        $logs = zume_get_user_log( get_current_user_id(), 'system', 'email_notification' );
+        $has_emailed_notification = array_search( $post_id, array_column( $logs, 'post_id' ) );
+        $log = $logs[$has_emailed_notification];
+        $training_group['last_emailed_notification'] = $log['timestamp'];
+        $training_group['has_emailed_notification'] = $has_emailed_notification !== false ? true : false;
+
         /* Include Invite QR url in the training */
         $invite_url = dt_create_site_url() . '/app/plan-invite?code=' . $training_group['join_key'];
         $training_group['qr_url'] = create_qr_url( $invite_url );

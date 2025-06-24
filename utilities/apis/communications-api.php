@@ -70,6 +70,7 @@ class Zume_Communications_API
 
         return [
             'email_results' => $email_results,
+            'timestamp' => time(),
         ];
     }
 

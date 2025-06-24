@@ -96,6 +96,7 @@ export class DashTrainings extends DashPage {
 
     updated() {
         jQuery(this.renderRoot).foundation()
+        zumeDetachObservers(this.tagName)
         zumeAttachObservers(this.renderRoot, this.tagName)
 
         const dropdown = jQuery('#filter-menu')
@@ -518,7 +519,9 @@ export class DashTrainings extends DashPage {
                 join_key: this.training.join_key,
             })
             .then((result) => {
-                console.log(result)
+                this.training.has_emailed_notification = true
+                this.training.last_emailed_notification = result.timestamp
+                this.update()
             })
     }
 
@@ -545,7 +548,6 @@ export class DashTrainings extends DashPage {
         return this.training.visibility.key === 'public'
     }
     isActive() {
-        console.log(this.training.status)
         return this.training.status.key === 'active'
     }
 
@@ -1266,7 +1268,8 @@ export class DashTrainings extends DashPage {
                                       </div>
                                   </div>
                               </div>
-                              ${this.isCoach()
+                              ${this.isCoach() &&
+                              this.training.visibility.key === 'public'
                                   ? html`
                                         <div
                                             class="card | group-communication | grow-0"
@@ -1308,8 +1311,40 @@ export class DashTrainings extends DashPage {
                                                             .has_joined_a_group}:
                                                         ${jsObject.subscribers_in_online_training}
                                                     </p>
+                                                    ${this.training
+                                                        .has_emailed_notification
+                                                        ? html`
+                                                              <p
+                                                                  class="text-left"
+                                                              >
+                                                                  ${jsObject
+                                                                      .translations
+                                                                      .last_emailed_notification}:
+                                                                  ${new Date(
+                                                                      this
+                                                                          .training
+                                                                          .last_emailed_notification *
+                                                                          1000
+                                                                  ).toLocaleDateString(
+                                                                      'en-US',
+                                                                      {
+                                                                          year: 'numeric',
+                                                                          month: 'long',
+                                                                          day: 'numeric',
+                                                                      }
+                                                                  )}
+                                                              </p>
+                                                          `
+                                                        : ''}
                                                     <button
-                                                        class="btn brand tight mt--2"
+                                                        class="btn brand tight mt--2 ${this
+                                                            .training
+                                                            .has_emailed_notification
+                                                            ? 'disabled'
+                                                            : ''}"
+                                                        ?disabled=${this
+                                                            .training
+                                                            .has_emailed_notification}
                                                         @click=${this
                                                             .sendEmailToSubscribers}
                                                     >
