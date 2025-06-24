@@ -509,6 +509,10 @@ export class DashTrainings extends DashPage {
     }
 
     sendEmailToSubscribers() {
+        if (!this.isCoach()) {
+            return
+        }
+
         zumeRequest
             .post('send_email_to_subscribers', {
                 join_key: this.training.join_key,
@@ -1262,54 +1266,61 @@ export class DashTrainings extends DashPage {
                                       </div>
                                   </div>
                               </div>
-                              <div class="card | group-communication | grow-0">
-                                  <button
-                                      class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
-                                      @click=${this.toggleGroupCommunication}
-                                  >
-                                      <span
-                                          class="icon z-icon-share brand-light"
-                                      ></span>
-                                      <span
-                                          >${jsObject.translations
-                                              .group_communication}</span
-                                      >
-                                      <img
-                                          class="chevron | svg w-1rem h-1rem ${this
-                                              .groupCommunicationOpen
-                                              ? 'rotate-180'
-                                              : ''}"
-                                          src=${jsObject.images_url +
-                                          '/chevron.svg'}
-                                      />
-                                  </button>
-                                  <div
-                                      class="zume-collapse"
-                                      ?data-expand=${this
-                                          .groupCommunicationOpen}
-                                  >
-                                      <div class="stack--2 | mt-0">
-                                          <p class="text-left">
-                                              ${jsObject.translations
-                                                  .subscribers}:
-                                              ${jsObject.subscribers_count}
-                                          </p>
-                                          <p class="text-left">
-                                              ${jsObject.translations
-                                                  .has_joined_a_group}:
-                                              ${jsObject.subscribers_in_online_training}
-                                          </p>
-                                          <button
-                                              class="btn brand tight mt--2"
-                                              @click=${this
-                                                  .sendEmailToSubscribers}
-                                          >
-                                              ${jsObject.translations
-                                                  .send_email_to_subscribers}
-                                          </button>
-                                      </div>
-                                  </div>
-                              </div>
+                              ${this.isCoach()
+                                  ? html`
+                                        <div
+                                            class="card | group-communication | grow-0"
+                                        >
+                                            <button
+                                                class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
+                                                @click=${this
+                                                    .toggleGroupCommunication}
+                                            >
+                                                <span
+                                                    class="icon z-icon-share brand-light"
+                                                ></span>
+                                                <span
+                                                    >${jsObject.translations
+                                                        .group_communication}</span
+                                                >
+                                                <img
+                                                    class="chevron | svg w-1rem h-1rem ${this
+                                                        .groupCommunicationOpen
+                                                        ? 'rotate-180'
+                                                        : ''}"
+                                                    src=${jsObject.images_url +
+                                                    '/chevron.svg'}
+                                                />
+                                            </button>
+                                            <div
+                                                class="zume-collapse"
+                                                ?data-expand=${this
+                                                    .groupCommunicationOpen}
+                                            >
+                                                <div class="stack--2 | mt-0">
+                                                    <p class="text-left">
+                                                        ${jsObject.translations
+                                                            .subscribers}:
+                                                        ${jsObject.subscribers_count}
+                                                    </p>
+                                                    <p class="text-left">
+                                                        ${jsObject.translations
+                                                            .has_joined_a_group}:
+                                                        ${jsObject.subscribers_in_online_training}
+                                                    </p>
+                                                    <button
+                                                        class="btn brand tight mt--2"
+                                                        @click=${this
+                                                            .sendEmailToSubscribers}
+                                                    >
+                                                        ${jsObject.translations
+                                                            .send_email_to_subscribers}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `
+                                  : ''}
                           `
                         : ''}
                     <dash-cta></dash-cta>

@@ -43,6 +43,13 @@ class Zume_Communications_API
         if ( is_wp_error( $post_id ) ) {
             return $post_id;
         }
+
+        $logs = zume_get_user_log( get_current_user_id(), 'system', 'email_notification' );
+        $has_emailed = array_search( $post_id, array_column( $logs, 'post_id' ) );
+        if ( false !== $has_emailed ) {
+            return new WP_Error( 'email_already_sent', 'Email already sent', [ 'status' => 400 ] );
+        }
+
         $training = Zume_Plans_Model::get_plan( $post_id );
 
         $subscribers = zume_get_notification_subscribers();
@@ -56,6 +63,10 @@ class Zume_Communications_API
             $email_result = wp_mail( $email, $message['subject'], $message['body'] );
             $email_results[] = $email_result;
         }
+
+        zume_log_insert( 'system', 'email_notification', [
+            'post_id' => $post_id,
+        ] );
 
         return [
             'email_results' => $email_results,
