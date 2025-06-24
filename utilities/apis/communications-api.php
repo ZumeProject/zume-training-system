@@ -68,6 +68,8 @@ class Zume_Communications_API
             'post_id' => $post_id,
         ] );
 
+        DT_Posts::add_post_comment( 'zume_plans', $post_id, 'Email notification sent to subscribers of new public plans' );
+
         return [
             'email_results' => $email_results,
             'timestamp' => time(),
