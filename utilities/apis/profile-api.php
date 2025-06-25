@@ -44,6 +44,13 @@ class Zume_Profile_API
                 'permission_callback' => 'is_user_logged_in',
             ]
         );
+        register_rest_route(
+            $namespace, '/email-preferences', [
+                'methods' => [ 'POST' ],
+                'callback' => [ $this, 'update_email_preferences' ],
+                'permission_callback' => 'is_user_logged_in',
+            ]
+        );
     }
 
     public function update_profile( WP_REST_Request $request ) {
@@ -82,6 +89,15 @@ class Zume_Profile_API
         if ( is_wp_error( $return ) ) {
             return $return;
         }
+
+        return new WP_REST_Response( $return );
+    }
+
+    public function update_email_preferences( WP_REST_Request $request ) {
+
+        $params = dt_recursive_sanitize_array( json_decode( $request->get_body(), true ) );
+
+        $return = Zume_Profile_Model::update_email_preferences( $params );
 
         return new WP_REST_Response( $return );
     }
@@ -194,6 +210,13 @@ class Zume_Profile_Model {
             'name' => $contact['name'],
             'phone' => $contact['user_phone'],
         ];
+    }
+
+    public static function update_email_preferences( $params ) {
+        $user_id = get_current_user_id();
+        $contact_id = zume_get_user_contact_id( $user_id );
+        $contact['notify_of_future_trainings'] = $params['notify_of_future_trainings'];
+        return DT_Posts::update_post( 'contacts', $contact_id, $contact, false, false );
     }
 
     public static function log_setting_of_profile( $user_id ) {
