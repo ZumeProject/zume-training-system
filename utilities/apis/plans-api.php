@@ -98,113 +98,36 @@ class Zume_Plans_Endpoints
         $code = $request['code'];
 
         $user_id = get_current_user_id();
-        $post_id = $this->can_user_access_plan( $code, $user_id );
+        $post_id = Zume_Plans_Model::can_user_access_plan( $code, $user_id );
         if ( is_wp_error( $post_id ) ) {
             return $post_id;
         }
 
-        $training_group = DT_Posts::get_post( self::$post_type, (int) $post_id, true, false );
-
-        $completed_sessions = $this->get_completed_sessions( $post_id, $training_group );
-
-        $training_group['completed_sessions'] = $completed_sessions;
-
-        /* Include Invite QR url in the training */
-        $invite_url = dt_create_site_url() . '/app/plan-invite?code=' . $training_group['join_key'];
-        $training_group['qr_url'] = create_qr_url( $invite_url );
-
-        return $training_group;
+        return Zume_Plans_Model::get_plan( $post_id );
     }
     public function create_plan( WP_REST_Request $request ){
         $params = dt_recursive_sanitize_array( $request->get_params() );
 
-        if ( !isset( $params['title'] ) || empty( $params['title'] ) ) {
-            $current_user = wp_get_current_user();
-            $plans = zume_get_user_plans( $params['user_id'] );
+        $title = $params['title'];
+        $user_id = $params['user_id'];
+        $contact_id = $params['contact_id'];
+        $set_type = isset( $params['set_type'] ) ? $params['set_type'] : '';
+        $set = $params['set'];
 
-            if ( empty( $plans ) ) {
-                $title = sprintf( _x( 'My first training - %s', 'My first training - username', 'zume' ), $current_user->display_name );
-            } else {
-                $title = sprintf( _x( 'Training %1$d - %2$s', 'Training 2 - username', 'zume' ), count( $plans ) + 1, $current_user->display_name );
-            }
-        } else {
-            $title = $params['title'];
-        }
-
-        $fields = [
-            'title' => $title,
-            'assigned_to' => $params['user_id'],
-            'set_type' => isset( $params['set_type'] ) ? $params['set_type'] : '',
-            'visibility' => 'private',
-            'participants' => [
-                'values' => [
-                    [
-                        'value' => $params['contact_id'],
-                    ],
-                ],
-            ],
-        ];
-
-        if ( isset( $params['set'] ) && is_array( $params['set'] ) ) {
-            foreach ( $params['set'] as $key => $value ) {
-                $fields[ $key ] = $value;
-            }
-        }
-
-        $new_post = DT_Posts::create_post( self::$post_type, $fields, true, false );
-
-        return $new_post;
+        return Zume_Plans_Model::create_plan( $title, $user_id, $contact_id, $set_type, $set );
     }
     public function update_plan( WP_REST_Request $request ){
         $code = $request['code'];
+        $params = dt_recursive_sanitize_array( $request->get_params() );
 
-        $post_id = $this->can_user_edit_plan( $code );
+        $post_id = Zume_Plans_Model::can_user_edit_plan( $code );
         if ( is_wp_error( $post_id ) ) {
             return $post_id;
         }
 
-        $params = dt_recursive_sanitize_array( $request->get_params() );
-
-        $fields = [];
-        if ( isset( $params['title'] ) ) {
-            $fields['title'] = $params['title'];
-        }
-        if ( isset( $params['visibility'] ) ) {
-            $fields['visibility'] = $params['visibility'];
-        }
-        if ( isset( $params['location_note'] ) ) {
-            $fields['location_note'] = $params['location_note'];
-        }
-        if ( isset( $params['time_of_day_note'] ) ) {
-            $fields['time_of_day_note'] = $params['time_of_day_note'];
-        }
-        if ( isset( $params['language_note'] ) ) {
-            $fields['language_note'] = $params['language_note'];
-        }
-        if ( isset( $params['timezone_note'] ) ) {
-            $fields['timezone_note'] = $params['timezone_note'];
-        }
-        if ( isset( $params['zoom_link_note'] ) ) {
-            $fields['zoom_link_note'] = $params['zoom_link_note'];
-        }
-        if ( isset( $params['visibility'] ) ) {
-            $fields['visibility'] = $params['visibility'];
-        }
-        if ( isset( $params['status'] ) ) {
-            $fields['status'] = $params['status'];
-        }
-
-        $result = DT_Posts::update_post( self::$post_type, (int) $post_id, $fields, true, false );
-
-        if ( is_wp_error( $result ) ) {
-            return $result;
-        }
-
-        return 1;
+        return Zume_Plans_Model::update_plan( $post_id, $params );
     }
     public function delete_plan( WP_REST_Request $request ) {
-        global $wpdb, $table_prefix;
-
         if ( ! is_user_logged_in() ) {
             return new WP_Error( __METHOD__, 'User not logged in', array( 'status' => 401 ) );
         }
@@ -217,20 +140,12 @@ class Zume_Plans_Endpoints
             return $user_id;
         }
 
-        $post_id = $this->can_user_edit_plan( $params['key'], $user_id );
+        $post_id = Zume_Plans_Model::can_user_edit_plan( $params['key'], $user_id );
         if ( is_wp_error( $post_id ) ) {
             return $post_id;
         }
 
-        $fields = [
-            'type' => $params['type'],
-            'subtype' => $params['subtype'],
-            'user_id' => $user_id,
-        ];
-
-        $delete = $wpdb->delete( $table_prefix . 'dt_reports', $fields );
-
-        return $delete;
+        return Zume_Plans_Model::delete_plan( $params['type'], $params['subtype'], $user_id );
     }
 
     public function completed_sessions( WP_REST_Request $request ) {
@@ -240,7 +155,7 @@ class Zume_Plans_Endpoints
             return new WP_Error( __METHOD__, 'post_id required', array( 'status' => 401 ) );
         }
 
-        return $this->get_completed_sessions( $params['post_id'] );
+        return Zume_Plans_Model::get_completed_sessions( $params['post_id'] );
     }
     public function edit_session( WP_REST_Request $request ) {
         $params = dt_recursive_sanitize_array( $request->get_params() );
@@ -255,7 +170,7 @@ class Zume_Plans_Endpoints
         }
 
         $key = $params['key'];
-        $post_id = $this->can_user_edit_plan( $key, $user_id );
+        $post_id = Zume_Plans_Model::can_user_edit_plan( $key, $user_id );
         if ( is_wp_error( $post_id ) ) {
             return $post_id;
         }
@@ -263,15 +178,7 @@ class Zume_Plans_Endpoints
         $meta_key = $params['session_id'];
         $meta_value = $params['session_time'];
 
-        /* Check that meta_key is of type set_X_YY, where X = {a,b,c} and YY is numeric and 20 or less */
-        $key_parts = explode( '_', $meta_key );
-        if ( count( $key_parts ) !== 3 || !in_array( $key_parts[1], [ 'a', 'b', 'c' ] ) || intval( $key_parts[2] ) > 20 ) {
-            return new WP_Error( __METHOD__, 'wrong session id format', array( 'status' => 401 ) );
-        }
-
-        update_post_meta( $post_id, $meta_key, $meta_value );
-
-        return 1;
+        return Zume_Plans_Model::edit_session( $post_id, $meta_key, $meta_value );
     }
     public function mark_session_complete( WP_REST_Request $request ) {
         $params = dt_recursive_sanitize_array( $request->get_params() );
@@ -284,138 +191,17 @@ class Zume_Plans_Endpoints
 
         // access check
         $user_id = get_current_user_id();
-        $post_id = $this->can_user_edit_plan( $key, $user_id );
+        $post_id = Zume_Plans_Model::can_user_edit_plan( $key, $user_id );
         if ( is_wp_error( $post_id ) ) {
             return $post_id;
         }
-        $completed_sessions = $this->get_completed_sessions( $post_id );
-        if ( in_array( $session_id, $completed_sessions ) ) {
-            return $completed_sessions;
-        }
-
-        // build fields
-        $completed_key = $session_id . '_completed';
-        $fields = [];
-        $fields[$completed_key] = time();
-
-        // update plan
-        $training_group = DT_Posts::update_post( self::$post_type, (int) $post_id, $fields, true, false );
-        if ( is_wp_error( $training_group ) ) {
-            return new WP_Error( __METHOD__, 'Failed to update post.', array( 'status' => 401 ) );
-        }
 
         // return new list
-        return $this->get_completed_sessions( $post_id );
-    }
-    public function get_completed_sessions( $post_id, $training_group = false ) {
-        $completed_sessions = [];
-
-        if ( empty( $training_group ) ) {
-            $training_group = DT_Posts::get_post( self::$post_type, $post_id, true, false );
-        }
-        if ( is_wp_error( $training_group ) ) {
-            return new WP_Error( __METHOD__, 'Failed to get training group.', array( 'status' => 401 ) );
-        }
-
-        foreach ( $training_group as $key => $value ) {
-            if ( 'set_' === substr( $key, 0, 4 ) && '_completed' === substr( $key, -10, 10 ) ) {
-                $completed_sessions[] = str_replace( '_completed', '', $key );
-            }
-        }
-        return $completed_sessions;
-    }
-
-
-
-
-
-
-    private function can_user_access_plan( $join_key, $user_id ) {
-        if ( is_null( $user_id ) ) {
-            $user_id = get_current_user_id();
-        }
-
-        $post_id = Zume_Connect_Endpoints::test_join_key( $join_key );
-
-        if ( !$post_id ) {
-            return new WP_Error( 'bad-plan-code', 'invalid key', array( 'status' => 400 ) );
-        }
-
-        $user_contact_id = zume_get_user_contact_id( $user_id );
-
-        $training_group = DT_Posts::get_post( self::$post_type, $post_id, true, false );
-        if ( is_wp_error( $training_group ) ) {
-            return new WP_Error( __METHOD__, 'Failed to get post.', array( 'status' => 401 ) );
-        }
-
-        $participant_ids = array_values( array_map( function ( $participant ) {
-            return $participant['ID'];
-        }, $training_group['participants'] ) );
-
-        if ( !in_array( $user_contact_id, $participant_ids ) ) {
-            return new WP_Error( 'not-authorized', 'Not a participant of this group', array( 'status' => 400 ) );
-        }
-
-        return $post_id;
-    }
-    private function can_user_edit_plan( $join_key, $user_id = null ) {
-        if ( is_null( $user_id ) ) {
-            $user_id = get_current_user_id();
-        }
-
-        $post_id = Zume_Connect_Endpoints::test_join_key( $join_key );
-
-        if ( !$post_id ) {
-            return new WP_Error( 'bad-plan-code', 'invalid key', array( 'status' => 400 ) );
-        }
-
-        $training_group = DT_Posts::get_post( 'zume_plans', $post_id );
-        if ( is_wp_error( $training_group ) ) {
-            return new WP_Error( __METHOD__, 'Failed to access post.', array( 'status' => 401 ) );
-        }
-
-        if ( $training_group['assigned_to']['id'] !== "$user_id" ) {
-            return new WP_Error( 'not-authorized', 'you are not authorised', array( 'status' => 400 ) );
-        }
-
-        return $post_id;
+        return Zume_Plans_Model::mark_session_complete( $post_id, $session_id );
     }
 
     public function public_plans( WP_REST_Request $request ){
-        $result = self::get_public_plans();
-
-        $posts = [];
-
-        $fields_to_include = [
-            'join_key',
-            'language_note',
-            'location_note',
-            'post_title',
-            'time_of_day_note',
-            'timezone_note',
-            'zoom_link_note',
-            'set_type',
-        ];
-        foreach ( $result['posts'] as $plan ) {
-            $post = [];
-            foreach ( array_keys( $plan ) as $key ) {
-                if ( in_array( $key, $fields_to_include ) || str_contains( $key, 'set_a' ) || str_contains( $key, 'set_b' ) || str_contains( $key, 'set_c' ) ) {
-                    $post[$key] = $plan[$key];
-                }
-            }
-
-            $posts[] = $post;
-        }
-
-        return $posts;
-    }
-    public static function get_public_plans() {
-        $result = DT_Posts::list_posts( self::$post_type, [ 'fields' => [ [ 'visibility' => [ 'public' ] ], [ 'status' => [ 'active' ] ] ] ], false );
-        if ( is_wp_error( $result ) ) {
-            error_log( 'Error in get_public_plans: ' . $result->get_error_message() );
-            return [ 'posts' => [] ];
-        }
-        return $result;
+        return Zume_Plans_Model::get_public_plans();
     }
 }
 Zume_Plans_Endpoints::instance();
