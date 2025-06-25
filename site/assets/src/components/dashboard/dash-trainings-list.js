@@ -1,15 +1,15 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html } from 'lit'
 import { repeat } from 'lit/directives/repeat.js'
-import { DashBoard } from './dash-board';
-import { RouteNames } from './routes';
-import { Wizards } from '../wizard/wizard-constants';
+import { DashBoard } from './dash-board'
+import { RouteNames } from './routes'
+import { Wizards } from '../wizard/wizard-constants'
 
 export class DashTrainingsList extends LitElement {
     static get properties() {
         return {
             activeTrainingGroups: { type: Object, attribute: false },
             inactiveTrainingGroups: { type: Object, attribute: false },
-        };
+        }
     }
 
     constructor() {
@@ -23,12 +23,17 @@ export class DashTrainingsList extends LitElement {
     makeTrainingHref(code) {
         const routes = DashBoard.routes
 
-        const route = routes.find(({name}) => name === RouteNames.myTraining)
+        const route = routes.find(({ name }) => name === RouteNames.myTraining)
 
         return route.pattern.replace(':code', code)
     }
     createTraining() {
-        this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.makeAGroup } } ))
+        this.dispatchEvent(
+            new CustomEvent('open-wizard', {
+                bubbles: true,
+                detail: { type: Wizards.planDecision },
+            })
+        )
     }
 
     render() {
@@ -42,11 +47,12 @@ export class DashTrainingsList extends LitElement {
                     </div>
                     <div class="">
                         <button
-                            class="icon-btn f-2 brand-light"
-                            aria-label=${jsObject.translations.create_training_group}
+                            class="btn brand-light tight"
+                            aria-label=${jsObject.translations
+                                .create_training_group}
                             @click=${this.createTraining}
                         >
-                            <span class="icon z-icon-plus"></span>
+                            ${jsObject.translations.new}
                         </button>
                     </div>
                 </div>
@@ -54,44 +60,44 @@ export class DashTrainingsList extends LitElement {
                 <div class="dashboard__main p-1">
                     <div class="stack">
                         <h2 class="h4">${jsObject.translations.active}</h2>
-                        ${
-                            repeat(
-                                this.activeTrainingGroups,
-                                ({ key }) => key,
-                                (group) => html`
-                                    <training-link
-                                        as="nav"
-                                        text=${group.title}
-                                        href=${this.makeTrainingHref(group.join_key)}
-                                    ></training-link>
-                                `
-                            )
-                        }
+                        ${repeat(
+                            this.activeTrainingGroups,
+                            ({ key }) => key,
+                            (group) => html`
+                                <training-link
+                                    as="nav"
+                                    text=${group.title}
+                                    href=${this.makeTrainingHref(
+                                        group.join_key
+                                    )}
+                                ></training-link>
+                            `
+                        )}
                         <h2 class="h4">${jsObject.translations.inactive}</h2>
-                        ${
-                            repeat(
-                                this.inactiveTrainingGroups,
-                                ({ key }) => key,
-                                (group) => html`
-                                    <training-link
-                                        as="nav"
-                                        text=${group.title}
-                                        href=${this.makeTrainingHref(group.join_key)}
-                                    ></training-link>
-                                `
-                            )
-                        }
+                        ${repeat(
+                            this.inactiveTrainingGroups,
+                            ({ key }) => key,
+                            (group) => html`
+                                <training-link
+                                    as="nav"
+                                    text=${group.title}
+                                    href=${this.makeTrainingHref(
+                                        group.join_key
+                                    )}
+                                ></training-link>
+                            `
+                        )}
                     </div>
-                    </div>
+                </div>
                 <div class="dashboard__secondary">
                     <dash-cta></dash-cta>
                 </div>
             </div>
-        `;
+        `
     }
 
     createRenderRoot() {
-        return this;
+        return this
     }
 }
-customElements.define('dash-trainings-list', DashTrainingsList);
+customElements.define('dash-trainings-list', DashTrainingsList)

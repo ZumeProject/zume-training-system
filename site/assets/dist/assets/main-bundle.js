@@ -2434,7 +2434,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-trainings",rl);class ol extends _{static get properties(){return{activeTrainingGroups:{type:Object,attribute:!1},inactiveTrainingGroups:{type:Object,attribute:!1}}}constructor(){super(),this.activeTrainingGroups=jsObject.active_training_groups,this.inactiveTrainingGroups=jsObject.inactive_training_groups,this.routeName=v.myTrainings,this.route=S.getRoute(this.routeName)}makeTrainingHref(t){return S.routes.find(({name:n})=>n===v.myTraining).pattern.replace(":code",t)}createTraining(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:$.makeAGroup}}))}render(){return c`
+        `}createRenderRoot(){return this}}customElements.define("dash-trainings",rl);class ol extends _{static get properties(){return{activeTrainingGroups:{type:Object,attribute:!1},inactiveTrainingGroups:{type:Object,attribute:!1}}}constructor(){super(),this.activeTrainingGroups=jsObject.active_training_groups,this.inactiveTrainingGroups=jsObject.inactive_training_groups,this.routeName=v.myTrainings,this.route=S.getRoute(this.routeName)}makeTrainingHref(t){return S.routes.find(({name:n})=>n===v.myTraining).pattern.replace(":code",t)}createTraining(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:$.planDecision}}))}render(){return c`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <div class="dashboard__title">
@@ -2444,11 +2444,11 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     </div>
                     <div class="">
                         <button
-                            class="icon-btn f-2 brand-light"
+                            class="btn brand-light tight"
                             aria-label=${jsObject.translations.create_training_group}
                             @click=${this.createTraining}
                         >
-                            <span class="icon z-icon-plus"></span>
+                            ${jsObject.translations.new}
                         </button>
                     </div>
                 </div>
@@ -2457,22 +2457,22 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     <div class="stack">
                         <h2 class="h4">${jsObject.translations.active}</h2>
                         ${U(this.activeTrainingGroups,({key:t})=>t,t=>c`
-                                    <training-link
-                                        as="nav"
-                                        text=${t.title}
-                                        href=${this.makeTrainingHref(t.join_key)}
-                                    ></training-link>
-                                `)}
+                                <training-link
+                                    as="nav"
+                                    text=${t.title}
+                                    href=${this.makeTrainingHref(t.join_key)}
+                                ></training-link>
+                            `)}
                         <h2 class="h4">${jsObject.translations.inactive}</h2>
                         ${U(this.inactiveTrainingGroups,({key:t})=>t,t=>c`
-                                    <training-link
-                                        as="nav"
-                                        text=${t.title}
-                                        href=${this.makeTrainingHref(t.join_key)}
-                                    ></training-link>
-                                `)}
+                                <training-link
+                                    as="nav"
+                                    text=${t.title}
+                                    href=${this.makeTrainingHref(t.join_key)}
+                                ></training-link>
+                            `)}
                     </div>
-                    </div>
+                </div>
                 <div class="dashboard__secondary">
                     <dash-cta></dash-cta>
                 </div>
