@@ -59,7 +59,7 @@ class Zume_Communications_API
             $name = $subscriber['name'];
             $message = $this->create_email_message( $training, $name );
 
-            wp_queue()->push( new Zume_Email_Job( $email, $message ) );
+            wp_queue()->push( new Zume_Email_Job( $email, $message['subject'], $message['body'] ) );
         }
 
         zume_log_insert( 'system', 'email_notification', [
