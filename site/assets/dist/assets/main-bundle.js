@@ -631,7 +631,13 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     <div class="stack center | text-center">
                         <h1 class="brand">${this.t.bad_wizard}</h1>
                         <p>${this.t.found_bad_wizard}</p>
-                        <div class="center"><img class="w-50" src="https://imgs.search.brave.com/3f3MurVApxsoxJlmqxLF0fs5-WlAk6sEu9IV3sICb_k/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/YWR2ZXJ0aXNlY2Fz/dC5jb20vcG9kY2Fz/dC9pbWFnZS9WZXJ5/QmFkV2l6YXJkcw.jpeg" alt="bad wizards" /></div>
+                        <div class="center">
+                            <img
+                                class="w-50"
+                                src="https://imgs.search.brave.com/3f3MurVApxsoxJlmqxLF0fs5-WlAk6sEu9IV3sICb_k/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/YWR2ZXJ0aXNlY2Fz/dC5jb20vcG9kY2Fz/dC9pbWFnZS9WZXJ5/QmFkV2l6YXJkcw.jpeg"
+                                alt="bad wizards"
+                            />
+                        </div>
                         <a class="btn tight" href="/">${this.t.home}</a>
                     </div>
                 </div>
@@ -644,22 +650,22 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     </div>
                 </div>
             `:c`
-        <div class="container center">
+            <div class="container center">
+                <header class="pt--1 px--4 w-100 position-relative">
+                    <div class="text-end" id="wizard-skip-button">
+                        ${this.headerButtons()}
+                    </div>
+                    <div class="center">${this.stepCounter()}</div>
+                </header>
 
-            <header class="pt--1 px--4 w-100 position-relative">
-                <div class="text-end" id="wizard-skip-button">${this.headerButtons()}</div>
-                <div class="center">${this.stepCounter()}</div>
-            </header>
+                <article class="${this.containerSize()} center text-center">
+                    ${this.currentStep()}
+                </article>
 
-            <article class="${this.containerSize()} center text-center">
-                ${this.currentStep()}
-            </article>
-
-            <footer class="stack-1 ${this.containerSize()} | my-3">
-                ${this.footer()}
-            </footer>
-
-        </div>
+                <footer class="stack-1 ${this.containerSize()} | my-3 z-20">
+                    ${this.footer()}
+                </footer>
+            </div>
         `}}containerSize(){return{...this.step},h.joinTraining?"container-md":"container-xsm"}currentStep(){const t={...this.step};let e="",s="";switch(t.slug){case h.updateName:case h.updateLocation:case h.updatePhone:e=it`complete-profile`,s=this.t.complete_profile;break;case h.contactPreferences:case h.languagePreferences:case h.howCanWeServe:case h.connectingToCoach:e=it`request-coach`,s=this.t.get_a_coach;break;case h.inviteFriends:e=it`invite-friends`,s=this.t.share;break;case h.joinTraining:case h.joinTrainingSelection:e=it`join-training`,s=this.t.join_training;break;case h.joinFriendsPlan:e=it`join-friends-training`,s=this.t.join_training;break;case h.connectToFriend:e=it`connect-friend`,s=this.t.connect_friend;break;case h.checkinSubmit:e=it`session-checkin`,s=this.t.checkin;break;case h.planDecision:case h.howManySessions:case h.scheduleDecision:case h.howOften:case h.startDate:case h.location:case h.name:case h.review:e=it`make-training`,s=this.t.make_training;break;case h.joinCommunity:case h.joinCommunityExplanation:e=it`join-community`,s=this.t.join_community;break;case h.notifyOfFutureTrainings:e=it`notify-of-future-trainings`,s=this.t.notify_of_future_trainings;break}return Vo`
             <${e}
                 class="w-100"
@@ -694,7 +700,9 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
             </button>
         `:""}stepCounter(){const t=this.steps.length<2;return c`
             <div class="cluster">
-                ${this.steps.map((e,s)=>{const n=s<=this.stepIndex;return c`<div class="step-circle ${t?"hidden":""} ${n?"complete":""}"></div>`})}
+                ${this.steps.map((e,s)=>{const n=s<=this.stepIndex;return c`<div
+                        class="step-circle ${t?"hidden":""} ${n?"complete":""}"
+                    ></div>`})}
             </div>
         `}footer(){let t="";return this.noUrlChange&&this.stepIndex>0&&this.type!==$.makeAGroup&&this.step.slug!==h.connectingToCoach&&(t=c`
                 <button
