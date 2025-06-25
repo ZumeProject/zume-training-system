@@ -95,17 +95,20 @@ class Zume_Communications_API
         $public_training_url = zume_join_a_public_plan_url();
         $join_training_url = zume_join_a_public_plan_wizard_url( $training['join_key'] );
         $first_session_date = $training[ $training['set_type']['key'] . '_01' ]['formatted'];
-        $email['body'] = '
-        <p>Hello ' . $name . ',</p>
-        <p>A new online Zume Training is now available. You can view it at the following link: ' . $public_training_url . '</p>
-        <p>The training is in the ' . $course_type . ' format and will be held in ' . $training['location_note'] . '.</p>
-        <p>First session: ' . $training['time_of_day_note'] . ' ' . $first_session_date . ' (' . $training['timezone_note'] . ').</p>
-        <p>You can also join the training by clicking the link below:</p>
-        <a href="' . $join_training_url . '" class="btn-primary">Join the Training</a>
-        <p>The training will be led by ' . $training['language_note'] . ' speakers.</p>
-        <p>Best regards,</p>
-        <p>The Zume Team</p>
-        ';
+        $message = [
+            sprintf( __( 'Hello %s', 'zume' ), $name ),
+            sprintf( __( 'A new online Zume Training is now available. You can view it at the following link: %s', 'zume' ), $public_training_url ),
+            sprintf( __( 'The training is in the %1$s format and will be held in %2$s', 'zume' ), $course_type, $training['location_note'] ),
+            sprintf( __( 'First session: %1$s %2$s (%3$s).', 'zume' ), $training['time_of_day_note'], $first_session_date, $training['timezone_note'] ),
+            __( 'You can also join the training by clicking the link below:', 'zume' ),
+            '<a href="' . $join_training_url . '" class="btn-primary">' . __( 'Join', 'zume' ) . '</a>',
+            sprintf( __( 'The training will be led by %s speakers.', 'zume' ), $training['language_note'] ),
+            __( 'Best regards,', 'zume' ),
+            __( 'The Zume Team', 'zume' ),
+        ];
+        $email['body'] = implode( "\n", array_map( function ( $message ) {
+            return '<p>' . $message . '</p>';
+        }, $message ) );
 
         return $email;
     }
