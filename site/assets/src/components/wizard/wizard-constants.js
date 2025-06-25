@@ -6,6 +6,7 @@ export const Wizards = {
     getACoach: 'get-a-coach',
     joinATraining: 'join-a-training',
     planDecision: 'plan-decision',
+    notifyOfFutureTrainings: 'notify-of-future-trainings',
     connectWithFriend: 'connect-with-friend',
     joinFriendsPlan: 'join-friends-training',
     checkin: 'checkin',
@@ -22,6 +23,7 @@ export const Modules = {
     joinTraining: 'joinTraining',
     connectFriend: 'connectFriend',
     joinFriendsTraining: 'joinFriendsTraining',
+    notifyOfFutureTrainings: 'notifyOfFutureTrainings',
     checkin: 'checkin',
     planDecision: 'planDecision',
     joinCommunity: 'joinCommunity',
@@ -54,6 +56,7 @@ export const Steps = {
     checkinSubmit: 'checkin-submit',
     joinCommunity: 'join-community',
     joinCommunityExplanation: 'join-community-explanation',
+    notifyOfFutureTrainings: 'notify-of-future-trainings',
     ...makeAPlanSteps,
 }
 export const ConnectedFields = {

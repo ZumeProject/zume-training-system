@@ -13,6 +13,7 @@ export class PublicTrainings extends LitElement {
              * If not provided, this component will just emit an event with details of the training selected
              */
             joinLink: { type: String },
+            notifyUrl: { type: String },
             loading: { attribute: false },
             posts: { attribute: false },
         }
@@ -23,6 +24,7 @@ export class PublicTrainings extends LitElement {
 
         this.loading = true
         this.plans = []
+        this.notifyUrl = ''
 
         this.getTrainings()
 
@@ -69,6 +71,17 @@ export class PublicTrainings extends LitElement {
                     ${this.plans.map(this.renderRow)}
                 </tbody>
             </table>
+            <div class="stack">
+                <h3>${this.t.notify_of_future_trainings_title}</h3>
+                <p>${this.t.notify_of_future_trainings_description}</p>
+                <p>${this.t.notify_of_future_trainings_unsubscribe}</p>
+                <a
+                    href=${this.notifyUrl}
+                    class="btn large uppercase fit-content mx-auto"
+                >
+                    ${this.t.notify_of_future_trainings_button}
+                </a>
+            </div>
         `
     }
 

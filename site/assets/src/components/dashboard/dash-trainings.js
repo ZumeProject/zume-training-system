@@ -30,6 +30,7 @@ export class DashTrainings extends DashPage {
             isSavingSession: { type: Boolean, attribute: false },
             groupMembersOpen: { type: Boolean, attribute: false },
             groupDetailsOpen: { type: Boolean, attribute: false },
+            groupCommunicationOpen: { type: Boolean, attribute: false },
         }
     }
 
@@ -45,7 +46,7 @@ export class DashTrainings extends DashPage {
         this.filteredItems = []
         this.groupMembersOpen = false
         this.groupDetailsOpen = false
-
+        this.groupCommunicationOpen = false
         this.filterName = 'my-trainings-filter'
         this.filterStatus = ZumeStorage.load(this.filterName)
 
@@ -81,6 +82,9 @@ export class DashTrainings extends DashPage {
             if (this.code !== 'teaser') {
                 zumeDetachObservers(this.tagName)
                 this.openDetailStates = {}
+                this.groupCommunicationOpen = false
+                this.groupDetailsOpen = false
+                this.groupMembersOpen = false
                 this.getTraining()
             }
         }
@@ -95,6 +99,7 @@ export class DashTrainings extends DashPage {
 
     updated() {
         jQuery(this.renderRoot).foundation()
+        zumeDetachObservers(this.tagName)
         zumeAttachObservers(this.renderRoot, this.tagName)
 
         const dropdown = jQuery('#filter-menu')
@@ -459,6 +464,9 @@ export class DashTrainings extends DashPage {
                 this.dispatchEvent(
                     new CustomEvent('training:changed', { bubbles: true })
                 )
+                if (visibility === 'private') {
+                    this.groupCommunicationOpen = false
+                }
             })
     }
 
@@ -507,6 +515,22 @@ export class DashTrainings extends DashPage {
         /* Update the local store to reflect this change */
     }
 
+    sendEmailToSubscribers() {
+        if (!this.isCoach()) {
+            return
+        }
+
+        zumeRequest
+            .post('send_email_to_subscribers', {
+                join_key: this.training.join_key,
+            })
+            .then((result) => {
+                this.training.has_emailed_notification = true
+                this.training.last_emailed_notification = result.timestamp
+                this.update()
+            })
+    }
+
     isGroupLeader() {
         if (
             this.training &&
@@ -530,7 +554,6 @@ export class DashTrainings extends DashPage {
         return this.training.visibility.key === 'public'
     }
     isActive() {
-        console.log(this.training.status)
         return this.training.status.key === 'active'
     }
 
@@ -589,6 +612,9 @@ export class DashTrainings extends DashPage {
     }
     toggleGroupDetails() {
         this.groupDetailsOpen = !this.groupDetailsOpen
+    }
+    toggleGroupCommunication() {
+        this.groupCommunicationOpen = !this.groupCommunicationOpen
     }
     makeTrainingItemHref(item, sessionId) {
         //const href = [ jsObject.site_url, jsObject.language, item.slug ].join('/')
@@ -1248,6 +1274,109 @@ export class DashTrainings extends DashPage {
                                       </div>
                                   </div>
                               </div>
+                              ${this.isCoach() &&
+                              this.training.visibility.key === 'public'
+                                  ? html`
+                                        <div
+                                            class="card | group-communication | grow-0"
+                                        >
+                                            <button
+                                                class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
+                                                @click=${this
+                                                    .toggleGroupCommunication}
+                                            >
+                                                <span
+                                                    class="icon z-icon-share brand-light"
+                                                ></span>
+                                                <span
+                                                    >${jsObject.translations
+                                                        .group_communication}</span
+                                                >
+                                                <img
+                                                    class="chevron | svg w-1rem h-1rem ${this
+                                                        .groupCommunicationOpen
+                                                        ? 'rotate-180'
+                                                        : ''}"
+                                                    src=${jsObject.images_url +
+                                                    '/chevron.svg'}
+                                                />
+                                            </button>
+                                            <div
+                                                class="zume-collapse"
+                                                ?data-expand=${this
+                                                    .groupCommunicationOpen}
+                                            >
+                                                <div class="stack--2 | mt-0">
+                                                    <p class="text-left">
+                                                        ${jsObject.translations
+                                                            .subscribers}:
+                                                        ${jsObject.subscribers_count}
+                                                    </p>
+                                                    <p class="text-left">
+                                                        ${jsObject.translations
+                                                            .has_joined_a_group}:
+                                                        ${jsObject.subscribers_in_online_training}
+                                                    </p>
+                                                    ${this.training
+                                                        .has_emailed_notification
+                                                        ? html`
+                                                              <p
+                                                                  class="text-left"
+                                                              >
+                                                                  ${jsObject
+                                                                      .translations
+                                                                      .last_emailed_notification}:
+                                                                  ${new Date(
+                                                                      this
+                                                                          .training
+                                                                          .last_emailed_notification *
+                                                                          1000
+                                                                  ).toLocaleDateString(
+                                                                      'en-US',
+                                                                      {
+                                                                          year: 'numeric',
+                                                                          month: 'long',
+                                                                          day: 'numeric',
+                                                                      }
+                                                                  )}
+                                                              </p>
+                                                          `
+                                                        : ''}
+                                                    <button
+                                                        class="btn brand tight mt--2 ${this
+                                                            .training
+                                                            .has_emailed_notification
+                                                            ? 'disabled'
+                                                            : ''}"
+                                                        ?disabled=${this
+                                                            .training
+                                                            .has_emailed_notification}
+                                                        @click=${this
+                                                            .sendEmailToSubscribers}
+                                                    >
+                                                        ${jsObject.translations
+                                                            .send_email_to_subscribers}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            ${!this.groupCommunicationOpen &&
+                                            !this.training
+                                                .has_emailed_notification
+                                                ? html`<button
+                                                      class="banner warning"
+                                                      @click=${this
+                                                          .toggleGroupCommunication}
+                                                  >
+                                                      <p>
+                                                          ${jsObject
+                                                              .translations
+                                                              .email_notification_reminder}
+                                                      </p>
+                                                  </button>`
+                                                : ''}
+                                        </div>
+                                    `
+                                  : ''}
                           `
                         : ''}
                     <dash-cta></dash-cta>
