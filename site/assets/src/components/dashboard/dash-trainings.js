@@ -82,6 +82,9 @@ export class DashTrainings extends DashPage {
             if (this.code !== 'teaser') {
                 zumeDetachObservers(this.tagName)
                 this.openDetailStates = {}
+                this.groupCommunicationOpen = false
+                this.groupDetailsOpen = false
+                this.groupMembersOpen = false
                 this.getTraining()
             }
         }
@@ -461,6 +464,9 @@ export class DashTrainings extends DashPage {
                 this.dispatchEvent(
                     new CustomEvent('training:changed', { bubbles: true })
                 )
+                if (visibility === 'private') {
+                    this.groupCommunicationOpen = false
+                }
             })
     }
 
@@ -1353,6 +1359,23 @@ export class DashTrainings extends DashPage {
                                                     </button>
                                                 </div>
                                             </div>
+                                            ${!this.groupCommunicationOpen &&
+                                            !this.training
+                                                .has_emailed_notification
+                                                ? html`<div
+                                                      class="banner warning"
+                                                      role="button"
+                                                      tabindex="0"
+                                                      @click=${this
+                                                          .toggleGroupCommunication}
+                                                  >
+                                                      <p>
+                                                          ${jsObject
+                                                              .translations
+                                                              .email_notification_reminder}
+                                                      </p>
+                                                  </div>`
+                                                : ''}
                                         </div>
                                     `
                                   : ''}
