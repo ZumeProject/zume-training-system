@@ -1,6 +1,6 @@
-import { LitElement, html, css } from 'lit';
-import { zumeRequest } from '../js/zumeRequest';
-import { DateTime } from 'luxon';
+import { LitElement, html, css } from 'lit'
+import { zumeRequest } from '../js/zumeRequest'
+import { DateTime } from 'luxon'
 
 export class PublicTrainings extends LitElement {
     static get properties() {
@@ -30,7 +30,8 @@ export class PublicTrainings extends LitElement {
     }
 
     getTrainings() {
-        zumeRequest.post( 'public_plans', {})
+        zumeRequest
+            .post('public_plans', {})
             .then((plans) => {
                 this.plans = plans
             })
@@ -43,14 +44,12 @@ export class PublicTrainings extends LitElement {
     }
 
     render() {
-        if ( this.loading ) {
+        if (this.loading) {
             return html`<span class="loading-spinner active"></span>`
         }
 
         if (this.plans.length === 0) {
-            return html`
-                <p>${this.t.no_plans}</p>
-            `
+            return html` <p>${this.t.no_plans}</p> `
         }
 
         return html`
@@ -68,12 +67,12 @@ export class PublicTrainings extends LitElement {
                 </thead>
                 <tbody>
                     ${this.plans.map(this.renderRow)}
-               </tbody>
+                </tbody>
             </table>
-        `;
+        `
     }
 
-    renderRow ({
+    renderRow({
         join_key,
         language_note,
         post_title,
@@ -82,20 +81,19 @@ export class PublicTrainings extends LitElement {
         set_type,
         ...fields
     }) {
-
         let plan_length
         switch (set_type.key) {
             case 'set_a':
                 plan_length = 10
-                break;
+                break
             case 'set_b':
                 plan_length = 20
-                break;
+                break
             case 'set_c':
                 plan_length = 5
-                break;
+                break
             default:
-                break;
+                break
         }
         const plan_prefix = set_type.key + '_'
 
@@ -103,27 +101,49 @@ export class PublicTrainings extends LitElement {
 
         let latestPlanDate = ''
         let latestSessionNumber
-        for ( let i = 1; i < plan_length + 1; i++ ) {
-            const sessionIndex = i < 10 ? `0${i}` : `${i}`;
-            const sessionDate = fields[plan_prefix + sessionIndex];
-            latestPlanDate = sessionDate['timestamp'];
+        for (let i = 1; i < plan_length + 1; i++) {
+            const sessionIndex = i < 10 ? `0${i}` : `${i}`
+
+            const sessionDate = fields[plan_prefix + sessionIndex]
+
+            if (!sessionDate) {
+                break
+            }
+            latestPlanDate = sessionDate['timestamp']
+
             latestSessionNumber = i
-            if ( now < sessionDate['timestamp'] ) {
-                break;
+            if (now < sessionDate['timestamp']) {
+                break
             }
         }
 
-        const formattedDate =  DateTime.fromMillis(latestPlanDate * 1000).toFormat('DD')
+        if (latestPlanDate === '') {
+            return null
+        }
+
+        const formattedDate = DateTime.fromMillis(
+            latestPlanDate * 1000
+        ).toFormat('DD')
 
         return html`
             <tr>
                 <td data-label="${this.t.name}">${post_title}</td>
-                <td data-label="${this.t.session}">${latestSessionNumber} / ${plan_length}</td>
+                <td data-label="${this.t.session}">
+                    ${latestSessionNumber} / ${plan_length}
+                </td>
                 <td data-label="${this.t.next_date}">${formattedDate}</td>
                 <td data-label="${this.t.start_time}">${time_of_day_note}</td>
                 <td data-label="${this.t.timezone}">${timezone_note}</td>
                 <td data-label="${this.t.language}">${language_note}</td>
-                <td><button class="btn" data-code=${join_key} @click=${this._handleJoinTraining}>${this.t.join}</button></td>
+                <td>
+                    <button
+                        class="btn"
+                        data-code=${join_key}
+                        @click=${this._handleJoinTraining}
+                    >
+                        ${this.t.join}
+                    </button>
+                </td>
             </tr>
         `
     }
@@ -131,7 +151,10 @@ export class PublicTrainings extends LitElement {
     _handleJoinTraining(event) {
         const code = event.target.dataset.code
 
-        const chosenTrainingEvent = new CustomEvent( 'chosen-training', { bubbles: true, detail: { code } } )
+        const chosenTrainingEvent = new CustomEvent('chosen-training', {
+            bubbles: true,
+            detail: { code },
+        })
         this.dispatchEvent(chosenTrainingEvent)
     }
 
@@ -139,4 +162,4 @@ export class PublicTrainings extends LitElement {
         return this
     }
 }
-customElements.define('public-trainings', PublicTrainings);
+customElements.define('public-trainings', PublicTrainings)

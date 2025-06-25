@@ -5,13 +5,14 @@ export const Wizards = {
     makeMoreGroups: 'make-more-groups',
     getACoach: 'get-a-coach',
     joinATraining: 'join-a-training',
+    planDecision: 'plan-decision',
     connectWithFriend: 'connect-with-friend',
     joinFriendsPlan: 'join-friends-training',
     checkin: 'checkin',
     setProfile: 'set-profile',
     joinCommunity: 'join-the-community',
     joinCommunityFromVision: 'join-the-community-vision',
-    inviteFriends: 'invite'
+    inviteFriends: 'invite',
 }
 export const Modules = {
     completeProfile: 'completeProfile',
@@ -58,7 +59,7 @@ export const Steps = {
 export const ConnectedFields = {
     [Steps.updateName]: {
         field: 'name',
-        testExistance: (field, profile) => profile.has_set_name
+        testExistance: (field, profile) => profile.has_set_name,
     },
     [Steps.updateLocation]: {
         field: 'location',
@@ -67,10 +68,10 @@ export const ConnectedFields = {
                 return false
             }
             return true
-        }
+        },
     },
     [Steps.updatePhone]: {
         field: 'phone',
-        testExistance: (phone) => !!phone
+        testExistance: (phone) => !!phone,
     },
 }

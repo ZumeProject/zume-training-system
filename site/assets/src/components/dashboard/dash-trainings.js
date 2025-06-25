@@ -244,7 +244,7 @@ export class DashTrainings extends DashPage {
     }
 
     createTraining() {
-        this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.makeAGroup } } ))
+        this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.planDecision } } ))
     }
     inviteFriends() {
         this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.inviteFriends, params: {
