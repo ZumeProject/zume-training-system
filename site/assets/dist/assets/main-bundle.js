@@ -1698,35 +1698,42 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 </div>
             </div>
         `}createRenderRoot(){return this}}customElements.define("dash-progress",il);class nl extends Ge{constructor(){super(b.training)}createRenderRoot(){return this}}customElements.define("dash-training",nl);class al extends mt{static get properties(){return{showTeaser:{type:Boolean},code:{type:String},loading:{type:Boolean,attribute:!1},error:{type:String,attribute:!1},training:{type:Object,attribute:!1},sessions:{type:Array,attribute:!1},sessionToEdit:{type:Object,attribute:!1},openDetailStates:{type:Object,attribute:!1},filterStatus:{type:String,attribute:!1},filteredItems:{type:Array,attribute:!1},isEditingTitle:{type:Boolean,attribute:!1},isSavingTitle:{type:Boolean,attribute:!1},isSavingSession:{type:Boolean,attribute:!1},groupMembersOpen:{type:Boolean,attribute:!1},groupDetailsOpen:{type:Boolean,attribute:!1}}}constructor(){super(),this.showTeaser=!1,this.loading=!1,this.isEditingTitle=!1,this.error="",this.route=k.getRoute(b.myTraining),this.sessionToEdit={},this.openDetailStates={},this.filteredItems=[],this.groupMembersOpen=!1,this.groupDetailsOpen=!1,this.filterName="my-trainings-filter",this.filterStatus=ZumeStorage.load(this.filterName),this.renderListItem=this.renderListItem.bind(this)}connectedCallback(){super.connectedCallback(),this.code!=="teaser"&&this.getTraining(),document.querySelectorAll(".reveal-overlay #edit-session-modal").forEach(t=>{t.parentElement.remove()}),document.querySelectorAll(".reveal-overlay #edit-session-details-modal").forEach(t=>{t.parentElement.remove()})}disconnectedCallback(){xe(this.tagName),super.disconnectedCallback()}willUpdate(t){t.has("code")&&this.code!=="teaser"&&(xe(this.tagName),this.openDetailStates={},this.getTraining())}firstUpdated(){super.firstUpdated(),jQuery(this.renderRoot).foundation(),ee(this.renderRoot,this.tagName)}updated(){jQuery(this.renderRoot).foundation(),ee(this.renderRoot,this.tagName);const t=jQuery("#filter-menu");t.foundation("_destroy"),new Foundation.Dropdown(t),t.css("display","")}getTraining(){return this.loading=!0,S.get(`plan/${this.code}`,{}).then(t=>{this.training=t,this.error=""}).then(()=>{this.refreshSessions(),this.groupMembers=this.getGroupMembers()}).catch(t=>{console.log(t),this.error=t.message}).finally(()=>{this.loading=!1})}refreshSessions(t){t&&(this.training.completed_sessions=t),this.sessions=this.getSessions(),this.currentSession=this.getCurrentSession(),this.filteredItems=this.filterItems(this.filterStatus,this.sessions)}getSessions(){const t=this.getTrainingType(),e=this.getNumberOfSessions(),s=[];for(let n=1;n<e+1;n++){const a=n<10?`0${n}`:`${n}`,r=t+"_"+a,o=this.training[r];s.push({id:r,name:jsObject.translations.session_x.replace("%d",n),datetime:o?Number(o.timestamp)*1e3:0,completed:this.training.completed_sessions.includes(r)})}return s}getHighlightedDays(){return this.sessions?this.sessions.map(t=>({date:g.fromMillis(t.datetime).toISODate()})):[]}getGroupMembers(){if(!this.training.participants||!Array.isArray(this.training.participants))return[];const t=[];return this.training.participants.forEach(e=>{t.push({id:e.ID,name:e.post_title})}),t}getTrainingType(){return this.training.set_type.key}getSessionNumber(t){const e=this.getTrainingType()+"_";return t.slice(e.length)}getSessionUrl(t){const e=this.getTrainingType(),s=this.getSessionNumber(t);let n="";e==="set_a"&&(n=jsObject.urls.launch_ten_session_course),e==="set_b"&&(n=jsObject.urls.launch_twenty_session_course),e==="set_c"&&(n=jsObject.urls.launch_intensive_session_course);const a=new URL(n);return a.searchParams.set("session",s),a.href}getNumberOfSessions(){switch(this.getTrainingType()){case"set_a":return 10;case"set_b":return 20;case"set_c":return 5}}getSlideKey(t){const e=t.split("_");if(e.length!==3)return"";switch(e[1]){case"a":return`s1_${Number(e[2])}_1`;case"b":return`s2_${Number(e[2])}_1`;case"c":return`s3_${Number(e[2])}_1`}}getCurrentSession(){for(let t=0;t<this.sessions.length;t++){const e=this.sessions[t];if(!e.completed)return e.id}return""}createTraining(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:$.planDecision}}))}inviteFriends(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:$.inviteFriends,params:{joinKey:this.code}}}))}startSession(t,e){e.stopImmediatePropagation();const s=this.getSessionUrl(t);location.href=s}editSession(t,e){this.stopImmediatePropagation(e),this.closeKebabMenu(t);const s=this.sessions.find(a=>a.id===t),n=g.fromMillis(s.datetime);s.date=n.toISODate(),this.sessionToEdit=s,this.openEditSessionModal()}selectDay(t){const{date:e}=t.detail,s={...this.sessionToEdit,date:e};this.sessionToEdit=s}saveSession(t){if(this.isSavingSession)return;this.isSavingSession=!0;const{date:e}=this.sessionToEdit,s=g.fromFormat(`${e}`,"y-LL-dd");S.post("plan/edit-session",{key:this.training.join_key,session_id:this.sessionToEdit.id,session_time:s.toSeconds()}).then(n=>{this.training={...this.training,[this.sessionToEdit.id]:{timestamp:s.toSeconds(),formatted:s.toISODate()}},this.refreshSessions(),this.closeEditSessionModal()}).finally(()=>{this.isSavingSession=!1})}cancelEditingSession(){this.sessionToEdit={},this.closeEditSessionModal()}openEditSessionModal(){const t=document.querySelector("#edit-session-modal");jQuery(t).foundation("open")}closeEditSessionModal(){const t=document.querySelector("#edit-session-modal");jQuery(t).foundation("close")}editSessionDetails(t){t.stopImmediatePropagation(),document.querySelector("#location-note").value=this.training.location_note||"",document.querySelector("#time-of-day-note").value=this.training.time_of_day_note||"",this.isCoach()&&(document.querySelector("#language-note").value=this.training.language_note||"",document.querySelector("#timezone-note").value=this.training.timezone_note||"",document.querySelector("#zoom-link-note").value=this.training.zoom_link_note||"",this.isPublic()?document.querySelector('#edit-session-details-modal #public[type="radio"]').checked=!0:document.querySelector('#edit-session-details-modal #private[type="radio"]').checked=!0,this.isActive()?document.querySelector('#edit-session-details-modal #active[type="radio"]').checked=!0:document.querySelector('#edit-session-details-modal #inactive[type="radio"]').checked=!0),this.openEditSessionDetailsModal()}openEditSessionDetailsModal(){const t=document.querySelector("#edit-session-details-modal");jQuery(t).foundation("open")}closeEditSessionDetailsModal(){const t=document.querySelector("#edit-session-details-modal");jQuery(t).foundation("close")}saveSessionDetails(){if(this.isSavingSession)return;this.isSavingSession=!0;const t=document.querySelector("#location-note").value,e=document.querySelector("#time-of-day-note").value,s=document.querySelector("#zoom-link-note").value,n=document.querySelector("#edit-session-details-modal #active").checked?"active":"inactive",a={location_note:t,time_of_day_note:e,zoom_link_note:s,status:n};let r,o,l;this.isCoach()&&(r=document.querySelector("#language-note").value,o=document.querySelector("#timezone-note").value,l=document.querySelector("#edit-session-details-modal #public").checked?"public":"private",a.language_note=r,a.timezone_note=o,a.visibility=l),S.put(`plan/${this.training.join_key}`,a).then(d=>{const u={...this.training};u.location_note=t,u.time_of_day_note=e,u.zoom_link_note=s,u.status={key:n},this.isCoach()&&(u.language_note=r,u.timezone_note=o,u.visibility={key:l}),this.training=u}).finally(()=>{this.isSavingSession=!1,this.closeEditSessionDetailsModal(),this.dispatchEvent(new CustomEvent("training:changed",{bubbles:!0}))})}editTitle(){this.isEditingTitle=!0}cancelEditingTitle(){this.isEditingTitle=!1}inputSaveTitle(t){t.code==="Enter"&&this.saveTitle()}saveTitle(){if(this.isSavingTitle)return;this.isSavingTitle=!0;const t=document.querySelector("#training-title-input").value;S.put(`plan/${this.training.join_key}`,{title:t}).then(e=>{this.training.title=t,this.dispatchEvent(new CustomEvent("training:changed",{bubbles:!0}))}).finally(()=>{this.isEditingTitle=!1,this.isSavingTitle=!1})}markSessionCompleted(t,e){this.stopImmediatePropagation(e),this.closeKebabMenu(t),S.post("plan/complete-session",{key:this.training.join_key,session_id:t}).then(s=>{this.refreshSessions(s)})}isGroupLeader(){return!!(this.training&&this.training.assigned_to&&Number(this.training.assigned_to.id)===jsObject.profile.user_id)}isCoach(){return jsObject.is_coach}canEditTitle(){return jsObject.training_groups&&Object.keys(jsObject.training_groups).length>1}isPublic(){return this.training.visibility.key==="public"}isActive(){return console.log(this.training.status),this.training.status.key==="active"}toggleDetails(t){this.openDetailStates[t]?this.openDetailStates={...this.openDetailStates,[t]:!1}:this.openDetailStates={...this.openDetailStates,[t]:!0}}closeKebabMenu(t){jQuery(`#kebab-menu-${t}`).foundation("close")}toggleKebabMenu(t){t.stopImmediatePropagation();const e=t.currentTarget.dataset.toggle;jQuery(`#${e}`).foundation("toggle")}stopImmediatePropagation(t){t.stopImmediatePropagation()}filterSessions(t){this.filterStatus=t,this.filteredItems=this.filterItems(t,this.sessions),ZumeStorage.save(this.filterName,t),this.closeFilter()}filterItems(t,e){if(!this.sessions)return[];switch(t){case"completed":return e.filter(s=>s.completed);case"uncompleted":return e.filter(s=>!s.completed);default:return[...e]}}closeFilter(){const t=this.querySelector("#filter-menu");jQuery(t).foundation("close")}toggleGroupMembers(){this.groupMembersOpen=!this.groupMembersOpen}toggleGroupDetails(){this.groupDetailsOpen=!this.groupDetailsOpen}makeTrainingItemHref(t,e){return this.getSessionUrl(e)+"&slide="+t.slide_key}makeGroupMembersHref(){const t={fields:[{connected_plans:[this.training.join_key]}]},e=Rs(t),s=[{field:"connected_plans",id:this.training.join_key,name:`Connected Plans: ${this.training.join_key}`}],n=Rs(s),a=new URL(jsObject.urls.coaching_contact_list);return a.searchParams.set("query",e),a.searchParams.set("labels",n),a.searchParams.set("filter_name","Custom Filter"),a.href}renderListItem(t){var e,s;const{id:n,name:a,datetime:r,completed:o}=t,l=this.getNumberOfSessions(),d=this.getSlideKey(n),u=(e=(s=zumeTrainingPieces[l][d])===null||s===void 0?void 0:s.pieces)!==null&&e!==void 0?e:[],p={month:"short",day:"numeric"};return g.fromMillis(r).year!==g.now().year&&(p.year="2-digit"),c`
-            <li
-                class="list__item"
-                data-no-flex
-            >
+            <li class="list__item" data-no-flex>
                 <div class="switcher | switcher-width-20 gapy0">
                     <div class="list__primary">
                         ${this.currentSession===n?c`
-                                <button
-                                    class="icon-btn"
-                                    @click=${m=>this.startSession(n,m)}
-                                    aria-label=${jsObject.translations.start_session}
-                                >
-                                    <span class="icon z-icon-play brand-light"></span>
-                                </button>
-                            `:c`
-                                <span class="icon z-icon-check-mark success ${o?"":"invisible"} p--2"></span>
-                            `}
-                                <span class="f-medium">${a}</span>
+                                  <button
+                                      class="icon-btn"
+                                      @click=${m=>this.startSession(n,m)}
+                                      aria-label=${jsObject.translations.start_session}
+                                  >
+                                      <span
+                                          class="icon z-icon-play brand-light"
+                                      ></span>
+                                  </button>
+                              `:c`
+                                  <span
+                                      class="icon z-icon-check-mark success ${o?"":"invisible"} p--2"
+                                  ></span>
+                              `}
+                        <span class="f-medium">${a}</span>
                     </div>
 
                     <div class="list__secondary" data-align-start>
-                        <div class="d-flex justify-content-center align-items-center gap--2">
-                            <span>${r>0?g.fromMillis(r).toLocaleString(p):jsObject.translations.not_scheduled}</span>
+                        <div
+                            class="d-flex justify-content-center align-items-center gap--2"
+                        >
+                            <span
+                                >${r>0?g.fromMillis(r).toLocaleString(p):jsObject.translations.not_scheduled}</span
+                            >
                             <button
                                 class="icon-btn"
                                 data-toggle="kebab-menu-${n}"
                                 @click=${this.toggleKebabMenu}
                             >
-                                <span class="icon z-icon-kebab brand-light"></span>
+                                <span
+                                    class="icon z-icon-kebab brand-light"
+                                ></span>
                             </button>
                             <button
                                 class="icon-btn"
@@ -1742,7 +1749,10 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                         </div>
                     </div>
                 </div>
-                <div class="list__tertiary zume-collapse" ?data-expand=${this.openDetailStates[n]}>
+                <div
+                    class="list__tertiary zume-collapse"
+                    ?data-expand=${this.openDetailStates[n]}
+                >
                     <ul class="pt-0 ps-2" role="list" data-brand-light>
                         ${u.map(m=>c`
                                 <li>
@@ -1756,147 +1766,239 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                             `)}
                     </ul>
                 </div>
-                <div class="dropdown-pane" id="kebab-menu-${n}" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl?"right":"left"} data-close-on-click="true" data-close-on-click-inside="true">
+                <div
+                    class="dropdown-pane"
+                    id="kebab-menu-${n}"
+                    data-dropdown
+                    data-auto-focus="true"
+                    data-position="bottom"
+                    data-alignment=${this.isRtl?"right":"left"}
+                    data-close-on-click="true"
+                    data-close-on-click-inside="true"
+                >
                     <ul>
                         ${this.isGroupLeader()?c`
-                                <li><button class="menu-btn" @click=${m=>this.editSession(n,m)}><span class="icon z-icon-pencil"></span>${jsObject.translations.edit_time}</button></li>
-                                <li><button class="menu-btn" @click=${m=>this.markSessionCompleted(n,m)}><span class="icon z-icon-pencil"></span>${jsObject.translations.mark_completed}</button></li>
-                            `:""}
-                        <li><button class="menu-btn" @click=${m=>this.startSession(n,m)}><span class="icon z-icon-play"></span>${jsObject.translations.start_session}</button></li>
+                                  <li>
+                                      <button
+                                          class="menu-btn"
+                                          @click=${m=>this.editSession(n,m)}
+                                      >
+                                          <span
+                                              class="icon z-icon-pencil"
+                                          ></span
+                                          >${jsObject.translations.edit_time}
+                                      </button>
+                                  </li>
+                                  <li>
+                                      <button
+                                          class="menu-btn"
+                                          @click=${m=>this.markSessionCompleted(n,m)}
+                                      >
+                                          <span
+                                              class="icon z-icon-pencil"
+                                          ></span
+                                          >${jsObject.translations.mark_completed}
+                                      </button>
+                                  </li>
+                              `:""}
+                        <li>
+                            <button
+                                class="menu-btn"
+                                @click=${m=>this.startSession(n,m)}
+                            >
+                                <span class="icon z-icon-play"></span>${jsObject.translations.start_session}
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </li>
-
-        `}renderMemberItem(t){const{name:e}=t;return c`
-            <li>
-                ${e}
-            </li>
-        `}renderFilterButton(){return c`
+        `}renderMemberItem(t){const{name:e}=t;return c` <li>${e}</li> `}renderFilterButton(){return c`
             <button class="icon-btn f-2" data-toggle="filter-menu">
-                <span class="visually-hidden">${jsObject.translations.filter}</span>
-                <span class="icon z-icon-filter brand-light" aria-hidden="true"></span>
+                <span class="visually-hidden"
+                    >${jsObject.translations.filter}</span
+                >
+                <span
+                    class="icon z-icon-filter brand-light"
+                    aria-hidden="true"
+                ></span>
             </button>
-
         `}render(){var t,e,s,n;return c`
             <div class="dashboard__content">
-                <div class="dashboard__header left">
+                <div class="dashboard__header left flex-wrap">
                     <div class="dashboard__title">
                         <dash-sidebar-toggle></dash-sidebar-toggle>
                         <span class="icon ${this.route.icon}"></span>
                         ${this.canEditTitle()?c`
                                     ${this.isEditingTitle?c`
-                                            <div class="switcher switcher-width-20 gap--5">
-                                                <div class="position-relative">
-                                                    <input
-                                                        class="input grow-1"
-                                                        id="training-title-input"
-                                                        type="text"
-                                                        value=${this.training.title||""}
-                                                        @keydown=${this.inputSaveTitle}
-                                                    />
-                                                    <div class="absolute ${this.isRtl?"left":"right"} top bottom d-flex align-items-center mx-0">
-                                                        <span class="loading-spinner ${this.isSavingTitle?"active":""}"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex align-items-center gap--1 grow-0">
-                                                    <button
-                                                        class="btn outline grow-0 tight f--1"
-                                                        @click=${this.cancelEditingTitle}
-                                                        ?disabled=${this.isSavingTitle}
-                                                    >
-                                                        ${jsObject.translations.cancel}
-                                                    </button>
-                                                    <button
-                                                        class="btn tight grow-0 f--1"
-                                                        @click=${this.saveTitle}
-                                                        ?disabled=${this.isSavingTitle}
-                                                        aria-disabled=${this.isSavingTitle?"true":"false"}
-                                                    >
-                                                        ${jsObject.translations.save}
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        `:c`
-                                            <div class="d-flex align-items-center s--3">
-                                                <h1 class="h3">${(t=(e=this.training)===null||e===void 0?void 0:e.title)!==null&&t!==void 0?t:""}</h1>
-                                                ${this.isGroupLeader()?c`
-                                                        <button
-                                                            class="icon-btn f-0 brand-light"
-                                                            aria-label=${jsObject.translations.edit}
-                                                            @click=${this.editTitle}
-                                                        >
-                                                            <span class="icon z-icon-pencil"></span>
-                                                        </button>
-                                                    `:""}
-                                                ${this.renderFilterButton()}
-                                            </div>
-                                        `}
+                                                  <div
+                                                      class="switcher switcher-width-20 gap--5"
+                                                  >
+                                                      <div
+                                                          class="position-relative"
+                                                      >
+                                                          <input
+                                                              class="input grow-1"
+                                                              id="training-title-input"
+                                                              type="text"
+                                                              value=${this.training.title||""}
+                                                              @keydown=${this.inputSaveTitle}
+                                                          />
+                                                          <div
+                                                              class="absolute ${this.isRtl?"left":"right"} top bottom d-flex align-items-center mx-0"
+                                                          >
+                                                              <span
+                                                                  class="loading-spinner ${this.isSavingTitle?"active":""}"
+                                                              ></span>
+                                                          </div>
+                                                      </div>
+                                                      <div
+                                                          class="d-flex align-items-center gap--1 grow-0"
+                                                      >
+                                                          <button
+                                                              class="btn outline grow-0 tight f--1"
+                                                              @click=${this.cancelEditingTitle}
+                                                              ?disabled=${this.isSavingTitle}
+                                                          >
+                                                              ${jsObject.translations.cancel}
+                                                          </button>
+                                                          <button
+                                                              class="btn tight grow-0 f--1"
+                                                              @click=${this.saveTitle}
+                                                              ?disabled=${this.isSavingTitle}
+                                                              aria-disabled=${this.isSavingTitle?"true":"false"}
+                                                          >
+                                                              ${jsObject.translations.save}
+                                                          </button>
+                                                      </div>
+                                                  </div>
+                                              `:c`
+                                                  <div
+                                                      class="d-flex align-items-center s--3"
+                                                  >
+                                                      <h1 class="h3">
+                                                          ${(t=(e=this.training)===null||e===void 0?void 0:e.title)!==null&&t!==void 0?t:""}
+                                                      </h1>
+                                                      ${this.isGroupLeader()?c`
+                                                                <button
+                                                                    class="icon-btn f-0 brand-light"
+                                                                    aria-label=${jsObject.translations.edit}
+                                                                    @click=${this.editTitle}
+                                                                >
+                                                                    <span
+                                                                        class="icon z-icon-pencil"
+                                                                    ></span>
+                                                                </button>
+                                                            `:""}
+                                                      ${this.renderFilterButton()}
+                                                  </div>
+                                              `}
                                 </div>
                             `:c`
-                                <h1 class="h3">${this.route.translation}</h1>
-                                ${this.renderFilterButton()}
-                            `}
-
+                                  <h1 class="h3">${this.route.translation}</h1>
+                                  ${this.renderFilterButton()}
+                              `}
                     </div>
 
                     ${this.isEditingTitle?"":c`
-                            <button
-                                class="icon-btn f-2 brand-light"
-                                aria-label=${jsObject.translations.create_training_group}
-                                @click=${this.createTraining}
-                            >
-                                <span class="icon z-icon-plus"></span>
-                            </button>
-                        `}
+                              <button
+                                  class="btn brand-light tight"
+                                  aria-label=${jsObject.translations.create_training_group}
+                                  @click=${this.createTraining}
+                              >
+                                  ${jsObject.translations.add}
+                              </button>
+                          `}
                 </div>
                 <dash-header-right></dash-header-right>
                 <div class="dashboard__main content">
-                    ${this.loading?c`<div class="p-1"><span class="loading-spinner active"></span></div>`:""}
+                    ${this.loading?c`<div class="p-1">
+                              <span class="loading-spinner active"></span>
+                          </div>`:""}
                     ${!this.loading&&this.error?c`
-                        <div class="p-1">
-                            <h3 class="f-1 bold uppercase">${jsObject.translations.error}</h3>
-                            ${this.error==="bad-plan-code"?c`
-                                    <p>${jsObject.translations.bad_code}</p>
-                                    <p>${jsObject.translations.join_key}: ${this.code}</p>
-                                `:""}
-                            ${this.error==="not-authorized"?c`
-                                    <p>${jsObject.translations.not_authorized}</p>
-                                `:""}
-                        </div>
-                        `:""}
+                              <div class="p-1">
+                                  <h3 class="f-1 bold uppercase">
+                                      ${jsObject.translations.error}
+                                  </h3>
+                                  ${this.error==="bad-plan-code"?c`
+                                            <p>
+                                                ${jsObject.translations.bad_code}
+                                            </p>
+                                            <p>
+                                                ${jsObject.translations.join_key}:
+                                                ${this.code}
+                                            </p>
+                                        `:""}
+                                  ${this.error==="not-authorized"?c`
+                                            <p>
+                                                ${jsObject.translations.not_authorized}
+                                            </p>
+                                        `:""}
+                              </div>
+                          `:""}
                     ${this.showTeaser&&!this.loading&&!this.error?c`
-                            <div class="p-1">
-                                <div class="dash-menu__list-item">
-                                    <div class="dash-menu__icon-area | stack--5">
-                                        <span class="icon z-icon-locked dash-menu__list-icon"></span>
-                                    </div>
-                                    <div class="dash-menu__text-area | switcher | switcher-width-20">
-                                        <div>
-                                            <h3 class="f-1 bold uppercase">${jsObject.translations.my_training_locked}</h3>
-                                            <p>${jsObject.translations.plan_a_training_explanation}</p>
-                                        </div>
-                                        <button class="dash-menu__view-button btn tight" @click=${this.createTraining}>
-                                            ${jsObject.translations.unlock}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        `:c`
-                            <ul class="list">
-                                ${!this.loading&&this.sessions&&this.sessions.length>0?U(this.filteredItems,a=>a.id,this.renderListItem):""}
-                            </ul>
-                        `}
+                              <div class="p-1">
+                                  <div class="dash-menu__list-item">
+                                      <div
+                                          class="dash-menu__icon-area | stack--5"
+                                      >
+                                          <span
+                                              class="icon z-icon-locked dash-menu__list-icon"
+                                          ></span>
+                                      </div>
+                                      <div
+                                          class="dash-menu__text-area | switcher | switcher-width-20"
+                                      >
+                                          <div>
+                                              <h3 class="f-1 bold uppercase">
+                                                  ${jsObject.translations.my_training_locked}
+                                              </h3>
+                                              <p>
+                                                  ${jsObject.translations.plan_a_training_explanation}
+                                              </p>
+                                          </div>
+                                          <button
+                                              class="dash-menu__view-button btn tight"
+                                              @click=${this.createTraining}
+                                          >
+                                              ${jsObject.translations.unlock}
+                                          </button>
+                                      </div>
+                                  </div>
+                              </div>
+                          `:c`
+                              <ul class="list">
+                                  ${!this.loading&&this.sessions&&this.sessions.length>0?U(this.filteredItems,a=>a.id,this.renderListItem):""}
+                              </ul>
+                          `}
                 </div>
-                <div class="dropdown-pane" id="filter-menu" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment=${this.isRtl?"right":"left"} data-close-on-click="true" data-close-on-click-inside="true">
+                <div
+                    class="dropdown-pane"
+                    id="filter-menu"
+                    data-dropdown
+                    data-auto-focus="true"
+                    data-position="bottom"
+                    data-alignment=${this.isRtl?"right":"left"}
+                    data-close-on-click="true"
+                    data-close-on-click-inside="true"
+                >
                     <ul>
                         <li>
-                            <button class="menu-btn w-100 ${this.filterStatus==="completed"?"selected":""}" @click=${()=>this.filterSessions("completed")}>
+                            <button
+                                class="menu-btn w-100 ${this.filterStatus==="completed"?"selected":""}"
+                                @click=${()=>this.filterSessions("completed")}
+                            >
                                 ${jsObject.translations.completed}
                             </button>
-                            <button class="menu-btn w-100 ${this.filterStatus==="uncompleted"?"selected":""}" @click=${()=>this.filterSessions("uncompleted")}>
+                            <button
+                                class="menu-btn w-100 ${this.filterStatus==="uncompleted"?"selected":""}"
+                                @click=${()=>this.filterSessions("uncompleted")}
+                            >
                                 ${jsObject.translations.uncompleted}
                             </button>
-                            <button class="menu-btn w-100 ${this.filterStatus==="all"?"selected":""}" @click=${()=>this.filterSessions("all")}>
+                            <button
+                                class="menu-btn w-100 ${this.filterStatus==="all"?"selected":""}"
+                                @click=${()=>this.filterSessions("all")}
+                            >
                                 ${jsObject.translations.all}
                             </button>
                         </li>
@@ -1905,67 +2007,122 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 <div class="dashboard__secondary stack">
                     ${this.loading&&!this.error?c`<span class="loading-spinner active"></span>`:""}
                     ${!this.loading&&!this.error&&this.code!=="teaser"?c`
-                                <div class="card | group-members | grow-0">
-                                    <button
-                                        class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
-                                        @click=${this.toggleGroupMembers}
-                                    >
-                                        <span class="icon z-icon-group brand-light"></span>
-                                        <span>${jsObject.translations.group_members} (${this.groupMembers.length})</span>
-                                        <img
-                                            class="chevron | svg w-1rem h-1rem ${this.groupMembersOpen?"rotate-180":""}"
-                                            src=${jsObject.images_url+"/chevron.svg"}
-                                        />
-                                    </button>
-                                    <div class="zume-collapse | mt-0" ?data-expand=${this.groupMembersOpen}>
-                                        ${!this.loading&&this.groupMembers&&this.groupMembers.length>0?c`
+                              <div class="card | group-members | grow-0">
+                                  <button
+                                      class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
+                                      @click=${this.toggleGroupMembers}
+                                  >
+                                      <span
+                                          class="icon z-icon-group brand-light"
+                                      ></span>
+                                      <span
+                                          >${jsObject.translations.group_members}
+                                          (${this.groupMembers.length})</span
+                                      >
+                                      <img
+                                          class="chevron | svg w-1rem h-1rem ${this.groupMembersOpen?"rotate-180":""}"
+                                          src=${jsObject.images_url+"/chevron.svg"}
+                                      />
+                                  </button>
+                                  <div
+                                      class="zume-collapse | mt-0"
+                                      ?data-expand=${this.groupMembersOpen}
+                                  >
+                                      ${!this.loading&&this.groupMembers&&this.groupMembers.length>0?c`
                                                 <ol class="ps-1">
                                                     ${U(this.groupMembers,a=>a.id,this.renderMemberItem)}
                                                 </ol>
                                             `:""}
-                                        ${this.isCoach()?c`
-                                              <a href=${this.makeGroupMembersHref()} target="_blank">${jsObject.translations.group_members_link}</a>
-                                          `:""}
-                                    </div>
-                                    <button
-                                        @click=${this.inviteFriends}
-                                        class="btn brand tight mt--2"
-                                    >
-                                        ${jsObject.translations.invite_friends}
-                                    </button>
-                                </div>
-                                <div class="card | group-details | grow-0">
-                                    <button
-                                        class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
-                                        @click=${this.toggleGroupDetails}
-                                    >
-                                        <span class="icon z-icon-overview brand-light"></span>
-                                        <span>${jsObject.translations.group_details}</span>
-                                        <img
-                                            class="chevron | svg w-1rem h-1rem ${this.groupDetailsOpen?"rotate-180":""}"
-                                            src=${jsObject.images_url+"/chevron.svg"}
-                                        />
-                                    </button>
-                                    <div class="zume-collapse" ?data-expand=${this.groupDetailsOpen}>
-                                        <div class="stack--2 | mt-0">
-                                            <p class="text-left"><span class="f-medium">${jsObject.translations.location}:</span> ${this.training.location_note}</p>
-                                            <p class="text-left"><span class="f-medium">${jsObject.translations.time}:</span> ${this.training.time_of_day_note}</p>
-                                            ${this.training.language_note&&this.training.language_note.length?c`
-                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.language}:</span> ${this.training.language_note}</p>
+                                      ${this.isCoach()?c`
+                                                <a
+                                                    href=${this.makeGroupMembersHref()}
+                                                    target="_blank"
+                                                    >${jsObject.translations.group_members_link}</a
+                                                >
+                                            `:""}
+                                  </div>
+                                  <button
+                                      @click=${this.inviteFriends}
+                                      class="btn brand tight mt--2"
+                                  >
+                                      ${jsObject.translations.invite_friends}
+                                  </button>
+                              </div>
+                              <div class="card | group-details | grow-0">
+                                  <button
+                                      class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
+                                      @click=${this.toggleGroupDetails}
+                                  >
+                                      <span
+                                          class="icon z-icon-overview brand-light"
+                                      ></span>
+                                      <span
+                                          >${jsObject.translations.group_details}</span
+                                      >
+                                      <img
+                                          class="chevron | svg w-1rem h-1rem ${this.groupDetailsOpen?"rotate-180":""}"
+                                          src=${jsObject.images_url+"/chevron.svg"}
+                                      />
+                                  </button>
+                                  <div
+                                      class="zume-collapse"
+                                      ?data-expand=${this.groupDetailsOpen}
+                                  >
+                                      <div class="stack--2 | mt-0">
+                                          <p class="text-left">
+                                              <span class="f-medium"
+                                                  >${jsObject.translations.location}:</span
+                                              >
+                                              ${this.training.location_note}
+                                          </p>
+                                          <p class="text-left">
+                                              <span class="f-medium"
+                                                  >${jsObject.translations.time}:</span
+                                              >
+                                              ${this.training.time_of_day_note}
+                                          </p>
+                                          ${this.training.language_note&&this.training.language_note.length?c`
+                                                    <p class="text-left">
+                                                        <span class="f-medium"
+                                                            >${jsObject.translations.language}:</span
+                                                        >
+                                                        ${this.training.language_note}
+                                                    </p>
                                                 `:""}
-                                            ${this.training.timezone_note&&this.training.timezone_note.length?c`
-                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.timezone}:</span> ${this.training.timezone_note}</p>
+                                          ${this.training.timezone_note&&this.training.timezone_note.length?c`
+                                                    <p class="text-left">
+                                                        <span class="f-medium"
+                                                            >${jsObject.translations.timezone}:</span
+                                                        >
+                                                        ${this.training.timezone_note}
+                                                    </p>
                                                 `:""}
-                                            ${this.training.zoom_link_note&&this.training.zoom_link_note.length?c`
-                                                    <p class="text-left"><a class="link f-medium" href=${this.training.zoom_link_note} target="_blank">${jsObject.translations.meeting_link}</a> </p>
+                                          ${this.training.zoom_link_note&&this.training.zoom_link_note.length?c`
+                                                    <p class="text-left">
+                                                        <a
+                                                            class="link f-medium"
+                                                            href=${this.training.zoom_link_note}
+                                                            target="_blank"
+                                                            >${jsObject.translations.meeting_link}</a
+                                                        >
+                                                    </p>
                                                 `:""}
-                                            ${this.isPublic()?c`
-                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.public_group}</span></p>
+                                          ${this.isPublic()?c`
+                                                    <p class="text-left">
+                                                        <span class="f-medium"
+                                                            >${jsObject.translations.public_group}</span
+                                                        >
+                                                    </p>
                                                 `:""}
-                                            ${this.isGroupLeader()?c`
-                                                    <p class="text-left"><span class="f-medium">${jsObject.translations.status}:</span> ${this.isActive()?jsObject.translations.active:jsObject.translations.inactive}</p>
+                                          ${this.isGroupLeader()?c`
+                                                    <p class="text-left">
+                                                        <span class="f-medium"
+                                                            >${jsObject.translations.status}:</span
+                                                        >
+                                                        ${this.isActive()?jsObject.translations.active:jsObject.translations.inactive}
+                                                    </p>
                                                 `:""}
-                                            ${this.isGroupLeader()?c`
+                                          ${this.isGroupLeader()?c`
                                                     <button
                                                         @click=${this.editSessionDetails}
                                                         class="btn brand tight mt--2"
@@ -1973,31 +2130,44 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                                         ${jsObject.translations.edit}
                                                     </button>
                                                 `:""}
-                                        </div>
-                                    </div>
-
-                                </div>
-                            `:""}
+                                      </div>
+                                  </div>
+                              </div>
+                          `:""}
                     <dash-cta></dash-cta>
                 </div>
             </div>
-            <div class="reveal small" id="edit-session-modal" data-reveal data-v-offset="20">
-                <button class="ms-auto close-btn" data-close aria-label=${jsObject.translations.close} type="button">
-                        <span class="icon z-icon-close"></span>
+            <div
+                class="reveal small"
+                id="edit-session-modal"
+                data-reveal
+                data-v-offset="20"
+            >
+                <button
+                    class="ms-auto close-btn"
+                    data-close
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                >
+                    <span class="icon z-icon-close"></span>
                 </button>
                 <div class="stack">
                     <div class="d-flex gap-0 flex-wrap justify-content-center">
                         <h2>${jsObject.translations.edit}:</h2>
-                        <h3 class="h2 brand-light">${(s=this.sessionToEdit)===null||s===void 0?void 0:s.name}</h3>
+                        <h3 class="h2 brand-light">
+                            ${(s=this.sessionToEdit)===null||s===void 0?void 0:s.name}
+                        </h3>
                     </div>
                     <calendar-select
-                        style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
+                        style="--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)"
                         showToday
                         .selectedDays=${(n=this.sessionToEdit)!==null&&n!==void 0&&n.date?[{date:this.sessionToEdit.date}]:[]}
                         .highlightedDays=${this.getHighlightedDays()}
                         @day-added=${this.selectDay}
                     ></calendar-select>
-                    <div class="d-flex align-items-center justify-content-center gap--1">
+                    <div
+                        class="d-flex align-items-center justify-content-center gap--1"
+                    >
                         <button
                             class="btn outline tight"
                             @click=${this.cancelEditingSession}
@@ -2013,71 +2183,124 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                             aria-disabled=${this.isSavingSession?"true":"false"}
                         >
                             ${jsObject.translations.save}
-                            <span class="loading-spinner ${this.isSavingSession?"active":""}"></span>
+                            <span
+                                class="loading-spinner ${this.isSavingSession?"active":""}"
+                            ></span>
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="reveal small" id="edit-session-details-modal" data-reveal data-v-offset="20">
-                <button class="ms-auto close-btn" data-close aria-label=${jsObject.translations.close} type="button">
-                        <span class="icon z-icon-close"></span>
+            <div
+                class="reveal small"
+                id="edit-session-details-modal"
+                data-reveal
+                data-v-offset="20"
+            >
+                <button
+                    class="ms-auto close-btn"
+                    data-close
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                >
+                    <span class="icon z-icon-close"></span>
                 </button>
                 <div class="stack">
                     <div class="d-flex gap-0 flex-wrap justify-content-center">
                         <h2>${jsObject.translations.edit}:</h2>
-                        <h3 class="h2 brand-light">${jsObject.translations.group_details}</h3>
+                        <h3 class="h2 brand-light">
+                            ${jsObject.translations.group_details}
+                        </h3>
                     </div>
                     <div>
-                        <label for="location-note">${jsObject.translations.location}</label>
-                        <input class="input" type="text" id="location-note"/>
+                        <label for="location-note"
+                            >${jsObject.translations.location}</label
+                        >
+                        <input class="input" type="text" id="location-note" />
                     </div>
                     <div>
-                        <label for="time-of-day-note">${jsObject.translations.time}</label>
-                        <input class="input" type="text" id="time-of-day-note"/>
+                        <label for="time-of-day-note"
+                            >${jsObject.translations.time}</label
+                        >
+                        <input
+                            class="input"
+                            type="text"
+                            id="time-of-day-note"
+                        />
                     </div>
                     ${this.isCoach()?c`
-                            <div>
-                                <label for="language-note">${jsObject.translations.language}</label>
-                                <input class="input" type="text" id="language-note"/>
-                            </div>
-                            <div>
-                                <label for="timezone-note">${jsObject.translations.timezone}</label>
-                                <input class="input" type="text" id="timezone-note"/>
-                            </div>
-                        `:""}
+                              <div>
+                                  <label for="language-note"
+                                      >${jsObject.translations.language}</label
+                                  >
+                                  <input
+                                      class="input"
+                                      type="text"
+                                      id="language-note"
+                                  />
+                              </div>
+                              <div>
+                                  <label for="timezone-note"
+                                      >${jsObject.translations.timezone}</label
+                                  >
+                                  <input
+                                      class="input"
+                                      type="text"
+                                      id="timezone-note"
+                                  />
+                              </div>
+                          `:""}
                     <div>
-                        <label for="zoom-link-note">${jsObject.translations.meeting_link} (${jsObject.translations.meeting_link_examples})</label>
-                        <input class="input" type="text" id="zoom-link-note"/>
+                        <label for="zoom-link-note"
+                            >${jsObject.translations.meeting_link}
+                            (${jsObject.translations.meeting_link_examples})</label
+                        >
+                        <input class="input" type="text" id="zoom-link-note" />
                     </div>
                     ${this.isCoach()?c`
-                            <div>
-                                <label>${jsObject.translations.visibility}</label>
-                                <div class="cluster">
-                                    <label class="form-control label-input">
-                                        <input name="visibility" type="radio" id="public">
-                                        ${jsObject.translations.public_group}
-                                    </label>
-                                    <label class="form-control label-input">
-                                        <input name="visibility" type="radio" id="private">
-                                        ${jsObject.translations.private_group}
-                                    </label>
-                                </div>
-                            </div>
-                        `:""}
+                              <div>
+                                  <label
+                                      >${jsObject.translations.visibility}</label
+                                  >
+                                  <div class="cluster">
+                                      <label class="form-control label-input">
+                                          <input
+                                              name="visibility"
+                                              type="radio"
+                                              id="public"
+                                          />
+                                          ${jsObject.translations.public_group}
+                                      </label>
+                                      <label class="form-control label-input">
+                                          <input
+                                              name="visibility"
+                                              type="radio"
+                                              id="private"
+                                          />
+                                          ${jsObject.translations.private_group}
+                                      </label>
+                                  </div>
+                              </div>
+                          `:""}
                     <div>
                         <label>${jsObject.translations.status}</label>
                         <div class="cluster">
                             <label class="form-control label-input">
-                                <input name="status" type="radio" id="active">
+                                <input name="status" type="radio" id="active" />
                                 ${jsObject.translations.active}
                             </label>
                             <label class="form-control label-input">
-                                <input name="status" type="radio" id="inactive">
+                                <input
+                                    name="status"
+                                    type="radio"
+                                    id="inactive"
+                                />
                                 ${jsObject.translations.inactive}
                             </label>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center justify-content-center gap--1">
+                    <div
+                        class="d-flex align-items-center justify-content-center gap--1"
+                    >
                         <button
                             class="btn outline tight"
                             @click=${this.closeEditSessionDetailsModal}
@@ -2093,7 +2316,9 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                             aria-disabled=${this.isSavingSession?"true":"false"}
                         >
                             ${jsObject.translations.save}
-                            <span class="loading-spinner ${this.isSavingSession?"active":""}"></span>
+                            <span
+                                class="loading-spinner ${this.isSavingSession?"active":""}"
+                            ></span>
                         </button>
                     </div>
                 </div>
