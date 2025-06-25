@@ -218,6 +218,21 @@ dash-header-right {
         grid-template-areas:"content";
         grid-template-columns: 1fr;
     }
+    .dashboard__content {
+        grid-template-areas: "header-right"
+                            "header-left"
+                            "main"
+                            "secondary";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+
+        &[data-no-secondary-area] {
+            grid-template-areas: "header-right"
+                                "header-left"
+                                "main";
+        }
+    }
+
 
     .dashboard__sidebar {
         grid-area: unset;
@@ -271,21 +286,6 @@ dash-header-right {
 }
 
 @media (max-width: $break-md) {
-    .dashboard__content {
-        grid-template-areas: "header-right"
-                            "header-left"
-                            "main"
-                            "secondary";
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-
-        &[data-no-secondary-area] {
-            grid-template-areas: "header-right"
-                                "header-left"
-                                "main";
-        }
-    }
-
     dash-sidebar-toggle:not([displayon="medium"]) {
         order: 10;
     }
@@ -309,6 +309,8 @@ dash-header-right {
     .dashboard__title {
         justify-content: space-between;
     }
+
+
 }
 .card.group-members {
     text-align:left;

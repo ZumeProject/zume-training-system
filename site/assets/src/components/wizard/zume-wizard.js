@@ -290,6 +290,10 @@ export class Wizard extends LitElement {
                 tag = literal`join-community`
                 translations = this.t.join_community
                 break
+            case Steps.notifyOfFutureTrainings:
+                tag = literal`notify-of-future-trainings`
+                translations = this.t.notify_of_future_trainings
+                break
             default:
                 break;
         }

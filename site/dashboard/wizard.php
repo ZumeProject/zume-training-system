@@ -107,6 +107,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'checkin_dashboard_url' => zume_checkin_dashboard_url(),
                 'training_dashboard_url' => zume_dashboard_page_url( 'my-training' ),
                 'coaching_dashboard_url' => zume_dashboard_page_url( 'my-coach' ),
+                'notify_of_future_trainings_url' => zume_notify_of_future_trainings_url(),
                 'site_url' => zume_home_url(),
             ]) ?>][0]
         </script>
@@ -255,6 +256,10 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'next' => __( 'Next', 'zume' ),
                 'no_plans' => __( 'There are currently no public trainings available.', 'zume' ),
                 'complete_profile' => __( 'Please make sure that your profile is up to date, so that group leaders can contact you.', 'zume' ),
+                'notify_of_future_trainings_title' => __( 'Would you like to be notified about future trainings?', 'zume' ),
+                'notify_of_future_trainings_description' => __( 'We will send you an email when a new training is available.', 'zume' ),
+                'notify_of_future_trainings_button' => __( 'Notify me about future trainings', 'zume' ),
+                'notify_of_future_trainings_unsubscribe' => __( 'You can always unsubscribe from these emails at any time.', 'zume' ),
             ],
             'connect_friend' => [
                 'title' => __( 'Connecting with friend', 'zume' ),
@@ -321,6 +326,13 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'no_days_selected' => __( 'Add some dates to your schedule', 'zume' ),
                 'change' => __( 'Change', 'zume' ),
                 'next' => __( 'Next', 'zume' ),
+            ],
+            'notify_of_future_trainings' => [
+                'title' => __( 'Notify me about future trainings', 'zume' ),
+                'please_wait' => __( 'Please wait while we connect you', 'zume' ),
+                'broken_link' => __( 'The notify me about future trainings link is broken. Please try again.', 'zume' ),
+                'success' => __( 'You have been added to the list to be notified about future trainings.', 'zume' ),
+                'error' => __( 'Something went wrong', 'zume' ),
             ],
             'share' => array_merge( [
                 'title' => __( 'Invite your friends to join your training', 'zume' ),

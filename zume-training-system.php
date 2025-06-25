@@ -122,7 +122,7 @@ class Zume_Training {
             $language_code = zume_get_language_cookie();
             if ( $language_code !== $lang_code ) {
                 zume_set_language_cookie( $lang_code );
-            } 
+            }
         }
 
     }
@@ -158,6 +158,8 @@ class Zume_Training {
         add_filter( 'pre_redirect_guess_404_permalink', '__return_false' );
         add_filter( '404_template_hierarchy', [ $this, 'filter_404_template_hierarchy' ], 100, 3 );
         add_filter( 'language_attributes', [ $this, 'filter_language_attributes' ], 10, 2 );
+        add_filter( 'dt_set_roles_and_permissions', [ $this, 'filter_set_roles_and_permissions' ], 10, 1 );
+        add_filter( 'dt_filter_access_permissions', [ $this, 'filter_access_permissions' ], 10, 2 );
 
         /* Ensure that Login is enabled and settings set to the correct values */
         $fields = [
@@ -182,7 +184,28 @@ class Zume_Training {
         }
 
         add_action( 'wp_head', [ $this, 'insert_head_scripts' ] );
+    }
 
+    public function filter_set_roles_and_permissions( $expected_roles ) {
+        $permissions = [
+            'access_contacts' => true,
+        ];
+
+        if ( !isset( $expected_roles['zume_admin'] ) ) {
+            $expected_roles['zume_admin'] = [
+                'label' => __( 'Zume Admin', 'zume' ),
+                'description' => 'Administrates Zume',
+                'permissions' => $permissions,
+            ];
+        }
+        return $expected_roles;
+    }
+
+    public function filter_access_permissions( $permissions, $post_type ) {
+        if ( $post_type === 'contacts' && current_user_can( 'zume_admin' ) ) {
+            $permissions = [];
+        }
+        return $permissions;
     }
 
     public function insert_head_scripts() {
@@ -198,18 +221,18 @@ class Zume_Training {
         if ( ! in_array( $url_parts[0], [ 'share', 'resources', 'training', 'about', 'how-to-follow-jesus'] ) ) {
             return;
         }
-        
+
         ?>
             <!-- Chipp Chat Widget -->
             <script>
             window.CHIPP_APP_URL = "https://zmecopilot-44723.chipp.ai";
             window.CHIPP_APP_ID = 44723;
             </script>
-            
+
             <link rel="stylesheet" href="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.css" />
-            
+
             <script defer src="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.js"></script>
-            
+
         <?php
     }
 
@@ -388,6 +411,22 @@ class Zume_Training {
                     'only_for_types' => [ 'user' ],
                 ];
             }
+            if ( !isset( $fields['notify_of_future_trainings'] ) ){
+                $fields['notify_of_future_trainings'] = [
+                    'name' => __( 'Notify of Future Trainings', 'zume' ),
+                    'type' => 'boolean',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
+            if ( !isset( $fields['notify_of_future_trainings_date_subscribed'] ) ){
+                $fields['notify_of_future_trainings_date_subscribed'] = [
+                    'name' => __( 'Notify of Future Trainings Date Subscribed', 'zume' ),
+                    'type' => 'date',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
             if ( !isset( $fields['coaching_contact_id'] ) ){
                 $fields['coaching_contact_id'] = [
                     'name' => __( 'Coaching Contact ID', 'zume' ),
@@ -508,7 +547,7 @@ class Zume_Training {
             'time_end' => time(),
             'language_code' => $user_language['code'] ?? 'en',
         ], true );
-        
+
         // Zume_System_Encouragement_API::update_plan( $user->ID, 'training', 'registered' ); @todo remove this
     }
     public function dt_update_users_corresponding_contact( mixed $contact, WP_User $user ) {
@@ -534,7 +573,7 @@ class Zume_Training {
         }
     }
     public function dt_login_url( $dt_login_url ) {
-        
+
         $dt_login_url = str_replace( $this->builtin_login_url, $this->login_url, $dt_login_url );
 
         $current_language = 'en';
@@ -568,7 +607,7 @@ class Zume_Training {
         return $current_language . '/' . $dt_login_url;
     }
     public function dt_login_redirect_url( $redirect_url ) {
-        
+
         $url = new DT_URL( $redirect_url );
 
         $parsed_url = $url->parsed_url;

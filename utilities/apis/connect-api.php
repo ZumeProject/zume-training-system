@@ -47,6 +47,51 @@ class Zume_Connect_Endpoints
                 'permission_callback' => 'is_user_logged_in',
             ]
         );
+        register_rest_route(
+            $this->namespace, '/connect/notify-of-future-trainings', [
+                'methods' => 'POST',
+                'callback' => [ $this, 'notify_of_future_trainings_callback' ],
+                'permission_callback' => 'is_user_logged_in',
+            ]
+        );
+    }
+
+    public function notify_of_future_trainings_callback( WP_REST_Request $request ){
+        $user_id = get_current_user_id();
+
+        $contact_id = zume_get_user_contact_id( $user_id );
+        $contact = DT_Posts::get_post( 'contacts', $contact_id, true, false );
+
+        $fields = [
+            'notify_of_future_trainings' => true,
+            'notify_of_future_trainings_date_subscribed' => gmdate( 'Y-m-d' ),
+        ];
+
+        $result = DT_Posts::update_post( 'contacts', $contact_id, $fields, true, false );
+
+        $email = $contact['user_email'];
+        $name = $contact['name'];
+
+        $message = [
+            sprintf( __( 'Hello %s', 'zume' ), $name ),
+            __( 'You have successfully subscribed to receive notifications about future trainings.', 'zume' ),
+            __( 'You can unsubscribe from these notifications at any time.', 'zume' ),
+            __( 'Best regards,', 'zume' ),
+            __( 'The Zume Team', 'zume' ),
+        ];
+        $email_message = implode( "\n", array_map( function ( $message ) {
+            return '<p>' . $message . '</p>';
+        }, $message ) );
+
+        $subject = __( 'Zume Training - Future Trainings', 'zume' );
+
+        $email_sent = wp_mail( $email, $subject, $email_message );
+
+        if ( !$email_sent ) {
+            wp_queue()->push( new Zume_email_job( $email, $subject, $email_message ) );
+        }
+
+        return $result;
     }
     public function connect_to_friend_callback( WP_REST_Request $request ){
         $params = dt_recursive_sanitize_array( $request->get_params() );

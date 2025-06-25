@@ -16,6 +16,7 @@ class Zume_Encouragement_Cron {
     public function __construct() {
         add_action( 'init', array( $this, 'schedule_events' ) );
         add_action( self::CRON_HOOK, array( $this, 'process_unsent_messages' ) );
+        add_action( 'deactivate_plugin', array( $this, 'deactivate' ) );
     }
 
     /**
@@ -30,7 +31,7 @@ class Zume_Encouragement_Cron {
     /**
      * Process unsent messages
      * Selects one message per user based on the oldest drop_date
-     * 
+     *
      * @param string $test_date Optional test date for admin testing (Y-m-d format)
      * @param bool $return_results Whether to return results for admin interface
      * @return array|null Results array if $return_results is true, null otherwise
@@ -67,23 +68,23 @@ class Zume_Encouragement_Cron {
 
             // Query for test date - get oldest unsent message per user for the specific date plus immediate messages
             $query = $wpdb->prepare(
-                "SELECT m.* 
+                "SELECT m.*
                 FROM {$table_name} m
                 WHERE (m.sent = 0 OR m.sent IS NULL)
                 AND (
-                    m.drop_date = 0 
+                    m.drop_date = 0
                     OR DATE(FROM_UNIXTIME(m.drop_date)) = DATE(FROM_UNIXTIME(%d))
                 )
                 AND m.drop_date = (
-                    SELECT MIN(CASE 
-                        WHEN inner_m.drop_date = 0 THEN 0 
-                        ELSE inner_m.drop_date 
+                    SELECT MIN(CASE
+                        WHEN inner_m.drop_date = 0 THEN 0
+                        ELSE inner_m.drop_date
                     END)
                     FROM {$table_name} inner_m
                     WHERE inner_m.user_id = m.user_id
                     AND (inner_m.sent = 0 OR inner_m.sent IS NULL)
                     AND (
-                        inner_m.drop_date = 0 
+                        inner_m.drop_date = 0
                         OR DATE(FROM_UNIXTIME(inner_m.drop_date)) = DATE(FROM_UNIXTIME(%d))
                     )
                 )
@@ -93,13 +94,13 @@ class Zume_Encouragement_Cron {
             );
         } else {
             // Regular cron query - get oldest unsent message per user
-            $query = "SELECT m.* 
+            $query = "SELECT m.*
                 FROM {$table_name} m
                 WHERE (m.sent = 0 OR m.sent IS NULL)
                 AND m.drop_date = (
-                    SELECT MIN(CASE 
-                        WHEN inner_m.drop_date = 0 THEN 0 
-                        ELSE inner_m.drop_date 
+                    SELECT MIN(CASE
+                        WHEN inner_m.drop_date = 0 THEN 0
+                        ELSE inner_m.drop_date
                     END)
                     FROM {$table_name} inner_m
                     WHERE inner_m.user_id = m.user_id
@@ -109,25 +110,25 @@ class Zume_Encouragement_Cron {
         }
 
         $messages = $wpdb->get_results( $query );
-        
+
         if ( $return_results ) {
             $results['debug_info']['query'] = $query;
             $results['debug_info']['last_error'] = $wpdb->last_error;
             $results['messages_found'] = count( $messages );
-            
+
             // Add some debug queries to help diagnose issues
             $results['debug_info']['total_unsent_messages'] = $wpdb->get_var(
                 "SELECT COUNT(*) FROM {$table_name} WHERE (sent = 0 OR sent IS NULL)"
             );
-            
+
             if ( $test_date ) {
                 $results['debug_info']['messages_for_test_date'] = $wpdb->get_var( $wpdb->prepare(
-                    "SELECT COUNT(*) FROM {$table_name} 
-                    WHERE (sent = 0 OR sent IS NULL) 
+                    "SELECT COUNT(*) FROM {$table_name}
+                    WHERE (sent = 0 OR sent IS NULL)
                     AND DATE(FROM_UNIXTIME(drop_date)) = DATE(FROM_UNIXTIME(%d))",
                     $timestamp
                 ));
-                
+
                 $results['debug_info']['messages_with_zero_drop_date'] = $wpdb->get_var(
                     "SELECT COUNT(*) FROM {$table_name} WHERE (sent = 0 OR sent IS NULL) AND drop_date = 0"
                 );
@@ -138,7 +139,7 @@ class Zume_Encouragement_Cron {
             foreach ( $messages as $message ) {
                 // Send the message
                 $send_result = $this->send_message( $message, $return_results );
-                
+
                 if ( $return_results ) {
                     if ( $send_result['success'] ) {
                         $results['processed']++;
@@ -165,7 +166,7 @@ class Zume_Encouragement_Cron {
 
     /**
      * Send a message to a user
-     * 
+     *
      * @param object $message The message object to send
      * @param bool $return_result Whether to return detailed result information
      * @return array|bool Result array if $return_result is true, bool otherwise
@@ -193,14 +194,14 @@ class Zume_Encouragement_Cron {
 
             // Send email
             $sent = wp_mail( $message->to, $message->subject, $message->message, $headers );
-            
+
             if ( $return_result ) {
                 return array(
                     'success' => $sent,
                     'error' => $sent ? null : "Failed to send email to: {$message->to}"
                 );
             }
-            
+
             return $sent;
         } catch ( Exception $e ) {
             if ( $return_result ) {
@@ -215,7 +216,7 @@ class Zume_Encouragement_Cron {
 
     /**
      * Public method for admin testing
-     * 
+     *
      * @param string $test_date The date to test with (Y-m-d format)
      * @return array Results of the test run
      */
