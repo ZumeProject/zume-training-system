@@ -925,7 +925,7 @@ export class DashTrainings extends DashPage {
                                       .create_training_group}
                                   @click=${this.createTraining}
                               >
-                                  ${jsObject.translations.add}
+                                  ${jsObject.translations.new}
                               </button>
                           `}
                 </div>

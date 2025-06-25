@@ -1905,7 +1905,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                   aria-label=${jsObject.translations.create_training_group}
                                   @click=${this.createTraining}
                               >
-                                  ${jsObject.translations.add}
+                                  ${jsObject.translations.new}
                               </button>
                           `}
                 </div>

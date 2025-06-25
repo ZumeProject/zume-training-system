@@ -198,7 +198,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'time' => __( 'Time', 'zume' ),
             'language' => __( 'Language', 'zume' ),
             'timezone' => __( 'Timezone', 'zume' ),
-            'add' => __( 'Add', 'zume' ),
+            'new' => __( 'New', 'zume' ),
             'meeting_link' => __( 'Meeting link', 'zume' ),
             'meeting_link_examples' => __( 'Zoom, Google Meet, Microsoft Teams etc.', 'zume' ),
             'edit_profile' => __( 'Edit Profile', 'zume' ),
