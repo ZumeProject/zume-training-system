@@ -2211,16 +2211,14 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                                     </button>
                                                 </div>
                                             </div>
-                                            ${!this.groupCommunicationOpen&&!this.training.has_emailed_notification?c`<div
+                                            ${!this.groupCommunicationOpen&&!this.training.has_emailed_notification?c`<button
                                                       class="banner warning"
-                                                      role="button"
-                                                      tabindex="0"
                                                       @click=${this.toggleGroupCommunication}
                                                   >
                                                       <p>
                                                           ${jsObject.translations.email_notification_reminder}
                                                       </p>
-                                                  </div>`:""}
+                                                  </button>`:""}
                                         </div>
                                     `:""}
                           `:""}

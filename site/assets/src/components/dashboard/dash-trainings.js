@@ -1362,10 +1362,8 @@ export class DashTrainings extends DashPage {
                                             ${!this.groupCommunicationOpen &&
                                             !this.training
                                                 .has_emailed_notification
-                                                ? html`<div
+                                                ? html`<button
                                                       class="banner warning"
-                                                      role="button"
-                                                      tabindex="0"
                                                       @click=${this
                                                           .toggleGroupCommunication}
                                                   >
@@ -1374,7 +1372,7 @@ export class DashTrainings extends DashPage {
                                                               .translations
                                                               .email_notification_reminder}
                                                       </p>
-                                                  </div>`
+                                                  </button>`
                                                 : ''}
                                         </div>
                                     `
