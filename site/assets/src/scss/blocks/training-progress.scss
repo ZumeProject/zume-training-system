@@ -23,6 +23,10 @@
         }
     }
 
+    &[data-display-only] > button {
+        cursor: default;
+    }
+
     & .icon {
         margin: spacing(-3) spacing(0);
         color: color('gray-100');

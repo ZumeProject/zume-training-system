@@ -5,6 +5,7 @@ export class HostProgressBar extends LitElement {
         return {
             host: { type: Object },
             hostProgressList: { type: Object },
+            displayOnly: { type: Boolean },
         };
     }
 
@@ -17,7 +18,7 @@ export class HostProgressBar extends LitElement {
 
     render() {
         return html`
-            <div class="training-progress">
+            <div class="training-progress" ?data-display-only=${this.displayOnly}>
                 <button
                     data-subtype=${this.host[0].subtype}
                     class=${this.hostProgressList[this.host[0].key] ? 'active' : ''}

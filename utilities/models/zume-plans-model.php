@@ -19,6 +19,11 @@ class Zume_Plans_Model {
         $invite_url = dt_create_site_url() . '/app/plan-invite?code=' . $training_group['join_key'];
         $training_group['qr_url'] = create_qr_url( $invite_url );
 
+        foreach ( $training_group['participants'] as $i => $participant ) {
+            $user_id = zume_get_user_id_by_contact_id( $participant['ID'] );
+            $training_group['participants'][$i]['progress'] = zume_get_user_host( $user_id );
+        }
+
         return $training_group;
     }
 

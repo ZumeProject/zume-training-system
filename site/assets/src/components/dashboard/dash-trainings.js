@@ -22,6 +22,7 @@ export class DashTrainings extends DashPage {
             training: { type: Object, attribute: false },
             sessions: { type: Array, attribute: false },
             sessionToEdit: { type: Object, attribute: false },
+            groupMemberToView: { type: Object, attribute: false },
             openDetailStates: { type: Object, attribute: false },
             filterStatus: { type: String, attribute: false },
             filteredItems: { type: Array, attribute: false },
@@ -42,6 +43,7 @@ export class DashTrainings extends DashPage {
         this.error = ''
         this.route = DashBoard.getRoute(RouteNames.myTraining)
         this.sessionToEdit = {}
+        this.groupMemberToView = {}
         this.openDetailStates = {}
         this.filteredItems = []
         this.groupMembersOpen = false
@@ -52,6 +54,7 @@ export class DashTrainings extends DashPage {
 
         this.renderListItem = this.renderListItem.bind(this)
         this.renderMemberItem = this.renderMemberItem.bind(this)
+        this.renderTrainingItem = this.renderTrainingItem.bind(this)
     }
 
     connectedCallback() {
@@ -352,7 +355,6 @@ export class DashTrainings extends DashPage {
         const modal = document.querySelector('#edit-session-modal')
         jQuery(modal).foundation('close')
     }
-
     editSessionDetails(event) {
         event.stopImmediatePropagation()
         document.querySelector('#location-note').value =
@@ -469,6 +471,21 @@ export class DashTrainings extends DashPage {
                     this.groupCommunicationOpen = false
                 }
             })
+    }
+
+    viewGroupMember(id) {
+        this.groupMemberToView = this.training.participants.find(
+            (member) => member.ID === id
+        )
+        this.openGroupMembersModal()
+    }
+    openGroupMembersModal() {
+        const modal = document.querySelector('#group-members-modal')
+        jQuery(modal).foundation('open')
+    }
+    closeGroupMembersModal() {
+        const modal = document.querySelector('#group-members-modal')
+        jQuery(modal).foundation('close')
     }
 
     editTitle() {
@@ -821,13 +838,41 @@ export class DashTrainings extends DashPage {
         if (this.training.visibility.key === 'private' || this.isCoach()) {
             return html`
                 <li>
-                    <button class="link" data-toggle="group-members-modal">
+                    <button
+                        class="link"
+                        @click=${() => this.viewGroupMember(member.id)}
+                    >
                         ${name}
                     </button>
                 </li>
             `
         }
         return html` <li>${name}</li> `
+    }
+    renderTrainingItem(trainingItem) {
+        const { title, host } = trainingItem
+
+        if (Object.keys(this.groupMemberToView).length === 0) {
+            return null
+        }
+
+        return html`
+            <li class=" list__item tight" data-no-flex>
+                <div class="switcher | switcher-width-30">
+                    <div>
+                        <h2 class="h5 bold m0">${title}</h2>
+                    </div>
+                    <div class="list__secondary">
+                        <host-progress-bar
+                            displayOnly
+                            .host=${host}
+                            .hostProgressList=${this.groupMemberToView.progress
+                                .list}
+                        ></host-progress-bar>
+                    </div>
+                </div>
+            </li>
+        `
     }
     renderFilterButton() {
         return html`
@@ -1407,8 +1452,17 @@ export class DashTrainings extends DashPage {
                 >
                     <span class="icon z-icon-close"></span>
                 </button>
+                <h2>${this.groupMemberToView.post_title}</h2>
                 <div>Contact info</div>
-                <div>Progress info</div>
+                <div>
+                    <ul>
+                        ${repeat(
+                            Object.values(jsObject.training_items),
+                            (training_item) => training_item.key,
+                            this.renderTrainingItem
+                        )}
+                    </ul>
+                </div>
             </div>
             <div
                 class="reveal small"
