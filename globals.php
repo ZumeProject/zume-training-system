@@ -723,6 +723,9 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
                     'name' => $participant['user_name'],
 //                    'coaching_contact_id' => false,
                 ];
+                if ( $plans[$participant['plan_id']]['visibility'] === 'private' ) {
+                    $plans[$participant['plan_id']]['participants'][$participant['user_id']]['progress'] = zume_get_user_host( $participant['user_id'] );
+                }
 //                $user_ids[] = $participant['user_id'];
             }
         }

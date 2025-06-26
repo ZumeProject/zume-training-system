@@ -51,6 +51,7 @@ export class DashTrainings extends DashPage {
         this.filterStatus = ZumeStorage.load(this.filterName)
 
         this.renderListItem = this.renderListItem.bind(this)
+        this.renderMemberItem = this.renderMemberItem.bind(this)
     }
 
     connectedCallback() {
@@ -816,6 +817,16 @@ export class DashTrainings extends DashPage {
 
     renderMemberItem(member) {
         const { name } = member
+        // if the group is a private one, then render the name as a link that opens a modal with the group members info
+        if (this.training.visibility.key === 'private' || this.isCoach()) {
+            return html`
+                <li>
+                    <button class="link" data-toggle="group-members-modal">
+                        ${name}
+                    </button>
+                </li>
+            `
+        }
         return html` <li>${name}</li> `
     }
     renderFilterButton() {
@@ -1259,7 +1270,7 @@ export class DashTrainings extends DashPage {
                                                     </p>
                                                 `
                                               : ''}
-                                          ${this.isGroupLeader()
+                                          ${this.isCoach()
                                               ? html`
                                                     <button
                                                         @click=${this
@@ -1381,6 +1392,23 @@ export class DashTrainings extends DashPage {
                         : ''}
                     <dash-cta></dash-cta>
                 </div>
+            </div>
+            <div
+                class="reveal small"
+                id="group-members-modal"
+                data-reveal
+                data-v-offset="20"
+            >
+                <button
+                    class="ms-auto close-btn"
+                    data-close
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                >
+                    <span class="icon z-icon-close"></span>
+                </button>
+                <div>Contact info</div>
+                <div>Progress info</div>
             </div>
             <div
                 class="reveal small"

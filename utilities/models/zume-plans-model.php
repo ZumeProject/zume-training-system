@@ -191,7 +191,7 @@ class Zume_Plans_Model {
             return new WP_Error( __METHOD__, 'Failed to access post.', array( 'status' => 401 ) );
         }
 
-        if ( $training_group['assigned_to']['id'] !== "$user_id" ) {
+        if ( $training_group['assigned_to']['id'] !== "$user_id" && !dt_current_user_has_role( 'dt_admin' ) ) {
             return new WP_Error( 'not-authorized', 'you are not authorised', array( 'status' => 400 ) );
         }
 
