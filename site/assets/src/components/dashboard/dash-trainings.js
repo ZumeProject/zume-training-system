@@ -668,6 +668,14 @@ export class DashTrainings extends DashPage {
 
         return url.href
     }
+    copyGroupEmails() {
+        const emails = this.training.participants.map((participant) => participant.email)
+        navigator.clipboard.writeText(emails.join(', '))
+    }
+    copyGroupPhones() {
+        const phones = this.training.participants.map((participant) => participant.phone)
+        navigator.clipboard.writeText(phones.join(', '))
+    }
 
     renderListItem(session) {
         const { id, name, datetime, completed } = session
@@ -1331,6 +1339,7 @@ export class DashTrainings extends DashPage {
                                       </div>
                                   </div>
                               </div>
+                              ${ this.isCoach() ? html`
                                         <div
                                             class="card | group-communication | grow-0"
                                         >
@@ -1359,51 +1368,55 @@ export class DashTrainings extends DashPage {
                                                 class="zume-collapse"
                                                 ?data-expand=${this.groupCommunicationOpen}
                                             >
-                                              ${this.isCoach() && this.training.visibility.key === 'public' ? html`
-                                                <div class="stack--2 | mt-0">
-                                                    <p class="text-left">
-                                                        ${jsObject.translations
-                                                            .subscribers}:
-                                                        ${jsObject.subscribers_count}
-                                                    </p>
-                                                    <p class="text-left">
-                                                        ${jsObject.translations
-                                                            .has_joined_a_group}:
-                                                        ${jsObject.subscribers_in_online_training}
-                                                    </p>
-                                                    ${this.training.has_emailed_notification
-                                                        ? html`
-                                                          <p class="text-left">
-                                                            ${jsObject
-                                                                .translations
-                                                                .last_emailed_notification}:
-                                                            ${new Date(
-                                                                this
-                                                                    .training
-                                                                    .last_emailed_notification *
-                                                                    1000
-                                                            ).toLocaleDateString(
-                                                                'en-US',
-                                                                {
-                                                                    year: 'numeric',
-                                                                    month: 'long',
-                                                                    day: 'numeric',
-                                                                }
-                                                            )}
-                                                          </p>
-                                                          `
-                                                        : ''}
-                                                    <button
-                                                        class="btn brand tight mt--2 ${this.training.has_emailed_notification
-                                                            ? 'disabled'
-                                                            : ''}"
-                                                        ?disabled=${this.training.has_emailed_notification}
-                                                        @click=${this.sendEmailToSubscribers}
-                                                    >
-                                                        ${jsObject.translations.send_email_to_subscribers}
-                                                    </button>
+                                                <div class="stack--2">
+                                                      <button class="btn brand tight mt--2" @click=${this.copyGroupEmails}>${jsObject.translations.copy_group_emails}</button>
+                                                      <button class="btn brand tight mt--2" @click=${this.copyGroupPhones}>${jsObject.translations.copy_group_phones}</button>
                                                 </div>
-                                                ` : ''}
+                                                ${this.isCoach() && this.training.visibility.key === 'public' ? html`
+                                                  <div class="stack--2 | mt-0">
+                                                      <p class="text-left">
+                                                          ${jsObject.translations
+                                                              .subscribers}:
+                                                          ${jsObject.subscribers_count}
+                                                      </p>
+                                                      <p class="text-left">
+                                                          ${jsObject.translations
+                                                              .has_joined_a_group}:
+                                                          ${jsObject.subscribers_in_online_training}
+                                                      </p>
+                                                      ${this.training.has_emailed_notification
+                                                          ? html`
+                                                            <p class="text-left">
+                                                              ${jsObject
+                                                                  .translations
+                                                                  .last_emailed_notification}:
+                                                              ${new Date(
+                                                                  this
+                                                                      .training
+                                                                      .last_emailed_notification *
+                                                                      1000
+                                                              ).toLocaleDateString(
+                                                                  'en-US',
+                                                                  {
+                                                                      year: 'numeric',
+                                                                      month: 'long',
+                                                                      day: 'numeric',
+                                                                  }
+                                                              )}
+                                                            </p>
+                                                            `
+                                                          : ''}
+                                                      <button
+                                                          class="btn brand tight mt--2 ${this.training.has_emailed_notification
+                                                              ? 'disabled'
+                                                              : ''}"
+                                                          ?disabled=${this.training.has_emailed_notification}
+                                                          @click=${this.sendEmailToSubscribers}
+                                                      >
+                                                          ${jsObject.translations.send_email_to_subscribers}
+                                                      </button>
+                                                  </div>
+                                                  ` : ''}
                                             </div>
                                             ${this.isCoach() &&
                                               this.training.visibility.key === 'public' &&
@@ -1423,6 +1436,7 @@ export class DashTrainings extends DashPage {
                                                 </button>`
                                               : ''}
                                         </div>
+                                        ` : ''}
                           `
                         : ''}
                     <dash-cta></dash-cta>
@@ -1448,7 +1462,7 @@ export class DashTrainings extends DashPage {
                     ${ this.groupMemberToView.email || this.groupMemberToView.phone ? html`
                         <h3 class="brand-light">${jsObject.translations.contact_info}</h3>
                         <ul>
-                            <li><strong>${jsObject.translations.email}:</strong> ${this.groupMemberToView.email ?? this.groupMemberToView.communications_email}</li>
+                            <li><strong>${jsObject.translations.email}:</strong> ${this.groupMemberToView.email}</li>
                             <li><strong>${jsObject.translations.phone}:</strong> ${this.groupMemberToView.phone}</li>
                         </ul>` : ''
                     }

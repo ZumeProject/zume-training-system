@@ -34,9 +34,8 @@ class Zume_Plans_Model {
                 ( $public_contact_consent === '1' && $is_private_group )
             ) {
                 $contact_meta = zume_get_contact_meta( $participant['ID'] );
-                $training_group['participants'][$i]['email'] = $contact_meta['user_email'] ?? '';
+                $training_group['participants'][$i]['email'] = $contact_meta['user_communications_email'] ?? $contact_meta['user_email'] ?? '';
                 $training_group['participants'][$i]['phone'] = $contact_meta['user_phone'] ?? '';
-                $training_group['participants'][$i]['communications_email'] = $contact_meta['user_communications_email'] ?? '';
             }
         }
 
