@@ -32,6 +32,7 @@ export class DashTrainings extends DashPage {
             groupMembersOpen: { type: Boolean, attribute: false },
             groupDetailsOpen: { type: Boolean, attribute: false },
             groupCommunicationOpen: { type: Boolean, attribute: false },
+            copyFeedback: { type: Object, attribute: false },
         }
     }
 
@@ -51,6 +52,10 @@ export class DashTrainings extends DashPage {
         this.groupCommunicationOpen = false
         this.filterName = 'my-trainings-filter'
         this.filterStatus = ZumeStorage.load(this.filterName)
+        this.copyFeedback = {
+            emails: '',
+            phones: '',
+        }
 
         this.renderListItem = this.renderListItem.bind(this)
         this.renderMemberItem = this.renderMemberItem.bind(this)
@@ -671,10 +676,30 @@ export class DashTrainings extends DashPage {
     copyGroupEmails() {
         const emails = this.training.participants.map((participant) => participant.email)
         navigator.clipboard.writeText(emails.join(', '))
+        this.copyFeedback = {
+          ...this.copyFeedback,
+          emails: jsObject.translations.copy_info_feedback
+        }
+        setTimeout(() => {
+          this.copyFeedback = {
+            ...this.copyFeedback,
+            emails: ''
+          }
+        }, 2000)
     }
     copyGroupPhones() {
         const phones = this.training.participants.map((participant) => participant.phone)
         navigator.clipboard.writeText(phones.join(', '))
+        this.copyFeedback = {
+          ...this.copyFeedback,
+          phones: jsObject.translations.copy_info_feedback
+        }
+        setTimeout(() => {
+          this.copyFeedback = {
+            ...this.copyFeedback,
+            phones: ''
+          }
+        }, 2000)
     }
 
     renderListItem(session) {
@@ -1369,8 +1394,14 @@ export class DashTrainings extends DashPage {
                                                 ?data-expand=${this.groupCommunicationOpen}
                                             >
                                                 <div class="stack--2">
-                                                      <button class="btn brand tight mt--2" @click=${this.copyGroupEmails}>${jsObject.translations.copy_group_emails}</button>
-                                                      <button class="btn brand tight mt--2" @click=${this.copyGroupPhones}>${jsObject.translations.copy_group_phones}</button>
+                                                      <div class="position-relative">
+                                                        <button class="btn brand tight mt--2" @click=${this.copyGroupEmails}>${jsObject.translations.copy_group_emails}</button>
+                                                        <p role="alert" aria-live="polite" id="copyFeedback" class="context-alert" data-state=${this.copyFeedback.emails.length ? '' : 'empty'}>${this.copyFeedback.emails}</p>
+                                                      </div>
+                                                      <div class="position-relative">
+                                                        <button class="btn brand tight mt--2" @click=${this.copyGroupPhones}>${jsObject.translations.copy_group_phones}</button>
+                                                        <p role="alert" aria-live="polite" id="copyFeedback" class="context-alert" data-state=${this.copyFeedback.phones.length ? '' : 'empty'}>${this.copyFeedback.phones}</p>
+                                                      </div>
                                                 </div>
                                                 ${this.isCoach() && this.training.visibility.key === 'public' ? html`
                                                   <div class="stack--2 | mt-0">

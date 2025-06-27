@@ -221,6 +221,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'copy_and_share_text' => __( 'Copy this link and send it to your friends 🙂', 'zume' ),
             'share_feedback' => __( 'Thanks!', 'zume' ),
             'copy_feedback' => __( 'Link copied', 'zume' ),
+            'copy_info_feedback' => __( 'Copied', 'zume' ),
             'getting_started' => __( 'Getting Started', 'zume' ),
             'set_profile' => __( 'Set Profile', 'zume' ),
             'set_profile_explanation' => __( 'Complete a short Profile Wizard to set your profile', 'zume' ),
