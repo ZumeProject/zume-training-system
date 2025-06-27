@@ -118,6 +118,7 @@ export class DashTrainings extends DashPage {
             .get(`plan/${this.code}`, {})
             .then((result) => {
                 this.training = result
+              console.log(this.training)
                 this.error = ''
             })
             .then(() => {

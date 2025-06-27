@@ -19,13 +19,20 @@ class Zume_Plans_Model {
         $invite_url = dt_create_site_url() . '/app/plan-invite?code=' . $training_group['join_key'];
         $training_group['qr_url'] = create_qr_url( $invite_url );
 
+        $is_private_group = $training_group['visibility']['key'] === 'private';
+
         foreach ( $training_group['participants'] as $i => $participant ) {
-            $user_id = zume_get_user_id_by_contact_id( $participant['ID'] );
-            $training_group['participants'][$i]['progress'] = zume_get_user_host( $user_id );
+            if ( $is_private_group ) {
+                $user_id = zume_get_user_id_by_contact_id( $participant['ID'] );
+                $training_group['participants'][$i]['progress'] = zume_get_user_host( $user_id );
+            }
 
             $public_contact_consent = get_post_meta( $participant['ID'], 'public_contact_consent', true );
 
-            if ( self::can_user_edit_plan( $training_group['join_key'], $user_id ) || $public_contact_consent === '1' ) {
+            $post_id = self::can_user_edit_plan( $training_group['join_key'], $user_id );
+            if ( !is_wp_error( $post_id ) ||
+                ( $public_contact_consent === '1' && $is_private_group )
+            ) {
                 $contact_meta = zume_get_contact_meta( $participant['ID'] );
                 $training_group['participants'][$i]['email'] = $contact_meta['user_email'] ?? '';
                 $training_group['participants'][$i]['phone'] = $contact_meta['user_phone'] ?? '';
