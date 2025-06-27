@@ -1331,9 +1331,6 @@ export class DashTrainings extends DashPage {
                                       </div>
                                   </div>
                               </div>
-                              ${this.isCoach() &&
-                              this.training.visibility.key === 'public'
-                                  ? html`
                                         <div
                                             class="card | group-communication | grow-0"
                                         >
@@ -1360,9 +1357,9 @@ export class DashTrainings extends DashPage {
                                             </button>
                                             <div
                                                 class="zume-collapse"
-                                                ?data-expand=${this
-                                                    .groupCommunicationOpen}
+                                                ?data-expand=${this.groupCommunicationOpen}
                                             >
+                                              ${this.isCoach() && this.training.visibility.key === 'public' ? html`
                                                 <div class="stack--2 | mt-0">
                                                     <p class="text-left">
                                                         ${jsObject.translations
@@ -1374,66 +1371,58 @@ export class DashTrainings extends DashPage {
                                                             .has_joined_a_group}:
                                                         ${jsObject.subscribers_in_online_training}
                                                     </p>
-                                                    ${this.training
-                                                        .has_emailed_notification
+                                                    ${this.training.has_emailed_notification
                                                         ? html`
-                                                              <p
-                                                                  class="text-left"
-                                                              >
-                                                                  ${jsObject
-                                                                      .translations
-                                                                      .last_emailed_notification}:
-                                                                  ${new Date(
-                                                                      this
-                                                                          .training
-                                                                          .last_emailed_notification *
-                                                                          1000
-                                                                  ).toLocaleDateString(
-                                                                      'en-US',
-                                                                      {
-                                                                          year: 'numeric',
-                                                                          month: 'long',
-                                                                          day: 'numeric',
-                                                                      }
-                                                                  )}
-                                                              </p>
+                                                          <p class="text-left">
+                                                            ${jsObject
+                                                                .translations
+                                                                .last_emailed_notification}:
+                                                            ${new Date(
+                                                                this
+                                                                    .training
+                                                                    .last_emailed_notification *
+                                                                    1000
+                                                            ).toLocaleDateString(
+                                                                'en-US',
+                                                                {
+                                                                    year: 'numeric',
+                                                                    month: 'long',
+                                                                    day: 'numeric',
+                                                                }
+                                                            )}
+                                                          </p>
                                                           `
                                                         : ''}
                                                     <button
-                                                        class="btn brand tight mt--2 ${this
-                                                            .training
-                                                            .has_emailed_notification
+                                                        class="btn brand tight mt--2 ${this.training.has_emailed_notification
                                                             ? 'disabled'
                                                             : ''}"
-                                                        ?disabled=${this
-                                                            .training
-                                                            .has_emailed_notification}
-                                                        @click=${this
-                                                            .sendEmailToSubscribers}
+                                                        ?disabled=${this.training.has_emailed_notification}
+                                                        @click=${this.sendEmailToSubscribers}
                                                     >
-                                                        ${jsObject.translations
-                                                            .send_email_to_subscribers}
+                                                        ${jsObject.translations.send_email_to_subscribers}
                                                     </button>
                                                 </div>
+                                                ` : ''}
                                             </div>
-                                            ${!this.groupCommunicationOpen &&
-                                            !this.training
-                                                .has_emailed_notification
-                                                ? html`<button
-                                                      class="banner warning"
-                                                      @click=${this
-                                                          .toggleGroupCommunication}
-                                                  >
-                                                      <p>
-                                                          ${jsObject
-                                                              .translations
-                                                              .email_notification_reminder}
-                                                      </p>
-                                                  </button>`
-                                                : ''}
+                                            ${this.isCoach() &&
+                                              this.training.visibility.key === 'public' &&
+                                              !this.groupCommunicationOpen &&
+                                              !this.training.has_emailed_notification
+                                              ? html`
+                                                <button
+                                                    class="banner warning"
+                                                    @click=${this
+                                                        .toggleGroupCommunication}
+                                                >
+                                                    <p>
+                                                        ${jsObject
+                                                            .translations
+                                                            .email_notification_reminder}
+                                                    </p>
+                                                </button>`
+                                              : ''}
                                         </div>
-                                    `
-                                  : ''}
                           `
                         : ''}
                     <dash-cta></dash-cta>
