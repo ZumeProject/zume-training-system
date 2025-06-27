@@ -10,10 +10,11 @@ export class JoinFriendsTraining extends LitElement {
              */
             t: { type: Object },
 
-            code: { attribute: false },
-            message: { attribute: false },
-            errorMessage: { attribute: false },
-            loading: { attribute: false },
+            code: { type: String, attribute: false },
+            message: { type: Array, attribute: false },
+            errorMessage: { type: String, attribute: false },
+            successMessage: { type: String, attribute: false },
+            loading: { type: Boolean, attribute: false },
         };
     }
 
@@ -22,17 +23,20 @@ export class JoinFriendsTraining extends LitElement {
 
         this.code = ''
         this.errorMessage = ''
+        this.successMessage = ''
+        this.message = []
         this.loading = false
     }
 
     firstUpdated() {
+      console.log(this.t)
         this.loading = true
         this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
-        this.message = this.t.please_wait
+        this.message.push(this.t.please_wait)
         /* We need the plan id */
         const url = new URL( location.href )
         if ( !url.searchParams.has('code') ) {
-            this.message = ""
+            this.message = []
             this.setErrorMessage(this.t.broken_link)
             this.loading = false
             return
@@ -43,7 +47,12 @@ export class JoinFriendsTraining extends LitElement {
 
         zumeRequest.post( 'connect/plan', { code: code } )
             .then( ( data ) => {
-                this.message = this.t.success.replace('%s', data.name)
+                this.successMessage = this.t.success.replace('%s', data.name)
+                this.message = [
+                  this.t.contact_visibility1,
+                  this.t.contact_visibility2,
+                  this.t.contact_visibility3
+                ]
 
                 const url = new URL(location.href)
                 url.searchParams.set('joinKey', code)
@@ -69,12 +78,19 @@ export class JoinFriendsTraining extends LitElement {
         this.errorMessage = message
     }
 
+    renderMessage() {
+        return this.message.map(message => html`<p>${message}</p>`)
+    }
+
     render() {
         return html`
             <h1>${this.t.title}</h1>
-            <p>${this.message}</p>
+            <div class="stack--2">
+              <div class="success banner" data-state=${this.successMessage.length ? '' : 'empty'}>${this.successMessage}</div>
+              ${this.renderMessage()}
+              <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
+            </div>
             <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
-            <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
         `;
     }
 
