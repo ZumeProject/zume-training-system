@@ -1452,16 +1452,27 @@ export class DashTrainings extends DashPage {
                 >
                     <span class="icon z-icon-close"></span>
                 </button>
-                <h2>${this.groupMemberToView.post_title}</h2>
-                <div>Contact info</div>
-                <div>
+                <div class="stack">
+                  <div>
+                    <h2>${this.groupMemberToView.post_title}</h2>
+                    ${ this.groupMemberToView.email || this.groupMemberToView.phone ? html`
+                        <h3 class="brand-light">${jsObject.translations.contact_info}</h3>
+                        <ul>
+                            <li><strong>${jsObject.translations.email}:</strong> ${this.groupMemberToView.email ?? this.groupMemberToView.communications_email}</li>
+                            <li><strong>${jsObject.translations.phone}:</strong> ${this.groupMemberToView.phone}</li>
+                        </ul>` : ''
+                    }
+                  </div>
+                  <div>
+                    <h3 class="brand-light">${jsObject.translations.progress}</h3>
                     <ul>
                         ${repeat(
                             Object.values(jsObject.training_items),
-                            (training_item) => training_item.key,
-                            this.renderTrainingItem
+                          (training_item) => training_item.key,
+                          this.renderTrainingItem
                         )}
                     </ul>
+                  </div>
                 </div>
             </div>
             <div

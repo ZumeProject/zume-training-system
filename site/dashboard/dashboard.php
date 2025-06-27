@@ -193,6 +193,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'name' => __( 'Name', 'zume' ),
             'phone' => __( 'Phone', 'zume' ),
             'email' => __( 'Email', 'zume' ),
+            'contact_info' => __( 'Contact Info', 'zume' ),
+            'progress' => __( 'Progress', 'zume' ),
             'linked_accounts' => __( 'Linked Accounts', 'zume' ),
             'communications_email' => __( 'Communications Email', 'zume' ),
             'email_preferences' => __( 'Email Preferences', 'zume' ),

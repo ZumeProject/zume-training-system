@@ -22,6 +22,15 @@ class Zume_Plans_Model {
         foreach ( $training_group['participants'] as $i => $participant ) {
             $user_id = zume_get_user_id_by_contact_id( $participant['ID'] );
             $training_group['participants'][$i]['progress'] = zume_get_user_host( $user_id );
+
+            $public_contact_consent = get_post_meta( $participant['ID'], 'public_contact_consent', true );
+
+            if ( self::can_user_edit_plan( $training_group['join_key'], $user_id ) || $public_contact_consent === '1' ) {
+                $contact_meta = zume_get_contact_meta( $participant['ID'] );
+                $training_group['participants'][$i]['email'] = $contact_meta['user_email'] ?? '';
+                $training_group['participants'][$i]['phone'] = $contact_meta['user_phone'] ?? '';
+                $training_group['participants'][$i]['communications_email'] = $contact_meta['user_communications_email'] ?? '';
+            }
         }
 
         return $training_group;
