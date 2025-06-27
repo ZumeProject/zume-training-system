@@ -2615,18 +2615,28 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     <li><a class="menu-btn no-wrap" href="${this.urls.launch_intensive_session_course}"><span class="icon z-icon-course"></span>${this.translations.three_day_intensive_course}</a></li>
                 </ul>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("launch-course",ul);class pl extends _{constructor(){super();x(this,"addressCallback",e=>{e.features.length<1?this.locations=-1:this.locations=e.features});x(this,"processLocation",debounce(getAddressSuggestions(this.addressCallback,jsObject.map_key)));this.userProfile={},this.locations=[],this.infosOpen=[]}static get properties(){return{userProfile:{type:Object},loading:{type:Boolean,attribute:!1},locations:{type:Array,attribute:!1},infosOpen:{type:Array,attribute:!1}}}firstUpdated(){this.nameInput=this.renderRoot.querySelector("#full_name"),this.phoneInput=this.renderRoot.querySelector("#phone"),this.emailInput=this.renderRoot.querySelector("#email"),this.preferredEmailInput=this.renderRoot.querySelector("#communications_email"),this.cityInput=this.renderRoot.querySelector("#city"),this.prefferedLanguageInput=this.renderRoot.querySelector("#preferred_language"),this.addressResultsContainer=this.renderRoot.querySelector("#address_results"),this.notifyOfFutureTrainingsInput=this.renderRoot.querySelector("#notify_of_future_trainings")}submitProfileForm(e){e.preventDefault();const s=this.nameInput.value,n=this.emailInput.value,a=this.preferredEmailInput.value,r=this.phoneInput.value,o=this.prefferedLanguageInput.value,l={name:s,phone:r,email:n,communications_email:a,preferred_language:o};l.location_grid_meta=getLocationGridFromMapbox(this.mapboxSelectedId,this.userProfile.location),this.loading=!0,fetch(jsObject.rest_endpoint+"/profile",{method:"POST",body:JSON.stringify(l),headers:{"X-WP-Nonce":jsObject.nonce}}).then(d=>d.json()).then(d=>{const u=new CustomEvent("user-profile:change",{bubbles:!0,detail:d});this.dispatchEvent(u);const p=new CustomEvent("user-state:change",{bubbles:!0});this.dispatchEvent(p)}).catch(d=>{console.error(d)}).finally(()=>{this.loading=!1})}submitEmailPreferences(e){e.preventDefault(),console.log(this.notifyOfFutureTrainingsInput.checked);const s={notify_of_future_trainings:this.notifyOfFutureTrainingsInput.checked};this.loading=!0,fetch(jsObject.rest_endpoint+"/email-preferences",{method:"POST",body:JSON.stringify(s),headers:{"X-WP-Nonce":jsObject.nonce}}).then(n=>n.json()).then(n=>{console.log(n)}).catch(n=>{console.error(n)}).finally(()=>{this.loading=!1})}selectAddress(e){const s=e.target.id,n=e.target.dataset.placeName;this.cityInput.value=n,this.mapboxSelectedId=s,this.locations=[]}_toggleInfo(e){if(this.infosOpen.includes(e)){const s=[...this.infosOpen];s.splice(s.indexOf(e),1),this.infosOpen=s}else this.infosOpen=[...this.infosOpen,e]}isSSOUser(){return this.userProfile.sso_identities!==""}render(){var e,s;return c`
+        `}createRenderRoot(){return this}}customElements.define("launch-course",ul);class pl extends _{constructor(){super();x(this,"addressCallback",e=>{e.features.length<1?this.locations=-1:this.locations=e.features});x(this,"processLocation",debounce(getAddressSuggestions(this.addressCallback,jsObject.map_key)));this.userProfile={},this.locations=[],this.infosOpen=[]}static get properties(){return{userProfile:{type:Object},loading:{type:Boolean,attribute:!1},locations:{type:Array,attribute:!1},infosOpen:{type:Array,attribute:!1}}}firstUpdated(){this.nameInput=this.renderRoot.querySelector("#full_name"),this.phoneInput=this.renderRoot.querySelector("#phone"),this.emailInput=this.renderRoot.querySelector("#email"),this.preferredEmailInput=this.renderRoot.querySelector("#communications_email"),this.cityInput=this.renderRoot.querySelector("#city"),this.prefferedLanguageInput=this.renderRoot.querySelector("#preferred_language"),this.addressResultsContainer=this.renderRoot.querySelector("#address_results"),this.notifyOfFutureTrainingsInput=this.renderRoot.querySelector("#notify_of_future_trainings"),this.publicContactConsentInput=this.renderRoot.querySelector("#public_contact_consent")}submitProfileForm(e){e.preventDefault();const s=this.nameInput.value,n=this.emailInput.value,a=this.preferredEmailInput.value,r=this.phoneInput.value,o=this.prefferedLanguageInput.value,l=this.publicContactConsentInput.checked?"1":"0",d={name:s,phone:r,email:n,communications_email:a,preferred_language:o,public_contact_consent:l};d.location_grid_meta=getLocationGridFromMapbox(this.mapboxSelectedId,this.userProfile.location),this.loading=!0,fetch(jsObject.rest_endpoint+"/profile",{method:"POST",body:JSON.stringify(d),headers:{"X-WP-Nonce":jsObject.nonce}}).then(u=>u.json()).then(u=>{const p=new CustomEvent("user-profile:change",{bubbles:!0,detail:u});this.dispatchEvent(p);const m=new CustomEvent("user-state:change",{bubbles:!0});this.dispatchEvent(m)}).catch(u=>{console.error(u)}).finally(()=>{this.loading=!1})}submitEmailPreferences(e){e.preventDefault();const s={notify_of_future_trainings:this.notifyOfFutureTrainingsInput.checked};this.loading=!0,fetch(jsObject.rest_endpoint+"/email-preferences",{method:"POST",body:JSON.stringify(s),headers:{"X-WP-Nonce":jsObject.nonce}}).then(n=>n.json()).catch(n=>{console.error(n)}).finally(()=>{this.loading=!1})}selectAddress(e){const s=e.target.id,n=e.target.dataset.placeName;this.cityInput.value=n,this.mapboxSelectedId=s,this.locations=[]}_toggleInfo(e){if(this.infosOpen.includes(e)){const s=[...this.infosOpen];s.splice(s.indexOf(e),1),this.infosOpen=s}else this.infosOpen=[...this.infosOpen,e]}isSSOUser(){return this.userProfile.sso_identities!==""}render(){var e,s;return c`
             <form action="" class="stack--2" id="profile-form" @submit=${this.submitProfileForm}>
 
                 <div class="">
                     <label for="full_name">${jsObject.translations.name}</label>
                     <div class="d-flex align-items-center">
-                        <input class="input" required type="text" id="full_name" name="full_name" value=${this.userProfile.name}>
+                        <input
+                          class="input"
+                          required
+                          type="text"
+                          id="full_name"
+                          name="full_name"
+                          value=${this.userProfile.name}
+                        >
                         <button type="button" class="icon-btn f-1" @click=${()=>this._toggleInfo("name")}>
                             <span class="icon z-icon-info brand-light"></span>
                         </button>
                     </div>
-                    <div class="info-area zume-collapse ${this.infosOpen.includes("name")?"mt-0":""}" data-state=${this.infosOpen.includes("name")?"open":"closed"}>
+                    <div
+                      class="info-area zume-collapse ${this.infosOpen.includes("name")?"mt-0":""}"
+                      data-state=${this.infosOpen.includes("name")?"open":"closed"}
+                    >
                         <div class="card mw-50ch mx-auto">
                             <p>${jsObject.translations.user_name_disclaimer}</p>
                         </div>
@@ -2635,52 +2645,92 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 <div class="">
                     <label for="phone">${jsObject.translations.phone}</label>
                     <div class="d-flex align-items-center">
-                        <input class="input" type="tel" id="phone" name="phone" value=${this.userProfile.phone}>
-                        <button type="button" class="icon-btn f-1" @click=${()=>this._toggleInfo("phone")}>
+                        <input
+                          class="input"
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          value=${this.userProfile.phone}
+                        >
+                        <button type="button" class="icon-btn f-1 ${this.isSSOUser()?"invisible":""}" @click=${()=>this._toggleInfo("phone")}>
                             <span class="icon z-icon-info brand-light"></span>
                         </button>
                     </div>
-                    <div class="info-area zume-collapse ${this.infosOpen.includes("phone")?"mt-0":""}" data-state=${this.infosOpen.includes("phone")?"open":"closed"}>
+                    <div
+                        class="info-area zume-collapse ${this.infosOpen.includes("phone")?"mt-0":""} ${this.isSSOUser()?"d-none":""}"
+                        data-state=${this.infosOpen.includes("phone")?"open":"closed"}
+                    >
                         <div class="card mw-50ch mx-auto">
-                            <p>${jsObject.translations.user_phone_disclaimer}</p>
+                            <p>
+                              ${jsObject.translations.user_phone_disclaimer}
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="">
                     <label for="email">${jsObject.translations.email}</label>
                     <div class="d-flex align-items-center">
-                        <input class="input" ?disabled=${this.isSSOUser()} type="email" id="email" name="email" value=${this.userProfile.email}>
-                        <button type="button" class="icon-btn f-1" @click=${()=>this._toggleInfo("email")}>
+                        <input
+                          class="input"
+                          ?disabled=${this.isSSOUser()}
+                          type="email"
+                          id="email"
+                          name="email"
+                          value=${this.userProfile.email}
+                        >
+                        <button
+                          type="button"
+                          class="icon-btn f-1 ${this.isSSOUser()?"invisible":""}"
+                          @click=${()=>this._toggleInfo("email")}
+                        >
                             <span class="icon z-icon-info brand-light"></span>
                         </button>
                     </div>
-                    <div class="info-area zume-collapse ${this.infosOpen.includes("email")?"mt-0":""}" data-state=${this.infosOpen.includes("email")?"open":"closed"}>
+                    <div
+                      class="info-area zume-collapse ${this.infosOpen.includes("email")?"mt-0":""} ${this.isSSOUser()?"d-none":""}"
+                      data-state=${this.infosOpen.includes("email")?"open":"closed"}
+                    >
                         <div class="card mw-50ch mx-auto">
-                            <p>${jsObject.translations.user_email_disclaimer}</p>
+                            <p>
+                              ${jsObject.translations.user_email_disclaimer}
+                            </p>
                         </div>
                     </div>
                 </div>
                     ${this.userProfile.sign_in_providers&&Array.isArray(this.userProfile.sign_in_providers)?c`
-                                  <label
-                                      >${jsObject.translations.linked_accounts}</label
-                                  >
+                                  <label>
+                                    ${jsObject.translations.linked_accounts}
+                                  </label>
                                   <div class="cluster">
                                       ${this.userProfile.sign_in_providers.map(n=>c`
-                                              <span class="token"
-                                                  >${n}</span
-                                              >
+                                              <span class="token">${n}</span>
                                           `)}
                                   </div>
                               `:""}
                 <div class="">
-                    <label for="communications_email">${jsObject.translations.communications_email}</label>
+                    <label for="communications_email">
+                      ${jsObject.translations.communications_email}
+                    </label>
                     <div class="d-flex align-items-center">
-                        <input class="input" type="email" id="communications_email" name="communications_email" value=${this.userProfile.communications_email}>
-                        <button type="button" class="icon-btn f-1 invisible" @click=${()=>this._toggleInfo("communications_email")}>
+                        <input
+                          class="input"
+                          type="email"
+                          id="communications_email"
+                          name="communications_email"
+                          value=${this.userProfile.communications_email}
+                        >
+                        <button
+                          type="button"
+                          class="icon-btn f-1 ${this.isSSOUser()?"invisible":""}"
+                          @click=${()=>this._toggleInfo("communications_email")}
+                        >
                             <span class="icon z-icon-info brand-light"></span>
                         </button>
                     </div>
-                    <div class="info-area zume-collapse ${this.infosOpen.includes("communications_email")?"mt-0":""}" data-state=${this.infosOpen.includes("communications_email")?"open":"closed"}>
+                    <div
+                      class="info-area zume-collapse ${this.infosOpen.includes("communications_email")?"mt-0":""} ${this.isSSOUser()?"d-none":""}"
+                      data-state=${this.infosOpen.includes("communications_email")?"open":"closed"}
+                    >
                         <div class="card mw-50ch mx-auto">
                             <p>${jsObject.translations.user_communications_email_disclaimer}</p>
                         </div>
@@ -2702,7 +2752,8 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                         </button>
                     </div>
                     <div
-                      class="info-area zume-collapse ${this.infosOpen.includes("city")?"mt-0":""}" data-state=${this.infosOpen.includes("city")?"open":"closed"}
+                      class="info-area zume-collapse ${this.infosOpen.includes("city")?"mt-0":""} ${this.isSSOUser()?"d-none":""}"
+                      data-state=${this.infosOpen.includes("city")?"open":"closed"}
                     >
                         <div class="card mw-50ch mx-auto">
                             <p>${jsObject.translations.user_city_disclaimer}</p>
@@ -2731,7 +2782,9 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 </div>
 
                 <div>
-                    <label for="preferred_language">${jsObject.translations.language}</label>
+                    <label for="preferred_language">
+                      ${jsObject.translations.language}
+                    </label>
                     <div class="d-flex align-items-center">
                         <select class="input" name="preferred_language" id="preferred_language">
 
@@ -2745,42 +2798,73 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                             `)}
 
                         </select>
-                        <button type="button" class="icon-btn f-1" @click=${()=>this._toggleInfo("preferred_language")}>
+                        <button
+                          type="button"
+                          class="icon-btn f-1 ${this.isSSOUser()?"invisible":""}"
+                          @click=${()=>this._toggleInfo("preferred_language")}
+                        >
                             <span class="icon z-icon-info brand-light"></span>
                         </button>
                     </div>
-                    <div class="info-area zume-collapse ${this.infosOpen.includes("preferred_language")?"mt-0":""}" data-state=${this.infosOpen.includes("preferred_language")?"open":"closed"}>
+                    <div
+                      class="info-area zume-collapse ${this.infosOpen.includes("preferred_language")?"mt-0":""} ${this.isSSOUser()?"d-none":""}"
+                      data-state=${this.infosOpen.includes("preferred_language")?"open":"closed"}>
                         <div class="card mw-50ch mx-auto">
-                            <p>${jsObject.translations.user_preferred_language_disclaimer}</p>
+                            <p>
+                              ${jsObject.translations.user_preferred_language_disclaimer}
+                            </p>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="stack my-0" data-fit-content>
-                    <button class="btn" id="submit-profile" ?disabled=${this.loading}>${jsObject.translations.save}</button>
-                    <a href=${jsObject.urls.logout} class="btn outline">${jsObject.translations.logout}</a>
-                </div>
-                <span class="loading-spinner ${this.loading?"active":""}"></span>
-            </form>
-                <hr>
-                <div>
-                    <h3 class="h4">${jsObject.translations.email_preferences}</h3>
-                    <p>${jsObject.translations.email_preferences_disclaimer}</p>
-                    <form @submit=${this.submitEmailPreferences} class="stack--2">
                       <div class="form-control brand-light">
                           <input
                               type="checkbox"
-                              id="notify_of_future_trainings"
-                              ?checked=${this.userProfile.notify_of_future_trainings}
+                              id="public_contact_consent"
+                              ?checked=${this.userProfile.public_contact_consent==="1"}
                           />
-                          <label for="notify_of_future_trainings">
-                              ${jsObject.translations.notify_of_future_trainings}
+                          <label for="public_contact_consent">
+                              ${jsObject.translations.public_contact_consent}
                           </label>
                       </div>
-                      <button class="btn" id="submit-email-preferences" ?disabled=${this.loading}>${jsObject.translations.save}</button>
-                    </form>
                 </div>
+
+                <div class="stack my-0" data-fit-content>
+                    <button
+                      class="btn"
+                      id="submit-profile"
+                      ?disabled=${this.loading}
+                    >
+                      ${jsObject.translations.save}
+                    </button>
+                </div>
+                <span class="loading-spinner ${this.loading?"active":""}"></span>
+            </form>
+            <hr>
+            <div class="stack--2">
+                <h3 class="h4">
+                  ${jsObject.translations.email_preferences}
+                </h3>
+                <p>${jsObject.translations.email_preferences_disclaimer}</p>
+                <form @submit=${this.submitEmailPreferences} class="stack--2">
+                  <div class="form-control brand-light">
+                      <input
+                          type="checkbox"
+                          id="notify_of_future_trainings"
+                          ?checked=${this.userProfile.notify_of_future_trainings}
+                      />
+                      <label for="notify_of_future_trainings">
+                          ${jsObject.translations.notify_of_future_trainings}
+                      </label>
+                  </div>
+                  <div class="stack my-0" data-fit-content>
+                    <button class="btn" id="submit-email-preferences" ?disabled=${this.loading}>
+                      ${jsObject.translations.save}
+                    </button>
+                    <a href=${jsObject.urls.logout} class="btn outline">
+                      ${jsObject.translations.logout}
+                    </a>
+                  </div>
+                </form>
+            </div>
 
         `}createRenderRoot(){return this}}customElements.define("profile-form",pl);class ml extends Ke{constructor(){super()}render(){return c`
             <div

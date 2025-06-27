@@ -427,6 +427,14 @@ class Zume_Training {
                     'only_for_types' => [ 'user' ],
                 ];
             }
+            if ( !isset( $fields['public_contact_consent'] ) ){
+                $fields['public_contact_consent'] = [
+                    'name' => __( 'I consent to my contact information being viewable in private trainings', 'zume' ),
+                    'type' => 'boolean',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
             if ( !isset( $fields['coaching_contact_id'] ) ){
                 $fields['coaching_contact_id'] = [
                     'name' => __( 'Coaching Contact ID', 'zume' ),
