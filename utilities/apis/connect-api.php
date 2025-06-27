@@ -238,13 +238,15 @@ class Zume_Connect_Endpoints
         // connect use to coach
         $response = self::connect_user_from_public_plan_to_coach( $user_id, $plan, $coach_id, $coach_user_id );
 
+        $coach_request_success = true;
         if ( is_wp_error( $response ) ) {
-            return $response;
+            $coach_request_success = false;
         }
 
         return [
             'name' => $plan['title'],
             'coach_id' => $plan['assigned_to']['id'],
+            'coach_request_success' => $coach_request_success,
         ];
     }
 

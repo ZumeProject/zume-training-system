@@ -257,6 +257,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'contact_visibility1' => __( 'Your contact information is always visible to the group leader.', 'zume' ),
                 'contact_visibility2' => __( 'You are joining a private training group, where everyone can see your contact information.', 'zume' ),
                 'contact_visibility3' => __( 'You can change your contact information visibility at any time in your profile.', 'zume' ),
+                'coach_request_failed' => __( 'We were unable to connect you with a coach. Please try again later.', 'zume' ),
                 'no_plans' => __( 'There are currently no public trainings available.', 'zume' ),
                 'complete_profile' => __( 'Please make sure that your profile is up to date, so that group leaders can contact you.', 'zume' ),
                 'notify_of_future_trainings_title' => __( 'Would you like to be notified about future trainings?', 'zume' ),

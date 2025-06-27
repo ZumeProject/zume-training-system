@@ -157,9 +157,14 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                         <share-links url=${this.url} title="${this.t.join_my_plan}" .t=${this.t} alwaysShow ></share-links>
                     `:""}
             </div>
-        `}createRenderRoot(){return this}}window.customElements.define("invite-friends",Do);class zo extends _{static get properties(){return{t:{type:Object},hasNextStep:{type:Boolean},variant:{type:String},code:{attribute:!1},message:{attribute:!1},errorMessage:{attribute:!1},loading:{attribute:!1},success:{attribute:!1},showTrainings:{attribute:!1},showNextStep:{attribute:!1}}}constructor(){super(),this.code="",this.errorMessage="",this.showTrainings=!1,this.showNextStep=!1,this.loading=!1,this.stateManager=At.getInstance(L.joinTraining)}firstUpdated(){if(this.variant===h.joinTraining){this._handleJoinTraining();return}const t=new URL(location.href);if(!t.searchParams.has("code")){this.message="",this.loading=!1,this.showTrainings=!0;return}const e=t.searchParams.get("code");this.chooseTraining(e)}connectToPlan(t){this.loading=!0,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.message=this.t.please_wait,this.code=t,k.post("connect/public-plan",{code:t}).then(e=>{this.message=this.t.success.replace("%s",e.name),this.success=!0;const s=new URL(location.href);s.searchParams.set("joinKey",t),window.history.pushState(null,null,s.href)}).catch(e=>{console.log(e),this.message="",e.code==="bad_plan_code"?this.setErrorMessage(this.t.broken_link):this.setErrorMessage(this.t.error)}).finally(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.dispatchEvent(new CustomEvent("wizard:finish",{bubbles:!0}))})}setErrorMessage(t){this.errorMessage=t}_handleChosenTraining(t){const{code:e}=t.detail;this.chooseTraining(e)}chooseTraining(t){this.stateManager.add(h.joinTrainingSelection,t),this.showTrainings=!1,this.showNextStep=!0,this.message=this.t.complete_profile}_handleJoinTraining(){const t=this.stateManager.get(h.joinTrainingSelection);this.connectToPlan(t)}_sendDoneStepEvent(){const t=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(t)}render(){return c`
+        `}createRenderRoot(){return this}}window.customElements.define("invite-friends",Do);class zo extends _{static get properties(){return{t:{type:Object},hasNextStep:{type:Boolean},variant:{type:String},code:{attribute:!1},message:{type:Array,attribute:!1},errorMessage:{type:String,attribute:!1},successMessage:{type:String,attribute:!1},loading:{type:Boolean,attribute:!1},success:{type:Boolean,attribute:!1},showTrainings:{attribute:!1},showNextStep:{attribute:!1}}}constructor(){super(),this.code="",this.errorMessage="",this.successMessage="",this.message=[],this.showTrainings=!1,this.showNextStep=!1,this.loading=!1,this.stateManager=At.getInstance(L.joinTraining)}firstUpdated(){if(this.variant===h.joinTraining){this._handleJoinTraining();return}const t=new URL(location.href);if(!t.searchParams.has("code")){this.message=[],this.loading=!1,this.showTrainings=!0;return}const e=t.searchParams.get("code");this.chooseTraining(e)}connectToPlan(t){this.loading=!0,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.message.push(this.t.please_wait),this.code=t,k.post("connect/public-plan",{code:t}).then(e=>{this.successMessage=this.t.success.replace("%s",e.name),this.success=!0,this.message=[this.t.contact_visibility1],e.coach_request_success||this.setErrorMessage(this.t.coach_request_failed);const s=new URL(location.href);s.searchParams.set("joinKey",t),window.history.pushState(null,null,s.href)}).catch(e=>{console.log(e),this.message=[],e.code==="bad_plan_code"?this.setErrorMessage(this.t.broken_link):this.setErrorMessage(this.t.error)}).finally(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.dispatchEvent(new CustomEvent("wizard:finish",{bubbles:!0}))})}setErrorMessage(t){this.errorMessage=t}_handleChosenTraining(t){const{code:e}=t.detail;this.chooseTraining(e)}chooseTraining(t){this.stateManager.add(h.joinTrainingSelection,t),this.showTrainings=!1,this.showNextStep=!0,this.message.push(this.t.complete_profile)}_handleJoinTraining(){const t=this.stateManager.get(h.joinTrainingSelection);this.connectToPlan(t)}_sendDoneStepEvent(){const t=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(t)}renderMessage(){return this.message.map(t=>c`<p>${t}</p>`)}render(){return c`
             <h1>${this.t.title}</h1>
-            <p>${this.message}</p>
+            <div class="stack--2">
+              <div class="success banner" data-state=${this.successMessage.length?"":"empty"}>${this.successMessage}</div>
+              <div class="warning banner" data-state=${this.errorMessage.length?"":"empty"}>${this.errorMessage}</div>
+              ${this.renderMessage()}
+            </div>
+            <span class="loading-spinner ${this.loading?"active":""}"></span>
             ${this.showTrainings&&this.variant===h.joinTrainingSelection?c`
                       <public-trainings
                           .t=${this.t}
@@ -167,15 +172,6 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                           @chosen-training=${this._handleChosenTraining}
                       ></public-trainings>
                   `:""}
-            <span
-                class="loading-spinner ${this.loading?"active":""}"
-            ></span>
-            <div
-                class="warning banner"
-                data-state=${this.errorMessage.length?"":"empty"}
-            >
-                ${this.errorMessage}
-            </div>
             ${this.showNextStep||this.success&&this.hasNextStep?c`
                       <button class="btn" @click=${this._sendDoneStepEvent}>
                           ${this.t.next}

@@ -14,10 +14,11 @@ export class JoinTraining extends LitElement {
             variant: { type: String },
 
             code: { attribute: false },
-            message: { attribute: false },
-            errorMessage: { attribute: false },
-            loading: { attribute: false },
-            success: { attribute: false },
+            message: { type: Array, attribute: false },
+            errorMessage: { type: String, attribute: false },
+            successMessage: { type: String, attribute: false },
+            loading: { type: Boolean, attribute: false },
+            success: { type: Boolean, attribute: false },
             showTrainings: { attribute: false },
             showNextStep: { attribute: false },
         }
@@ -28,6 +29,8 @@ export class JoinTraining extends LitElement {
 
         this.code = ''
         this.errorMessage = ''
+        this.successMessage = ''
+        this.message = []
         this.showTrainings = false
         this.showNextStep = false
         this.loading = false
@@ -43,7 +46,7 @@ export class JoinTraining extends LitElement {
         /* We need the plan id */
         const url = new URL(location.href)
         if (!url.searchParams.has('code')) {
-            this.message = ''
+            this.message = []
             this.loading = false
             this.showTrainings = true
             return
@@ -62,13 +65,20 @@ export class JoinTraining extends LitElement {
                 detail: { loading: this.loading },
             })
         )
-        this.message = this.t.please_wait
+        this.message.push(this.t.please_wait)
         this.code = code
         zumeRequest
             .post('connect/public-plan', { code })
             .then((data) => {
-                this.message = this.t.success.replace('%s', data.name)
+                this.successMessage = this.t.success.replace('%s', data.name)
                 this.success = true
+                this.message = [
+                  this.t.contact_visibility1,
+                ]
+
+                if (!data.coach_request_success) {
+                  this.setErrorMessage(this.t.coach_request_failed)
+                }
 
                 const url = new URL(location.href)
                 url.searchParams.set('joinKey', code)
@@ -76,7 +86,7 @@ export class JoinTraining extends LitElement {
             })
             .catch((error) => {
                 console.log(error)
-                this.message = ''
+                this.message = []
                 if (error.code === 'bad_plan_code') {
                     this.setErrorMessage(this.t.broken_link)
                 } else {
@@ -113,7 +123,7 @@ export class JoinTraining extends LitElement {
         this.showTrainings = false
         this.showNextStep = true
 
-        this.message = this.t.complete_profile
+        this.message.push(this.t.complete_profile)
     }
 
     _handleJoinTraining() {
@@ -127,10 +137,19 @@ export class JoinTraining extends LitElement {
         this.dispatchEvent(doneStepEvent)
     }
 
+    renderMessage() {
+        return this.message.map(message => html`<p>${message}</p>`)
+    }
+
     render() {
         return html`
             <h1>${this.t.title}</h1>
-            <p>${this.message}</p>
+            <div class="stack--2">
+              <div class="success banner" data-state=${this.successMessage.length ? '' : 'empty'}>${this.successMessage}</div>
+              <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
+              ${this.renderMessage()}
+            </div>
+            <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
             ${this.showTrainings && this.variant === Steps.joinTrainingSelection
                 ? html`
                       <public-trainings
@@ -140,15 +159,6 @@ export class JoinTraining extends LitElement {
                       ></public-trainings>
                   `
                 : ''}
-            <span
-                class="loading-spinner ${this.loading ? 'active' : ''}"
-            ></span>
-            <div
-                class="warning banner"
-                data-state=${this.errorMessage.length ? '' : 'empty'}
-            >
-                ${this.errorMessage}
-            </div>
             ${this.showNextStep || (this.success && this.hasNextStep)
                 ? html`
                       <button class="btn" @click=${this._sendDoneStepEvent}>
