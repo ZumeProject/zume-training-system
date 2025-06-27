@@ -3,7 +3,7 @@
 class Zume_Email_Job extends WP_Queue\Job {
     public string $email;
     public string $subject;
-    public array $message;
+    public string $message;
 
     public function __construct( $email, $subject, $message ) {
         $this->email = $email;
