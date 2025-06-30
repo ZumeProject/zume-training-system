@@ -34,11 +34,11 @@ class Zume_Local_Map extends Zume_Magic_Page
         ] = zume_get_url_pieces();
 
         $this->lang = $lang_code ?? $this->lang;
-        
+
         if ( isset( $url_parts[0] ) && $this->root === $url_parts[0] && isset( $url_parts[1] ) && $this->type === $url_parts[1] && ! dt_is_rest() ) {
-            
+
             $this->lang_code = $lang_code;
-            $this->grid_id = sanitize_text_field( $_GET['grid_id'] ?? '' );
+            $this->grid_id = sanitize_text_field( wp_unslash( $_GET['grid_id'] ?? '' ) );
 
             // Query location data if grid_id is provided
             if ( !empty( $this->grid_id ) ) {
@@ -78,7 +78,7 @@ class Zume_Local_Map extends Zume_Magic_Page
     public function enqueue_local_map_scripts() {
         // Enqueue jQuery first
         wp_enqueue_script( 'jquery' );
-        
+
         // Enqueue Mapbox GL JS and CSS
         wp_enqueue_script( 'mapbox-gl', 'https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js', ['jquery'], '2.15.0', true );
         wp_enqueue_style( 'mapbox-gl-css', 'https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css', [], '2.15.0' );
@@ -553,7 +553,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                     'progress' => esc_html__( 'Progress', 'zume' ),
                     'location_not_found' => esc_html__( 'Location not found', 'zume' ),
                     'enter_grid_id' => esc_html__( 'Please enter a grid_id parameter', 'zume' ),
-                ]
+                ],
             ]) ?>;
         </script>
         <?php
@@ -964,7 +964,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                     </div>
                     <div class="population">
                         <h3><?php echo esc_html__( 'Population', 'zume' ) ?></h3>
-                        <div class="number"><?php echo $this->format_population( $this->location_data['population'] ?? 0 ) ?></div>
+                        <div class="number"><?php echo esc_html( $this->format_population( $this->location_data['population'] ?? 0 ) ) ?></div>
                     </div>
                 </div>
 
@@ -981,7 +981,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                             <div class="goal-left">
                                 <div class="goal-title"><?php echo esc_html__( 'Trainees', 'zume' ) ?></div>
                                 <div class="goal-icon">
-                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/countriesandterritories-groups.svg?raw=true', dirname( __FILE__ ) ) ); ?>" alt="<?php echo esc_attr__( 'Trainees', 'zume' ) ?>" />
+                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/countriesandterritories-groups.svg?raw=true', __DIR__ ) ); ?>" alt="<?php echo esc_attr__( 'Trainees', 'zume' ) ?>" />
                                 </div>
                             </div>
                             
@@ -1012,7 +1012,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                                 <div class="progress-circle" id="trainees-progress">
                                     <div class="circle-bg"></div>
                                     <div class="circle-progress">
-                                        <div class="circle-text"><?php echo $this->calculate_progress_percentage( 'trainees' ) ?>%</div>
+                                        <div class="circle-text"><?php echo esc_html( $this->calculate_progress_percentage( 'trainees' ) ) ?>%</div>
                                     </div>
                                 </div>
                             </div>
@@ -1025,7 +1025,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                             <div class="goal-left">
                                 <div class="goal-title"><?php echo esc_html__( 'Churches', 'zume' ) ?></div>
                                 <div class="goal-icon">
-                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/GroupsFormed.svg?raw=true', dirname( __FILE__ ) ) ); ?>" alt="<?php echo esc_attr__( 'Churches', 'zume' ) ?>" />
+                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/GroupsFormed.svg?raw=true', __DIR__ ) ); ?>" alt="<?php echo esc_attr__( 'Churches', 'zume' ) ?>" />
                                 </div>
                             </div>
                             
@@ -1056,7 +1056,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                                 <div class="progress-circle" id="churches-progress">
                                     <div class="circle-bg"></div>
                                     <div class="circle-progress">
-                                        <div class="circle-text"><?php echo $this->calculate_progress_percentage( 'churches' ) ?>%</div>
+                                        <div class="circle-text"><?php echo esc_html( $this->calculate_progress_percentage( 'churches' ) ) ?>%</div>
                                     </div>
                                 </div>
                             </div>
@@ -1067,7 +1067,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 <div class="footer">
                     <div class="footer-text"><?php echo esc_html__( 'Getting Started', 'zume' ) ?></div>
                     <div class="qr-code">
-                        <img src="<?php echo esc_url( plugins_url( 'site/assets/images/zt-qr-code.png', dirname( __FILE__ ) ) ); ?>" alt="<?php echo esc_attr__( 'Training', 'zume' ) ?>" />
+                        <img src="<?php echo esc_url( plugins_url( 'site/assets/images/zt-qr-code.png', __DIR__ ) ); ?>" alt="<?php echo esc_attr__( 'Training', 'zume' ) ?>" />
                     </div>
                     <div class="footer-link">
                         <div class="check-out"><?php echo esc_html__( 'Vision', 'zume' ) ?>:</div>
@@ -1082,14 +1082,14 @@ class Zume_Local_Map extends Zume_Magic_Page
 
     private function get_location_data( $grid_id ) {
         global $wpdb;
-        
+
         $grid_id = intval( $grid_id );
         if ( empty( $grid_id ) ) {
             return null;
         }
 
         $result = $wpdb->get_row( $wpdb->prepare(
-            "SELECT 
+            'SELECT 
                 lg.grid_id, 
                 lg.name, 
                 lg.population, 
@@ -1112,7 +1112,7 @@ class Zume_Local_Map extends Zume_Magic_Page
              LEFT JOIN zume_location_grid_names admin0_gn ON admin0.grid_id = admin0_gn.grid_id AND admin0_gn.language_code = %s
              LEFT JOIN zume_location_grid_names admin1_gn ON admin1.grid_id = admin1_gn.grid_id AND admin1_gn.language_code = %s
              LEFT JOIN zume_location_grid_names admin2_gn ON admin2.grid_id = admin2_gn.grid_id AND admin2_gn.language_code = %s
-             WHERE lg.grid_id = %d",
+             WHERE lg.grid_id = %d',
             $this->lang_code,
             $this->lang_code,
             $this->lang_code,
@@ -1126,7 +1126,7 @@ class Zume_Local_Map extends Zume_Magic_Page
             $result['admin0_name'] = $result['admin0_localized_name'] ?? $result['admin0_name'];
             $result['admin1_name'] = $result['admin1_localized_name'] ?? $result['admin1_name'];
             $result['admin2_name'] = $result['admin2_localized_name'] ?? $result['admin2_name'];
-            
+
             // Build full hierarchical name
             $result['full_name'] = $this->build_hierarchical_name( $result );
         }
@@ -1136,30 +1136,30 @@ class Zume_Local_Map extends Zume_Magic_Page
 
     private function build_hierarchical_name( $location_data ) {
         $name_parts = [];
-        
+
         // Add the primary location name
         if ( !empty( $location_data['name'] ) ) {
             $name_parts[] = $location_data['name'];
         }
-        
+
         // Add admin1 name (state/province level)
-        if ( !empty( $location_data['admin1_name'] ) && 
+        if ( !empty( $location_data['admin1_name'] ) &&
              $location_data['admin1_name'] !== $location_data['name'] ) {
             $name_parts[] = $location_data['admin1_name'];
         }
-        
-        // Add admin0 name (country level) 
-        if ( !empty( $location_data['admin0_name'] ) && 
+
+        // Add admin0 name (country level)
+        if ( !empty( $location_data['admin0_name'] ) &&
              $location_data['admin0_name'] !== $location_data['name'] &&
              $location_data['admin0_name'] !== $location_data['admin1_name'] ) {
             $name_parts[] = $location_data['admin0_name'];
         }
-        
+
         // If we don't have admin0_name but have country_code, use that
         if ( empty( $location_data['admin0_name'] ) && !empty( $location_data['country_code'] ) ) {
             $name_parts[] = $location_data['country_code'];
         }
-        
+
         return implode( ', ', $name_parts );
     }
 
@@ -1170,7 +1170,7 @@ class Zume_Local_Map extends Zume_Magic_Page
 
         $population = intval( $this->location_data['population'] ?? 0 );
         $divisor = ( $this->location_data['country_code'] === 'US' ) ? 5000 : 50000;
-        
+
         return max( 1, round( $population / $divisor ) );
     }
 
@@ -1181,13 +1181,13 @@ class Zume_Local_Map extends Zume_Magic_Page
 
         $population = intval( $this->location_data['population'] ?? 0 );
         $divisor = ( $this->location_data['country_code'] === 'US' ) ? 5000 : 50000;
-        
+
         return max( 2, round( ( $population / $divisor ) * 2 ) );
     }
 
     private function get_trainees_count() {
         global $wpdb;
-        
+
         if ( empty( $this->grid_id ) ) {
             return 0;
         }
@@ -1212,7 +1212,7 @@ class Zume_Local_Map extends Zume_Magic_Page
 
     private function get_churches_count() {
         global $wpdb;
-        
+
         if ( empty( $this->grid_id ) ) {
             return 0;
         }
@@ -1234,7 +1234,7 @@ class Zume_Local_Map extends Zume_Magic_Page
 
     private function get_new_trainees_last_year() {
         global $wpdb;
-        
+
         if ( empty( $this->grid_id ) ) {
             return 0;
         }
@@ -1245,7 +1245,7 @@ class Zume_Local_Map extends Zume_Magic_Page
         $prepared_list = dt_array_to_sql( $all_ids );
 
         // Calculate timestamp for 365 days ago
-        $one_year_ago = time() - (365 * 24 * 60 * 60);
+        $one_year_ago = time() - ( 365 * 24 * 60 * 60 );
 
         $count = $wpdb->get_var( $wpdb->prepare("
             SELECT COUNT(DISTINCT r.user_id)
@@ -1263,10 +1263,10 @@ class Zume_Local_Map extends Zume_Magic_Page
 
     private function get_child_grid_ids( $grid_id ) {
         global $wpdb;
-        
+
         $children = $wpdb->get_results( $wpdb->prepare(
-            "SELECT grid_id FROM zume_dt_location_grid 
-             WHERE parent_id = %d OR admin0_grid_id = %d OR admin1_grid_id = %d OR admin2_grid_id = %d OR admin3_grid_id = %d",
+            'SELECT grid_id FROM zume_dt_location_grid 
+             WHERE parent_id = %d OR admin0_grid_id = %d OR admin1_grid_id = %d OR admin2_grid_id = %d OR admin3_grid_id = %d',
             $grid_id, $grid_id, $grid_id, $grid_id, $grid_id
         ), ARRAY_A );
 

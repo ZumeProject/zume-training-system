@@ -19,18 +19,18 @@ class Zume_Email_Test_Admin {
         if ( ! is_admin() ) {
             return;
         }
-        
+
         // Make sure the cron class is available
         if ( ! class_exists( 'Zume_Encouragement_Cron' ) ) {
-            add_action( 'admin_notices', function() {
+            add_action( 'admin_notices', function () {
                 echo '<div class="notice notice-error"><p>Zume_Encouragement_Cron class not found. Please ensure the encouragement-cron.php file is loaded.</p></div>';
             });
             return;
         }
-        
+
         // Get the global cron instance
         $this->cron_instance = new Zume_Encouragement_Cron();
-        
+
         add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
         add_action( 'admin_init', array( $this, 'handle_form_submission' ) );
@@ -57,12 +57,12 @@ class Zume_Email_Test_Admin {
 
     /**
      * Run a test of the encouragement cron job with a specific date
-     * 
+     *
      * @param string $test_date The date to test with
      */
     private function run_cron_test( $test_date ) {
         if ( empty( $test_date ) ) {
-            add_action( 'admin_notices', function() {
+            add_action( 'admin_notices', function () {
                 echo '<div class="notice notice-error"><p>Please provide a test date.</p></div>';
             });
             return;
@@ -70,7 +70,7 @@ class Zume_Email_Test_Admin {
 
         // Use the encouragement cron to run the test
         $results = $this->cron_instance->run_test( $test_date );
-        
+
         // Display results
         $this->display_test_results( $results, "Date-specific Test ($test_date)" );
     }
@@ -81,28 +81,28 @@ class Zume_Email_Test_Admin {
     private function run_regular_cron_test() {
         // Use the encouragement cron to process unsent messages with results
         $results = $this->cron_instance->process_unsent_messages( null, true );
-        
+
         // Display results
-        $this->display_test_results( $results, "Regular Cron Test (Oldest Messages)" );
+        $this->display_test_results( $results, 'Regular Cron Test (Oldest Messages)' );
     }
 
     /**
      * Display test results in admin notices
-     * 
+     *
      * @param array $results The results from the cron test
      * @param string $test_type The type of test that was run
      */
     private function display_test_results( $results, $test_type ) {
-        add_action( 'admin_notices', function() use ( $results, $test_type ) {
+        add_action( 'admin_notices', function () use ( $results, $test_type ) {
             echo '<h3>' . esc_html( $test_type ) . ' Results</h3>';
-            
+
             // Success messages
             if ( $results['processed'] > 0 ) {
                 echo '<div class="notice notice-success"><p>Successfully processed ' . $results['processed'] . ' messages.</p></div>';
             } else {
                 echo '<div class="notice notice-warning"><p>No messages were processed.</p></div>';
             }
-            
+
             // Error messages
             if ( !empty( $results['errors'] ) ) {
                 echo '<div class="notice notice-error">';
@@ -114,7 +114,7 @@ class Zume_Email_Test_Admin {
                 echo '</ul>';
                 echo '</div>';
             }
-            
+
             // Debug information
             if ( !empty( $results['debug_info'] ) ) {
                 echo '<div class="notice notice-info">';
@@ -127,7 +127,7 @@ class Zume_Email_Test_Admin {
                 echo '</details>';
                 echo '</div>';
             }
-            
+
             // Summary
             echo '<div class="notice notice-info">';
             echo '<p><strong>Summary:</strong> Found ' . $results['messages_found'] . ' eligible messages, processed ' . $results['processed'] . ' successfully.</p>';

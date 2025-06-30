@@ -134,7 +134,7 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
             <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $current_post->post_name ); ?>" />
         <?php } else { ?>
             <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $current_post->post_name ); ?>" />
-        <?php
+            <?php
         }
 
         zume_hreflang_with_slug( $this->lang_code, $this->postid );

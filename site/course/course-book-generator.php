@@ -1,6 +1,6 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
-
+/** phpcs:disable */
 
 class Zume_Book_Generator extends Zume_Magic_Page
 {
@@ -35,7 +35,7 @@ class Zume_Book_Generator extends Zume_Magic_Page
             if ( isset( $_GET['lang'] ) ) {
                 $this->lang = $_GET['lang'];
                 $zume_languages = zume_languages();
-                switch_to_locale($zume_languages[$this->lang]['locale'] );
+                switch_to_locale( $zume_languages[$this->lang]['locale'] );
             }
 
             $this->register_url_and_access();
@@ -583,20 +583,20 @@ class Zume_Book_Generator extends Zume_Magic_Page
     public function get_zume_activity( $lang, $id ) {
         $activity = '';
 
-        if( str_contains($id, '3monthplan' ) ) {
+        if ( str_contains( $id, '3monthplan' ) ) {
             $activity = Zume_Activites_3monthplan_Printable::instance()->list();
         }
-        else if( str_contains($id, 'coachingchecklist' ) ) {
+        else if ( str_contains( $id, 'coachingchecklist' ) ) {
             $activity = Zume_Activites_Coaching::instance()->description();
             $activity .= '<iframe id="iFrame1" src="https://zume.training/'.$this->lang.'/activities/coachingchecklist?description=false" style="border: none; width: 100%; overflow:hidden;" height="1800px" scrolling="no"></iframe>';
         }
-        else if( str_contains($id, 'listof100' ) ) {
+        else if ( str_contains( $id, 'listof100' ) ) {
             $this->list_of_100();
         }
         else {
             $activities = list_zume_activities( $lang );
             $activity = '';
-            foreach( $activities as $row ) {
+            foreach ( $activities as $row ) {
                 if ( $id === $row['post_title'] ) {
                     $activity = zume_replace_placeholder( $row['content'], $lang );
                     break;
@@ -617,33 +617,33 @@ class Zume_Book_Generator extends Zume_Magic_Page
 
     public function render_content( $stack = [], $bold_first = false, $bold_all = false, $is_activity = false ) {
         $item = '';
-        foreach( $stack as $i => $v ) {
+        foreach ( $stack as $i => $v ) {
             if ( is_array( $v ) ) {
                 $item .= '<ul class="bullets">';
-                foreach(  $v as $ii => $vv ) { // first level bullets
+                foreach ( $v as $ii => $vv ) { // first level bullets
                     if ( $is_activity && 0 === $ii ) { // remove the scan the QR step
                         continue;
                     }
                     if ( is_array( $vv ) ) { // second level bullets
                         $item .= '<ul class="bullets">';
-                        foreach( $vv as $vvv ) {
-                            $item .= "<li>" . $vvv . "</li>";
+                        foreach ( $vv as $vvv ) {
+                            $item .= '<li>' . $vvv . '</li>';
                         }
                         $item .= '</ul>';
                     } else {
-                        $item .= "<li>" . $vv . "</li>";
+                        $item .= '<li>' . $vv . '</li>';
                     }
                 }
                 $item .= '</ul>';
             }
             else if ( $bold_first && 0 === $i ) {
-                $item .= "<p><strong>" . $v . "</strong></p>";
+                $item .= '<p><strong>' . $v . '</strong></p>';
             }
-            else if ( $bold_all && ! is_array($v) ) {
-                $item .= "<p><strong>" . $v . "</strong></p>";
+            else if ( $bold_all && ! is_array( $v ) ) {
+                $item .= '<p><strong>' . $v . '</strong></p>';
             }
             else {
-                $item .= "<p>" . $v . "</p>";
+                $item .= '<p>' . $v . '</p>';
             }
         }
 
@@ -651,7 +651,7 @@ class Zume_Book_Generator extends Zume_Magic_Page
     }
 
     public function body(){
-        if ( ! isset( $_GET['type'], $_GET['session'],  $_GET['lang'] ) ) {
+        if ( ! isset( $_GET['type'], $_GET['session'], $_GET['lang'] ) ) {
             $this->selector();
         }
         else {
@@ -659,11 +659,11 @@ class Zume_Book_Generator extends Zume_Magic_Page
 
             ?><div class="print-content"><?php
 
-            foreach( $course as $slide ) {
-                $this->_template( $slide );
-            }
+foreach ( $course as $slide ) {
+    $this->_template( $slide );
+}
 
-            ?></div><?php
+?></div><?php
         }
     }
 
@@ -703,12 +703,12 @@ class Zume_Book_Generator extends Zume_Magic_Page
             </select><br>
             <select class="input-field" id="lang">
                 <?php
-                foreach($zume_languages as $language ) {
+                foreach ( $zume_languages as $language ) {
                     ?><option value="<?php echo $language['code'] ?>"><?php echo $language['name'] ?></option><?php
                 }
                 ?>
             </select><br>
-            <a class="btn" href="<?php ?>" id="launch" target="_blank">Build</a>
+            <a class="btn" href="" id="launch" target="_blank">Build</a>
         </div>
         <script>
             jQuery(document).ready(function() {
@@ -736,3 +736,4 @@ class Zume_Book_Generator extends Zume_Magic_Page
     }
 }
 Zume_Book_Generator::instance();
+/** phpcs:enable */

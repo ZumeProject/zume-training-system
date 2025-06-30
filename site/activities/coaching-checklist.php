@@ -68,7 +68,7 @@ class Zume_Activites_Coaching extends Zume_Activites
             <h1><?php echo esc_html__( 'Coaching Checklist', 'zume' ) ?></h1>
         </div>
         <div class="activity-content">
-            <?php echo $this->table() ?>
+            <?php $this->table() ?>
         </div>
         <br></br>
         <?php if ( ! isset( $_GET['description'] ) ) :

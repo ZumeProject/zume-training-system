@@ -31,8 +31,6 @@ class Zume_Activites_3monthplan extends Zume_Activites
         ] = zume_get_url_pieces();
 
         $this->lang = $lang_code;
-
-
     }
     public function body(){
         $questions = Zume_Training_Dashboard::three_month_plan_questions();
@@ -57,7 +55,7 @@ class Zume_Activites_3monthplan extends Zume_Activites
             </header>
             <div class="container-md">
                 <h1 class="activity-title"><?php echo esc_html__( '3-Month Plan', 'zume' ) ?></h1>
-                <a class="f-0 center" href="<?php echo site_url() ?>/<?php echo $this->lang ?>/activities/3monthplan_printable" target="_blank"><?php echo esc_html__( 'Switch to Printable Version', 'zume' ) ?></a>
+                <a class="f-0 center" href="<?php echo esc_url( site_url() . '/' . esc_attr( $this->lang ) . '/activities/3monthplan_printable' ) ?>" target="_blank"><?php echo esc_html__( 'Switch to Printable Version', 'zume' ) ?></a>
             </div>
             <hr>
             <div class="container-md activity-content">

@@ -30,7 +30,7 @@ class Zume_Encouragement_Cron {
     /**
      * Process unsent messages
      * Selects one message per user based on the oldest drop_date
-     * 
+     *
      * @param string $test_date Optional test date for admin testing (Y-m-d format)
      * @param bool $return_results Whether to return results for admin interface
      * @return array|null Results array if $return_results is true, null otherwise
@@ -43,7 +43,7 @@ class Zume_Encouragement_Cron {
             'processed' => 0,
             'errors' => array(),
             'debug_info' => array(),
-            'messages_found' => 0
+            'messages_found' => 0,
         );
 
         // Get the table name for messages
@@ -63,7 +63,7 @@ class Zume_Encouragement_Cron {
 
             $results['debug_info']['test_date'] = $test_date;
             $results['debug_info']['timestamp'] = $timestamp;
-            $results['debug_info']['formatted_date'] = date('Y-m-d', $timestamp);
+            $results['debug_info']['formatted_date'] = gmdate( 'Y-m-d', $timestamp );
 
             // Query for test date - get oldest unsent message per user for the specific date plus immediate messages
             $query = $wpdb->prepare(
@@ -109,17 +109,17 @@ class Zume_Encouragement_Cron {
         }
 
         $messages = $wpdb->get_results( $query );
-        
+
         if ( $return_results ) {
             $results['debug_info']['query'] = $query;
             $results['debug_info']['last_error'] = $wpdb->last_error;
             $results['messages_found'] = count( $messages );
-            
+
             // Add some debug queries to help diagnose issues
             $results['debug_info']['total_unsent_messages'] = $wpdb->get_var(
                 "SELECT COUNT(*) FROM {$table_name} WHERE (sent = 0 OR sent IS NULL)"
             );
-            
+
             if ( $test_date ) {
                 $results['debug_info']['messages_for_test_date'] = $wpdb->get_var( $wpdb->prepare(
                     "SELECT COUNT(*) FROM {$table_name} 
@@ -127,7 +127,7 @@ class Zume_Encouragement_Cron {
                     AND DATE(FROM_UNIXTIME(drop_date)) = DATE(FROM_UNIXTIME(%d))",
                     $timestamp
                 ));
-                
+
                 $results['debug_info']['messages_with_zero_drop_date'] = $wpdb->get_var(
                     "SELECT COUNT(*) FROM {$table_name} WHERE (sent = 0 OR sent IS NULL) AND drop_date = 0"
                 );
@@ -138,7 +138,7 @@ class Zume_Encouragement_Cron {
             foreach ( $messages as $message ) {
                 // Send the message
                 $send_result = $this->send_message( $message, $return_results );
-                
+
                 if ( $return_results ) {
                     if ( $send_result['success'] ) {
                         $results['processed']++;
@@ -165,7 +165,7 @@ class Zume_Encouragement_Cron {
 
     /**
      * Send a message to a user
-     * 
+     *
      * @param object $message The message object to send
      * @param bool $return_result Whether to return detailed result information
      * @return array|bool Result array if $return_result is true, bool otherwise
@@ -178,7 +178,7 @@ class Zume_Encouragement_Cron {
                 if ( $return_result ) {
                     return array(
                         'success' => false,
-                        'error' => "User not found for ID: {$message->user_id}"
+                        'error' => "User not found for ID: {$message->user_id}",
                     );
                 }
                 return false;
@@ -188,25 +188,25 @@ class Zume_Encouragement_Cron {
             $headers = array(
                 'Content-Type: text/html; charset=UTF-8',
                 'MIME-Version: 1.0',
-                'X-Zume-Email-System: 1.0'
+                'X-Zume-Email-System: 1.0',
             );
 
             // Send email
             $sent = wp_mail( $message->to, $message->subject, $message->message, $headers );
-            
+
             if ( $return_result ) {
                 return array(
                     'success' => $sent,
-                    'error' => $sent ? null : "Failed to send email to: {$message->to}"
+                    'error' => $sent ? null : "Failed to send email to: {$message->to}",
                 );
             }
-            
+
             return $sent;
         } catch ( Exception $e ) {
             if ( $return_result ) {
                 return array(
                     'success' => false,
-                    'error' => "Error processing message ID {$message->id}: " . $e->getMessage()
+                    'error' => "Error processing message ID {$message->id}: " . $e->getMessage(),
                 );
             }
             return false;
@@ -215,7 +215,7 @@ class Zume_Encouragement_Cron {
 
     /**
      * Public method for admin testing
-     * 
+     *
      * @param string $test_date The date to test with (Y-m-d format)
      * @return array Results of the test run
      */

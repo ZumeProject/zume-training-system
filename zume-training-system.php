@@ -122,9 +122,8 @@ class Zume_Training {
             $language_code = zume_get_language_cookie();
             if ( $language_code !== $lang_code ) {
                 zume_set_language_cookie( $lang_code );
-            } 
+            }
         }
-
     }
     public static function activation() {
     }
@@ -182,7 +181,6 @@ class Zume_Training {
         }
 
         add_action( 'wp_head', [ $this, 'insert_head_scripts' ] );
-
     }
 
     public function insert_head_scripts() {
@@ -198,7 +196,7 @@ class Zume_Training {
         if ( ! in_array( $url_parts[0], [ 'share', 'resources', 'training', 'about', 'how-to-follow-jesus'] ) ) {
             return;
         }
-        
+
         ?>
             <!-- Chipp Chat Widget -->
             <script>
@@ -206,10 +204,11 @@ class Zume_Training {
             window.CHIPP_APP_ID = 44723;
             </script>
             
+            <!-- phpcs:disable -->
             <link rel="stylesheet" href="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.css" />
             
             <script defer src="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.js"></script>
-            
+            <!-- phpcs:enable -->
         <?php
     }
 
@@ -508,7 +507,7 @@ class Zume_Training {
             'time_end' => time(),
             'language_code' => $user_language['code'] ?? 'en',
         ], true );
-        
+
         // Zume_System_Encouragement_API::update_plan( $user->ID, 'training', 'registered' ); @todo remove this
     }
     public function dt_update_users_corresponding_contact( mixed $contact, WP_User $user ) {
@@ -534,7 +533,7 @@ class Zume_Training {
         }
     }
     public function dt_login_url( $dt_login_url ) {
-        
+
         $dt_login_url = str_replace( $this->builtin_login_url, $this->login_url, $dt_login_url );
 
         $current_language = 'en';
@@ -568,7 +567,7 @@ class Zume_Training {
         return $current_language . '/' . $dt_login_url;
     }
     public function dt_login_redirect_url( $redirect_url ) {
-        
+
         $url = new DT_URL( $redirect_url );
 
         $parsed_url = $url->parsed_url;
@@ -681,12 +680,12 @@ function log_call_stack() {
     $backtrace = debug_backtrace();
     $call_stack = [];
 
-    foreach ($backtrace as $index => $trace) {
-        $file = isset($trace['file']) ? basename($trace['file']) : 'unknown';
-        $line = isset($trace['line']) ? $trace['line'] : 'unknown';
-        $function = isset($trace['function']) ? $trace['function'] : 'unknown';
+    foreach ( $backtrace as $index => $trace ) {
+        $file = isset( $trace['file'] ) ? basename( $trace['file'] ) : 'unknown';
+        $line = isset( $trace['line'] ) ? $trace['line'] : 'unknown';
+        $function = isset( $trace['function'] ) ? $trace['function'] : 'unknown';
         $call_stack[] = "#{$index} {$file}:{$line} - {$function}()";
     }
-    dt_write_log('Call Stack:');
-    dt_write_log($call_stack);
+    dt_write_log( 'Call Stack:' );
+    dt_write_log( $call_stack );
 }

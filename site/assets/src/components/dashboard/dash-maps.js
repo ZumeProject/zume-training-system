@@ -111,18 +111,13 @@ export class DashMaps extends DashPage {
                         `
                         : html`
                             <div class="stack">
-                                <a class="btn" data-map="local-map" target="_blank" href="/maps/local?grid_id=${jsObject.profile.location.grid_id || ''}">
+                                <a class="btn" data-map="local-map" target="_blank" href="/maps/local?grid_id=${jsObject.profile.location.grid_id || ''}&lang=${jsObject.language}">
                                     ${jsObject.translations.local_map}
                                 </a>
                                 <button class="btn" data-map="hundred-hour-map" @click=${this.openModal}>
                                     ${jsObject.translations.hundred_hour_map}
                                 </button>
-                                <button class="btn" data-map="vision-map" @click=${this.openModal}>
-                                    ${jsObject.translations.training_vision_map}
-                                </button>
-                                <button class="btn" data-map="church-map" @click=${this.openModal}>
-                                    ${jsObject.translations.simple_church_planting_map}
-                                </button>
+              
                             </div>
                         `
                     }

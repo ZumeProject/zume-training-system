@@ -296,7 +296,7 @@ function pieces_content_has_no_pieces( $post_id, $lang, $strings ) {
                 </div>
             </div>
         </div>
-    <?php
+        <?php
     }
 }
 

@@ -66,7 +66,7 @@ class Zume_Training_404 extends Zume_Magic_Page
                 $requested_path = $url_pieces['path'];
                 $url = 'https://legacy.zume.training/' . $zume_languages_by_locale[$locale]['code'] . '/' . $requested_path;
                 // dt_write_log( $requested_path );
-                wp_redirect(  $url );
+                wp_redirect( $url );
                 exit;
             }
         }

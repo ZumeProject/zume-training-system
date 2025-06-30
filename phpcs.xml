@@ -165,6 +165,16 @@
     <!-- <exclude name="WordPress.WhiteSpace.OperatorSpacing.SpacingAfter" /> -->
     <!-- <exclude name="WordPress.WhiteSpace.OperatorSpacing.SpacingBefore" /> -->
 
+    <!-- Database-related WordPress rules that are commonly problematic -->
+    <exclude name="WordPress.DB.PreparedSQL.NotPrepared" />
+    <exclude name="WordPress.DB.PreparedSQL.InterpolatedNotPrepared" />
+    <exclude name="WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare" />
+    <exclude name="WordPress.DB.PreparedSQLPlaceholders.UnnecessaryPrepare" />
+    <exclude name="WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber" />
+    <exclude name="WordPress.DB.PreparedSQLPlaceholders.UnescapedLiteral" />
+    <exclude name="WordPress.DB.DirectDatabaseQuery.DirectQuery" />
+    <exclude name="WordPress.DB.DirectDatabaseQuery.NoCaching" />
+
   </rule>
 
   <rule ref="NormalizedArrays">

@@ -34,7 +34,9 @@ class Zume_Magic_Page extends DT_Magic_Url_Base {
 
         ?>
         <!-- Google tag (gtag.js) -->
+        <!-- phpcs:disable -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-N27P3H7SBT"></script>
+        <!-- phpcs:enable -->
         <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
