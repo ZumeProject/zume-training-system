@@ -338,7 +338,6 @@ class Zume_Training_Translations extends Zume_Magic_Page
                         <th style="width:2%">Code</th>
                         <th style="width:2%">Locale</th>
                         <th style="width:2%">Weblate</th>
-                        <th style="width:4%">v4 Available</th>
                         <th style="width:4%">Translator Enabled</th>
                         <th style="width:4%">v5 Ready</th>
                         <th style="width:4%">Pieces</th>
@@ -359,7 +358,7 @@ class Zume_Training_Translations extends Zume_Magic_Page
                             <td><?php echo esc_html( $language['code'] ) ?></td>
                             <td><?php echo esc_html( $language['locale'] ) ?></td>
                             <td><?php echo esc_html( $language['weblate'] ) ?></td>
-                            <td><?php echo ( $language['enable_flags']['version_4_available'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+                            
                             <td><?php echo ( $language['enable_flags']['translator_enabled'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $language['enable_flags']['version_5_ready'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $language['enable_flags']['pieces_pages'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
