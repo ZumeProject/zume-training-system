@@ -976,7 +976,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enDisplayName' => 'Amharic',
                 'code' => 'am',
                 'displayCode' => 'am',
-                'locale' => 'amh',
+                'locale' => 'am',
                 'weblate' => 'am',
                 'nativeName' => 'አማርኛ',
                 'rtl' => false,
