@@ -2,23 +2,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2024-10-15 17:59-0600\n"
-"Last-Translator: Chris <chris@chasm.solutions>\n"
-"Language-Team: Turkish <https://translate.disciple.tools/projects/zume-"
-"training/zume-training-system/tr_TR/>\n"
+"PO-Revision-Date: 2025-07-03 19:03+0000\n"
+"Last-Translator: KevinG <kcgriesser@gmail.com>\n"
+"Language-Team: Turkish <https://translate.disciple.tools/projects/"
+"zume-training/zume-training-system/tr_TR/>\n"
 "Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Weblate 5.12.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,"
+"2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
@@ -186,7 +186,7 @@ msgstr "Tanrı’yı Duymak ve O’na İtaat Etmek"
 
 #: globals.php:2237 globals.php:2239
 msgid "S.O.A.P.S. Bible Study"
-msgstr "A.G.U.D.P. Kutsal Kitap Çalışması"
+msgstr "K.İ.T.A.P. Yöntemi"
 
 #: globals.php:2238 site/pages/follow-jesus.php:211
 msgid ""
@@ -215,7 +215,7 @@ msgstr ""
 
 #: globals.php:2261 site/pages/follow-jesus.php:189
 msgid "Consumer vs Producer Lifestyle"
-msgstr "Tüketici ve Üretici Yaşam Tarzıları"
+msgstr "Tüketici ve Üretici Yaşam Tarzları"
 
 #: globals.php:2262 site/pages/follow-jesus.php:190
 msgid ""
@@ -231,7 +231,7 @@ msgstr "Tüketici Değil Üretici"
 
 #: globals.php:2273 globals.php:2275 site/pages/follow-jesus.php:199
 msgid "How to Spend an Hour in Prayer"
-msgstr "Dua Ederek Bir Saat Nasıl Geçirilir"
+msgstr "Dua Halkası - Dua Ederek Bir Saat Nasıl Geçirilir"
 
 #: globals.php:2274 site/pages/follow-jesus.php:200
 msgid "See how easy it is to spend an hour in prayer."
@@ -283,7 +283,7 @@ msgid ""
 "Learn a way to share God’s Good News from the beginning of humanity all the "
 "way to the end of this age."
 msgstr ""
-"Tanrı'nın insanlığın başından bu çağın sonuna kadar olan İyi Haberlerini "
+"Tanrı'nın insanlığın başından bu çağın sonuna kadar olan İyi Haberini "
 "paylaşmanın bir yolunu öğrenin."
 
 #: globals.php:2311
@@ -458,16 +458,16 @@ msgstr "B.E.R.E.K.E.T. Dua Yöntemi"
 #: globals.php:2430 site/pages/follow-jesus.php:204
 msgid "Practice a simple mnemonic to remind you of ways to pray for others."
 msgstr ""
-"Başkaları için dua etmenin yöntemini hatırlatmak için basit bir araç "
+"Başkaları için dua etmenin yöntemini hatırlamak için basit bir araç "
 "uygulayın."
 
 #: globals.php:2431 site/course/course-content.php:1677
 msgid "The B.L.E.S.S. Prayer"
-msgstr "B.E.D.S.R. Duası"
+msgstr "B.E.R.E.K.E.T. Duası"
 
 #: globals.php:2441 site/pages/follow-jesus.php:221
 msgid "3/3 Group Meeting Pattern"
-msgstr "3’te 3 Grup Toplantı Deseni"
+msgstr "3’te 3 Grup Toplantı Formatı"
 
 #: globals.php:2442
 msgid ""
@@ -475,9 +475,9 @@ msgid ""
 "fellowship and practice obeying and sharing what they‘ve learned. In this "
 "way, a 3/3 Group is not just a small group but a Simple Church."
 msgstr ""
-"Bir 3/3 Grubu İsa’nın öğrencilerinin bir araya gelmeleri, dua etmeleri, "
+"Bir 3'te 3 Grubu İsa’nın öğrencilerinin bir araya gelmeleri, dua etmeleri, "
 "öğrenmeleri, büyümeleri, paydaşlık kurmaları, itaat etmeleri ve "
-"öğrendiklerini paylaşmaları için bir yoldur. Bu şekilde, bir 3/3 Grubu "
+"öğrendiklerini paylaşmaları için bir yoldur. Bu şekilde, bir 3'te 3 Grubu "
 "sadece bir küçük grup değil aynı zamanda bir Temel Kilisedir."
 
 #: globals.php:2443
@@ -594,7 +594,7 @@ msgstr ""
 #: utilities/integrations/replace-placeholder.php:103
 #: utilities/integrations/replace-placeholder.php:104
 msgid "Coaching Checklist"
-msgstr "Koluk Kontrol Listesi"
+msgstr "Koçluk Kontrol Listesi"
 
 #: globals.php:2526 site/pages/follow-jesus.php:323
 msgid ""
@@ -1204,7 +1204,7 @@ msgstr "Üç Dakikalık Tanıklık"
 #: site/activities/activities.php:273 site/course/course-content.php:1587
 #: site/course/course-content.php:4733 site/course/course-content.php:4753
 msgid "B.L.E.S.S. Prayer"
-msgstr "B.E.D.S.R. Duası"
+msgstr "B.E.R.E.K.E.T. Duası"
 
 #: site/activities/activities.php:296 site/course/course-content.php:1835
 #: site/course/course-content.php:1888 site/course/course-content.php:1897
@@ -1216,7 +1216,7 @@ msgstr "B.E.D.S.R. Duası"
 #: site/course/course-content.php:5016 site/course/course-content.php:5024
 #: site/course/course-content.php:5031 site/course/course-content.php:5059
 msgid "3/3 Group Meeting"
-msgstr "3/3 Grup Toplantısı"
+msgstr "3'te 3 Grup Toplantısı"
 
 #: site/activities/activities.php:365 site/course/course-content.php:2490
 #: site/course/course-content.php:2746 site/course/course-content.php:2752
@@ -2010,7 +2010,7 @@ msgstr "Tüm katılımcıların ve yöneticinin giriş yapmasını sağlayın."
 #: site/course/course-content.php:5979 site/course/course-content.php:6028
 #: site/course/course-content.php:6077
 msgid "Or zume.training/checkin and use code:"
-msgstr "Veya zume.eğitimi/giriş ve kodu kullanın:"
+msgstr "Veya zume.training/tr/checkin ve kodu kullanın:"
 
 #: site/course/course-content.php:69 site/course/course-content.php:456
 #: site/course/course-content.php:799 site/course/course-content.php:1155
@@ -2123,8 +2123,8 @@ msgid ""
 "Spiritual breathing. We breathe in. We breathe out. We’re alive. Hearing and "
 "obeying God is like that, too."
 msgstr ""
-"Ruhsal anlamda nefes almak. Nefes alırız. Nefes veririz. Hayattayız. "
-"Tanrı’yı duymak ve O’na itaat etmek de böyledir."
+"Ruhsal anlamda nefes almak. Nefes alırız. Nefes veririz. Yaşarız. Tanrı’yı "
+"duymak ve O’na itaat etmek de böyledir."
 
 #: site/course/course-content.php:235
 msgid "Why is it essential to learn to hear and recognize God’s voice?"
@@ -2149,7 +2149,7 @@ msgstr ""
 
 #: site/course/course-content.php:277 site/course/course-content.php:286
 msgid "Practice S.O.A.P.S."
-msgstr "A.G.U.D.P.’ları uygulayın."
+msgstr "K.İ.T.A.P. Yöntemi'ni uygulayın."
 
 #: site/course/course-content.php:288 site/course/course-content.php:347
 #: site/course/course-content.php:598 site/course/course-content.php:977
@@ -2173,8 +2173,8 @@ msgstr ""
 msgid ""
 "Return together and share your S.O.A.P.S. in groups of two or three. (10 min)"
 msgstr ""
-"Bir araya gelin ve iki ya da üç kişilik gruplar halinde A.G.U.D.P.'larınızı "
-"paylaşın. (10 dakika)"
+"Bir araya gelin ve iki ya da üç kişilik gruplar halinde K.İ.T.A.P. Yöntemi "
+"uyduklarınızı paylaşın. (10 dakika)"
 
 #: site/course/course-content.php:317
 msgid ""
@@ -2186,11 +2186,11 @@ msgstr ""
 
 #: site/course/course-content.php:318
 msgid "Accountability Groups are a great way to get ready!"
-msgstr "Güvenilirlik Grupları hazırlanmak için harika bir yoldur!"
+msgstr "Hesap Vereceğimiz Gruplar buna hazırlanmak için harika bir yoldur!"
 
 #: site/course/course-content.php:345
 msgid "Practice Accountability Groups"
-msgstr "Güvenilirlik Gruplarıyla Uygulama Yapın"
+msgstr "Hesap Vereceğimiz Gruplarla Uygulama Yapın"
 
 #: site/course/course-content.php:348
 msgid "Break into groups of two or three people of the same gender."
@@ -2203,8 +2203,8 @@ msgid ""
 "Spend the next 20 minutes working together through the Accountability "
 "Questions."
 msgstr ""
-"Sonraki 20 dakikayı Güvenilirlik Soruları üzerinde birlikte çalışarak "
-"geçirin."
+"Sonraki 20 dakikayı Hesap Vereceğimiz Grup Soruları üzerinde birlikte "
+"çalışarak geçirin."
 
 #: site/course/course-content.php:367 site/course/course-content.php:697
 #: site/course/course-content.php:1060 site/course/course-content.php:1465
@@ -2467,7 +2467,7 @@ msgstr ""
 
 #: site/course/course-content.php:599 site/course/course-content.php:3798
 msgid "Pray the Prayer Cycle for an hour individually"
-msgstr "Bir saat süre ile bireysel olarak Dua Döngüsü'nde dua edin."
+msgstr "Bir saat süre ile bireysel olarak Dua Halkası'yla dua edin."
 
 #: site/course/course-content.php:601 site/course/course-content.php:3799
 msgid ""
@@ -2930,8 +2930,8 @@ msgid ""
 "What is a community or segment of society near you that seems to have little "
 "(or no) Kingdom presence?"
 msgstr ""
-"Çevrenizde Egemenliğin varlığının çok az olduğu (ya da hiç olmadığı) bir "
-"topluluk ya da toplumsal kesim var mı?"
+"Çevrenizde Tanrı'nın Egemenliğinin varlığı çok az olduğu (ya da hiç olmadığı)"
+" bir topluluk ya da toplumsal kesim var mı?"
 
 #: site/course/course-content.php:1669
 msgid ""
@@ -2943,15 +2943,15 @@ msgstr ""
 
 #: site/course/course-content.php:1685
 msgid "Practice the B.L.E.S.S. Prayer"
-msgstr "B.E.D.S.R. duasını uygulayın."
+msgstr "B.E.R.E.K.E.T. Duası'nı uygulayın."
 
 #: site/course/course-content.php:1688
 msgid ""
 "Break into groups of two or three and practice praying the five areas of the "
 "B.L.E.S.S. Prayer over each other."
 msgstr ""
-"İki ya da üç kişilik gruplara ayrılın ve B.E.D.S.R. Duası'nın beş alanını "
-"birbirinizin üzerinde dua ederek uygulayın."
+"İki ya da üç kişilik gruplara ayrılın ve B.E.R.E.K.E.T. Duası'nın her bir "
+"alanını birbirinizin üzerinde dua ederek uygulayın."
 
 #: site/course/course-content.php:1703
 msgid "Prayer Walking Activity"
@@ -3067,8 +3067,8 @@ msgid ""
 "Small Group you’ve been a part of (or have heard about) in the past? If so, "
 "how would those differences impact the group?"
 msgstr ""
-"3/3 Grubu ile geçmişte parçası olduğunuz (ya da duyduğunuz) bir Kutsal Kitap "
-"Çalışması ya da Küçük Grup arasında herhangi bir değişiklik olduğunu "
+"3'te 3 Grubu ile geçmişte parçası olduğunuz (ya da duyduğunuz) bir Kutsal "
+"Kitap Çalışması ya da Küçük Grup arasında herhangi bir değişiklik olduğunu "
 "gördünüz mü? Eğer gördüyseniz, bu farklılıklar grubunuzu nasıl etkiler?"
 
 #: site/course/course-content.php:1928 site/course/course-content.php:4893
@@ -3082,7 +3082,7 @@ msgid ""
 "Spend time this week obeying, training, and sharing based on the commitments "
 "you’ve made during your 3/3 Group practice."
 msgstr ""
-"Bu hafta 3/3 Grup çalışmanız sırasında verdiğiniz sözlere bağlı kalarak "
+"Bu hafta 3'te 3 Grubu çalışmanız sırasında verdiğiniz sözlere bağlı kalarak "
 "itaat etmeye, eğitmeye ve paylaşmaya zaman ayırın."
 
 #: site/course/course-content.php:1964 site/course/course-content.php:4926
@@ -3179,7 +3179,7 @@ msgstr "En zorlayıcı olan neydi? Neden?"
 #: site/course/course-content.php:3673 site/course/course-content.php:4747
 #: site/course/course-content.php:5438
 msgid "Concept heard in this session:"
-msgstr "Bu derste işitilecek olan kavram:"
+msgstr "Bu derste işitilmiş olan kavram:"
 
 #: site/course/course-content.php:2171 site/course/course-content.php:3426
 #: site/course/course-content.php:3547 site/course/course-content.php:3677
@@ -3188,7 +3188,7 @@ msgstr "Bu derste işitilecek olan kavram:"
 #: site/course/course-content.php:4751 site/course/course-content.php:5057
 #: site/course/course-content.php:5442 site/course/course-content.php:5704
 msgid "Tool heard in this session:"
-msgstr "Bu derste işitilecek olan araç:"
+msgstr "Bu derste işitilmiş olan araç:"
 
 #: site/course/course-content.php:2188 site/course/course-content.php:5199
 msgid ""
@@ -3722,7 +3722,7 @@ msgid ""
 "Break into groups of two or three. Use the 3/3 formatted Peer Mentoring "
 "Group outline."
 msgstr ""
-"İki ya da üç kişilik gruplara ayrılın. 3/3 formatındaki Akran Mentorluk "
+"İki ya da üç kişilik gruplara ayrılın. 3'te 3 formatındaki Akran Danışmanlık "
 "Grubu taslağını kullanın."
 
 #: site/course/course-content.php:3110
@@ -3879,7 +3879,7 @@ msgstr ""
 
 #: site/course/course-content.php:3785 site/course/course-content.php:3823
 msgid "The Prayer Cycle"
-msgstr "Dua Döngüsü"
+msgstr "Dua Halkası"
 
 #: site/course/course-content.php:3800
 msgid ""
@@ -3902,7 +3902,7 @@ msgstr ""
 msgid ""
 "Use the prayer cycle to guide you as you pray for an hour sometime this week."
 msgstr ""
-"Bu hafta bir saat için dua ederken size yol göstermesi için dua döngüsünü "
+"Bu hafta bir saat için dua ederken size yol göstermesi için Dua Halkası'nı "
 "kullanın."
 
 #: site/course/course-content.php:3839
@@ -3910,7 +3910,7 @@ msgid ""
 "Share the prayer cycle with whomever the Lord directs you. Challenge them to "
 "share it with others as well."
 msgstr ""
-"Dua döngüsünü Rab’bin sizi yönlendirdikleriyle paylaşın. Onları da "
+"Dua Halkası'nı Rab’bin sizi yönlendirdikleriyle paylaşın. Onları da "
 "başkalarıyla paylaşmaları için teşvik edin."
 
 #: site/course/course-content.php:3965
@@ -4113,16 +4113,16 @@ msgstr "12. DERS"
 #: site/course/course-content.php:4768
 msgid "Pray for someone in their presence using the BLESS pattern this week."
 msgstr ""
-"Bu hafta BLESS kalıbını kullanarak onların yanında durarak birisi için dua "
-"edin."
+"Bu hafta B.E.R.E.K.E.T. Duası'nı kullanarak onların yanında durarak birisi "
+"için dua edin."
 
 #: site/course/course-content.php:4769
 msgid ""
 "Equip someone else to pray for others using the BLESS pattern and go with "
 "them as they do it."
 msgstr ""
-"BLESS kalıbını kullanarak dua etmesi için bir başkasını donatın ve bunu "
-"yaparken onlara eşlik edin."
+"B.E.R.E.K.E.T. Duası'nı kullanarak dua etmesi için bir başkasını donatın ve "
+"bunu yaparken onlara eşlik edin."
 
 #: site/course/course-content.php:4791 site/course/course-content.php:4796
 msgid "SESSION 13"
@@ -4171,7 +4171,7 @@ msgid ""
 "your list of 100 and ask God who you should invite to join you. Then invite "
 "them this week and trust God to build the group."
 msgstr ""
-"Dua edin ve Tanrı'ya bir 3/3 Grubu kurmanızı isteyip istemediğini sorun. "
+"Dua edin ve Tanrı'ya bir 3'te 3 Grubu kurmanızı isteyip istemediğini sorun. "
 "Eğer istiyorsa, 100 kişilik listenizi gözden geçirin ve Tanrı'ya size "
 "katılmaları için kimleri davet etmeniz gerektiğini sorun. Ardından bu hafta "
 "onları davet edin ve grubu oluşturması için Tanrı'ya güvenin."
@@ -4181,7 +4181,7 @@ msgid ""
 "Find someone to share the 3/3 Group format with before your group meets "
 "again. Share this person’s name with the group before you go."
 msgstr ""
-"Grubunuz tekrar bir araya gelmeden önce 3/3 Grup formatını paylaşacağınız "
+"Grubunuz tekrar bir araya gelmeden önce 3'te 3 Grup formatını paylaşacağınız "
 "birini bulun. Ayrılmadan önce bu kişinin adını grupla paylaşın."
 
 #: site/course/course-content.php:5097 site/course/course-content.php:5102
@@ -5202,7 +5202,8 @@ msgid ""
 "I will invite the following people to participate in a 3/3 Hope or Discover "
 "Group:"
 msgstr ""
-"Şu kişileri 3/3 Umut veya Keşif Grubuna katılmaları için davet edeceğim:"
+"Şu kişileri 3'te 3 Grubunda Umut veya Keşif Serisi okuma planına katılmaları "
+"için davet edeceğim:"
 
 #: site/dashboard/dashboard.php:346
 msgid ""
@@ -6373,7 +6374,7 @@ msgstr "İsa’nın bir takipçisi olmak nedir?"
 
 #: site/pages/follow-jesus.php:184
 msgid "What are the activities of a follower of Jesus?"
-msgstr "İsa'nın bir takipçisinin faaliyetleri nelerdir?"
+msgstr "İsa'yı takip edenlerin faaliyetleri nelerdir?"
 
 #: site/pages/follow-jesus.php:208
 msgid "Bible Reading"
