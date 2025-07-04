@@ -230,6 +230,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'create_training_group_explanation' => __( 'Create your own training group with our easy to set up wizard', 'zume' ),
             'join_training_group' => __( 'Join Training Group', 'zume' ),
             'join_training_group_explanation' => __( 'Join an online training group run by a coach', 'zume' ),
+            'coaching' => __( 'Coaching', 'zume' ),
             'get_a_coach' => __( 'Get a Coach', 'zume' ),
             'get_a_coach_explanation' => __( 'Connect with a coach for any help or encouragement before, during or after the training.', 'zume' ),
             'training' => __( 'Training', 'zume' ),

@@ -32,6 +32,7 @@ export class DashTrainings extends DashPage {
             groupMembersOpen: { type: Boolean, attribute: false },
             groupDetailsOpen: { type: Boolean, attribute: false },
             groupCommunicationOpen: { type: Boolean, attribute: false },
+            coachingToolsOpen: { type: Boolean, attribute: false },
             copyFeedback: { type: Object, attribute: false },
         }
     }
@@ -640,6 +641,9 @@ export class DashTrainings extends DashPage {
     toggleGroupCommunication() {
         this.groupCommunicationOpen = !this.groupCommunicationOpen
     }
+    toggleCoachingTools() {
+        this.coachingToolsOpen = !this.coachingToolsOpen
+    }
     makeTrainingItemHref(item, sessionId) {
         //const href = [ jsObject.site_url, jsObject.language, item.slug ].join('/')
 
@@ -1218,16 +1222,6 @@ export class DashTrainings extends DashPage {
                                                 </ol>
                                             `
                                           : ''}
-                                      ${this.isCoach()
-                                          ? html`
-                                                <a
-                                                    href=${this.makeGroupMembersHref()}
-                                                    target="_blank"
-                                                    >${jsObject.translations
-                                                        .group_members_link}</a
-                                                >
-                                            `
-                                          : ''}
                                   </div>
                                   <button
                                       @click=${this.inviteFriends}
@@ -1364,7 +1358,7 @@ export class DashTrainings extends DashPage {
                                       </div>
                                   </div>
                               </div>
-                              ${ this.isCoach() ? html`
+                              ${ this.isGroupLeader() ? html`
                                         <div
                                             class="card | group-communication | grow-0"
                                         >
@@ -1466,6 +1460,52 @@ export class DashTrainings extends DashPage {
                                                     </p>
                                                 </button>`
                                               : ''}
+                                        </div>
+                                        ` : ''}
+                              ${ this.isCoach() ? html`
+                                        <div
+                                            class="card | coaching-tools | grow-0"
+                                        >
+                                            <button
+                                                class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
+                                                @click=${this
+                                                    .toggleCoachingTools}
+                                            >
+                                                <span
+                                                    class="icon z-icon-coach brand-light"
+                                                ></span>
+                                                <span
+                                                    >${jsObject.translations
+                                                        .coaching}</span
+                                                >
+                                                <img
+                                                    class="chevron | svg w-1rem h-1rem ${this
+                                                        .coachingToolsOpen
+                                                        ? 'rotate-180'
+                                                        : ''}"
+                                                    src=${jsObject.images_url +
+                                                    '/chevron.svg'}
+                                                />
+                                            </button>
+                                            <div
+                                                class="zume-collapse"
+                                                ?data-expand=${this.coachingToolsOpen}
+                                            >
+                                                <div class="stack--2 mt-0">
+                                                  <a
+                                                      href=${this.makeGroupMembersHref()}
+                                                      target="_blank"
+                                                      >${jsObject.translations
+                                                          .group_members_link}</a
+                                                  >
+                                                  <a
+                                                      href="/coaching"
+                                                      target="_blank"
+                                                      >${jsObject.translations
+                                                          .coaching_portal}</a
+                                                  >
+                                                </div>
+                                            </div>
                                         </div>
                                         ` : ''}
                           `
