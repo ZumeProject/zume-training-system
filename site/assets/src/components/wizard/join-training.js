@@ -2,6 +2,7 @@ import { LitElement, html } from 'lit'
 import { zumeRequest } from '../../js/zumeRequest'
 import { WizardStateManager } from './wizard-state-manager'
 import { Modules, Steps } from './wizard-constants'
+import { zumeAttachObservers } from '../../js/zumeAttachObservers'
 
 export class JoinTraining extends LitElement {
     static get properties() {
@@ -14,13 +15,15 @@ export class JoinTraining extends LitElement {
             variant: { type: String },
 
             code: { attribute: false },
-            message: { type: Array, attribute: false },
+            message: { type: String, attribute: false },
             errorMessage: { type: String, attribute: false },
             successMessage: { type: String, attribute: false },
+            success: { type: Boolean, attribute: false },
             loading: { type: Boolean, attribute: false },
             success: { type: Boolean, attribute: false },
             showTrainings: { attribute: false },
             showNextStep: { attribute: false },
+            privacyPolicyOpen: { type: Boolean, attribute: false },
         }
     }
 
@@ -30,10 +33,12 @@ export class JoinTraining extends LitElement {
         this.code = ''
         this.errorMessage = ''
         this.successMessage = ''
-        this.message = []
+        this.success = false
+        this.message = ''
         this.showTrainings = false
         this.showNextStep = false
         this.loading = false
+        this.privacyPolicyOpen = false
         this.stateManager = WizardStateManager.getInstance(Modules.joinTraining)
     }
 
@@ -65,16 +70,14 @@ export class JoinTraining extends LitElement {
                 detail: { loading: this.loading },
             })
         )
-        this.message.push(this.t.please_wait)
+        this.message = this.t.please_wait
         this.code = code
         zumeRequest
             .post('connect/public-plan', { code })
             .then((data) => {
                 this.successMessage = this.t.success.replace('%s', data.name)
                 this.success = true
-                this.message = [
-                  this.t.contact_visibility1,
-                ]
+                this.message = ''
 
                 if (!data.coach_request_success) {
                   this.setErrorMessage(this.t.coach_request_failed)
@@ -86,7 +89,7 @@ export class JoinTraining extends LitElement {
             })
             .catch((error) => {
                 console.log(error)
-                this.message = []
+                this.message = ''
                 if (error.code === 'bad_plan_code') {
                     this.setErrorMessage(this.t.broken_link)
                 } else {
@@ -95,6 +98,7 @@ export class JoinTraining extends LitElement {
             })
             .finally(() => {
                 this.loading = false
+                zumeAttachObservers(this.renderRoot, 'join-training')
                 this.dispatchEvent(
                     new CustomEvent('loadingChange', {
                         bubbles: true,
@@ -137,8 +141,8 @@ export class JoinTraining extends LitElement {
         this.dispatchEvent(doneStepEvent)
     }
 
-    renderMessage() {
-        return this.message.map(message => html`<p>${message}</p>`)
+    togglePrivacyPolicy() {
+        this.privacyPolicyOpen = !this.privacyPolicyOpen
     }
 
     render() {
@@ -147,7 +151,7 @@ export class JoinTraining extends LitElement {
             <div class="stack--2">
               <div class="success banner" data-state=${this.successMessage.length ? '' : 'empty'}>${this.successMessage}</div>
               <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
-              ${this.renderMessage()}
+              ${this.message.length ? html`<p>${this.message}</p>` : ''}
             </div>
             <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
             ${this.showTrainings && this.variant === Steps.joinTrainingSelection
@@ -159,6 +163,16 @@ export class JoinTraining extends LitElement {
                       ></public-trainings>
                   `
                 : ''}
+            ${this.success ? html`
+                <button class="btn outline tight" @click=${this.togglePrivacyPolicy}>
+                  ${this.t.privacy_policy}
+                </button>
+                <div class="zume-collapse" ?data-expand=${this.privacyPolicyOpen}>
+                  <ul role="list" class="fit-content mt-1 mx-auto text-left">
+                    <li>${this.t.contact_visibility1}</li>
+                  </ul>
+                </div>
+            ` : ''}
             ${this.showNextStep || (this.success && this.hasNextStep)
                 ? html`
                       <button class="btn" @click=${this._sendDoneStepEvent}>
