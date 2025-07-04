@@ -201,7 +201,6 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'communications_email' => __( 'Communications Email', 'zume' ),
             'email_preferences' => __( 'Email Preferences', 'zume' ),
             'email_preferences_disclaimer' => __( 'Choose which email lists you want to receive', 'zume' ),
-            'notify_of_future_trainings' => __( 'Receive email notifications for future trainings', 'zume' ),
             'public_contact_consent' => __( 'I consent to my contact information being viewable in private trainings', 'zume' ),
             'email_notification_reminder' => __( 'Don\'t forget to send subscribers an email to notify them of the training.', 'zume' ),
             'city' => __( 'City', 'zume' ),

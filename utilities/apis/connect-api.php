@@ -76,8 +76,6 @@ class Zume_Connect_Endpoints
             sprintf( __( 'Hello %s', 'zume' ), $name ),
             __( 'You have successfully subscribed to receive notifications about future trainings.', 'zume' ),
             __( 'You can unsubscribe from these notifications at any time.', 'zume' ),
-            __( 'Best regards,', 'zume' ),
-            __( 'The Zume Team', 'zume' ),
         ];
         $email_message = implode( "\n", array_map( function ( $message ) {
             return '<p>' . $message . '</p>';
