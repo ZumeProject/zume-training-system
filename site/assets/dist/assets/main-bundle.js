@@ -173,7 +173,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                       ></public-trainings>
                   `:""}
             ${this.success?c`
-                <button class="btn outline tight" @click=${this.togglePrivacyPolicy}>
+                <button class="btn outline tight mt-0" @click=${this.togglePrivacyPolicy}>
                   ${this.t.privacy_policy}
                 </button>
                 <div class="zume-collapse" ?data-expand=${this.privacyPolicyOpen}>

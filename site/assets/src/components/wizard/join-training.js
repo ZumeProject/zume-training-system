@@ -164,7 +164,7 @@ export class JoinTraining extends LitElement {
                   `
                 : ''}
             ${this.success ? html`
-                <button class="btn outline tight" @click=${this.togglePrivacyPolicy}>
+                <button class="btn outline tight mt-0" @click=${this.togglePrivacyPolicy}>
                   ${this.t.privacy_policy}
                 </button>
                 <div class="zume-collapse" ?data-expand=${this.privacyPolicyOpen}>
