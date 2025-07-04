@@ -2251,20 +2251,6 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                                 </div>
                                                 ${this.isCoach()&&this.training.visibility.key==="public"?c`
                                                   <div class="stack--2 | mt-0">
-                                                      <p class="text-left">
-                                                          ${jsObject.translations.subscribers}:
-                                                          ${jsObject.subscribers_count}
-                                                      </p>
-                                                      <p class="text-left">
-                                                          ${jsObject.translations.has_joined_a_group}:
-                                                          ${jsObject.subscribers_in_online_training}
-                                                      </p>
-                                                      ${this.training.has_emailed_notification?c`
-                                                            <p class="text-left">
-                                                              ${jsObject.translations.last_emailed_notification}:
-                                                              ${new Date(this.training.last_emailed_notification*1e3).toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"})}
-                                                            </p>
-                                                            `:""}
                                                       <button
                                                           class="btn brand tight mt--2 ${this.training.has_emailed_notification?"disabled":""}"
                                                           ?disabled=${this.training.has_emailed_notification}
@@ -2275,15 +2261,6 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                                   </div>
                                                   `:""}
                                             </div>
-                                            ${this.isCoach()&&this.training.visibility.key==="public"&&!this.groupCommunicationOpen&&!this.training.has_emailed_notification?c`
-                                                <button
-                                                    class="banner warning"
-                                                    @click=${this.toggleGroupCommunication}
-                                                >
-                                                    <p>
-                                                        ${jsObject.translations.email_notification_reminder}
-                                                    </p>
-                                                </button>`:""}
                                         </div>
                                         `:""}
                           `:""}
