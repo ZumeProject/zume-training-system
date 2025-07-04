@@ -70,10 +70,8 @@ class Zume_Connect_Endpoints
         $result = DT_Posts::update_post( 'contacts', $contact_id, $fields, true, false );
 
         $email = $contact['user_email'];
-        $name = $contact['name'];
 
         $message = [
-            sprintf( __( 'Hello %s', 'zume' ), $name ),
             __( 'You have successfully subscribed to receive notifications about future trainings.', 'zume' ),
             __( 'You can unsubscribe from these notifications at any time.', 'zume' ),
         ];
@@ -81,9 +79,16 @@ class Zume_Connect_Endpoints
             return '<p>' . $message . '</p>';
         }, $message ) );
 
-        $subject = __( 'Zume Training - Future Trainings', 'zume' );
+        $email_message = Zume_System_Encouragement_API::build_email( $email_message, '', $user_id );
 
-        $email_sent = wp_mail( $email, $subject, $email_message );
+        $subject = __( 'Zume Training - Future Trainings', 'zume' );
+        $headers = array(
+            'Content-Type: text/html; charset=UTF-8',
+            'MIME-Version: 1.0',
+            'X-Zume-Email-System: 1.0'
+        );
+
+        $email_sent = wp_mail( $email, $subject, $email_message, $headers );
 
         if ( !$email_sent ) {
             wp_queue()->push( new Zume_email_job( $email, $subject, $email_message ) );
