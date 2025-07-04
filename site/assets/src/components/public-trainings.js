@@ -1,5 +1,8 @@
-import { LitElement, html, css } from 'lit'
-import { zumeAttachObservers } from '../js/zumeAttachObservers'
+import { LitElement, html } from 'lit'
+import {
+    zumeAttachObservers,
+    zumeDetachObservers,
+} from '../js/zumeAttachObservers'
 import { zumeRequest } from '../js/zumeRequest'
 import { DateTime } from 'luxon'
 
@@ -33,14 +36,11 @@ export class PublicTrainings extends LitElement {
         this.renderRow = this.renderRow.bind(this)
     }
 
-    firstUpdated() {
-        super.firstUpdated()
-
-        zumeAttachObservers(this.renderRoot, 'public-trainings')
-    }
-
-    updated() {
-        zumeAttachObservers(this.renderRoot, 'public-trainings')
+    updated(changedProperties) {
+        if (changedProperties.has('loading')) {
+            zumeDetachObservers(this.renderRoot, 'public-trainings')
+            zumeAttachObservers(this.renderRoot, 'public-trainings')
+        }
     }
 
     getTrainings() {
@@ -90,7 +90,7 @@ export class PublicTrainings extends LitElement {
             <button class="btn" @click=${this._handleNotifyMe}>
                 ${this.t.notify_of_future_trainings_button}
             </button>
-            <div class="zume-collapse" data-state=${this.notifyMeOpen ? 'open' : 'closed'}>
+            <div class="zume-collapse" ?data-expand=${this.notifyMeOpen}>
                 <h3>${this.t.notify_of_future_trainings_title}</h3>
                 <p>${this.t.notify_of_future_trainings_description}</p>
                 <p>${this.t.notify_of_future_trainings_unsubscribe}</p>
