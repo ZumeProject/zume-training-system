@@ -198,6 +198,11 @@ class Zume_Training {
                 'permissions' => $permissions,
             ];
         }
+
+        if ( isset( $expected_roles['multiplier'] ) ) {
+            $expected_roles['multiplier']['permissions']['access_disciple_tools'] = false;
+        }
+
         return $expected_roles;
     }
 
