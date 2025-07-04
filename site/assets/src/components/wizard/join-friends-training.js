@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { zumeRequest } from '../../js/zumeRequest';
+import { zumeAttachObservers } from '../../js/zumeAttachObservers';
 
 export class JoinFriendsTraining extends LitElement {
 
@@ -14,7 +15,9 @@ export class JoinFriendsTraining extends LitElement {
             message: { type: Array, attribute: false },
             errorMessage: { type: String, attribute: false },
             successMessage: { type: String, attribute: false },
+            success: { type: Boolean, attribute: false },
             loading: { type: Boolean, attribute: false },
+            privacyPolicyOpen: { type: Boolean, attribute: false },
         };
     }
 
@@ -24,8 +27,10 @@ export class JoinFriendsTraining extends LitElement {
         this.code = ''
         this.errorMessage = ''
         this.successMessage = ''
+        this.success = false
         this.message = []
         this.loading = false
+        this.privacyPolicyOpen = false
     }
 
     firstUpdated() {
@@ -47,12 +52,9 @@ export class JoinFriendsTraining extends LitElement {
 
         zumeRequest.post( 'connect/plan', { code: code } )
             .then( ( data ) => {
+                this.success = true
                 this.successMessage = this.t.success.replace('%s', data.name)
-                this.message = [
-                  this.t.contact_visibility1,
-                  this.t.contact_visibility2,
-                  this.t.contact_visibility3
-                ]
+                this.message = ''
 
                 const url = new URL(location.href)
                 url.searchParams.set('joinKey', code)
@@ -60,6 +62,7 @@ export class JoinFriendsTraining extends LitElement {
             })
             .catch((error) => {
                 console.log(error)
+                this.success = false
                 this.message = ''
                 if ( error.code === 'bad_plan_code' ) {
                     this.setErrorMessage(this.t.broken_link)
@@ -69,6 +72,7 @@ export class JoinFriendsTraining extends LitElement {
             })
             .finally(() => {
                 this.loading = false
+                zumeAttachObservers(this.renderRoot, 'join-friends-training')
                 this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
                 this.dispatchEvent(new CustomEvent('wizard:finish', { bubbles: true }))
             })
@@ -78,8 +82,8 @@ export class JoinFriendsTraining extends LitElement {
         this.errorMessage = message
     }
 
-    renderMessage() {
-        return this.message.map(message => html`<p>${message}</p>`)
+    togglePrivacyPolicy() {
+        this.privacyPolicyOpen = !this.privacyPolicyOpen
     }
 
     render() {
@@ -87,10 +91,23 @@ export class JoinFriendsTraining extends LitElement {
             <h1>${this.t.title}</h1>
             <div class="stack--2">
               <div class="success banner" data-state=${this.successMessage.length ? '' : 'empty'}>${this.successMessage}</div>
-              ${this.renderMessage()}
+              ${this.message.length ? html`<p>${this.message}</p>` : ''}
               <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
             </div>
             <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
+            ${this.success ? html`
+                <button class="btn outline tight" @click=${this.togglePrivacyPolicy}>
+                  ${this.t.privacy_policy}
+                </button>
+                <div class="zume-collapse" ?data-expand=${this.privacyPolicyOpen}>
+                  <ul role="list" class="fit-content mt-1 mx-auto text-left">
+                    <li>${this.t.contact_visibility1}</li>
+                    <li>${this.t.contact_visibility2}</li>
+                    <li>${this.t.contact_visibility3}</li>
+                  </ul>
+                  <a href="/dashboard/profile" class="btn brand tight">${this.t.change_preferences}</a>
+                </div>
+            ` : ''}
         `;
     }
 
