@@ -1,4 +1,4 @@
-import { DataWatcher } from './DataWatcher'
+import { DataWatcher } from './DataWatcher.js'
 
 const dataWatchers = {}
 
