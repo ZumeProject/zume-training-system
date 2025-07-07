@@ -604,10 +604,22 @@ export class DashBoard extends navigator(router(LitElement)) {
         }
     }
     openProfile() {
+        const url = new URL(window.location.href)
+        url.searchParams.set('modal', 'profile')
+        window.history.pushState({}, null, url.toString())
+        this.openProfileModal()
+    }
+    closeProfile() {
+      const url = new URL(window.location.href)
+      url.searchParams.delete('modal')
+      window.history.pushState({}, null, url.toString())
+      this.closeProfileModal()
+    }
+    openProfileModal() {
         const modal = document.querySelector('#profile-modal')
         jQuery(modal).foundation('open')
     }
-    closeProfile() {
+    closeProfileModal() {
         const modal = document.querySelector('#profile-modal')
         jQuery(modal).foundation('close')
     }
