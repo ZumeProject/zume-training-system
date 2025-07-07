@@ -2955,16 +2955,18 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                           ${jsObject.translations.notify_of_future_trainings}
                       </label>
                   </div>
-                  <div class="stack my-0" data-fit-content>
+                  <div class="stack-1 my-0" data-fit-content>
                     <button class="btn" id="submit-email-preferences" ?disabled=${this.loading}>
                       ${jsObject.translations.save}
                     </button>
-                    <a href=${jsObject.urls.logout} class="btn outline">
-                      ${jsObject.translations.logout}
-                    </a>
                   </div>
                 </form>
             </div>
+            <hr class="my-2">
+            <a href=${jsObject.urls.logout} class="btn outline fit-content">
+              ${jsObject.translations.logout}
+            </a>
+
 
         `}createRenderRoot(){return this}}customElements.define("profile-form",pl);class ml extends Ke{constructor(){super()}render(){return c`
             <div
