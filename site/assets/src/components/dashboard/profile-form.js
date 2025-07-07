@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit'
+import { zumeAttachObservers } from '../../js/zumeAttachObservers'
 
 export class ProfileForm extends LitElement {
     static get properties() {
@@ -35,6 +36,7 @@ export class ProfileForm extends LitElement {
         this.publicContactConsentInput = this.renderRoot.querySelector(
             '#public_contact_consent'
         )
+        zumeAttachObservers(this.renderRoot, 'profile-form')
     }
 
     submitProfileForm(e) {
@@ -179,7 +181,7 @@ export class ProfileForm extends LitElement {
                     </div>
                     <div
                       class="info-area zume-collapse ${this.infosOpen.includes('name') ? 'mt-0' : ''}"
-                      data-state=${this.infosOpen.includes('name') ? 'open' : 'closed'}
+                      ?data-expand=${this.infosOpen.includes('name')}
                     >
                         <div class="card mw-50ch mx-auto">
                             <p>${jsObject.translations.user_name_disclaimer}</p>
@@ -203,7 +205,7 @@ export class ProfileForm extends LitElement {
                     </div>
                     <div
                         class="info-area zume-collapse ${this.infosOpen.includes('phone') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}"
-                        data-state=${this.infosOpen.includes('phone') ? 'open' : 'closed'}
+                        ?data-expand=${this.infosOpen.includes('phone')}
                     >
                         <div class="card mw-50ch mx-auto">
                             <p>
@@ -233,7 +235,7 @@ export class ProfileForm extends LitElement {
                     </div>
                     <div
                       class="info-area zume-collapse ${this.infosOpen.includes('email') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}"
-                      data-state=${this.infosOpen.includes('email') ? 'open' : 'closed'}
+                      ?data-expand=${this.infosOpen.includes('email')}
                     >
                         <div class="card mw-50ch mx-auto">
                             <p>
@@ -285,16 +287,12 @@ export class ProfileForm extends LitElement {
                               ? 'mt-0'
                               : ''
                       } ${this.isSSOUser() ? 'd-none' : ''}"
-                      data-state=${
-                          this.infosOpen.includes('communications_email')
-                              ? 'open'
-                              : 'closed'
-                          }
+                      ?data-expand=${this.infosOpen.includes('communications_email')}
                     >
                         <div class="card mw-50ch mx-auto">
                             <p>${
                                 jsObject.translations
-                                    .user_communications_email_disclaimer
+                                    .user_email_disclaimer
                             }</p>
                         </div>
                     </div>
@@ -317,9 +315,7 @@ export class ProfileForm extends LitElement {
                     </div>
                     <div
                       class="info-area zume-collapse ${this.infosOpen.includes('city') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}"
-                      data-state=${
-                          this.infosOpen.includes('city') ? 'open' : 'closed'
-                      }
+                      ?data-expand=${this.infosOpen.includes('city')}
                     >
                         <div class="card mw-50ch mx-auto">
                             <p>${jsObject.translations.user_city_disclaimer}</p>
@@ -392,11 +388,8 @@ export class ProfileForm extends LitElement {
                               ? 'mt-0'
                               : ''
                       } ${this.isSSOUser() ? 'd-none' : ''}"
-                      data-state=${
-                          this.infosOpen.includes('preferred_language')
-                              ? 'open'
-                              : 'closed'
-                      }>
+                      ?data-expand=${this.infosOpen.includes('preferred_language')}
+                      >
                         <div class="card mw-50ch mx-auto">
                             <p>
                               ${jsObject.translations.user_preferred_language_disclaimer}
