@@ -22,14 +22,15 @@ class Zume_Plans_Model {
         $is_private_group = $training_group['visibility']['key'] === 'private';
 
         foreach ( $training_group['participants'] as $i => $participant ) {
-            if ( $is_private_group ) {
+            $post_id = self::can_user_edit_plan( $training_group['join_key'], $user_id );
+            $hide_public_progress = get_post_meta( $participant['ID'], 'hide_public_progress', true );
+            if ( !is_wp_error( $post_id ) || ( $hide_public_progress !== '1' && $is_private_group ) ) {
                 $user_id = zume_get_user_id_by_contact_id( $participant['ID'] );
                 $training_group['participants'][$i]['progress'] = zume_get_user_host( $user_id );
             }
 
             $hide_public_contact = get_post_meta( $participant['ID'], 'hide_public_contact', true );
 
-            $post_id = self::can_user_edit_plan( $training_group['join_key'], $user_id );
             if ( !is_wp_error( $post_id ) ||
                 ( $hide_public_contact !== '1' && $is_private_group )
             ) {

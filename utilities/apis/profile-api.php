@@ -145,6 +145,7 @@ class Zume_Profile_Model {
         $preferred_language = isset( $fields['preferred_language'] ) ? $fields['preferred_language'] : '';
         $contact_preference = isset( $fields['contact_preferences'] ) ? $fields['contact_preferences'] : [];
         $hide_public_contact = isset( $fields['hide_public_contact'] ) ? $fields['hide_public_contact'] : false;
+        $hide_public_progress = isset( $fields['hide_public_progress'] ) ? $fields['hide_public_progress'] : false;
 
         $user_updates = [];
         $updates = [];
@@ -184,6 +185,8 @@ class Zume_Profile_Model {
         }
 
         $updates['hide_public_contact'] = $hide_public_contact;
+
+        $updates['hide_public_progress'] = $hide_public_progress;
 
         $contact_id = zume_get_user_contact_id( $user_id );
 

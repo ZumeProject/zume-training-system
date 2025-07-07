@@ -36,6 +36,9 @@ export class ProfileForm extends LitElement {
         this.hidePublicContactInput = this.renderRoot.querySelector(
             '#hide_public_contact'
         )
+        this.hidePublicProgressInput = this.renderRoot.querySelector(
+            '#hide_public_progress'
+        )
         zumeAttachObservers(this.renderRoot, 'profile-form')
     }
 
@@ -124,6 +127,8 @@ export class ProfileForm extends LitElement {
         const data = {
             hide_public_contact:
                 this.hidePublicContactInput.checked,
+            hide_public_progress:
+                this.hidePublicProgressInput.checked,
         }
 
         this.loading = true
@@ -489,6 +494,32 @@ export class ProfileForm extends LitElement {
                           <p>${jsObject.wizard_translations.join_training.contact_visibility1}</p>
                       </div>
                     </div>
+                  </div>
+                  <div>
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="form-control brand-light">
+                            <input
+                                type="checkbox"
+                                id="hide_public_progress"
+                                ?checked=${this.userProfile.hide_public_progress === '1'}
+                            />
+                            <label for="hide_public_progress">
+                                ${jsObject.translations.hide_public_progress}
+                            </label>
+                        </div>
+                        <button
+                          type="button"
+                          class="icon-btn f-1 ${this.isSSOUser() ? 'invisible' : ''}"
+                          @click=${() => this._toggleInfo('hide_public_progress')}
+                        >
+                            <span class="icon z-icon-info brand-light"></span>
+                        </button>
+                      </div>
+                      <div class="info-area zume-collapse ${this.infosOpen.includes('hide_public_progress') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}" ?data-expand=${this.infosOpen.includes('hide_public_progress')}>
+                        <div class="card mw-50ch mx-auto">
+                            <p>${jsObject.translations.progress_visibility}</p>
+                        </div>
+                      </div>
                   </div>
                   <div class="stack-1 my-0" data-fit-content>
                     <button class="btn" id="submit-privacy-settings" ?disabled=${this.loading}>

@@ -1529,16 +1529,18 @@ export class DashTrainings extends DashPage {
                         </ul>` : ''
                     }
                   </div>
-                  <div>
-                    <h3 class="brand-light">${jsObject.translations.progress}</h3>
-                    <ul>
-                        ${repeat(
-                            Object.values(jsObject.training_items),
-                          (training_item) => training_item.key,
-                          this.renderTrainingItem
-                        )}
-                    </ul>
-                  </div>
+                  ${this.groupMemberToView.progress ? html`
+                    <div>
+                      <h3 class="brand-light">${jsObject.translations.progress}</h3>
+                      <ul>
+                          ${repeat(
+                              Object.values(jsObject.training_items),
+                            (training_item) => training_item.key,
+                            this.renderTrainingItem
+                          )}
+                      </ul>
+                    </div>
+                  ` : ''}
                 </div>
             </div>
             <div
