@@ -27,11 +27,11 @@ class Zume_Plans_Model {
                 $training_group['participants'][$i]['progress'] = zume_get_user_host( $user_id );
             }
 
-            $public_contact_consent = get_post_meta( $participant['ID'], 'public_contact_consent', true );
+            $hide_public_contact = get_post_meta( $participant['ID'], 'hide_public_contact', true );
 
             $post_id = self::can_user_edit_plan( $training_group['join_key'], $user_id );
             if ( !is_wp_error( $post_id ) ||
-                ( $public_contact_consent === '1' && $is_private_group )
+                ( $hide_public_contact !== '1' && $is_private_group )
             ) {
                 $contact_meta = zume_get_contact_meta( $participant['ID'] );
                 $training_group['participants'][$i]['email'] = $contact_meta['user_communications_email'] ?? $contact_meta['user_email'] ?? '';

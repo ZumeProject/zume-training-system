@@ -33,8 +33,8 @@ export class ProfileForm extends LitElement {
         this.notifyOfFutureTrainingsInput = this.renderRoot.querySelector(
             '#notify_of_future_trainings'
         )
-        this.publicContactConsentInput = this.renderRoot.querySelector(
-            '#public_contact_consent'
+        this.hidePublicContactInput = this.renderRoot.querySelector(
+            '#hide_public_contact'
         )
         zumeAttachObservers(this.renderRoot, 'profile-form')
     }
@@ -47,7 +47,7 @@ export class ProfileForm extends LitElement {
         const communications_email = this.preferredEmailInput.value
         const phone = this.phoneInput.value
         const preferred_language = this.prefferedLanguageInput.value
-        const public_contact_consent = this.publicContactConsentInput.checked ? '1' : '0'
+        const hide_public_contact = this.hidePublicContactInput.checked ? '1' : '0'
 
         const data = {
             name,
@@ -55,7 +55,7 @@ export class ProfileForm extends LitElement {
             email,
             communications_email,
             preferred_language,
-            public_contact_consent,
+            hide_public_contact,
         }
 
         data.location_grid_meta = getLocationGridFromMapbox(
@@ -400,22 +400,22 @@ export class ProfileForm extends LitElement {
                     <div class="form-control brand-light">
                         <input
                             type="checkbox"
-                            id="public_contact_consent"
-                            ?checked=${this.userProfile.public_contact_consent === '1'}
+                            id="hide_public_contact"
+                            ?checked=${this.userProfile.hide_public_contact === '1'}
                         />
-                        <label for="public_contact_consent">
-                            ${jsObject.translations.public_contact_consent}
+                        <label for="hide_public_contact">
+                            ${jsObject.translations.hide_public_contact}
                         </label>
                     </div>
                     <button
                       type="button"
                       class="icon-btn f-1 ${this.isSSOUser() ? 'invisible' : ''}"
-                      @click=${() => this._toggleInfo('public_contact_consent')}
+                      @click=${() => this._toggleInfo('hide_public_contact')}
                     >
                         <span class="icon z-icon-info brand-light"></span>
                     </button>
                   </div>
-                  <div class="info-area zume-collapse ${this.infosOpen.includes('public_contact_consent') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}" ?data-expand=${this.infosOpen.includes('public_contact_consent')}>
+                  <div class="info-area zume-collapse ${this.infosOpen.includes('hide_public_contact') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}" ?data-expand=${this.infosOpen.includes('hide_public_contact')}>
                     <div class="card mw-50ch mx-auto">
                         <p>${jsObject.wizard_translations.join_training.contact_visibility1}</p>
                     </div>
