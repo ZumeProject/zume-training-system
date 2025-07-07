@@ -118,6 +118,31 @@ export class ProfileForm extends LitElement {
                 this.loading = false
             })
     }
+    submitPreferences(e) {
+        e.preventDefault()
+
+        const data = {
+            hide_public_contact:
+                this.hidePublicContactInput.checked,
+        }
+
+        this.loading = true
+
+        fetch(jsObject.rest_endpoint + '/profile', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'X-WP-Nonce': jsObject.nonce,
+            },
+        })
+            .then((response) => response.json())
+            .catch((error) => {
+                console.error(error)
+            })
+            .finally(() => {
+                this.loading = false
+            })
+    }
 
     /* I couldn't get this to bind correctly, so have made an arrow function to implicitly gain access to 'this' of the class */
     addressCallback = (data) => {
@@ -395,32 +420,7 @@ export class ProfileForm extends LitElement {
                         </div>
                     </div>
                 </div>
-                <div>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div class="form-control brand-light">
-                        <input
-                            type="checkbox"
-                            id="hide_public_contact"
-                            ?checked=${this.userProfile.hide_public_contact === '1'}
-                        />
-                        <label for="hide_public_contact">
-                            ${jsObject.translations.hide_public_contact}
-                        </label>
-                    </div>
-                    <button
-                      type="button"
-                      class="icon-btn f-1 ${this.isSSOUser() ? 'invisible' : ''}"
-                      @click=${() => this._toggleInfo('hide_public_contact')}
-                    >
-                        <span class="icon z-icon-info brand-light"></span>
-                    </button>
-                  </div>
-                  <div class="info-area zume-collapse ${this.infosOpen.includes('hide_public_contact') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}" ?data-expand=${this.infosOpen.includes('hide_public_contact')}>
-                    <div class="card mw-50ch mx-auto">
-                        <p>${jsObject.wizard_translations.join_training.contact_visibility1}</p>
-                    </div>
-                  </div>
-                </div>
+
                 <div class="stack my-0" data-fit-content>
                     <button
                       class="btn"
@@ -458,8 +458,47 @@ export class ProfileForm extends LitElement {
                   </div>
                 </form>
             </div>
-            <hr class="my-2">
-            <a href=${jsObject.urls.logout} class="btn outline fit-content">
+            <hr>
+            <div class="stack--2">
+                <h3 class="h4">
+                  ${jsObject.translations.preferences}
+                </h3>
+                <form @submit=${this.submitPreferences} class="stack--2">
+                  <div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="form-control brand-light">
+                          <input
+                              type="checkbox"
+                              id="hide_public_contact"
+                              ?checked=${this.userProfile.hide_public_contact === '1'}
+                          />
+                          <label for="hide_public_contact">
+                              ${jsObject.translations.hide_public_contact}
+                          </label>
+                      </div>
+                      <button
+                        type="button"
+                        class="icon-btn f-1 ${this.isSSOUser() ? 'invisible' : ''}"
+                        @click=${() => this._toggleInfo('hide_public_contact')}
+                      >
+                          <span class="icon z-icon-info brand-light"></span>
+                      </button>
+                    </div>
+                    <div class="info-area zume-collapse ${this.infosOpen.includes('hide_public_contact') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}" ?data-expand=${this.infosOpen.includes('hide_public_contact')}>
+                      <div class="card mw-50ch mx-auto">
+                          <p>${jsObject.wizard_translations.join_training.contact_visibility1}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="stack-1 my-0" data-fit-content>
+                    <button class="btn" id="submit-privacy-settings" ?disabled=${this.loading}>
+                      ${jsObject.translations.save}
+                    </button>
+                  </div>
+                </form>
+            </div>
+            <hr>
+            <a href=${jsObject.urls.logout} class="btn outline fit-content mt-2">
               ${jsObject.translations.logout}
             </a>
 
