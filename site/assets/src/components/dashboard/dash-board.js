@@ -108,6 +108,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.showCelebrationModal = this.showCelebrationModal.bind(this)
         this.updateTrainingGroups = this.updateTrainingGroups.bind(this)
         this.renderTrainingGroupLink = this.renderTrainingGroupLink.bind(this)
+        this.handlePopState = this.handlePopState.bind(this)
     }
 
     connectedCallback() {
@@ -128,6 +129,7 @@ export class DashBoard extends navigator(router(LitElement)) {
 
         window.addEventListener('load', this.showCelebrationModal)
         window.addEventListener('ctas:changed', this.showCelebrationModal)
+        window.addEventListener('popstate', this.handlePopState)
 
         this.addEventListener('route', this.updateLanguageSwitcher)
     }
@@ -170,6 +172,14 @@ export class DashBoard extends navigator(router(LitElement)) {
         }
         this.trainingGroupsOpen = jQuery('#training-groups-menu').hasClass('is-active')
 
+        const profileModal = document.querySelector('#profile-modal')
+        if (profileModal) {
+            jQuery(profileModal).on('closed.zf.reveal', () => {
+                this.closeProfilePushState()
+            })
+        }
+
+
         // Initialize Foundation
         jQuery(this.renderRoot).foundation()
 
@@ -183,6 +193,16 @@ export class DashBoard extends navigator(router(LitElement)) {
                 const newUrl = window.location.pathname + window.location.hash
                 window.history.replaceState({}, '', newUrl)
             }, 0)
+        }
+    }
+
+    handlePopState(event) {
+        const { profile } = event.state
+        const url = new URL(window.location.href)
+        if (profile || url.searchParams.get('profile') === 'true') {
+            this.openProfileModal()
+        } else {
+          this.closeProfileModal()
         }
     }
 
@@ -605,15 +625,18 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
     openProfile() {
         const url = new URL(window.location.href)
-        url.searchParams.set('modal', 'profile')
-        window.history.pushState({}, null, url.toString())
+        url.searchParams.set('profile', 'true')
+        window.history.pushState({ profile: true }, null, url.toString())
         this.openProfileModal()
     }
     closeProfile() {
-      const url = new URL(window.location.href)
-      url.searchParams.delete('modal')
-      window.history.pushState({}, null, url.toString())
+      this.closeProfilePushState()
       this.closeProfileModal()
+    }
+    closeProfilePushState() {
+      const url = new URL(window.location.href)
+      url.searchParams.delete('profile')
+      window.history.pushState({ profile: false }, null, url.toString())
     }
     openProfileModal() {
         const modal = document.querySelector('#profile-modal')
