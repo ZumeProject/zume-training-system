@@ -357,6 +357,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'notify_of_future_trainings' => __( 'Notify me about future trainings', 'zume' ),
             'preferences' => __( 'Preferences', 'zume' ),
             'progress_visibility' => __( 'Your progress is always visible to the group leader.', 'zume' ),
+            'contact_hidden' => __( 'Contact information is currently hidden from other participants in private trainings.', 'zume' ),
+            'progress_hidden' => __( 'Progress is currently hidden from other participants in private trainings.', 'zume' ),
         ];
     }
 

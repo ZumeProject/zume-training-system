@@ -27,6 +27,7 @@ class Zume_Plans_Model {
             $participant_user_id = zume_get_user_id_by_contact_id( $participant['ID'] );
             $post_id = self::can_user_edit_plan( $training_group['join_key'], $user_id );
             $hide_public_progress = get_post_meta( $participant['ID'], 'hide_public_progress', true );
+            $training_group['participants'][$i]['hide_public_progress'] = $hide_public_progress;
             if ( !is_wp_error( $post_id )
                 || ( $hide_public_progress !== '1' && $is_private_group )
                 || $current_user_id == $participant_user_id
@@ -36,7 +37,7 @@ class Zume_Plans_Model {
             }
 
             $hide_public_contact = get_post_meta( $participant['ID'], 'hide_public_contact', true );
-
+            $training_group['participants'][$i]['hide_public_contact'] = $hide_public_contact;
             if ( !is_wp_error( $post_id )
                 || ( $hide_public_contact !== '1' && $is_private_group )
                 || $current_user_id == $participant_user_id

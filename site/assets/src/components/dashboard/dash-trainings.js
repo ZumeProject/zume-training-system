@@ -1519,29 +1519,35 @@ export class DashTrainings extends DashPage {
                     <span class="icon z-icon-close"></span>
                 </button>
                 <div class="stack">
-                  <div>
                     <h2>${this.groupMemberToView.post_title}</h2>
-                    ${ this.groupMemberToView.email || this.groupMemberToView.phone ? html`
+                    <div>
                         <h3 class="brand-light">${jsObject.translations.contact_info}</h3>
+                        ${this.groupMemberToView.hide_public_contact ? html`
+                          <p class="gray-700">${jsObject.translations.contact_hidden}</p>
+                        ` : ''}
+                        ${ this.groupMemberToView.email || this.groupMemberToView.phone ? html`
                         <ul>
                             <li><strong>${jsObject.translations.email}:</strong> ${this.groupMemberToView.email}</li>
                             <li><strong>${jsObject.translations.phone}:</strong> ${this.groupMemberToView.phone}</li>
-                        </ul>` : ''
-                    }
-                  </div>
-                  ${this.groupMemberToView.progress ? html`
+                        </ul>
+                      ` : ''}
+                    </div>
                     <div>
                       <h3 class="brand-light">${jsObject.translations.progress}</h3>
-                      <ul>
-                          ${repeat(
-                              Object.values(jsObject.training_items),
-                            (training_item) => training_item.key,
-                            this.renderTrainingItem
-                          )}
-                      </ul>
+                      ${this.groupMemberToView.hide_public_progress ? html`
+                        <p class="gray-700">${jsObject.translations.progress_hidden}</p>
+                      ` : ''}
+                      ${this.groupMemberToView.progress ? html`
+                        <ul>
+                            ${repeat(
+                                Object.values(jsObject.training_items),
+                              (training_item) => training_item.key,
+                              this.renderTrainingItem
+                            )}
+                        </ul>
+                      ` : ''}
                     </div>
-                  ` : ''}
-                </div>
+                </>
             </div>
             <div
                 class="reveal small"
