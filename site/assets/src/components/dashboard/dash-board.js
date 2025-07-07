@@ -197,12 +197,14 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
 
     handlePopState(event) {
-        const { profile } = event.state
-        const url = new URL(window.location.href)
-        if (profile || url.searchParams.get('profile') === 'true') {
-            this.openProfileModal()
-        } else {
-          this.closeProfileModal()
+        if (event.state) {
+          const { profile } = event.state
+          const url = new URL(window.location.href)
+          if (profile || url.searchParams.get('profile') === 'true') {
+              this.openProfileModal()
+          } else {
+              this.closeProfileModal()
+          }
         }
     }
 

@@ -105,7 +105,7 @@ export class JoinFriendsTraining extends LitElement {
                     <li>${this.t.contact_visibility2}</li>
                     <li>${this.t.contact_visibility3}</li>
                   </ul>
-                  <a href="/dashboard/profile" class="btn brand tight">${this.t.change_preferences}</a>
+                  <a href="/dashboard?profile=true" class="btn brand tight">${this.t.change_preferences}</a>
                 </div>
             ` : ''}
         `;
