@@ -2900,18 +2900,33 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                             </p>
                         </div>
                     </div>
-                      <div class="form-control brand-light">
-                          <input
-                              type="checkbox"
-                              id="public_contact_consent"
-                              ?checked=${this.userProfile.public_contact_consent==="1"}
-                          />
-                          <label for="public_contact_consent">
-                              ${jsObject.translations.public_contact_consent}
-                          </label>
-                      </div>
                 </div>
-
+                <div>
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="form-control brand-light">
+                        <input
+                            type="checkbox"
+                            id="public_contact_consent"
+                            ?checked=${this.userProfile.public_contact_consent==="1"}
+                        />
+                        <label for="public_contact_consent">
+                            ${jsObject.translations.public_contact_consent}
+                        </label>
+                    </div>
+                    <button
+                      type="button"
+                      class="icon-btn f-1 ${this.isSSOUser()?"invisible":""}"
+                      @click=${()=>this._toggleInfo("public_contact_consent")}
+                    >
+                        <span class="icon z-icon-info brand-light"></span>
+                    </button>
+                  </div>
+                  <div class="info-area zume-collapse ${this.infosOpen.includes("public_contact_consent")?"mt-0":""} ${this.isSSOUser()?"d-none":""}" ?data-expand=${this.infosOpen.includes("public_contact_consent")}>
+                    <div class="card mw-50ch mx-auto">
+                        <p>${jsObject.wizard_translations.join_training.contact_visibility1}</p>
+                    </div>
+                  </div>
+                </div>
                 <div class="stack my-0" data-fit-content>
                     <button
                       class="btn"
