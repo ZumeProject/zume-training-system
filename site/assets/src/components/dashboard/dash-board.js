@@ -109,6 +109,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.updateTrainingGroups = this.updateTrainingGroups.bind(this)
         this.renderTrainingGroupLink = this.renderTrainingGroupLink.bind(this)
         this.handlePopState = this.handlePopState.bind(this)
+        this.openProfile = this.openProfile.bind(this)
     }
 
     connectedCallback() {
@@ -121,6 +122,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.addEventListener('wizard-finished', this.getCtas)
         window.addEventListener('wizard-finished', this.redirectToPage)
         window.addEventListener('open-3-month-plan', this.open3MonthPlan)
+        window.addEventListener('open-profile', this.openProfile)
         window.addEventListener('user-state:change', this.refetchState)
         window.addEventListener('user-state:change', this.getCtas)
         window.addEventListener('user-host:change', this.refetchHost)
@@ -150,6 +152,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.removeEventListener('wizard-finished', this.getCtas)
         window.removeEventListener('wizard-finished', this.redirectToPage)
         window.removeEventListener('open-3-month-plan', this.open3MonthPlan)
+        window.removeEventListener('open-profile', this.openProfile)
         window.removeEventListener('user-state:change', this.refetchState)
         window.removeEventListener('user-state:change', this.getCtas)
         window.removeEventListener('user-host:change', this.refetchHost)

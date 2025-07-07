@@ -352,6 +352,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'visibility' => __( 'Visibility', 'zume' ),
             'private_group' => sprintf( _x( '%s group', 'public/private group', 'zume' ), __( 'Private', 'zume' ) ),
             'public_group' => sprintf( _x( '%s group', 'public/private group', 'zume' ), __( 'Public', 'zume' ) ),
+            'zume_privacy_policy' => __( 'Zúme Privacy Policy', 'zume' ),
         ];
     }
 
