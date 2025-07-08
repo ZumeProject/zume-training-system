@@ -71,8 +71,10 @@ class Zume_Book_Generator extends Zume_Magic_Page
         ?>
         <style>
             .slides-card .qr-code {
-                width: 250px;
-                height: 250px;
+                max-width: 250px;
+                max-height: 250px;
+                width: auto;
+                height: auto;
             }
             .title-icon {display:none;}
             .two-column>* {
