@@ -70,7 +70,14 @@ class Zume_Book_Generator extends Zume_Magic_Page
         $language = $languages[$lang_code];
         ?>
         <style>
+            
             .slides-card .qr-code {
+                max-width: 250px;
+                max-height: 250px;
+                width: auto;
+                height: auto;
+            }
+            .stack .qr-code {
                 max-width: 250px;
                 max-height: 250px;
                 width: auto;
