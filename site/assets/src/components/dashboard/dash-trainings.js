@@ -1547,7 +1547,7 @@ export class DashTrainings extends DashPage {
                         </ul>
                       ` : ''}
                     </div>
-                </>
+                </div>
             </div>
             <div
                 class="reveal small"

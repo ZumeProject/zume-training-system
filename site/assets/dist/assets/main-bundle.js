@@ -2393,7 +2393,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                         </ul>
                       `:""}
                     </div>
-                </>
+                </div>
             </div>
             <div
                 class="reveal small"
