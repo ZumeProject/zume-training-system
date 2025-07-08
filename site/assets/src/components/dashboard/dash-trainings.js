@@ -502,6 +502,14 @@ export class DashTrainings extends DashPage {
         jQuery(modal).foundation('close')
     }
 
+    openPrivacyPolicyModal() {
+        const modal = document.querySelector('#privacy-policy-modal')
+        jQuery(modal).foundation('open')
+    }
+    closePrivacyPolicyModal() {
+        const modal = document.querySelector('#privacy-policy-modal')
+        jQuery(modal).foundation('close')
+    }
     editTitle() {
         this.isEditingTitle = true
     }
@@ -1238,7 +1246,7 @@ export class DashTrainings extends DashPage {
                                         ${jsObject.translations.invite_friends}
                                     </button>
                                     <button
-                                        data-open="privacy-policy-modal"
+                                        @click=${this.openPrivacyPolicyModal}
                                         class="link f--1"
                                     >
                                         ${jsObject.wizard_translations.join_training.privacy_policy}
