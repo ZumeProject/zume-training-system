@@ -272,7 +272,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'complete_profile' => __( 'Please make sure that your profile is up to date, so that group leaders can contact you.', 'zume' ),
                 'notify_of_future_trainings_title' => __( 'Would you like to be notified about future trainings?', 'zume' ),
                 'notify_of_future_trainings_description' => __( 'We will send you an email when a new training is available.', 'zume' ),
-                'notify_of_future_trainings_button' => __( 'Notify me about future trainings', 'zume' ),
+                'notify_of_future_trainings_button' => __( 'Want to know about future trainings?', 'zume' ),
                 'notify_of_future_trainings_unsubscribe' => __( 'You can always unsubscribe from these emails at any time.', 'zume' ),
                 'notify_me' => __( 'Notify me', 'zume' ),
                 'do_you_want_to_unsubscribe_from_the_notification_list' => __( 'Do you want to unsubscribe from the notification list?', 'zume' ),
