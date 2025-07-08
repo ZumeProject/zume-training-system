@@ -167,7 +167,7 @@ class Zume_Book_Generator extends Zume_Magic_Page
                     <div class="slide-switcher" >
                         <slide-switcher>
                             <div class="slide-wrapper">
-                                <div class="slides-card" style="margin-top:200px; margin-bottom: 200px;">
+                                <div class="slides-card">
                                     <div class="cover-slide | title-slide | text-center">
                                         <div class="stack-1 | w-100 justify-content-center">
                                             <div class="center"><img src="<?php echo $slide['center'][0] ?>" /></div>
