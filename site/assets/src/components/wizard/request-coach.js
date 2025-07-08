@@ -108,7 +108,7 @@ export class RequestCoach extends LitElement {
 
         if ( this.variant === Steps.requestCoachExplanation ) {
             return html`
-              <div class="stack-2 | py-2">
+              <div class="stack-2">
                 <h1 class="text-center">${this.t.title}</h1>
                 <p>${this.t.request_coach_explanation_text}</p>
                 <div class="switcher | training-path">
@@ -201,7 +201,7 @@ export class RequestCoach extends LitElement {
 
                 <h1>${this.t.connecting_coach_title}</h1>
                 <p>${this.message}</p>
-                <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
+                <span class="loading-spinner mx-auto ${this.loading ? 'active' : ''}"></span>
             ` : '' }
             ${ this.hasNextStep
                 ? html`

@@ -450,7 +450,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 ${this.successMessage}
             </div>
         `}createRenderRoot(){return this}}customElements.define("notify-of-future-trainings",No);class Ro extends _{static get properties(){return{hasNextStep:{type:Boolean},t:{type:Object},variant:{type:String},state:{attribute:!1},errorMessage:{attribute:!1},message:{attribute:!1},loading:{attribute:!1},requestSent:{attribute:!1}}}constructor(){super(),this.hasNextStep=!1,this.variant="",this.t={},this.state={},this.errorMessage="",this.message="",this.loading=!1,this.requestSent=!1,this.contactPreferences=["email","text","phone","whatsapp","signal","telegram","messenger"],this.stateManager=Lt.getInstance(L.getACoach),this.stateManager.clear()}requestCoach(){this.message=this.t.please_wait;const t=this.stateManager.getAll();this.loading=!0,this.requestSent=!0,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),k.post("get_a_coach",{data:t}).then(e=>{console.log(e,this),this.message=this.t.connect_success,e===!1&&(this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting))}).catch(e=>{if(e.code==="coach_request_failed"){this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_with_request);return}else if(e.code==="already_has_coach"){this.message="",this.setErrorMessage(this.t.already_coached);return}this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting)}).finally(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.dispatchEvent(new CustomEvent("wizard:finish",{bubbles:!0}))})}willUpdate(t){t.has("variant")&&(this.state=this.stateManager.get(this.variant)||{},this.variant===h.languagePreferences&&!this.state.value&&(this.state.value=jsObject.profile.preferred_language||"en",this.stateManager.add(this.variant,this.state)))}setErrorMessage(t){this.errorMessage=t}render(){return this.variant===h.connectingToCoach&&this.requestSent===!1&&this.requestCoach(),this.variant===h.requestCoachExplanation?l`
-              <div class="stack-2 | py-2">
+              <div class="stack-2">
                 <h1 class="text-center">${this.t.title}</h1>
                 <p>${this.t.request_coach_explanation_text}</p>
                 <div class="switcher | training-path">
@@ -540,7 +540,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
 
                 <h1>${this.t.connecting_coach_title}</h1>
                 <p>${this.message}</p>
-                <span class="loading-spinner ${this.loading?"active":""}"></span>
+                <span class="loading-spinner mx-auto ${this.loading?"active":""}"></span>
             `:""}
             ${this.hasNextStep?l`
                     <div class="mx-auto">
