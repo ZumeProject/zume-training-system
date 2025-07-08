@@ -291,6 +291,13 @@ export class DashTrainings extends DashPage {
             })
         )
     }
+    openProfileModal() {
+      this.dispatchEvent(
+        new CustomEvent('open-profile', {
+          bubbles: true,
+        })
+      )
+    }
 
     startSession(id, event) {
         event.stopImmediatePropagation()
@@ -1223,12 +1230,20 @@ export class DashTrainings extends DashPage {
                                             `
                                           : ''}
                                   </div>
-                                  <button
-                                      @click=${this.inviteFriends}
-                                      class="btn brand tight mt--2"
-                                  >
-                                      ${jsObject.translations.invite_friends}
-                                  </button>
+                                  <div class="stack-1 mt-1">
+                                    <button
+                                        @click=${this.inviteFriends}
+                                        class="btn brand tight"
+                                    >
+                                        ${jsObject.translations.invite_friends}
+                                    </button>
+                                    <button
+                                        data-open="privacy-policy-modal"
+                                        class="link f--1"
+                                    >
+                                        ${jsObject.wizard_translations.join_training.privacy_policy}
+                                    </button>
+                                  </div>
                               </div>
                               <div class="card | group-details | grow-0">
                                   <button
@@ -1466,6 +1481,31 @@ export class DashTrainings extends DashPage {
             </div>
             <div
                 class="reveal small"
+                id="privacy-policy-modal"
+                data-reveal
+                data-v-offset="20"
+            >
+                <button
+                    class="ms-auto close-btn"
+                    data-close
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                >
+                    <span class="icon z-icon-close"></span>
+                </button>
+                <div class="stack">
+                  <h2 class="text-center">${jsObject.wizard_translations.join_training.privacy_policy}</h2>
+                  <ul role="list">
+                    <li>${jsObject.wizard_translations.join_training.contact_visibility1}</li>
+                    <li>${jsObject.wizard_translations.join_training.contact_visibility2}</li>
+                    <li>${jsObject.wizard_translations.join_training.contact_visibility3}</li>
+                  </ul>
+                  <button class="btn brand tight" @click=${this.openProfileModal}>${jsObject.wizard_translations.join_training.change_preferences}</button>
+                  <a href="/privacy-policy" target="_blank" class="btn outline tight">${jsObject.translations.zume_privacy_policy}</a>
+                </div>
+            </div>
+            <div
+                class="reveal small"
                 id="group-members-modal"
                 data-reveal
                 data-v-offset="20"
@@ -1479,27 +1519,35 @@ export class DashTrainings extends DashPage {
                     <span class="icon z-icon-close"></span>
                 </button>
                 <div class="stack">
-                  <div>
                     <h2>${this.groupMemberToView.post_title}</h2>
-                    ${ this.groupMemberToView.email || this.groupMemberToView.phone ? html`
+                    <div>
                         <h3 class="brand-light">${jsObject.translations.contact_info}</h3>
+                        ${this.groupMemberToView.hide_public_contact ? html`
+                          <p class="gray-700">${jsObject.translations.contact_hidden}</p>
+                        ` : ''}
+                        ${ this.groupMemberToView.email || this.groupMemberToView.phone ? html`
                         <ul>
                             <li><strong>${jsObject.translations.email}:</strong> ${this.groupMemberToView.email}</li>
                             <li><strong>${jsObject.translations.phone}:</strong> ${this.groupMemberToView.phone}</li>
-                        </ul>` : ''
-                    }
-                  </div>
-                  <div>
-                    <h3 class="brand-light">${jsObject.translations.progress}</h3>
-                    <ul>
-                        ${repeat(
-                            Object.values(jsObject.training_items),
-                          (training_item) => training_item.key,
-                          this.renderTrainingItem
-                        )}
-                    </ul>
-                  </div>
-                </div>
+                        </ul>
+                      ` : ''}
+                    </div>
+                    <div>
+                      <h3 class="brand-light">${jsObject.translations.progress}</h3>
+                      ${this.groupMemberToView.hide_public_progress ? html`
+                        <p class="gray-700">${jsObject.translations.progress_hidden}</p>
+                      ` : ''}
+                      ${this.groupMemberToView.progress ? html`
+                        <ul>
+                            ${repeat(
+                                Object.values(jsObject.training_items),
+                              (training_item) => training_item.key,
+                              this.renderTrainingItem
+                            )}
+                        </ul>
+                      ` : ''}
+                    </div>
+                </>
             </div>
             <div
                 class="reveal small"

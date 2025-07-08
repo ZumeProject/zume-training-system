@@ -254,6 +254,8 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'language' => __( 'Language', 'zume' ),
                 'join' => __( 'Join', 'zume' ),
                 'next' => __( 'Next', 'zume' ),
+                'privacy_policy' => __( 'Privacy Policy', 'zume' ),
+                'change_preferences' => __( 'Change Preferences', 'zume' ),
                 'contact_visibility1' => __( 'Your contact information is always visible to the group leader.', 'zume' ),
                 'contact_visibility2' => __( 'You are joining a private training group, where everyone can see your contact information.', 'zume' ),
                 'contact_visibility3' => __( 'You can change your contact information visibility at any time in your profile.', 'zume' ),

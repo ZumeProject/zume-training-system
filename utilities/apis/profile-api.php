@@ -144,7 +144,8 @@ class Zume_Profile_Model {
         $location_grid_meta = isset( $fields['location_grid_meta'] ) ? $fields['location_grid_meta'] : [];
         $preferred_language = isset( $fields['preferred_language'] ) ? $fields['preferred_language'] : '';
         $contact_preference = isset( $fields['contact_preferences'] ) ? $fields['contact_preferences'] : [];
-        $public_contact_consent = isset( $fields['public_contact_consent'] ) ? $fields['public_contact_consent'] : false;
+        $hide_public_contact = isset( $fields['hide_public_contact'] ) ? $fields['hide_public_contact'] : false;
+        $hide_public_progress = isset( $fields['hide_public_progress'] ) ? $fields['hide_public_progress'] : false;
 
         $user_updates = [];
         $updates = [];
@@ -183,7 +184,9 @@ class Zume_Profile_Model {
             $updates['user_contact_preference'] = $contact_preference;
         }
 
-        $updates['public_contact_consent'] = $public_contact_consent;
+        $updates['hide_public_contact'] = $hide_public_contact;
+
+        $updates['hide_public_progress'] = $hide_public_progress;
 
         $contact_id = zume_get_user_contact_id( $user_id );
 

@@ -21,17 +21,26 @@ class Zume_Plans_Model {
 
         $is_private_group = $training_group['visibility']['key'] === 'private';
 
+        $current_user_id = get_current_user_id();
+
         foreach ( $training_group['participants'] as $i => $participant ) {
-            if ( $is_private_group ) {
+            $participant_user_id = zume_get_user_id_by_contact_id( $participant['ID'] );
+            $post_id = self::can_user_edit_plan( $training_group['join_key'], $user_id );
+            $hide_public_progress = get_post_meta( $participant['ID'], 'hide_public_progress', true );
+            $training_group['participants'][$i]['hide_public_progress'] = $hide_public_progress;
+            if ( !is_wp_error( $post_id )
+                || ( $hide_public_progress !== '1' && $is_private_group )
+                || $current_user_id == $participant_user_id
+            ) {
                 $user_id = zume_get_user_id_by_contact_id( $participant['ID'] );
                 $training_group['participants'][$i]['progress'] = zume_get_user_host( $user_id );
             }
 
-            $public_contact_consent = get_post_meta( $participant['ID'], 'public_contact_consent', true );
-
-            $post_id = self::can_user_edit_plan( $training_group['join_key'], $user_id );
-            if ( !is_wp_error( $post_id ) ||
-                ( $public_contact_consent === '1' && $is_private_group )
+            $hide_public_contact = get_post_meta( $participant['ID'], 'hide_public_contact', true );
+            $training_group['participants'][$i]['hide_public_contact'] = $hide_public_contact;
+            if ( !is_wp_error( $post_id )
+                || ( $hide_public_contact !== '1' && $is_private_group )
+                || $current_user_id == $participant_user_id
             ) {
                 $contact_meta = zume_get_contact_meta( $participant['ID'] );
                 $training_group['participants'][$i]['email'] = $contact_meta['user_communications_email'] ?? $contact_meta['user_email'] ?? '';

@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit'
+import { zumeAttachObservers } from '../../js/zumeAttachObservers'
 
 export class ProfileForm extends LitElement {
     static get properties() {
@@ -32,9 +33,13 @@ export class ProfileForm extends LitElement {
         this.notifyOfFutureTrainingsInput = this.renderRoot.querySelector(
             '#notify_of_future_trainings'
         )
-        this.publicContactConsentInput = this.renderRoot.querySelector(
-            '#public_contact_consent'
+        this.hidePublicContactInput = this.renderRoot.querySelector(
+            '#hide_public_contact'
         )
+        this.hidePublicProgressInput = this.renderRoot.querySelector(
+            '#hide_public_progress'
+        )
+        zumeAttachObservers(this.renderRoot, 'profile-form')
     }
 
     submitProfileForm(e) {
@@ -45,7 +50,7 @@ export class ProfileForm extends LitElement {
         const communications_email = this.preferredEmailInput.value
         const phone = this.phoneInput.value
         const preferred_language = this.prefferedLanguageInput.value
-        const public_contact_consent = this.publicContactConsentInput.checked ? '1' : '0'
+        const hide_public_contact = this.hidePublicContactInput.checked ? '1' : '0'
 
         const data = {
             name,
@@ -53,7 +58,7 @@ export class ProfileForm extends LitElement {
             email,
             communications_email,
             preferred_language,
-            public_contact_consent,
+            hide_public_contact,
         }
 
         data.location_grid_meta = getLocationGridFromMapbox(
@@ -116,6 +121,33 @@ export class ProfileForm extends LitElement {
                 this.loading = false
             })
     }
+    submitPreferences(e) {
+        e.preventDefault()
+
+        const data = {
+            hide_public_contact:
+                this.hidePublicContactInput.checked,
+            hide_public_progress:
+                this.hidePublicProgressInput.checked,
+        }
+
+        this.loading = true
+
+        fetch(jsObject.rest_endpoint + '/profile', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'X-WP-Nonce': jsObject.nonce,
+            },
+        })
+            .then((response) => response.json())
+            .catch((error) => {
+                console.error(error)
+            })
+            .finally(() => {
+                this.loading = false
+            })
+    }
 
     /* I couldn't get this to bind correctly, so have made an arrow function to implicitly gain access to 'this' of the class */
     addressCallback = (data) => {
@@ -158,9 +190,7 @@ export class ProfileForm extends LitElement {
 
     render() {
         return html`
-            <form action="" class="stack--2" id="profile-form" @submit=${
-                this.submitProfileForm
-            }>
+            <form action="" class="stack--2" id="profile-form" @submit=${this.submitProfileForm}>
 
                 <div class="">
                     <label for="full_name">${jsObject.translations.name}</label>
@@ -179,7 +209,7 @@ export class ProfileForm extends LitElement {
                     </div>
                     <div
                       class="info-area zume-collapse ${this.infosOpen.includes('name') ? 'mt-0' : ''}"
-                      data-state=${this.infosOpen.includes('name') ? 'open' : 'closed'}
+                      ?data-expand=${this.infosOpen.includes('name')}
                     >
                         <div class="card mw-50ch mx-auto">
                             <p>${jsObject.translations.user_name_disclaimer}</p>
@@ -203,7 +233,7 @@ export class ProfileForm extends LitElement {
                     </div>
                     <div
                         class="info-area zume-collapse ${this.infosOpen.includes('phone') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}"
-                        data-state=${this.infosOpen.includes('phone') ? 'open' : 'closed'}
+                        ?data-expand=${this.infosOpen.includes('phone')}
                     >
                         <div class="card mw-50ch mx-auto">
                             <p>
@@ -233,7 +263,7 @@ export class ProfileForm extends LitElement {
                     </div>
                     <div
                       class="info-area zume-collapse ${this.infosOpen.includes('email') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}"
-                      data-state=${this.infosOpen.includes('email') ? 'open' : 'closed'}
+                      ?data-expand=${this.infosOpen.includes('email')}
                     >
                         <div class="card mw-50ch mx-auto">
                             <p>
@@ -285,16 +315,12 @@ export class ProfileForm extends LitElement {
                               ? 'mt-0'
                               : ''
                       } ${this.isSSOUser() ? 'd-none' : ''}"
-                      data-state=${
-                          this.infosOpen.includes('communications_email')
-                              ? 'open'
-                              : 'closed'
-                          }
+                      ?data-expand=${this.infosOpen.includes('communications_email')}
                     >
                         <div class="card mw-50ch mx-auto">
                             <p>${
                                 jsObject.translations
-                                    .user_communications_email_disclaimer
+                                    .user_email_disclaimer
                             }</p>
                         </div>
                     </div>
@@ -317,9 +343,7 @@ export class ProfileForm extends LitElement {
                     </div>
                     <div
                       class="info-area zume-collapse ${this.infosOpen.includes('city') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}"
-                      data-state=${
-                          this.infosOpen.includes('city') ? 'open' : 'closed'
-                      }
+                      ?data-expand=${this.infosOpen.includes('city')}
                     >
                         <div class="card mw-50ch mx-auto">
                             <p>${jsObject.translations.user_city_disclaimer}</p>
@@ -392,29 +416,14 @@ export class ProfileForm extends LitElement {
                               ? 'mt-0'
                               : ''
                       } ${this.isSSOUser() ? 'd-none' : ''}"
-                      data-state=${
-                          this.infosOpen.includes('preferred_language')
-                              ? 'open'
-                              : 'closed'
-                      }>
+                      ?data-expand=${this.infosOpen.includes('preferred_language')}
+                      >
                         <div class="card mw-50ch mx-auto">
                             <p>
                               ${jsObject.translations.user_preferred_language_disclaimer}
                             </p>
                         </div>
                     </div>
-                      <div class="form-control brand-light">
-                          <input
-                              type="checkbox"
-                              id="public_contact_consent"
-                              ?checked=${
-                                  this.userProfile.public_contact_consent === '1'
-                              }
-                          />
-                          <label for="public_contact_consent">
-                              ${jsObject.translations.public_contact_consent}
-                          </label>
-                      </div>
                 </div>
 
                 <div class="stack my-0" data-fit-content>
@@ -447,16 +456,83 @@ export class ProfileForm extends LitElement {
                           ${jsObject.translations.notify_of_future_trainings}
                       </label>
                   </div>
-                  <div class="stack my-0" data-fit-content>
+                  <div class="stack-1 my-0" data-fit-content>
                     <button class="btn" id="submit-email-preferences" ?disabled=${this.loading}>
                       ${jsObject.translations.save}
                     </button>
-                    <a href=${jsObject.urls.logout} class="btn outline">
-                      ${jsObject.translations.logout}
-                    </a>
                   </div>
                 </form>
             </div>
+            <hr>
+            <div class="stack--2">
+                <h3 class="h4">
+                  ${jsObject.translations.preferences}
+                </h3>
+                <form @submit=${this.submitPreferences} class="stack--2">
+                  <div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="form-control brand-light">
+                          <input
+                              type="checkbox"
+                              id="hide_public_contact"
+                              ?checked=${this.userProfile.hide_public_contact === '1'}
+                          />
+                          <label for="hide_public_contact">
+                              ${jsObject.translations.hide_public_contact}
+                          </label>
+                      </div>
+                      <button
+                        type="button"
+                        class="icon-btn f-1 ${this.isSSOUser() ? 'invisible' : ''}"
+                        @click=${() => this._toggleInfo('hide_public_contact')}
+                      >
+                          <span class="icon z-icon-info brand-light"></span>
+                      </button>
+                    </div>
+                    <div class="info-area zume-collapse ${this.infosOpen.includes('hide_public_contact') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}" ?data-expand=${this.infosOpen.includes('hide_public_contact')}>
+                      <div class="card mw-50ch mx-auto">
+                          <p>${jsObject.wizard_translations.join_training.contact_visibility1}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="form-control brand-light">
+                            <input
+                                type="checkbox"
+                                id="hide_public_progress"
+                                ?checked=${this.userProfile.hide_public_progress === '1'}
+                            />
+                            <label for="hide_public_progress">
+                                ${jsObject.translations.hide_public_progress}
+                            </label>
+                        </div>
+                        <button
+                          type="button"
+                          class="icon-btn f-1 ${this.isSSOUser() ? 'invisible' : ''}"
+                          @click=${() => this._toggleInfo('hide_public_progress')}
+                        >
+                            <span class="icon z-icon-info brand-light"></span>
+                        </button>
+                      </div>
+                      <div class="info-area zume-collapse ${this.infosOpen.includes('hide_public_progress') ? 'mt-0' : ''} ${this.isSSOUser() ? 'd-none' : ''}" ?data-expand=${this.infosOpen.includes('hide_public_progress')}>
+                        <div class="card mw-50ch mx-auto">
+                            <p>${jsObject.translations.progress_visibility}</p>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="stack-1 my-0" data-fit-content>
+                    <button class="btn" id="submit-privacy-settings" ?disabled=${this.loading}>
+                      ${jsObject.translations.save}
+                    </button>
+                  </div>
+                </form>
+            </div>
+            <hr>
+            <a href=${jsObject.urls.logout} class="btn outline fit-content mt-2">
+              ${jsObject.translations.logout}
+            </a>
+
 
         `
     }

@@ -51,7 +51,8 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
         $location = zume_get_user_location( $user_id );
         $contact_preference = get_post_meta( $contact_id, 'user_contact_preference' );
         $notify_of_future_trainings = get_post_meta( $contact_id, 'notify_of_future_trainings', true );
-        $public_contact_consent = get_post_meta( $contact_id, 'public_contact_consent', true );
+        $hide_public_contact = get_post_meta( $contact_id, 'hide_public_contact', true );
+        $hide_public_progress = get_post_meta( $contact_id, 'hide_public_progress', true );
 
         // add SSO identities
         $identities = get_user_meta( $user_id, 'firebase_identities', true );
@@ -137,7 +138,8 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
                 'sso_identities' => $identities,
                 'sign_in_providers' => $sign_in_providers,
                 'notify_of_future_trainings' => $notify_of_future_trainings,
-                'public_contact_consent' => $public_contact_consent,
+                'hide_public_contact' => $hide_public_contact,
+                'hide_public_progress' => $hide_public_progress,
             ];
             return $zume_user_profile;
         } else {
@@ -161,7 +163,8 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
                 'sso_identities' => $identities,
                 'sign_in_providers' => $sign_in_providers,
                 'notify_of_future_trainings' => $notify_of_future_trainings,
-                'public_contact_consent' => $public_contact_consent,
+                'hide_public_contact' => $hide_public_contact,
+                'hide_public_progress' => $hide_public_progress,
             ];
         }
     }

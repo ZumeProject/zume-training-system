@@ -108,6 +108,8 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.showCelebrationModal = this.showCelebrationModal.bind(this)
         this.updateTrainingGroups = this.updateTrainingGroups.bind(this)
         this.renderTrainingGroupLink = this.renderTrainingGroupLink.bind(this)
+        this.handlePopState = this.handlePopState.bind(this)
+        this.openProfile = this.openProfile.bind(this)
     }
 
     connectedCallback() {
@@ -120,6 +122,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.addEventListener('wizard-finished', this.getCtas)
         window.addEventListener('wizard-finished', this.redirectToPage)
         window.addEventListener('open-3-month-plan', this.open3MonthPlan)
+        window.addEventListener('open-profile', this.openProfile)
         window.addEventListener('user-state:change', this.refetchState)
         window.addEventListener('user-state:change', this.getCtas)
         window.addEventListener('user-host:change', this.refetchHost)
@@ -128,6 +131,7 @@ export class DashBoard extends navigator(router(LitElement)) {
 
         window.addEventListener('load', this.showCelebrationModal)
         window.addEventListener('ctas:changed', this.showCelebrationModal)
+        window.addEventListener('popstate', this.handlePopState)
 
         this.addEventListener('route', this.updateLanguageSwitcher)
     }
@@ -148,6 +152,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.removeEventListener('wizard-finished', this.getCtas)
         window.removeEventListener('wizard-finished', this.redirectToPage)
         window.removeEventListener('open-3-month-plan', this.open3MonthPlan)
+        window.removeEventListener('open-profile', this.openProfile)
         window.removeEventListener('user-state:change', this.refetchState)
         window.removeEventListener('user-state:change', this.getCtas)
         window.removeEventListener('user-host:change', this.refetchHost)
@@ -170,6 +175,14 @@ export class DashBoard extends navigator(router(LitElement)) {
         }
         this.trainingGroupsOpen = jQuery('#training-groups-menu').hasClass('is-active')
 
+        const profileModal = document.querySelector('#profile-modal')
+        if (profileModal) {
+            jQuery(profileModal).on('closed.zf.reveal', () => {
+                this.closeProfilePushState()
+            })
+        }
+
+
         // Initialize Foundation
         jQuery(this.renderRoot).foundation()
 
@@ -183,6 +196,18 @@ export class DashBoard extends navigator(router(LitElement)) {
                 const newUrl = window.location.pathname + window.location.hash
                 window.history.replaceState({}, '', newUrl)
             }, 0)
+        }
+    }
+
+    handlePopState(event) {
+        if (event.state) {
+          const { profile } = event.state
+          const url = new URL(window.location.href)
+          if (profile || url.searchParams.get('profile') === 'true') {
+              this.openProfileModal()
+          } else {
+              this.closeProfileModal()
+          }
         }
     }
 
@@ -604,10 +629,25 @@ export class DashBoard extends navigator(router(LitElement)) {
         }
     }
     openProfile() {
+        const url = new URL(window.location.href)
+        url.searchParams.set('profile', 'true')
+        window.history.pushState({ profile: true }, null, url.toString())
+        this.openProfileModal()
+    }
+    closeProfile() {
+      this.closeProfilePushState()
+      this.closeProfileModal()
+    }
+    closeProfilePushState() {
+      const url = new URL(window.location.href)
+      url.searchParams.delete('profile')
+      window.history.pushState({ profile: false }, null, url.toString())
+    }
+    openProfileModal() {
         const modal = document.querySelector('#profile-modal')
         jQuery(modal).foundation('open')
     }
-    closeProfile() {
+    closeProfileModal() {
         const modal = document.querySelector('#profile-modal')
         jQuery(modal).foundation('close')
     }
