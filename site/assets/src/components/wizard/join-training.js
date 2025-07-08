@@ -24,6 +24,8 @@ export class JoinTraining extends LitElement {
             showTrainings: { attribute: false },
             showNextStep: { attribute: false },
             privacyPolicyOpen: { type: Boolean, attribute: false },
+            notifyOfFutureTrainings: { type: Boolean, attribute: false },
+            leavingNotificationList: { type: Boolean, attribute: false },
         }
     }
 
@@ -38,7 +40,10 @@ export class JoinTraining extends LitElement {
         this.showTrainings = false
         this.showNextStep = false
         this.loading = false
+        this.leavingNotificationList = false
         this.privacyPolicyOpen = false
+        this.isOnNotificationList = jsObject.profile.notify_of_future_trainings === '1'
+        this.notifyOfFutureTrainings = jsObject.profile.notify_of_future_trainings === '1'
         this.stateManager = WizardStateManager.getInstance(Modules.joinTraining)
     }
 
@@ -88,7 +93,6 @@ export class JoinTraining extends LitElement {
                 window.history.pushState(null, null, url.href)
             })
             .catch((error) => {
-                console.log(error)
                 this.message = ''
                 if (error.code === 'bad_plan_code') {
                     this.setErrorMessage(this.t.broken_link)
@@ -145,6 +149,29 @@ export class JoinTraining extends LitElement {
         this.privacyPolicyOpen = !this.privacyPolicyOpen
     }
 
+    toggleNotificationList() {
+        if (this.leavingNotificationList) {
+            return
+        }
+
+        this.leavingNotificationList = true
+        this.notifyOfFutureTrainings = !this.notifyOfFutureTrainings
+
+        zumeRequest.post('email-preferences', {
+            notify_of_future_trainings: this.notifyOfFutureTrainings,
+        })
+        .then((data) => {
+          this.dispatchEvent(new CustomEvent('user-profile:change', { bubbles: true, detail: data }))
+        })
+        .catch((error) => {
+            this.notifyOfFutureTrainings = !this.notifyOfFutureTrainings
+            this.setErrorMessage(this.t.error)
+        })
+        .finally(() => {
+            this.leavingNotificationList = false
+        })
+    }
+
     render() {
         return html`
             <h1>${this.t.title}</h1>
@@ -172,6 +199,23 @@ export class JoinTraining extends LitElement {
                     <li>${this.t.contact_visibility1}</li>
                   </ul>
                 </div>
+            ` : ''}
+            ${ this.success && this.isOnNotificationList ? html`
+              <div class="card mw-50ch mx-auto">
+                <p class="bold">${this.t.do_you_want_to_unsubscribe_from_the_notification_list}</p>
+                <div class="form-control brand-light">
+                  <input
+                      type="checkbox"
+                      id="notify_of_future_trainings"
+                      ?checked=${this.notifyOfFutureTrainings}
+                      @change=${this.toggleNotificationList}
+                  />
+                  <label for="notify_of_future_trainings" class="f-1">
+                      ${jsObject.translations.notify_of_future_trainings}
+                  </label>
+                  </div>
+                  <span class="loading-spinner mx-auto ${this.leavingNotificationList ? 'active' : ''}"></span>
+              </div>
             ` : ''}
             ${this.showNextStep || (this.success && this.hasNextStep)
                 ? html`

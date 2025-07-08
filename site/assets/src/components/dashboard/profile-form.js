@@ -78,15 +78,7 @@ export class ProfileForm extends LitElement {
         })
             .then((response) => response.json())
             .then((profile) => {
-                const event = new CustomEvent('user-profile:change', {
-                    bubbles: true,
-                    detail: profile,
-                })
-                this.dispatchEvent(event)
-                const stateChangeEvent = new CustomEvent('user-state:change', {
-                    bubbles: true,
-                })
-                this.dispatchEvent(stateChangeEvent)
+                this.fireEvents(profile)
             })
             .catch((error) => {
                 console.error(error)
@@ -114,6 +106,9 @@ export class ProfileForm extends LitElement {
             },
         })
             .then((response) => response.json())
+            .then((profile) => {
+                this.fireEvents(profile)
+            })
             .catch((error) => {
                 console.error(error)
             })
@@ -141,12 +136,27 @@ export class ProfileForm extends LitElement {
             },
         })
             .then((response) => response.json())
+            .then((profile) => {
+                this.fireEvents(profile)
+            })
             .catch((error) => {
                 console.error(error)
             })
             .finally(() => {
                 this.loading = false
             })
+    }
+
+    fireEvents(profile) {
+        const event = new CustomEvent('user-profile:change', {
+            bubbles: true,
+            detail: profile,
+        })
+        this.dispatchEvent(event)
+        const stateChangeEvent = new CustomEvent('user-state:change', {
+            bubbles: true,
+        })
+        this.dispatchEvent(stateChangeEvent)
     }
 
     /* I couldn't get this to bind correctly, so have made an arrow function to implicitly gain access to 'this' of the class */
