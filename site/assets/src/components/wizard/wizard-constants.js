@@ -45,6 +45,7 @@ export const Steps = {
     updateLocation: 'update-your-location',
     updatePhone: 'update-your-phone',
     inviteFriends: 'invite-friends',
+    requestCoachExplanation: 'request-coach-explanation',
     contactPreferences: 'contact-preferences',
     languagePreferences: 'preferred-language',
     howCanWeServe: 'how-can-we-serve',

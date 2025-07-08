@@ -49,6 +49,7 @@ export const wizardDefinitions = {
     [Wizards.getACoach]: {
         [Modules.getACoach]: makeModule(
             [
+                Steps.requestCoachExplanation,
                 Steps.updateName,
                 Steps.updateLocation,
                 Steps.updatePhone,

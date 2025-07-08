@@ -252,6 +252,7 @@ export class Wizard extends LitElement {
                 tag = literal`complete-profile`
                 translations = this.t.complete_profile
                 break
+            case Steps.requestCoachExplanation:
             case Steps.contactPreferences:
             case Steps.languagePreferences:
             case Steps.howCanWeServe:
