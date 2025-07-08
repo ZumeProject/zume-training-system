@@ -122,8 +122,8 @@ class Zume_Book_Generator extends Zume_Magic_Page
                 list-style-type: disc;
             }
             h3 {
-                font-size: var(--t2) !important;
-                font-weight: 700 !important;
+                font-size: var(--font-size) !important;
+                font-weight: 600 !important;
                 font-family: var(--font-family);
             }
             @media print{
