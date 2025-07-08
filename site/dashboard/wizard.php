@@ -275,6 +275,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'notify_of_future_trainings_button' => __( 'Notify me about future trainings', 'zume' ),
                 'notify_of_future_trainings_unsubscribe' => __( 'You can always unsubscribe from these emails at any time.', 'zume' ),
                 'notify_me' => __( 'Notify me', 'zume' ),
+                'do_you_want_to_unsubscribe_from_the_notification_list' => __( 'Do you want to unsubscribe from the notification list?', 'zume' ),
             ],
             'connect_friend' => [
                 'title' => __( 'Connecting with friend', 'zume' ),
