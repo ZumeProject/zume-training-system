@@ -107,7 +107,10 @@ export class ProfileForm extends LitElement {
         })
             .then((response) => response.json())
             .then((profile) => {
-                this.fireEvents(profile)
+                this.fireEvents({
+                  ...this.userProfile,
+                  notify_of_future_trainings: profile.notify_of_future_trainings,
+                })
             })
             .catch((error) => {
                 console.error(error)
