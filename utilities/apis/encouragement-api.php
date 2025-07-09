@@ -43,7 +43,7 @@ class Zume_System_Encouragement_API
         $headers = array(
             'Content-Type: text/html; charset=UTF-8',
             'MIME-Version: 1.0',
-            'X-Zume-Email-System: 1.0'
+            'X-Zume-Email-System: 1.0',
         );
 
         $templates = self::_build_user_templates( $language_code, $user_id );
@@ -66,7 +66,7 @@ class Zume_System_Encouragement_API
             // dt_write_log( $message );
 
             // if immediate is true, send the email immediately
-            if ( empty($message['drop_date'] ) ) {
+            if ( empty( $message['drop_date'] ) ) {
                 // dt_write_log( 'Sending email immediately' );
                 $sent = wp_mail( $message['to'], $message['subject'], $message['message'], $headers );
                 $message['sent'] = $sent;
@@ -101,20 +101,20 @@ class Zume_System_Encouragement_API
         global $wpdb;
 
         $current_plan = $wpdb->get_results( $wpdb->prepare(
-            "SELECT *
+            'SELECT *
             FROM zume_dt_zume_message_plan
             WHERE user_id = %d
             AND sent = 0
-            ORDER BY drop_date ASC",
+            ORDER BY drop_date ASC',
             $user_id
         ), ARRAY_A);
 
         // If we have messages in the plan, enrich them with message content
-        if (!empty($current_plan)) {
+        if ( !empty( $current_plan ) ) {
             $messages = self::_query_messages();
 
-            foreach ($current_plan as $key => $message) {
-                if (isset($messages[$message['message_post_id']])) {
+            foreach ( $current_plan as $key => $message ) {
+                if ( isset( $messages[$message['message_post_id']] ) ) {
                     $current_plan[$key]['message_content'] = $messages[$message['message_post_id']];
                 }
             }
@@ -154,7 +154,7 @@ class Zume_System_Encouragement_API
         $scheduled_messages = $messages['scheduled'];
 
         // remove sent messages from the new plan
-        $new_plan = array_filter( $new_plan, function( $message ) use ( $sent_messages ) {
+        $new_plan = array_filter( $new_plan, function ( $message ) use ( $sent_messages ) {
             return !in_array( $message['message_post_id'], array_column( $sent_messages, 'message_post_id' ) );
         });
 
@@ -168,7 +168,7 @@ class Zume_System_Encouragement_API
         $new_plan_ids = array_column( $new_plan, 'message_post_id' );
         $scheduled_ids = array_column( $scheduled_messages, 'message_post_id' );
         // remove duplicates from the new plan that already exist in the scheduled messages
-        $new_plan = array_filter( $new_plan, function( $message ) use ( $scheduled_ids ) {
+        $new_plan = array_filter( $new_plan, function ( $message ) use ( $scheduled_ids ) {
             return !in_array( $message['message_post_id'], $scheduled_ids );
         });
 
@@ -579,18 +579,18 @@ class Zume_System_Encouragement_API
      * @param string $date The date to query messages for (format: Y-m-d)
      * @return array Array of messages with one message per user (the oldest one)
      */
-    public static function query_messages_by_date($date) {
+    public static function query_messages_by_date( $date ) {
         global $wpdb;
 
         // Convert date to timestamp for comparison
-        $timestamp = strtotime($date);
-        if (!$timestamp) {
+        $timestamp = strtotime( $date );
+        if ( !$timestamp ) {
             return [];
         }
 
         // Query to get the oldest message per user for the given date
         $sql = $wpdb->prepare(
-            "SELECT m1.*
+            'SELECT m1.*
             FROM zume_dt_zume_message_plan m1
             INNER JOIN (
                 SELECT user_id, MIN(drop_date) as oldest_drop_date
@@ -599,19 +599,19 @@ class Zume_System_Encouragement_API
                 GROUP BY user_id
             ) m2 ON m1.user_id = m2.user_id AND m1.drop_date = m2.oldest_drop_date
             WHERE DATE(FROM_UNIXTIME(m1.drop_date)) = DATE(FROM_UNIXTIME(%d))
-            ORDER BY m1.drop_date ASC",
+            ORDER BY m1.drop_date ASC',
             $timestamp,
             $timestamp
         );
 
-        $messages = $wpdb->get_results($sql, ARRAY_A);
+        $messages = $wpdb->get_results( $sql, ARRAY_A );
 
         // If we have messages, enrich them with message content
-        if (!empty($messages)) {
+        if ( !empty( $messages ) ) {
             $message_templates = self::_query_messages();
 
-            foreach ($messages as $key => $message) {
-                if (isset($message_templates[$message['message_post_id']])) {
+            foreach ( $messages as $key => $message ) {
+                if ( isset( $message_templates[$message['message_post_id']] ) ) {
                     $messages[$key]['message_content'] = $message_templates[$message['message_post_id']];
                 }
             }
@@ -633,16 +633,16 @@ class Zume_System_Encouragement_API
                 WHERE post_type = 'zume_message'
                 AND post_status = 'publish'";
 
-        $results = $wpdb->get_results($sql, ARRAY_A);
+        $results = $wpdb->get_results( $sql, ARRAY_A );
 
         $messages = [];
-        foreach ($results as $result) {
+        foreach ( $results as $result ) {
             $messages[$result['ID']] = $result['post_content'];
         }
 
         return $messages;
     }
 }
-new Zume_System_Encouragement_API;
+new Zume_System_Encouragement_API();
 
 

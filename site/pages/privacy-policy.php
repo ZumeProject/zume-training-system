@@ -36,7 +36,7 @@ class Zume_Training_Privacy_Policy extends Zume_Magic_Page
 
         $page_slug = $url_parts[0] ?? '';
 
-        if ( str_contains( $page_slug, $this->type ) && ! str_contains( $page_slug, 'privacy-policy' )  && ! dt_is_rest() ) {
+        if ( str_contains( $page_slug, $this->type ) && ! str_contains( $page_slug, 'privacy-policy' ) && ! dt_is_rest() ) {
 
             $this->lang_code = $lang_code;
 

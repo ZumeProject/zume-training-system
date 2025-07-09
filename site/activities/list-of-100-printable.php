@@ -91,7 +91,7 @@ class Zume_Activites_List100_Printable extends Zume_Activites
             </div>
             <hr>
             <div>
-                <?php echo $this->list() ?>
+                <?php $this->list() ?>
             </div>
         </div>
         </hr>

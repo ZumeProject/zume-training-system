@@ -44,7 +44,7 @@ class Zume_Encouragement_Cron {
             'processed' => 0,
             'errors' => array(),
             'debug_info' => array(),
-            'messages_found' => 0
+            'messages_found' => 0,
         );
 
         // Get the table name for messages
@@ -64,7 +64,7 @@ class Zume_Encouragement_Cron {
 
             $results['debug_info']['test_date'] = $test_date;
             $results['debug_info']['timestamp'] = $timestamp;
-            $results['debug_info']['formatted_date'] = date('Y-m-d', $timestamp);
+            $results['debug_info']['formatted_date'] = gmdate( 'Y-m-d', $timestamp );
 
             // Query for test date - get oldest unsent message per user for the specific date plus immediate messages
             $query = $wpdb->prepare(
@@ -179,7 +179,7 @@ class Zume_Encouragement_Cron {
                 if ( $return_result ) {
                     return array(
                         'success' => false,
-                        'error' => "User not found for ID: {$message->user_id}"
+                        'error' => "User not found for ID: {$message->user_id}",
                     );
                 }
                 return false;
@@ -189,7 +189,7 @@ class Zume_Encouragement_Cron {
             $headers = array(
                 'Content-Type: text/html; charset=UTF-8',
                 'MIME-Version: 1.0',
-                'X-Zume-Email-System: 1.0'
+                'X-Zume-Email-System: 1.0',
             );
 
             // Send email
@@ -198,7 +198,7 @@ class Zume_Encouragement_Cron {
             if ( $return_result ) {
                 return array(
                     'success' => $sent,
-                    'error' => $sent ? null : "Failed to send email to: {$message->to}"
+                    'error' => $sent ? null : "Failed to send email to: {$message->to}",
                 );
             }
 
@@ -207,7 +207,7 @@ class Zume_Encouragement_Cron {
             if ( $return_result ) {
                 return array(
                     'success' => false,
-                    'error' => "Error processing message ID {$message->id}: " . $e->getMessage()
+                    'error' => "Error processing message ID {$message->id}: " . $e->getMessage(),
                 );
             }
             return false;

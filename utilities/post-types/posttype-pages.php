@@ -9,7 +9,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * This post type has the place holders for core Zume pages. The pages are active and support the core urls
  * but the admin editor is disabled.
- * 
+ *
  * These core pages are:
  *  Mobile App
  * Get a Coach
@@ -176,4 +176,3 @@ class Zume_Training_Menu_Post_Type
         }
     }
 } // End Class
-

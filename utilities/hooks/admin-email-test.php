@@ -105,14 +105,6 @@ class Zume_Email_Test_Admin {
     }
 
     /**
-     * Run a test of the Zume_Admin_Cron job
-     */
-    private function run_admin_cron_test() {
-        $results = $this->admin_cron_instance->run_test();
-        $this->display_admin_cron_results( $results );
-    }
-
-    /**
      * Display test results in admin notices
      *
      * @param array $results The results from the cron test

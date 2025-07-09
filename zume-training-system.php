@@ -124,7 +124,6 @@ class Zume_Training {
                 zume_set_language_cookie( $lang_code );
             }
         }
-
     }
     public static function activation() {
     }
@@ -234,10 +233,11 @@ class Zume_Training {
             window.CHIPP_APP_ID = 44723;
             </script>
 
+            <!-- phpcs:disable -->
             <link rel="stylesheet" href="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.css" />
 
             <script defer src="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.js"></script>
-
+            <!-- phpcs:enable -->
         <?php
     }
 
@@ -741,12 +741,12 @@ function log_call_stack() {
     $backtrace = debug_backtrace();
     $call_stack = [];
 
-    foreach ($backtrace as $index => $trace) {
-        $file = isset($trace['file']) ? basename($trace['file']) : 'unknown';
-        $line = isset($trace['line']) ? $trace['line'] : 'unknown';
-        $function = isset($trace['function']) ? $trace['function'] : 'unknown';
+    foreach ( $backtrace as $index => $trace ) {
+        $file = isset( $trace['file'] ) ? basename( $trace['file'] ) : 'unknown';
+        $line = isset( $trace['line'] ) ? $trace['line'] : 'unknown';
+        $function = isset( $trace['function'] ) ? $trace['function'] : 'unknown';
         $call_stack[] = "#{$index} {$file}:{$line} - {$function}()";
     }
-    dt_write_log('Call Stack:');
-    dt_write_log($call_stack);
+    dt_write_log( 'Call Stack:' );
+    dt_write_log( $call_stack );
 }

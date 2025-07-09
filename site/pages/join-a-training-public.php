@@ -71,7 +71,7 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
         if ( $this->lang_code === 'en' || empty( $this->lang_code ) ) {
             $canon_url = trailingslashit( site_url() ) . $this->type;
         } else {
-            $canon_url =  trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ;
+            $canon_url = trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type;
         }
 
         ?>
@@ -115,14 +115,14 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
                             $trainings = DT_Posts::list_posts( $this->post_type, [
                                 'fields' => [
                                     [ 'visibility' => [ 'public' ] ],
-                                    [ 'status' => [ 'active' ] ]
-                                ]
+                                    [ 'status' => [ 'active' ] ],
+                                ],
                             ], false );
 
                             if ( !empty( $trainings['posts'] ) ) {
                                 foreach ( $trainings['posts'] as $training ) {
-                                    $session_info = $this->get_current_session($training);
-                                    $next_session = $this->get_next_session_date($training);
+                                    $session_info = $this->get_current_session( $training );
+                                    $next_session = $this->get_next_session_date( $training );
                                     ?>
                                     <tr>
                                         <td data-label="Name"><?php echo esc_html( $training['post_title'] ?? '' ); ?></td>
@@ -174,16 +174,16 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
         <?php
     }
 
-    private function get_current_session($training) {
+    private function get_current_session( $training ) {
         $set_type = $training['set_type']['key'] ?? '';
-        $total = intval($training['set_type']['label'] ?? 0);
+        $total = intval( $training['set_type']['label'] ?? 0 );
         $current = 1;
 
-        if ($set_type) {
+        if ( $set_type ) {
             $today = time();
-            for ($i = 1; $i <= $total; $i++) {
-                $session_key = sprintf('%s_%02d', $set_type, $i);
-                if (isset($training[$session_key]['timestamp']) && $training[$session_key]['timestamp'] > $today) {
+            for ( $i = 1; $i <= $total; $i++ ) {
+                $session_key = sprintf( '%s_%02d', $set_type, $i );
+                if ( isset( $training[$session_key]['timestamp'] ) && $training[$session_key]['timestamp'] > $today ) {
                     break;
                 }
                 $current = $i;
@@ -192,20 +192,20 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
 
         return array(
             'current' => $current,
-            'total' => $total
+            'total' => $total,
         );
     }
 
     // Add this function to get the next session date
-    private function get_next_session_date($training) {
+    private function get_next_session_date( $training ) {
         $set_type = $training['set_type']['key'] ?? '';
-        $total = intval($training['set_type']['label'] ?? 0);
+        $total = intval( $training['set_type']['label'] ?? 0 );
 
         $today = time();
-        for ($i = 1; $i <= $total; $i++) {
-            $session_key = sprintf('%s_%02d', $set_type, $i);
-            if (isset($training[$session_key]['timestamp']) && $training[$session_key]['timestamp'] > $today) {
-                return date('Y-m-d', $training[$session_key]['timestamp']);
+        for ( $i = 1; $i <= $total; $i++ ) {
+            $session_key = sprintf( '%s_%02d', $set_type, $i );
+            if ( isset( $training[$session_key]['timestamp'] ) && $training[$session_key]['timestamp'] > $today ) {
+                return gmdate( 'Y-m-d', $training[$session_key]['timestamp'] );
             }
         }
         return '';

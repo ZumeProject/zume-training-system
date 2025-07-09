@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2025-04-16 16:03+0000\n"
-"Last-Translator: Kevin Fallah <kevin@christianlingua.com>\n"
+"PO-Revision-Date: 2025-07-01 14:45+0000\n"
+"Last-Translator: JS <jamillaton@gmail.com>\n"
 "Language-Team: Urdu <https://translate.disciple.tools/projects/zume-training/"
 "zume-training-system/ur/>\n"
 "Language: ur\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11\n"
+"X-Generator: Weblate 5.12.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
@@ -209,8 +209,8 @@ msgid ""
 "correction."
 msgstr ""
 "ہم جِنس دو یا تِین لوگوں کے لئے ایسا آلٰہ جِس کے وسیلے وہ ہفتہ وار جمع ہوتے ہیں "
-"اور اُن علاقوں میں ایک دوسری کی حوصلہ افزائی کرتے ہیں  جو اچھے چل رہے ہیں اور "
-"اُن علاقوں کی نشاندہی کرتا ہے جِن میں اِصلاح کی ضرورت ہے۔"
+"اور اُن علاقوں میں ایک دوسری کی حوصلہ افزائی کرتے ہیں جو اچھے چل رہے ہیں اور اُ"
+"ن علاقوں کی نشاندہی کرتا ہے جِن میں اِصلاح کی ضرورت ہے۔"
 
 #: globals.php:2261 site/pages/follow-jesus.php:189
 msgid "Consumer vs Producer Lifestyle"
@@ -314,7 +314,7 @@ msgid ""
 "impacted your life."
 msgstr ""
 "سیکھیں کہ اپنی تِین مِنٹ کی گواہی کیسے سُنانی ہے یہ بیان کرتے ہُوئے کہ خُداوند "
-"یسوع نے  آپ کی زندگی  پر کیسے اثر ڈالا"
+"یسوع نے آپ کی زندگی پر کیسے اثر ڈالا"
 
 #: globals.php:2335
 msgid "3-Minute Testimony"
@@ -341,7 +341,7 @@ msgstr "بڑی نعمت، بہت بڑی نعمت اور بہت ہی بڑی نع�
 
 #: globals.php:2357 site/pages/follow-jesus.php:267
 msgid "Duckling Discipleship – Leading Immediately"
-msgstr "بطخ کے چُوزوں کی شاگردی  - فوری قیادت"
+msgstr "بطخ کے چُوزوں کی شاگردی - فوری قیادت"
 
 #: globals.php:2358
 msgid "Learn what ducklings have to do with disciple-making."
@@ -398,7 +398,7 @@ msgid ""
 "what it sounds like — praying to God while walking around!"
 msgstr ""
 "یہ دوسروں کے لئے دُعا کرنے کی بابت خُدا کے حُکم پر عمل کرنے کا آسان طریقہ ہے۔ "
-"اور یہ ویسا ہی ہے جیسا دِکھائی دیتا ہے  - سَیر کرتے ہُوئے خُدا سے دُعا کرنا۔"
+"اور یہ ویسا ہی ہے جیسا دِکھائی دیتا ہے - سَیر کرتے ہُوئے خُدا سے دُعا کرنا۔"
 
 #: globals.php:2395 site/activities/activities.php:319
 #: site/course/course-content.php:1588 site/course/course-content.php:1596
@@ -433,8 +433,8 @@ msgid ""
 "It‘s important what disciples know — but it‘s much more important what they "
 "DO with what they know."
 msgstr ""
-"شاگرد جو جانتے ہیں وہ اہم ہے  -  لیکن  وہ جو اپنے علم کے ساتھ کرتے ہیں وہ "
-"زیادہ اہم ہے۔"
+"شاگرد جو جانتے ہیں وہ اہم ہے - لیکن وہ جو اپنے علم کے ساتھ کرتے ہیں وہ زیادہ "
+"اہم ہے۔"
 
 #: globals.php:2419 site/course/course-content.php:1843
 #: site/course/course-content.php:1852 site/course/course-content.php:4860
@@ -560,7 +560,7 @@ msgid ""
 "Create and share your plan for how you will implement the Zúme tools over "
 "the next three months."
 msgstr ""
-"ایک منصوبہ بنائیں اور بیان کریں کہ آپ اگلے چھ ماہ میں زُومی ٹُول کو کیسے  کیسے "
+"ایک منصوبہ بنائیں اور بیان کریں کہ آپ اگلے چھ ماہ میں زُومی ٹُول کو کیسے کیسے "
 "لاگُو کریں گے۔"
 
 #: globals.php:2525 globals.php:2527
@@ -640,7 +640,7 @@ msgid ""
 "cell to reflect on the status of current efforts and the kingdom activity "
 "around them."
 msgstr ""
-"چار کھیت  تشخیصی چارٹ ایک سادہ آلٰہ ہے جِس کو قیادتی سَیل کی طرف سے موجودہ "
+"چار کھیت تشخیصی چارٹ ایک سادہ آلٰہ ہے جِس کو قیادتی سَیل کی طرف سے موجودہ "
 "کوششوں کی کیفیت پر اُن کے آس پاس بادشاہی کی سرگرمی پر غور کرنے کے لئے اِستعمال "
 "کِیا جاتا ہے۔"
 
@@ -713,17 +713,17 @@ msgstr "‎%1$s  سے   ‎%2$s ‎نے ‎%3$s ‎کوچنگ کی درخواس�
 #: maps/heatmap.php:3174
 #, php-format
 msgid "New training group scheduled in %1$s. %2$s"
-msgstr "‎%1$s  میں ایک نیا ٹریننگ گروپ تشکیل دِیا گیا ہے۔‎%2$s"
+msgstr "‎%1$s میں ایک نیا ٹریننگ گروپ تشکیل دِیا گیا ہے۔‎%2$s"
 
 #: maps/heatmap.php:3216
 #, php-format
 msgid "A %1$s is starting SESSION %2$s in %3$s. %4$s"
-msgstr "‎%3$s  میں ایک ‎%1$s‏، ‎%2$sٹریننگ گروپ شروع کر رہا ہے۔‎%4$s"
+msgstr "‎%3$s میں ایک ‎%1$s‏، ‎%2$sٹریننگ گروپ شروع کر رہا ہے۔‎%4$s"
 
 #: maps/heatmap.php:3254
 #, php-format
 msgid "A %1$s is studying \"%2$s\" in %3$s. %4$s"
-msgstr "‎%3$s میں ایک‎%1$s‏، ‎\"%2$s\" ‎  کامطالعہ کر رہے ہیں۔ ‎%4$s"
+msgstr "‎%3$s میں ایک‎%1$s‏، ‎\"%2$s\" ‎ کامطالعہ کر رہے ہیں۔ ‎%4$s"
 
 #: maps/heatmap.php:3296
 #, php-format
@@ -739,7 +739,7 @@ msgstr "‎%1$s میں ‎%2$s نے کسی کو ‎\"%3$s\"‎اِستعمال �
 #, php-format
 msgid "A coach is modeling \"%1$s\" for a trainee in %2$s. %3$s"
 msgstr ""
-"‎%2$s میں ایک کوچ  ایک طالب علم کے لئے ‎\"%1$s\" ‎ کا نمونہ پیش کر رہا ہے۔‎%3$s"
+"‎%2$s میں ایک کوچ ایک طالب علم کے لئے ‎\"%1$s\" ‎ کا نمونہ پیش کر رہا ہے۔‎%3$s"
 
 #: maps/heatmap.php:3412
 #, php-format
@@ -760,13 +760,13 @@ msgstr ""
 #, php-format
 msgid "A coach has fully launched a trainee regarding \"%1$s\" in %2$s. %3$s"
 msgstr ""
-"‎%2$s میں ایک کوچ نے  ‎\"%1$s\" ‎ کے لحاظ سے ایک طالب علم کے لئے کا آغاز کِیا "
+"‎%2$s میں ایک کوچ نے ‎\"%1$s\" ‎ کے لحاظ سے ایک طالب علم کے لئے کا آغاز کِیا "
 "ہے۔‎%3$s"
 
 #: maps/heatmap.php:3496
 #, php-format
 msgid "A %1$s created at post training plan in %2$s. %3$s"
-msgstr "‎%2$s میں ایک ‎%1$s نے قبل از ٹریننگ منصوبہ  تشکیل دِیا ہے۔‎%3$s"
+msgstr "‎%2$s میں ایک ‎%1$s نے قبل از ٹریننگ منصوبہ تشکیل دِیا ہے۔‎%3$s"
 
 #: maps/html/heatmap-html.php:37
 msgid "Loading the planet"
@@ -778,7 +778,7 @@ msgstr "دُنیا کی آبادی کا پتا لگانا"
 
 #: maps/html/heatmap-html.php:39
 msgid "Calculating movement activity"
-msgstr "تحریک  کی سرگرمی شُمار کرنا"
+msgstr "تحریک کی سرگرمی شُمار کرنا"
 
 #: maps/html/heatmap-html.php:40
 msgid "Shamelessly brewing coffee"
@@ -826,7 +826,7 @@ msgid ""
 "Scroll zoom with your mouse or pinch zoom with track pads and phones to "
 "focus on sections of the map."
 msgstr ""
-"نقشے کے حصوں کو دیکھنے کے لئے اپنے ماؤس کے ساتھ سکرول کریں یا  ٹریک پیڈز اور "
+"نقشے کے حصوں کو دیکھنے کے لئے اپنے ماؤس کے ساتھ سکرول کریں یا ٹریک پیڈز اور "
 "فونز کے ساتھ نقشہ پر کلِک کریں۔"
 
 #: maps/html/heatmap-html.php:110 maps/html/heatmap-html.php:134
@@ -916,7 +916,7 @@ msgstr "عمل کرنے والوں کی رپورٹ"
 
 #: maps/js-translation-strings.php:17
 msgid "Last 100 Hours of Movement Activity"
-msgstr "تحریک کی سرگرمی کے  گزشتہ 100 گھنٹے"
+msgstr "تحریک کی سرگرمی کے گزشتہ 100 گھنٹے"
 
 #: maps/js-translation-strings.php:18
 msgid "Countries"
@@ -1049,7 +1049,7 @@ msgid ""
 "Saturation Goal: 1 trainee per 5,000 people in the United States; and 1 "
 "trainee per 50,000 people globally."
 msgstr ""
-"بھرائی کا ہدف: امریکہ میں فی  000، 5 لوگ ایک طالب علم؛ اور عالمی سطح پر فی "
+"بھرائی کا ہدف: امریکہ میں فی 000، 5 لوگ ایک طالب علم؛ اور عالمی سطح پر فی "
 "000، 50 لوگ ایک طالب علم۔"
 
 #: maps/map-3-trainees.php:142
@@ -1069,12 +1069,12 @@ msgstr "بھرائی کا ہدف"
 #: maps/map-3-trainees.php:145
 msgid "1 trained multiplying disciple per 5,000 in the United States"
 msgstr ""
-"امریکہ میں ہر 000، 5 لوگوں کے پیچھے 1 تربیت یافتہ بڑھوتی  کرنے والا شاگرد"
+"امریکہ میں ہر 000، 5 لوگوں کے پیچھے 1 تربیت یافتہ بڑھوتی کرنے والا شاگرد"
 
 #: maps/map-3-trainees.php:146
 msgid "1 trained multiplying disciple per 50,000 globally"
 msgstr ""
-"عالمی سطح ہر 000، 50 لوگوں کے پیچھے  1 تربیت یافتہ بڑھوتی کرنے والا شاگرد"
+"عالمی سطح ہر 000، 50 لوگوں کے پیچھے 1 تربیت یافتہ بڑھوتی کرنے والا شاگرد"
 
 #: maps/map-3-trainees.php:148 maps/map-5-churches.php:148
 msgid "Measurements Used"
@@ -1191,7 +1191,7 @@ msgstr "تِین مِنٹ گواہی"
 #: site/activities/activities.php:273 site/course/course-content.php:1587
 #: site/course/course-content.php:4733 site/course/course-content.php:4753
 msgid "B.L.E.S.S. Prayer"
-msgstr "بی ایل ای ایس ایس  دُعا"
+msgstr "بی ایل ای ایس ایس دُعا"
 
 #: site/activities/activities.php:296 site/course/course-content.php:1835
 #: site/course/course-content.php:1888 site/course/course-content.php:1897
@@ -1291,7 +1291,7 @@ msgid ""
 "Have I obeyed this tool or concept? If a tool, have I practiced it on my "
 "own? If a concept, have you reflected on how it changes your perspective?"
 msgstr ""
-"کیا مَیں نے اِس ٹُول یا تصور کے بارے سُنا ہے؟  اگر ایک ٹُول ہے، توکیا مَیں نے اپنے "
+"کیا مَیں نے اِس ٹُول یا تصور کے بارے سُنا ہے؟ اگر ایک ٹُول ہے، توکیا مَیں نے اپنے "
 "طور پر ایک ٹُو کی مشق کی ہے؟ اگر ایک تصور ہے تو، کیا آپ نے غور کِیا ہے کہ یہ "
 "آپ کے نقطہ نظر کو کیسے تبدیل کرتا ہے؟"
 

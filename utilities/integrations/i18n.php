@@ -42,7 +42,6 @@ function zume_determine_locale( string $locale ) : string {
             return zume_get_language_locale( $language_code );
         } */
 
-//
     }
 
     $locale = zume_get_language_locale( $lang_code );

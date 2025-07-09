@@ -125,8 +125,6 @@ class Zume_Activites extends Zume_Magic_Page
         </div>
         </hr>
         <?php
-
-
     }
     public function content_header( $post_id ){
         $title = get_post_meta( $post_id, 'title_'.$this->language_code, true );

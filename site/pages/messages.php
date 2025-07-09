@@ -296,7 +296,7 @@ class Zume_Messages extends Zume_Magic_Page
         </div> <!-- wrapper-->
         <br><br><br>
 
-        <?php if (  current_user_can( 'administrator' ) ) { ?>
+        <?php if ( current_user_can( 'administrator' ) ) { ?>
             
             <div style="width: 800px; margin: 0 auto;">
                 <label for="email">Email:</label>
@@ -374,12 +374,11 @@ class Zume_Messages extends Zume_Magic_Page
         $email_body = Zume_System_Encouragement_API::build_email( zume_replace_placeholder( $message['body'], $language_code, $user_id ), $language_code, $user_id );
 
         // send email
-       $headers = array(
+        $headers = array(
            'Content-Type: text/html; charset=UTF-8',
-           'From: Zúme Training <noreply@zume.training>'
-       );
-       $send = wp_mail( $email, $message['subject'], $email_body, $headers );
-       
+           'From: Zúme Training <noreply@zume.training>',
+        );
+        $send = wp_mail( $email, $message['subject'], $email_body, $headers );
     }
 
     public function query_message( $language_code, $message_id ) {

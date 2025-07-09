@@ -1,10 +1,10 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
-function zume_hreflang_fixed( $lang_code, $slug = '') {
+function zume_hreflang_fixed( $lang_code, $slug = '' ) {
     global $zume_languages_v5_ready;
 
-    foreach( $zume_languages_v5_ready as $code => $lang ) {
+    foreach ( $zume_languages_v5_ready as $code => $lang ) {
         if ( $code === $lang_code ) {
             continue;
         }
@@ -14,7 +14,6 @@ function zume_hreflang_fixed( $lang_code, $slug = '') {
         else {
             echo '<link rel="alternate" href="' . esc_url( 'https://zume.training/' . $code . '/' . $slug ) . '" hreflang="' . esc_attr( $code ) . '" />' . "\n";
         }
-
     }
 }
 
@@ -34,11 +33,11 @@ function zume_hreflang_with_slug( $lang_code, $postid ) {
         WHERE p.post_type = 'zume_pieces'
     ", $plang ), ARRAY_A );
     $post_names = [];
-    foreach( $list as $slug ) {
+    foreach ( $list as $slug ) {
         $post_names[$slug['lang']] = $slug['post_name'];
     }
 
-    foreach( $zume_languages_v5_ready as $code => $lang ) {
+    foreach ( $zume_languages_v5_ready as $code => $lang ) {
         if ( ! isset( $post_names[$code] ) ) {
             continue;
         }

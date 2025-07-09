@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2024-10-11 13:02-0600\n"
-"PO-Revision-Date: 2025-04-11 13:03+0000\n"
+"PO-Revision-Date: 2025-07-03 09:03+0000\n"
 "Last-Translator: Manikumar Miriyala <mani@zume.training>\n"
 "Language-Team: Odia <https://translate.disciple.tools/projects/zume-training/"
 "zume-training-system/or/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.12.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
@@ -93,7 +93,7 @@ msgstr "ଏହା କିପରି କାର୍ଯ୍ୟ କରେ"
 
 #: appearance/style-override/navigation.php:91
 msgid "Download Guidebook"
-msgstr "ମାର୍ଗଦର୍ଶିକା ଡାଉନ୍‍‍ଲୋଡ୍ କରନ୍ତୁ"
+msgstr "ମାର୍ଗଦର୍ଶିକା ଡାଉନ୍‍‍ଲୋଡ୍କ ରନ୍ତୁ"
 
 #: appearance/style-override/navigation.php:97
 msgid "FAQs"
@@ -4964,8 +4964,9 @@ msgstr "ଯୋଗ ଦେବାପାଇଁ କୀ"
 #: site/dashboard/dashboard.php:309 site/pages/checkin.php:97
 #: site/pages/friend-invite.php:73 site/pages/plan-invite.php:73
 #: site/pages/plan-invite.php:169
+#, fuzzy
 msgid "Not a recognized code. Please check the number."
-msgstr "ଏହା ଏକ ସ୍ୱୀକୃତିପ୍ରାପ୍ତ କୋଡ୍ ନୁହଁ। ଦୟାକରି ନମ୍ବର ଯାଞ୍ଚ କରନ୍ତୁ।"
+msgstr "ଏହା ଏକ ସ୍ୱୀକୃତିପ୍ରାପ୍ତ କୋଡ୍ ନୁହଁ। ଦ���ାକରି ନମ୍ବର ଯାଞ୍ଚ କରନ୍ତୁ।"
 
 #: site/dashboard/dashboard.php:310
 msgid "You are not authorized to access this page"
@@ -6174,7 +6175,7 @@ msgstr "ମାଗଣାରେ ପଞ୍ଜିକରଣ କରନ୍ତୁ"
 
 #: site/pages/checkin.php:96 site/pages/friend-invite.php:72
 msgid "Please enter a friend code."
-msgstr "ଦୟାକରି ଏକ ଫ୍ରେଣ୍ଡ྄ କୋଡ୍ ପ୍ରବେଶ କରନ୍ତୁ ।"
+msgstr "ଦୟାକରି ଏକ ସହଯୋଗୀ କୋଡ୍ ପ୍ରବେଶ କରନ୍ତୁ ।"
 
 #: site/pages/checkin.php:257
 msgid "Use the code on the screen or in the book"
@@ -6451,6 +6452,7 @@ msgid "Join a training"
 msgstr "ଅଭିଜ୍ଞ"
 
 #: site/pages/home.php:81
+#, fuzzy
 msgid "45+"
 msgstr "ଏକ ପ୍ରଶିକ୍ଷଣରେ ଯୋଗ ଦିଅନ୍ତୁ"
 
@@ -6475,8 +6477,9 @@ msgid "Practice-Oriented"
 msgstr "ଅଭ୍ୟାସ ଭିତ୍ତିକ"
 
 #: site/pages/home.php:134
+#, fuzzy
 msgid "32 Concepts and Skills"
-msgstr "32 ଗୋଟି ଧାରଣା ଓ କୌଶଳ"
+msgstr "32 ଗୋଟି ଧା���ଣା ଓ କୌଶଳ"
 
 #: site/pages/home.php:135
 msgid "20 hours of Training"
@@ -6858,11 +6861,12 @@ msgstr ""
 "ସେକ୍ୟୁର୍‍ ସୋକେଟ୍ ଲେୟାର୍ (ଏସ୍‌ଏସ୍‌ଏଲ୍‌) ଟେକ୍ନୋଲୋଜି ଯୋଗେ ଏନ୍‌କ୍ରିପ୍ଟ୍‍ କରାଯାଇଛି ।"
 
 #: site/pages/privacy-policy.php:162
+#, fuzzy
 msgid ""
 "We implement a variety of security measures when a user submits, or accesses "
 "their information to maintain the safety of your personal information."
 msgstr ""
-"ଆମେ ବିଭିନ୍ନ ପ୍ରକାର ସୁରକ୍ଷା ବ୍ୟବସ୍ଥା ଲାଗୁ କରିଥାଉ ଯେତେବେଳେ ଜଣେ ଉପଯୋଗକର୍ତ୍ତା ତାଙ୍କ ବ୍ୟକ୍ତିଗତ "
+"ଆମେ ବିଭିନ୍ନ ପ୍ରକାର ସୁରକ୍ଷା ବ୍ୟବସ୍ଥା ଲାଗୁ କରିଥାଉ ଯେତେବେଳେ ଜଣେ ଉପଯୋଗକର୍ତ୍��ା ତାଙ୍କ ବ୍ୟକ୍ତିଗତ "
 "ସୂଚନାକୁ ସବମିଟ୍ କରନ୍ତି କିମ୍ବା ସେଗୁଡ଼ିକର ସୁରକ୍ଷା ପାଇଁ ଆକ୍ସେସ୍ କରନ୍ତି ।"
 
 #: site/pages/privacy-policy.php:168
@@ -7263,8 +7267,9 @@ msgid "3 Month Plan Completed"
 msgstr "ମାସର ଯୋଜନା ସମାପ୍ତ"
 
 #: utilities/apis/cta-api.php:410
+#, fuzzy
 msgid "Join the community"
-msgstr "ସମୁଦାୟରେ ଯୋଗ ଦିଅନ୍ତୁ"
+msgstr "ସମ��ଦାୟରେ ଯୋଗ ଦିଅନ୍ତୁ"
 
 #: utilities/apis/cta-api.php:424
 msgid "Joined Community"

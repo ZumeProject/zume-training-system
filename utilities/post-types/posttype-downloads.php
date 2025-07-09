@@ -179,13 +179,13 @@ class Zume_Downloads_Post_Type
 
         switch ( $column_name ) {
             case 'slides':
-                echo (get_post_meta( $post->ID, 'ppt_10_session', true ) ) ? 'Installed' : '';
+                echo ( get_post_meta( $post->ID, 'ppt_10_session', true ) ) ? 'Installed' : '';
                 break;
             case 'guidebook_10':
-                echo (get_post_meta( $post->ID, 'guidebook_10_session', true ) ) ? 'Installed' : '';
+                echo ( get_post_meta( $post->ID, 'guidebook_10_session', true ) ) ? 'Installed' : '';
                 break;
             case 'store_url':
-                echo (get_post_meta( $post->ID, 'purchase_url', true ) ) ? 'Installed' : '';
+                echo ( get_post_meta( $post->ID, 'purchase_url', true ) ) ? 'Installed' : '';
                 break;
             default:
                 break;

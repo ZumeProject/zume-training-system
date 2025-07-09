@@ -289,7 +289,7 @@ function zume_content( $lang_code = 'en' ) {
 //                    __( 'Scan QR code and work individually through the SOAPS Bible study pattern using Matthew 6:9-13. (20 min)', 'zume' ), // @remove and edit translations
                     __( 'Work individually through the SOAPS Bible study pattern using Matthew 6:9-13. (20 min)', 'zume' ),
                     __( 'Return together and share your S.O.A.P.S. in groups of two or three. (10 min)', 'zume' ),
-                ]
+                ],
 
             ],
             'right' => [
@@ -599,7 +599,7 @@ function zume_content( $lang_code = 'en' ) {
                     __( 'Pray the Prayer Cycle for an hour individually', 'zume' ),
 //                    __( 'Scan the QR code to get the prayer cycle guide on your phone.', 'zume' ),
                     __( 'Set a time for the group to return and reconnect. Be sure to add a few extra minutes for everyone to both find a quiet place to pray and to make their way back to the group.', 'zume' ),
-                ]
+                ],
             ],
             'right' => [
                 $activity_base_url . 'prayercycle',

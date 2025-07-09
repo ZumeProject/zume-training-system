@@ -1,10 +1,20 @@
 <?php
 /**
- * These are global functions that are used throughout the system, and used in the coaching system. There is a copy of this file in the coaching plugin.
+ * Zume Training System - Global Functions
+ *
+ * These are global functions that are used throughout the system, and used in the coaching system.
+ * There is a copy of this file in the coaching plugin.
  * If changes are made here, they need copied to the coaching plugin.
  * All sql queries should not use variable table names, but should be fully qualified.
  */
 
+// =============================================================================
+// #region USER DATA FUNCTIONS
+// =============================================================================
+/**
+ * Functions for retrieving and managing user profile data, stages, locations,
+ * languages, timezones, commitments, plans, churches, and related data.
+ */
 
 if ( ! function_exists( 'zume_get_user_profile' ) ) {
     function zume_get_user_profile( $user_id = null ) {
@@ -336,7 +346,7 @@ if ( ! function_exists( 'zume_get_user_language' ) ) {
             $zume_languages_by_code = zume_languages( 'code' );
         }
 
-        $contact_id = zume_get_user_contact_id($user_id);
+        $contact_id = zume_get_user_contact_id( $user_id );
         $language_code = get_post_meta( $contact_id, 'user_preferred_language', true );
 
         if ( ! $language_code ) {
@@ -353,6 +363,14 @@ if ( ! function_exists( 'zume_get_user_language' ) ) {
         return isset( $zume_languages_by_code[$language_code] ) ? $zume_languages_by_code[$language_code] : $zume_languages_by_code['en'];
     }
 }
+// =============================================================================
+// #endregion USER LANGUAGE FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region USER LOCATION FUNCTIONS
+// =============================================================================
+
 if ( ! function_exists( 'zume_get_user_location' ) ) {
     function zume_get_user_location( $user_id = null, $ip_lookup = false ) {
         if ( is_null( $user_id ) ) {
@@ -398,6 +416,14 @@ if ( ! function_exists( 'zume_get_user_location' ) ) {
         ];
     }
 }
+// =============================================================================
+// #endregion USER LOCATION FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region USER TIMEZONE FUNCTIONS
+// =============================================================================
+
 if ( ! function_exists( 'zume_get_user_timezone' ) ) {
     function zume_get_user_timezone( $user_id = null, $location = null ) {
         if ( is_null( $user_id ) ) {
@@ -427,6 +453,14 @@ if ( ! function_exists( 'zume_get_user_timezone' ) ) {
         return $timezone_details;
     }
 }
+// =============================================================================
+// #endregion USER TIMEZONE FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region USER HOST FUNCTIONS
+// =============================================================================
+
 if ( ! function_exists( 'zume_get_user_host' ) ) {
     function zume_get_user_host( $user_id = null, $log = null ) {
         if ( is_null( $user_id ) ) {
@@ -486,6 +520,14 @@ if ( ! function_exists( 'zume_get_user_host' ) ) {
         ];
     }
 }
+// =============================================================================
+// #endregion USER HOST FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region USER MAWL FUNCTIONS
+// =============================================================================
+
 if ( ! function_exists( 'zume_get_user_mawl' ) ) {
     function zume_get_user_mawl( $user_id = null, $log = null ) {
         if ( is_null( $user_id ) ) {
@@ -545,6 +587,14 @@ if ( ! function_exists( 'zume_get_user_mawl' ) ) {
         ];
     }
 }
+// =============================================================================
+// #endregion USER MAWL FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region USER FRIENDS FUNCTIONS
+// =============================================================================
+
 if ( ! function_exists( 'zume_get_user_friends' ) ) {
     function zume_get_user_friends( $user_id = null ) {
         if ( is_null( $user_id ) ) {
@@ -591,6 +641,14 @@ if ( ! function_exists( 'zume_get_user_friends' ) ) {
         return $friends;
     }
 }
+// =============================================================================
+// #endregion USER FRIENDS FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region USER COMMITMENTS FUNCTIONS
+// =============================================================================
+
 if ( ! function_exists( 'zume_get_user_commitments' ) ) {
     // open, closed, all
     function zume_get_user_commitments( $user_id = null, $status = 'open', $category = 'custom' )
@@ -640,6 +698,14 @@ if ( ! function_exists( 'zume_get_user_commitments' ) ) {
         return $list;
     }
 }
+// =============================================================================
+// #endregion USER COMMITMENTS FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region USER PLANS FUNCTIONS
+// =============================================================================
+
 if ( ! function_exists( 'zume_get_user_plans' ) ) {
     function zume_get_user_plans( $user_id = null )
     {
@@ -748,6 +814,14 @@ if ( ! function_exists( 'zume_get_user_plans' ) ) {
         return $plans;
     }
 }
+// =============================================================================
+// #endregion USER PLANS FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region USER CHURCHES FUNCTIONS
+// =============================================================================
+
 if ( ! function_exists( 'zume_get_user_churches' ) ) {
     function zume_get_user_churches( $user_id = null, $by_key = false ) {
         if ( is_null( $user_id ) ) {
@@ -788,24 +862,51 @@ if ( ! function_exists( 'zume_get_user_churches' ) ) {
         return $churches;
     }
 }
+// =============================================================================
+// #endregion USER CHURCHES FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region USER CONTACT ID FUNCTIONS
+// =============================================================================
+
 if ( ! function_exists( 'zume_get_user_contact_id' ) ) {
     function zume_get_user_contact_id( $user_id ) {
         global $wpdb;
         return $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM zume_postmeta WHERE meta_key = 'corresponds_to_user' AND meta_value = %s", $user_id ) );
     }
 }
+// =============================================================================
+// #endregion USER CONTACT ID FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region USER COACHING CONTACT ID FUNCTIONS
+// =============================================================================
+
 if ( ! function_exists( 'zume_get_user_coaching_contact_id' ) ) {
     function zume_get_user_coaching_contact_id( $user_id ) {
         global $wpdb;
         return $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM zume_3_postmeta WHERE meta_key = 'trainee_user_id' AND meta_value = %s", $user_id ) );
     }
 }
+// =============================================================================
+// #endregion USER COACHING CONTACT ID FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region USER ID BY CONTACT ID FUNCTIONS
+// =============================================================================
+
 if ( ! function_exists( 'zume_get_user_id_by_contact_id' ) ) {
     function zume_get_user_id_by_contact_id( $contact_id ) {
         global $wpdb;
         return $wpdb->get_var( $wpdb->prepare( "SELECT user_id FROM zume_usermeta WHERE meta_key = 'zume_corresponds_to_contact' AND meta_value = %s", $contact_id ) );
     }
 }
+// =============================================================================
+// #endregion USER ID BY CONTACT ID FUNCTIONS
+// =============================================================================
 if ( ! function_exists( 'zume_get_user_log' ) ) {
     /**
      * Get the user's log. $type and $subtype optionally filter the logs
@@ -842,6 +943,18 @@ if ( ! function_exists( 'zume_get_user_log' ) ) {
         }
     }
 }
+
+// =============================================================================
+// #endregion USER DATA FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region LANGUAGE & LOCALIZATION FUNCTIONS
+// =============================================================================
+/**
+ * Functions for language management, localization, feature flags, and locale handling.
+ */
+
 if ( ! function_exists( 'zume_languages' ) ) {
     /**
      * @param string $type 'code' or 'locale' or 'full'
@@ -880,7 +993,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enDisplayName' => 'Amharic',
                 'code' => 'am',
                 'displayCode' => 'am',
-                'locale' => 'amh',
+                'locale' => 'am',
                 'weblate' => 'am',
                 'nativeName' => 'አማርኛ',
                 'rtl' => false,
@@ -889,7 +1002,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => false,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1041,7 +1154,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1060,7 +1173,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1117,7 +1230,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => false,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1231,7 +1344,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => true,
                     'course_slides_download' => false,
                 ],
@@ -1269,7 +1382,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1364,7 +1477,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => false,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1421,7 +1534,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1440,7 +1553,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1478,7 +1591,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1497,7 +1610,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => true,
                     'course_slides_download' => false,
                 ],
@@ -1564,8 +1677,8 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enDisplayName' => 'Oriya',
                 'code' => 'or',
                 'displayCode' => 'or',
-                'locale' => 'or_IN',
-                'weblate' => 'or_IN',
+                'locale' => 'or',
+                'weblate' => 'or',
                 'nativeName' => 'ଓଡ଼ିଆ',
                 'rtl' => false,
                 'flag' => '🇮🇳',
@@ -1573,7 +1686,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1611,7 +1724,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => true,
                     'course_slides_download' => false,
                 ],
@@ -1649,7 +1762,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => true,
                     'course_slides_download' => false,
                 ],
@@ -1668,7 +1781,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => false,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1858,7 +1971,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -1915,7 +2028,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enable_flags' => [
                     'version_4_available' => true,
                     'translator_enabled' => true,
-                    'version_5_ready' => false,
+                    'version_5_ready' => true,
                     'pieces_pages' => false,
                     'course_slides_download' => false,
                 ],
@@ -2214,6 +2327,18 @@ if ( ! function_exists( 'zume_feature_flag' ) ) {
         return null;
     }
 }
+
+// =============================================================================
+// #endregion LANGUAGE & LOCALIZATION FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region TRAINING & CONTENT FUNCTIONS
+// =============================================================================
+/**
+ * Functions for managing training content, course materials, funnel stages,
+ * and educational resources.
+ */
 
 if ( ! function_exists( 'zume_training_items' ) ) {
     function zume_training_items(): array {
@@ -2947,6 +3072,19 @@ if ( ! function_exists( 'zume_funnel_stages' ) ) {
         ];
     }
 }
+
+// =============================================================================
+// #endregion TRAINING & CONTENT FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region UTILITY FUNCTIONS
+// =============================================================================
+/**
+ * Utility functions for URL handling, formatting, validation,
+ * timezones, and other helper operations.
+ */
+
 if ( ! function_exists( 'zume_mirror_url' ) ) {
     function zume_mirror_url() {
         return 'https://storage.googleapis.com/zume-file-mirror/';
@@ -3087,7 +3225,7 @@ if ( ! function_exists( 'zume_get_percent' ) ) {
                 $percent = $percent * 100;
                 $percent = round( ( 100 - $percent ), 1 ) * -1;
             }
-            else if ( $percent < 1 && intval( $percent ) >= 10  ) {
+            else if ( $percent < 1 && intval( $percent ) >= 10 ) {
                 $percent = $percent * 100;
                 $percent = round( ( $percent ), 1 ) * -1;
             }
@@ -6057,6 +6195,18 @@ if ( ! function_exists( 'zume_get_timezones' ) ) {
     }
 }
 
+// =============================================================================
+// #endregion UTILITY FUNCTIONS
+// =============================================================================
+
+// =============================================================================
+// #region API & LOGGING CLASSES
+// =============================================================================
+/**
+ * Classes for REST API endpoints, system logging, user generation mapping,
+ * and other core system functionality.
+ */
+
 if ( ! class_exists( 'Zume_Global_Endpoints' ) ) {
     class Zume_Global_Endpoints {
         public $namespace = 'zume_system/v1';
@@ -8264,6 +8414,9 @@ if ( !function_exists( 'zume_get_subscribers_in_online_trainings' ) ) {
         return $number_of_contacts_that_joined_online_training;
     }
 }
+// =============================================================================
+// #endregion API & LOGGING CLASSES
+// =============================================================================
 
 // must be last for initialization
 zume_get_user_profile();

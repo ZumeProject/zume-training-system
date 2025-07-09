@@ -92,7 +92,7 @@ class Zume_Funnel_Public_Heatmap_Churches extends Zume_Magic_Page
                 jQuery('#custom-paragraph').html(`
 
                     `)
-                    jQuery('#vision-map-link').html('<a href="https://zume.training/map/local?grid_id=<?php echo $this->grid_id; ?>" target="_blank" class="small clear"><?php echo esc_html__( 'Vision Map', 'zume' ) ?></a>');
+                    jQuery('#vision-map-link').html('<a href="https://zume.training/map/local?grid_id=<?php echo esc_attr( $this->grid_id ); ?>" target="_blank" class="small clear"><?php echo esc_html__( 'Vision Map', 'zume' ) ?></a>');
             }
 
             /* custom level content */
