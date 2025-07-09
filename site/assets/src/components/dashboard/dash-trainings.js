@@ -1238,6 +1238,12 @@ export class DashTrainings extends DashPage {
                                                 </ol>
                                             `
                                           : ''}
+                                      <button
+                                          @click=${this.openPrivacyPolicyModal}
+                                          class="link f--1 center"
+                                      >
+                                          ${jsObject.wizard_translations.join_training.privacy_policy}
+                                      </button>
                                   </div>
                                   <div class="stack-1 mt-1">
                                     <button
@@ -1245,12 +1251,6 @@ export class DashTrainings extends DashPage {
                                         class="btn brand tight"
                                     >
                                         ${jsObject.translations.invite_friends}
-                                    </button>
-                                    <button
-                                        @click=${this.openPrivacyPolicyModal}
-                                        class="link f--1"
-                                    >
-                                        ${jsObject.wizard_translations.join_training.privacy_policy}
                                     </button>
                                   </div>
                               </div>

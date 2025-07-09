@@ -2194,6 +2194,12 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                                     ${F(this.groupMembers,a=>a.id,this.renderMemberItem)}
                                                 </ol>
                                             `:""}
+                                      <button
+                                          @click=${this.openPrivacyPolicyModal}
+                                          class="link f--1 center"
+                                      >
+                                          ${jsObject.wizard_translations.join_training.privacy_policy}
+                                      </button>
                                   </div>
                                   <div class="stack-1 mt-1">
                                     <button
@@ -2201,12 +2207,6 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                         class="btn brand tight"
                                     >
                                         ${jsObject.translations.invite_friends}
-                                    </button>
-                                    <button
-                                        @click=${this.openPrivacyPolicyModal}
-                                        class="link f--1"
-                                    >
-                                        ${jsObject.wizard_translations.join_training.privacy_policy}
                                     </button>
                                   </div>
                               </div>
