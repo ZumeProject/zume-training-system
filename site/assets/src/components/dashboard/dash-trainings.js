@@ -34,6 +34,7 @@ export class DashTrainings extends DashPage {
             groupCommunicationOpen: { type: Boolean, attribute: false },
             coachingToolsOpen: { type: Boolean, attribute: false },
             copyFeedback: { type: Object, attribute: false },
+            privacyPolicyOpen: { type: Boolean, attribute: false },
         }
     }
 
@@ -57,7 +58,7 @@ export class DashTrainings extends DashPage {
             emails: '',
             phones: '',
         }
-
+        this.privacyPolicyOpen = false
         this.renderListItem = this.renderListItem.bind(this)
         this.renderMemberItem = this.renderMemberItem.bind(this)
         this.renderTrainingItem = this.renderTrainingItem.bind(this)
@@ -105,6 +106,7 @@ export class DashTrainings extends DashPage {
 
         jQuery(this.renderRoot).foundation()
         zumeAttachObservers(this.renderRoot, this.tagName)
+
     }
 
     updated() {
@@ -497,6 +499,7 @@ export class DashTrainings extends DashPage {
     openGroupMembersModal() {
         const modal = document.querySelector('#group-members-modal')
         jQuery(modal).foundation('open')
+        zumeAttachObservers(modal, 'privacy-policy')
     }
     closeGroupMembersModal() {
         const modal = document.querySelector('#group-members-modal')
@@ -659,6 +662,9 @@ export class DashTrainings extends DashPage {
     }
     toggleCoachingTools() {
         this.coachingToolsOpen = !this.coachingToolsOpen
+    }
+    togglePrivacyPolicy() {
+        this.privacyPolicyOpen = !this.privacyPolicyOpen
     }
     makeTrainingItemHref(item, sessionId) {
         //const href = [ jsObject.site_url, jsObject.language, item.slug ].join('/')
@@ -1506,10 +1512,16 @@ export class DashTrainings extends DashPage {
                   <h2 class="text-center">${jsObject.wizard_translations.join_training.privacy_policy}</h2>
                   <ul role="list">
                     <li>${jsObject.wizard_translations.join_training.contact_visibility1}</li>
-                    <li>${jsObject.wizard_translations.join_training.contact_visibility2}</li>
-                    <li>${jsObject.wizard_translations.join_training.contact_visibility3}</li>
+                    ${!this.isPublic() ? html`
+                      <li>${jsObject.wizard_translations.join_training.contact_visibility2}</li>
+                      <li>${jsObject.wizard_translations.join_training.contact_visibility3}</li>
+                    ` : ''}
                   </ul>
-                  <button class="btn brand tight" @click=${this.openProfileModal}>${jsObject.wizard_translations.join_training.change_preferences}</button>
+                  ${ !this.isPublic() ? html`
+                    <button class="btn brand tight" @click=${this.openProfileModal}>
+                      ${jsObject.wizard_translations.join_training.change_preferences}
+                    </button>
+                  ` : ''}
                   <a href="/privacy-policy" target="_blank" class="btn outline tight">${jsObject.translations.zume_privacy_policy}</a>
                 </div>
             </div>
@@ -1536,6 +1548,19 @@ export class DashTrainings extends DashPage {
                         </button>
                       ` : ''}
                     </div>
+                    <button class="link f--1 text-left" @click=${this.togglePrivacyPolicy}>
+                      ${jsObject.wizard_translations.join_training.privacy_policy}
+                    </button>
+                    <div class="zume-collapse" ?data-expand=${this.privacyPolicyOpen}>
+                      <div class="card mw-50ch mx-auto">
+                        <ul role="list" class="fit-content mt-1 mx-auto text-left">
+                          <li>${jsObject.wizard_translations.join_training.contact_visibility1}</li>
+                          <li>${jsObject.wizard_translations.join_training.contact_visibility2}</li>
+                          <li>${jsObject.wizard_translations.join_training.contact_visibility3}</li>
+                        </ul>
+                      </div>
+                    </div>
+
                     <div>
                         <h3 class="brand-light">${jsObject.translations.contact_info}</h3>
                         ${this.groupMemberToView.hide_public_contact ? html`
