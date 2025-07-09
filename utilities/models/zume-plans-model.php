@@ -25,6 +25,8 @@ class Zume_Plans_Model {
 
         foreach ( $training_group['participants'] as $i => $participant ) {
             $participant_user_id = zume_get_user_id_by_contact_id( $participant['ID'] );
+            $training_group['participants'][$i]['user_id'] = (int) $participant_user_id;
+
             $post_id = self::can_user_edit_plan( $training_group['join_key'], $user_id );
             $hide_public_progress = get_post_meta( $participant['ID'], 'hide_public_progress', true );
             $training_group['participants'][$i]['hide_public_progress'] = $hide_public_progress;

@@ -491,6 +491,7 @@ export class DashTrainings extends DashPage {
         this.groupMemberToView = this.training.participants.find(
             (member) => member.ID === id
         )
+        console.log(this.groupMemberToView, jsObject.profile)
         this.openGroupMembersModal()
     }
     openGroupMembersModal() {
@@ -1527,7 +1528,14 @@ export class DashTrainings extends DashPage {
                     <span class="icon z-icon-close"></span>
                 </button>
                 <div class="stack">
-                    <h2>${this.groupMemberToView.post_title}</h2>
+                    <div class="cluster">
+                      <h2>${this.groupMemberToView.post_title}</h2>
+                      ${ this.groupMemberToView.user_id === jsObject.profile.user_id ? html`
+                        <button class="icon-btn brand-light" @click=${this.openProfileModal}>
+                          <span class="icon z-icon-pencil"></span>
+                        </button>
+                      ` : ''}
+                    </div>
                     <div>
                         <h3 class="brand-light">${jsObject.translations.contact_info}</h3>
                         ${this.groupMemberToView.hide_public_contact ? html`
