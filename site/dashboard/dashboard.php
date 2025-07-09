@@ -201,8 +201,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'communications_email' => __( 'Communications Email', 'zume' ),
             'email_preferences' => __( 'Email Preferences', 'zume' ),
             'email_preferences_disclaimer' => __( 'Choose which email lists you want to receive', 'zume' ),
-            'hide_public_contact' => __( 'Hide my contact information from other participants in private trainings', 'zume' ),
-            'hide_public_progress' => __( 'Hide my progress from other participants in private trainings', 'zume' ),
+            'hide_public_contact' => __( 'Hide my contact information from other participants in trainings', 'zume' ),
+            'hide_public_progress' => __( 'Hide my progress from other participants in trainings', 'zume' ),
             'email_notification_reminder' => __( 'Don\'t forget to send subscribers an email to notify them of the training.', 'zume' ),
             'city' => __( 'City', 'zume' ),
             'no_locations' => __( 'No Locations found', 'zume' ),
@@ -357,8 +357,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'notify_of_future_trainings' => __( 'Notify me about future trainings', 'zume' ),
             'preferences' => __( 'Preferences', 'zume' ),
             'progress_visibility' => __( 'Your progress is always visible to the group leader.', 'zume' ),
-            'contact_hidden' => __( 'Contact information is currently hidden from other participants in private trainings.', 'zume' ),
-            'progress_hidden' => __( 'Progress is currently hidden from other participants in private trainings.', 'zume' ),
+            'contact_hidden' => __( 'Contact information is currently hidden from other participants in trainings.', 'zume' ),
+            'progress_hidden' => __( 'Progress is currently hidden from other participants in trainings.', 'zume' ),
             'local_map' => __( 'Local Vision Map', 'zume' ),
         ];
     }

@@ -434,7 +434,7 @@ class Zume_Training {
             }
             if ( !isset( $fields['hide_public_progress'] ) ){
                 $fields['hide_public_progress'] = [
-                    'name' => __( 'Hide my progress from other participants in private trainings', 'zume' ),
+                    'name' => __( 'Hide my progress from other participants in trainings', 'zume' ),
                     'type' => 'boolean',
                     'tile' => 'profile_details',
                     'only_for_types' => [ 'user' ],
@@ -442,7 +442,7 @@ class Zume_Training {
             }
             if ( !isset( $fields['hide_public_contact'] ) ){
                 $fields['hide_public_contact'] = [
-                    'name' => __( 'Hide my contact information from other participants in private trainings', 'zume' ),
+                    'name' => __( 'Hide my contact information from other participants in trainings', 'zume' ),
                     'type' => 'boolean',
                     'tile' => 'profile_details',
                     'only_for_types' => [ 'user' ],
