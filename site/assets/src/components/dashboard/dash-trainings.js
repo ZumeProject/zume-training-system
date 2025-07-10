@@ -1375,6 +1375,10 @@ export class DashTrainings extends DashPage {
                                                     </p>
                                                 `
                                               : ''}
+                                              <p class="text-left">
+                                                <span class="f-medium">${jsObject.translations.join_code}:</span>
+                                                ${this.training.join_key}
+                                              </p>
                                           ${this.isCoach()
                                               ? html`
                                                     <button

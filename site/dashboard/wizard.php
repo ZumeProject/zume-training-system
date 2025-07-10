@@ -367,7 +367,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'time' => __( 'Time', 'zume' ),
                 'meeting_link' => __( 'Meeting link', 'zume' ),
                 'join_url' => __( 'Join Training Group', 'zume' ),
-                'join_key' => __( 'Join key', 'zume' ),
+                'join_code' => __( 'Join Code', 'zume' ),
                 'broken_link' => __( 'The training link is broken. Please try again.', 'zume' ),
                 'copy_invite' => __( 'Copy Invite', 'zume' ),
             ], Zume_Training_Share::translations() ),

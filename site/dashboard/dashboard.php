@@ -326,7 +326,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'user_phone_disclaimer' => __( 'A user’s phone number is collected and stored for supporting the free coaching service.', 'zume' ),
             'user_city_disclaimer' => __( 'A user’s city is requested to personalize site resources and communication, and to connect users to appropriate coaching and customer service resources.', 'zume' ),
             'user_preferred_language_disclaimer' => __( 'A user’s language preference is stored to support proper site and communication functioning, and to help us connect the user with appropriate coaching and resources.', 'zume' ),
-            'join_key' => __( 'Join key', 'zume' ),
+            'join_code' => __( 'Join Code', 'zume' ),
             'bad_code' => __( 'Not a recognized code. Please check the number.', 'zume' ),
             'not_authorized' => __( 'You are not authorized to access this page', 'zume' ),
             'error_with_request' => __( 'There has been an error with your request', 'zume' ),

@@ -130,7 +130,7 @@ ${this.t.time}: ${t!==""?g.fromISO(t).toFormat("DDDD")+n+a:""}
 ${this.t.join_url}
 ${this.url}
 
-${this.t.join_key}: ${this.training.join_key}
+${this.t.join_code}: ${this.training.join_key}
 ${this.training.zoom_link_note?`
 ${this.t.meeting_link}: ${this.training.zoom_link_note}
 `:""}`}copyInvite(){const t=this.getInviteText();navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>{this.copyFeedback=this.t.copy_feedback,setTimeout(()=>{this.copyFeedback=""},3e3)})}render(){const t=this.getInviteText();return l`
@@ -153,7 +153,10 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                     <p role="alert" aria-live="polite" id="copyFeedback" class="context-alert" data-state=${this.copyFeedback.length?"":"empty"}>${this.copyFeedback}</p>
                                 </div>
                             `:""}
-
+                        <p class="text-left">
+                            <span class="f-medium">${this.t.join_code}:</span>
+                            ${this.training.join_key}
+                        </p>
                         <share-links url=${this.url} title="${this.t.join_my_plan}" .t=${this.t} alwaysShow ></share-links>
                     `:""}
             </div>
@@ -2314,6 +2317,10 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                                         ${this.isActive()?jsObject.translations.active:jsObject.translations.inactive}
                                                     </p>
                                                 `:""}
+                                              <p class="text-left">
+                                                <span class="f-medium">${jsObject.translations.join_code}:</span>
+                                                ${this.training.join_key}
+                                              </p>
                                           ${this.isCoach()?l`
                                                     <button
                                                         @click=${this.editSessionDetails}
