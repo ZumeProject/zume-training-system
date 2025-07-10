@@ -6,8 +6,14 @@ class Zume_Plans_Model {
         $training_group = DT_Posts::get_post( self::$post_type, (int) $post_id, true, false );
 
         $completed_sessions = self::get_completed_sessions( $post_id, $training_group );
-
         $training_group['completed_sessions'] = $completed_sessions;
+
+        $next_session_date = self::get_next_session_date( $post_id );
+        $training_group['next_session_date'] = $next_session_date;
+
+        $current_session = self::get_current_session( $post_id );
+        $training_group['current_session'] = $current_session['current'];
+        $training_group['total_sessions'] = $current_session['total'];
 
         $logs = zume_get_user_log( get_current_user_id(), 'system', 'email_notification' );
         $has_emailed_notification = array_search( $post_id, array_column( $logs, 'post_id' ) );

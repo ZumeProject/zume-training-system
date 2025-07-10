@@ -26,6 +26,7 @@ export class JoinTraining extends LitElement {
             privacyPolicyOpen: { type: Boolean, attribute: false },
             notifyOfFutureTrainings: { type: Boolean, attribute: false },
             leavingNotificationList: { type: Boolean, attribute: false },
+            training: { type: Object, attribute: false },
         }
     }
 
@@ -45,6 +46,7 @@ export class JoinTraining extends LitElement {
         this.isOnNotificationList = jsObject.profile.notify_of_future_trainings === '1'
         this.notifyOfFutureTrainings = jsObject.profile.notify_of_future_trainings === '1'
         this.stateManager = WizardStateManager.getInstance(Modules.joinTraining)
+        this.training = {}
     }
 
     firstUpdated() {
@@ -130,8 +132,20 @@ export class JoinTraining extends LitElement {
 
         this.showTrainings = false
         this.showNextStep = true
+        this.code = code
 
-        this.message.push(this.t.complete_profile)
+        this.loading = true
+        zumeRequest.get(`plan/${code}`)
+        .then((data) => {
+            this.training = data
+        })
+        .catch((error) => {
+            this.setErrorMessage(this.t.error)
+        })
+        .finally(() => {
+            this.loading = false
+        })
+        this.message = this.t.complete_profile
     }
 
     _handleJoinTraining() {
@@ -174,56 +188,112 @@ export class JoinTraining extends LitElement {
 
     render() {
         return html`
-            <h1>${this.t.title}</h1>
-            <div class="stack--2">
-              <div class="success banner" data-state=${this.successMessage.length ? '' : 'empty'}>${this.successMessage}</div>
-              <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
-              ${this.message.length ? html`<p>${this.message}</p>` : ''}
-            </div>
-            <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
-            ${this.showTrainings && this.variant === Steps.joinTrainingSelection
-                ? html`
-                      <public-trainings
-                          .t=${this.t}
-                          notifyUrl=${jsObject.notify_of_future_trainings_url}
-                          @chosen-training=${this._handleChosenTraining}
-                      ></public-trainings>
-                  `
-                : ''}
-            ${this.success ? html`
-                <button class="btn outline tight mt-0" @click=${this.togglePrivacyPolicy}>
-                  ${this.t.privacy_policy}
-                </button>
-                <div class="zume-collapse" ?data-expand=${this.privacyPolicyOpen}>
-                  <ul role="list" class="fit-content mt-1 mx-auto text-left">
-                    <li>${this.t.contact_visibility1}</li>
-                  </ul>
-                </div>
-            ` : ''}
-            ${ this.success && this.isOnNotificationList ? html`
-              <div class="card mw-50ch mx-auto">
-                <p class="bold">${this.t.do_you_want_to_unsubscribe_from_the_notification_list}</p>
-                <div class="form-control brand-light">
-                  <input
-                      type="checkbox"
-                      id="notify_of_future_trainings"
-                      ?checked=${this.notifyOfFutureTrainings}
-                      @change=${this.toggleNotificationList}
-                  />
-                  <label for="notify_of_future_trainings" class="f-1">
-                      ${jsObject.translations.notify_of_future_trainings}
-                  </label>
+            <div class="stack">
+                <h1>${this.t.title}</h1>
+
+                ${ this.variant ===  Steps.joinTrainingSelection && Object.keys(this.training).length > 0 ? html`
+                    <h2 class="h3 brand-light text-center">${this.training.title}</h2>
+                    <table class="table center">
+                        <tbody>
+                            <tr>
+                                <td class="f-medium">${this.t.facilitator}:</td>
+                                <td>${this.training.post_author_display_name}</td>
+                            </tr>
+                            <tr>
+                                <td class="f-medium">${this.t.location}:</td>
+                                <td>${this.training.location_note}</td>
+                            </tr>
+                            <tr>
+                                <td class="f-medium">${this.t.time_of_day}:</td>
+                                <td>${this.training.time_of_day_note}</td>
+                            </tr>
+                            <tr>
+                                <td class="f-medium">${this.t.timezone}:</td>
+                                <td>${this.training.timezone_note}</td>
+                            </tr>
+
+                            ${this.training.zoom_link_note ? html`
+                                <tr>
+                                    <td class="f-medium">${this.t.zoom_link}:</td>
+                                    <td>${this.training.zoom_link_note}</td>
+                                </tr>
+                            ` : ''}
+
+                            <tr>
+                                <td class="f-medium">${this.t.session}:</td>
+                                <td>${this.training.current_session} / ${this.training.total_sessions}</td>
+                            </tr>
+                            <tr>
+                                <td class="f-medium">${this.t.next_session_date}:</td>
+                                <td>${this.training.next_session_date}</td>
+                            </tr>
+                            <tr>
+                                <td class="f-medium">${this.t.visibility}:</td>
+                                <td>${this.training.visibility.key === 'public' ? this.t.public : this.t.private}</td>
+                            </tr>
+                            <tr>
+                                <td class="f-medium">${this.t.status}:</td>
+                                <td>${this.training.status.key === 'active' ? this.t.active : this.t.inactive}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                ` : ''}
+
+                ${this.message.length ? html`<p>${this.message}</p>` : ''}
+
+                <span class="loading-spinner mx-auto ${this.loading ? 'active' : ''}"></span>
+
+                ${this.showTrainings && this.variant === Steps.joinTrainingSelection
+                    ? html`
+                          <public-trainings
+                              .t=${this.t}
+                              notifyUrl=${jsObject.notify_of_future_trainings_url}
+                              @chosen-training=${this._handleChosenTraining}
+                          ></public-trainings>
+                      `
+                    : ''}
+
+                ${this.success ? html`
+                    <button class="btn outline tight mt-0 mx-auto fit-content" @click=${this.togglePrivacyPolicy}>
+                      ${this.t.privacy_policy}
+                    </button>
+                    <div class="zume-collapse" ?data-expand=${this.privacyPolicyOpen}>
+                      <ul role="list" class="fit-content mt-1 mx-auto text-left">
+                        <li>${this.t.contact_visibility1}</li>
+                      </ul>
+                    </div>
+                ` : ''}
+
+                ${ this.success && this.isOnNotificationList ? html`
+                  <div class="card mw-50ch mx-auto">
+                    <p class="bold">${this.t.do_you_want_to_unsubscribe_from_the_notification_list}</p>
+                    <div class="form-control brand-light">
+                      <input
+                          type="checkbox"
+                          id="notify_of_future_trainings"
+                          ?checked=${this.notifyOfFutureTrainings}
+                          @change=${this.toggleNotificationList}
+                      />
+                      <label for="notify_of_future_trainings" class="f-1">
+                          ${jsObject.translations.notify_of_future_trainings}
+                      </label>
+                      </div>
+                      <span class="loading-spinner mx-auto ${this.leavingNotificationList ? 'active' : ''}"></span>
                   </div>
-                  <span class="loading-spinner mx-auto ${this.leavingNotificationList ? 'active' : ''}"></span>
-              </div>
-            ` : ''}
-            ${this.showNextStep || (this.success && this.hasNextStep)
-                ? html`
-                      <button class="btn" @click=${this._sendDoneStepEvent}>
-                          ${this.t.next}
-                      </button>
-                  `
-                : ''}
+                ` : ''}
+
+                ${this.showNextStep || (this.success && this.hasNextStep)
+                    ? html`
+                          <button class="btn fit-content mx-auto" @click=${this._sendDoneStepEvent}>
+                              ${this.t.next}
+                          </button>
+                      `
+                    : ''}
+
+                <div class="success banner" data-state=${this.successMessage.length ? '' : 'empty'}>${this.successMessage}</div>
+                <div class="warning banner" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
+            </div>
         `
     }
 
