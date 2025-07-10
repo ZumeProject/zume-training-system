@@ -21,6 +21,7 @@ export class JoinFriendsTraining extends LitElement {
             success: { type: Boolean, attribute: false },
             loading: { type: Boolean, attribute: false },
             privacyPolicyOpen: { type: Boolean, attribute: false },
+            plan: { type: Object, attribute: false },
         };
     }
 
@@ -34,12 +35,20 @@ export class JoinFriendsTraining extends LitElement {
         this.message = []
         this.loading = false
         this.privacyPolicyOpen = false
+        this.plan = null
 
         this.stateManager = WizardStateManager.getInstance(Modules.joinFriendsTraining)
         this.stateManager.clear()
     }
 
     willUpdate(properties) {
+        if ( properties.has('variant') && this.variant === Steps.confirmPlan ) {
+            this.loading = true
+            const data = this.stateManager.get(Steps.joinFriendsPlan)
+            this.code = data.code
+            this.plan = data.plan
+            console.log( 'plan is ', this.plan)
+        }
         if ( properties.has('variant') && this.variant === Steps.joinFriendsPlan ) {
           this.loading = true
           this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
@@ -50,6 +59,12 @@ export class JoinFriendsTraining extends LitElement {
           const url = new URL( location.href )
           const code = data.code || url.searchParams.get('code')
           this.code = code
+
+          zumeRequest.post( 'connect/plan', { code: code } )
+              .then( ( data ) => {
+                  this.success = true
+                  this.successMessage = this.t.success.replace('%s', data.name)
+                  this.message = ''
 
                   const url = new URL(location.href)
                   url.searchParams.set('joinKey', code)
@@ -161,8 +176,8 @@ export class JoinFriendsTraining extends LitElement {
         if ( this.variant === Steps.confirmPlan ) {
             return html`
                 <div class="container-md">
-                    <h1 class="brand">${this.t.verify_plan}</h1>
-                    <p>${this.t.verify_plan_description}</p>
+                    <h1 class="brand">${this.t.confirm_plan}</h1>
+                    <p>${this.t.confirm_plan_description}</p>
                     <button class="btn light" @click=${this._sendDoneStepEvent}>
                         ${this.t.continue}
                     </button>
