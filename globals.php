@@ -8378,7 +8378,6 @@ if ( ! class_exists( 'Zume_User_Genmap' ) ) {
     }
     Zume_User_Genmap::instance();
 }
-
 if ( !function_exists( 'zume_get_notification_subscribers' ) ) {
     function zume_get_notification_subscribers() {
         $contacts = DT_Posts::list_posts( 'contacts', array(

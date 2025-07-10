@@ -117,13 +117,16 @@ class Zume_Training_Wizard extends Zume_Magic_Page
     public function should_wizard_redirect() {
         $url = new DT_URL( dt_get_url_path() );
         $user_stage = zume_get_user_stage();
+        $has_been_on_notification_list = get_post_meta( zume_get_user_contact_id( get_current_user_id() ), 'notify_of_future_trainings_date_subscribed', true );
         return (
-            $url->query_params->has( 'flow' ) &&
-            $url->query_params->get( 'flow' ) === 'start' &&
-            isset( $user_stage['state'] ) &&
-            $user_stage['state']['set_profile_name'] &&
-            $user_stage['state']['set_profile_location'] &&
-            ( isset( $user_stage['state']['plan_created'] ) ? $user_stage['state']['plan_created'] : false )
+            (
+                $url->query_params->has( 'flow' ) &&
+                $url->query_params->get( 'flow' ) === 'start' &&
+                isset( $user_stage['state'] ) &&
+                $user_stage['state']['set_profile_name'] &&
+                $user_stage['state']['set_profile_location'] &&
+                ( isset( $user_stage['state']['plan_created'] ) ? $user_stage['state']['plan_created'] : false )
+            ) || !empty( $has_been_on_notification_list )
         );
     }
 
