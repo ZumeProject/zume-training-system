@@ -92,8 +92,11 @@ export class MakeTraining extends LitElement {
             case 'make':
                 wizard = Wizards.makeAGroup
                 break;
-            case 'join':
+            case 'join-public':
                 wizard = Wizards.joinATraining
+                break;
+            case 'join-private':
+                wizard = Wizards.joinFriendsPlanWithCode
                 break;
             default:
                 break;
@@ -386,7 +389,8 @@ export class MakeTraining extends LitElement {
                         <h2>${this.t.join_or_start_a_training}</h2>
                         <div class="stack mx-auto" data-fit-content>
                             <button class="btn tight" data-decision="make" @click=${this._handlePlanDecision}>${this.t.start_a_training}</button>
-                            <button class="btn tight" data-decision="join" @click=${this._handlePlanDecision}>${this.t.join_a_public_training}</button>
+                            <button class="btn tight" data-decision="join-public" @click=${this._handlePlanDecision}>${this.t.join_a_public_training}</button>
+                            <button class="btn tight" data-decision="join-private" @click=${this._handlePlanDecision}>${this.t.join_a_private_training}</button>
                             <button class="btn tight outline" data-decision="skip" @click=${this._handlePlanDecision}>${this.t.skip_for_now}</button>
                         </div>
                     </div>

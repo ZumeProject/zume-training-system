@@ -85,6 +85,14 @@ export const wizardDefinitions = {
             Steps.joinFriendsPlan,
         ]),
     },
+    [Wizards.joinFriendsPlanWithCode]: {
+        [Modules.joinFriendsTraining]: makeModule([
+            Steps.joinCode,
+            Steps.updateName,
+            Steps.updateLocation,
+            Steps.joinFriendsPlan,
+        ]),
+    },
     [Wizards.joinCommunity]: {
         [Modules.joinCommunity]: makeModule(
             [

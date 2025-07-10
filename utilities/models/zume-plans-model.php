@@ -188,19 +188,9 @@ class Zume_Plans_Model {
             return new WP_Error( 'bad-plan-code', 'invalid key', array( 'status' => 400 ) );
         }
 
-        $user_contact_id = zume_get_user_contact_id( $user_id );
-
         $training_group = DT_Posts::get_post( self::$post_type, $post_id, true, false );
         if ( is_wp_error( $training_group ) ) {
             return new WP_Error( __METHOD__, 'Failed to get post.', array( 'status' => 401 ) );
-        }
-
-        $participant_ids = array_values( array_map( function ( $participant ) {
-            return $participant['ID'];
-        }, $training_group['participants'] ) );
-
-        if ( !in_array( $user_contact_id, $participant_ids ) ) {
-            return new WP_Error( 'not-authorized', 'Not a participant of this group', array( 'status' => 400 ) );
         }
 
         return $post_id;

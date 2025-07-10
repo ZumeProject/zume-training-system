@@ -114,7 +114,7 @@ ${this.t.time}: ${nextSession !== '' ? DateTime.fromISO(nextSession).toFormat('D
 ${this.t.join_url}
 ${this.url}
 
-${this.t.join_key}: ${this.training.join_key}
+${this.t.join_code}: ${this.training.join_key}
 ${
     this.training.zoom_link_note ? `\n${this.t.meeting_link}: ${this.training.zoom_link_note}\n` : ''
 }`
@@ -168,7 +168,10 @@ ${
                                 </div>
                             ` : ''
                         }
-
+                        <p class="text-left">
+                            <span class="f-medium">${this.t.join_code}:</span>
+                            ${this.training.join_key}
+                        </p>
                         <share-links url=${this.url} title="${this.t.join_my_plan}" .t=${this.t} alwaysShow ></share-links>
                     ` : ''
                 }
