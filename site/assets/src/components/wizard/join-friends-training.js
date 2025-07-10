@@ -47,10 +47,9 @@ export class JoinFriendsTraining extends LitElement {
           this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
           this.message.push(this.t.please_wait)
           /* We need the plan id */
-          const data = this.stateManager.get(Steps.joinFriendsPlan)
 
           const url = new URL( location.href )
-          const code = data.code || url.searchParams.get('code')
+          const code = url.searchParams.get('code')
           this.code = code
 
           zumeRequest.post( 'connect/plan', { code: code } )
