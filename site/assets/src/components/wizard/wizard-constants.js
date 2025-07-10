@@ -56,7 +56,6 @@ export const Steps = {
     connectToFriend: 'connect-friend',
     joinFriendsPlan: 'friend-training',
     joinCode: 'join-code',
-    confirmPlan: 'verify-plan',
     checkinSubmit: 'checkin-submit',
     joinCommunity: 'join-community',
     joinCommunityExplanation: 'join-community-explanation',

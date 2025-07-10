@@ -42,13 +42,6 @@ export class JoinFriendsTraining extends LitElement {
     }
 
     willUpdate(properties) {
-        if ( properties.has('variant') && this.variant === Steps.confirmPlan ) {
-            this.loading = true
-            const data = this.stateManager.get(Steps.joinFriendsPlan)
-            this.code = data.code
-            this.plan = data.plan
-            console.log( 'plan is ', this.plan)
-        }
         if ( properties.has('variant') && this.variant === Steps.joinFriendsPlan ) {
           this.loading = true
           this.dispatchEvent(new CustomEvent( 'loadingChange', { bubbles: true, detail: { loading: this.loading } } ))
@@ -169,18 +162,6 @@ export class JoinFriendsTraining extends LitElement {
                           ${this.errorMessage}
                       </div>
                   </div>
-                </div>
-            `
-        }
-
-        if ( this.variant === Steps.confirmPlan ) {
-            return html`
-                <div class="container-md">
-                    <h1 class="brand">${this.t.confirm_plan}</h1>
-                    <p>${this.t.confirm_plan_description}</p>
-                    <button class="btn light" @click=${this._sendDoneStepEvent}>
-                        ${this.t.continue}
-                    </button>
                 </div>
             `
         }
