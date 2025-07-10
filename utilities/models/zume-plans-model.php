@@ -270,4 +270,41 @@ class Zume_Plans_Model {
         // return new list
         return self::get_completed_sessions( $post_id );
     }
+
+    public static function get_current_session( $training ) {
+        $set_type = $training['set_type']['key'] ?? '';
+        $total = intval( $training['set_type']['label'] ?? 0 );
+        $current = 1;
+
+        if ( $set_type ) {
+            $today = time();
+            for ( $i = 1; $i <= $total; $i++ ) {
+                $session_key = sprintf( '%s_%02d', $set_type, $i );
+                if ( isset( $training[$session_key]['timestamp'] ) && $training[$session_key]['timestamp'] > $today ) {
+                    break;
+                }
+                $current = $i;
+            }
+        }
+
+        return array(
+            'current' => $current,
+            'total' => $total,
+        );
+    }
+
+    // Add this function to get the next session date
+    public static function get_next_session_date( $training ) {
+        $set_type = $training['set_type']['key'] ?? '';
+        $total = intval( $training['set_type']['label'] ?? 0 );
+
+        $today = time();
+        for ( $i = 1; $i <= $total; $i++ ) {
+            $session_key = sprintf( '%s_%02d', $set_type, $i );
+            if ( isset( $training[$session_key]['timestamp'] ) && $training[$session_key]['timestamp'] > $today ) {
+                return gmdate( 'Y-m-d', $training[$session_key]['timestamp'] );
+            }
+        }
+        return '';
+    }
 }

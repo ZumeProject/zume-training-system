@@ -197,6 +197,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'progress' => __( 'Progress', 'zume' ),
             'copy_group_emails' => __( 'Copy Emails', 'zume' ),
             'copy_group_phones' => __( 'Copy Phones', 'zume' ),
+            'copy_code' => __( 'Copy Code', 'zume' ),
             'linked_accounts' => __( 'Linked Accounts', 'zume' ),
             'communications_email' => __( 'Communications Email', 'zume' ),
             'email_preferences' => __( 'Email Preferences', 'zume' ),

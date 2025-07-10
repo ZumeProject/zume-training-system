@@ -58,6 +58,7 @@ export class DashTrainings extends DashPage {
         this.copyFeedback = {
             emails: '',
             phones: '',
+            code: '',
         }
         this.privacyPolicyOpen = false
         this.renderListItem = this.renderListItem.bind(this)
@@ -729,7 +730,19 @@ export class DashTrainings extends DashPage {
           }
         }, 2000)
     }
-
+    copyCode() {
+        navigator.clipboard.writeText(this.training.join_key)
+        this.copyFeedback = {
+            ...this.copyFeedback,
+            code: jsObject.translations.copy_info_feedback
+        }
+        setTimeout(() => {
+            this.copyFeedback = {
+                ...this.copyFeedback,
+                code: ''
+            }
+        }, 2000)
+    }
     renderListItem(session) {
         const { id, name, datetime, completed } = session
 
@@ -1379,6 +1392,14 @@ export class DashTrainings extends DashPage {
                                                 <span class="f-medium">${jsObject.translations.join_code}:</span>
                                                 ${this.training.join_key}
                                               </p>
+                                              ${
+                                                  navigator.clipboard ? html`
+                                                      <div class="position-relative">
+                                                          <button class="btn small" @click=${this.copyCode}>${jsObject.translations.copy_code}</button>
+                                                          <p role="alert" aria-live="polite" id="copyFeedback" class="context-alert" data-state=${this.copyFeedback.code.length ? '' : 'empty'}>${this.copyFeedback.code}</p>
+                                                      </div>
+                                                  ` : ''
+                                              }
                                           ${this.isCoach()
                                               ? html`
                                                     <button
