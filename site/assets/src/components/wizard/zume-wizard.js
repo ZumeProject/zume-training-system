@@ -265,6 +265,7 @@ export class Wizard extends LitElement {
                 translations = this.t.share
                 break
             case Steps.joinTraining:
+            case Steps.confirmPlan:
             case Steps.joinTrainingSelection:
                 tag = literal`join-training`
                 translations = this.t.join_training
@@ -479,6 +480,7 @@ export class Wizard extends LitElement {
                     Wizards.makeFirstGroup,
                     Wizards.makeMoreGroups,
                     Wizards.joinATraining,
+                    Wizards.joinATrainingWithCode,
                     Wizards.joinFriendsPlan,
                     Wizards.inviteFriends,
                 ].includes(this.type)

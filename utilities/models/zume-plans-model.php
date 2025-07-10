@@ -85,6 +85,10 @@ class Zume_Plans_Model {
                     $post[$key] = $plan[$key];
                 }
             }
+            $post['post_author_display_name'] = get_user_by( 'id', $plan['assigned_to']['id'] )->display_name;
+            $post['next_session_date'] = self::get_next_session_date( $plan['ID'] );
+            $post['current_session'] = self::get_current_session( $plan['ID'] )['current'];
+            $post['total_sessions'] = self::get_current_session( $plan['ID'] )['total'];
 
             $posts[] = $post;
         }

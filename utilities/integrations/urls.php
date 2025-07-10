@@ -74,7 +74,7 @@ function zume_join_a_public_plan_url( $code = null ) {
 }
 function zume_join_a_public_plan_wizard_url( $code = null ) {
     $params = empty( $code ) ? [] : [ 'code' => $code ];
-    $redirect_url = zume_wizard_url( 'join', $params );
+    $redirect_url = zume_wizard_url( 'join_with_code', $params );
     return zume_login_url( 'register', $redirect_url );
 }
 function zume_connect_with_friend_wizard_url( $code = null ) {
@@ -119,6 +119,9 @@ function zume_wizard_url( $type = 'start', $params = [] ) {
             break;
         case 'join':
             $url = "$wizard_root/join-a-training";
+            break;
+        case 'join_with_code':
+            $url = "$wizard_root/join-a-training-with-code";
             break;
         case 'friend':
             $url = "$wizard_root/connect-with-friend";

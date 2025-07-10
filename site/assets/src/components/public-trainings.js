@@ -20,7 +20,7 @@ export class PublicTrainings extends LitElement {
             notifyUrl: { type: String },
             notifyMeOpen: { type: Boolean, attribute: false },
             loading: { attribute: false },
-            posts: { attribute: false },
+            plans: { attribute: false },
         }
     }
 
@@ -183,9 +183,11 @@ export class PublicTrainings extends LitElement {
     _handleJoinTraining(event) {
         const code = event.target.dataset.code
 
+        const training = this.plans.find(plan => plan.join_key === code)
+
         const chosenTrainingEvent = new CustomEvent('chosen-training', {
             bubbles: true,
-            detail: { code },
+            detail: { code, training },
         })
         this.dispatchEvent(chosenTrainingEvent)
     }

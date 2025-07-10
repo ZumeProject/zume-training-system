@@ -61,9 +61,20 @@ export const wizardDefinitions = {
             true
         ),
     },
+    [Wizards.joinATrainingWithCode]: {
+        [Modules.joinTraining]: makeModule([
+            Steps.joinTrainingSelection,
+            Steps.updateName,
+            Steps.updateLocation,
+            Steps.contactPreferences,
+            Steps.updatePhone,
+            Steps.joinTraining,
+        ]),
+    },
     [Wizards.joinATraining]: {
         [Modules.joinTraining]: makeModule([
             Steps.joinTrainingSelection,
+            Steps.confirmPlan,
             Steps.updateName,
             Steps.updateLocation,
             Steps.contactPreferences,

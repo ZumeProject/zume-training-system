@@ -69,6 +69,25 @@ export class JoinTraining extends LitElement {
         this.chooseTraining(code)
     }
 
+    willUpdate(properties) {
+        if (properties.has('variant')) {
+            if (this.variant === Steps.confirmPlan) {
+                const data = this.stateManager.get(Steps.confirmPlan)
+                this.training = data.training
+                this.code = data.code
+                this.message = this.t.complete_profile
+            }
+            if (this.variant === Steps.joinTrainingSelection ) {
+
+              const url = new URL(location.href)
+              if (!url.searchParams.has('code') ) {
+                this.message = ''
+                this.showTrainings = true
+              }
+            }
+        }
+    }
+
     connectToPlan(code) {
         this.loading = true
         this.dispatchEvent(
@@ -122,30 +141,21 @@ export class JoinTraining extends LitElement {
     }
 
     _handleChosenTraining(event) {
-        const { code } = event.detail
+        const { code, training } = event.detail
 
-        this.chooseTraining(code)
+        this.chooseTraining(code, training)
     }
 
-    chooseTraining(code) {
+    chooseTraining(code, training) {
         this.stateManager.add(Steps.joinTrainingSelection, code)
 
         this.showTrainings = false
         this.showNextStep = true
         this.code = code
 
-        this.loading = true
-        zumeRequest.get(`plan/${code}`)
-        .then((data) => {
-            this.training = data
-        })
-        .catch((error) => {
-            this.setErrorMessage(this.t.error)
-        })
-        .finally(() => {
-            this.loading = false
-        })
-        this.message = this.t.complete_profile
+        this.stateManager.add(Steps.confirmPlan, { code, training })
+
+        this._sendDoneStepEvent()
     }
 
     _handleJoinTraining() {
@@ -191,7 +201,7 @@ export class JoinTraining extends LitElement {
             <div class="stack">
                 <h1>${this.t.title}</h1>
 
-                ${ this.variant ===  Steps.joinTrainingSelection && Object.keys(this.training).length > 0 ? html`
+                ${ this.variant ===  Steps.confirmPlan && Object.keys(this.training).length > 0 ? html`
                     <h2 class="h3 brand-light text-center">${this.training.title}</h2>
                     <table class="table center">
                         <tbody>
@@ -226,14 +236,6 @@ export class JoinTraining extends LitElement {
                             <tr>
                                 <td class="f-medium">${this.t.next_session_date}:</td>
                                 <td>${this.training.next_session_date}</td>
-                            </tr>
-                            <tr>
-                                <td class="f-medium">${this.t.visibility}:</td>
-                                <td>${this.training.visibility.key === 'public' ? this.t.public : this.t.private}</td>
-                            </tr>
-                            <tr>
-                                <td class="f-medium">${this.t.status}:</td>
-                                <td>${this.training.status.key === 'active' ? this.t.active : this.t.inactive}</td>
                             </tr>
                         </tbody>
                     </table>
