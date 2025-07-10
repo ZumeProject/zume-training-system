@@ -101,26 +101,31 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
         $training_group = get_post( $this->post_id );
         $training_group_facilitator = get_user_by( 'id', $training_group->post_author );
         $training_group_meta = get_post_meta( $this->post_id );
-        $time_of_day_note = $training_group_meta['time_of_day_note'][0];
-        $zoom_link_note = $training_group_meta['zoom_link_note'][0];
-        $location_note = $training_group_meta['location_note'][0];
-        $timezone_note = $training_group_meta['timezone_note'][0];
-        $visibility = $training_group_meta['visibility'][0] === 'public' ? esc_html__( 'Public', 'zume' ) : esc_html__( 'Private', 'zume' );
-        $status = $training_group_meta['status'][0] === 'active' ? esc_html__( 'Active', 'zume' ) : esc_html__( 'Inactive', 'zume' );
-        $session_info = Zume_Plans_Model::get_current_session( $training_group_meta );
-        $next_session = Zume_Plans_Model::get_next_session_date( $training_group_meta );
-        $is_public = $training_group_meta['visibility'][0] === 'public';
+        $training_group = [
+            ...$training_group->to_array(),
+            ...$training_group_meta,
+            'facilitator' => $training_group_facilitator,
+        ];
+        $time_of_day_note = $training_group['time_of_day_note'][0];
+        $zoom_link_note = $training_group['zoom_link_note'][0];
+        $location_note = $training_group['location_note'][0];
+        $timezone_note = $training_group['timezone_note'][0];
+        $visibility = $training_group['visibility'][0] === 'public' ? esc_html__( 'Public', 'zume' ) : esc_html__( 'Private', 'zume' );
+        $status = $training_group['status'][0] === 'active' ? esc_html__( 'Active', 'zume' ) : esc_html__( 'Inactive', 'zume' );
+        $session_info = Zume_Plans_Model::get_current_session( $this->post_id );
+        $next_session = Zume_Plans_Model::get_next_session_date( $this->post_id );
+        $is_public = $training_group['visibility'][0] === 'public';
         $join_url = $is_public ? zume_join_a_public_plan_wizard_url( $this->code ) : zume_join_friends_training_wizard_url( $this->code );
         ?>
 
         <div class="page container-md stack">
-            <h1 class="text-center brand-light"><?php echo esc_html( $training_group->post_title ); ?></h1>
+            <h1 class="text-center brand-light"><?php echo esc_html( $training_group['post_title'] ); ?></h1>
             <h2 class="h3 text-center"><?php echo esc_html__( 'Training Group Details', 'zume' ); ?></h2>
             <table class="table center">
                 <tbody>
                     <tr>
                         <td class="f-medium"><?php echo esc_html__( 'Facilitator', 'zume' ); ?>:</td>
-                        <td><?php echo esc_html( $training_group_facilitator->display_name ); ?></td>
+                        <td><?php echo esc_html( $training_group['facilitator']->display_name ); ?></td>
                     </tr>
                     <tr>
                         <td class="f-medium"><?php echo esc_html__( 'Location', 'zume' ); ?>:</td>

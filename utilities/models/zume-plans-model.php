@@ -271,16 +271,18 @@ class Zume_Plans_Model {
         return self::get_completed_sessions( $post_id );
     }
 
-    public static function get_current_session( $training ) {
+    public static function get_current_session( $training_id ) {
+        $training = DT_Posts::get_post( self::$post_type, $training_id, false, false );
         $set_type = $training['set_type']['key'] ?? '';
         $total = intval( $training['set_type']['label'] ?? 0 );
         $current = 1;
 
+        $completed_sessions = self::get_completed_sessions( $training_id );
         if ( $set_type ) {
             $today = time();
             for ( $i = 1; $i <= $total; $i++ ) {
                 $session_key = sprintf( '%s_%02d', $set_type, $i );
-                if ( isset( $training[$session_key]['timestamp'] ) && $training[$session_key]['timestamp'] > $today ) {
+                if ( !in_array( $session_key, $completed_sessions ) ) {
                     break;
                 }
                 $current = $i;
@@ -294,7 +296,8 @@ class Zume_Plans_Model {
     }
 
     // Add this function to get the next session date
-    public static function get_next_session_date( $training ) {
+    public static function get_next_session_date( $training_id ) {
+        $training = DT_Posts::get_post( self::$post_type, $training_id, false, false );
         $set_type = $training['set_type']['key'] ?? '';
         $total = intval( $training['set_type']['label'] ?? 0 );
 

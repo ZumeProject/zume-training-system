@@ -121,8 +121,8 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
 
                             if ( !empty( $trainings['posts'] ) ) {
                                 foreach ( $trainings['posts'] as $training ) {
-                                    $session_info = Zume_Plans_Model::get_current_session( $training );
-                                    $next_session = Zume_Plans_Model::get_next_session_date( $training );
+                                    $session_info = Zume_Plans_Model::get_current_session( $training['ID'] );
+                                    $next_session = Zume_Plans_Model::get_next_session_date( $training['ID'] );
                                     ?>
                                     <tr>
                                         <td data-label="Name"><?php echo esc_html( $training['post_title'] ?? '' ); ?></td>
