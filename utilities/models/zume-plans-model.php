@@ -16,7 +16,7 @@ class Zume_Plans_Model {
         $training_group['has_emailed_notification'] = $has_emailed_notification !== false ? true : false;
 
         /* Include Invite QR url in the training */
-        $invite_url = dt_create_site_url() . '/app/plan-invite?code=' . $training_group['join_key'];
+        $invite_url = dt_create_site_url() . '/training-group/' . $training_group['join_key'];
         $training_group['qr_url'] = create_qr_url( $invite_url );
 
         $is_private_group = $training_group['visibility']['key'] === 'private';
@@ -279,7 +279,6 @@ class Zume_Plans_Model {
 
         $completed_sessions = self::get_completed_sessions( $training_id );
         if ( $set_type ) {
-            $today = time();
             for ( $i = 1; $i <= $total; $i++ ) {
                 $session_key = sprintf( '%s_%02d', $set_type, $i );
                 if ( !in_array( $session_key, $completed_sessions ) ) {
