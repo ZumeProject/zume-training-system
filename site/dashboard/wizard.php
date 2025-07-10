@@ -276,6 +276,10 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'notify_of_future_trainings_unsubscribe' => __( 'You can always unsubscribe from these emails at any time.', 'zume' ),
                 'notify_me' => __( 'Notify me', 'zume' ),
                 'do_you_want_to_unsubscribe_from_the_notification_list' => __( 'Do you want to unsubscribe from the notification list?', 'zume' ),
+                'join_friends_training' => __( 'Join a friends training group', 'zume' ),
+                'use_the_code_your_friend_sent_you' => __( 'Use the code your friend sent you.', 'zume' ),
+                'not_a_recognized_code' => __( 'Not a recognized code. Please check the number.', 'zume' ),
+                'connect' => __( 'Connect', 'zume' ),
             ],
             'connect_friend' => [
                 'title' => __( 'Connecting with friend', 'zume' ),
@@ -295,6 +299,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'join_or_start_a_training' => __( 'Join or create a training group', 'zume' ),
                 'start_a_training' => __( 'Create a training group', 'zume' ),
                 'join_a_public_training' => __( 'Join a public training group', 'zume' ),
+                'join_a_private_training' => __( 'Join a private training group', 'zume' ),
                 'skip_for_now' => __( 'Skip for now', 'zume' ),
                 'question_which_session' => __( 'Choose your course format', 'zume' ),
                 'hour_1_session_20' => __( '1 hour (20 sessions)', 'zume' ),

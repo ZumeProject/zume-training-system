@@ -35,6 +35,7 @@ export class DashTrainings extends DashPage {
             coachingToolsOpen: { type: Boolean, attribute: false },
             copyFeedback: { type: Object, attribute: false },
             privacyPolicyOpen: { type: Boolean, attribute: false },
+            isPrivate: { type: Boolean, attribute: false },
         }
     }
 
@@ -62,6 +63,7 @@ export class DashTrainings extends DashPage {
         this.renderListItem = this.renderListItem.bind(this)
         this.renderMemberItem = this.renderMemberItem.bind(this)
         this.renderTrainingItem = this.renderTrainingItem.bind(this)
+        this.isPrivate = false
     }
 
     connectedCallback() {
@@ -126,8 +128,8 @@ export class DashTrainings extends DashPage {
             .get(`plan/${this.code}`, {})
             .then((result) => {
                 this.training = result
-              console.log(this.training)
                 this.error = ''
+                this.isPrivate = this.training.visibility.key === 'private'
             })
             .then(() => {
                 this.refreshSessions()
@@ -1512,12 +1514,12 @@ export class DashTrainings extends DashPage {
                   <h2 class="text-center">${jsObject.wizard_translations.join_training.privacy_policy}</h2>
                   <ul role="list">
                     <li>${jsObject.wizard_translations.join_training.contact_visibility1}</li>
-                    ${!this.isPublic() ? html`
+                    ${this.isPrivate ? html`
                       <li>${jsObject.wizard_translations.join_training.contact_visibility2}</li>
                       <li>${jsObject.wizard_translations.join_training.contact_visibility3}</li>
                     ` : ''}
                   </ul>
-                  ${ !this.isPublic() ? html`
+                  ${ this.isPrivate ? html`
                     <button class="btn brand tight" @click=${this.openProfileModal}>
                       ${jsObject.wizard_translations.join_training.change_preferences}
                     </button>
