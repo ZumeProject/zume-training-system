@@ -233,7 +233,7 @@ class Zume_Plans_Model {
         $completed_sessions = [];
 
         if ( empty( $training_group ) ) {
-            $training_group = DT_Posts::get_post( self::$post_type, $post_id, true, false );
+            $training_group = DT_Posts::get_post( self::$post_type, $post_id, false, false );
         }
         if ( is_wp_error( $training_group ) ) {
             return new WP_Error( __METHOD__, 'Failed to get training group.', array( 'status' => 401 ) );
@@ -260,21 +260,25 @@ class Zume_Plans_Model {
         return 1;
     }
 
-    public static function mark_session_complete( $post_id, $session_id ) {
+    public static function mark_session_complete( $post_id, $session_id, $completed = true ) {
         $completed_sessions = self::get_completed_sessions( $post_id );
-        if ( in_array( $session_id, $completed_sessions ) ) {
+        if ( in_array( $session_id, $completed_sessions ) && $completed === true ) {
             return $completed_sessions;
         }
 
         // build fields
         $completed_key = $session_id . '_completed';
         $fields = [];
-        $fields[$completed_key] = time();
+        $fields[$completed_key] = $completed ? time() : null;
 
-        // update plan
-        $training_group = DT_Posts::update_post( self::$post_type, (int) $post_id, $fields, true, false );
-        if ( is_wp_error( $training_group ) ) {
-            return new WP_Error( __METHOD__, 'Failed to update post.', array( 'status' => 401 ) );
+        if ( $completed === false ) {
+            delete_post_meta( $post_id, $completed_key );
+        } else {
+            // update plan
+            $training_group = DT_Posts::update_post( self::$post_type, (int) $post_id, $fields, true, false );
+            if ( is_wp_error( $training_group ) ) {
+                return new WP_Error( __METHOD__, 'Failed to update post.', array( 'status' => 401 ) );
+            }
         }
 
         // return new list

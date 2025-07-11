@@ -296,6 +296,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'last_emailed_notification' => __( 'Emailed on', 'zume' ),
             'send_email_to_subscribers' => __( 'Send Email to Subscribers', 'zume' ),
             'mark_completed' => __( 'Mark Completed', 'zume' ),
+            'mark_uncompleted' => __( 'Mark Uncompleted', 'zume' ),
             'session_x' => __( 'Session %d', 'zume' ),
             'start_session' => __( 'Start Session', 'zume' ),
             'show_details' => __( 'Show details', 'zume' ),

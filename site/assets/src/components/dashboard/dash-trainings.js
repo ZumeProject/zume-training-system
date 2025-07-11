@@ -567,7 +567,19 @@ export class DashTrainings extends DashPage {
             .then((result) => {
                 this.refreshSessions(result)
             })
-        /* Update the local store to reflect this change */
+    }
+    markSessionUncompleted(id, event) {
+        this.stopImmediatePropagation(event)
+        this.closeKebabMenu(id)
+        zumeRequest
+            .post('plan/complete-session', {
+                key: this.training.join_key,
+                session_id: id,
+                completed: 'false',
+            })
+            .then((result) => {
+                this.refreshSessions(result)
+            })
     }
 
     sendEmailToSubscribers() {
@@ -882,7 +894,7 @@ export class DashTrainings extends DashPage {
                                       </button>
                                   </li>
                                   <li>
-                                      <button
+                                      ${!completed ? html`<button
                                           class="menu-btn"
                                           @click=${(event) =>
                                               this.markSessionCompleted(
@@ -896,6 +908,22 @@ export class DashTrainings extends DashPage {
                                           >${jsObject.translations
                                               .mark_completed}
                                       </button>
+                                      ` : html`
+                                      <button
+                                          class="menu-btn"
+                                          @click=${(event) =>
+                                              this.markSessionUncompleted(
+                                                  id,
+                                                  event
+                                              )}
+                                      >
+                                          <span
+                                              class="icon z-icon-pencil"
+                                          ></span
+                                          >${jsObject.translations
+                                              .mark_uncompleted}
+                                      </button>
+                                      `}
                                   </li>
                               `
                             : ''}

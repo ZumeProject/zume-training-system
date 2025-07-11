@@ -189,6 +189,8 @@ class Zume_Plans_Endpoints
         $session_id = $params['session_id'];
         $key = $params['key'];
 
+        $completed = isset( $params['completed'] ) && $params['completed'] === 'false' ? false : true;
+
         // access check
         $user_id = get_current_user_id();
         $post_id = Zume_Plans_Model::can_user_edit_plan( $key, $user_id );
@@ -197,7 +199,7 @@ class Zume_Plans_Endpoints
         }
 
         // return new list
-        return Zume_Plans_Model::mark_session_complete( $post_id, $session_id );
+        return Zume_Plans_Model::mark_session_complete( $post_id, $session_id, $completed );
     }
 
     public function public_plans( WP_REST_Request $request ){
