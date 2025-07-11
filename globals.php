@@ -1223,7 +1223,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 'enDisplayName' => 'Cantonese (Traditional)',
                 'code' => 'zhhk',
                 'displayCode' => 'zhhk',
-                'locale' => 'zh_HK',
+                'locale' => 'zh_Hant_HK',
                 'weblate' => 'zh_Hant_HK',
                 'nativeName' => '中文（繁體,香港）',
                 'rtl' => false,
