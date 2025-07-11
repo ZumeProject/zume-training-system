@@ -362,6 +362,8 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'contact_hidden' => __( 'Contact information is currently hidden from other participants in trainings.', 'zume' ),
             'progress_hidden' => __( 'Progress is currently hidden from other participants in trainings.', 'zume' ),
             'local_map' => __( 'Local Vision Map', 'zume' ),
+            'public_group_warning' => __( 'You are making this group public. It will show up on the public list of trainings. Please confirm you are ready to make it public.', 'zume' ),
+            'confirm' => __( 'Confirm', 'zume' ),
         ];
     }
 

@@ -36,6 +36,7 @@ export class DashTrainings extends DashPage {
             copyFeedback: { type: Object, attribute: false },
             privacyPolicyOpen: { type: Boolean, attribute: false },
             isPrivate: { type: Boolean, attribute: false },
+            showPublicGroupWarning: { type: Boolean, attribute: false },
         }
     }
 
@@ -65,6 +66,7 @@ export class DashTrainings extends DashPage {
         this.renderMemberItem = this.renderMemberItem.bind(this)
         this.renderTrainingItem = this.renderTrainingItem.bind(this)
         this.isPrivate = false
+        this.showPublicGroupWarning = false
     }
 
     connectedCallback() {
@@ -429,11 +431,6 @@ export class DashTrainings extends DashPage {
         jQuery(modal).foundation('close')
     }
     saveSessionDetails() {
-        if (this.isSavingSession) {
-            return
-        }
-        this.isSavingSession = true
-
         const locationNote = document.querySelector('#location-note').value
         const timeNote = document.querySelector('#time-of-day-note').value
         const zoomLinkNote = document.querySelector('#zoom-link-note').value
@@ -467,6 +464,21 @@ export class DashTrainings extends DashPage {
             trainingUpdate.visibility = visibility
         }
 
+        if (this.isSavingSession) {
+            return
+        }
+
+        if (
+          this.showPublicGroupWarning === false &&
+          this.training.visibility.key === 'private' &&
+          trainingUpdate.visibility === 'public'
+        ) {
+            this.showPublicGroupWarning = true
+            return
+        }
+
+        this.isSavingSession = true
+
         zumeRequest
             .put(`plan/${this.training.join_key}`, trainingUpdate)
             .then((result) => {
@@ -491,6 +503,7 @@ export class DashTrainings extends DashPage {
             })
             .finally(() => {
                 this.isSavingSession = false
+                this.showPublicGroupWarning = false
                 this.closeEditSessionDetailsModal()
                 this.dispatchEvent(
                     new CustomEvent('training:changed', { bubbles: true })
@@ -1815,6 +1828,14 @@ export class DashTrainings extends DashPage {
                             </label>
                         </div>
                     </div>
+                    ${ this.showPublicGroupWarning ? html`
+                      <div class="warning banner stack" data-state=''>
+                        ${jsObject.translations.public_group_warning}
+                        <button class="btn outline tight center" @click=${this.saveSessionDetails}>
+                          ${jsObject.translations.confirm}
+                        </button>
+                      </div>
+                    ` : ''}
                     <div
                         class="d-flex align-items-center justify-content-center gap--1"
                     >
@@ -1831,8 +1852,8 @@ export class DashTrainings extends DashPage {
                         <button
                             class="btn tight"
                             @click=${this.saveSessionDetails}
-                            ?disabled=${this.isSavingSession}
-                            aria-disabled=${this.isSavingSession
+                            ?disabled=${this.isSavingSession || this.showPublicGroupWarning}
+                            aria-disabled=${this.isSavingSession || this.showPublicGroupWarning
                                 ? 'true'
                                 : 'false'}
                         >
