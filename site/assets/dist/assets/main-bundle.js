@@ -1416,7 +1416,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                   ${!this.showTeaser&&this.coaches.length>0?l`
                         <div class="grid grid-min-18rem">
                           ${this.coaches.map(t=>l`
-                                  <div class="card stack">
+                                  <div class="card stack | mw-50ch">
                                     <h3>${t.name}</h3>
                                     ${t.communication_apps.length?l`
                                         <ul class="stack">

@@ -63,7 +63,7 @@ export class DashCoach extends DashPage {
                         <div class="grid grid-min-18rem">
                           ${
                               this.coaches.map((coach) => html`
-                                  <div class="card stack">
+                                  <div class="card stack | mw-50ch">
                                     <h3>${coach.name}</h3>
                                     ${
                                       coach.communication_apps.length ? html`
