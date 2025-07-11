@@ -219,9 +219,13 @@ export class CalendarSelect extends LitElement {
     }
 
     willUpdate(properties) {
-        if (properties.has('selectedDays') && this.selectedDays.length > 0) {
-            const firstSelectedDay = this.selectedDays[0]
-            this.monthToShow = DateTime.fromFormat(`${firstSelectedDay.date}`, 'y-LL-dd')
+        if (properties.has('selectedDays') ) {
+            if (this.selectedDays.length > 0) {
+                const firstSelectedDay = this.selectedDays[0]
+                this.monthToShow = DateTime.fromFormat(`${firstSelectedDay.date}`, 'y-LL-dd')
+            } else {
+                this.monthToShow = DateTime.now()
+            }
         }
     }
 
@@ -340,7 +344,6 @@ export class CalendarSelect extends LitElement {
         const now = DateTime.now({ locale: navigator.language })
         const monthDate = this.monthToShow || DateTime.fromISO(this.startDate)
         const monthStart = monthDate.startOf('month')
-
 
         const previousMonth = monthDate.minus({ months: 1 })
         const nextMonth = monthStart.plus({ months: 1 })

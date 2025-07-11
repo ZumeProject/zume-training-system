@@ -178,11 +178,16 @@ export class DashTrainings extends DashPage {
         if (!this.sessions) {
             return []
         }
-        return this.sessions.map((session) => {
-            return {
-                date: DateTime.fromMillis(session.datetime).toISODate(),
+        return this.sessions.reduce((acc, session) => {
+            if (session.datetime === 0) {
+                return acc
             }
-        })
+            const date = DateTime.fromMillis(session.datetime).toISODate()
+            if (acc.includes(date)) {
+                return acc
+            }
+            return [...acc, date]
+        }, [])
     }
     getGroupMembers() {
         if (
@@ -315,8 +320,12 @@ export class DashTrainings extends DashPage {
         this.closeKebabMenu(id)
         const sessionToEdit = this.sessions.find((session) => session.id === id)
 
-        const date = DateTime.fromMillis(sessionToEdit.datetime)
-        sessionToEdit.date = date.toISODate()
+        if (sessionToEdit.datetime !== 0) {
+            const date = DateTime.fromMillis(sessionToEdit.datetime)
+            sessionToEdit.date = date.toISODate()
+        } else {
+
+        }
 
         this.sessionToEdit = sessionToEdit
 
@@ -496,7 +505,6 @@ export class DashTrainings extends DashPage {
         this.groupMemberToView = this.training.participants.find(
             (member) => member.ID === id
         )
-        console.log(this.groupMemberToView, jsObject.profile)
         this.openGroupMembersModal()
     }
     openGroupMembersModal() {
