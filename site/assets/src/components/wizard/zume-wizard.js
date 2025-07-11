@@ -347,10 +347,10 @@ export class Wizard extends LitElement {
             <button
                 @click=${this._handleFinish}
                 ?disabled=${this.loading}
-                class="btn tight
+                class="btn tight d-flex align-items-center gap--2
                 ${this.loading ? 'disabled' : ''} uppercase"
             >
-                ${this.t.dashboard}
+                ${this.t.dashboard} <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
             </button>
         `
     }
@@ -438,7 +438,6 @@ export class Wizard extends LitElement {
     }
     _onFinish(quit = false) {
         this.stateManager.clear()
-        this.resetWizard()
 
         if (!this.finishUrl) {
             this.dispatchEvent(
@@ -454,9 +453,11 @@ export class Wizard extends LitElement {
                     },
                 })
             )
+            this.resetWizard()
             return
         }
 
+        this.loading = true
         const url = new URL(this.finishUrl)
 
         if (quit === false) {
