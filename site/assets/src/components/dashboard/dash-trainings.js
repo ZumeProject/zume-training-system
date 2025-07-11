@@ -1454,19 +1454,6 @@ export class DashTrainings extends DashPage {
                                                         <p role="alert" aria-live="polite" id="copyFeedback" class="context-alert" data-state=${this.copyFeedback.phones.length ? '' : 'empty'}>${this.copyFeedback.phones}</p>
                                                       </div>
                                                 </div>
-                                                ${this.isCoach() && this.training.visibility.key === 'public' ? html`
-                                                  <div class="stack--2 | mt-0">
-                                                      <button
-                                                          class="btn brand tight mt--2 ${this.training.has_emailed_notification
-                                                              ? 'disabled'
-                                                              : ''}"
-                                                          ?disabled=${this.training.has_emailed_notification}
-                                                          @click=${this.sendEmailToSubscribers}
-                                                      >
-                                                          ${jsObject.translations.send_email_to_subscribers}
-                                                      </button>
-                                                  </div>
-                                                  ` : ''}
                                             </div>
                                         </div>
                                         ` : ''}
