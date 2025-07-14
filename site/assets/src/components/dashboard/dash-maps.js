@@ -153,12 +153,14 @@ export class DashMaps extends DashPage {
                                       ?noRenderText=${true}
                                   >
                                   </grid-link>
-                                  <a class="btn" data-map="local-map" target="_blank" href="/maps/local?grid_id=${jsObject.profile.location.grid_id || ''}&lang=${jsObject.language}">
-                                      ${jsObject.translations.local_map}
-                                  </a>
-                                  <button class="btn" data-map="hundred-hour-map" @click=${this.openModal}>
-                                      ${jsObject.translations.hundred_hour_map}
-                                  </button>
+                                  <!-- <grid-link
+                                    data-map="local-map"
+                                    href="/maps/local?grid_id=${jsObject.profile.location.grid_id || ''}&lang=${jsObject.language}"
+                                    target="_blank"
+                                    text=${jsObject.translations.local_map}
+                                    ?noRenderText=${true}
+                                  >
+                                  </grid-link> -->
                               </div>
                           `}
                 </div>
