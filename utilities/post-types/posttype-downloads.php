@@ -178,15 +178,34 @@ class Zume_Downloads_Post_Type
         global $post;
 
         switch ( $column_name ) {
-            case 'slides':
-                echo ( get_post_meta( $post->ID, 'ppt_10_session', true ) ) ? 'Installed' : '';
+            case 'guidebook_10_session':
+                echo ( get_post_meta( $post->ID, 'guidebook_10_session', true ) ) ? '&#x2705;' : '';
                 break;
-            case 'guidebook_10':
-                echo ( get_post_meta( $post->ID, 'guidebook_10_session', true ) ) ? 'Installed' : '';
+            case 'guidebook_20_session':
+                echo ( get_post_meta( $post->ID, 'guidebook_20_session', true ) ) ? '&#x2705;' : '';
                 break;
-            case 'store_url':
-                echo ( get_post_meta( $post->ID, 'purchase_url', true ) ) ? 'Installed' : '';
+            case 'guidebook_intensive':
+                echo ( get_post_meta( $post->ID, 'guidebook_intensive', true ) ) ? '&#x2705;' : '';
                 break;
+            case 'key_10_session':
+                echo ( get_post_meta( $post->ID, 'key_10_session', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'ppt_10_session':
+                echo ( get_post_meta( $post->ID, 'ppt_10_session', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'ppt_20_session':
+                echo ( get_post_meta( $post->ID, 'ppt_20_session', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'ppt_intensive':
+                echo ( get_post_meta( $post->ID, 'ppt_intensive', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'key_20_session':
+                echo ( get_post_meta( $post->ID, 'key_20_session', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'key_intensive':
+                echo ( get_post_meta( $post->ID, 'key_intensive', true ) ) ? '&#x2705;' : '';
+                break;
+            
             default:
                 break;
         }
@@ -204,7 +223,18 @@ class Zume_Downloads_Post_Type
      */
     public function register_custom_column_headings( $defaults ) {
 
-        $new_columns = array( 'slides' => 'Slides', 'guidebook_10' => 'Book 10', 'store_url' => 'Store URL' );
+        $new_columns = array( 
+            'guidebook_10_session' => 'PDF 10',
+            'guidebook_20_session' => 'PDF 20', 
+            'guidebook_intensive' => 'PDF Int',
+            'key_10_session' => 'Key 10',
+            'ppt_10_session' => 'PPT 10',
+            'key_20_session' => 'Key 20',
+            'ppt_20_session' => 'PPT 20',
+            'key_intensive' => 'Key Int',
+            'ppt_intensive' => 'PPT Int',
+           
+        );
 
         $last_item = array();
 
