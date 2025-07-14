@@ -2497,7 +2497,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                       ${jsObject.wizard_translations.join_training.change_preferences}
                     </button>
                   `:""}
-                  <a href="/privacy-policy" target="_blank" class="link f--1 text-center">${jsObject.translations.zume_privacy_policy}</a>
+                  <a href="/privacy-policy" target="_blank" class="link text-center">${jsObject.translations.learn_more}</a>
                 </div>
             </div>
             <div

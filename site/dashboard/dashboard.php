@@ -355,7 +355,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'visibility' => __( 'Visibility', 'zume' ),
             'private_group' => sprintf( _x( '%s group', 'public/private group', 'zume' ), __( 'Private', 'zume' ) ),
             'public_group' => sprintf( _x( '%s group', 'public/private group', 'zume' ), __( 'Public', 'zume' ) ),
-            'zume_privacy_policy' => __( 'Zúme Privacy Policy', 'zume' ),
+            'learn_more' => __( 'Learn more', 'zume' ),
             'notify_of_future_trainings' => __( 'Notify me about future trainings', 'zume' ),
             'preferences' => __( 'Preferences', 'zume' ),
             'progress_visibility' => __( 'Your progress is always visible to the group leader.', 'zume' ),
