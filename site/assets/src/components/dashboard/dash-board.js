@@ -455,6 +455,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.wizardParams = params
     }
     closeWizard() {
+        console.log('closing wizard')
         this.wizardType = ''
         this.wizardParams = ''
         const modal = document.querySelector('#wizard-modal')

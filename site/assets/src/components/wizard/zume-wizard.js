@@ -1,4 +1,4 @@
-import { AttributePart, LitElement, html } from 'lit'
+import { LitElement, html } from 'lit'
 import { html as staticHtml, literal } from 'lit/static-html.js'
 import { Steps, Wizards } from './wizard-constants'
 import { WizardStateManager } from './wizard-state-manager'
@@ -149,6 +149,8 @@ export class Wizard extends LitElement {
 
         if (Object.values(Wizards).includes(wizardToLoad)) {
             this.steps = this.wizard.getSteps(wizardToLoad)
+            console.log(this.steps)
+
             this._gotoStep(0, true, queryParams)
         } else {
             this._onSkip()
@@ -265,13 +267,14 @@ export class Wizard extends LitElement {
                 translations = this.t.share
                 break
             case Steps.joinTraining:
-            case Steps.confirmPlan:
             case Steps.joinTrainingSelection:
                 tag = literal`join-training`
                 translations = this.t.join_training
                 break
-            case Steps.joinCode:
             case Steps.confirmPlan:
+                tag = literal`confirm-training`
+                translations = this.t.confirm_plan
+                break
             case Steps.joinFriendsPlan:
                 tag = literal`join-friends-training`
                 translations = this.t.join_training
@@ -285,6 +288,7 @@ export class Wizard extends LitElement {
                 translations = this.t.checkin
                 break
             case Steps.planDecision:
+            case Steps.joinWithCode:
             case Steps.howManySessions:
             case Steps.scheduleDecision:
             case Steps.howOften:
@@ -547,6 +551,12 @@ export class Wizard extends LitElement {
         if (pushState && this.noUrlChange) {
             /* Add steps to # in url to allow user to reverse navigate through the wizard */
             const url = new URL(window.location.href)
+
+            if (Object.keys(queryParams).length > 0) {
+                Object.entries(queryParams).forEach(([key, value]) => {
+                    url.searchParams.set(key, value)
+                })
+            }
 
             const newUrl =
                 url.origin + url.pathname + url.search + `#${this.step.slug}`

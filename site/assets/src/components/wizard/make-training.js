@@ -26,6 +26,7 @@ export class MakeTraining extends LitElement {
             errorMessage: { type: String, attribute: false },
             message: { type: String, attribute: false },
             loading: { type: Boolean, attribute: false },
+            joinCodeOpen: { type: Boolean, attribute: false },
         }
     }
 
@@ -49,6 +50,7 @@ export class MakeTraining extends LitElement {
         this.calendarEndTwoYears = DateTime.now().plus({ years: 2 }).endOf('month').toISODate()
         this.calendarView = 'all'
         this.scheduleView = 'calendar'
+        this.joinCodeOpen = false
 }
 
     willUpdate(properties) {
@@ -96,7 +98,7 @@ export class MakeTraining extends LitElement {
                 wizard = Wizards.joinATraining
                 break;
             case 'join-private':
-                wizard = Wizards.joinFriendsPlanWithCode
+                wizard = Wizards.joinFriendsPlan
                 break;
             default:
                 break;
@@ -363,6 +365,51 @@ export class MakeTraining extends LitElement {
         this.selectedDays = []
     }
 
+    gotoJoinCodeStep() {
+        const url = new URL(window.location.href)
+        const urlParts = url.pathname.split('/')
+
+        const slug = Steps.joinWithCode
+        let newUrl = ''
+        if ( urlParts[1] === 'dashboard' ) {
+            newUrl = url.origin + url.pathname + url.search + `#${slug}`
+        } else {
+            newUrl = urlParts.slice(0, -1).join('/') + '/' + slug + url.search
+        }
+
+        console.log(newUrl)
+
+        window.history.pushState(null, null, newUrl)
+
+        this.variant = Steps.joinWithCode
+    }
+
+    _handleVerifyCode() {
+        this.loading = true
+        this.code = this.renderRoot.querySelector('#code').value
+        zumeRequest.get( `plan/${this.code}`, {})
+            .then( ( data ) => {
+                this.success = true
+                const stateManager = WizardStateManager.getInstance(Modules.joinTraining)
+                stateManager.add(Steps.confirmPlan, { code: this.code, training: data })
+
+                if (data.visibility.key === 'private') {
+                    this._sendLoadWizardEvent(Wizards.joinFriendsPlan, { code: this.code })
+                } else {
+                    this._sendLoadWizardEvent(Wizards.joinATraining, { code: this.code })
+                }
+            })
+            .catch((error) => {
+                this.errorMessage = this.t.not_a_recognized_code
+                setTimeout(() => {
+                    this.errorMessage = ''
+                }, 2500)
+            })
+            .finally(() => {
+                this.loading = false
+            })
+    }
+
     render() {
         const howManySessions = Number( this.stateManager.get(Steps.howManySessions) )
         const scheduleDecision = this.stateManager.get(Steps.scheduleDecision)
@@ -390,9 +437,31 @@ export class MakeTraining extends LitElement {
                         <div class="stack mx-auto" data-fit-content>
                             <button class="btn tight" data-decision="make" @click=${this._handlePlanDecision}>${this.t.start_a_training}</button>
                             <button class="btn tight" data-decision="join-public" @click=${this._handlePlanDecision}>${this.t.join_a_public_training}</button>
-                            <button class="btn tight" data-decision="join-private" @click=${this._handlePlanDecision}>${this.t.join_a_private_training}</button>
+                            <button class="btn tight" data-decision="join-private" @click=${this.gotoJoinCodeStep}>${this.t.join_with_code}</button>
                             <button class="btn tight outline" data-decision="skip" @click=${this._handlePlanDecision}>${this.t.skip_for_now}</button>
                         </div>
+                    </div>
+                ` : ''}
+                ${this.variant === Steps.joinWithCode ? html`
+                    <div class="container-md">
+                      <h1 class="brand">${this.t.join_with_code}</h1>
+                      <div class="stack-1 invitation-form">
+                          <p>${this.t.use_the_code_your_friend_sent_you}</p>
+                          <div class="">
+                              <label for="code"></label>
+                              <input class="input" id="code" type="text" placeholder="012345">
+                          </div>
+                          <button
+                              class="btn light fit-content center"
+                              @click=${this._handleVerifyCode}
+                          >
+                              ${this.t.connect}
+                          </button>
+                          <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
+                          <div class="banner warning text-center" data-state=${this.errorMessage.length ? '' : 'empty'}>
+                              ${this.errorMessage}
+                          </div>
+                      </div>
                     </div>
                 ` : ''}
                 ${this.variant === Steps.howManySessions ? html`

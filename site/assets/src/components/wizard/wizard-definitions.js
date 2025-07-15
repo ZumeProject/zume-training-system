@@ -61,16 +61,6 @@ export const wizardDefinitions = {
             true
         ),
     },
-    [Wizards.joinATrainingWithCode]: {
-        [Modules.joinTraining]: makeModule([
-            Steps.joinTrainingSelection,
-            Steps.updateName,
-            Steps.updateLocation,
-            Steps.contactPreferences,
-            Steps.updatePhone,
-            Steps.joinTraining,
-        ]),
-    },
     [Wizards.joinATraining]: {
         [Modules.joinTraining]: makeModule([
             Steps.joinTrainingSelection,
@@ -91,14 +81,7 @@ export const wizardDefinitions = {
     },
     [Wizards.joinFriendsPlan]: {
         [Modules.joinFriendsTraining]: makeModule([
-            Steps.updateName,
-            Steps.updateLocation,
-            Steps.joinFriendsPlan,
-        ]),
-    },
-    [Wizards.joinFriendsPlanWithCode]: {
-        [Modules.joinFriendsTraining]: makeModule([
-            Steps.joinCode,
+            Steps.confirmPlan,
             Steps.updateName,
             Steps.updateLocation,
             Steps.joinFriendsPlan,
