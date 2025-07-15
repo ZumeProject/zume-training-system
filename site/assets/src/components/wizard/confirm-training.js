@@ -77,6 +77,7 @@ export class ConfirmTraining extends LitElement {
                 view="all"
                 startDate=${this.training.next_session_date}
                 endDate=${this.training.session_dates[this.training.session_dates.length - 1].date}
+                viewOnly
             ></calendar-select>
             <p class="text-center">${this.t.complete_profile}</p>
             <button class="btn" @click=${this.sendDoneStepEvent}>${this.t.join_training}</button>

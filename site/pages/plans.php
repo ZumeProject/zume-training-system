@@ -155,6 +155,7 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
                 view="all"
                 startDate="<?php echo esc_attr( $next_session ); ?>"
                 endDate="<?php echo esc_attr( $session_dates[ count( $session_dates ) - 1 ]['date'] ); ?>"
+                viewOnly
             ></calendar-select>
             <div class="stack-2 fit-content mx-auto">
                 <a href="<?php echo esc_url( $join_url ); ?>" class="btn large">
