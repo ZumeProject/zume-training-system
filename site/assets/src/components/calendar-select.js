@@ -190,6 +190,7 @@ export class CalendarSelect extends LitElement {
             showToday: { type: Boolean },
             showTodayButton: { type: Boolean },
             showClearButton: { type: Boolean },
+            showAddMonthButton: { type: Boolean },
             monthToShow: { attribute: false },
         }
     }
@@ -203,6 +204,7 @@ export class CalendarSelect extends LitElement {
         this.showToday = false
         this.showTodayButton = false
         this.showClearButton = false
+        this.showAddMonthButton = false
         this.today = DateTime.now().toISODate()
         this.view = 'slider'
         this.translations = {
@@ -438,7 +440,7 @@ export class CalendarSelect extends LitElement {
                         })
                     }
                     ${
-                        this.view !== 'slider' ? html`
+                        this.view !== 'slider' && this.showAddMonthButton ? html`
                             <div class="add-month-button" role="button" @click=${this.addMonth}>
                                 <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" color="currentColor" width="40" height="40" viewBox="0 0 40 40">
                                     <path d="M32.104,18.262h-10.365V7.896c0-.96-.777-1.738-1.738-1.738s-1.738.778-1.738,1.738v10.366H7.896c-.961,0-1.738.778-1.738,1.738s.777,1.738,1.738,1.738h10.367v10.367c0,.96.777,1.738,1.738,1.738s1.738-.778,1.738-1.738v-10.367h10.365c.961,0,1.738-.778,1.738-1.738s-.777-1.738-1.738-1.738Z" stroke-width="0"/>

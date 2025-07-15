@@ -571,6 +571,7 @@ export class MakeTraining extends LitElement {
                                         .selectedDays=${this.selectedDays.sort(this.sortDays)}
                                         view=${this.calendarView}
                                         showToday
+                                        showAddMonthButton
                                         .translations=${{
                                             clear: this.t.clear,
                                             today: this.t.today,

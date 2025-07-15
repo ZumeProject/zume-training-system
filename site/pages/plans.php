@@ -107,13 +107,13 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
             'facilitator' => $training_group_facilitator,
         ];
         $time_of_day_note = $training_group['time_of_day_note'][0];
-        $zoom_link_note = $training_group['zoom_link_note'][0];
         $location_note = $training_group['location_note'][0];
         $timezone_note = $training_group['timezone_note'][0];
         $visibility = $training_group['visibility'][0] === 'public' ? esc_html__( 'Public', 'zume' ) : esc_html__( 'Private', 'zume' );
         $status = $training_group['status'][0] === 'active' ? esc_html__( 'Active', 'zume' ) : esc_html__( 'Inactive', 'zume' );
         $session_info = Zume_Plans_Model::get_current_session( $this->post_id );
         $next_session = Zume_Plans_Model::get_next_session_date( $this->post_id );
+        $session_dates = Zume_Plans_Model::get_session_dates( $this->post_id );
         $is_public = $training_group['visibility'][0] === 'public';
         $join_url = $is_public ? zume_join_a_public_plan_wizard_url( $this->code ) : zume_join_friends_training_wizard_url( $this->code );
         ?>
@@ -139,16 +139,6 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
                         <td class="f-medium"><?php echo esc_html__( 'Timezone', 'zume' ); ?>:</td>
                         <td><?php echo esc_html( $timezone_note ); ?></td>
                     </tr>
-
-                    <?php if ( !empty( $zoom_link_note ) ) : ?>
-
-                        <tr>
-                            <td class="f-medium"><?php echo esc_html__( 'Zoom Link', 'zume' ); ?>:</td>
-                            <td><?php echo esc_html( $zoom_link_note ); ?></td>
-                        </tr>
-
-                    <?php endif; ?>
-
                     <tr>
                         <td class="f-medium"><?php echo esc_html__( 'Session', 'zume' ); ?>:</td>
                         <td><?php echo esc_html( $session_info['current'] ); ?> / <?php echo esc_html( $session_info['total'] ); ?></td>
@@ -157,16 +147,15 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
                         <td class="f-medium"><?php echo esc_html__( 'Next Session Date', 'zume' ); ?>:</td>
                         <td><?php echo esc_html( $next_session ); ?></td>
                     </tr>
-                    <tr>
-                        <td class="f-medium"><?php echo esc_html__( 'Visibility', 'zume' ); ?>:</td>
-                        <td><?php echo esc_html( $visibility ); ?></td>
-                    </tr>
-                    <tr>
-                        <td class="f-medium"><?php echo esc_html__( 'Status', 'zume' ); ?>:</td>
-                        <td><?php echo esc_html( $status ); ?></td>
-                    </tr>
                 </tbody>
             </table>
+            <calendar-select
+                style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
+                selectedDays="<?php echo esc_attr( json_encode( $session_dates ) ); ?>"
+                view="all"
+                startDate="<?php echo esc_attr( $next_session ); ?>"
+                endDate="<?php echo esc_attr( $session_dates[ count( $session_dates ) - 1 ]['date'] ); ?>"
+            ></calendar-select>
             <div class="stack-2 fit-content mx-auto">
                 <a href="<?php echo esc_url( $join_url ); ?>" class="btn large">
                     <?php echo esc_html__( 'Join Training Group', 'zume' ); ?>

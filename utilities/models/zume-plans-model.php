@@ -323,4 +323,21 @@ class Zume_Plans_Model {
         }
         return '';
     }
+
+    // Get a list of dates of the sessions in the training
+    public static function get_session_dates( $training_id ) {
+        $training = DT_Posts::get_post( self::$post_type, $training_id, false, false );
+        $set_type = $training['set_type']['key'] ?? '';
+        $total = intval( $training['set_type']['label'] ?? 0 );
+
+        $dates = [];
+        for ( $i = 1; $i <= $total; $i++ ) {
+            $session_key = sprintf( '%s_%02d', $set_type, $i );
+            $dates[] = [
+                'date' => gmdate( 'Y-m-d', $training[$session_key]['timestamp'] ),
+                'session' => $i,
+            ];
+        }
+        return $dates;
+    }
 }
