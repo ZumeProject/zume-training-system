@@ -154,6 +154,9 @@ class Zume_Plans_Model {
         if ( isset( $params['time_of_day_note'] ) ) {
             $fields['time_of_day_note'] = $params['time_of_day_note'];
         }
+        if ( isset( $params['time_of_day'] ) ) {
+            $fields['time_of_day'] = $params['time_of_day'];
+        }
         if ( isset( $params['language_note'] ) ) {
             $fields['language_note'] = $params['language_note'];
         }

@@ -386,11 +386,20 @@ export class DashTrainings extends DashPage {
         jQuery(modal).foundation('close')
     }
     editSessionDetails(event) {
+      console.log(this.training)
         event.stopImmediatePropagation()
         document.querySelector('#location-note').value =
             this.training.location_note || ''
-        document.querySelector('#time-of-day-note').value =
-            this.training.time_of_day_note || ''
+        const timeOfDayNoteElement = document.querySelector('#time-of-day-note')
+        if (timeOfDayNoteElement) {
+            timeOfDayNoteElement.value =
+                this.training.time_of_day_note || ''
+        }
+        const timeOfDayElement = document.querySelector('#time-of-day')
+        if (timeOfDayElement) {
+            timeOfDayElement.value =
+                this.training.time_of_day || ''
+        }
 
         if (this.isCoach()) {
             document.querySelector('#language-note').value =
@@ -434,7 +443,6 @@ export class DashTrainings extends DashPage {
     }
     saveSessionDetails() {
         const locationNote = document.querySelector('#location-note').value
-        const timeNote = document.querySelector('#time-of-day-note').value
         const zoomLinkNote = document.querySelector('#zoom-link-note').value
         const status = document.querySelector(
             '#edit-session-details-modal #active'
@@ -444,7 +452,6 @@ export class DashTrainings extends DashPage {
 
         const trainingUpdate = {
             location_note: locationNote,
-            time_of_day_note: timeNote,
             zoom_link_note: zoomLinkNote,
             status,
         }
@@ -453,10 +460,13 @@ export class DashTrainings extends DashPage {
         let timezone
         let timezoneNote
         let visibility
+        let timeOfDay
+        let timeNote
         if (this.isCoach()) {
             languageNote = document.querySelector('#language-note').value
             timezone = document.querySelector('#timezone').value
             timezoneNote = document.querySelector('#timezone-note').value
+            timeOfDay = document.querySelector('#time-of-day').value
             visibility = document.querySelector(
                 '#edit-session-details-modal #public'
             ).checked
@@ -466,7 +476,11 @@ export class DashTrainings extends DashPage {
             trainingUpdate.language_note = languageNote
             trainingUpdate.timezone = timezone
             trainingUpdate.timezone_note = timezoneNote
+            trainingUpdate.time_of_day = timeOfDay
             trainingUpdate.visibility = visibility
+        } else {
+          timeNote = document.querySelector('#time-of-day-note').value
+          trainingUpdate.time_of_day_note = timeNote
         }
 
         if (this.isSavingSession) {
@@ -492,6 +506,7 @@ export class DashTrainings extends DashPage {
                 }
                 newTraining.location_note = locationNote
                 newTraining.time_of_day_note = timeNote
+                newTraining.time_of_day = timeOfDay
                 newTraining.zoom_link_note = zoomLinkNote
                 newTraining.status = {
                     key: status,
@@ -1363,13 +1378,23 @@ export class DashTrainings extends DashPage {
                                               >
                                               ${this.training.location_note}
                                           </p>
-                                          <p class="text-left">
-                                              <span class="f-medium"
-                                                  >${jsObject.translations
-                                                      .time}:</span
-                                              >
-                                              ${this.training.time_of_day_note}
-                                          </p>
+                                          ${this.isCoach() ? html`
+                                              <p class="text-left">
+                                                <span class="f-medium"
+                                                    >${jsObject.translations
+                                                        .time}:</span
+                                                >
+                                                ${this.training.time_of_day}
+                                              </p>
+                                          ` : html`
+                                              <p class="text-left">
+                                                <span class="f-medium"
+                                                    >${jsObject.translations
+                                                        .time}:</span
+                                                >
+                                                ${this.training.time_of_day_note}
+                                              </p>
+                                          `}
                                           ${this.training.language_note &&
                                           this.training.language_note.length
                                               ? html`
@@ -1734,48 +1759,60 @@ export class DashTrainings extends DashPage {
                         >
                         <input class="input" type="text" id="location-note" />
                     </div>
-                    <div>
-                        <label for="time-of-day-note"
-                            >${jsObject.translations.time}</label
-                        >
-                        <input
-                            class="input"
-                            type="text"
-                            id="time-of-day-note"
-                        />
-                    </div>
+                    ${!this.isCoach() ? html`
+                        <div>
+                            <label for="time-of-day-note"
+                                >${jsObject.translations.time}</label
+                            >
+                            <input
+                                class="input"
+                                type="text"
+                                id="time-of-day-note"
+                            />
+                        </div>
+                    ` : ''}
                     ${this.isCoach()
                         ? html`
-                              <div>
-                                  <label for="language-note"
-                                      >${jsObject.translations.language}</label
-                                  >
-                                  <input
-                                      class="input"
-                                      type="text"
-                                      id="language-note"
-                                  />
-                              </div>
-                              <div>
-                                  <label for="timezone-note"
-                                      >${jsObject.translations.timezone}</label
-                                  >
-                                  <input
-                                      class="input"
-                                      type="text"
-                                      id="timezone-note"
-                                  />
-                              </div>
-                              <div>
-                                  <label for="timezone"
-                                      >${jsObject.translations.timezone}</label
-                                  >
-                                  <select
-                                      class="input"
-                                      id="timezone"
-                                  >
-                                      <option value="">${jsObject.translations.select_timezone}</option>
-                                      ${Object.values(jsObject.timezones).map(timezone => html`
+                            <div>
+                                <label for="time-of-day"
+                                    >${jsObject.translations.time}</label
+                                >
+                                <input
+                                    class="input"
+                                    type="time"
+                                    id="time-of-day"
+                                />
+                            </div>
+                            <div>
+                                <label for="language-note"
+                                    >${jsObject.translations.language}</label
+                                >
+                                <input
+                                    class="input"
+                                    type="text"
+                                    id="language-note"
+                                />
+                            </div>
+                            <div>
+                                <label for="timezone-note"
+                                    >${jsObject.translations.timezone}</label
+                                >
+                                <input
+                                    class="input"
+                                    type="text"
+                                    id="timezone-note"
+                                />
+                            </div>
+                            <div>
+                                <label for="timezone"
+                                    >${jsObject.translations.timezone}</label
+                                >
+                                <select
+                                    class="input"
+                                    id="timezone"
+                                >
+                                    <option value="">${jsObject.translations.select_timezone}</option>
+                                    ${Object.values(jsObject.timezones).map(timezone => html`
                                         <option value="${timezone.timezone}">${timezone.timezone}</option>
                                       `)}
                                   </select>
