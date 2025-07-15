@@ -1,3 +1,4 @@
+import VitePluginBrowserSync from 'vite-plugin-browser-sync'
 import create_config from '@kucrut/vite-for-wp'
 import autoprefixer from 'autoprefixer'
 import { getBabelOutputPlugin } from '@rollup/plugin-babel';
@@ -32,6 +33,7 @@ const config = create_config(
             getBabelOutputPlugin({
                 configFile: path.resolve(__dirname, 'babel.config.js'),
             }),
+            VitePluginBrowserSync()
         ]
     }
 )
