@@ -282,8 +282,6 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'training_group_details' => __( 'Training Group Details', 'zume' ),
             ],
             'confirm_plan' => [
-                'confirm_plan' => __( 'Confirm plan', 'zume' ),
-                'confirm_plan_description' => __( 'Is this the plan you want to join?', 'zume' ),
                 'facilitator' => __( 'Facilitator', 'zume' ),
                 'location' => __( 'Location', 'zume' ),
                 'time_of_day' => __( 'Time of Day', 'zume' ),

@@ -41,8 +41,7 @@ export class ConfirmTraining extends LitElement {
         }
 
         return html`
-            <h2 class="h3 brand-light text-center">${this.training.title}</h2>
-            <p class="text-center">${this.training.description}</p>
+            <h2 class="h3 brand-light text-center">${this.training.post_title || this.training.title}</h2>
             <table class="table center">
                 <tbody>
                     <tr>
@@ -72,6 +71,13 @@ export class ConfirmTraining extends LitElement {
                     </tr>
                 </tbody>
             </table>
+            <calendar-select
+                style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
+                .selectedDays=${this.training.session_dates}
+                view="all"
+                startDate=${this.training.next_session_date}
+                endDate=${this.training.session_dates[this.training.session_dates.length - 1].date}
+            ></calendar-select>
             <p class="text-center">${this.t.complete_profile}</p>
             <button class="btn" @click=${this.sendDoneStepEvent}>${this.t.join_training}</button>
         `

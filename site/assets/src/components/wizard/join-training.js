@@ -145,16 +145,14 @@ export class JoinTraining extends LitElement {
         this.showNextStep = true
         this.code = code
 
-        let thisTraining = null
+        let thisTraining = training
 
-        if ( !training ) {
+        if ( !thisTraining ) {
           const confirmPlan = this.stateManager.get(Steps.confirmPlan)
-          console.log('confirmPlan', confirmPlan)
           if ( confirmPlan && confirmPlan.code === code ) {
             thisTraining = confirmPlan.training
           } else {
             const data = await zumeRequest.get(`plan/${code}`)
-            console.log('fetched the training', data)
             thisTraining = data
           }
         }

@@ -15,6 +15,9 @@ class Zume_Plans_Model {
         $training_group['current_session'] = $current_session['current'];
         $training_group['total_sessions'] = $current_session['total'];
 
+        $session_dates = self::get_session_dates( $post_id );
+        $training_group['session_dates'] = $session_dates;
+
         $logs = zume_get_user_log( get_current_user_id(), 'system', 'email_notification' );
         $has_emailed_notification = array_search( $post_id, array_column( $logs, 'post_id' ) );
         $log = $logs[$has_emailed_notification];
@@ -89,6 +92,7 @@ class Zume_Plans_Model {
             $post['next_session_date'] = self::get_next_session_date( $plan['ID'] );
             $post['current_session'] = self::get_current_session( $plan['ID'] )['current'];
             $post['total_sessions'] = self::get_current_session( $plan['ID'] )['total'];
+            $post['session_dates'] = self::get_session_dates( $plan['ID'] );
 
             $posts[] = $post;
         }
