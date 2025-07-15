@@ -395,6 +395,8 @@ export class DashTrainings extends DashPage {
         if (this.isCoach()) {
             document.querySelector('#language-note').value =
                 this.training.language_note || ''
+            document.querySelector('#timezone').value =
+                this.training.timezone || ''
             document.querySelector('#timezone-note').value =
                 this.training.timezone_note || ''
             document.querySelector('#zoom-link-note').value =
@@ -448,10 +450,12 @@ export class DashTrainings extends DashPage {
         }
 
         let languageNote
+        let timezone
         let timezoneNote
         let visibility
         if (this.isCoach()) {
             languageNote = document.querySelector('#language-note').value
+            timezone = document.querySelector('#timezone').value
             timezoneNote = document.querySelector('#timezone-note').value
             visibility = document.querySelector(
                 '#edit-session-details-modal #public'
@@ -460,6 +464,7 @@ export class DashTrainings extends DashPage {
                 : 'private'
 
             trainingUpdate.language_note = languageNote
+            trainingUpdate.timezone = timezone
             trainingUpdate.timezone_note = timezoneNote
             trainingUpdate.visibility = visibility
         }
@@ -494,6 +499,7 @@ export class DashTrainings extends DashPage {
 
                 if (this.isCoach()) {
                     newTraining.language_note = languageNote
+                    newTraining.timezone = timezone
                     newTraining.timezone_note = timezoneNote
                     newTraining.visibility = {
                         key: visibility,
@@ -1759,6 +1765,20 @@ export class DashTrainings extends DashPage {
                                       type="text"
                                       id="timezone-note"
                                   />
+                              </div>
+                              <div>
+                                  <label for="timezone"
+                                      >${jsObject.translations.timezone}</label
+                                  >
+                                  <select
+                                      class="input"
+                                      id="timezone"
+                                  >
+                                      <option value="">${jsObject.translations.select_timezone}</option>
+                                      ${Object.values(jsObject.timezones).map(timezone => html`
+                                        <option value="${timezone.timezone}">${timezone.timezone}</option>
+                                      `)}
+                                  </select>
                               </div>
                           `
                         : ''}

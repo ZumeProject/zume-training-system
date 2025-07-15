@@ -77,6 +77,8 @@ class Zume_Plans_Model {
             'location_note',
             'post_title',
             'time_of_day_note',
+            'time_of_day',
+            'timezone',
             'timezone_note',
             'zoom_link_note',
             'set_type',
@@ -157,6 +159,9 @@ class Zume_Plans_Model {
         }
         if ( isset( $params['timezone_note'] ) ) {
             $fields['timezone_note'] = $params['timezone_note'];
+        }
+        if ( isset( $params['timezone'] ) ) {
+            $fields['timezone'] = $params['timezone'];
         }
         if ( isset( $params['zoom_link_note'] ) ) {
             $fields['zoom_link_note'] = $params['zoom_link_note'];
