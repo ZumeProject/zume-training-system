@@ -50,7 +50,6 @@ export class ProfileForm extends LitElement {
         const communications_email = this.preferredEmailInput.value
         const phone = this.phoneInput.value
         const preferred_language = this.prefferedLanguageInput.value
-        const hide_public_contact = this.hidePublicContactInput.checked ? '1' : '0'
 
         const data = {
             name,
@@ -58,7 +57,6 @@ export class ProfileForm extends LitElement {
             email,
             communications_email,
             preferred_language,
-            hide_public_contact,
         }
 
         data.location_grid_meta = getLocationGridFromMapbox(

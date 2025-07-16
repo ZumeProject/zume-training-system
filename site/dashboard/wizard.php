@@ -126,7 +126,10 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 $user_stage['state']['set_profile_name'] &&
                 $user_stage['state']['set_profile_location'] &&
                 ( isset( $user_stage['state']['plan_created'] ) ? $user_stage['state']['plan_created'] : false )
-            ) || !empty( $has_been_on_notification_list )
+            ) || (
+                !empty( $has_been_on_notification_list ) &&
+                $this->wizard_type === 'getting-started'
+            )
         );
     }
 
@@ -291,6 +294,8 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'complete_profile' => __( 'Please make sure that your profile is up to date, so that group leaders can contact you.', 'zume' ),
                 'timezone' => __( 'Timezone', 'zume' ),
                 'session' => __( 'Session', 'zume' ),
+                'next_session_date_in_user_timezone' => __( 'The next session in your timezone is:', 'zume' ),
+                'your_timezone' => __( 'Your timezone is:', 'zume' ),
             ],
             'connect_friend' => [
                 'title' => __( 'Connecting with friend', 'zume' ),

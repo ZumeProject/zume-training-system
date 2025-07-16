@@ -5,7 +5,6 @@ export const Wizards = {
     makeMoreGroups: 'make-more-groups',
     getACoach: 'get-a-coach',
     joinATraining: 'join-a-training',
-    joinATrainingWithCode: 'join-a-training-with-code',
     planDecision: 'plan-decision',
     notifyOfFutureTrainings: 'notify-of-future-trainings',
     connectWithFriend: 'connect-with-friend',

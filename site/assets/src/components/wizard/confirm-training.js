@@ -53,10 +53,6 @@ export class ConfirmTraining extends LitElement {
                         <td>${this.training.location_note}</td>
                     </tr>
                     <tr>
-                        <td class="f-medium">${this.t.time_of_day}:</td>
-                        <td>${this.training.time_of_day_note}</td>
-                    </tr>
-                    <tr>
                         <td class="f-medium">${this.t.timezone}:</td>
                         <td>${this.training.timezone_note}</td>
                     </tr>
@@ -69,8 +65,30 @@ export class ConfirmTraining extends LitElement {
                         <td class="f-medium">${this.t.next_session_date}:</td>
                         <td>${this.training.next_session_date}</td>
                     </tr>
+                    ${ this.training.time_of_day ? html`
+                        <tr>
+                            <td class="f-medium">${this.t.time_of_day}:</td>
+                            <td>${this.training.time_of_day}</td>
+                        </tr>
+                    ` : html`
+                        <tr>
+                            <td class="f-medium">${this.t.time_of_day}:</td>
+                            <td>${this.training.time_of_day_note}</td>
+                        </tr>
+                    `}
                 </tbody>
             </table>
+            <p class="text-center">
+                ${this.training.next_session_date_in_user_timezone ? html`
+                    ${this.t.next_session_date_in_user_timezone}
+                    <br>
+                    <strong>${this.training.next_session_date_in_user_timezone}</strong>
+                    <br>
+                    ${this.t.your_timezone}
+                    <br>
+                    <strong>${jsObject.profile.timezone}</strong>
+                ` : ''}
+            </p>
             <calendar-select
                 style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
                 .selectedDays=${this.training.session_dates}
