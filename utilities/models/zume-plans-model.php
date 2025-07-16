@@ -314,8 +314,16 @@ class Zume_Plans_Model {
         $completed_sessions = self::get_completed_sessions( $training_id );
         if ( $set_type ) {
             for ( $i = 1; $i <= $total; $i++ ) {
+                // if the session is not completed or the session time exists and is in the future then this is the current session
                 $session_key = sprintf( '%s_%02d', $set_type, $i );
-                if ( !in_array( $session_key, $completed_sessions ) ) {
+                $session_timestamp = $training[$session_key]['timestamp'] ?? '';
+                $is_session_completed = in_array( $session_key, $completed_sessions );
+                if ( !empty( $session_timestamp ) && $session_timestamp > time() ) {
+                    $current = $i;
+                    break;
+                }
+                if ( empty( $session_timestamp ) && !$is_session_completed ) {
+                    $current = $i;
                     break;
                 }
                 $current = $i;
