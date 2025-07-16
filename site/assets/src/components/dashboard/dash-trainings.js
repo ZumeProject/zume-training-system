@@ -1290,6 +1290,11 @@ export class DashTrainings extends DashPage {
                         : ''}
                     ${!this.loading && !this.error && this.code !== 'teaser'
                         ? html`
+                              ${ this.isPublic() ? html`
+                                <div class="card banner success | grow-0">
+                                  <span>${jsObject.translations.public_group}</span>
+                                </div>
+                              ` : ''}
                               <div class="card | group-members | grow-0">
                                   <button
                                       class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"

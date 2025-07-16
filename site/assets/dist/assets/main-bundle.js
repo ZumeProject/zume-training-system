@@ -2276,6 +2276,11 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 <div class="dashboard__secondary stack">
                     ${this.loading&&!this.error?l`<span class="loading-spinner active"></span>`:""}
                     ${!this.loading&&!this.error&&this.code!=="teaser"?l`
+                              ${this.isPublic()?l`
+                                <div class="card banner success | grow-0">
+                                  <span>${jsObject.translations.public_group}</span>
+                                </div>
+                              `:""}
                               <div class="card | group-members | grow-0">
                                   <button
                                       class="f-0 f-medium d-flex align-items-center justify-content-between gap--2 black"
