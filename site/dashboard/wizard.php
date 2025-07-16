@@ -102,6 +102,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'profile' => $zume_user_profile,
                 'user_stage' => zume_get_user_stage(),
                 'has_training_group' => !empty( zume_get_user_plans( get_current_user_id() ) ),
+                'is_coach' => ! empty( get_user_meta( get_current_user_id(), 'zume_3_corresponds_to_contact', true ) ),
                 'privacy_url' => zume_privacy_url(),
                 'mapbox_selected_id' => 'current',
                 'checkin_dashboard_url' => zume_checkin_dashboard_url(),

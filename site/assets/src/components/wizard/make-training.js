@@ -214,6 +214,10 @@ export class MakeTraining extends LitElement {
             time_of_day_note: startTime || '',
         }
 
+        if (jsObject.is_coach && startTime) {
+            trainingSchedule.time_of_day = startTime
+        }
+
         let prefix = ''
         if (howManySessions === '10') {
             prefix = 'set_a_'
@@ -516,7 +520,13 @@ export class MakeTraining extends LitElement {
                             @day-added=${this.selectStartDate}
                             @clear=${this.clearStartDate}
                         ></calendar-select>
-                        <input type="text" name="time" placeholder=${this.t.time} @change=${this._handleChange} value=${this.timeNote} />
+                        ${
+                            jsObject.is_coach ? html`
+                                <input type="time" name="time" @change=${this._handleChange} value=${this.timeNote} />
+                            ` : html`
+                                <input type="text" name="time" placeholder=${this.t.time} @change=${this._handleChange} value=${this.timeNote} />
+                            `
+                        }
                         <div class="stack mx-auto" data-fit-content>
                             <button class="btn fit-content mx-auto" @click=${this._handleDone}>${this.t.next}</button>
                         </div>
