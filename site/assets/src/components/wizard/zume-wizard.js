@@ -149,7 +149,6 @@ export class Wizard extends LitElement {
 
         if (Object.values(Wizards).includes(wizardToLoad)) {
             this.steps = this.wizard.getSteps(wizardToLoad)
-            console.log(this.steps)
 
             this._gotoStep(0, true, queryParams)
         } else {
@@ -443,6 +442,18 @@ export class Wizard extends LitElement {
     _onFinish(quit = false) {
         this.stateManager.clear()
 
+        const hasMadeAGroup = [
+            Wizards.gettingStarted,
+            Wizards.makeAGroup,
+            Wizards.makeFirstGroup,
+            Wizards.makeMoreGroups,
+            Wizards.joinATraining,
+            Wizards.joinATrainingWithCode,
+            Wizards.joinFriendsPlan,
+            Wizards.inviteFriends,
+            Wizards.planDecision,
+        ].includes(this.type)
+
         if (!this.finishUrl) {
             this.dispatchEvent(
                 new CustomEvent('user-state:change', {
@@ -458,6 +469,23 @@ export class Wizard extends LitElement {
                 })
             )
             this.resetWizard()
+
+            if (hasMadeAGroup) {
+                const url = new URL(location.href)
+                const joinKey = url.searchParams.get('joinKey')
+                const code = url.searchParams.get('code')
+                const currentSlug = url.pathname.split('/').pop()
+
+                const key = joinKey || code
+                if (key && currentSlug !== key) {
+                    const dashboardUrl = new URL(
+                        jsObject.training_dashboard_url + '/' + key
+                    )
+                    window.location.href = dashboardUrl.href
+                    return
+                }
+            }
+
             return
         }
 
@@ -478,18 +506,7 @@ export class Wizard extends LitElement {
                     window.location.href = checkinDashboardUrl.href
                     return
                 }
-            } else if (
-                [
-                    Wizards.gettingStarted,
-                    Wizards.makeAGroup,
-                    Wizards.makeFirstGroup,
-                    Wizards.makeMoreGroups,
-                    Wizards.joinATraining,
-                    Wizards.joinATrainingWithCode,
-                    Wizards.joinFriendsPlan,
-                    Wizards.inviteFriends,
-                ].includes(this.type)
-            ) {
+            } else if (hasMadeAGroup) {
                 /* Get the join code for the group just joined and redirect to that page */
                 const url = new URL(location.href)
                 const joinKey = url.searchParams.get('joinKey')

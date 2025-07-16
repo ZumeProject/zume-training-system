@@ -127,6 +127,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'notify_of_future_trainings_url' => zume_notify_of_future_trainings_url(),
                 'subscribers_count' => zume_get_notification_subscribers_count(),
                 'subscribers_in_online_training' => zume_get_subscribers_in_online_trainings(),
+                'training_dashboard_url' => zume_dashboard_page_url( 'my-training' ),
                 'urls' => [
                     'logout' => esc_url( dt_login_url( 'logout' ) ),
                     'launch_ten_session_course' => zume_10_session_url(),

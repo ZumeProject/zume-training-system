@@ -305,6 +305,7 @@ export class MakeTraining extends LitElement {
     }
 
     _handleFinish(joinKey) {
+        this.dispatchEvent(new CustomEvent('training:changed', { bubbles: true } ))
         this._sendLoadWizardEvent(Wizards.inviteFriends, { joinKey })
     }
 
