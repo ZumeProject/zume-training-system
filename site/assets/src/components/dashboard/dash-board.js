@@ -455,6 +455,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.wizardParams = params
     }
     closeWizard() {
+        console.log('closing wizard')
         this.wizardType = ''
         this.wizardParams = ''
         const modal = document.querySelector('#wizard-modal')
@@ -690,6 +691,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                 Wizards.makeFirstGroup,
                 Wizards.joinATraining,
                 Wizards.joinFriendsPlan,
+                Wizards.planDecision,
             ].includes(type)
         ) {
             zumeRequest.get( 'plans', {}).then(

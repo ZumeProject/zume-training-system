@@ -1,4 +1,4 @@
-import { AttributePart, LitElement, html } from 'lit'
+import { LitElement, html } from 'lit'
 import { html as staticHtml, literal } from 'lit/static-html.js'
 import { Steps, Wizards } from './wizard-constants'
 import { WizardStateManager } from './wizard-state-manager'
@@ -149,6 +149,7 @@ export class Wizard extends LitElement {
 
         if (Object.values(Wizards).includes(wizardToLoad)) {
             this.steps = this.wizard.getSteps(wizardToLoad)
+
             this._gotoStep(0, true, queryParams)
         } else {
             this._onSkip()
@@ -265,13 +266,14 @@ export class Wizard extends LitElement {
                 translations = this.t.share
                 break
             case Steps.joinTraining:
-            case Steps.confirmPlan:
             case Steps.joinTrainingSelection:
                 tag = literal`join-training`
                 translations = this.t.join_training
                 break
-            case Steps.joinCode:
             case Steps.confirmPlan:
+                tag = literal`confirm-training`
+                translations = this.t.confirm_plan
+                break
             case Steps.joinFriendsPlan:
                 tag = literal`join-friends-training`
                 translations = this.t.join_training
@@ -285,6 +287,7 @@ export class Wizard extends LitElement {
                 translations = this.t.checkin
                 break
             case Steps.planDecision:
+            case Steps.joinWithCode:
             case Steps.howManySessions:
             case Steps.scheduleDecision:
             case Steps.howOften:
@@ -439,6 +442,17 @@ export class Wizard extends LitElement {
     _onFinish(quit = false) {
         this.stateManager.clear()
 
+        const hasMadeAGroup = [
+            Wizards.gettingStarted,
+            Wizards.makeAGroup,
+            Wizards.makeFirstGroup,
+            Wizards.makeMoreGroups,
+            Wizards.joinATraining,
+            Wizards.joinATrainingWithCode,
+            Wizards.joinFriendsPlan,
+            Wizards.inviteFriends,
+        ].includes(this.type)
+
         if (!this.finishUrl) {
             this.dispatchEvent(
                 new CustomEvent('user-state:change', {
@@ -474,18 +488,7 @@ export class Wizard extends LitElement {
                     window.location.href = checkinDashboardUrl.href
                     return
                 }
-            } else if (
-                [
-                    Wizards.gettingStarted,
-                    Wizards.makeAGroup,
-                    Wizards.makeFirstGroup,
-                    Wizards.makeMoreGroups,
-                    Wizards.joinATraining,
-                    Wizards.joinATrainingWithCode,
-                    Wizards.joinFriendsPlan,
-                    Wizards.inviteFriends,
-                ].includes(this.type)
-            ) {
+            } else if (hasMadeAGroup) {
                 /* Get the join code for the group just joined and redirect to that page */
                 const url = new URL(location.href)
                 const joinKey = url.searchParams.get('joinKey')
@@ -548,6 +551,12 @@ export class Wizard extends LitElement {
             /* Add steps to # in url to allow user to reverse navigate through the wizard */
             const url = new URL(window.location.href)
 
+            if (Object.keys(queryParams).length > 0) {
+                Object.entries(queryParams).forEach(([key, value]) => {
+                    url.searchParams.set(key, value)
+                })
+            }
+
             const newUrl =
                 url.origin + url.pathname + url.search + `#${this.step.slug}`
 
@@ -593,7 +602,7 @@ export class Wizard extends LitElement {
                 const hash = url.hash.slice(1)
                 return slug === hash
             }
-            path === slug
+            return path === slug
         }
 
         /* Check if the slug is somewhere in the middle of the wizard and go there */
@@ -613,6 +622,7 @@ export class Wizard extends LitElement {
                 }
 
                 this._gotoStep(i, false)
+                return
             }
         })
 
@@ -620,6 +630,7 @@ export class Wizard extends LitElement {
         if (!this.steps.some(({ slug }) => testSlug(slug))) {
             this.steps = this.wizard.getSteps(this.type)
             this._gotoStep(0)
+            return
         }
     }
 
