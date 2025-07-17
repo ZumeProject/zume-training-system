@@ -109,62 +109,21 @@ export class PublicTrainings extends LitElement {
         language_note,
         post_title,
         time_of_day_note,
+        time_of_day,
+        next_session_date,
+        current_session,
+        total_sessions,
         timezone_note,
-        set_type,
-        ...fields
     }) {
-        let plan_length
-        switch (set_type.key) {
-            case 'set_a':
-                plan_length = 10
-                break
-            case 'set_b':
-                plan_length = 20
-                break
-            case 'set_c':
-                plan_length = 5
-                break
-            default:
-                break
-        }
-        const plan_prefix = set_type.key + '_'
-
-        const now = Date.now() / 1000
-
-        let latestPlanDate = ''
-        let latestSessionNumber
-        for (let i = 1; i < plan_length + 1; i++) {
-            const sessionIndex = i < 10 ? `0${i}` : `${i}`
-
-            const sessionDate = fields[plan_prefix + sessionIndex]
-
-            if (!sessionDate) {
-                break
-            }
-            latestPlanDate = sessionDate['timestamp']
-
-            latestSessionNumber = i
-            if (now < sessionDate['timestamp']) {
-                break
-            }
-        }
-
-        if (latestPlanDate === '') {
-            return null
-        }
-
-        const formattedDate = DateTime.fromMillis(
-            latestPlanDate * 1000
-        ).toFormat('DD')
 
         return html`
             <tr>
                 <td data-label="${this.t.name}">${post_title}</td>
                 <td data-label="${this.t.session}">
-                    ${latestSessionNumber} / ${plan_length}
+                    ${current_session} / ${total_sessions}
                 </td>
-                <td data-label="${this.t.next_date}">${formattedDate}</td>
-                <td data-label="${this.t.start_time}">${time_of_day_note}</td>
+                <td data-label="${this.t.next_date}">${next_session_date}</td>
+                <td data-label="${this.t.start_time}">${time_of_day || time_of_day_note}</td>
                 <td data-label="${this.t.timezone}">${timezone_note}</td>
                 <td data-label="${this.t.language}">${language_note}</td>
                 <td>
