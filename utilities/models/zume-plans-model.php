@@ -357,7 +357,7 @@ class Zume_Plans_Model {
         $training = DT_Posts::get_post( self::$post_type, $training_id, false, false );
         $time_of_day = $training['time_of_day'];
         $timezone = $training['timezone'];
-        if ( empty( $time_of_day ) || empty( $timezone ) ) {
+        if ( empty( $time_of_day ) || empty( $timezone ) || empty( $next_session_date ) ) {
             return '';
         }
         $next_session_datetime = DateTime::createFromFormat( 'Y-m-d H:i', "$next_session_date $time_of_day", new DateTimeZone( $timezone ) );
