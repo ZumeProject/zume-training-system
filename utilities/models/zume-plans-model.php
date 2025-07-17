@@ -318,6 +318,10 @@ class Zume_Plans_Model {
                 $session_key = sprintf( '%s_%02d', $set_type, $i );
                 $session_timestamp = $training[$session_key]['timestamp'] ?? '';
                 $is_session_completed = in_array( $session_key, $completed_sessions );
+                if ( $is_session_completed || ( !empty( $session_timestamp ) && $session_timestamp < time() ) ) {
+                    $current = $i;
+                    continue;
+                }
                 if ( !empty( $session_timestamp ) && $session_timestamp > time() ) {
                     $current = $i;
                     break;
@@ -326,7 +330,6 @@ class Zume_Plans_Model {
                     $current = $i;
                     break;
                 }
-                $current = $i;
             }
         }
 
