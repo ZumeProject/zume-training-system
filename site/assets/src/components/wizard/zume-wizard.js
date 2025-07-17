@@ -602,7 +602,7 @@ export class Wizard extends LitElement {
                 const hash = url.hash.slice(1)
                 return slug === hash
             }
-            path === slug
+            return path === slug
         }
 
         /* Check if the slug is somewhere in the middle of the wizard and go there */
@@ -622,6 +622,7 @@ export class Wizard extends LitElement {
                 }
 
                 this._gotoStep(i, false)
+                return
             }
         })
 
@@ -629,6 +630,7 @@ export class Wizard extends LitElement {
         if (!this.steps.some(({ slug }) => testSlug(slug))) {
             this.steps = this.wizard.getSteps(this.type)
             this._gotoStep(0)
+            return
         }
     }
 
