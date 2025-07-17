@@ -451,7 +451,6 @@ export class Wizard extends LitElement {
             Wizards.joinATrainingWithCode,
             Wizards.joinFriendsPlan,
             Wizards.inviteFriends,
-            Wizards.planDecision,
         ].includes(this.type)
 
         if (!this.finishUrl) {
@@ -469,23 +468,6 @@ export class Wizard extends LitElement {
                 })
             )
             this.resetWizard()
-
-            if (hasMadeAGroup) {
-                const url = new URL(location.href)
-                const joinKey = url.searchParams.get('joinKey')
-                const code = url.searchParams.get('code')
-                const currentSlug = url.pathname.split('/').pop()
-
-                const key = joinKey || code
-                if (key && currentSlug !== key) {
-                    const dashboardUrl = new URL(
-                        jsObject.training_dashboard_url + '/' + key
-                    )
-                    window.location.href = dashboardUrl.href
-                    return
-                }
-            }
-
             return
         }
 

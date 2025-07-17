@@ -691,6 +691,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                 Wizards.makeFirstGroup,
                 Wizards.joinATraining,
                 Wizards.joinFriendsPlan,
+                Wizards.planDecision,
             ].includes(type)
         ) {
             zumeRequest.get( 'plans', {}).then(
