@@ -100,6 +100,7 @@ class Zume_Training {
         // datatable
         global $wpdb, $table_prefix;
         $wpdb->dt_zume_message_plan = $table_prefix . 'dt_zume_message_plan';
+        $wpdb->location_grid_cities = $table_prefix . 'location_grid_cities';
 
         $this->define_constants();
         $this->setup_hooks();

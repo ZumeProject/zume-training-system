@@ -190,14 +190,6 @@ class Zume_Plans_Post_Type extends DT_Module_Base {
                 'default_color' => '#366184',
                 'show_in_table' => 10,
             ];
-            $fields['time_of_day_note'] = [
-                'name'        => 'Time of Day Note',
-                'description' => 'Time of day, like "4-6 in the evening"',
-                'type'        => 'text',
-                'default'     => '',
-                'tile' => 'details',
-                'icon' => get_template_directory_uri() . '/dt-assets/images/date-start.svg',
-            ];
             $fields['location_note'] = [
                 'name'        => 'Location Note',
                 'description' => 'Location of the training description, like "Zoom" or "At the church"',
@@ -214,9 +206,33 @@ class Zume_Plans_Post_Type extends DT_Module_Base {
                 'tile' => 'details',
                 'icon' => get_template_directory_uri() . '/dt-assets/images/date-start.svg',
             ];
+            $fields['time_of_day_note'] = [
+                'name'        => 'Time of Day Note',
+                'description' => 'Time of day, like "4-6 in the evening" (free text)',
+                'type'        => 'text',
+                'default'     => '',
+                'tile' => 'details',
+                'icon' => get_template_directory_uri() . '/dt-assets/images/date-start.svg',
+            ];
+            $fields['time_of_day'] = [
+                'name'        => 'Time of Day',
+                'description' => 'Time of day, like 06:00 or 18:00. Used in public trainings for programmatic display of the time of day in other timezones.',
+                'type'        => 'text',
+                'default'     => '',
+                'tile' => 'details',
+                'icon' => get_template_directory_uri() . '/dt-assets/images/date-start.svg',
+            ];
             $fields['timezone_note'] = [
+                'name'        => 'Time Zone Note',
+                'description' => 'Time zone of the training (free text)',
+                'type'        => 'text',
+                'default'     => '',
+                'tile' => 'details',
+                'icon' => get_template_directory_uri() . '/dt-assets/images/date-start.svg',
+            ];
+            $fields['timezone'] = [
                 'name'        => 'Time Zone',
-                'description' => 'Time zone of the training',
+                'description' => 'Time zone of the training (e.g. America/New_York) as filled out by a selection of timezones',
                 'type'        => 'text',
                 'default'     => '',
                 'tile' => 'details',

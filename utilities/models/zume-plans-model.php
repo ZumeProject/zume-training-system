@@ -2,21 +2,32 @@
 
 class Zume_Plans_Model {
     private static $post_type = 'zume_plans';
-    public static function get_plan( $post_id ) {
-        $training_group = DT_Posts::get_post( self::$post_type, (int) $post_id, true, false );
+    public static function get_plan( $is_group_facilitator ) {
+        $training_group = DT_Posts::get_post( self::$post_type, (int) $is_group_facilitator, true, false );
 
-        $completed_sessions = self::get_completed_sessions( $post_id, $training_group );
+        $completed_sessions = self::get_completed_sessions( $is_group_facilitator, $training_group );
         $training_group['completed_sessions'] = $completed_sessions;
 
-        $next_session_date = self::get_next_session_date( $post_id );
+        $next_session_date = self::get_next_session_date( $is_group_facilitator );
         $training_group['next_session_date'] = $next_session_date;
 
-        $current_session = self::get_current_session( $post_id );
+        $current_session = self::get_current_session( $is_group_facilitator );
         $training_group['current_session'] = $current_session['current'];
         $training_group['total_sessions'] = $current_session['total'];
 
+        $session_dates = self::get_session_dates( $is_group_facilitator );
+        $training_group['session_dates'] = $session_dates;
+
+        if ( is_user_logged_in() ) {
+            $user_timezone = zume_get_user_profile()['timezone'];
+            $next_session_date_in_user_timezone = self::get_next_session_date_in_user_timezone( $is_group_facilitator, $user_timezone );
+            $training_group['next_session_date_in_user_timezone'] = $next_session_date_in_user_timezone;
+        } else {
+            $training_group['next_session_date_in_user_timezone'] = '';
+        }
+
         $logs = zume_get_user_log( get_current_user_id(), 'system', 'email_notification' );
-        $has_emailed_notification = array_search( $post_id, array_column( $logs, 'post_id' ) );
+        $has_emailed_notification = array_search( $is_group_facilitator, array_column( $logs, 'post_id' ) );
         $log = $logs[$has_emailed_notification];
         $training_group['last_emailed_notification'] = $log['timestamp'];
         $training_group['has_emailed_notification'] = $has_emailed_notification !== false ? true : false;
@@ -33,10 +44,10 @@ class Zume_Plans_Model {
             $participant_user_id = zume_get_user_id_by_contact_id( $participant['ID'] );
             $training_group['participants'][$i]['user_id'] = (int) $participant_user_id;
 
-            $post_id = self::can_user_edit_plan( $training_group['join_key'], $user_id );
+            $is_group_facilitator = self::can_user_edit_plan( $training_group['join_key'], $current_user_id );
             $hide_public_progress = get_post_meta( $participant['ID'], 'hide_public_progress', true );
             $training_group['participants'][$i]['hide_public_progress'] = $hide_public_progress;
-            if ( !is_wp_error( $post_id )
+            if ( !is_wp_error( $is_group_facilitator )
                 || ( $hide_public_progress !== '1' && $is_private_group )
                 || $current_user_id == $participant_user_id
             ) {
@@ -46,7 +57,7 @@ class Zume_Plans_Model {
 
             $hide_public_contact = get_post_meta( $participant['ID'], 'hide_public_contact', true );
             $training_group['participants'][$i]['hide_public_contact'] = $hide_public_contact;
-            if ( !is_wp_error( $post_id )
+            if ( !is_wp_error( $is_group_facilitator )
                 || ( $hide_public_contact !== '1' && $is_private_group )
                 || $current_user_id == $participant_user_id
             ) {
@@ -74,6 +85,8 @@ class Zume_Plans_Model {
             'location_note',
             'post_title',
             'time_of_day_note',
+            'time_of_day',
+            'timezone',
             'timezone_note',
             'zoom_link_note',
             'set_type',
@@ -89,6 +102,7 @@ class Zume_Plans_Model {
             $post['next_session_date'] = self::get_next_session_date( $plan['ID'] );
             $post['current_session'] = self::get_current_session( $plan['ID'] )['current'];
             $post['total_sessions'] = self::get_current_session( $plan['ID'] )['total'];
+            $post['session_dates'] = self::get_session_dates( $plan['ID'] );
 
             $posts[] = $post;
         }
@@ -148,11 +162,17 @@ class Zume_Plans_Model {
         if ( isset( $params['time_of_day_note'] ) ) {
             $fields['time_of_day_note'] = $params['time_of_day_note'];
         }
+        if ( isset( $params['time_of_day'] ) ) {
+            $fields['time_of_day'] = $params['time_of_day'];
+        }
         if ( isset( $params['language_note'] ) ) {
             $fields['language_note'] = $params['language_note'];
         }
         if ( isset( $params['timezone_note'] ) ) {
             $fields['timezone_note'] = $params['timezone_note'];
+        }
+        if ( isset( $params['timezone'] ) ) {
+            $fields['timezone'] = $params['timezone'];
         }
         if ( isset( $params['zoom_link_note'] ) ) {
             $fields['zoom_link_note'] = $params['zoom_link_note'];
@@ -294,11 +314,22 @@ class Zume_Plans_Model {
         $completed_sessions = self::get_completed_sessions( $training_id );
         if ( $set_type ) {
             for ( $i = 1; $i <= $total; $i++ ) {
+                // if the session is not completed or the session time exists and is in the future then this is the current session
                 $session_key = sprintf( '%s_%02d', $set_type, $i );
-                if ( !in_array( $session_key, $completed_sessions ) ) {
+                $session_timestamp = $training[$session_key]['timestamp'] ?? '';
+                $is_session_completed = in_array( $session_key, $completed_sessions );
+                if ( $is_session_completed || ( !empty( $session_timestamp ) && $session_timestamp < time() ) ) {
+                    $current = $i;
+                    continue;
+                }
+                if ( !empty( $session_timestamp ) && $session_timestamp > time() ) {
+                    $current = $i;
                     break;
                 }
-                $current = $i;
+                if ( empty( $session_timestamp ) && !$is_session_completed ) {
+                    $current = $i;
+                    break;
+                }
             }
         }
 
@@ -322,5 +353,36 @@ class Zume_Plans_Model {
             }
         }
         return '';
+    }
+
+    public static function get_next_session_date_in_user_timezone( $training_id, $user_timezone ) {
+        $next_session_date = self::get_next_session_date( $training_id );
+        $training = DT_Posts::get_post( self::$post_type, $training_id, false, false );
+        $time_of_day = $training['time_of_day'];
+        $timezone = $training['timezone'];
+        if ( empty( $time_of_day ) || empty( $timezone ) || empty( $next_session_date ) ) {
+            return '';
+        }
+        $next_session_datetime = DateTime::createFromFormat( 'Y-m-d H:i', "$next_session_date $time_of_day", new DateTimeZone( $timezone ) );
+        $next_session_datetime_in_user_timezone_datetime = $next_session_datetime->setTimezone( new DateTimeZone( $user_timezone ) );
+        $next_session_datetime_in_user_timezone = $next_session_datetime_in_user_timezone_datetime->format( 'Y-m-d H:i' );
+        return $next_session_datetime_in_user_timezone;
+    }
+
+    // Get a list of dates of the sessions in the training
+    public static function get_session_dates( $training_id ) {
+        $training = DT_Posts::get_post( self::$post_type, $training_id, false, false );
+        $set_type = $training['set_type']['key'] ?? '';
+        $total = intval( $training['set_type']['label'] ?? 0 );
+
+        $dates = [];
+        for ( $i = 1; $i <= $total; $i++ ) {
+            $session_key = sprintf( '%s_%02d', $set_type, $i );
+            $dates[] = [
+                'date' => gmdate( 'Y-m-d', $training[$session_key]['timestamp'] ),
+                'session' => $i,
+            ];
+        }
+        return $dates;
     }
 }

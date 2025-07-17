@@ -94,26 +94,6 @@ export class JoinFriendsTraining extends LitElement {
         this.dispatchEvent(doneStepEvent)
     }
 
-    _handleVerifyCode() {
-        this.loading = true
-        this.code = this.renderRoot.querySelector('#code').value
-        zumeRequest.get( `plan/${this.code}`, {})
-            .then( ( data ) => {
-                this.success = true
-                this._sendDoneStepEvent()
-                this.stateManager.add(Steps.joinFriendsPlan, { code: this.code, plan: data })
-            })
-            .catch((error) => {
-                this.errorMessage = this.t.not_a_recognized_code
-                setTimeout(() => {
-                    this.errorMessage = ''
-                }, 2500)
-            })
-            .finally(() => {
-                this.loading = false
-            })
-    }
-
     render() {
         if ( this.variant === Steps.joinFriendsPlan ) {
           return html`
@@ -138,31 +118,6 @@ export class JoinFriendsTraining extends LitElement {
                   </div>
               ` : ''}
           `;
-        }
-
-        if ( this.variant === Steps.joinCode ) {
-            return html`
-                <div class="container-md">
-                  <h1 class="brand">${this.t.join_friends_training}</h1>
-                  <div class="stack-1 invitation-form">
-                      <p>${this.t.use_the_code_your_friend_sent_you}</p>
-                      <div class="">
-                          <label for="code"></label>
-                          <input class="input" id="code" type="text" placeholder="012345">
-                      </div>
-                      <button
-                          class="btn light"
-                          @click=${this._handleVerifyCode}
-                      >
-                          ${this.t.connect}
-                      </button>
-                      <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
-                      <div class="banner warning text-center" data-state=${this.errorMessage.length ? '' : 'empty'}>
-                          ${this.errorMessage}
-                      </div>
-                  </div>
-                </div>
-            `
         }
     }
 

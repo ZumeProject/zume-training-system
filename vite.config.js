@@ -32,7 +32,7 @@ const config = create_config(
             getBabelOutputPlugin({
                 configFile: path.resolve(__dirname, 'babel.config.js'),
             }),
-        ]
+        ],
     }
 )
 

@@ -58,7 +58,7 @@ export class JoinTraining extends LitElement {
         /* We need the plan id */
         const url = new URL(location.href)
         if (!url.searchParams.has('code')) {
-            this.message = []
+            this.message = ''
             this.loading = false
             this.showTrainings = true
             return
@@ -71,12 +71,6 @@ export class JoinTraining extends LitElement {
 
     willUpdate(properties) {
         if (properties.has('variant')) {
-            if (this.variant === Steps.confirmPlan) {
-                const data = this.stateManager.get(Steps.confirmPlan)
-                this.training = data.training
-                this.code = data.code
-                this.message = this.t.complete_profile
-            }
             if (this.variant === Steps.joinTrainingSelection ) {
 
               const url = new URL(location.href)
@@ -146,22 +140,32 @@ export class JoinTraining extends LitElement {
         this.chooseTraining(code, training)
     }
 
-    chooseTraining(code, training) {
-        this.stateManager.add(Steps.joinTrainingSelection, code)
-
+    async chooseTraining(code, training) {
         this.showTrainings = false
         this.showNextStep = true
         this.code = code
 
-        this.stateManager.add(Steps.confirmPlan, { code, training })
+        let thisTraining = training
+
+        if ( !thisTraining ) {
+          const confirmPlan = this.stateManager.get(Steps.confirmPlan)
+          if ( confirmPlan && confirmPlan.code === code ) {
+            thisTraining = confirmPlan.training
+          } else {
+            const data = await zumeRequest.get(`plan/${code}`)
+            thisTraining = data
+          }
+        }
+
+        this.stateManager.add(Steps.confirmPlan, { code, training: thisTraining })
 
         this._sendDoneStepEvent()
     }
 
     _handleJoinTraining() {
-        const code = this.stateManager.get(Steps.joinTrainingSelection)
+        const confirmPlan = this.stateManager.get(Steps.confirmPlan)
 
-        this.connectToPlan(code)
+        this.connectToPlan(confirmPlan.code)
     }
 
     _sendDoneStepEvent() {
@@ -200,47 +204,6 @@ export class JoinTraining extends LitElement {
         return html`
             <div class="stack">
                 <h1>${this.t.title}</h1>
-
-                ${ this.variant ===  Steps.confirmPlan && Object.keys(this.training).length > 0 ? html`
-                    <h2 class="h3 brand-light text-center">${this.training.title}</h2>
-                    <table class="table center">
-                        <tbody>
-                            <tr>
-                                <td class="f-medium">${this.t.facilitator}:</td>
-                                <td>${this.training.post_author_display_name}</td>
-                            </tr>
-                            <tr>
-                                <td class="f-medium">${this.t.location}:</td>
-                                <td>${this.training.location_note}</td>
-                            </tr>
-                            <tr>
-                                <td class="f-medium">${this.t.time_of_day}:</td>
-                                <td>${this.training.time_of_day_note}</td>
-                            </tr>
-                            <tr>
-                                <td class="f-medium">${this.t.timezone}:</td>
-                                <td>${this.training.timezone_note}</td>
-                            </tr>
-
-                            ${this.training.zoom_link_note ? html`
-                                <tr>
-                                    <td class="f-medium">${this.t.zoom_link}:</td>
-                                    <td>${this.training.zoom_link_note}</td>
-                                </tr>
-                            ` : ''}
-
-                            <tr>
-                                <td class="f-medium">${this.t.session}:</td>
-                                <td>${this.training.current_session} / ${this.training.total_sessions}</td>
-                            </tr>
-                            <tr>
-                                <td class="f-medium">${this.t.next_session_date}:</td>
-                                <td>${this.training.next_session_date}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                ` : ''}
 
                 ${this.message.length ? html`<p>${this.message}</p>` : ''}
 

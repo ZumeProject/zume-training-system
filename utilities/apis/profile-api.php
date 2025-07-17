@@ -174,6 +174,12 @@ class Zume_Profile_Model {
                 'values' => [ $location_grid_meta ],
                 'force_values' => true,
             ];
+
+            $timezone = self::get_location_grid_timezone( $location_grid_meta );
+
+            if ( !empty( $timezone ) ) {
+                $updates['user_timezone'] = $timezone;
+            }
         }
 
         if ( !empty( $preferred_language ) ) {
@@ -239,5 +245,42 @@ class Zume_Profile_Model {
         if ( $profile['location']['source'] !== 'ip' ) {
             zume_log_insert( 'system', 'set_profile_location', [], true );
         }
+    }
+
+    public static function get_location_grid_timezone( $location_grid_meta ) {
+        global $wpdb;
+
+        $location_grid_geocoder = new Location_Grid_Geocoder();
+        $grid_data = $location_grid_geocoder->get_grid_id_by_lnglat( $location_grid_meta['lng'], $location_grid_meta['lat'] );
+
+        if ( empty( $grid_data ) ) {
+            return '';
+        }
+
+        if ( !empty( $grid_data['admin2_grid_id'] ) ) {
+            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM {$wpdb->location_grid_cities} WHERE admin2_grid_id = %d", $grid_data['admin2_grid_id'] ) );
+
+            if ( !empty( $timezone ) ) {
+                return $timezone;
+            }
+        }
+
+        if ( !empty( $grid_data['admin1_grid_id'] ) ) {
+            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM {$wpdb->location_grid_cities} WHERE admin1_grid_id = %d", $grid_data['admin1_grid_id'] ) );
+
+            if ( !empty( $timezone ) ) {
+                return $timezone;
+            }
+        }
+
+        if ( !empty( $grid_data['admin0_grid_id'] ) ) {
+            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM {$wpdb->location_grid_cities} WHERE admin0_grid_id = %d", $grid_data['admin0_grid_id'] ) );
+
+            if ( !empty( $timezone ) ) {
+                return $timezone;
+            }
+        }
+
+        return 'GMT';
     }
 }

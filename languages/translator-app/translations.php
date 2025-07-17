@@ -395,7 +395,7 @@ class Zume_Training_Translations extends Zume_Magic_Page
                         <th style="width:3%">Int key</th>
                         <th style="width:3%">Int ppt</th>
 
-                        <th style="width:3%">Store</th>
+                        
                     </tr>
                     </thead>
                     <tbody>
@@ -429,7 +429,6 @@ class Zume_Training_Translations extends Zume_Magic_Page
                             <td><?php echo ( $elements['key_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $elements['ppt_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
 
-                            <td><?php echo ( $elements['store_url'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                         </tr>
                         <?php
                         $globe_count++;
