@@ -1444,6 +1444,9 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                           ${this.coaches.map(t=>l`
                                   <div class="card stack | mw-50ch">
                                     <h3>${t.name}</h3>
+                                    <div class="center">
+                                        <img class="profile-image" src="${t.picture}" alt="${t.name}" />
+                                    </div>
                                     ${t.communication_apps.length?l`
                                         <ul class="stack">
                                           ${t.communication_apps.includes("email")?l`

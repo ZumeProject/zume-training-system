@@ -65,6 +65,9 @@ export class DashCoach extends DashPage {
                               this.coaches.map((coach) => html`
                                   <div class="card stack | mw-50ch">
                                     <h3>${coach.name}</h3>
+                                    <div class="center">
+                                        <img class="profile-image" src="${coach.picture}" alt="${coach.name}" />
+                                    </div>
                                     ${
                                       coach.communication_apps.length ? html`
                                         <ul class="stack">
