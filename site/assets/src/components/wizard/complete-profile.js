@@ -1,6 +1,7 @@
 import { LitElement, html } from "lit"
 import { live } from 'lit/directives/live.js';
 import { Steps } from "./wizard-constants";
+import { zumeAttachObservers, zumeDetachObservers } from "../../js/zumeAttachObservers";
 
 export class CompleteProfile extends LitElement {
     static get properties() {
@@ -51,11 +52,17 @@ export class CompleteProfile extends LitElement {
         this._handleCityInputChange = this._handleCityInputChange.bind(this)
     }
 
+    firstUpdated() {
+        zumeAttachObservers(this.renderRoot, 'complete-profile')
+    }
+
     updated(properties) {
         if (properties.has('variant')) {
             this.renderRoot.querySelector('.inputs input').focus()
             this.isInfoOpen = false
         }
+        zumeDetachObservers('complete-profile')
+        zumeAttachObservers(this.renderRoot, 'complete-profile')
     }
 
     willUpdate(properties) {
