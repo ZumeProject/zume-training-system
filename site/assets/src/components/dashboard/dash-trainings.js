@@ -1617,7 +1617,7 @@ export class DashTrainings extends DashPage {
                     ` : ''}
                   </ul>
                   ${ this.isPrivate ? html`
-                    <button class="btn brand tight" @click=${this.openProfileModal}>
+                    <button class="btn brand tight fit-content center" @click=${this.openProfileModal}>
                       ${jsObject.wizard_translations.join_training.change_preferences}
                     </button>
                   ` : ''}

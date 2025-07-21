@@ -2533,7 +2533,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     `:""}
                   </ul>
                   ${this.isPrivate?l`
-                    <button class="btn brand tight" @click=${this.openProfileModal}>
+                    <button class="btn brand tight fit-content center" @click=${this.openProfileModal}>
                       ${jsObject.wizard_translations.join_training.change_preferences}
                     </button>
                   `:""}
