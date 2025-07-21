@@ -113,7 +113,7 @@ export function dashRoutes() {
             translation: jsObject.translations['my_training'],
             explanation: jsObject.translations['my_training_explanation'],
             data: {
-                makeComponent: (code) => html`<dash-trainings ?showTeaser=${code === 'teaser'} code=${code}></dash-trainings>`,
+                makeComponent: (code, userProfile) => html`<dash-trainings ?showTeaser=${code === 'teaser'} code=${code} .userProfile=${userProfile}></dash-trainings>`,
             },
         },
         {

@@ -278,7 +278,7 @@ export class DashBoard extends navigator(router(LitElement)) {
 
         if (this.route === RouteNames.myTraining) {
             const code = this.params.code
-            return makeComponent(code)
+            return makeComponent(code, this.userProfile)
         }
 
         const isLocked = DashBoard.getLockedStatus(this.route, this.userState)

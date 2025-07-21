@@ -17,6 +17,7 @@ export class DashTrainings extends DashPage {
         return {
             showTeaser: { type: Boolean },
             code: { type: String },
+            userProfile: { type: Object },
             loading: { type: Boolean, attribute: false },
             error: { type: String, attribute: false },
             training: { type: Object, attribute: false },
@@ -43,6 +44,7 @@ export class DashTrainings extends DashPage {
     constructor() {
         super()
         this.showTeaser = false
+        this.userProfile = {}
         this.loading = false
         this.isEditingTitle = false
         this.error = ''
@@ -644,6 +646,21 @@ export class DashTrainings extends DashPage {
     }
     isCoach() {
         return jsObject.is_coach
+    }
+    isCurrentUser(userId) {
+        return Number(userId) === jsObject.profile.user_id
+    }
+    isUserContactHidden(user) {
+        if ( this.isCurrentUser(user.user_id) ) {
+          return this.userProfile.hide_public_contact
+        }
+        return user.hide_public_contact
+    }
+    isUserProgressHidden(user) {
+        if ( this.isCurrentUser(user.user_id) ) {
+          return this.userProfile.hide_public_progress
+        }
+        return user.hide_public_progress
     }
     canEditTitle() {
         return (
@@ -1641,7 +1658,7 @@ export class DashTrainings extends DashPage {
                 <div class="stack">
                     <div class="cluster">
                       <h2>${this.groupMemberToView.post_title}</h2>
-                      ${ this.groupMemberToView.user_id === jsObject.profile.user_id ? html`
+                      ${ this.isCurrentUser(this.groupMemberToView.user_id) ? html`
                         <button class="icon-btn brand-light" @click=${this.openProfileModal}>
                           <span class="icon z-icon-pencil"></span>
                         </button>
@@ -1649,7 +1666,7 @@ export class DashTrainings extends DashPage {
                     </div>
                     <div>
                         <h3 class="brand-light">${jsObject.translations.contact_info}</h3>
-                        ${this.groupMemberToView.hide_public_contact ? html`
+                        ${this.isUserContactHidden(this.groupMemberToView) ? html`
                           <p class="gray-700">${jsObject.translations.contact_hidden}</p>
                         ` : ''}
                         ${ this.groupMemberToView.email || this.groupMemberToView.phone ? html`
@@ -1661,7 +1678,7 @@ export class DashTrainings extends DashPage {
                     </div>
                     <div>
                       <h3 class="brand-light">${jsObject.translations.progress}</h3>
-                      ${this.groupMemberToView.hide_public_progress ? html`
+                      ${this.isUserProgressHidden(this.groupMemberToView) ? html`
                         <p class="gray-700">${jsObject.translations.progress_hidden}</p>
                       ` : ''}
                       ${this.groupMemberToView.progress ? html`
