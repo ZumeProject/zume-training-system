@@ -437,13 +437,23 @@ export class MakeTraining extends LitElement {
             <div class="stack-1 position-relative">
                 ${this.variant === Steps.planDecision ? html`
                     <div class="stack">
-                        <span class="z-icon-start-group brand-light f-7"></span>
+                        <span class="z-icon-public-training brand-light f-7"></span>
                         <h2>${this.t.join_or_start_a_training}</h2>
                         <div class="stack mx-auto" data-fit-content>
                             <button class="btn tight" data-decision="make" @click=${this._handlePlanDecision}>${this.t.start_a_training}</button>
                             <button class="btn tight" data-decision="join-public" @click=${this._handlePlanDecision}>${this.t.join_a_public_training}</button>
                             <button class="btn tight" data-decision="join-private" @click=${this.gotoJoinCodeStep}>${this.t.join_with_code}</button>
                             <button class="btn tight outline" data-decision="skip" @click=${this._handlePlanDecision}>${this.t.skip_for_now}</button>
+                        </div>
+                    </div>
+                ` : ''}
+                ${this.variant === Steps.joinDecision ? html`
+                    <div class="stack">
+                        <span class="z-icon-public-training brand-light f-7"></span>
+                        <h2>${this.t.join_a_training}</h2>
+                        <div class="stack mx-auto" data-fit-content>
+                            <button class="btn tight" data-decision="join-public" @click=${this._handlePlanDecision}>${this.t.join_a_public_training}</button>
+                            <button class="btn tight" data-decision="join-private" @click=${this.gotoJoinCodeStep}>${this.t.join_with_code}</button>
                         </div>
                     </div>
                 ` : ''}
