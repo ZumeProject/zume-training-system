@@ -12,11 +12,16 @@ export class DashCoach extends DashPage {
 
     constructor() {
       super()
-      this.coaches = Object.values(jsObject.profile.coaches) || []
+      //this.coaches = Object.values(jsObject.profile.coaches) || []
+      this.coaches = []
     }
 
     getACoach() {
       this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.getACoach } } ))
+    }
+
+    updateProfile() {
+      this.dispatchEvent(new CustomEvent( 'open-profile', { bubbles: true } ))
     }
 
     render() {
@@ -50,12 +55,28 @@ export class DashCoach extends DashPage {
                   }
                   ${
                       !this.showTeaser && this.coaches.length === 0 ? html`
-                          <p>
-                            ${jsObject.translations.connecting_with_coach}
-                          </p>
-                          <p>
-                            ${jsObject.translations.wait_for_coach}
-                          </p>
+                          <div class="stack--1">
+                            <p>
+                              ${jsObject.translations.connecting_with_coach}
+                            </p>
+                            <p>
+                              ${jsObject.translations.wait_for_coach}
+                            </p>
+                            <ul>
+                              <li>
+                                <strong>${jsObject.translations.phone}:</strong> ${jsObject.profile.phone}
+                              </li>
+                              <li>
+                                <strong>${jsObject.translations.communications_email}:</strong> ${jsObject.profile.communications_email}
+                              </li>
+                            </ul>
+                            <p>
+                              ${jsObject.translations.confirm_phone_and_email}
+                            </p>
+                            <button class="btn" @click=${this.updateProfile}>
+                              ${jsObject.translations.change_preferences}
+                            </button>
+                          </div>
                       ` : ''
                   }
                   ${

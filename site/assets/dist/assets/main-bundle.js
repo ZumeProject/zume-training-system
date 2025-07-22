@@ -1406,7 +1406,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-churches",rl);class ol extends vt{static get properties(){return{showTeaser:{type:Boolean},coaches:{type:Array,attribute:!1}}}constructor(){super(),this.coaches=Object.values(jsObject.profile.coaches)||[]}getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.getACoach}}))}render(){return console.log(this.coaches),l`
+        `}createRenderRoot(){return this}}customElements.define("dash-churches",rl);class ol extends vt{static get properties(){return{showTeaser:{type:Boolean},coaches:{type:Array,attribute:!1}}}constructor(){super(),this.coaches=[]}getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.getACoach}}))}updateProfile(){this.dispatchEvent(new CustomEvent("open-profile",{bubbles:!0}))}render(){return console.log(this.coaches),l`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -1432,12 +1432,28 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                           </div>
                       `:""}
                   ${!this.showTeaser&&this.coaches.length===0?l`
-                          <p>
-                            ${jsObject.translations.connecting_with_coach}
-                          </p>
-                          <p>
-                            ${jsObject.translations.wait_for_coach}
-                          </p>
+                          <div class="stack--1">
+                            <p>
+                              ${jsObject.translations.connecting_with_coach}
+                            </p>
+                            <p>
+                              ${jsObject.translations.wait_for_coach}
+                            </p>
+                            <ul>
+                              <li>
+                                <strong>${jsObject.translations.phone}:</strong> ${jsObject.profile.phone}
+                              </li>
+                              <li>
+                                <strong>${jsObject.translations.communications_email}:</strong> ${jsObject.profile.communications_email}
+                              </li>
+                            </ul>
+                            <p>
+                              ${jsObject.translations.confirm_phone_and_email}
+                            </p>
+                            <button class="btn" @click=${this.updateProfile}>
+                              ${jsObject.translations.change_preferences}
+                            </button>
+                          </div>
                       `:""}
                   ${!this.showTeaser&&this.coaches.length>0?l`
                         <div class="grid grid-min-18rem">
