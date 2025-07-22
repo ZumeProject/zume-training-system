@@ -314,6 +314,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
             ],
             'make_training' => [
                 'join_or_start_a_training' => __( 'Join or create a training group', 'zume' ),
+                'join_a_training' => __( 'Join Training Group', 'zume' ),
                 'start_a_training' => __( 'Create a training group', 'zume' ),
                 'join_a_public_training' => __( 'Join a public training group', 'zume' ),
                 'join_with_code' => __( 'Join with code', 'zume' ),

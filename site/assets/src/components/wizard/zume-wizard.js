@@ -287,6 +287,7 @@ export class Wizard extends LitElement {
                 translations = this.t.checkin
                 break
             case Steps.planDecision:
+            case Steps.joinDecision:
             case Steps.joinWithCode:
             case Steps.howManySessions:
             case Steps.scheduleDecision:

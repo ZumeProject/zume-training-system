@@ -63,7 +63,7 @@ export function dashRoutes() {
             parent: RouteNames.gettingStarted,
             icon: 'z-icon-public-training',
             type: 'handled-link',
-            clickHandler: makeClickHandler(Wizards.joinATraining, 'open-wizard'),
+            clickHandler: makeClickHandler(Wizards.joinDecision, 'open-wizard'),
             translation: jsObject.translations['join_training_group'],
             explanation: jsObject.translations['join_training_group_explanation'],
             data: {
