@@ -1,12 +1,15 @@
 import { html } from 'lit';
 import { DashPage } from './dash-page';
 import { Wizards } from '../wizard/wizard-constants';
+import { zumeRequest } from '../../js/zumeRequest';
 
 export class DashCoach extends DashPage {
     static get properties() {
       return {
         showTeaser: { type: Boolean },
         coaches: { type: Array, attribute: false },
+        error: { type: String, attribute: false },
+        loading: { type: Boolean, attribute: false },
       };
     }
 
@@ -14,6 +17,8 @@ export class DashCoach extends DashPage {
       super()
       //this.coaches = Object.values(jsObject.profile.coaches) || []
       this.coaches = []
+      this.error = ''
+      this.loading = false
       const timeSinceRequest = Number(jsObject.user_stage?.state?.requested_a_coach_date || Date.now() / 1000)
       this.timeSinceRequestInDays = Math.floor((Date.now() - timeSinceRequest) / (60 * 60 * 24))
     }
@@ -28,10 +33,20 @@ export class DashCoach extends DashPage {
 
     handleMessageInput(e) {
       this.message = e.target.value
+      this.error = ''
     }
 
     sendMessage() {
-      console.log(this.message)
+      this.loading = true
+      this.error = ''
+      // send message as a comment on the coaching contact
+      zumeRequest.post('/connect/message-coach', { message: this.message })
+        .catch(error => {
+          this.error = jsObject.translations.error_sending_message
+        })
+        .finally(() => {
+          this.loading = false
+        })
     }
 
     render() {
@@ -103,6 +118,10 @@ export class DashCoach extends DashPage {
                                         <button class="btn" @click=${this.sendMessage}>
                                           ${jsObject.translations.send_message}
                                         </button>
+                                        <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
+                                        <div class="banner warning" data-state=${this.error.length ? '' : 'empty'}>
+                                          ${this.error}
+                                        </div>
                                     </div>
                                 ` : ''
                               }

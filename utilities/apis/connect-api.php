@@ -54,6 +54,13 @@ class Zume_Connect_Endpoints
                 'permission_callback' => 'is_user_logged_in',
             ]
         );
+        register_rest_route(
+            $this->namespace, '/connect/message-coach', [
+                'methods' => 'POST',
+                'callback' => [ $this, 'send_message_to_coach_callback' ],
+                'permission_callback' => 'is_user_logged_in',
+            ]
+        );
     }
 
     public function notify_of_future_trainings_callback( WP_REST_Request $request ){
@@ -465,6 +472,46 @@ class Zume_Connect_Endpoints
         }
 
         return $body;
+    }
+
+    public function send_message_to_coach_callback( WP_REST_Request $request ){
+        $params = dt_recursive_sanitize_array( $request->get_params() );
+        if ( ! isset( $params['message'] ) ) {
+            return new WP_Error( 'missing_params', 'Missing params', [ 'status' => 400 ] );
+        }
+        $user_id = get_current_user_id();
+        return self::send_message_to_coach( $user_id, $params['message'] );
+    }
+    public static function send_message_to_coach( $user_id, $message ) {
+        $coach_contact_id = zume_get_user_coaching_contact_id( $user_id );
+        $site = Site_Link_System::get_site_connection_vars( self::SITE_CONNECTION_POST_ID );
+        if ( ! $site ) {
+            dt_write_log( __METHOD__ . ' FAILED TO GET SITE LINK TO GLOBAL ' );
+            return new WP_Error( 'site_link_failed', 'Failed to link to coaching site ', array( 'status' => 400 ) );
+        }
+
+        $fields = [
+            'comment' => $message,
+        ];
+
+        $comment_args = [
+            'method' => 'POST',
+            'body' => json_encode( $fields ),
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer ' . $site['transfer_token'],
+            ],
+        ];
+
+        $url = 'https://' . trailingslashit( $site['url'] ) . 'wp-json/dt-posts/v2/contacts/' . $coach_contact_id . '/comments';
+
+        $result = wp_remote_post( $url, $comment_args );
+        if ( is_wp_error( $result ) ) {
+            $profile = zume_get_user_profile( $user_id );
+            dt_write_log( __METHOD__ . ' FAILED TO ADD COMMENTS TO COACHING CONTACT FOR ' . $profile['name'] );
+        }
+
+        return $result;
     }
 
     public static function test_join_key( $key ) : bool|int {
