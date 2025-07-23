@@ -344,6 +344,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'message_explanation' => __( 'If you have any queries or need help, please enter a message below and we will get back to you as soon as possible.', 'zume' ),
             'send_message' => __( 'Send Message', 'zume' ),
             'error_sending_message' => __( 'There was an error sending your message. Please try again later.', 'zume' ),
+            'success_sending_message' => __( 'Message sent successfully', 'zume' ),
             'hundred_hour_map' => __( '100 Hour Map', 'zume' ),
             'training_vision_map' => __( 'Trainee vision map', 'zume' ),
             'simple_church_planting_map' => __( 'Simple church vision map', 'zume' ),

@@ -1416,7 +1416,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-churches",rl);class ol extends vt{static get properties(){return{showTeaser:{type:Boolean},coaches:{type:Array,attribute:!1},error:{type:String,attribute:!1},loading:{type:Boolean,attribute:!1}}}constructor(){var t;super(),this.coaches=[],this.error="",this.loading=!1;const e=Number(((t=jsObject.user_stage)===null||t===void 0||(t=t.state)===null||t===void 0?void 0:t.requested_a_coach_date)||Date.now()/1e3);this.timeSinceRequestInDays=Math.floor((Date.now()-e)/(60*60*24))}getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.getACoach}}))}updateProfile(){this.dispatchEvent(new CustomEvent("open-profile",{bubbles:!0}))}handleMessageInput(t){this.message=t.target.value,this.error=""}sendMessage(){this.loading=!0,this.error="",w.post("/connect/message-coach",{message:this.message}).catch(t=>{this.error=jsObject.translations.error_sending_message}).finally(()=>{this.loading=!1})}render(){return console.log(this.coaches),l`
+        `}createRenderRoot(){return this}}customElements.define("dash-churches",rl);class ol extends vt{static get properties(){return{showTeaser:{type:Boolean},coaches:{type:Array,attribute:!1},error:{type:String,attribute:!1},success:{type:String,attribute:!1},loading:{type:Boolean,attribute:!1}}}constructor(){var t;super(),this.coaches=[],this.error="",this.success="",this.loading=!1;const e=Number(((t=jsObject.user_stage)===null||t===void 0||(t=t.state)===null||t===void 0?void 0:t.requested_a_coach_date)||Date.now()/1e3);this.timeSinceRequestInDays=Math.floor((Date.now()-e)/(60*60*24))}getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.getACoach}}))}updateProfile(){this.dispatchEvent(new CustomEvent("open-profile",{bubbles:!0}))}handleMessageInput(t){this.message=t.target.value,this.error=""}sendMessage(){this.loading=!0,this.error="",w.post("/connect/message-coach",{message:this.message}).then(()=>{this.success=jsObject.translations.success_sending_message,setTimeout(()=>{this.success=""},3e3)}).catch(t=>{this.error=jsObject.translations.error_sending_message}).finally(()=>{this.loading=!1})}render(){return console.log(this.coaches),l`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -1482,6 +1482,9 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                         <span class="loading-spinner ${this.loading?"active":""}"></span>
                                         <div class="banner warning" data-state=${this.error.length?"":"empty"}>
                                           ${this.error}
+                                        </div>
+                                        <div class="banner success" data-state=${this.success.length?"":"empty"}>
+                                          ${this.success}
                                         </div>
                                     </div>
                                 `:""}

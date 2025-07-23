@@ -9,6 +9,7 @@ export class DashCoach extends DashPage {
         showTeaser: { type: Boolean },
         coaches: { type: Array, attribute: false },
         error: { type: String, attribute: false },
+        success: { type: String, attribute: false },
         loading: { type: Boolean, attribute: false },
       };
     }
@@ -18,6 +19,7 @@ export class DashCoach extends DashPage {
       //this.coaches = Object.values(jsObject.profile.coaches) || []
       this.coaches = []
       this.error = ''
+      this.success = ''
       this.loading = false
       const timeSinceRequest = Number(jsObject.user_stage?.state?.requested_a_coach_date || Date.now() / 1000)
       this.timeSinceRequestInDays = Math.floor((Date.now() - timeSinceRequest) / (60 * 60 * 24))
@@ -41,6 +43,12 @@ export class DashCoach extends DashPage {
       this.error = ''
       // send message as a comment on the coaching contact
       zumeRequest.post('/connect/message-coach', { message: this.message })
+        .then(() => {
+          this.success = jsObject.translations.success_sending_message
+          setTimeout(() => {
+            this.success = ''
+          }, 3000)
+        })
         .catch(error => {
           this.error = jsObject.translations.error_sending_message
         })
@@ -121,6 +129,9 @@ export class DashCoach extends DashPage {
                                         <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
                                         <div class="banner warning" data-state=${this.error.length ? '' : 'empty'}>
                                           ${this.error}
+                                        </div>
+                                        <div class="banner success" data-state=${this.success.length ? '' : 'empty'}>
+                                          ${this.success}
                                         </div>
                                     </div>
                                 ` : ''
