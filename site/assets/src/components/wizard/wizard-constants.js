@@ -6,6 +6,7 @@ export const Wizards = {
     getACoach: 'get-a-coach',
     joinATraining: 'join-a-training',
     planDecision: 'plan-decision',
+    joinDecision: 'join-decision',
     notifyOfFutureTrainings: 'notify-of-future-trainings',
     connectWithFriend: 'connect-with-friend',
     joinFriendsPlan: 'join-friends-training',
@@ -26,11 +27,13 @@ export const Modules = {
     notifyOfFutureTrainings: 'notifyOfFutureTrainings',
     checkin: 'checkin',
     planDecision: 'planDecision',
+    joinDecision: 'joinDecision',
     joinCommunity: 'joinCommunity',
     joinCommunityFromVision: 'joinCommunityFromVision',
 }
 const makeAPlanSteps = {
     planDecision: 'plan-decision',
+    joinDecision: 'join-decision',
     howManySessions: 'how-many-sessions',
     scheduleDecision: 'schedule-decision',
     howOften: 'how-often',

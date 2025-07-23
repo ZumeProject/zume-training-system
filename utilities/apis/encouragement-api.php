@@ -376,7 +376,7 @@ class Zume_System_Encouragement_API
     public static function build_email( $message, $language_code, $user_id ){
 
         $email = self::email_head_part();
-        $email .= self::email_content_part( $message );
+        $email .= self::email_content_part( $message, $user_id );
         $email .= self::email_footer_part();
 
         $email_with_placeholders = zume_replace_placeholder( $email, $language_code, $user_id );
@@ -510,8 +510,8 @@ class Zume_System_Encouragement_API
         return $html;
     }
 
-    public static function email_content_part( $message ){
-        global $zume_user_profile;
+    public static function email_content_part( $message, $user_id ){
+        $user_profile = zume_get_user_profile( $user_id );
         ob_start();
         ?>
         <body>
@@ -522,10 +522,10 @@ class Zume_System_Encouragement_API
                     </div>
                 </header>
                 <?php
-                if ( isset( $zume_user_profile['has_set_name'] ) && $zume_user_profile['has_set_name'] ) {
+                if ( isset( $user_profile['has_set_name'] ) && $user_profile['has_set_name'] ) {
                     ?>
                     <div class="zmail-body">
-                        <?php echo wp_kses( $zume_user_profile['name'], 'post' ) ?>,
+                        <?php echo wp_kses( $user_profile['name'], 'post' ) ?>,
                     </div>
                     <?php
                 } else {

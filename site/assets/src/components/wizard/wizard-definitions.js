@@ -10,6 +10,9 @@ export const wizardDefinitions = {
     [Wizards.planDecision]: {
         [Modules.planDecision]: makeModule([Steps.planDecision], false),
     },
+    [Wizards.joinDecision]: {
+        [Modules.joinDecision]: makeModule([Steps.joinDecision], false),
+    },
     [Wizards.setProfile]: {
         [Modules.completeProfile]: makeModule(
             [Steps.updateName, Steps.updateLocation],
