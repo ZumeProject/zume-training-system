@@ -1,22 +1,52 @@
 import { html } from 'lit';
 import { DashPage } from './dash-page';
 import { Wizards } from '../wizard/wizard-constants';
+import { zumeRequest } from '../../js/zumeRequest';
 
 export class DashCoach extends DashPage {
     static get properties() {
       return {
         showTeaser: { type: Boolean },
         coaches: { type: Array, attribute: false },
+        error: { type: String, attribute: false },
+        loading: { type: Boolean, attribute: false },
       };
     }
 
     constructor() {
       super()
-      this.coaches = Object.values(jsObject.profile.coaches) || []
+      //this.coaches = Object.values(jsObject.profile.coaches) || []
+      this.coaches = []
+      this.error = ''
+      this.loading = false
+      const timeSinceRequest = Number(jsObject.user_stage?.state?.requested_a_coach_date || Date.now() / 1000)
+      this.timeSinceRequestInDays = Math.floor((Date.now() - timeSinceRequest) / (60 * 60 * 24))
     }
 
     getACoach() {
       this.dispatchEvent(new CustomEvent( 'open-wizard', { bubbles: true, detail: { type: Wizards.getACoach } } ))
+    }
+
+    updateProfile() {
+      this.dispatchEvent(new CustomEvent( 'open-profile', { bubbles: true } ))
+    }
+
+    handleMessageInput(e) {
+      this.message = e.target.value
+      this.error = ''
+    }
+
+    sendMessage() {
+      this.loading = true
+      this.error = ''
+      // send message as a comment on the coaching contact
+      zumeRequest.post('/connect/message-coach', { message: this.message })
+        .catch(error => {
+          this.error = jsObject.translations.error_sending_message
+        })
+        .finally(() => {
+          this.loading = false
+        })
     }
 
     render() {
@@ -50,12 +80,52 @@ export class DashCoach extends DashPage {
                   }
                   ${
                       !this.showTeaser && this.coaches.length === 0 ? html`
-                          <p>
-                            ${jsObject.translations.connecting_with_coach}
-                          </p>
-                          <p>
-                            ${jsObject.translations.wait_for_coach}
-                          </p>
+                          <div class="stack">
+                              <div class="stack--1">
+                                <p>
+                                  ${jsObject.translations.connecting_with_coach}
+                                </p>
+                                <p>
+                                  ${jsObject.translations.wait_for_coach}
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong>${jsObject.translations.phone}:</strong> ${jsObject.profile.phone}
+                                  </li>
+                                  <li>
+                                    <strong>${jsObject.translations.communications_email}:</strong> ${jsObject.profile.communications_email}
+                                  </li>
+                                </ul>
+                                <p>
+                                  ${jsObject.translations.confirm_phone_and_email}
+                                </p>
+                                <button class="btn center" @click=${this.updateProfile}>
+                                  ${jsObject.translations.change_preferences}
+                                </button>
+                              </div>
+                              ${
+                                this.timeSinceRequestInDays > 14 ? html`
+                                    <div class="stack--1 center">
+                                        <h3 class="h4 brand-light">${jsObject.translations.apology_for_delay}</h3>
+                                        <p>
+                                          ${jsObject.translations.message_explanation}
+                                        </p>
+                                        <textarea
+                                            placeholder="${jsObject.translations.message}"
+                                            rows="3"
+                                            @input=${this.handleMessageInput}
+                                        ></textarea>
+                                        <button class="btn" @click=${this.sendMessage}>
+                                          ${jsObject.translations.send_message}
+                                        </button>
+                                        <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
+                                        <div class="banner warning" data-state=${this.error.length ? '' : 'empty'}>
+                                          ${this.error}
+                                        </div>
+                                    </div>
+                                ` : ''
+                              }
+                          </div>
                       ` : ''
                   }
                   ${
@@ -63,8 +133,11 @@ export class DashCoach extends DashPage {
                         <div class="grid grid-min-18rem">
                           ${
                               this.coaches.map((coach) => html`
-                                  <div class="card stack">
+                                  <div class="card stack | mw-50ch">
                                     <h3>${coach.name}</h3>
+                                    <div class="center">
+                                        <img class="profile-image" src="${coach.picture}" alt="${coach.name}" />
+                                    </div>
                                     ${
                                       coach.communication_apps.length ? html`
                                         <ul class="stack">

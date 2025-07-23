@@ -123,6 +123,7 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
                 $coaches[$value['user_id']]['signal'] = in_array( 'signal', $communication_apps ) ? $signal : '';
                 $coaches[$value['user_id']]['telegram'] = in_array( 'telegram', $communication_apps ) ? $telegram : '';
                 $coaches[$value['user_id']]['communication_apps'] = $communication_apps;
+                $coaches[$value['user_id']]['picture'] = get_avatar_url( $value['user_id'], array( 'scheme' => 'https' ) );
             }
         }
 
@@ -283,6 +284,7 @@ if ( ! function_exists( 'zume_get_user_stage' ) ) {
                 }
                 if ( 'requested_a_coach' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
+                    $user_state['requested_a_coach_date'] = $value['timestamp'];
                 }
                 if ( 'set_profile_location' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
