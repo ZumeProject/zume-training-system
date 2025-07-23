@@ -203,18 +203,20 @@ class Zume_Training {
         return $placeholders;
     }
 
-    public function filter_post_messaging_message( $message, $post, $args ) {
+    public function filter_post_messaging_message( $message, $post ) {
         if ( $post['post_type'] === 'contacts' ) {
+            $contact_id = $post['ID'];
+            $user_id = zume_get_user_id_by_contact_id( $contact_id );
+
+            // this also handily sets the global $zume_user_profile variable for the building of the email
+            $user_profile = zume_get_user_profile( $user_id );
+            $preferred_language = $user_profile['preferred_language'];
+
             if ( str_contains( $message, '{{training ' ) ) {
                 // get each training code from the message
                 $training_codes = [];
                 preg_match_all( '/{{training ([^}]+)}}/', $message, $matches );
                 $training_codes = $matches[1];
-
-                $user_id = $post['ID'];
-                // this also handily sets the global $zume_user_profile variable for the building of the email
-                $user_profile = zume_get_user_profile( $user_id );
-                $preferred_language = $user_profile['preferred_language'];
 
                 // for each training code, get the training details
                 foreach ( $training_codes as $training_code ) {
@@ -252,8 +254,9 @@ class Zume_Training {
                     }
                 }
             }
+            return Zume_System_Encouragement_API::build_email( $message, $preferred_language, $user_id );
         }
-        return Zume_System_Encouragement_API::build_email( $message, $preferred_language, $user_id );
+        return $message;
     }
 
     public function filter_post_messaging_headers( $headers, $post, $args ) {
