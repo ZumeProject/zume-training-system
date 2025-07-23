@@ -161,6 +161,10 @@ class Zume_Training {
         add_filter( 'dt_set_roles_and_permissions', [ $this, 'filter_set_roles_and_permissions' ], 10, 1 );
         add_filter( 'dt_filter_access_permissions', [ $this, 'filter_access_permissions' ], 10, 2 );
 
+        // add message placeholders
+        add_filter( 'dt_post_messaging_message_placeholders', [ $this, 'filter_post_messaging_message_placeholders' ], 10, 2 );
+        add_filter( 'dt_post_messaging_message', [ $this, 'filter_post_messaging_message' ], 10, 3 );
+
         /* Ensure that Login is enabled and settings set to the correct values */
         $fields = [
             'login_enabled' => 'on',
@@ -184,6 +188,66 @@ class Zume_Training {
         }
 
         add_action( 'wp_head', [ $this, 'insert_head_scripts' ] );
+    }
+
+    public function filter_post_messaging_message_placeholders( $placeholders, $post_type ) {
+        if ( $post_type === 'contacts' ) {
+            $placeholders = [
+                [
+                    'name' => '{{training [code]}}',
+                    'description' => __( 'Add the details for training with code [code]', 'zume' ),
+                ],
+            ];
+        }
+        return $placeholders;
+    }
+
+    public function filter_post_messaging_message( $message, $post, $args ) {
+        if ( $post['post_type'] === 'contacts' ) {
+            if ( str_contains( $message, '{{training ' ) ) {
+                // get each training code from the message
+                $training_codes = [];
+                preg_match_all( '/{{training ([^}]+)}}/', $message, $matches );
+                $training_codes = $matches[1];
+
+                // for each training code, get the training details
+                foreach ( $training_codes as $training_code ) {
+                    $training = Zume_Plans_Model::get_plan_by_code( $training_code );
+                    if ( $training ) {
+                        $training_details = "
+                            <h3>{$training['title']}</h3>
+                        ";
+
+                        if ( $training['location_note'] ) {
+                            $training_details .= "<p>{$training['location_note']}</p>";
+                        }
+                        if ( $training['language_note'] ) {
+                            $training_details .= "<p>{$training['language_note']}</p>";
+                        }
+                        if ( $training['time_of_day_note'] ) {
+                            $training_details .= "<p>{$training['time_of_day_note']}</p>";
+                        }
+
+                        if ( $training['next_session_date'] ) {
+                            $training_details .= "<p>{$training['next_session_date']}</p>";
+                        }
+
+                        if ( $training['timezone_note'] ) {
+                            $training_details .= "<p>{$training['timezone_note']}</p>";
+                        }
+
+                        if ( $training['join_key'] ) {
+                            $training_details .= "<p>{$training['join_key']}</p>";
+                        }
+
+                        $message = str_replace( '{{training ' . $training_code . '}}', $training_details, $message );
+                    } else {
+                        $message = str_replace( '{{training ' . $training_code . '}}', '', $message );
+                    }
+                }
+            }
+        }
+        return $message;
     }
 
     public function filter_set_roles_and_permissions( $expected_roles ) {

@@ -2,6 +2,16 @@
 
 class Zume_Plans_Model {
     private static $post_type = 'zume_plans';
+
+    public static function get_plan_by_code( $training_code ) {
+        // get the post id from the post meta that has the 'join_key' as $training_code
+        global $wpdb;
+        $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'join_key' AND meta_value = %s", $training_code ) );
+        if ( !$post_id ) {
+            return null;
+        }
+        return self::get_plan( $post_id );
+    }
     public static function get_plan( $training_id ) {
         $training_group = DT_Posts::get_post( self::$post_type, (int) $training_id, true, false );
 
