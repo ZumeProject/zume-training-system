@@ -14,6 +14,8 @@ export class DashCoach extends DashPage {
       super()
       //this.coaches = Object.values(jsObject.profile.coaches) || []
       this.coaches = []
+      const timeSinceRequest = Number(jsObject.user_stage?.state?.requested_a_coach_date || Date.now() / 1000)
+      this.timeSinceRequestInDays = Math.floor((Date.now() - timeSinceRequest) / (60 * 60 * 24))
     }
 
     getACoach() {
@@ -22,6 +24,14 @@ export class DashCoach extends DashPage {
 
     updateProfile() {
       this.dispatchEvent(new CustomEvent( 'open-profile', { bubbles: true } ))
+    }
+
+    handleMessageInput(e) {
+      this.message = e.target.value
+    }
+
+    sendMessage() {
+      console.log(this.message)
     }
 
     render() {
@@ -55,27 +65,47 @@ export class DashCoach extends DashPage {
                   }
                   ${
                       !this.showTeaser && this.coaches.length === 0 ? html`
-                          <div class="stack--1">
-                            <p>
-                              ${jsObject.translations.connecting_with_coach}
-                            </p>
-                            <p>
-                              ${jsObject.translations.wait_for_coach}
-                            </p>
-                            <ul>
-                              <li>
-                                <strong>${jsObject.translations.phone}:</strong> ${jsObject.profile.phone}
-                              </li>
-                              <li>
-                                <strong>${jsObject.translations.communications_email}:</strong> ${jsObject.profile.communications_email}
-                              </li>
-                            </ul>
-                            <p>
-                              ${jsObject.translations.confirm_phone_and_email}
-                            </p>
-                            <button class="btn" @click=${this.updateProfile}>
-                              ${jsObject.translations.change_preferences}
-                            </button>
+                          <div class="stack">
+                              <div class="stack--1">
+                                <p>
+                                  ${jsObject.translations.connecting_with_coach}
+                                </p>
+                                <p>
+                                  ${jsObject.translations.wait_for_coach}
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong>${jsObject.translations.phone}:</strong> ${jsObject.profile.phone}
+                                  </li>
+                                  <li>
+                                    <strong>${jsObject.translations.communications_email}:</strong> ${jsObject.profile.communications_email}
+                                  </li>
+                                </ul>
+                                <p>
+                                  ${jsObject.translations.confirm_phone_and_email}
+                                </p>
+                                <button class="btn center" @click=${this.updateProfile}>
+                                  ${jsObject.translations.change_preferences}
+                                </button>
+                              </div>
+                              ${
+                                this.timeSinceRequestInDays > 14 ? html`
+                                    <div class="stack--1 center">
+                                        <h3 class="h4 brand-light">${jsObject.translations.apology_for_delay}</h3>
+                                        <p>
+                                          ${jsObject.translations.message_explanation}
+                                        </p>
+                                        <textarea
+                                            placeholder="${jsObject.translations.message}"
+                                            rows="3"
+                                            @input=${this.handleMessageInput}
+                                        ></textarea>
+                                        <button class="btn" @click=${this.sendMessage}>
+                                          ${jsObject.translations.send_message}
+                                        </button>
+                                    </div>
+                                ` : ''
+                              }
                           </div>
                       ` : ''
                   }

@@ -1406,7 +1406,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-churches",rl);class ol extends vt{static get properties(){return{showTeaser:{type:Boolean},coaches:{type:Array,attribute:!1}}}constructor(){super(),this.coaches=[]}getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.getACoach}}))}updateProfile(){this.dispatchEvent(new CustomEvent("open-profile",{bubbles:!0}))}render(){return console.log(this.coaches),l`
+        `}createRenderRoot(){return this}}customElements.define("dash-churches",rl);class ol extends vt{static get properties(){return{showTeaser:{type:Boolean},coaches:{type:Array,attribute:!1}}}constructor(){var t;super(),this.coaches=[];const e=Number(((t=jsObject.user_stage)===null||t===void 0||(t=t.state)===null||t===void 0?void 0:t.requested_a_coach_date)||Date.now()/1e3);this.timeSinceRequestInDays=Math.floor((Date.now()-e)/(60*60*24))}getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.getACoach}}))}updateProfile(){this.dispatchEvent(new CustomEvent("open-profile",{bubbles:!0}))}handleMessageInput(t){this.message=t.target.value}sendMessage(){console.log(this.message)}render(){return console.log(this.coaches),l`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -1432,27 +1432,45 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                           </div>
                       `:""}
                   ${!this.showTeaser&&this.coaches.length===0?l`
-                          <div class="stack--1">
-                            <p>
-                              ${jsObject.translations.connecting_with_coach}
-                            </p>
-                            <p>
-                              ${jsObject.translations.wait_for_coach}
-                            </p>
-                            <ul>
-                              <li>
-                                <strong>${jsObject.translations.phone}:</strong> ${jsObject.profile.phone}
-                              </li>
-                              <li>
-                                <strong>${jsObject.translations.communications_email}:</strong> ${jsObject.profile.communications_email}
-                              </li>
-                            </ul>
-                            <p>
-                              ${jsObject.translations.confirm_phone_and_email}
-                            </p>
-                            <button class="btn" @click=${this.updateProfile}>
-                              ${jsObject.translations.change_preferences}
-                            </button>
+                          <div class="stack">
+                              <div class="stack--1">
+                                <p>
+                                  ${jsObject.translations.connecting_with_coach}
+                                </p>
+                                <p>
+                                  ${jsObject.translations.wait_for_coach}
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong>${jsObject.translations.phone}:</strong> ${jsObject.profile.phone}
+                                  </li>
+                                  <li>
+                                    <strong>${jsObject.translations.communications_email}:</strong> ${jsObject.profile.communications_email}
+                                  </li>
+                                </ul>
+                                <p>
+                                  ${jsObject.translations.confirm_phone_and_email}
+                                </p>
+                                <button class="btn center" @click=${this.updateProfile}>
+                                  ${jsObject.translations.change_preferences}
+                                </button>
+                              </div>
+                              ${this.timeSinceRequestInDays>14?l`
+                                    <div class="stack--1 center">
+                                        <h3 class="h4 brand-light">${jsObject.translations.apology_for_delay}</h3>
+                                        <p>
+                                          ${jsObject.translations.message_explanation}
+                                        </p>
+                                        <textarea
+                                            placeholder="${jsObject.translations.message}"
+                                            rows="3"
+                                            @input=${this.handleMessageInput}
+                                        ></textarea>
+                                        <button class="btn" @click=${this.sendMessage}>
+                                          ${jsObject.translations.send_message}
+                                        </button>
+                                    </div>
+                                `:""}
                           </div>
                       `:""}
                   ${!this.showTeaser&&this.coaches.length>0?l`

@@ -284,6 +284,7 @@ if ( ! function_exists( 'zume_get_user_stage' ) ) {
                 }
                 if ( 'requested_a_coach' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
+                    $user_state['requested_a_coach_date'] = $value['timestamp'];
                 }
                 if ( 'set_profile_location' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
