@@ -164,6 +164,7 @@ class Zume_Training {
         // add message placeholders
         add_filter( 'dt_post_messaging_message_placeholders', [ $this, 'filter_post_messaging_message_placeholders' ], 10, 2 );
         add_filter( 'dt_post_messaging_message', [ $this, 'filter_post_messaging_message' ], 10, 3 );
+        add_filter( 'dt_post_messaging_headers', [ $this, 'filter_post_messaging_headers' ], 10, 3 );
 
         /* Ensure that Login is enabled and settings set to the correct values */
         $fields = [
@@ -210,6 +211,11 @@ class Zume_Training {
                 preg_match_all( '/{{training ([^}]+)}}/', $message, $matches );
                 $training_codes = $matches[1];
 
+                $user_id = $post['ID'];
+                // this also handily sets the global $zume_user_profile variable for the building of the email
+                $user_profile = zume_get_user_profile( $user_id );
+                $preferred_language = $user_profile['preferred_language'];
+
                 // for each training code, get the training details
                 foreach ( $training_codes as $training_code ) {
                     $training = Zume_Plans_Model::get_plan_by_code( $training_code );
@@ -247,7 +253,16 @@ class Zume_Training {
                 }
             }
         }
-        return $message;
+        return Zume_System_Encouragement_API::build_email( $message, $preferred_language, $user_id );
+    }
+
+    public function filter_post_messaging_headers( $headers, $post, $args ) {
+        if ( $post['post_type'] === 'contacts' ) {
+            $headers[] = 'Content-Type: text/html; charset=UTF-8';
+            $headers[] = 'MIME-Version: 1.0';
+            $headers[] = 'X-Zume-Email-System: 1.0';
+        }
+        return $headers;
     }
 
     public function filter_set_roles_and_permissions( $expected_roles ) {
