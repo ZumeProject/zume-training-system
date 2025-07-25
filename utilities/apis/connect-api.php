@@ -505,10 +505,14 @@ class Zume_Connect_Endpoints
 
         $url = 'https://' . trailingslashit( $site['url'] ) . 'wp-json/dt-posts/v2/contacts/' . $coach_contact_id . '/comments';
 
+        // TODO: remove me as only for dev
+        Zume_System_Log_API::log( 'coaching', 'sent_message_to_coach', [ 'user_id' => $user_id, 'payload' => $coach_contact_id ] );
         $result = wp_remote_post( $url, $comment_args );
         if ( is_wp_error( $result ) ) {
             $profile = zume_get_user_profile( $user_id );
             dt_write_log( __METHOD__ . ' FAILED TO ADD COMMENTS TO COACHING CONTACT FOR ' . $profile['name'] );
+        } else {
+            Zume_System_Log_API::log( 'coaching', 'sent_message_to_coach', [ 'user_id' => $user_id, 'payload' => $coach_contact_id ] );
         }
 
         return $result;

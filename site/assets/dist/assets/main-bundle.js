@@ -1416,7 +1416,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     </div>
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-churches",rl);class ol extends vt{static get properties(){return{showTeaser:{type:Boolean},coaches:{type:Array,attribute:!1},error:{type:String,attribute:!1},success:{type:String,attribute:!1},loading:{type:Boolean,attribute:!1}}}constructor(){var t;super(),this.coaches=[],this.error="",this.success="",this.loading=!1;const e=Number(((t=jsObject.user_stage)===null||t===void 0||(t=t.state)===null||t===void 0?void 0:t.requested_a_coach_date)||Date.now()/1e3);this.timeSinceRequestInDays=Math.floor((Date.now()-e)/(60*60*24))}getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.getACoach}}))}updateProfile(){this.dispatchEvent(new CustomEvent("open-profile",{bubbles:!0}))}handleMessageInput(t){this.message=t.target.value,this.error=""}sendMessage(){this.loading=!0,this.error="",w.post("/connect/message-coach",{message:this.message}).then(()=>{this.success=jsObject.translations.success_sending_message,setTimeout(()=>{this.success=""},3e3)}).catch(t=>{this.error=jsObject.translations.error_sending_message}).finally(()=>{this.loading=!1})}render(){return console.log(this.coaches),l`
+        `}createRenderRoot(){return this}}customElements.define("dash-churches",rl);class ol extends vt{static get properties(){return{showTeaser:{type:Boolean},coaches:{type:Array,attribute:!1},error:{type:String,attribute:!1},success:{type:String,attribute:!1},loading:{type:Boolean,attribute:!1}}}constructor(){var t,e;super(),this.coaches=[],this.error="",this.success="",this.loading=!1;const s=Number(((t=jsObject.user_stage)===null||t===void 0||(t=t.state)===null||t===void 0?void 0:t.requested_a_coach_date)||Date.now()/1e3);this.timeSinceRequestInDays=Math.floor((Date.now()-s)/(60*60*24)),this.daysSinceLastContactedCoach=Math.floor((Date.now()-((e=jsObject.profile.last_contacted_coach)!==null&&e!==void 0?e:0))/(60*60*24));const n=7;this.allowMessage=this.daysSinceLastContactedCoach>n,this.daysLeftToMessage=n-this.daysSinceLastContactedCoach}getACoach(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.getACoach}}))}updateProfile(){this.dispatchEvent(new CustomEvent("open-profile",{bubbles:!0}))}handleMessageInput(t){this.message=t.target.value,this.error=""}sendMessage(){this.loading=!0,this.error="",w.post("/connect/message-coach",{message:this.message}).then(()=>{this.success=jsObject.translations.success_sending_message,setTimeout(()=>{this.success=""},3e3)}).catch(t=>{this.error=jsObject.translations.error_sending_message}).finally(()=>{this.loading=!1})}render(){return console.log(this.coaches),l`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -1442,7 +1442,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                           </div>
                       `:""}
                   ${!this.showTeaser&&this.coaches.length===0?l`
-                          <div class="stack">
+                          <div class="stack-2">
                               <div class="stack--1">
                                 <p>
                                   ${jsObject.translations.connecting_with_coach}

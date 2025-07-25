@@ -78,6 +78,8 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
                         AND meta_value = %s",
             $user_id )
         );
+        $dates_contacted_coach = zume_get_user_log( $user_id, 'coaching', 'sent_message_to_coach' );
+        $last_contacted_coach = !empty( $dates_contacted_coach ) ? (int) $dates_contacted_coach[ count( $dates_contacted_coach ) - 1 ]['timestamp'] : 0;
 
         $coach_list = [];
         if ( $coaching_contact_id ) {
@@ -136,6 +138,7 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
                 'user_id' => $user_id,
                 'contact_id' => $contact_id,
                 'coaching_contact_id' => $coaching_contact_id,
+                'last_contacted_coach' => $last_contacted_coach,
                 'email' => $email,
                 'communications_email' => $communications_email,
                 'phone' => $phone,
@@ -161,6 +164,7 @@ if ( ! function_exists( 'zume_get_user_profile' ) ) {
                 'user_id' => $user_id,
                 'contact_id' => $contact_id,
                 'coaching_contact_id' => $coaching_contact_id,
+                'last_contacted_coach' => $last_contacted_coach,
                 'email' => $email,
                 'communications_email' => $communications_email,
                 'phone' => $phone,

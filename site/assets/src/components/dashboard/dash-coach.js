@@ -16,6 +16,7 @@ export class DashCoach extends DashPage {
 
     constructor() {
       super()
+      // TODO: remove me as only for devs
       //this.coaches = Object.values(jsObject.profile.coaches) || []
       this.coaches = []
       this.error = ''
@@ -23,6 +24,11 @@ export class DashCoach extends DashPage {
       this.loading = false
       const timeSinceRequest = Number(jsObject.user_stage?.state?.requested_a_coach_date || Date.now() / 1000)
       this.timeSinceRequestInDays = Math.floor((Date.now() - timeSinceRequest) / (60 * 60 * 24))
+      this.daysSinceLastContactedCoach = Math.floor((Date.now() - (jsObject.profile.last_contacted_coach ?? 0)) / (60 * 60 * 24))
+
+      const daysBetweenMessages = 7
+      this.allowMessage = this.daysSinceLastContactedCoach > daysBetweenMessages
+      this.daysLeftToMessage = daysBetweenMessages - this.daysSinceLastContactedCoach
     }
 
     getACoach() {
@@ -88,7 +94,7 @@ export class DashCoach extends DashPage {
                   }
                   ${
                       !this.showTeaser && this.coaches.length === 0 ? html`
-                          <div class="stack">
+                          <div class="stack-2">
                               <div class="stack--1">
                                 <p>
                                   ${jsObject.translations.connecting_with_coach}
