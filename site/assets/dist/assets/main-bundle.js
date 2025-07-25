@@ -297,7 +297,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 <span class="loading-spinner active"></span>
             `:l`
             <h2 class="h3 brand-light text-center">${this.training.post_title||this.training.title}</h2>
-            <table class="table center">
+            <table class="center" no-labels>
                 <tbody>
                     <tr>
                         <td class="f-medium">${this.t.facilitator}:</td>

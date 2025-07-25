@@ -125,12 +125,12 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
                                     $next_session = Zume_Plans_Model::get_next_session_date( $training['ID'] );
                                     ?>
                                     <tr>
-                                        <td data-label="Name"><?php echo esc_html( $training['post_title'] ?? '' ); ?></td>
-                                        <td data-label="Session"><?php echo esc_html( $session_info['current'] ); ?> / <?php echo esc_html( $session_info['total'] ); ?></td>
-                                        <td data-label="Next Session Date"><?php echo esc_html( $next_session ); ?></td>
-                                        <td data-label="Start Time"><?php echo esc_html( $training['time_of_day_note'] ?? '' ); ?></td>
-                                        <td data-label="Timezone"><?php echo esc_html( $training['timezone_note'] ?? '' ); ?></td>
-                                        <td data-label="Language"><?php echo esc_html( $training['language_note'] ?? '' ); ?></td>
+                                        <td data-label="<?php echo esc_html__( 'Name', 'zume' ); ?>"><?php echo esc_html( $training['post_title'] ?? '' ); ?></td>
+                                        <td data-label="<?php echo esc_html__( 'Session', 'zume' ); ?>"><?php echo esc_html( $session_info['current'] ); ?> / <?php echo esc_html( $session_info['total'] ); ?></td>
+                                        <td data-label="<?php echo esc_html__( 'Next Session Date', 'zume' ); ?>"><?php echo esc_html( $next_session ); ?></td>
+                                        <td data-label="<?php echo esc_html__( 'Start Time', 'zume' ); ?>"><?php echo esc_html( $training['time_of_day_note'] ?? '' ); ?></td>
+                                        <td data-label="<?php echo esc_html__( 'Timezone', 'zume' ); ?>"><?php echo esc_html( $training['timezone_note'] ?? '' ); ?></td>
+                                        <td data-label="<?php echo esc_html__( 'Language', 'zume' ); ?>"><?php echo esc_html( $training['language_note'] ?? '' ); ?></td>
                                         <td>
                                             <a href="/training-group/<?php echo esc_html( $training['join_key'] ?? '' ); ?>" class="btn" data-code="<?php echo esc_attr( $training['join_key'] ?? '' ); ?>">
                                                 <?php echo esc_html__( 'Join', 'zume' ); ?>

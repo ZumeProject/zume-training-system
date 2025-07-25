@@ -138,7 +138,7 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
         <div class="page container-md stack">
             <h1 class="text-center brand-light"><?php echo esc_html( $training_group['post_title'] ); ?></h1>
             <h2 class="h3 text-center"><?php echo esc_html__( 'Training Group Details', 'zume' ); ?></h2>
-            <table class="table center">
+            <table class="center" no-labels>
                 <tbody>
                     <tr>
                         <td class="f-medium"><?php echo esc_html__( 'Facilitator', 'zume' ); ?>:</td>
