@@ -443,7 +443,9 @@ export class DashTrainings extends DashPage {
         const modal = document.querySelector('#edit-session-details-modal')
         jQuery(modal).foundation('close')
     }
-    saveSessionDetails() {
+    saveSessionDetails( event ) {
+        event.preventDefault()
+
         const locationNote = document.querySelector('#location-note').value
         const zoomLinkNote = document.querySelector('#zoom-link-note').value
         const status = document.querySelector(
@@ -1768,7 +1770,7 @@ export class DashTrainings extends DashPage {
                 >
                     <span class="icon z-icon-close"></span>
                 </button>
-                <div class="stack">
+                <form class="stack" @submit=${this.saveSessionDetails}>
                     <div class="d-flex gap-0 flex-wrap justify-content-center">
                         <h2>${jsObject.translations.edit}:</h2>
                         <h3 class="h2 brand-light">
@@ -1797,9 +1799,10 @@ export class DashTrainings extends DashPage {
                         ? html`
                             <div>
                                 <label for="time-of-day"
-                                    >${jsObject.translations.time}</label
+                                    >${jsObject.translations.time} *</label
                                 >
                                 <input
+                                    required
                                     class="input"
                                     type="time"
                                     id="time-of-day"
@@ -1827,9 +1830,10 @@ export class DashTrainings extends DashPage {
                             </div>
                             <div>
                                 <label for="timezone"
-                                    >${jsObject.translations.timezone}</label
+                                    >${jsObject.translations.timezone} *</label
                                 >
                                 <select
+                                    required
                                     class="input"
                                     id="timezone"
                                 >
@@ -1897,7 +1901,7 @@ export class DashTrainings extends DashPage {
                     ${ this.showPublicGroupWarning ? html`
                       <div class="warning banner stack" data-state=''>
                         ${jsObject.translations.public_group_warning}
-                        <button class="btn outline tight center" @click=${this.saveSessionDetails}>
+                        <button class="btn outline tight center">
                           ${jsObject.translations.confirm}
                         </button>
                       </div>
@@ -1917,7 +1921,6 @@ export class DashTrainings extends DashPage {
                         </button>
                         <button
                             class="btn tight"
-                            @click=${this.saveSessionDetails}
                             ?disabled=${this.isSavingSession || this.showPublicGroupWarning}
                             aria-disabled=${this.isSavingSession || this.showPublicGroupWarning
                                 ? 'true'
@@ -1931,7 +1934,7 @@ export class DashTrainings extends DashPage {
                             ></span>
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
         `
     }
