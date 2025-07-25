@@ -295,8 +295,8 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'complete_profile' => __( 'Please make sure that your profile is up to date, so that group leaders can contact you.', 'zume' ),
                 'timezone' => __( 'Timezone', 'zume' ),
                 'session' => __( 'Session', 'zume' ),
-                'next_session_date_in_user_timezone' => __( 'The next session in your timezone is:', 'zume' ),
-                'your_timezone' => __( 'Your timezone is:', 'zume' ),
+                'next_session_date_in_timezone' => __( 'The next session is:', 'zume' ),
+                'this_timezone' => __( 'In this timezone:', 'zume' ),
             ],
             'connect_friend' => [
                 'title' => __( 'Connecting with friend', 'zume' ),

@@ -98,25 +98,23 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
 
     public function body(){
         require __DIR__ . '/../parts/nav.php';
-        $training_group = get_post( $this->post_id );
-        $training_group_facilitator = get_user_by( 'id', $training_group->post_author );
-        $training_group_meta = get_post_meta( $this->post_id );
-        $training_group = [
-            ...$training_group->to_array(),
-            ...$training_group_meta,
-            'facilitator' => $training_group_facilitator,
-        ];
-        $time_of_day_note = $training_group['time_of_day_note'][0];
-        $time_of_day = $training_group['time_of_day'][0];
-        $location_note = $training_group['location_note'][0];
-        $timezone_note = $training_group['timezone_note'][0];
-        $timezone = $training_group['timezone'][0];
-        $visibility = $training_group['visibility'][0] === 'public' ? esc_html__( 'Public', 'zume' ) : esc_html__( 'Private', 'zume' );
-        $status = $training_group['status'][0] === 'active' ? esc_html__( 'Active', 'zume' ) : esc_html__( 'Inactive', 'zume' );
+        $training_group = Zume_Plans_Model::get_plan( $this->post_id );
+        $training_group_facilitator = get_user_by( 'id', $training_group['post_author'] );
+        $training_group['facilitator'] = $training_group_facilitator;
+
+        $time_of_day_note = $training_group['time_of_day_note'];
+        $time_of_day_formatted = $training_group['time_of_day_formatted'];
+        $time_of_day = $training_group['time_of_day'];
+        $location_note = $training_group['location_note'];
+        $timezone_note = $training_group['timezone_note'];
+        $timezone = $training_group['timezone'];
+        $is_public = $training_group['visibility']['key'] === 'public';
+        $visibility = $is_public ? esc_html__( 'Public', 'zume' ) : esc_html__( 'Private', 'zume' );
+        $status = $training_group['status']['key'] === 'active' ? esc_html__( 'Active', 'zume' ) : esc_html__( 'Inactive', 'zume' );
         $session_info = Zume_Plans_Model::get_current_session( $this->post_id );
-        $next_session = Zume_Plans_Model::get_next_session_date( $this->post_id );
+        $next_session_formatted = $training_group['next_session_date_formatted'];
+        $next_session = $training_group['next_session_date'];
         $session_dates = Zume_Plans_Model::get_session_dates( $this->post_id );
-        $is_public = $training_group['visibility'][0] === 'public';
         $join_url = $is_public ? zume_join_a_public_plan_wizard_url( $this->code ) : zume_join_friends_training_wizard_url( $this->code );
 
         if ( is_user_logged_in() ) {
@@ -129,7 +127,7 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
         // we want to find the time of the course in the user's timezone.
         // so e.g. if the training group is 10am in GMT+0, and the user is in GMT+1, we want to show 11am.
         // we can do this by converting the training group time to the user's timezone.
-        if ( !empty( $time_of_day ) && !empty( $next_session ) && !empty( $user_timezone ) ) {
+        if ( !empty( $time_of_day_formatted ) && !empty( $next_session_formatted ) && !empty( $user_timezone ) ) {
             $next_session_datetime_in_user_timezone = Zume_Plans_Model::get_next_session_date_in_user_timezone( $this->post_id, $user_timezone );
         } else {
             $next_session_datetime_in_user_timezone = '';
@@ -160,11 +158,11 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
                     </tr>
                     <tr>
                         <td class="f-medium"><?php echo esc_html__( 'Next Session Date', 'zume' ); ?>:</td>
-                        <td><?php echo esc_html( $next_session ); ?></td>
+                        <td><?php echo esc_html( $next_session_formatted ); ?></td>
                     </tr>
                     <tr>
                         <td class="f-medium"><?php echo esc_html__( 'Time of Day', 'zume' ); ?>:</td>
-                        <td><?php echo esc_html( $time_of_day ); ?></td>
+                        <td><?php echo esc_html( $time_of_day_formatted ); ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -172,11 +170,11 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
             <?php if ( !empty( $next_session_datetime_in_user_timezone ) ) : ?>
 
                 <p class="text-center">
-                    <?php echo esc_html__( 'The next session in your timezone is:', 'zume' ); ?>
+                    <?php echo esc_html__( 'The next session is:', 'zume' ); ?>
                     <br>
                     <strong><?php echo esc_html( $next_session_datetime_in_user_timezone ); ?></strong>
                     <br>
-                    <?php echo esc_html__( 'Your timezone is:', 'zume' ); ?>
+                    <?php echo esc_html__( 'In this timezone:', 'zume' ); ?>
                     <br>
                     <strong><?php echo esc_html( $user_timezone ); ?></strong>
                 </p>
@@ -187,7 +185,7 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
                 style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
                 selectedDays="<?php echo esc_attr( json_encode( $session_dates ) ); ?>"
                 view="all"
-                startDate="<?php echo esc_attr( $next_session ); ?>"
+                startDate="<?php echo esc_attr( $next_session_formatted ); ?>"
                 endDate="<?php echo esc_attr( $session_dates[ count( $session_dates ) - 1 ]['date'] ); ?>"
                 viewOnly
             ></calendar-select>

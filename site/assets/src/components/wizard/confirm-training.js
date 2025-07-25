@@ -54,7 +54,7 @@ export class ConfirmTraining extends LitElement {
                     </tr>
                     <tr>
                         <td class="f-medium">${this.t.timezone}:</td>
-                        <td>${this.training.timezone_note}</td>
+                        <td>${this.training.timezone ? this.training.timezone : this.training.timezone_note}</td>
                     </tr>
 
                     <tr>
@@ -63,12 +63,12 @@ export class ConfirmTraining extends LitElement {
                     </tr>
                     <tr>
                         <td class="f-medium">${this.t.next_session_date}:</td>
-                        <td>${this.training.next_session_date}</td>
+                        <td>${this.training.next_session_date_formatted}</td>
                     </tr>
                     ${ this.training.time_of_day ? html`
                         <tr>
                             <td class="f-medium">${this.t.time_of_day}:</td>
-                            <td>${this.training.time_of_day}</td>
+                            <td>${this.training.time_of_day_formatted}</td>
                         </tr>
                     ` : html`
                         <tr>
@@ -80,11 +80,11 @@ export class ConfirmTraining extends LitElement {
             </table>
             <p class="text-center">
                 ${this.training.next_session_date_in_user_timezone ? html`
-                    ${this.t.next_session_date_in_user_timezone}
+                    ${this.t.next_session_date_in_timezone}
                     <br>
                     <strong>${this.training.next_session_date_in_user_timezone}</strong>
                     <br>
-                    ${this.t.your_timezone}
+                    ${this.t.this_timezone}
                     <br>
                     <strong>${jsObject.profile.timezone}</strong>
                 ` : ''}

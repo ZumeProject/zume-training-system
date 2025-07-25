@@ -15,11 +15,21 @@ class Zume_Plans_Model {
     public static function get_plan( $training_id ) {
         $training_group = DT_Posts::get_post( self::$post_type, (int) $training_id, true, false );
 
+        $users_language = zume_get_user_language();
+        $users_locale = $users_language['locale'];
+        $time_formatter = new IntlDateFormatter( $users_locale, IntlDateFormatter::NONE, IntlDateFormatter::SHORT );
+        $date_formatter = new IntlDateFormatter( $users_locale, IntlDateFormatter::LONG, IntlDateFormatter::NONE );
+
         $completed_sessions = self::get_completed_sessions( $training_id, $training_group );
         $training_group['completed_sessions'] = $completed_sessions;
 
         $next_session_date = self::get_next_session_date( $training_id );
         $training_group['next_session_date'] = $next_session_date;
+
+        $time_of_day = $training_group['time_of_day'];
+        $next_session_datetime = DateTime::createFromFormat( 'Y-m-d H:i', "$next_session_date $time_of_day", new DateTimeZone( 'UTC' ) );
+        $training_group['time_of_day_formatted'] = $time_formatter->format( $next_session_datetime );
+        $training_group['next_session_date_formatted'] = $date_formatter->format( $next_session_datetime );
 
         $current_session = self::get_current_session( $training_id );
         $training_group['current_session'] = $current_session['current'];
@@ -30,8 +40,7 @@ class Zume_Plans_Model {
 
         if ( is_user_logged_in() ) {
             $user_timezone = zume_get_user_profile()['timezone'];
-            $next_session_date_in_user_timezone = self::get_next_session_date_in_user_timezone( $training_id, $user_timezone );
-            $training_group['next_session_date_in_user_timezone'] = $next_session_date_in_user_timezone;
+            $training_group['next_session_date_in_user_timezone'] = self::get_next_session_date_in_user_timezone( $training_id, $user_timezone );
         } else {
             $training_group['next_session_date_in_user_timezone'] = '';
         }
@@ -101,6 +110,12 @@ class Zume_Plans_Model {
             'zoom_link_note',
             'set_type',
         ];
+
+        $users_language = zume_get_user_language();
+        $users_locale = $users_language['locale'];
+        $time_formatter = new IntlDateFormatter( $users_locale, IntlDateFormatter::NONE, IntlDateFormatter::LONG );
+        $date_formatter = new IntlDateFormatter( $users_locale, IntlDateFormatter::LONG, IntlDateFormatter::NONE );
+
         foreach ( $result['posts'] as $plan ) {
             $post = [];
             foreach ( array_keys( $plan ) as $key ) {
@@ -113,7 +128,8 @@ class Zume_Plans_Model {
             $post['current_session'] = self::get_current_session( $plan['ID'] )['current'];
             $post['total_sessions'] = self::get_current_session( $plan['ID'] )['total'];
             $post['session_dates'] = self::get_session_dates( $plan['ID'] );
-
+            $post['time_of_day_formatted'] = $time_formatter->format( $plan['time_of_day'] );
+            $post['next_session_date_formatted'] = $date_formatter->format( $plan['next_session_date'] );
             if ( is_user_logged_in() ) {
                 $user_timezone = zume_get_user_profile()['timezone'];
                 $next_session_date_in_user_timezone = self::get_next_session_date_in_user_timezone( $plan['ID'], $user_timezone );
@@ -381,9 +397,14 @@ class Zume_Plans_Model {
         if ( empty( $time_of_day ) || empty( $timezone ) || empty( $next_session_date ) ) {
             return '';
         }
+
+        $users_language = zume_get_user_language();
+        $users_locale = $users_language['locale'];
+        $formatter = new IntlDateFormatter( $users_locale, IntlDateFormatter::LONG, IntlDateFormatter::SHORT );
+
         $next_session_datetime = DateTime::createFromFormat( 'Y-m-d H:i', "$next_session_date $time_of_day", new DateTimeZone( $timezone ) );
-        $next_session_datetime_in_user_timezone_datetime = $next_session_datetime->setTimezone( new DateTimeZone( $user_timezone ) );
-        $next_session_datetime_in_user_timezone = $next_session_datetime_in_user_timezone_datetime->format( 'Y-m-d H:i' );
+        $formatter->setTimeZone( new DateTimeZone( $user_timezone ) );
+        $next_session_datetime_in_user_timezone = $formatter->format( $next_session_datetime );
         return $next_session_datetime_in_user_timezone;
     }
 
