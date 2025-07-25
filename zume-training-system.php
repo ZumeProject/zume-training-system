@@ -195,8 +195,12 @@ class Zume_Training {
         if ( $post_type === 'contacts' ) {
             $placeholders = [
                 [
-                    'name' => '{{training [code]}}',
-                    'description' => __( 'Add the details for training with code [code]', 'zume' ),
+                    'name' => '{{training code=abc123}}',
+                    'description' => __( 'Add the details for training with code abc123', 'zume' ),
+                ],
+                [
+                    'name' => '{{language en_US}}',
+                    'description' => __( 'Set the language to e.g. en_US', 'zume' ),
                 ],
             ];
         }
@@ -212,6 +216,22 @@ class Zume_Training {
             $user_profile = zume_get_user_profile( $user_id );
             $preferred_language = $user_profile['preferred_language'];
 
+            if ( str_contains( $message, '{{language ' ) ) {
+                preg_match( '/{{language ([^}]+)}}/', $message, $matches );
+                $lang_code = $matches[1];
+
+                $lang_codes = zume_language_codes();
+
+                if ( !empty( $lang_code ) && in_array( $lang_code, $lang_codes ) ) {
+                    add_filter( 'determine_locale', function ( $locale ) use ( $lang_code ) {
+                        return $lang_code;
+                    } );
+                    zume_i18n();
+
+                }
+                $message = preg_replace( '/{{language ([^}]+)}}/', '', $message );
+            }
+
             if ( str_contains( $message, '{{training ' ) ) {
                 // get each training code from the message
                 $training_codes = [];
@@ -220,32 +240,25 @@ class Zume_Training {
 
                 // for each training code, get the training details
                 foreach ( $training_codes as $training_code ) {
+
                     $training = Zume_Plans_Model::get_plan_by_code( $training_code );
                     if ( $training ) {
-                        $training_details = "
-                            <h3>{$training['title']}</h3>
-                        ";
 
-                        if ( $training['location_note'] ) {
-                            $training_details .= "<p>{$training['location_note']}</p>";
+                        $training_details = '';
+
+                        if ( $training['time_of_day_formatted'] ) {
+                            $training_details .= '<p>' . esc_html__( 'Time', 'zume' ) . ': ' . $training['time_of_day_formatted'] . '</p>';
+                        }
+                        if ( $training['timezone_note'] ) {
+                            $training_details .= '<p>' . esc_html__( 'Timezone', 'zume' ) . ': ' . $training['timezone_note'] . '</p>';
                         }
                         if ( $training['language_note'] ) {
-                            $training_details .= "<p>{$training['language_note']}</p>";
-                        }
-                        if ( $training['time_of_day_note'] ) {
-                            $training_details .= "<p>{$training['time_of_day_note']}</p>";
-                        }
-
-                        if ( $training['next_session_date'] ) {
-                            $training_details .= "<p>{$training['next_session_date']}</p>";
-                        }
-
-                        if ( $training['timezone_note'] ) {
-                            $training_details .= "<p>{$training['timezone_note']}</p>";
+                            $training_details .= '<p>' . esc_html__( 'Language', 'zume' ) . ': ' . $training['language_note'] . '</p>';
                         }
 
                         if ( $training['join_key'] ) {
-                            $training_details .= "<p>{$training['join_key']}</p>";
+                            $join_key = $training['join_key'];
+                            $training_details .= '<a class="button button--primary" href="' . site_url( "training-group/$join_key" ) . '">' . __( 'Learn More', 'zume' ) . '</a>';
                         }
 
                         $message = str_replace( '{{training ' . $training_code . '}}', $training_details, $message );
