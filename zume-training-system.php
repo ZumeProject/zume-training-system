@@ -195,7 +195,7 @@ class Zume_Training {
         if ( $post_type === 'contacts' ) {
             $placeholders = [
                 [
-                    'name' => '{{training code=abc123}}',
+                    'name' => '{{training abc123}}',
                     'description' => __( 'Add the details for training with code abc123', 'zume' ),
                 ],
                 [
@@ -222,13 +222,15 @@ class Zume_Training {
 
                 $lang_codes = zume_language_codes();
 
-                if ( !empty( $lang_code ) && in_array( $lang_code, $lang_codes ) ) {
-                    add_filter( 'determine_locale', function ( $locale ) use ( $lang_code ) {
-                        return $lang_code;
-                    } );
-                    zume_i18n();
+                $lang_code = !empty( $lang_code ) && in_array( $lang_code, array_values( $lang_codes ) ) ? $lang_code : 'en';
+                $lang_locale = zume_get_language_locale( $lang_code );
 
-                }
+                add_filter( 'determine_locale', function ( $locale ) use ( $lang_locale ) {
+                    return $lang_locale;
+                } );
+                determine_locale();
+                zume_i18n();
+
                 $message = preg_replace( '/{{language ([^}]+)}}/', '', $message );
             }
 
@@ -258,7 +260,7 @@ class Zume_Training {
 
                         if ( $training['join_key'] ) {
                             $join_key = $training['join_key'];
-                            $training_details .= '<a class="button button--primary" href="' . site_url( "training-group/$join_key" ) . '">' . __( 'Learn More', 'zume' ) . '</a>';
+                            $training_details .= '<a class="button button--primary" href="' . site_url( "$lang_code/training-group/$join_key" ) . '">' . esc_html__( 'Learn More', 'zume' ) . '</a>';
                         }
 
                         $message = str_replace( '{{training ' . $training_code . '}}', $training_details, $message );
