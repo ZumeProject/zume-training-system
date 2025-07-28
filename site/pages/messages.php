@@ -142,7 +142,7 @@ class Zume_Messages extends Zume_Magic_Page
             <html>
             <head>
             <style>
-               
+
                #zmail{
                    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",
                                Arial,sans-serif;
@@ -245,6 +245,35 @@ class Zume_Messages extends Zume_Magic_Page
                    color:#008cc7;
                }
 
+               /* Tables */
+                #zmail table {
+                    border-spacing: 0;
+                }
+                #zmail tbody, thead {
+                    border: 1px solid #f1f1f1;
+                    background-color: #fefefe;
+                }
+                #zmail tbody, thead {
+                    border: 1px solid #f1f1f1;
+                    background-color: #fefefe;
+                }
+                #zmail thead {
+                    background: #f8f8f8;
+                    color: #0a0a0a;
+                }
+                #zmail tbody tr:nth-child(even) {
+                    border-bottom: 0;
+                    background-color: #f1f1f1;
+                }
+                #zmail thead td, thead th {
+                    padding: .5rem .625rem .625rem;
+                    font-weight: 700;
+                    text-align: left;
+                }
+                #zmail tbody td {
+                    padding: .5rem .625rem .625rem;
+                }
+
                /*—Footer—*/
                #zmail .zmail-footer{
                    background:#f2f7fa;
@@ -297,11 +326,11 @@ class Zume_Messages extends Zume_Magic_Page
         <br><br><br>
 
         <?php if ( current_user_can( 'administrator' ) ) { ?>
-            
+
             <div style="width: 800px; margin: 0 auto;">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" value="" style="margin-right: 20px;">
-                
+
                 <label for="user_id">User ID:</label>
                 <input type="text" id="user_id" name="user_id" value="">
 
@@ -311,7 +340,7 @@ class Zume_Messages extends Zume_Magic_Page
                     function sendDevEmail() {
                         const email = document.getElementById('email').value;
                         const userId = document.getElementById('user_id').value;
-                        
+
                         if (!email || !userId) {
                             alert('Please enter both email and user ID');
                             return;
@@ -320,16 +349,16 @@ class Zume_Messages extends Zume_Magic_Page
                         const currentUrl = window.location.href;
                         const separator = currentUrl.includes('?') ? '&' : '?';
                         const newUrl = `${currentUrl}${separator}email=${encodeURIComponent(email)}&user_id=${encodeURIComponent(userId)}`;
-                        
+
                         window.location.href = newUrl;
                     }
                 </script>
             </div>
             </br></br></br>
-            
+
         <?php } ?>
-        
-        
+
+
         <?php
     }
 

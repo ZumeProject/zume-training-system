@@ -234,36 +234,51 @@ class Zume_Training {
                 $message = preg_replace( '/{{language ([^}]+)}}/', '', $message );
             }
 
+            $build_row = function ( $row ) {
+                return '<tr><td>' . implode( '</td><td>', $row ) . '</td></tr>';
+            };
+
             if ( str_contains( $message, '{{training ' ) ) {
                 // get each training code from the message
                 $training_codes = [];
                 preg_match_all( '/{{training ([^}]+)}}/', $message, $matches );
                 $training_codes = $matches[1];
 
+                $table_head = [
+                    esc_html__( 'Day', 'zume' ),
+                    esc_html__( 'Time', 'zume' ),
+                    esc_html__( 'Timezone', 'zume' ),
+                    esc_html__( 'Language', 'zume' ),
+                    '',
+                ];
+                $table_head = $build_row( $table_head );
                 // for each training code, get the training details
-                foreach ( $training_codes as $training_code ) {
-
+                foreach ( $training_codes as $i => $training_code ) {
                     $training = Zume_Plans_Model::get_plan_by_code( $training_code );
                     if ( $training ) {
 
-                        $training_details = '';
+                        $join_key = $training['join_key'];
+                        $table_body = [
+                            $training['day_of_week'],
+                            $training['time_of_day_formatted'],
+                            $training['timezone_note'],
+                            $training['language_note'],
+                            $training['join_key'] ? '<a class="button button--primary" href="' . site_url( "$lang_code/training-group/$join_key" ) . '">' . esc_html__( 'Learn More', 'zume' ) . '</a>' : '',
+                        ];
+                        $table_body = $build_row( $table_body );
 
-                        if ( $training['time_of_day_formatted'] ) {
-                            $training_details .= '<p>' . esc_html__( 'Time', 'zume' ) . ': ' . $training['time_of_day_formatted'] . '</p>';
-                        }
-                        if ( $training['timezone_note'] ) {
-                            $training_details .= '<p>' . esc_html__( 'Timezone', 'zume' ) . ': ' . $training['timezone_note'] . '</p>';
-                        }
-                        if ( $training['language_note'] ) {
-                            $training_details .= '<p>' . esc_html__( 'Language', 'zume' ) . ': ' . $training['language_note'] . '</p>';
-                        }
+                        $training_table = "
+                            <table>
+                                <thead>
+                                    $table_head
+                                </thead>
+                                <tbody>
+                                    $table_body
+                                </tbody>
+                            </table>
+                        ";
 
-                        if ( $training['join_key'] ) {
-                            $join_key = $training['join_key'];
-                            $training_details .= '<a class="button button--primary" href="' . site_url( "$lang_code/training-group/$join_key" ) . '">' . esc_html__( 'Learn More', 'zume' ) . '</a>';
-                        }
-
-                        $message = str_replace( '{{training ' . $training_code . '}}', $training_details, $message );
+                        $message = str_replace( '{{training ' . $training_code . '}}', $training_table, $message );
                     } else {
                         $message = str_replace( '{{training ' . $training_code . '}}', '', $message );
                     }
