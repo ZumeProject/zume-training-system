@@ -234,6 +234,9 @@ class Zume_Training {
                 $message = preg_replace( '/{{language ([^}]+)}}/', '', $message );
             }
 
+            // Add a <br> after each line in the message
+            $message = preg_replace( '/(\r?\n)/', '<br>', $message );
+
             $build_row = function ( $row ) {
                 return '<tr><td>' . implode( '</td><td>', $row ) . '</td></tr>';
             };
