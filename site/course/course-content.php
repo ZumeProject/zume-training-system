@@ -883,6 +883,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'What are some differences you see between God’s Spiritual Economy and our earthly way of getting things done?', 'zume' ),
             ],
         ],
+
+            
         [
             'key' => 't10_a',
             'type' => 'center',
@@ -894,7 +896,7 @@ function zume_content( $lang_code = 'en' ) {
             'center' => [],
             'left' => [
                 __( 'Jesus said, “You will receive power when the Holy Spirit comes upon you. And you will be my witnesses, telling people about me everywhere – in Jerusalem, throughout Judea, in Samaria, and to the ends of the earth.”', 'zume' ),
-                __( 'There’s no one “best way” to tell God’s story (also called the gospel), because the best way will depend on who you’re sharing with. Every disciple should learn to tell God’s story in a way that’s true to scripture and connects with the audience they’re sharing with.', 'zume' ),
+                
             ],
             'right' => [],
             'id' => 10,
@@ -919,6 +921,19 @@ function zume_content( $lang_code = 'en' ) {
         ],
         [
             'key' => 't10_c',
+            'type' => 'center',
+            'menu' => [],
+            'length' => [],
+            'center' => [],
+            'left' => [
+                __( 'The Gospel', 'zume' ),
+                __( 'There’s no one “best way” to tell God’s story (also called the gospel), because the best way will depend on who you’re sharing with. Every disciple should learn to tell God’s story in a way that’s true to scripture and connects with the audience they’re sharing with.', 'zume' ), 
+                __( 'Review the following two presentations and choose one to practice.', 'zume' )  
+            ],
+            'right' => [],
+        ],
+        [
+            'key' => 't10_d',
             'type' => 'watch',
             'menu' => [],
             'length' => [5],
@@ -927,14 +942,14 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'WATCH', 'zume' ),
             ],
             'right' => [
-                __( 'The Gospel', 'zume' ),
+                __( 'Presentation 1', 'zume' ),
                 __( 'One way to share God’s good news is by telling God’s story from Creation to Judgement – from the beginning of humankind all the way to the end of this age.', 'zume' ),
             ],
             'id' => 10,
             'qr' => create_qr_url( $video_base_url . '10' ),
         ],
         [
-            'key' => 't10_d',
+            'key' => 't10_e',
             'type' => 'video',
             'alt_video_id' => 10,
             'script_id' => Zume_Course::get_transcript_by_key( '10' ),
@@ -947,7 +962,36 @@ function zume_content( $lang_code = 'en' ) {
             'right' => [],
         ],
         [
-            'key' => 't10_e',
+            'key' => 't10_f',
+            'type' => 'watch',
+            'menu' => [],
+            'length' => [5],
+            'center' => [],
+            'left' => [
+                __( 'WATCH', 'zume' ),
+            ],
+            'right' => [
+                __( 'Presentation 2', 'zume' ),
+                __( 'The 3-Circles gospel presentation is a way to tell the gospel using a simple illustration that can be drawn on a piece of paper.', 'zume' ),
+            ],
+            'id' => 33,
+            'qr' => create_qr_url( $video_base_url . '33' ),
+        ],
+        [
+            'key' => 't10_g',
+            'type' => 'video',
+            'alt_video_id' => 33,
+            'script_id' => Zume_Course::get_transcript_by_key( '33' ),
+            'menu' => [],
+            'length' => [],
+            'center' => [
+                Zume_Course::get_video_by_key( '33', true, $lang_code, true ), // video
+            ],
+            'left' => [],
+            'right' => [],
+        ],
+        [
+            'key' => 't10_h',
             'type' => 'discuss',
             'menu' => [],
             'length' => [10],
@@ -963,6 +1007,9 @@ function zume_content( $lang_code = 'en' ) {
                 ],
             ],
         ],
+
+
+
         [
             'key' => 's1_3_8',
             'type' => 'activity',
@@ -974,6 +1021,7 @@ function zume_content( $lang_code = 'en' ) {
             'left' => [
                 __( 'Share the Gospel', 'zume' ),
                 [
+                    __( 'Choose one of the two presentations you watched.', 'zume' ),
                     __( 'Scan the QR code.', 'zume' ),
                     __( 'Break into groups of two or three people.', 'zume' ),
                     __( 'Take turns telling the Gospel to each other.', 'zume' ),

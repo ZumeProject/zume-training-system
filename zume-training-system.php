@@ -316,14 +316,11 @@ class Zume_Training {
             'url_parts' => $url_parts,
         ] = zume_get_url_pieces();
 
-        // if ( ! in_array( $lang_code, [ '', 'en' ] ) ) {
-        //     return;
-        // }
-
         if ( ! in_array( $url_parts[0], [ 'share', 'resources', 'training', 'about', 'how-to-follow-jesus'] ) ) {
             return;
         }
 
+        /** 
         ?>
             <!-- Chipp Chat Widget -->
             <script>
@@ -337,6 +334,7 @@ class Zume_Training {
             <script defer src="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.js"></script>
             <!-- phpcs:enable -->
         <?php
+        **/
     }
 
     /**

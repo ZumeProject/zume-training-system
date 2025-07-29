@@ -213,28 +213,6 @@ class Zume_Activites_Prayer_Cycle extends Zume_Activites
 }
 Zume_Activites_Prayer_Cycle::instance();
 
-//phpcs:ignore
-class Zume_Activites_Sharegospel extends Zume_Activites
-{
-    public $page_title = 'Zúme Activity - Share the Gospel';
-    public $root = 'activities';
-    public $type = 'sharegospel';
-
-    private static $_instance = null;
-    public static function instance() {
-        if ( is_null( self::$_instance ) ) {
-            self::$_instance = new self();
-        }
-        return self::$_instance;
-    }
-
-    public function __construct() {
-        parent::__construct();
-
-        $this->page_title = strtolower( esc_html__( 'ACTIVITY', 'zume' ) ) . ' - ' . esc_html__( 'Share the Gospel', 'zume' );
-    }
-}
-Zume_Activites_Sharegospel::instance();
 
 //phpcs:ignore
 class Zume_Activites_Sharetestimony extends Zume_Activites
