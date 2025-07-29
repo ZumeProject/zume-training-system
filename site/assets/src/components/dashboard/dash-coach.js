@@ -24,11 +24,11 @@ export class DashCoach extends DashPage {
       this.loading = false
       const timeSinceRequest = Number(jsObject.user_stage?.state?.requested_a_coach_date || Date.now() / 1000)
       this.timeSinceRequestInDays = Math.floor((Date.now() - timeSinceRequest) / (60 * 60 * 24))
-      this.daysSinceLastContactedCoach = Math.floor((Date.now() - (jsObject.profile.last_contacted_coach ?? 0)) / (60 * 60 * 24))
+      this.hoursSinceLastContactedCoach = Math.floor((Date.now() - (jsObject.profile.last_contacted_coach * 1000 ?? 0)) / ( 1000 * 60 * 60))
 
-      const daysBetweenMessages = 7
-      this.allowMessage = this.daysSinceLastContactedCoach > daysBetweenMessages
-      this.daysLeftToMessage = daysBetweenMessages - this.daysSinceLastContactedCoach
+      const hoursBetweenMessages = 24
+      this.hoursLeftToMessage = hoursBetweenMessages - this.hoursSinceLastContactedCoach
+      this.allowMessage = this.hoursLeftToMessage < 0
     }
 
     getACoach() {
@@ -129,9 +129,18 @@ export class DashCoach extends DashPage {
                                             rows="3"
                                             @input=${this.handleMessageInput}
                                         ></textarea>
-                                        <button class="btn" @click=${this.sendMessage}>
+                                        <button
+                                          class="btn ${this.allowMessage ? '' : 'disabled'}"
+                                          @click=${this.sendMessage}
+                                          ?disabled=${!this.allowMessage}
+                                        >
                                           ${jsObject.translations.send_message}
                                         </button>
+                                        ${
+                                          !this.allowMessage ? html`
+                                            <span>${jsObject.translations.message_again.replace( '%d', this.hoursLeftToMessage )}</span>
+                                          ` : ''
+                                        }
                                         <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
                                         <div class="banner warning" data-state=${this.error.length ? '' : 'empty'}>
                                           ${this.error}

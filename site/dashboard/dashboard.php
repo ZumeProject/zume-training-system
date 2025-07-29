@@ -375,6 +375,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
             'local_map' => __( 'Local Vision Map', 'zume' ),
             'public_group_warning' => __( 'You are making this group public. It will show up on the public list of trainings. Please confirm you are ready to make it public.', 'zume' ),
             'confirm' => __( 'Confirm', 'zume' ),
+            'message_again' => __( 'You can message again in %d hours', 'zume' ),
         ];
     }
 
