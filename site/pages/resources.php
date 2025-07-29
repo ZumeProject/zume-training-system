@@ -156,9 +156,27 @@ class Zume_Training_Resources extends Zume_Magic_Page
                         <a class="btn outline w-100 guidebook-download-button" data-subtype="order_print_copy" target="_blank" href="<?php echo esc_url( $store_url ) ?>"><?php echo esc_html__( 'Order print copy', 'zume' ) ?></a>
                         <img class="w-16rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/workbooksample.png' ) ?>" alt="zume training book">
                     <?php }  ?>
+                
+                    <div class="center"><strong><?php echo esc_html__( 'Preview', 'zume' ) ?></strong></div>
+                    <?php if ( $guidebook_10_session ) { ?>
+                        <a class="btn w-100 guidebook-download-button" data-subtype="guidebook_10" target="_blank" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/workbook/10' ) ?>"><?php echo esc_html__( '10 Session Course', 'zume' ) ?></a>
+                    <?php } ?>
+                    
+                    <?php if ( $guidebook_20_session ) { ?>
+                        <a class="btn w-100 guidebook-download-button" data-subtype="guidebook_20" target="_blank" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/workbook/20' ) ?>"><?php echo esc_html__( '20 Session Course', 'zume' ) ?></a>
+                    <?php } ?>
+                   
+                    <?php if ( $guidebook_intensive ) { ?>
+                        <a class="btn w-100 guidebook-download-button" data-subtype="guidebook_5" target="_blank" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/workbook/intensive' ) ?>"><?php echo esc_html__( 'Intensive Course', 'zume' ) ?></a>
+                    <?php } ?>
+                    
                 </div>
             </div>
         </div>
+
+        <hr>
+
+        <?php include( trailingslashit( plugin_dir_path( __DIR__ ) ) . 'parts/download-slides.php' ) ?>
 
         <hr>
 
@@ -177,13 +195,12 @@ class Zume_Training_Resources extends Zume_Magic_Page
                     <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?session=index' ) ?>"><?php echo esc_html__( '10 Session Course', 'zume' ) ?></a>
                     <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?type=20&session=index' ) ?>"><?php echo esc_html__( '20 Session Course', 'zume' ) ?></a>
                     <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?type=intensive&session=index' ) ?>"><?php echo esc_html__( 'Intensive Course', 'zume' ) ?></a>
+                    
                 </div>
             </div>
         </div>
 
-        <hr>
-
-        <?php include( trailingslashit( plugin_dir_path( __DIR__ ) ) . 'parts/download-slides.php' ) ?>
+       
 
         <br></br>
         <br></br>

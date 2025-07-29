@@ -164,7 +164,10 @@ class Zume_Book_Generator extends Zume_Magic_Page
         <?php
     }
 
-    public function _template( $slide ) {
+    public function _template( $slide, $lang = null) {
+        if ( empty( $lang ) ) {
+            $lang = $this->lang;
+        }
 
         switch ( $slide['type'] ) {
             case 'title':
@@ -342,8 +345,9 @@ class Zume_Book_Generator extends Zume_Magic_Page
                                             <?php echo '<p><strong>'.$slide['right'][0].'</strong></p>' ?>
                                             <?php
                                             $script_id = Zume_Course::get_transcript_by_key( $slide['id'] );
-                                            $scripts = list_zume_scripts( $this->lang );
-                                            echo zume_replace_placeholder( $scripts[$script_id]['content'] ?? '', $this->lang );
+                                            $scripts = list_zume_scripts( $lang );
+                                            
+                                            echo zume_replace_placeholder( $scripts[$script_id]['content'] ?? '', $lang );
                                             ?>
                                         </div>
                                     </div>
@@ -432,7 +436,7 @@ class Zume_Book_Generator extends Zume_Magic_Page
                                                 <?php echo $this->render_content( $slide['left'], true, false, true ) ?>
                                             </div>
                                             <br>
-                                            <?php echo $this->get_zume_activity( $this->lang, $slide['id'] ); ?>
+                                            <?php echo $this->get_zume_activity( $lang, $slide['id'] ); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -673,11 +677,11 @@ class Zume_Book_Generator extends Zume_Magic_Page
 
             ?><div class="print-content"><?php
 
-foreach ( $course as $slide ) {
-    $this->_template( $slide );
-}
+            foreach ( $course as $slide ) {
+                $this->_template( $slide );
+            }
 
-?></div><?php
+            ?></div><?php
         }
     }
 
