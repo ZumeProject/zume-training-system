@@ -287,6 +287,13 @@ class Zume_Training {
                     }
                 }
             }
+            if ( str_contains( $message, '{{upcoming-trainings}}' ) ) {
+                $public_trainings = Zume_Plans_Model::get_public_plans();
+                // filter the trainings for those that start in the future
+                $future_trainings = array_filter( $public_trainings, function ( $training ) {
+                    return $training['current_session'] === 1;
+                } );
+            }
             return Zume_System_Encouragement_API::build_email( $message, $preferred_language, $user_id );
         }
         return $message;
