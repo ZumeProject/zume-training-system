@@ -1019,7 +1019,6 @@ msgstr "Uvijek prijavite nove jednostavne crkve koje pokrećete."
 
 #: maps/local-map.php:28 maps/local-map.php:547
 #, fuzzy
-#| msgid "Global Map"
 msgid "Local Map"
 msgstr "Globalno mapiranje"
 
@@ -1041,19 +1040,16 @@ msgstr "Crkva"
 
 #: maps/local-map.php:553
 #, fuzzy
-#| msgid "My Progress"
 msgid "Progress"
 msgstr "Moj napredak"
 
 #: maps/local-map.php:554
 #, fuzzy
-#| msgid "No Locations found"
 msgid "Location not found"
 msgstr "Nisu pronađene lokacije"
 
 #: maps/local-map.php:555
 #, fuzzy
-#| msgid "Please enter a friend code."
 msgid "Please enter a grid_id parameter"
 msgstr "Unesite šifru prijatelja."
 
@@ -1169,7 +1165,6 @@ msgstr ""
 
 #: maps/map-5-churches.php:95
 #, fuzzy
-#| msgid "Vision"
 msgid "Vision Map"
 msgstr "Vizija"
 
@@ -7393,7 +7388,6 @@ msgstr "Kursevi %1$d - %2$s"
 
 #: utilities/hooks/admin-email-test.php:169
 #, fuzzy
-#| msgid "You are not authorized to access this page"
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Niste ovlašteni za pristup ovoj stranici"
 
@@ -8904,17 +8898,16 @@ msgstr "Zume sistem obuke"
 
 #~ msgid ""
 #~ "Use the rest of your time to complete the Three Month Plan worksheet. You "
-#~ "can write it out on a piece of paper. If you are logged in to "
-#~ "ZúmeProject.com you can fill out your form digitally and link it to your "
-#~ "group. Once you login, you’ll find the Three Month Plan under Settings. "
-#~ "You can also find the Three Month Plan on your Dashboard."
+#~ "can write it out on a piece of paper. If you are logged in to ZúmeProject."
+#~ "com you can fill out your form digitally and link it to your group. Once "
+#~ "you login, you’ll find the Three Month Plan under Settings. You can also "
+#~ "find the Three Month Plan on your Dashboard."
 #~ msgstr ""
 #~ "Upotrijebite ostatak vremena za popunjavanje radnog lista Tromjesečnog "
-#~ "plana. Možete to zapisati na papir. Ako ste prijavljeni na "
-#~ "ZúmeProject.com, možete digitalno popuniti obrazac i podijeliti ga sa "
-#~ "svojom grupom. Jednom kada se prijavite, u postavkama ćete pronaći "
-#~ "Tromjesečni plan. Tromjesečni plan možete pronaći i na svojoj kontrolnoj "
-#~ "ploči."
+#~ "plana. Možete to zapisati na papir. Ako ste prijavljeni na ZúmeProject."
+#~ "com, možete digitalno popuniti obrazac i podijeliti ga sa svojom grupom. "
+#~ "Jednom kada se prijavite, u postavkama ćete pronaći Tromjesečni plan. "
+#~ "Tromjesečni plan možete pronaći i na svojoj kontrolnoj ploči."
 
 #~ msgid ""
 #~ "You do not have to commit to every item, and there is room for other "
