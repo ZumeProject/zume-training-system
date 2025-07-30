@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
-"POT-Creation-Date: 2025-07-28 17:05-0600\n"
-"PO-Revision-Date: 2025-04-04 15:03+0000\n"
-"Last-Translator: Kevin Fallah <kevin@christianlingua.com>\n"
+"POT-Creation-Date: 2025-07-29 09:25-0600\n"
+"PO-Revision-Date: 2025-07-30 20:03+0000\n"
+"Last-Translator: Chris <chris@chasm.solutions>\n"
 "Language-Team: Thai <https://translate.disciple.tools/projects/zume-training/"
 "zume-training-system/th/>\n"
 "Language: th\n"
@@ -11,14 +11,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.12.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,"
+"2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
@@ -47,18 +47,18 @@ msgstr "เกี่ยวกับ"
 #: 404.php:94 appearance/style-override/navigation.php:106
 #: site/course/presenter.php:144 site/dashboard/checkin-dashboard.php:29
 #: site/dashboard/checkin-dashboard.php:177 site/dashboard/dashboard.php:29
-#: site/dashboard/wizard.php:181 site/dashboard/wizard.php:194
+#: site/dashboard/wizard.php:189 site/dashboard/wizard.php:202
 #: site/pages/home.php:118 site/parts/checkin-nav.php:13
 #: site/parts/mobile-nav.php:7 site/parts/nav.php:19
 msgid "Dashboard"
 msgstr "แผงหน้าปัด"
 
-#: 404.php:99 site/dashboard/dashboard.php:251 site/parts/footer.php:25
+#: 404.php:99 site/dashboard/dashboard.php:272 site/parts/footer.php:25
 #: site/parts/footer.php:28
 msgid "Launch Course"
 msgstr "เปิดคอร์ส"
 
-#: 404.php:100 site/dashboard/dashboard.php:256 site/pages/resources.php:145
+#: 404.php:100 site/dashboard/dashboard.php:277 site/pages/resources.php:145
 #: site/pages/resources.php:147 site/pages/resources.php:162
 #: site/pages/resources.php:195 site/parts/download-slides.php:31
 #: site/parts/download-slides.php:43 site/parts/footer.php:29
@@ -68,7 +68,7 @@ msgstr "เปิดคอร์ส"
 msgid "10 Session Course"
 msgstr "หลักสูตร 10 ส่วน"
 
-#: 404.php:101 site/dashboard/dashboard.php:257 site/pages/resources.php:150
+#: 404.php:101 site/dashboard/dashboard.php:278 site/pages/resources.php:150
 #: site/pages/resources.php:166 site/pages/resources.php:196
 #: site/parts/download-slides.php:34 site/parts/download-slides.php:46
 #: site/parts/footer.php:30 utilities/integrations/replace-placeholder.php:114
@@ -84,8 +84,8 @@ msgstr "หลักสูตรเร่งรัด 3 วัน"
 #: appearance/style-override/navigation.php:75
 #: appearance/style-override/navigation.php:79
 #: maps/js-translation-strings.php:26 maps/local-map.php:1070
-#: site/course/presenter.php:147 site/dashboard/dashboard.php:222
-#: site/dashboard/dashboard.php:282 site/pages/training.php:29
+#: site/course/presenter.php:147 site/dashboard/dashboard.php:243
+#: site/dashboard/dashboard.php:309 site/pages/training.php:29
 #: site/parts/footer.php:11 site/parts/mobile-nav.php:27 site/parts/nav.php:25
 msgid "Training"
 msgstr "การฝึกอบรม"
@@ -140,69 +140,69 @@ msgstr "เรื่องราว"
 msgid "Global Map"
 msgstr "แผนที่โลก"
 
-#: globals.php:2332 globals.php:2335 site/course/course-content.php:87
+#: globals.php:2355 globals.php:2358 site/course/course-content.php:87
 #: site/course/course-content.php:102 site/course/course-content.php:111
 #: site/course/course-content.php:372 site/course/course-content.php:3332
 #: site/course/course-content.php:3350 site/pages/follow-jesus.php:177
 msgid "God Uses Ordinary People"
 msgstr "พระเจ้าทรงใช้คนธรรมดา"
 
-#: globals.php:2334 site/pages/follow-jesus.php:178
+#: globals.php:2357 site/pages/follow-jesus.php:178
 msgid ""
 "You'll see how God uses ordinary people doing simple things to make a big "
 "impact."
 msgstr "คุณจะเห็นวิธีที่พระเจ้าทรงใช้คนธรรมดาทำสิ่งง่าย ๆ เพื่อสร้างผลกระทบใหญ่หลวง"
 
-#: globals.php:2345 site/course/course-content.php:3333
+#: globals.php:2368 site/course/course-content.php:3333
 #: site/course/course-content.php:3351 site/pages/follow-jesus.php:181
 msgid "Simple Definition of Disciple and Church"
 msgstr "คำจำกัดความง่าย ๆ ของสาวกและคริสตจักร"
 
-#: globals.php:2347 site/course/course-content.php:157
+#: globals.php:2370 site/course/course-content.php:157
 #: site/pages/follow-jesus.php:182
 msgid ""
 "Discover the essence of being a disciple, making a disciple, and what is the "
 "church."
 msgstr "ค้นพบแก่นแท้ของการเป็นสาวก การสร้างสาวก และคริสตจักร"
 
-#: globals.php:2348 site/course/course-content.php:147
+#: globals.php:2371 site/course/course-content.php:147
 #: site/course/course-content.php:156
 msgid "Disciples and the Church"
 msgstr "สาวกและคริสตจักร"
 
-#: globals.php:2358 site/course/course-content.php:3334
+#: globals.php:2381 site/course/course-content.php:3334
 #: site/course/course-content.php:3352 site/pages/follow-jesus.php:203
 msgid "Spiritual Breathing is Hearing and Obeying God"
 msgstr "การหายใจฝ่ายวิญญาณคือการได้ยินและเชื่อฟังพระเจ้า"
 
-#: globals.php:2360 site/pages/follow-jesus.php:204
+#: globals.php:2383 site/pages/follow-jesus.php:204
 msgid "Being a disciple means we hear from God and we obey God."
 msgstr "การเป็นสาวกหมายความว่าเราได้ยินจากพระเจ้าและเราเชื่อฟังพระเจ้า"
 
-#: globals.php:2361 site/course/course-content.php:196
+#: globals.php:2384 site/course/course-content.php:196
 #: site/course/course-content.php:205
 msgid "Hearing and Obeying God"
 msgstr "การได้ยินและเชื่อฟังพระเจ้า"
 
-#: globals.php:2371 globals.php:2374
+#: globals.php:2394 globals.php:2397
 msgid "S.O.A.P.S. Bible Study"
 msgstr "การศึกษาพระคัมภีร์แบบ S.O.A.P.S."
 
-#: globals.php:2373 site/pages/follow-jesus.php:219
+#: globals.php:2396 site/pages/follow-jesus.php:219
 msgid ""
 "A tool for daily Bible study that helps you understand, obey, and share "
 "God’s Word."
 msgstr ""
 "เครื่องมือสำหรับการศึกษาพระคัมภีร์รายวันเพื่อช่วยให้คุณเข้าใจ เชื่อฟัง และแบ่งปันพระวจนะของพระเจ้า"
 
-#: globals.php:2384 globals.php:2387 site/course/course-content.php:94
+#: globals.php:2407 globals.php:2410 site/course/course-content.php:94
 #: site/course/course-content.php:307 site/course/course-content.php:316
 #: site/course/course-content.php:379 site/course/course-content.php:3581
 #: site/course/course-content.php:3597 site/pages/follow-jesus.php:233
 msgid "Accountability Groups"
 msgstr "กลุ่มความรับผิดชอบ"
 
-#: globals.php:2386 site/pages/follow-jesus.php:234
+#: globals.php:2409 site/pages/follow-jesus.php:234
 msgid ""
 "A tool for two or three people of the same gender to meet weekly and "
 "encourage each other in areas that are going well and reveal areas that need "
@@ -211,37 +211,37 @@ msgstr ""
 "เครื่องมือสำหรับสองหรือสามคนที่เป็นเพศเดียวกันเพื่อพบปะกันเป็นรายสัปดาห์และให้กำลังใจกันในเรื่องต่าง "
 "ๆ ที่กำลังดำเนินไปด้วยดี และเปิดเผยเรื่องต่าง ๆ ที่ต้องการการแก้ไข"
 
-#: globals.php:2397 site/pages/follow-jesus.php:197
+#: globals.php:2420 site/pages/follow-jesus.php:197
 msgid "Consumer vs Producer Lifestyle"
 msgstr "รูปแบบการใช้ชีวิตของผู้บริโภคกับผู้ผลิต"
 
-#: globals.php:2399 site/pages/follow-jesus.php:198
+#: globals.php:2422 site/pages/follow-jesus.php:198
 msgid ""
 "You'll discover the four main ways God makes everyday followers more like "
 "Jesus."
 msgstr "คุณจะค้นพบวิธีหลัก 4 ประการที่พระเจ้าทำให้สาวกทั่วไปเป็นเหมือนพระเยซูมากขึ้น"
 
-#: globals.php:2400
+#: globals.php:2423
 msgid "Producer not Consumer"
 msgstr "ผู้ผลิตไม่ใช่ผู้บริโภค"
 
-#: globals.php:2410 globals.php:2413 site/pages/follow-jesus.php:207
+#: globals.php:2433 globals.php:2436 site/pages/follow-jesus.php:207
 msgid "How to Spend an Hour in Prayer"
 msgstr "วิธีใช้เวลาอธิษฐานหนึ่งชั่วโมง"
 
-#: globals.php:2412 site/pages/follow-jesus.php:208
+#: globals.php:2435 site/pages/follow-jesus.php:208
 msgid "See how easy it is to spend an hour in prayer."
 msgstr "ดูกันว่าการใช้เวลาอธิษฐานหนึ่งชั่วโมงเป็นเรื่องง่าย"
 
-#: globals.php:2423 site/pages/follow-jesus.php:294
+#: globals.php:2446 site/pages/follow-jesus.php:294
 msgid "Relational Stewardship – List of 100"
 msgstr "การรักษาความสัมพันธ์ –100 รายชื่อ"
 
-#: globals.php:2425 site/pages/follow-jesus.php:295
+#: globals.php:2448 site/pages/follow-jesus.php:295
 msgid "A tool designed to help you be a good steward of your relationships."
 msgstr "เครื่องมือที่ออกแบบมาเพื่อช่วยให้คุณเป็นผู้ดูแลความสัมพันธ์ของคุณได้ดี"
 
-#: globals.php:2426 site/activities/list-of-100-printable.php:22
+#: globals.php:2449 site/activities/list-of-100-printable.php:22
 #: site/activities/list-of-100-printable.php:90
 #: site/activities/list-of-100.php:22 site/activities/list-of-100.php:81
 #: site/course/course-content.php:496 site/course/course-content.php:634
@@ -253,13 +253,13 @@ msgstr "เครื่องมือที่ออกแบบมาเพื
 msgid "List of 100"
 msgstr "100 รายชื่อ"
 
-#: globals.php:2436 globals.php:2439 site/course/course-content.php:832
+#: globals.php:2459 globals.php:2462 site/course/course-content.php:832
 #: site/course/course-content.php:845 site/course/course-content.php:854
 #: site/course/course-content.php:3977 site/course/course-content.php:3996
 msgid "Spiritual Economy"
 msgstr "เศรษฐศาสตร์ฝ่ายวิญญาณ"
 
-#: globals.php:2438 site/pages/follow-jesus.php:253
+#: globals.php:2461 site/pages/follow-jesus.php:253
 msgid ""
 "Learn how God's economy is different from the world's. God invests more in "
 "those who are faithful with what they've already been given."
@@ -267,25 +267,25 @@ msgstr ""
 "เรียนรู้วิธีที่ระบบเศรษฐศาสตร์ของพระเจ้าแตกต่างจากของโลก "
 "พระเจ้าทรงลงทุนมากกว่ากับผู้ที่ซื่อสัตย์กับสิ่งที่เขาได้รับ"
 
-#: globals.php:2449 site/pages/follow-jesus.php:298
+#: globals.php:2472 site/pages/follow-jesus.php:298
 msgid "The Gospel and How to Share It"
 msgstr "พระกิตติคุณและวิธีแบ่งปัน"
 
-#: globals.php:2451 site/pages/follow-jesus.php:299
+#: globals.php:2474 site/pages/follow-jesus.php:299
 msgid ""
 "Learn a way to share God’s Good News from the beginning of humanity all the "
 "way to the end of this age."
 msgstr "เรียนรู้วิธีแบ่งปันข่าวประเสริฐของพระเจ้าตั้งแต่เริ่มมีมนุษยชาติมาจนถึงยุคสุดท้ายนี้"
 
-#: globals.php:2452
+#: globals.php:2475
 msgid "Sharing God‘s Story"
 msgstr "การแบ่งปันเรื่องราวของพระเจ้า"
 
-#: globals.php:2462 site/pages/follow-jesus.php:245
+#: globals.php:2485 site/pages/follow-jesus.php:245
 msgid "Baptism and How To Do It"
 msgstr "พิธีบัพติศมาและวิธีการทำ"
 
-#: globals.php:2464 site/pages/follow-jesus.php:246
+#: globals.php:2487 site/pages/follow-jesus.php:246
 msgid ""
 "Jesus said, “Go and make disciples of all nations, BAPTIZING them in the "
 "name of the Father and of the Son and of the Holy Spirit…” Learn how to put "
@@ -295,34 +295,34 @@ msgstr ""
 "“ ท่านทั้งหลายจงออกไปและนำชนทุกชาติมาเป็นสาวกของเรา จงบัพติศมาพวกเขาในพระนามของพระบิดา "
 "พระบุตร และพระวิญญาณบริสุทธิ์…” เรียนรู้ วิธีนำสิ่งนี้ไปปฏิบัติ"
 
-#: globals.php:2465 site/course/course-content.php:837
+#: globals.php:2488 site/course/course-content.php:837
 #: site/course/course-content.php:1043 site/course/course-content.php:1052
 #: site/course/course-content.php:1118 site/course/course-content.php:4252
 #: site/course/course-content.php:4269
 msgid "Baptism"
 msgstr "พิธีบัพติศมา"
 
-#: globals.php:2475 site/pages/follow-jesus.php:302
+#: globals.php:2498 site/pages/follow-jesus.php:302
 msgid "Prepare Your 3-Minute Testimony"
 msgstr "เตรียมคำพยาน 3 นาทีของคุณ"
 
-#: globals.php:2477 site/pages/follow-jesus.php:303
+#: globals.php:2500 site/pages/follow-jesus.php:303
 msgid ""
 "Learn how to share your testimony in three minutes by sharing how Jesus has "
 "impacted your life."
 msgstr "เรียนรู้วิธีแบ่งปันคำพยานของคุณในสามนาทีโดยการเล่าวิธีที่พระเยซูมีอิทธิพลต่อชีวิตคุณ"
 
-#: globals.php:2478
+#: globals.php:2501
 msgid "3-Minute Testimony"
 msgstr "คำพยาน 3 นาที"
 
-#: globals.php:2488 site/course/course-content.php:1237
+#: globals.php:2511 site/course/course-content.php:1237
 #: site/course/course-content.php:1518 site/course/course-content.php:3978
 #: site/course/course-content.php:3997 site/pages/follow-jesus.php:185
 msgid "Vision Casting the Greatest Blessing"
 msgstr "การแบ่งปันวิสัยทัศน์เป็นพระพรอันยิ่งใหญ่ที่สุด"
 
-#: globals.php:2490 site/course/course-content.php:1318
+#: globals.php:2513 site/course/course-content.php:1318
 #: site/pages/follow-jesus.php:186
 msgid ""
 "Learn a simple pattern of making not just one follower of Jesus but entire "
@@ -332,33 +332,33 @@ msgstr ""
 "ในการสร้างไม่เพียงแค่สาวกพระเยซูคนเดียวแต่ยังเป็นครอบครัวฝ่ายวิญญาณทั้งหมดที่ทวีคูณขึ้นสำหรับคนรุ่นต่อ "
 "ๆ ไป"
 
-#: globals.php:2491
+#: globals.php:2514
 msgid "Great, Greater, and Greatest Blessing"
 msgstr "พระพรอันยิ่งใหญ่ ยิ่งใหญ่ยิ่งขึ้น และยิ่งใหญ่ที่สุด"
 
-#: globals.php:2501 site/pages/follow-jesus.php:275
+#: globals.php:2524 site/pages/follow-jesus.php:275
 msgid "Duckling Discipleship – Leading Immediately"
 msgstr "การเป็นสาวกแบบลูกเป็ด – การนำทันที"
 
-#: globals.php:2503
+#: globals.php:2526
 msgid "Learn what ducklings have to do with disciple-making."
 msgstr "เรียนรู้ว่าลูกเป็ดมีส่วนเกี่ยวข้องอย่างไรในการสร้างสาวก"
 
-#: globals.php:2504 site/course/course-content.php:1238
+#: globals.php:2527 site/course/course-content.php:1238
 #: site/course/course-content.php:1357 site/course/course-content.php:1366
 #: site/course/course-content.php:1519 site/course/course-content.php:4529
 #: site/course/course-content.php:4550
 msgid "Duckling Discipleship"
 msgstr "การเป็นสาวกแบบลูกเป็ด"
 
-#: globals.php:2514 globals.php:2517 site/course/course-content.php:1239
+#: globals.php:2537 globals.php:2540 site/course/course-content.php:1239
 #: site/course/course-content.php:1405 site/course/course-content.php:1414
 #: site/course/course-content.php:1520 site/course/course-content.php:4530
 #: site/course/course-content.php:4551 site/pages/follow-jesus.php:256
 msgid "Eyes to See Where the Kingdom Isn’t"
 msgstr "ดวงตาที่มองเห็นว่าแผ่นดินของพระเจ้าไม่อยู่ที่ไหน"
 
-#: globals.php:2516 site/pages/follow-jesus.php:257
+#: globals.php:2539 site/pages/follow-jesus.php:257
 msgid ""
 "Begin to see where God’s Kingdom isn’t. These are usually the places where "
 "God wants to work the most."
@@ -366,11 +366,11 @@ msgstr ""
 "เริ่มมองเห็นว่าแผ่นดินของพระเจ้าไม่อยู่ที่ไหน "
 "โดยทั่วไปแล้วนี่คือสถานที่ที่พระเจ้าต้องการให้ทำงานมากที่สุด"
 
-#: globals.php:2527 site/pages/follow-jesus.php:241
+#: globals.php:2550 site/pages/follow-jesus.php:241
 msgid "The Lord’s Supper and How To Lead It"
 msgstr "อาหารค่ำมื้อสุดท้ายขององค์พระผู้เป็นเจ้าและวิธีทำพิธี"
 
-#: globals.php:2529
+#: globals.php:2552
 msgid ""
 "It’s a simple way to celebrate our intimate connection and ongoing "
 "relationship with Jesus. Learn a simple way to celebrate."
@@ -378,18 +378,18 @@ msgstr ""
 "เป็นวิธีง่าย ๆ ในการเฉลิมฉลองความสัมพันธ์อันใกล้ชิด "
 "และความสัมพันธ์ที่ต่อเนื่องระหว่างเรากับพระเยซู เรียนรู้วิธีง่าย ๆ ในการเฉลิมฉลอง"
 
-#: globals.php:2530 site/activities/activities.php:258
+#: globals.php:2553 site/activities/activities.php:258
 #: site/course/course-content.php:1244 site/course/course-content.php:1455
 #: site/course/course-content.php:1464 site/course/course-content.php:1525
 #: site/course/course-content.php:4534 site/course/course-content.php:4555
 msgid "The Lord’s Supper"
 msgstr "อาหารค่ำมื้อสุดท้ายขององค์พระผู้เป็นเจ้า"
 
-#: globals.php:2540 site/pages/follow-jesus.php:313
+#: globals.php:2563 site/pages/follow-jesus.php:313
 msgid "Prayer Walking and How To Do It"
 msgstr "การเดินอธิษฐานและวิธีการทำ"
 
-#: globals.php:2542
+#: globals.php:2565
 msgid ""
 "It‘s a simple way to obey God’s command to pray for others. And it‘s just "
 "what it sounds like — praying to God while walking around!"
@@ -397,61 +397,61 @@ msgstr ""
 "เป็นวิธีง่าย ๆ ในการเชื่อฟังพระบัญชาของพระเจ้าในการอธิษฐานเผื่อคนอื่น ๆ "
 "และเป็นเพียงการอธิษฐานต่อพระเจ้าขณะเดินไปมา!"
 
-#: globals.php:2543 site/activities/activities.php:327
+#: globals.php:2566 site/activities/activities.php:327
 #: site/course/course-content.php:1636 site/course/course-content.php:1644
 #: site/course/course-content.php:1653 site/course/course-content.php:1759
 #: site/course/course-content.php:4661 site/course/course-content.php:4674
 msgid "Prayer Walking"
 msgstr "การเดินอธิษฐาน"
 
-#: globals.php:2553 site/pages/follow-jesus.php:309
+#: globals.php:2576 site/pages/follow-jesus.php:309
 msgid "A Person of Peace and How To Find One"
 msgstr "บุคคลแห่งสันติและวิธีค้นหาบุคคลนั้น"
 
-#: globals.php:2555
+#: globals.php:2578
 msgid ""
 "Learn who a person of peace might be and how to know when you‘ve found one."
 msgstr "เรียนรู้ว่าใครคือผู้รักสันติและจะรู้ได้อย่างไรว่าคุณพบคนนั้นแล้ว"
 
-#: globals.php:2556 site/course/course-content.php:1631
+#: globals.php:2579 site/course/course-content.php:1631
 #: site/course/course-content.php:1676 site/course/course-content.php:1685
 #: site/course/course-content.php:4777 site/course/course-content.php:4797
 msgid "Person of Peace"
 msgstr "บุคคลแห่งสันติภาพ"
 
-#: globals.php:2566 site/pages/follow-jesus.php:222
+#: globals.php:2589 site/pages/follow-jesus.php:222
 msgid "Faithfulness is Better Than Knowledge"
 msgstr "ความซื่อสัตย์ดีกว่าความรู้"
 
-#: globals.php:2568
+#: globals.php:2591
 msgid ""
 "It‘s important what disciples know — but it‘s much more important what they "
 "DO with what they know."
 msgstr "สิ่งสำคัญคือสิ่งที่สาวกรู้ แต่สิ่งที่สำคัญกว่ามากคือสิ่งที่พวกเขาทำด้วยสิ่งที่พวกเขารู้"
 
-#: globals.php:2569 site/course/course-content.php:1891
+#: globals.php:2592 site/course/course-content.php:1891
 #: site/course/course-content.php:1900 site/course/course-content.php:4908
 #: site/course/course-content.php:4957
 msgid "Faithfulness"
 msgstr "ความซื่อสัตย์"
 
-#: globals.php:2579 site/pages/follow-jesus.php:211
+#: globals.php:2602 site/pages/follow-jesus.php:211
 msgid "The BLESS Prayer Pattern"
 msgstr "รูปแบบการอธิษฐาน BLESS"
 
-#: globals.php:2581 site/pages/follow-jesus.php:212
+#: globals.php:2604 site/pages/follow-jesus.php:212
 msgid "Practice a simple mnemonic to remind you of ways to pray for others."
 msgstr "ฝึกจดจำง่าย ๆ เพื่อเตือนคุณถึงวิธีที่จะอธิษฐานเพื่อคนอื่น ๆ"
 
-#: globals.php:2582 site/course/course-content.php:1725
+#: globals.php:2605 site/course/course-content.php:1725
 msgid "The B.L.E.S.S. Prayer"
 msgstr "คำอธิษฐาน B.L.E.S.S."
 
-#: globals.php:2592 site/pages/follow-jesus.php:229
+#: globals.php:2615 site/pages/follow-jesus.php:229
 msgid "3/3 Group Meeting Pattern"
 msgstr "รูปแบบการประชุมกลุ่ม 3/3"
 
-#: globals.php:2594
+#: globals.php:2617
 msgid ""
 "A 3/3 Group is a way for followers of Jesus to meet, pray, learn, grow, "
 "fellowship and practice obeying and sharing what they‘ve learned. In this "
@@ -461,32 +461,32 @@ msgstr ""
 "และปฏิบัติตามคำสอนและแบ่งปันสิ่งที่เรียนรู้มา ด้วยวิธีนี้ กลุ่ม 3/3 จึงไม่ใช่แค่กลุ่มเล็ก ๆ "
 "แต่เป็นคริสตจักรที่เรียบง่าย"
 
-#: globals.php:2595
+#: globals.php:2618
 msgid "3/3 Group"
 msgstr "กลุ่ม 3/3"
 
-#: globals.php:2605 site/pages/follow-jesus.php:279
+#: globals.php:2628 site/pages/follow-jesus.php:279
 msgid "Training Cycle for Maturing Disciples"
 msgstr "วงจรการฝึกฝนเพื่อสาวกที่เติบโตเป็นผู้ใหญ่"
 
-#: globals.php:2607 site/pages/follow-jesus.php:280
+#: globals.php:2630 site/pages/follow-jesus.php:280
 msgid ""
 "Learn the training cycle and consider how it applies to disciple making."
 msgstr "เรียนรู้วงจรการฝึกอบรมและพิจารณาว่าจะนำไปใช้กับการสร้างสาวกอย่างไร"
 
-#: globals.php:2608 site/course/course-content.php:5214
+#: globals.php:2631 site/course/course-content.php:5214
 #: site/course/course-content.php:5231
 msgid "Training Cycle"
 msgstr "วงจรการฝึกอบรม"
 
-#: globals.php:2618 globals.php:2621 site/course/course-content.php:2327
+#: globals.php:2641 globals.php:2644 site/course/course-content.php:2327
 #: site/course/course-content.php:2339 site/course/course-content.php:2348
 #: site/course/course-content.php:2421 site/course/course-content.php:5215
 #: site/course/course-content.php:5232 site/pages/follow-jesus.php:334
 msgid "Leadership Cells"
 msgstr "กลุ่มย่อยสำหรับผู้นำ"
 
-#: globals.php:2620 site/course/course-content.php:2350
+#: globals.php:2643 site/course/course-content.php:2350
 #: site/pages/follow-jesus.php:335
 msgid ""
 "A Leadership Cell is a way someone who feels called to lead can develop "
@@ -495,60 +495,60 @@ msgstr ""
 "กลุ่มย่อยสำหรับผู้นำ คือวิธีที่ผู้ที่รู้สึกว่าถูกเรียกให้นำจะสามารถพัฒนาความเป็นผู้นำได้ "
 "โดยการฝึกปฏิบัติในการรับใช้"
 
-#: globals.php:2631 globals.php:2634 site/course/course-content.php:5339
+#: globals.php:2654 globals.php:2657 site/course/course-content.php:5339
 #: site/course/course-content.php:5357 site/pages/follow-jesus.php:283
 msgid "Expect Non-Sequential Growth"
 msgstr "คาดหวังการเติบโตแบบไม่เป็นขั้นตอน"
 
-#: globals.php:2633
+#: globals.php:2656
 msgid ""
 "See how disciple making doesn‘t have to be linear. Multiple things can "
 "happen at the same time."
 msgstr ""
 "ดูว่าการสร้างสาวกไม่จำเป็นต้องเป็นเส้นตรง เพราะมีหลายสิ่งหลายอย่างเกิดขึ้นในเวลาเดียวกัน"
 
-#: globals.php:2644 site/course/course-content.php:2930
+#: globals.php:2667 site/course/course-content.php:2930
 #: site/pages/follow-jesus.php:287
 msgid "Pace of Multiplication Matters"
 msgstr "จังหวะก้าวของการทวีคูณมีความสำคัญ"
 
-#: globals.php:2646 site/pages/follow-jesus.php:288
+#: globals.php:2669 site/pages/follow-jesus.php:288
 msgid ""
 "Multiplying matters and multiplying quickly matters even more. See why pace "
 "matters."
 msgstr ""
 "การทวีคูณมีความสำคัญและการทวีคูณอย่างรวดเร็วมีความสำคัญยิ่งกว่า ดูว่าทำไมความเร็วจึงสำคัญ"
 
-#: globals.php:2647 site/course/course-content.php:2532
+#: globals.php:2670 site/course/course-content.php:2532
 #: site/course/course-content.php:2595 site/course/course-content.php:2604
 #: site/course/course-content.php:5340 site/course/course-content.php:5358
 msgid "Pace"
 msgstr "จังหวะก้าว"
 
-#: globals.php:2657 globals.php:2660 site/course/course-content.php:2533
+#: globals.php:2680 globals.php:2683 site/course/course-content.php:2533
 #: site/course/course-content.php:2644 site/course/course-content.php:2653
 #: site/course/course-content.php:2931 site/course/course-content.php:5341
 #: site/course/course-content.php:5359 site/pages/follow-jesus.php:237
 msgid "Always Part of Two Churches"
 msgstr "เป็นส่วนหนึ่งของสองคริสตจักรเสมอ"
 
-#: globals.php:2659
+#: globals.php:2682
 msgid "Learn how to obey Jesus‘ commands by going AND staying."
 msgstr "เรียนรู้วิธีการเชื่อฟังพระบัญญัติของพระเยซูโดยการออกไปและอยู่ต่อ"
 
-#: globals.php:2671 globals.php:2674 site/course/course-content.php:3062
+#: globals.php:2694 globals.php:2697 site/course/course-content.php:3062
 #: site/course/course-content.php:3174 site/course/course-content.php:3180
 #: site/course/course-content.php:3246 site/course/course-content.php:5877
 msgid "Three-Month Plan"
 msgstr "แผนสามเดือน"
 
-#: globals.php:2673
+#: globals.php:2696
 msgid ""
 "Create and share your plan for how you will implement the Zúme tools over "
 "the next three months."
 msgstr "สร้างและแบ่งปันแผนของคุณเกี่ยวกับวิธีการนำเครื่องมือ Zúme มาใช้ในช่วงสามเดือนข้างหน้า"
 
-#: globals.php:2683 globals.php:2686
+#: globals.php:2706 globals.php:2709
 #: site/activities/coaching-checklist-host.php:22
 #: site/activities/coaching-checklist-host.php:89
 #: site/activities/coaching-checklist-mawl.php:22
@@ -570,33 +570,33 @@ msgstr "สร้างและแบ่งปันแผนของคุณ
 msgid "Coaching Checklist"
 msgstr "รายการตรวจสอบการฝึกสอน"
 
-#: globals.php:2685 site/pages/follow-jesus.php:331
+#: globals.php:2708 site/pages/follow-jesus.php:331
 msgid ""
 "A powerful tool you can use to quickly assess your own strengths and "
 "vulnerabilities when it comes to making disciples who multiply."
 msgstr "เครื่องมืออันทรงพลังที่คุณสามารถใช้เพื่อประเมินจุดแข็งและจุดอ่อนของตัวเองได้อย่างรวดเร็วเมื่อต้องสร้างสาวกที่ทวีคูณ"
 
-#: globals.php:2696 globals.php:2699 site/course/course-content.php:3057
+#: globals.php:2719 globals.php:2722 site/course/course-content.php:3057
 #: site/course/course-content.php:3070 site/course/course-content.php:3079
 #: site/course/course-content.php:3241 site/course/course-content.php:5468
 #: site/course/course-content.php:5488 site/pages/follow-jesus.php:338
 msgid "Leadership in Networks"
 msgstr "ความเป็นผู้นำในเครือข่าย"
 
-#: globals.php:2698 site/pages/follow-jesus.php:339
+#: globals.php:2721 site/pages/follow-jesus.php:339
 msgid ""
 "Learn how multiplying churches stay connected and live life together as an "
 "extended, spiritual family."
 msgstr "เรียนรู้ว่าคริสตจักรที่ขยายตัวนั้นเชื่อมโยงกันและดำเนินชีวิตอยู่ร่วมกันเป็นครอบครัวที่ขยายใหญ่ขึ้นทางจิตวิญญาณได้อย่างไร"
 
-#: globals.php:2709 site/course/course-content.php:3061
+#: globals.php:2732 site/course/course-content.php:3061
 #: site/course/course-content.php:3116 site/course/course-content.php:3125
 #: site/course/course-content.php:3245 site/course/course-content.php:5738
 #: site/course/course-content.php:5754 site/pages/follow-jesus.php:326
 msgid "Peer Mentoring Groups"
 msgstr "กลุ่มพี่เลี้ยงที่เป็นเพื่อน"
 
-#: globals.php:2711 site/pages/follow-jesus.php:327
+#: globals.php:2734 site/pages/follow-jesus.php:327
 msgid ""
 "This is a group that consists of people who are leading and starting 3/3 "
 "Groups. It also follows a 3/3 format and is a powerful way to assess the "
@@ -605,16 +605,16 @@ msgstr ""
 "กลุ่มนี้ประกอบด้วยผู้นำและผู้เริ่มต้นกลุ่ม 3/3 นอกจากนี้ยังใช้รูปแบบ 3/3 "
 "และเป็นวิธีที่มีประสิทธิภาพในการประเมินสุขภาพจิตวิญญาณของงานของพระเจ้าในพื้นที่ของคุณ"
 
-#: globals.php:2712 site/activities/activities.php:350
-#: site/dashboard/wizard.php:185
+#: globals.php:2735 site/activities/activities.php:350
+#: site/dashboard/wizard.php:193
 msgid "Peer Mentoring"
 msgstr "การเป็นพี่เลี้ยงที่เป็นเพื่อน"
 
-#: globals.php:2722 globals.php:2725
+#: globals.php:2745 globals.php:2748
 msgid "Four Fields Tool"
 msgstr "เครื่องมือสี่ช่อง"
 
-#: globals.php:2724
+#: globals.php:2747
 msgid ""
 "The four fields diagnostic chart is a simple tool to be used by a leadership "
 "cell to reflect on the status of current efforts and the kingdom activity "
@@ -623,25 +623,25 @@ msgstr ""
 "แผนภูมิวินิจฉัยสี่ช่องเป็นเครื่องมือง่าย ๆ "
 "ที่กลุ่มย่อยสำหรับผู้นำใช้เพื่อสะท้อนถึงสถานะของความพยายามปัจจุบันและกิจกรรมของอาณาจักรรอบ ๆ ตัว"
 
-#: globals.php:2735 globals.php:2738 site/activities/activities.php:396
+#: globals.php:2758 globals.php:2761 site/activities/activities.php:396
 #: site/course/course-content.php:2539 site/course/course-content.php:2867
 #: site/course/course-content.php:2873 site/course/course-content.php:2937
 #: site/course/course-content.php:5602 site/course/course-content.php:5632
 msgid "Generational Mapping"
 msgstr "การทำแผนที่รุ่น"
 
-#: globals.php:2737
+#: globals.php:2760
 msgid ""
 "Generation mapping is another simple tool to help leaders in a movement "
 "understand the growth around them."
 msgstr ""
 "การทำแผนที่รุ่นเป็นเครื่องมือง่าย ๆ อีกอย่างหนึ่งที่ช่วยผู้นำในขบวนการเข้าใจการเติบโตรอบตัวเขา"
 
-#: globals.php:2748
+#: globals.php:2771
 msgid "3-Circles Gospel Presentation"
 msgstr "การนำเสนอพระกิตติคุณด้วยวงกลม 3 วง"
 
-#: globals.php:2750 site/course/course-content.php:975
+#: globals.php:2773 site/course/course-content.php:975
 msgid ""
 "The 3-Circles gospel presentation is a way to tell the gospel using a simple "
 "illustration that can be drawn on a piece of paper."
@@ -649,20 +649,20 @@ msgstr ""
 "การนำเสนอข่าวประเสริฐแบบวงกลม 3 วง เป็นวิธีการบอกเล่าข่าวประเสริฐ โดยใช้ภาพประกอบง่าย "
 "ๆ ที่สามารถวาดลงบนกระดาษได้"
 
-#: globals.php:2751
+#: globals.php:2774
 msgid "3-Circles"
 msgstr "วงกลม 3 วง"
 
-#: globals.php:8148 maps/html/heatmap-html.php:56 maps/html/heatmap-html.php:59
+#: globals.php:8171 maps/html/heatmap-html.php:56 maps/html/heatmap-html.php:59
 #: maps/js-translation-strings.php:43 site/course/presenter.php:169
-#: site/dashboard/checkin-dashboard.php:179 site/dashboard/dashboard.php:303
-#: site/dashboard/wizard.php:179 site/pages/follow-jesus.php:349
+#: site/dashboard/checkin-dashboard.php:179 site/dashboard/dashboard.php:330
+#: site/dashboard/wizard.php:187 site/pages/follow-jesus.php:349
 #: site/parts/footer.php:77 site/parts/footer.php:84 site/parts/footer.php:91
 #: site/parts/language-menu.php:4 utilities/apis/pieces-api.php:202
 msgid "Close"
 msgstr "ปิด"
 
-#: globals.php:8350
+#: globals.php:8373
 msgid "No Results"
 msgstr "ไม่มีผลลัพธ์"
 
@@ -918,11 +918,12 @@ msgstr "บันทึกเพิ่มเติม (ซูมหรือก�
 msgid "Studying"
 msgstr "กำลังเรียน"
 
-#: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:235
+#: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:256
 msgid "Practicing"
 msgstr "การฝึกซ้อม"
 
-#: maps/js-translation-strings.php:28 site/dashboard/wizard.php:226
+#: maps/js-translation-strings.php:28 site/dashboard/dashboard.php:240
+#: site/dashboard/wizard.php:234
 msgid "Coaching"
 msgstr "การฝึกสอน"
 
@@ -995,15 +996,15 @@ msgid "Always report new simple churches that you are starting."
 msgstr "รายงานถึงคริสตจักรเรียบง่ายแห่งใหม่ ๆ ที่คุณกำลังเริ่มต้นอยู่เสมอ"
 
 #: maps/local-map.php:28 maps/local-map.php:547
-#, fuzzy
 msgid "Local Map"
-msgstr "แผนที่โลก"
+msgstr "แผนที่ท้องถิ่น"
 
 #: maps/local-map.php:29
 msgid ""
 "Local map showing Zúme training progress and church planting activity for a "
 "specific location."
 msgstr ""
+"แผนที่ท้องถิ่นที่แสดงความคืบหน้าการฝึกอบรมของซูเมและการทำกิจกรรมปลูกคริสตจักรสำหรับสถานที่เฉพาะ"
 
 #: maps/local-map.php:548 maps/local-map.php:982 maps/local-map.php:984
 #: maps/map-3-trainees.php:123
@@ -1015,37 +1016,35 @@ msgstr "ผู้รับการฝึกอบรม"
 msgid "Churches"
 msgstr "คริสตจักร"
 
-#: maps/local-map.php:553
-#, fuzzy
+#: maps/local-map.php:553 site/dashboard/dashboard.php:201
 msgid "Progress"
-msgstr "ความก้าวหน้าของฉัน"
+msgstr "ความคืบหน้า"
 
 #: maps/local-map.php:554
-#, fuzzy
 msgid "Location not found"
-msgstr "ไม่พบตำแหน่งที่ตั้ง"
+msgstr "ไม่พบตำแหน่ง"
 
 #: maps/local-map.php:555
-#, fuzzy
 msgid "Please enter a grid_id parameter"
-msgstr "โปรดกรอกรหัสเพื่อน"
+msgstr "กรุณากรอกพารามิเตอร์ grid_id"
 
 #: maps/local-map.php:944 maps/local-map.php:1068
-#: site/dashboard/dashboard.php:211
+#: site/dashboard/dashboard.php:231
 msgid "Getting Started"
 msgstr "การเริ่มต้น"
 
 #: maps/local-map.php:946 maps/local-map.php:963
-#: site/dashboard/dashboard.php:197 site/dashboard/wizard.php:305
-#: site/dashboard/wizard.php:306 site/dashboard/wizard.php:330
+#: site/dashboard/dashboard.php:214 site/dashboard/wizard.php:290
+#: site/dashboard/wizard.php:352 site/dashboard/wizard.php:353
+#: site/dashboard/wizard.php:384 site/pages/plans.php:148
 msgid "Location"
 msgstr "ที่ตั้ง"
 
-#: maps/local-map.php:954 site/dashboard/dashboard.php:196
+#: maps/local-map.php:954 site/dashboard/dashboard.php:213
 msgid "No Locations found"
 msgstr "ไม่พบตำแหน่งที่ตั้ง"
 
-#: maps/local-map.php:955 site/dashboard/wizard.php:180
+#: maps/local-map.php:955 site/dashboard/wizard.php:188
 msgid "No locations found"
 msgstr "ไม่พบตำแหน่งที่ตั้ง"
 
@@ -1135,9 +1134,8 @@ msgstr ""
 "คนต่อ 50,000 คนทั่วโลก"
 
 #: maps/map-5-churches.php:95
-#, fuzzy
 msgid "Vision Map"
-msgstr "วิสัยทัศน์"
+msgstr "แผนที่วิสัยทัศน์"
 
 #: maps/map-5-churches.php:125
 msgid "Map of Zúme Churches"
@@ -1242,7 +1240,7 @@ msgstr "ถามตัวเองว่าฉันเคย"
 #: site/activities/coaching-checklist-two.php:187
 #: site/activities/coaching-checklist.php:150
 #: site/activities/coaching-checklist.php:290
-#: site/dashboard/checkin-dashboard.php:183 site/dashboard/dashboard.php:259
+#: site/dashboard/checkin-dashboard.php:183 site/dashboard/dashboard.php:280
 msgid "Heard"
 msgstr "ได้ยิน"
 
@@ -1252,7 +1250,7 @@ msgstr "ได้ยิน"
 #: site/activities/coaching-checklist-two.php:191
 #: site/activities/coaching-checklist.php:153
 #: site/activities/coaching-checklist.php:293
-#: site/dashboard/checkin-dashboard.php:185 site/dashboard/dashboard.php:261
+#: site/dashboard/checkin-dashboard.php:185 site/dashboard/dashboard.php:282
 msgid "Obeyed"
 msgstr "เชื่อฟัง"
 
@@ -1262,7 +1260,7 @@ msgstr "เชื่อฟัง"
 #: site/activities/coaching-checklist-two.php:195
 #: site/activities/coaching-checklist.php:156
 #: site/activities/coaching-checklist.php:296
-#: site/dashboard/checkin-dashboard.php:187 site/dashboard/dashboard.php:263
+#: site/dashboard/checkin-dashboard.php:187 site/dashboard/dashboard.php:284
 msgid "Shared"
 msgstr "แบ่งปัน"
 
@@ -1272,21 +1270,21 @@ msgstr "แบ่งปัน"
 #: site/activities/coaching-checklist-two.php:199
 #: site/activities/coaching-checklist.php:159
 #: site/activities/coaching-checklist.php:299
-#: site/dashboard/checkin-dashboard.php:189 site/dashboard/dashboard.php:265
+#: site/dashboard/checkin-dashboard.php:189 site/dashboard/dashboard.php:286
 msgid "Trained"
 msgstr "ฝึกอบรม"
 
 #: site/activities/coaching-checklist-host.php:157
 #: site/activities/coaching-checklist-two.php:189
 #: site/activities/coaching-checklist.php:290
-#: site/dashboard/checkin-dashboard.php:184 site/dashboard/dashboard.php:260
+#: site/dashboard/checkin-dashboard.php:184 site/dashboard/dashboard.php:281
 msgid "Have I heard about this tool or concept?"
 msgstr "ฉันเคยได้ยินเกี่ยวกับเครื่องมือหรือแนวคิดนี้มั้ย?"
 
 #: site/activities/coaching-checklist-host.php:161
 #: site/activities/coaching-checklist-two.php:193
 #: site/activities/coaching-checklist.php:293
-#: site/dashboard/checkin-dashboard.php:186 site/dashboard/dashboard.php:262
+#: site/dashboard/checkin-dashboard.php:186 site/dashboard/dashboard.php:283
 msgid ""
 "Have I obeyed this tool or concept? If a tool, have I practiced it on my "
 "own? If a concept, have you reflected on how it changes your perspective?"
@@ -1297,7 +1295,7 @@ msgstr ""
 #: site/activities/coaching-checklist-host.php:165
 #: site/activities/coaching-checklist-two.php:197
 #: site/activities/coaching-checklist.php:296
-#: site/dashboard/checkin-dashboard.php:188 site/dashboard/dashboard.php:264
+#: site/dashboard/checkin-dashboard.php:188 site/dashboard/dashboard.php:285
 msgid ""
 "Have I shared this tool or concept? If a tool, have you shown anyone how to "
 "use this tool? If a concept, have you shared this concept with anyone?"
@@ -1308,7 +1306,7 @@ msgstr ""
 #: site/activities/coaching-checklist-host.php:169
 #: site/activities/coaching-checklist-two.php:201
 #: site/activities/coaching-checklist.php:299
-#: site/dashboard/checkin-dashboard.php:190 site/dashboard/dashboard.php:266
+#: site/dashboard/checkin-dashboard.php:190 site/dashboard/dashboard.php:287
 msgid ""
 "Have I trained others to share this tool or concept? If a tool, have I "
 "trained someone to share the tool with someone else? If a concept, have I "
@@ -1572,27 +1570,24 @@ msgid "Unknown"
 msgstr "ไม่รู้จัก"
 
 #: site/activities/sharegospel.php:132 site/course/course-content.php:945
-#, fuzzy
 msgid "Presentation 1"
-msgstr "ผู้นำเสนอ"
+msgstr "การนำเสนอ 1"
 
 #: site/activities/sharegospel.php:135 site/course/course-content.php:974
-#, fuzzy
 msgid "Presentation 2"
-msgstr "ผู้นำเสนอ"
+msgstr "การนำเสนอ 2"
 
 #: site/activities/sharegospel.php:171
-#, fuzzy
 msgid "3 Circles Gospel Presentation"
-msgstr "การนำเสนอพระกิตติคุณด้วยวงกลม 3 วง"
+msgstr "การนำเสนอพระกิตติคุณแบบสามวงกลม"
 
 #: site/activities/sharegospel.php:196
 msgid "No script content found for this language."
-msgstr ""
+msgstr "ไม่พบเนื้อหาสคริปต์สำหรับภาษา"
 
 #: site/activities/sharegospel.php:200
 msgid "No script found for this language."
-msgstr ""
+msgstr "ไม่พบสคริปต์สำหรับภาษา"
 
 #: site/activities/three-month-plan-printable.php:22
 #: site/activities/three-month-plan.php:22
@@ -1600,7 +1595,7 @@ msgid "3 Month Plan"
 msgstr "แผน 3 เดือน"
 
 #: site/activities/three-month-plan-printable.php:47
-#: site/activities/three-month-plan.php:57 site/dashboard/dashboard.php:229
+#: site/activities/three-month-plan.php:57 site/dashboard/dashboard.php:250
 msgid "3-Month Plan"
 msgstr "แผน 3 เดือน"
 
@@ -1619,8 +1614,8 @@ msgid ""
 msgstr ""
 "โปรดเปิดใช้งานสคริปต์เพื่อใช้หน้าโต้ตอบนี้ มิฉะนั้น คุณสามารถใช้เวอร์ชันที่พิมพ์ได้โดยใช้ลิงก์ด้านบน"
 
-#: site/activities/three-month-plan.php:83 site/dashboard/dashboard.php:172
-#: site/dashboard/wizard.php:313 site/profile/profile.php:148
+#: site/activities/three-month-plan.php:83 site/dashboard/dashboard.php:177
+#: site/dashboard/wizard.php:360 site/profile/profile.php:148
 msgid "Save"
 msgstr "บันทึก"
 
@@ -1628,15 +1623,15 @@ msgstr "บันทึก"
 msgid "Cancel"
 msgstr "ยกเลิก"
 
-#: site/activities/three-month-plan.php:85 site/dashboard/dashboard.php:329
+#: site/activities/three-month-plan.php:85 site/dashboard/dashboard.php:362
 msgid "Question"
 msgstr "คำถาม"
 
-#: site/activities/three-month-plan.php:86 site/dashboard/dashboard.php:330
+#: site/activities/three-month-plan.php:86 site/dashboard/dashboard.php:363
 msgid "Answer"
 msgstr "คำตอบ"
 
-#: site/activities/three-month-plan.php:87 site/dashboard/dashboard.php:331
+#: site/activities/three-month-plan.php:87 site/dashboard/dashboard.php:364
 msgid "Note"
 msgstr "บันทึก"
 
@@ -2496,7 +2491,7 @@ msgstr ""
 msgid "Obey"
 msgstr "เชื่อฟัง"
 
-#: site/course/course-content.php:719 site/dashboard/dashboard.php:174
+#: site/course/course-content.php:719 site/dashboard/dashboard.php:179
 #: site/pages/_strings-mobile-pwa.php:37 site/pages/share.php:29
 #: site/pages/share.php:84 site/parts/nav.php:41
 msgid "Share"
@@ -2564,7 +2559,7 @@ msgstr ""
 
 #: site/course/course-content.php:931
 msgid "Review the following two presentations and choose one to practice."
-msgstr ""
+msgstr "กรุณาทบทวนงานนำเสนอสองชิ้นต่อไปนี้ และเลือกหนึ่งชิ้นเพื่อฝึกฝน"
 
 #: site/course/course-content.php:946
 msgid ""
@@ -2581,7 +2576,7 @@ msgstr "แบ่งปันพระกิตติคุณ"
 
 #: site/course/course-content.php:1024
 msgid "Choose one of the two presentations you watched."
-msgstr ""
+msgstr "เลือกหนึ่งในการนำเสนอสองชิ้นที่คุณได้ชม"
 
 #: site/course/course-content.php:1026
 msgid "Break into groups of two or three people."
@@ -3319,8 +3314,8 @@ msgid ""
 "If you don’t have a coach or mentor, scan the QR code and request one now."
 msgstr "ถ้าคุณไม่มีผู้ฝึกสอนหรือพี่เลี้ยง โปรดสแกนรหัส QR และขอรับทันที"
 
-#: site/course/course-content.php:2771 site/dashboard/dashboard.php:220
-#: site/dashboard/wizard.php:239 site/pages/about.php:271
+#: site/course/course-content.php:2771 site/dashboard/dashboard.php:241
+#: site/dashboard/wizard.php:247 site/pages/about.php:271
 #: site/parts/footer.php:12 site/parts/footer.php:18
 #: site/parts/mobile-nav.php:14 utilities/apis/cta-api.php:246
 #: utilities/apis/cta-api.php:248
@@ -3603,7 +3598,7 @@ msgstr ""
 msgid "God makes plans, and He expects us to make plans, too."
 msgstr "พระเจ้าทรงวางแผน และพระองค์คาดหวังให้เราวางแผนเช่นกัน"
 
-#: site/course/course-content.php:3183 site/dashboard/dashboard.php:231
+#: site/course/course-content.php:3183 site/dashboard/dashboard.php:252
 msgid ""
 "A Three Month Plan is a tool you can use to help focus your attention and "
 "efforts and keep them aligned with God’s priorities for making disciples who "
@@ -4156,7 +4151,7 @@ msgid "INTENSIVE SESSION 5"
 msgstr "ส่วนเข้มข้น 5"
 
 #: site/course/course-content.php:6160 site/course/course-content.php:6168
-#: site/dashboard/dashboard.php:267 site/parts/mobile-nav.php:20
+#: site/dashboard/dashboard.php:288 site/parts/mobile-nav.php:20
 msgid "Join the Community"
 msgstr "เข้าร่วมกับชุมชน"
 
@@ -4198,7 +4193,7 @@ msgstr "ผู้บรรยายหลักสูตร"
 msgid "Links"
 msgstr "ลิงก์"
 
-#: site/course/presenter.php:148 site/dashboard/dashboard.php:271
+#: site/course/presenter.php:148 site/dashboard/dashboard.php:292
 #: site/pages/resources.php:29 site/pages/resources.php:122
 #: site/parts/checkin-nav.php:14 site/parts/footer.php:41
 #: site/parts/mobile-nav.php:8 site/parts/mobile-nav.php:28
@@ -4210,7 +4205,7 @@ msgstr "แหล่งข้อมูลแหล่งข้อมูล"
 msgid "Exit Course"
 msgstr "สำเร็จหลักสูตร"
 
-#: site/course/presenter.php:163 site/dashboard/dashboard.php:189
+#: site/course/presenter.php:163 site/dashboard/dashboard.php:194
 msgid "Menu"
 msgstr "เมนู"
 
@@ -4218,7 +4213,7 @@ msgstr "เมนู"
 msgid "Slide View"
 msgstr "ดูสไลด์"
 
-#: site/course/presenter.php:165 site/dashboard/dashboard.php:184
+#: site/course/presenter.php:165 site/dashboard/dashboard.php:189
 msgid "List View"
 msgstr "ดูรายการ"
 
@@ -4230,8 +4225,9 @@ msgstr "สไลด์ถัดไป"
 msgid "Previous slide"
 msgstr "สไลด์ก่อนหน้า"
 
-#: site/course/presenter.php:168 site/dashboard/wizard.php:250
-#: site/pages/join-a-training-public.php:105
+#: site/course/presenter.php:168 site/dashboard/wizard.php:266
+#: site/dashboard/wizard.php:297 site/pages/join-a-training-public.php:105
+#: site/pages/join-a-training-public.php:129 site/pages/plans.php:156
 msgid "Session"
 msgstr "การประชุม"
 
@@ -4278,215 +4274,278 @@ msgstr "ยินดีด้วย"
 msgid "You're checked in"
 msgstr "คุณเช็คอินแล้ว"
 
-#: site/dashboard/checkin-dashboard.php:182
+#: site/dashboard/checkin-dashboard.php:182 site/dashboard/dashboard.php:369
 #: site/pages/_strings-mobile-pwa.php:41
 msgid "Learn more"
 msgstr "เรียนรู้เพิ่มเติม"
 
-#: site/dashboard/dashboard.php:170 site/dashboard/wizard.php:311
+#: site/dashboard/dashboard.php:175 site/dashboard/wizard.php:358
 msgid "Done"
 msgstr "เสร็จแล้ว"
 
-#: site/dashboard/dashboard.php:171
+#: site/dashboard/dashboard.php:176
 msgid "Edit"
 msgstr "แก้ไข"
 
-#: site/dashboard/dashboard.php:173 site/pages/_strings-mobile-pwa.php:27
+#: site/dashboard/dashboard.php:178 site/pages/_strings-mobile-pwa.php:27
 msgid "Delete"
 msgstr "ลบ"
 
-#: site/dashboard/dashboard.php:175
+#: site/dashboard/dashboard.php:180
 msgid "Status"
 msgstr "สถานะ"
 
-#: site/dashboard/dashboard.php:176
+#: site/dashboard/dashboard.php:181 site/pages/plans.php:113
 msgid "Active"
 msgstr "ทำงาน"
 
-#: site/dashboard/dashboard.php:177
+#: site/dashboard/dashboard.php:182 site/pages/plans.php:113
 msgid "Inactive"
 msgstr "ไม่ทำงาน"
 
-#: site/dashboard/dashboard.php:178
+#: site/dashboard/dashboard.php:183
 msgid "Completed"
 msgstr "สมบูรณ์"
 
-#: site/dashboard/dashboard.php:179
+#: site/dashboard/dashboard.php:184
 msgid "Uncompleted"
 msgstr "ยังไม่เสร็จสมบูรณ์"
 
-#: site/dashboard/dashboard.php:180
+#: site/dashboard/dashboard.php:185
 msgid "Not Heard"
 msgstr "ไม่ได้ยิน"
 
-#: site/dashboard/dashboard.php:181 site/pages/share.php:124
+#: site/dashboard/dashboard.php:186 site/pages/share.php:124
 msgid "All"
 msgstr "ทั้งหมด"
 
-#: site/dashboard/dashboard.php:182 site/profile/profile.php:154
+#: site/dashboard/dashboard.php:187 site/profile/profile.php:154
 msgid "Logout"
 msgstr "ออกจากระบบ"
 
-#: site/dashboard/dashboard.php:183 site/pages/share.php:127
+#: site/dashboard/dashboard.php:188 site/pages/share.php:127
 msgid "Filter"
 msgstr "กรอง"
 
-#: site/dashboard/dashboard.php:185
+#: site/dashboard/dashboard.php:190
 msgid "Grid View"
 msgstr "ดูการแสดงข้อมูล"
 
-#: site/dashboard/dashboard.php:186
+#: site/dashboard/dashboard.php:191
 msgid "View Now"
 msgstr "ดูตอนนี้"
 
-#: site/dashboard/dashboard.php:187
+#: site/dashboard/dashboard.php:192
 msgid "Complete Now"
 msgstr "เสร็จสมบูรณ์แล้วตอนนี้"
 
-#: site/dashboard/dashboard.php:188
+#: site/dashboard/dashboard.php:193
 msgid "View"
 msgstr "ดู"
 
-#: site/dashboard/dashboard.php:190 site/dashboard/wizard.php:202
-#: site/dashboard/wizard.php:248 site/pages/join-a-training-public.php:104
-#: site/profile/profile.php:111
+#: site/dashboard/dashboard.php:195 site/dashboard/wizard.php:210
+#: site/dashboard/wizard.php:264 site/pages/join-a-training-public.php:104
+#: site/pages/join-a-training-public.php:128 site/profile/profile.php:111
 msgid "Name"
 msgstr "ชื่อ"
 
-#: site/dashboard/dashboard.php:191 site/dashboard/wizard.php:200
-#: site/dashboard/wizard.php:218 site/profile/profile.php:115
-#: zume-training-system.php:404
+#: site/dashboard/dashboard.php:196 site/dashboard/wizard.php:208
+#: site/dashboard/wizard.php:226 site/profile/profile.php:115
+#: zume-training-system.php:563
 msgid "Phone"
 msgstr "โทรศัพท์"
 
-#: site/dashboard/dashboard.php:192 site/dashboard/wizard.php:216
+#: site/dashboard/dashboard.php:197 site/dashboard/wizard.php:224
 #: site/login/login-template.php:450 site/login/login-template.php:451
-#: site/profile/profile.php:119 zume-training-system.php:402
+#: site/profile/profile.php:119 zume-training-system.php:561
 msgid "Email"
 msgstr "อีเมล"
 
-#: site/dashboard/dashboard.php:193
-msgid "Linked Accounts"
-msgstr "บัญชีที่เชื่อมโยง"
-
-#: site/dashboard/dashboard.php:194
+#: site/dashboard/dashboard.php:198
 msgid "Communications Email"
 msgstr "อีเมลการสื่อสาร"
 
-#: site/dashboard/dashboard.php:195 site/dashboard/wizard.php:201
+#: site/dashboard/dashboard.php:199
+msgid "If these are not correct, please update your profile."
+msgstr "หากข้อมูลเหล่านี้ไม่ถูกต้อง กรุณาอัปเดตโปรไฟล์ของคุณ"
+
+#: site/dashboard/dashboard.php:200
+msgid "Contact Info"
+msgstr "ข้อมูลติดต่อ"
+
+#: site/dashboard/dashboard.php:202
+msgid "Copy Emails"
+msgstr "คัดลอกอีเมล"
+
+#: site/dashboard/dashboard.php:203
+msgid "Copy Phones"
+msgstr "คัดลอกโทรศัพท์"
+
+#: site/dashboard/dashboard.php:204
+msgid "Copy Code"
+msgstr "คัดลอกรหัส"
+
+#: site/dashboard/dashboard.php:205
+msgid "Linked Accounts"
+msgstr "บัญชีที่เชื่อมโยง"
+
+#: site/dashboard/dashboard.php:206 site/dashboard/wizard.php:273
+msgid "Change Preferences"
+msgstr "เปลี่ยนการตั้งค่า"
+
+#: site/dashboard/dashboard.php:207
+msgid "Email Preferences"
+msgstr "การตั้งค่าอีเมล"
+
+#: site/dashboard/dashboard.php:208
+msgid "Choose which email lists you want to receive"
+msgstr "เลือกบัญชีอีเมลที่คุณต้องการรับ"
+
+#: site/dashboard/dashboard.php:209 zume-training-system.php:541
+msgid "Hide my contact information from other participants in trainings"
+msgstr "ซ่อนข้อมูลติดต่อของฉันจากผู้เข้าร่วมคนอื่น ๆ ในการฝึกอบรม"
+
+#: site/dashboard/dashboard.php:210 zume-training-system.php:533
+msgid "Hide my progress from other participants in trainings"
+msgstr "ซ่อนความคืบหน้าของฉันจากผู้เข้าร่วมคนอื่น ๆ ในการฝึกอบรม"
+
+#: site/dashboard/dashboard.php:211
+msgid ""
+"Don't forget to send subscribers an email to notify them of the training."
+msgstr "อย่าลืมส่งอีเมลแจ้งผู้สมัครสมาชิกเกี่ยวกับการฝึกอบรม"
+
+#: site/dashboard/dashboard.php:212 site/dashboard/wizard.php:209
 #: site/profile/profile.php:123
 msgid "City"
 msgstr "เมือง"
 
-#: site/dashboard/dashboard.php:198 site/dashboard/wizard.php:310
-#: site/dashboard/wizard.php:314 site/dashboard/wizard.php:331
+#: site/dashboard/dashboard.php:215 site/dashboard/wizard.php:357
+#: site/dashboard/wizard.php:361 site/dashboard/wizard.php:385
+#: zume-training-system.php:252
 msgid "Time"
 msgstr "เวลา"
 
-#: site/dashboard/dashboard.php:199 site/dashboard/wizard.php:224
-#: site/dashboard/wizard.php:253 site/pages/_strings-mobile-pwa.php:17
-#: site/pages/join-a-training-public.php:109 site/parts/language-menu.php:7
+#: site/dashboard/dashboard.php:216 site/dashboard/wizard.php:232
+#: site/dashboard/wizard.php:269 site/pages/_strings-mobile-pwa.php:17
+#: site/pages/join-a-training-public.php:109
+#: site/pages/join-a-training-public.php:133 site/parts/language-menu.php:7
 #: site/profile/profile.php:133 utilities/post-types/posttype-pieces.php:300
+#: zume-training-system.php:258
 msgid "Language"
 msgstr "ภาษา"
 
-#: site/dashboard/dashboard.php:200 site/dashboard/wizard.php:252
-#: site/pages/join-a-training-public.php:108
+#: site/dashboard/dashboard.php:217 site/dashboard/wizard.php:268
+#: site/dashboard/wizard.php:296 site/pages/join-a-training-public.php:108
+#: site/pages/join-a-training-public.php:132 site/pages/plans.php:152
+#: zume-training-system.php:255
 msgid "Timezone"
 msgstr "เขตเวลา"
 
-#: site/dashboard/dashboard.php:201 site/dashboard/wizard.php:332
+#: site/dashboard/dashboard.php:218
+msgid "Select timezone"
+msgstr "เลือกเขตเวลา"
+
+#: site/dashboard/dashboard.php:219
+msgid "New"
+msgstr "ใหม่"
+
+#: site/dashboard/dashboard.php:220 site/dashboard/wizard.php:386
 msgid "Meeting link"
 msgstr "ลิงก์การประชุม"
 
-#: site/dashboard/dashboard.php:202
+#: site/dashboard/dashboard.php:221
 msgid "Zoom, Google Meet, Microsoft Teams etc."
 msgstr "Zoom, Google Meet, Microsoft Teams เป็นต้น"
 
-#: site/dashboard/dashboard.php:203
+#: site/dashboard/dashboard.php:222
 msgid "Edit Profile"
 msgstr "แก้ไขโปรไฟล์"
 
-#: site/dashboard/dashboard.php:204
+#: site/dashboard/dashboard.php:223
 msgid "Check out this Zúme concept"
 msgstr "ออกจากแนวคิด Zúme นี้"
 
-#: site/dashboard/dashboard.php:205 site/pages/resources.php:160
+#: site/dashboard/dashboard.php:224 site/pages/resources.php:160
 msgid "Preview"
 msgstr "ตัวอย่าง"
 
-#: site/dashboard/dashboard.php:206 site/dashboard/dashboard.php:282
-#: site/dashboard/dashboard.php:295
+#: site/dashboard/dashboard.php:225 site/dashboard/dashboard.php:309
+#: site/dashboard/dashboard.php:322
 #, php-format
 msgid "Add new %s"
 msgstr "เพิ่ม%sใหม่"
 
-#: site/dashboard/dashboard.php:206
+#: site/dashboard/dashboard.php:225
 msgid "Commitment"
 msgstr "ความมุ่งมั่น"
 
-#: site/dashboard/dashboard.php:207 site/pages/share.php:85
+#: site/dashboard/dashboard.php:226 site/pages/share.php:85
 msgid "Copy Link"
 msgstr "คัดลอกลิงก์"
 
-#: site/dashboard/dashboard.php:208
+#: site/dashboard/dashboard.php:227
 msgid "Copy this link and send it to your friends 🙂"
 msgstr "คัดลอกลิงก์นี้และส่งให้เพื่อนของคุณ 🙂"
 
-#: site/dashboard/dashboard.php:209 site/pages/share.php:87
+#: site/dashboard/dashboard.php:228 site/pages/share.php:87
 msgid "Thanks!"
 msgstr "ขอบคุณ!"
 
-#: site/dashboard/dashboard.php:210
+#: site/dashboard/dashboard.php:229
 msgid "Link copied"
 msgstr "คัดลอกลิงก์แล้ว"
 
-#: site/dashboard/dashboard.php:212 utilities/apis/cta-api.php:157
+#: site/dashboard/dashboard.php:230 site/pages/share.php:88
+msgid "Copied"
+msgstr "คัดลอกแล้ว"
+
+#: site/dashboard/dashboard.php:232 utilities/apis/cta-api.php:157
 #: utilities/apis/cta-api.php:159
 msgid "Set Profile"
 msgstr "ตั้งค่าโปรไฟล์"
 
-#: site/dashboard/dashboard.php:213
+#: site/dashboard/dashboard.php:233
 msgid "Complete a short Profile Wizard to set your profile"
 msgstr "กรอกแบบฟอร์ม Profile Wizard สั้น ๆ เพื่อตั้งค่าโปรไฟล์ของคุณ"
 
-#: site/dashboard/dashboard.php:214 site/dashboard/wizard.php:274
+#: site/dashboard/dashboard.php:234 site/dashboard/wizard.php:316
 msgid "Join or create a training group"
 msgstr "เข้าร่วมหรือสร้างกลุ่มการฝึกอบรม"
 
-#: site/dashboard/dashboard.php:215
+#: site/dashboard/dashboard.php:235
 msgid ""
 "Join one of our online trainings or create your own training group with our "
 "easy to set up wizard"
 msgstr "เข้าร่วมการฝึกอบรมออนไลน์ของเราหรือสร้างกลุ่มการฝึกอบรมของคุณเองด้วยตัวช่วยที่ตั้งค่าได้ง่ายของเรา"
 
-#: site/dashboard/dashboard.php:216
+#: site/dashboard/dashboard.php:236
 msgid "Create Training Group"
 msgstr "สร้างกลุ่มการฝึกอบรม"
 
-#: site/dashboard/dashboard.php:217
+#: site/dashboard/dashboard.php:237
 msgid "Create your own training group with our easy to set up wizard"
 msgstr "สร้างกลุ่มฝึกอบรมของคุณเองด้วยตัวช่วยที่ตั้งค่าได้ง่ายของเรา"
 
-#: site/dashboard/dashboard.php:218 site/dashboard/wizard.php:333
+#: site/dashboard/dashboard.php:238 site/dashboard/wizard.php:317
+#: site/dashboard/wizard.php:387 site/pages/plans.php:194
 msgid "Join Training Group"
 msgstr "เข้าร่วมกลุ่มการฝึกอบรม"
 
-#: site/dashboard/dashboard.php:219
+#: site/dashboard/dashboard.php:239
 msgid "Join an online training group run by a coach"
 msgstr "เข้าร่วมกลุ่มฝึกอบรมออนไลน์ที่ดำเนินการโดยผู้ฝึกสอน"
 
-#: site/dashboard/dashboard.php:221
+#: site/dashboard/dashboard.php:242
 msgid ""
 "Connect with a coach for any help or encouragement before, during or after "
 "the training."
 msgstr "ติดต่อผู้ฝึกสอนเพื่อขอความช่วยเหลือหรือให้กำลังใจก่อน ระหว่างหรือหลังการฝึกอบรม"
 
-#: site/dashboard/dashboard.php:223 site/parts/checkin-nav.php:8
+#: site/dashboard/dashboard.php:244 site/parts/checkin-nav.php:8
 msgid "My Progress"
 msgstr "ความก้าวหน้าของฉัน"
 
-#: site/dashboard/dashboard.php:224
+#: site/dashboard/dashboard.php:245
 msgid ""
 "Track your course progress with this interactive view. Learn to listen, "
 "obey, share and train others with what you have learned."
@@ -4494,34 +4553,34 @@ msgstr ""
 "ติดตามความคืบหน้าของหลักสูตรของคุณด้วยมุมมองแบบโต้ตอบนี้ เรียนรู้ที่จะฟัง เชื่อฟัง แบ่งปัน "
 "และฝึกอบรมคนอื่น ๆ ด้วยสิ่งที่คุณเรียนรู้"
 
-#: site/dashboard/dashboard.php:225
+#: site/dashboard/dashboard.php:246
 msgid "Information about progress"
 msgstr "ข้อมูลความคืบหน้า"
 
-#: site/dashboard/dashboard.php:226
+#: site/dashboard/dashboard.php:247
 msgid "My Training"
 msgstr "การฝึกอบรมของฉัน"
 
-#: site/dashboard/dashboard.php:227
+#: site/dashboard/dashboard.php:248
 msgid "My Trainings"
 msgstr "การฝึกอบรมของฉัน"
 
-#: site/dashboard/dashboard.php:228
+#: site/dashboard/dashboard.php:249
 msgid ""
 "Full access to your training content, schedule, group details and sharing "
 "tools."
 msgstr ""
 "เข้าถึงเนื้อหาการฝึกอบรม ตารางเวลา รายละเอียดกลุ่ม และเครื่องมือการแบ่งปันของคุณได้อย่างสมบูรณ์"
 
-#: site/dashboard/dashboard.php:230
+#: site/dashboard/dashboard.php:251
 msgid "Create Your Plan"
 msgstr "สร้างแผนของคุณ"
 
-#: site/dashboard/dashboard.php:232
+#: site/dashboard/dashboard.php:253
 msgid "Three Month Plan Locked"
 msgstr "ล็อกแผนสามเดือน"
 
-#: site/dashboard/dashboard.php:233
+#: site/dashboard/dashboard.php:254
 msgid ""
 "The three month plan is a tool to help you take action and implement the "
 "tools and concepts learned through the Zúme course. It is most useful, once "
@@ -4530,53 +4589,53 @@ msgstr ""
 "แผนสามเดือนเป็นเครื่องมือที่ช่วยให้คุณดำเนินการและนำเครื่องมือและแนวคิดที่เรียนรู้จากหลักสูตร Zúme "
 "ไปใช้ ซึ่งจะมีประโยชน์มากที่สุดเมื่อคุณผ่านการฝึกอบรมแล้ว"
 
-#: site/dashboard/dashboard.php:234
+#: site/dashboard/dashboard.php:255
 msgid "Unlock now"
 msgstr "ปลดล็อกตอนนี้"
 
-#: site/dashboard/dashboard.php:236
+#: site/dashboard/dashboard.php:257
 msgid "My Coach"
 msgstr "ผู้ฝึกสอนของฉัน"
 
-#: site/dashboard/dashboard.php:237
+#: site/dashboard/dashboard.php:258
 msgid "Quick access to your coach at all times."
 msgstr "เข้าถึงผู้ฝึกสอนของคุณได้อย่างรวดเร็วทุกเวลา"
 
-#: site/dashboard/dashboard.php:238
+#: site/dashboard/dashboard.php:259
 msgid "My Tools"
 msgstr "เครื่องมือของฉัน"
 
-#: site/dashboard/dashboard.php:239
+#: site/dashboard/dashboard.php:260
 msgid ""
 "Your My Tools area will unlock as you move through the course, practicing "
 "and developing essential discipleship skills"
 msgstr "พื้นที่เครื่องมือของฉันจะปลดล็อกเมื่อคุณผ่านหลักสูตร ฝึกฝนและพัฒนาทักษะการเป็นสาวกที่จำเป็น"
 
-#: site/dashboard/dashboard.php:240
+#: site/dashboard/dashboard.php:261
 msgid "My Plans"
 msgstr "แผนการของฉัน"
 
-#: site/dashboard/dashboard.php:241
+#: site/dashboard/dashboard.php:262
 msgid ""
 "Unlock the My Plans area by completing your 3-Month plan in the final "
 "session."
 msgstr "ปลดล็อกพื้นที่แผนของฉันโดยทำรายการแผน 3 เดือนของคุณให้เสร็จสิ้นในส่วนสุดท้าย"
 
-#: site/dashboard/dashboard.php:242
+#: site/dashboard/dashboard.php:263
 msgid "My Plans are Locked"
 msgstr "แผนของฉันถูกล็อกแล้ว"
 
-#: site/dashboard/dashboard.php:243
+#: site/dashboard/dashboard.php:264
 msgid ""
 "Unlock this area by creating your Three-Month Plan or adding a commitment of "
 "your own."
 msgstr "ปลดล็อกพื้นที่นี้โดยการสร้างแผนสามเดือนของคุณหรือเพิ่มข้อผูกพันของคุณเอง"
 
-#: site/dashboard/dashboard.php:244
+#: site/dashboard/dashboard.php:265
 msgid "My Churches"
 msgstr "คริสตจักรของฉัน"
 
-#: site/dashboard/dashboard.php:245 site/dashboard/dashboard.php:285
+#: site/dashboard/dashboard.php:266 site/dashboard/dashboard.php:312
 msgid ""
 "My Churches tool makes it easy for you to track your simple church and the "
 "simple church generations that grow out of your spiritual family."
@@ -4584,15 +4643,15 @@ msgstr ""
 "เครื่องมือคริสตจักรของฉันทำให้คุณติดตามคริสตจักรเรียบง่ายของคุณและคริสตจักรเรียบง่ายรุ่นต่าง ๆ "
 "ที่เติบโตมาจากครอบครัวฝ่ายจิตวิญญาณของคุณได้อย่างง่ายดาย"
 
-#: site/dashboard/dashboard.php:246
+#: site/dashboard/dashboard.php:267
 msgid "My Maps"
 msgstr "แผนที่ของฉัน"
 
-#: site/dashboard/dashboard.php:247
+#: site/dashboard/dashboard.php:268
 msgid "My Maps are Locked"
 msgstr "แผนที่ของฉันถูกล็อก"
 
-#: site/dashboard/dashboard.php:248
+#: site/dashboard/dashboard.php:269
 msgid ""
 "My maps help clarify the Zúme vision of 1 trainee and 2 churches for every "
 "5,000 people in the US, and 50,000 globally. To unlock My Maps, join the "
@@ -4604,177 +4663,201 @@ msgstr ""
 "ปลดล็อกแผนที่ของฉันให้เข้าร่วมชุมชน Zúme และเชื่อมต่อกับผู้สร้างสาวกคนอื่น ๆ "
 "ที่กระตือรือร้นที่จะเห็นพันธกิจอันยิ่งใหญ่สำเร็จลุล่วง"
 
-#: site/dashboard/dashboard.php:249
+#: site/dashboard/dashboard.php:270
 msgid "My Training is Locked"
 msgstr "การฝึกอบรมของฉันถูกล็อก"
 
-#: site/dashboard/dashboard.php:250
+#: site/dashboard/dashboard.php:271
 msgid "Present Course"
 msgstr "หลักสูตรปัจจุบัน"
 
-#: site/dashboard/dashboard.php:252
+#: site/dashboard/dashboard.php:273
 msgid "Course Content"
 msgstr "เนื้อหาหลักสูตร"
 
-#: site/dashboard/dashboard.php:253
+#: site/dashboard/dashboard.php:274
 msgid "Course"
 msgstr "หลักสูตร"
 
-#: site/dashboard/dashboard.php:254
+#: site/dashboard/dashboard.php:275
 msgid "Enter Course"
 msgstr "เข้าสู่หลักสูตร"
 
-#: site/dashboard/dashboard.php:255
+#: site/dashboard/dashboard.php:276
 msgid "Course Slides"
 msgstr "สไลด์หลักสูตร"
 
-#: site/dashboard/dashboard.php:258 site/pages/resources.php:153
+#: site/dashboard/dashboard.php:279 site/pages/resources.php:153
 #: site/pages/resources.php:170 site/pages/resources.php:197
 #: site/parts/download-slides.php:37 site/parts/download-slides.php:49
 msgid "Intensive Course"
 msgstr "หลักสูตรเร่งรัด"
 
-#: site/dashboard/dashboard.php:268 site/dashboard/wizard.php:254
+#: site/dashboard/dashboard.php:289 site/dashboard/wizard.php:270
 #: site/pages/home.php:281 site/pages/join-a-training-public.php:136
-#: site/pages/training.php:150 utilities/apis/cta-api.php:189
-#: utilities/apis/cta-api.php:412
+#: site/pages/training.php:150 utilities/apis/communications-api.php:104
+#: utilities/apis/cta-api.php:189 utilities/apis/cta-api.php:412
 msgid "Join"
 msgstr "เข้าร่วม"
 
-#: site/dashboard/dashboard.php:269
+#: site/dashboard/dashboard.php:290
 msgid "Join the community to get access to this area."
 msgstr "เข้าร่วมชุมชนเพื่อเข้าถึงพื้นที่นี้"
 
-#: site/dashboard/dashboard.php:270
+#: site/dashboard/dashboard.php:291
 msgid "Community links"
 msgstr "ลิงก์ชุมชน"
 
-#: site/dashboard/dashboard.php:272
+#: site/dashboard/dashboard.php:293
 msgid "Previous Slide"
 msgstr "สไลด์ก่อนหน้า"
 
-#: site/dashboard/dashboard.php:273
+#: site/dashboard/dashboard.php:294
 msgid "Next Slide"
 msgstr "สไลด์ถัดไป"
 
-#: site/dashboard/dashboard.php:274
+#: site/dashboard/dashboard.php:295
 msgid "Group Members"
 msgstr "สมาชิกในกลุ่ม"
 
-#: site/dashboard/dashboard.php:275
+#: site/dashboard/dashboard.php:296
 msgid "Group Members Link"
 msgstr "ลิงก์สมาชิกกลุ่ม"
 
-#: site/dashboard/dashboard.php:276
+#: site/dashboard/dashboard.php:297
 msgid "Group Details"
 msgstr "รายละเอียดกลุ่ม"
 
-#: site/dashboard/dashboard.php:277
+#: site/dashboard/dashboard.php:298
+msgid "Group Communication"
+msgstr "การสื่อสารกลุ่ม"
+
+#: site/dashboard/dashboard.php:299
+msgid "Subscribers"
+msgstr "สมาชิก"
+
+#: site/dashboard/dashboard.php:300
+msgid "Has joined a group"
+msgstr "ได้เข้าร่วมกลุ่ม"
+
+#: site/dashboard/dashboard.php:301
+msgid "Emailed on"
+msgstr "ส่งทางอีเมลเมื่อ"
+
+#: site/dashboard/dashboard.php:302
+msgid "Send Email to Subscribers"
+msgstr "ส่งอีเมลถึงผู้สมัครสมาชิก"
+
+#: site/dashboard/dashboard.php:303
 msgid "Mark Completed"
 msgstr "ทำเครื่องหมายว่าเสร็จแล้ว"
 
-#: site/dashboard/dashboard.php:278
+#: site/dashboard/dashboard.php:304
+msgid "Mark Uncompleted"
+msgstr "ทำเครื่องหมายว่ายังไม่เสร็จ"
+
+#: site/dashboard/dashboard.php:305
 #, php-format
 msgid "Session %d"
 msgstr "ส่วนที่ %d"
 
-#: site/dashboard/dashboard.php:279 site/pages/_strings-mobile-pwa.php:31
+#: site/dashboard/dashboard.php:306 site/pages/_strings-mobile-pwa.php:31
 msgid "Start Session"
 msgstr "เริ่มบทเรียน"
 
-#: site/dashboard/dashboard.php:280
+#: site/dashboard/dashboard.php:307
 msgid "Show details"
 msgstr "แสดงรายละเอียด"
 
-#: site/dashboard/dashboard.php:281
+#: site/dashboard/dashboard.php:308
 msgid "Edit time"
 msgstr "แก้ไขเวลา"
 
-#: site/dashboard/dashboard.php:283
+#: site/dashboard/dashboard.php:310
 msgid "Invite Friends"
 msgstr "เชิญเพื่อน ๆ"
 
-#: site/dashboard/dashboard.php:284
+#: site/dashboard/dashboard.php:311
 msgid "My Churches are Locked"
 msgstr "คริสตจักรของฉันถูกล็อก"
 
-#: site/dashboard/dashboard.php:286
+#: site/dashboard/dashboard.php:313
 msgid "Unlock the My Churches area by joining the community."
 msgstr "ปลดล็อกพื้นที่คริสตจักรของฉันโดยการเข้าร่วมชุมชน"
 
-#: site/dashboard/dashboard.php:287
+#: site/dashboard/dashboard.php:314
 msgid "Click to add your first church"
 msgstr "คลิกเพื่อเพิ่มคริสตจักรแรกของคุณ"
 
-#: site/dashboard/dashboard.php:288
+#: site/dashboard/dashboard.php:315
 msgid "Church Name"
 msgstr "ชื่อคริสตจักร"
 
-#: site/dashboard/dashboard.php:289
+#: site/dashboard/dashboard.php:316
 msgid "Number of People"
 msgstr "จำนวนคน"
 
-#: site/dashboard/dashboard.php:290
+#: site/dashboard/dashboard.php:317
 msgid "Church Location"
 msgstr "ที่ตั้งคริสตจักร"
 
-#: site/dashboard/dashboard.php:291
+#: site/dashboard/dashboard.php:318
 msgid "Parent Church"
 msgstr "คริสตจักรแม่"
 
-#: site/dashboard/dashboard.php:292 site/dashboard/wizard.php:309
+#: site/dashboard/dashboard.php:319 site/dashboard/wizard.php:356
 msgid "Start Date"
 msgstr "วันที่เริ่มต้น"
 
-#: site/dashboard/dashboard.php:293
+#: site/dashboard/dashboard.php:320
 msgid "Mark Active"
 msgstr "ทำเครื่องหมายว่าใช้งานได้"
 
-#: site/dashboard/dashboard.php:294
+#: site/dashboard/dashboard.php:321
 msgid "Mark Inactive"
 msgstr "ทำเครื่องหมายว่าไม่ได้ใช้งาน"
 
-#: site/dashboard/dashboard.php:295
+#: site/dashboard/dashboard.php:322
 msgid "Church"
 msgstr "คริสตจักร"
 
-#: site/dashboard/dashboard.php:296
+#: site/dashboard/dashboard.php:323
 msgid "cancel"
 msgstr "ยกเลิก"
 
-#: site/dashboard/dashboard.php:297 utilities/apis/cta-api.php:173
+#: site/dashboard/dashboard.php:324 utilities/apis/cta-api.php:173
 #: utilities/apis/cta-api.php:203 utilities/apis/cta-api.php:323
 #: utilities/apis/cta-api.php:337 utilities/apis/cta-api.php:366
 msgid "Congratulations!"
 msgstr "ยินดีด้วย!"
 
-#: site/dashboard/dashboard.php:298
+#: site/dashboard/dashboard.php:325
 msgid "You have requested a coach"
 msgstr "คุณร้องขอผู้ฝึกสอน"
 
-#: site/dashboard/dashboard.php:299
+#: site/dashboard/dashboard.php:326
 msgid "You have joined a training"
 msgstr "คุณเข้าร่วมการฝึกอบรม"
 
-#: site/dashboard/dashboard.php:300
+#: site/dashboard/dashboard.php:327
 msgid "You have set your profile"
 msgstr "คุณตั้งค่าโปรไฟล์ของคุณแล้ว"
 
-#: site/dashboard/dashboard.php:301
+#: site/dashboard/dashboard.php:328
 #, php-format
 msgctxt "3-month plan unlocked"
 msgid "%s unlocked"
 msgstr "%s ปลดล็อกแล้ว"
 
-#: site/dashboard/dashboard.php:301 utilities/apis/cta-api.php:322
+#: site/dashboard/dashboard.php:328 utilities/apis/cta-api.php:322
 msgid "3 month plan"
 msgstr "แผน 3 เดือน"
 
-#: site/dashboard/dashboard.php:302
+#: site/dashboard/dashboard.php:329
 msgid "You have joined the community"
 msgstr "คุณเข้าร่วมชุมชนแล้ว"
 
-#: site/dashboard/dashboard.php:304 site/dashboard/wizard.php:210
+#: site/dashboard/dashboard.php:331 site/dashboard/wizard.php:218
 #: site/pages/privacy-policy.php:110
 msgid ""
 "A user’s real name or nickname is requested to improve the personal quality "
@@ -4784,20 +4867,20 @@ msgstr ""
 "ขอให้ผู้ใช้ระบุชื่อจริงหรือชื่อเล่นเพื่อปรับปรุงคุณภาพส่วนบุคคลของไซต์และการสื่อสาร "
 "รวมถึงเพื่อการร้องขอการบริการลูกค้าและการฝึกอบรม"
 
-#: site/dashboard/dashboard.php:305 site/pages/privacy-policy.php:116
+#: site/dashboard/dashboard.php:332 site/pages/privacy-policy.php:116
 msgid ""
 "A user’s email address is required to establish an account and is used for "
 "transactional communication as part of site operation."
 msgstr "จำเป็นต้องมีที่อยู่อีเมลของผู้ใช้เพื่อสร้างบัญชีและใช้สำหรับการสื่อสารธุรกรรมเป็นส่วนหนึ่งของการดำเนินงานไซต์"
 
-#: site/dashboard/dashboard.php:306 site/dashboard/wizard.php:211
+#: site/dashboard/dashboard.php:333 site/dashboard/wizard.php:219
 #: site/pages/privacy-policy.php:119
 msgid ""
 "A user’s phone number is collected and stored for supporting the free "
 "coaching service."
 msgstr "เบอร์โทรศัพท์ของผู้ใช้จะถูกเก็บรวบรวมและจัดเก็บไว้เพื่อสนับสนุนบริการให้คำปรึกษาฟรี"
 
-#: site/dashboard/dashboard.php:307 site/dashboard/wizard.php:212
+#: site/dashboard/dashboard.php:334 site/dashboard/wizard.php:220
 #: site/pages/privacy-policy.php:122
 msgid ""
 "A user’s city is requested to personalize site resources and communication, "
@@ -4806,7 +4889,7 @@ msgstr ""
 "ผู้ใช้จะได้รับการร้องขอให้ปรับแต่งแหล่งข้อมูลแหล่งข้อมูลและการสื่อสารของไซต์ "
 "และเชื่อมต่อผู้ใช้กับแหล่งข้อมูลการฝึกอบรมและการบริการลูกค้าที่เหมาะสม"
 
-#: site/dashboard/dashboard.php:308 site/dashboard/wizard.php:240
+#: site/dashboard/dashboard.php:335 site/dashboard/wizard.php:248
 #: site/pages/privacy-policy.php:113
 msgid ""
 "A user’s language preference is stored to support proper site and "
@@ -4816,127 +4899,193 @@ msgstr ""
 "การตั้งค่าภาษาของผู้ใช้จะถูกบันทึกไว้เพื่อรองรับการทำงานของไซต์และการสื่อสารที่เหมาะสม "
 "และเพื่อช่วยให้เราเชื่อมต่อผู้ใช้กับการฝึกอบรมและแหล่งข้อมูลที่เหมาะสม"
 
-#: site/dashboard/dashboard.php:309 site/dashboard/wizard.php:334
-msgid "Join key"
-msgstr "ปุ่มเข้าร่วม"
+#: site/dashboard/dashboard.php:336 site/dashboard/wizard.php:388
+msgid "Join Code"
+msgstr "เข้าร่วมโค้ด"
 
-#: site/dashboard/dashboard.php:310 site/pages/checkin.php:91
-#: site/pages/friend-invite.php:79 site/pages/plan-invite.php:78
-#: site/pages/plan-invite.php:174
+#: site/dashboard/dashboard.php:337 site/dashboard/wizard.php:322
+#: site/pages/checkin.php:91 site/pages/friend-invite.php:79
+#: site/pages/plan-invite.php:78 site/pages/plan-invite.php:174
 msgid "Not a recognized code. Please check the number."
 msgstr "รหัสไม่ได้รับการยอมรับ กรุณาตรวจสอบหมายเลข"
 
-#: site/dashboard/dashboard.php:311
+#: site/dashboard/dashboard.php:338
 msgid "You are not authorized to access this page"
 msgstr "คุณไม่มีสิทธิเข้าถึงหน้านี้"
 
-#: site/dashboard/dashboard.php:312
+#: site/dashboard/dashboard.php:339
 msgid "There has been an error with your request"
 msgstr "มีข้อผิดพลาดเกิดขึ้นกับคำขอของคุณ"
 
-#: site/dashboard/dashboard.php:313
+#: site/dashboard/dashboard.php:340
 msgid ""
 "Thank you for your coaching request. Our team will be working to connect you "
 "with an available coach in your language and region."
 msgstr ""
 "ขอขอบคุณสำหรับคำขอการฝึกสอนของคุณ ทีมงานของเราจะติดต่อคุณเพื่อฝึกสอนในภาษาและภูมิภาคของคุณ"
 
-#: site/dashboard/dashboard.php:314
+#: site/dashboard/dashboard.php:341
 msgid ""
 "Please watch for communication from your coach within the communication "
 "preference you indicated."
 msgstr "โปรดดูการสื่อสารจากผู้สอนของคุณภายในช่องการตั้งค่าการสื่อสารที่คุณระบุไว้"
 
-#: site/dashboard/dashboard.php:315
+#: site/dashboard/dashboard.php:342
+msgid "We apologize for the delay"
+msgstr "เราขออภัยในความล่าช้า"
+
+#: site/dashboard/dashboard.php:343
+msgid "Message"
+msgstr "ข้อความ"
+
+#: site/dashboard/dashboard.php:344
+msgid ""
+"If you have any queries or need help, please enter a message below and we "
+"will get back to you as soon as possible."
+msgstr ""
+"หากคุณมีคำถามหรือต้องการความช่วยเหลือ โปรดกรอกข้อความด้านล่าง และเราจะติดต่อกลับโดยเร็วที่สุด"
+
+#: site/dashboard/dashboard.php:345
+msgid "Send Message"
+msgstr "ส่งข้อความ"
+
+#: site/dashboard/dashboard.php:346
+msgid "There was an error sending your message. Please try again later."
+msgstr "เกิดข้อผิดพลาดในการส่งข้อความของคุณ กรุณาลองอีกครั้งในภายหลัง"
+
+#: site/dashboard/dashboard.php:347
+msgid "Message sent successfully"
+msgstr "ข้อความถูกส่งเรียบร้อยแล้ว"
+
+#: site/dashboard/dashboard.php:348
 msgid "100 Hour Map"
 msgstr "แผนที่ 100 ชั่วโมง"
 
-#: site/dashboard/dashboard.php:316
+#: site/dashboard/dashboard.php:349
 msgid "Trainee vision map"
 msgstr "แผนที่วิสัยทัศน์ของผู้รับการฝึกอบรม"
 
-#: site/dashboard/dashboard.php:317
+#: site/dashboard/dashboard.php:350
 msgid "Simple church vision map"
 msgstr "แผนที่วิสัยทัศน์คริสตจักรแบบง่าย"
 
-#: site/dashboard/dashboard.php:318
+#: site/dashboard/dashboard.php:351
 msgid "Missing answer"
 msgstr "คำตอบที่หายไป"
 
-#: site/dashboard/dashboard.php:319 site/dashboard/wizard.php:193
-#: site/dashboard/wizard.php:247 site/dashboard/wizard.php:264
-#: site/dashboard/wizard.php:271
+#: site/dashboard/dashboard.php:352 site/dashboard/wizard.php:201
+#: site/dashboard/wizard.php:263 site/dashboard/wizard.php:306
+#: site/dashboard/wizard.php:313 site/dashboard/wizard.php:377
 msgid "Something went wrong"
 msgstr "มีบางอย่างผิดพลาดเกิดขึ้น"
 
-#: site/dashboard/dashboard.php:320 site/dashboard/wizard.php:283
+#: site/dashboard/dashboard.php:353 site/dashboard/wizard.php:330
 #: site/pages/_strings-mobile-pwa.php:10
 msgid "Yes"
 msgstr "ใช่"
 
-#: site/dashboard/dashboard.php:321 site/dashboard/wizard.php:284
+#: site/dashboard/dashboard.php:354 site/dashboard/wizard.php:331
 #: site/pages/_strings-mobile-pwa.php:11
 msgid "No"
 msgstr "ไม่ใช่"
 
-#: site/dashboard/dashboard.php:322
+#: site/dashboard/dashboard.php:355
 msgid "No date"
 msgstr "ไม่มีวันที่"
 
-#: site/dashboard/dashboard.php:323 site/dashboard/wizard.php:219
-#: zume-training-system.php:405
+#: site/dashboard/dashboard.php:356 site/dashboard/wizard.php:227
+#: zume-training-system.php:564
 msgid "Whatsapp"
 msgstr "วอทส์แอพพ์"
 
-#: site/dashboard/dashboard.php:324 site/dashboard/wizard.php:220
-#: zume-training-system.php:406
+#: site/dashboard/dashboard.php:357 site/dashboard/wizard.php:228
+#: zume-training-system.php:565
 msgid "Signal"
 msgstr "สัญญาณ"
 
-#: site/dashboard/dashboard.php:325 site/dashboard/wizard.php:221
-#: zume-training-system.php:407
+#: site/dashboard/dashboard.php:358 site/dashboard/wizard.php:229
+#: zume-training-system.php:566
 msgid "Telegram"
 msgstr "โทรเลข"
 
-#: site/dashboard/dashboard.php:326 site/dashboard/wizard.php:222
+#: site/dashboard/dashboard.php:359 site/dashboard/wizard.php:230
 msgid "Facebook Messenger"
 msgstr "เฟสบุ๊ค เมสเซนเจอร์"
 
-#: site/dashboard/dashboard.php:327 site/dashboard/wizard.php:318
+#: site/dashboard/dashboard.php:360 site/dashboard/wizard.php:365
 msgid "Clear"
 msgstr "ชัดเจน"
 
-#: site/dashboard/dashboard.php:328 site/dashboard/wizard.php:319
+#: site/dashboard/dashboard.php:361 site/dashboard/wizard.php:366
 msgid "Today"
 msgstr "วันนี้"
 
-#: site/dashboard/dashboard.php:332
+#: site/dashboard/dashboard.php:365
 msgid "Coaching Portal"
 msgstr "ประตูเข้าสู่ผู้ฝึกสอน"
 
-#: site/dashboard/dashboard.php:333
+#: site/dashboard/dashboard.php:366
 msgid "Visibility"
 msgstr "การมองเห็น"
 
-#: site/dashboard/dashboard.php:334 site/dashboard/dashboard.php:335
+#: site/dashboard/dashboard.php:367 site/dashboard/dashboard.php:368
 #, php-format
 msgctxt "public/private group"
 msgid "%s group"
 msgstr "กลุ่ม %s"
 
-#: site/dashboard/dashboard.php:334
+#: site/dashboard/dashboard.php:367 site/pages/plans.php:112
 msgid "Private"
 msgstr "ส่วนตัว"
 
-#: site/dashboard/dashboard.php:335
+#: site/dashboard/dashboard.php:368 site/pages/plans.php:112
 msgid "Public"
 msgstr "สาธารณะ"
 
-#: site/dashboard/dashboard.php:336
-msgid "Local Vision Map"
-msgstr ""
+#: site/dashboard/dashboard.php:370 site/dashboard/wizard.php:281
+#: site/dashboard/wizard.php:373 site/pages/join-a-training-public.php:171
+msgid "Notify me about future trainings"
+msgstr "แจ้งเตือนฉันเกี่ยวกับการฝึกอบรมในอนาคต"
 
-#: site/dashboard/dashboard.php:342
+#: site/dashboard/dashboard.php:371
+msgid "Preferences"
+msgstr "ตั้งค่า"
+
+#: site/dashboard/dashboard.php:372
+msgid "Your progress is always visible to the group leader."
+msgstr "ความคืบหน้าของคุณจะปรากฏให้ผู้นำกลุ่มเห็นเสมอ"
+
+#: site/dashboard/dashboard.php:373
+msgid ""
+"Contact information is currently hidden from other participants in trainings."
+msgstr "ข้อมูลการติดต่อถูกซ่อนไว้จากผู้เข้าร่วมการฝึกอบรมอื่น ๆ ในขณะนี้"
+
+#: site/dashboard/dashboard.php:374
+msgid "Progress is currently hidden from other participants in trainings."
+msgstr "ความคืบหน้าปัจจุบันถูกซ่อนจากผู้เข้าร่วมคนอื่น ๆ ในการฝึกอบรม"
+
+#: site/dashboard/dashboard.php:375
+msgid "Local Vision Map"
+msgstr "แผนที่วิสัยทัศน์ท้องถิ่น"
+
+#: site/dashboard/dashboard.php:376
+msgid ""
+"You are making this group public. It will show up on the public list of "
+"trainings. Please confirm you are ready to make it public."
+msgstr ""
+"คุณกำลังทำให้กลุ่มนี้เป็นสาธารณะ กลุ่มนี้จะปรากฏในรายการสาธารณะของการฝึกอบรม "
+"โปรดยืนยันว่าคุณพร้อมที่จะทำให้เป็นสาธารณะ"
+
+#: site/dashboard/dashboard.php:377
+msgid "Confirm"
+msgstr "ยืนยัน"
+
+#: site/dashboard/dashboard.php:378
+#, php-format
+msgid "You can message again in %d hours"
+msgstr "คุณสามารถส่งข้อความได้อีกครั้งใน %d ชั่วโมง"
+
+#: site/dashboard/dashboard.php:384
 msgid ""
 "I will share My Story [Testimony] and God‘s Story [the Gospel] with the "
 "following individuals:"
@@ -4944,43 +5093,43 @@ msgstr ""
 "ฉันจะแบ่งปันเรื่องราวของฉัน \\ [คำพยาน] และเรื่องราวของพระเจ้า \\ [พระกิตติคุณ] "
 "กับบุคคลต่อไปนี้:"
 
-#: site/dashboard/dashboard.php:343
+#: site/dashboard/dashboard.php:385
 msgid ""
 "I will invite the following people to begin an Accountability Group with me:"
 msgstr "ฉันจะเชิญผู้คนต่อไปนี้ให้เริ่มกลุ่มความรับผิดชอบร่วมกับฉัน:"
 
-#: site/dashboard/dashboard.php:344
+#: site/dashboard/dashboard.php:386
 msgid ""
 "I will challenge the following people to begin their own Accountability "
 "Groups and train them how to do it:"
 msgstr "ฉันจะท้าทายบุคคลต่อไปนี้ให้เริ่มกลุ่มความรับผิดชอบของตนเองและฝึกอบรมพวกเขาวิธีการทำให้เขา:"
 
-#: site/dashboard/dashboard.php:345
+#: site/dashboard/dashboard.php:387
 msgid "I will invite the following people to begin a 3/3 Group with me:"
 msgstr "ฉันจะเชิญผู้คนต่อไปนี้เพื่อเริ่มกลุ่ม 3/3 กับฉัน:"
 
-#: site/dashboard/dashboard.php:346
+#: site/dashboard/dashboard.php:388
 msgid ""
 "I will challenge the following people to begin their own 3/3 Groups and "
 "train them how to do it:"
 msgstr "ฉันจะท้าทายบุคคลต่อไปนี้ให้เริ่มกลุ่ม 3/3 ของตนเองและฝึกอบรมวิธีการทำให้พวกเขา:"
 
-#: site/dashboard/dashboard.php:347
+#: site/dashboard/dashboard.php:389
 msgid ""
 "I will invite the following people to participate in a 3/3 Hope or Discover "
 "Group:"
 msgstr "ฉันจะเชิญคนต่อไปนี้เข้าร่วมกลุ่ม ความหวัง หรือ ค้นหา 3/3:"
 
-#: site/dashboard/dashboard.php:348
+#: site/dashboard/dashboard.php:390
 msgid ""
 "I will invite the following people to participate in Prayer Walking with me:"
 msgstr "ฉันจะเชิญบุคคลต่อไปนี้เข้าร่วมการเดินอธิษฐานร่วมกับฉัน:"
 
-#: site/dashboard/dashboard.php:349
+#: site/dashboard/dashboard.php:391
 msgid "I will Prayer Walk once every [days / weeks / months]."
 msgstr "ฉันจะเดินอธิษฐานครั้งหนึ่งในทุก [วัน / สัปดาห์ / เดือน]"
 
-#: site/dashboard/dashboard.php:350
+#: site/dashboard/dashboard.php:392
 msgid ""
 "I will equip the following people to share their story and God‘s Story and "
 "make a List of 100 of the people in their relational network:"
@@ -4988,29 +5137,29 @@ msgstr ""
 "ฉันจะเตรียมคนต่อไปนี้เพื่อแบ่งปันเรื่องราวของพวกเขาและเรื่องราวของพระเจ้า และจัดทำรายชื่อ 100 "
 "คนจากเครือข่ายความสัมพันธ์ของพวกเขา:"
 
-#: site/dashboard/dashboard.php:351
+#: site/dashboard/dashboard.php:393
 msgid ""
 "I will challenge the following people to use the Prayer Cycle tool on a "
 "periodic basis:"
 msgstr "ฉันจะท้าคนต่อไปนี้ให้ใช้เครื่องมือ Prayer Cycle เป็นระยะ ๆ:"
 
-#: site/dashboard/dashboard.php:352
+#: site/dashboard/dashboard.php:394
 msgid "I will use the Prayer Cycle tool once every [days / weeks / months]."
 msgstr "ฉันจะใช้เครื่องมือหัวข้ออธิษฐานหนึ่งครั้งในทุก ๆ [วัน / สัปดาห์ / เดือน]"
 
-#: site/dashboard/dashboard.php:353
+#: site/dashboard/dashboard.php:395
 msgid ""
 "I will invite the following people to be part of a Leadership Cell that I "
 "will lead:"
 msgstr "ฉันจะเชิญบุคคลต่อไปนี้มาเป็นส่วนหนึ่งของกลุ่มผู้นำที่ฉันจะนำ:"
 
-#: site/dashboard/dashboard.php:354
+#: site/dashboard/dashboard.php:396
 msgid ""
 "I will encourage the following people to go through this Zúme Training "
 "course:"
 msgstr "ฉันจะสนับสนุนให้บุคคลต่อไปนี้เข้าร่วมหลักสูตรการฝึกอบรม Zúme:"
 
-#: site/dashboard/dashboard.php:355
+#: site/dashboard/dashboard.php:397
 msgid "Other commitments:"
 msgstr "ภาระผูกพันอื่น ๆ:"
 
@@ -5018,52 +5167,52 @@ msgstr "ภาระผูกพันอื่น ๆ:"
 msgid "Wizard"
 msgstr "โปรแกมติดตั้ง"
 
-#: site/dashboard/wizard.php:171
+#: site/dashboard/wizard.php:179
 msgctxt ""
 "This is the title for the screen where the application wizard has not been "
 "found"
 msgid "Bad Wizard"
 msgstr "โปรแกมติดตั้งที่ไม่ดี"
 
-#: site/dashboard/wizard.php:172
+#: site/dashboard/wizard.php:180
 msgctxt ""
 "This is some humourous text using a play on words as the application wizard "
 "sounds like the sorcerer type of wizard."
 msgid "You have fallen in with some very bad wizards!"
 msgstr "คุณได้พบกับโปรแกรมติดตั้งที่ไม่ดีมากมายแล้ว!"
 
-#: site/dashboard/wizard.php:173
+#: site/dashboard/wizard.php:181
 msgid "Wizard is already completed"
 msgstr "โปรแกรมติดตั้งเสร็จสมบูรณ์แล้ว"
 
-#: site/dashboard/wizard.php:174
+#: site/dashboard/wizard.php:182
 msgid "Get back home"
 msgstr "กลับบ้าน"
 
-#: site/dashboard/wizard.php:175 site/login/login-template.php:421
+#: site/dashboard/wizard.php:183 site/login/login-template.php:421
 msgid "Back"
 msgstr "กลับ"
 
-#: site/dashboard/wizard.php:176 site/dashboard/wizard.php:195
-#: site/dashboard/wizard.php:208 site/dashboard/wizard.php:231
-#: site/dashboard/wizard.php:255 site/dashboard/wizard.php:323
-#: site/pages/_strings-mobile-pwa.php:35
+#: site/dashboard/wizard.php:184 site/dashboard/wizard.php:203
+#: site/dashboard/wizard.php:216 site/dashboard/wizard.php:239
+#: site/dashboard/wizard.php:271 site/dashboard/wizard.php:294
+#: site/dashboard/wizard.php:370 site/pages/_strings-mobile-pwa.php:35
 msgid "Next"
 msgstr "ต่อไป"
 
-#: site/dashboard/wizard.php:177 site/dashboard/wizard.php:312
+#: site/dashboard/wizard.php:185 site/dashboard/wizard.php:359
 msgid "Skip"
 msgstr "ข้าม"
 
-#: site/dashboard/wizard.php:178 site/pages/_strings-mobile-pwa.php:36
+#: site/dashboard/wizard.php:186 site/pages/_strings-mobile-pwa.php:36
 msgid "Finish"
 msgstr "เสร็จ"
 
-#: site/dashboard/wizard.php:183
+#: site/dashboard/wizard.php:191
 msgid "Zúme Community"
 msgstr "ชุมชนซูเม"
 
-#: site/dashboard/wizard.php:184
+#: site/dashboard/wizard.php:192
 msgid ""
 "Zúme is a community of practice and encouragement for those who want to see "
 "disciple making movements. The Zúme vision is to see one trainee and two "
@@ -5074,7 +5223,7 @@ msgstr ""
 "วิสัยทัศน์ ของ Zúme คือการเห็นผู้เข้ารับการฝึก 1 คนและคริสตจักรธรรมดา 2 แห่งต่อประชากร "
 "5,000 คนในสหรัฐอเมริกาและ 50,000 คนทั่วโลก"
 
-#: site/dashboard/wizard.php:186
+#: site/dashboard/wizard.php:194
 msgid ""
 "Connect with others like you who want to see a disciple making movement in "
 "their area. Share your experience with others, and learn from others who are "
@@ -5083,11 +5232,11 @@ msgstr ""
 "เชื่อมต่อกับคนอื่น ๆ ที่เป็นเหมือนคุณซึ่งต้องการเห็นความเคลื่อนไหวในการสร้างสาวกในพื้นที่ของตน "
 "แบ่งปันประสบการณ์ของคุณกับคนอื่น ๆ และเรียนรู้จากคนอื่น ๆ ที่กำลังค้นพบสิ่งใหม่ ๆ"
 
-#: site/dashboard/wizard.php:187
+#: site/dashboard/wizard.php:195
 msgid "Encouragement"
 msgstr "กำลังใจ"
 
-#: site/dashboard/wizard.php:188
+#: site/dashboard/wizard.php:196
 msgid ""
 "Hear news about disciple making movements in your region and your wider "
 "country, get reports of  progress, and get connected to online and face-to-"
@@ -5096,11 +5245,11 @@ msgstr ""
 "รับฟังข่าวสารเกี่ยวกับความเคลื่อนไหวของการสร้างสาวกในภูมิภาคของคุณและประเทศของคุณ "
 "รับรายงานความคืบหน้า และเชื่อมต่อกับการรวมตัวทางออนไลน์และแบบพบหน้ากัน"
 
-#: site/dashboard/wizard.php:189
+#: site/dashboard/wizard.php:197
 msgid "Free Tools"
 msgstr "เครื่องมือฟรี"
 
-#: site/dashboard/wizard.php:190
+#: site/dashboard/wizard.php:198
 msgid ""
 "Access free tools for tracking disciple-making and church planting in your "
 "area. Get a map to cast vision for saturating your city with multiplying "
@@ -5109,337 +5258,486 @@ msgstr ""
 "เข้าถึงเครื่องมือฟรีสำหรับติดตามการสร้างสาวกและการปลูกคริสตจักรในพื้นที่ของคุณ "
 "รับแผนที่เพื่อแสดงวิสัยทัศน์ในการทำให้เมืองของคุณเต็มไปด้วยการทวีคูณสาวกและคริสตจักร"
 
-#: site/dashboard/wizard.php:191
+#: site/dashboard/wizard.php:199
 msgid "Join for Free"
 msgstr "เข้าร่วมฟรี"
 
-#: site/dashboard/wizard.php:192
+#: site/dashboard/wizard.php:200
 msgid "Successfully joined community"
 msgstr "เข้าร่วมชุมชนสำเร็จแล้ว"
 
-#: site/dashboard/wizard.php:196 site/dashboard/wizard.php:238
-#: site/dashboard/wizard.php:244 site/dashboard/wizard.php:261
-#: site/dashboard/wizard.php:268
+#: site/dashboard/wizard.php:204 site/dashboard/wizard.php:246
+#: site/dashboard/wizard.php:260 site/dashboard/wizard.php:303
+#: site/dashboard/wizard.php:310 site/dashboard/wizard.php:374
 msgid "Please wait while we connect you"
 msgstr "กรุณารอสักครู่ขณะที่เรากำลังเชื่อมต่อคุณ"
 
-#: site/dashboard/wizard.php:199
+#: site/dashboard/wizard.php:207
 msgid "Complete your profile"
 msgstr "กรอกข้อมูลโปรไฟล์ของคุณให้ครบถ้วน"
 
-#: site/dashboard/wizard.php:203
+#: site/dashboard/wizard.php:211
 msgid "What is your name?"
 msgstr "คุณชื่ออะไร"
 
-#: site/dashboard/wizard.php:204
+#: site/dashboard/wizard.php:212
 msgid "What is your phone number?"
 msgstr "เบอร์โทรศัพท์ของคุณคืออะไร"
 
-#: site/dashboard/wizard.php:205
+#: site/dashboard/wizard.php:213
 msgid "Phone number can only contain numbers, brackets and hyphens"
 msgstr "หมายเลขโทรศัพท์สามารถมีได้เฉพาะตัวเลข วงเล็บ และเครื่องหมายขีดกลางเท่านั้น"
 
-#: site/dashboard/wizard.php:206
+#: site/dashboard/wizard.php:214
 msgid "What city do you live in?"
 msgstr "คุณอาศัยอยู่เมืองไหน"
 
-#: site/dashboard/wizard.php:207
+#: site/dashboard/wizard.php:215
 msgid "This is your approximate location."
 msgstr "นี่คือตำแหน่งโดยประมาณของคุณ"
 
-#: site/dashboard/wizard.php:209 site/parts/footer.php:57
+#: site/dashboard/wizard.php:217 site/dashboard/wizard.php:272
+#: site/parts/footer.php:57
 msgid "Privacy Policy"
 msgstr "นโยบายความเป็นส่วนตัว"
 
-#: site/dashboard/wizard.php:215
+#: site/dashboard/wizard.php:223
 msgid "What is your contact preference?"
 msgstr "คุณต้องการใช้ชื่อในการติดต่อว่าอะไร"
 
-#: site/dashboard/wizard.php:217 zume-training-system.php:403
+#: site/dashboard/wizard.php:225 zume-training-system.php:562
 msgid "Text"
 msgstr "ข้อความ"
 
-#: site/dashboard/wizard.php:223
+#: site/dashboard/wizard.php:231
 msgid "What is your language preference?"
 msgstr "คุณชอบภาษาอะไร"
 
-#: site/dashboard/wizard.php:225
+#: site/dashboard/wizard.php:233
 msgid "How can we serve you?"
 msgstr "เราจะให้บริการคุณได้อย่างไร"
 
-#: site/dashboard/wizard.php:227
+#: site/dashboard/wizard.php:235
 msgid "Technical Assistance"
 msgstr "ความช่วยเหลือด้านเทคนิค"
 
-#: site/dashboard/wizard.php:228
+#: site/dashboard/wizard.php:236
 msgid "Question about implementing the training"
 msgstr "คำถามเกี่ยวกับการดำเนินการฝึกอบรม"
 
-#: site/dashboard/wizard.php:229
+#: site/dashboard/wizard.php:237
 msgid "Question about the content"
 msgstr "คำถามเกี่ยวกับเนื้อหา"
 
-#: site/dashboard/wizard.php:230
+#: site/dashboard/wizard.php:238
 msgid "Help with what to do after starting a group"
 msgstr "ความช่วยเหลือในสิ่งที่ทำหลังจากเริ่มกลุ่ม"
 
-#: site/dashboard/wizard.php:232
+#: site/dashboard/wizard.php:240
 msgid "Please give a response to this question"
 msgstr "กรุณาตอบคำถามนี้"
 
-#: site/dashboard/wizard.php:233
+#: site/dashboard/wizard.php:241
 msgid ""
 "Request Submitted, we will do our best to connect you with a coach near you."
 msgstr "ส่งคำร้องขอแล้ว เราจะพยายามอย่างเต็มที่เพื่อเชื่อมต่อคุณกับผู้สอนที่อยู่ใกล้คุณ"
 
-#: site/dashboard/wizard.php:234
+#: site/dashboard/wizard.php:242
 msgid "Sorry. We were unable to submit your request. Please try again later."
 msgstr "ขออภัย เราไม่สามารถส่งคำขอของคุณได้ โปรดลองอีกครั้งในภายหลัง"
 
-#: site/dashboard/wizard.php:235
+#: site/dashboard/wizard.php:243
 msgid "You have already requested a coach"
 msgstr "คุณได้ร้องขอผู้ฝึกสอนไปแล้ว"
 
-#: site/dashboard/wizard.php:236
+#: site/dashboard/wizard.php:244
 msgid "Error connecting with a coach"
 msgstr "เกิดข้อผิดพลาดในการเชื่อมต่อกับผู้ฝึกสอน"
 
-#: site/dashboard/wizard.php:237
+#: site/dashboard/wizard.php:245
 msgid "Connecting you to a Coach"
 msgstr "กำลังเชื่อมต่อคุณกับผู้ฝึกสอน"
 
-#: site/dashboard/wizard.php:243
+#: site/dashboard/wizard.php:249 site/pages/get-a-coach.php:93
+msgid ""
+"Every athletic sport, especially at higher levels, uses coaching. Even "
+"olympic athletes have coaches, and often more than one. Disciple making can "
+"equally benefit from coaching by those who have more experience."
+msgstr ""
+"กีฬาทุกประเภท โดยเฉพาะกีฬาระดับสูง ต้องใช้ผู้ฝึกสอน แม้แต่นักกีฬาโอลิมปิกก็ยังมีผู้ฝึกสอน "
+"และมักจะมีมากกว่าหนึ่งคน การสร้างสาวกก็ได้รับประโยชน์จากผู้ฝึกสอนที่มีประสบการณ์มากกว่าเช่นกัน"
+
+#: site/dashboard/wizard.php:250
+msgid ""
+"In order to connect you to an appropriate coach, we need to know a little "
+"more about you."
+msgstr ""
+"เพื่อที่จะเชื่อมต่อคุณกับโค้ชที่เหมาะสม เราจำเป็นต้องทราบข้อมูลเพิ่มเติมเกี่ยวกับคุณเล็กน้อย"
+
+#: site/dashboard/wizard.php:251 site/pages/get-a-coach.php:96
+msgid "No Cost"
+msgstr "ไม่มีค่าใช้จ่าย"
+
+#: site/dashboard/wizard.php:252 site/pages/get-a-coach.php:103
+msgid "Localized"
+msgstr "ระบุตำแหน่ง"
+
+#: site/dashboard/wizard.php:253 site/pages/get-a-coach.php:110
+msgid "Experienced"
+msgstr "มีประสบการณ์"
+
+#: site/dashboard/wizard.php:254 site/pages/get-a-coach.php:99
+msgid ""
+"Our network of volunteer coaches are not paid, but are driven rather by a "
+"passion for loving God, loving others, and obeying the Great Commission."
+msgstr ""
+"เครือข่ายผู้ฝึกสอนอาสาสมัครของเราไม่ได้รับค่าจ้าง "
+"แต่มีแรงขับเคลื่อนจากความหลงใหลในการรักพระเจ้า รักคนอื่น ๆ และเชื่อฟังพระมหาบัญชา"
+
+#: site/dashboard/wizard.php:255 site/pages/get-a-coach.php:106
+msgid ""
+"Our connection team attempts to connect you with a coach who speaks your "
+"language and is geographically as close as possible."
+msgstr "ทีมเชื่อมต่อของเราพยายามเชื่อมต่อคุณกับผู้ฝึกสอนที่พูดภาษาของคุณและอยู่ใกล้ชิดทางภูมิศาสตร์มากที่สุด"
+
+#: site/dashboard/wizard.php:256 site/pages/get-a-coach.php:30
+#: site/pages/get-a-coach.php:113
+msgid ""
+"All our coaches are trained and practicing the concepts and tools found in "
+"Zûme. All our coaches can help you over barriers and make steps in your "
+"journey."
+msgstr ""
+"ผู้ฝึกสอนของเราทุกคนได้รับการฝึกอบรมและฝึกฝนแนวคิดและเครื่องมือต่าง ๆ ที่พบใน Zûme "
+"ผู้สอนของเราทุกคนสามารถช่วยคุณเอาชนะอุปสรรคและก้าวเดินในเส้นทางของ คุณได้"
+
+#: site/dashboard/wizard.php:259
 msgid "Joining Plan"
 msgstr "แผนการเข้าร่วม"
 
-#: site/dashboard/wizard.php:245 site/dashboard/wizard.php:335
+#: site/dashboard/wizard.php:261 site/dashboard/wizard.php:389
 msgid "The training link is broken. Please try again."
 msgstr "ลิงก์การฝึกอบรมเสีย กรุณาลองใหม่อีกครั้ง"
 
-#: site/dashboard/wizard.php:246
+#: site/dashboard/wizard.php:262
 #, php-format
 msgid "Successfully joined training %s"
 msgstr "เข้าร่วมการฝึกอบรมสำเร็จ %s"
 
-#: site/dashboard/wizard.php:249 site/pages/join-a-training-public.php:106
+#: site/dashboard/wizard.php:265 site/dashboard/wizard.php:293
+#: site/pages/join-a-training-public.php:106
+#: site/pages/join-a-training-public.php:130 site/pages/plans.php:160
 msgid "Next Session Date"
 msgstr "วันที่ประชุมครั้งต่อไป"
 
-#: site/dashboard/wizard.php:251 site/pages/join-a-training-public.php:107
+#: site/dashboard/wizard.php:267 site/pages/join-a-training-public.php:107
+#: site/pages/join-a-training-public.php:131
 msgid "Start Time"
 msgstr "เวลาเริ่มต้น"
 
-#: site/dashboard/wizard.php:256
+#: site/dashboard/wizard.php:274
+msgid "Your contact information is always visible to the group leader."
+msgstr "ข้อมูลติดต่อของคุณจะปรากฏให้ผู้นำกลุ่มเห็นเสมอ"
+
+#: site/dashboard/wizard.php:275
+msgid ""
+"You are joining a private training group, where everyone can see your "
+"contact information."
+msgstr ""
+"คุณกำลังเข้าร่วมกลุ่มฝึกอบรมส่วนตัว ซึ่งทุกคนสามารถเห็นข้อมูลติดต่อของคุณได้"
+
+#: site/dashboard/wizard.php:276
+msgid ""
+"You can change your contact information visibility at any time in your "
+"profile."
+msgstr ""
+"คุณสามารถเปลี่ยนการตั้งค่าการมองเห็นข้อมูลติดต่อของคุณได้ตลอดเวลาในโปรไฟล์ของคุณ"
+
+#: site/dashboard/wizard.php:277
+msgid "We were unable to connect you with a coach. Please try again later."
+msgstr "เราไม่สามารถเชื่อมต่อคุณกับโค้ชได้ กรุณาลองใหม่อีกครั้งในภายหลัง"
+
+#: site/dashboard/wizard.php:278
 msgid "There are currently no public trainings available."
 msgstr "ยังไม่มีการฝึกอบรมทั่วไปในขณะนี้"
 
-#: site/dashboard/wizard.php:257
+#: site/dashboard/wizard.php:279 site/pages/join-a-training-public.php:160
+msgid "Would you like to be notified about future trainings?"
+msgstr "คุณต้องการรับการแจ้งเตือนเกี่ยวกับการฝึกอบรมในอนาคตหรือไม่?"
+
+#: site/dashboard/wizard.php:280 site/pages/join-a-training-public.php:161
+msgid "We will send you an email when a new training is available."
+msgstr "เราจะส่งอีเมลถึงคุณเมื่อมีการฝึกอบรมใหม่พร้อมให้บริการ"
+
+#: site/dashboard/wizard.php:282 site/pages/join-a-training-public.php:162
+msgid "You can always unsubscribe from these emails at any time."
+msgstr "คุณสามารถยกเลิกการสมัครรับอีเมลเหล่านี้ได้ตลอดเวลา"
+
+#: site/dashboard/wizard.php:283 site/pages/join-a-training-public.php:164
+msgid "Notify me"
+msgstr "แจ้งให้ฉันทราบ"
+
+#: site/dashboard/wizard.php:284
+msgid "Do you want to unsubscribe from the notification list?"
+msgstr "คุณต้องการยกเลิกการสมัครรับรายชื่อการแจ้งเตือนหรือไม่?"
+
+#: site/dashboard/wizard.php:285
+msgid "Continue"
+msgstr "ดำเนินการต่อ"
+
+#: site/dashboard/wizard.php:286 site/pages/plans.php:140
+msgid "Training Group Details"
+msgstr "รายละเอียดกลุ่มฝึกอบรม"
+
+#: site/dashboard/wizard.php:289 site/pages/plans.php:144
+msgid "Facilitator"
+msgstr "ผู้ประสานงาน"
+
+#: site/dashboard/wizard.php:291 site/pages/plans.php:164
+msgid "Time of Day"
+msgstr "เวลา"
+
+#: site/dashboard/wizard.php:292
+msgid "Zoom Link"
+msgstr "ลิงก์ Zoom"
+
+#: site/dashboard/wizard.php:295
 msgid ""
 "Please make sure that your profile is up to date, so that group leaders can "
 "contact you."
 msgstr "โปรดตรวจสอบให้แน่ใจว่าโปรไฟล์ของคุณเป็นข้อมูลล่าสุด เพื่อให้หัวหน้ากลุ่มสามารถติดต่อคุณได้"
 
-#: site/dashboard/wizard.php:260
+#: site/dashboard/wizard.php:298 site/pages/plans.php:173
+msgid "The next session is:"
+msgstr "เซสชันถัดไปคือ:"
+
+#: site/dashboard/wizard.php:299 site/pages/plans.php:177
+msgid "In this timezone:"
+msgstr "ในเขตเวลา:"
+
+#: site/dashboard/wizard.php:302
 msgid "Connecting with friend"
 msgstr "การเชื่อมต่อกับเพื่อน"
 
-#: site/dashboard/wizard.php:262
+#: site/dashboard/wizard.php:304
 msgid "The friend link is broken. Please try again."
 msgstr "ลิงก์เพื่อนเสีย กรุณาลองใหม่อีกครั้ง"
 
-#: site/dashboard/wizard.php:263
+#: site/dashboard/wizard.php:305
 #, php-format
 msgid "Successfully connected with friend %s"
 msgstr "เชื่อมต่อกับเพื่อน %s สำเร็จแล้ว"
 
-#: site/dashboard/wizard.php:267
+#: site/dashboard/wizard.php:309
 msgid "Checking in"
 msgstr "การเช็คอิน"
 
-#: site/dashboard/wizard.php:269
+#: site/dashboard/wizard.php:311
 msgid "The checkin link is broken. Please try again."
 msgstr "ลิงก์เช็คอินเสีย กรุณาลองใหม่อีกครั้ง"
 
-#: site/dashboard/wizard.php:270
+#: site/dashboard/wizard.php:312
 msgid "Successfully checked in"
 msgstr "เช็คอินสำเร็จแล้ว"
 
-#: site/dashboard/wizard.php:275
+#: site/dashboard/wizard.php:318
 msgid "Create a training group"
 msgstr "สร้างกลุ่มฝึกอบรม"
 
-#: site/dashboard/wizard.php:276
+#: site/dashboard/wizard.php:319
 msgid "Join a public training group"
 msgstr "เข้าร่วมกลุ่มฝึกอบรมสาธารณะ"
 
-#: site/dashboard/wizard.php:277
+#: site/dashboard/wizard.php:320
+msgid "Join with code"
+msgstr "เข้าร่วมด้วยรหัส"
+
+#: site/dashboard/wizard.php:321 site/pages/friend-invite.php:172
+#: site/pages/plan-invite.php:177
+msgid "Use the code your friend sent you."
+msgstr "ใช้รหัสที่เพื่อนของคุณส่งมาให้"
+
+#: site/dashboard/wizard.php:323 site/pages/checkin.php:257
+#: site/pages/friend-invite.php:177 site/pages/plan-invite.php:182
+msgid "Connect"
+msgstr "เชื่อมต่อ"
+
+#: site/dashboard/wizard.php:324
 msgid "Skip for now"
 msgstr "ข้ามไปก่อนตอนนี้"
 
-#: site/dashboard/wizard.php:278
+#: site/dashboard/wizard.php:325
 msgid "Choose your course format"
 msgstr "เลือกรูปแบบหลักสูตรของคุณ"
 
-#: site/dashboard/wizard.php:279
+#: site/dashboard/wizard.php:326
 msgid "1 hour (20 sessions)"
 msgstr "1 ชั่วโมง (20 ครั้ง)"
 
-#: site/dashboard/wizard.php:280
+#: site/dashboard/wizard.php:327
 msgid "2 hour (10 sessions)"
 msgstr "2 ชั่วโมง (10 ครั้ง)"
 
-#: site/dashboard/wizard.php:281
+#: site/dashboard/wizard.php:328
 msgid "4 hour (5 sessions)"
 msgstr "4 ชั่วโมง (5 ครั้ง)"
 
-#: site/dashboard/wizard.php:282
+#: site/dashboard/wizard.php:329
 msgid "Would you like to schedule your training?"
 msgstr "คุณต้องการกำหนดเวลาการฝึกอบรมของคุณหรือไม่?"
 
-#: site/dashboard/wizard.php:285
+#: site/dashboard/wizard.php:332
 msgid "What time of day?"
 msgstr "เวลาใดของวัน?"
 
-#: site/dashboard/wizard.php:286
+#: site/dashboard/wizard.php:333
 msgid "Morning"
 msgstr "ตอนเช้า"
 
-#: site/dashboard/wizard.php:287
+#: site/dashboard/wizard.php:334
 msgid "Afternoon"
 msgstr "ตอนบ่าย"
 
-#: site/dashboard/wizard.php:288
+#: site/dashboard/wizard.php:335
 msgid "Evening"
 msgstr "ตอนเย็น"
 
-#: site/dashboard/wizard.php:289
+#: site/dashboard/wizard.php:336
 msgid "How often will you meet?"
 msgstr "คุณจะพบกันบ่อยแค่ไหน?"
 
-#: site/dashboard/wizard.php:290
+#: site/dashboard/wizard.php:337
 msgid "Every day"
 msgstr "ทุกวัน"
 
-#: site/dashboard/wizard.php:291
+#: site/dashboard/wizard.php:338
 msgid "Once a week"
 msgstr "สัปดาห์ละครั้ง"
 
-#: site/dashboard/wizard.php:292
+#: site/dashboard/wizard.php:339
 msgid "Twice a month"
 msgstr "เดือนละสองครั้ง"
 
-#: site/dashboard/wizard.php:293
+#: site/dashboard/wizard.php:340
 msgid "Once a month"
 msgstr "เดือนละครั้ง"
 
-#: site/dashboard/wizard.php:294
+#: site/dashboard/wizard.php:341
 msgid "Other"
 msgstr "อื่น ๆ"
 
-#: site/dashboard/wizard.php:295
+#: site/dashboard/wizard.php:342
 msgid "What is the name of the training group?"
 msgstr "ชื่อกลุ่มฝึกอบรมคืออะไร?"
 
-#: site/dashboard/wizard.php:296
+#: site/dashboard/wizard.php:343
 msgid "My first training group"
 msgstr "กลุ่มฝึกอบรมครั้งแรกของฉัน"
 
-#: site/dashboard/wizard.php:297
+#: site/dashboard/wizard.php:344
 msgid "When do you plan to start?"
 msgstr "คุณวางแผนจะเริ่มต้นเมื่อไหร่?"
 
-#: site/dashboard/wizard.php:298
+#: site/dashboard/wizard.php:345
 msgid "Where do you plan to meet?"
 msgstr "คุณวางแผนจะพบกันที่ไหน?"
 
-#: site/dashboard/wizard.php:299
+#: site/dashboard/wizard.php:346
 msgid "This could be online or in person"
 msgstr "อาจเป็นแบบออนไลน์หรือแบบพบตัวก็ได้"
 
-#: site/dashboard/wizard.php:300
+#: site/dashboard/wizard.php:347
 msgid "Review Schedule"
 msgstr "ตารางการทบทวน"
 
-#: site/dashboard/wizard.php:301
+#: site/dashboard/wizard.php:348
 #, php-format
 msgctxt "1 of 10 selected"
 msgid "%1$s of %2$s selected"
 msgstr "%1$s จาก %2$s ที่เลือก"
 
-#: site/dashboard/wizard.php:302
+#: site/dashboard/wizard.php:349
 msgctxt "All 10 sessions scheduled"
 msgid "Ready"
 msgstr "พร้อม"
 
-#: site/dashboard/wizard.php:303
+#: site/dashboard/wizard.php:350
 #, php-format
 msgctxt "Too many selected: 2"
 msgid "Too many selected: %s"
 msgstr "เลือกมากเกินไป: %s"
 
-#: site/dashboard/wizard.php:304
+#: site/dashboard/wizard.php:351
 msgid "Incorrect number of sessions selected"
 msgstr "จำนวนส่วนที่เลือกไม่ถูกต้อง"
 
-#: site/dashboard/wizard.php:305 site/dashboard/wizard.php:307
-#: site/dashboard/wizard.php:309 site/dashboard/wizard.php:310
+#: site/dashboard/wizard.php:352 site/dashboard/wizard.php:354
+#: site/dashboard/wizard.php:356 site/dashboard/wizard.php:357
 #, php-format
 msgid "Set %s"
 msgstr "ตั้งค่า %s"
 
-#: site/dashboard/wizard.php:307
+#: site/dashboard/wizard.php:354
 msgid "Group Name"
 msgstr "ชื่อกลุ่ม"
 
-#: site/dashboard/wizard.php:308
+#: site/dashboard/wizard.php:355
 msgid "Group name"
 msgstr "ชื่อกลุ่ม"
 
-#: site/dashboard/wizard.php:315
+#: site/dashboard/wizard.php:362
 msgid "Date"
 msgstr "วันที่"
 
-#: site/dashboard/wizard.php:316
+#: site/dashboard/wizard.php:363
 msgid "Summary"
 msgstr "สรุป"
 
-#: site/dashboard/wizard.php:317
+#: site/dashboard/wizard.php:364
 msgid "Clear Calendar"
 msgstr "ปฏิทินที่ชัดเจน"
 
-#: site/dashboard/wizard.php:320
+#: site/dashboard/wizard.php:367
 msgid "Add"
 msgstr "เพิ่ม"
 
-#: site/dashboard/wizard.php:321
+#: site/dashboard/wizard.php:368
 msgid "Add some dates to your schedule"
 msgstr "เพิ่มวันที่ลงในตารางงานของคุณ"
 
-#: site/dashboard/wizard.php:322
+#: site/dashboard/wizard.php:369
 msgid "Change"
 msgstr "เปลี่ยน"
 
-#: site/dashboard/wizard.php:326
+#: site/dashboard/wizard.php:375
+msgid "The notify me about future trainings link is broken. Please try again."
+msgstr "ลิงก์แจ้งเตือนเกี่ยวกับการฝึกอบรมในอนาคตไม่ทำงาน กรุณาลองอีกครั้ง"
+
+#: site/dashboard/wizard.php:376
+msgid "You have been added to the list to be notified about future trainings."
+msgstr ""
+"คุณได้ถูกเพิ่มเข้าไปในรายการเพื่อรับการแจ้งเตือนเกี่ยวกับการฝึกอบรมในอนาคต"
+
+#: site/dashboard/wizard.php:380
 msgid "Invite your friends to join your training"
 msgstr "เชิญเพื่อนของคุณเข้าร่วมการฝึกอบรมของคุณ"
 
-#: site/dashboard/wizard.php:327
+#: site/dashboard/wizard.php:381
 msgid ""
 "Share the invite or link below with your friends so that they can join your "
 "training."
 msgstr ""
 "แบ่งปันคำเชิญหรือลิงก์ด้านล่างกับเพื่อน ๆ ของคุณเพื่อให้เขาสามารถเข้าร่วมการฝึกอบรมของคุณได้"
 
-#: site/dashboard/wizard.php:328
+#: site/dashboard/wizard.php:382
 msgid "Join my zume plan"
 msgstr "เข้าร่วมแผน Zume ของฉัน"
 
-#: site/dashboard/wizard.php:329
+#: site/dashboard/wizard.php:383
 #, php-format
 msgid "%s is inviting you to a Zume Training Group"
 msgstr "%s กำลังเชิญคุณเข้าร่วมกลุ่มการฝึกอบรม Zume"
 
-#: site/dashboard/wizard.php:336
+#: site/dashboard/wizard.php:390
 msgid "Copy Invite"
 msgstr "คัดลอกคำเชิญ"
 
@@ -5998,11 +6296,6 @@ msgstr "โปรดกรอกรหัสเพื่อน"
 msgid "Use the code on the screen or in the book"
 msgstr "ใช้รหัสบนหน้าจอหรือในหนังสือ"
 
-#: site/pages/checkin.php:257 site/pages/friend-invite.php:177
-#: site/pages/plan-invite.php:182
-msgid "Connect"
-msgstr "เชื่อมต่อ"
-
 #: site/pages/checkin.php:261
 msgid "or"
 msgstr "หรือ"
@@ -6177,36 +6470,10 @@ msgstr "จะเกิดอะไรขึ้นถ้าเพื่อน �
 msgid "Friend Invitation"
 msgstr "การเชิญเพื่อน"
 
-#: site/pages/friend-invite.php:172 site/pages/plan-invite.php:177
-msgid "Use the code your friend sent you."
-msgstr "ใช้รหัสที่เพื่อนของคุณส่งมาให้"
-
 #: site/pages/get-a-coach.php:29 site/pages/get-a-coach.php:92
 #: site/pages/get-a-coach.php:119
 msgid "Get A Coach"
 msgstr "ได้ผู้สอน"
-
-#: site/pages/get-a-coach.php:30 site/pages/get-a-coach.php:113
-msgid ""
-"All our coaches are trained and practicing the concepts and tools found in "
-"Zûme. All our coaches can help you over barriers and make steps in your "
-"journey."
-msgstr ""
-"ผู้ฝึกสอนของเราทุกคนได้รับการฝึกอบรมและฝึกฝนแนวคิดและเครื่องมือต่าง ๆ ที่พบใน Zûme "
-"ผู้สอนของเราทุกคนสามารถช่วยคุณเอาชนะอุปสรรคและก้าวเดินในเส้นทางของ คุณได้"
-
-#: site/pages/get-a-coach.php:93
-msgid ""
-"Every athletic sport, especially at higher levels, uses coaching. Even "
-"olympic athletes have coaches, and often more than one. Disciple making can "
-"equally benefit from coaching by those who have more experience."
-msgstr ""
-"กีฬาทุกประเภท โดยเฉพาะกีฬาระดับสูง ต้องใช้ผู้ฝึกสอน แม้แต่นักกีฬาโอลิมปิกก็ยังมีผู้ฝึกสอน "
-"และมักจะมีมากกว่าหนึ่งคน การสร้างสาวกก็ได้รับประโยชน์จากผู้ฝึกสอนที่มีประสบการณ์มากกว่าเช่นกัน"
-
-#: site/pages/get-a-coach.php:96
-msgid "No Cost"
-msgstr "ไม่มีค่าใช้จ่าย"
 
 #: site/pages/get-a-coach.php:97 site/pages/get-a-coach.php:104
 #: site/pages/home.php:269 site/pages/home.php:276 site/pages/home.php:277
@@ -6214,28 +6481,6 @@ msgstr "ไม่มีค่าใช้จ่าย"
 #: site/pages/training.php:145 site/pages/training.php:146
 msgid "Join a training group"
 msgstr "เข้าร่วมกลุ่มฝึกอบรม"
-
-#: site/pages/get-a-coach.php:99
-msgid ""
-"Our network of volunteer coaches are not paid, but are driven rather by a "
-"passion for loving God, loving others, and obeying the Great Commission."
-msgstr ""
-"เครือข่ายผู้ฝึกสอนอาสาสมัครของเราไม่ได้รับค่าจ้าง "
-"แต่มีแรงขับเคลื่อนจากความหลงใหลในการรักพระเจ้า รักคนอื่น ๆ และเชื่อฟังพระมหาบัญชา"
-
-#: site/pages/get-a-coach.php:103
-msgid "Localized"
-msgstr "ระบุตำแหน่ง"
-
-#: site/pages/get-a-coach.php:106
-msgid ""
-"Our connection team attempts to connect you with a coach who speaks your "
-"language and is geographically as close as possible."
-msgstr "ทีมเชื่อมต่อของเราพยายามเชื่อมต่อคุณกับผู้ฝึกสอนที่พูดภาษาของคุณและอยู่ใกล้ชิดทางภูมิศาสตร์มากที่สุด"
-
-#: site/pages/get-a-coach.php:110
-msgid "Experienced"
-msgstr "มีประสบการณ์"
 
 #: site/pages/get-a-coach.php:111 site/pages/home.php:285
 #: site/pages/training.php:154
@@ -6464,7 +6709,6 @@ msgid "Get started"
 msgstr "เริ่มต้นใช้งาน"
 
 #: site/pages/join-a-training-public.php:30
-#, fuzzy
 msgid "Join a Training"
 msgstr "เข้าร่วมการฝึกอบรม"
 
@@ -6479,11 +6723,11 @@ msgstr ""
 
 #: site/pages/join-a-training-public.php:146
 msgid "No active trainings available at this time."
-msgstr ""
+msgstr "ขณะนี้ไม่มีการฝึกอบรมที่กำลังดำเนินการอยู่"
 
-#: site/pages/join-a-training-public.php:158
-msgid "Notify me about future trainings"
-msgstr ""
+#: site/pages/join-a-training-public.php:156
+msgid "Want to know about future trainings?"
+msgstr "ต้องการทราบเกี่ยวกับการฝึกอบรมในอนาคตหรือไม่?"
 
 #: site/pages/messages.php:283 utilities/apis/encouragement-api.php:534
 msgid "Friend"
@@ -6528,6 +6772,10 @@ msgstr "แผนการเชิญชวน"
 #: site/pages/plan-invite.php:77
 msgid "Please enter a code."
 msgstr "โปรดใส่รหัส"
+
+#: site/pages/plans.php:200
+msgid "Back to Public Training Groups"
+msgstr "กลับไปยังกลุ่มฝึกอบรมสาธารณะ"
 
 #: site/pages/privacy-policy.php:29 site/pages/privacy-policy.php:86
 msgid "Zúme Privacy Policy"
@@ -6766,10 +7014,6 @@ msgstr "ลิงก์สำหรับแบ่งปันแนวคิด
 msgid "Copy this link and send it to your friends."
 msgstr "คัดลอกลิงก์นี้และส่งให้เพื่อนของคุณ"
 
-#: site/pages/share.php:88
-msgid "Copied"
-msgstr "คัดลอกแล้ว"
-
 #: site/pages/share.php:125
 msgid "Tools"
 msgstr "เครื่องมือ"
@@ -6964,11 +7208,65 @@ msgstr ""
 "Zúme Training คือประสบการณ์การเรียนรู้แบบออนไลน์และในชีวิตจริงที่ออกแบบมา สำหรับกลุ่มเล็ก ๆ "
 "ที่ติดตามพระเยซู การฝึกการเคลื่อนไหวแบบออนไลน์ในชีวิตจริงสำหรับการสร้างสาวก"
 
-#: utilities/apis/connect-api.php:86
+#: utilities/apis/communications-api.php:99
+#, php-format
+msgid "Hello %s"
+msgstr "สวัสดี %s"
+
+#: utilities/apis/communications-api.php:100
+#, php-format
+msgid ""
+"A new online Zume Training is now available. You can view it at the "
+"following link: %s"
+msgstr ""
+"การฝึกอบรมออนไลน์ Zume ใหม่พร้อมให้บริการแล้ว คุณสามารถดูได้ที่ลิงก์ต่อไปนี้: %s"
+
+#: utilities/apis/communications-api.php:101
+#, php-format
+msgid "The training is in the %1$s format and will be held in %2$s"
+msgstr "การฝึกอบรมอยู่ในรูปแบบ %1$s และจะจัดขึ้นที่ %2$s"
+
+#: utilities/apis/communications-api.php:102
+#, php-format
+msgid "First session: %1$s %2$s (%3$s)."
+msgstr "เซสชันแรก: %1$s %2$s (%3$s)."
+
+#: utilities/apis/communications-api.php:103
+msgid "You can also join the training by clicking the link below:"
+msgstr "คุณสามารถเข้าร่วมการฝึกอบรมได้โดยการคลิกที่ลิงค์ด้านล่าง:"
+
+#: utilities/apis/communications-api.php:105
+#, php-format
+msgid "The training will be led by %s speakers."
+msgstr "การฝึกอบรมจะดำเนินการโดยวิทยากร %s ท่าน"
+
+#: utilities/apis/communications-api.php:106
+msgid "Best regards,"
+msgstr "ขอแสดงความนับถือ"
+
+#: utilities/apis/communications-api.php:107
+msgid "The Zume Team"
+msgstr "ทีมซูเม"
+
+#: utilities/apis/connect-api.php:82
+msgid ""
+"You have successfully subscribed to receive notifications about future "
+"trainings."
+msgstr "คุณได้สมัครรับการแจ้งเตือนเกี่ยวกับการฝึกอบรมในอนาคตเรียบร้อยแล้ว"
+
+#: utilities/apis/connect-api.php:83
+msgid "You can unsubscribe from these notifications at any time."
+msgstr "คุณสามารถยกเลิกการสมัครรับการแจ้งเตือนเหล่านี้ได้ตลอดเวลา"
+
+#: utilities/apis/connect-api.php:91
+msgid "Zume Training - Future Trainings"
+msgstr "การฝึกอบรม Zume - การฝึกอบรมในอนาคต"
+
+#: utilities/apis/connect-api.php:141
 msgid "your friend"
 msgstr "เพื่อนของคุณ"
 
-#: utilities/apis/connect-api.php:237
+#: utilities/apis/connect-api.php:294
 msgid "the plan"
 msgstr "แผนการ"
 
@@ -7057,22 +7355,9 @@ msgstr "เข้าร่วมกับชุมชน"
 msgid "Joined Community"
 msgstr "เข้าร่วมชุมชนแล้ว"
 
-#: utilities/apis/plans-api.php:126
-#, php-format
-msgctxt "My first training - username"
-msgid "My first training - %s"
-msgstr "การฝึกอบรมครั้งแรกของฉัน - %s"
-
-#: utilities/apis/plans-api.php:128
-#, php-format
-msgctxt "Training 2 - username"
-msgid "Training %1$d - %2$s"
-msgstr "ฝึกอบรม %1$d - %2$s"
-
-#: utilities/hooks/admin-email-test.php:169
-#, fuzzy
+#: utilities/hooks/admin-email-test.php:227
 msgid "You do not have sufficient permissions to access this page."
-msgstr "คุณไม่มีสิทธิเข้าถึงหน้านี้"
+msgstr "คุณมีสิทธิ์ไม่เพียงพอในการเข้าถึงหน้านี้"
 
 #: utilities/hooks/ipstack-admin-tab.php:47
 msgid "Ipstack"
@@ -7122,77 +7407,113 @@ msgstr "แชร์หน้า Zúme"
 msgid "Zúme Annual Report"
 msgstr "รายงานประจำปีของ Zúme"
 
+#: utilities/models/zume-plans-model.php:153
+#, php-format
+msgctxt "My first training - username"
+msgid "My first training - %s"
+msgstr "การฝึกอบรมครั้งแรกของฉัน - %s"
+
+#: utilities/models/zume-plans-model.php:155
+#, php-format
+msgctxt "Training 2 - username"
+msgid "Training %1$d - %2$s"
+msgstr "ฝึกอบรม %1$d - %2$s"
+
 #: utilities/post-types/posttype-pieces.php:299
 msgid "Piece"
 msgstr "ชิ้นส่วน"
 
-#: zume-training-system.php:277
+#: zume-training-system.php:199
+msgid "Add the details for training with code abc123"
+msgstr "เพิ่มรายละเอียดสำหรับการฝึกอบรมด้วยรหัส abc123"
+
+#: zume-training-system.php:203
+msgid "Set the language to e.g. en_US"
+msgstr "ตั้งค่าภาษาเป็น เช่น en_US"
+
+#: zume-training-system.php:263
+msgid "Learn More"
+msgstr "เรียนรู้เพิ่มเติม"
+
+#: zume-training-system.php:293
+msgid "Zume Admin"
+msgstr "ซูม์ แอดมิน"
+
+#: zume-training-system.php:404
 msgid "Someone has requested a password reset for the following account:"
 msgstr "มีผู้ร้องขอการรีเซ็ตรหัสผ่านสำหรับบัญชีต่อไปนี้:"
 
 #. translators: %s: site name
-#: zume-training-system.php:279
+#: zume-training-system.php:406
 #, php-format
 msgid "Site Name: %s"
 msgstr "ชื่อไซต์: %s"
 
 #. translators: %s: user login
-#: zume-training-system.php:281
+#: zume-training-system.php:408
 #, php-format
 msgid "Username: %s"
 msgstr "ชื่อผู้ใช้: %s"
 
-#: zume-training-system.php:282
+#: zume-training-system.php:409
 msgid "If this was a mistake, just ignore this email and nothing will happen."
 msgstr "ถ้านี่เป็นความผิดพลาด ให้เพิกเฉยต่ออีเมลนี้ และจะไม่มีอะไรเกิดขึ้น"
 
-#: zume-training-system.php:283
+#: zume-training-system.php:410
 msgid "To reset your password, visit the following address:"
 msgstr "ถ้าต้องการรีเซ็ตรหัสผ่านของคุณ โปรดไปที่อยู่ต่อไปนี้:"
 
 #. translators: Password reset email subject. %s: Site name
-#: zume-training-system.php:301
+#: zume-training-system.php:428
 #, php-format
 msgid "[%s] Password Reset"
 msgstr "[%s] รีเซ็ตรหัสผ่าน"
 
-#: zume-training-system.php:329
+#: zume-training-system.php:456
 msgid "Profile Details"
 msgstr "รายละเอียดโปรไฟล์"
 
-#: zume-training-system.php:341
+#: zume-training-system.php:468
 msgid "User Email"
 msgstr "อีเมล์ผู้ใช้"
 
-#: zume-training-system.php:350
+#: zume-training-system.php:477
 msgid "User Phone"
 msgstr "หมายเลขโทรศัพท์ของผู้ใช้"
 
-#: zume-training-system.php:358
+#: zume-training-system.php:485
 msgid "User Timezone"
 msgstr "โซนเวลาของผู้ใช้"
 
-#: zume-training-system.php:366
+#: zume-training-system.php:493
 msgid "User Friend Key"
 msgstr "คีย์เพื่อนผู้ใช้"
 
-#: zume-training-system.php:374
+#: zume-training-system.php:501
 msgid "User Preferred Language"
 msgstr "ภาษาที่ผู้ใช้ต้องการ"
 
-#: zume-training-system.php:382
+#: zume-training-system.php:509
 msgid "User Preferred Email"
 msgstr "อีเมลที่ผู้ใช้ต้องการใช้"
 
-#: zume-training-system.php:390
+#: zume-training-system.php:517
+msgid "Notify of Future Trainings"
+msgstr "แจ้งให้ทราบเกี่ยวกับการฝึกอบรมในอนาคต"
+
+#: zume-training-system.php:525
+msgid "Notify of Future Trainings Date Subscribed"
+msgstr "แจ้งการฝึกอบรมในอนาคต วันที่สมัคร"
+
+#: zume-training-system.php:549
 msgid "Coaching Contact ID"
 msgstr "รหัสติดต่อผู้ฝึกสอน"
 
-#: zume-training-system.php:398
+#: zume-training-system.php:557
 msgid "Preferred Contact Methods"
 msgstr "ช่องทางการติดต่อที่ต้องการ"
 
-#: zume-training-system.php:408
+#: zume-training-system.php:567
 msgid "Messenger"
 msgstr "ผู้ส่งสาร"
 

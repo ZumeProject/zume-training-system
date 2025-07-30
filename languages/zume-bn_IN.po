@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
-"POT-Creation-Date: 2025-07-28 17:05-0600\n"
-"PO-Revision-Date: 2025-04-11 11:35+0000\n"
-"Last-Translator: Manikumar Miriyala <mani@zume.training>\n"
+"POT-Creation-Date: 2025-07-29 09:25-0600\n"
+"PO-Revision-Date: 2025-07-29 22:03+0000\n"
+"Last-Translator: Chris <chris@chasm.solutions>\n"
 "Language-Team: Bengali (India) <https://translate.disciple.tools/projects/"
 "zume-training/zume-training-system/bn_IN/>\n"
 "Language: bn_IN\n"
@@ -11,14 +11,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.12.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,"
+"2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
@@ -47,18 +47,18 @@ msgstr "সম্পর্কে"
 #: 404.php:94 appearance/style-override/navigation.php:106
 #: site/course/presenter.php:144 site/dashboard/checkin-dashboard.php:29
 #: site/dashboard/checkin-dashboard.php:177 site/dashboard/dashboard.php:29
-#: site/dashboard/wizard.php:181 site/dashboard/wizard.php:194
+#: site/dashboard/wizard.php:189 site/dashboard/wizard.php:202
 #: site/pages/home.php:118 site/parts/checkin-nav.php:13
 #: site/parts/mobile-nav.php:7 site/parts/nav.php:19
 msgid "Dashboard"
 msgstr "ড্যাশবোর্ড"
 
-#: 404.php:99 site/dashboard/dashboard.php:251 site/parts/footer.php:25
+#: 404.php:99 site/dashboard/dashboard.php:272 site/parts/footer.php:25
 #: site/parts/footer.php:28
 msgid "Launch Course"
 msgstr "লঞ্চ কোর্স"
 
-#: 404.php:100 site/dashboard/dashboard.php:256 site/pages/resources.php:145
+#: 404.php:100 site/dashboard/dashboard.php:277 site/pages/resources.php:145
 #: site/pages/resources.php:147 site/pages/resources.php:162
 #: site/pages/resources.php:195 site/parts/download-slides.php:31
 #: site/parts/download-slides.php:43 site/parts/footer.php:29
@@ -68,7 +68,7 @@ msgstr "লঞ্চ কোর্স"
 msgid "10 Session Course"
 msgstr "10 টি সেশন কোর্স"
 
-#: 404.php:101 site/dashboard/dashboard.php:257 site/pages/resources.php:150
+#: 404.php:101 site/dashboard/dashboard.php:278 site/pages/resources.php:150
 #: site/pages/resources.php:166 site/pages/resources.php:196
 #: site/parts/download-slides.php:34 site/parts/download-slides.php:46
 #: site/parts/footer.php:30 utilities/integrations/replace-placeholder.php:114
@@ -84,8 +84,8 @@ msgstr "3 দিনের নিবিড় কোর্স"
 #: appearance/style-override/navigation.php:75
 #: appearance/style-override/navigation.php:79
 #: maps/js-translation-strings.php:26 maps/local-map.php:1070
-#: site/course/presenter.php:147 site/dashboard/dashboard.php:222
-#: site/dashboard/dashboard.php:282 site/pages/training.php:29
+#: site/course/presenter.php:147 site/dashboard/dashboard.php:243
+#: site/dashboard/dashboard.php:309 site/pages/training.php:29
 #: site/parts/footer.php:11 site/parts/mobile-nav.php:27 site/parts/nav.php:25
 msgid "Training"
 msgstr "প্রশিক্ষণ"
@@ -120,7 +120,7 @@ msgstr "প্রশিক্ষণ"
 
 #: appearance/style-override/navigation.php:135
 msgid "Metrics"
-msgstr "ছন্দোবিজ্ঞান"
+msgstr "ছন্দোবিজ্ঞান"
 
 #: appearance/style-override/navigation.php:143 site/pages/follow-jesus.php:227
 msgid "Community"
@@ -140,14 +140,14 @@ msgstr "গল্প"
 msgid "Global Map"
 msgstr "বিশ্ব মানচিত্র"
 
-#: globals.php:2332 globals.php:2335 site/course/course-content.php:87
+#: globals.php:2355 globals.php:2358 site/course/course-content.php:87
 #: site/course/course-content.php:102 site/course/course-content.php:111
 #: site/course/course-content.php:372 site/course/course-content.php:3332
 #: site/course/course-content.php:3350 site/pages/follow-jesus.php:177
 msgid "God Uses Ordinary People"
 msgstr "ঈশ্বর সাধারণ মানুষকে ব্যবহার করেন"
 
-#: globals.php:2334 site/pages/follow-jesus.php:178
+#: globals.php:2357 site/pages/follow-jesus.php:178
 msgid ""
 "You'll see how God uses ordinary people doing simple things to make a big "
 "impact."
@@ -155,42 +155,42 @@ msgstr ""
 "আপনি দেখতে পাবেন কিভাবে ঈশ্বর সাধারণ মানুষকে ব্যবহার করে সাধারণ কাজ করে বড় "
 "প্রভাব ফেলেন।"
 
-#: globals.php:2345 site/course/course-content.php:3333
+#: globals.php:2368 site/course/course-content.php:3333
 #: site/course/course-content.php:3351 site/pages/follow-jesus.php:181
 msgid "Simple Definition of Disciple and Church"
 msgstr "শিষ্য এবং গির্জার সহজ সংজ্ঞা"
 
-#: globals.php:2347 site/course/course-content.php:157
+#: globals.php:2370 site/course/course-content.php:157
 #: site/pages/follow-jesus.php:182
 msgid ""
 "Discover the essence of being a disciple, making a disciple, and what is the "
 "church."
 msgstr "শিষ্য হওয়ার, শিষ্য তৈরি করার সারমর্ম এবং গির্জা কী তা আবিষ্কার করুন।"
 
-#: globals.php:2348 site/course/course-content.php:147
+#: globals.php:2371 site/course/course-content.php:147
 #: site/course/course-content.php:156
 msgid "Disciples and the Church"
 msgstr "শিষ্য এবং গির্জা"
 
-#: globals.php:2358 site/course/course-content.php:3334
+#: globals.php:2381 site/course/course-content.php:3334
 #: site/course/course-content.php:3352 site/pages/follow-jesus.php:203
 msgid "Spiritual Breathing is Hearing and Obeying God"
-msgstr "আধ্যাত্মিক শ্বাস-প্রশ্বাস হল ঈশ্বরের কথা শোনা এবং তার বাধ্য হওয়া"
+msgstr "আধ্যাত্মিক শ্বাস-প্রশ্বাস হল ঈশ্বরের কথা শোনা এবং তার বাধ্য হওয়া"
 
-#: globals.php:2360 site/pages/follow-jesus.php:204
+#: globals.php:2383 site/pages/follow-jesus.php:204
 msgid "Being a disciple means we hear from God and we obey God."
 msgstr "শিষ্য হওয়ার অর্থ হল আমরা ঈশ্বরের কাছ থেকে শুনি এবং ঈশ্বরের কথা মেনে চলি ।"
 
-#: globals.php:2361 site/course/course-content.php:196
+#: globals.php:2384 site/course/course-content.php:196
 #: site/course/course-content.php:205
 msgid "Hearing and Obeying God"
 msgstr "ঈশ্বরের কথা শোনা এবং তার কথা মেনে চলা"
 
-#: globals.php:2371 globals.php:2374
+#: globals.php:2394 globals.php:2397
 msgid "S.O.A.P.S. Bible Study"
 msgstr "এস.ও.এ.পি.এস. বাইবেল অধ্যয়ন"
 
-#: globals.php:2373 site/pages/follow-jesus.php:219
+#: globals.php:2396 site/pages/follow-jesus.php:219
 msgid ""
 "A tool for daily Bible study that helps you understand, obey, and share "
 "God’s Word."
@@ -198,14 +198,14 @@ msgstr ""
 "প্রতিদিনের বাইবেল অধ্যয়নের জন্য একটি সরঞ্জাম যা আপনাকে ঈশ্বরের বাক্য বুঝতে, মান্য "
 "করতে এবং অন্যদের সাথে ভাগ করে নিতে সাহায্য করে।"
 
-#: globals.php:2384 globals.php:2387 site/course/course-content.php:94
+#: globals.php:2407 globals.php:2410 site/course/course-content.php:94
 #: site/course/course-content.php:307 site/course/course-content.php:316
 #: site/course/course-content.php:379 site/course/course-content.php:3581
 #: site/course/course-content.php:3597 site/pages/follow-jesus.php:233
 msgid "Accountability Groups"
 msgstr "দায়বদ্ধতা দল"
 
-#: globals.php:2386 site/pages/follow-jesus.php:234
+#: globals.php:2409 site/pages/follow-jesus.php:234
 msgid ""
 "A tool for two or three people of the same gender to meet weekly and "
 "encourage each other in areas that are going well and reveal areas that need "
@@ -215,11 +215,11 @@ msgstr ""
 "করতে পারে এবং ভালোভাবে চলছে এমন ক্ষেত্রগুলিতে একে অপরকে উৎসাহিত করতে পারে এবং "
 "সংশোধনের প্রয়োজন এমন ক্ষেত্রগুলি প্রকাশ করতে পারে।"
 
-#: globals.php:2397 site/pages/follow-jesus.php:197
+#: globals.php:2420 site/pages/follow-jesus.php:197
 msgid "Consumer vs Producer Lifestyle"
 msgstr "ভোক্তা বনাম প্রযোজক জীবনধারা"
 
-#: globals.php:2399 site/pages/follow-jesus.php:198
+#: globals.php:2422 site/pages/follow-jesus.php:198
 msgid ""
 "You'll discover the four main ways God makes everyday followers more like "
 "Jesus."
@@ -227,27 +227,27 @@ msgstr ""
 "আপনি চারটি প্রধান উপায় আবিষ্কার করবেন যেগুলো ঈশ্বর প্রতিদিনের অনুসারীদের যীশুর মতো "
 "করে তোলেন।"
 
-#: globals.php:2400
+#: globals.php:2423
 msgid "Producer not Consumer"
 msgstr "ভোক্তা নয়, উৎপাদক"
 
-#: globals.php:2410 globals.php:2413 site/pages/follow-jesus.php:207
+#: globals.php:2433 globals.php:2436 site/pages/follow-jesus.php:207
 msgid "How to Spend an Hour in Prayer"
 msgstr "কীভাবে এক ঘন্টা প্রার্থনায় ব্যয় করবেন"
 
-#: globals.php:2412 site/pages/follow-jesus.php:208
+#: globals.php:2435 site/pages/follow-jesus.php:208
 msgid "See how easy it is to spend an hour in prayer."
 msgstr "দেখুন এক ঘন্টা প্রার্থনায় ব্যয় করা কত সহজ।"
 
-#: globals.php:2423 site/pages/follow-jesus.php:294
+#: globals.php:2446 site/pages/follow-jesus.php:294
 msgid "Relational Stewardship – List of 100"
 msgstr "সম্পর্কীয় তত্ত্বাবধান - ১০০ জনের তালিকা"
 
-#: globals.php:2425 site/pages/follow-jesus.php:295
+#: globals.php:2448 site/pages/follow-jesus.php:295
 msgid "A tool designed to help you be a good steward of your relationships."
 msgstr "আপনার সম্পর্কের একজন ভালো রক্ষক হতে সাহায্য করার জন্য তৈরি একটি সরঞ্জাম ।"
 
-#: globals.php:2426 site/activities/list-of-100-printable.php:22
+#: globals.php:2449 site/activities/list-of-100-printable.php:22
 #: site/activities/list-of-100-printable.php:90
 #: site/activities/list-of-100.php:22 site/activities/list-of-100.php:81
 #: site/course/course-content.php:496 site/course/course-content.php:634
@@ -259,40 +259,40 @@ msgstr "আপনার সম্পর্কের একজন ভালো �
 msgid "List of 100"
 msgstr "১০০ জনের তালিকা"
 
-#: globals.php:2436 globals.php:2439 site/course/course-content.php:832
+#: globals.php:2459 globals.php:2462 site/course/course-content.php:832
 #: site/course/course-content.php:845 site/course/course-content.php:854
 #: site/course/course-content.php:3977 site/course/course-content.php:3996
 msgid "Spiritual Economy"
 msgstr "আধ্যাত্মিক অর্থনীতি"
 
-#: globals.php:2438 site/pages/follow-jesus.php:253
+#: globals.php:2461 site/pages/follow-jesus.php:253
 msgid ""
 "Learn how God's economy is different from the world's. God invests more in "
 "those who are faithful with what they've already been given."
 msgstr ""
 "ঈশ্বরের অর্থনীতি পৃথিবীর অর্থনীতি থেকে কীভাবে আলাদা তা জানুন। ঈশ্বর তাদের উপর বেশি "
-"বিনিয়োগ করেন যারা যা দেওয়া হয়েছে তার প্রতি বিশ্বস্ত।"
+"বিনিয়োগ করেন যারা যা দেওয়া হয়েছে তার প্রতি বিশ্বস্ত।"
 
-#: globals.php:2449 site/pages/follow-jesus.php:298
+#: globals.php:2472 site/pages/follow-jesus.php:298
 msgid "The Gospel and How to Share It"
 msgstr "সুসমাচার এবং এটি কীভাবে ভাগ করবেন"
 
-#: globals.php:2451 site/pages/follow-jesus.php:299
+#: globals.php:2474 site/pages/follow-jesus.php:299
 msgid ""
 "Learn a way to share God’s Good News from the beginning of humanity all the "
 "way to the end of this age."
 msgstr ""
 "মানবজাতির শুরু থেকে এই যুগের শেষ পর্যন্ত ঈশ্বরের সুসমাচার কীভাবে ভাগ করবেন তা শিখুন।"
 
-#: globals.php:2452
+#: globals.php:2475
 msgid "Sharing God‘s Story"
 msgstr "ঈশ্বরের গল্প ভাগ করে নেওয়া"
 
-#: globals.php:2462 site/pages/follow-jesus.php:245
+#: globals.php:2485 site/pages/follow-jesus.php:245
 msgid "Baptism and How To Do It"
 msgstr "বাপ্তিস্ম এবং এটি কীভাবে করবেন"
 
-#: globals.php:2464 site/pages/follow-jesus.php:246
+#: globals.php:2487 site/pages/follow-jesus.php:246
 msgid ""
 "Jesus said, “Go and make disciples of all nations, BAPTIZING them in the "
 "name of the Father and of the Son and of the Holy Spirit…” Learn how to put "
@@ -301,18 +301,18 @@ msgstr ""
 "যীশু বলেছিলেন, “তোমরা যাও এবং সমস্ত জাতির লোকদের শিষ্য কর, পিতা, পুত্র এবং পবিত্র "
 "আত্মার নামে তাদের বাপ্তিস্ম দাও...” এটি কীভাবে বাস্তবে প্রয়োগ করতে হয় তা শিখো।"
 
-#: globals.php:2465 site/course/course-content.php:837
+#: globals.php:2488 site/course/course-content.php:837
 #: site/course/course-content.php:1043 site/course/course-content.php:1052
 #: site/course/course-content.php:1118 site/course/course-content.php:4252
 #: site/course/course-content.php:4269
 msgid "Baptism"
 msgstr "বাপ্তিস্ম"
 
-#: globals.php:2475 site/pages/follow-jesus.php:302
+#: globals.php:2498 site/pages/follow-jesus.php:302
 msgid "Prepare Your 3-Minute Testimony"
 msgstr "আপনার ৩ মিনিটের সাক্ষ্য প্রস্তুত করুন"
 
-#: globals.php:2477 site/pages/follow-jesus.php:303
+#: globals.php:2500 site/pages/follow-jesus.php:303
 msgid ""
 "Learn how to share your testimony in three minutes by sharing how Jesus has "
 "impacted your life."
@@ -320,17 +320,17 @@ msgstr ""
 "যীশু আপনার জীবনে কীভাবে প্রভাব ফেলেছেন তা ভাগ করে তিন মিনিটের মধ্যে আপনার সাক্ষ্য "
 "কীভাবে ভাগ করে নেবেন তা শিখুন।"
 
-#: globals.php:2478
+#: globals.php:2501
 msgid "3-Minute Testimony"
 msgstr "৩ মিনিটের সাক্ষ্য"
 
-#: globals.php:2488 site/course/course-content.php:1237
+#: globals.php:2511 site/course/course-content.php:1237
 #: site/course/course-content.php:1518 site/course/course-content.php:3978
 #: site/course/course-content.php:3997 site/pages/follow-jesus.php:185
 msgid "Vision Casting the Greatest Blessing"
 msgstr "সর্বশ্রেষ্ঠ আশীর্বাদ প্রদানের দৃষ্টিভঙ্গি"
 
-#: globals.php:2490 site/course/course-content.php:1318
+#: globals.php:2513 site/course/course-content.php:1318
 #: site/pages/follow-jesus.php:186
 msgid ""
 "Learn a simple pattern of making not just one follower of Jesus but entire "
@@ -339,33 +339,33 @@ msgstr ""
 "যীশুর একজন অনুসারীকে নয় বরং প্রজন্মের পর প্রজন্ম ধরে সংখ্যাবৃদ্ধি করে এমন সমগ্র "
 "আধ্যাত্মিক পরিবারকে কীভাবে গড়ে তোলা যায় তার একটি সহজ পদ্ধতি শিখুন।"
 
-#: globals.php:2491
+#: globals.php:2514
 msgid "Great, Greater, and Greatest Blessing"
 msgstr "মহান, বৃহত্তর এবং সর্বশ্রেষ্ঠ আশীর্বাদ"
 
-#: globals.php:2501 site/pages/follow-jesus.php:275
+#: globals.php:2524 site/pages/follow-jesus.php:275
 msgid "Duckling Discipleship – Leading Immediately"
 msgstr "হাঁসের বাচ্চা শিষ্যত্ব – তাৎক্ষণিকভাবে নেতৃত্বদান"
 
-#: globals.php:2503
+#: globals.php:2526
 msgid "Learn what ducklings have to do with disciple-making."
 msgstr "শিষ্য তৈরির সাথে হাঁসের বাচ্চাদের কী সম্পর্ক তা শিখুন।"
 
-#: globals.php:2504 site/course/course-content.php:1238
+#: globals.php:2527 site/course/course-content.php:1238
 #: site/course/course-content.php:1357 site/course/course-content.php:1366
 #: site/course/course-content.php:1519 site/course/course-content.php:4529
 #: site/course/course-content.php:4550
 msgid "Duckling Discipleship"
 msgstr "হাঁসের বাচ্চা শিষ্যত্ব"
 
-#: globals.php:2514 globals.php:2517 site/course/course-content.php:1239
+#: globals.php:2537 globals.php:2540 site/course/course-content.php:1239
 #: site/course/course-content.php:1405 site/course/course-content.php:1414
 #: site/course/course-content.php:1520 site/course/course-content.php:4530
 #: site/course/course-content.php:4551 site/pages/follow-jesus.php:256
 msgid "Eyes to See Where the Kingdom Isn’t"
 msgstr "রাজ্য কোথায় নেই তা দেখার চোখ"
 
-#: globals.php:2516 site/pages/follow-jesus.php:257
+#: globals.php:2539 site/pages/follow-jesus.php:257
 msgid ""
 "Begin to see where God’s Kingdom isn’t. These are usually the places where "
 "God wants to work the most."
@@ -373,11 +373,11 @@ msgstr ""
 "ঈশ্বরের রাজ্য কোথায় নেই তা দেখতে শুরু করুন। সাধারণত এই জায়গাগুলিতে ঈশ্বর সবচেয়ে "
 "বেশি কাজ করতে চান।"
 
-#: globals.php:2527 site/pages/follow-jesus.php:241
+#: globals.php:2550 site/pages/follow-jesus.php:241
 msgid "The Lord’s Supper and How To Lead It"
 msgstr "প্রভুর ভোজ এবং এটি কীভাবে পরিচালনা করবেন"
 
-#: globals.php:2529
+#: globals.php:2552
 msgid ""
 "It’s a simple way to celebrate our intimate connection and ongoing "
 "relationship with Jesus. Learn a simple way to celebrate."
@@ -385,18 +385,18 @@ msgstr ""
 "এটি যীশুর সাথে আমাদের ঘনিষ্ঠ সংযোগ এবং চলমান সম্পর্ক উদযাপন করার একটি সহজ উপায়। "
 "উদযাপন করার একটি সহজ উপায় শিখুন।"
 
-#: globals.php:2530 site/activities/activities.php:258
+#: globals.php:2553 site/activities/activities.php:258
 #: site/course/course-content.php:1244 site/course/course-content.php:1455
 #: site/course/course-content.php:1464 site/course/course-content.php:1525
 #: site/course/course-content.php:4534 site/course/course-content.php:4555
 msgid "The Lord’s Supper"
 msgstr "প্রভুর ভোজ"
 
-#: globals.php:2540 site/pages/follow-jesus.php:313
+#: globals.php:2563 site/pages/follow-jesus.php:313
 msgid "Prayer Walking and How To Do It"
-msgstr "প্রার্থনায় হাঁটা এবং এটি কীভাবে করবেন"
+msgstr "প্রার্থনায় হাঁটা এবং এটি কীভাবে করবেন"
 
-#: globals.php:2542
+#: globals.php:2565
 msgid ""
 "It‘s a simple way to obey God’s command to pray for others. And it‘s just "
 "what it sounds like — praying to God while walking around!"
@@ -404,35 +404,35 @@ msgstr ""
 "অন্যদের জন্য প্রার্থনা করার জন্য ঈশ্বরের আদেশ পালন করার এটি একটি সহজ উপায়। এবং এটি "
 "ঠিক যেমন শোনায় - ঘুরে বেড়ানোর সময় ঈশ্বরের কাছে প্রার্থনা করা!"
 
-#: globals.php:2543 site/activities/activities.php:327
+#: globals.php:2566 site/activities/activities.php:327
 #: site/course/course-content.php:1636 site/course/course-content.php:1644
 #: site/course/course-content.php:1653 site/course/course-content.php:1759
 #: site/course/course-content.php:4661 site/course/course-content.php:4674
 msgid "Prayer Walking"
 msgstr "প্রার্থনায় হাঁটা"
 
-#: globals.php:2553 site/pages/follow-jesus.php:309
+#: globals.php:2576 site/pages/follow-jesus.php:309
 msgid "A Person of Peace and How To Find One"
 msgstr "শান্তির ব্যক্তি এবং কীভাবে একজনকে খুঁজে পাবেন"
 
-#: globals.php:2555
+#: globals.php:2578
 msgid ""
 "Learn who a person of peace might be and how to know when you‘ve found one."
 msgstr ""
 "শান্তির ব্যক্তি কে হতে পারেন এবং কখন আপনি তাকে খুঁজে পেয়েছেন তা কীভাবে জানবেন তা "
 "জানুন।"
 
-#: globals.php:2556 site/course/course-content.php:1631
+#: globals.php:2579 site/course/course-content.php:1631
 #: site/course/course-content.php:1676 site/course/course-content.php:1685
 #: site/course/course-content.php:4777 site/course/course-content.php:4797
 msgid "Person of Peace"
 msgstr "শান্তির ব্যক্তি"
 
-#: globals.php:2566 site/pages/follow-jesus.php:222
+#: globals.php:2589 site/pages/follow-jesus.php:222
 msgid "Faithfulness is Better Than Knowledge"
 msgstr "বিশ্বস্ততা জ্ঞানের চেয়ে উত্তম"
 
-#: globals.php:2568
+#: globals.php:2591
 msgid ""
 "It‘s important what disciples know — but it‘s much more important what they "
 "DO with what they know."
@@ -440,31 +440,31 @@ msgstr ""
 "শিষ্যরা কী জানেন তা গুরুত্বপূর্ণ - কিন্তু তারা যা জানেন তা দিয়ে তারা কী করেন তা আরও "
 "গুরুত্বপূর্ণ।"
 
-#: globals.php:2569 site/course/course-content.php:1891
+#: globals.php:2592 site/course/course-content.php:1891
 #: site/course/course-content.php:1900 site/course/course-content.php:4908
 #: site/course/course-content.php:4957
 msgid "Faithfulness"
 msgstr "বিশ্বস্ততা"
 
-#: globals.php:2579 site/pages/follow-jesus.php:211
+#: globals.php:2602 site/pages/follow-jesus.php:211
 msgid "The BLESS Prayer Pattern"
 msgstr "আশীর্বাদ প্রার্থনার ধরণ"
 
-#: globals.php:2581 site/pages/follow-jesus.php:212
+#: globals.php:2604 site/pages/follow-jesus.php:212
 msgid "Practice a simple mnemonic to remind you of ways to pray for others."
 msgstr ""
 "অন্যদের জন্য প্রার্থনা করার উপায়গুলি মনে করিয়ে দেওয়ার জন্য একটি সহজ স্মৃতি অনুশীলন "
 "করুন।"
 
-#: globals.php:2582 site/course/course-content.php:1725
+#: globals.php:2605 site/course/course-content.php:1725
 msgid "The B.L.E.S.S. Prayer"
 msgstr "বি.এল.ই.এস.এস. প্রার্থনা"
 
-#: globals.php:2592 site/pages/follow-jesus.php:229
+#: globals.php:2615 site/pages/follow-jesus.php:229
 msgid "3/3 Group Meeting Pattern"
 msgstr "৩/৩ দলগত সভার ধরণ"
 
-#: globals.php:2594
+#: globals.php:2617
 msgid ""
 "A 3/3 Group is a way for followers of Jesus to meet, pray, learn, grow, "
 "fellowship and practice obeying and sharing what they‘ve learned. In this "
@@ -474,33 +474,33 @@ msgstr ""
 "মেলামেশার এবং তারা যা শিখেছে তা মেনে চলা এবং ভাগ করে নেওয়ার অনুশীলন করার একটি "
 "উপায়। এইভাবে, ৩/৩ দল কেবল একটি ছোট দল নয় বরং একটি সাধারণ গির্জা।"
 
-#: globals.php:2595
+#: globals.php:2618
 msgid "3/3 Group"
 msgstr "৩/৩ গ্রুপ"
 
-#: globals.php:2605 site/pages/follow-jesus.php:279
+#: globals.php:2628 site/pages/follow-jesus.php:279
 msgid "Training Cycle for Maturing Disciples"
 msgstr "পরিপক্ক শিষ্যদের জন্য প্রশিক্ষণ চক্র"
 
-#: globals.php:2607 site/pages/follow-jesus.php:280
+#: globals.php:2630 site/pages/follow-jesus.php:280
 msgid ""
 "Learn the training cycle and consider how it applies to disciple making."
 msgstr ""
 "প্রশিক্ষণ চক্রটি শিখুন এবং বিবেচনা করুন যে এটি শিষ্য তৈরির ক্ষেত্রে কীভাবে প্রযোজ্য।"
 
-#: globals.php:2608 site/course/course-content.php:5214
+#: globals.php:2631 site/course/course-content.php:5214
 #: site/course/course-content.php:5231
 msgid "Training Cycle"
 msgstr "প্রশিক্ষণ চক্র"
 
-#: globals.php:2618 globals.php:2621 site/course/course-content.php:2327
+#: globals.php:2641 globals.php:2644 site/course/course-content.php:2327
 #: site/course/course-content.php:2339 site/course/course-content.php:2348
 #: site/course/course-content.php:2421 site/course/course-content.php:5215
 #: site/course/course-content.php:5232 site/pages/follow-jesus.php:334
 msgid "Leadership Cells"
 msgstr "নেতৃত্ব কোষ"
 
-#: globals.php:2620 site/course/course-content.php:2350
+#: globals.php:2643 site/course/course-content.php:2350
 #: site/pages/follow-jesus.php:335
 msgid ""
 "A Leadership Cell is a way someone who feels called to lead can develop "
@@ -509,53 +509,53 @@ msgstr ""
 "একটি নেতৃত্ব কোষ হল এমন একটি উপায় যা নেতৃত্ব দেওয়ার জন্য আহ্বান করা বোধ করে ,এমন "
 "ব্যক্তি সেবা অনুশীলনের মাধ্যমে তাদের নেতৃত্ব বিকাশ করতে পারে।"
 
-#: globals.php:2631 globals.php:2634 site/course/course-content.php:5339
+#: globals.php:2654 globals.php:2657 site/course/course-content.php:5339
 #: site/course/course-content.php:5357 site/pages/follow-jesus.php:283
 msgid "Expect Non-Sequential Growth"
 msgstr "অ-ক্রমিক বৃদ্ধি আশা করুন"
 
-#: globals.php:2633
+#: globals.php:2656
 msgid ""
 "See how disciple making doesn‘t have to be linear. Multiple things can "
 "happen at the same time."
 msgstr ""
 "দেখুন কীভাবে শিষ্য তৈরি রৈখিক হতে হবে না। একই সময়ে একাধিক জিনিস ঘটতে পারে।"
 
-#: globals.php:2644 site/course/course-content.php:2930
+#: globals.php:2667 site/course/course-content.php:2930
 #: site/pages/follow-jesus.php:287
 msgid "Pace of Multiplication Matters"
 msgstr "গুণের গতি গুরুত্বপূর্ণ"
 
-#: globals.php:2646 site/pages/follow-jesus.php:288
+#: globals.php:2669 site/pages/follow-jesus.php:288
 msgid ""
 "Multiplying matters and multiplying quickly matters even more. See why pace "
 "matters."
 msgstr "গুণ করা এবং দ্রুত গুণ করা আরও গুরুত্বপূর্ণ। দেখুন কেন গতি গুরুত্বপূর্ণ।"
 
-#: globals.php:2647 site/course/course-content.php:2532
+#: globals.php:2670 site/course/course-content.php:2532
 #: site/course/course-content.php:2595 site/course/course-content.php:2604
 #: site/course/course-content.php:5340 site/course/course-content.php:5358
 msgid "Pace"
 msgstr "গতি"
 
-#: globals.php:2657 globals.php:2660 site/course/course-content.php:2533
+#: globals.php:2680 globals.php:2683 site/course/course-content.php:2533
 #: site/course/course-content.php:2644 site/course/course-content.php:2653
 #: site/course/course-content.php:2931 site/course/course-content.php:5341
 #: site/course/course-content.php:5359 site/pages/follow-jesus.php:237
 msgid "Always Part of Two Churches"
 msgstr "সর্বদা দুটি গির্জার অংশ"
 
-#: globals.php:2659
+#: globals.php:2682
 msgid "Learn how to obey Jesus‘ commands by going AND staying."
-msgstr "যাওয়া এবং থাকার মাধ্যমে যীশুর আদেশ মেনে চলতে শিখুন।"
+msgstr "যাওয়া এবং থাকার মাধ্যমে যীশুর আদেশ মেনে চলতে শিখুন।"
 
-#: globals.php:2671 globals.php:2674 site/course/course-content.php:3062
+#: globals.php:2694 globals.php:2697 site/course/course-content.php:3062
 #: site/course/course-content.php:3174 site/course/course-content.php:3180
 #: site/course/course-content.php:3246 site/course/course-content.php:5877
 msgid "Three-Month Plan"
 msgstr "তিন মাসের পরিকল্পনা"
 
-#: globals.php:2673
+#: globals.php:2696
 msgid ""
 "Create and share your plan for how you will implement the Zúme tools over "
 "the next three months."
@@ -563,7 +563,7 @@ msgstr ""
 "আগামী তিন মাস ধরে আপনি কীভাবে জুমে সরঞ্জামগুলি বাস্তবায়ন করবেন তার জন্য আপনার "
 "পরিকল্পনা তৈরি করুন এবং ভাগ করুন।"
 
-#: globals.php:2683 globals.php:2686
+#: globals.php:2706 globals.php:2709
 #: site/activities/coaching-checklist-host.php:22
 #: site/activities/coaching-checklist-host.php:89
 #: site/activities/coaching-checklist-mawl.php:22
@@ -585,7 +585,7 @@ msgstr ""
 msgid "Coaching Checklist"
 msgstr "কোচিং চেকলিস্ট"
 
-#: globals.php:2685 site/pages/follow-jesus.php:331
+#: globals.php:2708 site/pages/follow-jesus.php:331
 msgid ""
 "A powerful tool you can use to quickly assess your own strengths and "
 "vulnerabilities when it comes to making disciples who multiply."
@@ -593,14 +593,14 @@ msgstr ""
 "বহুগুণ বৃদ্ধিকারী শিষ্য তৈরির ক্ষেত্রে আপনার নিজস্ব শক্তি এবং দুর্বলতাগুলি দ্রুত মূল্যায়ন "
 "করার জন্য আপনি একটি শক্তিশালী সরঞ্জাম ব্যবহার করতে পারেন।"
 
-#: globals.php:2696 globals.php:2699 site/course/course-content.php:3057
+#: globals.php:2719 globals.php:2722 site/course/course-content.php:3057
 #: site/course/course-content.php:3070 site/course/course-content.php:3079
 #: site/course/course-content.php:3241 site/course/course-content.php:5468
 #: site/course/course-content.php:5488 site/pages/follow-jesus.php:338
 msgid "Leadership in Networks"
 msgstr "নেটওয়ার্কে নেতৃত্ব"
 
-#: globals.php:2698 site/pages/follow-jesus.php:339
+#: globals.php:2721 site/pages/follow-jesus.php:339
 msgid ""
 "Learn how multiplying churches stay connected and live life together as an "
 "extended, spiritual family."
@@ -608,49 +608,49 @@ msgstr ""
 "বহুসংখ্যক গির্জা কীভাবে সংযুক্ত থাকে এবং একটি বর্ধিত, আধ্যাত্মিক পরিবার হিসেবে "
 "একসাথে জীবনযাপন করে তা শিখুন।"
 
-#: globals.php:2709 site/course/course-content.php:3061
+#: globals.php:2732 site/course/course-content.php:3061
 #: site/course/course-content.php:3116 site/course/course-content.php:3125
 #: site/course/course-content.php:3245 site/course/course-content.php:5738
 #: site/course/course-content.php:5754 site/pages/follow-jesus.php:326
 msgid "Peer Mentoring Groups"
 msgstr "সহকর্মী পরামর্শদাতা দল"
 
-#: globals.php:2711 site/pages/follow-jesus.php:327
+#: globals.php:2734 site/pages/follow-jesus.php:327
 msgid ""
 "This is a group that consists of people who are leading and starting 3/3 "
 "Groups. It also follows a 3/3 format and is a powerful way to assess the "
 "spiritual health of God’s work in your area."
 msgstr ""
-"এটি এমন একটি দল যারা ৩/৩ টি গোষ্ঠীর নেতৃত্ব দিয়ে চলেছে এবং শুরু করেছে । এটি ৩/৩ "
-"টি বিন্যাসও/ ফর্মেট অনুসরণ করে এবং আপনার এলাকায় ঈশ্বরের কাজের আধ্যাত্মিক স্বাস্থ্য "
-"মূল্যায়ন করার একটি শক্তিশালী উপায়।"
+"এটি এমন একটি দল যারা ৩/৩ টি গোষ্ঠীর নেতৃত্ব দিয়ে চলেছে এবং শুরু করেছে । এটি ৩/৩ টি"
+" বিন্যাসও/ ফর্মেট অনুসরণ করে এবং আপনার এলাকায় ঈশ্বরের কাজের আধ্যাত্মিক স্বাস্থ্য মূল্যায়"
+"ন করার একটি শক্তিশালী উপায়।"
 
-#: globals.php:2712 site/activities/activities.php:350
-#: site/dashboard/wizard.php:185
+#: globals.php:2735 site/activities/activities.php:350
+#: site/dashboard/wizard.php:193
 msgid "Peer Mentoring"
 msgstr "সহকর্মী মেন্টরিং"
 
-#: globals.php:2722 globals.php:2725
+#: globals.php:2745 globals.php:2748
 msgid "Four Fields Tool"
 msgstr "চারটি ক্ষেত্রের সরঞ্জাম"
 
-#: globals.php:2724
+#: globals.php:2747
 msgid ""
 "The four fields diagnostic chart is a simple tool to be used by a leadership "
 "cell to reflect on the status of current efforts and the kingdom activity "
 "around them."
 msgstr ""
-"চারটি ক্ষেত্র নির্ণয়ের চার্ট হল একটি সহজ উপায় যা একটি নেতৃত্ব সেল বর্তমান প্রচেষ্টার "
+"চারটি ক্ষেত্র নির্ণয়ের চার্ট হল একটি সহজ উপায় যা একটি নেতৃত্ব সেল বর্তমান প্রচেষ্টার "
 "অবস্থা এবং তাদের চারপাশের রাজ্য কার্যকলাপের উপর প্রতিফলন ঘটাতে ব্যবহার করে।"
 
-#: globals.php:2735 globals.php:2738 site/activities/activities.php:396
+#: globals.php:2758 globals.php:2761 site/activities/activities.php:396
 #: site/course/course-content.php:2539 site/course/course-content.php:2867
 #: site/course/course-content.php:2873 site/course/course-content.php:2937
 #: site/course/course-content.php:5602 site/course/course-content.php:5632
 msgid "Generational Mapping"
 msgstr "প্রজন্মগত মানচিত্র করা"
 
-#: globals.php:2737
+#: globals.php:2760
 msgid ""
 "Generation mapping is another simple tool to help leaders in a movement "
 "understand the growth around them."
@@ -658,11 +658,11 @@ msgstr ""
 "একটি আন্দোলনের নেতাদের তাদের চারপাশের বৃদ্ধি বুঝতে সাহায্য করার জন্য প্রজন্মগত "
 "মানচিত্র করা আরেকটি সহজ সরঞ্জাম ।"
 
-#: globals.php:2748
+#: globals.php:2771
 msgid "3-Circles Gospel Presentation"
 msgstr "৩-বৃত্তের সুসমাচার উপস্থাপনা"
 
-#: globals.php:2750 site/course/course-content.php:975
+#: globals.php:2773 site/course/course-content.php:975
 msgid ""
 "The 3-Circles gospel presentation is a way to tell the gospel using a simple "
 "illustration that can be drawn on a piece of paper."
@@ -670,20 +670,20 @@ msgstr ""
 "৩-বৃত্তের সুসমাচার উপস্থাপনা হল একটি সহজ চিত্র ব্যবহার করে সুসমাচার বলার একটি উপায় "
 "যা একটি কাগজের টুকরোতে আঁকা যেতে পারে।"
 
-#: globals.php:2751
+#: globals.php:2774
 msgid "3-Circles"
 msgstr "৩-বৃত্ত"
 
-#: globals.php:8148 maps/html/heatmap-html.php:56 maps/html/heatmap-html.php:59
+#: globals.php:8171 maps/html/heatmap-html.php:56 maps/html/heatmap-html.php:59
 #: maps/js-translation-strings.php:43 site/course/presenter.php:169
-#: site/dashboard/checkin-dashboard.php:179 site/dashboard/dashboard.php:303
-#: site/dashboard/wizard.php:179 site/pages/follow-jesus.php:349
+#: site/dashboard/checkin-dashboard.php:179 site/dashboard/dashboard.php:330
+#: site/dashboard/wizard.php:187 site/pages/follow-jesus.php:349
 #: site/parts/footer.php:77 site/parts/footer.php:84 site/parts/footer.php:91
 #: site/parts/language-menu.php:4 utilities/apis/pieces-api.php:202
 msgid "Close"
 msgstr "বন্ধ করুন"
 
-#: globals.php:8350
+#: globals.php:8373
 msgid "No Results"
 msgstr "কোন ফলাফল নেই"
 
@@ -947,11 +947,12 @@ msgstr "অতিরিক্ত রেকর্ড। (ফলাফল ফো�
 msgid "Studying"
 msgstr "অধ্যয়ন"
 
-#: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:235
+#: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:256
 msgid "Practicing"
 msgstr "অনুশীলন"
 
-#: maps/js-translation-strings.php:28 site/dashboard/wizard.php:226
+#: maps/js-translation-strings.php:28 site/dashboard/dashboard.php:240
+#: site/dashboard/wizard.php:234
 msgid "Coaching"
 msgstr "প্রশিক্ষণ"
 
@@ -1031,15 +1032,16 @@ msgid "Always report new simple churches that you are starting."
 msgstr "আপনি যে নতুন সহজ গির্জাগুলি শুরু করছেন সেগুলি সর্বদা রিপোর্ট করুন।"
 
 #: maps/local-map.php:28 maps/local-map.php:547
-#, fuzzy
 msgid "Local Map"
-msgstr "বিশ্ব মানচিত্র"
+msgstr "স্থানীয় মানচিত্র"
 
 #: maps/local-map.php:29
 msgid ""
 "Local map showing Zúme training progress and church planting activity for a "
 "specific location."
 msgstr ""
+"স্থানীয় মানচিত্রে একটি নির্দিষ্ট স্থানের জন্য জুমে প্রশিক্ষণের অগ্রগতি এবং গির্জা রোপণ "
+"কার্যকলাপ দেখানো হয়েছে।"
 
 #: maps/local-map.php:548 maps/local-map.php:982 maps/local-map.php:984
 #: maps/map-3-trainees.php:123
@@ -1051,37 +1053,35 @@ msgstr "প্রশিক্ষণার্থী"
 msgid "Churches"
 msgstr "গির্জা"
 
-#: maps/local-map.php:553
-#, fuzzy
+#: maps/local-map.php:553 site/dashboard/dashboard.php:201
 msgid "Progress"
-msgstr "আমার অগ্রগতি"
+msgstr "অগ্রগতি"
 
 #: maps/local-map.php:554
-#, fuzzy
 msgid "Location not found"
-msgstr "কোনও অবস্থান খুঁজে পাওয়া যায়নি"
+msgstr "অবস্থান খুঁজে পাওয়া যায়নি"
 
 #: maps/local-map.php:555
-#, fuzzy
 msgid "Please enter a grid_id parameter"
-msgstr "দয়া করে একটি বন্ধু কোড লিখুন।"
+msgstr "অনুগ্রহ করে একটি grid_id প্যারামিটার লিখুন।"
 
 #: maps/local-map.php:944 maps/local-map.php:1068
-#: site/dashboard/dashboard.php:211
+#: site/dashboard/dashboard.php:231
 msgid "Getting Started"
 msgstr "শুরু করা হচ্ছে"
 
 #: maps/local-map.php:946 maps/local-map.php:963
-#: site/dashboard/dashboard.php:197 site/dashboard/wizard.php:305
-#: site/dashboard/wizard.php:306 site/dashboard/wizard.php:330
+#: site/dashboard/dashboard.php:214 site/dashboard/wizard.php:290
+#: site/dashboard/wizard.php:352 site/dashboard/wizard.php:353
+#: site/dashboard/wizard.php:384 site/pages/plans.php:148
 msgid "Location"
 msgstr "অবস্থান"
 
-#: maps/local-map.php:954 site/dashboard/dashboard.php:196
+#: maps/local-map.php:954 site/dashboard/dashboard.php:213
 msgid "No Locations found"
 msgstr "কোনও অবস্থান খুঁজে পাওয়া যায়নি"
 
-#: maps/local-map.php:955 site/dashboard/wizard.php:180
+#: maps/local-map.php:955 site/dashboard/wizard.php:188
 msgid "No locations found"
 msgstr "কোনও অবস্থান খুঁজে পাওয়া যায়নি"
 
@@ -1139,14 +1139,15 @@ msgstr "ব্যবহৃত পরিমাপ"
 msgid ""
 "\"Needed\" refers to what is missing in the location listed according to "
 "population."
-msgstr "প্রয়োজনীয় বলতে জনসংখ্যা অনুযায়ী তালিকাভুক্ত স্থানে কী অনুপস্থিত তা বোঝায়।"
+msgstr ""
+"প্রয়োজনীয় বলতে জনসংখ্যা অনুযায়ী তালিকাভুক্ত স্থানে কী অনুপস্থিত তা বোঝায়।"
 
 #: maps/map-3-trainees.php:151
 msgid ""
 "\"Reported\" refers to trainees who have registered themselves to the Zúme "
 "community."
 msgstr ""
-"প্রতিবেদিত বলতে সেইসব প্রশিক্ষণার্থীদের বোঝায় যারা জুমে সম্প্রদায়তে নিজেদের নিবন্ধিত "
+"প্রতিবেদিত বলতে সেইসব প্রশিক্ষণার্থীদের বোঝায় যারা জুমে সম্প্রদায়তে নিজেদের নিবন্ধিত "
 "করেছেন।"
 
 #: maps/map-3-trainees.php:155 maps/map-5-churches.php:157
@@ -1174,9 +1175,8 @@ msgstr ""
 "প্রতি ৫০,০০০ জনে ১ জন প্রশিক্ষণার্থী"
 
 #: maps/map-5-churches.php:95
-#, fuzzy
 msgid "Vision Map"
-msgstr "দর্শন"
+msgstr "দৃষ্টি মানচিত্র"
 
 #: maps/map-5-churches.php:125
 msgid "Map of Zúme Churches"
@@ -1283,7 +1283,7 @@ msgstr "নিজেকে জিজ্ঞাসা করুন, আমি ক�
 #: site/activities/coaching-checklist-two.php:187
 #: site/activities/coaching-checklist.php:150
 #: site/activities/coaching-checklist.php:290
-#: site/dashboard/checkin-dashboard.php:183 site/dashboard/dashboard.php:259
+#: site/dashboard/checkin-dashboard.php:183 site/dashboard/dashboard.php:280
 msgid "Heard"
 msgstr "শ্রবণ"
 
@@ -1293,7 +1293,7 @@ msgstr "শ্রবণ"
 #: site/activities/coaching-checklist-two.php:191
 #: site/activities/coaching-checklist.php:153
 #: site/activities/coaching-checklist.php:293
-#: site/dashboard/checkin-dashboard.php:185 site/dashboard/dashboard.php:261
+#: site/dashboard/checkin-dashboard.php:185 site/dashboard/dashboard.php:282
 msgid "Obeyed"
 msgstr "মান্য করেছি"
 
@@ -1303,9 +1303,9 @@ msgstr "মান্য করেছি"
 #: site/activities/coaching-checklist-two.php:195
 #: site/activities/coaching-checklist.php:156
 #: site/activities/coaching-checklist.php:296
-#: site/dashboard/checkin-dashboard.php:187 site/dashboard/dashboard.php:263
+#: site/dashboard/checkin-dashboard.php:187 site/dashboard/dashboard.php:284
 msgid "Shared"
-msgstr "ভাগ করে নেয়া"
+msgstr "ভাগ করে নেয়া"
 
 #: site/activities/coaching-checklist-host.php:126
 #: site/activities/coaching-checklist-host.php:167
@@ -1313,21 +1313,21 @@ msgstr "ভাগ করে নেয়া"
 #: site/activities/coaching-checklist-two.php:199
 #: site/activities/coaching-checklist.php:159
 #: site/activities/coaching-checklist.php:299
-#: site/dashboard/checkin-dashboard.php:189 site/dashboard/dashboard.php:265
+#: site/dashboard/checkin-dashboard.php:189 site/dashboard/dashboard.php:286
 msgid "Trained"
 msgstr "প্রশিক্ষিত"
 
 #: site/activities/coaching-checklist-host.php:157
 #: site/activities/coaching-checklist-two.php:189
 #: site/activities/coaching-checklist.php:290
-#: site/dashboard/checkin-dashboard.php:184 site/dashboard/dashboard.php:260
+#: site/dashboard/checkin-dashboard.php:184 site/dashboard/dashboard.php:281
 msgid "Have I heard about this tool or concept?"
 msgstr "আমি কি এই সরঞ্জাম বা ধারণা সম্পর্কে শুনেছি?"
 
 #: site/activities/coaching-checklist-host.php:161
 #: site/activities/coaching-checklist-two.php:193
 #: site/activities/coaching-checklist.php:293
-#: site/dashboard/checkin-dashboard.php:186 site/dashboard/dashboard.php:262
+#: site/dashboard/checkin-dashboard.php:186 site/dashboard/dashboard.php:283
 msgid ""
 "Have I obeyed this tool or concept? If a tool, have I practiced it on my "
 "own? If a concept, have you reflected on how it changes your perspective?"
@@ -1339,7 +1339,7 @@ msgstr ""
 #: site/activities/coaching-checklist-host.php:165
 #: site/activities/coaching-checklist-two.php:197
 #: site/activities/coaching-checklist.php:296
-#: site/dashboard/checkin-dashboard.php:188 site/dashboard/dashboard.php:264
+#: site/dashboard/checkin-dashboard.php:188 site/dashboard/dashboard.php:285
 msgid ""
 "Have I shared this tool or concept? If a tool, have you shown anyone how to "
 "use this tool? If a concept, have you shared this concept with anyone?"
@@ -1351,7 +1351,7 @@ msgstr ""
 #: site/activities/coaching-checklist-host.php:169
 #: site/activities/coaching-checklist-two.php:201
 #: site/activities/coaching-checklist.php:299
-#: site/dashboard/checkin-dashboard.php:190 site/dashboard/dashboard.php:266
+#: site/dashboard/checkin-dashboard.php:190 site/dashboard/dashboard.php:287
 msgid ""
 "Have I trained others to share this tool or concept? If a tool, have I "
 "trained someone to share the tool with someone else? If a concept, have I "
@@ -1413,7 +1413,7 @@ msgstr "দেখুন"
 #: site/activities/coaching-checklist.php:199
 #: site/activities/coaching-checklist.php:331
 msgid "Leave"
-msgstr "বিদায় নিন"
+msgstr "বিদায় নিন"
 
 #: site/activities/coaching-checklist-mawl.php:169
 #: site/activities/coaching-checklist-two.php:208
@@ -1477,7 +1477,7 @@ msgstr ""
 "যখন শিক্ষার্থী পরামর্শদাতার সহকর্মী হয়ে ওঠে, তখন ত্যাগ করা এক ধরণের স্নাতকোত্তর। "
 "শিক্ষার্থী এবং পরামর্শদাতা একই নেটওয়ার্কে থাকলে পর্যায়ক্রমিক যোগাযোগ এবং সহকর্মীদের "
 "পরামর্শ অব্যাহত থাকতে পারে। যখন একজন অভিভাবক সম্পূর্ণ তত্ত্বাবধান ছাড়াই একটি শিশুকে "
-"সাইকেল চালানোর জন্য ছেড়ে দেন, তখন এটিই ছেড়ে দেবার পর্ব ।"
+"সাইকেল চালানোর জন্য ছেড়ে দেন, তখন এটিই ছেড়ে দেবার পর্ব ।"
 
 #: site/activities/coaching-checklist-two.php:101
 msgid "1. Self-evaluate yourself using Heard, Obeyed, Shared, Trained."
@@ -1619,27 +1619,24 @@ msgid "Unknown"
 msgstr "অজানা"
 
 #: site/activities/sharegospel.php:132 site/course/course-content.php:945
-#, fuzzy
 msgid "Presentation 1"
-msgstr "উপস্থাপক"
+msgstr "উপস্থাপনা ১"
 
 #: site/activities/sharegospel.php:135 site/course/course-content.php:974
-#, fuzzy
 msgid "Presentation 2"
-msgstr "উপস্থাপক"
+msgstr "উপস্থাপনা ২"
 
 #: site/activities/sharegospel.php:171
-#, fuzzy
 msgid "3 Circles Gospel Presentation"
-msgstr "৩-বৃত্তের সুসমাচার উপস্থাপনা"
+msgstr "৩টি বৃত্তের সুসমাচার উপস্থাপনা"
 
 #: site/activities/sharegospel.php:196
 msgid "No script content found for this language."
-msgstr ""
+msgstr "এই ভাষার জন্য কোনও স্ক্রিপ্ট কন্টেন্ট পাওয়া যায়নি।"
 
 #: site/activities/sharegospel.php:200
 msgid "No script found for this language."
-msgstr ""
+msgstr "এই ভাষার জন্য কোন স্ক্রিপ্ট পাওয়া যায়নি।"
 
 #: site/activities/three-month-plan-printable.php:22
 #: site/activities/three-month-plan.php:22
@@ -1647,7 +1644,7 @@ msgid "3 Month Plan"
 msgstr "৩ মাসের পরিকল্পনা"
 
 #: site/activities/three-month-plan-printable.php:47
-#: site/activities/three-month-plan.php:57 site/dashboard/dashboard.php:229
+#: site/activities/three-month-plan.php:57 site/dashboard/dashboard.php:250
 msgid "3-Month Plan"
 msgstr "৩ মাসের পরিকল্পনা"
 
@@ -1657,7 +1654,7 @@ msgstr "মুদ্রণযোগ্য সংস্করণে পরিব�
 
 #: site/activities/three-month-plan.php:71
 msgid "Scripts are off"
-msgstr "স্ক্রিপ্টগুলি বন্ধ রয়েছে"
+msgstr "স্ক্রিপ্টগুলি বন্ধ রয়েছে"
 
 #: site/activities/three-month-plan.php:72
 msgid ""
@@ -1668,8 +1665,8 @@ msgstr ""
 "উপরের লিঙ্কটি ব্যবহার করে মুদ্রণযোগ্য সংস্করণটি / প্রিন্টেবেল ভার্সন ব্যবহার করতে "
 "পারেন।"
 
-#: site/activities/three-month-plan.php:83 site/dashboard/dashboard.php:172
-#: site/dashboard/wizard.php:313 site/profile/profile.php:148
+#: site/activities/three-month-plan.php:83 site/dashboard/dashboard.php:177
+#: site/dashboard/wizard.php:360 site/profile/profile.php:148
 msgid "Save"
 msgstr "সংরক্ষণ করুন"
 
@@ -1677,15 +1674,15 @@ msgstr "সংরক্ষণ করুন"
 msgid "Cancel"
 msgstr "বাতিল করুন"
 
-#: site/activities/three-month-plan.php:85 site/dashboard/dashboard.php:329
+#: site/activities/three-month-plan.php:85 site/dashboard/dashboard.php:362
 msgid "Question"
 msgstr "প্রশ্ন"
 
-#: site/activities/three-month-plan.php:86 site/dashboard/dashboard.php:330
+#: site/activities/three-month-plan.php:86 site/dashboard/dashboard.php:363
 msgid "Answer"
 msgstr "উত্তর"
 
-#: site/activities/three-month-plan.php:87 site/dashboard/dashboard.php:331
+#: site/activities/three-month-plan.php:87 site/dashboard/dashboard.php:364
 msgid "Note"
 msgstr "নোট"
 
@@ -1746,7 +1743,8 @@ msgstr "(১০ মিনিট)"
 msgid ""
 "What comes to mind when you hear God’s command to be His \"witness\" and to "
 "tell His story?"
-msgstr "ঈশ্বরের \"সাক্ষী\" হওয়ার এবং তাঁর গল্প বলার আদেশ শুনলে আপনার মনে কী আসে?"
+msgstr ""
+"ঈশ্বরের \"সাক্ষী\" হওয়ার এবং তাঁর গল্প বলার আদেশ শুনলে আপনার মনে কী আসে?"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:29
 #: site/course/course-content.php:917
@@ -1754,8 +1752,8 @@ msgid ""
 "Why do you think Jesus chose ordinary people instead of some other way to "
 "share His good news?"
 msgstr ""
-"আপনার কি মনে হয় যীশু তাঁর সুসমাচার ভাগ করে নেওয়ার জন্য অন্য কোনও উপায়ের পরিবর্তে "
-"সাধারণ মানুষকে বেছে নিয়েছিলেন?"
+"আপনার কি মনে হয় যীশু তাঁর সুসমাচার ভাগ করে নেওয়ার জন্য অন্য কোনও উপায়ের পরিবর্তে "
+"সাধারণ মানুষকে বেছে নিয়েছিলেন?"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:30
 #: site/course/course-content.php:918
@@ -1798,7 +1796,7 @@ msgid ""
 "One way to share God‘s good news is by using a visual presentation called 3 "
 "Circles."
 msgstr ""
-"ঈশ্বরের সুসমাচার ভাগ করে নেওয়ার একটি উপায় হল ৩টি বৃত্ত নামক একটি দৃশ্যমান উপস্থাপনা "
+"ঈশ্বরের সুসমাচার ভাগ করে নেওয়ার একটি উপায় হল ৩টি বৃত্ত নামক একটি দৃশ্যমান উপস্থাপনা "
 "ব্যবহার করা।"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:66
@@ -1817,7 +1815,7 @@ msgid ""
 "Do you think it would be easier or harder to share God’s story by telling a "
 "story like this?"
 msgstr ""
-"আপনার কি মনে হয় এই ধরণের গল্প বলে ঈশ্বরের গল্প ভাগ করে নেওয়া সহজ না কঠিন হবে?"
+"আপনার কি মনে হয় এই ধরণের গল্প বলে ঈশ্বরের গল্প ভাগ করে নেওয়া সহজ না কঠিন হবে?"
 
 #: site/course/_strings-3-circle-gospel-presentation.php:84
 #: site/course/_strings-3-circle-gospel-presentation.php:109
@@ -2343,8 +2341,8 @@ msgid ""
 "Ask if anyone in the group has specific needs they would like the group to "
 "pray for."
 msgstr ""
-"দলের কারও কি এমন নির্দিষ্ট চাহিদা রয়েছে যা তারা চাইবে যে দলটি সেটির জন্য "
-"প্রার্থনা করুক, তা জিজ্ঞাসা করুন।"
+"দলের কারও কি এমন নির্দিষ্ট চাহিদা রয়েছে যা তারা চাইবে যে দলটি সেটির জন্য প্রার্থনা"
+" করুক, তা জিজ্ঞাসা করুন।"
 
 #: site/course/course-content.php:460 site/course/course-content.php:3429
 msgid ""
@@ -2450,8 +2448,8 @@ msgid ""
 "everyday followers more like Jesus:"
 msgstr ""
 "যদি আমরা এমন শিষ্য তৈরি করতে চাই যারা সংখ্যাবৃদ্ধি করে - কেবল ভোক্তা নয় বরং "
-"আধ্যাত্মিক উৎপাদনকারীও হয়ে ওঠে - তাহলে আমাদের চারটি প্রধান উপায় শিখতে হবে এবং "
-"ভাগ করে নিতে হবে যেভাবে ঈশ্বর প্রতিদিনের অনুসারীদের যীশুর মতো করে তোলেন:"
+"আধ্যাত্মিক উৎপাদনকারীও হয়ে ওঠে - তাহলে আমাদের চারটি প্রধান উপায় শিখতে হবে এবং ভা"
+"গ করে নিতে হবে যেভাবে ঈশ্বর প্রতিদিনের অনুসারীদের যীশুর মতো করে তোলেন:"
 
 #: site/course/course-content.php:516 site/pages/follow-jesus.php:201
 msgid "Prayer"
@@ -2572,7 +2570,7 @@ msgstr ""
 msgid "Obey"
 msgstr "মান্য করুন"
 
-#: site/course/course-content.php:719 site/dashboard/dashboard.php:174
+#: site/course/course-content.php:719 site/dashboard/dashboard.php:179
 #: site/pages/_strings-mobile-pwa.php:37 site/pages/share.php:29
 #: site/pages/share.php:84 site/parts/nav.php:41
 msgid "Share"
@@ -2645,6 +2643,7 @@ msgstr ""
 #: site/course/course-content.php:931
 msgid "Review the following two presentations and choose one to practice."
 msgstr ""
+"নিম্নলিখিত দুটি উপস্থাপনা পর্যালোচনা করুন এবং অনুশীলনের জন্য একটি বেছে নিন।"
 
 #: site/course/course-content.php:946
 msgid ""
@@ -2661,7 +2660,7 @@ msgstr "সুসমাচার ভাগ করে নিন"
 
 #: site/course/course-content.php:1024
 msgid "Choose one of the two presentations you watched."
-msgstr ""
+msgstr "তুমি যে দুটি উপস্থাপনা দেখেছো তার মধ্যে একটি বেছে নাও।"
 
 #: site/course/course-content.php:1026
 msgid "Break into groups of two or three people."
@@ -2935,8 +2934,8 @@ msgid ""
 "Prayer Walking is a simple way to obey God’s command to pray for others. And "
 "it’s just what it sounds like – praying to God while walking around!"
 msgstr ""
-"প্রার্থনায় হাঁটা হল ঈশ্বরের আদেশ পালন করার একটি সহজ উপায়, অন্যদের জন্য প্রার্থনা "
-"করা। এবং এটি ঠিক এরকমই শোনাচ্ছে - হাঁটার সময় ঈশ্বরের কাছে প্রার্থনা করা!"
+"প্রার্থনায় হাঁটা হল ঈশ্বরের আদেশ পালন করার একটি সহজ উপায়, অন্যদের জন্য প্রার্থনা করা।"
+" এবং এটি ঠিক এরকমই শোনাচ্ছে - হাঁটার সময় ঈশ্বরের কাছে প্রার্থনা করা!"
 
 #: site/course/course-content.php:1686
 msgid ""
@@ -3082,7 +3081,7 @@ msgid ""
 "where you’ll learn a principle and then “press pause” and practice it with "
 "the group."
 msgstr ""
-"পরবর্তী ভিডিওতে, আপনাকে একটি ইন্টারেক্টিভ ৩ /৩ গ্রুপের মাধ্যমে প্রশিক্ষণ দেওয়া হবে "
+"পরবর্তী ভিডিওতে, আপনাকে একটি ইন্টারেক্টিভ ৩ /৩ গ্রুপের মাধ্যমে প্রশিক্ষণ দেওয়া হবে "
 "যেখানে আপনি একটি নীতি শিখবেন এবং তারপর \"পজ\" টিপুন এবং গ্রুপের সাথে এটি অনুশীলন "
 "করবেন।"
 
@@ -3150,7 +3149,7 @@ msgstr "আপনি কি কখনও প্রশিক্ষণ চক্�
 
 #: site/course/course-content.php:2158
 msgid "Who did you train? Or who trained you?"
-msgstr "আপনি কাকে প্রশিক্ষণ দিয়েছেন? অথনা আপনাকে কে প্রশিক্ষণ দিয়েছেন?"
+msgstr "আপনি কাকে প্রশিক্ষণ দিয়েছেন? অথনা আপনাকে কে প্রশিক্ষণ দিয়েছেন?"
 
 #: site/course/course-content.php:2159
 msgid ""
@@ -3448,8 +3447,8 @@ msgstr ""
 "যদি আপনার কোন কোচ বা পরামর্শদাতা না থাকে, তাহলে QR কোড স্ক্যান করুন এবং এখনই "
 "একটি অনুরোধ করুন।"
 
-#: site/course/course-content.php:2771 site/dashboard/dashboard.php:220
-#: site/dashboard/wizard.php:239 site/pages/about.php:271
+#: site/course/course-content.php:2771 site/dashboard/dashboard.php:241
+#: site/dashboard/wizard.php:247 site/pages/about.php:271
 #: site/parts/footer.php:12 site/parts/footer.php:18
 #: site/parts/mobile-nav.php:14 utilities/apis/cta-api.php:246
 #: utilities/apis/cta-api.php:248
@@ -3696,9 +3695,9 @@ msgid ""
 "churches? How do they stay connected and live life together as an extended, "
 "spiritual family? They become a network!"
 msgstr ""
-"যে মণ্ডলীগুলি বৃদ্ধি পাওয়ার সাথে নতুন মণ্ডলী শুরু করে যেগুলি আবার নতুন মণ্ডলী শুরু করে "
-"তাদের কী হয়? তারা কীভাবে যুক্ত থাকে এবং এক বর্ধিত আত্মিক পরিবাররূপে একসঙ্গে "
-"জীবনযাপন করে? তারা একটি নেটওয়ার্ক-এ পরিণত হয়!"
+"যে মণ্ডলীগুলি বৃদ্ধি পাওয়ার সাথে নতুন মণ্ডলী শুরু করে যেগুলি আবার নতুন মণ্ডলী শুরু করে "
+"তাদের কী হয়? তারা কীভাবে যুক্ত থাকে এবং এক বর্ধিত আত্মিক পরিবাররূপে একসঙ্গে জীবনযা"
+"পন করে? তারা একটি নেটওয়ার্ক-এ পরিণত হয়!"
 
 #: site/course/course-content.php:3108
 msgid ""
@@ -3755,7 +3754,7 @@ msgstr ""
 msgid "God makes plans, and He expects us to make plans, too."
 msgstr "ঈশ্বর পরিকল্পনা করেন, এবং তিনি আশা করেন যে আমরাও পরিকল্পনা করব।"
 
-#: site/course/course-content.php:3183 site/dashboard/dashboard.php:231
+#: site/course/course-content.php:3183 site/dashboard/dashboard.php:252
 msgid ""
 "A Three Month Plan is a tool you can use to help focus your attention and "
 "efforts and keep them aligned with God’s priorities for making disciples who "
@@ -3943,7 +3942,7 @@ msgid ""
 "spiritual families."
 msgstr ""
 "আপনার দলের প্রতিটি সদস্যের জন্য প্রার্থনা করুন যেন তারা যীশুকে অনুসরণ করতে পারে এবং "
-"অন্যরা যেন যীশুকে অনুসরণ করে ও নতুন আধ্যাত্মিক পরিবার শুরু করার জন্য প্রস্তুত হওয়ার "
+"অন্যরা যেন যীশুকে অনুসরণ করে ও নতুন আধ্যাত্মিক পরিবার শুরু করার জন্য প্রস্তুত হওয়ার "
 "আশীর্বাদ লাভ করে।"
 
 #: site/course/course-content.php:4103 site/course/course-content.php:4374
@@ -4214,8 +4213,8 @@ msgid ""
 "of Two Churches\" pattern with the people in it. If not, share it with "
 "another believer you know."
 msgstr ""
-"যদি আপনি আপনার নিজস্ব সাধারণ গির্জা শুরু করে থাকো, তাহলে \"সর্বদা দুটি গির্জার "
-"অংশ\" প্যাটার্নটি এর লোকেদের সাথে শেয়ার করো। যদি না হয়, তাহলে আপনার পরিচিত অন্য "
+"যদি আপনি আপনার নিজস্ব সাধারণ গির্জা শুরু করে থাকো, তাহলে \"সর্বদা দুটি গির্জার অংশ\""
+" প্যাটার্নটি এর লোকেদের সাথে শেয়ার করো। যদি না হয়, তাহলে আপনার পরিচিত অন্য "
 "বিশ্বাসীর সাথে ভাগ করুন ।"
 
 #: site/course/course-content.php:5399 site/course/course-content.php:5404
@@ -4307,7 +4306,7 @@ msgid ""
 "Share the concept of the \"Peer Mentoring Group\" with two believers on your "
 "list of 100."
 msgstr ""
-"আপনার ১০০ জনের তালিকায় থাকা দুজন বিশ্বাসীর সাথে \"সঙ্গী পরামর্শদাতাদের দল\" এর "
+"আপনার ১০০ জনের তালিকায় থাকা দুজন বিশ্বাসীর সাথে \"সঙ্গী পরামর্শদাতাদের দল\" এর "
 "ধারণাটি ভাগ করুন।"
 
 #: site/course/course-content.php:5793 site/course/course-content.php:5798
@@ -4349,7 +4348,7 @@ msgid "INTENSIVE SESSION 5"
 msgstr "তীব্র সেশন ৫"
 
 #: site/course/course-content.php:6160 site/course/course-content.php:6168
-#: site/dashboard/dashboard.php:267 site/parts/mobile-nav.php:20
+#: site/dashboard/dashboard.php:288 site/parts/mobile-nav.php:20
 msgid "Join the Community"
 msgstr "সম্প্রদায়ে যোগদান করুন"
 
@@ -4393,7 +4392,7 @@ msgstr "কোর্স উপস্থাপক"
 msgid "Links"
 msgstr "লিঙ্কগুলি"
 
-#: site/course/presenter.php:148 site/dashboard/dashboard.php:271
+#: site/course/presenter.php:148 site/dashboard/dashboard.php:292
 #: site/pages/resources.php:29 site/pages/resources.php:122
 #: site/parts/checkin-nav.php:14 site/parts/footer.php:41
 #: site/parts/mobile-nav.php:8 site/parts/mobile-nav.php:28
@@ -4405,7 +4404,7 @@ msgstr "সম্পদ"
 msgid "Exit Course"
 msgstr "কোর্স থেকে বেরিয়ে আসুন"
 
-#: site/course/presenter.php:163 site/dashboard/dashboard.php:189
+#: site/course/presenter.php:163 site/dashboard/dashboard.php:194
 msgid "Menu"
 msgstr "মেনু"
 
@@ -4413,7 +4412,7 @@ msgstr "মেনু"
 msgid "Slide View"
 msgstr "স্লাইড ভিউ"
 
-#: site/course/presenter.php:165 site/dashboard/dashboard.php:184
+#: site/course/presenter.php:165 site/dashboard/dashboard.php:189
 msgid "List View"
 msgstr "তালিকা ভিউ"
 
@@ -4425,8 +4424,9 @@ msgstr "পরবর্তী স্লাইড"
 msgid "Previous slide"
 msgstr "পূর্ববর্তী স্লাইড"
 
-#: site/course/presenter.php:168 site/dashboard/wizard.php:250
-#: site/pages/join-a-training-public.php:105
+#: site/course/presenter.php:168 site/dashboard/wizard.php:266
+#: site/dashboard/wizard.php:297 site/pages/join-a-training-public.php:105
+#: site/pages/join-a-training-public.php:129 site/pages/plans.php:156
 msgid "Session"
 msgstr "সেশন"
 
@@ -4475,209 +4475,272 @@ msgstr "অভিনন্দন"
 msgid "You're checked in"
 msgstr "আপনি চেক ইন করেছেন"
 
-#: site/dashboard/checkin-dashboard.php:182
+#: site/dashboard/checkin-dashboard.php:182 site/dashboard/dashboard.php:369
 #: site/pages/_strings-mobile-pwa.php:41
 msgid "Learn more"
 msgstr "আরও জানুন"
 
-#: site/dashboard/dashboard.php:170 site/dashboard/wizard.php:311
+#: site/dashboard/dashboard.php:175 site/dashboard/wizard.php:358
 msgid "Done"
 msgstr "সম্পন্ন"
 
-#: site/dashboard/dashboard.php:171
+#: site/dashboard/dashboard.php:176
 msgid "Edit"
 msgstr "সম্পাদনা"
 
-#: site/dashboard/dashboard.php:173 site/pages/_strings-mobile-pwa.php:27
+#: site/dashboard/dashboard.php:178 site/pages/_strings-mobile-pwa.php:27
 msgid "Delete"
 msgstr "মুছুন"
 
-#: site/dashboard/dashboard.php:175
+#: site/dashboard/dashboard.php:180
 msgid "Status"
 msgstr "স্থিতি"
 
-#: site/dashboard/dashboard.php:176
+#: site/dashboard/dashboard.php:181 site/pages/plans.php:113
 msgid "Active"
 msgstr "সক্রিয়"
 
-#: site/dashboard/dashboard.php:177
+#: site/dashboard/dashboard.php:182 site/pages/plans.php:113
 msgid "Inactive"
 msgstr "নিষ্ক্রিয়"
 
-#: site/dashboard/dashboard.php:178
+#: site/dashboard/dashboard.php:183
 msgid "Completed"
 msgstr "সম্পূর্ণ"
 
-#: site/dashboard/dashboard.php:179
+#: site/dashboard/dashboard.php:184
 msgid "Uncompleted"
 msgstr "অসম্পূর্ণ"
 
-#: site/dashboard/dashboard.php:180
+#: site/dashboard/dashboard.php:185
 msgid "Not Heard"
 msgstr "শুনা যায়নি"
 
-#: site/dashboard/dashboard.php:181 site/pages/share.php:124
+#: site/dashboard/dashboard.php:186 site/pages/share.php:124
 msgid "All"
 msgstr "সব"
 
-#: site/dashboard/dashboard.php:182 site/profile/profile.php:154
+#: site/dashboard/dashboard.php:187 site/profile/profile.php:154
 msgid "Logout"
 msgstr "লগআউট"
 
-#: site/dashboard/dashboard.php:183 site/pages/share.php:127
+#: site/dashboard/dashboard.php:188 site/pages/share.php:127
 msgid "Filter"
 msgstr "ফিল্টার"
 
-#: site/dashboard/dashboard.php:185
+#: site/dashboard/dashboard.php:190
 msgid "Grid View"
 msgstr "গ্রিড ভিউ"
 
-#: site/dashboard/dashboard.php:186
+#: site/dashboard/dashboard.php:191
 msgid "View Now"
 msgstr "এখন দেখুন"
 
-#: site/dashboard/dashboard.php:187
+#: site/dashboard/dashboard.php:192
 msgid "Complete Now"
 msgstr "এখনই সম্পূর্ণ করুন"
 
-#: site/dashboard/dashboard.php:188
+#: site/dashboard/dashboard.php:193
 msgid "View"
 msgstr "দেখুন"
 
-#: site/dashboard/dashboard.php:190 site/dashboard/wizard.php:202
-#: site/dashboard/wizard.php:248 site/pages/join-a-training-public.php:104
-#: site/profile/profile.php:111
+#: site/dashboard/dashboard.php:195 site/dashboard/wizard.php:210
+#: site/dashboard/wizard.php:264 site/pages/join-a-training-public.php:104
+#: site/pages/join-a-training-public.php:128 site/profile/profile.php:111
 msgid "Name"
 msgstr "নাম"
 
-#: site/dashboard/dashboard.php:191 site/dashboard/wizard.php:200
-#: site/dashboard/wizard.php:218 site/profile/profile.php:115
-#: zume-training-system.php:404
+#: site/dashboard/dashboard.php:196 site/dashboard/wizard.php:208
+#: site/dashboard/wizard.php:226 site/profile/profile.php:115
+#: zume-training-system.php:563
 msgid "Phone"
 msgstr "ফোন"
 
-#: site/dashboard/dashboard.php:192 site/dashboard/wizard.php:216
+#: site/dashboard/dashboard.php:197 site/dashboard/wizard.php:224
 #: site/login/login-template.php:450 site/login/login-template.php:451
-#: site/profile/profile.php:119 zume-training-system.php:402
+#: site/profile/profile.php:119 zume-training-system.php:561
 msgid "Email"
 msgstr "ইমেল"
 
-#: site/dashboard/dashboard.php:193
-msgid "Linked Accounts"
-msgstr "লিঙ্ক করা অ্যাকাউন্ট"
-
-#: site/dashboard/dashboard.php:194
+#: site/dashboard/dashboard.php:198
 msgid "Communications Email"
 msgstr "যোগাযোগ ইমেল"
 
-#: site/dashboard/dashboard.php:195 site/dashboard/wizard.php:201
+#: site/dashboard/dashboard.php:199
+msgid "If these are not correct, please update your profile."
+msgstr "যদি এগুলো সঠিক না হয়, তাহলে অনুগ্রহ করে আপনার প্রোফাইল আপডেট করুন।"
+
+#: site/dashboard/dashboard.php:200
+msgid "Contact Info"
+msgstr "যোগাযোগের তথ্য"
+
+#: site/dashboard/dashboard.php:202
+msgid "Copy Emails"
+msgstr "ইমেল কপি করুন"
+
+#: site/dashboard/dashboard.php:203
+msgid "Copy Phones"
+msgstr "ফোন কপি করুন"
+
+#: site/dashboard/dashboard.php:204
+msgid "Copy Code"
+msgstr "কোড কপি করুন"
+
+#: site/dashboard/dashboard.php:205
+msgid "Linked Accounts"
+msgstr "লিঙ্ক করা অ্যাকাউন্ট"
+
+#: site/dashboard/dashboard.php:206 site/dashboard/wizard.php:273
+msgid "Change Preferences"
+msgstr "পছন্দ পরিবর্তন করুন"
+
+#: site/dashboard/dashboard.php:207
+msgid "Email Preferences"
+msgstr "ইমেল পছন্দসমূহ"
+
+#: site/dashboard/dashboard.php:208
+msgid "Choose which email lists you want to receive"
+msgstr "আপনি কোন ইমেল তালিকা পেতে চান তা বেছে নিন"
+
+#: site/dashboard/dashboard.php:209 zume-training-system.php:541
+msgid "Hide my contact information from other participants in trainings"
+msgstr "প্রশিক্ষণে অন্যান্য অংশগ্রহণকারীদের থেকে আমার যোগাযোগের তথ্য লুকান"
+
+#: site/dashboard/dashboard.php:210 zume-training-system.php:533
+msgid "Hide my progress from other participants in trainings"
+msgstr "প্রশিক্ষণে অন্যান্য অংশগ্রহণকারীদের কাছ থেকে আমার অগ্রগতি লুকান"
+
+#: site/dashboard/dashboard.php:211
+msgid ""
+"Don't forget to send subscribers an email to notify them of the training."
+msgstr "প্রশিক্ষণ সম্পর্কে গ্রাহকদের ইমেল করে অবহিত করতে ভুলবেন না।"
+
+#: site/dashboard/dashboard.php:212 site/dashboard/wizard.php:209
 #: site/profile/profile.php:123
 msgid "City"
 msgstr "শহর"
 
-#: site/dashboard/dashboard.php:198 site/dashboard/wizard.php:310
-#: site/dashboard/wizard.php:314 site/dashboard/wizard.php:331
+#: site/dashboard/dashboard.php:215 site/dashboard/wizard.php:357
+#: site/dashboard/wizard.php:361 site/dashboard/wizard.php:385
+#: zume-training-system.php:252
 msgid "Time"
 msgstr "সময়"
 
-#: site/dashboard/dashboard.php:199 site/dashboard/wizard.php:224
-#: site/dashboard/wizard.php:253 site/pages/_strings-mobile-pwa.php:17
-#: site/pages/join-a-training-public.php:109 site/parts/language-menu.php:7
+#: site/dashboard/dashboard.php:216 site/dashboard/wizard.php:232
+#: site/dashboard/wizard.php:269 site/pages/_strings-mobile-pwa.php:17
+#: site/pages/join-a-training-public.php:109
+#: site/pages/join-a-training-public.php:133 site/parts/language-menu.php:7
 #: site/profile/profile.php:133 utilities/post-types/posttype-pieces.php:300
+#: zume-training-system.php:258
 msgid "Language"
 msgstr "ভাষা"
 
-#: site/dashboard/dashboard.php:200 site/dashboard/wizard.php:252
-#: site/pages/join-a-training-public.php:108
+#: site/dashboard/dashboard.php:217 site/dashboard/wizard.php:268
+#: site/dashboard/wizard.php:296 site/pages/join-a-training-public.php:108
+#: site/pages/join-a-training-public.php:132 site/pages/plans.php:152
+#: zume-training-system.php:255
 msgid "Timezone"
 msgstr "সময় অঞ্চল"
 
-#: site/dashboard/dashboard.php:201 site/dashboard/wizard.php:332
+#: site/dashboard/dashboard.php:218
+msgid "Select timezone"
+msgstr "টাইমজোন নির্বাচন করুন"
+
+#: site/dashboard/dashboard.php:219
+msgid "New"
+msgstr "নতুন"
+
+#: site/dashboard/dashboard.php:220 site/dashboard/wizard.php:386
 msgid "Meeting link"
 msgstr "মিটিং লিঙ্ক"
 
-#: site/dashboard/dashboard.php:202
+#: site/dashboard/dashboard.php:221
 msgid "Zoom, Google Meet, Microsoft Teams etc."
 msgstr "জুম, গুগল মিট, মাইক্রোসফ্ট টিম ইত্যাদি।"
 
-#: site/dashboard/dashboard.php:203
+#: site/dashboard/dashboard.php:222
 msgid "Edit Profile"
 msgstr "প্রোফাইল সম্পাদনা করুন"
 
-#: site/dashboard/dashboard.php:204
+#: site/dashboard/dashboard.php:223
 msgid "Check out this Zúme concept"
 msgstr "এই জুমে ধারণাটি দেখুন"
 
-#: site/dashboard/dashboard.php:205 site/pages/resources.php:160
+#: site/dashboard/dashboard.php:224 site/pages/resources.php:160
 msgid "Preview"
 msgstr "প্রিভিউ"
 
-#: site/dashboard/dashboard.php:206 site/dashboard/dashboard.php:282
-#: site/dashboard/dashboard.php:295
+#: site/dashboard/dashboard.php:225 site/dashboard/dashboard.php:309
+#: site/dashboard/dashboard.php:322
 #, php-format
 msgid "Add new %s"
 msgstr "নতুন স যোগ করুন%s"
 
-#: site/dashboard/dashboard.php:206
+#: site/dashboard/dashboard.php:225
 msgid "Commitment"
 msgstr "প্রতিশ্রুতি"
 
-#: site/dashboard/dashboard.php:207 site/pages/share.php:85
+#: site/dashboard/dashboard.php:226 site/pages/share.php:85
 msgid "Copy Link"
 msgstr "লিঙ্কটি অনুলিপি করুন"
 
-#: site/dashboard/dashboard.php:208
+#: site/dashboard/dashboard.php:227
 msgid "Copy this link and send it to your friends 🙂"
 msgstr "এই লিঙ্কটি অনুলিপি করুন এবং এটি আপনার বন্ধুদের কাছে পাঠান 🙂"
 
-#: site/dashboard/dashboard.php:209 site/pages/share.php:87
+#: site/dashboard/dashboard.php:228 site/pages/share.php:87
 msgid "Thanks!"
 msgstr "ধন্যবাদ!"
 
-#: site/dashboard/dashboard.php:210
+#: site/dashboard/dashboard.php:229
 msgid "Link copied"
 msgstr "লিঙ্কটি অনুলিপি করা হয়েছে"
 
-#: site/dashboard/dashboard.php:212 utilities/apis/cta-api.php:157
+#: site/dashboard/dashboard.php:230 site/pages/share.php:88
+msgid "Copied"
+msgstr "অনুলিপি করা হয়েছে"
+
+#: site/dashboard/dashboard.php:232 utilities/apis/cta-api.php:157
 #: utilities/apis/cta-api.php:159
 msgid "Set Profile"
 msgstr "প্রোফাইল সেট করুন"
 
-#: site/dashboard/dashboard.php:213
+#: site/dashboard/dashboard.php:233
 msgid "Complete a short Profile Wizard to set your profile"
 msgstr "আপনার প্রোফাইল সেট করতে একটি ছোট প্রোফাইল উইজার্ড সম্পূর্ণ করুন"
 
-#: site/dashboard/dashboard.php:214 site/dashboard/wizard.php:274
+#: site/dashboard/dashboard.php:234 site/dashboard/wizard.php:316
 msgid "Join or create a training group"
 msgstr "একটি প্রশিক্ষণ গ্রুপে যোগদান করুন বা তৈরি করুন"
 
-#: site/dashboard/dashboard.php:215
+#: site/dashboard/dashboard.php:235
 msgid ""
 "Join one of our online trainings or create your own training group with our "
 "easy to set up wizard"
 msgstr ""
-"আমাদের অনলাইন প্রশিক্ষণে যোগদান করুন অথবা আমাদের সহজে সেট আপ করা যায় এমন উইজার্ড "
+"আমাদের অনলাইন প্রশিক্ষণে যোগদান করুন অথবা আমাদের সহজে সেট আপ করা যায় এমন উইজার্ড "
 "ব্যবহার করে আপনার নিজস্ব প্রশিক্ষণ গ্রুপ তৈরি করুন"
 
-#: site/dashboard/dashboard.php:216
+#: site/dashboard/dashboard.php:236
 msgid "Create Training Group"
 msgstr "প্রশিক্ষণ গ্রুপ তৈরি করুন"
 
-#: site/dashboard/dashboard.php:217
+#: site/dashboard/dashboard.php:237
 msgid "Create your own training group with our easy to set up wizard"
 msgstr ""
-"আমাদের সহজে সেট আপ করা যায় এমন উইজার্ড ব্যবহার করে আপনার নিজস্ব প্রশিক্ষণ গ্রুপ "
-"তৈরি করুন"
+"আমাদের সহজে সেট আপ করা যায় এমন উইজার্ড ব্যবহার করে আপনার নিজস্ব প্রশিক্ষণ গ্রুপ তৈরি"
+" করুন"
 
-#: site/dashboard/dashboard.php:218 site/dashboard/wizard.php:333
+#: site/dashboard/dashboard.php:238 site/dashboard/wizard.php:317
+#: site/dashboard/wizard.php:387 site/pages/plans.php:194
 msgid "Join Training Group"
 msgstr "প্রশিক্ষণ গ্রুপে যোগদান করুন"
 
-#: site/dashboard/dashboard.php:219
+#: site/dashboard/dashboard.php:239
 msgid "Join an online training group run by a coach"
 msgstr "কোনও কোচ দ্বারা পরিচালিত একটি অনলাইন প্রশিক্ষণ গ্রুপে যোগদান করুন"
 
-#: site/dashboard/dashboard.php:221
+#: site/dashboard/dashboard.php:242
 msgid ""
 "Connect with a coach for any help or encouragement before, during or after "
 "the training."
@@ -4685,11 +4748,11 @@ msgstr ""
 "প্রশিক্ষণের আগে, চলাকালীন বা পরে যেকোনো সাহায্য বা উৎসাহের জন্য একজন কোচের সাথে "
 "যোগাযোগ করুন।"
 
-#: site/dashboard/dashboard.php:223 site/parts/checkin-nav.php:8
+#: site/dashboard/dashboard.php:244 site/parts/checkin-nav.php:8
 msgid "My Progress"
 msgstr "আমার অগ্রগতি"
 
-#: site/dashboard/dashboard.php:224
+#: site/dashboard/dashboard.php:245
 msgid ""
 "Track your course progress with this interactive view. Learn to listen, "
 "obey, share and train others with what you have learned."
@@ -4697,35 +4760,35 @@ msgstr ""
 "এই ইন্টারেক্টিভ ভিউ দিয়ে আপনার কোর্সের অগ্রগতি ট্র্যাক করুন। আপনি যা শিখেছেন তা "
 "শুনতে, মান্য করতে, ভাগ করে নিতে এবং অন্যদের প্রশিক্ষণ দিতে শিখুন।"
 
-#: site/dashboard/dashboard.php:225
+#: site/dashboard/dashboard.php:246
 msgid "Information about progress"
 msgstr "অগ্রগতি সম্পর্কে তথ্য"
 
-#: site/dashboard/dashboard.php:226
+#: site/dashboard/dashboard.php:247
 msgid "My Training"
 msgstr "আমার প্রশিক্ষণ"
 
-#: site/dashboard/dashboard.php:227
+#: site/dashboard/dashboard.php:248
 msgid "My Trainings"
 msgstr "আমার প্রশিক্ষণ"
 
-#: site/dashboard/dashboard.php:228
+#: site/dashboard/dashboard.php:249
 msgid ""
 "Full access to your training content, schedule, group details and sharing "
 "tools."
 msgstr ""
 "আপনার প্রশিক্ষণের বিষয়বস্তু, সময়সূচী, দলের বিবরণ এবং ভাগ করে নেওয়ার সরঞ্জামগুলিতে "
-"সম্পূর্ণ নিয়ন্ত্রণ।"
+"সম্পূর্ণ নিয়ন্ত্রণ।"
 
-#: site/dashboard/dashboard.php:230
+#: site/dashboard/dashboard.php:251
 msgid "Create Your Plan"
 msgstr "আপনার পরিকল্পনা তৈরি করুন"
 
-#: site/dashboard/dashboard.php:232
+#: site/dashboard/dashboard.php:253
 msgid "Three Month Plan Locked"
 msgstr "তিন মাসের পরিকল্পনা লক করা হয়েছে"
 
-#: site/dashboard/dashboard.php:233
+#: site/dashboard/dashboard.php:254
 msgid ""
 "The three month plan is a tool to help you take action and implement the "
 "tools and concepts learned through the Zúme course. It is most useful, once "
@@ -4735,23 +4798,23 @@ msgstr ""
 "মাধ্যমে শেখা সরঞ্জাম এবং ধারণাগুলি বাস্তবায়নে সাহায্য করে। প্রশিক্ষণ শেষ করার পরে "
 "এটি সবচেয়ে কার্যকর।"
 
-#: site/dashboard/dashboard.php:234
+#: site/dashboard/dashboard.php:255
 msgid "Unlock now"
 msgstr "এখনই আনলক করুন"
 
-#: site/dashboard/dashboard.php:236
+#: site/dashboard/dashboard.php:257
 msgid "My Coach"
 msgstr "আমার কোচ"
 
-#: site/dashboard/dashboard.php:237
+#: site/dashboard/dashboard.php:258
 msgid "Quick access to your coach at all times."
 msgstr "সর্বদা আপনার কোচের কাছে দ্রুত অ্যাক্সেস।"
 
-#: site/dashboard/dashboard.php:238
+#: site/dashboard/dashboard.php:259
 msgid "My Tools"
 msgstr "আমার সরঞ্জাম"
 
-#: site/dashboard/dashboard.php:239
+#: site/dashboard/dashboard.php:260
 msgid ""
 "Your My Tools area will unlock as you move through the course, practicing "
 "and developing essential discipleship skills"
@@ -4759,22 +4822,22 @@ msgstr ""
 "আপনার কোর্সটি এগিয়ে যাওয়ার সাথে আপনার আমার সরঞ্জাম এলাকাটি আনলক হয়ে যাবে, "
 "অনুশীলন এবং প্রয়োজনীয় শিষ্যত্ব দক্ষতা বিকাশ করবে"
 
-#: site/dashboard/dashboard.php:240
+#: site/dashboard/dashboard.php:261
 msgid "My Plans"
 msgstr "আমার পরিকল্পনা"
 
-#: site/dashboard/dashboard.php:241
+#: site/dashboard/dashboard.php:262
 msgid ""
 "Unlock the My Plans area by completing your 3-Month plan in the final "
 "session."
 msgstr ""
 "সম্পূর্ণ সেশনে আপনার 3-মাসের পরিকল্পনা সম্পূর্ণ করে আমার পরিকল্পনা এলাকাটি আনলক করুন।"
 
-#: site/dashboard/dashboard.php:242
+#: site/dashboard/dashboard.php:263
 msgid "My Plans are Locked"
 msgstr "আমার পরিকল্পনা লক করা হয়েছে"
 
-#: site/dashboard/dashboard.php:243
+#: site/dashboard/dashboard.php:264
 msgid ""
 "Unlock this area by creating your Three-Month Plan or adding a commitment of "
 "your own."
@@ -4782,11 +4845,11 @@ msgstr ""
 "আপনার তিন-মাসের পরিকল্পনা তৈরি করে বা আপনার নিজস্ব একটি প্রতিশ্রুতি যোগ করে এই "
 "এলাকাটি আনলক করুন।"
 
-#: site/dashboard/dashboard.php:244
+#: site/dashboard/dashboard.php:265
 msgid "My Churches"
 msgstr "আমার গীর্জা"
 
-#: site/dashboard/dashboard.php:245 site/dashboard/dashboard.php:285
+#: site/dashboard/dashboard.php:266 site/dashboard/dashboard.php:312
 msgid ""
 "My Churches tool makes it easy for you to track your simple church and the "
 "simple church generations that grow out of your spiritual family."
@@ -4794,15 +4857,15 @@ msgstr ""
 "আমার গীর্জা টুলটি আপনার জন্য আপনার সাধারণ গির্জা এবং আপনার আধ্যাত্মিক পরিবার থেকে "
 "বেড়ে ওঠা সাধারণ গির্জা প্রজন্মগুলিকে ট্র্যাক করা সহজ করে তোলে।"
 
-#: site/dashboard/dashboard.php:246
+#: site/dashboard/dashboard.php:267
 msgid "My Maps"
 msgstr "আমার মানচিত্র"
 
-#: site/dashboard/dashboard.php:247
+#: site/dashboard/dashboard.php:268
 msgid "My Maps are Locked"
 msgstr "আমার মানচিত্র লক করা হয়েছে"
 
-#: site/dashboard/dashboard.php:248
+#: site/dashboard/dashboard.php:269
 msgid ""
 "My maps help clarify the Zúme vision of 1 trainee and 2 churches for every "
 "5,000 people in the US, and 50,000 globally. To unlock My Maps, join the "
@@ -4814,177 +4877,201 @@ msgstr ""
 "থাকবে। আমার মানচিত্র আনলক করতে, জুমে সম্প্রদায়ে যোগ দিন এবং অন্যান্য শিষ্য "
 "নির্মাতাদের সাথে যোগাযোগ করুন যারা মহান দায়িত্ব পূর্ণ হতে দেখতে আগ্রহী।"
 
-#: site/dashboard/dashboard.php:249
+#: site/dashboard/dashboard.php:270
 msgid "My Training is Locked"
 msgstr "আমার প্রশিক্ষণ লক করা আছে"
 
-#: site/dashboard/dashboard.php:250
+#: site/dashboard/dashboard.php:271
 msgid "Present Course"
 msgstr "বর্তমান কোর্স"
 
-#: site/dashboard/dashboard.php:252
+#: site/dashboard/dashboard.php:273
 msgid "Course Content"
 msgstr "কোর্স বিষয়বস্তু"
 
-#: site/dashboard/dashboard.php:253
+#: site/dashboard/dashboard.php:274
 msgid "Course"
 msgstr "কোর্স"
 
-#: site/dashboard/dashboard.php:254
+#: site/dashboard/dashboard.php:275
 msgid "Enter Course"
 msgstr "কোর্সে প্রবেশ করুন"
 
-#: site/dashboard/dashboard.php:255
+#: site/dashboard/dashboard.php:276
 msgid "Course Slides"
 msgstr "কোর্স স্লাইড"
 
-#: site/dashboard/dashboard.php:258 site/pages/resources.php:153
+#: site/dashboard/dashboard.php:279 site/pages/resources.php:153
 #: site/pages/resources.php:170 site/pages/resources.php:197
 #: site/parts/download-slides.php:37 site/parts/download-slides.php:49
 msgid "Intensive Course"
 msgstr "তীব্র কোর্স"
 
-#: site/dashboard/dashboard.php:268 site/dashboard/wizard.php:254
+#: site/dashboard/dashboard.php:289 site/dashboard/wizard.php:270
 #: site/pages/home.php:281 site/pages/join-a-training-public.php:136
-#: site/pages/training.php:150 utilities/apis/cta-api.php:189
-#: utilities/apis/cta-api.php:412
+#: site/pages/training.php:150 utilities/apis/communications-api.php:104
+#: utilities/apis/cta-api.php:189 utilities/apis/cta-api.php:412
 msgid "Join"
 msgstr "যোগদান করুন"
 
-#: site/dashboard/dashboard.php:269
+#: site/dashboard/dashboard.php:290
 msgid "Join the community to get access to this area."
 msgstr "এই এলাকায় অ্যাক্সেস পেতে কমিউনিটিতে যোগদান করুন।"
 
-#: site/dashboard/dashboard.php:270
+#: site/dashboard/dashboard.php:291
 msgid "Community links"
 msgstr "সম্প্রদায়র লিঙ্ক"
 
-#: site/dashboard/dashboard.php:272
+#: site/dashboard/dashboard.php:293
 msgid "Previous Slide"
 msgstr "পূর্ববর্তী স্লাইড"
 
-#: site/dashboard/dashboard.php:273
+#: site/dashboard/dashboard.php:294
 msgid "Next Slide"
 msgstr "পরবর্তী স্লাইড"
 
-#: site/dashboard/dashboard.php:274
+#: site/dashboard/dashboard.php:295
 msgid "Group Members"
 msgstr "দলের সদস্য"
 
-#: site/dashboard/dashboard.php:275
+#: site/dashboard/dashboard.php:296
 msgid "Group Members Link"
 msgstr "দলের সদস্যদের লিঙ্ক"
 
-#: site/dashboard/dashboard.php:276
+#: site/dashboard/dashboard.php:297
 msgid "Group Details"
 msgstr "দলের বিবরণ"
 
-#: site/dashboard/dashboard.php:277
+#: site/dashboard/dashboard.php:298
+msgid "Group Communication"
+msgstr "গ্রুপ যোগাযোগ"
+
+#: site/dashboard/dashboard.php:299
+msgid "Subscribers"
+msgstr "গ্রাহকগণ"
+
+#: site/dashboard/dashboard.php:300
+msgid "Has joined a group"
+msgstr "একটি গ্রুপে যোগ দিয়েছেন"
+
+#: site/dashboard/dashboard.php:301
+msgid "Emailed on"
+msgstr "ইমেল করা হয়েছে"
+
+#: site/dashboard/dashboard.php:302
+msgid "Send Email to Subscribers"
+msgstr "সাবস্ক্রাইবারদের ইমেল পাঠান"
+
+#: site/dashboard/dashboard.php:303
 msgid "Mark Completed"
 msgstr "সম্পূর্ণ হয়েছে চিহ্নিত করুন"
 
-#: site/dashboard/dashboard.php:278
+#: site/dashboard/dashboard.php:304
+msgid "Mark Uncompleted"
+msgstr "অসম্পূর্ণ হিসেবে চিহ্নিত করুন"
+
+#: site/dashboard/dashboard.php:305
 #, php-format
 msgid "Session %d"
 msgstr "সেশন %d"
 
-#: site/dashboard/dashboard.php:279 site/pages/_strings-mobile-pwa.php:31
+#: site/dashboard/dashboard.php:306 site/pages/_strings-mobile-pwa.php:31
 msgid "Start Session"
 msgstr "সেশন শুরু করুন"
 
-#: site/dashboard/dashboard.php:280
+#: site/dashboard/dashboard.php:307
 msgid "Show details"
 msgstr "বিস্তারিত দেখান"
 
-#: site/dashboard/dashboard.php:281
+#: site/dashboard/dashboard.php:308
 msgid "Edit time"
 msgstr "সময় সম্পাদনা করুন"
 
-#: site/dashboard/dashboard.php:283
+#: site/dashboard/dashboard.php:310
 msgid "Invite Friends"
 msgstr "বন্ধুদের আমন্ত্রণ জানান"
 
-#: site/dashboard/dashboard.php:284
+#: site/dashboard/dashboard.php:311
 msgid "My Churches are Locked"
 msgstr "আমার গির্জাগুলি লক করা আছে"
 
-#: site/dashboard/dashboard.php:286
+#: site/dashboard/dashboard.php:313
 msgid "Unlock the My Churches area by joining the community."
 msgstr "সম্প্রদায়ে যোগদান করে আমার গির্জা অঞ্চলটি আনলক করুন।"
 
-#: site/dashboard/dashboard.php:287
+#: site/dashboard/dashboard.php:314
 msgid "Click to add your first church"
 msgstr "আপনার প্রথম গির্জা যোগ করতে ক্লিক করুন"
 
-#: site/dashboard/dashboard.php:288
+#: site/dashboard/dashboard.php:315
 msgid "Church Name"
 msgstr "গির্জাটির নাম"
 
-#: site/dashboard/dashboard.php:289
+#: site/dashboard/dashboard.php:316
 msgid "Number of People"
 msgstr "মানুষের সংখ্যা"
 
-#: site/dashboard/dashboard.php:290
+#: site/dashboard/dashboard.php:317
 msgid "Church Location"
 msgstr "গির্জাটির অবস্থান"
 
-#: site/dashboard/dashboard.php:291
+#: site/dashboard/dashboard.php:318
 msgid "Parent Church"
 msgstr "পিতামাতার গির্জা"
 
-#: site/dashboard/dashboard.php:292 site/dashboard/wizard.php:309
+#: site/dashboard/dashboard.php:319 site/dashboard/wizard.php:356
 msgid "Start Date"
 msgstr "শুরু তারিখ"
 
-#: site/dashboard/dashboard.php:293
+#: site/dashboard/dashboard.php:320
 msgid "Mark Active"
 msgstr "সক্রিয় চিহ্নিত করুন"
 
-#: site/dashboard/dashboard.php:294
+#: site/dashboard/dashboard.php:321
 msgid "Mark Inactive"
 msgstr "নিষ্ক্রিয় হিসেবে চিহ্নিত করুন"
 
-#: site/dashboard/dashboard.php:295
+#: site/dashboard/dashboard.php:322
 msgid "Church"
 msgstr "গির্জা"
 
-#: site/dashboard/dashboard.php:296
+#: site/dashboard/dashboard.php:323
 msgid "cancel"
 msgstr "বাতিল করুন"
 
-#: site/dashboard/dashboard.php:297 utilities/apis/cta-api.php:173
+#: site/dashboard/dashboard.php:324 utilities/apis/cta-api.php:173
 #: utilities/apis/cta-api.php:203 utilities/apis/cta-api.php:323
 #: utilities/apis/cta-api.php:337 utilities/apis/cta-api.php:366
 msgid "Congratulations!"
 msgstr "অভিনন্দন!"
 
-#: site/dashboard/dashboard.php:298
+#: site/dashboard/dashboard.php:325
 msgid "You have requested a coach"
 msgstr "আপনি একজন কোচের জন্য অনুরোধ করেছেন"
 
-#: site/dashboard/dashboard.php:299
+#: site/dashboard/dashboard.php:326
 msgid "You have joined a training"
 msgstr "আপনি একটি প্রশিক্ষণে যোগদান করেছেন"
 
-#: site/dashboard/dashboard.php:300
+#: site/dashboard/dashboard.php:327
 msgid "You have set your profile"
 msgstr "আপনি আপনার প্রোফাইল সেট করেছেন"
 
-#: site/dashboard/dashboard.php:301
+#: site/dashboard/dashboard.php:328
 #, php-format
 msgctxt "3-month plan unlocked"
 msgid "%s unlocked"
 msgstr "%s আনলক করা হয়েছে"
 
-#: site/dashboard/dashboard.php:301 utilities/apis/cta-api.php:322
+#: site/dashboard/dashboard.php:328 utilities/apis/cta-api.php:322
 msgid "3 month plan"
 msgstr "৩ মাসের পরিকল্পনা"
 
-#: site/dashboard/dashboard.php:302
+#: site/dashboard/dashboard.php:329
 msgid "You have joined the community"
 msgstr "আপনি সম্প্রদায়ে যোগদান করেছেন"
 
-#: site/dashboard/dashboard.php:304 site/dashboard/wizard.php:210
+#: site/dashboard/dashboard.php:331 site/dashboard/wizard.php:218
 #: site/pages/privacy-policy.php:110
 msgid ""
 "A user’s real name or nickname is requested to improve the personal quality "
@@ -4994,7 +5081,7 @@ msgstr ""
 "সাইটের ব্যক্তিগত মান এবং যোগাযোগের উন্নতির জন্য, সেইসাথে গ্রাহক পরিষেবা অনুরোধ এবং "
 "প্রশিক্ষণের জন্য একজন ব্যবহারকারীর আসল নাম বা ডাকনাম অনুরোধ করা হয়।"
 
-#: site/dashboard/dashboard.php:305 site/pages/privacy-policy.php:116
+#: site/dashboard/dashboard.php:332 site/pages/privacy-policy.php:116
 msgid ""
 "A user’s email address is required to establish an account and is used for "
 "transactional communication as part of site operation."
@@ -5002,7 +5089,7 @@ msgstr ""
 "একজন ব্যবহারকারীর ইমেল ঠিকানা একটি অ্যাকাউন্ট তৈরি করতে প্রয়োজন এবং সাইট "
 "পরিচালনার অংশ হিসাবে লেনদেনের যোগাযোগের জন্য এটি ব্যবহার করা হয়।"
 
-#: site/dashboard/dashboard.php:306 site/dashboard/wizard.php:211
+#: site/dashboard/dashboard.php:333 site/dashboard/wizard.php:219
 #: site/pages/privacy-policy.php:119
 msgid ""
 "A user’s phone number is collected and stored for supporting the free "
@@ -5011,7 +5098,7 @@ msgstr ""
 "বিনামূল্যে কোচিং পরিষেবা সমর্থন করার জন্য একজন ব্যবহারকারীর ফোন নম্বর সংগ্রহ এবং "
 "সংরক্ষণ করা হয়।"
 
-#: site/dashboard/dashboard.php:307 site/dashboard/wizard.php:212
+#: site/dashboard/dashboard.php:334 site/dashboard/wizard.php:220
 #: site/pages/privacy-policy.php:122
 msgid ""
 "A user’s city is requested to personalize site resources and communication, "
@@ -5021,7 +5108,7 @@ msgstr ""
 "ব্যবহারকারীদের উপযুক্ত কোচিং এবং গ্রাহক পরিষেবা সম্পদের সাথে সংযুক্ত করার জন্য অনুরোধ "
 "করা হচ্ছে।"
 
-#: site/dashboard/dashboard.php:308 site/dashboard/wizard.php:240
+#: site/dashboard/dashboard.php:335 site/dashboard/wizard.php:248
 #: site/pages/privacy-policy.php:113
 msgid ""
 "A user’s language preference is stored to support proper site and "
@@ -5032,25 +5119,25 @@ msgstr ""
 "সমর্থন করার জন্য এবং ইউজারকে উপযুক্ত প্রশিক্ষণের এবং সম্পদের সাথে সংযুক্ত করতে আমাদের "
 "সাহায্য করার জন্য।"
 
-#: site/dashboard/dashboard.php:309 site/dashboard/wizard.php:334
-msgid "Join key"
-msgstr "জয়েন কী"
+#: site/dashboard/dashboard.php:336 site/dashboard/wizard.php:388
+msgid "Join Code"
+msgstr "যোগদান কোড"
 
-#: site/dashboard/dashboard.php:310 site/pages/checkin.php:91
-#: site/pages/friend-invite.php:79 site/pages/plan-invite.php:78
-#: site/pages/plan-invite.php:174
+#: site/dashboard/dashboard.php:337 site/dashboard/wizard.php:322
+#: site/pages/checkin.php:91 site/pages/friend-invite.php:79
+#: site/pages/plan-invite.php:78 site/pages/plan-invite.php:174
 msgid "Not a recognized code. Please check the number."
 msgstr "কোনও স্বীকৃত কোড নয়। অনুগ্রহ করে নম্বরটি পরীক্ষা করুন।"
 
-#: site/dashboard/dashboard.php:311
+#: site/dashboard/dashboard.php:338
 msgid "You are not authorized to access this page"
 msgstr "আপনার এই পৃষ্ঠাটি অ্যাক্সেস করার অনুমতি নেই"
 
-#: site/dashboard/dashboard.php:312
+#: site/dashboard/dashboard.php:339
 msgid "There has been an error with your request"
 msgstr "আপনার অনুরোধে একটি ত্রুটি হয়েছে"
 
-#: site/dashboard/dashboard.php:313
+#: site/dashboard/dashboard.php:340
 msgid ""
 "Thank you for your coaching request. Our team will be working to connect you "
 "with an available coach in your language and region."
@@ -5058,103 +5145,171 @@ msgstr ""
 "আপনার প্রশিক্ষণের অনুরোধের জন্য ধন্যবাদ। আমাদের দল আপনার ভাষা এবং অঞ্চলে উপলব্ধ "
 "একজন কোচের সাথে আপনাকে সংযুক্ত করার জন্য কাজ করবে।"
 
-#: site/dashboard/dashboard.php:314
+#: site/dashboard/dashboard.php:341
 msgid ""
 "Please watch for communication from your coach within the communication "
 "preference you indicated."
 msgstr ""
 "আপনার নির্দেশিত যোগাযোগ পছন্দের মধ্যে আপনার কোচের যোগাযোগের দিকে নজর রাখুন।"
 
-#: site/dashboard/dashboard.php:315
+#: site/dashboard/dashboard.php:342
+msgid "We apologize for the delay"
+msgstr "বিলম্বের জন্য আমরা ক্ষমাপ্রার্থী।"
+
+#: site/dashboard/dashboard.php:343
+msgid "Message"
+msgstr "বার্তা"
+
+#: site/dashboard/dashboard.php:344
+msgid ""
+"If you have any queries or need help, please enter a message below and we "
+"will get back to you as soon as possible."
+msgstr ""
+"আপনার যদি কোন প্রশ্ন থাকে বা সাহায্যের প্রয়োজন হয়, তাহলে অনুগ্রহ করে নীচে একটি "
+"বার্তা লিখুন এবং আমরা যত তাড়াতাড়ি সম্ভব আপনার সাথে যোগাযোগ করব।"
+
+#: site/dashboard/dashboard.php:345
+msgid "Send Message"
+msgstr "বার্তা পাঠান"
+
+#: site/dashboard/dashboard.php:346
+msgid "There was an error sending your message. Please try again later."
+msgstr ""
+"আপনার বার্তাটি পাঠানোর সময় একটি ত্রুটি হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
+
+#: site/dashboard/dashboard.php:347
+msgid "Message sent successfully"
+msgstr "বার্তাটি সফলভাবে পাঠানো হয়েছে"
+
+#: site/dashboard/dashboard.php:348
 msgid "100 Hour Map"
 msgstr "১০০ ঘন্টার মানচিত্র"
 
-#: site/dashboard/dashboard.php:316
+#: site/dashboard/dashboard.php:349
 msgid "Trainee vision map"
 msgstr "প্রশিক্ষণার্থী দৃষ্টি মানচিত্র"
 
-#: site/dashboard/dashboard.php:317
+#: site/dashboard/dashboard.php:350
 msgid "Simple church vision map"
 msgstr "সাধারণ গির্জার দৃষ্টি মানচিত্র"
 
-#: site/dashboard/dashboard.php:318
+#: site/dashboard/dashboard.php:351
 msgid "Missing answer"
 msgstr "উত্তর অনুপস্থিত"
 
-#: site/dashboard/dashboard.php:319 site/dashboard/wizard.php:193
-#: site/dashboard/wizard.php:247 site/dashboard/wizard.php:264
-#: site/dashboard/wizard.php:271
+#: site/dashboard/dashboard.php:352 site/dashboard/wizard.php:201
+#: site/dashboard/wizard.php:263 site/dashboard/wizard.php:306
+#: site/dashboard/wizard.php:313 site/dashboard/wizard.php:377
 msgid "Something went wrong"
 msgstr "কিছু ভুল হয়েছে"
 
-#: site/dashboard/dashboard.php:320 site/dashboard/wizard.php:283
+#: site/dashboard/dashboard.php:353 site/dashboard/wizard.php:330
 #: site/pages/_strings-mobile-pwa.php:10
 msgid "Yes"
 msgstr "হ্যাঁ"
 
-#: site/dashboard/dashboard.php:321 site/dashboard/wizard.php:284
+#: site/dashboard/dashboard.php:354 site/dashboard/wizard.php:331
 #: site/pages/_strings-mobile-pwa.php:11
 msgid "No"
 msgstr "না"
 
-#: site/dashboard/dashboard.php:322
+#: site/dashboard/dashboard.php:355
 msgid "No date"
 msgstr "কোন তারিখ নেই"
 
-#: site/dashboard/dashboard.php:323 site/dashboard/wizard.php:219
-#: zume-training-system.php:405
+#: site/dashboard/dashboard.php:356 site/dashboard/wizard.php:227
+#: zume-training-system.php:564
 msgid "Whatsapp"
 msgstr "হোয়াটসঅ্যাপ"
 
-#: site/dashboard/dashboard.php:324 site/dashboard/wizard.php:220
-#: zume-training-system.php:406
+#: site/dashboard/dashboard.php:357 site/dashboard/wizard.php:228
+#: zume-training-system.php:565
 msgid "Signal"
 msgstr "সিগন্যাল"
 
-#: site/dashboard/dashboard.php:325 site/dashboard/wizard.php:221
-#: zume-training-system.php:407
+#: site/dashboard/dashboard.php:358 site/dashboard/wizard.php:229
+#: zume-training-system.php:566
 msgid "Telegram"
 msgstr "টেলিগ্রাম"
 
-#: site/dashboard/dashboard.php:326 site/dashboard/wizard.php:222
+#: site/dashboard/dashboard.php:359 site/dashboard/wizard.php:230
 msgid "Facebook Messenger"
 msgstr "ফেসবুক মেসেঞ্জার"
 
-#: site/dashboard/dashboard.php:327 site/dashboard/wizard.php:318
+#: site/dashboard/dashboard.php:360 site/dashboard/wizard.php:365
 msgid "Clear"
 msgstr "পরিষ্কার"
 
-#: site/dashboard/dashboard.php:328 site/dashboard/wizard.php:319
+#: site/dashboard/dashboard.php:361 site/dashboard/wizard.php:366
 msgid "Today"
 msgstr "প্রশিক্ষণের পোর্টাল"
 
-#: site/dashboard/dashboard.php:332
+#: site/dashboard/dashboard.php:365
 msgid "Coaching Portal"
 msgstr "প্রশিক্ষণের চেকলিস্ট"
 
-#: site/dashboard/dashboard.php:333
+#: site/dashboard/dashboard.php:366
 msgid "Visibility"
 msgstr "দৃশ্যমানতা"
 
-#: site/dashboard/dashboard.php:334 site/dashboard/dashboard.php:335
+#: site/dashboard/dashboard.php:367 site/dashboard/dashboard.php:368
 #, php-format
 msgctxt "public/private group"
 msgid "%s group"
 msgstr "%s গ্রুপ"
 
-#: site/dashboard/dashboard.php:334
+#: site/dashboard/dashboard.php:367 site/pages/plans.php:112
 msgid "Private"
 msgstr "ব্যক্তিগত"
 
-#: site/dashboard/dashboard.php:335
+#: site/dashboard/dashboard.php:368 site/pages/plans.php:112
 msgid "Public"
 msgstr "সর্বজনীন"
 
-#: site/dashboard/dashboard.php:336
-msgid "Local Vision Map"
-msgstr ""
+#: site/dashboard/dashboard.php:370 site/dashboard/wizard.php:281
+#: site/dashboard/wizard.php:373 site/pages/join-a-training-public.php:171
+msgid "Notify me about future trainings"
+msgstr "ভবিষ্যতের প্রশিক্ষণ সম্পর্কে আমাকে জানান।"
 
-#: site/dashboard/dashboard.php:342
+#: site/dashboard/dashboard.php:371
+msgid "Preferences"
+msgstr "পছন্দসমূহ"
+
+#: site/dashboard/dashboard.php:372
+msgid "Your progress is always visible to the group leader."
+msgstr "আপনার অগ্রগতি সর্বদা গ্রুপ লিডারের কাছে দৃশ্যমান।"
+
+#: site/dashboard/dashboard.php:373
+msgid ""
+"Contact information is currently hidden from other participants in trainings."
+msgstr "প্রশিক্ষণে অংশগ্রহণকারীদের যোগাযোগের তথ্য বর্তমানে লুকানো আছে।"
+
+#: site/dashboard/dashboard.php:374
+msgid "Progress is currently hidden from other participants in trainings."
+msgstr "প্রশিক্ষণে অংশগ্রহণকারীদের কাছ থেকে অগ্রগতি বর্তমানে গোপন রাখা হয়েছে।"
+
+#: site/dashboard/dashboard.php:375
+msgid "Local Vision Map"
+msgstr "স্থানীয় দৃষ্টি মানচিত্র"
+
+#: site/dashboard/dashboard.php:376
+msgid ""
+"You are making this group public. It will show up on the public list of "
+"trainings. Please confirm you are ready to make it public."
+msgstr ""
+"আপনি এই গ্রুপটি সর্বজনীন করছেন। এটি প্রশিক্ষণের সর্বজনীন তালিকায় প্রদর্শিত হবে। দয়া "
+"করে নিশ্চিত করুন যে আপনি এটি সর্বজনীন করতে প্রস্তুত।"
+
+#: site/dashboard/dashboard.php:377
+msgid "Confirm"
+msgstr "নিশ্চিত করুন"
+
+#: site/dashboard/dashboard.php:378
+#, php-format
+msgid "You can message again in %d hours"
+msgstr "আপনি %d ঘন্টা পরে আবার মেসেজ করতে পারবেন।"
+
+#: site/dashboard/dashboard.php:384
 msgid ""
 "I will share My Story [Testimony] and God‘s Story [the Gospel] with the "
 "following individuals:"
@@ -5162,14 +5317,14 @@ msgstr ""
 "আমি আমার গল্প [সাক্ষ্য] এবং ঈশ্বরের গল্প [সুসমাচার] নিম্নলিখিত ব্যক্তিদের সাথে ভাগ "
 "করে নেব:"
 
-#: site/dashboard/dashboard.php:343
+#: site/dashboard/dashboard.php:385
 msgid ""
 "I will invite the following people to begin an Accountability Group with me:"
 msgstr ""
 "আমি নিম্নলিখিত ব্যক্তিদের আমার সাথে একটি জবাবদিহিতা দল শুরু করার জন্য আমন্ত্রণ "
 "জানাচ্ছি:"
 
-#: site/dashboard/dashboard.php:344
+#: site/dashboard/dashboard.php:386
 msgid ""
 "I will challenge the following people to begin their own Accountability "
 "Groups and train them how to do it:"
@@ -5177,12 +5332,12 @@ msgstr ""
 "আমি নিম্নলিখিত ব্যক্তিদের তাদের নিজস্ব জবাবদিহিতা দলের শুরু করার এবং এটি কীভাবে "
 "করতে হয় তা প্রশিক্ষণ দেওয়ার জন্য চ্যালেঞ্জ জানাব:"
 
-#: site/dashboard/dashboard.php:345
+#: site/dashboard/dashboard.php:387
 msgid "I will invite the following people to begin a 3/3 Group with me:"
 msgstr ""
 "আমি নিম্নলিখিত ব্যক্তিদের আমার সাথে একটি ৩ /৩ দল শুরু করার জন্য আমন্ত্রণ জানাচ্ছি:"
 
-#: site/dashboard/dashboard.php:346
+#: site/dashboard/dashboard.php:388
 msgid ""
 "I will challenge the following people to begin their own 3/3 Groups and "
 "train them how to do it:"
@@ -5190,22 +5345,22 @@ msgstr ""
 "আমি নিম্নলিখিত ব্যক্তিদের তাদের নিজস্ব ৩/৩টি দল শুরু করার এবং এটি কীভাবে করতে হয় "
 "তা প্রশিক্ষণ দেওয়ার জন্য চ্যালেঞ্জ জানাব:"
 
-#: site/dashboard/dashboard.php:347
+#: site/dashboard/dashboard.php:389
 msgid ""
 "I will invite the following people to participate in a 3/3 Hope or Discover "
 "Group:"
 msgstr "আমি নিম্নলিখিত ব্যক্তিদের আমার সাথে প্রার্থনা হাঁটার জন্য আমন্ত্রণ জানাব:"
 
-#: site/dashboard/dashboard.php:348
+#: site/dashboard/dashboard.php:390
 msgid ""
 "I will invite the following people to participate in Prayer Walking with me:"
 msgstr "আমার সঙ্গে প্রার্থনা করতে হাঁটতে আমি নিম্নলিখিত ব্যক্তিদের আমন্ত্রণ জানাব:"
 
-#: site/dashboard/dashboard.php:349
+#: site/dashboard/dashboard.php:391
 msgid "I will Prayer Walk once every [days / weeks / months]."
 msgstr "আমি প্রতি [দিন / সপ্তাহ / মাস] একবার প্রার্থনা হাঁটা করব।"
 
-#: site/dashboard/dashboard.php:350
+#: site/dashboard/dashboard.php:392
 msgid ""
 "I will equip the following people to share their story and God‘s Story and "
 "make a List of 100 of the people in their relational network:"
@@ -5213,7 +5368,7 @@ msgstr ""
 "আমি নিম্নলিখিত ব্যক্তিদের তাদের গল্প এবং ঈশ্বরের গল্প ভাগ করে নেওয়ার জন্য সজ্জিত করব "
 "এবং তাদের সম্পর্কযুক্ত নেটওয়ার্কের ১০০ জন ব্যক্তির একটি তালিকা তৈরি করব:"
 
-#: site/dashboard/dashboard.php:351
+#: site/dashboard/dashboard.php:393
 msgid ""
 "I will challenge the following people to use the Prayer Cycle tool on a "
 "periodic basis:"
@@ -5221,25 +5376,25 @@ msgstr ""
 "আমি নিম্নলিখিত ব্যক্তিদের পর্যায়ক্রমে প্রার্থনা চক্র সরঞ্জামটি ব্যবহার করার জন্য আহ্বান "
 "জনাব:"
 
-#: site/dashboard/dashboard.php:352
+#: site/dashboard/dashboard.php:394
 msgid "I will use the Prayer Cycle tool once every [days / weeks / months]."
 msgstr "আমি প্রতি [দিন / সপ্তাহ / মাস] একবার প্রার্থনা চক্র সরঞ্জামটি ব্যবহার করব।"
 
-#: site/dashboard/dashboard.php:353
+#: site/dashboard/dashboard.php:395
 msgid ""
 "I will invite the following people to be part of a Leadership Cell that I "
 "will lead:"
 msgstr ""
 "আমি নিম্নলিখিত ব্যক্তিদের একটি নেতৃত্ব কোষের অংশ হতে আমন্ত্রণ জানাব যার নেতৃত্ব দেব:"
 
-#: site/dashboard/dashboard.php:354
+#: site/dashboard/dashboard.php:396
 msgid ""
 "I will encourage the following people to go through this Zúme Training "
 "course:"
 msgstr ""
 "আমি নিম্নলিখিত ব্যক্তিদের এই জুমে প্রশিক্ষণ কোর্সটি সম্পন্ন করার জন্য উৎসাহিত করব:"
 
-#: site/dashboard/dashboard.php:355
+#: site/dashboard/dashboard.php:397
 msgid "Other commitments:"
 msgstr "অন্যান্য প্রতিশ্রুতি:"
 
@@ -5247,52 +5402,52 @@ msgstr "অন্যান্য প্রতিশ্রুতি:"
 msgid "Wizard"
 msgstr "উইজার্ড"
 
-#: site/dashboard/wizard.php:171
+#: site/dashboard/wizard.php:179
 msgctxt ""
 "This is the title for the screen where the application wizard has not been "
 "found"
 msgid "Bad Wizard"
 msgstr "খারাপ উইজার্ড"
 
-#: site/dashboard/wizard.php:172
+#: site/dashboard/wizard.php:180
 msgctxt ""
 "This is some humourous text using a play on words as the application wizard "
 "sounds like the sorcerer type of wizard."
 msgid "You have fallen in with some very bad wizards!"
 msgstr "তুমি খুব খারাপ জাদুকরদের সাথে জড়িয়ে পড়েছো!"
 
-#: site/dashboard/wizard.php:173
+#: site/dashboard/wizard.php:181
 msgid "Wizard is already completed"
 msgstr "জাদুকর ইতিমধ্যেই সম্পন্ন হয়েছে"
 
-#: site/dashboard/wizard.php:174
+#: site/dashboard/wizard.php:182
 msgid "Get back home"
 msgstr "বাড়ি ফিরে যাও"
 
-#: site/dashboard/wizard.php:175 site/login/login-template.php:421
+#: site/dashboard/wizard.php:183 site/login/login-template.php:421
 msgid "Back"
 msgstr "ফিরে যাও"
 
-#: site/dashboard/wizard.php:176 site/dashboard/wizard.php:195
-#: site/dashboard/wizard.php:208 site/dashboard/wizard.php:231
-#: site/dashboard/wizard.php:255 site/dashboard/wizard.php:323
-#: site/pages/_strings-mobile-pwa.php:35
+#: site/dashboard/wizard.php:184 site/dashboard/wizard.php:203
+#: site/dashboard/wizard.php:216 site/dashboard/wizard.php:239
+#: site/dashboard/wizard.php:271 site/dashboard/wizard.php:294
+#: site/dashboard/wizard.php:370 site/pages/_strings-mobile-pwa.php:35
 msgid "Next"
 msgstr "পরবর্তী"
 
-#: site/dashboard/wizard.php:177 site/dashboard/wizard.php:312
+#: site/dashboard/wizard.php:185 site/dashboard/wizard.php:359
 msgid "Skip"
 msgstr "এড়িয়ে যাও"
 
-#: site/dashboard/wizard.php:178 site/pages/_strings-mobile-pwa.php:36
+#: site/dashboard/wizard.php:186 site/pages/_strings-mobile-pwa.php:36
 msgid "Finish"
 msgstr "সমাপ্তি"
 
-#: site/dashboard/wizard.php:183
+#: site/dashboard/wizard.php:191
 msgid "Zúme Community"
 msgstr "জুমে সম্প্রদায়"
 
-#: site/dashboard/wizard.php:184
+#: site/dashboard/wizard.php:192
 msgid ""
 "Zúme is a community of practice and encouragement for those who want to see "
 "disciple making movements. The Zúme vision is to see one trainee and two "
@@ -5303,7 +5458,7 @@ msgstr ""
 "জুমের দৃষ্টিভঙ্গি হল মার্কিন যুক্তরাষ্ট্রে প্রতি ৫,০০০ এবং বিশ্বব্যাপী ৫০,০০০ জনের জন্য "
 "একজন প্রশিক্ষণার্থী এবং দুটি সাধারণ গির্জা দেখা।"
 
-#: site/dashboard/wizard.php:186
+#: site/dashboard/wizard.php:194
 msgid ""
 "Connect with others like you who want to see a disciple making movement in "
 "their area. Share your experience with others, and learn from others who are "
@@ -5313,11 +5468,11 @@ msgstr ""
 "চান। অন্যদের সাথে আপনার অভিজ্ঞতা ভাগ করে নিন, এবং যারা নতুন জিনিস আবিষ্কার করছেন "
 "তাদের কাছ থেকে শিখুন।"
 
-#: site/dashboard/wizard.php:187
+#: site/dashboard/wizard.php:195
 msgid "Encouragement"
 msgstr "উৎসাহ"
 
-#: site/dashboard/wizard.php:188
+#: site/dashboard/wizard.php:196
 msgid ""
 "Hear news about disciple making movements in your region and your wider "
 "country, get reports of  progress, and get connected to online and face-to-"
@@ -5326,11 +5481,11 @@ msgstr ""
 "আপনার অঞ্চল এবং আপনার বৃহত্তর দেশে শিষ্য তৈরির কার্যের খবর শুনুন, অগ্রগতির প্রতিবেদন "
 "পান এবং অনলাইন এবং মুখোমুখি সমাবেশে সংযুক্ত হন।"
 
-#: site/dashboard/wizard.php:189
+#: site/dashboard/wizard.php:197
 msgid "Free Tools"
 msgstr "বিনামূল্যে সরঞ্জাম"
 
-#: site/dashboard/wizard.php:190
+#: site/dashboard/wizard.php:198
 msgid ""
 "Access free tools for tracking disciple-making and church planting in your "
 "area. Get a map to cast vision for saturating your city with multiplying "
@@ -5340,133 +5495,260 @@ msgstr ""
 "ব্যবহার করুন। আপনার শহরকে বহুসংখ্যক শিষ্য এবং গির্জা দিয়ে পরিপূর্ণ করার জন্য একটি "
 "দৃষ্টিভঙ্গি তৈরি করার জন্য একটি মানচিত্র পান।"
 
-#: site/dashboard/wizard.php:191
+#: site/dashboard/wizard.php:199
 msgid "Join for Free"
 msgstr "বিনামূল্যে যোগদান করুন"
 
-#: site/dashboard/wizard.php:192
+#: site/dashboard/wizard.php:200
 msgid "Successfully joined community"
 msgstr "সফলভাবে সম্প্রদায়ে যোগদান করেছেন"
 
-#: site/dashboard/wizard.php:196 site/dashboard/wizard.php:238
-#: site/dashboard/wizard.php:244 site/dashboard/wizard.php:261
-#: site/dashboard/wizard.php:268
+#: site/dashboard/wizard.php:204 site/dashboard/wizard.php:246
+#: site/dashboard/wizard.php:260 site/dashboard/wizard.php:303
+#: site/dashboard/wizard.php:310 site/dashboard/wizard.php:374
 msgid "Please wait while we connect you"
 msgstr "আমরা আপনাকে সংযুক্ত করার জন্য অনুগ্রহ করে অপেক্ষা করুন"
 
-#: site/dashboard/wizard.php:199
+#: site/dashboard/wizard.php:207
 msgid "Complete your profile"
 msgstr "আপনার প্রোফাইল সম্পূর্ণ করুন"
 
-#: site/dashboard/wizard.php:203
+#: site/dashboard/wizard.php:211
 msgid "What is your name?"
 msgstr "আপনার নাম কি?"
 
-#: site/dashboard/wizard.php:204
+#: site/dashboard/wizard.php:212
 msgid "What is your phone number?"
 msgstr "আপনার ফোন নম্বর কী?"
 
-#: site/dashboard/wizard.php:205
+#: site/dashboard/wizard.php:213
 msgid "Phone number can only contain numbers, brackets and hyphens"
 msgstr "ফোন নম্বরে কেবল সংখ্যা, বন্ধনী এবং হাইফেন থাকতে পারে"
 
-#: site/dashboard/wizard.php:206
+#: site/dashboard/wizard.php:214
 msgid "What city do you live in?"
 msgstr "আপনি কোন শহরে থাকেন?"
 
-#: site/dashboard/wizard.php:207
+#: site/dashboard/wizard.php:215
 msgid "This is your approximate location."
 msgstr "এটি আপনার আনুমানিক অবস্থান।"
 
-#: site/dashboard/wizard.php:209 site/parts/footer.php:57
+#: site/dashboard/wizard.php:217 site/dashboard/wizard.php:272
+#: site/parts/footer.php:57
 msgid "Privacy Policy"
 msgstr "গোপনীয়তা নীতি"
 
-#: site/dashboard/wizard.php:215
+#: site/dashboard/wizard.php:223
 msgid "What is your contact preference?"
 msgstr "আপনার যোগাযোগের পছন্দ কী?"
 
-#: site/dashboard/wizard.php:217 zume-training-system.php:403
+#: site/dashboard/wizard.php:225 zume-training-system.php:562
 msgid "Text"
 msgstr "টেক্সট"
 
-#: site/dashboard/wizard.php:223
+#: site/dashboard/wizard.php:231
 msgid "What is your language preference?"
 msgstr "আপনার ভাষা কী?"
 
-#: site/dashboard/wizard.php:225
+#: site/dashboard/wizard.php:233
 msgid "How can we serve you?"
 msgstr "আমরা কীভাবে আপনাকে সেবা দিতে পারি?"
 
-#: site/dashboard/wizard.php:227
+#: site/dashboard/wizard.php:235
 msgid "Technical Assistance"
 msgstr "কারিগরি সাহায্য"
 
-#: site/dashboard/wizard.php:228
+#: site/dashboard/wizard.php:236
 msgid "Question about implementing the training"
 msgstr "প্রশিক্ষণ বাস্তবায়ন সম্পর্কে প্রশ্ন"
 
-#: site/dashboard/wizard.php:229
+#: site/dashboard/wizard.php:237
 msgid "Question about the content"
 msgstr "বিষয়বস্তু সম্পর্কে প্রশ্ন"
 
-#: site/dashboard/wizard.php:230
+#: site/dashboard/wizard.php:238
 msgid "Help with what to do after starting a group"
 msgstr "একটি দল শুরু করার পরে কী করতে হবে সে সম্পর্কে সহায়তা"
 
-#: site/dashboard/wizard.php:232
+#: site/dashboard/wizard.php:240
 msgid "Please give a response to this question"
 msgstr "অনুগ্রহ করে এই প্রশ্নের উত্তর দিন"
 
-#: site/dashboard/wizard.php:233
+#: site/dashboard/wizard.php:241
 msgid ""
 "Request Submitted, we will do our best to connect you with a coach near you."
 msgstr ""
-"অনুরোধ জমা দেওয়া হয়েছে, আমরা আপনার কাছাকাছি একজন প্রশিক্ষকের সাথে যোগাযোগ করার "
+"অনুরোধ জমা দেওয়া হয়েছে, আমরা আপনার কাছাকাছি একজন প্রশিক্ষকের সাথে যোগাযোগ করার "
 "জন্য যথাসাধ্য চেষ্টা করব।"
 
-#: site/dashboard/wizard.php:234
+#: site/dashboard/wizard.php:242
 msgid "Sorry. We were unable to submit your request. Please try again later."
 msgstr "দুঃখিত। আমরা আপনার অনুরোধ জমা দিতে পারিনি। অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
 
-#: site/dashboard/wizard.php:235
+#: site/dashboard/wizard.php:243
 msgid "You have already requested a coach"
 msgstr "আপনি একজন কোচের জন্য অনুরোধ করেছেন"
 
-#: site/dashboard/wizard.php:236
+#: site/dashboard/wizard.php:244
 msgid "Error connecting with a coach"
 msgstr "একজন প্রশিক্ষকের সাথে সংযোগ স্থাপনে ত্রুটি"
 
-#: site/dashboard/wizard.php:237
+#: site/dashboard/wizard.php:245
 msgid "Connecting you to a Coach"
 msgstr "একজন প্রশিক্ষকের সাথে আপনাকে সংযোগ স্থাপনে ত্রুটি"
 
-#: site/dashboard/wizard.php:243
+#: site/dashboard/wizard.php:249 site/pages/get-a-coach.php:93
+msgid ""
+"Every athletic sport, especially at higher levels, uses coaching. Even "
+"olympic athletes have coaches, and often more than one. Disciple making can "
+"equally benefit from coaching by those who have more experience."
+msgstr ""
+"প্রতিটি ক্রীড়া খেলা, বিশেষ করে উচ্চ স্তরে, কোচিং ব্যবহার করে। এমনকি অলিম্পিক "
+"ক্রীড়াবিদদেরও কোচ থাকে, এবং প্রায়শই একাধিক। শিষ্য তৈরির ক্ষেত্রেও অভিজ্ঞতাসম্পন্ন "
+"ব্যক্তিদের দ্বারা কোচিং থেকে সমানভাবে উপকৃত হতে পারেন।"
+
+#: site/dashboard/wizard.php:250
+msgid ""
+"In order to connect you to an appropriate coach, we need to know a little "
+"more about you."
+msgstr ""
+"আপনাকে একজন উপযুক্ত কোচের সাথে সংযুক্ত করার জন্য, আমাদের আপনার সম্পর্কে আরও কিছু "
+"জানতে হবে।"
+
+#: site/dashboard/wizard.php:251 site/pages/get-a-coach.php:96
+msgid "No Cost"
+msgstr "কোন খরচ নেই"
+
+#: site/dashboard/wizard.php:252 site/pages/get-a-coach.php:103
+msgid "Localized"
+msgstr "স্থানীয়"
+
+#: site/dashboard/wizard.php:253 site/pages/get-a-coach.php:110
+msgid "Experienced"
+msgstr "অভিজ্ঞ"
+
+#: site/dashboard/wizard.php:254 site/pages/get-a-coach.php:99
+msgid ""
+"Our network of volunteer coaches are not paid, but are driven rather by a "
+"passion for loving God, loving others, and obeying the Great Commission."
+msgstr ""
+"আমাদের স্বেচ্ছাসেবক প্রশিক্ষকদের নেটওয়ার্ক বেতনভুক্ত নয়, বরং ঈশ্বরকে ভালোবাসা, "
+"অন্যদের ভালোবাসা এবং মহান আদেশ মেনে চলার আবেগ দ্বারা পরিচালিত হয়।"
+
+#: site/dashboard/wizard.php:255 site/pages/get-a-coach.php:106
+msgid ""
+"Our connection team attempts to connect you with a coach who speaks your "
+"language and is geographically as close as possible."
+msgstr ""
+"আমাদের সংযোগ দল আপনাকে এমন একজন কোচের সাথে সংযুক্ত করার চেষ্টা করে যিনি আপনার "
+"ভাষা বলতে পারেন এবং ভৌগোলিকভাবে যতটা সম্ভব কাছাকাছি।"
+
+#: site/dashboard/wizard.php:256 site/pages/get-a-coach.php:30
+#: site/pages/get-a-coach.php:113
+msgid ""
+"All our coaches are trained and practicing the concepts and tools found in "
+"Zûme. All our coaches can help you over barriers and make steps in your "
+"journey."
+msgstr ""
+"আমাদের সকল কোচ প্রশিক্ষণপ্রাপ্ত এবং জুমে পাওয়া ধারণা এবং সরঞ্জামগুলি অনুশীলন করছেন। "
+"আমাদের সকল কোচ আপনাকে বাধা অতিক্রম করতে এবং আপনার যাত্রায় পদক্ষেপ নিতে সাহায্য "
+"করতে পারেন।"
+
+#: site/dashboard/wizard.php:259
 msgid "Joining Plan"
 msgstr "যোগদান পরিকল্পনা"
 
-#: site/dashboard/wizard.php:245 site/dashboard/wizard.php:335
+#: site/dashboard/wizard.php:261 site/dashboard/wizard.php:389
 msgid "The training link is broken. Please try again."
 msgstr "প্রশিক্ষণ লিঙ্কটি নষ্ট হয়ে গেছে। অনুগ্রহ করে আবার চেষ্টা করুন।"
 
-#: site/dashboard/wizard.php:246
+#: site/dashboard/wizard.php:262
 #, php-format
 msgid "Successfully joined training %s"
 msgstr "সফলভাবে প্রশিক্ষণে যোগদান করেছেন %s"
 
-#: site/dashboard/wizard.php:249 site/pages/join-a-training-public.php:106
+#: site/dashboard/wizard.php:265 site/dashboard/wizard.php:293
+#: site/pages/join-a-training-public.php:106
+#: site/pages/join-a-training-public.php:130 site/pages/plans.php:160
 msgid "Next Session Date"
 msgstr "পরবর্তী সেশনের তারিখ"
 
-#: site/dashboard/wizard.php:251 site/pages/join-a-training-public.php:107
+#: site/dashboard/wizard.php:267 site/pages/join-a-training-public.php:107
+#: site/pages/join-a-training-public.php:131
 msgid "Start Time"
 msgstr "শুরু সময়"
 
-#: site/dashboard/wizard.php:256
+#: site/dashboard/wizard.php:274
+msgid "Your contact information is always visible to the group leader."
+msgstr "আপনার যোগাযোগের তথ্য সর্বদা গ্রুপ লিডারের কাছে দৃশ্যমান থাকবে।"
+
+#: site/dashboard/wizard.php:275
+msgid ""
+"You are joining a private training group, where everyone can see your "
+"contact information."
+msgstr ""
+"আপনি একটি ব্যক্তিগত প্রশিক্ষণ গোষ্ঠীতে যোগদান করছেন, যেখানে সবাই আপনার যোগাযোগের "
+"তথ্য দেখতে পাবে।"
+
+#: site/dashboard/wizard.php:276
+msgid ""
+"You can change your contact information visibility at any time in your "
+"profile."
+msgstr ""
+"আপনি আপনার প্রোফাইলে যেকোনো সময় আপনার যোগাযোগের তথ্যের দৃশ্যমানতা পরিবর্তন করতে "
+"পারেন।"
+
+#: site/dashboard/wizard.php:277
+msgid "We were unable to connect you with a coach. Please try again later."
+msgstr ""
+"আমরা আপনাকে কোনও কোচের সাথে সংযুক্ত করতে পারিনি। অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
+
+#: site/dashboard/wizard.php:278
 msgid "There are currently no public trainings available."
 msgstr "বর্তমানে কোনও সর্বজনীন প্রশিক্ষণ উপলব্ধ নেই।"
 
-#: site/dashboard/wizard.php:257
+#: site/dashboard/wizard.php:279 site/pages/join-a-training-public.php:160
+msgid "Would you like to be notified about future trainings?"
+msgstr "আপনি কি ভবিষ্যতের প্রশিক্ষণ সম্পর্কে অবহিত হতে চান?"
+
+#: site/dashboard/wizard.php:280 site/pages/join-a-training-public.php:161
+msgid "We will send you an email when a new training is available."
+msgstr ""
+"নতুন প্রশিক্ষণের জন্য আবেদনপত্র পাওয়া গেলে আমরা আপনাকে একটি ইমেল পাঠাবো।"
+
+#: site/dashboard/wizard.php:282 site/pages/join-a-training-public.php:162
+msgid "You can always unsubscribe from these emails at any time."
+msgstr "আপনি যেকোনো সময় এই ইমেলগুলি থেকে সদস্যতা ত্যাগ করতে পারেন।"
+
+#: site/dashboard/wizard.php:283 site/pages/join-a-training-public.php:164
+msgid "Notify me"
+msgstr "আমাকে জানান"
+
+#: site/dashboard/wizard.php:284
+msgid "Do you want to unsubscribe from the notification list?"
+msgstr "আপনি কি বিজ্ঞপ্তি তালিকা থেকে সদস্যতা ত্যাগ করতে চান?"
+
+#: site/dashboard/wizard.php:285
+msgid "Continue"
+msgstr "চালিয়ে যান"
+
+#: site/dashboard/wizard.php:286 site/pages/plans.php:140
+msgid "Training Group Details"
+msgstr "প্রশিক্ষণ দলের বিবরণ"
+
+#: site/dashboard/wizard.php:289 site/pages/plans.php:144
+msgid "Facilitator"
+msgstr "সুবিধা প্রদানকারী"
+
+#: site/dashboard/wizard.php:291 site/pages/plans.php:164
+msgid "Time of Day"
+msgstr "দিনের সময়"
+
+#: site/dashboard/wizard.php:292
+msgid "Zoom Link"
+msgstr "জুম লিঙ্ক"
+
+#: site/dashboard/wizard.php:295
 msgid ""
 "Please make sure that your profile is up to date, so that group leaders can "
 "contact you."
@@ -5474,191 +5756,224 @@ msgstr ""
 "দয়া করে নিশ্চিত করুন যে আপনার প্রোফাইলটি আপডেট করা আছে, যাতে দলের লিডাররা আপনার "
 "সাথে যোগাযোগ করতে পারেন।"
 
-#: site/dashboard/wizard.php:260
+#: site/dashboard/wizard.php:298 site/pages/plans.php:173
+msgid "The next session is:"
+msgstr "পরবর্তী অধিবেশনটি হল:"
+
+#: site/dashboard/wizard.php:299 site/pages/plans.php:177
+msgid "In this timezone:"
+msgstr "এই সময় অঞ্চলে:"
+
+#: site/dashboard/wizard.php:302
 msgid "Connecting with friend"
 msgstr "বন্ধুর সাথে সংযোগ স্থাপন করা হচ্ছে"
 
-#: site/dashboard/wizard.php:262
+#: site/dashboard/wizard.php:304
 msgid "The friend link is broken. Please try again."
 msgstr "বন্ধুত্বের লিঙ্কটি নষ্ট হয়ে গেছে। অনুগ্রহ করে আবার চেষ্টা করুন।"
 
-#: site/dashboard/wizard.php:263
+#: site/dashboard/wizard.php:305
 #, php-format
 msgid "Successfully connected with friend %s"
 msgstr "বন্ধু %s এর সাথে সফলভাবে সংযুক্ত হয়েছে"
 
-#: site/dashboard/wizard.php:267
+#: site/dashboard/wizard.php:309
 msgid "Checking in"
 msgstr "চেক ইন করা হচ্ছে"
 
-#: site/dashboard/wizard.php:269
+#: site/dashboard/wizard.php:311
 msgid "The checkin link is broken. Please try again."
 msgstr "চেক ইন লিঙ্কটি নষ্ট হয়ে গেছে। অনুগ্রহ করে আবার চেষ্টা করুন।"
 
-#: site/dashboard/wizard.php:270
+#: site/dashboard/wizard.php:312
 msgid "Successfully checked in"
 msgstr "সফলভাবে চেক ইন করা হয়েছে"
 
-#: site/dashboard/wizard.php:275
+#: site/dashboard/wizard.php:318
 msgid "Create a training group"
 msgstr "একটি প্রশিক্ষণ গ্রুপ তৈরি করুন"
 
-#: site/dashboard/wizard.php:276
+#: site/dashboard/wizard.php:319
 msgid "Join a public training group"
 msgstr "একটি সর্বজনীন প্রশিক্ষণ দোলে যোগদান করুন"
 
-#: site/dashboard/wizard.php:277
+#: site/dashboard/wizard.php:320
+msgid "Join with code"
+msgstr "কোড ব্যবহার করে যোগদান করুন"
+
+#: site/dashboard/wizard.php:321 site/pages/friend-invite.php:172
+#: site/pages/plan-invite.php:177
+msgid "Use the code your friend sent you."
+msgstr "আপনার বন্ধু আপনাকে যে কোডটি পাঠিয়েছে তা ব্যবহার করুন।"
+
+#: site/dashboard/wizard.php:323 site/pages/checkin.php:257
+#: site/pages/friend-invite.php:177 site/pages/plan-invite.php:182
+msgid "Connect"
+msgstr "সংযুক্ত করুন"
+
+#: site/dashboard/wizard.php:324
 msgid "Skip for now"
 msgstr "এখনকার জন্য এড়িয়ে যান"
 
-#: site/dashboard/wizard.php:278
+#: site/dashboard/wizard.php:325
 msgid "Choose your course format"
 msgstr "আপনার কোর্স ফর্ম্যাটটি বেছে নিন"
 
-#: site/dashboard/wizard.php:279
+#: site/dashboard/wizard.php:326
 msgid "1 hour (20 sessions)"
 msgstr "১ ঘন্টা (২০টি সেশন)"
 
-#: site/dashboard/wizard.php:280
+#: site/dashboard/wizard.php:327
 msgid "2 hour (10 sessions)"
 msgstr "২ ঘন্টা (১০টি সেশন)"
 
-#: site/dashboard/wizard.php:281
+#: site/dashboard/wizard.php:328
 msgid "4 hour (5 sessions)"
 msgstr "৪ ঘন্টা (৫টি সেশন)"
 
-#: site/dashboard/wizard.php:282
+#: site/dashboard/wizard.php:329
 msgid "Would you like to schedule your training?"
 msgstr "আপনি কি আপনার প্রশিক্ষণের সময়সূচী নির্ধারণ করতে চান?"
 
-#: site/dashboard/wizard.php:285
+#: site/dashboard/wizard.php:332
 msgid "What time of day?"
 msgstr "দিনের কোন সময়?"
 
-#: site/dashboard/wizard.php:286
+#: site/dashboard/wizard.php:333
 msgid "Morning"
 msgstr "সকাল"
 
-#: site/dashboard/wizard.php:287
+#: site/dashboard/wizard.php:334
 msgid "Afternoon"
 msgstr "বিকাল"
 
-#: site/dashboard/wizard.php:288
+#: site/dashboard/wizard.php:335
 msgid "Evening"
 msgstr "সন্ধ্যা"
 
-#: site/dashboard/wizard.php:289
+#: site/dashboard/wizard.php:336
 msgid "How often will you meet?"
 msgstr "আপনি কতবার দেখা করবেন?"
 
-#: site/dashboard/wizard.php:290
+#: site/dashboard/wizard.php:337
 msgid "Every day"
 msgstr "প্রতিদিন"
 
-#: site/dashboard/wizard.php:291
+#: site/dashboard/wizard.php:338
 msgid "Once a week"
 msgstr "সপ্তাহে একবার"
 
-#: site/dashboard/wizard.php:292
+#: site/dashboard/wizard.php:339
 msgid "Twice a month"
 msgstr "মাসে দুবার"
 
-#: site/dashboard/wizard.php:293
+#: site/dashboard/wizard.php:340
 msgid "Once a month"
 msgstr "মাসে একবার"
 
-#: site/dashboard/wizard.php:294
+#: site/dashboard/wizard.php:341
 msgid "Other"
 msgstr "অন্যান্য"
 
-#: site/dashboard/wizard.php:295
+#: site/dashboard/wizard.php:342
 msgid "What is the name of the training group?"
 msgstr "প্রশিক্ষণ দলের নাম কী?"
 
-#: site/dashboard/wizard.php:296
+#: site/dashboard/wizard.php:343
 msgid "My first training group"
 msgstr "আমার প্রথম প্রশিক্ষণ দলের নাম"
 
-#: site/dashboard/wizard.php:297
+#: site/dashboard/wizard.php:344
 msgid "When do you plan to start?"
 msgstr "কখন থেকে শুরু করার পরিকল্পনা করছেন?"
 
-#: site/dashboard/wizard.php:298
+#: site/dashboard/wizard.php:345
 msgid "Where do you plan to meet?"
 msgstr "আপনার কোথায় দেখা করার পরিকল্পনা আছে?"
 
-#: site/dashboard/wizard.php:299
+#: site/dashboard/wizard.php:346
 msgid "This could be online or in person"
 msgstr "এটি অনলাইনে বা ব্যক্তিগতভাবে হতে পারে"
 
-#: site/dashboard/wizard.php:300
+#: site/dashboard/wizard.php:347
 msgid "Review Schedule"
 msgstr "পর্যালোচনা সময়সূচী"
 
-#: site/dashboard/wizard.php:301
+#: site/dashboard/wizard.php:348
 #, php-format
 msgctxt "1 of 10 selected"
 msgid "%1$s of %2$s selected"
 msgstr "%2$s এর মধ্যে %1$s নির্বাচিত"
 
-#: site/dashboard/wizard.php:302
+#: site/dashboard/wizard.php:349
 msgctxt "All 10 sessions scheduled"
 msgid "Ready"
 msgstr "প্রস্তুত"
 
-#: site/dashboard/wizard.php:303
+#: site/dashboard/wizard.php:350
 #, php-format
 msgctxt "Too many selected: 2"
 msgid "Too many selected: %s"
 msgstr "অনেক বেশি নির্বাচিত: %s"
 
-#: site/dashboard/wizard.php:304
+#: site/dashboard/wizard.php:351
 msgid "Incorrect number of sessions selected"
 msgstr "সেশনের ভুল সংখ্যা নির্বাচিত"
 
-#: site/dashboard/wizard.php:305 site/dashboard/wizard.php:307
-#: site/dashboard/wizard.php:309 site/dashboard/wizard.php:310
+#: site/dashboard/wizard.php:352 site/dashboard/wizard.php:354
+#: site/dashboard/wizard.php:356 site/dashboard/wizard.php:357
 #, php-format
 msgid "Set %s"
 msgstr "%s সেট করুন"
 
-#: site/dashboard/wizard.php:307
+#: site/dashboard/wizard.php:354
 msgid "Group Name"
 msgstr "দলের নাম"
 
-#: site/dashboard/wizard.php:308
+#: site/dashboard/wizard.php:355
 msgid "Group name"
 msgstr "দলের নাম"
 
-#: site/dashboard/wizard.php:315
+#: site/dashboard/wizard.php:362
 msgid "Date"
 msgstr "তারিখ"
 
-#: site/dashboard/wizard.php:316
+#: site/dashboard/wizard.php:363
 msgid "Summary"
 msgstr "সারাংশ"
 
-#: site/dashboard/wizard.php:317
+#: site/dashboard/wizard.php:364
 msgid "Clear Calendar"
 msgstr "ক্যালেন্ডার পরিষ্কার করুন"
 
-#: site/dashboard/wizard.php:320
+#: site/dashboard/wizard.php:367
 msgid "Add"
 msgstr "যোগ করুন"
 
-#: site/dashboard/wizard.php:321
+#: site/dashboard/wizard.php:368
 msgid "Add some dates to your schedule"
 msgstr "আপনার সময়সূচীতে কিছু তারিখ যোগ করুন"
 
-#: site/dashboard/wizard.php:322
+#: site/dashboard/wizard.php:369
 msgid "Change"
 msgstr "পরিবর্তন করুন"
 
-#: site/dashboard/wizard.php:326
+#: site/dashboard/wizard.php:375
+msgid "The notify me about future trainings link is broken. Please try again."
+msgstr ""
+"ভবিষ্যতের প্রশিক্ষণ সম্পর্কে আমাকে জানানোর লিঙ্কটি নষ্ট হয়ে গেছে। অনুগ্রহ করে আবার "
+"চেষ্টা করুন।"
+
+#: site/dashboard/wizard.php:376
+msgid "You have been added to the list to be notified about future trainings."
+msgstr ""
+"ভবিষ্যতের প্রশিক্ষণ সম্পর্কে অবহিত করার জন্য আপনাকে তালিকায় যুক্ত করা হয়েছে।"
+
+#: site/dashboard/wizard.php:380
 msgid "Invite your friends to join your training"
 msgstr "আপনার বন্ধুদের আপনার প্রশিক্ষণে যোগদানের জন্য আমন্ত্রণ জানান"
 
-#: site/dashboard/wizard.php:327
+#: site/dashboard/wizard.php:381
 msgid ""
 "Share the invite or link below with your friends so that they can join your "
 "training."
@@ -5666,16 +5981,16 @@ msgstr ""
 "আপনার বন্ধুদের সাথে নীচের আমন্ত্রণ বা লিঙ্কটি শেয়ার করুন যাতে তারা আপনার প্রশিক্ষণে "
 "যোগ দিতে পারে।"
 
-#: site/dashboard/wizard.php:328
+#: site/dashboard/wizard.php:382
 msgid "Join my zume plan"
 msgstr "আমার জুম প্ল্যানে যোগদান করুন"
 
-#: site/dashboard/wizard.php:329
+#: site/dashboard/wizard.php:383
 #, php-format
 msgid "%s is inviting you to a Zume Training Group"
 msgstr "%s আপনাকে একটি জুম প্রশিক্ষণ গ্রুপে আমন্ত্রণ জানাচ্ছে"
 
-#: site/dashboard/wizard.php:336
+#: site/dashboard/wizard.php:390
 msgid "Copy Invite"
 msgstr "আমন্ত্রণ অনুলিপি করুন"
 
@@ -5962,7 +6277,7 @@ msgid ""
 "generation."
 msgstr ""
 "আমাদের প্রজন্মের বহুমুখী শিষ্য দিয়ে বিশ্বকে পরিপূর্ণ করার জন্য জুমে প্রশিক্ষণ সংপৃক্ত করা "
-"হয়েছে ।"
+"হয়েছে ।"
 
 #: site/pages/about.php:92
 msgid "What is Zúme Training?"
@@ -6019,8 +6334,8 @@ msgid ""
 "formal statement of faith. All involved, however, would agree with the "
 "Lausanne Covenant."
 msgstr ""
-"১৪ ফেব্রুয়ারি, ২০১৭ তারিখে রাজ্য সহযোগিতার মাধ্যমে শুরু হওয়া জুমে প্রশিক্ষণ আনুষ্ঠানিক "
-"সাংগঠনিক নিয়ন্ত্রণ বা পৃথক সত্তা ছাড়াই একটি উন্মুক্ত উদ্যোগ হিসেবে রয়ে গেছে। যেহেতু "
+"১৪ ফেব্রুয়ারি, ২০১৭ তারিখে রাজ্য সহযোগিতার মাধ্যমে শুরু হওয়া জুমে প্রশিক্ষণ আনুষ্ঠানিক "
+"সাংগঠনিক নিয়ন্ত্রণ বা পৃথক সত্তা ছাড়াই একটি উন্মুক্ত উদ্যোগ হিসেবে রয়ে গেছে। যেহেতু "
 "জুমে কোনও সংস্থা দ্বারা পরিচালিত হয় না, তাই বিশ্বাসের কোনও আনুষ্ঠানিক বিবৃতি নেই। "
 "তবে, জড়িত সকলেই লৌসান চুক্তির সাথে একমত হবেন।"
 
@@ -6162,7 +6477,7 @@ msgstr ""
 
 #: site/pages/about.php:224
 msgid "Second:"
-msgstr "দ্বিতীয়:"
+msgstr "দ্বিতীয়:"
 
 #: site/pages/about.php:225
 msgid ""
@@ -6251,11 +6566,6 @@ msgstr "দয়া করে একটি বন্ধু কোড লিখ�
 #: site/pages/checkin.php:252
 msgid "Use the code on the screen or in the book"
 msgstr "স্ক্রিনে বা বইতে কোডটি ব্যবহার করুন"
-
-#: site/pages/checkin.php:257 site/pages/friend-invite.php:177
-#: site/pages/plan-invite.php:182
-msgid "Connect"
-msgstr "সংযুক্ত করুন"
 
 #: site/pages/checkin.php:261
 msgid "or"
@@ -6379,7 +6689,7 @@ msgid ""
 "teaching them to obey everything I have commanded you. And surely I am with "
 "you always, to the very end of the age.\""
 msgstr ""
-"তখন যীশু তাদের কাছে এসে বললেন, “স্বর্গে ও পৃথিবীতে সমস্ত কর্তৃত্ব আমাকে দেওয়া হয়েছে।"
+"তখন যীশু তাদের কাছে এসে বললেন, “স্বর্গে ও পৃথিবীতে সমস্ত কর্তৃত্ব আমাকে দেওয়া হয়েছে।"
 "অতএব তোমরা যাও এবং সমস্ত জাতির লোকদের শিষ্য কর, পিতা, পুত্র ও পবিত্র আত্মার নামে "
 "তাদের বাপ্তিস্ম দাও, এবং আমি তোমাদের যা আদেশ করেছি তা পালন করতে তাদের শিক্ষা "
 "দাও।আর আমি অবশ্যই যুগান্ত পর্যন্ত সর্বদা তোমাদের সাথে আছি।”"
@@ -6436,38 +6746,10 @@ msgstr ""
 msgid "Friend Invitation"
 msgstr "বন্ধুত্বের আমন্ত্রণ"
 
-#: site/pages/friend-invite.php:172 site/pages/plan-invite.php:177
-msgid "Use the code your friend sent you."
-msgstr "আপনার বন্ধু আপনাকে যে কোডটি পাঠিয়েছে তা ব্যবহার করুন।"
-
 #: site/pages/get-a-coach.php:29 site/pages/get-a-coach.php:92
 #: site/pages/get-a-coach.php:119
 msgid "Get A Coach"
 msgstr "একজন প্রশিক্ষক নিন"
-
-#: site/pages/get-a-coach.php:30 site/pages/get-a-coach.php:113
-msgid ""
-"All our coaches are trained and practicing the concepts and tools found in "
-"Zûme. All our coaches can help you over barriers and make steps in your "
-"journey."
-msgstr ""
-"আমাদের সকল কোচ প্রশিক্ষণপ্রাপ্ত এবং জুমে পাওয়া ধারণা এবং সরঞ্জামগুলি অনুশীলন করছেন। "
-"আমাদের সকল কোচ আপনাকে বাধা অতিক্রম করতে এবং আপনার যাত্রায় পদক্ষেপ নিতে সাহায্য "
-"করতে পারেন।"
-
-#: site/pages/get-a-coach.php:93
-msgid ""
-"Every athletic sport, especially at higher levels, uses coaching. Even "
-"olympic athletes have coaches, and often more than one. Disciple making can "
-"equally benefit from coaching by those who have more experience."
-msgstr ""
-"প্রতিটি ক্রীড়া খেলা, বিশেষ করে উচ্চ স্তরে, কোচিং ব্যবহার করে। এমনকি অলিম্পিক "
-"ক্রীড়াবিদদেরও কোচ থাকে, এবং প্রায়শই একাধিক। শিষ্য তৈরির ক্ষেত্রেও অভিজ্ঞতাসম্পন্ন "
-"ব্যক্তিদের দ্বারা কোচিং থেকে সমানভাবে উপকৃত হতে পারেন।"
-
-#: site/pages/get-a-coach.php:96
-msgid "No Cost"
-msgstr "কোন খরচ নেই"
 
 #: site/pages/get-a-coach.php:97 site/pages/get-a-coach.php:104
 #: site/pages/home.php:269 site/pages/home.php:276 site/pages/home.php:277
@@ -6475,30 +6757,6 @@ msgstr "কোন খরচ নেই"
 #: site/pages/training.php:145 site/pages/training.php:146
 msgid "Join a training group"
 msgstr "একটি প্রশিক্ষণ দলে যোগদান করুন"
-
-#: site/pages/get-a-coach.php:99
-msgid ""
-"Our network of volunteer coaches are not paid, but are driven rather by a "
-"passion for loving God, loving others, and obeying the Great Commission."
-msgstr ""
-"আমাদের স্বেচ্ছাসেবক প্রশিক্ষকদের নেটওয়ার্ক বেতনভুক্ত নয়, বরং ঈশ্বরকে ভালোবাসা, "
-"অন্যদের ভালোবাসা এবং মহান আদেশ মেনে চলার আবেগ দ্বারা পরিচালিত হয়।"
-
-#: site/pages/get-a-coach.php:103
-msgid "Localized"
-msgstr "স্থানীয়"
-
-#: site/pages/get-a-coach.php:106
-msgid ""
-"Our connection team attempts to connect you with a coach who speaks your "
-"language and is geographically as close as possible."
-msgstr ""
-"আমাদের সংযোগ দল আপনাকে এমন একজন কোচের সাথে সংযুক্ত করার চেষ্টা করে যিনি আপনার "
-"ভাষা বলতে পারেন এবং ভৌগোলিকভাবে যতটা সম্ভব কাছাকাছি।"
-
-#: site/pages/get-a-coach.php:110
-msgid "Experienced"
-msgstr "অভিজ্ঞ"
 
 #: site/pages/get-a-coach.php:111 site/pages/home.php:285
 #: site/pages/training.php:154
@@ -6731,7 +6989,6 @@ msgid "Get started"
 msgstr "শুরু করুন"
 
 #: site/pages/join-a-training-public.php:30
-#, fuzzy
 msgid "Join a Training"
 msgstr "একটি প্রশিক্ষণে যোগদান করুন"
 
@@ -6746,11 +7003,11 @@ msgstr ""
 
 #: site/pages/join-a-training-public.php:146
 msgid "No active trainings available at this time."
-msgstr ""
+msgstr "এই মুহূর্তে কোনও সক্রিয় প্রশিক্ষণ উপলব্ধ নেই।"
 
-#: site/pages/join-a-training-public.php:158
-msgid "Notify me about future trainings"
-msgstr ""
+#: site/pages/join-a-training-public.php:156
+msgid "Want to know about future trainings?"
+msgstr "ভবিষ্যতের প্রশিক্ষণ সম্পর্কে জানতে চান?"
 
 #: site/pages/messages.php:283 utilities/apis/encouragement-api.php:534
 msgid "Friend"
@@ -6795,6 +7052,10 @@ msgstr "আমন্ত্রণ পরিকল্পনা করুন"
 #: site/pages/plan-invite.php:77
 msgid "Please enter a code."
 msgstr "দয়া করে একটি কোড লিখুন।"
+
+#: site/pages/plans.php:200
+msgid "Back to Public Training Groups"
+msgstr "পাবলিক ট্রেনিং গ্রুপ-এ ফিরে যান"
 
 #: site/pages/privacy-policy.php:29 site/pages/privacy-policy.php:86
 msgid "Zúme Privacy Policy"
@@ -7019,9 +7280,9 @@ msgid ""
 "of your hands. QR codes for every session give you access to all the video "
 "content as well!"
 msgstr ""
-"জুমে প্রশিক্ষণ এখন একটি সম্পূর্ণ ওয়ার্কবুক আকারে উপলব্ধ। প্রশিক্ষণের সমস্ত ধারণা, "
-"সরঞ্জাম, আলোচনার প্রশ্ন এবং চ্যালেঞ্জগুলি এখন আপনার হাতের মুঠোয়। প্রতিটি সেশনের জন্য "
-"QR কোডগুলি আপনাকে সমস্ত ভিডিও সামগ্রীতে নিয়ন্ত্রণ দেয়!"
+"জুমে প্রশিক্ষণ এখন একটি সম্পূর্ণ ওয়ার্কবুক আকারে উপলব্ধ। প্রশিক্ষণের সমস্ত ধারণা, সরঞ্জা"
+"ম, আলোচনার প্রশ্ন এবং চ্যালেঞ্জগুলি এখন আপনার হাতের মুঠোয়। প্রতিটি সেশনের জন্য QR "
+"কোডগুলি আপনাকে সমস্ত ভিডিও সামগ্রীতে নিয়ন্ত্রণ দেয়!"
 
 #: site/pages/resources.php:143
 msgid "Free Download (PDF)"
@@ -7050,10 +7311,6 @@ msgstr "জুমে প্রশিক্ষণ কোর্সের ধার
 #: site/pages/share.php:86
 msgid "Copy this link and send it to your friends."
 msgstr "এই লিঙ্কটি অনুলিপি করুন এবং এটি আপনার বন্ধুদের কাছে পাঠান।"
-
-#: site/pages/share.php:88
-msgid "Copied"
-msgstr "অনুলিপি করা হয়েছে"
 
 #: site/pages/share.php:125
 msgid "Tools"
@@ -7251,11 +7508,67 @@ msgstr ""
 "জুমে প্রশিক্ষণ হল একটি অনলাইন এবং জীবনে শেখার অভিজ্ঞতা যা যীশুকে অনুসরণকারী ছোট "
 "গোষ্ঠীর জন্য ডিজাইন করা হয়েছে। একটি অনলাইন, জীবনে শিষ্য তৈরির আন্দোলন প্রশিক্ষণ"
 
-#: utilities/apis/connect-api.php:86
+#: utilities/apis/communications-api.php:99
+#, php-format
+msgid "Hello %s"
+msgstr "হ্যালো %s"
+
+#: utilities/apis/communications-api.php:100
+#, php-format
+msgid ""
+"A new online Zume Training is now available. You can view it at the "
+"following link: %s"
+msgstr ""
+"একটি নতুন অনলাইন জুম প্রশিক্ষণ এখন উপলব্ধ। আপনি এটি নিম্নলিখিত লিঙ্কে দেখতে পারেন: "
+"%s"
+
+#: utilities/apis/communications-api.php:101
+#, php-format
+msgid "The training is in the %1$s format and will be held in %2$s"
+msgstr "প্রশিক্ষণটি %1$s ফর্ম্যাটে এবং %2$s এ অনুষ্ঠিত হবে"
+
+#: utilities/apis/communications-api.php:102
+#, php-format
+msgid "First session: %1$s %2$s (%3$s)."
+msgstr "প্রথম অধিবেশন: %1$s %2$s (%3$s)।"
+
+#: utilities/apis/communications-api.php:103
+msgid "You can also join the training by clicking the link below:"
+msgstr "আপনি নীচের লিঙ্কে ক্লিক করে প্রশিক্ষণে যোগদান করতে পারেন:"
+
+#: utilities/apis/communications-api.php:105
+#, php-format
+msgid "The training will be led by %s speakers."
+msgstr "প্রশিক্ষণটি %s জন বক্তা দ্বারা পরিচালিত হবে।"
+
+#: utilities/apis/communications-api.php:106
+msgid "Best regards,"
+msgstr "শুভেচ্ছান্তে,"
+
+#: utilities/apis/communications-api.php:107
+msgid "The Zume Team"
+msgstr "জুম টিম"
+
+#: utilities/apis/connect-api.php:82
+msgid ""
+"You have successfully subscribed to receive notifications about future "
+"trainings."
+msgstr ""
+"ভবিষ্যতের প্রশিক্ষণ সম্পর্কে বিজ্ঞপ্তি পেতে আপনি সফলভাবে সাবস্ক্রাইব করেছেন।"
+
+#: utilities/apis/connect-api.php:83
+msgid "You can unsubscribe from these notifications at any time."
+msgstr "আপনি যেকোনো সময় এই বিজ্ঞপ্তিগুলি থেকে সদস্যতা ত্যাগ করতে পারেন।"
+
+#: utilities/apis/connect-api.php:91
+msgid "Zume Training - Future Trainings"
+msgstr "জুম প্রশিক্ষণ - ভবিষ্যতের প্রশিক্ষণ"
+
+#: utilities/apis/connect-api.php:141
 msgid "your friend"
 msgstr "আপনার বন্ধু"
 
-#: utilities/apis/connect-api.php:237
+#: utilities/apis/connect-api.php:294
 msgid "the plan"
 msgstr "পরিকল্পনা"
 
@@ -7344,22 +7657,9 @@ msgstr "৩ মাসের পরিকল্পনা তৈরি করা �
 msgid "Joined Community"
 msgstr "৩ মাসের পরিকল্পনা সম্পূর্ণ করুন"
 
-#: utilities/apis/plans-api.php:126
-#, php-format
-msgctxt "My first training - username"
-msgid "My first training - %s"
-msgstr "আমার প্রথম প্রশিক্ষণ - %s"
-
-#: utilities/apis/plans-api.php:128
-#, php-format
-msgctxt "Training 2 - username"
-msgid "Training %1$d - %2$s"
-msgstr "প্রশিক্ষণ %1$d - %2$s"
-
-#: utilities/hooks/admin-email-test.php:169
-#, fuzzy
+#: utilities/hooks/admin-email-test.php:227
 msgid "You do not have sufficient permissions to access this page."
-msgstr "আপনার এই পৃষ্ঠাটি অ্যাক্সেস করার অনুমতি নেই"
+msgstr "এই পৃষ্ঠাটি অ্যাক্সেস করার জন্য আপনার পর্যাপ্ত অনুমতি নেই।"
 
 #: utilities/hooks/ipstack-admin-tab.php:47
 msgid "Ipstack"
@@ -7409,77 +7709,113 @@ msgstr "জুমে পেজটা ভাগ করুন"
 msgid "Zúme Annual Report"
 msgstr "জুমে বার্ষিক প্রতিবেদন"
 
+#: utilities/models/zume-plans-model.php:153
+#, php-format
+msgctxt "My first training - username"
+msgid "My first training - %s"
+msgstr "আমার প্রথম প্রশিক্ষণ - %s"
+
+#: utilities/models/zume-plans-model.php:155
+#, php-format
+msgctxt "Training 2 - username"
+msgid "Training %1$d - %2$s"
+msgstr "প্রশিক্ষণ %1$d - %2$s"
+
 #: utilities/post-types/posttype-pieces.php:299
 msgid "Piece"
 msgstr "টুকরো"
 
-#: zume-training-system.php:277
+#: zume-training-system.php:199
+msgid "Add the details for training with code abc123"
+msgstr "abc123 কোড ব্যবহার করে প্রশিক্ষণের বিবরণ যোগ করুন।"
+
+#: zume-training-system.php:203
+msgid "Set the language to e.g. en_US"
+msgstr "ভাষাটি যেমন en_US এ সেট করুন"
+
+#: zume-training-system.php:263
+msgid "Learn More"
+msgstr "আরও জানুন"
+
+#: zume-training-system.php:293
+msgid "Zume Admin"
+msgstr "জুম অ্যাডমিন"
+
+#: zume-training-system.php:404
 msgid "Someone has requested a password reset for the following account:"
 msgstr "কেউ নিম্নলিখিত অ্যাকাউন্টের জন্য পাসওয়ার্ড রিসেট করার অনুরোধ করেছেন:"
 
 #. translators: %s: site name
-#: zume-training-system.php:279
+#: zume-training-system.php:406
 #, php-format
 msgid "Site Name: %s"
 msgstr "সাইটের নাম: %s"
 
 #. translators: %s: user login
-#: zume-training-system.php:281
+#: zume-training-system.php:408
 #, php-format
 msgid "Username: %s"
 msgstr "ব্যবহারকারীর নাম: %s"
 
-#: zume-training-system.php:282
+#: zume-training-system.php:409
 msgid "If this was a mistake, just ignore this email and nothing will happen."
 msgstr "যদি এটি ভুল করে হয়ে থাকে, তাহলে এই ইমেলটি উপেক্ষা করুন এবং কিছুই হবে না।"
 
-#: zume-training-system.php:283
+#: zume-training-system.php:410
 msgid "To reset your password, visit the following address:"
 msgstr "আপনার পাসওয়ার্ড রিসেট করতে, নিম্নলিখিত ঠিকানায় যান:"
 
 #. translators: Password reset email subject. %s: Site name
-#: zume-training-system.php:301
+#: zume-training-system.php:428
 #, php-format
 msgid "[%s] Password Reset"
 msgstr "[%s] পাসওয়ার্ড রিসেট"
 
-#: zume-training-system.php:329
+#: zume-training-system.php:456
 msgid "Profile Details"
 msgstr "প্রোফাইলের বিবরণ"
 
-#: zume-training-system.php:341
+#: zume-training-system.php:468
 msgid "User Email"
 msgstr "ব্যবহারকারীর ইমেল"
 
-#: zume-training-system.php:350
+#: zume-training-system.php:477
 msgid "User Phone"
 msgstr "ব্যবহারকারীর ফোন"
 
-#: zume-training-system.php:358
+#: zume-training-system.php:485
 msgid "User Timezone"
 msgstr "ব্যবহারকারীর সময় অঞ্চল"
 
-#: zume-training-system.php:366
+#: zume-training-system.php:493
 msgid "User Friend Key"
 msgstr "ব্যবহারকারীর বন্ধু কী"
 
-#: zume-training-system.php:374
+#: zume-training-system.php:501
 msgid "User Preferred Language"
 msgstr "ব্যবহারকারীর পছন্দের ভাষা"
 
-#: zume-training-system.php:382
+#: zume-training-system.php:509
 msgid "User Preferred Email"
 msgstr "ব্যবহারকারীর পছন্দের ইমেল"
 
-#: zume-training-system.php:390
+#: zume-training-system.php:517
+msgid "Notify of Future Trainings"
+msgstr "ভবিষ্যতের প্রশিক্ষণ সম্পর্কে অবহিত করুন"
+
+#: zume-training-system.php:525
+msgid "Notify of Future Trainings Date Subscribed"
+msgstr "ভবিষ্যতের প্রশিক্ষণের তারিখ সাবস্ক্রাইব করা সম্পর্কে অবহিত করুন"
+
+#: zume-training-system.php:549
 msgid "Coaching Contact ID"
 msgstr "প্রশিক্ষণের যোগাযোগ আইডি"
 
-#: zume-training-system.php:398
+#: zume-training-system.php:557
 msgid "Preferred Contact Methods"
 msgstr "পছন্দের যোগাযোগ পদ্ধতি"
 
-#: zume-training-system.php:408
+#: zume-training-system.php:567
 msgid "Messenger"
 msgstr "মেসেঞ্জার"
 

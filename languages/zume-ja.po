@@ -1,24 +1,24 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
-"POT-Creation-Date: 2025-07-28 17:05-0600\n"
-"PO-Revision-Date: 2025-04-17 16:03+0000\n"
-"Last-Translator: Kevin Fallah <kevin@christianlingua.com>\n"
-"Language-Team: Japanese <https://translate.disciple.tools/projects/zume-"
-"training/zume-training-system/ja/>\n"
+"POT-Creation-Date: 2025-07-29 09:25-0600\n"
+"PO-Revision-Date: 2025-07-30 00:03+0000\n"
+"Last-Translator: Chris <chris@chasm.solutions>\n"
+"Language-Team: Japanese <https://translate.disciple.tools/projects/"
+"zume-training/zume-training-system/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.11\n"
+"X-Generator: Weblate 5.12.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,"
+"2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
@@ -47,18 +47,18 @@ msgstr "概要"
 #: 404.php:94 appearance/style-override/navigation.php:106
 #: site/course/presenter.php:144 site/dashboard/checkin-dashboard.php:29
 #: site/dashboard/checkin-dashboard.php:177 site/dashboard/dashboard.php:29
-#: site/dashboard/wizard.php:181 site/dashboard/wizard.php:194
+#: site/dashboard/wizard.php:189 site/dashboard/wizard.php:202
 #: site/pages/home.php:118 site/parts/checkin-nav.php:13
 #: site/parts/mobile-nav.php:7 site/parts/nav.php:19
 msgid "Dashboard"
 msgstr "ダッシュボード"
 
-#: 404.php:99 site/dashboard/dashboard.php:251 site/parts/footer.php:25
+#: 404.php:99 site/dashboard/dashboard.php:272 site/parts/footer.php:25
 #: site/parts/footer.php:28
 msgid "Launch Course"
 msgstr "コースを開始"
 
-#: 404.php:100 site/dashboard/dashboard.php:256 site/pages/resources.php:145
+#: 404.php:100 site/dashboard/dashboard.php:277 site/pages/resources.php:145
 #: site/pages/resources.php:147 site/pages/resources.php:162
 #: site/pages/resources.php:195 site/parts/download-slides.php:31
 #: site/parts/download-slides.php:43 site/parts/footer.php:29
@@ -68,7 +68,7 @@ msgstr "コースを開始"
 msgid "10 Session Course"
 msgstr "10セッションコース"
 
-#: 404.php:101 site/dashboard/dashboard.php:257 site/pages/resources.php:150
+#: 404.php:101 site/dashboard/dashboard.php:278 site/pages/resources.php:150
 #: site/pages/resources.php:166 site/pages/resources.php:196
 #: site/parts/download-slides.php:34 site/parts/download-slides.php:46
 #: site/parts/footer.php:30 utilities/integrations/replace-placeholder.php:114
@@ -84,8 +84,8 @@ msgstr "3日間集中コース"
 #: appearance/style-override/navigation.php:75
 #: appearance/style-override/navigation.php:79
 #: maps/js-translation-strings.php:26 maps/local-map.php:1070
-#: site/course/presenter.php:147 site/dashboard/dashboard.php:222
-#: site/dashboard/dashboard.php:282 site/pages/training.php:29
+#: site/course/presenter.php:147 site/dashboard/dashboard.php:243
+#: site/dashboard/dashboard.php:309 site/pages/training.php:29
 #: site/parts/footer.php:11 site/parts/mobile-nav.php:27 site/parts/nav.php:25
 msgid "Training"
 msgstr "トレーニング"
@@ -140,14 +140,14 @@ msgstr "ストーリー"
 msgid "Global Map"
 msgstr "グローバルマップ"
 
-#: globals.php:2332 globals.php:2335 site/course/course-content.php:87
+#: globals.php:2355 globals.php:2358 site/course/course-content.php:87
 #: site/course/course-content.php:102 site/course/course-content.php:111
 #: site/course/course-content.php:372 site/course/course-content.php:3332
 #: site/course/course-content.php:3350 site/pages/follow-jesus.php:177
 msgid "God Uses Ordinary People"
 msgstr "神は普通の人たちを用いられる"
 
-#: globals.php:2334 site/pages/follow-jesus.php:178
+#: globals.php:2357 site/pages/follow-jesus.php:178
 msgid ""
 "You'll see how God uses ordinary people doing simple things to make a big "
 "impact."
@@ -155,12 +155,12 @@ msgstr ""
 "神がいかに、素朴なことをしている普通の人たちを用いて、大きな変化を起こされる"
 "かが分かります。"
 
-#: globals.php:2345 site/course/course-content.php:3333
+#: globals.php:2368 site/course/course-content.php:3333
 #: site/course/course-content.php:3351 site/pages/follow-jesus.php:181
 msgid "Simple Definition of Disciple and Church"
 msgstr "弟子と教会に関する簡単な定義"
 
-#: globals.php:2347 site/course/course-content.php:157
+#: globals.php:2370 site/course/course-content.php:157
 #: site/pages/follow-jesus.php:182
 msgid ""
 "Discover the essence of being a disciple, making a disciple, and what is the "
@@ -169,30 +169,30 @@ msgstr ""
 "弟子であること、弟子を作ること、教会とは何かについて本質的なことを発見しま"
 "す。"
 
-#: globals.php:2348 site/course/course-content.php:147
+#: globals.php:2371 site/course/course-content.php:147
 #: site/course/course-content.php:156
 msgid "Disciples and the Church"
 msgstr "弟子と教会"
 
-#: globals.php:2358 site/course/course-content.php:3334
+#: globals.php:2381 site/course/course-content.php:3334
 #: site/course/course-content.php:3352 site/pages/follow-jesus.php:203
 msgid "Spiritual Breathing is Hearing and Obeying God"
 msgstr "霊的呼吸とは、神の声を聞き、従うこと"
 
-#: globals.php:2360 site/pages/follow-jesus.php:204
+#: globals.php:2383 site/pages/follow-jesus.php:204
 msgid "Being a disciple means we hear from God and we obey God."
 msgstr "弟子であるとは、神の声を聞き、従うことです。"
 
-#: globals.php:2361 site/course/course-content.php:196
+#: globals.php:2384 site/course/course-content.php:196
 #: site/course/course-content.php:205
 msgid "Hearing and Obeying God"
 msgstr "神の声を聞き、従う"
 
-#: globals.php:2371 globals.php:2374
+#: globals.php:2394 globals.php:2397
 msgid "S.O.A.P.S. Bible Study"
 msgstr "S.O.A.P.S.式バイブルスタディ"
 
-#: globals.php:2373 site/pages/follow-jesus.php:219
+#: globals.php:2396 site/pages/follow-jesus.php:219
 msgid ""
 "A tool for daily Bible study that helps you understand, obey, and share "
 "God’s Word."
@@ -200,14 +200,14 @@ msgstr ""
 "日々のバイブルスタディのためのツールで、神のみことばを理解し、それに従い、分"
 "かち合う助けとなります。"
 
-#: globals.php:2384 globals.php:2387 site/course/course-content.php:94
+#: globals.php:2407 globals.php:2410 site/course/course-content.php:94
 #: site/course/course-content.php:307 site/course/course-content.php:316
 #: site/course/course-content.php:379 site/course/course-content.php:3581
 #: site/course/course-content.php:3597 site/pages/follow-jesus.php:233
 msgid "Accountability Groups"
 msgstr "アカウンタビリティグループ"
 
-#: globals.php:2386 site/pages/follow-jesus.php:234
+#: globals.php:2409 site/pages/follow-jesus.php:234
 msgid ""
 "A tool for two or three people of the same gender to meet weekly and "
 "encourage each other in areas that are going well and reveal areas that need "
@@ -216,11 +216,11 @@ msgstr ""
 "同性2、3人が毎週集まって、うまく行っている分野では互いを励まし合い、改善が必"
 "要な分野を明らかにするためのツール。"
 
-#: globals.php:2397 site/pages/follow-jesus.php:197
+#: globals.php:2420 site/pages/follow-jesus.php:197
 msgid "Consumer vs Producer Lifestyle"
 msgstr "消費者的生き方VS生産者的生き方"
 
-#: globals.php:2399 site/pages/follow-jesus.php:198
+#: globals.php:2422 site/pages/follow-jesus.php:198
 msgid ""
 "You'll discover the four main ways God makes everyday followers more like "
 "Jesus."
@@ -228,27 +228,27 @@ msgstr ""
 "神が信者を日々ますますイエスに似た者となるようにされる、4つのおもな方法を発見"
 "します。"
 
-#: globals.php:2400
+#: globals.php:2423
 msgid "Producer not Consumer"
 msgstr "消費者ではなく生産者"
 
-#: globals.php:2410 globals.php:2413 site/pages/follow-jesus.php:207
+#: globals.php:2433 globals.php:2436 site/pages/follow-jesus.php:207
 msgid "How to Spend an Hour in Prayer"
 msgstr "1時間祈る方法"
 
-#: globals.php:2412 site/pages/follow-jesus.php:208
+#: globals.php:2435 site/pages/follow-jesus.php:208
 msgid "See how easy it is to spend an hour in prayer."
 msgstr "1時間祈ることが、いかに簡単かが分かります。"
 
-#: globals.php:2423 site/pages/follow-jesus.php:294
+#: globals.php:2446 site/pages/follow-jesus.php:294
 msgid "Relational Stewardship – List of 100"
 msgstr "人間関係の管理–100人のリスト"
 
-#: globals.php:2425 site/pages/follow-jesus.php:295
+#: globals.php:2448 site/pages/follow-jesus.php:295
 msgid "A tool designed to help you be a good steward of your relationships."
 msgstr "人間関係の良き管理者となるためのツール。"
 
-#: globals.php:2426 site/activities/list-of-100-printable.php:22
+#: globals.php:2449 site/activities/list-of-100-printable.php:22
 #: site/activities/list-of-100-printable.php:90
 #: site/activities/list-of-100.php:22 site/activities/list-of-100.php:81
 #: site/course/course-content.php:496 site/course/course-content.php:634
@@ -260,13 +260,13 @@ msgstr "人間関係の良き管理者となるためのツール。"
 msgid "List of 100"
 msgstr "100人のリスト"
 
-#: globals.php:2436 globals.php:2439 site/course/course-content.php:832
+#: globals.php:2459 globals.php:2462 site/course/course-content.php:832
 #: site/course/course-content.php:845 site/course/course-content.php:854
 #: site/course/course-content.php:3977 site/course/course-content.php:3996
 msgid "Spiritual Economy"
 msgstr "霊的経済"
 
-#: globals.php:2438 site/pages/follow-jesus.php:253
+#: globals.php:2461 site/pages/follow-jesus.php:253
 msgid ""
 "Learn how God's economy is different from the world's. God invests more in "
 "those who are faithful with what they've already been given."
@@ -274,26 +274,26 @@ msgstr ""
 "神の経済がいかに世の経済と異なるかを学びます。神は、既に与えられたものに関し"
 "て忠実である人たちにさらに投資されるのです。"
 
-#: globals.php:2449 site/pages/follow-jesus.php:298
+#: globals.php:2472 site/pages/follow-jesus.php:298
 msgid "The Gospel and How to Share It"
 msgstr "福音とその分かち合い方"
 
-#: globals.php:2451 site/pages/follow-jesus.php:299
+#: globals.php:2474 site/pages/follow-jesus.php:299
 msgid ""
 "Learn a way to share God’s Good News from the beginning of humanity all the "
 "way to the end of this age."
 msgstr ""
 "人類の初めからこの世の終わりに到るまでの神の福音を分かち合う方法を学びます。"
 
-#: globals.php:2452
+#: globals.php:2475
 msgid "Sharing God‘s Story"
 msgstr "神のストーリーを分かち合う"
 
-#: globals.php:2462 site/pages/follow-jesus.php:245
+#: globals.php:2485 site/pages/follow-jesus.php:245
 msgid "Baptism and How To Do It"
 msgstr "洗礼（バプテスマ）とその方法"
 
-#: globals.php:2464 site/pages/follow-jesus.php:246
+#: globals.php:2487 site/pages/follow-jesus.php:246
 msgid ""
 "Jesus said, “Go and make disciples of all nations, BAPTIZING them in the "
 "name of the Father and of the Son and of the Holy Spirit…” Learn how to put "
@@ -303,18 +303,18 @@ msgstr ""
 "子と聖霊の名によって洗礼を授け」なさいと言われました。これをどのように実行に"
 "移したらよいかを学びます。"
 
-#: globals.php:2465 site/course/course-content.php:837
+#: globals.php:2488 site/course/course-content.php:837
 #: site/course/course-content.php:1043 site/course/course-content.php:1052
 #: site/course/course-content.php:1118 site/course/course-content.php:4252
 #: site/course/course-content.php:4269
 msgid "Baptism"
 msgstr "洗礼（バプテスマ）"
 
-#: globals.php:2475 site/pages/follow-jesus.php:302
+#: globals.php:2498 site/pages/follow-jesus.php:302
 msgid "Prepare Your 3-Minute Testimony"
 msgstr "3分間の証しを用意する"
 
-#: globals.php:2477 site/pages/follow-jesus.php:303
+#: globals.php:2500 site/pages/follow-jesus.php:303
 msgid ""
 "Learn how to share your testimony in three minutes by sharing how Jesus has "
 "impacted your life."
@@ -322,17 +322,17 @@ msgstr ""
 "イエスがいかに自分の人生に影響を与えてくださったかについて、3分で証しを分かち"
 "合う方法を学びます。"
 
-#: globals.php:2478
+#: globals.php:2501
 msgid "3-Minute Testimony"
 msgstr "3分間の証し"
 
-#: globals.php:2488 site/course/course-content.php:1237
+#: globals.php:2511 site/course/course-content.php:1237
 #: site/course/course-content.php:1518 site/course/course-content.php:3978
 #: site/course/course-content.php:3997 site/pages/follow-jesus.php:185
 msgid "Vision Casting the Greatest Blessing"
 msgstr "最も偉大な祝福をもたらすビジョン"
 
-#: globals.php:2490 site/course/course-content.php:1318
+#: globals.php:2513 site/course/course-content.php:1318
 #: site/pages/follow-jesus.php:186
 msgid ""
 "Learn a simple pattern of making not just one follower of Jesus but entire "
@@ -341,33 +341,33 @@ msgstr ""
 "イエスに従う人を一人といわず、何世代にも増え続ける霊的家族全体を生み出す単純"
 "なパターンを学びます。"
 
-#: globals.php:2491
+#: globals.php:2514
 msgid "Great, Greater, and Greatest Blessing"
 msgstr "偉大な祝福、もっと偉大な祝福、最も偉大な祝福"
 
-#: globals.php:2501 site/pages/follow-jesus.php:275
+#: globals.php:2524 site/pages/follow-jesus.php:275
 msgid "Duckling Discipleship – Leading Immediately"
 msgstr "アヒルの子と弟子作り–直ちにリードする"
 
-#: globals.php:2503
+#: globals.php:2526
 msgid "Learn what ducklings have to do with disciple-making."
 msgstr "アヒルの子が弟子作りと何の関係があるのかを学びます。"
 
-#: globals.php:2504 site/course/course-content.php:1238
+#: globals.php:2527 site/course/course-content.php:1238
 #: site/course/course-content.php:1357 site/course/course-content.php:1366
 #: site/course/course-content.php:1519 site/course/course-content.php:4529
 #: site/course/course-content.php:4550
 msgid "Duckling Discipleship"
 msgstr "アヒルの子と弟子作り"
 
-#: globals.php:2514 globals.php:2517 site/course/course-content.php:1239
+#: globals.php:2537 globals.php:2540 site/course/course-content.php:1239
 #: site/course/course-content.php:1405 site/course/course-content.php:1414
 #: site/course/course-content.php:1520 site/course/course-content.php:4530
 #: site/course/course-content.php:4551 site/pages/follow-jesus.php:256
 msgid "Eyes to See Where the Kingdom Isn’t"
 msgstr "御国がないところを見極める"
 
-#: globals.php:2516 site/pages/follow-jesus.php:257
+#: globals.php:2539 site/pages/follow-jesus.php:257
 msgid ""
 "Begin to see where God’s Kingdom isn’t. These are usually the places where "
 "God wants to work the most."
@@ -375,11 +375,11 @@ msgstr ""
 "神の御国がない場所を見極めます。それは大抵、神が最も働かれたいと望まれている"
 "場所です。"
 
-#: globals.php:2527 site/pages/follow-jesus.php:241
+#: globals.php:2550 site/pages/follow-jesus.php:241
 msgid "The Lord’s Supper and How To Lead It"
 msgstr "主の晩餐とそのリードの仕方"
 
-#: globals.php:2529
+#: globals.php:2552
 msgid ""
 "It’s a simple way to celebrate our intimate connection and ongoing "
 "relationship with Jesus. Learn a simple way to celebrate."
@@ -387,18 +387,18 @@ msgstr ""
 "イエスとの親密なつながりと現在進行形の関係を祝う主の晩餐。その簡単な祝い方を"
 "学びます。"
 
-#: globals.php:2530 site/activities/activities.php:258
+#: globals.php:2553 site/activities/activities.php:258
 #: site/course/course-content.php:1244 site/course/course-content.php:1455
 #: site/course/course-content.php:1464 site/course/course-content.php:1525
 #: site/course/course-content.php:4534 site/course/course-content.php:4555
 msgid "The Lord’s Supper"
 msgstr "主の晩餐"
 
-#: globals.php:2540 site/pages/follow-jesus.php:313
+#: globals.php:2563 site/pages/follow-jesus.php:313
 msgid "Prayer Walking and How To Do It"
 msgstr "祈りの散歩、その方法"
 
-#: globals.php:2542
+#: globals.php:2565
 msgid ""
 "It‘s a simple way to obey God’s command to pray for others. And it‘s just "
 "what it sounds like — praying to God while walking around!"
@@ -406,61 +406,61 @@ msgstr ""
 "これによって、簡単に他人のために祈りなさいという神の命令に従うことができま"
 "す。この名称の通り、歩きながら神に祈るのです。"
 
-#: globals.php:2543 site/activities/activities.php:327
+#: globals.php:2566 site/activities/activities.php:327
 #: site/course/course-content.php:1636 site/course/course-content.php:1644
 #: site/course/course-content.php:1653 site/course/course-content.php:1759
 #: site/course/course-content.php:4661 site/course/course-content.php:4674
 msgid "Prayer Walking"
 msgstr "祈りの散歩"
 
-#: globals.php:2553 site/pages/follow-jesus.php:309
+#: globals.php:2576 site/pages/follow-jesus.php:309
 msgid "A Person of Peace and How To Find One"
 msgstr "平和の人を見つける方法"
 
-#: globals.php:2555
+#: globals.php:2578
 msgid ""
 "Learn who a person of peace might be and how to know when you‘ve found one."
 msgstr "平和の人とはどのような人か、見つけ方を学びます。"
 
-#: globals.php:2556 site/course/course-content.php:1631
+#: globals.php:2579 site/course/course-content.php:1631
 #: site/course/course-content.php:1676 site/course/course-content.php:1685
 #: site/course/course-content.php:4777 site/course/course-content.php:4797
 msgid "Person of Peace"
 msgstr "平和の人"
 
-#: globals.php:2566 site/pages/follow-jesus.php:222
+#: globals.php:2589 site/pages/follow-jesus.php:222
 msgid "Faithfulness is Better Than Knowledge"
 msgstr "忠実さは知識よりも大切"
 
-#: globals.php:2568
+#: globals.php:2591
 msgid ""
 "It‘s important what disciples know — but it‘s much more important what they "
 "DO with what they know."
 msgstr "弟子の知識は重要ですが、もっと重要なのは知識をどうするかです。"
 
-#: globals.php:2569 site/course/course-content.php:1891
+#: globals.php:2592 site/course/course-content.php:1891
 #: site/course/course-content.php:1900 site/course/course-content.php:4908
 #: site/course/course-content.php:4957
 msgid "Faithfulness"
 msgstr "忠実さ"
 
-#: globals.php:2579 site/pages/follow-jesus.php:211
+#: globals.php:2602 site/pages/follow-jesus.php:211
 msgid "The BLESS Prayer Pattern"
 msgstr "BLESS式祈り"
 
-#: globals.php:2581 site/pages/follow-jesus.php:212
+#: globals.php:2604 site/pages/follow-jesus.php:212
 msgid "Practice a simple mnemonic to remind you of ways to pray for others."
 msgstr "簡単な覚え方で他人のために祈る方法を覚えましょう。"
 
-#: globals.php:2582 site/course/course-content.php:1725
+#: globals.php:2605 site/course/course-content.php:1725
 msgid "The B.L.E.S.S. Prayer"
 msgstr "B.L.E.S.S.式祈り"
 
-#: globals.php:2592 site/pages/follow-jesus.php:229
+#: globals.php:2615 site/pages/follow-jesus.php:229
 msgid "3/3 Group Meeting Pattern"
 msgstr "3／3グループのミーティングパターン"
 
-#: globals.php:2594
+#: globals.php:2617
 msgid ""
 "A 3/3 Group is a way for followers of Jesus to meet, pray, learn, grow, "
 "fellowship and practice obeying and sharing what they‘ve learned. In this "
@@ -471,32 +471,32 @@ msgstr ""
 "このように、3／3グループは単なるスモールグループではなく、一つの素朴な教会"
 "（シンプル・チャーチ）なのです。"
 
-#: globals.php:2595
+#: globals.php:2618
 msgid "3/3 Group"
 msgstr "3／3グループ"
 
-#: globals.php:2605 site/pages/follow-jesus.php:279
+#: globals.php:2628 site/pages/follow-jesus.php:279
 msgid "Training Cycle for Maturing Disciples"
 msgstr "弟子の成長のためのトレーニングのサイクル"
 
-#: globals.php:2607 site/pages/follow-jesus.php:280
+#: globals.php:2630 site/pages/follow-jesus.php:280
 msgid ""
 "Learn the training cycle and consider how it applies to disciple making."
 msgstr "トレーニングのサイクルを学び、弟子作りへの適用方法を検討します。"
 
-#: globals.php:2608 site/course/course-content.php:5214
+#: globals.php:2631 site/course/course-content.php:5214
 #: site/course/course-content.php:5231
 msgid "Training Cycle"
 msgstr "トレーニングのサイクル"
 
-#: globals.php:2618 globals.php:2621 site/course/course-content.php:2327
+#: globals.php:2641 globals.php:2644 site/course/course-content.php:2327
 #: site/course/course-content.php:2339 site/course/course-content.php:2348
 #: site/course/course-content.php:2421 site/course/course-content.php:5215
 #: site/course/course-content.php:5232 site/pages/follow-jesus.php:334
 msgid "Leadership Cells"
 msgstr "リーダーシップ・セル"
 
-#: globals.php:2620 site/course/course-content.php:2350
+#: globals.php:2643 site/course/course-content.php:2350
 #: site/pages/follow-jesus.php:335
 msgid ""
 "A Leadership Cell is a way someone who feels called to lead can develop "
@@ -505,12 +505,12 @@ msgstr ""
 "リーダーシップ・セルとは、リーダーシップに召されていると感じる人が、奉仕の実"
 "践によって自分のリーダーシップを開発する方法です。"
 
-#: globals.php:2631 globals.php:2634 site/course/course-content.php:5339
+#: globals.php:2654 globals.php:2657 site/course/course-content.php:5339
 #: site/course/course-content.php:5357 site/pages/follow-jesus.php:283
 msgid "Expect Non-Sequential Growth"
 msgstr "一筋ではない成長を期待する"
 
-#: globals.php:2633
+#: globals.php:2656
 msgid ""
 "See how disciple making doesn‘t have to be linear. Multiple things can "
 "happen at the same time."
@@ -518,12 +518,12 @@ msgstr ""
 "弟子作りは一筋とは限らないことを理解しましょう。同時に複数のことが起こり得ま"
 "す。"
 
-#: globals.php:2644 site/course/course-content.php:2930
+#: globals.php:2667 site/course/course-content.php:2930
 #: site/pages/follow-jesus.php:287
 msgid "Pace of Multiplication Matters"
 msgstr "増員の速度は重要"
 
-#: globals.php:2646 site/pages/follow-jesus.php:288
+#: globals.php:2669 site/pages/follow-jesus.php:288
 msgid ""
 "Multiplying matters and multiplying quickly matters even more. See why pace "
 "matters."
@@ -531,30 +531,30 @@ msgstr ""
 "増員は重要ですし、速く増員することはもっと重要です。速度が重要である理由を理"
 "解します。"
 
-#: globals.php:2647 site/course/course-content.php:2532
+#: globals.php:2670 site/course/course-content.php:2532
 #: site/course/course-content.php:2595 site/course/course-content.php:2604
 #: site/course/course-content.php:5340 site/course/course-content.php:5358
 msgid "Pace"
 msgstr "速度"
 
-#: globals.php:2657 globals.php:2660 site/course/course-content.php:2533
+#: globals.php:2680 globals.php:2683 site/course/course-content.php:2533
 #: site/course/course-content.php:2644 site/course/course-content.php:2653
 #: site/course/course-content.php:2931 site/course/course-content.php:5341
 #: site/course/course-content.php:5359 site/pages/follow-jesus.php:237
 msgid "Always Part of Two Churches"
 msgstr "常に二つの教会の一部"
 
-#: globals.php:2659
+#: globals.php:2682
 msgid "Learn how to obey Jesus‘ commands by going AND staying."
 msgstr "去ることと留まることによってイエスの命令に従う方法を学びます。"
 
-#: globals.php:2671 globals.php:2674 site/course/course-content.php:3062
+#: globals.php:2694 globals.php:2697 site/course/course-content.php:3062
 #: site/course/course-content.php:3174 site/course/course-content.php:3180
 #: site/course/course-content.php:3246 site/course/course-content.php:5877
 msgid "Three-Month Plan"
 msgstr "3ヶ月計画"
 
-#: globals.php:2673
+#: globals.php:2696
 msgid ""
 "Create and share your plan for how you will implement the Zúme tools over "
 "the next three months."
@@ -562,7 +562,7 @@ msgstr ""
 "次の3ヶ月でどのようにZúmeのツールを実施するか、あなたの計画を作成し、分かち合"
 "います。"
 
-#: globals.php:2683 globals.php:2686
+#: globals.php:2706 globals.php:2709
 #: site/activities/coaching-checklist-host.php:22
 #: site/activities/coaching-checklist-host.php:89
 #: site/activities/coaching-checklist-mawl.php:22
@@ -584,7 +584,7 @@ msgstr ""
 msgid "Coaching Checklist"
 msgstr "コーチング・チェックリスト"
 
-#: globals.php:2685 site/pages/follow-jesus.php:331
+#: globals.php:2708 site/pages/follow-jesus.php:331
 msgid ""
 "A powerful tool you can use to quickly assess your own strengths and "
 "vulnerabilities when it comes to making disciples who multiply."
@@ -592,14 +592,14 @@ msgstr ""
 "増員する（弟子を増やす）弟子を作ることに関して、自分自身の強みと弱みを素早く"
 "評価するのに使える強力なツールです。"
 
-#: globals.php:2696 globals.php:2699 site/course/course-content.php:3057
+#: globals.php:2719 globals.php:2722 site/course/course-content.php:3057
 #: site/course/course-content.php:3070 site/course/course-content.php:3079
 #: site/course/course-content.php:3241 site/course/course-content.php:5468
 #: site/course/course-content.php:5488 site/pages/follow-jesus.php:338
 msgid "Leadership in Networks"
 msgstr "ネットワークにおけるリーダーシップ"
 
-#: globals.php:2698 site/pages/follow-jesus.php:339
+#: globals.php:2721 site/pages/follow-jesus.php:339
 msgid ""
 "Learn how multiplying churches stay connected and live life together as an "
 "extended, spiritual family."
@@ -607,14 +607,14 @@ msgstr ""
 "増えていく教会が霊的拡大家族として、つながったままで共に生きていく方法を学び"
 "ます。"
 
-#: globals.php:2709 site/course/course-content.php:3061
+#: globals.php:2732 site/course/course-content.php:3061
 #: site/course/course-content.php:3116 site/course/course-content.php:3125
 #: site/course/course-content.php:3245 site/course/course-content.php:5738
 #: site/course/course-content.php:5754 site/pages/follow-jesus.php:326
 msgid "Peer Mentoring Groups"
 msgstr "ピア・メンタリングのグループ"
 
-#: globals.php:2711 site/pages/follow-jesus.php:327
+#: globals.php:2734 site/pages/follow-jesus.php:327
 msgid ""
 "This is a group that consists of people who are leading and starting 3/3 "
 "Groups. It also follows a 3/3 format and is a powerful way to assess the "
@@ -624,16 +624,16 @@ msgstr ""
 "フォーマットに従い、あなたの地域における神の働きの霊的健康を評価する強力な方"
 "法です。"
 
-#: globals.php:2712 site/activities/activities.php:350
-#: site/dashboard/wizard.php:185
+#: globals.php:2735 site/activities/activities.php:350
+#: site/dashboard/wizard.php:193
 msgid "Peer Mentoring"
 msgstr "ピア・メンタリング"
 
-#: globals.php:2722 globals.php:2725
+#: globals.php:2745 globals.php:2748
 msgid "Four Fields Tool"
 msgstr "4つのフィールドツール"
 
-#: globals.php:2724
+#: globals.php:2747
 msgid ""
 "The four fields diagnostic chart is a simple tool to be used by a leadership "
 "cell to reflect on the status of current efforts and the kingdom activity "
@@ -643,14 +643,14 @@ msgstr ""
 "神の御国に関するアクティビティと現在の活動の状態について考察することができま"
 "す。"
 
-#: globals.php:2735 globals.php:2738 site/activities/activities.php:396
+#: globals.php:2758 globals.php:2761 site/activities/activities.php:396
 #: site/course/course-content.php:2539 site/course/course-content.php:2867
 #: site/course/course-content.php:2873 site/course/course-content.php:2937
 #: site/course/course-content.php:5602 site/course/course-content.php:5632
 msgid "Generational Mapping"
 msgstr "ジェネレーションマップ"
 
-#: globals.php:2737
+#: globals.php:2760
 msgid ""
 "Generation mapping is another simple tool to help leaders in a movement "
 "understand the growth around them."
@@ -658,30 +658,30 @@ msgstr ""
 "ジェネレーションマップもまた簡単なツールで、運動に携わるリーダーたちが自分の"
 "周囲での成長を理解する役に立ちます。"
 
-#: globals.php:2748
+#: globals.php:2771
 msgid "3-Circles Gospel Presentation"
 msgstr "3つの円による福音説明"
 
-#: globals.php:2750 site/course/course-content.php:975
+#: globals.php:2773 site/course/course-content.php:975
 msgid ""
 "The 3-Circles gospel presentation is a way to tell the gospel using a simple "
 "illustration that can be drawn on a piece of paper."
 msgstr "3つの円による福音説明は、簡単な図を紙に描いて福音を伝える方法です。"
 
-#: globals.php:2751
+#: globals.php:2774
 msgid "3-Circles"
 msgstr "3つの円"
 
-#: globals.php:8148 maps/html/heatmap-html.php:56 maps/html/heatmap-html.php:59
+#: globals.php:8171 maps/html/heatmap-html.php:56 maps/html/heatmap-html.php:59
 #: maps/js-translation-strings.php:43 site/course/presenter.php:169
-#: site/dashboard/checkin-dashboard.php:179 site/dashboard/dashboard.php:303
-#: site/dashboard/wizard.php:179 site/pages/follow-jesus.php:349
+#: site/dashboard/checkin-dashboard.php:179 site/dashboard/dashboard.php:330
+#: site/dashboard/wizard.php:187 site/pages/follow-jesus.php:349
 #: site/parts/footer.php:77 site/parts/footer.php:84 site/parts/footer.php:91
 #: site/parts/language-menu.php:4 utilities/apis/pieces-api.php:202
 msgid "Close"
 msgstr "閉じる"
 
-#: globals.php:8350
+#: globals.php:8373
 msgid "No Results"
 msgstr "結果なし"
 
@@ -942,11 +942,12 @@ msgstr "追加の記録（マップを拡大、またはフィルターをかけ
 msgid "Studying"
 msgstr "学習中"
 
-#: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:235
+#: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:256
 msgid "Practicing"
 msgstr "実践中"
 
-#: maps/js-translation-strings.php:28 site/dashboard/wizard.php:226
+#: maps/js-translation-strings.php:28 site/dashboard/dashboard.php:240
+#: site/dashboard/wizard.php:234
 msgid "Coaching"
 msgstr "コーチング中"
 
@@ -1024,15 +1025,14 @@ msgid "Always report new simple churches that you are starting."
 msgstr "新しく始めたシンプル・チャーチは常に報告してください。"
 
 #: maps/local-map.php:28 maps/local-map.php:547
-#, fuzzy
 msgid "Local Map"
-msgstr "グローバルマップ"
+msgstr "現地地図"
 
 #: maps/local-map.php:29
 msgid ""
 "Local map showing Zúme training progress and church planting activity for a "
 "specific location."
-msgstr ""
+msgstr "Zúmeのトレーニングの進捗状況と特定の場所の教会開拓活動を示すローカルマップ。"
 
 #: maps/local-map.php:548 maps/local-map.php:982 maps/local-map.php:984
 #: maps/map-3-trainees.php:123
@@ -1044,37 +1044,35 @@ msgstr "訓練生"
 msgid "Churches"
 msgstr "教会"
 
-#: maps/local-map.php:553
-#, fuzzy
+#: maps/local-map.php:553 site/dashboard/dashboard.php:201
 msgid "Progress"
-msgstr "マイ・プログレス"
+msgstr "進度"
 
 #: maps/local-map.php:554
-#, fuzzy
 msgid "Location not found"
-msgstr "位置が見つかりません"
+msgstr "開催場所が見つかりません。"
 
 #: maps/local-map.php:555
-#, fuzzy
 msgid "Please enter a grid_id parameter"
-msgstr "お友達コードを入力してください。"
+msgstr "grid_id パラメータを入力してください。"
 
 #: maps/local-map.php:944 maps/local-map.php:1068
-#: site/dashboard/dashboard.php:211
+#: site/dashboard/dashboard.php:231
 msgid "Getting Started"
 msgstr "開始する"
 
 #: maps/local-map.php:946 maps/local-map.php:963
-#: site/dashboard/dashboard.php:197 site/dashboard/wizard.php:305
-#: site/dashboard/wizard.php:306 site/dashboard/wizard.php:330
+#: site/dashboard/dashboard.php:214 site/dashboard/wizard.php:290
+#: site/dashboard/wizard.php:352 site/dashboard/wizard.php:353
+#: site/dashboard/wizard.php:384 site/pages/plans.php:148
 msgid "Location"
 msgstr "位置"
 
-#: maps/local-map.php:954 site/dashboard/dashboard.php:196
+#: maps/local-map.php:954 site/dashboard/dashboard.php:213
 msgid "No Locations found"
 msgstr "位置が見つかりません"
 
-#: maps/local-map.php:955 site/dashboard/wizard.php:180
+#: maps/local-map.php:955 site/dashboard/wizard.php:188
 msgid "No locations found"
 msgstr "位置が見つかりません"
 
@@ -1165,9 +1163,8 @@ msgstr ""
 "の訓練生。"
 
 #: maps/map-5-churches.php:95
-#, fuzzy
 msgid "Vision Map"
-msgstr "ビジョン"
+msgstr "ビジョン・マップ"
 
 #: maps/map-5-churches.php:125
 msgid "Map of Zúme Churches"
@@ -1275,7 +1272,7 @@ msgstr "自問自答しましょう。自分は、"
 #: site/activities/coaching-checklist-two.php:187
 #: site/activities/coaching-checklist.php:150
 #: site/activities/coaching-checklist.php:290
-#: site/dashboard/checkin-dashboard.php:183 site/dashboard/dashboard.php:259
+#: site/dashboard/checkin-dashboard.php:183 site/dashboard/dashboard.php:280
 msgid "Heard"
 msgstr "Heard（聞いた）"
 
@@ -1285,7 +1282,7 @@ msgstr "Heard（聞いた）"
 #: site/activities/coaching-checklist-two.php:191
 #: site/activities/coaching-checklist.php:153
 #: site/activities/coaching-checklist.php:293
-#: site/dashboard/checkin-dashboard.php:185 site/dashboard/dashboard.php:261
+#: site/dashboard/checkin-dashboard.php:185 site/dashboard/dashboard.php:282
 msgid "Obeyed"
 msgstr "Obeyed（従った）"
 
@@ -1295,7 +1292,7 @@ msgstr "Obeyed（従った）"
 #: site/activities/coaching-checklist-two.php:195
 #: site/activities/coaching-checklist.php:156
 #: site/activities/coaching-checklist.php:296
-#: site/dashboard/checkin-dashboard.php:187 site/dashboard/dashboard.php:263
+#: site/dashboard/checkin-dashboard.php:187 site/dashboard/dashboard.php:284
 msgid "Shared"
 msgstr "Shared（分かち合った）"
 
@@ -1305,21 +1302,21 @@ msgstr "Shared（分かち合った）"
 #: site/activities/coaching-checklist-two.php:199
 #: site/activities/coaching-checklist.php:159
 #: site/activities/coaching-checklist.php:299
-#: site/dashboard/checkin-dashboard.php:189 site/dashboard/dashboard.php:265
+#: site/dashboard/checkin-dashboard.php:189 site/dashboard/dashboard.php:286
 msgid "Trained"
 msgstr "Trained（訓練した）"
 
 #: site/activities/coaching-checklist-host.php:157
 #: site/activities/coaching-checklist-two.php:189
 #: site/activities/coaching-checklist.php:290
-#: site/dashboard/checkin-dashboard.php:184 site/dashboard/dashboard.php:260
+#: site/dashboard/checkin-dashboard.php:184 site/dashboard/dashboard.php:281
 msgid "Have I heard about this tool or concept?"
 msgstr "自分はこのツールやコンセプトについて聞いたか？"
 
 #: site/activities/coaching-checklist-host.php:161
 #: site/activities/coaching-checklist-two.php:193
 #: site/activities/coaching-checklist.php:293
-#: site/dashboard/checkin-dashboard.php:186 site/dashboard/dashboard.php:262
+#: site/dashboard/checkin-dashboard.php:186 site/dashboard/dashboard.php:283
 msgid ""
 "Have I obeyed this tool or concept? If a tool, have I practiced it on my "
 "own? If a concept, have you reflected on how it changes your perspective?"
@@ -1331,7 +1328,7 @@ msgstr ""
 #: site/activities/coaching-checklist-host.php:165
 #: site/activities/coaching-checklist-two.php:197
 #: site/activities/coaching-checklist.php:296
-#: site/dashboard/checkin-dashboard.php:188 site/dashboard/dashboard.php:264
+#: site/dashboard/checkin-dashboard.php:188 site/dashboard/dashboard.php:285
 msgid ""
 "Have I shared this tool or concept? If a tool, have you shown anyone how to "
 "use this tool? If a concept, have you shared this concept with anyone?"
@@ -1342,7 +1339,7 @@ msgstr ""
 #: site/activities/coaching-checklist-host.php:169
 #: site/activities/coaching-checklist-two.php:201
 #: site/activities/coaching-checklist.php:299
-#: site/dashboard/checkin-dashboard.php:190 site/dashboard/dashboard.php:266
+#: site/dashboard/checkin-dashboard.php:190 site/dashboard/dashboard.php:287
 msgid ""
 "Have I trained others to share this tool or concept? If a tool, have I "
 "trained someone to share the tool with someone else? If a concept, have I "
@@ -1611,27 +1608,24 @@ msgid "Unknown"
 msgstr "不明"
 
 #: site/activities/sharegospel.php:132 site/course/course-content.php:945
-#, fuzzy
 msgid "Presentation 1"
-msgstr "プレゼンター"
+msgstr "プレゼンテーション1"
 
 #: site/activities/sharegospel.php:135 site/course/course-content.php:974
-#, fuzzy
 msgid "Presentation 2"
-msgstr "プレゼンター"
+msgstr "プレゼンテーション2"
 
 #: site/activities/sharegospel.php:171
-#, fuzzy
 msgid "3 Circles Gospel Presentation"
-msgstr "3つの円による福音説明"
+msgstr "3サークル・ゴスペル・プレゼンテーション"
 
 #: site/activities/sharegospel.php:196
 msgid "No script content found for this language."
-msgstr ""
+msgstr "この言語のスクリプトコンテンツは見つかりませんでした。"
 
 #: site/activities/sharegospel.php:200
 msgid "No script found for this language."
-msgstr ""
+msgstr "この言語のスクリプトは見つかりませんでした。"
 
 #: site/activities/three-month-plan-printable.php:22
 #: site/activities/three-month-plan.php:22
@@ -1639,7 +1633,7 @@ msgid "3 Month Plan"
 msgstr "3ヶ月計画"
 
 #: site/activities/three-month-plan-printable.php:47
-#: site/activities/three-month-plan.php:57 site/dashboard/dashboard.php:229
+#: site/activities/three-month-plan.php:57 site/dashboard/dashboard.php:250
 msgid "3-Month Plan"
 msgstr "3ヶ月計画"
 
@@ -1659,8 +1653,8 @@ msgstr ""
 "スクリプトをオンにして、このインテラクティブなページを使ってください。あるい"
 "は、上記のリンクを使って、印刷可能なバージョンを使ってもよいです。"
 
-#: site/activities/three-month-plan.php:83 site/dashboard/dashboard.php:172
-#: site/dashboard/wizard.php:313 site/profile/profile.php:148
+#: site/activities/three-month-plan.php:83 site/dashboard/dashboard.php:177
+#: site/dashboard/wizard.php:360 site/profile/profile.php:148
 msgid "Save"
 msgstr "保存"
 
@@ -1668,15 +1662,15 @@ msgstr "保存"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: site/activities/three-month-plan.php:85 site/dashboard/dashboard.php:329
+#: site/activities/three-month-plan.php:85 site/dashboard/dashboard.php:362
 msgid "Question"
 msgstr "質問"
 
-#: site/activities/three-month-plan.php:86 site/dashboard/dashboard.php:330
+#: site/activities/three-month-plan.php:86 site/dashboard/dashboard.php:363
 msgid "Answer"
 msgstr "答え"
 
-#: site/activities/three-month-plan.php:87 site/dashboard/dashboard.php:331
+#: site/activities/three-month-plan.php:87 site/dashboard/dashboard.php:364
 msgid "Note"
 msgstr "注"
 
@@ -2562,7 +2556,7 @@ msgstr ""
 msgid "Obey"
 msgstr "従う"
 
-#: site/course/course-content.php:719 site/dashboard/dashboard.php:174
+#: site/course/course-content.php:719 site/dashboard/dashboard.php:179
 #: site/pages/_strings-mobile-pwa.php:37 site/pages/share.php:29
 #: site/pages/share.php:84 site/parts/nav.php:41
 msgid "Share"
@@ -2633,7 +2627,7 @@ msgstr ""
 
 #: site/course/course-content.php:931
 msgid "Review the following two presentations and choose one to practice."
-msgstr ""
+msgstr "次の2つのプレゼンテーションを確認し、練習するものを1つ選びなさい。"
 
 #: site/course/course-content.php:946
 msgid ""
@@ -2650,7 +2644,7 @@ msgstr "福音を分かち合う"
 
 #: site/course/course-content.php:1024
 msgid "Choose one of the two presentations you watched."
-msgstr ""
+msgstr "あなたが見た2つのプレゼンテーションから1つを選びなさい。"
 
 #: site/course/course-content.php:1026
 msgid "Break into groups of two or three people."
@@ -3440,8 +3434,8 @@ msgstr ""
 "コーチやメンターがいない場合は、QRコードをスキャンして、一人リクエストしてく"
 "ださい。"
 
-#: site/course/course-content.php:2771 site/dashboard/dashboard.php:220
-#: site/dashboard/wizard.php:239 site/pages/about.php:271
+#: site/course/course-content.php:2771 site/dashboard/dashboard.php:241
+#: site/dashboard/wizard.php:247 site/pages/about.php:271
 #: site/parts/footer.php:12 site/parts/footer.php:18
 #: site/parts/mobile-nav.php:14 utilities/apis/cta-api.php:246
 #: utilities/apis/cta-api.php:248
@@ -3747,7 +3741,7 @@ msgstr ""
 msgid "God makes plans, and He expects us to make plans, too."
 msgstr "神は計画を立てられ、私たちにも計画を立てるように期待されています。"
 
-#: site/course/course-content.php:3183 site/dashboard/dashboard.php:231
+#: site/course/course-content.php:3183 site/dashboard/dashboard.php:252
 msgid ""
 "A Three Month Plan is a tool you can use to help focus your attention and "
 "efforts and keep them aligned with God’s priorities for making disciples who "
@@ -4334,7 +4328,7 @@ msgid "INTENSIVE SESSION 5"
 msgstr "集中セッション5"
 
 #: site/course/course-content.php:6160 site/course/course-content.php:6168
-#: site/dashboard/dashboard.php:267 site/parts/mobile-nav.php:20
+#: site/dashboard/dashboard.php:288 site/parts/mobile-nav.php:20
 msgid "Join the Community"
 msgstr "コミュニティに加わる"
 
@@ -4380,7 +4374,7 @@ msgstr "コースプレゼンター"
 msgid "Links"
 msgstr "リンク"
 
-#: site/course/presenter.php:148 site/dashboard/dashboard.php:271
+#: site/course/presenter.php:148 site/dashboard/dashboard.php:292
 #: site/pages/resources.php:29 site/pages/resources.php:122
 #: site/parts/checkin-nav.php:14 site/parts/footer.php:41
 #: site/parts/mobile-nav.php:8 site/parts/mobile-nav.php:28
@@ -4392,7 +4386,7 @@ msgstr "リソース"
 msgid "Exit Course"
 msgstr "コースを出る"
 
-#: site/course/presenter.php:163 site/dashboard/dashboard.php:189
+#: site/course/presenter.php:163 site/dashboard/dashboard.php:194
 msgid "Menu"
 msgstr "メニュー"
 
@@ -4400,7 +4394,7 @@ msgstr "メニュー"
 msgid "Slide View"
 msgstr "スライド閲覧"
 
-#: site/course/presenter.php:165 site/dashboard/dashboard.php:184
+#: site/course/presenter.php:165 site/dashboard/dashboard.php:189
 msgid "List View"
 msgstr "リスト閲覧"
 
@@ -4412,8 +4406,9 @@ msgstr "次のスライド"
 msgid "Previous slide"
 msgstr "前のスライド"
 
-#: site/course/presenter.php:168 site/dashboard/wizard.php:250
-#: site/pages/join-a-training-public.php:105
+#: site/course/presenter.php:168 site/dashboard/wizard.php:266
+#: site/dashboard/wizard.php:297 site/pages/join-a-training-public.php:105
+#: site/pages/join-a-training-public.php:129 site/pages/plans.php:156
 msgid "Session"
 msgstr "セッション"
 
@@ -4462,183 +4457,245 @@ msgstr "おめでとうございます"
 msgid "You're checked in"
 msgstr "チェックインしました"
 
-#: site/dashboard/checkin-dashboard.php:182
+#: site/dashboard/checkin-dashboard.php:182 site/dashboard/dashboard.php:369
 #: site/pages/_strings-mobile-pwa.php:41
 msgid "Learn more"
 msgstr "もっと学ぶ"
 
-#: site/dashboard/dashboard.php:170 site/dashboard/wizard.php:311
+#: site/dashboard/dashboard.php:175 site/dashboard/wizard.php:358
 msgid "Done"
 msgstr "完了"
 
-#: site/dashboard/dashboard.php:171
+#: site/dashboard/dashboard.php:176
 msgid "Edit"
 msgstr "編集する"
 
-#: site/dashboard/dashboard.php:173 site/pages/_strings-mobile-pwa.php:27
+#: site/dashboard/dashboard.php:178 site/pages/_strings-mobile-pwa.php:27
 msgid "Delete"
 msgstr "削除する"
 
-#: site/dashboard/dashboard.php:175
+#: site/dashboard/dashboard.php:180
 msgid "Status"
 msgstr "ステータス"
 
-#: site/dashboard/dashboard.php:176
+#: site/dashboard/dashboard.php:181 site/pages/plans.php:113
 msgid "Active"
 msgstr "活動中"
 
-#: site/dashboard/dashboard.php:177
+#: site/dashboard/dashboard.php:182 site/pages/plans.php:113
 msgid "Inactive"
 msgstr "活動休止中"
 
-#: site/dashboard/dashboard.php:178
+#: site/dashboard/dashboard.php:183
 msgid "Completed"
 msgstr "完了"
 
-#: site/dashboard/dashboard.php:179
+#: site/dashboard/dashboard.php:184
 msgid "Uncompleted"
 msgstr "未完了"
 
-#: site/dashboard/dashboard.php:180
+#: site/dashboard/dashboard.php:185
 msgid "Not Heard"
 msgstr "消息なし"
 
-#: site/dashboard/dashboard.php:181 site/pages/share.php:124
+#: site/dashboard/dashboard.php:186 site/pages/share.php:124
 msgid "All"
 msgstr "すべて"
 
-#: site/dashboard/dashboard.php:182 site/profile/profile.php:154
+#: site/dashboard/dashboard.php:187 site/profile/profile.php:154
 msgid "Logout"
 msgstr "ログアウト"
 
-#: site/dashboard/dashboard.php:183 site/pages/share.php:127
+#: site/dashboard/dashboard.php:188 site/pages/share.php:127
 msgid "Filter"
 msgstr "フィルター"
 
-#: site/dashboard/dashboard.php:185
+#: site/dashboard/dashboard.php:190
 msgid "Grid View"
 msgstr "グリッドビュー"
 
-#: site/dashboard/dashboard.php:186
+#: site/dashboard/dashboard.php:191
 msgid "View Now"
 msgstr "今閲覧する"
 
-#: site/dashboard/dashboard.php:187
+#: site/dashboard/dashboard.php:192
 msgid "Complete Now"
 msgstr "今完了する"
 
-#: site/dashboard/dashboard.php:188
+#: site/dashboard/dashboard.php:193
 msgid "View"
 msgstr "閲覧する"
 
-#: site/dashboard/dashboard.php:190 site/dashboard/wizard.php:202
-#: site/dashboard/wizard.php:248 site/pages/join-a-training-public.php:104
-#: site/profile/profile.php:111
+#: site/dashboard/dashboard.php:195 site/dashboard/wizard.php:210
+#: site/dashboard/wizard.php:264 site/pages/join-a-training-public.php:104
+#: site/pages/join-a-training-public.php:128 site/profile/profile.php:111
 msgid "Name"
 msgstr "名前"
 
-#: site/dashboard/dashboard.php:191 site/dashboard/wizard.php:200
-#: site/dashboard/wizard.php:218 site/profile/profile.php:115
-#: zume-training-system.php:404
+#: site/dashboard/dashboard.php:196 site/dashboard/wizard.php:208
+#: site/dashboard/wizard.php:226 site/profile/profile.php:115
+#: zume-training-system.php:563
 msgid "Phone"
 msgstr "電話"
 
-#: site/dashboard/dashboard.php:192 site/dashboard/wizard.php:216
+#: site/dashboard/dashboard.php:197 site/dashboard/wizard.php:224
 #: site/login/login-template.php:450 site/login/login-template.php:451
-#: site/profile/profile.php:119 zume-training-system.php:402
+#: site/profile/profile.php:119 zume-training-system.php:561
 msgid "Email"
 msgstr "Eメール"
 
-#: site/dashboard/dashboard.php:193
-msgid "Linked Accounts"
-msgstr "リンクしたアカウント"
-
-#: site/dashboard/dashboard.php:194
+#: site/dashboard/dashboard.php:198
 msgid "Communications Email"
 msgstr "連絡用Eメール"
 
-#: site/dashboard/dashboard.php:195 site/dashboard/wizard.php:201
+#: site/dashboard/dashboard.php:199
+msgid "If these are not correct, please update your profile."
+msgstr "これらが正しくない場合は、プロフィールを更新してください。"
+
+#: site/dashboard/dashboard.php:200
+msgid "Contact Info"
+msgstr "連絡先情報"
+
+#: site/dashboard/dashboard.php:202
+msgid "Copy Emails"
+msgstr "電子メールのコピー"
+
+#: site/dashboard/dashboard.php:203
+msgid "Copy Phones"
+msgstr "コピー電話"
+
+#: site/dashboard/dashboard.php:204
+msgid "Copy Code"
+msgstr "コードをコピー"
+
+#: site/dashboard/dashboard.php:205
+msgid "Linked Accounts"
+msgstr "リンクしたアカウント"
+
+#: site/dashboard/dashboard.php:206 site/dashboard/wizard.php:273
+msgid "Change Preferences"
+msgstr "プリファレンスの変更"
+
+#: site/dashboard/dashboard.php:207
+msgid "Email Preferences"
+msgstr "メール設定"
+
+#: site/dashboard/dashboard.php:208
+msgid "Choose which email lists you want to receive"
+msgstr "受信したいEメールリストを選択する"
+
+#: site/dashboard/dashboard.php:209 zume-training-system.php:541
+msgid "Hide my contact information from other participants in trainings"
+msgstr "研修の他の参加者から自分の連絡先を隠す"
+
+#: site/dashboard/dashboard.php:210 zume-training-system.php:533
+msgid "Hide my progress from other participants in trainings"
+msgstr "トレーニングの進捗状況を他の参加者から隠す"
+
+#: site/dashboard/dashboard.php:211
+msgid ""
+"Don't forget to send subscribers an email to notify them of the training."
+msgstr "購読者にトレーニングのお知らせメールを送るのをお忘れなく。"
+
+#: site/dashboard/dashboard.php:212 site/dashboard/wizard.php:209
 #: site/profile/profile.php:123
 msgid "City"
 msgstr "都市"
 
-#: site/dashboard/dashboard.php:198 site/dashboard/wizard.php:310
-#: site/dashboard/wizard.php:314 site/dashboard/wizard.php:331
+#: site/dashboard/dashboard.php:215 site/dashboard/wizard.php:357
+#: site/dashboard/wizard.php:361 site/dashboard/wizard.php:385
+#: zume-training-system.php:252
 msgid "Time"
 msgstr "時間"
 
-#: site/dashboard/dashboard.php:199 site/dashboard/wizard.php:224
-#: site/dashboard/wizard.php:253 site/pages/_strings-mobile-pwa.php:17
-#: site/pages/join-a-training-public.php:109 site/parts/language-menu.php:7
+#: site/dashboard/dashboard.php:216 site/dashboard/wizard.php:232
+#: site/dashboard/wizard.php:269 site/pages/_strings-mobile-pwa.php:17
+#: site/pages/join-a-training-public.php:109
+#: site/pages/join-a-training-public.php:133 site/parts/language-menu.php:7
 #: site/profile/profile.php:133 utilities/post-types/posttype-pieces.php:300
+#: zume-training-system.php:258
 msgid "Language"
 msgstr "言語"
 
-#: site/dashboard/dashboard.php:200 site/dashboard/wizard.php:252
-#: site/pages/join-a-training-public.php:108
+#: site/dashboard/dashboard.php:217 site/dashboard/wizard.php:268
+#: site/dashboard/wizard.php:296 site/pages/join-a-training-public.php:108
+#: site/pages/join-a-training-public.php:132 site/pages/plans.php:152
+#: zume-training-system.php:255
 msgid "Timezone"
 msgstr "タイムゾーン"
 
-#: site/dashboard/dashboard.php:201 site/dashboard/wizard.php:332
+#: site/dashboard/dashboard.php:218
+msgid "Select timezone"
+msgstr "タイムゾーンを選択"
+
+#: site/dashboard/dashboard.php:219
+msgid "New"
+msgstr "新着"
+
+#: site/dashboard/dashboard.php:220 site/dashboard/wizard.php:386
 msgid "Meeting link"
 msgstr "ミーティング用リンク"
 
-#: site/dashboard/dashboard.php:202
+#: site/dashboard/dashboard.php:221
 msgid "Zoom, Google Meet, Microsoft Teams etc."
 msgstr "Zoom、Google Meet、Microsoft Teams など"
 
-#: site/dashboard/dashboard.php:203
+#: site/dashboard/dashboard.php:222
 msgid "Edit Profile"
 msgstr "プロフィールを編集する"
 
-#: site/dashboard/dashboard.php:204
+#: site/dashboard/dashboard.php:223
 msgid "Check out this Zúme concept"
 msgstr "このZúmeのコンセプトをチェックする"
 
-#: site/dashboard/dashboard.php:205 site/pages/resources.php:160
+#: site/dashboard/dashboard.php:224 site/pages/resources.php:160
 msgid "Preview"
 msgstr "プレビュー"
 
-#: site/dashboard/dashboard.php:206 site/dashboard/dashboard.php:282
-#: site/dashboard/dashboard.php:295
+#: site/dashboard/dashboard.php:225 site/dashboard/dashboard.php:309
+#: site/dashboard/dashboard.php:322
 #, php-format
 msgid "Add new %s"
 msgstr "新しい%sを追加する"
 
-#: site/dashboard/dashboard.php:206
+#: site/dashboard/dashboard.php:225
 msgid "Commitment"
 msgstr "誓約"
 
-#: site/dashboard/dashboard.php:207 site/pages/share.php:85
+#: site/dashboard/dashboard.php:226 site/pages/share.php:85
 msgid "Copy Link"
 msgstr "リンクをコピーする"
 
-#: site/dashboard/dashboard.php:208
+#: site/dashboard/dashboard.php:227
 msgid "Copy this link and send it to your friends 🙂"
 msgstr "このリンクをコピーして、お友達に送ってください🙂"
 
-#: site/dashboard/dashboard.php:209 site/pages/share.php:87
+#: site/dashboard/dashboard.php:228 site/pages/share.php:87
 msgid "Thanks!"
 msgstr "ありがとうございます！"
 
-#: site/dashboard/dashboard.php:210
+#: site/dashboard/dashboard.php:229
 msgid "Link copied"
 msgstr "リンクをコピーしました"
 
-#: site/dashboard/dashboard.php:212 utilities/apis/cta-api.php:157
+#: site/dashboard/dashboard.php:230 site/pages/share.php:88
+msgid "Copied"
+msgstr "コピー済"
+
+#: site/dashboard/dashboard.php:232 utilities/apis/cta-api.php:157
 #: utilities/apis/cta-api.php:159
 msgid "Set Profile"
 msgstr "プロフィールを設定する"
 
-#: site/dashboard/dashboard.php:213
+#: site/dashboard/dashboard.php:233
 msgid "Complete a short Profile Wizard to set your profile"
 msgstr "簡単なプロフィールウィザードを完成して、プロフィールを設定する"
 
-#: site/dashboard/dashboard.php:214 site/dashboard/wizard.php:274
+#: site/dashboard/dashboard.php:234 site/dashboard/wizard.php:316
 msgid "Join or create a training group"
 msgstr "トレーニンググループに参加する、または作る"
 
-#: site/dashboard/dashboard.php:215
+#: site/dashboard/dashboard.php:235
 msgid ""
 "Join one of our online trainings or create your own training group with our "
 "easy to set up wizard"
@@ -4646,23 +4703,24 @@ msgstr ""
 "オンラインのトレーニンググループに参加するか、または簡単なウィザードを使って"
 "自分のトレーニンググループを作りましょう。"
 
-#: site/dashboard/dashboard.php:216
+#: site/dashboard/dashboard.php:236
 msgid "Create Training Group"
 msgstr "トレーニンググループを作る"
 
-#: site/dashboard/dashboard.php:217
+#: site/dashboard/dashboard.php:237
 msgid "Create your own training group with our easy to set up wizard"
 msgstr "簡単なウィザードを使って、自分のトレーニンググループを作る"
 
-#: site/dashboard/dashboard.php:218 site/dashboard/wizard.php:333
+#: site/dashboard/dashboard.php:238 site/dashboard/wizard.php:317
+#: site/dashboard/wizard.php:387 site/pages/plans.php:194
 msgid "Join Training Group"
 msgstr "トレーニンググループに参加する"
 
-#: site/dashboard/dashboard.php:219
+#: site/dashboard/dashboard.php:239
 msgid "Join an online training group run by a coach"
 msgstr "コーチが運営するオンラインのトレーニンググループに参加する"
 
-#: site/dashboard/dashboard.php:221
+#: site/dashboard/dashboard.php:242
 msgid ""
 "Connect with a coach for any help or encouragement before, during or after "
 "the training."
@@ -4670,11 +4728,11 @@ msgstr ""
 "トレーニング前、中、後に、コーチに連絡して、サポートや励ましをもらいましょ"
 "う。"
 
-#: site/dashboard/dashboard.php:223 site/parts/checkin-nav.php:8
+#: site/dashboard/dashboard.php:244 site/parts/checkin-nav.php:8
 msgid "My Progress"
 msgstr "マイ・プログレス"
 
-#: site/dashboard/dashboard.php:224
+#: site/dashboard/dashboard.php:245
 msgid ""
 "Track your course progress with this interactive view. Learn to listen, "
 "obey, share and train others with what you have learned."
@@ -4682,19 +4740,19 @@ msgstr ""
 "このインテラクティブな画面で自分のコースの進捗状況を追跡します。聴き、従い、"
 "分かち合うことを学び、自分が学んだことをもって他の人を訓練してください。"
 
-#: site/dashboard/dashboard.php:225
+#: site/dashboard/dashboard.php:246
 msgid "Information about progress"
 msgstr "進捗状況に関する情報"
 
-#: site/dashboard/dashboard.php:226
+#: site/dashboard/dashboard.php:247
 msgid "My Training"
 msgstr "マイ・トレーニング"
 
-#: site/dashboard/dashboard.php:227
+#: site/dashboard/dashboard.php:248
 msgid "My Trainings"
 msgstr "マイ・トレーニング"
 
-#: site/dashboard/dashboard.php:228
+#: site/dashboard/dashboard.php:249
 msgid ""
 "Full access to your training content, schedule, group details and sharing "
 "tools."
@@ -4702,15 +4760,15 @@ msgstr ""
 "自分のトレーニングコンテンツ、予定、グループ詳細、シェアするツールに、完全に"
 "アクセスする。"
 
-#: site/dashboard/dashboard.php:230
+#: site/dashboard/dashboard.php:251
 msgid "Create Your Plan"
 msgstr "自分の計画を作成する"
 
-#: site/dashboard/dashboard.php:232
+#: site/dashboard/dashboard.php:253
 msgid "Three Month Plan Locked"
 msgstr "3ヶ月計画が確定されました"
 
-#: site/dashboard/dashboard.php:233
+#: site/dashboard/dashboard.php:254
 msgid ""
 "The three month plan is a tool to help you take action and implement the "
 "tools and concepts learned through the Zúme course. It is most useful, once "
@@ -4719,23 +4777,23 @@ msgstr ""
 "3ヶ月計画は、Zúmeのコースを通して学んだツールやコンセプトを実施し、行動を起こ"
 "すことを助け、トレーニングを終了した後、最も役に立つツールです。"
 
-#: site/dashboard/dashboard.php:234
+#: site/dashboard/dashboard.php:255
 msgid "Unlock now"
 msgstr "今ロック解除する"
 
-#: site/dashboard/dashboard.php:236
+#: site/dashboard/dashboard.php:257
 msgid "My Coach"
 msgstr "マイ・コーチ"
 
-#: site/dashboard/dashboard.php:237
+#: site/dashboard/dashboard.php:258
 msgid "Quick access to your coach at all times."
 msgstr "常に自分のコーチに対して素早くアクセスできます。"
 
-#: site/dashboard/dashboard.php:238
+#: site/dashboard/dashboard.php:259
 msgid "My Tools"
 msgstr "マイ・ツール"
 
-#: site/dashboard/dashboard.php:239
+#: site/dashboard/dashboard.php:260
 msgid ""
 "Your My Tools area will unlock as you move through the course, practicing "
 "and developing essential discipleship skills"
@@ -4743,11 +4801,11 @@ msgstr ""
 "必要不可欠な弟子としてのスキルを実践し、発展させて、コースを進めて行けば、マ"
 "イ・ツール・エリアはロック解除されます。"
 
-#: site/dashboard/dashboard.php:240
+#: site/dashboard/dashboard.php:261
 msgid "My Plans"
 msgstr "マイ・プラン"
 
-#: site/dashboard/dashboard.php:241
+#: site/dashboard/dashboard.php:262
 msgid ""
 "Unlock the My Plans area by completing your 3-Month plan in the final "
 "session."
@@ -4755,11 +4813,11 @@ msgstr ""
 "最後のセッションで3ヶ月計画を完了し、マイ・プラン・エリアをロック解除してくだ"
 "さい。"
 
-#: site/dashboard/dashboard.php:242
+#: site/dashboard/dashboard.php:263
 msgid "My Plans are Locked"
 msgstr "マイ・プランはロックされています。"
 
-#: site/dashboard/dashboard.php:243
+#: site/dashboard/dashboard.php:264
 msgid ""
 "Unlock this area by creating your Three-Month Plan or adding a commitment of "
 "your own."
@@ -4767,11 +4825,11 @@ msgstr ""
 "3ヶ月計画を作成するか、自分の誓約を追加して、このエリアをロック解除してくださ"
 "い。"
 
-#: site/dashboard/dashboard.php:244
+#: site/dashboard/dashboard.php:265
 msgid "My Churches"
 msgstr "マイ・チャーチ"
 
-#: site/dashboard/dashboard.php:245 site/dashboard/dashboard.php:285
+#: site/dashboard/dashboard.php:266 site/dashboard/dashboard.php:312
 msgid ""
 "My Churches tool makes it easy for you to track your simple church and the "
 "simple church generations that grow out of your spiritual family."
@@ -4779,15 +4837,15 @@ msgstr ""
 "マイ・チャーチ・ツールによって、あなたのシンプル・チャーチと、あなたの霊的家"
 "族から生まれた世代を容易に追跡することができます。"
 
-#: site/dashboard/dashboard.php:246
+#: site/dashboard/dashboard.php:267
 msgid "My Maps"
 msgstr "マイ・マップ"
 
-#: site/dashboard/dashboard.php:247
+#: site/dashboard/dashboard.php:268
 msgid "My Maps are Locked"
 msgstr "マイ・マップはロックされています。"
 
-#: site/dashboard/dashboard.php:248
+#: site/dashboard/dashboard.php:269
 msgid ""
 "My maps help clarify the Zúme vision of 1 trainee and 2 churches for every "
 "5,000 people in the US, and 50,000 globally. To unlock My Maps, join the "
@@ -4799,177 +4857,201 @@ msgstr ""
 "ロックを解除するには、Zúmeコミュニティに参加し、大宣教命令の成就に情熱を注い"
 "で弟子作りをしている他の人たちとつながってください。"
 
-#: site/dashboard/dashboard.php:249
+#: site/dashboard/dashboard.php:270
 msgid "My Training is Locked"
 msgstr "マイ・トレーニングはロックされています。"
 
-#: site/dashboard/dashboard.php:250
+#: site/dashboard/dashboard.php:271
 msgid "Present Course"
 msgstr "現在のコース"
 
-#: site/dashboard/dashboard.php:252
+#: site/dashboard/dashboard.php:273
 msgid "Course Content"
 msgstr "コースのコンテンツ"
 
-#: site/dashboard/dashboard.php:253
+#: site/dashboard/dashboard.php:274
 msgid "Course"
 msgstr "コース"
 
-#: site/dashboard/dashboard.php:254
+#: site/dashboard/dashboard.php:275
 msgid "Enter Course"
 msgstr "コースに入る"
 
-#: site/dashboard/dashboard.php:255
+#: site/dashboard/dashboard.php:276
 msgid "Course Slides"
 msgstr "コースのスライド"
 
-#: site/dashboard/dashboard.php:258 site/pages/resources.php:153
+#: site/dashboard/dashboard.php:279 site/pages/resources.php:153
 #: site/pages/resources.php:170 site/pages/resources.php:197
 #: site/parts/download-slides.php:37 site/parts/download-slides.php:49
 msgid "Intensive Course"
 msgstr "集中コース"
 
-#: site/dashboard/dashboard.php:268 site/dashboard/wizard.php:254
+#: site/dashboard/dashboard.php:289 site/dashboard/wizard.php:270
 #: site/pages/home.php:281 site/pages/join-a-training-public.php:136
-#: site/pages/training.php:150 utilities/apis/cta-api.php:189
-#: utilities/apis/cta-api.php:412
+#: site/pages/training.php:150 utilities/apis/communications-api.php:104
+#: utilities/apis/cta-api.php:189 utilities/apis/cta-api.php:412
 msgid "Join"
 msgstr "参加する"
 
-#: site/dashboard/dashboard.php:269
+#: site/dashboard/dashboard.php:290
 msgid "Join the community to get access to this area."
 msgstr "コミュニティに参加して、この地域へのアクセスを得ましょう。"
 
-#: site/dashboard/dashboard.php:270
+#: site/dashboard/dashboard.php:291
 msgid "Community links"
 msgstr "コミュニティ・リンク"
 
-#: site/dashboard/dashboard.php:272
+#: site/dashboard/dashboard.php:293
 msgid "Previous Slide"
 msgstr "前のスライド"
 
-#: site/dashboard/dashboard.php:273
+#: site/dashboard/dashboard.php:294
 msgid "Next Slide"
 msgstr "次のスライド"
 
-#: site/dashboard/dashboard.php:274
+#: site/dashboard/dashboard.php:295
 msgid "Group Members"
 msgstr "グループメンバー"
 
-#: site/dashboard/dashboard.php:275
+#: site/dashboard/dashboard.php:296
 msgid "Group Members Link"
 msgstr "グループメンバーのリンク"
 
-#: site/dashboard/dashboard.php:276
+#: site/dashboard/dashboard.php:297
 msgid "Group Details"
 msgstr "グループの詳細"
 
-#: site/dashboard/dashboard.php:277
+#: site/dashboard/dashboard.php:298
+msgid "Group Communication"
+msgstr "グループ・コミュニケーション"
+
+#: site/dashboard/dashboard.php:299
+msgid "Subscribers"
+msgstr "登録者"
+
+#: site/dashboard/dashboard.php:300
+msgid "Has joined a group"
+msgstr "グループに加入している"
+
+#: site/dashboard/dashboard.php:301
+msgid "Emailed on"
+msgstr "メールで送信"
+
+#: site/dashboard/dashboard.php:302
+msgid "Send Email to Subscribers"
+msgstr "購読者にメールを送る"
+
+#: site/dashboard/dashboard.php:303
 msgid "Mark Completed"
 msgstr "「完了」にする"
 
-#: site/dashboard/dashboard.php:278
+#: site/dashboard/dashboard.php:304
+msgid "Mark Uncompleted"
+msgstr "未完成マーク"
+
+#: site/dashboard/dashboard.php:305
 #, php-format
 msgid "Session %d"
 msgstr "セッション%d"
 
-#: site/dashboard/dashboard.php:279 site/pages/_strings-mobile-pwa.php:31
+#: site/dashboard/dashboard.php:306 site/pages/_strings-mobile-pwa.php:31
 msgid "Start Session"
 msgstr "セッション開始"
 
-#: site/dashboard/dashboard.php:280
+#: site/dashboard/dashboard.php:307
 msgid "Show details"
 msgstr "詳細を表示"
 
-#: site/dashboard/dashboard.php:281
+#: site/dashboard/dashboard.php:308
 msgid "Edit time"
 msgstr "時間を編集する"
 
-#: site/dashboard/dashboard.php:283
+#: site/dashboard/dashboard.php:310
 msgid "Invite Friends"
 msgstr "お友達を招待する"
 
-#: site/dashboard/dashboard.php:284
+#: site/dashboard/dashboard.php:311
 msgid "My Churches are Locked"
 msgstr "マイ・チャーチはロックされています。"
 
-#: site/dashboard/dashboard.php:286
+#: site/dashboard/dashboard.php:313
 msgid "Unlock the My Churches area by joining the community."
 msgstr "コミュニティに参加して、マイ・チャーチのエリアをロック解除する。"
 
-#: site/dashboard/dashboard.php:287
+#: site/dashboard/dashboard.php:314
 msgid "Click to add your first church"
 msgstr "クリックして、最初のチャーチを加える"
 
-#: site/dashboard/dashboard.php:288
+#: site/dashboard/dashboard.php:315
 msgid "Church Name"
 msgstr "チャーチの名前"
 
-#: site/dashboard/dashboard.php:289
+#: site/dashboard/dashboard.php:316
 msgid "Number of People"
 msgstr "人数"
 
-#: site/dashboard/dashboard.php:290
+#: site/dashboard/dashboard.php:317
 msgid "Church Location"
 msgstr "チャーチの位置"
 
-#: site/dashboard/dashboard.php:291
+#: site/dashboard/dashboard.php:318
 msgid "Parent Church"
 msgstr "親チャーチ"
 
-#: site/dashboard/dashboard.php:292 site/dashboard/wizard.php:309
+#: site/dashboard/dashboard.php:319 site/dashboard/wizard.php:356
 msgid "Start Date"
 msgstr "開始日"
 
-#: site/dashboard/dashboard.php:293
+#: site/dashboard/dashboard.php:320
 msgid "Mark Active"
 msgstr "「活動中」にする"
 
-#: site/dashboard/dashboard.php:294
+#: site/dashboard/dashboard.php:321
 msgid "Mark Inactive"
 msgstr "「活動休止中」にする"
 
-#: site/dashboard/dashboard.php:295
+#: site/dashboard/dashboard.php:322
 msgid "Church"
 msgstr "チャーチ"
 
-#: site/dashboard/dashboard.php:296
+#: site/dashboard/dashboard.php:323
 msgid "cancel"
 msgstr "キャンセル"
 
-#: site/dashboard/dashboard.php:297 utilities/apis/cta-api.php:173
+#: site/dashboard/dashboard.php:324 utilities/apis/cta-api.php:173
 #: utilities/apis/cta-api.php:203 utilities/apis/cta-api.php:323
 #: utilities/apis/cta-api.php:337 utilities/apis/cta-api.php:366
 msgid "Congratulations!"
 msgstr "おめでとうございます！"
 
-#: site/dashboard/dashboard.php:298
+#: site/dashboard/dashboard.php:325
 msgid "You have requested a coach"
 msgstr "コーチをリクエストしました"
 
-#: site/dashboard/dashboard.php:299
+#: site/dashboard/dashboard.php:326
 msgid "You have joined a training"
 msgstr "トレーニングに参加しました"
 
-#: site/dashboard/dashboard.php:300
+#: site/dashboard/dashboard.php:327
 msgid "You have set your profile"
 msgstr "プロフィールを設定しました"
 
-#: site/dashboard/dashboard.php:301
+#: site/dashboard/dashboard.php:328
 #, php-format
 msgctxt "3-month plan unlocked"
 msgid "%s unlocked"
 msgstr "%s をロック解除しました"
 
-#: site/dashboard/dashboard.php:301 utilities/apis/cta-api.php:322
+#: site/dashboard/dashboard.php:328 utilities/apis/cta-api.php:322
 msgid "3 month plan"
 msgstr "3ヶ月計画"
 
-#: site/dashboard/dashboard.php:302
+#: site/dashboard/dashboard.php:329
 msgid "You have joined the community"
 msgstr "コミュニティに参加しました"
 
-#: site/dashboard/dashboard.php:304 site/dashboard/wizard.php:210
+#: site/dashboard/dashboard.php:331 site/dashboard/wizard.php:218
 #: site/pages/privacy-policy.php:110
 msgid ""
 "A user’s real name or nickname is requested to improve the personal quality "
@@ -4979,7 +5061,7 @@ msgstr ""
 "カスタマーサービスのリクエストやコーチング、サイトの個別的品質やコミュニケー"
 "ションを改善するため、ユーザーの本当の名前やニックネームが必要になります。"
 
-#: site/dashboard/dashboard.php:305 site/pages/privacy-policy.php:116
+#: site/dashboard/dashboard.php:332 site/pages/privacy-policy.php:116
 msgid ""
 "A user’s email address is required to establish an account and is used for "
 "transactional communication as part of site operation."
@@ -4987,7 +5069,7 @@ msgstr ""
 "アカウントを設定し、サイト運営の一環として相互連絡に使うため、ユーザーのメー"
 "ルアドレスが必要になります。"
 
-#: site/dashboard/dashboard.php:306 site/dashboard/wizard.php:211
+#: site/dashboard/dashboard.php:333 site/dashboard/wizard.php:219
 #: site/pages/privacy-policy.php:119
 msgid ""
 "A user’s phone number is collected and stored for supporting the free "
@@ -4996,7 +5078,7 @@ msgstr ""
 "ユーザーの電話番号は、無料のコーチングサービスをサポートするために収集・保存"
 "されます。"
 
-#: site/dashboard/dashboard.php:307 site/dashboard/wizard.php:212
+#: site/dashboard/dashboard.php:334 site/dashboard/wizard.php:220
 #: site/pages/privacy-policy.php:122
 msgid ""
 "A user’s city is requested to personalize site resources and communication, "
@@ -5006,7 +5088,7 @@ msgstr ""
 "切なコーチングやカスタマーサービスのリソースにユーザーをつなげるために求めら"
 "れます。"
 
-#: site/dashboard/dashboard.php:308 site/dashboard/wizard.php:240
+#: site/dashboard/dashboard.php:335 site/dashboard/wizard.php:248
 #: site/pages/privacy-policy.php:113
 msgid ""
 "A user’s language preference is stored to support proper site and "
@@ -5017,25 +5099,25 @@ msgstr ""
 "ため、またユーザーを適切なコーチングやリソースにつなげ易くするために保存され"
 "ます。"
 
-#: site/dashboard/dashboard.php:309 site/dashboard/wizard.php:334
-msgid "Join key"
-msgstr "参加キー"
+#: site/dashboard/dashboard.php:336 site/dashboard/wizard.php:388
+msgid "Join Code"
+msgstr "参加コード"
 
-#: site/dashboard/dashboard.php:310 site/pages/checkin.php:91
-#: site/pages/friend-invite.php:79 site/pages/plan-invite.php:78
-#: site/pages/plan-invite.php:174
+#: site/dashboard/dashboard.php:337 site/dashboard/wizard.php:322
+#: site/pages/checkin.php:91 site/pages/friend-invite.php:79
+#: site/pages/plan-invite.php:78 site/pages/plan-invite.php:174
 msgid "Not a recognized code. Please check the number."
 msgstr "コードを認識できません。ナンバーを確認してください。"
 
-#: site/dashboard/dashboard.php:311
+#: site/dashboard/dashboard.php:338
 msgid "You are not authorized to access this page"
 msgstr "このページにアクセスする権限がありません。"
 
-#: site/dashboard/dashboard.php:312
+#: site/dashboard/dashboard.php:339
 msgid "There has been an error with your request"
 msgstr "あなたのリクエストでエラーが発生しました。"
 
-#: site/dashboard/dashboard.php:313
+#: site/dashboard/dashboard.php:340
 msgid ""
 "Thank you for your coaching request. Our team will be working to connect you "
 "with an available coach in your language and region."
@@ -5043,102 +5125,166 @@ msgstr ""
 "コーチングのリクエストをありがとうございます。あなたの言語と地域で活動してい"
 "るコーチにおつなぎします。"
 
-#: site/dashboard/dashboard.php:314
+#: site/dashboard/dashboard.php:341
 msgid ""
 "Please watch for communication from your coach within the communication "
 "preference you indicated."
 msgstr "ご指定の連絡手段によるコーチからの連絡をお待ちください。"
 
-#: site/dashboard/dashboard.php:315
+#: site/dashboard/dashboard.php:342
+msgid "We apologize for the delay"
+msgstr "お待たせして申し訳ありません。"
+
+#: site/dashboard/dashboard.php:343
+msgid "Message"
+msgstr "メッセージ"
+
+#: site/dashboard/dashboard.php:344
+msgid ""
+"If you have any queries or need help, please enter a message below and we "
+"will get back to you as soon as possible."
+msgstr "ご質問やサポートが必要な場合は、下記にメッセージをご記入ください。"
+
+#: site/dashboard/dashboard.php:345
+msgid "Send Message"
+msgstr "メッセージを送信"
+
+#: site/dashboard/dashboard.php:346
+msgid "There was an error sending your message. Please try again later."
+msgstr "メッセージの送信にエラーが発生しました。後でもう一度お試しください。"
+
+#: site/dashboard/dashboard.php:347
+msgid "Message sent successfully"
+msgstr "メッセージを送信しました"
+
+#: site/dashboard/dashboard.php:348
 msgid "100 Hour Map"
 msgstr "100時間マップ"
 
-#: site/dashboard/dashboard.php:316
+#: site/dashboard/dashboard.php:349
 msgid "Trainee vision map"
 msgstr "訓練生のビジョンマップ"
 
-#: site/dashboard/dashboard.php:317
+#: site/dashboard/dashboard.php:350
 msgid "Simple church vision map"
 msgstr "シンプル・チャーチのビジョンマップ"
 
-#: site/dashboard/dashboard.php:318
+#: site/dashboard/dashboard.php:351
 msgid "Missing answer"
 msgstr "答えが見つかりません"
 
-#: site/dashboard/dashboard.php:319 site/dashboard/wizard.php:193
-#: site/dashboard/wizard.php:247 site/dashboard/wizard.php:264
-#: site/dashboard/wizard.php:271
+#: site/dashboard/dashboard.php:352 site/dashboard/wizard.php:201
+#: site/dashboard/wizard.php:263 site/dashboard/wizard.php:306
+#: site/dashboard/wizard.php:313 site/dashboard/wizard.php:377
 msgid "Something went wrong"
 msgstr "問題が発生しました"
 
-#: site/dashboard/dashboard.php:320 site/dashboard/wizard.php:283
+#: site/dashboard/dashboard.php:353 site/dashboard/wizard.php:330
 #: site/pages/_strings-mobile-pwa.php:10
 msgid "Yes"
 msgstr "はい"
 
-#: site/dashboard/dashboard.php:321 site/dashboard/wizard.php:284
+#: site/dashboard/dashboard.php:354 site/dashboard/wizard.php:331
 #: site/pages/_strings-mobile-pwa.php:11
 msgid "No"
 msgstr "いいえ"
 
-#: site/dashboard/dashboard.php:322
+#: site/dashboard/dashboard.php:355
 msgid "No date"
 msgstr "日付なし"
 
-#: site/dashboard/dashboard.php:323 site/dashboard/wizard.php:219
-#: zume-training-system.php:405
+#: site/dashboard/dashboard.php:356 site/dashboard/wizard.php:227
+#: zume-training-system.php:564
 msgid "Whatsapp"
 msgstr "Whatsapp"
 
-#: site/dashboard/dashboard.php:324 site/dashboard/wizard.php:220
-#: zume-training-system.php:406
+#: site/dashboard/dashboard.php:357 site/dashboard/wizard.php:228
+#: zume-training-system.php:565
 msgid "Signal"
 msgstr "シグナル"
 
-#: site/dashboard/dashboard.php:325 site/dashboard/wizard.php:221
-#: zume-training-system.php:407
+#: site/dashboard/dashboard.php:358 site/dashboard/wizard.php:229
+#: zume-training-system.php:566
 msgid "Telegram"
 msgstr "テレグラム"
 
-#: site/dashboard/dashboard.php:326 site/dashboard/wizard.php:222
+#: site/dashboard/dashboard.php:359 site/dashboard/wizard.php:230
 msgid "Facebook Messenger"
 msgstr "フェイスブック・メッセンジャー"
 
-#: site/dashboard/dashboard.php:327 site/dashboard/wizard.php:318
+#: site/dashboard/dashboard.php:360 site/dashboard/wizard.php:365
 msgid "Clear"
 msgstr "クリア"
 
-#: site/dashboard/dashboard.php:328 site/dashboard/wizard.php:319
+#: site/dashboard/dashboard.php:361 site/dashboard/wizard.php:366
 msgid "Today"
 msgstr "今日"
 
-#: site/dashboard/dashboard.php:332
+#: site/dashboard/dashboard.php:365
 msgid "Coaching Portal"
 msgstr "コーチング・ポータル"
 
-#: site/dashboard/dashboard.php:333
+#: site/dashboard/dashboard.php:366
 msgid "Visibility"
 msgstr "表示・非表示の設定"
 
-#: site/dashboard/dashboard.php:334 site/dashboard/dashboard.php:335
+#: site/dashboard/dashboard.php:367 site/dashboard/dashboard.php:368
 #, php-format
 msgctxt "public/private group"
 msgid "%s group"
 msgstr "%sグループ"
 
-#: site/dashboard/dashboard.php:334
+#: site/dashboard/dashboard.php:367 site/pages/plans.php:112
 msgid "Private"
 msgstr "プライベート"
 
-#: site/dashboard/dashboard.php:335
+#: site/dashboard/dashboard.php:368 site/pages/plans.php:112
 msgid "Public"
 msgstr "パブリック"
 
-#: site/dashboard/dashboard.php:336
-msgid "Local Vision Map"
-msgstr ""
+#: site/dashboard/dashboard.php:370 site/dashboard/wizard.php:281
+#: site/dashboard/wizard.php:373 site/pages/join-a-training-public.php:171
+msgid "Notify me about future trainings"
+msgstr "今後のトレーニングについて通知する"
 
-#: site/dashboard/dashboard.php:342
+#: site/dashboard/dashboard.php:371
+msgid "Preferences"
+msgstr "環境設定"
+
+#: site/dashboard/dashboard.php:372
+msgid "Your progress is always visible to the group leader."
+msgstr "あなたの進捗状況は、グループリーダーから常に確認することができます。"
+
+#: site/dashboard/dashboard.php:373
+msgid ""
+"Contact information is currently hidden from other participants in trainings."
+msgstr "現在、連絡先情報はトレーニングの他の参加者から隠されている。"
+
+#: site/dashboard/dashboard.php:374
+msgid "Progress is currently hidden from other participants in trainings."
+msgstr "現在、トレーニングの進捗状況は他の参加者には見えないようになっている。"
+
+#: site/dashboard/dashboard.php:375
+msgid "Local Vision Map"
+msgstr "ローカル・ビジョン・マップ"
+
+#: site/dashboard/dashboard.php:376
+msgid ""
+"You are making this group public. It will show up on the public list of "
+"trainings. Please confirm you are ready to make it public."
+msgstr "このグループを公開します。トレーニングの公開リストに表示されます。公開の準備"
+"ができていることを確認してください。"
+
+#: site/dashboard/dashboard.php:377
+msgid "Confirm"
+msgstr "確認する"
+
+#: site/dashboard/dashboard.php:378
+#, php-format
+msgid "You can message again in %d hours"
+msgstr "%d時間後に再度メッセージを送信できます"
+
+#: site/dashboard/dashboard.php:384
 msgid ""
 "I will share My Story [Testimony] and God‘s Story [the Gospel] with the "
 "following individuals:"
@@ -5146,12 +5292,12 @@ msgstr ""
 "私は自分のストーリー/[証し]と神のストーリー/[福音]を以下の人たちと分かち合い"
 "ます："
 
-#: site/dashboard/dashboard.php:343
+#: site/dashboard/dashboard.php:385
 msgid ""
 "I will invite the following people to begin an Accountability Group with me:"
 msgstr "私は以下の人たちを招いて、アカウンタビリティグループを始めます："
 
-#: site/dashboard/dashboard.php:344
+#: site/dashboard/dashboard.php:386
 msgid ""
 "I will challenge the following people to begin their own Accountability "
 "Groups and train them how to do it:"
@@ -5159,12 +5305,12 @@ msgstr ""
 "私は以下の人たちに、自分のアカウンタビリティグループを立ち上げることを勧め、"
 "そのやり方を彼らに訓練します："
 
-#: site/dashboard/dashboard.php:345
+#: site/dashboard/dashboard.php:387
 msgid "I will invite the following people to begin a 3/3 Group with me:"
 msgstr ""
 "私は以下の人たちを招いて、私と一緒に3／3グループを立ち上げてもらいます："
 
-#: site/dashboard/dashboard.php:346
+#: site/dashboard/dashboard.php:388
 msgid ""
 "I will challenge the following people to begin their own 3/3 Groups and "
 "train them how to do it:"
@@ -5172,22 +5318,22 @@ msgstr ""
 "私は以下の人たちに、自分の3／3グループを立ち上げることを勧め、そのやり方を彼"
 "らに訓練します："
 
-#: site/dashboard/dashboard.php:347
+#: site/dashboard/dashboard.php:389
 msgid ""
 "I will invite the following people to participate in a 3/3 Hope or Discover "
 "Group:"
 msgstr "私は以下の人たちを、3／3希望と発見グループに招待します："
 
-#: site/dashboard/dashboard.php:348
+#: site/dashboard/dashboard.php:390
 msgid ""
 "I will invite the following people to participate in Prayer Walking with me:"
 msgstr "私は以下の人たちを、祈りの散歩に招待します："
 
-#: site/dashboard/dashboard.php:349
+#: site/dashboard/dashboard.php:391
 msgid "I will Prayer Walk once every [days / weeks / months]."
 msgstr "私は　/[日/週間/ヶ月]に一度、祈りの散歩を実践します。"
 
-#: site/dashboard/dashboard.php:350
+#: site/dashboard/dashboard.php:392
 msgid ""
 "I will equip the following people to share their story and God‘s Story and "
 "make a List of 100 of the people in their relational network:"
@@ -5195,29 +5341,29 @@ msgstr ""
 "私は以下の人たちに、自分のストーリーと神の福音を分かち合う方法、自分の知って"
 "いる人100人のリストを作る方法を指導します："
 
-#: site/dashboard/dashboard.php:351
+#: site/dashboard/dashboard.php:393
 msgid ""
 "I will challenge the following people to use the Prayer Cycle tool on a "
 "periodic basis:"
 msgstr "私は以下の人たちに、祈りのサイクルツールを定期的に使うよう勧めます："
 
-#: site/dashboard/dashboard.php:352
+#: site/dashboard/dashboard.php:394
 msgid "I will use the Prayer Cycle tool once every [days / weeks / months]."
 msgstr "私は　/[日間 /週間/ヶ月]に一度祈りのサイクルツールを使います。"
 
-#: site/dashboard/dashboard.php:353
+#: site/dashboard/dashboard.php:395
 msgid ""
 "I will invite the following people to be part of a Leadership Cell that I "
 "will lead:"
 msgstr "私は以下の人たちを、私がリードするリーダーシップ・セルに招待します："
 
-#: site/dashboard/dashboard.php:354
+#: site/dashboard/dashboard.php:396
 msgid ""
 "I will encourage the following people to go through this Zúme Training "
 "course:"
 msgstr "私は以下の人たちに、このZúmeのトレーニングコースを学ぶよう勧めます："
 
-#: site/dashboard/dashboard.php:355
+#: site/dashboard/dashboard.php:397
 msgid "Other commitments:"
 msgstr "他の誓約："
 
@@ -5225,52 +5371,52 @@ msgstr "他の誓約："
 msgid "Wizard"
 msgstr "ウィザード"
 
-#: site/dashboard/wizard.php:171
+#: site/dashboard/wizard.php:179
 msgctxt ""
 "This is the title for the screen where the application wizard has not been "
 "found"
 msgid "Bad Wizard"
 msgstr "悪いウィザード"
 
-#: site/dashboard/wizard.php:172
+#: site/dashboard/wizard.php:180
 msgctxt ""
 "This is some humourous text using a play on words as the application wizard "
 "sounds like the sorcerer type of wizard."
 msgid "You have fallen in with some very bad wizards!"
 msgstr "いくつかのとても悪いウィザードに捕まりました！"
 
-#: site/dashboard/wizard.php:173
+#: site/dashboard/wizard.php:181
 msgid "Wizard is already completed"
 msgstr "ウィザードは既に完了しています"
 
-#: site/dashboard/wizard.php:174
+#: site/dashboard/wizard.php:182
 msgid "Get back home"
 msgstr "ホームに戻る"
 
-#: site/dashboard/wizard.php:175 site/login/login-template.php:421
+#: site/dashboard/wizard.php:183 site/login/login-template.php:421
 msgid "Back"
 msgstr "戻る"
 
-#: site/dashboard/wizard.php:176 site/dashboard/wizard.php:195
-#: site/dashboard/wizard.php:208 site/dashboard/wizard.php:231
-#: site/dashboard/wizard.php:255 site/dashboard/wizard.php:323
-#: site/pages/_strings-mobile-pwa.php:35
+#: site/dashboard/wizard.php:184 site/dashboard/wizard.php:203
+#: site/dashboard/wizard.php:216 site/dashboard/wizard.php:239
+#: site/dashboard/wizard.php:271 site/dashboard/wizard.php:294
+#: site/dashboard/wizard.php:370 site/pages/_strings-mobile-pwa.php:35
 msgid "Next"
 msgstr "次へ"
 
-#: site/dashboard/wizard.php:177 site/dashboard/wizard.php:312
+#: site/dashboard/wizard.php:185 site/dashboard/wizard.php:359
 msgid "Skip"
 msgstr "スキップ"
 
-#: site/dashboard/wizard.php:178 site/pages/_strings-mobile-pwa.php:36
+#: site/dashboard/wizard.php:186 site/pages/_strings-mobile-pwa.php:36
 msgid "Finish"
 msgstr "終了する"
 
-#: site/dashboard/wizard.php:183
+#: site/dashboard/wizard.php:191
 msgid "Zúme Community"
 msgstr "Zúme コミュニティ"
 
-#: site/dashboard/wizard.php:184
+#: site/dashboard/wizard.php:192
 msgid ""
 "Zúme is a community of practice and encouragement for those who want to see "
 "disciple making movements. The Zúme vision is to see one trainee and two "
@@ -5281,7 +5427,7 @@ msgstr ""
 "ミュニティです。Zúmeのビジョンは、北米で5000人につき、地球上で50000人につき1"
 "人の訓練生と2つのシンプル・チャーチを立ち上げることです。"
 
-#: site/dashboard/wizard.php:186
+#: site/dashboard/wizard.php:194
 msgid ""
 "Connect with others like you who want to see a disciple making movement in "
 "their area. Share your experience with others, and learn from others who are "
@@ -5291,11 +5437,11 @@ msgstr ""
 "思っている人たちとつながりましょう。あなたの経験を他の人たちと分かち合い、新"
 "しい発見をしている人たちから学びましょう。"
 
-#: site/dashboard/wizard.php:187
+#: site/dashboard/wizard.php:195
 msgid "Encouragement"
 msgstr "励まし"
 
-#: site/dashboard/wizard.php:188
+#: site/dashboard/wizard.php:196
 msgid ""
 "Hear news about disciple making movements in your region and your wider "
 "country, get reports of  progress, and get connected to online and face-to-"
@@ -5304,11 +5450,11 @@ msgstr ""
 "あなたの地域、国で行われている弟子作り運動についてのニュースを聞き、進捗状況"
 "の報告を得て、オンラインや対面の集会に参加しましょう。"
 
-#: site/dashboard/wizard.php:189
+#: site/dashboard/wizard.php:197
 msgid "Free Tools"
 msgstr "無料のツール"
 
-#: site/dashboard/wizard.php:190
+#: site/dashboard/wizard.php:198
 msgid ""
 "Access free tools for tracking disciple-making and church planting in your "
 "area. Get a map to cast vision for saturating your city with multiplying "
@@ -5318,135 +5464,256 @@ msgstr ""
 "ださい。マップを使って、あなたの街を増員する弟子と教会で満たすというビジョン"
 "を持ちましょう。"
 
-#: site/dashboard/wizard.php:191
+#: site/dashboard/wizard.php:199
 msgid "Join for Free"
 msgstr "無料で参加する"
 
-#: site/dashboard/wizard.php:192
+#: site/dashboard/wizard.php:200
 msgid "Successfully joined community"
 msgstr "コミュニティに参加できました"
 
-#: site/dashboard/wizard.php:196 site/dashboard/wizard.php:238
-#: site/dashboard/wizard.php:244 site/dashboard/wizard.php:261
-#: site/dashboard/wizard.php:268
+#: site/dashboard/wizard.php:204 site/dashboard/wizard.php:246
+#: site/dashboard/wizard.php:260 site/dashboard/wizard.php:303
+#: site/dashboard/wizard.php:310 site/dashboard/wizard.php:374
 msgid "Please wait while we connect you"
 msgstr "接続するまでお待ちください"
 
-#: site/dashboard/wizard.php:199
+#: site/dashboard/wizard.php:207
 msgid "Complete your profile"
 msgstr "プロフィールを完成する"
 
-#: site/dashboard/wizard.php:203
+#: site/dashboard/wizard.php:211
 msgid "What is your name?"
 msgstr "あなたの名前は？"
 
-#: site/dashboard/wizard.php:204
+#: site/dashboard/wizard.php:212
 msgid "What is your phone number?"
 msgstr "あなたの電話番号は何ですか？"
 
-#: site/dashboard/wizard.php:205
+#: site/dashboard/wizard.php:213
 msgid "Phone number can only contain numbers, brackets and hyphens"
 msgstr "電話番号は、数字、カッコ、ハイフンのみ記入できます。"
 
-#: site/dashboard/wizard.php:206
+#: site/dashboard/wizard.php:214
 msgid "What city do you live in?"
 msgstr "あなたの住んでいる都市はどこですか？"
 
-#: site/dashboard/wizard.php:207
+#: site/dashboard/wizard.php:215
 msgid "This is your approximate location."
 msgstr "あなたの大まかな位置はここです。"
 
-#: site/dashboard/wizard.php:209 site/parts/footer.php:57
+#: site/dashboard/wizard.php:217 site/dashboard/wizard.php:272
+#: site/parts/footer.php:57
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
-#: site/dashboard/wizard.php:215
+#: site/dashboard/wizard.php:223
 msgid "What is your contact preference?"
 msgstr "どの連絡先を優先しますか？"
 
-#: site/dashboard/wizard.php:217 zume-training-system.php:403
+#: site/dashboard/wizard.php:225 zume-training-system.php:562
 msgid "Text"
 msgstr "テキスト"
 
-#: site/dashboard/wizard.php:223
+#: site/dashboard/wizard.php:231
 msgid "What is your language preference?"
 msgstr "どの言語を優先しますか？"
 
-#: site/dashboard/wizard.php:225
+#: site/dashboard/wizard.php:233
 msgid "How can we serve you?"
 msgstr "どんなサービスをご希望ですか？"
 
-#: site/dashboard/wizard.php:227
+#: site/dashboard/wizard.php:235
 msgid "Technical Assistance"
 msgstr "技術サポート"
 
-#: site/dashboard/wizard.php:228
+#: site/dashboard/wizard.php:236
 msgid "Question about implementing the training"
 msgstr "トレーニング実施に関する質問"
 
-#: site/dashboard/wizard.php:229
+#: site/dashboard/wizard.php:237
 msgid "Question about the content"
 msgstr "コンテンツに関する質問"
 
-#: site/dashboard/wizard.php:230
+#: site/dashboard/wizard.php:238
 msgid "Help with what to do after starting a group"
 msgstr "グループを立ち上げた後すべきことのサポート"
 
-#: site/dashboard/wizard.php:232
+#: site/dashboard/wizard.php:240
 msgid "Please give a response to this question"
 msgstr "この質問に答えてください"
 
-#: site/dashboard/wizard.php:233
+#: site/dashboard/wizard.php:241
 msgid ""
 "Request Submitted, we will do our best to connect you with a coach near you."
 msgstr ""
 "リクエストが送信されました。あなたの近くのコーチとつなげるべく全力を尽くしま"
 "す。"
 
-#: site/dashboard/wizard.php:234
+#: site/dashboard/wizard.php:242
 msgid "Sorry. We were unable to submit your request. Please try again later."
 msgstr ""
 "申し訳ありません。リクエストを送信できませんでした。後でもう一度送信してくだ"
 "さい。"
 
-#: site/dashboard/wizard.php:235
+#: site/dashboard/wizard.php:243
 msgid "You have already requested a coach"
 msgstr "あなたは既にコーチをリクエストしています"
 
-#: site/dashboard/wizard.php:236
+#: site/dashboard/wizard.php:244
 msgid "Error connecting with a coach"
 msgstr "コーチにつなげる際にエラーが起きました"
 
-#: site/dashboard/wizard.php:237
+#: site/dashboard/wizard.php:245
 msgid "Connecting you to a Coach"
 msgstr "あなたをコーチにつなげています"
 
-#: site/dashboard/wizard.php:243
+#: site/dashboard/wizard.php:249 site/pages/get-a-coach.php:93
+msgid ""
+"Every athletic sport, especially at higher levels, uses coaching. Even "
+"olympic athletes have coaches, and often more than one. Disciple making can "
+"equally benefit from coaching by those who have more experience."
+msgstr ""
+"特に高いレベルのアスリートは皆、コーチングを使っているものです。オリンピック"
+"選手には、しばしば2人以上のコーチがついています。弟子作りも同じく、経験を積ん"
+"だ人からのコーチングを受けることで恩恵が得られます。"
+
+#: site/dashboard/wizard.php:250
+msgid ""
+"In order to connect you to an appropriate coach, we need to know a little "
+"more about you."
+msgstr "適切なコーチをご紹介するためには、あなたについてもう少し詳しく知る必要があり"
+"ます。"
+
+#: site/dashboard/wizard.php:251 site/pages/get-a-coach.php:96
+msgid "No Cost"
+msgstr "費用はかかりません"
+
+#: site/dashboard/wizard.php:252 site/pages/get-a-coach.php:103
+msgid "Localized"
+msgstr "あなたの地域で"
+
+#: site/dashboard/wizard.php:253 site/pages/get-a-coach.php:110
+msgid "Experienced"
+msgstr "経験済"
+
+#: site/dashboard/wizard.php:254 site/pages/get-a-coach.php:99
+msgid ""
+"Our network of volunteer coaches are not paid, but are driven rather by a "
+"passion for loving God, loving others, and obeying the Great Commission."
+msgstr ""
+"私たちのネットワークのボランティアコーチたちは給与を受けているわけではなく、"
+"大宣教命令に従い、神を愛し、人を愛したいという情熱に動かされている人たちで"
+"す。"
+
+#: site/dashboard/wizard.php:255 site/pages/get-a-coach.php:106
+msgid ""
+"Our connection team attempts to connect you with a coach who speaks your "
+"language and is geographically as close as possible."
+msgstr ""
+"私たちのコネクションチームが、あなたの言語を話し、地理的にもできるだけ近いと"
+"ころにいるコーチとつなげます。"
+
+#: site/dashboard/wizard.php:256 site/pages/get-a-coach.php:30
+#: site/pages/get-a-coach.php:113
+msgid ""
+"All our coaches are trained and practicing the concepts and tools found in "
+"Zûme. All our coaches can help you over barriers and make steps in your "
+"journey."
+msgstr ""
+"私たちのコーチは皆、Zûmeのコンセプトとツールを実践する訓練を受けた人たちで"
+"す。私たちのコーチは皆、あなたが旅路において障害を克服し、前進を続ける助けと"
+"なる人たちです。"
+
+#: site/dashboard/wizard.php:259
 msgid "Joining Plan"
 msgstr "参加する計画"
 
-#: site/dashboard/wizard.php:245 site/dashboard/wizard.php:335
+#: site/dashboard/wizard.php:261 site/dashboard/wizard.php:389
 msgid "The training link is broken. Please try again."
 msgstr "トレーニングのリンクが壊れています。もう一度試してください。"
 
-#: site/dashboard/wizard.php:246
+#: site/dashboard/wizard.php:262
 #, php-format
 msgid "Successfully joined training %s"
 msgstr "トレーニング%sに参加できました"
 
-#: site/dashboard/wizard.php:249 site/pages/join-a-training-public.php:106
+#: site/dashboard/wizard.php:265 site/dashboard/wizard.php:293
+#: site/pages/join-a-training-public.php:106
+#: site/pages/join-a-training-public.php:130 site/pages/plans.php:160
 msgid "Next Session Date"
 msgstr "次のセッション日付"
 
-#: site/dashboard/wizard.php:251 site/pages/join-a-training-public.php:107
+#: site/dashboard/wizard.php:267 site/pages/join-a-training-public.php:107
+#: site/pages/join-a-training-public.php:131
 msgid "Start Time"
 msgstr "開始時間"
 
-#: site/dashboard/wizard.php:256
+#: site/dashboard/wizard.php:274
+msgid "Your contact information is always visible to the group leader."
+msgstr "あなたの連絡先は常にグループリーダーから見えるようになっています。"
+
+#: site/dashboard/wizard.php:275
+msgid ""
+"You are joining a private training group, where everyone can see your "
+"contact information."
+msgstr "あなたはプライベート・トレーニング・グループに参加することになります。"
+
+#: site/dashboard/wizard.php:276
+msgid ""
+"You can change your contact information visibility at any time in your "
+"profile."
+msgstr "連絡先の可視性は、プロフィールでいつでも変更できます。"
+
+#: site/dashboard/wizard.php:277
+msgid "We were unable to connect you with a coach. Please try again later."
+msgstr "コーチにおつなぎできませんでした。後でもう一度お試しください。"
+
+#: site/dashboard/wizard.php:278
 msgid "There are currently no public trainings available."
 msgstr "現在参加できる公開トレーニングはありません。"
 
-#: site/dashboard/wizard.php:257
+#: site/dashboard/wizard.php:279 site/pages/join-a-training-public.php:160
+msgid "Would you like to be notified about future trainings?"
+msgstr "今後のトレーニングについてのお知らせを希望しますか？"
+
+#: site/dashboard/wizard.php:280 site/pages/join-a-training-public.php:161
+msgid "We will send you an email when a new training is available."
+msgstr "新しいトレーニングが受講可能になりましたら、メールでお知らせいたします。"
+
+#: site/dashboard/wizard.php:282 site/pages/join-a-training-public.php:162
+msgid "You can always unsubscribe from these emails at any time."
+msgstr "これらのメールはいつでも配信停止することができます。"
+
+#: site/dashboard/wizard.php:283 site/pages/join-a-training-public.php:164
+msgid "Notify me"
+msgstr "通知する"
+
+#: site/dashboard/wizard.php:284
+msgid "Do you want to unsubscribe from the notification list?"
+msgstr "通知リストの登録を解除しますか？"
+
+#: site/dashboard/wizard.php:285
+msgid "Continue"
+msgstr "続ける"
+
+#: site/dashboard/wizard.php:286 site/pages/plans.php:140
+msgid "Training Group Details"
+msgstr "トレーニンググループ詳細"
+
+#: site/dashboard/wizard.php:289 site/pages/plans.php:144
+msgid "Facilitator"
+msgstr "ファシリテーター"
+
+#: site/dashboard/wizard.php:291 site/pages/plans.php:164
+msgid "Time of Day"
+msgstr "時間帯"
+
+#: site/dashboard/wizard.php:292
+msgid "Zoom Link"
+msgstr "Zoomミーティングの参加リンク"
+
+#: site/dashboard/wizard.php:295
 msgid ""
 "Please make sure that your profile is up to date, so that group leaders can "
 "contact you."
@@ -5454,191 +5721,222 @@ msgstr ""
 "プロフィールが最新の状態となっているようにしてください。グループのリーダーが"
 "あなたに連絡します。"
 
-#: site/dashboard/wizard.php:260
+#: site/dashboard/wizard.php:298 site/pages/plans.php:173
+msgid "The next session is:"
+msgstr "次のセッションは"
+
+#: site/dashboard/wizard.php:299 site/pages/plans.php:177
+msgid "In this timezone:"
+msgstr "このタイムゾーンでは"
+
+#: site/dashboard/wizard.php:302
 msgid "Connecting with friend"
 msgstr "お友達とつながる"
 
-#: site/dashboard/wizard.php:262
+#: site/dashboard/wizard.php:304
 msgid "The friend link is broken. Please try again."
 msgstr "お友達のリンクが壊れています。もう一度試してください。"
 
-#: site/dashboard/wizard.php:263
+#: site/dashboard/wizard.php:305
 #, php-format
 msgid "Successfully connected with friend %s"
 msgstr "お友達%sとつながりました"
 
-#: site/dashboard/wizard.php:267
+#: site/dashboard/wizard.php:309
 msgid "Checking in"
 msgstr "チェックイン中"
 
-#: site/dashboard/wizard.php:269
+#: site/dashboard/wizard.php:311
 msgid "The checkin link is broken. Please try again."
 msgstr "チェックインのリンクが壊れています。もう一度試してください。"
 
-#: site/dashboard/wizard.php:270
+#: site/dashboard/wizard.php:312
 msgid "Successfully checked in"
 msgstr "チェックインできました"
 
-#: site/dashboard/wizard.php:275
+#: site/dashboard/wizard.php:318
 msgid "Create a training group"
 msgstr "トレーニンググループを作る"
 
-#: site/dashboard/wizard.php:276
+#: site/dashboard/wizard.php:319
 msgid "Join a public training group"
 msgstr "公開トレーニンググループに参加する"
 
-#: site/dashboard/wizard.php:277
+#: site/dashboard/wizard.php:320
+msgid "Join with code"
+msgstr "コードで参加"
+
+#: site/dashboard/wizard.php:321 site/pages/friend-invite.php:172
+#: site/pages/plan-invite.php:177
+msgid "Use the code your friend sent you."
+msgstr "あなたのお友達から送られたコードを使用してください。"
+
+#: site/dashboard/wizard.php:323 site/pages/checkin.php:257
+#: site/pages/friend-invite.php:177 site/pages/plan-invite.php:182
+msgid "Connect"
+msgstr "接続する"
+
+#: site/dashboard/wizard.php:324
 msgid "Skip for now"
 msgstr "後で"
 
-#: site/dashboard/wizard.php:278
+#: site/dashboard/wizard.php:325
 msgid "Choose your course format"
 msgstr "自分のコースフォーマットを選択してください"
 
-#: site/dashboard/wizard.php:279
+#: site/dashboard/wizard.php:326
 msgid "1 hour (20 sessions)"
 msgstr "1時間（20セッション）"
 
-#: site/dashboard/wizard.php:280
+#: site/dashboard/wizard.php:327
 msgid "2 hour (10 sessions)"
 msgstr "2時間（10セッション）"
 
-#: site/dashboard/wizard.php:281
+#: site/dashboard/wizard.php:328
 msgid "4 hour (5 sessions)"
 msgstr "4時間（5セッション）"
 
-#: site/dashboard/wizard.php:282
+#: site/dashboard/wizard.php:329
 msgid "Would you like to schedule your training?"
 msgstr "トレーニングのスケジュールを立てますか？"
 
-#: site/dashboard/wizard.php:285
+#: site/dashboard/wizard.php:332
 msgid "What time of day?"
 msgstr "時間帯"
 
-#: site/dashboard/wizard.php:286
+#: site/dashboard/wizard.php:333
 msgid "Morning"
 msgstr "朝"
 
-#: site/dashboard/wizard.php:287
+#: site/dashboard/wizard.php:334
 msgid "Afternoon"
 msgstr "午後"
 
-#: site/dashboard/wizard.php:288
+#: site/dashboard/wizard.php:335
 msgid "Evening"
 msgstr "夕方"
 
-#: site/dashboard/wizard.php:289
+#: site/dashboard/wizard.php:336
 msgid "How often will you meet?"
 msgstr "集まる頻度"
 
-#: site/dashboard/wizard.php:290
+#: site/dashboard/wizard.php:337
 msgid "Every day"
 msgstr "毎日"
 
-#: site/dashboard/wizard.php:291
+#: site/dashboard/wizard.php:338
 msgid "Once a week"
 msgstr "週1回"
 
-#: site/dashboard/wizard.php:292
+#: site/dashboard/wizard.php:339
 msgid "Twice a month"
 msgstr "月2回"
 
-#: site/dashboard/wizard.php:293
+#: site/dashboard/wizard.php:340
 msgid "Once a month"
 msgstr "月1回"
 
-#: site/dashboard/wizard.php:294
+#: site/dashboard/wizard.php:341
 msgid "Other"
 msgstr "その他"
 
-#: site/dashboard/wizard.php:295
+#: site/dashboard/wizard.php:342
 msgid "What is the name of the training group?"
 msgstr "このトレーニンググループの名前は何ですか？"
 
-#: site/dashboard/wizard.php:296
+#: site/dashboard/wizard.php:343
 msgid "My first training group"
 msgstr "自分の最初のトレーニンググループ"
 
-#: site/dashboard/wizard.php:297
+#: site/dashboard/wizard.php:344
 msgid "When do you plan to start?"
 msgstr "いつ開始しますか？"
 
-#: site/dashboard/wizard.php:298
+#: site/dashboard/wizard.php:345
 msgid "Where do you plan to meet?"
 msgstr "どこで集まりますか？"
 
-#: site/dashboard/wizard.php:299
+#: site/dashboard/wizard.php:346
 msgid "This could be online or in person"
 msgstr "オンラインまたは対面でできます"
 
-#: site/dashboard/wizard.php:300
+#: site/dashboard/wizard.php:347
 msgid "Review Schedule"
 msgstr "スケジュールを見直す"
 
-#: site/dashboard/wizard.php:301
+#: site/dashboard/wizard.php:348
 #, php-format
 msgctxt "1 of 10 selected"
 msgid "%1$s of %2$s selected"
 msgstr "%2$s の%1$s が選択されています"
 
-#: site/dashboard/wizard.php:302
+#: site/dashboard/wizard.php:349
 msgctxt "All 10 sessions scheduled"
 msgid "Ready"
 msgstr "準備完了"
 
-#: site/dashboard/wizard.php:303
+#: site/dashboard/wizard.php:350
 #, php-format
 msgctxt "Too many selected: 2"
 msgid "Too many selected: %s"
 msgstr "選択された数が多すぎます：%s"
 
-#: site/dashboard/wizard.php:304
+#: site/dashboard/wizard.php:351
 msgid "Incorrect number of sessions selected"
 msgstr "選択されたセッション数が正しくありません"
 
-#: site/dashboard/wizard.php:305 site/dashboard/wizard.php:307
-#: site/dashboard/wizard.php:309 site/dashboard/wizard.php:310
+#: site/dashboard/wizard.php:352 site/dashboard/wizard.php:354
+#: site/dashboard/wizard.php:356 site/dashboard/wizard.php:357
 #, php-format
 msgid "Set %s"
 msgstr "%sを設定する"
 
-#: site/dashboard/wizard.php:307
+#: site/dashboard/wizard.php:354
 msgid "Group Name"
 msgstr "グループ名"
 
-#: site/dashboard/wizard.php:308
+#: site/dashboard/wizard.php:355
 msgid "Group name"
 msgstr "グループ名"
 
-#: site/dashboard/wizard.php:315
+#: site/dashboard/wizard.php:362
 msgid "Date"
 msgstr "日付"
 
-#: site/dashboard/wizard.php:316
+#: site/dashboard/wizard.php:363
 msgid "Summary"
 msgstr "要約"
 
-#: site/dashboard/wizard.php:317
+#: site/dashboard/wizard.php:364
 msgid "Clear Calendar"
 msgstr "カレンダーを空欄にする"
 
-#: site/dashboard/wizard.php:320
+#: site/dashboard/wizard.php:367
 msgid "Add"
 msgstr "追加する"
 
-#: site/dashboard/wizard.php:321
+#: site/dashboard/wizard.php:368
 msgid "Add some dates to your schedule"
 msgstr "スケジュールにいくつかの日付を追加する"
 
-#: site/dashboard/wizard.php:322
+#: site/dashboard/wizard.php:369
 msgid "Change"
 msgstr "変更する"
 
-#: site/dashboard/wizard.php:326
+#: site/dashboard/wizard.php:375
+msgid "The notify me about future trainings link is broken. Please try again."
+msgstr "今後のトレーニングについて通知するリンクが壊れています。もう一度お試しくださ"
+"い。"
+
+#: site/dashboard/wizard.php:376
+msgid "You have been added to the list to be notified about future trainings."
+msgstr "今後のトレーニングについてお知らせするリストに追加されました。"
+
+#: site/dashboard/wizard.php:380
 msgid "Invite your friends to join your training"
 msgstr "お友達をトレーニングに招待する"
 
-#: site/dashboard/wizard.php:327
+#: site/dashboard/wizard.php:381
 msgid ""
 "Share the invite or link below with your friends so that they can join your "
 "training."
@@ -5646,16 +5944,16 @@ msgstr ""
 "招待状または以下のリンクをお友達にシェアし、あなたのトレーニングに招待しま"
 "しょう。"
 
-#: site/dashboard/wizard.php:328
+#: site/dashboard/wizard.php:382
 msgid "Join my zume plan"
 msgstr "自分のzumeプランに参加する"
 
-#: site/dashboard/wizard.php:329
+#: site/dashboard/wizard.php:383
 #, php-format
 msgid "%s is inviting you to a Zume Training Group"
 msgstr "%s が、あなたをZume のトレーニンググループに招待しています。"
 
-#: site/dashboard/wizard.php:336
+#: site/dashboard/wizard.php:390
 msgid "Copy Invite"
 msgstr "招待状をコピー"
 
@@ -6240,11 +6538,6 @@ msgstr "お友達コードを入力してください。"
 msgid "Use the code on the screen or in the book"
 msgstr "スクリーン上で、または本の中でコードを使う"
 
-#: site/pages/checkin.php:257 site/pages/friend-invite.php:177
-#: site/pages/plan-invite.php:182
-msgid "Connect"
-msgstr "接続する"
-
 #: site/pages/checkin.php:261
 msgid "or"
 msgstr "または"
@@ -6425,38 +6718,10 @@ msgstr "多くの友人、家族などが、私と一緒にイエスに従い始
 msgid "Friend Invitation"
 msgstr "お友達を招待"
 
-#: site/pages/friend-invite.php:172 site/pages/plan-invite.php:177
-msgid "Use the code your friend sent you."
-msgstr "あなたのお友達から送られたコードを使用してください。"
-
 #: site/pages/get-a-coach.php:29 site/pages/get-a-coach.php:92
 #: site/pages/get-a-coach.php:119
 msgid "Get A Coach"
 msgstr "コーチを見つける"
-
-#: site/pages/get-a-coach.php:30 site/pages/get-a-coach.php:113
-msgid ""
-"All our coaches are trained and practicing the concepts and tools found in "
-"Zûme. All our coaches can help you over barriers and make steps in your "
-"journey."
-msgstr ""
-"私たちのコーチは皆、Zûmeのコンセプトとツールを実践する訓練を受けた人たちで"
-"す。私たちのコーチは皆、あなたが旅路において障害を克服し、前進を続ける助けと"
-"なる人たちです。"
-
-#: site/pages/get-a-coach.php:93
-msgid ""
-"Every athletic sport, especially at higher levels, uses coaching. Even "
-"olympic athletes have coaches, and often more than one. Disciple making can "
-"equally benefit from coaching by those who have more experience."
-msgstr ""
-"特に高いレベルのアスリートは皆、コーチングを使っているものです。オリンピック"
-"選手には、しばしば2人以上のコーチがついています。弟子作りも同じく、経験を積ん"
-"だ人からのコーチングを受けることで恩恵が得られます。"
-
-#: site/pages/get-a-coach.php:96
-msgid "No Cost"
-msgstr "費用はかかりません"
 
 #: site/pages/get-a-coach.php:97 site/pages/get-a-coach.php:104
 #: site/pages/home.php:269 site/pages/home.php:276 site/pages/home.php:277
@@ -6464,31 +6729,6 @@ msgstr "費用はかかりません"
 #: site/pages/training.php:145 site/pages/training.php:146
 msgid "Join a training group"
 msgstr "トレーニンググループに参加する"
-
-#: site/pages/get-a-coach.php:99
-msgid ""
-"Our network of volunteer coaches are not paid, but are driven rather by a "
-"passion for loving God, loving others, and obeying the Great Commission."
-msgstr ""
-"私たちのネットワークのボランティアコーチたちは給与を受けているわけではなく、"
-"大宣教命令に従い、神を愛し、人を愛したいという情熱に動かされている人たちで"
-"す。"
-
-#: site/pages/get-a-coach.php:103
-msgid "Localized"
-msgstr "あなたの地域で"
-
-#: site/pages/get-a-coach.php:106
-msgid ""
-"Our connection team attempts to connect you with a coach who speaks your "
-"language and is geographically as close as possible."
-msgstr ""
-"私たちのコネクションチームが、あなたの言語を話し、地理的にもできるだけ近いと"
-"ころにいるコーチとつなげます。"
-
-#: site/pages/get-a-coach.php:110
-msgid "Experienced"
-msgstr "経験済"
 
 #: site/pages/get-a-coach.php:111 site/pages/home.php:285
 #: site/pages/training.php:154
@@ -6720,7 +6960,6 @@ msgid "Get started"
 msgstr "開始する"
 
 #: site/pages/join-a-training-public.php:30
-#, fuzzy
 msgid "Join a Training"
 msgstr "トレーニングに参加する"
 
@@ -6735,11 +6974,11 @@ msgstr ""
 
 #: site/pages/join-a-training-public.php:146
 msgid "No active trainings available at this time."
-msgstr ""
+msgstr "現在、アクティブなトレーニングはありません。"
 
-#: site/pages/join-a-training-public.php:158
-msgid "Notify me about future trainings"
-msgstr ""
+#: site/pages/join-a-training-public.php:156
+msgid "Want to know about future trainings?"
+msgstr "今後のトレーニングについて知りたいですか？"
 
 #: site/pages/messages.php:283 utilities/apis/encouragement-api.php:534
 msgid "Friend"
@@ -6784,6 +7023,10 @@ msgstr "計画の招待"
 #: site/pages/plan-invite.php:77
 msgid "Please enter a code."
 msgstr "コードを入力してください。"
+
+#: site/pages/plans.php:200
+msgid "Back to Public Training Groups"
+msgstr "公開トレーニング・グループに戻る"
 
 #: site/pages/privacy-policy.php:29 site/pages/privacy-policy.php:86
 msgid "Zúme Privacy Policy"
@@ -7038,10 +7281,6 @@ msgstr "Zumeトレーニングコースのコンセプトとツールをシェ�
 msgid "Copy this link and send it to your friends."
 msgstr "このリンクをコピーして、お友達に送ってください。"
 
-#: site/pages/share.php:88
-msgid "Copied"
-msgstr "コピー済"
-
 #: site/pages/share.php:125
 msgid "Tools"
 msgstr "ツール"
@@ -7238,13 +7477,67 @@ msgstr ""
 "Zúmeトレーニングは、イエスに従う人たちのスモールグループのために作られた、オ"
 "ンラインおよび対面の学習体験です。"
 
-#: utilities/apis/connect-api.php:86
+#: utilities/apis/communications-api.php:99
+#, php-format
+msgid "Hello %s"
+msgstr "こんにちは %s さん"
+
+#: utilities/apis/communications-api.php:100
+#, php-format
+msgid ""
+"A new online Zume Training is now available. You can view it at the "
+"following link: %s"
+msgstr "新しいオンラインZumeトレーニングが利用可能になりました。以下のリンクからご覧"
+"いただけます：%s"
+
+#: utilities/apis/communications-api.php:101
+#, php-format
+msgid "The training is in the %1$s format and will be held in %2$s"
+msgstr "トレーニングは%1$s形式で、%2$sで行われる。"
+
+#: utilities/apis/communications-api.php:102
+#, php-format
+msgid "First session: %1$s %2$s (%3$s)."
+msgstr "最初のセッション：%1$s %2$s (%3$s)."
+
+#: utilities/apis/communications-api.php:103
+msgid "You can also join the training by clicking the link below:"
+msgstr "以下のリンクをクリックしてトレーニングに参加することもできる："
+
+#: utilities/apis/communications-api.php:105
+#, php-format
+msgid "The training will be led by %s speakers."
+msgstr "トレーニングは%sのスピーカーが指導する。"
+
+#: utilities/apis/communications-api.php:106
+msgid "Best regards,"
+msgstr "よろしくお願いいたします,"
+
+#: utilities/apis/communications-api.php:107
+msgid "The Zume Team"
+msgstr "Zumeチーム"
+
+#: utilities/apis/connect-api.php:82
+msgid ""
+"You have successfully subscribed to receive notifications about future "
+"trainings."
+msgstr "今後のトレーニングに関する通知を受け取るための登録が完了しました。"
+
+#: utilities/apis/connect-api.php:83
+msgid "You can unsubscribe from these notifications at any time."
+msgstr "これらの通知はいつでも配信停止することができます。"
+
+#: utilities/apis/connect-api.php:91
+msgid "Zume Training - Future Trainings"
+msgstr "Zumeトレーニング - 今後のトレーニング"
+
+#: utilities/apis/connect-api.php:141
 msgid "your friend"
 msgstr ""
 "あなたの友人をトレーニングして、オンラインおよび対面で弟子作りをする活動で"
 "す。"
 
-#: utilities/apis/connect-api.php:237
+#: utilities/apis/connect-api.php:294
 msgid "the plan"
 msgstr "計画"
 
@@ -7333,20 +7626,7 @@ msgstr "コミュニティに加わる。"
 msgid "Joined Community"
 msgstr "加わったコミュニティ"
 
-#: utilities/apis/plans-api.php:126
-#, php-format
-msgctxt "My first training - username"
-msgid "My first training - %s"
-msgstr "私の最初のトレーニング- %s"
-
-#: utilities/apis/plans-api.php:128
-#, php-format
-msgctxt "Training 2 - username"
-msgid "Training %1$d - %2$s"
-msgstr "トレーニング %1$d - %2$s"
-
-#: utilities/hooks/admin-email-test.php:169
-#, fuzzy
+#: utilities/hooks/admin-email-test.php:227
 msgid "You do not have sufficient permissions to access this page."
 msgstr "このページにアクセスする権限がありません。"
 
@@ -7398,78 +7678,114 @@ msgstr "Zúmeのページをシェアする"
 msgid "Zúme Annual Report"
 msgstr "Zúmeの年次報告"
 
+#: utilities/models/zume-plans-model.php:153
+#, php-format
+msgctxt "My first training - username"
+msgid "My first training - %s"
+msgstr "私の最初のトレーニング- %s"
+
+#: utilities/models/zume-plans-model.php:155
+#, php-format
+msgctxt "Training 2 - username"
+msgid "Training %1$d - %2$s"
+msgstr "トレーニング %1$d - %2$s"
+
 #: utilities/post-types/posttype-pieces.php:299
 msgid "Piece"
 msgstr "ピース"
 
-#: zume-training-system.php:277
+#: zume-training-system.php:199
+msgid "Add the details for training with code abc123"
+msgstr "コード abc123 でトレーニングの詳細を追加"
+
+#: zume-training-system.php:203
+msgid "Set the language to e.g. en_US"
+msgstr "言語を例えばen_USに設定する。"
+
+#: zume-training-system.php:263
+msgid "Learn More"
+msgstr "詳細はこちら"
+
+#: zume-training-system.php:293
+msgid "Zume Admin"
+msgstr "ズーム管理者"
+
+#: zume-training-system.php:404
 msgid "Someone has requested a password reset for the following account:"
 msgstr "以下のアカウントについてパスワードのリセットをリクエストされました："
 
 #. translators: %s: site name
-#: zume-training-system.php:279
+#: zume-training-system.php:406
 #, php-format
 msgid "Site Name: %s"
 msgstr "サイト名: %s"
 
 #. translators: %s: user login
-#: zume-training-system.php:281
+#: zume-training-system.php:408
 #, php-format
 msgid "Username: %s"
 msgstr "ユーザー名: %s"
 
-#: zume-training-system.php:282
+#: zume-training-system.php:409
 msgid "If this was a mistake, just ignore this email and nothing will happen."
 msgstr ""
 "間違いでしたら、このメールを無視してください。そうすれば何も起きません。"
 
-#: zume-training-system.php:283
+#: zume-training-system.php:410
 msgid "To reset your password, visit the following address:"
 msgstr "パスワードをリセットするには、以下のアドレスにアクセスしてください："
 
 #. translators: Password reset email subject. %s: Site name
-#: zume-training-system.php:301
+#: zume-training-system.php:428
 #, php-format
 msgid "[%s] Password Reset"
 msgstr "[%s] パスワードリセット"
 
-#: zume-training-system.php:329
+#: zume-training-system.php:456
 msgid "Profile Details"
 msgstr "プロフィールの詳細"
 
-#: zume-training-system.php:341
+#: zume-training-system.php:468
 msgid "User Email"
 msgstr "ユーザーのEメール"
 
-#: zume-training-system.php:350
+#: zume-training-system.php:477
 msgid "User Phone"
 msgstr "ユーザーの電話番号"
 
-#: zume-training-system.php:358
+#: zume-training-system.php:485
 msgid "User Timezone"
 msgstr "ユーザーのタイムゾーン"
 
-#: zume-training-system.php:366
+#: zume-training-system.php:493
 msgid "User Friend Key"
 msgstr "ユーザーのお友達キー"
 
-#: zume-training-system.php:374
+#: zume-training-system.php:501
 msgid "User Preferred Language"
 msgstr "ユーザーの設定言語"
 
-#: zume-training-system.php:382
+#: zume-training-system.php:509
 msgid "User Preferred Email"
 msgstr "ユーザーの設定Eメール"
 
-#: zume-training-system.php:390
+#: zume-training-system.php:517
+msgid "Notify of Future Trainings"
+msgstr "今後のトレーニングのお知らせ"
+
+#: zume-training-system.php:525
+msgid "Notify of Future Trainings Date Subscribed"
+msgstr "今後のトレーニングを通知 購読日"
+
+#: zume-training-system.php:549
 msgid "Coaching Contact ID"
 msgstr "コーチング連絡ID"
 
-#: zume-training-system.php:398
+#: zume-training-system.php:557
 msgid "Preferred Contact Methods"
 msgstr "希望の連絡方法"
 
-#: zume-training-system.php:408
+#: zume-training-system.php:567
 msgid "Messenger"
 msgstr "メッセンジャー"
 
