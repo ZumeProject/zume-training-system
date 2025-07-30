@@ -486,6 +486,35 @@ class Zume_System_Encouragement_API
                     color:#008cc7;
                 }
 
+               /* Tables */
+                #zmail table {
+                    border-spacing: 0;
+                }
+                #zmail tbody, thead {
+                    border: 1px solid #f1f1f1;
+                    background-color: #fefefe;
+                }
+                #zmail tbody, thead {
+                    border: 1px solid #f1f1f1;
+                    background-color: #fefefe;
+                }
+                #zmail thead {
+                    background: #f8f8f8;
+                    color: #0a0a0a;
+                }
+                #zmail tbody tr:nth-child(even) {
+                    border-bottom: 0;
+                    background-color: #f1f1f1;
+                }
+                #zmail thead td, thead th {
+                    padding: .5rem .625rem .625rem;
+                    font-weight: 700;
+                    text-align: left;
+                }
+                #zmail tbody td {
+                    padding: .5rem .625rem .625rem;
+                }
+
                 /*—Footer—*/
                 #zmail .zmail-footer{
                     background:#f2f7fa;
