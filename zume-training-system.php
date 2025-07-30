@@ -162,6 +162,7 @@ class Zume_Training {
         add_filter( 'dt_filter_access_permissions', [ $this, 'filter_access_permissions' ], 10, 2 );
 
         // add message placeholders
+        add_filter( 'dt_post_messaging_message_default', [ $this, 'filter_post_messaging_message_default' ], 10, 2 );
         add_filter( 'dt_post_messaging_message_placeholders', [ $this, 'filter_post_messaging_message_placeholders' ], 10, 2 );
         add_filter( 'dt_post_messaging_message', [ $this, 'filter_post_messaging_message' ], 10, 3 );
         add_filter( 'dt_post_messaging_headers', [ $this, 'filter_post_messaging_headers' ], 10, 3 );
@@ -191,16 +192,61 @@ class Zume_Training {
         add_action( 'wp_head', [ $this, 'insert_head_scripts' ] );
     }
 
+    public function filter_post_messaging_message_default( $default_message, $post_type ) {
+
+        if ( $post_type === 'contacts' ) {
+            $default_message = '
+
+Great news we have some new trainings coming up!
+
+{{upcoming-trainings}}
+
+Thanks!
+
+{{language en}}
+';
+
+        }
+
+        return $default_message;
+    }
+
     public function filter_post_messaging_message_placeholders( $placeholders, $post_type ) {
         if ( $post_type === 'contacts' ) {
+            $zume_languages = zume_languages();
             $placeholders = [
                 [
                     'name' => '{{training abc123}}',
                     'description' => __( 'Add the details for training with code abc123', 'zume' ),
+                    'help' => [
+                        'id' => 'training_abc123',
+                        'title' => __( 'Training Details Placeholder', 'zume' ),
+                        'description' => __( 'Add the details for training with code abc123. Use the training join code to replace abc123 in the placeholder.', 'zume' ),
+                    ],
                 ],
                 [
-                    'name' => '{{language en_US}}',
-                    'description' => __( 'Set the language to e.g. en_US', 'zume' ),
+                    'name' => '{{upcoming-trainings}}',
+                    'description' => __( 'Add the details for upcoming trainings', 'zume' ),
+                    'help' => [
+                        'id' => 'upcoming_trainings',
+                        'title' => __( 'Upcoming Trainings Placeholder', 'zume' ),
+                        'description' => __( "Add the details for upcoming trainings. This will display the details for all upcoming trainings that haven't started yet.", 'zume' ),
+                    ],
+                ],
+                [
+                    'name' => '{{language fr}}',
+                    'description' => __( 'Set the language to e.g. fr', 'zume' ),
+                    'help' => [
+                        'id' => 'language_fr',
+                        'title' => __( 'Language Placeholder', 'zume' ),
+                        'description' => __( 'Set the language to e.g. french. Use the language code to replace fr in the placeholder.', 'zume' ),
+                        'items' => array_map( function ( $lang ) {
+                            return [
+                                'title' => $lang['code'],
+                                'text' => $lang['name'],
+                            ];
+                        }, $zume_languages ),
+                    ],
                 ],
             ];
         }
@@ -366,7 +412,7 @@ class Zume_Training {
             return;
         }
 
-        /** 
+        /**
         ?>
             <!-- Chipp Chat Widget -->
             <script>
