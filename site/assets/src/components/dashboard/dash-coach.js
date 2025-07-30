@@ -17,8 +17,8 @@ export class DashCoach extends DashPage {
     constructor() {
       super()
       // TODO: remove me as only for devs
-      //this.coaches = Object.values(jsObject.profile.coaches) || []
-      this.coaches = []
+      this.coaches = Object.values(jsObject.profile.coaches) || []
+      //this.coaches = []
       this.error = ''
       this.success = ''
       this.loading = false
@@ -29,6 +29,9 @@ export class DashCoach extends DashPage {
       const hoursBetweenMessages = 24
       this.hoursLeftToMessage = hoursBetweenMessages - this.hoursSinceLastContactedCoach
       this.allowMessage = this.hoursLeftToMessage < 0
+
+      // TODO: remove me as only for devs
+      //this.allowMessage = true
     }
 
     getACoach() {

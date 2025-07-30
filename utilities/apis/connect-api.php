@@ -490,8 +490,18 @@ class Zume_Connect_Endpoints
             return new WP_Error( 'site_link_failed', 'Failed to link to coaching site ', array( 'status' => 400 ) );
         }
 
+        // @mentions of all dispatchers on the system
+        $dispatchers = get_users( [
+            'role' => 'dispatcher',
+            'fields' => [ 'ID', 'display_name' ],
+        ] );
+        $dispatcher_mentions = implode( ' ', array_map( function ( $dispatcher ) {
+            return '@' . $dispatcher->display_name;
+        }, $dispatchers ) );
+
         $message = "
         Waiting for coach assignment...
+        $dispatcher_mentions
 
         $message
         ";
@@ -512,7 +522,7 @@ class Zume_Connect_Endpoints
         $url = 'https://' . trailingslashit( $site['url'] ) . 'wp-json/dt-posts/v2/contacts/' . $coach_contact_id . '/comments';
 
         // TODO: remove me as only for dev
-        Zume_System_Log_API::log( 'coaching', 'sent_message_to_coach', [ 'user_id' => $user_id, 'payload' => $coach_contact_id ] );
+        //Zume_System_Log_API::log( 'coaching', 'sent_message_to_coach', [ 'user_id' => $user_id, 'payload' => $coach_contact_id ] );
         $result = wp_remote_post( $url, $comment_args );
         if ( is_wp_error( $result ) ) {
             $profile = zume_get_user_profile( $user_id );
