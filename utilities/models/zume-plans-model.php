@@ -3,22 +3,35 @@
 class Zume_Plans_Model {
     private static $post_type = 'zume_plans';
 
-    public static function get_plan_by_code( $training_code ) {
+    public static function get_plan_by_code( $training_code, $locale = null ) {
         // get the post id from the post meta that has the 'join_key' as $training_code
         global $wpdb;
         $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'join_key' AND meta_value = %s", $training_code ) );
         if ( !$post_id ) {
             return null;
         }
-        return self::get_plan( $post_id );
+        return self::get_plan( $post_id, $locale );
     }
-    public static function get_plan( $training_id ) {
+    public static function get_plan( $training_id, $locale = null ) {
         $training_group = DT_Posts::get_post( self::$post_type, (int) $training_id, true, false );
 
-        $users_language = zume_get_user_language();
-        $users_locale = $users_language['locale'];
+        if ( empty( $locale ) ) {
+            $users_language = zume_get_user_language();
+            $users_locale = $users_language['locale'];
+        } else {
+            $users_locale = $locale;
+        }
+
         $time_formatter = new IntlDateFormatter( $users_locale, IntlDateFormatter::NONE, IntlDateFormatter::SHORT );
         $date_formatter = new IntlDateFormatter( $users_locale, IntlDateFormatter::LONG, IntlDateFormatter::NONE );
+        $day_formatter = new IntlDateFormatter(
+            $users_locale,
+            IntlDateFormatter::NONE,
+            IntlDateFormatter::NONE,
+            null,
+            null,
+            'EEEE',
+        );
 
         $completed_sessions = self::get_completed_sessions( $training_id, $training_group );
         $training_group['completed_sessions'] = $completed_sessions;
@@ -30,7 +43,7 @@ class Zume_Plans_Model {
         $next_session_datetime = DateTime::createFromFormat( 'Y-m-d H:i', "$next_session_date $time_of_day", new DateTimeZone( 'UTC' ) );
         $training_group['time_of_day_formatted'] = $time_formatter->format( $next_session_datetime );
         $training_group['next_session_date_formatted'] = $date_formatter->format( $next_session_datetime );
-
+        $training_group['day_of_week'] = $day_formatter->format( $next_session_datetime );
         $current_session = self::get_current_session( $training_id );
         $training_group['current_session'] = $current_session['current'];
         $training_group['total_sessions'] = $current_session['total'];
@@ -89,7 +102,7 @@ class Zume_Plans_Model {
         return $training_group;
     }
 
-    public static function get_public_plans() {
+    public static function get_public_plans( $locale = null ) {
         $result = DT_Posts::list_posts( self::$post_type, [ 'fields' => [ [ 'visibility' => [ 'public' ] ], [ 'status' => [ 'active' ] ] ] ], false );
         if ( is_wp_error( $result ) ) {
             error_log( 'Error in get_public_plans: ' . $result->get_error_message() );
@@ -111,10 +124,29 @@ class Zume_Plans_Model {
             'set_type',
         ];
 
-        $users_language = zume_get_user_language();
-        $users_locale = $users_language['locale'];
-        $time_formatter = new IntlDateFormatter( $users_locale, IntlDateFormatter::NONE, IntlDateFormatter::LONG );
-        $date_formatter = new IntlDateFormatter( $users_locale, IntlDateFormatter::LONG, IntlDateFormatter::NONE );
+        if ( empty( $locale ) ) {
+            $users_language = zume_get_user_language();
+            $users_locale = $users_language['locale'];
+        } else {
+            $users_locale = $locale;
+        }
+        $time_formatter = new IntlDateFormatter( $users_locale, IntlDateFormatter::NONE, IntlDateFormatter::SHORT );
+        $date_formatter = new IntlDateFormatter(
+            $users_locale,
+            IntlDateFormatter::SHORT,
+            IntlDateFormatter::NONE,
+            null,
+            null,
+            "EEE, MMM d, ''yy"
+        );
+        $day_formatter = new IntlDateFormatter(
+            $users_locale,
+            IntlDateFormatter::NONE,
+            IntlDateFormatter::NONE,
+            null,
+            null,
+            'EEEE',
+        );
 
         foreach ( $result['posts'] as $plan ) {
             $post = [];
@@ -123,13 +155,17 @@ class Zume_Plans_Model {
                     $post[$key] = $plan[$key];
                 }
             }
+            $next_session_date = self::get_next_session_date( $plan['ID'] );
+            $time_of_day = $plan['time_of_day'];
+            $next_session_datetime = DateTime::createFromFormat( 'Y-m-d H:i', "$next_session_date $time_of_day", new DateTimeZone( 'UTC' ) );
             $post['post_author_display_name'] = get_user_by( 'id', $plan['assigned_to']['id'] )->display_name;
             $post['next_session_date'] = self::get_next_session_date( $plan['ID'] );
             $post['current_session'] = self::get_current_session( $plan['ID'] )['current'];
             $post['total_sessions'] = self::get_current_session( $plan['ID'] )['total'];
             $post['session_dates'] = self::get_session_dates( $plan['ID'] );
-            $post['time_of_day_formatted'] = $time_formatter->format( $plan['time_of_day'] );
-            $post['next_session_date_formatted'] = $date_formatter->format( $plan['next_session_date'] );
+            $post['time_of_day_formatted'] = $time_formatter->format( $next_session_datetime );
+            $post['next_session_date_formatted'] = $date_formatter->format( $next_session_datetime );
+            $post['day_of_week'] = $day_formatter->format( $next_session_datetime );
             if ( is_user_logged_in() ) {
                 $user_timezone = zume_get_user_profile()['timezone'];
                 $next_session_date_in_user_timezone = self::get_next_session_date_in_user_timezone( $plan['ID'], $user_timezone );
