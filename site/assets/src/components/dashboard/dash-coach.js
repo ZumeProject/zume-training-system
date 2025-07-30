@@ -22,9 +22,9 @@ export class DashCoach extends DashPage {
       this.error = ''
       this.success = ''
       this.loading = false
-      const timeSinceRequest = Number(jsObject.user_stage?.state?.requested_a_coach_date || Date.now() / 1000)
-      this.timeSinceRequestInDays = Math.floor((Date.now() - timeSinceRequest) / (60 * 60 * 24))
-      this.hoursSinceLastContactedCoach = Math.floor((Date.now() - (jsObject.profile.last_contacted_coach * 1000 ?? 0)) / ( 1000 * 60 * 60))
+      const timeSinceRequest = Number(jsObject.user_stage?.state?.requested_a_coach_date * 1000 || Date.now())
+      this.timeSinceRequestInDays = Math.floor((Date.now() - timeSinceRequest) / (1000 * 60 * 60 * 24))
+      this.hoursSinceLastContactedCoach = Math.floor((Date.now() - (jsObject.profile.last_contacted_coach * 1000 ?? Date.now())) / ( 1000 * 60 * 60))
 
       const hoursBetweenMessages = 24
       this.hoursLeftToMessage = hoursBetweenMessages - this.hoursSinceLastContactedCoach
