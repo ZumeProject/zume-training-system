@@ -490,6 +490,12 @@ class Zume_Connect_Endpoints
             return new WP_Error( 'site_link_failed', 'Failed to link to coaching site ', array( 'status' => 400 ) );
         }
 
+        $message = "
+        Waiting for coach assignment...
+
+        $message
+        ";
+
         $fields = [
             'comment' => $message,
         ];
