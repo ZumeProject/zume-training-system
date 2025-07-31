@@ -743,6 +743,10 @@ export class DashBoard extends navigator(router(LitElement)) {
     isParentSectionActive(parentRoute) {
         let route = DashBoard.getRoute(this.route)
 
+        if (this.route === RouteNames.myTrainings) {
+          route = DashBoard.getRoute(RouteNames.training)
+        }
+
         if (this.route === 'root') {
             route = DashBoard.rootRoute
         }
