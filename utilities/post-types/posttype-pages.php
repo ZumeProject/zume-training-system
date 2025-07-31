@@ -3,6 +3,26 @@ if ( !defined( 'ABSPATH' ) ) {
     exit;
 }
 
+
+/**
+ * Zume_Training_Menu_Post_Type
+ *
+ * This post type has the place holders for core Zume pages. The pages are active and support the core urls
+ * but the admin editor is disabled.
+ *
+ * These core pages are:
+ *  Mobile App
+ * Get a Coach
+ * How to Follow Jesus
+ * Cookie Policy
+ * Training
+ * Privacy Policy
+ * Home
+ * Resources
+ */
+
+ Zume_Training_Menu_Post_Type::instance();
+
 class Zume_Training_Menu_Post_Type
 {
 
@@ -31,8 +51,8 @@ class Zume_Training_Menu_Post_Type
     public function __construct( $args = [], $taxonomies = [] ) {
 
         $this->post_type = 'zume_page';
-        $this->singular = 'Zume Page';
-        $this->plural = 'Zume Pages';
+        $this->singular = 'Zume Base Slug';
+        $this->plural = 'Zume Base Slugs';
         $this->root = 'app';
         $this->type = 'page';
         $this->meta_key = 'app_page_magic_key';
@@ -156,4 +176,3 @@ class Zume_Training_Menu_Post_Type
         }
     }
 } // End Class
-//Zume_Training_Menu_Post_Type::instance();

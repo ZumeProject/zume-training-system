@@ -13,6 +13,8 @@ class Zume_Messages extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'message';
     public static $token = 'app_message';
+    public $email = '';
+    public $user_id = '';
 
     private static $_instance = null;
     public static function instance() {
@@ -49,6 +51,12 @@ class Zume_Messages extends Zume_Magic_Page
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
 
             add_filter( 'wp_enqueue_scripts', [ $this, 'enqueue_zume_training_scripts' ] );
+
+            if ( isset( $_GET['email'], $_GET['user_id'] ) && ! empty( $_GET['email'] ) && ! empty( $_GET['user_id'] ) && current_user_can( 'administrator' ) ) {
+                $this->email = sanitize_text_field( wp_unslash( $_GET['email'] ) );
+                $this->user_id = sanitize_text_field( wp_unslash( $_GET['user_id'] ) );
+                $this->send_dev_email( $this->email, $this->user_id );
+            }
         }
     }
 
@@ -77,6 +85,7 @@ class Zume_Messages extends Zume_Magic_Page
             }
         </style>
         <?php
+        zume_hreflang_fixed( $this->language_code, $this->type );
     }
     public function body(){
         if ( !is_user_logged_in() ) { // test if logged in
@@ -132,82 +141,156 @@ class Zume_Messages extends Zume_Magic_Page
         <div class="email-wrapper">
             <html>
             <head>
-                <style>
-                    #zmail {}
-                    #zmail .zmail-body {
-                        padding: .5em;
-                    }
-                    #zmail .zmail-header {}
-                    #zmail .zmail-footer {
-                        padding: 1em .5em;
-                        background-color: #f5f5f5;
-                        border-top: 1px solid #ccc;
-                        font-size: .8em;
-                        text-align: center;
-                    }
-                    #zmail h3 {
-                        font-size: 1.5em;
-                        margin: 0;
-                        font-weight: 700;
-                        padding-bottom: .8em;
-                    }
-                    #zmail .zmail-topbar {
-                        background-color: #008cc7;
-                        color: white;
-                        padding-top: .3em;
-                        padding-bottom: .3em;
-                        display: flex;
-                        align-items: center;
-                    }
-                    #zmail .zmail-logo {
-                        margin: 0 auto;
-                    }
-                    #zmail .zmail-logo img {
-                        max-width: 100%;
-                        display: block;
-                        vertical-align: middle;
-                        height: 3em;
-                    }
-                    #zmail .button.primary-button-hollow {
-                        color: white;
-                        background-color: #008cc7;
-                        border: 1px solid #008cc7;
-                        padding: .5em 1em;
-                        text-align: center;
-                        text-decoration: none;
-                        display: inline-block;
-                        border-radius: 5px;
-                        font-size: .9rem;
-                        transition: background-color .25s ease-out, color .25s ease-out;
-                    }
-                    #zmail .button.primary-button-hollow.large {
-                        background-color: #008cc7;
-                        color: white;
-                        border: 1px solid #008cc7;
-                        padding: .5em 1em;
-                        text-align: center;
-                        text-decoration: none;
-                        display: inline-block;
-                        border-radius: 5px;
-                        font-size: 1.5em;
-                        transition: background-color .25s ease-out, color .25s ease-out;
-                    }
-                    #zmail ul {
-                        margin-bottom: 1em;
-                    }
-                    #zmail ul li {
-                        padding: 0 1em;
-                        margin-left: 50px;
-                        margin-right: 50px;
-                        list-style-type: disc;
-                        list-style-position: outside;
-                        line-height: 1.5;
-                    }
-                    #zmail strong {
-                        font-weight: 600;
-                        color: #008cc7;
-                    }
-                </style>
+            <style>
+
+               #zmail{
+                   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",
+                               Arial,sans-serif;
+                   color:#333;
+                   font-size:16px;               /* 1 rem baseline for accessibility   */
+                   line-height:1.55;
+                   -webkit-text-size-adjust:100%;/* prevent iOS font blow‑up           */
+               }
+
+               /*—Body copy container—*/
+               #zmail .zmail-body{
+                   padding:1.25rem 1rem;
+               }
+
+               /*—Top bar—*/
+               #zmail .zmail-topbar{
+                   background:#008cc7;
+                   color:#fff;
+                   padding:0.75rem 1rem;
+                   text-align:center;
+               }
+               #zmail .zmail-logo img{
+                   max-height:3rem;
+                   width:auto;
+                   display:block;
+                   margin:0 auto;
+               }
+
+               /*—Headings—*/
+               #zmail h3{
+                   margin:1.5rem 0 0.5rem;
+                   font-size:1.25rem;            /* ≈ 20 px                            */
+                   font-weight:700;
+                   color:#008cc7;
+               }
+
+               /*—Buttons—*/
+               #zmail .button{
+                   display:inline-block;
+                   text-decoration:none;
+                   text-transform:uppercase;
+                   font-weight:600;
+                   font-size:.875rem;            /* ≈ 14 px                            */
+                   padding:.55em 2.5em;
+                   border-radius:999px;
+                   cursor:pointer;
+                   transition:background .15s ease,color .15s ease;
+               }
+               /* primary (filled) */
+               #zmail .button--primary{
+                   background:#008cc7;
+                   color:#fff    !important;
+                   border:2px solid #008cc7;
+               }
+               #zmail .button.small {
+                   background:#008cc7;
+                   color:#fff    !important;
+                   border:2px solid #008cc7;
+               }
+               #zmail .button.medium {
+                   background:#008cc7;
+                   color:#fff    !important;
+                   border:2px solid #008cc7;
+               }
+               #zmail .button.large {
+                   background:#008cc7;
+                   color:#fff    !important;
+                   border:2px solid #008cc7;
+               }
+               /* secondary (outline) */
+               #zmail .button--secondary{
+                   background:#ffffff;
+                   color:#008cc7 !important;
+                   border:2px solid #008cc7;
+               }
+               #zmail .button--primary:hover,
+               #zmail .button--primary:focus{
+                   background:#006fa0;
+               }
+               #zmail .button--secondary:hover,
+               #zmail .button--secondary:focus{
+                   background:#f0f8fc;
+               }
+
+               /*—Lists—*/
+               #zmail ul{
+                   margin:0 0 1rem 0;
+                   padding:0;                    /* reset Gmail default                */
+               }
+               #zmail ul li{
+                   margin:0 0 .5rem 1.25rem;
+                   padding:0;
+                   line-height:1.5;
+                   list-style-type: disc;
+               }
+
+               /*—Strong / emphasis—*/
+               #zmail strong{
+                   font-weight:700;
+                   color:#008cc7;
+               }
+
+               /* Tables */
+                #zmail table {
+                    border-spacing: 0;
+                }
+                #zmail tbody, thead {
+                    border: 1px solid #f1f1f1;
+                    background-color: #fefefe;
+                }
+                #zmail tbody, thead {
+                    border: 1px solid #f1f1f1;
+                    background-color: #fefefe;
+                }
+                #zmail thead {
+                    background: #f8f8f8;
+                    color: #0a0a0a;
+                }
+                #zmail tbody tr:nth-child(even) {
+                    border-bottom: 0;
+                    background-color: #f1f1f1;
+                }
+                #zmail thead td, thead th {
+                    padding: .5rem .625rem .625rem;
+                    font-weight: 700;
+                    text-align: left;
+                }
+                #zmail tbody td {
+                    padding: .5rem .625rem .625rem;
+                }
+
+               /*—Footer—*/
+               #zmail .zmail-footer{
+                   background:#f2f7fa;
+                   border-top:1px solid #dfe7ec;
+                   text-align:center;
+                   padding:1.5rem .75rem;
+                   font-size:.8125rem;           /* ≈ 13 px                            */
+                   color:#666;
+               }
+               #zmail .zmail-footer a{
+                   color:#008cc7;
+                   text-decoration:none;
+               }
+               #zmail .zmail-footer a:hover{
+                   text-decoration:underline;
+               }
+           </style>
             </head>
             <body>
             <div id="zmail">
@@ -240,7 +323,42 @@ class Zume_Messages extends Zume_Magic_Page
             </body>
             </html>
         </div> <!-- wrapper-->
-        <br><br><br></br></br></br>
+        <br><br><br>
+
+        <?php if ( current_user_can( 'administrator' ) ) { ?>
+
+            <div style="width: 800px; margin: 0 auto;">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="" style="margin-right: 20px;">
+
+                <label for="user_id">User ID:</label>
+                <input type="text" id="user_id" name="user_id" value="">
+
+                <button onclick="sendDevEmail()" class="button">Send Dev Email</button>
+
+                <script>
+                    function sendDevEmail() {
+                        const email = document.getElementById('email').value;
+                        const userId = document.getElementById('user_id').value;
+
+                        if (!email || !userId) {
+                            alert('Please enter both email and user ID');
+                            return;
+                        }
+
+                        const currentUrl = window.location.href;
+                        const separator = currentUrl.includes('?') ? '&' : '?';
+                        const newUrl = `${currentUrl}${separator}email=${encodeURIComponent(email)}&user_id=${encodeURIComponent(userId)}`;
+
+                        window.location.href = newUrl;
+                    }
+                </script>
+            </div>
+            </br></br></br>
+
+        <?php } ?>
+
+
         <?php
     }
 
@@ -265,6 +383,31 @@ class Zume_Messages extends Zume_Magic_Page
         $html = ob_get_contents();
         ob_end_clean();
         return $html;
+    }
+
+    public function send_dev_email( $email, $user_id ) {
+        $user = get_user_by( 'id', $user_id );
+        [
+            'lang_code' => $language_code,
+            'url_parts' => $url_parts,
+        ] = zume_get_url_pieces();
+
+        // get message id from url
+        $message_id = isset( $_GET['m'] ) ? sanitize_key( $_GET['m'] ) : '';
+
+        // get message
+        $messages = Zume_System_Encouragement_API::_build_user_templates( $language_code, $user_id );
+        $message = $messages[$message_id];
+
+        // build email body
+        $email_body = Zume_System_Encouragement_API::build_email( zume_replace_placeholder( $message['body'], $language_code, $user_id ), $language_code, $user_id );
+
+        // send email
+        $headers = array(
+           'Content-Type: text/html; charset=UTF-8',
+           'From: Zúme Training <noreply@zume.training>',
+        );
+        $send = wp_mail( $email, $message['subject'], $email_body, $headers );
     }
 
     public function query_message( $language_code, $message_id ) {

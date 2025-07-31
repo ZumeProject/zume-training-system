@@ -30,14 +30,14 @@ class Zume_Activites_List100_Printable extends Zume_Activites
 
         /* Redirect /checkin to /{lang_code}/checkin */
         /* This facilitates QR codes sending users to /checkin not knowing what language they may have previously been using */
-        $url = dt_get_url_path();
-        if ( $url === $this->type ) {
-            $lang_code_from_cookie = zume_get_language_cookie();
-            if ( $lang_code_from_cookie !== 'en' ) {
-                wp_redirect( $lang_code_from_cookie . '/' . $this->type );
-                exit;
-            }
-        }
+//        $url = dt_get_url_path();
+//        if ( $url === $this->type ) {
+//            $lang_code_from_cookie = zume_get_language_cookie();
+//            if ( $lang_code_from_cookie !== 'en' ) {
+//                wp_redirect( $lang_code_from_cookie . '/' . $this->type );
+//                exit;
+//            }
+//        }
     }
     public function dt_magic_url_base_allowed_js( $allowed_js ) {
         return [
@@ -75,6 +75,15 @@ class Zume_Activites_List100_Printable extends Zume_Activites
             .print_cell {
                 padding: 2em 0 0;
             }
+            table.unstriped tbody tr {
+                border: 1px solid white;
+                background-color: white;
+            }
+            tbody, tfoot, thead {
+                 border: 1px solid white;
+                 background-color: white;
+            }
+
         </style>
         <div class="activity-page">
             <div style="text-align:center;">
@@ -82,22 +91,28 @@ class Zume_Activites_List100_Printable extends Zume_Activites
             </div>
             <hr>
             <div>
-                <table class="unstriped print_table" >
-                <?php
-                for ( $x = 1; $x <= 100; $x++ ) {
-                    ?>
-                    <tr class="print_table_row">
-                        <td class="print_cell print_table_number"><?php echo esc_html( $x ); ?></td>
-                        <td class="print_cell print_table_line"></td>
-                        <td class="print_cell print_table_check_column">&#9744; <?php echo esc_html__( 'Disciple', 'zume' ) ?>&nbsp;&nbsp; &#9744; <?php echo esc_html__( 'Unbeliever', 'zume' ) ?>&nbsp;&nbsp;  &#9744; <?php echo esc_html__( 'Unknown', 'zume' ) ?></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-                </table>
+                <?php $this->list() ?>
             </div>
         </div>
         </hr>
+        <?php
+    }
+
+    public function list() {
+        ?>
+        <table class="unstriped print_table" >
+            <?php
+            for ( $x = 1; $x <= 100; $x++ ) {
+                ?>
+                <tr class="print_table_row">
+                    <td class="print_cell print_table_number"><?php echo esc_html( $x ); ?></td>
+                    <td class="print_cell print_table_line"></td>
+                    <td class="print_cell print_table_check_column">&#9744; <?php echo esc_html__( 'Disciple', 'zume' ) ?>&nbsp;&nbsp; &#9744; <?php echo esc_html__( 'Unbeliever', 'zume' ) ?>&nbsp;&nbsp;  &#9744; <?php echo esc_html__( 'Unknown', 'zume' ) ?></td>
+                </tr>
+                <?php
+            }
+            ?>
+        </table>
         <?php
     }
 }

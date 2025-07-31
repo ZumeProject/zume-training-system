@@ -20,7 +20,8 @@
     "@rollup/plugin-babel": "^6.0.4",
     "lit": "^2.6.1",
     "lit-element-router": "^2.0.3",
-    "luxon": "^3.4.4"
+    "luxon": "^3.4.4",
+    "vite-plugin-browser-sync": "^3.0.4"
   },
   "devDependencies": {
     "@babel/plugin-transform-nullish-coalescing-operator": "^7.24.7",

@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html } from 'lit'
 import { navigator } from 'lit-element-router'
 
 export class NavLink extends navigator(LitElement) {
@@ -14,7 +14,8 @@ export class NavLink extends navigator(LitElement) {
             icon: { type: String },
             text: { type: String },
             explanation: { type: String },
-        };
+            noRenderText: { type: Boolean },
+        }
     }
 
     constructor() {
@@ -32,14 +33,14 @@ export class NavLink extends navigator(LitElement) {
     }
 
     handleClick(event) {
-        if ( this.as === 'nav' ) {
+        if (this.as === 'nav') {
             event.preventDefault()
             this.navigate(this.href)
         }
-        if ( this.as === 'link' ) {
+        if (this.as === 'link') {
             return
         }
-        if ( this.as === 'button' ) {
+        if (this.as === 'button') {
             event.preventDefault()
         }
     }
@@ -62,11 +63,11 @@ export class NavLink extends navigator(LitElement) {
                 <span class="icon ${this.icon} brand-light"></span>
                 <span>${this.text}</span>
             </a>
-        `;
+        `
     }
 
     createRenderRoot() {
         return this
     }
 }
-customElements.define('nav-link', NavLink);
+customElements.define('nav-link', NavLink)

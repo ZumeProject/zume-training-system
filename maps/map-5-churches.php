@@ -72,7 +72,7 @@ class Zume_Funnel_Public_Heatmap_Churches extends Zume_Magic_Page
         Zume_Funnel_App_Heatmap::_header();
         ?>
         <script>
-            let jsObject = [<?php echo json_encode([
+            let mapObject = [<?php echo json_encode([
                 'map_key' => DT_Mapbox_API::get_key(),
                 'mirror_url' => dt_get_location_grid_mirror( true ),
                 'theme_uri' => trailingslashit( get_stylesheet_directory_uri() ),
@@ -92,6 +92,7 @@ class Zume_Funnel_Public_Heatmap_Churches extends Zume_Magic_Page
                 jQuery('#custom-paragraph').html(`
 
                     `)
+                    jQuery('#vision-map-link').html('<a href="https://zume.training/map/local?grid_id=<?php echo esc_attr( $this->grid_id ); ?>" target="_blank" class="small clear"><?php echo esc_html__( 'Vision Map', 'zume' ) ?></a>');
             }
 
             /* custom level content */
@@ -103,10 +104,10 @@ class Zume_Funnel_Public_Heatmap_Churches extends Zume_Magic_Page
                             <div class="progress-list-item">
                                 <div class="cell">
                                   <strong>${data.name}</strong><br>
-                                  ${jsObject.translation.population}: <span>${data.population}</span><br>
-                                  ${jsObject.translation.churches_needed}: <span>${data.needed}</span><br>
-                                  ${jsObject.translation.churches_reported}: <span class="reported_number">${data.reported}</span><br>
-                                  ${jsObject.translation.goal_reached}: <span>${data.percent}</span>%
+                                  ${mapObject.translation.population}: <span>${data.population}</span><br>
+                                  ${mapObject.translation.churches_needed}: <span>${data.needed}</span><br>
+                                  ${mapObject.translation.churches_reported}: <span class="reported_number">${data.reported}</span><br>
+                                  ${mapObject.translation.goal_reached}: <span>${data.percent}</span>%
                                   <meter class="meter" value="${data.percent}" min="0" low="33" high="66" optimum="100" max="100"></meter>
                                 </div>
                             </div>
@@ -123,6 +124,7 @@ class Zume_Funnel_Public_Heatmap_Churches extends Zume_Magic_Page
                 jQuery('#panel-type-title').html('<?php echo esc_html__( 'Churches', 'zume' ) ?>');
                 jQuery('#map-header-title').html('<?php echo esc_html__( 'Map of Zúme Churches', 'zume' ) ?>');
                 jQuery('#map-header-description').html('<p style="max-width: 400px;"><?php echo esc_html__( 'Saturation Goal: 2 simple churches per 5,000 people in the United States, and 2 simple churches per 50,000 people globally', 'zume' ) ?></p>');
+                
 
             })
         </script>

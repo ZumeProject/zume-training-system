@@ -9,7 +9,9 @@ function zume_content( $lang_code = 'en' ) {
 
 
     $mirror_url = 'https://storage.googleapis.com/zume-file-mirror/' . $lang_code . '/';
+    $checkin_base_url = site_url() . '/' . $lang_code . '/checkin/?code=';
     $activity_base_url = trailingslashit( site_url() ) . 'app/qr/?l=' . $lang_code . '&a=';
+    $video_base_url = trailingslashit( site_url() ) . 'app/qr/?l=' . $lang_code . '&v=';
     $other_page_base_url = trailingslashit( site_url() ) . 'app/qr/?l=' . $lang_code . '&o=';
 
     $content = [
@@ -44,15 +46,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '5678' ),
-                create_qr_url( zume_checkin_wizard_url( '5678' ) ),
+                $checkin_base_url . '5678',
+                create_qr_url( $checkin_base_url . '5678' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '5678',
             ],
@@ -74,7 +76,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_1_4',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -109,6 +111,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'God Uses Ordinary People', 'zume' ),
                 __( 'God uses ordinary people doing simple things to make a big impact.', 'zume' ),
             ],
+            'id' => 1, // supports the book generator specifically
+            'qr' => create_qr_url( $video_base_url . '1' ), // supports the book generator specifically
         ],
         [
             'key' => 't1_b',
@@ -116,7 +120,7 @@ function zume_content( $lang_code = 'en' ) {
             'alt_video_id' => 1,
             'script_id' => Zume_Course::get_transcript_by_key( '1' ),
             'menu' => [],
-            'length' => [],
+            'length' => [5],
             'center' => [
                 Zume_Course::get_video_by_key( '1', true, $lang_code, true ), // video
             ],
@@ -152,6 +156,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Disciples and the Church', 'zume' ),
                 __( 'Discover the essence of being a disciple, making a disciple, and what is the church.', 'zume' ),
             ],
+            'id' => 2,
+            'qr' => create_qr_url( $video_base_url . '2' ),
         ],
         [
             'key' => 't2_b',
@@ -199,6 +205,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Hearing and Obeying God', 'zume' ),
                 __( 'Spiritual breathing. We breathe in. We breathe out. We’re alive. Hearing and obeying God is like that, too.', 'zume' ),
             ],
+            'id' => 3,
+            'qr' => create_qr_url( $video_base_url . '3' ),
         ],
         [
             'key' => 't3_b',
@@ -245,6 +253,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'S.O.A.P.S. Bible Reading', 'zume' ),
                 __( 'Hearing from God regularly is a key element in our personal relationship with Him, and in our ability to stay obediently engaged in what He is doing around us.', 'zume' ),
             ],
+            'id' => 4,
+            'qr' => create_qr_url( $video_base_url . '4' ),
         ],
         [
             'key' => 't4_b',
@@ -274,21 +284,21 @@ function zume_content( $lang_code = 'en' ) {
             ],
             'left' => [
                 __( 'Practice S.O.A.P.S.', 'zume' ),
-                __( 'Scan QR code and work individually through the SOAPS Bible study pattern using Matthew 6:9-13. (20 min)', 'zume' ),
                 [
-                    __( 'Scripture', 'zume' ),
-                    __( 'Observation', 'zume' ),
-                    __( 'Application', 'zume' ),
-                    __( 'Prayer', 'zume' ),
-                    __( 'Sharing', 'zume' ),
+                    __( 'Scan the QR code.', 'zume' ),
+//                    __( 'Scan QR code and work individually through the SOAPS Bible study pattern using Matthew 6:9-13. (20 min)', 'zume' ), // @remove and edit translations
+                    __( 'Work individually through the SOAPS Bible study pattern using Matthew 6:9-13. (20 min)', 'zume' ),
+                    __( 'Return together and share your S.O.A.P.S. in groups of two or three. (10 min)', 'zume' ),
                 ],
-                __( 'Return together and share your S.O.A.P.S. in groups of two or three. (10 min)', 'zume' ),
+
             ],
             'right' => [
                 $activity_base_url . 'soaps',
                 create_qr_url( $activity_base_url . 'soaps' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'soaps',
+            'qr' => create_qr_url( $activity_base_url . 'soaps' ),
         ],
         [
             'key' => 't5_a',
@@ -307,6 +317,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'The Bible tells us that every follower of Jesus will one day be held accountable for what we do and say and think.', 'zume' ),
                 __( 'Accountability Groups are a great way to get ready!', 'zume' ),
             ],
+            'id' => 5,
+            'qr' => create_qr_url( $video_base_url . '5' ),
         ],
         [
             'key' => 't5_b',
@@ -342,12 +354,14 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . 'accountability' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'accountability',
+            'qr' => create_qr_url( $activity_base_url . 'accountability' ),
         ],
         [
             'key' => 's1_1_20',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -419,15 +433,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '2468' ),
-                create_qr_url( zume_checkin_wizard_url( '2468' ) ),
+                $checkin_base_url . '2468',
+                create_qr_url( $checkin_base_url . '2468' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '2468',
             ],
@@ -466,7 +480,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_2_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -505,6 +519,8 @@ function zume_content( $lang_code = 'en' ) {
                     __( 'Persecution and Suffering', 'zume' ),
                 ],
             ],
+            'id' => 6,
+            'qr' => create_qr_url( $video_base_url . '6' ),
         ],
         [
             'key' => 't6_b',
@@ -552,6 +568,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Prayer Cycle', 'zume' ),
                 __( 'The Bible tells us that prayer is our chance to speak to and hear from the same God who created us!', 'zume' ),
             ],
+            'id' => 7,
+            'qr' => create_qr_url( $video_base_url . '7' ),
         ],
         [
             'key' => 't7_b',
@@ -575,15 +593,21 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'ACTIVITY', 'zume' ),
             ],
             'left' => [
-                __( 'Pray the Prayer Cycle for an hour individually', 'zume' ),
-                __( 'Scan the QR code to get the prayer cycle guide on your phone.', 'zume' ),
-                __( 'Set a time for the group to return and reconnect. Be sure to add a few extra minutes for everyone to both find a quiet place to pray and to make their way back to the group.', 'zume' ),
+                __( 'Prayer Cycle', 'zume' ),
+                [
+                    __( 'Scan the QR code.', 'zume' ),
+                    __( 'Pray the Prayer Cycle for an hour individually', 'zume' ),
+//                    __( 'Scan the QR code to get the prayer cycle guide on your phone.', 'zume' ),
+                    __( 'Set a time for the group to return and reconnect. Be sure to add a few extra minutes for everyone to both find a quiet place to pray and to make their way back to the group.', 'zume' ),
+                ],
             ],
             'right' => [
                 $activity_base_url . 'prayercycle',
                 create_qr_url( $activity_base_url . 'prayercycle' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'prayercycle',
+            'qr' => create_qr_url( $activity_base_url . 'prayercycle' ),
         ],
         [
             'key' => 't7_d',
@@ -621,6 +645,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'These are our family, friends, neighbors, co-workers and classmates – people we’ve known all our lives or maybe just met.', 'zume' ),
                 __( 'Stewarding the relationships you have is the best place to start.', 'zume' ),
             ],
+            'id' => 8,
+            'qr' => create_qr_url( $video_base_url . '8' ),
         ],
         [
             'key' => 't8_b',
@@ -658,12 +684,14 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . 'listof100' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'listof100',
+            'qr' => create_qr_url( $activity_base_url . 'listof100' ),
         ],
         [
             'key' => 's1_2_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -748,15 +776,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '6543' ),
-                create_qr_url( zume_checkin_wizard_url( '6543' ) ),
+                $checkin_base_url . '6543',
+                create_qr_url( $checkin_base_url . '6543' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '6543',
             ],
@@ -793,7 +821,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_3_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -826,6 +854,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Spiritual Economy', 'zume' ),
                 __( 'In this broken world, people feel rewarded when they take, when they receive and when they gain more than those around them. But God’s Spiritual Economy is different – God invests more in those who are faithful with what they’ve already been given.', 'zume' ),
             ],
+            'id' => 9,
+            'qr' => create_qr_url( $video_base_url . '9' ),
         ],
         [
             'key' => 't9_b',
@@ -853,6 +883,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'What are some differences you see between God’s Spiritual Economy and our earthly way of getting things done?', 'zume' ),
             ],
         ],
+
+            
         [
             'key' => 't10_a',
             'type' => 'center',
@@ -864,9 +896,11 @@ function zume_content( $lang_code = 'en' ) {
             'center' => [],
             'left' => [
                 __( 'Jesus said, “You will receive power when the Holy Spirit comes upon you. And you will be my witnesses, telling people about me everywhere – in Jerusalem, throughout Judea, in Samaria, and to the ends of the earth.”', 'zume' ),
-                __( 'There’s no one “best way” to tell God’s story (also called the gospel), because the best way will depend on who you’re sharing with. Every disciple should learn to tell God’s story in a way that’s true to scripture and connects with the audience they’re sharing with.', 'zume' ),
+                
             ],
             'right' => [],
+            'id' => 10,
+            'qr' => create_qr_url( $video_base_url . '10' ),
         ],
         [
             'key' => 't10_b',
@@ -887,6 +921,19 @@ function zume_content( $lang_code = 'en' ) {
         ],
         [
             'key' => 't10_c',
+            'type' => 'center',
+            'menu' => [],
+            'length' => [],
+            'center' => [],
+            'left' => [
+                __( 'The Gospel', 'zume' ),
+                __( 'There’s no one “best way” to tell God’s story (also called the gospel), because the best way will depend on who you’re sharing with. Every disciple should learn to tell God’s story in a way that’s true to scripture and connects with the audience they’re sharing with.', 'zume' ), 
+                __( 'Review the following two presentations and choose one to practice.', 'zume' )  
+            ],
+            'right' => [],
+        ],
+        [
+            'key' => 't10_d',
             'type' => 'watch',
             'menu' => [],
             'length' => [5],
@@ -895,12 +942,14 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'WATCH', 'zume' ),
             ],
             'right' => [
-                __( 'The Gospel', 'zume' ),
+                __( 'Presentation 1', 'zume' ),
                 __( 'One way to share God’s good news is by telling God’s story from Creation to Judgement – from the beginning of humankind all the way to the end of this age.', 'zume' ),
             ],
+            'id' => 10,
+            'qr' => create_qr_url( $video_base_url . '10' ),
         ],
         [
-            'key' => 't10_d',
+            'key' => 't10_e',
             'type' => 'video',
             'alt_video_id' => 10,
             'script_id' => Zume_Course::get_transcript_by_key( '10' ),
@@ -913,7 +962,36 @@ function zume_content( $lang_code = 'en' ) {
             'right' => [],
         ],
         [
-            'key' => 't10_e',
+            'key' => 't10_f',
+            'type' => 'watch',
+            'menu' => [],
+            'length' => [5],
+            'center' => [],
+            'left' => [
+                __( 'WATCH', 'zume' ),
+            ],
+            'right' => [
+                __( 'Presentation 2', 'zume' ),
+                __( 'The 3-Circles gospel presentation is a way to tell the gospel using a simple illustration that can be drawn on a piece of paper.', 'zume' ),
+            ],
+            'id' => 33,
+            'qr' => create_qr_url( $video_base_url . '33' ),
+        ],
+        [
+            'key' => 't10_g',
+            'type' => 'video',
+            'alt_video_id' => 33,
+            'script_id' => Zume_Course::get_transcript_by_key( '33' ),
+            'menu' => [],
+            'length' => [],
+            'center' => [
+                Zume_Course::get_video_by_key( '33', true, $lang_code, true ), // video
+            ],
+            'left' => [],
+            'right' => [],
+        ],
+        [
+            'key' => 't10_h',
             'type' => 'discuss',
             'menu' => [],
             'length' => [10],
@@ -929,6 +1007,9 @@ function zume_content( $lang_code = 'en' ) {
                 ],
             ],
         ],
+
+
+
         [
             'key' => 's1_3_8',
             'type' => 'activity',
@@ -940,6 +1021,7 @@ function zume_content( $lang_code = 'en' ) {
             'left' => [
                 __( 'Share the Gospel', 'zume' ),
                 [
+                    __( 'Choose one of the two presentations you watched.', 'zume' ),
                     __( 'Scan the QR code.', 'zume' ),
                     __( 'Break into groups of two or three people.', 'zume' ),
                     __( 'Take turns telling the Gospel to each other.', 'zume' ),
@@ -951,6 +1033,8 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . 'sharegospel' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'sharegospel',
+            'qr' => create_qr_url( $activity_base_url . 'sharegospel' ),
         ],
         [
             'key' => 't11_a',
@@ -968,6 +1052,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Baptism', 'zume' ),
                 __( 'Jesus said, “Go and make disciples of all nations, BAPTIZING them in the name of the Father and of the Son and of the Holy Spirit…”', 'zume' ),
             ],
+            'id' => 11,
+            'qr' => create_qr_url( $video_base_url . '11' ),
         ],
         [
             'key' => 't11_b',
@@ -1016,7 +1102,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_3_10',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -1094,15 +1180,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '8764' ),
-                create_qr_url( zume_checkin_wizard_url( '8764' ) ),
+                $checkin_base_url . '8764',
+                create_qr_url( $checkin_base_url . '8764' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '8764',
             ],
@@ -1140,7 +1226,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_4_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -1175,6 +1261,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Three-Minute Testimony', 'zume' ),
                 __( 'As followers of Jesus, we are “witnesses" for Him, because we “testify” about the impact Jesus has had on our lives. Your story of your relationship with God is called your Testimony. It’s powerful, and it’s something no one can share better than you.', 'zume' ),
             ],
+            'id' => 12,
+            'qr' => create_qr_url( $video_base_url . '12' ),
         ],
         [
             'key' => 't12_b',
@@ -1210,6 +1298,8 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . 'sharetestimony' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'sharetestimony',
+            'qr' => create_qr_url( $activity_base_url . 'sharetestimony' ),
         ],
         [
             'key' => 't13_a',
@@ -1227,6 +1317,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Great - Greater - Greatest Blessings', 'zume' ),
                 __( 'Learn a simple pattern of making not just one follower of Jesus but entire spiritual families who multiply for generations to come.', 'zume' ),
             ],
+            'id' => 13,
+            'qr' => create_qr_url( $video_base_url . '13' ),
         ],
         [
             'key' => 't13_b',
@@ -1274,6 +1366,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Duckling Discipleship', 'zume' ),
                 __( 'What do ducklings have to do with disciple making? They lead and follow at the same time.', 'zume' ),
             ],
+            'id' => 14,
+            'qr' => create_qr_url( $video_base_url . '14' ),
         ],
         [
             'key' => 't14_b',
@@ -1321,6 +1415,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Have you ever stopped to think about where God’s Kingdom... isn’t?', 'zume' ),
                 __( 'Have you ever visited a home or a neighborhood or even a city where it seemed as if God was just... missing? These are usually the places where God wants to work the most.', 'zume' ),
             ],
+            'id' => 15,
+            'qr' => create_qr_url( $video_base_url . '15' ),
         ],
         [
             'key' => 't15_b',
@@ -1368,6 +1464,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'The Lord’s Supper', 'zume' ),
                 __( 'Jesus said, “I am the living bread that came down from heaven. Whoever eats this bread will live forever. This bread is my flesh, which I will give for the life of the world.”', 'zume' ),
             ],
+            'id' => 16,
+            'qr' => create_qr_url( $video_base_url . '16' ),
         ],
         [
             'key' => 't16_b',
@@ -1402,12 +1500,14 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . 'lordssupper' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'lordssupper',
+            'qr' => create_qr_url( $activity_base_url . 'lordssupper' ),
         ],
         [
             'key' => 's1_4_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -1475,15 +1575,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '6542' ),
-                create_qr_url( zume_checkin_wizard_url( '6542' ) ),
+                $checkin_base_url . '6542',
+                create_qr_url( $checkin_base_url . '6542' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '6542',
             ],
@@ -1520,7 +1620,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_5_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -1553,6 +1653,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Prayer Walking', 'zume' ),
                 __( 'Prayer Walking is a simple way to obey God’s command to pray for others. And it’s just what it sounds like – praying to God while walking around!', 'zume' ),
             ],
+            'id' => 17,
+            'qr' => create_qr_url( $video_base_url . '17' ),
         ],
         [
             'key' => 't17_b',
@@ -1583,6 +1685,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Person of Peace', 'zume' ),
                 __( 'Disciple-making can be rapidly advanced by finding a person of peace, even in a place where followers of Jesus are few and far between.', 'zume' ),
             ],
+            'id' => 18,
+            'qr' => create_qr_url( $video_base_url . '18' ),
         ],
         [
             'key' => 't18_b',
@@ -1637,6 +1741,8 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . 'blessprayer' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'blessprayer',
+            'qr' => create_qr_url( $activity_base_url . 'blessprayer' ),
         ],
         [
             'key' => 't17_d',
@@ -1664,6 +1770,8 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . 'prayerwalking' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'prayerwalking',
+            'qr' => create_qr_url( $activity_base_url . 'prayerwalking' ),
         ],
         [
             'key' => 't17_e',
@@ -1715,15 +1823,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '1235' ),
-                create_qr_url( zume_checkin_wizard_url( '1235' ) ),
+                $checkin_base_url . '1235',
+                create_qr_url( $checkin_base_url . '1235' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '1235',
             ],
@@ -1760,7 +1868,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_6_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -1792,6 +1900,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Faithfulness', 'zume' ),
                 __( 'When we help multiply disciples, we need to make sure we’re reproducing the right things. It’s important what disciples know – but it’s much more important what they DO with what they know.', 'zume' ),
             ],
+            'id' => 19,
+            'qr' => create_qr_url( $video_base_url . '19' ),
         ],
         [
             'key' => 't20_b',
@@ -1835,6 +1945,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( '3/3 Group Meeting', 'zume' ),
                 __( 'In the following video, you’ll be coached through an interactive 3/3 Group where you’ll learn a principle and then “press pause” and practice it with the group.', 'zume' ),
             ],
+            'id' => 21,
+            'qr' => create_qr_url( $video_base_url . '21' ),
         ],
         [
             'key' => 't21_b',
@@ -1869,7 +1981,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_6_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -1938,15 +2050,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '4322' ),
-                create_qr_url( zume_checkin_wizard_url( '4322' ) ),
+                $checkin_base_url . '4322',
+                create_qr_url( $checkin_base_url . '4322' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '4322',
             ],
@@ -1983,7 +2095,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_7_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -2015,6 +2127,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'The Training Cycle', 'zume' ),
                 __( 'Have you ever learned how to ride a bicycle? Have you ever helped someone else learn? If so, chances are you already know the Training Cycle.', 'zume' ),
             ],
+            'id' => 22,
+            'qr' => create_qr_url( $video_base_url . '22' ),
         ],
         [
             'key' => 't22_b',
@@ -2069,6 +2183,8 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . '33group' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => '33group',
+            'qr' => create_qr_url( $activity_base_url . '33group' ),
         ],
         [
             'key' => 's1_7_7',
@@ -2090,7 +2206,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_7_8',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -2155,15 +2271,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '9870' ),
-                create_qr_url( zume_checkin_wizard_url( '9870' ) ),
+                $checkin_base_url . '9870',
+                create_qr_url( $checkin_base_url . '9870' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '9870',
             ],
@@ -2200,7 +2316,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_8_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -2233,6 +2349,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Jesus said, “Whoever wishes to become great among you shall be your servant.”', 'zume' ),
                 __( 'A Leadership Cell is a way someone who feels called to lead can develop their leadership by practicing serving.', 'zume' ),
             ],
+            'id' => 23,
+            'qr' => create_qr_url( $video_base_url . '23' ),
         ],
         [
             'key' => 't23_b',
@@ -2285,12 +2403,14 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . '33group' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => '33group',
+            'qr' => create_qr_url( $activity_base_url . '33group' ),
         ],
         [
             'key' => 's1_8_7',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -2355,15 +2475,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '1355' ),
-                create_qr_url( zume_checkin_wizard_url( '1355' ) ),
+                $checkin_base_url . '1355',
+                create_qr_url( $checkin_base_url . '1355' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '1355',
             ],
@@ -2400,7 +2520,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_9_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -2436,6 +2556,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Non-Sequential Growth', 'zume' ),
                 __( 'When people think about disciples multiplying, they often think of it as a step-by-step process. The problem with that is — that’s not how it works best!', 'zume' ),
             ],
+            'id' => 24,
+            'qr' => create_qr_url( $video_base_url . '24' ),
         ],
         [
             'key' => 't24_b',
@@ -2482,6 +2604,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Pace', 'zume' ),
                 __( 'Multiplying matters and multiplying quickly matters even more. Pace matters because where we all spend our eternity — an existence that outlasts time — is determined in the very short time we call “life.“', 'zume' ),
             ],
+            'id' => 25,
+            'qr' => create_qr_url( $video_base_url . '25' ),
         ],
         [
             'key' => 't25_b',
@@ -2530,6 +2654,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Jesus taught us that we are to stay close — to live as a small, spiritual family, to love and give our lives to one another, to celebrate and suffer — together.', 'zume' ),
                 __( 'However, Jesus also taught us to leave our homes and loved ones behind and be willing to go anywhere — and everywhere — to share and start new spiritual families.', 'zume' ),
             ],
+            'id' => 26,
+            'qr' => create_qr_url( $video_base_url . '26' ),
         ],
         [
             'key' => 't26_b',
@@ -2573,6 +2699,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Coaching Checklist', 'zume' ),
                 __( 'The Coaching Checklist is a simple tool you can use to help guide you as you assist others through various parts of becoming a fully equipped disciple.', 'zume' ),
             ],
+            'id' => 28,
+            'qr' => create_qr_url( $video_base_url . '28' ),
         ],
         [
             'key' => 't28_b',
@@ -2607,6 +2735,8 @@ function zume_content( $lang_code = 'en' ) {
             create_qr_url( $activity_base_url . 'coachingchecklist' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'coachingchecklist',
+            'qr' => create_qr_url( $activity_base_url . 'coachingchecklist' ),
         ],
         [
             'key' => 't28_d',
@@ -2640,6 +2770,8 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( trailingslashit( site_url() ) . $lang_code . '/get-a-coach' ),
                 __( 'Get a Coach', 'zume' ),
             ],
+            'id' => 'getacoach',
+            'qr' => create_qr_url( trailingslashit( site_url() ) . $lang_code . '/get-a-coach' ),
         ],
         [
             'key' => 't31_a',
@@ -2652,6 +2784,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'REMINDER: Zúme coaches are available to help you apply these tools in your local area.', 'zume' ),
             ],
             'right' => [],
+            'id' => 31,
+            'qr' => create_qr_url( $video_base_url . '31' ),
         ],
         [
             'key' => 't31_b',
@@ -2742,6 +2876,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'See the example on the next slide.', 'zume' ),
             ],
             'right' => [],
+            'id' => 32,
+            'qr' => create_qr_url( $video_base_url . '32' ),
         ],
         [
             'key' => 't32_b',
@@ -2782,7 +2918,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_9_9',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -2850,15 +2986,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '5430' ),
-                create_qr_url( zume_checkin_wizard_url( '5430' ) ),
+                $checkin_base_url . '5430',
+                create_qr_url( $checkin_base_url . '5430' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '5430',
             ],
@@ -2910,7 +3046,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_10_6',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -2943,6 +3079,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Leadership in Networks', 'zume' ),
                 __( 'What happens to churches as they grow and start new churches that start new churches? How do they stay connected and live life together as an extended, spiritual family? They become a network!', 'zume' ),
             ],
+            'id' => 29,
+            'qr' => create_qr_url( $video_base_url . '29' ),
         ],
         [
             'key' => 't29_b',
@@ -2988,6 +3126,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'Making disciples who make disciples means making leaders who make leaders.', 'zume' ),
                 __( 'Peer Mentoring groups gather leaders together and help them love and encourage one another in their faith and leadership.', 'zume' ),
             ],
+            'id' => 30,
+            'qr' => create_qr_url( $video_base_url . '30' ),
         ],
         [
             'key' => 't30_b',
@@ -3024,6 +3164,8 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . 'peermentoring' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'peermentoring',
+            'qr' => create_qr_url( $activity_base_url . 'peermentoring' ),
         ],
         [
             'key' => 't27_a',
@@ -3042,6 +3184,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( 'The next slide will show you how to make your Three Month Plan. We recommend using the online tool.', 'zume' ),
             ],
             'right' => [],
+            'id' => 27,
+            'qr' => create_qr_url( $video_base_url . '27' ),
         ],
         [
             'key' => 't27_b',
@@ -3054,7 +3198,8 @@ function zume_content( $lang_code = 'en' ) {
             'left' => [
                 __( 'Make your Three Month Plan', 'zume' ),
                 [
-                    __( 'Read - Scan the QR code. You don‘t have to commit to every item, rather they are intended as prompts for your plan. (5 min)', 'zume' ),
+                    __( 'Scan the QR code.', 'zume' ),
+                    __( 'Read - You don‘t have to commit to every item, rather they are intended as prompts for your plan. (5 min)', 'zume' ),
                     __( 'Listen - Take time to be as quiet as possible and listen to what God chooses to reveal. (10 min)', 'zume' ),
                     __( 'Record Your Plan - Write commitments on a piece of paper or use the online tool to save your answers. (15 min)', 'zume' ),
                 ],
@@ -3064,6 +3209,8 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . '3monthplan' ),
                 __( 'Online Plan Tool', 'zume' ),
             ],
+            'id' => '3monthplan',
+            'qr' => create_qr_url( $activity_base_url . '3monthplan' ),
         ],
         [
             'key' => 't27_c',
@@ -3083,7 +3230,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's1_10_7',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -3144,15 +3291,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '3354' ),
-                create_qr_url( zume_checkin_wizard_url( '3354' ) ),
+                $checkin_base_url . '3354',
+                create_qr_url( $checkin_base_url . '3354' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '3354',
             ],
@@ -3174,7 +3321,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_1_4',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -3192,7 +3339,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_1_5',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -3255,15 +3402,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '4568' ),
-                create_qr_url( zume_checkin_wizard_url( '4568' ) ),
+                $checkin_base_url . '4568',
+                create_qr_url( $checkin_base_url . '4568' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '4568',
             ],
@@ -3302,7 +3449,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_2_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -3318,7 +3465,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_2_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -3378,15 +3525,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '8767' ),
-                create_qr_url( zume_checkin_wizard_url( '8767' ) ),
+                $checkin_base_url . '8767',
+                create_qr_url( $checkin_base_url . '8767' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '8767',
             ],
@@ -3423,7 +3570,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_3_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -3439,7 +3586,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_3_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -3500,15 +3647,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '6787' ),
-                create_qr_url( zume_checkin_wizard_url( '6787' ) ),
+                $checkin_base_url . '6787',
+                create_qr_url( $checkin_base_url . '6787' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '6787',
             ],
@@ -3545,7 +3692,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_4_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -3565,7 +3712,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_4_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -3630,15 +3777,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '3450' ),
-                create_qr_url( zume_checkin_wizard_url( '3450' ) ),
+                $checkin_base_url . '3450',
+                create_qr_url( $checkin_base_url . '3450' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '3450',
             ],
@@ -3675,7 +3822,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_5_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -3706,12 +3853,14 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . 'prayercycle' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'prayercycle',
+            'qr' => create_qr_url( $activity_base_url . 'prayercycle' ),
         ],
         [
             'key' => 's2_5_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -3772,15 +3921,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '2344' ),
-                create_qr_url( zume_checkin_wizard_url( '2344' ) ),
+                $checkin_base_url . '2344',
+                create_qr_url( $checkin_base_url . '2344' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '2344',
             ],
@@ -3817,7 +3966,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_6_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -3836,7 +3985,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_6_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -3900,15 +4049,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '1116' ),
-                create_qr_url( zume_checkin_wizard_url( '1116' ) ),
+                $checkin_base_url . '1116',
+                create_qr_url( $checkin_base_url . '1116' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '1116',
             ],
@@ -3945,7 +4094,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_7_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -3978,12 +4127,14 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . 'sharegospel' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'sharegospel',
+            'qr' => create_qr_url( $activity_base_url . 'sharegospel' ),
         ],
         [
             'key' => 's2_7_7',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -4045,15 +4196,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '5431' ),
-                create_qr_url( zume_checkin_wizard_url( '5431' ) ),
+                $checkin_base_url . '5431',
+                create_qr_url( $checkin_base_url . '5431' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '5431',
             ],
@@ -4090,7 +4241,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_8_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -4107,7 +4258,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_8_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -4169,15 +4320,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '8768' ),
-                create_qr_url( zume_checkin_wizard_url( '8768' ) ),
+                $checkin_base_url . '8768',
+                create_qr_url( $checkin_base_url . '8768' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '8768',
             ],
@@ -4214,7 +4365,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_9_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -4249,7 +4400,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_9_7',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -4322,15 +4473,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '2347' ),
-                create_qr_url( zume_checkin_wizard_url( '2347' ) ),
+                $checkin_base_url . '2347',
+                create_qr_url( $checkin_base_url . '2347' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '2347',
             ],
@@ -4367,7 +4518,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_10_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -4388,7 +4539,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_10_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -4454,15 +4605,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '9434' ),
-                create_qr_url( zume_checkin_wizard_url( '9434' ) ),
+                $checkin_base_url . '9434',
+                create_qr_url( $checkin_base_url . '9434' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '9434',
             ],
@@ -4499,7 +4650,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_11_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -4532,6 +4683,8 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . 'prayerwalking' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => 'prayerwalking',
+            'qr' => create_qr_url( $activity_base_url . 'prayerwalking' ),
         ],
 
 
@@ -4568,15 +4721,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '2348' ),
-                create_qr_url( zume_checkin_wizard_url( '2348' ) ),
+                $checkin_base_url . '2348',
+                create_qr_url( $checkin_base_url . '2348' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '2348',
             ],
@@ -4613,7 +4766,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_12_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -4633,7 +4786,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_12_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -4699,15 +4852,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '6785' ),
-                create_qr_url( zume_checkin_wizard_url( '6785' ) ),
+                $checkin_base_url . '6785',
+                create_qr_url( $checkin_base_url . '6785' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '6785',
             ],
@@ -4744,7 +4897,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_13_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -4770,6 +4923,8 @@ function zume_content( $lang_code = 'en' ) {
                 __( '3/3 Group Meeting', 'zume' ),
                 __( 'In the following video, you’ll be coached through an interactive 3/3 Group where you’ll learn a principle and then “press pause” and practice it with the group.', 'zume' ),
             ],
+            'id' => 21,
+            'qr' => create_qr_url( $video_base_url . '21' ),
         ],
         [ // modified time from 10 to 5 minutes, original t21_c
             'key' => 't21_cc',
@@ -4791,7 +4946,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_13_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -4853,15 +5008,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '9872' ),
-                create_qr_url( zume_checkin_wizard_url( '9872' ) ),
+                $checkin_base_url . '9872',
+                create_qr_url( $checkin_base_url . '9872' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '9872',
             ],
@@ -4898,7 +5053,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_14_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -4924,7 +5079,7 @@ function zume_content( $lang_code = 'en' ) {
                 __( '3/3 Group Meeting', 'zume' ),
                 [
                     __( 'Scan the QR code.', 'zume' ),
-                    __( 'LOOK BACK – Use last session’s Obey, Train, and Share challenges to check-in with each other. (15 min)', 'zume' ),
+                    __( 'LOOK BACK – Use last session’s Obey, Train, and Share challenges to check-in with each other. (15 min)', 'zume' ), // @todo check translation for this string
                     __( 'LOOK UP – Use Mark 5:1-20 as your group’s reading passage and answer questions 1-4 during the Look Up section. (15 min)', 'zume' ),
                     __( 'LOOK FORWARD – Use questions 5, 6, and 7 in the Look Forward section to develop how you will Obey, Train and Share. (15 min)', 'zume' ),
                 ],
@@ -4934,12 +5089,14 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $activity_base_url . '33group' ),
                 __( 'Activity Resource', 'zume' ),
             ],
+            'id' => '33group',
+            'qr' => create_qr_url( $activity_base_url . '33group' ),
         ],
         [
             'key' => 's2_14_7',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -5001,15 +5158,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '4327' ),
-                create_qr_url( zume_checkin_wizard_url( '4327' ) ),
+                $checkin_base_url . '4327',
+                create_qr_url( $checkin_base_url . '4327' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '4327',
             ],
@@ -5046,7 +5203,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_15_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -5063,7 +5220,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_15_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -5126,15 +5283,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '2871' ),
-                create_qr_url( zume_checkin_wizard_url( '2871' ) ),
+                $checkin_base_url . '2871',
+                create_qr_url( $checkin_base_url . '2871' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '2871',
             ],
@@ -5171,7 +5328,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_16_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -5189,7 +5346,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_16_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -5255,15 +5412,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '4328' ),
-                create_qr_url( zume_checkin_wizard_url( '4328' ) ),
+                $checkin_base_url . '4328',
+                create_qr_url( $checkin_base_url . '4328' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '4328',
             ],
@@ -5300,7 +5457,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_17_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -5320,7 +5477,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_17_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -5388,15 +5545,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '6548' ),
-                create_qr_url( zume_checkin_wizard_url( '6548' ) ),
+                $checkin_base_url . '6548',
+                create_qr_url( $checkin_base_url . '6548' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '6548',
             ],
@@ -5433,7 +5590,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_18_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -5463,7 +5620,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_18_7',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -5525,15 +5682,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '7657' ),
-                create_qr_url( zume_checkin_wizard_url( '7657' ) ),
+                $checkin_base_url . '7657',
+                create_qr_url( $checkin_base_url . '7657' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '7657',
             ],
@@ -5570,7 +5727,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_19_5',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -5586,7 +5743,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_19_6',
             'type' => 'review',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'REVIEW', 'zume' ),
@@ -5649,15 +5806,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '2767' ),
-                create_qr_url( zume_checkin_wizard_url( '2767' ) ),
+                $checkin_base_url . '2767',
+                create_qr_url( $checkin_base_url . '2767' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '2767',
             ],
@@ -5709,7 +5866,7 @@ function zume_content( $lang_code = 'en' ) {
             'key' => 's2_20_6',
             'type' => 'overview',
             'menu' => [],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'OVERVIEW', 'zume' ),
@@ -5758,15 +5915,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '1397' ),
-                create_qr_url( zume_checkin_wizard_url( '1397' ) ),
+                $checkin_base_url . '1397',
+                create_qr_url( $checkin_base_url . '1397' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '1397',
             ],
@@ -5809,15 +5966,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '2341' ),
-                create_qr_url( zume_checkin_wizard_url( '2341' ) ),
+                $checkin_base_url . '2341',
+                create_qr_url( $checkin_base_url . '2341' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '2341',
             ],
@@ -5858,15 +6015,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '3455' ),
-                create_qr_url( zume_checkin_wizard_url( '3455' ) ),
+                $checkin_base_url . '3455',
+                create_qr_url( $checkin_base_url . '3455' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '3455',
             ],
@@ -5907,15 +6064,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '4329' ),
-                create_qr_url( zume_checkin_wizard_url( '4329' ) ),
+                $checkin_base_url . '4329',
+                create_qr_url( $checkin_base_url . '4329' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '4329',
             ],
@@ -5956,15 +6113,15 @@ function zume_content( $lang_code = 'en' ) {
             'menu' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
-            'length' => [],
+            'length' => [1],
             'center' => [],
             'left' => [
                 __( 'CHECK-IN', 'zume' ),
             ],
             'right' => [
                 __( 'Have all of the participants and facilitator check-in.', 'zume' ),
-                zume_checkin_wizard_url( '5451' ),
-                create_qr_url( zume_checkin_wizard_url( '5451' ) ),
+                $checkin_base_url . '5451',
+                create_qr_url( $checkin_base_url . '5451' ),
                 __( 'Or zume.training/checkin and use code:', 'zume' ),
                 '5451',
             ],
@@ -6010,6 +6167,8 @@ function zume_content( $lang_code = 'en' ) {
                 create_qr_url( $other_page_base_url . 'join_the_community' ),
                 __( 'Join the Community', 'zume' ),
             ],
+            'id' => 'join_the_community',
+            'qr' => create_qr_url( $other_page_base_url . 'join_the_community' ),
         ],
         [
             'key' => 'congratulations',

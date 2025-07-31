@@ -64,7 +64,12 @@ export class RequestCoach extends LitElement {
                 }
             })
             .catch((error) => {
-                if (error.message === 'already_has_coach') {
+              if (error.code === 'coach_request_failed') {
+                this.message = this.t.connect_fail
+                this.setErrorMessage(this.t.error_with_request)
+                return
+              }
+              else if (error.code === 'already_has_coach') {
                     this.message = ''
                     this.setErrorMessage(this.t.already_coached)
                     return
@@ -99,6 +104,42 @@ export class RequestCoach extends LitElement {
     render() {
         if ( this.variant === Steps.connectingToCoach && this.requestSent === false ) {
             this.requestCoach()
+        }
+
+        if ( this.variant === Steps.requestCoachExplanation ) {
+            return html`
+              <div class="stack-2">
+                <h1 class="text-center">${this.t.title}</h1>
+                <p>${this.t.request_coach_explanation_text}</p>
+                <div class="switcher | training-path">
+                    <div class="stack | card | switcher-width-40">
+                        <h2 class="f-1 text-center">${this.t.no_cost}</h2>
+                        <img class="mx-auto h-6rem" src="${jsObject.images_url}/Gather-A-Group-01.svg" alt="${this.t.join_a_training_group}">
+                        <p class="mb-0">
+                            ${this.t.our_network_of_volunteer_coaches}
+                        </p>
+                    </div>
+                    <div class="stack | card | switcher-width-40">
+                        <h2 class="f-1 text-center">${this.t.localized}</h2>
+                        <img class="mx-auto h-6rem" src="${jsObject.images_url}/JoinTraining.svg" alt="${this.t.join_a_training_group}">
+                        <p class="mb-0">
+                            ${this.t.our_connection_team}
+                        </p>
+                    </div>
+                    <div class="stack | card | switcher-width-40">
+                        <h2 class="f-1 text-center">${this.t.experienced}</h2>
+                        <img class="mx-auto h-6rem" src="${jsObject.images_url}/coach-2guys.svg" alt="${this.t.join_a_training}">
+                        <p class="mb-0">
+                            ${this.t.all_our_coaches_are_trained}
+                        </p>
+                    </div>
+                </div>
+                <p>${this.t.request_coach_explanation_text_2}</p>
+                <div class="mx-auto">
+                    <button class="btn tight" @click=${this._handleDone}>${this.t.next}</button>
+                </div>
+              </div>
+            `
         }
 
         return html`
@@ -160,7 +201,7 @@ export class RequestCoach extends LitElement {
 
                 <h1>${this.t.connecting_coach_title}</h1>
                 <p>${this.message}</p>
-                <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
+                <span class="loading-spinner mx-auto ${this.loading ? 'active' : ''}"></span>
             ` : '' }
             ${ this.hasNextStep
                 ? html`
@@ -179,8 +220,7 @@ export class RequestCoach extends LitElement {
             event.preventDefault()
         }
 
-        console.log(this.variant, Steps.connectingToCoach)
-        if (this.variant !== Steps.connectingToCoach && ( Object.keys(this.state).length === 0 || Object.values(this.state).every((item) => !item) ) ) {
+        if ( ![Steps.connectingToCoach, Steps.requestCoachExplanation].includes(this.variant) && ( Object.keys(this.state).length === 0 || Object.values(this.state).every((item) => !item) ) ) {
             this.setErrorMessage(this.t.missing_response)
             return
         } else {

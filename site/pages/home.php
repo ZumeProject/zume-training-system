@@ -11,6 +11,7 @@ class Zume_Training_Home extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'home';
     public $lang = 'en_US';
+    public $lang_code = 'en';
     public static $token = 'app_home';
 
     private static $_instance = null;
@@ -26,9 +27,14 @@ class Zume_Training_Home extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
-        if ( empty( $url_parts[0] ?? '' ) && ! dt_is_rest() ) {
+        $cli_running = defined( 'WP_CLI' ) && WP_CLI;
+
+        if ( empty( $url_parts[0] ?? '' ) && ! dt_is_rest() && !wp_doing_cron() && !$cli_running ) {
+
+            $this->lang_code = $lang_code;
 
             $this->register_url_and_access();
             $this->header_content();
@@ -55,7 +61,7 @@ class Zume_Training_Home extends Zume_Magic_Page
         return zume_training_magic_url_base_allowed_css();
     }
 
-    public function header_style(){
+    public function header_style() {
         ?>
         <script>
             jQuery(document).ready(function(){
@@ -67,7 +73,15 @@ class Zume_Training_Home extends Zume_Magic_Page
         </style>
         <?php //phpcs:ignore ?>
         <link rel="stylesheet" href="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/fonts/BebasKai/stylesheet.css' ) ?>">
-        <?php
+
+        <?php if ( $this->lang_code == 'en' || empty( $this->lang_code ) ) { ?>
+            <link rel="canonical" href="<?php echo esc_url( site_url() ); ?>" />
+        <?php } else { ?>
+            <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code ); ?>" />
+            <?php
+        }
+
+        zume_hreflang_fixed( $this->lang_code, '' );
     }
 
     public function body(){
@@ -105,8 +119,8 @@ class Zume_Training_Home extends Zume_Magic_Page
 
                         <?php else : ?>
 
-                            <a href="<?php echo esc_url( zume_getting_started_url( 'login' ) ) ?>" class="btn large outline w-80 px-0"><?php echo esc_html__( 'Login', 'zume' ) ?></a>
                             <a href="<?php echo esc_url( zume_getting_started_url( 'register' ) ) ?>" class="btn large w-80 px-0"><?php echo esc_html__( 'Register Free', 'zume' ) ?></a>
+
 
                         <?php endif; ?>
 
@@ -264,7 +278,7 @@ class Zume_Training_Home extends Zume_Magic_Page
                     <p class="mb-0">
                         <?php echo esc_html__( 'If you can‘t gather a group right now, consider joining one of our online training groups lead by an experienced Zúme coach.', 'zume' ) ?>
                     </p>
-                    <a href="<?php echo esc_url( zume_join_a_public_plan_wizard_url() ) ?>" class="btn mt-auto"><?php echo esc_html__( 'Join', 'zume' ) ?></a>
+                    <a href="<?php echo esc_url( zume_join_a_public_plan_url() ) ?>" class="btn mt-auto"><?php echo esc_html__( 'Join', 'zume' ) ?></a>
                 </div>
                 <div class="stack | card | switcher-width-40">
                     <h2 class="f-1 text-center"><?php echo esc_html__( 'Request a coach', 'zume' ) ?></h2>

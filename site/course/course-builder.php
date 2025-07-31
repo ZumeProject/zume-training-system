@@ -135,7 +135,7 @@ class Zume_Course_Builder {
 
             $session['1'] = ['s1_1_1', 's1_1_2', 's1_1_3', 's1_1_4', false, 't1_a', 't1_b', 't1_c', false, 't2_a', 't2_b', 't2_c', false, 't3_a', 't3_b', 't3_c', false, 't4_a', 't4_b', 't4_c', false, 't5_a', 't5_b', 't5_c', false, 's1_1_20', 's1_1_21', 'final']; // session 1
             $session['2'] = ['s1_2_1', 's1_2_2', 's1_2_3', 's1_2_4', 's1_2_5', false, 't6_a', 't6_b', 't6_c', false, 't7_a', 't7_b', 't7_c', 't7_d', false, 't8_a', 't8_b', 't8_c', false, 's1_2_6', 's1_2_7', 'final']; // session 2
-            $session['3'] = ['s1_3_1', 's1_3_2', 's1_3_3', 's1_3_4', 's1_3_5', false, 't9_a', 't9_b', 't9_c', false, 't10_a', 't10_b', 't10_c', 't10_d', 't10_e', false, 's1_3_8', false, 't11_a', 't11_b', 't11_c', 't11_d', false, 's1_3_10', 's1_3_11', 's1_3_12', 'final']; // sesssion 3
+            $session['3'] = ['s1_3_1', 's1_3_2', 's1_3_3', 's1_3_4', 's1_3_5', false, 't9_a', 't9_b', 't9_c', false, 't10_a', 't10_b', 't10_c', 't10_d', 't10_e', 't10_f', 't10_g', false, 's1_3_8', false, 't11_a', 't11_b', 't11_c', 't11_d', false, 's1_3_10', 's1_3_11', 's1_3_12', 'final']; // sesssion 3
             $session['4'] = ['s1_4_1', 's1_4_2', 's1_4_3', 's1_4_4', 's1_4_5', false, 't12_a', 't12_b', 't12_c', false, 't13_a', 't13_b', 't13_c', false, 't14_a', 't14_b', 't14_c', false, 't15_a', 't15_b', 't15_c', false, 't16_a', 't16_b', 't16_c', false, 's1_4_6', 's1_4_7', 'final']; // session 4
             $session['5'] = ['s1_5_1', 's1_5_2', 's1_5_3', 's1_5_4', 's1_5_5', false, 't17_a', 't17_b', false, 't18_a', 't18_b', 't18_c', false, 't19_a', false, 't17_d', 't17_e', 'final']; // session 5
             $session['6'] = ['s1_6_1', 's1_6_2', 's1_6_3', 's1_6_4', 's1_6_5', false, 't20_a', 't20_b', 't20_c', false, 't21_a', 't21_b', 't21_c', false, 's1_6_6', 's1_6_7', 'final']; // session 6
@@ -152,7 +152,7 @@ class Zume_Course_Builder {
             $session['3'] = ['s2_3_1', 's2_3_2', 's2_3_3', 's2_3_4', 's2_3_5', false, 't5_a', 't5_b', 't5_c', false, 's2_3_6', 's2_3_7', 'final'];  // session 3
             $session['4'] = ['s2_4_1', 's2_4_2', 's2_4_3', 's2_4_4', 's2_4_5', false, 't6_a', 't6_b', 't6_c', false, 't8_a', 't8_b', 't8_c', false, 's2_4_6', 's2_4_7', 'final']; // session 4
             $session['5'] = ['s2_5_1', 's2_5_2', 's2_5_3', 's2_5_4', 's2_5_5', false, 't7_a', 't7_b', 't7_cc', 't7_d', false, 's2_5_6', 's2_5_7', 'final']; // session 5
-            $session['6'] = ['s2_6_1', 's2_6_2', 's2_6_3', 's2_6_4', 's2_6_5', false, 't9_a', 't9_b', 't9_c', false, 't13_a', 't13_b', 't13_c', false, 't10_a', 't10_b', 't10_c', 't10_d', 't10_e', false, 's2_6_6', 's2_6_7', 'final']; // session 6
+            $session['6'] = ['s2_6_1', 's2_6_2', 's2_6_3', 's2_6_4', 's2_6_5', false, 't9_a', 't9_b', 't9_c', false, 't13_a', 't13_b', 't13_c', false, 't10_a', 't10_b', 't10_c', 't10_d', 't10_e', 't10_f', 't10_g', false, 's2_6_6', 's2_6_7', 'final']; // session 6
             $session['7'] = ['s2_7_1', 's2_7_2', 's2_7_3', 's2_7_4', 's2_7_5', false, 's2_7_6', 's2_7_7', 's2_7_8', 'final']; // session 7
             $session['8'] = ['s2_8_1', 's2_8_2', 's2_8_3', 's2_8_4', 's2_8_5', false, 't11_a', 't11_b', 't11_c', 't11_d', false, 't12_a', 't12_b', 't12_c', false, 's2_8_6', 's2_8_7', 'final']; // session 8
             $session['9'] = ['s2_9_1', 's2_9_2', 's2_9_3', 's2_9_4', 's2_9_5', false, 's2_9_6', 's2_9_7', 's2_9_8', 's2_9_9', 'final'];    // session 9
@@ -200,7 +200,7 @@ class Zume_Course_Builder {
             false,
             'break',
             false,  // session 1
-                's1_2_5',
+            's1_2_5',
             false,
             't6_a',
             't6_b',
@@ -233,6 +233,8 @@ class Zume_Course_Builder {
             't10_c',
             't10_d',
             't10_e',
+            't10_f',
+            't10_g',
             false,
             's1_3_8',
             false,
@@ -246,7 +248,7 @@ class Zume_Course_Builder {
             false,
             'break',
             false,  // session 3
-                's1_4_5',
+            's1_4_5',
             false,
             't12_a',
             't12_b',
@@ -401,7 +403,13 @@ class Zume_Course_Builder {
 
         $template = [
             1 => __( '(1 min)', 'zume' ),
+            2 => __( '(2 min)', 'zume' ),
+            3 => __( '(3 min)', 'zume' ),
+            4 => __( '(4 min)', 'zume' ),
             5 => __( '(5 min)', 'zume' ),
+            6 => __( '(6 min)', 'zume' ),
+            7 => __( '(7 min)', 'zume' ),
+            8 => __( '(8 min)', 'zume' ),
             10 => __( '(10 min)', 'zume' ),
             15 => __( '(15 min)', 'zume' ),
             20 => __( '(20 min)', 'zume' ),

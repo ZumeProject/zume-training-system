@@ -1,6 +1,7 @@
 import { LitElement, html } from "lit"
 import { live } from 'lit/directives/live.js';
 import { Steps } from "./wizard-constants";
+import { zumeAttachObservers, zumeDetachObservers } from "../../js/zumeAttachObservers";
 
 export class CompleteProfile extends LitElement {
     static get properties() {
@@ -51,11 +52,17 @@ export class CompleteProfile extends LitElement {
         this._handleCityInputChange = this._handleCityInputChange.bind(this)
     }
 
+    firstUpdated() {
+        zumeAttachObservers(this.renderRoot, 'complete-profile')
+    }
+
     updated(properties) {
         if (properties.has('variant')) {
             this.renderRoot.querySelector('.inputs input').focus()
             this.isInfoOpen = false
         }
+        zumeDetachObservers('complete-profile')
+        zumeAttachObservers(this.renderRoot, 'complete-profile')
     }
 
     willUpdate(properties) {
@@ -139,7 +146,7 @@ export class CompleteProfile extends LitElement {
                 </div>
 
             ` : '' }
-            <div class="info-area zume-collapse" data-state=${this.isInfoOpen ? 'open' : 'closed'}>
+            <div class="info-area zume-collapse" ?data-expand=${this.isInfoOpen}>
                 <div class="card mw-50ch mx-auto">
                     <p>${this.infoText}</p>
                     <a class="f--1 gray-500" href=${jsObject.privacy_url + '#personal-information'} target="_blank">${this.t.privacy_page}</a>

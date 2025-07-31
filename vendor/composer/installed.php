@@ -1,114 +1,122 @@
-<?php return array (
-  'root' => 
-  array (
-    'pretty_version' => 'dev-main',
-    'version' => 'dev-main',
-    'aliases' => 
-    array (
+<?php return array(
+    'root' => array(
+        'name' => '__root__',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'a2114bfbe109fbd971ca0c1a2de287a64c195809',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
     ),
-    'reference' => '7615d4a94225b803cfea528e5ee8cf0609465efe',
-    'name' => '__root__',
-  ),
-  'versions' => 
-  array (
-    '__root__' => 
-    array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '7615d4a94225b803cfea528e5ee8cf0609465efe',
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'a2114bfbe109fbd971ca0c1a2de287a64c195809',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'dealerdirect/phpcodesniffer-composer-installer' => array(
+            'pretty_version' => 'v1.0.0',
+            'version' => '1.0.0.0',
+            'reference' => '4be43904336affa5c2f70744a348312336afd0da',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/../dealerdirect/phpcodesniffer-composer-installer',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'gettext/gettext' => array(
+            'pretty_version' => 'v5.7.3',
+            'version' => '5.7.3.0',
+            'reference' => '95820f020e4f2f05e0bbaa5603e4c6ec3edc50f1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../gettext/gettext',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'gettext/languages' => array(
+            'pretty_version' => '2.12.1',
+            'version' => '2.12.1.0',
+            'reference' => '0b0b0851c55168e1dfb14305735c64019732b5f1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../gettext/languages',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'gettext/php-scanner' => array(
+            'pretty_version' => 'v1.3.1',
+            'version' => '1.3.1.0',
+            'reference' => '989a2cffa1d0f43d13b14c83a50429119b5eb8e4',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../gettext/php-scanner',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'kucrut/vite-for-wp' => array(
+            'pretty_version' => 'v0.5.2',
+            'version' => '0.5.2.0',
+            'reference' => '850e04b16b7bebfe6b1a276845d20bd99874fd56',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kucrut/vite-for-wp',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'nikic/php-parser' => array(
+            'pretty_version' => 'v4.19.4',
+            'version' => '4.19.4.0',
+            'reference' => '715f4d25e225bc47b293a8b997fe6ce99bf987d2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../nikic/php-parser',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'php-stubs/wordpress-stubs' => array(
+            'pretty_version' => 'v6.8.1',
+            'version' => '6.8.1.0',
+            'reference' => '92e444847d94f7c30f88c60004648f507688acd5',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-stubs/wordpress-stubs',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'phpcsstandards/phpcsextra' => array(
+            'pretty_version' => '1.3.0',
+            'version' => '1.3.0.0',
+            'reference' => '46d08eb86eec622b96c466adec3063adfed280dd',
+            'type' => 'phpcodesniffer-standard',
+            'install_path' => __DIR__ . '/../phpcsstandards/phpcsextra',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'phpcsstandards/phpcsutils' => array(
+            'pretty_version' => '1.0.12',
+            'version' => '1.0.12.0',
+            'reference' => '87b233b00daf83fb70f40c9a28692be017ea7c6c',
+            'type' => 'phpcodesniffer-standard',
+            'install_path' => __DIR__ . '/../phpcsstandards/phpcsutils',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'squizlabs/php_codesniffer' => array(
+            'pretty_version' => '3.12.2',
+            'version' => '3.12.2.0',
+            'reference' => '6d4cf6032d4b718f168c90a96e36c7d0eaacb2aa',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'wp-coding-standards/wpcs' => array(
+            'pretty_version' => '3.1.0',
+            'version' => '3.1.0.0',
+            'reference' => '9333efcbff231f10dfd9c56bb7b65818b4733ca7',
+            'type' => 'phpcodesniffer-standard',
+            'install_path' => __DIR__ . '/../wp-coding-standards/wpcs',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
     ),
-    'dealerdirect/phpcodesniffer-composer-installer' => 
-    array (
-      'pretty_version' => 'v1.0.0',
-      'version' => '1.0.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '4be43904336affa5c2f70744a348312336afd0da',
-    ),
-    'gettext/gettext' => 
-    array (
-      'pretty_version' => 'v5.7.0',
-      'version' => '5.7.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '8657e580747bb3baacccdcebe69cac094661e404',
-    ),
-    'gettext/languages' => 
-    array (
-      'pretty_version' => '2.10.0',
-      'version' => '2.10.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '4d61d67fe83a2ad85959fe6133d6d9ba7dddd1ab',
-    ),
-    'gettext/php-scanner' => 
-    array (
-      'pretty_version' => 'v1.3.1',
-      'version' => '1.3.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '989a2cffa1d0f43d13b14c83a50429119b5eb8e4',
-    ),
-    'kucrut/vite-for-wp' => 
-    array (
-      'pretty_version' => 'v0.5.2',
-      'version' => '0.5.2.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '850e04b16b7bebfe6b1a276845d20bd99874fd56',
-    ),
-    'nikic/php-parser' => 
-    array (
-      'pretty_version' => 'v4.18.0',
-      'version' => '4.18.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '1bcbb2179f97633e98bbbc87044ee2611c7d7999',
-    ),
-    'phpcsstandards/phpcsextra' => 
-    array (
-      'pretty_version' => '1.2.1',
-      'version' => '1.2.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '11d387c6642b6e4acaf0bd9bf5203b8cca1ec489',
-    ),
-    'phpcsstandards/phpcsutils' => 
-    array (
-      'pretty_version' => '1.0.9',
-      'version' => '1.0.9.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '908247bc65010c7b7541a9551e002db12e9dae70',
-    ),
-    'squizlabs/php_codesniffer' => 
-    array (
-      'pretty_version' => '3.8.1',
-      'version' => '3.8.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '14f5fff1e64118595db5408e946f3a22c75807f7',
-    ),
-    'wp-coding-standards/wpcs' => 
-    array (
-      'pretty_version' => '3.0.1',
-      'version' => '3.0.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'b4caf9689f1a0e4a4c632679a44e638c1c67aff1',
-    ),
-  ),
 );

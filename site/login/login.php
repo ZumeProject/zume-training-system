@@ -14,6 +14,7 @@ class Zume_Training_Login extends Zume_Magic_Page {
     public $root = 'app';
     public $type = 'login';
     public $lang = 'en';
+    public $lang_code = 'en';
     public static $token = 'app_login';
     public $url;
 
@@ -32,9 +33,12 @@ class Zume_Training_Login extends Zume_Magic_Page {
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         if ( $url_parts[0] === $this->type && ! dt_is_rest() ) {
+
+            $this->lang_code = $lang_code;
 
             $this->register_url_and_access();
             $this->header_content();
@@ -62,6 +66,7 @@ class Zume_Training_Login extends Zume_Magic_Page {
     public function header_javascript(){
 
         ?>
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
         <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
@@ -89,6 +94,7 @@ class Zume_Training_Login extends Zume_Magic_Page {
         $show_nav = !$hide_nav;
 
         ?>
+        
 
         <div class="cover-page | position-relative bg-brand-gradient">
 
@@ -108,7 +114,23 @@ class Zume_Training_Login extends Zume_Magic_Page {
             </div>
 
         </div>
-
+        
+        <!-- Event snippet for Submit lead form conversion page
+        In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+        <script>
+        function gtag_report_conversion(url) {
+            var callback = function () {
+                if (typeof(url) != 'undefined') {
+                window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-16678073167/XNCdCMzCyssaEM_m3JA-',
+                'event_callback': callback
+            });
+            return false;
+        }
+        </script>
         <?php
     }
 }

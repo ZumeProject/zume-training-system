@@ -10,7 +10,10 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
     public $root = 'starter_app';
     public $type = 'home';
     public $postid = false;
+    public $piece_id = false;
     public $lang_code = 'en';
+    public $page_description = '';
+    public $canonical_url = 'https://zume.training/';
     public static $token = 'starter_app_home';
 
     private static $_instance = null;
@@ -79,10 +82,11 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
             }
 
             // set page title
-            $this->page_title = get_post_meta( $this->postid , 'zume_piece_h1', true );
+            $this->page_title = get_post_meta( $this->postid, 'zume_piece_h1', true );
             if ( empty( $this->page_title ) ) {
                 $this->page_title = get_the_title( $this->postid );
             }
+            $this->page_description = get_post_meta( $this->postid, 'zume_seo_meta_description', true );
 
             $this->register_url_and_access();
             $this->header_content();
@@ -97,6 +101,7 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
             add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
             add_filter( 'wp_enqueue_scripts', [ $this, 'enqueue_zume_training_scripts' ] );
+
         }
     }
 
@@ -111,19 +116,28 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
     public function header_style(){
 
         // dt_reports logger
-        $logger_type = 'studying';
+        $logger_type = ( is_user_logged_in() ) ? 'training' : 'studying';
         $zume_piece_id = get_post_meta( $this->postid, 'zume_piece', true );
+
         $logger_subtype = $zume_piece_id.'_heard';
         zume_content_logger( $logger_type, $logger_subtype, $this->lang_code );
         ?>
-
         <script>
             jQuery(document).ready(() => {
                 jQuery(document).foundation()
             })
         </script>
 
-        <?php
+        <?php $current_post = get_post( $this->postid ); ?>
+
+        <?php if ( $this->lang_code == 'en' || empty( $this->lang_code ) ) { ?>
+            <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $current_post->post_name ); ?>" />
+        <?php } else { ?>
+            <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $current_post->post_name ); ?>" />
+            <?php
+        }
+
+        zume_hreflang_with_slug( $this->lang_code, $this->postid );
     }
 
     public function header_script() {

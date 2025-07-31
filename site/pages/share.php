@@ -10,6 +10,7 @@ class Zume_Training_Share extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'share';
     public $lang = 'en';
+    public $lang_code = 'en';
     public static $token = 'app_share';
 
     private static $_instance = null;
@@ -30,11 +31,14 @@ class Zume_Training_Share extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         $page_slug = $url_parts[0] ?? '';
 
         if ( $page_slug === $this->type && ! dt_is_rest() ) {
+
+            $this->lang_code = $lang_code;
 
             $this->register_url_and_access();
             $this->header_content();
@@ -68,7 +72,11 @@ class Zume_Training_Share extends Zume_Magic_Page
                 jQuery(document).foundation();
             });
         </script>
+
+         <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
+
         <?php
+        zume_hreflang_fixed( $this->lang_code, $this->type );
     }
 
     public static function translations() {
@@ -97,7 +105,7 @@ class Zume_Training_Share extends Zume_Magic_Page
 
         foreach ( $posts as $post ) {
             $share_items[] = [
-                'page_title' => $post['zume_piece_h1'],
+                'page_title' => empty( $post['zume_piece_h1'] ) ? $training_items[$post['zume_piece']]['title'] : $post['zume_piece_h1'],
                 'page_url' => zume_pieces_pages_url( $post['post_name'] ),
                 'type' => $training_items[$post['zume_piece']]['type'],
                 'key' => $training_items[$post['zume_piece']]['key'],
@@ -139,16 +147,8 @@ class Zume_Training_Share extends Zume_Magic_Page
         </div>
 
         <div class="share-list__wrapper | py-1">
-            <?php if ( empty( $posts ) || !zume_feature_flag( 'pieces_pages', $lang_code ) ): ?>
 
-                <p>No pieces pages for the language code <?php echo esc_html( $lang_code ) ?></p>
-
-            <?php else : ?>
-
-                <share-list items="<?php echo esc_attr( json_encode( $share_items ) ) ?>"></share-list>
-
-            <?php endif; ?>
-
+            <share-list items="<?php echo esc_attr( json_encode( $share_items ) ) ?>"></share-list>
             <noscript>
                 <ul class="stack container-xsm">
                     <?php foreach ( $share_items as $item ): ?>

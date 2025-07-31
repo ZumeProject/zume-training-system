@@ -114,6 +114,8 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.renderTrainingGroupLink = this.renderTrainingGroupLink.bind(this)
         this.openVideoModal = this.openVideoModal.bind(this)
         this.openCourseExplorer = this.openCourseExplorer.bind(this)
+        this.handlePopState = this.handlePopState.bind(this)
+        this.openProfile = this.openProfile.bind(this)
     }
 
     connectedCallback() {
@@ -128,6 +130,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.addEventListener('open-3-month-plan', this.open3MonthPlan)
         window.addEventListener('open-video-modal', this.openVideoModal)
         window.addEventListener('open-course-explorer', this.openCourseExplorer)
+        window.addEventListener('open-profile', this.openProfile)
         window.addEventListener('user-state:change', this.refetchState)
         window.addEventListener('user-state:change', this.getCtas)
         window.addEventListener('user-host:change', this.refetchHost)
@@ -136,6 +139,7 @@ export class DashBoard extends navigator(router(LitElement)) {
 
         window.addEventListener('load', this.showCelebrationModal)
         window.addEventListener('ctas:changed', this.showCelebrationModal)
+        window.addEventListener('popstate', this.handlePopState)
 
         this.addEventListener('route', this.updateLanguageSwitcher)
     }
@@ -158,6 +162,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.removeEventListener('wizard-finished', this.redirectToPage)
         window.removeEventListener('open-3-month-plan', this.open3MonthPlan)
         window.removeEventListener('open-video-modal', this.openVideoModal)
+        window.removeEventListener('open-profile', this.openProfile)
         window.removeEventListener('user-state:change', this.refetchState)
         window.removeEventListener('user-state:change', this.getCtas)
         window.removeEventListener('user-host:change', this.refetchHost)
@@ -172,7 +177,6 @@ export class DashBoard extends navigator(router(LitElement)) {
     async firstUpdated() {
         this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
         this.getCtas()
-
         const celebrationModal = this.renderRoot.querySelector('#celebration-modal')
         if (celebrationModal) {
             jQuery(celebrationModal).on('closed.zf.reveal', () => {
@@ -186,14 +190,46 @@ export class DashBoard extends navigator(router(LitElement)) {
             courseExplorerModal.querySelector('.loading-spinner').classList.remove('active')
         })
 
-        this.trainingGroupsOpen = jQuery('#training-groups-menu').hasClass(
-            'is-active'
-        )
-
         this.isVimeoAvailable = await checkVimeoAvailability()
 
         jQuery('#video-modal').on('closed.zf.reveal', this.stopVideoModal)
         jQuery('#course-explorer').on('closed.zf.reveal', this.clearCourseExplorer)
+        this.trainingGroupsOpen = jQuery('#training-groups-menu').hasClass('is-active')
+
+        const profileModal = document.querySelector('#profile-modal')
+        if (profileModal) {
+            jQuery(profileModal).on('closed.zf.reveal', () => {
+                this.closeProfilePushState()
+            })
+        }
+
+
+        // Initialize Foundation
+        jQuery(this.renderRoot).foundation()
+
+        // Check for profile parameter in URL
+        const urlParams = new URLSearchParams(window.location.search)
+        if (urlParams.get('profile') === 'true') {
+            // Wait for Foundation to be ready
+            setTimeout(() => {
+                this.openProfile()
+                // Remove the parameter from URL without reloading
+                const newUrl = window.location.pathname + window.location.hash
+                window.history.replaceState({}, '', newUrl)
+            }, 0)
+        }
+    }
+
+    handlePopState(event) {
+        if (event.state) {
+          const { profile } = event.state
+          const url = new URL(window.location.href)
+          if (profile || url.searchParams.get('profile') === 'true') {
+              this.openProfileModal()
+          } else {
+              this.closeProfileModal()
+          }
+        }
     }
 
     updateWizardType(event) {
@@ -263,7 +299,7 @@ export class DashBoard extends navigator(router(LitElement)) {
 
         if (this.route === RouteNames.myTraining) {
             const code = this.params.code
-            return makeComponent(code)
+            return makeComponent(code, this.userProfile)
         }
 
         const isLocked = DashBoard.getLockedStatus(this.route, this.userState)
@@ -440,6 +476,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.wizardParams = params
     }
     closeWizard() {
+        console.log('closing wizard')
         this.wizardType = ''
         this.wizardParams = ''
         const modal = document.querySelector('#wizard-modal')
@@ -652,10 +689,25 @@ export class DashBoard extends navigator(router(LitElement)) {
         }
     }
     openProfile() {
+        const url = new URL(window.location.href)
+        url.searchParams.set('profile', 'true')
+        window.history.pushState({ profile: true }, null, url.toString())
+        this.openProfileModal()
+    }
+    closeProfile() {
+      this.closeProfilePushState()
+      this.closeProfileModal()
+    }
+    closeProfilePushState() {
+      const url = new URL(window.location.href)
+      url.searchParams.delete('profile')
+      window.history.pushState({ profile: false }, null, url.toString())
+    }
+    openProfileModal() {
         const modal = document.querySelector('#profile-modal')
         jQuery(modal).foundation('open')
     }
-    closeProfile() {
+    closeProfileModal() {
         const modal = document.querySelector('#profile-modal')
         jQuery(modal).foundation('close')
     }
@@ -698,6 +750,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                 Wizards.makeFirstGroup,
                 Wizards.joinATraining,
                 Wizards.joinFriendsPlan,
+                Wizards.planDecision,
             ].includes(type)
         ) {
             zumeRequest.get( 'plans', {}).then(
@@ -1153,7 +1206,7 @@ export class DashBoard extends navigator(router(LitElement)) {
             <div class="reveal full" id="wizard-modal" data-reveal>
                 <zume-wizard
                     type=${this.wizardType}
-                    .params=${this.wizardParams}
+                    .params=${this.wizardParams || {}}
                     .user=${this.userProfile}
                     .translations=${jsObject.wizard_translations}
                     noUrlChange

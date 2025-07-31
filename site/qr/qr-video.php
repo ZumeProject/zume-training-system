@@ -11,6 +11,7 @@ class Zume_QR_Video extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'video';
     public $lang = 'en';
+    public $lang_code = 'en';
     public static $token = 'app_video';
 
     private static $_instance = null;
@@ -27,6 +28,7 @@ class Zume_QR_Video extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         if ( isset( $url_parts[0] ) && ( $this->root === $url_parts[0] && $this->type === $url_parts[1] ) && ! dt_is_rest() ) {
@@ -56,8 +58,7 @@ class Zume_QR_Video extends Zume_Magic_Page
         return zume_training_magic_url_base_allowed_css();
     }
 
-    public function header_style(){
-    }
+    public function header_style(){}
 
     public function body(){
         if ( isset( $_GET['id'] ) && ! is_numeric( $_GET['id'] ) ) {

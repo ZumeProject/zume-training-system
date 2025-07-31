@@ -1,14 +1,14 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
-
+return;
 
 /**
- * DT_Porch_Landing_Roles Class
+ * Zume_Landing_Roles Class
  *
  * @package  Disciple_Tools
  * @since    0.1.0
  */
-class DT_Porch_Landing_Roles
+class Zume_Landing_Roles
 {
     // needs to match post-type.php
     public $post_type = 'zume_page';
@@ -119,4 +119,4 @@ class DT_Porch_Landing_Roles
         return $allowed_wp_v2_paths;
     }
 } // End Class
-DT_Porch_Landing_Roles::instance();
+Zume_Landing_Roles::instance();

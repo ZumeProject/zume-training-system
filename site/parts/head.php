@@ -27,3 +27,6 @@ if ( $server_name === 'zume.training' ) {
         environment: '<?php echo esc_js( $environment ) ?>'
     });
 </script>
+
+<!-- action zume_head -->
+<?php do_action( 'zume_head' ) ?>

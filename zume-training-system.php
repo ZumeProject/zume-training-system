@@ -100,6 +100,7 @@ class Zume_Training {
         // datatable
         global $wpdb, $table_prefix;
         $wpdb->dt_zume_message_plan = $table_prefix . 'dt_zume_message_plan';
+        $wpdb->location_grid_cities = $table_prefix . 'location_grid_cities';
 
         $this->define_constants();
         $this->setup_hooks();
@@ -113,6 +114,17 @@ class Zume_Training {
         require_once( 'maps/loader.php' );
 
         require_once( 'languages/translator-app/loader.php' );
+
+        if ( ! dt_is_rest() ) {
+            [
+                'lang_code' => $lang_code,
+            ] = zume_get_url_pieces();
+
+            $language_code = zume_get_language_cookie();
+            if ( $language_code !== $lang_code ) {
+                zume_set_language_cookie( $lang_code );
+            }
+        }
     }
     public static function activation() {
     }
@@ -146,6 +158,14 @@ class Zume_Training {
         add_filter( 'pre_redirect_guess_404_permalink', '__return_false' );
         add_filter( '404_template_hierarchy', [ $this, 'filter_404_template_hierarchy' ], 100, 3 );
         add_filter( 'language_attributes', [ $this, 'filter_language_attributes' ], 10, 2 );
+        add_filter( 'dt_set_roles_and_permissions', [ $this, 'filter_set_roles_and_permissions' ], 10, 1 );
+        add_filter( 'dt_filter_access_permissions', [ $this, 'filter_access_permissions' ], 10, 2 );
+
+        // add message placeholders
+        add_filter( 'dt_post_messaging_message_default', [ $this, 'filter_post_messaging_message_default' ], 10, 2 );
+        add_filter( 'dt_post_messaging_message_placeholders', [ $this, 'filter_post_messaging_message_placeholders' ], 10, 2 );
+        add_filter( 'dt_post_messaging_message', [ $this, 'filter_post_messaging_message' ], 10, 3 );
+        add_filter( 'dt_post_messaging_headers', [ $this, 'filter_post_messaging_headers' ], 10, 3 );
 
         /* Ensure that Login is enabled and settings set to the correct values */
         $fields = [
@@ -168,6 +188,245 @@ class Zume_Training {
         if ( class_exists( 'DT_Login_Fields' ) ) { // if outside DT context, don't run this
             DT_Login_Fields::update( $fields );
         }
+
+        add_action( 'wp_head', [ $this, 'insert_head_scripts' ] );
+    }
+
+    public function filter_post_messaging_message_default( $default_message, $post_type ) {
+
+        if ( $post_type === 'contacts' ) {
+            $default_message = '
+
+Great news we have some new trainings coming up!
+
+{{upcoming-trainings}}
+
+Thanks!
+
+{{language en}}
+';
+
+        }
+
+        return $default_message;
+    }
+
+    public function filter_post_messaging_message_placeholders( $placeholders, $post_type ) {
+        if ( $post_type === 'contacts' ) {
+            $zume_languages = zume_languages();
+            $placeholders = [
+                [
+                    'name' => '{{training abc123}}',
+                    'description' => __( 'Add the details for training with code abc123', 'zume' ),
+                    'help' => [
+                        'id' => 'training_abc123',
+                        'title' => __( 'Training Details Placeholder', 'zume' ),
+                        'description' => __( 'Add the details for training with code abc123. Use the training join code to replace abc123 in the placeholder.', 'zume' ),
+                    ],
+                ],
+                [
+                    'name' => '{{upcoming-trainings}}',
+                    'description' => __( 'Add the details for upcoming trainings', 'zume' ),
+                    'help' => [
+                        'id' => 'upcoming_trainings',
+                        'title' => __( 'Upcoming Trainings Placeholder', 'zume' ),
+                        'description' => __( "Add the details for upcoming trainings. This will display the details for all upcoming trainings that haven't started yet.", 'zume' ),
+                    ],
+                ],
+                [
+                    'name' => '{{language fr}}',
+                    'description' => __( 'Set the language to e.g. fr', 'zume' ),
+                    'help' => [
+                        'id' => 'language_fr',
+                        'title' => __( 'Language Placeholder', 'zume' ),
+                        'description' => __( 'Set the language to e.g. french. Use the language code to replace fr in the placeholder.', 'zume' ),
+                        'items' => array_map( function ( $lang ) {
+                            return [
+                                'title' => $lang['code'],
+                                'text' => $lang['name'],
+                            ];
+                        }, $zume_languages ),
+                    ],
+                ],
+            ];
+        }
+        return $placeholders;
+    }
+
+    public function filter_post_messaging_message( $message, $post ) {
+        if ( $post['post_type'] === 'contacts' ) {
+            $contact_id = $post['ID'];
+            $user_id = zume_get_user_id_by_contact_id( $contact_id );
+
+            // this also handily sets the global $zume_user_profile variable for the building of the email
+            $user_profile = zume_get_user_profile( $user_id );
+            $preferred_language = $user_profile['preferred_language'];
+
+            if ( str_contains( $message, '{{language ' ) ) {
+                preg_match( '/{{language ([^}]+)}}/', $message, $matches );
+                $lang_code = $matches[1];
+
+                $lang_codes = zume_language_codes();
+
+                $lang_code = !empty( $lang_code ) && in_array( $lang_code, array_values( $lang_codes ) ) ? $lang_code : 'en';
+                $lang_locale = zume_get_language_locale( $lang_code );
+
+                add_filter( 'determine_locale', function ( $locale ) use ( $lang_locale ) {
+                    return $lang_locale;
+                } );
+                determine_locale();
+                zume_i18n();
+
+                $message = preg_replace( '/{{language ([^}]+)}}/', '', $message );
+            }
+
+            // Add a <br> after each line in the message
+            $message = preg_replace( '/(\r?\n)/', '<br>', $message );
+
+            $build_table = function ( array $trainings ) use ( $lang_code ) {
+                if ( count( $trainings ) === 0 ) {
+                    return '';
+                }
+
+                $build_row = function ( $row ) {
+                    return '<tr><td>' . implode( '</td><td>', $row ) . '</td></tr>';
+                };
+
+                $rows = [];
+
+                $table_head = [
+                    esc_html__( 'Day', 'zume' ),
+                    esc_html__( 'Time', 'zume' ),
+                    esc_html__( 'Timezone', 'zume' ),
+                    esc_html__( 'Language', 'zume' ),
+                    '',
+                ];
+                $table_head = $build_row( $table_head );
+
+                foreach ( $trainings as $training ) {
+                    $join_key = $training['join_key'];
+                    $table_row = [
+                        $training['day_of_week'],
+                        $training['time_of_day_formatted'],
+                        $training['timezone_note'],
+                        $training['language_note'],
+                        $training['join_key'] ? '<a class="button button--primary" href="' . site_url( "$lang_code/training-group/$join_key" ) . '">' . esc_html__( 'Learn More', 'zume' ) . '</a>' : '',
+                    ];
+                    $table_row = $build_row( $table_row );
+                    $rows[] = $table_row;
+                }
+
+                $table_body = implode( '', $rows );
+
+                return "
+                    <table>
+                        <thead>
+                            $table_head
+                        </thead>
+                        <tbody>
+                            $table_body
+                        </tbody>
+                    </table>
+                ";
+            };
+
+            if ( str_contains( $message, '{{training ' ) ) {
+                // get each training code from the message
+                $training_codes = [];
+                preg_match_all( '/{{training ([^}]+)}}/', $message, $matches );
+                $training_codes = $matches[1];
+                // for each training code, get the training details
+                foreach ( $training_codes as $training_code ) {
+                    $training = Zume_Plans_Model::get_plan_by_code( $training_code, $lang_locale );
+                    if ( $training ) {
+                        $training_table = $build_table( [ $training ] );
+
+                        $message = str_replace( '{{training ' . $training_code . '}}', $training_table, $message );
+                    } else {
+                        $message = str_replace( '{{training ' . $training_code . '}}', '', $message );
+                    }
+                }
+            }
+            if ( str_contains( $message, '{{upcoming-trainings}}' ) ) {
+                $public_trainings = Zume_Plans_Model::get_public_plans( $lang_locale );
+                // filter the trainings for those that start in the future
+                $future_trainings = array_filter( $public_trainings, function ( $training ) {
+                    return $training['current_session'] === 1;
+                } );
+
+                if ( count( $future_trainings ) > 0 ) {
+                    $training_table = $build_table( $future_trainings );
+                    $message = str_replace( '{{upcoming-trainings}}', $training_table, $message );
+                } else {
+                    $message = str_replace( '{{upcoming-trainings}}', '', $message );
+                }
+            }
+            return Zume_System_Encouragement_API::build_email( $message, $preferred_language, $user_id );
+        }
+        return $message;
+    }
+
+    public function filter_post_messaging_headers( $headers, $post, $args ) {
+        if ( $post['post_type'] === 'contacts' ) {
+            $headers[] = 'Content-Type: text/html; charset=UTF-8';
+            $headers[] = 'MIME-Version: 1.0';
+            $headers[] = 'X-Zume-Email-System: 1.0';
+        }
+        return $headers;
+    }
+
+    public function filter_set_roles_and_permissions( $expected_roles ) {
+        $permissions = [
+            'access_contacts' => true,
+        ];
+
+        if ( !isset( $expected_roles['zume_admin'] ) ) {
+            $expected_roles['zume_admin'] = [
+                'label' => __( 'Zume Admin', 'zume' ),
+                'description' => 'Administrates Zume',
+                'permissions' => $permissions,
+            ];
+        }
+
+        if ( isset( $expected_roles['multiplier'] ) ) {
+            $expected_roles['multiplier']['permissions']['access_disciple_tools'] = false;
+        }
+
+        return $expected_roles;
+    }
+
+    public function filter_access_permissions( $permissions, $post_type ) {
+        if ( $post_type === 'contacts' && current_user_can( 'zume_admin' ) ) {
+            $permissions = [];
+        }
+        return $permissions;
+    }
+
+    public function insert_head_scripts() {
+        [
+            'lang_code' => $lang_code,
+            'url_parts' => $url_parts,
+        ] = zume_get_url_pieces();
+
+        if ( ! in_array( $url_parts[0], [ 'share', 'resources', 'training', 'about', 'how-to-follow-jesus'] ) ) {
+            return;
+        }
+
+        /**
+        ?>
+            <!-- Chipp Chat Widget -->
+            <script>
+            window.CHIPP_APP_URL = "https://zmecopilot-44723.chipp.ai";
+            window.CHIPP_APP_ID = 44723;
+            </script>
+
+            <!-- phpcs:disable -->
+            <link rel="stylesheet" href="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.css" />
+
+            <script defer src="https://storage.googleapis.com/chipp-chat-widget-assets/build/bundle.js"></script>
+            <!-- phpcs:enable -->
+        <?php
+        **/
     }
 
     /**
@@ -345,6 +604,38 @@ class Zume_Training {
                     'only_for_types' => [ 'user' ],
                 ];
             }
+            if ( !isset( $fields['notify_of_future_trainings'] ) ){
+                $fields['notify_of_future_trainings'] = [
+                    'name' => __( 'Notify of Future Trainings', 'zume' ),
+                    'type' => 'boolean',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
+            if ( !isset( $fields['notify_of_future_trainings_date_subscribed'] ) ){
+                $fields['notify_of_future_trainings_date_subscribed'] = [
+                    'name' => __( 'Notify of Future Trainings Date Subscribed', 'zume' ),
+                    'type' => 'date',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
+            if ( !isset( $fields['hide_public_progress'] ) ){
+                $fields['hide_public_progress'] = [
+                    'name' => __( 'Hide my progress from other participants in trainings', 'zume' ),
+                    'type' => 'boolean',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
+            if ( !isset( $fields['hide_public_contact'] ) ){
+                $fields['hide_public_contact'] = [
+                    'name' => __( 'Hide my contact information from other participants in trainings', 'zume' ),
+                    'type' => 'boolean',
+                    'tile' => 'profile_details',
+                    'only_for_types' => [ 'user' ],
+                ];
+            }
             if ( !isset( $fields['coaching_contact_id'] ) ){
                 $fields['coaching_contact_id'] = [
                     'name' => __( 'Coaching Contact ID', 'zume' ),
@@ -466,7 +757,7 @@ class Zume_Training {
             'language_code' => $user_language['code'] ?? 'en',
         ], true );
 
-        Zume_System_Encouragement_API::_install_plan( $user->ID, Zume_System_Encouragement_API::_get_recommended_plan( $user->ID, 'training', 'registered' ) );
+        // Zume_System_Encouragement_API::update_plan( $user->ID, 'training', 'registered' ); @todo remove this
     }
     public function dt_update_users_corresponding_contact( mixed $contact, WP_User $user ) {
         $current_user = wp_get_current_user();
@@ -491,6 +782,7 @@ class Zume_Training {
         }
     }
     public function dt_login_url( $dt_login_url ) {
+
         $dt_login_url = str_replace( $this->builtin_login_url, $this->login_url, $dt_login_url );
 
         $current_language = 'en';
@@ -524,6 +816,7 @@ class Zume_Training {
         return $current_language . '/' . $dt_login_url;
     }
     public function dt_login_redirect_url( $redirect_url ) {
+
         $url = new DT_URL( $redirect_url );
 
         $parsed_url = $url->parsed_url;
@@ -624,4 +917,24 @@ class Zume_Training {
         unset( $method, $args );
         return null;
     }
+}
+function log_call_stack() {
+    if ( dt_is_rest() ) {
+        return;
+    }
+    if ( wp_doing_cron() ) {
+        return;
+    }
+    // Add call stack to the log
+    $backtrace = debug_backtrace();
+    $call_stack = [];
+
+    foreach ( $backtrace as $index => $trace ) {
+        $file = isset( $trace['file'] ) ? basename( $trace['file'] ) : 'unknown';
+        $line = isset( $trace['line'] ) ? $trace['line'] : 'unknown';
+        $function = isset( $trace['function'] ) ? $trace['function'] : 'unknown';
+        $call_stack[] = "#{$index} {$file}:{$line} - {$function}()";
+    }
+    dt_write_log( 'Call Stack:' );
+    dt_write_log( $call_stack );
 }

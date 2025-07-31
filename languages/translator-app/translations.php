@@ -260,19 +260,23 @@ class Zume_Training_Translations extends Zume_Magic_Page
         </div>
         <div class="grid-x grid-padding-x" style="margin-top: 100px;">
 
-            <!-- OVERVIEW SECTION -->
-            <div class="cell medium-12" style="border-bottom: 1px solid lightgrey; padding-bottom: 1.5em;margin-bottom:1.5em;">
-                <strong style="text-decoration: underline;">ENGLISH WORDS</strong>:
-                <strong>Weblate:</strong> <?php echo number_format( $strings ); ?> words |
-                <strong>Scripts:</strong> <?php echo number_format( $scripts ); ?> words |
-                <strong>Activities:</strong> <?php echo number_format( $activities ); ?> words |
-                <strong>Messages:</strong> <?php echo number_format( $messages ); ?> words |
-                <strong>Pieces:</strong> <?php echo number_format( $pieces ); ?> words ||
-                <strong style="text-decoration: underline;">TOTAL:</strong> <?php echo number_format( $pieces + $scripts + $activities + $messages + $strings ); ?> words
+            <!-- FOCUS -->
+            <div class="cell medium-12">
+                <select id="focus-list">
+                    <option value="">Focus List</option>
+                    <option disabled>-------</option>
+                    <option value="all">Show All</option>
+                    <?php
+                    foreach ( $zume_languages_full_list as $l ) {
+                        ?><option value="<?php echo $l['code'] ?>"><?php echo $l['name'] ?></option><?php
+                    }
+                    ?>
+                </select>
             </div>
 
             <!-- CONTENT LIST SECTION -->
             <div class="cell medium-12">
+                <h3>TRANSLATION STATUS</h3>
                 <table class="hover click-table" id="content-table">
                     <thead>
                     <tr>
@@ -302,7 +306,7 @@ class Zume_Training_Translations extends Zume_Magic_Page
                         $pp = translation_get_percent( $p, 160 );
                         $web = round( $weblate[$code] );
                         ?>
-                        <tr class="<?php echo $code ?>" data-value="<?php echo esc_html( $code )  ?>">
+                        <tr class="focus <?php echo $code ?>" data-value="<?php echo esc_html( $code )  ?>">
                             <td><?php echo $count ?></td>
                             <td><a href="/<?php echo esc_attr( $code ) ?>/app/translator/?tab=status"><?php echo esc_attr( $name ) ?></a></td>
                             <td><span class="percent-<?php echo $web ?>"><?php echo $web ?>%</span></td>
@@ -322,23 +326,21 @@ class Zume_Training_Translations extends Zume_Magic_Page
 
             <!-- PUBLISH STATUS SECTION -->
             <div class="cell medium-12">
-                <h3>PUBLISHED STATUS</h3><hr></hr>
+                <h3>PUBLISHED STATUS</h3>
                 <table class="hover click-table" id="global-table">
                     <thead>
                     <tr>
                         <th style="width:1%"></th>
-                        <th style="width:8%">Display</th>
+                        <th style="width:8%">Language</th>
                         <th style="width:8%">Native</th>
                         <th style="width:4%">Population</th>
                         <th style="width:2%">RTL</th>
                         <th style="width:2%">Code</th>
                         <th style="width:2%">Locale</th>
                         <th style="width:2%">Weblate</th>
-                        <th style="width:4%">v4 Available</th>
                         <th style="width:4%">Translator Enabled</th>
                         <th style="width:4%">v5 Ready</th>
                         <th style="width:4%">Pieces</th>
-                        <th style="width:4%">Slides</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -347,20 +349,19 @@ class Zume_Training_Translations extends Zume_Magic_Page
                     foreach ( $column as $name => $code ) {
                         $language = $zume_languages_full_list[$code];
                         ?>
-                        <tr class="<?php echo esc_html( $language['code'] )  ?>" data-value="<?php echo esc_html( $language['code'] )  ?>">
+                        <tr class="focus <?php echo esc_html( $language['code'] )  ?>" data-value="<?php echo esc_html( $language['code'] )  ?>">
                             <td><?php echo esc_html( $globe_count ) ?></td>
-                            <td><?php echo esc_html( $language['enDisplayName'] ) ?></td>
+                            <td><a href="/<?php echo esc_attr( $code ) ?>/app/translator/?tab=status"><?php echo esc_html( $language['enDisplayName'] ) ?></a></td>
                             <td><?php echo esc_html( $language['nativeName'] ) ?></td>
                             <td><?php echo esc_html( number_format( $language['population'] ) ) ?></td>
                             <td><?php echo ( $language['rtl'] ) ?'Yes' :'No' ?></td>
                             <td><?php echo esc_html( $language['code'] ) ?></td>
                             <td><?php echo esc_html( $language['locale'] ) ?></td>
                             <td><?php echo esc_html( $language['weblate'] ) ?></td>
-                            <td><?php echo ( $language['enable_flags']['version_4_available'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+                            
                             <td><?php echo ( $language['enable_flags']['translator_enabled'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $language['enable_flags']['version_5_ready'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $language['enable_flags']['pieces_pages'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
-                            <td><?php echo ( $language['enable_flags']['course_slides_download'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                         </tr>
                         <?php
                         $globe_count++;
@@ -369,6 +370,88 @@ class Zume_Training_Translations extends Zume_Magic_Page
                     </tbody>
                 </table>
             </div>
+
+            <!-- PUBLISH STATUS SECTION -->
+            <div class="cell medium-12">
+                <h3>DOWNLOADS</h3>
+                <table class="hover click-table" id="global-table">
+                    <thead>
+                    <tr>
+                        <th style="width:1%"></th>
+                        <th style="width:8%">Language</th>
+                        <th style="width:3%">10s bk</th>
+                        <th style="width:3%">10s key</th>
+                        <th style="width:3%">10s ppt</th>
+
+                        <th style="width:1%; border-left:1px solid grey;"></th>
+
+                        <th style="width:3%">20s bk</th>
+                        <th style="width:3%">20s key</th>
+                        <th style="width:3%">20s ppt</th>
+
+                        <th style="width:1%; border-left:1px solid grey;"></th>
+
+                        <th style="width:3%">Int bk</th>
+                        <th style="width:3%">Int key</th>
+                        <th style="width:3%">Int ppt</th>
+
+                        
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $globe_count = 1;
+                    $downloads = zume_get_downloads_list();
+                    foreach ( $column as $name => $code ) {
+                        $language = $zume_languages_full_list[$code];
+                        $elements = $downloads[$code];
+                        if ( empty( $elements ) ) {
+                            continue;
+                        }
+                        ?>
+                        <tr class="focus <?php echo esc_html( $language['code'] )  ?>" data-value="<?php echo esc_html( $language['code'] )  ?>">
+                            <td><?php echo esc_html( $globe_count ) ?></td>
+                            <td><a href="/<?php echo esc_attr( $code ) ?>/app/translator/?tab=status"><?php echo esc_html( $language['enDisplayName'] ) ?></a></td>
+
+                            <td><?php echo ( $elements['guidebook_10_session'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+                            <td><?php echo ( $elements['key_10_session'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+                            <td><?php echo ( $elements['ppt_10_session'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+
+                            <td style="width:1%; border-left:1px solid grey;"></td>
+
+                            <td><?php echo ( $elements['guidebook_20_session'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+                            <td><?php echo ( $elements['key_20_session'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+                            <td><?php echo ( $elements['ppt_20_session'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+
+                            <td style="width:1%; border-left:1px solid grey;"></td>
+
+                            <td><?php echo ( $elements['guidebook_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+                            <td><?php echo ( $elements['key_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+                            <td><?php echo ( $elements['ppt_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+
+                        </tr>
+                        <?php
+                        $globe_count++;
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- BASICS -->
+            <div class="cell medium-12">
+                <h3>BASICS</h3>
+            </div>
+            <div class="cell medium-12" style="border-bottom: 1px solid lightgrey; padding-bottom: 1.5em;margin-bottom:1.5em;">
+                <strong style="text-decoration: underline;">ENGLISH WORDS</strong>:
+                <strong>Weblate:</strong> <?php echo number_format( $strings ); ?> words |
+                <strong>Scripts:</strong> <?php echo number_format( $scripts ); ?> words |
+                <strong>Activities:</strong> <?php echo number_format( $activities ); ?> words |
+                <strong>Messages:</strong> <?php echo number_format( $messages ); ?> words |
+                <strong>Pieces:</strong> <?php echo number_format( $pieces ); ?> words ||
+                <strong style="text-decoration: underline;">TOTAL:</strong> <?php echo number_format( $pieces + $scripts + $activities + $messages + $strings ); ?> words
+            </div>
+
             <script>
                 jQuery(document).ready(function(){
                     jQuery('.en').css('background-color', 'yellow' )
@@ -377,6 +460,17 @@ class Zume_Training_Translations extends Zume_Magic_Page
                         jQuery('tr').css('background-color', '')
                         let code = jQuery(this).data('value')
                         jQuery('.'+code).css('background-color', 'yellow' )
+                    })
+
+                    jQuery('#focus-list').on('change', function(){
+                        let lang = jQuery(this).val()
+                        if ( 'all' !== lang ) {
+                            jQuery('.focus').hide()
+                            jQuery('.'+lang).show()
+                        } else {
+                            jQuery('.focus').show()
+                        }
+
                     })
                 })
             </script>
@@ -387,7 +481,41 @@ class Zume_Training_Translations extends Zume_Magic_Page
 }
 Zume_Training_Translations::instance();
 
+function zume_get_downloads_list() {
+    global $wpdb;
+    $list_raw = $wpdb->get_results( "
+            SELECT p.ID, p.post_title as lang_code,
+                pm1.meta_value as ppt_10_session,
+                pm2.meta_value as ppt_20_session,
+                pm3.meta_value as ppt_intensive,
+                pm4.meta_value as guidebook_10_session,
+                pm5.meta_value as guidebook_20_session,
+                pm6.meta_value as guidebook_intensive,
+                pm7.meta_value as store_url,
+                pm8.meta_value as key_10_session,
+                pm9.meta_value as key_20_session,
+                pm10.meta_value as key_intensive
+            FROM zume_posts p
+            LEFT JOIN zume_postmeta pm1 ON pm1.post_id=p.ID AND pm1.meta_key = 'ppt_10_session'
+            LEFT JOIN zume_postmeta pm2 ON pm2.post_id=p.ID AND pm2.meta_key = 'ppt_20_session'
+            LEFT JOIN zume_postmeta pm3 ON pm3.post_id=p.ID AND pm3.meta_key = 'ppt_intensive'
+            LEFT JOIN zume_postmeta pm4 ON pm4.post_id=p.ID AND pm4.meta_key = 'guidebook_10_session'
+            LEFT JOIN zume_postmeta pm5 ON pm5.post_id=p.ID AND pm5.meta_key = 'guidebook_20_session'
+            LEFT JOIN zume_postmeta pm6 ON pm6.post_id=p.ID AND pm6.meta_key = 'guidebook_intensive'
+            LEFT JOIN zume_postmeta pm7 ON pm7.post_id=p.ID AND pm7.meta_key = 'store_url'
+            LEFT JOIN zume_postmeta pm8 ON pm8.post_id=p.ID AND pm8.meta_key = 'key_10_session'
+            LEFT JOIN zume_postmeta pm9 ON pm9.post_id=p.ID AND pm9.meta_key = 'key_20_session'
+            LEFT JOIN zume_postmeta pm10 ON pm10.post_id=p.ID AND pm10.meta_key = 'key_intensive'
+            WHERE p.post_type = 'zume_download'
+    ", ARRAY_A );
 
+    $list = [];
+    foreach( $list_raw as $item ) {
+        $list[$item['lang_code']] = $item;
+    }
+
+    return $list;
+}
 function zume_string_count_scripts( $language ) {
     $count = 0;
     $scripts = list_zume_scripts( $language );

@@ -7,9 +7,7 @@ require_once( 'integrations/polylang-integration.php' );
 require_once( 'integrations/urls.php' );
 require_once( 'integrations/i18n.php' );
 
-$skip_folders = [
-//    'integrations',
-];
+$skip_folders = [];
 
 // Load all other files
 $dir = scandir( __DIR__ );

@@ -177,6 +177,8 @@ class Zume_Course {
                 return 61;
             case '30':
                 return 62;
+            case '33':
+                return 63;
             default:
                 return -1;
         }

@@ -16,7 +16,8 @@ add_action( 'dt_post_updated', function ( $post_type, $post_id, $fields, $existi
                     'subtype' => 'new_church',
                     'post_id' => $post_id,
                     'user_id' => (int) $post['assigned_to']['id'],
-                ], [
+                ],
+                [
                     'user_id' => (int) $post['assigned_to']['id'],
                     'post_id' => $post_id,
                     'lat' => (float) $post['location_grid_meta'][0]['lat'],

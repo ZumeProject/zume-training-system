@@ -35,11 +35,13 @@ class Zume_Training_Presenter extends Zume_Magic_Page
             'url_parts' => $url_parts,
         ] = zume_get_url_pieces();
 
-        $this->lang_code = $lang_code;
 
         $page_slug = $url_parts[0] ?? '';
 
         if ( str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
+
+            $this->lang_code = $lang_code;
+
 
             $this->register_url_and_access();
             $this->header_content();
@@ -74,12 +76,12 @@ class Zume_Training_Presenter extends Zume_Magic_Page
         global $zume_user_profile;
 
         ?>
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
         <script>
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
             });
-        </script>
-        <script>
+
             const jsObject = [<?php echo json_encode([
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'root' => esc_url_raw( rest_url() ),
@@ -100,6 +102,8 @@ class Zume_Training_Presenter extends Zume_Magic_Page
 
             const zumeIntensiveSessions = [<?php echo json_encode( Zume_Course_Builder::builder( 'intensive', $this->lang_code ) ) ?>][0]
             const zumeIntensiveSessionsMenu = [<?php echo json_encode( Zume_Course_Builder::menu( 'intensive', $this->lang_code ) ) ?>][0]
+
+            const zumeTrainingItems = [<?php echo json_encode( zume_training_items() ) ?>][0]
         </script>
 
         <?php

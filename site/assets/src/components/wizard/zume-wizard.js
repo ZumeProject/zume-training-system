@@ -1,9 +1,9 @@
-import { AttributePart, LitElement, html } from "lit"
-import { html as staticHtml, literal } from "lit/static-html.js"
-import { Steps,  Wizards } from "./wizard-constants"
-import { WizardStateManager } from "./wizard-state-manager"
-import { WizardModuleManager } from "./wizard-module-manager"
-import { escapeObject } from "../../main"
+import { LitElement, html } from 'lit'
+import { html as staticHtml, literal } from 'lit/static-html.js'
+import { Steps, Wizards } from './wizard-constants'
+import { WizardStateManager } from './wizard-state-manager'
+import { WizardModuleManager } from './wizard-module-manager'
+import { escapeObject } from '../../main'
 
 export class Wizard extends LitElement {
     static get properties() {
@@ -69,7 +69,7 @@ export class Wizard extends LitElement {
     connectedCallback() {
         super.connectedCallback()
         this.redirectToCheckinInUserLanguage()
-        this.wizard = new WizardModuleManager( this.user )
+        this.wizard = new WizardModuleManager(this.user)
         window.addEventListener('popstate', this._handleHistoryPopState)
         window.addEventListener('wizard:load', this._handleLoadWizard)
         window.addEventListener('wizard:goto-step', this._handleGotoStep)
@@ -87,7 +87,7 @@ export class Wizard extends LitElement {
     }
 
     firstUpdated() {
-        this._handleHistoryPopState( true )
+        this._handleHistoryPopState(true)
 
         if (this.translations) {
             this.t = escapeObject(this.translations)
@@ -121,10 +121,10 @@ export class Wizard extends LitElement {
         const pathParts = checkinURL.pathname.split('/')
 
         const maybeLanguageCode = pathParts[1]
-        if ( !Object.keys(jsObject.languages).includes(maybeLanguageCode) ) {
+        if (!Object.keys(jsObject.languages).includes(maybeLanguageCode)) {
             /* The URL doesn't contain a language code */
             checkinURL.pathname = '/' + cookieLanguage + checkinURL.pathname
-        } else if ( maybeLanguageCode !== cookieLanguage ) {
+        } else if (maybeLanguageCode !== cookieLanguage) {
             /* The URL contains a language code but it doesn't match the user's UI language */
             pathParts[1] = cookieLanguage
             checkinURL.pathname = pathParts.join('/')
@@ -148,7 +148,8 @@ export class Wizard extends LitElement {
         }
 
         if (Object.values(Wizards).includes(wizardToLoad)) {
-            this.steps = this.wizard.getSteps( wizardToLoad )
+            this.steps = this.wizard.getSteps(wizardToLoad)
+
             this._gotoStep(0, true, queryParams)
         } else {
             this._onSkip()
@@ -169,13 +170,19 @@ export class Wizard extends LitElement {
         if (!this.wizard) {
             return
         }
-        if (!this.wizard.isTypeValid( this.type )) {
+        if (!this.wizard.isTypeValid(this.type)) {
             return html`
                 <div class="cover-page">
                     <div class="stack center | text-center">
                         <h1 class="brand">${this.t.bad_wizard}</h1>
                         <p>${this.t.found_bad_wizard}</p>
-                        <div class="center"><img class="w-50" src="https://imgs.search.brave.com/3f3MurVApxsoxJlmqxLF0fs5-WlAk6sEu9IV3sICb_k/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/YWR2ZXJ0aXNlY2Fz/dC5jb20vcG9kY2Fz/dC9pbWFnZS9WZXJ5/QmFkV2l6YXJkcw.jpeg" alt="bad wizards" /></div>
+                        <div class="center">
+                            <img
+                                class="w-50"
+                                src="https://imgs.search.brave.com/3f3MurVApxsoxJlmqxLF0fs5-WlAk6sEu9IV3sICb_k/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/YWR2ZXJ0aXNlY2Fz/dC5jb20vcG9kY2Fz/dC9pbWFnZS9WZXJ5/QmFkV2l6YXJkcw.jpeg"
+                                alt="bad wizards"
+                            />
+                        </div>
                         <a class="btn tight" href="/">${this.t.home}</a>
                     </div>
                 </div>
@@ -199,22 +206,22 @@ export class Wizard extends LitElement {
         }
 
         return html`
-        <div class="container center">
+            <div class="container center">
+                <header class="pt--1 px--4 w-100 position-relative">
+                    <div class="text-end" id="wizard-skip-button">
+                        ${this.headerButtons()}
+                    </div>
+                    <div class="center">${this.stepCounter()}</div>
+                </header>
 
-            <header class="pt--1 px--4 w-100 position-relative">
-                <div class="text-end" id="wizard-skip-button">${this.headerButtons()}</div>
-                <div class="center">${this.stepCounter()}</div>
-            </header>
+                <article class="${this.containerSize()} center text-center">
+                    ${this.currentStep()}
+                </article>
 
-            <article class="${this.containerSize()} center text-center">
-                ${this.currentStep()}
-            </article>
-
-            <footer class="stack-1 ${this.containerSize()} | my-3">
-                ${this.footer()}
-            </footer>
-
-        </div>
+                <footer class="stack-1 ${this.containerSize()} | my-3 z-20">
+                    ${this.footer()}
+                </footer>
+            </div>
         `
     }
 
@@ -225,9 +232,9 @@ export class Wizard extends LitElement {
      * but this section shouldn't have to know about the internal workings of a section
      */
     containerSize() {
-        const currentStep = {...this.step}
+        const currentStep = { ...this.step }
 
-        if (currentStep.slug = Steps.joinTraining) {
+        if ((currentStep.slug = Steps.joinTraining)) {
             return 'container-md'
         }
 
@@ -246,6 +253,7 @@ export class Wizard extends LitElement {
                 tag = literal`complete-profile`
                 translations = this.t.complete_profile
                 break
+            case Steps.requestCoachExplanation:
             case Steps.contactPreferences:
             case Steps.languagePreferences:
             case Steps.howCanWeServe:
@@ -262,6 +270,10 @@ export class Wizard extends LitElement {
                 tag = literal`join-training`
                 translations = this.t.join_training
                 break
+            case Steps.confirmPlan:
+                tag = literal`confirm-training`
+                translations = this.t.confirm_plan
+                break
             case Steps.joinFriendsPlan:
                 tag = literal`join-friends-training`
                 translations = this.t.join_training
@@ -275,6 +287,8 @@ export class Wizard extends LitElement {
                 translations = this.t.checkin
                 break
             case Steps.planDecision:
+            case Steps.joinDecision:
+            case Steps.joinWithCode:
             case Steps.howManySessions:
             case Steps.scheduleDecision:
             case Steps.howOften:
@@ -290,8 +304,12 @@ export class Wizard extends LitElement {
                 tag = literal`join-community`
                 translations = this.t.join_community
                 break
+            case Steps.notifyOfFutureTrainings:
+                tag = literal`notify-of-future-trainings`
+                translations = this.t.notify_of_future_trainings
+                break
             default:
-                break;
+                break
         }
 
         return staticHtml`
@@ -310,7 +328,6 @@ export class Wizard extends LitElement {
     }
 
     headerButtons() {
-
         return html`
             <div class="cluster | inline s-3">
                 <button
@@ -334,10 +351,10 @@ export class Wizard extends LitElement {
             <button
                 @click=${this._handleFinish}
                 ?disabled=${this.loading}
-                class="btn tight
+                class="btn tight d-flex align-items-center gap--2
                 ${this.loading ? 'disabled' : ''} uppercase"
             >
-                ${this.t.dashboard}
+                ${this.t.dashboard} <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
             </button>
         `
     }
@@ -349,7 +366,11 @@ export class Wizard extends LitElement {
             <div class="cluster">
                 ${this.steps.map((step, i) => {
                     const completed = i <= this.stepIndex
-                    return html`<div class="step-circle ${hideCircles ? 'hidden' : ''} ${completed ? 'complete' : ''}"></div>`
+                    return html`<div
+                        class="step-circle ${hideCircles
+                            ? 'hidden'
+                            : ''} ${completed ? 'complete' : ''}"
+                    ></div>`
                 })}
             </div>
         `
@@ -359,9 +380,9 @@ export class Wizard extends LitElement {
         let backButton = ''
         if (
             this.noUrlChange &&
-            this.stepIndex > 0
-            && this.type !== Wizards.makeAGroup
-            && this.step.slug !== Steps.connectingToCoach
+            this.stepIndex > 0 &&
+            this.type !== Wizards.makeAGroup &&
+            this.step.slug !== Steps.connectingToCoach
         ) {
             backButton = html`
                 <button
@@ -371,25 +392,26 @@ export class Wizard extends LitElement {
                     ${this.t.back}
                 </button>
             `
-
         }
 
         return html`
             <div class="cluster justify-content-center">
                 ${backButton}
-                ${this.stepIndex === this.steps.length - 1 ? this.finishButton() : ''}
+                ${this.stepIndex === this.steps.length - 1
+                    ? this.finishButton()
+                    : ''}
             </div>
         `
     }
 
     _onBack() {
-        if ( this.stepIndex > 0 ) {
+        if (this.stepIndex > 0) {
             const backStepIndex = this.stepIndex - 1
             this._gotoStep(backStepIndex)
         }
     }
     _onNext() {
-        if ( this.stepIndex + 1 < this.steps.length ) {
+        if (this.stepIndex + 1 < this.steps.length) {
             const nextStepIndex = this.stepIndex + 1
             this._gotoStep(nextStepIndex)
         } else {
@@ -400,8 +422,8 @@ export class Wizard extends LitElement {
         /* Go to the next module? */
         const currentModule = this.step.module
         for (let i = this.stepIndex + 1; i < this.steps.length; i++) {
-            const step = this.steps[i];
-            if ( step.module !== currentModule ) {
+            const step = this.steps[i]
+            if (step.module !== currentModule) {
                 this._gotoStep(i)
                 return
             }
@@ -420,55 +442,61 @@ export class Wizard extends LitElement {
     }
     _onFinish(quit = false) {
         this.stateManager.clear()
-        this.resetWizard()
 
-        if ( !this.finishUrl ) {
-            this.dispatchEvent(new CustomEvent(
-                'user-state:change',
-                {
+        const hasMadeAGroup = [
+            Wizards.gettingStarted,
+            Wizards.makeAGroup,
+            Wizards.makeFirstGroup,
+            Wizards.makeMoreGroups,
+            Wizards.joinATraining,
+            Wizards.joinATrainingWithCode,
+            Wizards.joinFriendsPlan,
+            Wizards.inviteFriends,
+        ].includes(this.type)
+
+        if (!this.finishUrl) {
+            this.dispatchEvent(
+                new CustomEvent('user-state:change', {
                     bubbles: true,
-                }
-            ))
-            this.dispatchEvent(new CustomEvent(
-                'wizard-finished',
-                {
+                })
+            )
+            this.dispatchEvent(
+                new CustomEvent('wizard-finished', {
                     bubbles: true,
                     detail: {
                         type: this.type,
                     },
-                }
-            ))
+                })
+            )
+            this.resetWizard()
             return
         }
 
-        const url = new URL( this.finishUrl )
+        this.loading = true
+        const url = new URL(this.finishUrl)
 
-        if ( quit === false ) {
-            if ( this.type === Wizards.checkin ) {
-                const currentUrl = new URL( location.href )
+        if (quit === false) {
+            if (this.type === Wizards.checkin) {
+                const currentUrl = new URL(location.href)
                 const code = currentUrl.searchParams.get('code')
 
-                if ( code !== null ) {
-                    const checkinDashboardUrl = new URL( jsObject.checkin_dashboard_url )
-                    checkinDashboardUrl.searchParams.set( 'code', code)
+                if (code !== null) {
+                    const checkinDashboardUrl = new URL(
+                        jsObject.checkin_dashboard_url
+                    )
+                    checkinDashboardUrl.searchParams.set('code', code)
 
                     window.location.href = checkinDashboardUrl.href
                     return
                 }
-            } else if ( [
-                Wizards.gettingStarted,
-                Wizards.makeAGroup,
-                Wizards.makeFirstGroup,
-                Wizards.makeMoreGroups,
-                Wizards.joinATraining,
-                Wizards.joinFriendsPlan,
-                Wizards.inviteFriends,
-            ].includes(this.type) ) {
+            } else if (hasMadeAGroup) {
                 /* Get the join code for the group just joined and redirect to that page */
                 const url = new URL(location.href)
                 const joinKey = url.searchParams.get('joinKey')
                 if (joinKey) {
-                    const dashboardUrl = new URL(jsObject.training_dashboard_url + '/' + joinKey)
+                    const dashboardUrl = new URL(
+                        jsObject.training_dashboard_url + '/' + joinKey
+                    )
                     window.location.href = dashboardUrl.href
                     return
                 }
@@ -476,7 +504,7 @@ export class Wizard extends LitElement {
                 window.location.href = jsObject.coaching_dashboard_url
                 return
             } else {
-                url.searchParams.set( 'completed', this.type )
+                url.searchParams.set('completed', this.type)
             }
         }
 
@@ -487,14 +515,14 @@ export class Wizard extends LitElement {
     }
 
     _gotoStep(index, pushState = true, queryParams = {}) {
-        if ( this.steps.length === 0 ) {
+        if (this.steps.length === 0) {
             return
         }
 
         this.stepIndex = this.clampSteps(index)
-        this.step = {...this.steps[this.stepIndex] }
+        this.step = { ...this.steps[this.stepIndex] }
 
-        if ( pushState && !this.noUrlChange ) {
+        if (pushState && !this.noUrlChange) {
             const url = new URL(window.location.href)
             const urlParts = url.pathname.split('/')
             const slug = urlParts[urlParts.length - 1]
@@ -506,20 +534,32 @@ export class Wizard extends LitElement {
             }
 
             let newUrl = ''
-            if ( Object.values(Wizards).includes(slug) ) { // first load of the wizard
+            if (Object.values(Wizards).includes(slug)) {
+                // first load of the wizard
                 newUrl = urlParts.join('/') + '/' + this.step.slug + url.search
             } else {
-                newUrl = urlParts.slice(0, -1).join('/') + '/' + this.step.slug + url.search
+                newUrl =
+                    urlParts.slice(0, -1).join('/') +
+                    '/' +
+                    this.step.slug +
+                    url.search
             }
 
-            window.history.pushState( null, null, newUrl )
+            window.history.pushState(null, null, newUrl)
         }
 
-        if ( pushState && this.noUrlChange === true ) {
+        if (pushState && this.noUrlChange) {
             /* Add steps to # in url to allow user to reverse navigate through the wizard */
             const url = new URL(window.location.href)
 
-            const newUrl = url.origin + url.pathname + url.search + `#${this.step.slug}`
+            if (Object.keys(queryParams).length > 0) {
+                Object.entries(queryParams).forEach(([key, value]) => {
+                    url.searchParams.set(key, value)
+                })
+            }
+
+            const newUrl =
+                url.origin + url.pathname + url.search + `#${this.step.slug}`
 
             window.history.pushState(null, null, newUrl)
         }
@@ -532,26 +572,25 @@ export class Wizard extends LitElement {
                 }
             })
         }
-
     }
     clampSteps(index) {
         let clampedIndex = index
-        if ( index > this.steps.length - 1 ) {
+        if (index > this.steps.length - 1) {
             clampedIndex = this.steps.length - 1
         }
-        if ( index < 0 ) {
+        if (index < 0) {
             clampedIndex = 0
         }
         return clampedIndex
     }
-    _handleHistoryPopState( goToBeginningOfModule = false ) {
+    _handleHistoryPopState(goToBeginningOfModule = false) {
         const url = new URL(window.location.href)
         const urlParts = url.pathname.split('/')
         const path = urlParts[urlParts.length - 1]
 
         /* not in a modal. */
         /* If the slug is a wizard name, goto the first step of the wizard */
-        if (!this.noUrlChange && Object.values(Wizards).includes(path) ) {
+        if (!this.noUrlChange && Object.values(Wizards).includes(path)) {
             this._gotoStep(0, false)
             return
         }
@@ -564,30 +603,35 @@ export class Wizard extends LitElement {
                 const hash = url.hash.slice(1)
                 return slug === hash
             }
-            path === slug
+            return path === slug
         }
 
         /* Check if the slug is somewhere in the middle of the wizard and go there */
-        this.steps.forEach(({slug, module}, i) => {
-            if ( currentModule !== module ) {
+        this.steps.forEach(({ slug, module }, i) => {
+            if (currentModule !== module) {
                 currentModule = module
                 beginningOfModule = i
             }
 
-            if ( testSlug(slug) ) {
-                if (goToBeginningOfModule === true && this.stateManager.isDataStale()) {
+            if (testSlug(slug)) {
+                if (
+                    goToBeginningOfModule === true &&
+                    this.stateManager.isDataStale()
+                ) {
                     this._gotoStep(beginningOfModule)
                     return
                 }
 
                 this._gotoStep(i, false)
+                return
             }
         })
 
         /* The previous step isn't in this wizard, so reload the current wizard journey */
-        if (!this.steps.some(({slug}) => testSlug(slug))) {
-            this.steps = this.wizard.getSteps( this.type )
+        if (!this.steps.some(({ slug }) => testSlug(slug))) {
+            this.steps = this.wizard.getSteps(this.type)
             this._gotoStep(0)
+            return
         }
     }
 
@@ -621,8 +665,8 @@ export class Wizard extends LitElement {
      * Disable the shadow DOM
      */
     createRenderRoot() {
-        return this;
+        return this
     }
 }
 
-window.customElements.define( 'zume-wizard', Wizard )
+window.customElements.define('zume-wizard', Wizard)

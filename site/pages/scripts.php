@@ -10,6 +10,7 @@ class Zume_Scripts extends Zume_Magic_Page
     public $page_title = 'Zúme Script';
     public $root = 'app';
     public $type = 'script';
+    public $lang_code = 'en';
     public $lang;
     public static $token = 'app_script';
 
@@ -26,12 +27,14 @@ class Zume_Scripts extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         $this->lang = get_locale();
 
         if ( isset( $url_parts[0] ) && $this->root === $url_parts[0] && isset( $url_parts[1] ) && $this->type === $url_parts[1] && ! dt_is_rest() ) {
 
+            $this->lang_code = $lang_code;
             $this->register_url_and_access();
             $this->header_content();
 
@@ -72,8 +75,13 @@ class Zume_Scripts extends Zume_Magic_Page
                 margin-left: auto;
                 margin-right: auto;
             }
+            .activity__content > * + * {
+                margin-bottom: 0;
+                margin-top: var(--s0);
+            }
         </style>
         <?php
+        zume_hreflang_fixed( $this->lang_code, $this->type );
     }
 
     public function body(){

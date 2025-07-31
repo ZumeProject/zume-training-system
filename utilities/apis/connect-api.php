@@ -47,6 +47,61 @@ class Zume_Connect_Endpoints
                 'permission_callback' => 'is_user_logged_in',
             ]
         );
+        register_rest_route(
+            $this->namespace, '/connect/notify-of-future-trainings', [
+                'methods' => 'POST',
+                'callback' => [ $this, 'notify_of_future_trainings_callback' ],
+                'permission_callback' => 'is_user_logged_in',
+            ]
+        );
+        register_rest_route(
+            $this->namespace, '/connect/message-coach', [
+                'methods' => 'POST',
+                'callback' => [ $this, 'send_message_to_coach_callback' ],
+                'permission_callback' => 'is_user_logged_in',
+            ]
+        );
+    }
+
+    public function notify_of_future_trainings_callback( WP_REST_Request $request ){
+        $user_id = get_current_user_id();
+
+        $contact_id = zume_get_user_contact_id( $user_id );
+        $contact = DT_Posts::get_post( 'contacts', $contact_id, true, false );
+
+        $fields = [
+            'notify_of_future_trainings' => true,
+            'notify_of_future_trainings_date_subscribed' => gmdate( 'Y-m-d' ),
+        ];
+
+        $result = DT_Posts::update_post( 'contacts', $contact_id, $fields, true, false );
+
+        $email = $contact['user_email'];
+
+        $message = [
+            __( 'You have successfully subscribed to receive notifications about future trainings.', 'zume' ),
+            __( 'You can unsubscribe from these notifications at any time.', 'zume' ),
+        ];
+        $email_message = implode( "\n", array_map( function ( $message ) {
+            return '<p>' . $message . '</p>';
+        }, $message ) );
+
+        $email_message = Zume_System_Encouragement_API::build_email( $email_message, '', $user_id );
+
+        $subject = __( 'Zume Training - Future Trainings', 'zume' );
+        $headers = array(
+            'Content-Type: text/html; charset=UTF-8',
+            'MIME-Version: 1.0',
+            'X-Zume-Email-System: 1.0'
+        );
+
+        $email_sent = wp_mail( $email, $subject, $email_message, $headers );
+
+        if ( !$email_sent ) {
+            wp_queue()->push( new Zume_email_job( $email, $subject, $email_message ) );
+        }
+
+        return $result;
     }
     public function connect_to_friend_callback( WP_REST_Request $request ){
         $params = dt_recursive_sanitize_array( $request->get_params() );
@@ -193,13 +248,15 @@ class Zume_Connect_Endpoints
         // connect use to coach
         $response = self::connect_user_from_public_plan_to_coach( $user_id, $plan, $coach_id, $coach_user_id );
 
+        $coach_request_success = true;
         if ( is_wp_error( $response ) ) {
-            return $response;
+            $coach_request_success = false;
         }
 
         return [
             'name' => $plan['title'],
             'coach_id' => $plan['assigned_to']['id'],
+            'coach_request_success' => $coach_request_success,
         ];
     }
 
@@ -266,6 +323,11 @@ class Zume_Connect_Endpoints
                         [ 'value' => $coach_id ],
                     ],
                 ],
+                'contact_email' => [
+                    'values' => [
+                        [ 'value' => $profile['communications_email'] ],
+                    ],
+                ],
                 'assigned_to' => $coach_user_id,
             ];
             if ( ! empty( $profile['location'] ) ) {
@@ -309,6 +371,11 @@ class Zume_Connect_Endpoints
                 'language_preference' => $preferred_language,
                 'trainee_user_id' => $profile['user_id'],
                 'trainee_contact_id' => $profile['contact_id'],
+                'contact_email' => [
+                    'values' => [
+                        [ 'value' => $profile['communications_email'] ],
+                    ],
+                ],
                 'connected_plans' => [
                     'values' => [
                         [ 'value' => $plan['join_key'] ],
@@ -405,6 +472,66 @@ class Zume_Connect_Endpoints
         }
 
         return $body;
+    }
+
+    public function send_message_to_coach_callback( WP_REST_Request $request ){
+        $params = dt_recursive_sanitize_array( $request->get_params() );
+        if ( ! isset( $params['message'] ) ) {
+            return new WP_Error( 'missing_params', 'Missing params', [ 'status' => 400 ] );
+        }
+        $user_id = get_current_user_id();
+        return self::send_message_to_coach( $user_id, $params['message'] );
+    }
+    public static function send_message_to_coach( $user_id, $message ) {
+        $coach_contact_id = zume_get_user_coaching_contact_id( $user_id );
+        $site = Site_Link_System::get_site_connection_vars( self::SITE_CONNECTION_POST_ID );
+        if ( ! $site ) {
+            dt_write_log( __METHOD__ . ' FAILED TO GET SITE LINK TO GLOBAL ' );
+            return new WP_Error( 'site_link_failed', 'Failed to link to coaching site ', array( 'status' => 400 ) );
+        }
+
+        // @mentions of all dispatchers on the system
+        $dispatchers = get_users( [
+            'role' => 'dispatcher',
+            'fields' => [ 'ID', 'display_name' ],
+        ] );
+        $dispatcher_mentions = implode( ' ', array_map( function ( $dispatcher ) {
+            return '@' . $dispatcher->display_name;
+        }, $dispatchers ) );
+
+        $message = "
+        Waiting for coach assignment...
+        $dispatcher_mentions
+
+        $message
+        ";
+
+        $fields = [
+            'comment' => $message,
+        ];
+
+        $comment_args = [
+            'method' => 'POST',
+            'body' => json_encode( $fields ),
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer ' . $site['transfer_token'],
+            ],
+        ];
+
+        $url = 'https://' . trailingslashit( $site['url'] ) . 'wp-json/dt-posts/v2/contacts/' . $coach_contact_id . '/comments';
+
+        // TODO: remove me as only for dev
+        //Zume_System_Log_API::log( 'coaching', 'sent_message_to_coach', [ 'user_id' => $user_id, 'payload' => $coach_contact_id ] );
+        $result = wp_remote_post( $url, $comment_args );
+        if ( is_wp_error( $result ) ) {
+            $profile = zume_get_user_profile( $user_id );
+            dt_write_log( __METHOD__ . ' FAILED TO ADD COMMENTS TO COACHING CONTACT FOR ' . $profile['name'] );
+        } else {
+            Zume_System_Log_API::log( 'coaching', 'sent_message_to_coach', [ 'user_id' => $user_id, 'payload' => $coach_contact_id ] );
+        }
+
+        return $result;
     }
 
     public static function test_join_key( $key ) : bool|int {

@@ -11,6 +11,7 @@ class Zume_Training_Checkin extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'checkin';
     public $lang = 'en';
+    public $lang_code = 'en';
     public static $token = 'app_checkin';
 
     private static $_instance = null;
@@ -28,20 +29,24 @@ class Zume_Training_Checkin extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
-        /* Redirect /checkin to /{lang_code}/checkin */
-        /* This facilitates QR codes sending users to /checkin not knowing what language they may have previously been using */
-        $url = dt_get_url_path();
-        if ( $url === $this->type ) {
-            $lang_code_from_cookie = zume_get_language_cookie();
-            if ( $lang_code_from_cookie !== 'en' ) {
-                wp_redirect( $lang_code_from_cookie . '/' . $this->type );
-                exit;
-            }
-        }
+
+        $key_code = $this->get_checkin_code();
 
         if ( isset( $url_parts[0] ) && ( ( $this->root === $url_parts[0] && $this->type === $url_parts[1] ) || 'checkin' === $url_parts[0] ) && ! dt_is_rest() ) {
+
+            $this->lang_code = $lang_code;
+
+            if ( $key_code !== false ) {
+                if ( is_user_logged_in() ) {
+                    wp_redirect( zume_wizard_url( 'checkin', [ 'code' => $key_code ] ) );
+                    exit;
+                }
+                wp_redirect( zume_checkin_wizard_url( $key_code ) );
+                exit;
+            }
 
             $this->register_url_and_access();
             $this->header_content();
@@ -71,6 +76,9 @@ class Zume_Training_Checkin extends Zume_Magic_Page
     public function header_style(){
         global $zume_user_profile;
         ?>
+
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/checkin' ); ?>" />
+
         <script>
             const jsObject = [<?php echo json_encode([
                 'nonce' => wp_create_nonce( 'wp_rest' ),
@@ -203,15 +211,22 @@ class Zume_Training_Checkin extends Zume_Magic_Page
             });
         </script>
         <?php
+        zume_hreflang_fixed( $this->lang_code, $this->type );
+    }
+
+    public function get_checkin_code() {
+        $key_code = false;
+        if ( isset( $_GET['code'] ) ) {
+            $key_code = sanitize_text_field( wp_unslash( $_GET['code'] ) );
+        }
+
+        return $key_code;
     }
 
     public function body(){
         global $zume_user_profile;
 
-        $key_code = false;
-        if ( isset( $_GET['code'] ) ) {
-            $key_code = sanitize_text_field( wp_unslash( $_GET['code'] ) );
-        }
+        $key_code = $this->get_checkin_code();
 
         ?>
 

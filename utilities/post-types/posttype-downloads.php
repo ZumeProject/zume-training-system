@@ -178,9 +178,34 @@ class Zume_Downloads_Post_Type
         global $post;
 
         switch ( $column_name ) {
-            case 'slides':
-                echo (get_post_meta( $post->ID, 'ppt_10_session', true ) ) ? 'Installed' : '';
+            case 'guidebook_10_session':
+                echo ( get_post_meta( $post->ID, 'guidebook_10_session', true ) ) ? '&#x2705;' : '';
                 break;
+            case 'guidebook_20_session':
+                echo ( get_post_meta( $post->ID, 'guidebook_20_session', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'guidebook_intensive':
+                echo ( get_post_meta( $post->ID, 'guidebook_intensive', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'key_10_session':
+                echo ( get_post_meta( $post->ID, 'key_10_session', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'ppt_10_session':
+                echo ( get_post_meta( $post->ID, 'ppt_10_session', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'ppt_20_session':
+                echo ( get_post_meta( $post->ID, 'ppt_20_session', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'ppt_intensive':
+                echo ( get_post_meta( $post->ID, 'ppt_intensive', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'key_20_session':
+                echo ( get_post_meta( $post->ID, 'key_20_session', true ) ) ? '&#x2705;' : '';
+                break;
+            case 'key_intensive':
+                echo ( get_post_meta( $post->ID, 'key_intensive', true ) ) ? '&#x2705;' : '';
+                break;
+            
             default:
                 break;
         }
@@ -198,7 +223,18 @@ class Zume_Downloads_Post_Type
      */
     public function register_custom_column_headings( $defaults ) {
 
-        $new_columns = array( 'slides' => __( 'Slides', 'zume' ));
+        $new_columns = array( 
+            'guidebook_10_session' => 'PDF 10',
+            'guidebook_20_session' => 'PDF 20', 
+            'guidebook_intensive' => 'PDF Int',
+            'key_10_session' => 'Key 10',
+            'ppt_10_session' => 'PPT 10',
+            'key_20_session' => 'Key 20',
+            'ppt_20_session' => 'PPT 20',
+            'key_intensive' => 'Key Int',
+            'ppt_intensive' => 'PPT Int',
+           
+        );
 
         $last_item = array();
 
@@ -272,11 +308,21 @@ class Zume_Downloads_Post_Type
      */
     public function meta_box_setup() {
         add_meta_box( $this->post_type . '_slides', 'Slide Decks', array( $this, 'load_slides_meta_box' ), $this->post_type, 'normal', 'high' );
-        add_meta_box( $this->post_type . '_scribes', 'Downloads', array( $this, 'load_downloads_meta_box' ), $this->post_type, 'normal', 'high' );
+        add_meta_box( $this->post_type . '_guidebook', 'Guidebooks', array( $this, 'load_guidebooks_meta_box' ), $this->post_type, 'normal', 'high' );
+        add_meta_box( $this->post_type . '_store', 'Store', array( $this, 'load_store_meta_box' ), $this->post_type, 'normal', 'high' );
+        add_meta_box( $this->post_type . '_scribes', 'Scripts', array( $this, 'load_downloads_meta_box' ), $this->post_type, 'normal', 'high' );
     } // End meta_box_setup()
 
     public function load_slides_meta_box() {
         $this->meta_box_content( 'slides' ); // prints
+    }
+
+    public function load_guidebooks_meta_box() {
+        $this->meta_box_content( 'guidebook' ); // prints
+    }
+
+    public function load_store_meta_box() {
+        $this->meta_box_content( 'store' ); // prints
     }
 
     /**
@@ -481,13 +527,7 @@ class Zume_Downloads_Post_Type
         $fields = array();
 
         // Project Update Information Section
-        $fields['33'] = array(
-            'name'        => '(33) Zúme Guidebook ',
-            'description' => '',
-            'type'        => 'link',
-            'default'     => '',
-            'section'     => 'downloads',
-        );
+
         $fields['34'] = array(
             'name'        => '(34) God Uses Ordinary People',
             'description' => '',
@@ -744,6 +784,44 @@ class Zume_Downloads_Post_Type
             'type'        => 'link',
             'default'     => '',
             'section'     => 'slides',
+        );
+
+        // guidebook
+        $fields['guidebook_10_session'] = array(
+            'name'        => 'Guidebook 10 Session',
+            'description' => '',
+            'type'        => 'link',
+            'default'     => '',
+            'section'     => 'guidebook',
+        );
+        $fields['guidebook_20_session'] = array(
+            'name'        => 'Guidebook 20 Session',
+            'description' => '',
+            'type'        => 'link',
+            'default'     => '',
+            'section'     => 'guidebook',
+        );
+        $fields['guidebook_intensive'] = array(
+            'name'        => 'Guidebook Intensive',
+            'description' => '',
+            'type'        => 'link',
+            'default'     => '',
+            'section'     => 'guidebook',
+        );
+        $fields['33'] = array(
+            'name'        => '(33) v4 Zúme Guidebook ',
+            'description' => '',
+            'type'        => 'link',
+            'default'     => '',
+            'section'     => 'guidebook',
+        );
+
+        $fields['store_url'] = array(
+            'name'        => 'Online Store URL',
+            'description' => '',
+            'type'        => 'url',
+            'default'     => '',
+            'section'     => 'store',
         );
 
 

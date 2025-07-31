@@ -28,6 +28,18 @@
         text-align: right;
     }
 
+    table[no-labels] {
+        tr {
+            display: flex;
+            justify-content: space-between;
+        }
+        td {
+            display: inline-flex;
+            border-bottom: none;
+            text-align: unset;
+        }
+    }
+
     table td::before {
         /*
         * aria-label has no advantage, it won't be read inside a table

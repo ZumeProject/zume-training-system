@@ -44,6 +44,13 @@ class Zume_Profile_API
                 'permission_callback' => 'is_user_logged_in',
             ]
         );
+        register_rest_route(
+            $namespace, '/email-preferences', [
+                'methods' => [ 'POST' ],
+                'callback' => [ $this, 'update_email_preferences' ],
+                'permission_callback' => 'is_user_logged_in',
+            ]
+        );
     }
 
     public function update_profile( WP_REST_Request $request ) {
@@ -82,6 +89,15 @@ class Zume_Profile_API
         if ( is_wp_error( $return ) ) {
             return $return;
         }
+
+        return new WP_REST_Response( $return );
+    }
+
+    public function update_email_preferences( WP_REST_Request $request ) {
+
+        $params = dt_recursive_sanitize_array( json_decode( $request->get_body(), true ) );
+
+        $return = Zume_Profile_Model::update_email_preferences( $params );
 
         return new WP_REST_Response( $return );
     }
@@ -127,7 +143,9 @@ class Zume_Profile_Model {
         $communications_email = isset( $fields['communications_email'] ) ? $fields['communications_email'] : '';
         $location_grid_meta = isset( $fields['location_grid_meta'] ) ? $fields['location_grid_meta'] : [];
         $preferred_language = isset( $fields['preferred_language'] ) ? $fields['preferred_language'] : '';
-        $contact_preference = isset( $fields['contact_preference'] ) ? $fields['contact_preference'] : [];
+        $contact_preference = isset( $fields['contact_preferences'] ) ? $fields['contact_preferences'] : [];
+        $hide_public_contact = isset( $fields['hide_public_contact'] ) ? $fields['hide_public_contact'] : false;
+        $hide_public_progress = isset( $fields['hide_public_progress'] ) ? $fields['hide_public_progress'] : false;
 
         $user_updates = [];
         $updates = [];
@@ -156,6 +174,12 @@ class Zume_Profile_Model {
                 'values' => [ $location_grid_meta ],
                 'force_values' => true,
             ];
+
+            $timezone = self::get_location_grid_timezone( $location_grid_meta );
+
+            if ( !empty( $timezone ) ) {
+                $updates['user_timezone'] = $timezone;
+            }
         }
 
         if ( !empty( $preferred_language ) ) {
@@ -165,6 +189,10 @@ class Zume_Profile_Model {
         if ( !empty( $contact_preference ) ) {
             $updates['user_contact_preference'] = $contact_preference;
         }
+
+        $updates['hide_public_contact'] = $hide_public_contact;
+
+        $updates['hide_public_progress'] = $hide_public_progress;
 
         $contact_id = zume_get_user_contact_id( $user_id );
 
@@ -196,6 +224,13 @@ class Zume_Profile_Model {
         ];
     }
 
+    public static function update_email_preferences( $params ) {
+        $user_id = get_current_user_id();
+        $contact_id = zume_get_user_contact_id( $user_id );
+        $contact['notify_of_future_trainings'] = $params['notify_of_future_trainings'];
+        return DT_Posts::update_post( 'contacts', $contact_id, $contact, false, false );
+    }
+
     public static function log_setting_of_profile( $user_id ) {
         $profile = zume_get_user_profile( $user_id );
 
@@ -210,5 +245,42 @@ class Zume_Profile_Model {
         if ( $profile['location']['source'] !== 'ip' ) {
             zume_log_insert( 'system', 'set_profile_location', [], true );
         }
+    }
+
+    public static function get_location_grid_timezone( $location_grid_meta ) {
+        global $wpdb;
+
+        $location_grid_geocoder = new Location_Grid_Geocoder();
+        $grid_data = $location_grid_geocoder->get_grid_id_by_lnglat( $location_grid_meta['lng'], $location_grid_meta['lat'] );
+
+        if ( empty( $grid_data ) ) {
+            return '';
+        }
+
+        if ( !empty( $grid_data['admin2_grid_id'] ) ) {
+            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM {$wpdb->location_grid_cities} WHERE admin2_grid_id = %d", $grid_data['admin2_grid_id'] ) );
+
+            if ( !empty( $timezone ) ) {
+                return $timezone;
+            }
+        }
+
+        if ( !empty( $grid_data['admin1_grid_id'] ) ) {
+            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM {$wpdb->location_grid_cities} WHERE admin1_grid_id = %d", $grid_data['admin1_grid_id'] ) );
+
+            if ( !empty( $timezone ) ) {
+                return $timezone;
+            }
+        }
+
+        if ( !empty( $grid_data['admin0_grid_id'] ) ) {
+            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM {$wpdb->location_grid_cities} WHERE admin0_grid_id = %d", $grid_data['admin0_grid_id'] ) );
+
+            if ( !empty( $timezone ) ) {
+                return $timezone;
+            }
+        }
+
+        return 'GMT';
     }
 }

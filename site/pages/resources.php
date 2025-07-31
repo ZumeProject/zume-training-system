@@ -11,6 +11,7 @@ class Zume_Training_Resources extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'resources';
     public $lang = 'en';
+    public $lang_code = 'en';
     public static $token = 'app_resources';
 
     private static $_instance = null;
@@ -30,6 +31,7 @@ class Zume_Training_Resources extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         $page_slug = $url_parts[0] ?? '';
@@ -37,6 +39,8 @@ class Zume_Training_Resources extends Zume_Magic_Page
         $post = zume_get_post_by_slug( $page_slug );
 
         if ( $post && str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
+
+            $this->lang_code = $lang_code;
 
             $this->register_url_and_access();
             $this->header_content();
@@ -72,7 +76,8 @@ class Zume_Training_Resources extends Zume_Magic_Page
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
 
-                const guidebookDownloadButton = document.querySelector('.guidebook-download-button')
+                // const guidebookDownloadButton = document.querySelector('.guidebook-download-button')
+                const guidebookDownloadButtons = document.querySelectorAll('.guidebook-download-button')
                 const slideDownloadButtons = document.querySelectorAll('.slide-download-button')
 
                 function anonymous_log(event) {
@@ -84,17 +89,32 @@ class Zume_Training_Resources extends Zume_Magic_Page
                         })
                 }
 
-                guidebookDownloadButton.addEventListener('click', anonymous_log)
+                // guidebookDownloadButton.addEventListener('click', anonymous_log)
+                guidebookDownloadButtons.forEach((button) => {
+                    console.log(button)
+                    button.addEventListener('click', anonymous_log)
+                })
                 slideDownloadButtons.forEach((button) => {
                     button.addEventListener('click', anonymous_log)
                 })
             });
         </script>
+
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
+
         <?php
+        zume_hreflang_fixed( $this->lang_code, $this->type );
     }
 
     public function body(){
         $zume_current_language = zume_current_language();
+        $store_url = zume_raw_download_url( 'store_url', $zume_current_language );
+        $guidebook_10_session = zume_download_url( 'guidebook_10_session', $zume_current_language );
+        $guidebook_20_session = zume_download_url( 'guidebook_20_session', $zume_current_language );
+        $guidebook_intensive = zume_download_url( 'guidebook_intensive', $zume_current_language );
+        $guidebook_v4 = zume_download_url( '33', $zume_current_language );
+
+
         require __DIR__ . '/../parts/nav.php';
         ?>
 
@@ -120,14 +140,43 @@ class Zume_Training_Resources extends Zume_Magic_Page
                     </p>
                 </div>
                 <div class="stack center | text-center">
-                    <a class="guidebook-download-button | btn w-100" data-subtype="guidebook" target="_blank" href="<?php echo esc_url( zume_download_url( '33', $zume_current_language ) ) ?>"><?php echo esc_html__( 'Free Download (PDF)', 'zume' ) ?></a>
-                    <?php if ( 'en' === $zume_current_language ) { ?>
-                        <a class="btn outline w-100" target="_blank" href="https://missionbooks.org/products/zume-training"><?php echo esc_html__( 'Order print copy', 'zume' ) ?></a>
+                    <div class="center"><strong><?php echo esc_html__( 'Free Download (PDF)', 'zume' ) ?></strong></div>
+                    <?php if ( $guidebook_10_session ) { ?>
+                        <a class="btn w-100 guidebook-download-button" data-subtype="guidebook_10" target="_blank" href="<?php echo esc_url( $guidebook_10_session ) ?>"><?php echo esc_html__( '10 Session Course', 'zume' ) ?></a>
+                    <?php } else if ( $guidebook_v4 ) { ?>
+                        <a class="btn w-100 guidebook-download-button" data-subtype="guidebook_v4_10" target="_blank" href="<?php echo esc_url( $guidebook_v4 ) ?>"><?php echo esc_html__( '10 Session Course', 'zume' ) ?></a>
+                    <?php } ?>
+                    <?php if ( $guidebook_20_session ) { ?>
+                        <a class="btn w-100 guidebook-download-button" data-subtype="guidebook_20" target="_blank" href="<?php echo esc_url( $guidebook_20_session ) ?>"><?php echo esc_html__( '20 Session Course', 'zume' ) ?></a>
+                    <?php } ?>
+                    <?php if ( $guidebook_intensive ) { ?>
+                        <a class="btn w-100 guidebook-download-button" data-subtype="guidebook_5" target="_blank" href="<?php echo esc_url( $guidebook_intensive ) ?>"><?php echo esc_html__( 'Intensive Course', 'zume' ) ?></a>
+                    <?php } ?>
+                    <?php if ( $store_url ) { ?>
+                        <a class="btn outline w-100 guidebook-download-button" data-subtype="order_print_copy" target="_blank" href="<?php echo esc_url( $store_url ) ?>"><?php echo esc_html__( 'Order print copy', 'zume' ) ?></a>
                         <img class="w-16rem" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/workbooksample.png' ) ?>" alt="zume training book">
                     <?php }  ?>
+                
+                    <div class="center"><strong><?php echo esc_html__( 'Preview', 'zume' ) ?></strong></div>
+                    <?php if ( $guidebook_10_session ) { ?>
+                        <a class="btn w-100 guidebook-download-button" data-subtype="guidebook_10" target="_blank" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/workbook/10' ) ?>"><?php echo esc_html__( '10 Session Course', 'zume' ) ?></a>
+                    <?php } ?>
+                    
+                    <?php if ( $guidebook_20_session ) { ?>
+                        <a class="btn w-100 guidebook-download-button" data-subtype="guidebook_20" target="_blank" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/workbook/20' ) ?>"><?php echo esc_html__( '20 Session Course', 'zume' ) ?></a>
+                    <?php } ?>
+                   
+                    <?php if ( $guidebook_intensive ) { ?>
+                        <a class="btn w-100 guidebook-download-button" data-subtype="guidebook_5" target="_blank" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/workbook/intensive' ) ?>"><?php echo esc_html__( 'Intensive Course', 'zume' ) ?></a>
+                    <?php } ?>
+                    
                 </div>
             </div>
         </div>
+
+        <hr>
+
+        <?php include( trailingslashit( plugin_dir_path( __DIR__ ) ) . 'parts/download-slides.php' ) ?>
 
         <hr>
 
@@ -144,15 +193,14 @@ class Zume_Training_Resources extends Zume_Magic_Page
                 </div>
                 <div class="stack center | text-center">
                     <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?session=index' ) ?>"><?php echo esc_html__( '10 Session Course', 'zume' ) ?></a>
-                    <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?session=index' ) ?>"><?php echo esc_html__( '20 Session Course', 'zume' ) ?></a>
-                    <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?session=index' ) ?>"><?php echo esc_html__( 'Intensive Course', 'zume' ) ?></a>
+                    <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?type=20&session=index' ) ?>"><?php echo esc_html__( '20 Session Course', 'zume' ) ?></a>
+                    <a class="btn w-100" href="<?php echo esc_url( site_url() . '/' . $zume_current_language . '/presenter?type=intensive&session=index' ) ?>"><?php echo esc_html__( 'Intensive Course', 'zume' ) ?></a>
+                    
                 </div>
             </div>
         </div>
 
-        <hr>
-
-        <?php include( trailingslashit( plugin_dir_path( __DIR__ ) ) . 'parts/download-slides.php' ) ?>
+       
 
         <br></br>
         <br></br>

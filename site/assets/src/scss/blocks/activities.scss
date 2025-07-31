@@ -19,16 +19,19 @@
         font-size: font-size(2)
     }
 
-    p {
-        margin-bottom: spacing(2);
-    }
+    ul > * + * {
+        margin-top: spacing(-3);
 
-    ul, ol {
-        margin-bottom: spacing(2);
     }
-
     ol > * + * {
-        margin-top: spacing(0);
+        margin-top: spacing(-1);
+    }
+    dl, ol, ul {
+        margin-bottom: 1rem;
+        list-style-position: outside;
+        line-height: 1.6;
+        margin-left: 1.25rem;
+        list-style-type: disc;
     }
 
     strong {

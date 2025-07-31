@@ -77,6 +77,9 @@ class Zume_Training_Wizard extends Zume_Magic_Page
     public function enqueue_scripts() {}
 
     public function header_style(){
+
+
+
         global $zume_user_profile, $zume_languages_by_code;
         ?>
         <?php //phpcs:ignore ?>
@@ -99,11 +102,13 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'profile' => $zume_user_profile,
                 'user_stage' => zume_get_user_stage(),
                 'has_training_group' => !empty( zume_get_user_plans( get_current_user_id() ) ),
+                'is_coach' => ! empty( get_user_meta( get_current_user_id(), 'zume_3_corresponds_to_contact', true ) ),
                 'privacy_url' => zume_privacy_url(),
                 'mapbox_selected_id' => 'current',
                 'checkin_dashboard_url' => zume_checkin_dashboard_url(),
                 'training_dashboard_url' => zume_dashboard_page_url( 'my-training' ),
                 'coaching_dashboard_url' => zume_dashboard_page_url( 'my-coach' ),
+                'notify_of_future_trainings_url' => zume_notify_of_future_trainings_url(),
                 'site_url' => zume_home_url(),
             ]) ?>][0]
         </script>
@@ -113,13 +118,19 @@ class Zume_Training_Wizard extends Zume_Magic_Page
     public function should_wizard_redirect() {
         $url = new DT_URL( dt_get_url_path() );
         $user_stage = zume_get_user_stage();
+        $has_been_on_notification_list = get_post_meta( zume_get_user_contact_id( get_current_user_id() ), 'notify_of_future_trainings_date_subscribed', true );
         return (
-            $url->query_params->has( 'flow' ) &&
-            $url->query_params->get( 'flow' ) === 'start' &&
-            isset( $user_stage['state'] ) &&
-            $user_stage['state']['set_profile_name'] && // @todo throwing log error that set_profile_name is not set
-            $user_stage['state']['set_profile_location'] &&
-            $user_stage['state']['plan_created']
+            (
+                $url->query_params->has( 'flow' ) &&
+                $url->query_params->get( 'flow' ) === 'start' &&
+                isset( $user_stage['state'] ) &&
+                $user_stage['state']['set_profile_name'] &&
+                $user_stage['state']['set_profile_location'] &&
+                ( isset( $user_stage['state']['plan_created'] ) ? $user_stage['state']['plan_created'] : false )
+            ) || (
+                !empty( $has_been_on_notification_list ) &&
+                $this->wizard_type === 'getting-started'
+            )
         );
     }
 
@@ -235,6 +246,14 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'please_wait' => __( 'Please wait while we connect you', 'zume' ),
                 'title' => __( 'Get a Coach', 'zume' ),
                 'user_language_disclaimer' => __( 'A user’s language preference is stored to support proper site and communication functioning, and to help us connect the user with appropriate coaching and resources.', 'zume' ),
+                'request_coach_explanation_text' => __( 'Every athletic sport, especially at higher levels, uses coaching. Even olympic athletes have coaches, and often more than one. Disciple making can equally benefit from coaching by those who have more experience.', 'zume' ),
+                'request_coach_explanation_text_2' => __( 'In order to connect you to an appropriate coach, we need to know a little more about you.', 'zume' ),
+                'no_cost' => __( 'No Cost', 'zume' ),
+                'localized' => __( 'Localized', 'zume' ),
+                'experienced' => __( 'Experienced', 'zume' ),
+                'our_network_of_volunteer_coaches' => __( 'Our network of volunteer coaches are not paid, but are driven rather by a passion for loving God, loving others, and obeying the Great Commission.', 'zume' ),
+                'our_connection_team' => __( 'Our connection team attempts to connect you with a coach who speaks your language and is geographically as close as possible.', 'zume' ),
+                'all_our_coaches_are_trained' => __( 'All our coaches are trained and practicing the concepts and tools found in Zûme. All our coaches can help you over barriers and make steps in your journey.', 'zume' ),
             ],
             'join_training' => [
                 'title' => __( 'Joining Plan', 'zume' ),
@@ -250,8 +269,34 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'language' => __( 'Language', 'zume' ),
                 'join' => __( 'Join', 'zume' ),
                 'next' => __( 'Next', 'zume' ),
+                'privacy_policy' => __( 'Privacy Policy', 'zume' ),
+                'change_preferences' => __( 'Change Preferences', 'zume' ),
+                'contact_visibility1' => __( 'Your contact information is always visible to the group leader.', 'zume' ),
+                'contact_visibility2' => __( 'You are joining a private training group, where everyone can see your contact information.', 'zume' ),
+                'contact_visibility3' => __( 'You can change your contact information visibility at any time in your profile.', 'zume' ),
+                'coach_request_failed' => __( 'We were unable to connect you with a coach. Please try again later.', 'zume' ),
                 'no_plans' => __( 'There are currently no public trainings available.', 'zume' ),
+                'notify_of_future_trainings_title' => __( 'Would you like to be notified about future trainings?', 'zume' ),
+                'notify_of_future_trainings_description' => __( 'We will send you an email when a new training is available.', 'zume' ),
+                'notify_of_future_trainings_button' => __( 'Notify me about future trainings', 'zume' ),
+                'notify_of_future_trainings_unsubscribe' => __( 'You can always unsubscribe from these emails at any time.', 'zume' ),
+                'notify_me' => __( 'Notify me', 'zume' ),
+                'do_you_want_to_unsubscribe_from_the_notification_list' => __( 'Do you want to unsubscribe from the notification list?', 'zume' ),
+                'continue' => __( 'Continue', 'zume' ),
+                'training_group_details' => __( 'Training Group Details', 'zume' ),
+            ],
+            'confirm_plan' => [
+                'facilitator' => __( 'Facilitator', 'zume' ),
+                'location' => __( 'Location', 'zume' ),
+                'time_of_day' => __( 'Time of Day', 'zume' ),
+                'zoom_link' => __( 'Zoom Link', 'zume' ),
+                'next_session_date' => __( 'Next Session Date', 'zume' ),
+                'join_training' => __( 'Next', 'zume' ),
                 'complete_profile' => __( 'Please make sure that your profile is up to date, so that group leaders can contact you.', 'zume' ),
+                'timezone' => __( 'Timezone', 'zume' ),
+                'session' => __( 'Session', 'zume' ),
+                'next_session_date_in_timezone' => __( 'The next session is:', 'zume' ),
+                'this_timezone' => __( 'In this timezone:', 'zume' ),
             ],
             'connect_friend' => [
                 'title' => __( 'Connecting with friend', 'zume' ),
@@ -269,8 +314,13 @@ class Zume_Training_Wizard extends Zume_Magic_Page
             ],
             'make_training' => [
                 'join_or_start_a_training' => __( 'Join or create a training group', 'zume' ),
+                'join_a_training' => __( 'Join Training Group', 'zume' ),
                 'start_a_training' => __( 'Create a training group', 'zume' ),
                 'join_a_public_training' => __( 'Join a public training group', 'zume' ),
+                'join_with_code' => __( 'Join with code', 'zume' ),
+                'use_the_code_your_friend_sent_you' => __( 'Use the code your friend sent you.', 'zume' ),
+                'not_a_recognized_code' => __( 'Not a recognized code. Please check the number.', 'zume' ),
+                'connect' => __( 'Connect', 'zume' ),
                 'skip_for_now' => __( 'Skip for now', 'zume' ),
                 'question_which_session' => __( 'Choose your course format', 'zume' ),
                 'hour_1_session_20' => __( '1 hour (20 sessions)', 'zume' ),
@@ -319,6 +369,13 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'change' => __( 'Change', 'zume' ),
                 'next' => __( 'Next', 'zume' ),
             ],
+            'notify_of_future_trainings' => [
+                'title' => __( 'Notify me about future trainings', 'zume' ),
+                'please_wait' => __( 'Please wait while we connect you', 'zume' ),
+                'broken_link' => __( 'The notify me about future trainings link is broken. Please try again.', 'zume' ),
+                'success' => __( 'You have been added to the list to be notified about future trainings.', 'zume' ),
+                'error' => __( 'Something went wrong', 'zume' ),
+            ],
             'share' => array_merge( [
                 'title' => __( 'Invite your friends to join your training', 'zume' ),
                 'share_with_friends' => __( 'Share the invite or link below with your friends so that they can join your training.', 'zume' ),
@@ -328,7 +385,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'time' => __( 'Time', 'zume' ),
                 'meeting_link' => __( 'Meeting link', 'zume' ),
                 'join_url' => __( 'Join Training Group', 'zume' ),
-                'join_key' => __( 'Join key', 'zume' ),
+                'join_code' => __( 'Join Code', 'zume' ),
                 'broken_link' => __( 'The training link is broken. Please try again.', 'zume' ),
                 'copy_invite' => __( 'Copy Invite', 'zume' ),
             ], Zume_Training_Share::translations() ),

@@ -11,4 +11,8 @@
             margin: calc( var(--gutter, 2rem) / 2 );
         }
     }
+
+    &[data-full-width] > * {
+        flex: 1 1 0;
+    }
 }

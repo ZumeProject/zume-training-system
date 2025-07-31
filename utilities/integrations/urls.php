@@ -60,9 +60,17 @@ function zume_get_a_coach_wizard_url() {
     $redirect_url = zume_wizard_url( 'coaching' );
     return zume_login_url( 'register', $redirect_url );
 }
+function zume_notify_of_future_trainings_url() {
+    $redirect_url = zume_wizard_url( 'notify-of-future-trainings' );
+    return zume_login_url( 'register', $redirect_url );
+}
 function zume_join_the_community_wizard_url() {
     $redirect_url = zume_wizard_url( 'join_the_community' );
     return zume_login_url( 'login', $redirect_url );
+}
+function zume_join_a_public_plan_url( $code = null ) {
+    $lang_slug = empty( $code ) ? '' : $code . '/';
+    return site_url() . $lang_slug . '/join-a-training';
 }
 function zume_join_a_public_plan_wizard_url( $code = null ) {
     $params = empty( $code ) ? [] : [ 'code' => $code ];
@@ -82,7 +90,7 @@ function zume_join_friends_training_wizard_url( $code = null ) {
 function zume_checkin_wizard_url( $code = null ) {
     $params = empty( $code ) ? [] : [ 'code' => $code ];
     $redirect_url = zume_wizard_url( 'checkin', $params );
-    return zume_login_url( 'register', $redirect_url );
+    return zume_login_url( 'login', $redirect_url );
 }
 
 /**
@@ -126,6 +134,9 @@ function zume_wizard_url( $type = 'start', $params = [] ) {
             break;
         case 'make_a_group':
             $url = "$wizard_root/make-a-group";
+            break;
+        case 'notify-of-future-trainings':
+            $url = "$wizard_root/notify-of-future-trainings";
             break;
         default:
             $url = '';
@@ -236,6 +247,19 @@ function zume_download_url( $meta_key, $current_language = false ) {
     }
 
     return zume_mirror_url() . $current_language . '/' . $file_name;
+}
+function zume_raw_download_url( $meta_key, $current_language = false ) {
+    global $wpdb;
+    if ( ! $current_language ) {
+        $current_language = zume_current_language();
+    }
+    $url = null;
+
+    $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT p.ID FROM zume_posts p WHERE p.post_type = 'zume_download' AND p.post_title = %s", $current_language ) );
+    if ( empty( $post_id ) ) {
+        return $url;
+    }
+    return get_post_meta( $post_id, $meta_key, true );
 }
 
 function zume_coaching_url( $path = '' ) {

@@ -11,6 +11,7 @@ class Zume_Training_Mobile_App extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'mobile-app';
     public $lang = 'en';
+    public $lang_code = 'en';
     public static $token = 'app_mobile_app';
 
     private static $_instance = null;
@@ -29,11 +30,14 @@ class Zume_Training_Mobile_App extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         $page_slug = $url_parts[0] ?? '';
 
         if ( str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
+
+            $this->lang_code = $lang_code;
 
             $this->register_url_and_access();
             $this->header_content();
@@ -48,7 +52,6 @@ class Zume_Training_Mobile_App extends Zume_Magic_Page
             add_filter( 'dt_magic_url_base_allowed_css', [ $this, 'dt_magic_url_base_allowed_css' ], 10, 1 );
             add_filter( 'dt_magic_url_base_allowed_js', [ $this, 'dt_magic_url_base_allowed_js' ], 10, 1 );
             add_filter( 'wp_enqueue_scripts', [ $this, 'enqueue_zume_training_scripts' ] );
-
         }
     }
 
@@ -67,7 +70,9 @@ class Zume_Training_Mobile_App extends Zume_Magic_Page
                 jQuery(document).foundation();
             });
         </script>
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
         <?php
+        zume_hreflang_fixed( $this->lang_code, $this->type );
     }
 
     public function body(){
@@ -77,7 +82,7 @@ class Zume_Training_Mobile_App extends Zume_Magic_Page
 
         $lang_code = zume_current_language();
         $google_locales = zume_google_locales();
-        $apple_codes = apple_locales( 'codes' );
+        $apple_codes = zume_apple_locales( 'codes' );
 
         $google_lang = $lang_code;
         if ( !in_array( $lang_code, $google_locales ) ) {

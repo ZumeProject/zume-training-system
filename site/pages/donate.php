@@ -11,6 +11,7 @@ class Zume_Training_Donate extends Zume_Magic_Page
     public $root = 'app';
     public $type = 'donate';
     public $lang = 'en';
+    public $lang_code = 'en';
     public static $token = 'app_donate';
 
     private static $_instance = null;
@@ -29,11 +30,14 @@ class Zume_Training_Donate extends Zume_Magic_Page
 
         [
             'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
         $page_slug = $url_parts[0] ?? '';
 
         if ( str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
+
+            $this->lang_code = $lang_code;
 
             $this->register_url_and_access();
             $this->header_content();
@@ -67,7 +71,11 @@ class Zume_Training_Donate extends Zume_Magic_Page
                 jQuery(document).foundation();
             });
         </script>
+
+        <link rel="canonical" href="<?php echo esc_url( trailingslashit( site_url() ) . $this->lang_code . '/' . $this->type ); ?>" />
+
         <?php
+        zume_hreflang_fixed( $this->lang_code, $this->type );
     }
 
     public function body(){
@@ -88,15 +96,26 @@ class Zume_Training_Donate extends Zume_Magic_Page
                 <div class="stack-1">
                     <h2 class="brand h3 uppercase d-flex align-items-center gap-1"></h2>
                     <p><?php echo esc_html__( 'We are crowdfunded, and we love that you want to be part of the Zúme vision.', 'zume' ) ?></p>
+
                     <div>
-                        <div class="grassroot-project-widget" data-handle="default"></div>
-                        <?php //phpcs:ignore ?>
-                        <script src="https://give.zume.vision/-/project-embed.js"></script>
+                        <!--spinner-->
+                        <div id="give-loading-spinner">
+                            <div class="center"><span class="loading-spinner active"></span></div>
+                        </div>
+
+                        <iframe height="650"
+                                src="https://axiainternational.net/embed/giving/662-2892CRE" width="100%" id="givingWidget662-2892CRE"
+                                style="border: none" scrolling="no"
+                                onload="document.querySelector('#give-loading-spinner').remove()"
+                        ></iframe>
+                        <script>window.addEventListener("message", function (event) {if (event.origin ==='https://axiainternational.net' && (typeof event.data == "number" || typeof event.data == "string")) {
+                            document.getElementById("givingWidget662-2892CRE").height = event.data;
+                          }});</script>
                     </div>
                 </div>
             </div>
 
-            <a href="https://give.zume.vision/projects" class="btn uppercase fit-content mx-auto"><?php echo esc_html__( 'View All Giving Opportunities', 'zume' ) ?> <?php require plugin_dir_path( __DIR__ ) . 'assets/images/external-link.svg' ?></a>
+            <!--<a href="https://give.zume.vision/projects" class="btn uppercase fit-content mx-auto">--><?php //echo esc_html__( 'View All Giving Opportunities', 'zume' ) ?><!-- --><?php //require plugin_dir_path( __DIR__ ) . 'assets/images/external-link.svg' ?><!--</a>-->
 
         </div>
         <?php
