@@ -150,6 +150,7 @@ export class DashProgress extends DashPage {
         newHostProgress.list = { ...this.hostProgress.list }
         newHostProgress.list[key] = value
         this.hostProgress = { ...newHostProgress }
+        jsObject.host_progress = { ...this.hostProgress }
     }
 
     toggleDetails(key) {

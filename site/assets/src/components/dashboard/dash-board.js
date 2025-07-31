@@ -164,13 +164,9 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.removeEventListener('route', this.updateLanguageSwitcher)
     }
 
-    updated() {
-        super.updated()
-        this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
-    }
-
     firstUpdated() {
         this.getCtas()
+        this.menuOffset = this.getHeightOfElement('.header')
         const celebrationModal = this.renderRoot.querySelector('#celebration-modal')
         if (celebrationModal) {
             jQuery(celebrationModal).on('closed.zf.reveal', () => {
@@ -290,10 +286,10 @@ export class DashBoard extends navigator(router(LitElement)) {
         return makeComponent(isLocked)
     }
 
-    getOffsetTop(querySelector) {
-        const element = this.querySelector(querySelector)
-        const offsetTop = element.offsetTop
-        return offsetTop
+    getHeightOfElement(querySelector) {
+        const element = document.querySelector(querySelector)
+        const height = element.offsetHeight
+        return height
     }
 
     toggleSidebar() {
