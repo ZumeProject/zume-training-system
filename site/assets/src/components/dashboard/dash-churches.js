@@ -666,9 +666,14 @@ export class DashChurches extends DashPage {
                                 <span class="visually-hidden">${jsObject.translations.filter}</span>
                                 <span class="icon z-icon-filter" aria-hidden="true"></span>
                             </button> -->
-                            <button class="icon-btn f-2" @click=${this.openAddChurchModal} ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser ? 'true' : 'false'}>
+                            <button class="icon-btn f-2 filter-btn" @click=${this.openAddChurchModal} ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser ? 'true' : 'false'}>
                                 <span class="visually-hidden">${jsObject.translations.add_church}</span>
                                 <span class="icon z-icon-plus" aria-hidden="true"></span>
+                                ${
+                                  this.filterStatus &&this.filterStatus !== 'all' ? html`
+                                      <span class="filter-dot"></span>
+                                  ` : ''
+                                }
                             </button>
                         </div>
                     </div>

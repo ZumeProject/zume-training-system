@@ -1307,9 +1307,12 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                 <span class="visually-hidden">${jsObject.translations.filter}</span>
                                 <span class="icon z-icon-filter" aria-hidden="true"></span>
                             </button> -->
-                            <button class="icon-btn f-2" @click=${this.openAddChurchModal} ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser?"true":"false"}>
+                            <button class="icon-btn f-2 filter-btn" @click=${this.openAddChurchModal} ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser?"true":"false"}>
                                 <span class="visually-hidden">${jsObject.translations.add_church}</span>
                                 <span class="icon z-icon-plus" aria-hidden="true"></span>
+                                ${this.filterStatus&&this.filterStatus!=="all"?l`
+                                      <span class="filter-dot"></span>
+                                  `:""}
                             </button>
                         </div>
                     </div>
@@ -1764,9 +1767,12 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                             <h1 class="h3">${this.route.translation}</h1>
                         </div>
                         <div class="s0">
-                            <button class="icon-btn f-2" data-toggle="filter-menu" ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser?"true":"false"}>
+                            <button class="icon-btn f-2 filter-btn" data-toggle="filter-menu" ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser?"true":"false"}>
                                 <span class="visually-hidden">${jsObject.translations.filter}</span>
                                 <span class="icon z-icon-filter" aria-hidden="true"></span>
+                                ${this.filterStatus&&this.filterStatus!=="all"?l`
+                                        <span class="filter-dot"></span>
+                                    `:""}
                             </button>
                             <button class="icon-btn f-2" @click=${this.handleOpenCommitmentsModal} ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser?"true":"false"}>
                                 <span class="visually-hidden">${jsObject.translations.add_commitments}</span>
@@ -1918,9 +1924,12 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                         <span class="icon ${this.route.icon}"></span>
                         <h1 class="h3">${this.route.translation}</h1>
                         <div class="s0">
-                            <button class="icon-btn f-2" data-toggle="filter-menu">
+                            <button class="icon-btn f-2 filter-btn" data-toggle="filter-menu">
                                 <span class="visually-hidden">${jsObject.translations.filter}</span>
                                 <span class="icon z-icon-filter brand-light" aria-hidden="true"></span>
+                                ${this.filterStatus&&this.filterStatus!=="all"?l`
+                                        <span class="filter-dot"></span>
+                                    `:""}
                             </button>
                             <button class="icon-btn f-2" @click=${this.openInfoModal}>
                                 <span class="visually-hidden">${jsObject.translations.progress_info}</span>
@@ -2147,7 +2156,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 </div>
             </li>
         `}renderFilterButton(){return l`
-            <button class="icon-btn f-2" data-toggle="filter-menu">
+            <button class="icon-btn f-2 filter-btn" data-toggle="filter-menu">
                 <span class="visually-hidden"
                     >${jsObject.translations.filter}</span
                 >
@@ -2155,6 +2164,9 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     class="icon z-icon-filter brand-light"
                     aria-hidden="true"
                 ></span>
+                ${this.filterStatus&&this.filterStatus!=="all"?l`
+                        <span class="filter-dot"></span>
+                    `:""}
             </button>
         `}render(){var t,e,s,n;return l`
             <div class="dashboard__content">
@@ -4148,7 +4160,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
 
 
             </div>
-        `}createRenderRoot(){return this}}customElements.define("share-links",Zl);class Kl extends k{constructor(){super();E(this,"sortAlphabetically",(e,s)=>e.page_title<s.page_title?-1:1);E(this,"sortByKey",(e,s)=>Number(e.key)<Number(s.key)?-1:1);this.items=[],this.itemsToDisplay=[],this.filterType="all"}static get properties(){return{items:{type:Array},itemsToDisplay:{type:Array,attribute:!1},filterType:{type:String,attribute:!1},isSortedAlphabetically:{type:Boolean,attribute:!1}}}connectedCallback(){super.connectedCallback(),this.itemsToDisplay=[...this.items]}filterItems(e){this.filterType=e,this.itemsToDisplay=this.sortItems(this.items.filter(({type:s})=>e==="all"?!0:s===e))}toggleSorting(){this.isSortedAlphabetically=!this.isSortedAlphabetically,this.itemsToDisplay=this.sortItems(this.itemsToDisplay)}sortItems(e){return e.sort((s,n)=>this.isSortedAlphabetically?this.sortAlphabetically(s,n):this.sortByKey(s,n))}renderListItem({page_url:e,page_title:s,type:n,description:a}){return l`
+        `}createRenderRoot(){return this}}customElements.define("share-links",Zl);class Kl extends k{constructor(){super();E(this,"sortAlphabetically",(e,s)=>e.page_title<s.page_title?-1:1);E(this,"sortByKey",(e,s)=>Number(e.key)<Number(s.key)?-1:1);this.items=[],this.itemsToDisplay=[],this.filterStatus="all"}static get properties(){return{items:{type:Array},itemsToDisplay:{type:Array,attribute:!1},filterStatus:{type:String,attribute:!1},isSortedAlphabetically:{type:Boolean,attribute:!1}}}connectedCallback(){super.connectedCallback(),this.itemsToDisplay=[...this.items]}filterItems(e){this.filterStatus=e,this.itemsToDisplay=this.sortItems(this.items.filter(({type:s})=>e==="all"?!0:s===e))}toggleSorting(){this.isSortedAlphabetically=!this.isSortedAlphabetically,this.itemsToDisplay=this.sortItems(this.itemsToDisplay)}sortItems(e){return e.sort((s,n)=>this.isSortedAlphabetically?this.sortAlphabetically(s,n):this.sortByKey(s,n))}renderListItem({page_url:e,page_title:s,type:n,description:a}){return l`
             <li class="share-cards" data-type=${n}>
                 <div class="share card">
                     <div class="switcher | switcher-width-25 align-items-center gapx--4">
@@ -4181,28 +4193,31 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                         <span class="visually-hidden">${zumeShare.translations.sort}</span>
                         <svg class="w-2rem brand-light" focusable="false" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12.93 2.65c-.2-.2-.51-.2-.71 0l-2.01 2.01h4.72zm-.7 18.7c.2.2.51.2.71 0l1.98-1.98h-4.66zm-1.25-3.62c.6 0 1.01-.6.79-1.16L8.04 7.03c-.18-.46-.63-.76-1.12-.76-.49 0-.94.3-1.12.76l-3.74 9.53c-.22.56.19 1.16.79 1.16.35 0 .67-.22.8-.55l.71-1.9h5.11l.71 1.9c.13.34.45.56.8.56m-6.01-4.09 1.94-5.18 1.94 5.18zm16.08 2.5h-5.33l5.72-8.29c.46-.66-.02-1.57-.82-1.57h-6.48c-.44 0-.79.36-.79.8v.01c0 .44.36.8.79.8h5.09l-5.73 8.28c-.46.66.02 1.57.82 1.57h6.72c.44 0 .79-.36.79-.79.02-.45-.34-.81-.78-.81"></path></svg>
                     </button>
-                    <button class="icon-btn f-2" data-toggle="filter-menu">
+                    <button class="icon-btn f-2 filter-btn" data-toggle="filter-menu">
                         <span class="visually-hidden">${zumeShare.translations.filter}</span>
                         <span class="icon z-icon-filter brand-light" aria-hidden="true"></span>
+                        ${this.filterStatus&&this.filterStatus!=="all"?l`
+                                <span class="filter-dot"></span>
+                            `:""}
                     </button>
                 </div>
                 <div class="dropdown-pane" id="filter-menu" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="center" data-close-on-click="true" data-close-on-click-inside="true">
                     <ul>
                         <li>
                             <button
-                                class="menu-btn w-100 filter-button ${this.filterType==="all"?"selected":""}"
+                                class="menu-btn w-100 filter-button ${this.filterStatus==="all"?"selected":""}"
                                 @click=${()=>this.filterItems("all")}
                             >
                                 ${zumeShare.translations.all}
                             </button>
                             <button
-                                class="menu-btn w-100 filter-button ${this.filterType==="tool"?"selected":""}"
+                                class="menu-btn w-100 filter-button ${this.filterStatus==="tool"?"selected":""}"
                                 @click=${()=>this.filterItems("tool")}
                             >
                                 ${zumeShare.translations.tools}
                             </button>
                             <button
-                                class="menu-btn w-100 filter-button ${this.filterType==="concept"?"selected":""}"
+                                class="menu-btn w-100 filter-button ${this.filterStatus==="concept"?"selected":""}"
                                 @click=${()=>this.filterItems("concept")}
                             >
                                 ${zumeShare.translations.concepts}
