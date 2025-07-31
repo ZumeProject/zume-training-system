@@ -1679,8 +1679,8 @@ if ( ! function_exists( 'zume_languages' ) ) {
                 ],
             ),
             'or' => array(
-                'name' => 'Oriya',
-                'enDisplayName' => 'Oriya',
+                'name' => 'Odia',
+                'enDisplayName' => 'Odia',
                 'code' => 'or',
                 'displayCode' => 'or',
                 'locale' => 'or',
