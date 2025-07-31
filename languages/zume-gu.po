@@ -1,24 +1,24 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
-"POT-Creation-Date: 2025-07-28 17:05-0600\n"
-"PO-Revision-Date: 2025-04-11 11:35+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Gujarati <https://translate.disciple.tools/projects/zume-"
-"training/zume-training-system/gu/>\n"
+"POT-Creation-Date: 2025-07-29 09:25-0600\n"
+"PO-Revision-Date: 2025-07-30 00:03+0000\n"
+"Last-Translator: Chris <chris@chasm.solutions>\n"
+"Language-Team: Gujarati <https://translate.disciple.tools/projects/"
+"zume-training/zume-training-system/gu/>\n"
 "Language: gu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.12.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,"
+"2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
@@ -47,18 +47,18 @@ msgstr "લગભગ"
 #: 404.php:94 appearance/style-override/navigation.php:106
 #: site/course/presenter.php:144 site/dashboard/checkin-dashboard.php:29
 #: site/dashboard/checkin-dashboard.php:177 site/dashboard/dashboard.php:29
-#: site/dashboard/wizard.php:181 site/dashboard/wizard.php:194
+#: site/dashboard/wizard.php:189 site/dashboard/wizard.php:202
 #: site/pages/home.php:118 site/parts/checkin-nav.php:13
 #: site/parts/mobile-nav.php:7 site/parts/nav.php:19
 msgid "Dashboard"
 msgstr "ડેશબોર્ડ"
 
-#: 404.php:99 site/dashboard/dashboard.php:251 site/parts/footer.php:25
+#: 404.php:99 site/dashboard/dashboard.php:272 site/parts/footer.php:25
 #: site/parts/footer.php:28
 msgid "Launch Course"
 msgstr "અભ્યાસની શરૂઆત કરો"
 
-#: 404.php:100 site/dashboard/dashboard.php:256 site/pages/resources.php:145
+#: 404.php:100 site/dashboard/dashboard.php:277 site/pages/resources.php:145
 #: site/pages/resources.php:147 site/pages/resources.php:162
 #: site/pages/resources.php:195 site/parts/download-slides.php:31
 #: site/parts/download-slides.php:43 site/parts/footer.php:29
@@ -68,7 +68,7 @@ msgstr "અભ્યાસની શરૂઆત કરો"
 msgid "10 Session Course"
 msgstr "૧૦ પાઠ નો અભ્યાસક્રમ"
 
-#: 404.php:101 site/dashboard/dashboard.php:257 site/pages/resources.php:150
+#: 404.php:101 site/dashboard/dashboard.php:278 site/pages/resources.php:150
 #: site/pages/resources.php:166 site/pages/resources.php:196
 #: site/parts/download-slides.php:34 site/parts/download-slides.php:46
 #: site/parts/footer.php:30 utilities/integrations/replace-placeholder.php:114
@@ -84,8 +84,8 @@ msgstr "૩ દિવસનો સઘન અભ્યાસક્રમ"
 #: appearance/style-override/navigation.php:75
 #: appearance/style-override/navigation.php:79
 #: maps/js-translation-strings.php:26 maps/local-map.php:1070
-#: site/course/presenter.php:147 site/dashboard/dashboard.php:222
-#: site/dashboard/dashboard.php:282 site/pages/training.php:29
+#: site/course/presenter.php:147 site/dashboard/dashboard.php:243
+#: site/dashboard/dashboard.php:309 site/pages/training.php:29
 #: site/parts/footer.php:11 site/parts/mobile-nav.php:27 site/parts/nav.php:25
 msgid "Training"
 msgstr "તાલીમ"
@@ -140,14 +140,14 @@ msgstr "વાર્તાઓ"
 msgid "Global Map"
 msgstr "વૈશ્વિક નકશો"
 
-#: globals.php:2332 globals.php:2335 site/course/course-content.php:87
+#: globals.php:2355 globals.php:2358 site/course/course-content.php:87
 #: site/course/course-content.php:102 site/course/course-content.php:111
 #: site/course/course-content.php:372 site/course/course-content.php:3332
 #: site/course/course-content.php:3350 site/pages/follow-jesus.php:177
 msgid "God Uses Ordinary People"
 msgstr "ઈશ્વર સામાન્ય લોકોનો ઉપયોગ કરે છે"
 
-#: globals.php:2334 site/pages/follow-jesus.php:178
+#: globals.php:2357 site/pages/follow-jesus.php:178
 msgid ""
 "You'll see how God uses ordinary people doing simple things to make a big "
 "impact."
@@ -155,44 +155,44 @@ msgstr ""
 "તમે જોશો કે કેવી રીતે ઈશ્વર સામાન્ય લોકોનો ઉપયોગ કરે છે અને સરળ બાબતો કરીને મોટી અસર "
 "ઉપજાવે છે."
 
-#: globals.php:2345 site/course/course-content.php:3333
+#: globals.php:2368 site/course/course-content.php:3333
 #: site/course/course-content.php:3351 site/pages/follow-jesus.php:181
 msgid "Simple Definition of Disciple and Church"
 msgstr "શિષ્ય અને ચર્ચની સરળ વ્યાખ્યા"
 
-#: globals.php:2347 site/course/course-content.php:157
+#: globals.php:2370 site/course/course-content.php:157
 #: site/pages/follow-jesus.php:182
 msgid ""
 "Discover the essence of being a disciple, making a disciple, and what is the "
 "church."
 msgstr "શિષ્ય બનવાનો, શિષ્ય બનાવવાનો અને ચર્ચ શું છે તેનો સાર શોધી કાઢો."
 
-#: globals.php:2348 site/course/course-content.php:147
+#: globals.php:2371 site/course/course-content.php:147
 #: site/course/course-content.php:156
 msgid "Disciples and the Church"
 msgstr "શિષ્યો અને ચર્ચ"
 
-#: globals.php:2358 site/course/course-content.php:3334
+#: globals.php:2381 site/course/course-content.php:3334
 #: site/course/course-content.php:3352 site/pages/follow-jesus.php:203
 msgid "Spiritual Breathing is Hearing and Obeying God"
 msgstr "આધ્યાત્મિક શ્વાસોચ્છવાસ એટલે સાંભળવું અને ઈશ્વરની આજ્ઞાનું પાલન કરવું"
 
-#: globals.php:2360 site/pages/follow-jesus.php:204
+#: globals.php:2383 site/pages/follow-jesus.php:204
 msgid "Being a disciple means we hear from God and we obey God."
 msgstr ""
 "શિષ્ય હોવાનો અર્થ એ છે કે આપણે ઈશ્વર પાસેથી સાંભળીએ છીએ અને આપણે ઈશ્વરની આજ્ઞાનું પાલન "
 "કરીએ છીએ."
 
-#: globals.php:2361 site/course/course-content.php:196
+#: globals.php:2384 site/course/course-content.php:196
 #: site/course/course-content.php:205
 msgid "Hearing and Obeying God"
 msgstr "સાંભળવું અને ઈશ્વરની આજ્ઞાનું પાલન કરવું"
 
-#: globals.php:2371 globals.php:2374
+#: globals.php:2394 globals.php:2397
 msgid "S.O.A.P.S. Bible Study"
 msgstr "S.O.A.P.S. બાઇબલ અભ્યાસ"
 
-#: globals.php:2373 site/pages/follow-jesus.php:219
+#: globals.php:2396 site/pages/follow-jesus.php:219
 msgid ""
 "A tool for daily Bible study that helps you understand, obey, and share "
 "God’s Word."
@@ -200,14 +200,14 @@ msgstr ""
 "દૈનિક બાઇબલ અભ્યાસ માટેનું એક સાધન, જે તમને ઈશ્વરના શબ્દને સમજવા, તેનું પાલન કરવા અને "
 "સુવાર્તામાં મદદ કરે છે."
 
-#: globals.php:2384 globals.php:2387 site/course/course-content.php:94
+#: globals.php:2407 globals.php:2410 site/course/course-content.php:94
 #: site/course/course-content.php:307 site/course/course-content.php:316
 #: site/course/course-content.php:379 site/course/course-content.php:3581
 #: site/course/course-content.php:3597 site/pages/follow-jesus.php:233
 msgid "Accountability Groups"
 msgstr "જવાબદારી પૂર્ણ જૂથો"
 
-#: globals.php:2386 site/pages/follow-jesus.php:234
+#: globals.php:2409 site/pages/follow-jesus.php:234
 msgid ""
 "A tool for two or three people of the same gender to meet weekly and "
 "encourage each other in areas that are going well and reveal areas that need "
@@ -216,37 +216,37 @@ msgstr ""
 "એક જ લિંગના બે કે ત્રણ લોકો માટે સાપ્તાહિક મળવાનું અને સારી રીતે ચાલતા ક્ષેત્રોમાં એકબીજાને "
 "પ્રોત્સાહિત કરવા અને સુધારણાની જરૂર હોય તેવા ક્ષેત્રોને જાહેર કરવા માટેનું એક સાધન."
 
-#: globals.php:2397 site/pages/follow-jesus.php:197
+#: globals.php:2420 site/pages/follow-jesus.php:197
 msgid "Consumer vs Producer Lifestyle"
 msgstr "ઉપભોક્તા વિરુદ્ધ ઉત્પાદક જીવનશૈલી"
 
-#: globals.php:2399 site/pages/follow-jesus.php:198
+#: globals.php:2422 site/pages/follow-jesus.php:198
 msgid ""
 "You'll discover the four main ways God makes everyday followers more like "
 "Jesus."
 msgstr "ઈશ્વર રોજબરોજના શિષ્યોને ઈસુ જેવા બનાવે છે તે ચાર મુખ્ય રીતો તમે શોધી કાઢશો."
 
-#: globals.php:2400
+#: globals.php:2423
 msgid "Producer not Consumer"
 msgstr "ઉત્પાદક ઉપભોક્તા નથી"
 
-#: globals.php:2410 globals.php:2413 site/pages/follow-jesus.php:207
+#: globals.php:2433 globals.php:2436 site/pages/follow-jesus.php:207
 msgid "How to Spend an Hour in Prayer"
 msgstr "પ્રાર્થનામાં એક કલાક કેવી રીતે વિતાવવો"
 
-#: globals.php:2412 site/pages/follow-jesus.php:208
+#: globals.php:2435 site/pages/follow-jesus.php:208
 msgid "See how easy it is to spend an hour in prayer."
 msgstr "જુઓ, પ્રાર્થનામાં વિતાવવો એક કલાકનો સમય કેટલો સરળ છે."
 
-#: globals.php:2423 site/pages/follow-jesus.php:294
+#: globals.php:2446 site/pages/follow-jesus.php:294
 msgid "Relational Stewardship – List of 100"
 msgstr "૧૦૦ - કારભારીઓની યાદી"
 
-#: globals.php:2425 site/pages/follow-jesus.php:295
+#: globals.php:2448 site/pages/follow-jesus.php:295
 msgid "A tool designed to help you be a good steward of your relationships."
 msgstr "તમને તમારા સંબંધોના સારા કારભારી બનવામાં મદદ કરવા માટે રચાયેલ એક સાધન."
 
-#: globals.php:2426 site/activities/list-of-100-printable.php:22
+#: globals.php:2449 site/activities/list-of-100-printable.php:22
 #: site/activities/list-of-100-printable.php:90
 #: site/activities/list-of-100.php:22 site/activities/list-of-100.php:81
 #: site/course/course-content.php:496 site/course/course-content.php:634
@@ -258,13 +258,13 @@ msgstr "તમને તમારા સંબંધોના સારા ક�
 msgid "List of 100"
 msgstr "૧૦૦ ની યાદી"
 
-#: globals.php:2436 globals.php:2439 site/course/course-content.php:832
+#: globals.php:2459 globals.php:2462 site/course/course-content.php:832
 #: site/course/course-content.php:845 site/course/course-content.php:854
 #: site/course/course-content.php:3977 site/course/course-content.php:3996
 msgid "Spiritual Economy"
 msgstr "આધ્યાત્મિક વ્યવસ્થા"
 
-#: globals.php:2438 site/pages/follow-jesus.php:253
+#: globals.php:2461 site/pages/follow-jesus.php:253
 msgid ""
 "Learn how God's economy is different from the world's. God invests more in "
 "those who are faithful with what they've already been given."
@@ -272,26 +272,26 @@ msgstr ""
 "જાણો કે ઈશ્વરની વ્યવસ્થા કેવી રીતે દુનિયાથી અલગ છે. જેઓ પોતાને જે મળ્યું છે તેનાથી જેઓ વફાદાર "
 "હોય તેમનામાં ઈશ્વર વધારે રોકાણ કરે છે."
 
-#: globals.php:2449 site/pages/follow-jesus.php:298
+#: globals.php:2472 site/pages/follow-jesus.php:298
 msgid "The Gospel and How to Share It"
 msgstr "સુવાર્તા અને તેને કેવી રીતે જણાવવી"
 
-#: globals.php:2451 site/pages/follow-jesus.php:299
+#: globals.php:2474 site/pages/follow-jesus.php:299
 msgid ""
 "Learn a way to share God’s Good News from the beginning of humanity all the "
 "way to the end of this age."
 msgstr ""
 "માનવજાતથી શરૂઆત કરીને આ યુગના અંત સુધી ઈશ્વરના શુભ સમાચારને જણાવવા તેની રીત શીખો."
 
-#: globals.php:2452
+#: globals.php:2475
 msgid "Sharing God‘s Story"
 msgstr "ઈશ્વરની વાત જણાવી રહ્યા છીએ"
 
-#: globals.php:2462 site/pages/follow-jesus.php:245
+#: globals.php:2485 site/pages/follow-jesus.php:245
 msgid "Baptism and How To Do It"
 msgstr "બાપ્તિસ્મા અને કેવી રીતે આપવું તે"
 
-#: globals.php:2464 site/pages/follow-jesus.php:246
+#: globals.php:2487 site/pages/follow-jesus.php:246
 msgid ""
 "Jesus said, “Go and make disciples of all nations, BAPTIZING them in the "
 "name of the Father and of the Son and of the Holy Spirit…” Learn how to put "
@@ -300,18 +300,18 @@ msgstr ""
 "ઈસુએ કહ્યું, જાઓ અને સર્વ દેશોનાઓને શિષ્યો બનાવો. તેઓને બાપ્તિસ્મા આપતા જાઓ. પિતા, પુત્ર "
 "તથા પવિત્ર આત્માના નામે બાપ્તિસ્મા આપો. આને વ્યવહારમાં કેવી રીતે મૂકવું તે શીખો."
 
-#: globals.php:2465 site/course/course-content.php:837
+#: globals.php:2488 site/course/course-content.php:837
 #: site/course/course-content.php:1043 site/course/course-content.php:1052
 #: site/course/course-content.php:1118 site/course/course-content.php:4252
 #: site/course/course-content.php:4269
 msgid "Baptism"
 msgstr "બાપ્તિસ્મા"
 
-#: globals.php:2475 site/pages/follow-jesus.php:302
+#: globals.php:2498 site/pages/follow-jesus.php:302
 msgid "Prepare Your 3-Minute Testimony"
 msgstr "તમારી 3 મિનિટની સાક્ષી તૈયાર કરો"
 
-#: globals.php:2477 site/pages/follow-jesus.php:303
+#: globals.php:2500 site/pages/follow-jesus.php:303
 msgid ""
 "Learn how to share your testimony in three minutes by sharing how Jesus has "
 "impacted your life."
@@ -319,17 +319,17 @@ msgstr ""
 "ઈસુએ તમારા જીવનમાં કેવી અસર કરી છે તે જણાવીને ત્રણ મિનિટમાં તમારી સાક્ષીને કેવી રીતે "
 "જણાવવી તે શીખો."
 
-#: globals.php:2478
+#: globals.php:2501
 msgid "3-Minute Testimony"
 msgstr "3-મિનિટની સાક્ષી"
 
-#: globals.php:2488 site/course/course-content.php:1237
+#: globals.php:2511 site/course/course-content.php:1237
 #: site/course/course-content.php:1518 site/course/course-content.php:3978
 #: site/course/course-content.php:3997 site/pages/follow-jesus.php:185
 msgid "Vision Casting the Greatest Blessing"
 msgstr "દર્શન અને સૌથી મોટો આશીર્વાદ"
 
-#: globals.php:2490 site/course/course-content.php:1318
+#: globals.php:2513 site/course/course-content.php:1318
 #: site/pages/follow-jesus.php:186
 msgid ""
 "Learn a simple pattern of making not just one follower of Jesus but entire "
@@ -338,33 +338,33 @@ msgstr ""
 "ઈસુનો માત્ર એક શિષ્ય જ નહીં, પરંતુ સમગ્ર આધ્યાત્મિક કુટુંબો કે જેઓ આવનારી પેઢીઓ સુધી ગુણાત્મક "
 "થાય છે, તેમને શિષ્ય બનાવવાની એક સરળ રીત શીખો."
 
-#: globals.php:2491
+#: globals.php:2514
 msgid "Great, Greater, and Greatest Blessing"
 msgstr "મહાન, મહાન અને મહાન આશીર્વાદ"
 
-#: globals.php:2501 site/pages/follow-jesus.php:275
+#: globals.php:2524 site/pages/follow-jesus.php:275
 msgid "Duckling Discipleship – Leading Immediately"
 msgstr "બતકની માફક શિષ્યપણું - તરત જ નેતૃત્વ"
 
-#: globals.php:2503
+#: globals.php:2526
 msgid "Learn what ducklings have to do with disciple-making."
 msgstr "બતક અને શિષ્ય બનાવવા સાથે શું સંબંધ છે તે જાણો."
 
-#: globals.php:2504 site/course/course-content.php:1238
+#: globals.php:2527 site/course/course-content.php:1238
 #: site/course/course-content.php:1357 site/course/course-content.php:1366
 #: site/course/course-content.php:1519 site/course/course-content.php:4529
 #: site/course/course-content.php:4550
 msgid "Duckling Discipleship"
 msgstr "બતકની જેમ શિષ્યપણું"
 
-#: globals.php:2514 globals.php:2517 site/course/course-content.php:1239
+#: globals.php:2537 globals.php:2540 site/course/course-content.php:1239
 #: site/course/course-content.php:1405 site/course/course-content.php:1414
 #: site/course/course-content.php:1520 site/course/course-content.php:4530
 #: site/course/course-content.php:4551 site/pages/follow-jesus.php:256
 msgid "Eyes to See Where the Kingdom Isn’t"
 msgstr "ઈશ્વરનું રાજ્ય ક્યાં નથી તે જોવા માટે આંખો"
 
-#: globals.php:2516 site/pages/follow-jesus.php:257
+#: globals.php:2539 site/pages/follow-jesus.php:257
 msgid ""
 "Begin to see where God’s Kingdom isn’t. These are usually the places where "
 "God wants to work the most."
@@ -372,11 +372,11 @@ msgstr ""
 "ઈશ્વરનું રાજ્ય ક્યાં નથી તે જોવાનું શરૂ કરો. આ સામાન્ય રીતે એવી જગ્યાઓ હોય છે જ્યાં ઈશ્વર "
 "સૌથી વધુ કામ કરવા માગે છે."
 
-#: globals.php:2527 site/pages/follow-jesus.php:241
+#: globals.php:2550 site/pages/follow-jesus.php:241
 msgid "The Lord’s Supper and How To Lead It"
 msgstr "પ્રભુ ભોજન અને તેને તેમાં કેવી રીતે દોરી જવું"
 
-#: globals.php:2529
+#: globals.php:2552
 msgid ""
 "It’s a simple way to celebrate our intimate connection and ongoing "
 "relationship with Jesus. Learn a simple way to celebrate."
@@ -384,18 +384,18 @@ msgstr ""
 "ઈસુ સાથેના આપણા ઘનિષ્ઠ સબંધો અને ચાલુ સંબંધોની ઉજવણી કરવાની આ એક સરળ રીત છે. ઉજવણી "
 "કરવાની એક સરળ રીત શીખો."
 
-#: globals.php:2530 site/activities/activities.php:258
+#: globals.php:2553 site/activities/activities.php:258
 #: site/course/course-content.php:1244 site/course/course-content.php:1455
 #: site/course/course-content.php:1464 site/course/course-content.php:1525
 #: site/course/course-content.php:4534 site/course/course-content.php:4555
 msgid "The Lord’s Supper"
 msgstr "પ્રભુ ભોજન"
 
-#: globals.php:2540 site/pages/follow-jesus.php:313
+#: globals.php:2563 site/pages/follow-jesus.php:313
 msgid "Prayer Walking and How To Do It"
 msgstr "પ્રાર્થના યાત્રા અને તેનું આયોજન કેવી રીતે કરવું"
 
-#: globals.php:2542
+#: globals.php:2565
 msgid ""
 "It‘s a simple way to obey God’s command to pray for others. And it‘s just "
 "what it sounds like — praying to God while walking around!"
@@ -403,64 +403,64 @@ msgstr ""
 "બીજાઓ માટે પ્રાર્થના કરવી તે ઈશ્વરની આજ્ઞાનું પાલન કરવાની આ એક સરળ રીત છે. અને તે કેવું "
 "લાગે છે તેવું જ છે - ચાલતાં ઈશ્વરને પ્રાર્થના કરવી!"
 
-#: globals.php:2543 site/activities/activities.php:327
+#: globals.php:2566 site/activities/activities.php:327
 #: site/course/course-content.php:1636 site/course/course-content.php:1644
 #: site/course/course-content.php:1653 site/course/course-content.php:1759
 #: site/course/course-content.php:4661 site/course/course-content.php:4674
 msgid "Prayer Walking"
 msgstr "પ્રાર્થના યાત્રા"
 
-#: globals.php:2553 site/pages/follow-jesus.php:309
+#: globals.php:2576 site/pages/follow-jesus.php:309
 msgid "A Person of Peace and How To Find One"
 msgstr "શાંતિની વ્યક્તિ અને એકને કેવી રીતે શોધવી તે"
 
-#: globals.php:2555
+#: globals.php:2578
 msgid ""
 "Learn who a person of peace might be and how to know when you‘ve found one."
 msgstr ""
 "જાણો કે શાંતિવાળી વ્યક્તિ કોણ હોઈ શકે છે અને જ્યારે તમને તે મળી ગઈ છે ત્યારે કેવી રીતે જાણવું."
 
-#: globals.php:2556 site/course/course-content.php:1631
+#: globals.php:2579 site/course/course-content.php:1631
 #: site/course/course-content.php:1676 site/course/course-content.php:1685
 #: site/course/course-content.php:4777 site/course/course-content.php:4797
 msgid "Person of Peace"
 msgstr "શાંતિની વ્યક્તિ"
 
-#: globals.php:2566 site/pages/follow-jesus.php:222
+#: globals.php:2589 site/pages/follow-jesus.php:222
 msgid "Faithfulness is Better Than Knowledge"
 msgstr "જ્ઞાન કરતાં વફાદારી વધુ સારી છે"
 
-#: globals.php:2568
+#: globals.php:2591
 msgid ""
 "It‘s important what disciples know — but it‘s much more important what they "
 "DO with what they know."
 msgstr "શિષ્યો શું જાણે છે તે મહત્ત્વનું છે- પરંતુ તેઓ જે જાણે છે તેનું તેઓ શું કરે છે તે વધારે મહત્ત્વનું છે."
 
-#: globals.php:2569 site/course/course-content.php:1891
+#: globals.php:2592 site/course/course-content.php:1891
 #: site/course/course-content.php:1900 site/course/course-content.php:4908
 #: site/course/course-content.php:4957
 msgid "Faithfulness"
 msgstr "વિશ્વાસુતા"
 
-#: globals.php:2579 site/pages/follow-jesus.php:211
+#: globals.php:2602 site/pages/follow-jesus.php:211
 msgid "The BLESS Prayer Pattern"
 msgstr "આશીર્વાદ પ્રાર્થનાની પધ્ધતિ"
 
-#: globals.php:2581 site/pages/follow-jesus.php:212
+#: globals.php:2604 site/pages/follow-jesus.php:212
 msgid "Practice a simple mnemonic to remind you of ways to pray for others."
 msgstr ""
 "તમને અન્ય લોકો માટે પ્રાર્થના કરવાની રીતોની યાદ અપાવવા માટે એક સરળ સંજ્ઞાસૂચિનો અભ્યાસ "
 "કરો."
 
-#: globals.php:2582 site/course/course-content.php:1725
+#: globals.php:2605 site/course/course-content.php:1725
 msgid "The B.L.E.S.S. Prayer"
 msgstr "બી.એલ.ઈ.એસ.એસ. પ્રાર્થના"
 
-#: globals.php:2592 site/pages/follow-jesus.php:229
+#: globals.php:2615 site/pages/follow-jesus.php:229
 msgid "3/3 Group Meeting Pattern"
 msgstr "૩/૩ જૂથની પધ્ધતિ"
 
-#: globals.php:2594
+#: globals.php:2617
 msgid ""
 "A 3/3 Group is a way for followers of Jesus to meet, pray, learn, grow, "
 "fellowship and practice obeying and sharing what they‘ve learned. In this "
@@ -470,32 +470,32 @@ msgstr ""
 "તેઓ જે શીખ્યા છે તેનું પાલન કરવાની અને સુવાર્તાની પ્રેક્ટિસ કરવાનો એક માર્ગ છે. 3/3નું જૂથ એક "
 "માત્ર નાનું જૂથ જ નહીં, પણ એક નાનું ચર્ચ છે."
 
-#: globals.php:2595
+#: globals.php:2618
 msgid "3/3 Group"
 msgstr "૩/૩ નું જૂથ"
 
-#: globals.php:2605 site/pages/follow-jesus.php:279
+#: globals.php:2628 site/pages/follow-jesus.php:279
 msgid "Training Cycle for Maturing Disciples"
 msgstr "પરિપક્વ શિષ્યો માટે તાલીમ ચક્ર"
 
-#: globals.php:2607 site/pages/follow-jesus.php:280
+#: globals.php:2630 site/pages/follow-jesus.php:280
 msgid ""
 "Learn the training cycle and consider how it applies to disciple making."
 msgstr "તાલીમ ચક્ર શીખો અને તે શિષ્ય બનાવવા પર કેવી રીતે લાગુ પડે છે તે ધ્યાનમાં લો."
 
-#: globals.php:2608 site/course/course-content.php:5214
+#: globals.php:2631 site/course/course-content.php:5214
 #: site/course/course-content.php:5231
 msgid "Training Cycle"
 msgstr "તાલીમ ચક્ર"
 
-#: globals.php:2618 globals.php:2621 site/course/course-content.php:2327
+#: globals.php:2641 globals.php:2644 site/course/course-content.php:2327
 #: site/course/course-content.php:2339 site/course/course-content.php:2348
 #: site/course/course-content.php:2421 site/course/course-content.php:5215
 #: site/course/course-content.php:5232 site/pages/follow-jesus.php:334
 msgid "Leadership Cells"
 msgstr "આગેવાનનું જૂથ"
 
-#: globals.php:2620 site/course/course-content.php:2350
+#: globals.php:2643 site/course/course-content.php:2350
 #: site/pages/follow-jesus.php:335
 msgid ""
 "A Leadership Cell is a way someone who feels called to lead can develop "
@@ -504,54 +504,54 @@ msgstr ""
 "આગેવાનનું એક એવું જૂથ છે કે જેને આગેવાની કરવા માટે કહેવામાં આવે છે તે સેવા આપવાની પ્રેક્ટિસ કરીને "
 "તેમનું આગેવાની વિકસાવી શકે છે."
 
-#: globals.php:2631 globals.php:2634 site/course/course-content.php:5339
+#: globals.php:2654 globals.php:2657 site/course/course-content.php:5339
 #: site/course/course-content.php:5357 site/pages/follow-jesus.php:283
 msgid "Expect Non-Sequential Growth"
 msgstr "બિન-અનુક્રમિક વૃદ્ધિની અપેક્ષા રાખો"
 
-#: globals.php:2633
+#: globals.php:2656
 msgid ""
 "See how disciple making doesn‘t have to be linear. Multiple things can "
 "happen at the same time."
 msgstr ""
 "જુઓ શિષ્ય કેવી રીતે બનાવવું તે લાઈનમાં હોવું જરૂરી નથી. એક જ સમયે ઘણી વસ્તુઓ બની શકે છે."
 
-#: globals.php:2644 site/course/course-content.php:2930
+#: globals.php:2667 site/course/course-content.php:2930
 #: site/pages/follow-jesus.php:287
 msgid "Pace of Multiplication Matters"
 msgstr "ગુણાત્મકની ગતિની બાબતો"
 
-#: globals.php:2646 site/pages/follow-jesus.php:288
+#: globals.php:2669 site/pages/follow-jesus.php:288
 msgid ""
 "Multiplying matters and multiplying quickly matters even more. See why pace "
 "matters."
 msgstr ""
 "ગુણાત્મક કરવું અને ઝડપથી ગુણાત્મક કરવો એ વધુ મહત્વનું છે. જુઓ, ગતિ શા માટે મહત્ત્વની છે."
 
-#: globals.php:2647 site/course/course-content.php:2532
+#: globals.php:2670 site/course/course-content.php:2532
 #: site/course/course-content.php:2595 site/course/course-content.php:2604
 #: site/course/course-content.php:5340 site/course/course-content.php:5358
 msgid "Pace"
 msgstr "વચ્ચે"
 
-#: globals.php:2657 globals.php:2660 site/course/course-content.php:2533
+#: globals.php:2680 globals.php:2683 site/course/course-content.php:2533
 #: site/course/course-content.php:2644 site/course/course-content.php:2653
 #: site/course/course-content.php:2931 site/course/course-content.php:5341
 #: site/course/course-content.php:5359 site/pages/follow-jesus.php:237
 msgid "Always Part of Two Churches"
 msgstr "હંમેશા ચર્ચનો બીજો ભાગ"
 
-#: globals.php:2659
+#: globals.php:2682
 msgid "Learn how to obey Jesus‘ commands by going AND staying."
 msgstr "કેવી રીતે જઈને અને તેમાં રહીને ઈસુની આજ્ઞાનું પાલન કરવું તે શીખો."
 
-#: globals.php:2671 globals.php:2674 site/course/course-content.php:3062
+#: globals.php:2694 globals.php:2697 site/course/course-content.php:3062
 #: site/course/course-content.php:3174 site/course/course-content.php:3180
 #: site/course/course-content.php:3246 site/course/course-content.php:5877
 msgid "Three-Month Plan"
 msgstr "ત્રણ મહિનાની યોજના"
 
-#: globals.php:2673
+#: globals.php:2696
 msgid ""
 "Create and share your plan for how you will implement the Zúme tools over "
 "the next three months."
@@ -559,7 +559,7 @@ msgstr ""
 "આગામી ત્રણ મહિનામાં તમે ઝુમ પધ્ધિત ને કેવી રીતે અમલમાં મૂકશો તે માટે તમારી યોજના બનાવો "
 "અને જણાવો."
 
-#: globals.php:2683 globals.php:2686
+#: globals.php:2706 globals.php:2709
 #: site/activities/coaching-checklist-host.php:22
 #: site/activities/coaching-checklist-host.php:89
 #: site/activities/coaching-checklist-mawl.php:22
@@ -581,7 +581,7 @@ msgstr ""
 msgid "Coaching Checklist"
 msgstr "પ્રશિક્ષણની યાદી"
 
-#: globals.php:2685 site/pages/follow-jesus.php:331
+#: globals.php:2708 site/pages/follow-jesus.php:331
 msgid ""
 "A powerful tool you can use to quickly assess your own strengths and "
 "vulnerabilities when it comes to making disciples who multiply."
@@ -589,14 +589,14 @@ msgstr ""
 "એક શક્તિશાળી સાધન જેનો ઉપયોગ તમે તમારી પોતાની શક્તિ અને નબળાઈઓનું ઝડપથી મૂલ્યાંકન કરવા "
 "માટે કરી શકો છો જ્યારે તે ગુણાત્મક શિષ્યો બનાવવાની વાત આવે છે."
 
-#: globals.php:2696 globals.php:2699 site/course/course-content.php:3057
+#: globals.php:2719 globals.php:2722 site/course/course-content.php:3057
 #: site/course/course-content.php:3070 site/course/course-content.php:3079
 #: site/course/course-content.php:3241 site/course/course-content.php:5468
 #: site/course/course-content.php:5488 site/pages/follow-jesus.php:338
 msgid "Leadership in Networks"
 msgstr "માળખામાં નેતાગીરી"
 
-#: globals.php:2698 site/pages/follow-jesus.php:339
+#: globals.php:2721 site/pages/follow-jesus.php:339
 msgid ""
 "Learn how multiplying churches stay connected and live life together as an "
 "extended, spiritual family."
@@ -604,14 +604,14 @@ msgstr ""
 "જાણો કે કેવી રીતે ગુણાત્મક કરતા ચર્ચો એકબીજા સાથે જોડાયેલા રહે છે અને એક વિસ્તૃત, "
 "આધ્યાત્મિક પરિવાર તરીકે સાથે મળીને જીવન જીવે છે."
 
-#: globals.php:2709 site/course/course-content.php:3061
+#: globals.php:2732 site/course/course-content.php:3061
 #: site/course/course-content.php:3116 site/course/course-content.php:3125
 #: site/course/course-content.php:3245 site/course/course-content.php:5738
 #: site/course/course-content.php:5754 site/pages/follow-jesus.php:326
 msgid "Peer Mentoring Groups"
 msgstr "માર્ગદર્શન આપનાર જૂથો"
 
-#: globals.php:2711 site/pages/follow-jesus.php:327
+#: globals.php:2734 site/pages/follow-jesus.php:327
 msgid ""
 "This is a group that consists of people who are leading and starting 3/3 "
 "Groups. It also follows a 3/3 format and is a powerful way to assess the "
@@ -621,16 +621,16 @@ msgstr ""
 "કરી રહ્યા છે. તે 3/3ની પધ્ધિતને પણ અનુસરે છે અને તમારા ક્ષેત્રમાં ઈશ્વરના કાર્યની આધ્યાત્મિક "
 "તંદુરસ્તીનું મૂલ્યાંકન કરવાનો એક શક્તિશાળી માર્ગ છે."
 
-#: globals.php:2712 site/activities/activities.php:350
-#: site/dashboard/wizard.php:185
+#: globals.php:2735 site/activities/activities.php:350
+#: site/dashboard/wizard.php:193
 msgid "Peer Mentoring"
 msgstr "માર્ગદર્શન આપનાર"
 
-#: globals.php:2722 globals.php:2725
+#: globals.php:2745 globals.php:2748
 msgid "Four Fields Tool"
 msgstr "ચાર ક્ષેત્રોનું સાધન"
 
-#: globals.php:2724
+#: globals.php:2747
 msgid ""
 "The four fields diagnostic chart is a simple tool to be used by a leadership "
 "cell to reflect on the status of current efforts and the kingdom activity "
@@ -639,14 +639,14 @@ msgstr ""
 "ચાર ક્ષેત્રો ને દર્શાવતો એક ચાર્ટ એ વર્તમાન પ્રયત્નોની સ્થિતિ અને તેની આસપાસની કાર્ય "
 "પ્રવૃત્તિને પ્રતિબિંબિત કરવા માટે આગેવાન જૂથ દ્વારા ઉપયોગમાં લેવાતું એક સરળ સાધન છે."
 
-#: globals.php:2735 globals.php:2738 site/activities/activities.php:396
+#: globals.php:2758 globals.php:2761 site/activities/activities.php:396
 #: site/course/course-content.php:2539 site/course/course-content.php:2867
 #: site/course/course-content.php:2873 site/course/course-content.php:2937
 #: site/course/course-content.php:5602 site/course/course-content.php:5632
 msgid "Generational Mapping"
 msgstr "પેઢીઓ નું સર્વે"
 
-#: globals.php:2737
+#: globals.php:2760
 msgid ""
 "Generation mapping is another simple tool to help leaders in a movement "
 "understand the growth around them."
@@ -654,11 +654,11 @@ msgstr ""
 "આગેવાન નેતાઓને તેમની આસપાસના વિકાસને સમજવામાં મદદ કરવા માટે પેઢીઓનું સર્વે એ એક બીજું સરળ "
 "સાધન છે."
 
-#: globals.php:2748
+#: globals.php:2771
 msgid "3-Circles Gospel Presentation"
 msgstr "3-વર્તુળો સુવાર્તાની પ્રસ્તુતિ"
 
-#: globals.php:2750 site/course/course-content.php:975
+#: globals.php:2773 site/course/course-content.php:975
 msgid ""
 "The 3-Circles gospel presentation is a way to tell the gospel using a simple "
 "illustration that can be drawn on a piece of paper."
@@ -666,20 +666,20 @@ msgstr ""
 "૩=વર્તુળો સુવાર્તાની પ્રસ્તુતિ એ એક સરળ ઉદાહરણનો ઉપયોગ કરીને સુવાર્તાને કહેવાની એક રીત છે "
 "જે કાગળના ટુકડા પર દોરી શકાય છે."
 
-#: globals.php:2751
+#: globals.php:2774
 msgid "3-Circles"
 msgstr "૩- વર્તુળો"
 
-#: globals.php:8148 maps/html/heatmap-html.php:56 maps/html/heatmap-html.php:59
+#: globals.php:8171 maps/html/heatmap-html.php:56 maps/html/heatmap-html.php:59
 #: maps/js-translation-strings.php:43 site/course/presenter.php:169
-#: site/dashboard/checkin-dashboard.php:179 site/dashboard/dashboard.php:303
-#: site/dashboard/wizard.php:179 site/pages/follow-jesus.php:349
+#: site/dashboard/checkin-dashboard.php:179 site/dashboard/dashboard.php:330
+#: site/dashboard/wizard.php:187 site/pages/follow-jesus.php:349
 #: site/parts/footer.php:77 site/parts/footer.php:84 site/parts/footer.php:91
 #: site/parts/language-menu.php:4 utilities/apis/pieces-api.php:202
 msgid "Close"
 msgstr "પૂર્ણ કરો"
 
-#: globals.php:8350
+#: globals.php:8373
 msgid "No Results"
 msgstr "પરિણામ નથી"
 
@@ -940,11 +940,12 @@ msgstr ""
 msgid "Studying"
 msgstr "અભ્યાસ કરી રહ્યા છે"
 
-#: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:235
+#: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:256
 msgid "Practicing"
 msgstr "પ્રેક્ટિસ"
 
-#: maps/js-translation-strings.php:28 site/dashboard/wizard.php:226
+#: maps/js-translation-strings.php:28 site/dashboard/dashboard.php:240
+#: site/dashboard/wizard.php:234
 msgid "Coaching"
 msgstr "કોચિંગ"
 
@@ -1023,15 +1024,15 @@ msgid "Always report new simple churches that you are starting."
 msgstr "તમે શરૂ કરી રહ્યાં છો તે નવા સરળ ચર્ચોની હંમેશા જાણ કરો."
 
 #: maps/local-map.php:28 maps/local-map.php:547
-#, fuzzy
 msgid "Local Map"
-msgstr "વૈશ્વિક નકશો"
+msgstr "સ્થાનિક નકશો"
 
 #: maps/local-map.php:29
 msgid ""
 "Local map showing Zúme training progress and church planting activity for a "
 "specific location."
 msgstr ""
+"ચોક્કસ સ્થાન માટે ઝુમે તાલીમ પ્રગતિ અને ચર્ચ વાવેતર પ્રવૃત્તિ દર્શાવતો સ્થાનિક નકશો."
 
 #: maps/local-map.php:548 maps/local-map.php:982 maps/local-map.php:984
 #: maps/map-3-trainees.php:123
@@ -1043,37 +1044,35 @@ msgstr "તાલીમાર્થીઓ"
 msgid "Churches"
 msgstr "ચર્ચો"
 
-#: maps/local-map.php:553
-#, fuzzy
+#: maps/local-map.php:553 site/dashboard/dashboard.php:201
 msgid "Progress"
-msgstr "મારી પ્રગતિ"
+msgstr "પ્રગતિ"
 
 #: maps/local-map.php:554
-#, fuzzy
 msgid "Location not found"
-msgstr "કોઈ સ્થાનનું સરનામું પ્રાપ્ત થયેલ નથી"
+msgstr "સ્થાન મળ્યું નથી"
 
 #: maps/local-map.php:555
-#, fuzzy
 msgid "Please enter a grid_id parameter"
-msgstr "કૃપા કરીને એક મિત્ર કોડ દાખલ કરો."
+msgstr "કૃપા કરીને grid_id પરિમાણ દાખલ કરો"
 
 #: maps/local-map.php:944 maps/local-map.php:1068
-#: site/dashboard/dashboard.php:211
+#: site/dashboard/dashboard.php:231
 msgid "Getting Started"
 msgstr "શરૂ કરી રહ્યા છીએ"
 
 #: maps/local-map.php:946 maps/local-map.php:963
-#: site/dashboard/dashboard.php:197 site/dashboard/wizard.php:305
-#: site/dashboard/wizard.php:306 site/dashboard/wizard.php:330
+#: site/dashboard/dashboard.php:214 site/dashboard/wizard.php:290
+#: site/dashboard/wizard.php:352 site/dashboard/wizard.php:353
+#: site/dashboard/wizard.php:384 site/pages/plans.php:148
 msgid "Location"
 msgstr "સ્થાન"
 
-#: maps/local-map.php:954 site/dashboard/dashboard.php:196
+#: maps/local-map.php:954 site/dashboard/dashboard.php:213
 msgid "No Locations found"
 msgstr "કોઈ સ્થાનનું સરનામું પ્રાપ્ત થયેલ નથી"
 
-#: maps/local-map.php:955 site/dashboard/wizard.php:180
+#: maps/local-map.php:955 site/dashboard/wizard.php:188
 msgid "No locations found"
 msgstr "કોઈ સ્થાનો મળ્યા નથી"
 
@@ -1164,9 +1163,8 @@ msgstr ""
 "તાલીમાર્થી"
 
 #: maps/map-5-churches.php:95
-#, fuzzy
 msgid "Vision Map"
-msgstr "દ્રષ્ટિ"
+msgstr "વિઝન મેપ"
 
 #: maps/map-5-churches.php:125
 msgid "Map of Zúme Churches"
@@ -1272,7 +1270,7 @@ msgstr "તમારી જાતને પૂછો, શું હું"
 #: site/activities/coaching-checklist-two.php:187
 #: site/activities/coaching-checklist.php:150
 #: site/activities/coaching-checklist.php:290
-#: site/dashboard/checkin-dashboard.php:183 site/dashboard/dashboard.php:259
+#: site/dashboard/checkin-dashboard.php:183 site/dashboard/dashboard.php:280
 msgid "Heard"
 msgstr "સાંભળેલ"
 
@@ -1282,7 +1280,7 @@ msgstr "સાંભળેલ"
 #: site/activities/coaching-checklist-two.php:191
 #: site/activities/coaching-checklist.php:153
 #: site/activities/coaching-checklist.php:293
-#: site/dashboard/checkin-dashboard.php:185 site/dashboard/dashboard.php:261
+#: site/dashboard/checkin-dashboard.php:185 site/dashboard/dashboard.php:282
 msgid "Obeyed"
 msgstr "આજ્ઞાંકિત"
 
@@ -1292,7 +1290,7 @@ msgstr "આજ્ઞાંકિત"
 #: site/activities/coaching-checklist-two.php:195
 #: site/activities/coaching-checklist.php:156
 #: site/activities/coaching-checklist.php:296
-#: site/dashboard/checkin-dashboard.php:187 site/dashboard/dashboard.php:263
+#: site/dashboard/checkin-dashboard.php:187 site/dashboard/dashboard.php:284
 msgid "Shared"
 msgstr "જણાવેલ છે"
 
@@ -1302,21 +1300,21 @@ msgstr "જણાવેલ છે"
 #: site/activities/coaching-checklist-two.php:199
 #: site/activities/coaching-checklist.php:159
 #: site/activities/coaching-checklist.php:299
-#: site/dashboard/checkin-dashboard.php:189 site/dashboard/dashboard.php:265
+#: site/dashboard/checkin-dashboard.php:189 site/dashboard/dashboard.php:286
 msgid "Trained"
 msgstr "પ્રશિક્ષિત"
 
 #: site/activities/coaching-checklist-host.php:157
 #: site/activities/coaching-checklist-two.php:189
 #: site/activities/coaching-checklist.php:290
-#: site/dashboard/checkin-dashboard.php:184 site/dashboard/dashboard.php:260
+#: site/dashboard/checkin-dashboard.php:184 site/dashboard/dashboard.php:281
 msgid "Have I heard about this tool or concept?"
 msgstr "શું મેં આ સાધન અથવા ખ્યાલ વિશે સાંભળ્યું છે?"
 
 #: site/activities/coaching-checklist-host.php:161
 #: site/activities/coaching-checklist-two.php:193
 #: site/activities/coaching-checklist.php:293
-#: site/dashboard/checkin-dashboard.php:186 site/dashboard/dashboard.php:262
+#: site/dashboard/checkin-dashboard.php:186 site/dashboard/dashboard.php:283
 msgid ""
 "Have I obeyed this tool or concept? If a tool, have I practiced it on my "
 "own? If a concept, have you reflected on how it changes your perspective?"
@@ -1328,7 +1326,7 @@ msgstr ""
 #: site/activities/coaching-checklist-host.php:165
 #: site/activities/coaching-checklist-two.php:197
 #: site/activities/coaching-checklist.php:296
-#: site/dashboard/checkin-dashboard.php:188 site/dashboard/dashboard.php:264
+#: site/dashboard/checkin-dashboard.php:188 site/dashboard/dashboard.php:285
 msgid ""
 "Have I shared this tool or concept? If a tool, have you shown anyone how to "
 "use this tool? If a concept, have you shared this concept with anyone?"
@@ -1339,7 +1337,7 @@ msgstr ""
 #: site/activities/coaching-checklist-host.php:169
 #: site/activities/coaching-checklist-two.php:201
 #: site/activities/coaching-checklist.php:299
-#: site/dashboard/checkin-dashboard.php:190 site/dashboard/dashboard.php:266
+#: site/dashboard/checkin-dashboard.php:190 site/dashboard/dashboard.php:287
 msgid ""
 "Have I trained others to share this tool or concept? If a tool, have I "
 "trained someone to share the tool with someone else? If a concept, have I "
@@ -1602,27 +1600,24 @@ msgid "Unknown"
 msgstr "અજાણ્યું"
 
 #: site/activities/sharegospel.php:132 site/course/course-content.php:945
-#, fuzzy
 msgid "Presentation 1"
-msgstr "પ્રસ્તુતકર્તા"
+msgstr "પ્રસ્તુતિ ૧"
 
 #: site/activities/sharegospel.php:135 site/course/course-content.php:974
-#, fuzzy
 msgid "Presentation 2"
-msgstr "પ્રસ્તુતકર્તા"
+msgstr "પ્રસ્તુતિ 2"
 
 #: site/activities/sharegospel.php:171
-#, fuzzy
 msgid "3 Circles Gospel Presentation"
-msgstr "3-વર્તુળો સુવાર્તાની પ્રસ્તુતિ"
+msgstr "૩ વર્તુળો ગોસ્પેલ પ્રેઝન્ટેશન"
 
 #: site/activities/sharegospel.php:196
 msgid "No script content found for this language."
-msgstr ""
+msgstr "આ ભાષા માટે કોઈ સ્ક્રિપ્ટ સામગ્રી મળી નથી."
 
 #: site/activities/sharegospel.php:200
 msgid "No script found for this language."
-msgstr ""
+msgstr "આ ભાષા માટે કોઈ લિપિ મળી નથી."
 
 #: site/activities/three-month-plan-printable.php:22
 #: site/activities/three-month-plan.php:22
@@ -1630,7 +1625,7 @@ msgid "3 Month Plan"
 msgstr "3 મહિનાની યોજના"
 
 #: site/activities/three-month-plan-printable.php:47
-#: site/activities/three-month-plan.php:57 site/dashboard/dashboard.php:229
+#: site/activities/three-month-plan.php:57 site/dashboard/dashboard.php:250
 msgid "3-Month Plan"
 msgstr "3-મહિનાની યોજના"
 
@@ -1650,8 +1645,8 @@ msgstr ""
 "આ વાતચીત પૃષ્ઠનો ઉપયોગ કરવા માટે કૃપા કરીને બોલવા માટે નું લખાણને ચાલુ કરો. નહીંતર તમે "
 "ઉપરની લિંકનો ઉપયોગ કરીને કોપી કાઢી શકાય તેવા સાધનનો ઉપયોગ કરી શકો છો."
 
-#: site/activities/three-month-plan.php:83 site/dashboard/dashboard.php:172
-#: site/dashboard/wizard.php:313 site/profile/profile.php:148
+#: site/activities/three-month-plan.php:83 site/dashboard/dashboard.php:177
+#: site/dashboard/wizard.php:360 site/profile/profile.php:148
 msgid "Save"
 msgstr "સંગ્રહ કરી લો"
 
@@ -1659,15 +1654,15 @@ msgstr "સંગ્રહ કરી લો"
 msgid "Cancel"
 msgstr "રદ્દ"
 
-#: site/activities/three-month-plan.php:85 site/dashboard/dashboard.php:329
+#: site/activities/three-month-plan.php:85 site/dashboard/dashboard.php:362
 msgid "Question"
 msgstr "પ્રશ્ન"
 
-#: site/activities/three-month-plan.php:86 site/dashboard/dashboard.php:330
+#: site/activities/three-month-plan.php:86 site/dashboard/dashboard.php:363
 msgid "Answer"
 msgstr "ઉત્તર"
 
-#: site/activities/three-month-plan.php:87 site/dashboard/dashboard.php:331
+#: site/activities/three-month-plan.php:87 site/dashboard/dashboard.php:364
 msgid "Note"
 msgstr "નોંધ"
 
@@ -2545,7 +2540,7 @@ msgstr ""
 msgid "Obey"
 msgstr "આજ્ઞાપાલન કરો"
 
-#: site/course/course-content.php:719 site/dashboard/dashboard.php:174
+#: site/course/course-content.php:719 site/dashboard/dashboard.php:179
 #: site/pages/_strings-mobile-pwa.php:37 site/pages/share.php:29
 #: site/pages/share.php:84 site/parts/nav.php:41
 msgid "Share"
@@ -2615,7 +2610,7 @@ msgstr ""
 
 #: site/course/course-content.php:931
 msgid "Review the following two presentations and choose one to practice."
-msgstr ""
+msgstr "નીચેના બે પ્રસ્તુતિઓની સમીક્ષા કરો અને પ્રેક્ટિસ માટે એક પસંદ કરો."
 
 #: site/course/course-content.php:946
 msgid ""
@@ -2632,7 +2627,7 @@ msgstr "સુવાર્તા જણાવો"
 
 #: site/course/course-content.php:1024
 msgid "Choose one of the two presentations you watched."
-msgstr ""
+msgstr "તમે જોયેલા બે પ્રસ્તુતિઓમાંથી એક પસંદ કરો."
 
 #: site/course/course-content.php:1026
 msgid "Break into groups of two or three people."
@@ -3405,8 +3400,8 @@ msgstr ""
 "જો તમારી પાસે પ્રશિક્ષક અથવા શીખવાડનાર ન હોય, તો ક્યુઆર કોડને સ્કેન કરો અને હમણાં જ "
 "વિનંતી કરો."
 
-#: site/course/course-content.php:2771 site/dashboard/dashboard.php:220
-#: site/dashboard/wizard.php:239 site/pages/about.php:271
+#: site/course/course-content.php:2771 site/dashboard/dashboard.php:241
+#: site/dashboard/wizard.php:247 site/pages/about.php:271
 #: site/parts/footer.php:12 site/parts/footer.php:18
 #: site/parts/mobile-nav.php:14 utilities/apis/cta-api.php:246
 #: utilities/apis/cta-api.php:248
@@ -3703,7 +3698,7 @@ msgstr ""
 msgid "God makes plans, and He expects us to make plans, too."
 msgstr "ઈશ્વર યોજનાઓ ઘડે છે અને તે એવી અપેક્ષા રાખે છે કે આપણે પણ યોજનાઓ બનાવીએ."
 
-#: site/course/course-content.php:3183 site/dashboard/dashboard.php:231
+#: site/course/course-content.php:3183 site/dashboard/dashboard.php:252
 msgid ""
 "A Three Month Plan is a tool you can use to help focus your attention and "
 "efforts and keep them aligned with God’s priorities for making disciples who "
@@ -4283,7 +4278,7 @@ msgid "INTENSIVE SESSION 5"
 msgstr "સઘન સત્ર ૫"
 
 #: site/course/course-content.php:6160 site/course/course-content.php:6168
-#: site/dashboard/dashboard.php:267 site/parts/mobile-nav.php:20
+#: site/dashboard/dashboard.php:288 site/parts/mobile-nav.php:20
 msgid "Join the Community"
 msgstr "સમુદાયમાં જોડાઓ"
 
@@ -4325,7 +4320,7 @@ msgstr "વિષય પ્રસ્તુત કરનાર"
 msgid "Links"
 msgstr "લિંક્સ"
 
-#: site/course/presenter.php:148 site/dashboard/dashboard.php:271
+#: site/course/presenter.php:148 site/dashboard/dashboard.php:292
 #: site/pages/resources.php:29 site/pages/resources.php:122
 #: site/parts/checkin-nav.php:14 site/parts/footer.php:41
 #: site/parts/mobile-nav.php:8 site/parts/mobile-nav.php:28
@@ -4337,7 +4332,7 @@ msgstr "સ્ત્રોતો"
 msgid "Exit Course"
 msgstr "વિષયની બહાર"
 
-#: site/course/presenter.php:163 site/dashboard/dashboard.php:189
+#: site/course/presenter.php:163 site/dashboard/dashboard.php:194
 msgid "Menu"
 msgstr "મેનુ"
 
@@ -4345,7 +4340,7 @@ msgstr "મેનુ"
 msgid "Slide View"
 msgstr "ચિત્ર સાથે નું દૃશ્ય"
 
-#: site/course/presenter.php:165 site/dashboard/dashboard.php:184
+#: site/course/presenter.php:165 site/dashboard/dashboard.php:189
 msgid "List View"
 msgstr "યાદીનું દૃશ્ય"
 
@@ -4357,8 +4352,9 @@ msgstr "આગળનું ચિત્ર"
 msgid "Previous slide"
 msgstr "પહેલાનું ચિત્ર"
 
-#: site/course/presenter.php:168 site/dashboard/wizard.php:250
-#: site/pages/join-a-training-public.php:105
+#: site/course/presenter.php:168 site/dashboard/wizard.php:266
+#: site/dashboard/wizard.php:297 site/pages/join-a-training-public.php:105
+#: site/pages/join-a-training-public.php:129 site/pages/plans.php:156
 msgid "Session"
 msgstr "સત્ર"
 
@@ -4407,183 +4403,245 @@ msgstr "અભિનંદન"
 msgid "You're checked in"
 msgstr "તમે પ્રવેશ મેળવી લીધો છે"
 
-#: site/dashboard/checkin-dashboard.php:182
+#: site/dashboard/checkin-dashboard.php:182 site/dashboard/dashboard.php:369
 #: site/pages/_strings-mobile-pwa.php:41
 msgid "Learn more"
 msgstr "વધુ શીખો"
 
-#: site/dashboard/dashboard.php:170 site/dashboard/wizard.php:311
+#: site/dashboard/dashboard.php:175 site/dashboard/wizard.php:358
 msgid "Done"
 msgstr "થઈ ગયું"
 
-#: site/dashboard/dashboard.php:171
+#: site/dashboard/dashboard.php:176
 msgid "Edit"
 msgstr "સંપાદિત કરો"
 
-#: site/dashboard/dashboard.php:173 site/pages/_strings-mobile-pwa.php:27
+#: site/dashboard/dashboard.php:178 site/pages/_strings-mobile-pwa.php:27
 msgid "Delete"
 msgstr "કાઢી નાંખો"
 
-#: site/dashboard/dashboard.php:175
+#: site/dashboard/dashboard.php:180
 msgid "Status"
 msgstr "સ્થિતિ"
 
-#: site/dashboard/dashboard.php:176
+#: site/dashboard/dashboard.php:181 site/pages/plans.php:113
 msgid "Active"
 msgstr "સક્રિય"
 
-#: site/dashboard/dashboard.php:177
+#: site/dashboard/dashboard.php:182 site/pages/plans.php:113
 msgid "Inactive"
 msgstr "નિષ્ક્રિય"
 
-#: site/dashboard/dashboard.php:178
+#: site/dashboard/dashboard.php:183
 msgid "Completed"
 msgstr "સમાપ્ત થયેલ"
 
-#: site/dashboard/dashboard.php:179
+#: site/dashboard/dashboard.php:184
 msgid "Uncompleted"
 msgstr "પૂર્ણ થયેલ નથી"
 
-#: site/dashboard/dashboard.php:180
+#: site/dashboard/dashboard.php:185
 msgid "Not Heard"
 msgstr "સાંભળ્યું નથી"
 
-#: site/dashboard/dashboard.php:181 site/pages/share.php:124
+#: site/dashboard/dashboard.php:186 site/pages/share.php:124
 msgid "All"
 msgstr "બધા"
 
-#: site/dashboard/dashboard.php:182 site/profile/profile.php:154
+#: site/dashboard/dashboard.php:187 site/profile/profile.php:154
 msgid "Logout"
 msgstr "બહાર નીકળો"
 
-#: site/dashboard/dashboard.php:183 site/pages/share.php:127
+#: site/dashboard/dashboard.php:188 site/pages/share.php:127
 msgid "Filter"
 msgstr "ફિલ્ટર કરો"
 
-#: site/dashboard/dashboard.php:185
+#: site/dashboard/dashboard.php:190
 msgid "Grid View"
 msgstr "બરાબર દેખાવ"
 
-#: site/dashboard/dashboard.php:186
+#: site/dashboard/dashboard.php:191
 msgid "View Now"
 msgstr "હમણાં જુઓ"
 
-#: site/dashboard/dashboard.php:187
+#: site/dashboard/dashboard.php:192
 msgid "Complete Now"
 msgstr "હમણાં પૂર્ણ કરો"
 
-#: site/dashboard/dashboard.php:188
+#: site/dashboard/dashboard.php:193
 msgid "View"
 msgstr "જુઓ"
 
-#: site/dashboard/dashboard.php:190 site/dashboard/wizard.php:202
-#: site/dashboard/wizard.php:248 site/pages/join-a-training-public.php:104
-#: site/profile/profile.php:111
+#: site/dashboard/dashboard.php:195 site/dashboard/wizard.php:210
+#: site/dashboard/wizard.php:264 site/pages/join-a-training-public.php:104
+#: site/pages/join-a-training-public.php:128 site/profile/profile.php:111
 msgid "Name"
 msgstr "નામ"
 
-#: site/dashboard/dashboard.php:191 site/dashboard/wizard.php:200
-#: site/dashboard/wizard.php:218 site/profile/profile.php:115
-#: zume-training-system.php:404
+#: site/dashboard/dashboard.php:196 site/dashboard/wizard.php:208
+#: site/dashboard/wizard.php:226 site/profile/profile.php:115
+#: zume-training-system.php:563
 msgid "Phone"
 msgstr "ફોન"
 
-#: site/dashboard/dashboard.php:192 site/dashboard/wizard.php:216
+#: site/dashboard/dashboard.php:197 site/dashboard/wizard.php:224
 #: site/login/login-template.php:450 site/login/login-template.php:451
-#: site/profile/profile.php:119 zume-training-system.php:402
+#: site/profile/profile.php:119 zume-training-system.php:561
 msgid "Email"
 msgstr "ઇમેઇલ"
 
-#: site/dashboard/dashboard.php:193
-msgid "Linked Accounts"
-msgstr "સામેલ થયેલ વ્યક્તિઓ"
-
-#: site/dashboard/dashboard.php:194
+#: site/dashboard/dashboard.php:198
 msgid "Communications Email"
 msgstr "સંદેશાવ્યવહાર ઈ-મેઈલ"
 
-#: site/dashboard/dashboard.php:195 site/dashboard/wizard.php:201
+#: site/dashboard/dashboard.php:199
+msgid "If these are not correct, please update your profile."
+msgstr "જો આ સાચું ન હોય, તો કૃપા કરીને તમારી પ્રોફાઇલ અપડેટ કરો."
+
+#: site/dashboard/dashboard.php:200
+msgid "Contact Info"
+msgstr "સંપર્ક માહિતી"
+
+#: site/dashboard/dashboard.php:202
+msgid "Copy Emails"
+msgstr "ઇમેઇલ્સ કૉપિ કરો"
+
+#: site/dashboard/dashboard.php:203
+msgid "Copy Phones"
+msgstr "ફોનની નકલ કરો"
+
+#: site/dashboard/dashboard.php:204
+msgid "Copy Code"
+msgstr "કોડ કોપી કરો"
+
+#: site/dashboard/dashboard.php:205
+msgid "Linked Accounts"
+msgstr "સામેલ થયેલ વ્યક્તિઓ"
+
+#: site/dashboard/dashboard.php:206 site/dashboard/wizard.php:273
+msgid "Change Preferences"
+msgstr "પસંદગીઓ બદલો"
+
+#: site/dashboard/dashboard.php:207
+msgid "Email Preferences"
+msgstr "ઇમેઇલ પસંદગીઓ"
+
+#: site/dashboard/dashboard.php:208
+msgid "Choose which email lists you want to receive"
+msgstr "તમે કઈ ઇમેઇલ સૂચિઓ પ્રાપ્ત કરવા માંગો છો તે પસંદ કરો"
+
+#: site/dashboard/dashboard.php:209 zume-training-system.php:541
+msgid "Hide my contact information from other participants in trainings"
+msgstr "તાલીમમાં અન્ય સહભાગીઓથી મારી સંપર્ક માહિતી છુપાવો"
+
+#: site/dashboard/dashboard.php:210 zume-training-system.php:533
+msgid "Hide my progress from other participants in trainings"
+msgstr "તાલીમમાં અન્ય સહભાગીઓથી મારી પ્રગતિ છુપાવો"
+
+#: site/dashboard/dashboard.php:211
+msgid ""
+"Don't forget to send subscribers an email to notify them of the training."
+msgstr "સબ્સ્ક્રાઇબર્સને તાલીમની જાણ કરવા માટે ઇમેઇલ મોકલવાનું ભૂલશો નહીં."
+
+#: site/dashboard/dashboard.php:212 site/dashboard/wizard.php:209
 #: site/profile/profile.php:123
 msgid "City"
 msgstr "શહેર"
 
-#: site/dashboard/dashboard.php:198 site/dashboard/wizard.php:310
-#: site/dashboard/wizard.php:314 site/dashboard/wizard.php:331
+#: site/dashboard/dashboard.php:215 site/dashboard/wizard.php:357
+#: site/dashboard/wizard.php:361 site/dashboard/wizard.php:385
+#: zume-training-system.php:252
 msgid "Time"
 msgstr "સમય"
 
-#: site/dashboard/dashboard.php:199 site/dashboard/wizard.php:224
-#: site/dashboard/wizard.php:253 site/pages/_strings-mobile-pwa.php:17
-#: site/pages/join-a-training-public.php:109 site/parts/language-menu.php:7
+#: site/dashboard/dashboard.php:216 site/dashboard/wizard.php:232
+#: site/dashboard/wizard.php:269 site/pages/_strings-mobile-pwa.php:17
+#: site/pages/join-a-training-public.php:109
+#: site/pages/join-a-training-public.php:133 site/parts/language-menu.php:7
 #: site/profile/profile.php:133 utilities/post-types/posttype-pieces.php:300
+#: zume-training-system.php:258
 msgid "Language"
 msgstr "ભાષા"
 
-#: site/dashboard/dashboard.php:200 site/dashboard/wizard.php:252
-#: site/pages/join-a-training-public.php:108
+#: site/dashboard/dashboard.php:217 site/dashboard/wizard.php:268
+#: site/dashboard/wizard.php:296 site/pages/join-a-training-public.php:108
+#: site/pages/join-a-training-public.php:132 site/pages/plans.php:152
+#: zume-training-system.php:255
 msgid "Timezone"
 msgstr "સમય મુજબ"
 
-#: site/dashboard/dashboard.php:201 site/dashboard/wizard.php:332
+#: site/dashboard/dashboard.php:218
+msgid "Select timezone"
+msgstr "સમય ઝોન પસંદ કરો"
+
+#: site/dashboard/dashboard.php:219
+msgid "New"
+msgstr "નવું"
+
+#: site/dashboard/dashboard.php:220 site/dashboard/wizard.php:386
 msgid "Meeting link"
 msgstr "સભાની લિંક"
 
-#: site/dashboard/dashboard.php:202
+#: site/dashboard/dashboard.php:221
 msgid "Zoom, Google Meet, Microsoft Teams etc."
 msgstr "ઝુમ,ગુગલ મિટ,માય્કરોસોફ્ટ ટીમ વગેરે."
 
-#: site/dashboard/dashboard.php:203
+#: site/dashboard/dashboard.php:222
 msgid "Edit Profile"
 msgstr "રૂપરેખામાં ફેરફાર કરો"
 
-#: site/dashboard/dashboard.php:204
+#: site/dashboard/dashboard.php:223
 msgid "Check out this Zúme concept"
 msgstr "આ ઝુમ ખ્યાલને તપાસો"
 
-#: site/dashboard/dashboard.php:205 site/pages/resources.php:160
+#: site/dashboard/dashboard.php:224 site/pages/resources.php:160
 msgid "Preview"
 msgstr "પૂર્વ ભૂમિકા"
 
-#: site/dashboard/dashboard.php:206 site/dashboard/dashboard.php:282
-#: site/dashboard/dashboard.php:295
+#: site/dashboard/dashboard.php:225 site/dashboard/dashboard.php:309
+#: site/dashboard/dashboard.php:322
 #, php-format
 msgid "Add new %s"
 msgstr "નવા %s ને ઉમેરો"
 
-#: site/dashboard/dashboard.php:206
+#: site/dashboard/dashboard.php:225
 msgid "Commitment"
 msgstr "ખાતરી"
 
-#: site/dashboard/dashboard.php:207 site/pages/share.php:85
+#: site/dashboard/dashboard.php:226 site/pages/share.php:85
 msgid "Copy Link"
 msgstr "કડીની નકલ કરો"
 
-#: site/dashboard/dashboard.php:208
+#: site/dashboard/dashboard.php:227
 msgid "Copy this link and send it to your friends 🙂"
 msgstr "આ લિંકની નકલ કરો અને તમારા મિત્રોને 🙂 મોકલો"
 
-#: site/dashboard/dashboard.php:209 site/pages/share.php:87
+#: site/dashboard/dashboard.php:228 site/pages/share.php:87
 msgid "Thanks!"
 msgstr "આભાર!"
 
-#: site/dashboard/dashboard.php:210
+#: site/dashboard/dashboard.php:229
 msgid "Link copied"
 msgstr "શરૂ કરી રહ્યા છીએ"
 
-#: site/dashboard/dashboard.php:212 utilities/apis/cta-api.php:157
+#: site/dashboard/dashboard.php:230 site/pages/share.php:88
+msgid "Copied"
+msgstr "નકલ થઈ ગઈ"
+
+#: site/dashboard/dashboard.php:232 utilities/apis/cta-api.php:157
 #: utilities/apis/cta-api.php:159
 msgid "Set Profile"
 msgstr "રૂપરેખા સુયોજિત કરો"
 
-#: site/dashboard/dashboard.php:213
+#: site/dashboard/dashboard.php:233
 msgid "Complete a short Profile Wizard to set your profile"
 msgstr "તમારી રૂપરેખાને સુયોજિત કરવા માટે ટૂંકી રૂપરેખાને પૂર્ણ કરો"
 
-#: site/dashboard/dashboard.php:214 site/dashboard/wizard.php:274
+#: site/dashboard/dashboard.php:234 site/dashboard/wizard.php:316
 msgid "Join or create a training group"
 msgstr "તાલીમ જૂથમાં જોડાવ અથવા બનાવો"
 
-#: site/dashboard/dashboard.php:215
+#: site/dashboard/dashboard.php:235
 msgid ""
 "Join one of our online trainings or create your own training group with our "
 "easy to set up wizard"
@@ -4591,23 +4649,24 @@ msgstr ""
 "અમારી કોઈ એક ઑનલાઇન તાલીમમાં જોડાઓ અથવા વિઝાર્ડ સેટ અપ કરવા માટે અમારી સાથે તમારું "
 "પોતાનું તાલીમ જૂથ બનાવો"
 
-#: site/dashboard/dashboard.php:216
+#: site/dashboard/dashboard.php:236
 msgid "Create Training Group"
 msgstr "તાલીમ જૂથ બનાવો"
 
-#: site/dashboard/dashboard.php:217
+#: site/dashboard/dashboard.php:237
 msgid "Create your own training group with our easy to set up wizard"
 msgstr "વિઝાર્ડને સેટ અપ કરવા માટે અમારી સાથે તમારું પોતાનું તાલીમ જૂથ બનાવો"
 
-#: site/dashboard/dashboard.php:218 site/dashboard/wizard.php:333
+#: site/dashboard/dashboard.php:238 site/dashboard/wizard.php:317
+#: site/dashboard/wizard.php:387 site/pages/plans.php:194
 msgid "Join Training Group"
 msgstr "તાલીમ જૂથમાં જોડાવ"
 
-#: site/dashboard/dashboard.php:219
+#: site/dashboard/dashboard.php:239
 msgid "Join an online training group run by a coach"
 msgstr "પ્રશિક્ષક દ્વારા સંચાલિત ઓનલાઇન તાલીમ જૂથમાં જોડાવ"
 
-#: site/dashboard/dashboard.php:221
+#: site/dashboard/dashboard.php:242
 msgid ""
 "Connect with a coach for any help or encouragement before, during or after "
 "the training."
@@ -4615,11 +4674,11 @@ msgstr ""
 "તાલીમ પહેલા, દરમિયાન અથવા પછી કોઈ પણ સહાય અથવા પ્રોત્સાહન માટે પ્રશિક્ષક સાથે "
 "જોડાયેલા રહો."
 
-#: site/dashboard/dashboard.php:223 site/parts/checkin-nav.php:8
+#: site/dashboard/dashboard.php:244 site/parts/checkin-nav.php:8
 msgid "My Progress"
 msgstr "મારી પ્રગતિ"
 
-#: site/dashboard/dashboard.php:224
+#: site/dashboard/dashboard.php:245
 msgid ""
 "Track your course progress with this interactive view. Learn to listen, "
 "obey, share and train others with what you have learned."
@@ -4627,34 +4686,34 @@ msgstr ""
 "આ વાતચીતની આપલે સાથે તમારા અભ્યાસક્રમની પ્રગતિપર નજર રાખો. તમે જે શીખ્યા છો તેની સાથે "
 "બીજાઓને સાંભળવાનું, આજ્ઞાપાલન કરવાનું, જણાવવાનું અને તાલીમ આપવાનું શીખો."
 
-#: site/dashboard/dashboard.php:225
+#: site/dashboard/dashboard.php:246
 msgid "Information about progress"
 msgstr "પ્રગતિ વિશેની જાણકારી"
 
-#: site/dashboard/dashboard.php:226
+#: site/dashboard/dashboard.php:247
 msgid "My Training"
 msgstr "મારી તાલીમ"
 
-#: site/dashboard/dashboard.php:227
+#: site/dashboard/dashboard.php:248
 msgid "My Trainings"
 msgstr "મારી તાલીમો"
 
-#: site/dashboard/dashboard.php:228
+#: site/dashboard/dashboard.php:249
 msgid ""
 "Full access to your training content, schedule, group details and sharing "
 "tools."
 msgstr ""
 "તમારી તાલીમની સામગ્રી, સમયપત્રક, જૂથની વિગતો અને જણાવવાની પધ્ધતિઓ થી સંપૂર્ણ ભરપુર."
 
-#: site/dashboard/dashboard.php:230
+#: site/dashboard/dashboard.php:251
 msgid "Create Your Plan"
 msgstr "તમારી યોજના બનાવો"
 
-#: site/dashboard/dashboard.php:232
+#: site/dashboard/dashboard.php:253
 msgid "Three Month Plan Locked"
 msgstr "ત્રણ મહિનાની યોજના પૂર્ણ થઈ ગઈ"
 
-#: site/dashboard/dashboard.php:233
+#: site/dashboard/dashboard.php:254
 msgid ""
 "The three month plan is a tool to help you take action and implement the "
 "tools and concepts learned through the Zúme course. It is most useful, once "
@@ -4664,23 +4723,23 @@ msgstr ""
 "પગલાં લેવામાં અને તેનો અમલ કરવામાં તમારી સહાય માટેનું એક સાધન છે. એકવાર તમે તાલીમ પૂર્ણ "
 "કરી લો પછી, તે સૌથી વધુ ઉપયોગી છે."
 
-#: site/dashboard/dashboard.php:234
+#: site/dashboard/dashboard.php:255
 msgid "Unlock now"
 msgstr "અત્યારે મુક્ત કરો"
 
-#: site/dashboard/dashboard.php:236
+#: site/dashboard/dashboard.php:257
 msgid "My Coach"
 msgstr "મારા પ્રશિક્ષક"
 
-#: site/dashboard/dashboard.php:237
+#: site/dashboard/dashboard.php:258
 msgid "Quick access to your coach at all times."
 msgstr "દરેક સમયે તમારા પ્રશિક્ષક ઝડપીથી પ્રાપ્ત થશે."
 
-#: site/dashboard/dashboard.php:238
+#: site/dashboard/dashboard.php:259
 msgid "My Tools"
 msgstr "મારા સાધનો"
 
-#: site/dashboard/dashboard.php:239
+#: site/dashboard/dashboard.php:260
 msgid ""
 "Your My Tools area will unlock as you move through the course, practicing "
 "and developing essential discipleship skills"
@@ -4688,22 +4747,22 @@ msgstr ""
 "તમે અભ્યાસક્રમમાં આગળ વધશો, પ્રેક્ટિસ કરશો અને આવશ્યક શિષ્યત્વ કુશળતા વિકસાવશો ત્યારે "
 "તમારા મારા સાધનોનું ક્ષેત્ર અનલોક થશે"
 
-#: site/dashboard/dashboard.php:240
+#: site/dashboard/dashboard.php:261
 msgid "My Plans"
 msgstr "મારી યોજનાઓ"
 
-#: site/dashboard/dashboard.php:241
+#: site/dashboard/dashboard.php:262
 msgid ""
 "Unlock the My Plans area by completing your 3-Month plan in the final "
 "session."
 msgstr ""
 "છેલ્લા સત્રમાં તમારી 3-મહિનાની યોજનાને પૂર્ણ કરીને મારા આયોજન કાર્યક્ષેત્રને મુક્ત કરો."
 
-#: site/dashboard/dashboard.php:242
+#: site/dashboard/dashboard.php:263
 msgid "My Plans are Locked"
 msgstr "મારી યોજનાઓ બંધ થઈ ગઈ છે"
 
-#: site/dashboard/dashboard.php:243
+#: site/dashboard/dashboard.php:264
 msgid ""
 "Unlock this area by creating your Three-Month Plan or adding a commitment of "
 "your own."
@@ -4711,11 +4770,11 @@ msgstr ""
 "તમારી ત્રણ મહિનાની યોજના બનાવીને અથવા તમારી પોતાની પ્રતિબદ્ધતા ઉમેરીને આ ક્ષેત્રને મુક્ત "
 "કરો."
 
-#: site/dashboard/dashboard.php:244
+#: site/dashboard/dashboard.php:265
 msgid "My Churches"
 msgstr "મારા ચર્ચો"
 
-#: site/dashboard/dashboard.php:245 site/dashboard/dashboard.php:285
+#: site/dashboard/dashboard.php:266 site/dashboard/dashboard.php:312
 msgid ""
 "My Churches tool makes it easy for you to track your simple church and the "
 "simple church generations that grow out of your spiritual family."
@@ -4723,15 +4782,15 @@ msgstr ""
 "મારા ચર્ચનું સાધન તમારા માટે તમારા નાના ચર્ચ અને તમારા આધ્યાત્મિક કુટુંબમાંથી વિકસતી સરળ "
 "ચર્ચ પેઢીઓને ટ્રેક કરવાનું સરળ બનાવે છે."
 
-#: site/dashboard/dashboard.php:246
+#: site/dashboard/dashboard.php:267
 msgid "My Maps"
 msgstr "મારા નકશાઓ"
 
-#: site/dashboard/dashboard.php:247
+#: site/dashboard/dashboard.php:268
 msgid "My Maps are Locked"
 msgstr "મારા નકશાને બંધ કરેલ છે"
 
-#: site/dashboard/dashboard.php:248
+#: site/dashboard/dashboard.php:269
 msgid ""
 "My maps help clarify the Zúme vision of 1 trainee and 2 churches for every "
 "5,000 people in the US, and 50,000 globally. To unlock My Maps, join the "
@@ -4743,177 +4802,201 @@ msgstr ""
 "સમુદાયમાં જોડાઓ અને અન્ય શિષ્ય બનાવનાર સાથે જોડાઓ, જે મહાન આદેશને પૂર્ણ થતું જોવા માટે "
 "ઉત્સાહી છે."
 
-#: site/dashboard/dashboard.php:249
+#: site/dashboard/dashboard.php:270
 msgid "My Training is Locked"
 msgstr "મારી તાલીમ લોક છે"
 
-#: site/dashboard/dashboard.php:250
+#: site/dashboard/dashboard.php:271
 msgid "Present Course"
 msgstr "અત્યાર નો કોર્સ"
 
-#: site/dashboard/dashboard.php:252
+#: site/dashboard/dashboard.php:273
 msgid "Course Content"
 msgstr "અભ્યાસક્રમ અનુક્મણીકા"
 
-#: site/dashboard/dashboard.php:253
+#: site/dashboard/dashboard.php:274
 msgid "Course"
 msgstr "અભ્યાસક્રમ"
 
-#: site/dashboard/dashboard.php:254
+#: site/dashboard/dashboard.php:275
 msgid "Enter Course"
 msgstr "અભ્યાસક્રમ માં દાખલ થાવ"
 
-#: site/dashboard/dashboard.php:255
+#: site/dashboard/dashboard.php:276
 msgid "Course Slides"
 msgstr "અભ્યાસક્રમ નું ચિત્ર"
 
-#: site/dashboard/dashboard.php:258 site/pages/resources.php:153
+#: site/dashboard/dashboard.php:279 site/pages/resources.php:153
 #: site/pages/resources.php:170 site/pages/resources.php:197
 #: site/parts/download-slides.php:37 site/parts/download-slides.php:49
 msgid "Intensive Course"
 msgstr "સઘન કોર્સ"
 
-#: site/dashboard/dashboard.php:268 site/dashboard/wizard.php:254
+#: site/dashboard/dashboard.php:289 site/dashboard/wizard.php:270
 #: site/pages/home.php:281 site/pages/join-a-training-public.php:136
-#: site/pages/training.php:150 utilities/apis/cta-api.php:189
-#: utilities/apis/cta-api.php:412
+#: site/pages/training.php:150 utilities/apis/communications-api.php:104
+#: utilities/apis/cta-api.php:189 utilities/apis/cta-api.php:412
 msgid "Join"
 msgstr "જોડાવ"
 
-#: site/dashboard/dashboard.php:269
+#: site/dashboard/dashboard.php:290
 msgid "Join the community to get access to this area."
 msgstr "આ ક્ષેત્રમાં પ્રવેશ મેળવવા માટે સમુદાયમાં જોડાઓ."
 
-#: site/dashboard/dashboard.php:270
+#: site/dashboard/dashboard.php:291
 msgid "Community links"
 msgstr "સમુદાયની કડીઓ"
 
-#: site/dashboard/dashboard.php:272
+#: site/dashboard/dashboard.php:293
 msgid "Previous Slide"
 msgstr "પહેલાંનું ચિત્ર"
 
-#: site/dashboard/dashboard.php:273
+#: site/dashboard/dashboard.php:294
 msgid "Next Slide"
 msgstr "આગળનું ચિત્ર"
 
-#: site/dashboard/dashboard.php:274
+#: site/dashboard/dashboard.php:295
 msgid "Group Members"
 msgstr "જૂથના સભ્યો"
 
-#: site/dashboard/dashboard.php:275
+#: site/dashboard/dashboard.php:296
 msgid "Group Members Link"
 msgstr "જૂથ સભ્યોની કડી"
 
-#: site/dashboard/dashboard.php:276
+#: site/dashboard/dashboard.php:297
 msgid "Group Details"
 msgstr "જૂથની વિગતો"
 
-#: site/dashboard/dashboard.php:277
+#: site/dashboard/dashboard.php:298
+msgid "Group Communication"
+msgstr "ગ્રુપ કોમ્યુનિકેશન"
+
+#: site/dashboard/dashboard.php:299
+msgid "Subscribers"
+msgstr "સબ્સ્ક્રાઇબર્સ"
+
+#: site/dashboard/dashboard.php:300
+msgid "Has joined a group"
+msgstr "જૂથમાં જોડાયા છે"
+
+#: site/dashboard/dashboard.php:301
+msgid "Emailed on"
+msgstr "ઇમેઇલ કરેલ તારીખ"
+
+#: site/dashboard/dashboard.php:302
+msgid "Send Email to Subscribers"
+msgstr "સબ્સ્ક્રાઇબર્સને ઇમેઇલ મોકલો"
+
+#: site/dashboard/dashboard.php:303
 msgid "Mark Completed"
 msgstr "ટીકમાર્ક પૂર્ણ થયેલ છે"
 
-#: site/dashboard/dashboard.php:278
+#: site/dashboard/dashboard.php:304
+msgid "Mark Uncompleted"
+msgstr "અપૂર્ણ તરીકે ચિહ્નિત કરો"
+
+#: site/dashboard/dashboard.php:305
 #, php-format
 msgid "Session %d"
 msgstr "સત્ર %d"
 
-#: site/dashboard/dashboard.php:279 site/pages/_strings-mobile-pwa.php:31
+#: site/dashboard/dashboard.php:306 site/pages/_strings-mobile-pwa.php:31
 msgid "Start Session"
 msgstr "સત્રને શરૂ કરો"
 
-#: site/dashboard/dashboard.php:280
+#: site/dashboard/dashboard.php:307
 msgid "Show details"
 msgstr "વિગતો બતાવો"
 
-#: site/dashboard/dashboard.php:281
+#: site/dashboard/dashboard.php:308
 msgid "Edit time"
 msgstr "સમયમાં ફેરફાર"
 
-#: site/dashboard/dashboard.php:283
+#: site/dashboard/dashboard.php:310
 msgid "Invite Friends"
 msgstr "મિત્રોને આમંત્રિત કરો"
 
-#: site/dashboard/dashboard.php:284
+#: site/dashboard/dashboard.php:311
 msgid "My Churches are Locked"
 msgstr "મારૂ ચર્ચ બંધ છે"
 
-#: site/dashboard/dashboard.php:286
+#: site/dashboard/dashboard.php:313
 msgid "Unlock the My Churches area by joining the community."
 msgstr "સમુદાયમાં જોડાઈને મારા ચર્ચના વિસ્તારને મુક્ત કરો."
 
-#: site/dashboard/dashboard.php:287
+#: site/dashboard/dashboard.php:314
 msgid "Click to add your first church"
 msgstr "તમારું પ્રથમ ચર્ચ ઉમેરવા માટે ક્લિક કરો"
 
-#: site/dashboard/dashboard.php:288
+#: site/dashboard/dashboard.php:315
 msgid "Church Name"
 msgstr "ચર્ચનું નામ"
 
-#: site/dashboard/dashboard.php:289
+#: site/dashboard/dashboard.php:316
 msgid "Number of People"
 msgstr "લોકોની સંખ્યા"
 
-#: site/dashboard/dashboard.php:290
+#: site/dashboard/dashboard.php:317
 msgid "Church Location"
 msgstr "ચર્ચનું સ્થાન"
 
-#: site/dashboard/dashboard.php:291
+#: site/dashboard/dashboard.php:318
 msgid "Parent Church"
 msgstr "માતૃ ચર્ચ"
 
-#: site/dashboard/dashboard.php:292 site/dashboard/wizard.php:309
+#: site/dashboard/dashboard.php:319 site/dashboard/wizard.php:356
 msgid "Start Date"
 msgstr "પ્રારંભ તારીખ"
 
-#: site/dashboard/dashboard.php:293
+#: site/dashboard/dashboard.php:320
 msgid "Mark Active"
 msgstr "સક્રિય માર્ક કરો"
 
-#: site/dashboard/dashboard.php:294
+#: site/dashboard/dashboard.php:321
 msgid "Mark Inactive"
 msgstr "અસક્રિય માર્ક કરો"
 
-#: site/dashboard/dashboard.php:295
+#: site/dashboard/dashboard.php:322
 msgid "Church"
 msgstr "ચર્ચ"
 
-#: site/dashboard/dashboard.php:296
+#: site/dashboard/dashboard.php:323
 msgid "cancel"
 msgstr "રદ્દ"
 
-#: site/dashboard/dashboard.php:297 utilities/apis/cta-api.php:173
+#: site/dashboard/dashboard.php:324 utilities/apis/cta-api.php:173
 #: utilities/apis/cta-api.php:203 utilities/apis/cta-api.php:323
 #: utilities/apis/cta-api.php:337 utilities/apis/cta-api.php:366
 msgid "Congratulations!"
 msgstr "અભિનંદન!"
 
-#: site/dashboard/dashboard.php:298
+#: site/dashboard/dashboard.php:325
 msgid "You have requested a coach"
 msgstr "તમે પ્રશિક્ષક માટે વિનંતી કરી છે"
 
-#: site/dashboard/dashboard.php:299
+#: site/dashboard/dashboard.php:326
 msgid "You have joined a training"
 msgstr "તમે તાલીમમાં જોડાયા છો"
 
-#: site/dashboard/dashboard.php:300
+#: site/dashboard/dashboard.php:327
 msgid "You have set your profile"
 msgstr "તમે તમારી રૂપરેખાને સુયોજિત કરી છે"
 
-#: site/dashboard/dashboard.php:301
+#: site/dashboard/dashboard.php:328
 #, php-format
 msgctxt "3-month plan unlocked"
 msgid "%s unlocked"
 msgstr "%s મુક્ત"
 
-#: site/dashboard/dashboard.php:301 utilities/apis/cta-api.php:322
+#: site/dashboard/dashboard.php:328 utilities/apis/cta-api.php:322
 msgid "3 month plan"
 msgstr "3 મહિનાની યોજના"
 
-#: site/dashboard/dashboard.php:302
+#: site/dashboard/dashboard.php:329
 msgid "You have joined the community"
 msgstr "તમે આ સમુદાયમાં જોડાયા છો"
 
-#: site/dashboard/dashboard.php:304 site/dashboard/wizard.php:210
+#: site/dashboard/dashboard.php:331 site/dashboard/wizard.php:218
 #: site/pages/privacy-policy.php:110
 msgid ""
 "A user’s real name or nickname is requested to improve the personal quality "
@@ -4923,7 +5006,7 @@ msgstr ""
 "વપરાશકર્તાનું સાચું નામ અથવા હુલામણું નામ સાઇટની વ્યક્તિગત ગુણવત્તા અને સંદેશાવ્યવહારમાં "
 "સુધારો કરવા, તેમજ ગ્રાહક સેવા વિનંતીઓ અને પ્રશિક્ષણ માટે વિનંતી કરવામાં આવે છે."
 
-#: site/dashboard/dashboard.php:305 site/pages/privacy-policy.php:116
+#: site/dashboard/dashboard.php:332 site/pages/privacy-policy.php:116
 msgid ""
 "A user’s email address is required to establish an account and is used for "
 "transactional communication as part of site operation."
@@ -4931,7 +5014,7 @@ msgstr ""
 "એકાઉન્ટ ખોલવા માટે વપરાશકર્તાનું ઇમેઇલ સરનામું જરૂરી છે અને તેનો ઉપયોગ સાઇટ કામગીરીના "
 "ભાગ રૂપે વ્યવહારિક સંદેશાવ્યવહાર માટે થાય છે."
 
-#: site/dashboard/dashboard.php:306 site/dashboard/wizard.php:211
+#: site/dashboard/dashboard.php:333 site/dashboard/wizard.php:219
 #: site/pages/privacy-policy.php:119
 msgid ""
 "A user’s phone number is collected and stored for supporting the free "
@@ -4940,7 +5023,7 @@ msgstr ""
 "નિ:શુલ્ક પ્રશિક્ષણ સેવાને ટેકો આપવા માટે વપરાશકર્તાનો ફોન નંબર એકત્રિત કરવામાં આવે છે અને "
 "સંગ્રહિત કરવામાં આવે છે."
 
-#: site/dashboard/dashboard.php:307 site/dashboard/wizard.php:212
+#: site/dashboard/dashboard.php:334 site/dashboard/wizard.php:220
 #: site/pages/privacy-policy.php:122
 msgid ""
 "A user’s city is requested to personalize site resources and communication, "
@@ -4949,7 +5032,7 @@ msgstr ""
 "વપરાશકર્તાના શહેરને સાઇટ સંસાધનો અને સંદેશાવ્યવહારને વ્યક્તિગત બનાવવા, અને વપરાશકર્તાઓને "
 "યોગ્ય પ્રશિક્ષણ અને ગ્રાહક સેવા સંસાધનો સાથે જોડવા માટે વિનંતી કરવામાં આવે છે."
 
-#: site/dashboard/dashboard.php:308 site/dashboard/wizard.php:240
+#: site/dashboard/dashboard.php:335 site/dashboard/wizard.php:248
 #: site/pages/privacy-policy.php:113
 msgid ""
 "A user’s language preference is stored to support proper site and "
@@ -4960,25 +5043,25 @@ msgstr ""
 "સંગ્રહિત કરવામાં આવે છે, અને યોગ્ય પ્રશિક્ષણ અને સંસાધનો સાથે વપરાશકર્તાને જોડવામાં અમારી "
 "સહાય માટે."
 
-#: site/dashboard/dashboard.php:309 site/dashboard/wizard.php:334
-msgid "Join key"
-msgstr "પાસવર્ડ સાથે જોડાવ"
+#: site/dashboard/dashboard.php:336 site/dashboard/wizard.php:388
+msgid "Join Code"
+msgstr "જોડાઓ કોડ"
 
-#: site/dashboard/dashboard.php:310 site/pages/checkin.php:91
-#: site/pages/friend-invite.php:79 site/pages/plan-invite.php:78
-#: site/pages/plan-invite.php:174
+#: site/dashboard/dashboard.php:337 site/dashboard/wizard.php:322
+#: site/pages/checkin.php:91 site/pages/friend-invite.php:79
+#: site/pages/plan-invite.php:78 site/pages/plan-invite.php:174
 msgid "Not a recognized code. Please check the number."
 msgstr "માન્યતાપ્રાપ્ત કોડ નથી. કૃપા કરીને નંબર તપાસો."
 
-#: site/dashboard/dashboard.php:311
+#: site/dashboard/dashboard.php:338
 msgid "You are not authorized to access this page"
 msgstr "તમે આ પાનું વાપરવા માટે અધિકૃત નથી"
 
-#: site/dashboard/dashboard.php:312
+#: site/dashboard/dashboard.php:339
 msgid "There has been an error with your request"
 msgstr "તમારી વિનંતી સાથે ત્યાં ભૂલ આવી છે"
 
-#: site/dashboard/dashboard.php:313
+#: site/dashboard/dashboard.php:340
 msgid ""
 "Thank you for your coaching request. Our team will be working to connect you "
 "with an available coach in your language and region."
@@ -4986,7 +5069,7 @@ msgstr ""
 "તમારી પ્રશિક્ષકની વિનંતી બદલ આભાર. અમારી ટીમ તમને તમારી ભાષા અને પ્રદેશના ઉપલબ્ધ "
 "પ્રશિક્ષક સાથે જોડવાનું કામ કરશે."
 
-#: site/dashboard/dashboard.php:314
+#: site/dashboard/dashboard.php:341
 msgid ""
 "Please watch for communication from your coach within the communication "
 "preference you indicated."
@@ -4994,107 +5077,174 @@ msgstr ""
 "કૃપા કરીને તમે સૂચવેલા સંદેશાવ્યવહારની પસંદગીની અંદર તમારા પ્રશિક્ષક તરફથી સંદેશાવ્યવહાર "
 "માટે જુઓ."
 
-#: site/dashboard/dashboard.php:315
+#: site/dashboard/dashboard.php:342
+msgid "We apologize for the delay"
+msgstr "વિલંબ બદલ અમે માફી માંગીએ છીએ."
+
+#: site/dashboard/dashboard.php:343
+msgid "Message"
+msgstr "સંદેશ"
+
+#: site/dashboard/dashboard.php:344
+msgid ""
+"If you have any queries or need help, please enter a message below and we "
+"will get back to you as soon as possible."
+msgstr ""
+"જો તમને કોઈ પ્રશ્નો હોય અથવા મદદની જરૂર હોય, તો કૃપા કરીને નીચે એક સંદેશ દાખલ કરો અને "
+"અમે શક્ય તેટલી વહેલી તકે તમારો સંપર્ક કરીશું."
+
+#: site/dashboard/dashboard.php:345
+msgid "Send Message"
+msgstr "સંદેશ મોકલો"
+
+#: site/dashboard/dashboard.php:346
+msgid "There was an error sending your message. Please try again later."
+msgstr "તમારો સંદેશ મોકલવામાં ભૂલ આવી હતી. કૃપા કરીને પછીથી ફરી પ્રયાસ કરો."
+
+#: site/dashboard/dashboard.php:347
+msgid "Message sent successfully"
+msgstr "સંદેશ સફળતાપૂર્વક મોકલ્યો"
+
+#: site/dashboard/dashboard.php:348
 msgid "100 Hour Map"
 msgstr "100 કલાક માટે નકશો"
 
-#: site/dashboard/dashboard.php:316
+#: site/dashboard/dashboard.php:349
 msgid "Trainee vision map"
 msgstr "તાલીમાર્થી માટે દર્શન નો નકશો"
 
-#: site/dashboard/dashboard.php:317
+#: site/dashboard/dashboard.php:350
 msgid "Simple church vision map"
 msgstr "નાના ચર્ચ દર્શનનો નકશો"
 
-#: site/dashboard/dashboard.php:318
+#: site/dashboard/dashboard.php:351
 msgid "Missing answer"
 msgstr "જવાબ ગુમ થયેલ છે"
 
-#: site/dashboard/dashboard.php:319 site/dashboard/wizard.php:193
-#: site/dashboard/wizard.php:247 site/dashboard/wizard.php:264
-#: site/dashboard/wizard.php:271
+#: site/dashboard/dashboard.php:352 site/dashboard/wizard.php:201
+#: site/dashboard/wizard.php:263 site/dashboard/wizard.php:306
+#: site/dashboard/wizard.php:313 site/dashboard/wizard.php:377
 msgid "Something went wrong"
 msgstr "કશુંક ખોટું થયું"
 
-#: site/dashboard/dashboard.php:320 site/dashboard/wizard.php:283
+#: site/dashboard/dashboard.php:353 site/dashboard/wizard.php:330
 #: site/pages/_strings-mobile-pwa.php:10
 msgid "Yes"
 msgstr "હા"
 
-#: site/dashboard/dashboard.php:321 site/dashboard/wizard.php:284
+#: site/dashboard/dashboard.php:354 site/dashboard/wizard.php:331
 #: site/pages/_strings-mobile-pwa.php:11
 msgid "No"
 msgstr "ના"
 
-#: site/dashboard/dashboard.php:322
+#: site/dashboard/dashboard.php:355
 msgid "No date"
 msgstr "તારીખ નથી"
 
-#: site/dashboard/dashboard.php:323 site/dashboard/wizard.php:219
-#: zume-training-system.php:405
+#: site/dashboard/dashboard.php:356 site/dashboard/wizard.php:227
+#: zume-training-system.php:564
 msgid "Whatsapp"
 msgstr "વોટ્સેપ"
 
-#: site/dashboard/dashboard.php:324 site/dashboard/wizard.php:220
-#: zume-training-system.php:406
+#: site/dashboard/dashboard.php:357 site/dashboard/wizard.php:228
+#: zume-training-system.php:565
 msgid "Signal"
 msgstr "સિગ્નલ"
 
-#: site/dashboard/dashboard.php:325 site/dashboard/wizard.php:221
-#: zume-training-system.php:407
+#: site/dashboard/dashboard.php:358 site/dashboard/wizard.php:229
+#: zume-training-system.php:566
 msgid "Telegram"
 msgstr "ટેલિગ્રામ"
 
-#: site/dashboard/dashboard.php:326 site/dashboard/wizard.php:222
+#: site/dashboard/dashboard.php:359 site/dashboard/wizard.php:230
 msgid "Facebook Messenger"
 msgstr "ફેશબુક સંદશાવાહક"
 
-#: site/dashboard/dashboard.php:327 site/dashboard/wizard.php:318
+#: site/dashboard/dashboard.php:360 site/dashboard/wizard.php:365
 msgid "Clear"
 msgstr "ચોખ્ખુ"
 
-#: site/dashboard/dashboard.php:328 site/dashboard/wizard.php:319
+#: site/dashboard/dashboard.php:361 site/dashboard/wizard.php:366
 msgid "Today"
 msgstr "આજે"
 
-#: site/dashboard/dashboard.php:332
+#: site/dashboard/dashboard.php:365
 msgid "Coaching Portal"
 msgstr "પ્રશિક્ષણની સાઈટ"
 
-#: site/dashboard/dashboard.php:333
+#: site/dashboard/dashboard.php:366
 msgid "Visibility"
 msgstr "જોઈ શકાય"
 
-#: site/dashboard/dashboard.php:334 site/dashboard/dashboard.php:335
+#: site/dashboard/dashboard.php:367 site/dashboard/dashboard.php:368
 #, php-format
 msgctxt "public/private group"
 msgid "%s group"
 msgstr "%s જૂથ"
 
-#: site/dashboard/dashboard.php:334
+#: site/dashboard/dashboard.php:367 site/pages/plans.php:112
 msgid "Private"
 msgstr "ખાનગી"
 
-#: site/dashboard/dashboard.php:335
+#: site/dashboard/dashboard.php:368 site/pages/plans.php:112
 msgid "Public"
 msgstr "સાર્વજનિક"
 
-#: site/dashboard/dashboard.php:336
-msgid "Local Vision Map"
-msgstr ""
+#: site/dashboard/dashboard.php:370 site/dashboard/wizard.php:281
+#: site/dashboard/wizard.php:373 site/pages/join-a-training-public.php:171
+msgid "Notify me about future trainings"
+msgstr "ભવિષ્યની તાલીમ વિશે મને જાણ કરો"
 
-#: site/dashboard/dashboard.php:342
+#: site/dashboard/dashboard.php:371
+msgid "Preferences"
+msgstr "પસંદગીઓ"
+
+#: site/dashboard/dashboard.php:372
+msgid "Your progress is always visible to the group leader."
+msgstr "તમારી પ્રગતિ હંમેશા ગ્રુપ લીડરને દેખાય છે."
+
+#: site/dashboard/dashboard.php:373
+msgid ""
+"Contact information is currently hidden from other participants in trainings."
+msgstr "તાલીમમાં અન્ય સહભાગીઓથી સંપર્ક માહિતી હાલમાં છુપાવવામાં આવી છે."
+
+#: site/dashboard/dashboard.php:374
+msgid "Progress is currently hidden from other participants in trainings."
+msgstr "તાલીમમાં અન્ય સહભાગીઓથી પ્રગતિ હાલમાં છુપાવવામાં આવી છે."
+
+#: site/dashboard/dashboard.php:375
+msgid "Local Vision Map"
+msgstr "સ્થાનિક દ્રષ્ટિ નકશો"
+
+#: site/dashboard/dashboard.php:376
+msgid ""
+"You are making this group public. It will show up on the public list of "
+"trainings. Please confirm you are ready to make it public."
+msgstr ""
+"તમે આ જૂથને સાર્વજનિક બનાવી રહ્યા છો. તે તાલીમની જાહેર સૂચિમાં દેખાશે. કૃપા કરીને પુષ્ટિ કરો"
+" કે તમે તેને સાર્વજનિક કરવા માટે તૈયાર છો."
+
+#: site/dashboard/dashboard.php:377
+msgid "Confirm"
+msgstr "પુષ્ટિ કરો"
+
+#: site/dashboard/dashboard.php:378
+#, php-format
+msgid "You can message again in %d hours"
+msgstr "તમે %d કલાકમાં ફરીથી મેસેજ કરી શકો છો."
+
+#: site/dashboard/dashboard.php:384
 msgid ""
 "I will share My Story [Testimony] and God‘s Story [the Gospel] with the "
 "following individuals:"
 msgstr "હું મારી વાત [સાક્ષી] અને ઈશ્વરની વાર્તા [સુવાર્તા] નીચેની વ્યક્તિઓને જણાવીશ:"
 
-#: site/dashboard/dashboard.php:343
+#: site/dashboard/dashboard.php:385
 msgid ""
 "I will invite the following people to begin an Accountability Group with me:"
 msgstr "હું નીચેના વ્યક્તિઓને મારી સાથે જવાબદાર જૂથની શરૂઆત કરવા માટે આમંત્રણ આપીશ:"
 
-#: site/dashboard/dashboard.php:344
+#: site/dashboard/dashboard.php:386
 msgid ""
 "I will challenge the following people to begin their own Accountability "
 "Groups and train them how to do it:"
@@ -5102,11 +5252,11 @@ msgstr ""
 "હું નીચેના લોકોને પડકાર આપીશ કે તેઓ તેમના પોતાના જવાબદારી વાળું જૂથ શરૂ કરે અને તે કેવી રીતે "
 "કરવું તે અંગે તેમને તાલીમ આપે:"
 
-#: site/dashboard/dashboard.php:345
+#: site/dashboard/dashboard.php:387
 msgid "I will invite the following people to begin a 3/3 Group with me:"
 msgstr "હું નીચેના લોકોને મારી સાથે 3/3 ના જૂથ શરૂ કરવા માટે આમંત્રિત કરીશ:"
 
-#: site/dashboard/dashboard.php:346
+#: site/dashboard/dashboard.php:388
 msgid ""
 "I will challenge the following people to begin their own 3/3 Groups and "
 "train them how to do it:"
@@ -5114,22 +5264,22 @@ msgstr ""
 "હું નીચેના લોકોને પડકાર આપીશ કે તેઓ તેમના પોતાના 3/3ના જૂથો શરૂ કરે અને તે કેવી રીતે કરવું "
 "તેની તાલીમ આપે:"
 
-#: site/dashboard/dashboard.php:347
+#: site/dashboard/dashboard.php:389
 msgid ""
 "I will invite the following people to participate in a 3/3 Hope or Discover "
 "Group:"
 msgstr "હું નીચેના લોકોને 3/3 આશા અથવા સંશોધન જૂથમાં ભાગ લેવા માટે આમંત્રિત કરીશ:"
 
-#: site/dashboard/dashboard.php:348
+#: site/dashboard/dashboard.php:390
 msgid ""
 "I will invite the following people to participate in Prayer Walking with me:"
 msgstr "હું નીચેના લોકોને મારી સાથે પ્રાર્થનામાં ભાગ લેવા આમંત્રણ આપીશ:"
 
-#: site/dashboard/dashboard.php:349
+#: site/dashboard/dashboard.php:391
 msgid "I will Prayer Walk once every [days / weeks / months]."
 msgstr "હું દર [દિવસો/અઠવાડિયાંઓ/મહિનાઓમાં] એકવાર પ્રાર્થના કરીશ."
 
-#: site/dashboard/dashboard.php:350
+#: site/dashboard/dashboard.php:392
 msgid ""
 "I will equip the following people to share their story and God‘s Story and "
 "make a List of 100 of the people in their relational network:"
@@ -5137,30 +5287,30 @@ msgstr ""
 "હું નીચેના લોકોને તેમની સાક્ષી અને ઈશ્વરની વાત જણાવવા માટે સજ્જ કરીશ અને તેમના સંબંધોના "
 "માળખામાંના ૧૦૦ લોકોની યાદી બનાવીશ:"
 
-#: site/dashboard/dashboard.php:351
+#: site/dashboard/dashboard.php:393
 msgid ""
 "I will challenge the following people to use the Prayer Cycle tool on a "
 "periodic basis:"
 msgstr "હું નીચેના લોકોને સમયાંતરે પ્રાર્થના ચક્રની પધ્ધતિ ઉપયોગ કરવાનો પડકાર આપીશ:"
 
-#: site/dashboard/dashboard.php:352
+#: site/dashboard/dashboard.php:394
 msgid "I will use the Prayer Cycle tool once every [days / weeks / months]."
 msgstr ""
 "હું પ્રાર્થના યાત્રાની પધ્ધતિનો ઉપયોગ દર એક વખત [દિવસો/અઠવાડિયાંઓ/મહિનાઓમાં] કરીશ."
 
-#: site/dashboard/dashboard.php:353
+#: site/dashboard/dashboard.php:395
 msgid ""
 "I will invite the following people to be part of a Leadership Cell that I "
 "will lead:"
 msgstr "હું નીચેના લોકોને આગેવાની જૂથનો હિસ્સો બનવા આમંત્રણ આપીશ, જેનું હું નેતૃત્વ કરીશ :"
 
-#: site/dashboard/dashboard.php:354
+#: site/dashboard/dashboard.php:396
 msgid ""
 "I will encourage the following people to go through this Zúme Training "
 "course:"
 msgstr "હું નીચેના લોકોને આ ઝુમ તાલીમ અભ્યાસક્રમમાંથી પસાર થવા માટે પ્રોત્સાહિત કરીશઃ :"
 
-#: site/dashboard/dashboard.php:355
+#: site/dashboard/dashboard.php:397
 msgid "Other commitments:"
 msgstr "અન્ય નિર્ણયો:"
 
@@ -5168,52 +5318,52 @@ msgstr "અન્ય નિર્ણયો:"
 msgid "Wizard"
 msgstr "સોફ્ટવેર"
 
-#: site/dashboard/wizard.php:171
+#: site/dashboard/wizard.php:179
 msgctxt ""
 "This is the title for the screen where the application wizard has not been "
 "found"
 msgid "Bad Wizard"
 msgstr "ખરાબ સોફ્ટવેર"
 
-#: site/dashboard/wizard.php:172
+#: site/dashboard/wizard.php:180
 msgctxt ""
 "This is some humourous text using a play on words as the application wizard "
 "sounds like the sorcerer type of wizard."
 msgid "You have fallen in with some very bad wizards!"
 msgstr "તમે કેટલાક ખૂબ જ ખરાબ સોફ્ટવેર સાથે જોડાઈ ગયા છો!"
 
-#: site/dashboard/wizard.php:173
+#: site/dashboard/wizard.php:181
 msgid "Wizard is already completed"
 msgstr "સોફ્ટવેર પહેલેથી જ સમાપ્ત થયેલ છે"
 
-#: site/dashboard/wizard.php:174
+#: site/dashboard/wizard.php:182
 msgid "Get back home"
 msgstr "ઘરમાં પાછા આવો"
 
-#: site/dashboard/wizard.php:175 site/login/login-template.php:421
+#: site/dashboard/wizard.php:183 site/login/login-template.php:421
 msgid "Back"
 msgstr "પાછળ"
 
-#: site/dashboard/wizard.php:176 site/dashboard/wizard.php:195
-#: site/dashboard/wizard.php:208 site/dashboard/wizard.php:231
-#: site/dashboard/wizard.php:255 site/dashboard/wizard.php:323
-#: site/pages/_strings-mobile-pwa.php:35
+#: site/dashboard/wizard.php:184 site/dashboard/wizard.php:203
+#: site/dashboard/wizard.php:216 site/dashboard/wizard.php:239
+#: site/dashboard/wizard.php:271 site/dashboard/wizard.php:294
+#: site/dashboard/wizard.php:370 site/pages/_strings-mobile-pwa.php:35
 msgid "Next"
 msgstr "આગળનું"
 
-#: site/dashboard/wizard.php:177 site/dashboard/wizard.php:312
+#: site/dashboard/wizard.php:185 site/dashboard/wizard.php:359
 msgid "Skip"
 msgstr "અવગણવું નહિ"
 
-#: site/dashboard/wizard.php:178 site/pages/_strings-mobile-pwa.php:36
+#: site/dashboard/wizard.php:186 site/pages/_strings-mobile-pwa.php:36
 msgid "Finish"
 msgstr "સમાપ્ત"
 
-#: site/dashboard/wizard.php:183
+#: site/dashboard/wizard.php:191
 msgid "Zúme Community"
 msgstr "ઝુમ સમુદાય"
 
-#: site/dashboard/wizard.php:184
+#: site/dashboard/wizard.php:192
 msgid ""
 "Zúme is a community of practice and encouragement for those who want to see "
 "disciple making movements. The Zúme vision is to see one trainee and two "
@@ -5224,7 +5374,7 @@ msgstr ""
 "દર્શન અમેરિકામાં દર 5,000 લોકો અને વૈશ્વિક સ્તરે 50,000 લોકો માટે એક તાલીમાર્થી અને બે "
 "નાના ચર્ચ જોવાનું છે."
 
-#: site/dashboard/wizard.php:186
+#: site/dashboard/wizard.php:194
 msgid ""
 "Connect with others like you who want to see a disciple making movement in "
 "their area. Share your experience with others, and learn from others who are "
@@ -5233,11 +5383,11 @@ msgstr ""
 "તમારા જેવા બીજા લોકો સાથે જોડાઓ જે કોઈ શિષ્યને તેમના કાર્યક્ષેત્રમાં શરૂઆત કરતા જોવા માંગે "
 "છે. તમારો અનુભવ અન્ય લોકો સાથે વહેંચો, અને નવી બાબતો શોધતા લોકો પાસેથી શીખો."
 
-#: site/dashboard/wizard.php:187
+#: site/dashboard/wizard.php:195
 msgid "Encouragement"
 msgstr "પ્રોત્સાહન"
 
-#: site/dashboard/wizard.php:188
+#: site/dashboard/wizard.php:196
 msgid ""
 "Hear news about disciple making movements in your region and your wider "
 "country, get reports of  progress, and get connected to online and face-to-"
@@ -5246,11 +5396,11 @@ msgstr ""
 "શિષ્ય તમારા વિસ્તાર અને તમારા વિશાળ દેશમાં ચળવળ શરુ કરે છે તેના સમાચાર સાંભળો, પ્રગતિના "
 "અહેવાલો મેળવો, અને ઓનલાઇન અને રૂબરૂ જોડાયેલા રહો."
 
-#: site/dashboard/wizard.php:189
+#: site/dashboard/wizard.php:197
 msgid "Free Tools"
 msgstr "મફત સાધનો"
 
-#: site/dashboard/wizard.php:190
+#: site/dashboard/wizard.php:198
 msgid ""
 "Access free tools for tracking disciple-making and church planting in your "
 "area. Get a map to cast vision for saturating your city with multiplying "
@@ -5260,324 +5410,478 @@ msgstr ""
 "ઉપયોગ કરો. તમારા શહેરને ગુણાત્મક શિષ્યો અને ચર્ચોથી સંતૃપ્ત કરવા માટે દર્શનનું માર્ગદર્શન "
 "મેળવવા માટે નકશો મેળવો."
 
-#: site/dashboard/wizard.php:191
+#: site/dashboard/wizard.php:199
 msgid "Join for Free"
 msgstr "મફતમાં જોડાવો"
 
-#: site/dashboard/wizard.php:192
+#: site/dashboard/wizard.php:200
 msgid "Successfully joined community"
 msgstr "સમુદાયમાં સફળતાપૂર્વક જોડાયા"
 
-#: site/dashboard/wizard.php:196 site/dashboard/wizard.php:238
-#: site/dashboard/wizard.php:244 site/dashboard/wizard.php:261
-#: site/dashboard/wizard.php:268
+#: site/dashboard/wizard.php:204 site/dashboard/wizard.php:246
+#: site/dashboard/wizard.php:260 site/dashboard/wizard.php:303
+#: site/dashboard/wizard.php:310 site/dashboard/wizard.php:374
 msgid "Please wait while we connect you"
 msgstr "અમે તમને સામેલ કરીએ તે દરમિયાન કૃપા કરીને રાહ જુઓ"
 
-#: site/dashboard/wizard.php:199
+#: site/dashboard/wizard.php:207
 msgid "Complete your profile"
 msgstr "તમારી રૂપરેખાને પૂર્ણ કરો"
 
-#: site/dashboard/wizard.php:203
+#: site/dashboard/wizard.php:211
 msgid "What is your name?"
 msgstr "તમારું નામ શું છે?"
 
-#: site/dashboard/wizard.php:204
+#: site/dashboard/wizard.php:212
 msgid "What is your phone number?"
 msgstr "તમારો ફોન નંબર શું છે?"
 
-#: site/dashboard/wizard.php:205
+#: site/dashboard/wizard.php:213
 msgid "Phone number can only contain numbers, brackets and hyphens"
 msgstr "ફોન નંબર ફક્ત નંબરો, કૌંસ અને હાઇફન ધરાવી શકે છે"
 
-#: site/dashboard/wizard.php:206
+#: site/dashboard/wizard.php:214
 msgid "What city do you live in?"
 msgstr "તમે કયા શહેરમાં રહો છો?"
 
-#: site/dashboard/wizard.php:207
+#: site/dashboard/wizard.php:215
 msgid "This is your approximate location."
 msgstr "આ તમારું નજીકનું રહેવાનું સ્થાન છે."
 
-#: site/dashboard/wizard.php:209 site/parts/footer.php:57
+#: site/dashboard/wizard.php:217 site/dashboard/wizard.php:272
+#: site/parts/footer.php:57
 msgid "Privacy Policy"
 msgstr "ગોપનીયતાની નીતિ"
 
-#: site/dashboard/wizard.php:215
+#: site/dashboard/wizard.php:223
 msgid "What is your contact preference?"
 msgstr "તમારો સંપર્ક પસંદગી શું છે?"
 
-#: site/dashboard/wizard.php:217 zume-training-system.php:403
+#: site/dashboard/wizard.php:225 zume-training-system.php:562
 msgid "Text"
 msgstr "લખાણ"
 
-#: site/dashboard/wizard.php:223
+#: site/dashboard/wizard.php:231
 msgid "What is your language preference?"
 msgstr "તમારી ભાષાની પસંદગી શું છે?"
 
-#: site/dashboard/wizard.php:225
+#: site/dashboard/wizard.php:233
 msgid "How can we serve you?"
 msgstr "અમે તમારી સેવા કેવી રીતે કરી શકીએ?"
 
-#: site/dashboard/wizard.php:227
+#: site/dashboard/wizard.php:235
 msgid "Technical Assistance"
 msgstr "ટેકનિકલ સહાય"
 
-#: site/dashboard/wizard.php:228
+#: site/dashboard/wizard.php:236
 msgid "Question about implementing the training"
 msgstr "તાલીમના અમલીકરણ વિશેનો પ્રશ્ન"
 
-#: site/dashboard/wizard.php:229
+#: site/dashboard/wizard.php:237
 msgid "Question about the content"
 msgstr "સમાવિષ્ટો વિશે પ્રશ્ન"
 
-#: site/dashboard/wizard.php:230
+#: site/dashboard/wizard.php:238
 msgid "Help with what to do after starting a group"
 msgstr "જૂથ શરૂ કર્યા પછી શું કરવું તેની મદદ કરો"
 
-#: site/dashboard/wizard.php:232
+#: site/dashboard/wizard.php:240
 msgid "Please give a response to this question"
 msgstr "કૃપા કરીને આ પ્રશ્નનો જવાબ આપો"
 
-#: site/dashboard/wizard.php:233
+#: site/dashboard/wizard.php:241
 msgid ""
 "Request Submitted, we will do our best to connect you with a coach near you."
 msgstr ""
 "મોકલાવેલી વિનંતીઓ, અમે તમને તમારી નજીકના પ્રશિક્ષક સાથે જોડવા માટે અમારાથી બનતા શ્રેષ્ઠ "
 "પ્રયાસો કરીશું."
 
-#: site/dashboard/wizard.php:234
+#: site/dashboard/wizard.php:242
 msgid "Sorry. We were unable to submit your request. Please try again later."
 msgstr "માફ કરશો. અમે તમારી વિનંતી મોકલવામાં અસમર્થ હતા. કૃપા કરીને ફરીથી પ્રયાસ કરો."
 
-#: site/dashboard/wizard.php:235
+#: site/dashboard/wizard.php:243
 msgid "You have already requested a coach"
 msgstr "તમે પ્રશિક્ષક માટે પહેલેથી જ વિનંતી કરી છે"
 
-#: site/dashboard/wizard.php:236
+#: site/dashboard/wizard.php:244
 msgid "Error connecting with a coach"
 msgstr "પ્રશિક્ષકને સાથે જોડવામાં ભૂલ આવી રહી છે"
 
-#: site/dashboard/wizard.php:237
+#: site/dashboard/wizard.php:245
 msgid "Connecting you to a Coach"
 msgstr "પ્રશિક્ષક સાથે તમને જોડી રહ્યા છીએ"
 
-#: site/dashboard/wizard.php:243
+#: site/dashboard/wizard.php:249 site/pages/get-a-coach.php:93
+msgid ""
+"Every athletic sport, especially at higher levels, uses coaching. Even "
+"olympic athletes have coaches, and often more than one. Disciple making can "
+"equally benefit from coaching by those who have more experience."
+msgstr ""
+"દરેક રમતવીર રમતમાં , ખાસ કરીને અનુભવી , પ્રશિક્ષકનો ઉપયોગ કરે છે. ઓલિમ્પિકના ખેલાડીઓમાં "
+"પણ પ્રશિક્ષક હોય છે, અને ઘણી વખત એકથી વધારે. જેમની પાસે વધુ અનુભવ છે તેમના મારફતે શિષ્ય "
+"બનાવવાથી બધીજ્ર રીતે લાભ થઈ શકે છે."
+
+#: site/dashboard/wizard.php:250
+msgid ""
+"In order to connect you to an appropriate coach, we need to know a little "
+"more about you."
+msgstr ""
+"તમને યોગ્ય કોચ સાથે જોડવા માટે, અમારે તમારા વિશે થોડું વધુ જાણવાની જરૂર છે."
+
+#: site/dashboard/wizard.php:251 site/pages/get-a-coach.php:96
+msgid "No Cost"
+msgstr "કિંમત નથી"
+
+#: site/dashboard/wizard.php:252 site/pages/get-a-coach.php:103
+msgid "Localized"
+msgstr "સ્થાનિકમાં"
+
+#: site/dashboard/wizard.php:253 site/pages/get-a-coach.php:110
+msgid "Experienced"
+msgstr "અનુભવી"
+
+#: site/dashboard/wizard.php:254 site/pages/get-a-coach.php:99
+msgid ""
+"Our network of volunteer coaches are not paid, but are driven rather by a "
+"passion for loving God, loving others, and obeying the Great Commission."
+msgstr ""
+"આપણા સ્વયંસેવકોના પ્રશિક્ષકના માળખાને પગાર આપવામાં આવતો નથી, પરંતુ તે ઈશ્વરને પ્રેમ "
+"કરવાની, બીજાને પ્રેમ કરવાની અને મહાન આદેશની આજ્ઞાનું પાલન કરવાની ધગશથી પ્રેરિત થાય છે."
+
+#: site/dashboard/wizard.php:255 site/pages/get-a-coach.php:106
+msgid ""
+"Our connection team attempts to connect you with a coach who speaks your "
+"language and is geographically as close as possible."
+msgstr ""
+"અમારી મદદનીશ ટીમ તમને એવા પ્રશિક્ષક સાથે જોડવાનો પ્રયાસ કરે છે જે તમારી ભાષા બોલે છે "
+"અને ભૌગોલિક રીતે શક્ય તેટલી નજીક છે."
+
+#: site/dashboard/wizard.php:256 site/pages/get-a-coach.php:30
+#: site/pages/get-a-coach.php:113
+msgid ""
+"All our coaches are trained and practicing the concepts and tools found in "
+"Zûme. All our coaches can help you over barriers and make steps in your "
+"journey."
+msgstr ""
+"અમારા બધા પ્રશિક્ષક ઝુમમાં જોવા મળતા ખ્યાલો અને સાધનોને તાલીમબદ્ધ અને પ્રેક્ટિસ કરે છે. "
+"અમારા બધા પ્રશિક્ષક તમને અવરોધો પર મદદ કરી શકે છે અને તમારી યાત્રામાં સહે જોડાઈ શકે છે."
+
+#: site/dashboard/wizard.php:259
 msgid "Joining Plan"
 msgstr "યોજનામાં જોડાવું"
 
-#: site/dashboard/wizard.php:245 site/dashboard/wizard.php:335
+#: site/dashboard/wizard.php:261 site/dashboard/wizard.php:389
 msgid "The training link is broken. Please try again."
 msgstr "તાલીમનું સાતત્ય જળવાતું નથી . કૃપા કરીને ફરી પ્રયાસ કરો."
 
-#: site/dashboard/wizard.php:246
+#: site/dashboard/wizard.php:262
 #, php-format
 msgid "Successfully joined training %s"
 msgstr "તાલીમ %s માં સફળતાપૂર્વક જોડાય ગયા છો"
 
-#: site/dashboard/wizard.php:249 site/pages/join-a-training-public.php:106
+#: site/dashboard/wizard.php:265 site/dashboard/wizard.php:293
+#: site/pages/join-a-training-public.php:106
+#: site/pages/join-a-training-public.php:130 site/pages/plans.php:160
 msgid "Next Session Date"
 msgstr "આગળના સત્રની તારીખ"
 
-#: site/dashboard/wizard.php:251 site/pages/join-a-training-public.php:107
+#: site/dashboard/wizard.php:267 site/pages/join-a-training-public.php:107
+#: site/pages/join-a-training-public.php:131
 msgid "Start Time"
 msgstr "શરુઆતનો સમય"
 
-#: site/dashboard/wizard.php:256
+#: site/dashboard/wizard.php:274
+msgid "Your contact information is always visible to the group leader."
+msgstr "તમારી સંપર્ક માહિતી હંમેશા ગ્રુપ લીડરને દેખાય છે."
+
+#: site/dashboard/wizard.php:275
+msgid ""
+"You are joining a private training group, where everyone can see your "
+"contact information."
+msgstr ""
+"તમે એક ખાનગી તાલીમ જૂથમાં જોડાઈ રહ્યા છો, જ્યાં દરેક વ્યક્તિ તમારી સંપર્ક માહિતી જોઈ શકે "
+"છે."
+
+#: site/dashboard/wizard.php:276
+msgid ""
+"You can change your contact information visibility at any time in your "
+"profile."
+msgstr ""
+"તમે તમારી પ્રોફાઇલમાં કોઈપણ સમયે તમારી સંપર્ક માહિતીની દૃશ્યતા બદલી શકો છો."
+
+#: site/dashboard/wizard.php:277
+msgid "We were unable to connect you with a coach. Please try again later."
+msgstr ""
+"અમે તમને કોચ સાથે કનેક્ટ કરી શક્યા નથી. કૃપા કરીને પછીથી ફરી પ્રયાસ કરો."
+
+#: site/dashboard/wizard.php:278
 msgid "There are currently no public trainings available."
 msgstr "હાલમાં કોઈ જાહેર તાલીમ ઉપલબ્ધ નથી."
 
-#: site/dashboard/wizard.php:257
+#: site/dashboard/wizard.php:279 site/pages/join-a-training-public.php:160
+msgid "Would you like to be notified about future trainings?"
+msgstr "શું તમે ભવિષ્યની તાલીમ વિશે જાણ કરવા માંગો છો?"
+
+#: site/dashboard/wizard.php:280 site/pages/join-a-training-public.php:161
+msgid "We will send you an email when a new training is available."
+msgstr "નવી તાલીમ ઉપલબ્ધ થશે ત્યારે અમે તમને ઇમેઇલ મોકલીશું."
+
+#: site/dashboard/wizard.php:282 site/pages/join-a-training-public.php:162
+msgid "You can always unsubscribe from these emails at any time."
+msgstr "તમે કોઈપણ સમયે આ ઇમેઇલ્સમાંથી અનસબ્સ્ક્રાઇબ કરી શકો છો."
+
+#: site/dashboard/wizard.php:283 site/pages/join-a-training-public.php:164
+msgid "Notify me"
+msgstr "મને સૂચિત કરો"
+
+#: site/dashboard/wizard.php:284
+msgid "Do you want to unsubscribe from the notification list?"
+msgstr "શું તમે સૂચના સૂચિમાંથી અનસબ્સ્ક્રાઇબ કરવા માંગો છો?"
+
+#: site/dashboard/wizard.php:285
+msgid "Continue"
+msgstr "ચાલુ રાખો"
+
+#: site/dashboard/wizard.php:286 site/pages/plans.php:140
+msgid "Training Group Details"
+msgstr "તાલીમ જૂથ વિગતો"
+
+#: site/dashboard/wizard.php:289 site/pages/plans.php:144
+msgid "Facilitator"
+msgstr "સુવિધા આપનાર"
+
+#: site/dashboard/wizard.php:291 site/pages/plans.php:164
+msgid "Time of Day"
+msgstr "દિવસનો સમય"
+
+#: site/dashboard/wizard.php:292
+msgid "Zoom Link"
+msgstr "ઝૂમ લિંક"
+
+#: site/dashboard/wizard.php:295
 msgid ""
 "Please make sure that your profile is up to date, so that group leaders can "
 "contact you."
 msgstr ""
 "કૃપા કરીને ખાતરી કરો કે તમારી રૂપરેખા અદ્યતન છે, જેથી જૂથના નેતાઓ તમારો સંપર્ક કરી શકે."
 
-#: site/dashboard/wizard.php:260
+#: site/dashboard/wizard.php:298 site/pages/plans.php:173
+msgid "The next session is:"
+msgstr "આગામી સત્ર છે:"
+
+#: site/dashboard/wizard.php:299 site/pages/plans.php:177
+msgid "In this timezone:"
+msgstr "આ સમય ઝોનમાં:"
+
+#: site/dashboard/wizard.php:302
 msgid "Connecting with friend"
 msgstr "મિત્ર સાથે જોડાઇ રહ્યા છીએ"
 
-#: site/dashboard/wizard.php:262
+#: site/dashboard/wizard.php:304
 msgid "The friend link is broken. Please try again."
 msgstr "મિત્રની લિંક તૂટી ગઈ છે. કૃપા કરીને ફરીથી પ્રયાસ કરો."
 
-#: site/dashboard/wizard.php:263
+#: site/dashboard/wizard.php:305
 #, php-format
 msgid "Successfully connected with friend %s"
 msgstr "મિત્ર %s સાથે સફળતાપૂર્વક જોડાયેલ છે"
 
-#: site/dashboard/wizard.php:267
+#: site/dashboard/wizard.php:309
 msgid "Checking in"
 msgstr "માં ચકાસી રહ્યા છીએ"
 
-#: site/dashboard/wizard.php:269
+#: site/dashboard/wizard.php:311
 msgid "The checkin link is broken. Please try again."
 msgstr "ચેકઈન લિંક તૂટી ગઈ છે. કૃપા કરીને ફરી પ્રયાસ કરો."
 
-#: site/dashboard/wizard.php:270
+#: site/dashboard/wizard.php:312
 msgid "Successfully checked in"
 msgstr "સફળતાપૂર્વક ચેક થયેલ છે"
 
-#: site/dashboard/wizard.php:275
+#: site/dashboard/wizard.php:318
 msgid "Create a training group"
 msgstr "એક તાલીમ જૂથ બનાવો"
 
-#: site/dashboard/wizard.php:276
+#: site/dashboard/wizard.php:319
 msgid "Join a public training group"
 msgstr "જાહેર તાલીમ જૂથમાં જોડાવ"
 
-#: site/dashboard/wizard.php:277
+#: site/dashboard/wizard.php:320
+msgid "Join with code"
+msgstr "કોડ સાથે જોડાઓ"
+
+#: site/dashboard/wizard.php:321 site/pages/friend-invite.php:172
+#: site/pages/plan-invite.php:177
+msgid "Use the code your friend sent you."
+msgstr "તમારા મિત્રએ તમને મોકલેલો કોડ નંબર વાપરો."
+
+#: site/dashboard/wizard.php:323 site/pages/checkin.php:257
+#: site/pages/friend-invite.php:177 site/pages/plan-invite.php:182
+msgid "Connect"
+msgstr "જોડવું"
+
+#: site/dashboard/wizard.php:324
 msgid "Skip for now"
 msgstr "અત્યારે અવગણશો"
 
-#: site/dashboard/wizard.php:278
+#: site/dashboard/wizard.php:325
 msgid "Choose your course format"
 msgstr "તમારા અભ્યાસક્રમની પધ્ધતિ પસંદ કરો"
 
-#: site/dashboard/wizard.php:279
+#: site/dashboard/wizard.php:326
 msgid "1 hour (20 sessions)"
 msgstr "૧ કલાક (૨૦ સત્રો)"
 
-#: site/dashboard/wizard.php:280
+#: site/dashboard/wizard.php:327
 msgid "2 hour (10 sessions)"
 msgstr "૨ કલાક (૧૦ સત્રો)"
 
-#: site/dashboard/wizard.php:281
+#: site/dashboard/wizard.php:328
 msgid "4 hour (5 sessions)"
 msgstr "૪ કલાક (૫ સત્રો)"
 
-#: site/dashboard/wizard.php:282
+#: site/dashboard/wizard.php:329
 msgid "Would you like to schedule your training?"
 msgstr "શું તમે તમારી તાલીમનો સમય નક્કી કરવા માંગો છો?"
 
-#: site/dashboard/wizard.php:285
+#: site/dashboard/wizard.php:332
 msgid "What time of day?"
 msgstr "દિવસનો કેટલો સમય?"
 
-#: site/dashboard/wizard.php:286
+#: site/dashboard/wizard.php:333
 msgid "Morning"
 msgstr "સવાર"
 
-#: site/dashboard/wizard.php:287
+#: site/dashboard/wizard.php:334
 msgid "Afternoon"
 msgstr "બપોર"
 
-#: site/dashboard/wizard.php:288
+#: site/dashboard/wizard.php:335
 msgid "Evening"
 msgstr "સાંજ"
 
-#: site/dashboard/wizard.php:289
+#: site/dashboard/wizard.php:336
 msgid "How often will you meet?"
 msgstr "તમે કેટલી વાર મળશો?"
 
-#: site/dashboard/wizard.php:290
+#: site/dashboard/wizard.php:337
 msgid "Every day"
 msgstr "દરરોજ"
 
-#: site/dashboard/wizard.php:291
+#: site/dashboard/wizard.php:338
 msgid "Once a week"
 msgstr "અઠવાડિયામાં એક વાર"
 
-#: site/dashboard/wizard.php:292
+#: site/dashboard/wizard.php:339
 msgid "Twice a month"
 msgstr "મહિનામાં બે વાર"
 
-#: site/dashboard/wizard.php:293
+#: site/dashboard/wizard.php:340
 msgid "Once a month"
 msgstr "મહિનામાં એક વાર"
 
-#: site/dashboard/wizard.php:294
+#: site/dashboard/wizard.php:341
 msgid "Other"
 msgstr "અન્ય"
 
-#: site/dashboard/wizard.php:295
+#: site/dashboard/wizard.php:342
 msgid "What is the name of the training group?"
 msgstr "તાલીમ જૂથનું નામ શું છે?"
 
-#: site/dashboard/wizard.php:296
+#: site/dashboard/wizard.php:343
 msgid "My first training group"
 msgstr "મારું પ્રથમ તાલીમ જૂથ"
 
-#: site/dashboard/wizard.php:297
+#: site/dashboard/wizard.php:344
 msgid "When do you plan to start?"
 msgstr "તમે ક્યારે શરૂ કરવાની યોજના કરો છો?"
 
-#: site/dashboard/wizard.php:298
+#: site/dashboard/wizard.php:345
 msgid "Where do you plan to meet?"
 msgstr "તમે ક્યાં મળવાનું વિચારી રહ્યા છો?"
 
-#: site/dashboard/wizard.php:299
+#: site/dashboard/wizard.php:346
 msgid "This could be online or in person"
 msgstr "આ ઓનલાઈન અથવા વ્યક્તિગત હોઈ શકે છે"
 
-#: site/dashboard/wizard.php:300
+#: site/dashboard/wizard.php:347
 msgid "Review Schedule"
 msgstr "સમય પત્રકની સમિક્ષા"
 
-#: site/dashboard/wizard.php:301
+#: site/dashboard/wizard.php:348
 #, php-format
 msgctxt "1 of 10 selected"
 msgid "%1$s of %2$s selected"
 msgstr "પસંદ થયેલ %2$s નું %1$s"
 
-#: site/dashboard/wizard.php:302
+#: site/dashboard/wizard.php:349
 msgctxt "All 10 sessions scheduled"
 msgid "Ready"
 msgstr "તૈયાર છે"
 
-#: site/dashboard/wizard.php:303
+#: site/dashboard/wizard.php:350
 #, php-format
 msgctxt "Too many selected: 2"
 msgid "Too many selected: %s"
 msgstr "ઘણા બધા પસંદ થયેલ છે: %s"
 
-#: site/dashboard/wizard.php:304
+#: site/dashboard/wizard.php:351
 msgid "Incorrect number of sessions selected"
 msgstr "પસંદ થયેલ સત્રોની અયોગ્ય સંખ્યા"
 
-#: site/dashboard/wizard.php:305 site/dashboard/wizard.php:307
-#: site/dashboard/wizard.php:309 site/dashboard/wizard.php:310
+#: site/dashboard/wizard.php:352 site/dashboard/wizard.php:354
+#: site/dashboard/wizard.php:356 site/dashboard/wizard.php:357
 #, php-format
 msgid "Set %s"
 msgstr "%s ને સુયોજિત કરો"
 
-#: site/dashboard/wizard.php:307
+#: site/dashboard/wizard.php:354
 msgid "Group Name"
 msgstr "જૂથ નામ"
 
-#: site/dashboard/wizard.php:308
+#: site/dashboard/wizard.php:355
 msgid "Group name"
 msgstr "જૂથ નામ"
 
-#: site/dashboard/wizard.php:315
+#: site/dashboard/wizard.php:362
 msgid "Date"
 msgstr "તારીખ"
 
-#: site/dashboard/wizard.php:316
+#: site/dashboard/wizard.php:363
 msgid "Summary"
 msgstr "સારાંશ"
 
-#: site/dashboard/wizard.php:317
+#: site/dashboard/wizard.php:364
 msgid "Clear Calendar"
 msgstr "મહિનો પૂરો થયો"
 
-#: site/dashboard/wizard.php:320
+#: site/dashboard/wizard.php:367
 msgid "Add"
 msgstr "ઉમેરો"
 
-#: site/dashboard/wizard.php:321
+#: site/dashboard/wizard.php:368
 msgid "Add some dates to your schedule"
 msgstr "તમારા સમય પત્રકમાં કેટલીક તારીખો ઉમેરો"
 
-#: site/dashboard/wizard.php:322
+#: site/dashboard/wizard.php:369
 msgid "Change"
 msgstr "ફેરફાર"
 
-#: site/dashboard/wizard.php:326
+#: site/dashboard/wizard.php:375
+msgid "The notify me about future trainings link is broken. Please try again."
+msgstr ""
+"ભવિષ્યની તાલીમ વિશે મને સૂચિત કરવાની લિંક તૂટી ગઈ છે. કૃપા કરીને ફરી પ્રયાસ કરો."
+
+#: site/dashboard/wizard.php:376
+msgid "You have been added to the list to be notified about future trainings."
+msgstr "ભવિષ્યની તાલીમ વિશે જાણ કરવા માટે તમને યાદીમાં ઉમેરવામાં આવ્યા છે."
+
+#: site/dashboard/wizard.php:380
 msgid "Invite your friends to join your training"
 msgstr "તમારી તાલીમમાં જોડાવા માટે તમારા મિત્રોને આમંત્રિત કરો"
 
-#: site/dashboard/wizard.php:327
+#: site/dashboard/wizard.php:381
 msgid ""
 "Share the invite or link below with your friends so that they can join your "
 "training."
@@ -5585,16 +5889,16 @@ msgstr ""
 "નીચે આપેલા આમંત્રણને અથવા તમારા મિત્રો સાથે લિંક શેર કરો જેથી તેઓ તમારી તાલીમમાં જોડાઈ "
 "શકે."
 
-#: site/dashboard/wizard.php:328
+#: site/dashboard/wizard.php:382
 msgid "Join my zume plan"
 msgstr "મારી ઝુમ યોજનામાં જોડાવ"
 
-#: site/dashboard/wizard.php:329
+#: site/dashboard/wizard.php:383
 #, php-format
 msgid "%s is inviting you to a Zume Training Group"
 msgstr "%s તમને ઝુમ તાલીમ જૂથમાં આમંત્રણ આપી રહ્યુ છે"
 
-#: site/dashboard/wizard.php:336
+#: site/dashboard/wizard.php:390
 msgid "Copy Invite"
 msgstr "આમંત્રણની નકલ કરો"
 
@@ -6166,11 +6470,6 @@ msgstr "કૃપા કરીને એક મિત્ર કોડ દાખ�
 msgid "Use the code on the screen or in the book"
 msgstr "સ્ક્રીન પર અથવા પુસ્તકમાં કોડનો ઉપયોગ કરો"
 
-#: site/pages/checkin.php:257 site/pages/friend-invite.php:177
-#: site/pages/plan-invite.php:182
-msgid "Connect"
-msgstr "જોડવું"
-
 #: site/pages/checkin.php:261
 msgid "or"
 msgstr "અથવા"
@@ -6347,37 +6646,10 @@ msgstr "જો ઘણા મિત્રો, કુટુંબીજનો અ�
 msgid "Friend Invitation"
 msgstr "મિત્રને આમંત્રણ"
 
-#: site/pages/friend-invite.php:172 site/pages/plan-invite.php:177
-msgid "Use the code your friend sent you."
-msgstr "તમારા મિત્રએ તમને મોકલેલો કોડ નંબર વાપરો."
-
 #: site/pages/get-a-coach.php:29 site/pages/get-a-coach.php:92
 #: site/pages/get-a-coach.php:119
 msgid "Get A Coach"
 msgstr "પ્રશિક્ષક મેળવો"
-
-#: site/pages/get-a-coach.php:30 site/pages/get-a-coach.php:113
-msgid ""
-"All our coaches are trained and practicing the concepts and tools found in "
-"Zûme. All our coaches can help you over barriers and make steps in your "
-"journey."
-msgstr ""
-"અમારા બધા પ્રશિક્ષક ઝુમમાં જોવા મળતા ખ્યાલો અને સાધનોને તાલીમબદ્ધ અને પ્રેક્ટિસ કરે છે. "
-"અમારા બધા પ્રશિક્ષક તમને અવરોધો પર મદદ કરી શકે છે અને તમારી યાત્રામાં સહે જોડાઈ શકે છે."
-
-#: site/pages/get-a-coach.php:93
-msgid ""
-"Every athletic sport, especially at higher levels, uses coaching. Even "
-"olympic athletes have coaches, and often more than one. Disciple making can "
-"equally benefit from coaching by those who have more experience."
-msgstr ""
-"દરેક રમતવીર રમતમાં , ખાસ કરીને અનુભવી , પ્રશિક્ષકનો ઉપયોગ કરે છે. ઓલિમ્પિકના ખેલાડીઓમાં "
-"પણ પ્રશિક્ષક હોય છે, અને ઘણી વખત એકથી વધારે. જેમની પાસે વધુ અનુભવ છે તેમના મારફતે શિષ્ય "
-"બનાવવાથી બધીજ્ર રીતે લાભ થઈ શકે છે."
-
-#: site/pages/get-a-coach.php:96
-msgid "No Cost"
-msgstr "કિંમત નથી"
 
 #: site/pages/get-a-coach.php:97 site/pages/get-a-coach.php:104
 #: site/pages/home.php:269 site/pages/home.php:276 site/pages/home.php:277
@@ -6385,30 +6657,6 @@ msgstr "કિંમત નથી"
 #: site/pages/training.php:145 site/pages/training.php:146
 msgid "Join a training group"
 msgstr "તાલીમ જૂથમાં જોડાવ"
-
-#: site/pages/get-a-coach.php:99
-msgid ""
-"Our network of volunteer coaches are not paid, but are driven rather by a "
-"passion for loving God, loving others, and obeying the Great Commission."
-msgstr ""
-"આપણા સ્વયંસેવકોના પ્રશિક્ષકના માળખાને પગાર આપવામાં આવતો નથી, પરંતુ તે ઈશ્વરને પ્રેમ "
-"કરવાની, બીજાને પ્રેમ કરવાની અને મહાન આદેશની આજ્ઞાનું પાલન કરવાની ધગશથી પ્રેરિત થાય છે."
-
-#: site/pages/get-a-coach.php:103
-msgid "Localized"
-msgstr "સ્થાનિકમાં"
-
-#: site/pages/get-a-coach.php:106
-msgid ""
-"Our connection team attempts to connect you with a coach who speaks your "
-"language and is geographically as close as possible."
-msgstr ""
-"અમારી મદદનીશ ટીમ તમને એવા પ્રશિક્ષક સાથે જોડવાનો પ્રયાસ કરે છે જે તમારી ભાષા બોલે છે "
-"અને ભૌગોલિક રીતે શક્ય તેટલી નજીક છે."
-
-#: site/pages/get-a-coach.php:110
-msgid "Experienced"
-msgstr "અનુભવી"
 
 #: site/pages/get-a-coach.php:111 site/pages/home.php:285
 #: site/pages/training.php:154
@@ -6638,9 +6886,8 @@ msgid "Get started"
 msgstr "શરૂ કરો"
 
 #: site/pages/join-a-training-public.php:30
-#, fuzzy
 msgid "Join a Training"
-msgstr "તાલીમમાં જોડવ"
+msgstr "તાલીમમાં જોડાઓ"
 
 #: site/pages/join-a-training-public.php:31 site/pages/training.php:30
 #: site/pages/training.php:220
@@ -6653,11 +6900,11 @@ msgstr ""
 
 #: site/pages/join-a-training-public.php:146
 msgid "No active trainings available at this time."
-msgstr ""
+msgstr "આ સમયે કોઈ સક્રિય તાલીમ ઉપલબ્ધ નથી."
 
-#: site/pages/join-a-training-public.php:158
-msgid "Notify me about future trainings"
-msgstr ""
+#: site/pages/join-a-training-public.php:156
+msgid "Want to know about future trainings?"
+msgstr "ભવિષ્યની તાલીમ વિશે જાણવા માંગો છો?"
 
 #: site/pages/messages.php:283 utilities/apis/encouragement-api.php:534
 msgid "Friend"
@@ -6702,6 +6949,10 @@ msgstr "પ્લાન આમંત્રણ"
 #: site/pages/plan-invite.php:77
 msgid "Please enter a code."
 msgstr "કૃપા કરીને એક કોડ દાખલ કરો."
+
+#: site/pages/plans.php:200
+msgid "Back to Public Training Groups"
+msgstr "જાહેર તાલીમ જૂથો પર પાછા"
 
 #: site/pages/privacy-policy.php:29 site/pages/privacy-policy.php:86
 msgid "Zúme Privacy Policy"
@@ -6953,10 +7204,6 @@ msgstr "ઝુમ તાલીમ અભ્યાસક્રમના ખ્ય
 msgid "Copy this link and send it to your friends."
 msgstr "આ લિંકની નકલ કરીને તમારા મિત્રોને મોકલો."
 
-#: site/pages/share.php:88
-msgid "Copied"
-msgstr "નકલ થઈ ગઈ"
-
 #: site/pages/share.php:125
 msgid "Tools"
 msgstr "સાધનો"
@@ -7151,11 +7398,66 @@ msgstr ""
 "ઝુમ તાલીમ એ ઓન-લાઇન અને ઇન-લાઇફ શીખવાનો અનુભવ છે, જે ઈસુને અનુસરતા નાના જૂથો માટે "
 "બનાવવામાં આવ્યો છે. ઓનલાઇન, જીવનમાં આંદોલનની તાલીમ આપતો શિષ્ય"
 
-#: utilities/apis/connect-api.php:86
+#: utilities/apis/communications-api.php:99
+#, php-format
+msgid "Hello %s"
+msgstr "નમસ્તે %s"
+
+#: utilities/apis/communications-api.php:100
+#, php-format
+msgid ""
+"A new online Zume Training is now available. You can view it at the "
+"following link: %s"
+msgstr ""
+"એક નવી ઓનલાઈન ઝુમ તાલીમ હવે ઉપલબ્ધ છે. તમે તેને નીચેની લિંક પર જોઈ શકો છો: %s"
+
+#: utilities/apis/communications-api.php:101
+#, php-format
+msgid "The training is in the %1$s format and will be held in %2$s"
+msgstr "તાલીમ %1$s ફોર્મેટમાં છે અને %2$s માં યોજાશે."
+
+#: utilities/apis/communications-api.php:102
+#, php-format
+msgid "First session: %1$s %2$s (%3$s)."
+msgstr "પહેલું સત્ર: %1$s %2$s (%3$s)."
+
+#: utilities/apis/communications-api.php:103
+msgid "You can also join the training by clicking the link below:"
+msgstr "તમે નીચેની લિંક પર ક્લિક કરીને પણ તાલીમમાં જોડાઈ શકો છો:"
+
+#: utilities/apis/communications-api.php:105
+#, php-format
+msgid "The training will be led by %s speakers."
+msgstr "તાલીમનું નેતૃત્વ %s વક્તાઓ કરશે."
+
+#: utilities/apis/communications-api.php:106
+msgid "Best regards,"
+msgstr "શુભેચ્છાઓ,"
+
+#: utilities/apis/communications-api.php:107
+msgid "The Zume Team"
+msgstr "ઝુમ ટીમ"
+
+#: utilities/apis/connect-api.php:82
+msgid ""
+"You have successfully subscribed to receive notifications about future "
+"trainings."
+msgstr ""
+"તમે ભવિષ્યની તાલીમ વિશે સૂચનાઓ મેળવવા માટે સફળતાપૂર્વક સબ્સ્ક્રાઇબ કર્યું છે."
+
+#: utilities/apis/connect-api.php:83
+msgid "You can unsubscribe from these notifications at any time."
+msgstr "તમે કોઈપણ સમયે આ સૂચનાઓમાંથી અનસબ્સ્ક્રાઇબ કરી શકો છો."
+
+#: utilities/apis/connect-api.php:91
+msgid "Zume Training - Future Trainings"
+msgstr "ઝુમ તાલીમ - ભવિષ્યની તાલીમ"
+
+#: utilities/apis/connect-api.php:141
 msgid "your friend"
 msgstr "તમારા મિત્ર"
 
-#: utilities/apis/connect-api.php:237
+#: utilities/apis/connect-api.php:294
 msgid "the plan"
 msgstr "યોજના"
 
@@ -7244,22 +7546,9 @@ msgstr "સમુદાયમાં જોડાઓ"
 msgid "Joined Community"
 msgstr "સમુદાયમાં જોડાયા"
 
-#: utilities/apis/plans-api.php:126
-#, php-format
-msgctxt "My first training - username"
-msgid "My first training - %s"
-msgstr "મારી પ્રથમ તાલીમ - %s"
-
-#: utilities/apis/plans-api.php:128
-#, php-format
-msgctxt "Training 2 - username"
-msgid "Training %1$d - %2$s"
-msgstr "તાલીમ %1$d - %2$s"
-
-#: utilities/hooks/admin-email-test.php:169
-#, fuzzy
+#: utilities/hooks/admin-email-test.php:227
 msgid "You do not have sufficient permissions to access this page."
-msgstr "તમે આ પાનું વાપરવા માટે અધિકૃત નથી"
+msgstr "આ પૃષ્ઠને ઍક્સેસ કરવા માટે તમારી પાસે પૂરતી પરવાનગીઓ નથી."
 
 #: utilities/hooks/ipstack-admin-tab.php:47
 msgid "Ipstack"
@@ -7309,77 +7598,113 @@ msgstr "ઝુમ પાનું વહેંચો"
 msgid "Zúme Annual Report"
 msgstr "ઝુમનો વાર્ષિક અહેવાલ"
 
+#: utilities/models/zume-plans-model.php:153
+#, php-format
+msgctxt "My first training - username"
+msgid "My first training - %s"
+msgstr "મારી પ્રથમ તાલીમ - %s"
+
+#: utilities/models/zume-plans-model.php:155
+#, php-format
+msgctxt "Training 2 - username"
+msgid "Training %1$d - %2$s"
+msgstr "તાલીમ %1$d - %2$s"
+
 #: utilities/post-types/posttype-pieces.php:299
 msgid "Piece"
 msgstr "ટુકડો"
 
-#: zume-training-system.php:277
+#: zume-training-system.php:199
+msgid "Add the details for training with code abc123"
+msgstr "abc123 કોડ સાથે તાલીમ માટે વિગતો ઉમેરો."
+
+#: zume-training-system.php:203
+msgid "Set the language to e.g. en_US"
+msgstr "ભાષાને દા.ત. en_US પર સેટ કરો."
+
+#: zume-training-system.php:263
+msgid "Learn More"
+msgstr "વધુ શીખો"
+
+#: zume-training-system.php:293
+msgid "Zume Admin"
+msgstr "ઝુમ એડમિન"
+
+#: zume-training-system.php:404
 msgid "Someone has requested a password reset for the following account:"
 msgstr "કોઈકે નીચેનાં ખાતા માટે પાસવર્ડમાં ફેરફાર કરવાની વિનંતી કરી છે:"
 
 #. translators: %s: site name
-#: zume-training-system.php:279
+#: zume-training-system.php:406
 #, php-format
 msgid "Site Name: %s"
 msgstr "સાઇટ નું નામ: %s"
 
 #. translators: %s: user login
-#: zume-training-system.php:281
+#: zume-training-system.php:408
 #, php-format
 msgid "Username: %s"
 msgstr "વપરાશકર્તાનું નામ: %s"
 
-#: zume-training-system.php:282
+#: zume-training-system.php:409
 msgid "If this was a mistake, just ignore this email and nothing will happen."
 msgstr "જો આ ભૂલ હતી, તો ફક્ત આ ઇમેઇલને અવગણો અને કંઇ નહીં થાય."
 
-#: zume-training-system.php:283
+#: zume-training-system.php:410
 msgid "To reset your password, visit the following address:"
 msgstr "તમારા પાસવર્ડમાં ફેરફાર કરવા માટે, નીચેના સરનામાંની મુલાકાત લો:"
 
 #. translators: Password reset email subject. %s: Site name
-#: zume-training-system.php:301
+#: zume-training-system.php:428
 #, php-format
 msgid "[%s] Password Reset"
 msgstr "[%s] પાસવર્ડને ફરીથી પુનઃસુયોજિત કરો"
 
-#: zume-training-system.php:329
+#: zume-training-system.php:456
 msgid "Profile Details"
 msgstr "પ્રોફાઇલ વિગતો"
 
-#: zume-training-system.php:341
+#: zume-training-system.php:468
 msgid "User Email"
 msgstr "વપરાશકર્તાનો ઈ-મેઈલ"
 
-#: zume-training-system.php:350
+#: zume-training-system.php:477
 msgid "User Phone"
 msgstr "વપરાશકર્તાનો ફોન"
 
-#: zume-training-system.php:358
+#: zume-training-system.php:485
 msgid "User Timezone"
 msgstr "વપરાશકર્તાનો ટાઇમપત્રક"
 
-#: zume-training-system.php:366
+#: zume-training-system.php:493
 msgid "User Friend Key"
 msgstr "વપરાશકર્તા મિત્રની કી"
 
-#: zume-training-system.php:374
+#: zume-training-system.php:501
 msgid "User Preferred Language"
 msgstr "વપરાશકર્તાની પસંદગીની ભાષા"
 
-#: zume-training-system.php:382
+#: zume-training-system.php:509
 msgid "User Preferred Email"
 msgstr "વપરાશકર્તાનો પસંદ થયેલ ઇમેઇલ"
 
-#: zume-training-system.php:390
+#: zume-training-system.php:517
+msgid "Notify of Future Trainings"
+msgstr "ભવિષ્યની તાલીમની જાણ કરો"
+
+#: zume-training-system.php:525
+msgid "Notify of Future Trainings Date Subscribed"
+msgstr "ભાવિ તાલીમ તારીખની જાણ કરો સબ્સ્ક્રાઇબ કરેલ"
+
+#: zume-training-system.php:549
 msgid "Coaching Contact ID"
 msgstr "પ્રશિક્ષકનો સંપર્ક આઈડી"
 
-#: zume-training-system.php:398
+#: zume-training-system.php:557
 msgid "Preferred Contact Methods"
 msgstr "પસંદગીની સંપર્ક પદ્ધતિઓ"
 
-#: zume-training-system.php:408
+#: zume-training-system.php:567
 msgid "Messenger"
 msgstr "સંદેશાવ્યવહાર"
 
