@@ -333,7 +333,7 @@ class Zume_Training_Translations extends Zume_Magic_Page
                         <th style="width:1%"></th>
                         <th style="width:8%">Language</th>
                         <th style="width:8%">Native</th>
-                        <th style="width:4%">Population</th>
+                        <!-- <th style="width:4%">Population</th> -->
                         <th style="width:2%">RTL</th>
                         <th style="width:2%">Code</th>
                         <th style="width:2%">Locale</th>
@@ -355,7 +355,7 @@ class Zume_Training_Translations extends Zume_Magic_Page
                             <td><?php echo esc_html( $globe_count ) ?></td>
                             <td><a href="/<?php echo esc_attr( $code ) ?>/app/translator/?tab=status"><?php echo esc_html( $language['enDisplayName'] ) ?></a></td>
                             <td><?php echo esc_html( $language['nativeName'] ) ?></td>
-                            <td><?php echo esc_html( number_format( $language['population'] ) ) ?></td>
+                            <!-- <td><?php // echo esc_html( number_format( $language['population'] ) ) ?></td> -->
                             <td><?php echo ( $language['rtl'] ) ?'Yes' :'No' ?></td>
                             <td><?php echo esc_html( $language['code'] ) ?></td>
                             <td><?php echo esc_html( $language['locale'] ) ?></td>
