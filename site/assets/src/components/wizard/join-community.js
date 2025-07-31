@@ -13,14 +13,34 @@ export class JoinCommunity extends LitElement {
             variant: { type: String },
             loading: { type: Boolean, attribute: false },
             success: { type: Boolean, atrtibute: false },
+            error: { type: String, attribute: false },
+            requestSent: { type: Boolean, attribute: false },
         }
+    }
+
+    constructor() {
+        super()
+        this.loading = false
+        this.success = false
+        this.requestSent = false
+        this.error = ''
     }
 
     joinCommunity() {
         this.loading = true
+        this.requestSent = true
         zumeRequest.post( 'join_community' )
             .then( ( data ) => {
                 this.success = true
+            })
+            .catch( ( error ) => {
+                if (error.message=== 'coach_request_failed') {
+                    this.success = true
+                    this.error = this.t.error_connecting
+                } else {
+                    this.success = false
+                    this.error = this.t.error
+                }
             })
             .finally(() => {
                 this.loading = false
@@ -75,7 +95,7 @@ export class JoinCommunity extends LitElement {
         }
 
         if (this.variant === Steps.joinCommunity) {
-            if (!this.loading && !this.success) {
+            if (!this.loading && !this.requestSent) {
                 this.joinCommunity()
             }
 
@@ -87,24 +107,22 @@ export class JoinCommunity extends LitElement {
                         <span class="loading-spinner active"></span>
                     ` : ''
                 }
-                ${
-                    this.success === true ? html`
-                        <div class="stack">
+                <div class="stack">
+                    ${
+                        this.success === true ? html`
                             <span class="banner success">
                                 ${this.t.joined_community}
                             </span>
-                        </div>
-                    ` : ''
-                }
-                ${
-                    this.success === false ? html`
-                        <div class="stack">
+                        ` : ''
+                    }
+                    ${
+                        this.error !== '' ? html`
                             <span class="banner warning">
-                                ${this.t.error}
+                                ${this.error}
                             </span>
-                        </div>
-                    ` : ''
-                }
+                        ` : ''
+                    }
+                </div>
                 ${
                     this.success && this.hasNextStep ? html`
                         <button class="btn" @click=${this._sendDoneStepEvent}>
