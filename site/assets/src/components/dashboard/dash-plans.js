@@ -291,9 +291,14 @@ export class DashPlans extends DashPage {
                             <h1 class="h3">${this.route.translation}</h1>
                         </div>
                         <div class="s0">
-                            <button class="icon-btn f-2" data-toggle="filter-menu" ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser ? 'true' : 'false'}>
+                            <button class="icon-btn f-2 filter-btn" data-toggle="filter-menu" ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser ? 'true' : 'false'}>
                                 <span class="visually-hidden">${jsObject.translations.filter}</span>
                                 <span class="icon z-icon-filter" aria-hidden="true"></span>
+                                ${
+                                    this.filterStatus &&this.filterStatus !== 'all' ? html`
+                                        <span class="filter-dot"></span>
+                                    ` : ''
+                                }
                             </button>
                             <button class="icon-btn f-2" @click=${this.handleOpenCommitmentsModal} ?disabled=${this.showTeaser} aria-disabled=${this.showTeaser ? 'true' : 'false'}>
                                 <span class="visually-hidden">${jsObject.translations.add_commitments}</span>

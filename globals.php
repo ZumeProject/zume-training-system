@@ -237,7 +237,7 @@ if ( ! function_exists( 'zume_get_user_stage' ) ) {
                 if ( 'training_completed' == $value['subtype'] ) {
                     $funnel_steps[3] = true;
                 }
-                if ( ! ( strpos( 'heard', $value['subtype'] ) === false ) ) {
+                if ( ! ( strpos( $value['subtype'], 'heard' ) === false ) ) {
                     $progress[$value['subtype']] = true;
                     if ( count( $progress ) > 25 ) {
                         $funnel_steps[3] = true;

@@ -1040,7 +1040,7 @@ export class DashTrainings extends DashPage {
     }
     renderFilterButton() {
         return html`
-            <button class="icon-btn f-2" data-toggle="filter-menu">
+            <button class="icon-btn f-2 filter-btn" data-toggle="filter-menu">
                 <span class="visually-hidden"
                     >${jsObject.translations.filter}</span
                 >
@@ -1048,6 +1048,11 @@ export class DashTrainings extends DashPage {
                     class="icon z-icon-filter brand-light"
                     aria-hidden="true"
                 ></span>
+                ${
+                    this.filterStatus &&this.filterStatus !== 'all' ? html`
+                        <span class="filter-dot"></span>
+                    ` : ''
+                }
             </button>
         `
     }

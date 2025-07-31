@@ -165,8 +165,8 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
 
     firstUpdated() {
-        this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
         this.getCtas()
+        this.menuOffset = this.getHeightOfElement('.header')
         const celebrationModal = this.renderRoot.querySelector('#celebration-modal')
         if (celebrationModal) {
             jQuery(celebrationModal).on('closed.zf.reveal', () => {
@@ -286,10 +286,10 @@ export class DashBoard extends navigator(router(LitElement)) {
         return makeComponent(isLocked)
     }
 
-    getOffsetTop(querySelector) {
-        const element = this.querySelector(querySelector)
-        const offsetTop = element.offsetTop
-        return offsetTop
+    getHeightOfElement(querySelector) {
+        const element = document.querySelector(querySelector)
+        const height = element.offsetHeight
+        return height
     }
 
     toggleSidebar() {
@@ -742,6 +742,10 @@ export class DashBoard extends navigator(router(LitElement)) {
 
     isParentSectionActive(parentRoute) {
         let route = DashBoard.getRoute(this.route)
+
+        if (this.route === RouteNames.myTrainings) {
+          route = DashBoard.getRoute(RouteNames.training)
+        }
 
         if (this.route === 'root') {
             route = DashBoard.rootRoute

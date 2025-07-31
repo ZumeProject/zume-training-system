@@ -6,7 +6,7 @@ export class ShareList extends LitElement {
         return {
             items: { type: Array },
             itemsToDisplay: { type: Array, attribute: false },
-            filterType: { type: String, attribute: false },
+            filterStatus: { type: String, attribute: false },
             isSortedAlphabetically: { type: Boolean, attribute: false },
         };
     }
@@ -15,7 +15,7 @@ export class ShareList extends LitElement {
         super()
         this.items = []
         this.itemsToDisplay = []
-        this.filterType = 'all'
+        this.filterStatus = 'all'
     }
 
     connectedCallback() {
@@ -23,15 +23,15 @@ export class ShareList extends LitElement {
         this.itemsToDisplay = [ ...this.items ]
     }
 
-    filterItems(filterType) {
-        this.filterType = filterType
+    filterItems(filterStatus) {
+        this.filterStatus = filterStatus
 
         this.itemsToDisplay = this.sortItems(this.items.filter(({ type }) => {
-            if (filterType === 'all') {
+            if (filterStatus === 'all') {
                 return true
             }
 
-            return type === filterType
+            return type === filterStatus
         }))
     }
     toggleSorting() {
@@ -91,28 +91,33 @@ export class ShareList extends LitElement {
                         <span class="visually-hidden">${zumeShare.translations.sort}</span>
                         <svg class="w-2rem brand-light" focusable="false" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12.93 2.65c-.2-.2-.51-.2-.71 0l-2.01 2.01h4.72zm-.7 18.7c.2.2.51.2.71 0l1.98-1.98h-4.66zm-1.25-3.62c.6 0 1.01-.6.79-1.16L8.04 7.03c-.18-.46-.63-.76-1.12-.76-.49 0-.94.3-1.12.76l-3.74 9.53c-.22.56.19 1.16.79 1.16.35 0 .67-.22.8-.55l.71-1.9h5.11l.71 1.9c.13.34.45.56.8.56m-6.01-4.09 1.94-5.18 1.94 5.18zm16.08 2.5h-5.33l5.72-8.29c.46-.66-.02-1.57-.82-1.57h-6.48c-.44 0-.79.36-.79.8v.01c0 .44.36.8.79.8h5.09l-5.73 8.28c-.46.66.02 1.57.82 1.57h6.72c.44 0 .79-.36.79-.79.02-.45-.34-.81-.78-.81"></path></svg>
                     </button>
-                    <button class="icon-btn f-2" data-toggle="filter-menu">
+                    <button class="icon-btn f-2 filter-btn" data-toggle="filter-menu">
                         <span class="visually-hidden">${zumeShare.translations.filter}</span>
                         <span class="icon z-icon-filter brand-light" aria-hidden="true"></span>
+                        ${
+                            this.filterStatus &&this.filterStatus !== 'all' ? html`
+                                <span class="filter-dot"></span>
+                            ` : ''
+                        }
                     </button>
                 </div>
                 <div class="dropdown-pane" id="filter-menu" data-dropdown data-auto-focus="true" data-position="bottom" data-alignment="center" data-close-on-click="true" data-close-on-click-inside="true">
                     <ul>
                         <li>
                             <button
-                                class="menu-btn w-100 filter-button ${this.filterType === 'all' ? 'selected' : ''}"
+                                class="menu-btn w-100 filter-button ${this.filterStatus === 'all' ? 'selected' : ''}"
                                 @click=${() => this.filterItems('all')}
                             >
                                 ${zumeShare.translations.all}
                             </button>
                             <button
-                                class="menu-btn w-100 filter-button ${this.filterType === 'tool' ? 'selected' : ''}"
+                                class="menu-btn w-100 filter-button ${this.filterStatus === 'tool' ? 'selected' : ''}"
                                 @click=${() => this.filterItems('tool')}
                             >
                                 ${zumeShare.translations.tools}
                             </button>
                             <button
-                                class="menu-btn w-100 filter-button ${this.filterType === 'concept' ? 'selected' : ''}"
+                                class="menu-btn w-100 filter-button ${this.filterStatus === 'concept' ? 'selected' : ''}"
                                 @click=${() => this.filterItems('concept')}
                             >
                                 ${zumeShare.translations.concepts}
