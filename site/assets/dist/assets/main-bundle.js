@@ -214,7 +214,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 <div class="success banner" data-state=${this.successMessage.length?"":"empty"}>${this.successMessage}</div>
                 <div class="warning banner" data-state=${this.errorMessage.length?"":"empty"}>${this.errorMessage}</div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("join-training",qo);class Wo extends k{static get properties(){return{hasNextStep:{type:Boolean},t:{type:Object},variant:{type:String},loading:{type:Boolean,attribute:!1},success:{type:Boolean,atrtibute:!1}}}joinCommunity(){this.loading=!0,w.post("join_community").then(t=>{this.success=!0}).finally(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("wizard:finish",{bubbles:!0}))})}_sendDoneStepEvent(){const t=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(t)}render(){if(this.variant===h.joinCommunityExplanation)return l`
+        `}createRenderRoot(){return this}}customElements.define("join-training",qo);class Wo extends k{static get properties(){return{hasNextStep:{type:Boolean},t:{type:Object},variant:{type:String},loading:{type:Boolean,attribute:!1},success:{type:Boolean,atrtibute:!1},error:{type:String,attribute:!1},requestSent:{type:Boolean,attribute:!1}}}constructor(){super(),this.loading=!1,this.success=!1,this.requestSent=!1,this.error=""}joinCommunity(){this.loading=!0,this.requestSent=!0,w.post("join_community").then(t=>{this.success=!0}).catch(t=>{t.message==="coach_request_failed"?(this.success=!0,this.error=this.t.error_connecting):(this.success=!1,this.error=this.t.error)}).finally(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("wizard:finish",{bubbles:!0}))})}_sendDoneStepEvent(){const t=new CustomEvent("done-step",{bubbles:!0});this.dispatchEvent(t)}render(){if(this.variant===h.joinCommunityExplanation)return l`
                 <div class="container-md stack-2 center | py-2">
                   <h1 class="text-center">${this.t.community_title}</h1>
                   <p>${this.t.community_description}</p>
@@ -247,26 +247,24 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                         ${this.t.community_join_free}
                     </button>
                 </div>
-            `;if(this.variant===h.joinCommunity)return!this.loading&&!this.success&&this.joinCommunity(),l`
+            `;if(this.variant===h.joinCommunity)return!this.loading&&!this.requestSent&&this.joinCommunity(),l`
                 <h1>${this.t.community_title}</h1>
                 <p>${this.t.please_wait}</p>
                 ${this.loading===!0?l`
                         <span class="loading-spinner active"></span>
                     `:""}
-                ${this.success===!0?l`
-                        <div class="stack">
+                <div class="stack">
+                    ${this.success===!0?l`
                             <span class="banner success">
                                 ${this.t.joined_community}
                             </span>
-                        </div>
-                    `:""}
-                ${this.success===!1?l`
-                        <div class="stack">
+                        `:""}
+                    ${this.error!==""?l`
                             <span class="banner warning">
-                                ${this.t.error}
+                                ${this.error}
                             </span>
-                        </div>
-                    `:""}
+                        `:""}
+                </div>
                 ${this.success&&this.hasNextStep?l`
                         <button class="btn" @click=${this._sendDoneStepEvent}>
                             ${this.t.next}
@@ -575,7 +573,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
             >
                 ${this.successMessage}
             </div>
-        `}createRenderRoot(){return this}}customElements.define("notify-of-future-trainings",Go);class Zo extends k{static get properties(){return{hasNextStep:{type:Boolean},t:{type:Object},variant:{type:String},state:{attribute:!1},errorMessage:{attribute:!1},message:{attribute:!1},loading:{attribute:!1},requestSent:{attribute:!1}}}constructor(){super(),this.hasNextStep=!1,this.variant="",this.t={},this.state={},this.errorMessage="",this.message="",this.loading=!1,this.requestSent=!1,this.contactPreferences=["email","text","phone","whatsapp","signal","telegram","messenger"],this.stateManager=ot.getInstance(D.getACoach),this.stateManager.clear()}requestCoach(){this.message=this.t.please_wait;const t=this.stateManager.getAll();this.loading=!0,this.requestSent=!0,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),w.post("get_a_coach",{data:t}).then(e=>{console.log(e,this),this.message=this.t.connect_success,e===!1&&(this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting))}).catch(e=>{if(e.code==="coach_request_failed"){this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_with_request);return}else if(e.code==="already_has_coach"){this.message="",this.setErrorMessage(this.t.already_coached);return}this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting)}).finally(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.dispatchEvent(new CustomEvent("wizard:finish",{bubbles:!0}))})}willUpdate(t){t.has("variant")&&(this.state=this.stateManager.get(this.variant)||{},this.variant===h.languagePreferences&&!this.state.value&&(this.state.value=jsObject.profile.preferred_language||"en",this.stateManager.add(this.variant,this.state)))}setErrorMessage(t){this.errorMessage=t}render(){return this.variant===h.connectingToCoach&&this.requestSent===!1&&this.requestCoach(),this.variant===h.requestCoachExplanation?l`
+        `}createRenderRoot(){return this}}customElements.define("notify-of-future-trainings",Go);class Zo extends k{static get properties(){return{hasNextStep:{type:Boolean},t:{type:Object},variant:{type:String},state:{attribute:!1},errorMessage:{attribute:!1},message:{attribute:!1},loading:{attribute:!1},requestSent:{attribute:!1}}}constructor(){super(),this.hasNextStep=!1,this.variant="",this.t={},this.state={},this.errorMessage="",this.message="",this.loading=!1,this.requestSent=!1,this.contactPreferences=["email","text","phone","whatsapp","signal","telegram","messenger"],this.stateManager=ot.getInstance(D.getACoach),this.stateManager.clear()}requestCoach(){this.message=this.t.please_wait;const t=this.stateManager.getAll();this.loading=!0,this.requestSent=!0,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),w.post("get_a_coach",{data:t}).then(e=>{console.log(e,this),this.message=this.t.connect_success,e===!1&&(this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting))}).catch(e=>{if(e.message==="coach_request_failed"){this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_with_request);return}else if(e.message==="already_has_coach"){this.message="",this.setErrorMessage(this.t.already_coached);return}this.message=this.t.connect_fail,this.setErrorMessage(this.t.error_connecting)}).finally(()=>{this.loading=!1,this.dispatchEvent(new CustomEvent("loadingChange",{bubbles:!0,detail:{loading:this.loading}})),this.dispatchEvent(new CustomEvent("wizard:finish",{bubbles:!0}))})}willUpdate(t){t.has("variant")&&(this.state=this.stateManager.get(this.variant)||{},this.variant===h.languagePreferences&&!this.state.value&&(this.state.value=jsObject.profile.preferred_language||"en",this.stateManager.add(this.variant,this.state)))}setErrorMessage(t){this.errorMessage=t}render(){return this.variant===h.connectingToCoach&&this.requestSent===!1&&this.requestCoach(),this.variant===h.requestCoachExplanation?l`
               <div class="stack-2">
                 <h1 class="text-center">${this.t.title}</h1>
                 <p>${this.t.request_coach_explanation_text}</p>
