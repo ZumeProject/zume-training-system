@@ -164,8 +164,12 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.removeEventListener('route', this.updateLanguageSwitcher)
     }
 
-    firstUpdated() {
+    updated() {
+        super.updated()
         this.menuOffset = this.getOffsetTop('.sidebar-wrapper')
+    }
+
+    firstUpdated() {
         this.getCtas()
         const celebrationModal = this.renderRoot.querySelector('#celebration-modal')
         if (celebrationModal) {
