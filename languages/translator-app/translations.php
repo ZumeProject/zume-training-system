@@ -394,8 +394,12 @@ class Zume_Training_Translations extends Zume_Magic_Page
                         <th style="width:3%">Int bk</th>
                         <th style="width:3%">Int key</th>
                         <th style="width:3%">Int ppt</th>
-
                         
+                        <th style="width:1%; border-left:1px solid grey;"></th>
+
+                        <th style="width:3%">3 Circles</th>
+
+   
                     </tr>
                     </thead>
                     <tbody>
@@ -428,6 +432,10 @@ class Zume_Training_Translations extends Zume_Magic_Page
                             <td><?php echo ( $elements['guidebook_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $elements['key_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $elements['ppt_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+
+                            <td style="width:1%; border-left:1px solid grey;"></td>
+
+                            <td><?php echo ( $language['enable_flags']['3_circles'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
 
                         </tr>
                         <?php
