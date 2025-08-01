@@ -100,8 +100,7 @@ class Zume_Activites_Sharegospel extends Zume_Activites
         global $wpdb;
         $sql = $wpdb->prepare( "SELECT ID FROM zume_posts p WHERE p.post_type = 'zume_activities' AND p.post_title = %s", $this->type );
 
-        $code = zume_current_language();
-        $display_code = zume_get_language_display_code( $code );
+        $display_code = zume_get_language_display_code( $this->lang );
 
         //phpcs:ignore
         $post_id = $wpdb->get_var( $sql );
