@@ -1495,18 +1495,15 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                     <div class="center">
                                         <img class="profile-image" src="${t.picture}" alt="${t.name}" />
                                     </div>
-                                    ${t.communication_apps.length?l`
-                                        <ul class="stack">
-                                          ${t.communication_apps.includes("email")?l`
-                                              <li>${jsObject.translations.email}: <a href="mailto:${t.email}">${t.email}</a></li>
-                                            `:""}
-                                          ${t.communication_apps.includes("phone")?l`
-                                              <li>${jsObject.translations.phone}: ${t.phone}</li>
-                                            `:""}
-                                          ${t.communication_apps.map(e=>"")}
-                                        </ul>
-                                      `:""}
-
+                                    <ul class="stack">
+                                      ${t.email?l`
+                                          <li>${jsObject.translations.email}: <a href="mailto:${t.email}">${t.email}</a></li>
+                                        `:""}
+                                      ${t.phone?l`
+                                          <li>${jsObject.translations.phone}: ${t.phone}</li>
+                                        `:""}
+                                      ${t.communication_apps.map(e=>"")}
+                                    </ul>
                                   </div>
                               `)}
                         </div>
