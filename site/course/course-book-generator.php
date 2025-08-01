@@ -415,7 +415,6 @@ class Zume_Book_Generator extends Zume_Magic_Page
                 break;
             case 'left_content':
             case 'activity':
-                dt_write_log( $slide );
                 ?>
                 <div class="slide-switcher">
                     <slide-switcher>
