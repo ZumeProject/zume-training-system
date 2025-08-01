@@ -1047,8 +1047,8 @@ function zume_content( $lang_code = 'en' ) {
             'left' => [
                 __( 'Share the Gospel', 'zume' ),
                 [
-                    __( 'Choose one of the two presentations you watched.', 'zume' ),
                     __( 'Scan the QR code.', 'zume' ),
+                    __( 'Choose one of the two presentations you watched.', 'zume' ),
                     __( 'Break into groups of two or three people.', 'zume' ),
                     __( 'Take turns telling the Gospel to each other.', 'zume' ),
                 ],

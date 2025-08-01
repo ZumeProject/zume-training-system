@@ -415,6 +415,7 @@ class Zume_Book_Generator extends Zume_Magic_Page
                 break;
             case 'left_content':
             case 'activity':
+                dt_write_log( $slide );
                 ?>
                 <div class="slide-switcher">
                     <slide-switcher>
@@ -611,7 +612,9 @@ class Zume_Book_Generator extends Zume_Magic_Page
         else if ( str_contains( $id, 'listof100' ) ) {
             $this->list_of_100();
         }
-        
+        else if ( str_contains( $id, 'sharegospel' ) ) {
+            $activity = '';
+        }
         else {
             $activities = list_zume_activities( $lang );
             $activity = '';
