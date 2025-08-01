@@ -29,5 +29,5 @@
     </header>
 
     <?php require __DIR__ . '/mobile-nav.php' ?>
-    <?php require __DIR__ . '/language-menu.php' ?>
+
     <?php require __DIR__ . '/language-selector.php' ?>
