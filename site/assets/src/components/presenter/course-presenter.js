@@ -59,28 +59,33 @@ export class CoursePresenter extends LitElement {
     firstUpdated() {
         window.addEventListener('load', () => {
             if (this.isTrainingMode) {
+                const steps = []
+                const checkinSlide = document.querySelector('.checkin-link.qr-code')
+                if ( checkinSlide ) {
+                    steps.push({
+                        element: checkinSlide,
+                        intro: 'Scan the QR code to check in and log your progress.',
+                    })
+                }
+                steps.push({
+                      element: document.querySelector('#hamburger-menu'),
+                      intro: 'Using the menu you can navigate around the course and change language',
+                })
+                steps.push({
+                      element: document.querySelector('.visual-indicator.right'),
+                      intro: 'Click towards the edges of the screen to change slides',
+                })
+
+                const progressBar = document.querySelector('.progress-bar-wrapper')
+                if ( progressBar ) {
+                    steps.push({
+                        element: progressBar,
+                        intro: 'The progress bar shows you how much of the course you have completed.',
+                    })
+                }
+
                 window.introJs().setOptions({
-                    steps: [
-                        {
-                            title: 'Welcome',
-                            intro: 'Here you can learn how to use the course presenter',
-                        },
-                        {
-                            title: 'Tips',
-                            intro: 'We recommend a group size of 4-12 people in order to make sure everyone gets a chance to participate in the discussions.',
-                        },
-                        {
-                            element: document.querySelector('#hamburger-menu'),
-                            intro: 'Using the menu you can navigate around the course and change language',
-                        },
-                        {
-                            element: document.querySelector('.visual-indicator.right'),
-                            intro: 'Click towards the edges of the screen to change slides',
-                        },
-                        {
-                            intro: 'If you are on mobile, it is recommended to view the course presenter in landscape',
-                        }
-                    ],
+                    steps,
                     nextLabel: jsObject.translations.next,
                     prevLabel: jsObject.translations.previous,
                     skipLabel: '<span class="icon z-icon-close"></span>',

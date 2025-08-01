@@ -498,8 +498,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         const modal = document.querySelector('#course-explorer')
         modal.querySelector('.loading-spinner').classList.add('active')
         jQuery(modal).foundation('open')
-        const explorerURL = new URL( jsObject.urls.launch_ten_session_course_1 + '&training' )
-        modal.querySelector('iframe').src = explorerURL.pathname + explorerURL.search + explorerURL.hash
+        modal.querySelector('iframe').src = this.exploreCourseUrl()
     }
     closeCourseExplorer() {
         const modal = document.querySelector('#course-explorer')
@@ -825,6 +824,12 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
     isTrainingRouteActive(key) {
         return key === this.params.code
+    }
+    exploreCourseUrl() {
+      const url = new URL(jsObject.urls.launch_ten_session_course_1)
+      url.searchParams.set('training', 'true')
+      url.searchParams.set('slide', 's1_1_2')
+      return url.toString()
     }
 
     renderTrainingGroupLink(group) {
@@ -1247,7 +1252,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                     </div>
                     <div class="course-explorer__wrapper cover container">
                         <div class="center"><span class="loading-spinner"></span></div>
-                        <iframe width="100%" height="100%" src=${jsObject.urls.launch_ten_session_course_1 + '&training' } frameborder="0"></iframe>
+                        <iframe width="100%" height="100%" src=${this.exploreCourseUrl()} frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
