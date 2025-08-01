@@ -21,6 +21,7 @@ class Zume_Email_Test_Admin {
      * Constructor
      */
     public function __construct() {
+        return;
         if ( ! is_admin() ) {
             return;
         }
