@@ -1227,9 +1227,9 @@ export class DashBoard extends navigator(router(LitElement)) {
                 >
                     <span class="icon z-icon-close"></span>
                 </button>
-                <div class="stack">
+                <div class="stack container">
                     <h2 class="text-center brand-light">${jsObject.translations.explore_course}</h2>
-                    <div class="switcher container gap-0 ">
+                    <div class="switcher gap-0 ">
                         <div>
                             <h3>${jsObject.translations.needed_for_course}</h3>
                             <ul class="bullets">
@@ -1246,9 +1246,12 @@ export class DashBoard extends navigator(router(LitElement)) {
                             </ul>
                         </div>
                     </div>
-                    <div class="course-explorer__wrapper cover container">
+                    <div class="course-explorer__wrapper cover">
                         <div class="center"><span class="loading-spinner"></span></div>
                         <iframe width="100%" height="100%" src=${this.exploreCourseUrl()} frameborder="0"></iframe>
+                    </div>
+                    <div class="center">
+                        <launch-course></launch-course>
                     </div>
                 </div>
             </div>
