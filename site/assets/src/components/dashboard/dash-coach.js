@@ -167,48 +167,43 @@ export class DashCoach extends DashPage {
                                     <div class="center">
                                         <img class="profile-image" src="${coach.picture}" alt="${coach.name}" />
                                     </div>
-                                    ${
-                                      coach.communication_apps.length ? html`
-                                        <ul class="stack">
-                                          ${
-                                            coach.communication_apps.includes('email') ? html`
-                                              <li>${jsObject.translations.email}: <a href="mailto:${coach.email}">${coach.email}</a></li>
-                                            ` : ''
-                                          }
-                                          ${
-                                            coach.communication_apps.includes('phone') ? html`
-                                              <li>${jsObject.translations.phone}: ${coach.phone}</li>
-                                            ` : ''
-                                          }
-                                          ${coach.communication_apps.map((app) => {
-                                            /* Mute these buttons for now until we have time to test them */
-                                            /* Number needs checking to make sure it's formatted correctly, only numbers and + at the start */
-                                            return ''
-                                            if (app === 'signal') {
-                                              return html`
-                                                <li><a class="btn" href="sgnl://signal.me/#p/${coach.signal}">${jsObject.translations.signal}</a></li>
-                                              `
-                                            }
-                                            if (app === 'telegram') {
-                                              return html`
-                                                <li><a class="btn" href="https://t.me/${coach.telegram}" target="_blank">${jsObject.translations.telegram}</a></li>
-                                              `
-                                            }
-                                            if (app === 'whatsapp') {
-                                              return html`
-                                                <li><a class="btn" href="https://wa.me/${coach.whatsapp}" target="_blank">${jsObject.translations.whatsapp}</a></li>
-                                              `
-                                            }
-                                            if (app === 'messenger') {
-                                              return html`
-                                                <li><a class="btn" href="https://m.me/${coach.messenger}" target="_blank">${jsObject.translations.messenger}</a></li>
-                                              `
-                                            }
-                                          })}
-                                        </ul>
-                                      ` : ''
-                                    }
-
+                                    <ul class="stack">
+                                      ${
+                                        coach.email ? html`
+                                          <li>${jsObject.translations.email}: <a href="mailto:${coach.email}">${coach.email}</a></li>
+                                        ` : ''
+                                      }
+                                      ${
+                                        coach.phone ? html`
+                                          <li>${jsObject.translations.phone}: ${coach.phone}</li>
+                                        ` : ''
+                                      }
+                                      ${coach.communication_apps.map((app) => {
+                                        /* Mute these buttons for now until we have time to test them */
+                                        /* Number needs checking to make sure it's formatted correctly, only numbers and + at the start */
+                                        return ''
+                                        if (app === 'signal') {
+                                          return html`
+                                            <li><a class="btn" href="sgnl://signal.me/#p/${coach.signal}">${jsObject.translations.signal}</a></li>
+                                          `
+                                        }
+                                        if (app === 'telegram') {
+                                          return html`
+                                            <li><a class="btn" href="https://t.me/${coach.telegram}" target="_blank">${jsObject.translations.telegram}</a></li>
+                                          `
+                                        }
+                                        if (app === 'whatsapp') {
+                                          return html`
+                                            <li><a class="btn" href="https://wa.me/${coach.whatsapp}" target="_blank">${jsObject.translations.whatsapp}</a></li>
+                                          `
+                                        }
+                                        if (app === 'messenger') {
+                                          return html`
+                                            <li><a class="btn" href="https://m.me/${coach.messenger}" target="_blank">${jsObject.translations.messenger}</a></li>
+                                          `
+                                        }
+                                      })}
+                                    </ul>
                                   </div>
                               `)
                           }

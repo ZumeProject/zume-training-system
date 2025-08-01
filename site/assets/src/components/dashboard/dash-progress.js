@@ -150,6 +150,7 @@ export class DashProgress extends DashPage {
         newHostProgress.list = { ...this.hostProgress.list }
         newHostProgress.list[key] = value
         this.hostProgress = { ...newHostProgress }
+        jsObject.host_progress = { ...this.hostProgress }
     }
 
     toggleDetails(key) {
@@ -231,9 +232,14 @@ export class DashProgress extends DashPage {
                         <span class="icon ${this.route.icon}"></span>
                         <h1 class="h3">${this.route.translation}</h1>
                         <div class="s0">
-                            <button class="icon-btn f-2" data-toggle="filter-menu">
+                            <button class="icon-btn f-2 filter-btn" data-toggle="filter-menu">
                                 <span class="visually-hidden">${jsObject.translations.filter}</span>
                                 <span class="icon z-icon-filter brand-light" aria-hidden="true"></span>
+                                ${
+                                    this.filterStatus &&this.filterStatus !== 'all' ? html`
+                                        <span class="filter-dot"></span>
+                                    ` : ''
+                                }
                             </button>
                             <button class="icon-btn f-2" @click=${this.openInfoModal}>
                                 <span class="visually-hidden">${jsObject.translations.progress_info}</span>

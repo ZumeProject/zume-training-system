@@ -187,6 +187,7 @@ export class CheckinDashboard extends LitElement {
         newHostProgress.list = { ...this.hostProgress.list }
         newHostProgress.list[key] = value
         this.hostProgress = { ...newHostProgress }
+        jsObject.host_progress = { ...this.hostProgress }
     }
 
     renderListItem(trainingItem) {

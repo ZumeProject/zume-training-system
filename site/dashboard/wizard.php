@@ -202,6 +202,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'dashboard' => __( 'Dashboard', 'zume' ),
                 'next' => __( 'Next', 'zume' ),
                 'please_wait' => __( 'Please wait while we connect you', 'zume' ),
+                'error_connecting' => __( 'Error connecting with a coach', 'zume' ),
             ],
             'complete_profile' => [
                 'title' => __( 'Complete your profile', 'zume' ),
