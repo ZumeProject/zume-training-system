@@ -65,9 +65,9 @@ class Zume_System_CTA_API
             return new WP_Error( 'no_language', 'Missing params language', array( 'status' => 400 ) );
         }
 
-        return self::_get_ctas( $params['user_id'] );
+        return self::_get_ctas( $params['user_id'], $params['language'] );
     }
-    public static function _get_ctas( $user_id, $log = null ) : array
+    public static function _get_ctas( $user_id, $language, $log = null ) : array
     {
         if ( is_null( $log ) ) {
             $log = zume_get_user_log( $user_id );
@@ -83,7 +83,7 @@ class Zume_System_CTA_API
             $log_keys[] = $row['log_key'];
         }
 
-        $templates = self::get_ctas();
+        $templates = self::get_ctas( $language );
 
         $ctas = [];
         foreach ( $templates as $template ) {
@@ -115,7 +115,7 @@ class Zume_System_CTA_API
 
     public function guest( $params )
     {
-        $templates = self::get_ctas();
+        $templates = self::get_ctas( $params['language'] );
 
         $ctas = [];
         foreach ( $templates as $template ) {
@@ -127,7 +127,7 @@ class Zume_System_CTA_API
         return $ctas;
     }
 
-    public static function get_ctas()
+    public static function get_ctas( $language )
     {
         $templates = [
             [
@@ -144,6 +144,21 @@ class Zume_System_CTA_API
                     'link' => zume_login_url(),
                 ],
                 'content_template' => 'card',
+            ],
+            [
+                'stages' => [0, 1, 2],
+                'required_keys' => [],
+                'disable_keys' => ['system_how_does_zume_work_watched'],
+                'key' => 'system_how_does_zume_work_watched',
+                'type' => 'system',
+                'subtype' => 'how_does_zume_work_watched',
+                'content' => [
+                    'title' => __( 'How does Zúme Training Work?', 'zume' ),
+                    'link_text' => __( 'Watch This Video', 'zume' ),
+                    'link' => esc_url( Zume_Course::get_video_by_key( '70', true, $language, true ) ),
+                    'link_alt' => esc_url( Zume_Course::create_alt_video_by_key( '70', $language ) ),
+                ],
+                'content_template' => 'video',
             ],
             // Profile CTAs
             [

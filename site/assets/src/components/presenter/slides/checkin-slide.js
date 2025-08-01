@@ -16,7 +16,7 @@ export class CheckinSlide extends CourseSlide {
                     <div class="content-area">
                         <div class="stack">
                             <p>${this.slide['right'][0]}</p>
-                            <div class="qr-code">
+                            <div class="qr-code checkin-link">
                                 <a
                                     href="${this.slide['right'][1]}"
                                     class="bypass-nav-click"

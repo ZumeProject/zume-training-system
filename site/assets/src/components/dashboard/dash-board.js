@@ -5,6 +5,7 @@ import { repeat } from 'lit/directives/repeat.js'
 import { Wizards } from '../wizard/wizard-constants'
 import { RouteNames } from './routes'
 import { zumeRequest } from '../../js/zumeRequest'
+import { checkVimeoAvailability } from '../../main'
 
 /**
  * This highest level of the dashboard should mostly be focussed on the routing
@@ -27,6 +28,7 @@ export class DashBoard extends navigator(router(LitElement)) {
             wizardType: { type: String, attribute: false },
             celbrationModalContent: { type: Object, attribute: false },
             trainingGroupsOpen: { type: Boolean, attribute: false },
+            loadingExploreCourse: { type: Boolean, attribute: false },
         }
     }
 
@@ -88,12 +90,14 @@ export class DashBoard extends navigator(router(LitElement)) {
             title: '',
             content: [],
         }
+        this.loadingExploreCourse = false
 
         this.allCtas = []
         this.ctas = []
         this.userId = jsObject.profile.user_id
         this.showingCelebrationModal = false
         this.unlockedSection = []
+        this.isVimeoAvailable = false
 
         this.languageSelectorElements =
             document.querySelectorAll('.language-selector')
@@ -108,6 +112,8 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.showCelebrationModal = this.showCelebrationModal.bind(this)
         this.updateTrainingGroups = this.updateTrainingGroups.bind(this)
         this.renderTrainingGroupLink = this.renderTrainingGroupLink.bind(this)
+        this.openVideoModal = this.openVideoModal.bind(this)
+        this.openCourseExplorer = this.openCourseExplorer.bind(this)
         this.handlePopState = this.handlePopState.bind(this)
         this.openProfile = this.openProfile.bind(this)
     }
@@ -122,6 +128,8 @@ export class DashBoard extends navigator(router(LitElement)) {
         window.addEventListener('wizard-finished', this.getCtas)
         window.addEventListener('wizard-finished', this.redirectToPage)
         window.addEventListener('open-3-month-plan', this.open3MonthPlan)
+        window.addEventListener('open-video-modal', this.openVideoModal)
+        window.addEventListener('open-course-explorer', this.openCourseExplorer)
         window.addEventListener('open-profile', this.openProfile)
         window.addEventListener('user-state:change', this.refetchState)
         window.addEventListener('user-state:change', this.getCtas)
@@ -148,10 +156,12 @@ export class DashBoard extends navigator(router(LitElement)) {
             this.toggleSidebar
         )
         window.removeEventListener('open-wizard', this.updateWizardType)
+        window.removeEventListener('open-course-explorer', this.openCourseExplorer)
         window.removeEventListener('wizard-finished', this.closeWizard)
         window.removeEventListener('wizard-finished', this.getCtas)
         window.removeEventListener('wizard-finished', this.redirectToPage)
         window.removeEventListener('open-3-month-plan', this.open3MonthPlan)
+        window.removeEventListener('open-video-modal', this.openVideoModal)
         window.removeEventListener('open-profile', this.openProfile)
         window.removeEventListener('user-state:change', this.refetchState)
         window.removeEventListener('user-state:change', this.getCtas)
@@ -164,7 +174,7 @@ export class DashBoard extends navigator(router(LitElement)) {
         this.removeEventListener('route', this.updateLanguageSwitcher)
     }
 
-    firstUpdated() {
+    async firstUpdated() {
         this.getCtas()
         this.menuOffset = this.getHeightOfElement('.header')
         const celebrationModal = this.renderRoot.querySelector('#celebration-modal')
@@ -173,6 +183,17 @@ export class DashBoard extends navigator(router(LitElement)) {
                 this.showingCelebrationModal = false
             })
         }
+        const courseExplorerModal = document.querySelector('#course-explorer')
+        const courseExplorerIframe = courseExplorerModal.querySelector('iframe')
+        courseExplorerIframe.addEventListener('load', () => {
+            this.loadingExploreCourse = false
+            courseExplorerModal.querySelector('.loading-spinner').classList.remove('active')
+        })
+
+        this.isVimeoAvailable = await checkVimeoAvailability()
+
+        jQuery('#video-modal').on('closed.zf.reveal', this.stopVideoModal)
+        jQuery('#course-explorer').on('closed.zf.reveal', this.clearCourseExplorer)
         this.trainingGroupsOpen = jQuery('#training-groups-menu').hasClass('is-active')
 
         const profileModal = document.querySelector('#profile-modal')
@@ -423,12 +444,7 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
 
     isGettingStartedActive() {
-        const isActive = DashBoard.childRoutesOf(
-            RouteNames.gettingStarted
-        ).some(
-            (route) => !DashBoard.getCompletedStatus(route.name, this.userState)
-        )
-        return isActive
+      this.getGettingStartedPercentage() === 100
     }
 
     getGettingStartedPercentage() {
@@ -471,6 +487,43 @@ export class DashBoard extends navigator(router(LitElement)) {
         const modal = document.querySelector('#activity-3-month-plan-modal')
         jQuery(modal).foundation('_enableScroll')
         jQuery(modal).foundation('close')
+    }
+    openCourseExplorer() {
+        this.loadingExploreCourse = true
+        const modal = document.querySelector('#course-explorer')
+        modal.querySelector('.loading-spinner').classList.add('active')
+        jQuery(modal).foundation('open')
+        modal.querySelector('iframe').src = this.exploreCourseUrl()
+    }
+    closeCourseExplorer() {
+        const modal = document.querySelector('#course-explorer')
+        jQuery(modal).foundation('close')
+    }
+    clearCourseExplorer() {
+        const modal = document.querySelector('#course-explorer')
+        modal.querySelector('iframe').src = ''
+    }
+    openVideoModal(event) {
+        const { videoSrc, videoSrcAlt } = event.detail
+
+        const modal = document.querySelector('#video-modal')
+        if (this.isVimeoAvailable) {
+            modal.querySelector('iframe').src = videoSrc
+            modal.querySelector('video').classList.add('hidden')
+        } else {
+            modal.querySelector('iframe').classList.add('hidden')
+            modal.querySelector('video').src = videoSrcAlt
+        }
+        jQuery(modal).foundation('open')
+    }
+    closeVideoModal() {
+        const modal = document.querySelector('#video-modal')
+        jQuery(modal).foundation('open')
+    }
+    stopVideoModal() {
+        const modal = document.querySelector('#video-modal')
+        modal.querySelector('iframe').src = ''
+        modal.querySelector('video').src = ''
     }
     handleCreated3MonthPlan() {
         this.dispatchEvent(
@@ -555,7 +608,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                     ({ content_template }) => content_template === 'celebration'
                 )
                 const cards = this.allCtas.filter(
-                    ({ content_template }) => content_template === 'card'
+                    ({ content_template }) => content_template !== 'celebration'
                 )
 
                 const organizedCtas = [...celebrations, ...shuffleArray(cards)]
@@ -766,6 +819,13 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
     isTrainingRouteActive(key) {
         return key === this.params.code
+    }
+    exploreCourseUrl() {
+      const url = new URL(jsObject.urls.launch_ten_session_course_1)
+      url.searchParams.set('training', 'true')
+      url.searchParams.set('iframe', 'true')
+      url.searchParams.set('slide', 's1_1_2')
+      return url.toString()
     }
 
     renderTrainingGroupLink(group) {
@@ -1151,11 +1211,65 @@ export class DashBoard extends navigator(router(LitElement)) {
             <div class="reveal full" id="wizard-modal" data-reveal>
                 <zume-wizard
                     type=${this.wizardType}
-                    .params=${this.wizardParams}
+                    .params=${this.wizardParams || {}}
                     .user=${this.userProfile}
                     .translations=${jsObject.wizard_translations}
                     noUrlChange
                 ></zume-wizard>
+            </div>
+            <div class="reveal full" id="course-explorer" data-reveal>
+                <button
+                    class="ms-auto close-btn"
+                    data-close
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                    @click=${this.closeCourseExplorer}
+                >
+                    <span class="icon z-icon-close"></span>
+                </button>
+                <div class="stack container">
+                    <h2 class="text-center brand-light">${jsObject.translations.explore_course}</h2>
+                    <div class="switcher gap-0 ">
+                        <div>
+                            <h3>${jsObject.translations.needed_for_course}</h3>
+                            <ul class="bullets">
+                                <li>${jsObject.translations.at_least_3_people}</li>
+                                <li>${jsObject.translations.twenty_hour_commitment}</li>
+                                <li>${jsObject.translations.a_facilitator}</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>${jsObject.translations.not_needed_for_course}</h3>
+                            <ul class="bullets">
+                                <li>${jsObject.translations.more_experience_than_group}</li>
+                                <li>${jsObject.translations.special_permission_to_run_group}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="course-explorer__wrapper cover">
+                        <div class="center"><span class="loading-spinner"></span></div>
+                        <iframe width="100%" height="100%" src=${this.exploreCourseUrl()} frameborder="0"></iframe>
+                    </div>
+                    <div class="center">
+                        <launch-course></launch-course>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal full" id="video-modal" data-reveal>
+                <button
+                    class="ms-auto close-btn"
+                    data-close
+                    aria-label=${jsObject.translations.close}
+                    type="button"
+                    @click=${this.closeVideoModal}
+                >
+                    <span class="icon z-icon-close"></span>
+                </button>
+                <div class="video-player responsive-embed widescreen m0">
+                    <iframe width="640" height="360" frameborder="0"></iframe>
+                    <video controls autoplay></video>
+                </div>
             </div>
             <div
                 class="reveal full"

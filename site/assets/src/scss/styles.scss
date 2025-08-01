@@ -32,23 +32,24 @@
 @import 'utilities/text';
 @import 'utilities/transformations';
 
-@import 'blocks/activities';
-@import 'blocks/login';
-@import 'blocks/stories';
 @import 'blocks/accordian';
-@import 'blocks/wizard';
-@import 'blocks/table';
-@import 'blocks/pieces-page';
-@import 'blocks/dashboard';
-@import 'blocks/progress-menu';
-@import 'blocks/progress-circle';
+@import 'blocks/activities';
 @import 'blocks/card';
-@import 'blocks/dropdown';
-@import 'blocks/list';
+@import 'blocks/dashboard';
 @import 'blocks/dash-menu';
-@import 'blocks/training-progress';
+@import 'blocks/dropdown';
+@import 'blocks/introjs';
+@import 'blocks/list';
+@import 'blocks/login';
 @import 'blocks/modal';
+@import 'blocks/pieces-page';
 @import 'blocks/presenter';
+@import 'blocks/progress-circle';
+@import 'blocks/progress-menu';
+@import 'blocks/stories';
+@import 'blocks/table';
+@import 'blocks/training-progress';
+@import 'blocks/wizard';
 
 html {
     font-size: 18px;

@@ -1,4 +1,5 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
+import { getCookie, setCookie } from '../../main';
 
 const courseViews = [
     'slideshow',
@@ -9,7 +10,6 @@ export class CoursePresenter extends LitElement {
     static get properties() {
         return {
             languageCode: { type: String },
-            assetsPath: { type: String },
             zumeSessions: { attribute: false },
             menu: { attribute: false },
             lessonIndex: { attribute: false },
@@ -17,6 +17,7 @@ export class CoursePresenter extends LitElement {
             view: { attribute: false },
             linkNodes: { attribute: false },
             showIndex: { attribute: false },
+            isTrainingMode: { attribute: false },
         };
     }
 
@@ -46,6 +47,9 @@ export class CoursePresenter extends LitElement {
         this.changeSession(lessonIndex, false, sessions)
 
         this.dir = document.querySelector('html').dir
+        this.isTrainingMode = url.searchParams.has('training')
+        this.isInIframe = url.searchParams.has('iframe')
+        this.numberOfTrainingSessions = 3
 
         window.addEventListener('popstate', this.handleHistoryPopState)
         window.addEventListener('presenter:open-menu', this.openMenu)
@@ -55,6 +59,12 @@ export class CoursePresenter extends LitElement {
         window.removeEventListener('popstate', this.handleHistoryPopState)
     }
     firstUpdated() {
+        window.addEventListener('load', () => {
+            if (this.isTrainingMode) {
+              this.startTutorial()
+            }
+        })
+
         const languageSelectors = document.querySelectorAll('.language-selector')
         languageSelectors.forEach(function(languageSelector) {
             languageSelector.addEventListener('click', () => {
@@ -82,6 +92,43 @@ export class CoursePresenter extends LitElement {
                 location.href = newUrl
             })
         })
+    }
+
+    startTutorial() {
+        this.closeMenu()
+        const steps = []
+        const checkinSlide = document.querySelector('.checkin-link.qr-code')
+        if ( checkinSlide ) {
+            steps.push({
+                element: checkinSlide,
+                intro: 'Scan the QR code to check in and log your progress.',
+            })
+        }
+        steps.push({
+              element: document.querySelector('#hamburger-menu'),
+              intro: 'Using the menu you can navigate around the course and change language',
+        })
+        steps.push({
+              element: document.querySelector('.visual-indicator.right'),
+              intro: 'Click towards the edges of the screen to change slides',
+        })
+
+        const progressBar = document.querySelector('.progress-bar-wrapper')
+        if ( progressBar ) {
+            steps.push({
+                element: progressBar,
+                intro: 'The progress bar shows you how much of the course you have completed.',
+            })
+        }
+
+        window.introJs().setOptions({
+            steps,
+            nextLabel: jsObject.translations.next,
+            prevLabel: jsObject.translations.previous,
+            skipLabel: '<span class="icon z-icon-close"></span>',
+            doneLabel: jsObject.translations.done,
+            buttonClass: 'btn tight bypass-nav-click'
+        }).start();
     }
 
     getView(url) {
@@ -333,7 +380,7 @@ export class CoursePresenter extends LitElement {
                                     <a
                                         class="session-link"
                                         data-session-number="${sessionNumber}"
-                                        @click=${this.handleSessionLink}
+                                        @click=${(event) => this.handleSessionLink(event) }
                                     >
                                         ${title}
                                     </a>
@@ -357,7 +404,11 @@ export class CoursePresenter extends LitElement {
                     </div>
                     <div class="">
                         <div class="cluster">
-                            <a class="btn tight" href="${jsObject.home_url}">${jsObject.translations.home}</a>
+                            ${
+                                !this.isInIframe ? html`
+                                    <a class="btn tight" href="${jsObject.home_url}">${jsObject.translations.home}</a>
+                                ` : ''
+                            }
                             <button class="btn d-flex align-items-center justify-content-center gap--4 tight" data-open="language-menu-reveal">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" class="ionicon" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path d="M256 48c-58.07 0-112.67 93.13-112.67 208S197.93 464 256 464s112.67-93.13 112.67-208S314.07 48 256 48z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path d="M117.33 117.33c38.24 27.15 86.38 43.34 138.67 43.34s100.43-16.19 138.67-43.34M394.67 394.67c-38.24-27.15-86.38-43.34-138.67-43.34s-100.43 16.19-138.67 43.34" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M256 48v416M464 256H48"/></svg>
                                 ${this.languageCode}
@@ -369,6 +420,7 @@ export class CoursePresenter extends LitElement {
                                         : jsObject.translations.slide_view
                                 }
                             </button>
+                            <button class="btn tight" @click=${this.startTutorial}>?</button>
                         </div>
                     </div>
                 </div>
@@ -385,13 +437,15 @@ export class CoursePresenter extends LitElement {
                     this.view === 'guide'
                     ? html`
                         <course-guide
-                            .sections=${this.getSessionSections()
-                        }></course-guide>`
+                            .sections=${this.getSessionSections()}
+                            ?trainingMode=${this.isTrainingMode}
+                        ></course-guide>`
                     : html`
                         <course-slideshow
                             .sections=${this.getSessionSections()}
                             slideKey=${this.slideKey}
                             @set-slide=${this.handleSetSlide}
+                            ?trainingMode=${this.isTrainingMode}
                         ></course-slideshow>`
                 }
             </div>

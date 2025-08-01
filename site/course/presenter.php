@@ -61,11 +61,13 @@ class Zume_Training_Presenter extends Zume_Magic_Page
 
     public function dt_magic_url_base_allowed_js( $allowed_js ) {
         $allowed_js[] = 'zume-profile-utilities';
+        $allowed_js[] = 'introjs-js';
         return zume_training_magic_url_base_allowed_js( $allowed_js );
     }
 
     public function dt_magic_url_base_allowed_css( $allowed_css ) {
-        return zume_training_magic_url_base_allowed_css();
+        $allowed_css = [ 'introjs-css' ];
+        return zume_training_magic_url_base_allowed_css( $allowed_css );
     }
 
     public function enqueue_scripts() {}
@@ -121,7 +123,6 @@ class Zume_Training_Presenter extends Zume_Magic_Page
 
                 <course-presenter
                     languageCode="<?php echo esc_html( strtoupper( $display_code ) ) ?>"
-                    assetsPath="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'assets/images' ) ?>"
                 ></course-presenter>
             </div>
 
@@ -170,6 +171,9 @@ class Zume_Training_Presenter extends Zume_Magic_Page
             'view_script' => __( 'View Transcript', 'zume' ),
             'view_activity' => __( 'View Activity', 'zume' ),
             'watch_this_video' => __( 'Watch This Video', 'zume' ),
+            'next' => __( 'Next', 'zume' ),
+            'previous' => __( 'Previous', 'zume' ),
+            'done' => __( 'Finish', 'zume' ),
         ];
     }
 }

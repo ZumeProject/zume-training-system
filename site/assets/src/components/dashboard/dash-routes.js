@@ -2,10 +2,14 @@ import { html } from "lit"
 import { Wizards } from "../wizard/wizard-constants"
 import { RouteNames } from "./routes"
 
-function makeClickHandler(type, eventName) {
+function makeClickHandler(eventName, type) {
     return (event, dispatchEvent) => {
         event.preventDefault()
-        dispatchEvent(new CustomEvent(eventName, { bubbles: true, detail: { type } }))
+        const detail = {}
+        if (type) {
+            detail.type = type
+        }
+        dispatchEvent(new CustomEvent(eventName, { bubbles: true, detail }))
     }
 }
 
@@ -37,9 +41,22 @@ export function dashRoutes() {
             parent: RouteNames.gettingStarted,
             icon: 'z-icon-profile',
             type: 'handled-link',
-            clickHandler: makeClickHandler(Wizards.setProfile, 'open-wizard'),
+            clickHandler: makeClickHandler('open-wizard', Wizards.setProfile),
             translation: jsObject.translations['set_profile'],
             explanation: jsObject.translations['set_profile_explanation'],
+            data: {
+                makeComponent: () => '',
+            },
+        },
+        {
+            name: RouteNames.exploreSessions,
+            pattern: '#',
+            parent: RouteNames.gettingStarted,
+            icon: 'z-icon-course',
+            type: 'handled-link',
+            clickHandler: makeClickHandler('open-course-explorer'),
+            translation: jsObject.translations['explore_course'],
+            explanation: jsObject.translations['explore_course_profile_explanation'],
             data: {
                 makeComponent: () => '',
             },
@@ -50,7 +67,7 @@ export function dashRoutes() {
             parent: RouteNames.gettingStarted,
             icon: 'z-icon-start',
             type: 'handled-link',
-            clickHandler: makeClickHandler(Wizards.makeAGroup, 'open-wizard'),
+            clickHandler: makeClickHandler('open-wizard', Wizards.makeAGroup),
             translation: jsObject.translations['create_training_group'],
             explanation: jsObject.translations['create_training_group_explanation'],
             data: {
@@ -63,7 +80,7 @@ export function dashRoutes() {
             parent: RouteNames.gettingStarted,
             icon: 'z-icon-public-training',
             type: 'handled-link',
-            clickHandler: makeClickHandler(Wizards.joinDecision, 'open-wizard'),
+            clickHandler: makeClickHandler('open-wizard', Wizards.joinDecision),
             translation: jsObject.translations['join_training_group'],
             explanation: jsObject.translations['join_training_group_explanation'],
             data: {
@@ -77,7 +94,7 @@ export function dashRoutes() {
             parent: RouteNames.gettingStarted,
             icon: 'z-icon-coach',
             type: 'handled-link',
-            clickHandler: makeClickHandler(Wizards.getACoach, 'open-wizard'),
+            clickHandler: makeClickHandler('open-wizard', Wizards.getACoach),
             translation: jsObject.translations['get_a_coach'],
             explanation: jsObject.translations['get_a_coach_explanation'],
             data: {
@@ -134,7 +151,7 @@ export function dashRoutes() {
             parent: RouteNames.training,
             icon: 'z-icon-plans',
             type: 'handled-link',
-            clickHandler: makeClickHandler('3-month-plan', 'open-3-month-plan'),
+            clickHandler: makeClickHandler('open-3-month-plan'),
             translation: jsObject.translations['create_3_month_plan'],
             explanation: jsObject.translations['3_month_plan_explanation'],
             data: {
