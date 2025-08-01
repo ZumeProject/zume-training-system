@@ -125,8 +125,8 @@ class Zume_Activites_Sharegospel extends Zume_Activites
                             <?php require plugin_dir_path( __DIR__ ) . 'assets/images/globe-outline.svg' ?>
                             <span><?php echo esc_html( strtoupper( $display_code ) ) ?></span>
                         </button>
+                    </nav>
                 </div>
-                </nav>
             </div>
 
             <div class="container-md">
@@ -164,6 +164,9 @@ class Zume_Activites_Sharegospel extends Zume_Activites
         </div>
         </hr>
         <?php
+        
+        
+       
     }
     public function content_header( $post_id ){
         $title = get_post_meta( $post_id, 'title_'.$this->language_code, true );
@@ -215,7 +218,8 @@ class Zume_Activites_Sharegospel extends Zume_Activites
         if ( ! isset( $_GET['description'] ) ) :
             wp_footer();
             $this->footer_javascript();
-            require plugin_dir_path( __DIR__ ) .'parts/language-selector.php';
+            require_once plugin_dir_path(__DIR__) .'parts/language-menu.php';
+            require_once plugin_dir_path( __DIR__ ) .'parts/language-selector.php';
         endif;
     }
 }

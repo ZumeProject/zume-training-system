@@ -139,7 +139,8 @@ class Zume_Activites extends Zume_Magic_Page
         if ( ! isset( $_GET['description'] ) ) :
             wp_footer();
             $this->footer_javascript();
-            require plugin_dir_path( __DIR__ ) .'parts/language-selector.php';
+            require_once plugin_dir_path(__DIR__) .'parts/language-menu.php';
+            require_once plugin_dir_path( __DIR__ ) .'parts/language-selector.php';
         endif;
     }
 }
