@@ -444,12 +444,7 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
 
     isGettingStartedActive() {
-        const isActive = DashBoard.childRoutesOf(
-            RouteNames.gettingStarted
-        ).some(
-            (route) => !DashBoard.getCompletedStatus(route.name, this.userState)
-        )
-        return isActive
+      this.getGettingStartedPercentage() === 100
     }
 
     getGettingStartedPercentage() {
