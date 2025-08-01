@@ -2183,6 +2183,19 @@ if ( ! function_exists( 'zume_languages' ) ) {
     }
     zume_languages();
 }
+if ( ! function_exists( 'zume_languages_with_three_circles' ) ) {
+    function zume_languages_with_three_circles() {
+        global $zume_languages_by_code, $zume_languages_with_three_circles;
+        if ( isset( $zume_languages_with_three_circles ) ) {
+            return $zume_languages_with_three_circles;
+        }
+        $filtered_list = array_filter( $zume_languages_by_code, function( $lang ) {
+            return isset( $lang['enable_flags']['3_circles'] ) && $lang['enable_flags']['3_circles'];
+        } );
+        $zume_languages_with_three_circles = array_keys( $filtered_list );
+        return $zume_languages_with_three_circles;
+    }
+}
 if ( ! function_exists( 'zume_language_codes' ) ) {
     function zume_language_codes() {
         global $zume_languages_by_code;

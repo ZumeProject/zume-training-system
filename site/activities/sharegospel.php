@@ -106,6 +106,8 @@ class Zume_Activites_Sharegospel extends Zume_Activites
         //phpcs:ignore
         $post_id = $wpdb->get_var( $sql );
 
+        $three_circles_languages = zume_languages_with_three_circles();
+
         ?>
         <div class="activity content">
             <div class="header">
@@ -127,6 +129,7 @@ class Zume_Activites_Sharegospel extends Zume_Activites
                 <h1 class="activity-title"><?php self::content_header( $post_id ); ?></h1>
                 
                 <!-- Navigation Buttons -->
+                <?php if ( in_array( $this->language_code, $three_circles_languages ) ) { ?>
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 1rem 0;" class="nav-buttons-container">
                     <button class="btn btn-primary btn-sm" style="width: 100%; max-width: 300px; font-size: 14px; white-space: nowrap;" onclick="scrollToSection('presentation1')">
                         <?php echo esc_html__( 'Presentation 1', 'zume' ); ?>
@@ -135,6 +138,7 @@ class Zume_Activites_Sharegospel extends Zume_Activites
                         <?php echo esc_html__( 'Presentation 2', 'zume' ); ?>
                     </button>
                 </div>
+                <?php } ?>
             </div>
             <hr>
             <div class="container-md activity-content">
@@ -144,12 +148,14 @@ class Zume_Activites_Sharegospel extends Zume_Activites
                         self::content_body( $post_id ); 
                     ?>
                 </div>
+                <?php if ( in_array( $this->language_code, $three_circles_languages ) ) { ?>
                 <div id="presentation2">
                     <?php 
                         // 3 circles gospel presentation content
                         self::content_three_circles( $post_id );
-                     ?>
+                    ?>
                 </div>
+                <?php } ?>
                 </div>
         </div>
         </hr>
