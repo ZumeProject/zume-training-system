@@ -17,6 +17,7 @@ export class CoursePresenter extends LitElement {
             view: { attribute: false },
             linkNodes: { attribute: false },
             showIndex: { attribute: false },
+            isTrainingMode: { attribute: false },
         };
     }
 
@@ -47,6 +48,7 @@ export class CoursePresenter extends LitElement {
 
         this.dir = document.querySelector('html').dir
         this.isTrainingMode = url.searchParams.has('training')
+        this.isInIframe = url.searchParams.has('iframe')
         this.numberOfTrainingSessions = 3
 
         window.addEventListener('popstate', this.handleHistoryPopState)
@@ -59,39 +61,7 @@ export class CoursePresenter extends LitElement {
     firstUpdated() {
         window.addEventListener('load', () => {
             if (this.isTrainingMode) {
-                const steps = []
-                const checkinSlide = document.querySelector('.checkin-link.qr-code')
-                if ( checkinSlide ) {
-                    steps.push({
-                        element: checkinSlide,
-                        intro: 'Scan the QR code to check in and log your progress.',
-                    })
-                }
-                steps.push({
-                      element: document.querySelector('#hamburger-menu'),
-                      intro: 'Using the menu you can navigate around the course and change language',
-                })
-                steps.push({
-                      element: document.querySelector('.visual-indicator.right'),
-                      intro: 'Click towards the edges of the screen to change slides',
-                })
-
-                const progressBar = document.querySelector('.progress-bar-wrapper')
-                if ( progressBar ) {
-                    steps.push({
-                        element: progressBar,
-                        intro: 'The progress bar shows you how much of the course you have completed.',
-                    })
-                }
-
-                window.introJs().setOptions({
-                    steps,
-                    nextLabel: jsObject.translations.next,
-                    prevLabel: jsObject.translations.previous,
-                    skipLabel: '<span class="icon z-icon-close"></span>',
-                    doneLabel: jsObject.translations.done,
-                    buttonClass: 'btn tight bypass-nav-click'
-                }).start();
+              this.startTutorial()
             }
         })
 
@@ -122,6 +92,43 @@ export class CoursePresenter extends LitElement {
                 location.href = newUrl
             })
         })
+    }
+
+    startTutorial() {
+        this.closeMenu()
+        const steps = []
+        const checkinSlide = document.querySelector('.checkin-link.qr-code')
+        if ( checkinSlide ) {
+            steps.push({
+                element: checkinSlide,
+                intro: 'Scan the QR code to check in and log your progress.',
+            })
+        }
+        steps.push({
+              element: document.querySelector('#hamburger-menu'),
+              intro: 'Using the menu you can navigate around the course and change language',
+        })
+        steps.push({
+              element: document.querySelector('.visual-indicator.right'),
+              intro: 'Click towards the edges of the screen to change slides',
+        })
+
+        const progressBar = document.querySelector('.progress-bar-wrapper')
+        if ( progressBar ) {
+            steps.push({
+                element: progressBar,
+                intro: 'The progress bar shows you how much of the course you have completed.',
+            })
+        }
+
+        window.introJs().setOptions({
+            steps,
+            nextLabel: jsObject.translations.next,
+            prevLabel: jsObject.translations.previous,
+            skipLabel: '<span class="icon z-icon-close"></span>',
+            doneLabel: jsObject.translations.done,
+            buttonClass: 'btn tight bypass-nav-click'
+        }).start();
     }
 
     getView(url) {
@@ -373,29 +380,24 @@ export class CoursePresenter extends LitElement {
                                     <a
                                         class="session-link"
                                         data-session-number="${sessionNumber}"
-                                        ?disabled=${this.isTrainingMode && sessionNumber > this.numberOfTrainingSessions - 1}
-                                        @click=${(event) => this.isTrainingMode && sessionNumber > this.numberOfTrainingSessions - 1 ? '' : this.handleSessionLink(event) }
+                                        @click=${(event) => this.handleSessionLink(event) }
                                     >
                                         ${title}
                                     </a>
-                                    ${
-                                        this.isTrainingMode && sessionNumber > this.numberOfTrainingSessions - 1 ? '' : html`
-                                            <ul class="menu vertical nested ${this.lessonIndex === sessionNumber ? 'is-active' : ''}">
-                                                ${
-                                                    submenu.map(({ key, title, length }) => html`
-                                                        <a
-                                                            class="session-link"
-                                                            data-subitem
-                                                            href="#"
-                                                            @click=${() => this.handleSubSectionLink(sessionNumber, key)}
-                                                        >
-                                                            <span>${title}</span> <span>${length}</span>
-                                                        </a>
-                                                    `)
-                                                }
-                                            </ul>
-                                        `
-                                    }
+                                    <ul class="menu vertical nested ${this.lessonIndex === sessionNumber ? 'is-active' : ''}">
+                                        ${
+                                            submenu.map(({ key, title, length }) => html`
+                                                <a
+                                                    class="session-link"
+                                                    data-subitem
+                                                    href="#"
+                                                    @click=${() => this.handleSubSectionLink(sessionNumber, key)}
+                                                >
+                                                    <span>${title}</span> <span>${length}</span>
+                                                </a>
+                                            `)
+                                        }
+                                    </ul>
                                 </li>
                             `)}
                         </ul>
@@ -403,7 +405,7 @@ export class CoursePresenter extends LitElement {
                     <div class="">
                         <div class="cluster">
                             ${
-                                !this.isTrainingMode ? html`
+                                !this.isInIframe ? html`
                                     <a class="btn tight" href="${jsObject.home_url}">${jsObject.translations.home}</a>
                                 ` : ''
                             }
@@ -418,6 +420,7 @@ export class CoursePresenter extends LitElement {
                                         : jsObject.translations.slide_view
                                 }
                             </button>
+                            <button class="btn tight" @click=${this.startTutorial}>?</button>
                         </div>
                     </div>
                 </div>

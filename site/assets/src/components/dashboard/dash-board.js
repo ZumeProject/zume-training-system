@@ -828,6 +828,7 @@ export class DashBoard extends navigator(router(LitElement)) {
     exploreCourseUrl() {
       const url = new URL(jsObject.urls.launch_ten_session_course_1)
       url.searchParams.set('training', 'true')
+      url.searchParams.set('iframe', 'true')
       url.searchParams.set('slide', 's1_1_2')
       return url.toString()
     }
