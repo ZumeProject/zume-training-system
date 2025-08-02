@@ -92,7 +92,7 @@ class Zume_Communications_API
             default:
                 $course_type = '10 session';
         }
-        $public_training_url = zume_join_a_public_plan_url();
+        $public_training_url = zume_join_a_public_plan_url( zume_current_language() );
         $join_training_url = zume_join_a_public_plan_wizard_url( $training['join_key'] );
         $first_session_date = $training[ $training['set_type']['key'] . '_01' ]['formatted'];
         $message = [
