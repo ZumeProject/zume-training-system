@@ -2,22 +2,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2025-07-29 09:25-0600\n"
-"PO-Revision-Date: 2025-07-29 18:06-0600\n"
-"Last-Translator: Chris <chris@zume.training>\n"
-"Language-Team: Kurdish <https://translate.disciple.tools/projects/zume-"
-"training/zume-training-system/ku/>\n"
+"PO-Revision-Date: 2025-08-02 01:43+0000\n"
+"Last-Translator: Chris <chris@chasm.solutions>\n"
+"Language-Team: Kurdish <https://translate.disciple.tools/projects/"
+"zume-training/zume-training-system/ku/>\n"
 "Language: ku\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Weblate 5.12.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: "
-"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,"
+"2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
@@ -310,7 +311,7 @@ msgstr "لە ئاوهەڵکێشان"
 
 #: globals.php:2498 site/pages/follow-jesus.php:302
 msgid "Prepare Your 3-Minute Testimony"
-msgstr "٣ خولەکی شایەتحاڵی خۆت ئامادەبکە"
+msgstr "٣ خولەک شایەتیدانی خۆت ئامادەبکە"
 
 #: globals.php:2500 site/pages/follow-jesus.php:303
 msgid ""
@@ -322,13 +323,13 @@ msgstr ""
 
 #: globals.php:2501
 msgid "3-Minute Testimony"
-msgstr "٣ خولەکی شایەتحاڵی"
+msgstr "٣ خولەک شایەتیدان"
 
 #: globals.php:2511 site/course/course-content.php:1237
 #: site/course/course-content.php:1518 site/course/course-content.php:3978
 #: site/course/course-content.php:3997 site/pages/follow-jesus.php:185
 msgid "Vision Casting the Greatest Blessing"
-msgstr "گەورەترین بەرەکەتی دیدگەی کاستیک"
+msgstr "مەزنترین بەرەکەتی دیدگەی کاستیک"
 
 #: globals.php:2513 site/course/course-content.php:1318
 #: site/pages/follow-jesus.php:186
@@ -701,14 +702,14 @@ msgid "visitor"
 msgstr "سەردانیکار"
 
 #: maps/heatmap.php:3167
-#, fuzzy, php-format
+#, php-format
 msgid "A new trainee from %1$s has registered!"
-msgstr "$sفێرخوازێکی نوێ لە % 1 $ sناوی خۆی تۆمارکردووە!"
+msgstr "فێرخوازێکی نوێ لە %1$s ناوی خۆی تۆمارکردووە!"
 
 #: maps/heatmap.php:3171
-#, fuzzy, php-format
+#, php-format
 msgid "A %1$s in %2$s has requested %3$s coaching!"
-msgstr "‎%1$s لە s$2% داوای ڕاهێنەرایەتی s$3% کردووە!"
+msgstr "%1$s لە %2$s داوای ڕاهێنەرایەتی %3$s کردووە!"
 
 #: maps/heatmap.php:3175
 #, php-format
@@ -716,24 +717,24 @@ msgid "New training group scheduled in %1$s. %2$s"
 msgstr "گرووپی نوێی ڕاهێنان دیارکرا لە %1$s. %2$s"
 
 #: maps/heatmap.php:3217
-#, fuzzy, php-format
+#, php-format
 msgid "A %1$s is starting SESSION %2$s in %3$s. %4$s"
-msgstr "‎%2 $ sوانە  s‏$‎ ‏  1%لە s$3% ‎دەستپێدەکات s$4%"
+msgstr "%1$s وانە %2$s لە %3$s دەستپێدەکات %4$s"
 
 #: maps/heatmap.php:3255
-#, fuzzy, php-format
+#, php-format
 msgid "A %1$s is studying \"%2$s\" in %3$s. %4$s"
-msgstr "‎%1$s ‎لە  \"%2$s\" لە‎ s$3% ‎دەخوێنێت s$4%"
+msgstr "%1$sێک لە %3$sدا \"%2$s\" دەخوێنێت. %4$s"
 
 #: maps/heatmap.php:3297
-#, fuzzy, php-format
+#, php-format
 msgid "A %1$s shared \"%2$s\" with someone in %3$s. %4$s"
-msgstr "‎\"%2$s\"%1$sی لەگەڵ کەسێک s$3% ‎هاوبەشکردووە s$4%"
+msgstr "%2$s\" %1$s\"ی لەگەڵ کەسێک %3$s هاوبەشکردووە %4$s"
 
 #: maps/heatmap.php:3335
-#, fuzzy, php-format
+#, php-format
 msgid "A %1$s trained someone to use \"%2$s\" in %3$s. %4$s"
-msgstr "%1‏s$sبەکارهێنانی کەسێک بۆ ڕاهێنان \"%2$s\" ‎لە %3$s. %4$s"
+msgstr "%1$s بەکارهێنانی کەسێک بۆ ڕاهێنان %2$s لە %4$s. %3$s"
 
 #: maps/heatmap.php:3374
 #, php-format
@@ -746,22 +747,21 @@ msgid "A coach is assisting with \"%1$s\" for a trainee in %2$s. %3$s"
 msgstr "ڕاهێنەرێک هاوکاری دەکات بە \"%1$s\"بۆ ڕاهێنراوێک لە %2$s. %3$s"
 
 #: maps/heatmap.php:3452
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "A coach has entered a watching stage for a trainee regarding \"%1$s\" in "
 "%2$s. %3$s"
-msgstr "ڕاهێنەرێک تەواو مەشقیکردووە بە راهێنراوێک سەبارەت بە s$1%لە s.$2%%3$s"
+msgstr "ڕاهێنەرێک تەواو مەشقیکردووە بە راهێنراوێک سەبارەت بە %1$s لە %3$s .%2$s"
 
 #: maps/heatmap.php:3491
-#, fuzzy, php-format
+#, php-format
 msgid "A coach has fully launched a trainee regarding \"%1$s\" in %2$s. %3$s"
-msgstr ""
-"دەستپێکردنی ڕاهێنراوێک لەلایەن ڕاهێنەرێک سەبارەت بە\"%1$s\"لە s.%3$s$2%"
+msgstr "دەستپێکردنی ڕاهێنراوێک لەلایەن ڕاهێنەرێک سەبارەت بە%1$s لە %3$s .%2$s"
 
 #: maps/heatmap.php:3497
-#, fuzzy, php-format
+#, php-format
 msgid "A %1$s created at post training plan in %2$s. %3$s"
-msgstr "%1$‏sکە لە پلانی ڕاهێنانی دوای ڕاهێنان لە s$2% ‎دروستکردووە %3$s"
+msgstr "%1$s کە لە پلانی ڕاهێنانی دوای ڕاهێنان لە دروستکردووە %3$s .%2$s"
 
 #: maps/html/heatmap-html.php:37
 msgid "Loading the planet"
@@ -1030,15 +1030,16 @@ msgid "Always report new simple churches that you are starting."
 msgstr "هەمیشە باسی ئەو کلێسا سادە و نوێیانە بکە تۆ دروستیان دەکەیت."
 
 #: maps/local-map.php:28 maps/local-map.php:547
-#, fuzzy
 msgid "Local Map"
-msgstr "نەخشەی جیهانی"
+msgstr "نەخشەی ناوخۆیی"
 
 #: maps/local-map.php:29
 msgid ""
 "Local map showing Zúme training progress and church planting activity for a "
 "specific location."
 msgstr ""
+"نەخشەی ناوخۆیی کە پێشکەوتنی ڕاهێنانی Zúme و چالاکیی چاندنی کڵێسا بۆ شوێنێکی "
+"دیاریکراو نیشان دەدات."
 
 #: maps/local-map.php:548 maps/local-map.php:982 maps/local-map.php:984
 #: maps/map-3-trainees.php:123
@@ -1051,19 +1052,16 @@ msgid "Churches"
 msgstr "کڵێساکان"
 
 #: maps/local-map.php:553 site/dashboard/dashboard.php:201
-#, fuzzy
 msgid "Progress"
-msgstr "پێشکەوتنی من"
+msgstr "کار"
 
 #: maps/local-map.php:554
-#, fuzzy
 msgid "Location not found"
-msgstr "هیچ شوێنێک نەدۆزرایەوە"
+msgstr "شوێن نەدۆزراوەتەوە"
 
 #: maps/local-map.php:555
-#, fuzzy
 msgid "Please enter a grid_id parameter"
-msgstr "تکایە کۆدی هاوڕێت دابنێ."
+msgstr "تکایە پارامێتەرێکی grid_id دابنێ"
 
 #: maps/local-map.php:944 maps/local-map.php:1068
 #: site/dashboard/dashboard.php:231
@@ -1176,9 +1174,8 @@ msgstr ""
 "بۆ هەر پەنجا هەزار کەس لە ئاستی جیهاندا"
 
 #: maps/map-5-churches.php:95
-#, fuzzy
 msgid "Vision Map"
-msgstr "دیدگە"
+msgstr "نەخشەی بینین"
 
 #: maps/map-5-churches.php:125
 msgid "Map of Zúme Churches"
@@ -1628,27 +1625,24 @@ msgid "Unknown"
 msgstr "نەزانراوە"
 
 #: site/activities/sharegospel.php:132 site/course/course-content.php:945
-#, fuzzy
 msgid "Presentation 1"
-msgstr "پێشکەشکار"
+msgstr "پێشکەشکردن 1"
 
 #: site/activities/sharegospel.php:135 site/course/course-content.php:974
-#, fuzzy
 msgid "Presentation 2"
-msgstr "پێشکەشکار"
+msgstr "پێشکەشکردن 2"
 
 #: site/activities/sharegospel.php:171
-#, fuzzy
 msgid "3 Circles Gospel Presentation"
-msgstr "٣ بازنەکانی پێشکەشکردنی مزگێنی"
+msgstr "3 بازنە پێشکەشکردنی ئینجیل"
 
 #: site/activities/sharegospel.php:196
 msgid "No script content found for this language."
-msgstr ""
+msgstr "هیچ ناوەڕۆکێکی سکریپت بۆ ئەم زمانە نەدۆزراوەتەوە."
 
 #: site/activities/sharegospel.php:200
 msgid "No script found for this language."
-msgstr ""
+msgstr "هیچ سکریپتێک بۆ ئەم زمانە نەدۆزراوەتەوە."
 
 #: site/activities/three-month-plan-printable.php:22
 #: site/activities/three-month-plan.php:22
@@ -2124,7 +2118,7 @@ msgstr "لەم دانیشتنەدا گوێ لەم چەمکانە دەبیستی�
 
 #: site/course/course-content.php:88 site/course/course-content.php:373
 msgid "Simple Definition of Disciple & Church"
-msgstr ""
+msgstr "پێناسەیەکی سادەی قوتابی و کڵێسا"
 
 #: site/course/course-content.php:89 site/course/course-content.php:374
 msgid "Spiritual Breathing"
@@ -2240,11 +2234,11 @@ msgstr ""
 
 #: site/course/course-content.php:318
 msgid "Accountability Groups are a great way to get ready!"
-msgstr "گروپەکانی بەرپرسیاریەتی ڕێگەیەکی زۆر باشە بۆ ئامادەکاری!"
+msgstr "گروپەکانی بەرپرسیاریەتیلێپرسینەوە ڕێگەیەکی زۆر باشە بۆ ئامادەکاری!"
 
 #: site/course/course-content.php:345
 msgid "Practice Accountability Groups"
-msgstr "گروپەکانی بەرپرسیاریەتی ڕاهێنان بکەن"
+msgstr "گروپەکانی لێپرسینەوە ڕاهێنان بکەن"
 
 #: site/course/course-content.php:348
 msgid "Break into groups of two or three people of the same gender."
@@ -2663,6 +2657,7 @@ msgstr ""
 #: site/course/course-content.php:931
 msgid "Review the following two presentations and choose one to practice."
 msgstr ""
+"پێداچوونەوە بەم دوو پێشکەشکردنەی خوارەوە بکە و یەکێکیان هەڵبژێرە بۆ مەشقکردن."
 
 #: site/course/course-content.php:946
 msgid ""
@@ -2670,6 +2665,9 @@ msgid ""
 "Judgement – from the beginning of humankind all the way to the end of this "
 "age."
 msgstr ""
+"یەکێک لە ڕێگاکانی هاوبەشکردنی هەواڵی خۆشی خودا گێڕانەوەی چیرۆکی خودایە لە "
+"پەیدابوونەوە تا لێپرسینەوە، لە سەرەتای دروستبوونی مرۆڤایەتییەوە تا کۆتایی "
+"ئەم سەردەمە."
 
 #: site/course/course-content.php:1022
 msgid "Share the Gospel"
@@ -2677,7 +2675,7 @@ msgstr "مزگێنیدان"
 
 #: site/course/course-content.php:1024
 msgid "Choose one of the two presentations you watched."
-msgstr ""
+msgstr "یەکێک لەو دوو پێشکەشکردنە هەڵبژێرە کە سەیری کردوویت."
 
 #: site/course/course-content.php:1026
 msgid "Break into groups of two or three people."
@@ -2815,7 +2813,7 @@ msgstr ""
 
 #: site/course/course-content.php:1308 site/course/course-content.php:1317
 msgid "Great - Greater - Greatest Blessings"
-msgstr "گەورە - گەورەتر - گەورەترین بەرەکەتەکان"
+msgstr "مەزن - مەزنتر - مەزنترین بەرەکەتەکان"
 
 #: site/course/course-content.php:1347
 msgid ""
@@ -3974,9 +3972,9 @@ msgid ""
 "them practice it as well. Share this person‘s name with the group before you "
 "go and reach out to them."
 msgstr ""
-"لە خودا بپرسە کە دەیەوێت لەگەڵ کێدا باسی گەورەترین بەرەکەت بکەیت. با ئەوانیش "
-"مەشقی بکەن. پێش ئەوەی بچیتە لای ناوی کەسەکە لەگەڵ گروپەکەدا باسبکە بەر لە "
-"دانیشتنی داهاتوو."
+"لە خودا بپرسە کە دەیەوێت لەگەڵ کێدا باسی مەزنترین بەرەکەتەکان بکەیت. با "
+"ئەوانیش مەشقی بکەن. پێش ئەوەی بچیتە لای ناوی کەسەکە لەگەڵ گروپەکەدا باسبکە "
+"بەر لە دانیشتنی داهاتوو."
 
 #: site/course/course-content.php:4075
 msgid ""
@@ -4131,9 +4129,10 @@ msgid ""
 "with whomever the Lord impresses on you. Then equip them to share it with "
 "someone else."
 msgstr ""
-"سەیری قوتابی ڕۆحی بکە بۆ ئەوەی بزانن شانشینی لە کوێ نییە لەگەڵ هەر کەسێکدا "
-"بەشی بکە کە پەروەردگار کاریگەری لەسەرت دروست بکات. پاشان ئامێریان بۆ دابین "
-"بکە بۆ ئەوەی لەگەڵ کەسێکی تردا بەشی بکەن."
+"باسی \"بەقوتابیکردنی مراوی ئاسا\" هەروەها "
+"\"چاوەکان بۆ ئەوەی بزانن شانشین لە کوێ نییە\" لەگەڵ هەر کەسێکدا بەشی بکە کە "
+"پەروەردگار کاریگەری لەسەرت دروست بکات. پاشان ئامێریان بۆ دابین بکە بۆ ئەوەی "
+"لەگەڵ کەسێکی تردا بەشی بکەن."
 
 #: site/course/course-content.php:4592 site/course/course-content.php:4597
 msgid "SESSION 11"
@@ -4146,8 +4145,8 @@ msgid ""
 "isn‘t, yet."
 msgstr ""
 "نوێژبکە و سوپاسی خودا بکە چۆن لە ژیانت و ژیانی کەسانی دیکەی دەوروبەرتدا "
-"کاردەکات. نوێژبکە بۆ ئەوەی گروپەکە چاویان بکرێتەوە بۆ ئەوەی بزانن شانشینی لە "
-"کوێ نییە، هێشتا."
+"کاردەکات. نوێژبکە بۆ گروپەکە تاکو "
+"\"چاویان هەبێت بۆ ئەوەی بزانن شانشین لە کوێ نییە\". هێشتا."
 
 #: site/course/course-content.php:4708 site/course/course-content.php:4713
 msgid "SESSION 12"
@@ -4613,64 +4612,54 @@ msgstr "ئیمەیلی پەیوەندیەکان"
 
 #: site/dashboard/dashboard.php:199
 msgid "If these are not correct, please update your profile."
-msgstr ""
+msgstr "ئەگەر ئەمانە ڕاست نەبوون تکایە پڕۆفایلی خۆت نوێ بکەرەوە."
 
 #: site/dashboard/dashboard.php:200
-#, fuzzy
-#| msgid "Contacts"
 msgid "Contact Info"
-msgstr "پەیوەندیەکان"
+msgstr "زانیاری پەیوەندی"
 
 #: site/dashboard/dashboard.php:202
-#, fuzzy
-#| msgid "Email"
 msgid "Copy Emails"
-msgstr "ئیمەیل"
+msgstr "ئیمەیڵەکان کۆپی بکە"
 
 #: site/dashboard/dashboard.php:203
-#, fuzzy
-#| msgid "Copy Invite"
 msgid "Copy Phones"
-msgstr "بانگهێشت نامە کۆپی بکە"
+msgstr "کۆپیکردنی مۆبایلەکان"
 
 #: site/dashboard/dashboard.php:204
-#, fuzzy
-#| msgid "Copy Invite"
 msgid "Copy Code"
-msgstr "بانگهێشت نامە کۆپی بکە"
+msgstr "کۆدی کۆپی بکە"
 
 #: site/dashboard/dashboard.php:205
 msgid "Linked Accounts"
 msgstr "ئەکاونتە بەستراوەکان"
 
 #: site/dashboard/dashboard.php:206 site/dashboard/wizard.php:273
-#, fuzzy
-#| msgid "Update Communication Preferences"
 msgid "Change Preferences"
-msgstr "هەڵبژاردەکانی پەیوەندی نوێ بکەوە"
+msgstr "گۆڕینی هەڵبژاردنەکان"
 
 #: site/dashboard/dashboard.php:207
-#, fuzzy
-#| msgid "Update Communication Preferences"
 msgid "Email Preferences"
-msgstr "هەڵبژاردەکانی پەیوەندی نوێ بکەوە"
+msgstr "هەڵبژاردەکانی ئیمەیڵ"
 
 #: site/dashboard/dashboard.php:208
 msgid "Choose which email lists you want to receive"
-msgstr ""
+msgstr "کام لیستەی ئیمەیڵەکانت هەڵبژێرە کە دەتەوێت وەریبگریت"
 
 #: site/dashboard/dashboard.php:209 zume-training-system.php:541
 msgid "Hide my contact information from other participants in trainings"
-msgstr ""
+msgstr "زانیاری پەیوەندیکردنم لە بەشداربووانی تر لە ڕاهێنانەکاندا بشارمەوە"
 
 #: site/dashboard/dashboard.php:210 zume-training-system.php:533
 msgid "Hide my progress from other participants in trainings"
-msgstr ""
+msgstr "پێشکەوتنەکانم لە بەشداربووانی تر لە ڕاهێنانەکاندا بشارمەوە"
 
 #: site/dashboard/dashboard.php:211
 msgid ""
 "Don't forget to send subscribers an email to notify them of the training."
 msgstr ""
+"لەبیرت نەچێت ئیمەیڵێک بۆ بەشداربووان بنێرن بۆ ئاگادارکردنەوەیان لە "
+"ڕاهێنانەکان."
 
 #: site/dashboard/dashboard.php:212 site/dashboard/wizard.php:209
 #: site/profile/profile.php:123
@@ -4700,14 +4689,12 @@ msgid "Timezone"
 msgstr "ناوچەی کات"
 
 #: site/dashboard/dashboard.php:218
-#, fuzzy
-#| msgid "User Timezone"
 msgid "Select timezone"
-msgstr "ناوچەی کاتی بەکارهێنەر"
+msgstr "ناوچەی کات هەڵبژێرە"
 
 #: site/dashboard/dashboard.php:219
 msgid "New"
-msgstr ""
+msgstr "نوێ"
 
 #: site/dashboard/dashboard.php:220 site/dashboard/wizard.php:386
 msgid "Meeting link"
@@ -5001,38 +4988,32 @@ msgid "Group Details"
 msgstr "وردەکاری گرووپ"
 
 #: site/dashboard/dashboard.php:298
-#, fuzzy
-#| msgid "Communications Email"
 msgid "Group Communication"
-msgstr "ئیمەیلی پەیوەندیەکان"
+msgstr "پەیوەندی گروپی"
 
 #: site/dashboard/dashboard.php:299
 msgid "Subscribers"
-msgstr ""
+msgstr "بەشداربووان"
 
 #: site/dashboard/dashboard.php:300
 msgid "Has joined a group"
-msgstr ""
+msgstr "پەیوەندی بە گروپێکەوە کردووە"
 
 #: site/dashboard/dashboard.php:301
-#, fuzzy
-#| msgid "Email"
 msgid "Emailed on"
-msgstr "ئیمەیل"
+msgstr "ئیمەیڵ لە..."
 
 #: site/dashboard/dashboard.php:302
 msgid "Send Email to Subscribers"
-msgstr ""
+msgstr "ناردنی ئیمەیڵ بۆ بەشداربووان"
 
 #: site/dashboard/dashboard.php:303
 msgid "Mark Completed"
 msgstr "دەستنیشانی بکە وەک تەواوبوو"
 
 #: site/dashboard/dashboard.php:304
-#, fuzzy
-#| msgid "Mark Completed"
 msgid "Mark Uncompleted"
-msgstr "دەستنیشانی بکە وەک تەواوبوو"
+msgstr "مارک تەواو نەبوو"
 
 #: site/dashboard/dashboard.php:305
 #, php-format
@@ -5122,10 +5103,10 @@ msgid "You have set your profile"
 msgstr "تۆ پڕۆفایلی خۆتت داناوە"
 
 #: site/dashboard/dashboard.php:328
-#, fuzzy, php-format
+#, php-format
 msgctxt "3-month plan unlocked"
 msgid "%s unlocked"
-msgstr "S%‎قوفڵی نەکراوە"
+msgstr "%s  کراوەتەوە"
 
 #: site/dashboard/dashboard.php:328 utilities/apis/cta-api.php:322
 msgid "3 month plan"
@@ -5185,10 +5166,8 @@ msgstr ""
 "بەکارهێنەرەکە بە ڕاهێنەرایەتی و سەرچاوەی گونجاو."
 
 #: site/dashboard/dashboard.php:336 site/dashboard/wizard.php:388
-#, fuzzy
-#| msgid "Join key"
 msgid "Join Code"
-msgstr "کلیلی پەیوەندیکردن"
+msgstr "کۆدی بەشداریکردن"
 
 #: site/dashboard/dashboard.php:337 site/dashboard/wizard.php:322
 #: site/pages/checkin.php:91 site/pages/friend-invite.php:79
@@ -5222,35 +5201,31 @@ msgstr ""
 
 #: site/dashboard/dashboard.php:342
 msgid "We apologize for the delay"
-msgstr ""
+msgstr "داوای لێبوردن دەکەین بۆ دواکەوتنەکە"
 
 #: site/dashboard/dashboard.php:343
-#, fuzzy
-#| msgid "Messenger"
 msgid "Message"
-msgstr "مەسنجەر"
+msgstr "پەیام"
 
 #: site/dashboard/dashboard.php:344
 msgid ""
 "If you have any queries or need help, please enter a message below and we "
 "will get back to you as soon as possible."
 msgstr ""
+"ئەگەر هەر پرسیارێکتان هەیە یان پێویستتان بە یارمەتی هەیە، تکایە لە خوارەوە "
+"نامەیەک دابنێن و بە زووترین کات پەیوەندیتان پێوە دەکەینەوە."
 
 #: site/dashboard/dashboard.php:345
 msgid "Send Message"
-msgstr ""
+msgstr "نامە بنێرە"
 
 #: site/dashboard/dashboard.php:346
-#, fuzzy
-#| msgid ""
-#| "Sorry. We were unable to submit your request. Please try again later."
 msgid "There was an error sending your message. Please try again later."
-msgstr ""
-"ببوورە. ئێمە نەمانتوانی داواکارییەکەت پێشکەش بکەین. تکایە دواتر هەوڵبدەرەوە."
+msgstr "هەڵەیەک لە ناردنی نامەکەتدا هەبوو. تکایە دواتر هەوڵبدەرەوە."
 
 #: site/dashboard/dashboard.php:347
 msgid "Message sent successfully"
-msgstr ""
+msgstr "پەیامێک بە سەرکەوتوویی نێردراوە"
 
 #: site/dashboard/dashboard.php:348
 msgid "100 Hour Map"
@@ -5324,10 +5299,10 @@ msgid "Visibility"
 msgstr "بینین"
 
 #: site/dashboard/dashboard.php:367 site/dashboard/dashboard.php:368
-#, fuzzy, php-format
+#, php-format
 msgctxt "public/private group"
 msgid "%s group"
-msgstr "S%‎گرووپ"
+msgstr "%s گرووپ"
 
 #: site/dashboard/dashboard.php:367 site/pages/plans.php:112
 msgid "Private"
@@ -5340,45 +5315,47 @@ msgstr "گشتی"
 #: site/dashboard/dashboard.php:370 site/dashboard/wizard.php:281
 #: site/dashboard/wizard.php:373 site/pages/join-a-training-public.php:171
 msgid "Notify me about future trainings"
-msgstr ""
+msgstr "ئاگادارم بکەرەوە لە ڕاهێنانەکانی داهاتوو"
 
 #: site/dashboard/dashboard.php:371
-#, fuzzy
-#| msgid "Preferred Contact Methods"
 msgid "Preferences"
-msgstr "شێوازەکانی پەیوەندیکردنی پەسندکراو"
+msgstr "هەڵبژاردەکان"
 
 #: site/dashboard/dashboard.php:372
 msgid "Your progress is always visible to the group leader."
-msgstr ""
+msgstr "پێشکەوتنەکانت هەمیشە بۆ سەرۆکی گروپەکە دیارە."
 
 #: site/dashboard/dashboard.php:373
 msgid ""
 "Contact information is currently hidden from other participants in trainings."
 msgstr ""
+"لە ئێستادا زانیاری پەیوەندیکردن لە بەشداربووانی دیکە لە ڕاهێنانەکاندا "
+"شاراوەتەوە."
 
 #: site/dashboard/dashboard.php:374
 msgid "Progress is currently hidden from other participants in trainings."
-msgstr ""
+msgstr "لە ئێستادا پێشکەوتن لە بەشداربووانی دیکە لە ڕاهێنانەکاندا شاراوەتەوە."
 
 #: site/dashboard/dashboard.php:375
 msgid "Local Vision Map"
-msgstr ""
+msgstr "نەخشەی بینینی ناوخۆیی"
 
 #: site/dashboard/dashboard.php:376
 msgid ""
 "You are making this group public. It will show up on the public list of "
 "trainings. Please confirm you are ready to make it public."
 msgstr ""
+"ئێوە ئەم گروپە دەکەنە گشتی. لە لیستی گشتی ڕاهێنانەکاندا دەردەکەوێت. تکایە "
+"پشتڕاستی بکەرەوە کە ئامادەیت بۆ ئەوەی ئاشکرای بکەیت."
 
 #: site/dashboard/dashboard.php:377
 msgid "Confirm"
-msgstr ""
+msgstr "دووپاتکردنەوە"
 
 #: site/dashboard/dashboard.php:378
 #, php-format
 msgid "You can message again in %d hours"
-msgstr ""
+msgstr "دەتوانیت لە %d کاتژمێردا دووبارە نامە بنێیتەوە"
 
 #: site/dashboard/dashboard.php:384
 msgid ""
@@ -5428,14 +5405,11 @@ msgstr ""
 msgid ""
 "I will invite the following people to participate in Prayer Walking with me:"
 msgstr ""
-"بانگهێشتی ئەم کەسانەی خوارەوە دەکەم بۆ ئەوەی لەگەڵمدا بەشداری لە ڕێپێوانی "
-"نوێژ بکەن:"
+"بانگهێشتی ئەم کەسانەی خوارەوە دەکەم بۆ ئەوەی لەگەڵمدا بەشداری نوێژەڕۆ بکەن:"
 
 #: site/dashboard/dashboard.php:391
 msgid "I will Prayer Walk once every [days / weeks / months]."
-msgstr ""
-"من جارێک لە [ڕۆژێک یان هەفتەیەک یان مانگ] کاتێک بە پێ دەڕۆم. بەڕۆیشتنەوە "
-"نوێژدەکەم."
+msgstr "من جارێک نوێژەڕۆ دەکەم لە /[ڕۆژێک یان هەفتەیەک یان مانگ]."
 
 #: site/dashboard/dashboard.php:392
 msgid ""
@@ -5694,6 +5668,8 @@ msgid ""
 "In order to connect you to an appropriate coach, we need to know a little "
 "more about you."
 msgstr ""
+"بۆ ئەوەی تۆ بە ڕاهێنەرێکی گونجاوەوە ببەستینەوە، پێویستە کەمێک زیاتر دەربارەی "
+"تۆ بزانین."
 
 #: site/dashboard/wizard.php:251 site/pages/get-a-coach.php:96
 msgid "No Cost"
@@ -5743,9 +5719,9 @@ msgid "The training link is broken. Please try again."
 msgstr "پەیوەندی ڕاهێنانکە شکاوە تکایە هەوڵدە."
 
 #: site/dashboard/wizard.php:262
-#, fuzzy, php-format
+#, php-format
 msgid "Successfully joined training %s"
-msgstr "بەسەرکەوتوویی پەیوەندیت بە ڕاهێناوەکرد"
+msgstr "بەسەرکەوتوویی پەیوەندیت بە ڕاهێناوەکرد %s"
 
 #: site/dashboard/wizard.php:265 site/dashboard/wizard.php:293
 #: site/pages/join-a-training-public.php:106
@@ -5760,81 +5736,73 @@ msgstr "کاتی دەستپێکردن"
 
 #: site/dashboard/wizard.php:274
 msgid "Your contact information is always visible to the group leader."
-msgstr ""
+msgstr "زانیاری پەیوەندیکردنت هەمیشە بۆ سەرۆکی گروپەکە دیارە."
 
 #: site/dashboard/wizard.php:275
 msgid ""
 "You are joining a private training group, where everyone can see your "
 "contact information."
 msgstr ""
+"تۆ بەشداری گروپێکی ڕاهێنانی تایبەت دەکەیت، کە هەموو کەسێک دەتوانێت زانیاری "
+"پەیوەندیکردنت ببینێت."
 
 #: site/dashboard/wizard.php:276
 msgid ""
 "You can change your contact information visibility at any time in your "
 "profile."
 msgstr ""
+"دەتوانیت لە هەر کاتێکدا لە پڕۆفایلی خۆتدا بینینی زانیاری پەیوەندییەکانت "
+"بگۆڕیت."
 
 #: site/dashboard/wizard.php:277
-#, fuzzy
-#| msgid ""
-#| "Sorry. We were unable to submit your request. Please try again later."
 msgid "We were unable to connect you with a coach. Please try again later."
 msgstr ""
-"ببوورە. ئێمە نەمانتوانی داواکارییەکەت پێشکەش بکەین. تکایە دواتر هەوڵبدەرەوە."
+"ئێمە نەمانتوانی ئێوە بە ڕاهێنەرێکەوە ببەستینەوە. تکایە دواتر هەوڵبدەرەوە."
 
 #: site/dashboard/wizard.php:278
 msgid "There are currently no public trainings available."
 msgstr "لە ئێستادا هیچ ڕاهێنانێکی گشتی لەبەردەستدا نییە."
 
 #: site/dashboard/wizard.php:279 site/pages/join-a-training-public.php:160
-#, fuzzy
-#| msgid "Would you like to schedule your training?"
 msgid "Would you like to be notified about future trainings?"
-msgstr "حەزدەکەیت کات بۆ ڕاهێنانەکانت دابنێیت؟"
+msgstr "ئایا حەز دەکەیت لە ڕاهێنانەکانی داهاتوو ئاگادار بکرێیتەوە؟"
 
 #: site/dashboard/wizard.php:280 site/pages/join-a-training-public.php:161
 msgid "We will send you an email when a new training is available."
-msgstr ""
+msgstr "کاتێک ڕاهێنانێکی نوێ بەردەست بوو ئیمەیڵێکتان بۆ دەنێرین."
 
 #: site/dashboard/wizard.php:282 site/pages/join-a-training-public.php:162
 msgid "You can always unsubscribe from these emails at any time."
 msgstr ""
+"هەمیشە دەتوانیت لە هەر کاتێکدا بەشداریکردن لەم ئیمەیڵانە هەڵبوەشێنیتەوە."
 
 #: site/dashboard/wizard.php:283 site/pages/join-a-training-public.php:164
 msgid "Notify me"
-msgstr ""
+msgstr "ئاگادارم بکەرەوە"
 
 #: site/dashboard/wizard.php:284
 msgid "Do you want to unsubscribe from the notification list?"
-msgstr ""
+msgstr "ئایا دەتەوێت بەشداریکردن لە لیستی ئاگادارکردنەوەکان هەڵبوەشێنیتەوە؟"
 
 #: site/dashboard/wizard.php:285
 msgid "Continue"
-msgstr ""
+msgstr "بەردەوام بوون"
 
 #: site/dashboard/wizard.php:286 site/pages/plans.php:140
-#, fuzzy
-#| msgid "Group Details"
 msgid "Training Group Details"
-msgstr "وردەکاری گرووپ"
+msgstr "وردەکاری گروپی ڕاهێنان"
 
 #: site/dashboard/wizard.php:289 site/pages/plans.php:144
-#, fuzzy
-#| msgid "Self-Facilitated"
 msgid "Facilitator"
-msgstr "ئاسانکاری خۆت"
+msgstr "ئاسانکار"
 
 #: site/dashboard/wizard.php:291 site/pages/plans.php:164
-#, fuzzy
-#| msgid "What time of day?"
 msgid "Time of Day"
-msgstr "لە کاتێک لە ڕۆژدا"
+msgstr "کاتی ڕۆژ"
 
 #: site/dashboard/wizard.php:292
-#, fuzzy
-#| msgid "Copy Link"
 msgid "Zoom Link"
-msgstr "لینکی گۆپیکردن"
+msgstr "لینکی زووم"
 
 #: site/dashboard/wizard.php:295
 msgid ""
@@ -5845,16 +5813,12 @@ msgstr ""
 "پەیوەندیتان پێوە بکەن."
 
 #: site/dashboard/wizard.php:298 site/pages/plans.php:173
-#, fuzzy
-#| msgid "Tool heard in this session:"
 msgid "The next session is:"
-msgstr "ئامرازێک لەم دانیشتنەدا بیستراوە:"
+msgstr "دانیشتنی داهاتوو بریتییە لە:"
 
 #: site/dashboard/wizard.php:299 site/pages/plans.php:177
-#, fuzzy
-#| msgid "User Timezone"
 msgid "In this timezone:"
-msgstr "ناوچەی کاتی بەکارهێنەر"
+msgstr "لەم ناوچەی کاتییەدا:"
 
 #: site/dashboard/wizard.php:302
 msgid "Connecting with friend"
@@ -5865,9 +5829,9 @@ msgid "The friend link is broken. Please try again."
 msgstr "لینکی پەیوەندی هاوڕێ شکاوە تکایە دووبارە هەوڵدە پەیوەندی بکە."
 
 #: site/dashboard/wizard.php:305
-#, fuzzy, php-format
+#, php-format
 msgid "Successfully connected with friend %s"
-msgstr "بە سەرکەوتوویی پەیوەندیت کرد لەگەڵ هاوڕێکەت"
+msgstr "بە سەرکەوتوویی پەیوەندیت کرد لەگەڵ هاوڕێکەت %s"
 
 #: site/dashboard/wizard.php:309
 msgid "Checking in"
@@ -5890,10 +5854,8 @@ msgid "Join a public training group"
 msgstr "بەژداری گرووپێکی ڕاهێنانی گشتی بکە"
 
 #: site/dashboard/wizard.php:320
-#, fuzzy
-#| msgid "Join the community"
 msgid "Join with code"
-msgstr "بەشداری کۆمەڵگەبکە"
+msgstr "بە کۆد بەشداری بکە"
 
 #: site/dashboard/wizard.php:321 site/pages/friend-invite.php:172
 #: site/pages/plan-invite.php:177
@@ -5994,10 +5956,10 @@ msgid "Review Schedule"
 msgstr "خشتەی پێداچوونەوە"
 
 #: site/dashboard/wizard.php:348
-#, fuzzy, php-format
+#, php-format
 msgctxt "1 of 10 selected"
 msgid "%1$s of %2$s selected"
-msgstr "%1$‏sلە s$2%هەڵبژێردزاوە"
+msgstr "%1$s لە %2$s هەڵبژێردراون"
 
 #: site/dashboard/wizard.php:349
 msgctxt "All 10 sessions scheduled"
@@ -6005,10 +5967,10 @@ msgid "Ready"
 msgstr "ئامادە"
 
 #: site/dashboard/wizard.php:350
-#, fuzzy, php-format
+#, php-format
 msgctxt "Too many selected: 2"
 msgid "Too many selected: %s"
-msgstr "زۆر هەڵبژێردراونs%"
+msgstr "زۆر هەڵبژێردراون %s"
 
 #: site/dashboard/wizard.php:351
 msgid "Incorrect number of sessions selected"
@@ -6016,9 +5978,9 @@ msgstr "ژمارەی هەڵەی دانیشتنەکان هەڵبژێرە"
 
 #: site/dashboard/wizard.php:352 site/dashboard/wizard.php:354
 #: site/dashboard/wizard.php:356 site/dashboard/wizard.php:357
-#, fuzzy, php-format
+#, php-format
 msgid "Set %s"
-msgstr "S%‎دابنێ"
+msgstr "دابنێ %s"
 
 #: site/dashboard/wizard.php:354
 msgid "Group Name"
@@ -6053,14 +6015,15 @@ msgid "Change"
 msgstr "گۆڕین"
 
 #: site/dashboard/wizard.php:375
-#, fuzzy
-#| msgid "The training link is broken. Please try again."
 msgid "The notify me about future trainings link is broken. Please try again."
-msgstr "پەیوەندی ڕاهێنانکە شکاوە تکایە هەوڵدە."
+msgstr ""
+"لینکی ئاگادارکردنەوەم لەبارەی ڕاهێنانەکانی داهاتووەوە شکاوە. تکایە دووبارە "
+"هەوڵبدەرەوە."
 
 #: site/dashboard/wizard.php:376
 msgid "You have been added to the list to be notified about future trainings."
 msgstr ""
+"تۆ زیاد کرایت بۆ لیستەکە بۆ ئەوەی ئاگادار بکرێیتەوە لە ڕاهێنانەکانی داهاتوو."
 
 #: site/dashboard/wizard.php:380
 msgid "Invite your friends to join your training"
@@ -6512,47 +6475,47 @@ msgid "How does Zúme Training Work?"
 msgstr "ڕاهێنانی Zúme چۆن کاردەکات؟"
 
 #: site/pages/about.php:172 site/pages/home.php:225
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "%1$sFree Registration%2$s gives you full access to all training materials "
 "and online coaching."
 msgstr ""
-"%1$ناو تۆمارکردنی بێبەرامبەر%2$s دەستڕاگەیشتنێکی تەواوت پێدەدات بۆ هەموو "
+"%1$sناو تۆمارکردنی بێبەرامبەر%2$s دەستڕاگەیشتنێکی تەواوت پێدەدات بۆ هەموو "
 "کەرەستەی ڕاهێنان و ڕاهێنەرایەتی ئۆنلاین."
 
 #: site/pages/about.php:176 site/pages/home.php:229
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "%1$sInstructional Videos%2$s help your group understand basic principles of "
 "multiplying disciples."
 msgstr ""
-"%1$ڤیدیۆی فێرکاری%2$ یارمەتی گروپەکەت دەدەن لە بنەما سەرەکییەکانی زۆرکردنی "
+"%1$sڤیدیۆی فێرکاری%2$s یارمەتی گروپەکەت دەدەن لە بنەما سەرەکییەکانی زۆرکردنی "
 "شاگردەکان تێبگەن."
 
 #: site/pages/about.php:180 site/pages/home.php:233
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "%1$sGroup Discussions%2$s help your group think through what is being shared."
 msgstr ""
-"%1$باسەکانی گروپ%2$ یارمەتی گروپەکەت دەدەن بیر لەوە بکەنەوە کە چی هاوبەش "
+"%1$sباسەکانی گروپ%2$s یارمەتی گروپەکەت دەدەن بیر لەوە بکەنەوە کە چی هاوبەش "
 "دەکرێت."
 
 #: site/pages/about.php:184 site/pages/home.php:237
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "%1$sSimple Exercises%2$s help your group put what you are learning into "
 "practice."
 msgstr ""
-"%1$‏sمەشقی سادە%2$ یارمەتی گروپەکەت دەدەن ئەوەی فێری دەبیت بیخەنە بواری "
+"%1$sمەشقی سادە%2$s یارمەتی گروپەکەت دەدەن ئەوەی فێری دەبیت بیخەنە بواری "
 "جێبەجێکردنەوە."
 
 #: site/pages/about.php:188 site/pages/home.php:241
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "%1$sSession Challenges%2$s help your group keep learning and growing between "
 "sessions."
 msgstr ""
-"%1$‏sتەحەددیاتی دانیشتن%2$s یارمەتی گروپەکەت دەدات بەردەوام بێت لە فێربوون و "
+"%1$sتەحەددیاتی دانیشتن%2$s یارمەتی گروپەکەت دەدات بەردەوام بێت لە فێربوون و "
 "گەشەکردن لە نێوان دانیشتنەکاندا."
 
 #: site/pages/about.php:211
@@ -7060,9 +7023,9 @@ msgstr ""
 "ئەم چەمک و لێهاتووییانە کڵێساکەمان و کاریگەرییەکانمان لەسەر جیهان گۆڕی. ~ ڕ"
 
 #: site/pages/home.php:365
-#, fuzzy, php-format
+#, php-format
 msgid "%s = Yeast"
-msgstr "%= هەویرترش"
+msgstr "%s = هەویرترش"
 
 #: site/pages/home.php:370
 msgid ""
@@ -7102,7 +7065,6 @@ msgid "Get started"
 msgstr "دەست پێبکە"
 
 #: site/pages/join-a-training-public.php:30
-#, fuzzy
 msgid "Join a Training"
 msgstr "بەشداری ڕاهێنانێک بکە"
 
@@ -7117,11 +7079,11 @@ msgstr ""
 
 #: site/pages/join-a-training-public.php:146
 msgid "No active trainings available at this time."
-msgstr ""
+msgstr "لەم کاتەدا هیچ ڕاهێنانێکی چالاک لەبەردەستدا نییە."
 
 #: site/pages/join-a-training-public.php:156
 msgid "Want to know about future trainings?"
-msgstr ""
+msgstr "دەتەوێت بزانیت دەربارەی ڕاهێنانەکانی داهاتوو؟"
 
 #: site/pages/messages.php:283 utilities/apis/encouragement-api.php:534
 msgid "Friend"
@@ -7168,10 +7130,8 @@ msgid "Please enter a code."
 msgstr "تکایە کۆدێک دابنێ."
 
 #: site/pages/plans.php:200
-#, fuzzy
-#| msgid "Join Training Group"
 msgid "Back to Public Training Groups"
-msgstr "بەشداری گرووپی ڕاهێنان بکە"
+msgstr "گەڕانەوە بۆ گروپەکانی ڕاهێنانی گشتی"
 
 #: site/pages/privacy-policy.php:29 site/pages/privacy-policy.php:86
 msgid "Zúme Privacy Policy"
@@ -7635,10 +7595,9 @@ msgstr ""
 "ڕاهێنانی جووڵە دەکات"
 
 #: utilities/apis/communications-api.php:99
-#, fuzzy, php-format
-#| msgid "Hello!"
+#, php-format
 msgid "Hello %s"
-msgstr "سڵاو!"
+msgstr "سڵاو %s"
 
 #: utilities/apis/communications-api.php:100
 #, php-format
@@ -7646,49 +7605,52 @@ msgid ""
 "A new online Zume Training is now available. You can view it at the "
 "following link: %s"
 msgstr ""
+"ئێستا ڕاهێنانێکی نوێی ئۆنلاین زوم بەردەستە. دەتوانن لەم بەستەرەی خوارەوە "
+"سەیری بکەن: %s"
 
 #: utilities/apis/communications-api.php:101
 #, php-format
 msgid "The training is in the %1$s format and will be held in %2$s"
-msgstr ""
+msgstr "ڕاهێنانەکە بە شێوەی %1$s و بە شێوەی %2$s ئەنجام دەدرێت."
 
 #: utilities/apis/communications-api.php:102
 #, php-format
 msgid "First session: %1$s %2$s (%3$s)."
-msgstr ""
+msgstr "یەکەم دانیشتن: %1$s %2$s (%3$s)."
 
 #: utilities/apis/communications-api.php:103
 msgid "You can also join the training by clicking the link below:"
 msgstr ""
+"هەروەها دەتوانن بەشداری ڕاهێنانەکە بکەن بە کلیککردن لەسەر ئەم لینکەی خوارەوە:"
 
 #: utilities/apis/communications-api.php:105
 #, php-format
 msgid "The training will be led by %s speakers."
-msgstr ""
+msgstr "ڕاهێنانەکە لەلایەن %s وتاردەرەوە سەرپەرشتی دەکرێت."
 
 #: utilities/apis/communications-api.php:106
 msgid "Best regards,"
-msgstr ""
+msgstr "لەگەڵ ڕێز،"
 
 #: utilities/apis/communications-api.php:107
 msgid "The Zume Team"
-msgstr ""
+msgstr "تیمی زوم"
 
 #: utilities/apis/connect-api.php:82
 msgid ""
 "You have successfully subscribed to receive notifications about future "
 "trainings."
 msgstr ""
+"تۆ بە سەرکەوتوویی بەشداریت کردووە بۆ وەرگرتنی ئاگادارکردنەوە سەبارەت بە "
+"ڕاهێنانەکانی داهاتوو."
 
 #: utilities/apis/connect-api.php:83
 msgid "You can unsubscribe from these notifications at any time."
-msgstr ""
+msgstr "دەتوانیت لە هەر کاتێکدا بەشداریکردن لەم ئاگادارییانە هەڵبوەشێنیتەوە."
 
 #: utilities/apis/connect-api.php:91
-#, fuzzy
-#| msgid "Zume Training System"
 msgid "Zume Training - Future Trainings"
-msgstr "سیستەمی ڕاهێنانی زوم"
+msgstr "ڕاهێنانی زوم - ڕاهێنانی داهاتوو"
 
 #: utilities/apis/connect-api.php:141
 msgid "your friend"
@@ -7755,9 +7717,9 @@ msgid "Create a 3 month plan to help you grow"
 msgstr "پلانی سێ مانگ دروست بکە بۆ ئەوەی یارمەتی بدات گەشە بکەن"
 
 #: utilities/apis/cta-api.php:322
-#, fuzzy, php-format
+#, php-format
 msgid "%s unlocked"
-msgstr "S%‎قوفڵی نەکراوە"
+msgstr "%s قوفڵی نەکراوە"
 
 #: utilities/apis/cta-api.php:336
 msgid "3-Month Plan Created"
@@ -7784,9 +7746,8 @@ msgid "Joined Community"
 msgstr "پەیوەندی بە کۆمەڵگەکردووە"
 
 #: utilities/hooks/admin-email-test.php:227
-#, fuzzy
 msgid "You do not have sufficient permissions to access this page."
-msgstr "تۆ ڕێگەت پێنادرێت بچیتە ناو ئەم لاپەڕەیە"
+msgstr "تۆ مۆڵەتی پێویستت نییە بۆ چوونە ناو ئەم لاپەڕەیە."
 
 #: utilities/hooks/ipstack-admin-tab.php:47
 msgid "Ipstack"
@@ -7837,16 +7798,16 @@ msgid "Zúme Annual Report"
 msgstr "ڕاپۆرتی ساڵانەی زووم"
 
 #: utilities/models/zume-plans-model.php:153
-#, fuzzy, php-format
+#, php-format
 msgctxt "My first training - username"
 msgid "My first training - %s"
-msgstr "یەکەم ڕاهێنانم s%"
+msgstr "یەکەم ڕاهێنانم %s"
 
 #: utilities/models/zume-plans-model.php:155
-#, fuzzy, php-format
+#, php-format
 msgctxt "Training 2 - username"
 msgid "Training %1$d - %2$s"
-msgstr "ڕاهێنان d-%2$s$1%"
+msgstr "ڕاهێنان %2$s - %1$d"
 
 #: utilities/post-types/posttype-pieces.php:299
 msgid "Piece"
@@ -7854,21 +7815,19 @@ msgstr "پارچە"
 
 #: zume-training-system.php:199
 msgid "Add the details for training with code abc123"
-msgstr ""
+msgstr "وردەکارییەکان بۆ ڕاهێنان زیاد بکە بە کۆدی abc123"
 
 #: zume-training-system.php:203
 msgid "Set the language to e.g. en_US"
-msgstr ""
+msgstr "زمانەکە دابنێ بۆ نموونە. en_US"
 
 #: zume-training-system.php:263
-#, fuzzy
-#| msgid "Learn more"
 msgid "Learn More"
-msgstr "زیاتر فێربە"
+msgstr "زیاتر بزانە"
 
 #: zume-training-system.php:293
 msgid "Zume Admin"
-msgstr ""
+msgstr "زوم ئەدمین"
 
 #: zume-training-system.php:404
 msgid "Someone has requested a password reset for the following account:"
@@ -7876,15 +7835,15 @@ msgstr "کەسێک داوای ڕێستکردنی وشەی نهێنی کردوو�
 
 #. translators: %s: site name
 #: zume-training-system.php:406
-#, fuzzy, php-format
+#, php-format
 msgid "Site Name: %s"
-msgstr "ناوی ماڵپەرs%"
+msgstr "ناوی ماڵپەر%s"
 
 #. translators: %s: user login
 #: zume-training-system.php:408
-#, fuzzy, php-format
+#, php-format
 msgid "Username: %s"
-msgstr "نای بەکارهێنەرs%"
+msgstr "نای بەکارهێنەر%s"
 
 #: zume-training-system.php:409
 msgid "If this was a mistake, just ignore this email and nothing will happen."
@@ -7896,9 +7855,9 @@ msgstr "بۆ ڕێستکردنی وشەی نهێنی خۆت سەردانی ئەم
 
 #. translators: Password reset email subject. %s: Site name
 #: zume-training-system.php:428
-#, fuzzy, php-format
+#, php-format
 msgid "[%s] Password Reset"
-msgstr "ڕێستکردنی وشەی نەهێنیs%"
+msgstr "\\[%s]  ڕێستکردنی وشەی نەهێنی"
 
 #: zume-training-system.php:456
 msgid "Profile Details"
@@ -7930,11 +7889,11 @@ msgstr "ئیمەیلی پەسندکراوی بەکارهێنەر"
 
 #: zume-training-system.php:517
 msgid "Notify of Future Trainings"
-msgstr ""
+msgstr "ئاگادارکردنەوە لە ڕاهێنانەکانی داهاتوو"
 
 #: zume-training-system.php:525
 msgid "Notify of Future Trainings Date Subscribed"
-msgstr ""
+msgstr "ئاگادارکردنەوە لە ڕاهێنانەکانی داهاتوو بەرواری بەشداریکردن"
 
 #: zume-training-system.php:549
 msgid "Coaching Contact ID"
