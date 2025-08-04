@@ -1338,9 +1338,14 @@ export class DashTrainings extends navigator(DashPage) {
                         : ''}
                     ${!this.loading && !this.error && this.code !== 'teaser'
                         ? html`
-                              ${ this.isPublic() ? html`
+                              ${ this.isPublic() && this.isActive() ? html`
                                 <div class="card banner success | grow-0">
                                   <span>${jsObject.translations.public_group}</span>
+                                </div>
+                              ` : ''}
+                              ${ !this.isActive() ? html`
+                                <div class="card banner disabled | grow-0">
+                                  <span>${jsObject.translations.inactive}</span>
                                 </div>
                               ` : ''}
                               <div class="card | group-members | grow-0">
