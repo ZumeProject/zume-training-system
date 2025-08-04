@@ -106,6 +106,6 @@
         transition: transform 120ms linear;
     }
 }
-#training-menu [aria-expanded="true"] .training-groups__toggle {
+[aria-expanded="true"] > .training-groups__toggle {
     transform: rotate(180deg);
 }

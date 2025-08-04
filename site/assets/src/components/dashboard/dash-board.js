@@ -731,6 +731,13 @@ export class DashBoard extends navigator(router(LitElement)) {
             'is-active'
         )
     }
+    toggleInactiveTrainingGroups() {
+        jQuery(this.renderRoot).foundation()
+        jQuery('#training-menu').foundation(
+            'toggle',
+            jQuery('#inactive-training-groups-menu')
+        )
+    }
     redirectToPage(event) {
         const { type } = event.detail
 
@@ -998,12 +1005,12 @@ export class DashBoard extends navigator(router(LitElement)) {
                                                         )}
                                                     ></nav-link>
                                                     <button
-                                                        class="d-flex justify-content-center"
+                                                        class="d-flex justify-content-center | training-groups__toggle"
                                                         @click=${this
                                                             .toggleTrainingGroups}
                                                     >
                                                         <img
-                                                            class="training-groups__toggle svg w-1rem h-1rem"
+                                                            class="svg w-1rem h-1rem"
                                                             src=${jsObject.images_url +
                                                             '/chevron.svg'}
                                                         />
@@ -1018,12 +1025,32 @@ export class DashBoard extends navigator(router(LitElement)) {
                                                             (group) => group.trainingGroupId,
                                                             this.renderTrainingGroupLink,
                                                         )}
-                                                        <li>${jsObject.translations.inactive}</li>
-                                                        ${repeat(
-                                                            this.inactiveTrainingGroups,
-                                                            (group) => group.trainingGroupId,
-                                                            this.renderTrainingGroupLink,
-                                                        )}
+                                                        ${this.inactiveTrainingGroups.length > 0 ? html`
+                                                            <li>
+                                                              ${jsObject.translations.inactive}
+                                                              <button
+                                                                  class="d-flex justify-content-center | training-groups__toggle"
+                                                                  @click=${this
+                                                                      .toggleInactiveTrainingGroups}
+                                                              >
+                                                                  <img
+                                                                      class="svg w-1rem h-1rem"
+                                                                      src=${jsObject.images_url +
+                                                                      '/chevron.svg'}
+                                                                  />
+                                                              </button>
+                                                              <ul
+                                                                  id="inactive-training-groups-menu"
+                                                                  class="menu vertical nested"
+                                                              >
+                                                                  ${repeat(
+                                                                      this.inactiveTrainingGroups,
+                                                                      (group) => group.trainingGroupId,
+                                                                      this.renderTrainingGroupLink,
+                                                                  )}
+                                                              </ul>
+                                                            </li>
+                                                        ` : ''}
                                                     </ul>
                                                 </li>
                                             `
