@@ -2438,12 +2438,11 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                           ${jsObject.wizard_translations.join_training.privacy_policy}
                                       </button>
                                       ${this.isGroupLeader()?"":l`
-                                      }
                                         <button
                                             class="btn outline f--1 red"
                                             @click=${this.leaveGroup}
                                         >
-                                                ${jsObject.translations.leave}
+                                          ${jsObject.translations.leave}
                                             </button>
                                         `}
                                   </div>

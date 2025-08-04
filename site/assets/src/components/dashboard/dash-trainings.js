@@ -1390,12 +1390,11 @@ export class DashTrainings extends navigator(DashPage) {
                                       </button>
                                       ${
                                         !this.isGroupLeader() ? html`
-                                      }
                                         <button
                                             class="btn outline f--1 red"
                                             @click=${this.leaveGroup}
                                         >
-                                                ${jsObject.translations.leave}
+                                          ${jsObject.translations.leave}
                                             </button>
                                         ` : ''
                                       }
