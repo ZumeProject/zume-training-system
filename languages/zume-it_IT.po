@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme Project\n"
 "POT-Creation-Date: 2025-07-29 09:25-0600\n"
-"PO-Revision-Date: 2025-07-30 00:03+0000\n"
-"Last-Translator: Chris <chris@chasm.solutions>\n"
+"PO-Revision-Date: 2025-08-04 13:03+0000\n"
+"Last-Translator: Kyle Koval <kyle.koval@gmail.com>\n"
 "Language-Team: Italian <https://translate.disciple.tools/projects/"
 "zume-training/zume-training-system/it_IT/>\n"
 "Language: it_IT\n"
@@ -4757,11 +4757,11 @@ msgstr "Selezionare il fuso orario"
 
 #: site/dashboard/dashboard.php:219
 msgid "New"
-msgstr "Novità"
+msgstr "Nuovo"
 
 #: site/dashboard/dashboard.php:220 site/dashboard/wizard.php:386
 msgid "Meeting link"
-msgstr "Orario dell’incontro"
+msgstr "Link dell’incontro"
 
 #: site/dashboard/dashboard.php:221
 msgid "Zoom, Google Meet, Microsoft Teams etc."
