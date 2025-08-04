@@ -15,6 +15,7 @@ export class LaunchCourse extends LitElement {
 
         this.translations = {}
         this.urls = {}
+        this.id = window.crypto.randomUUID()
 
         if ( typeof jsObject !== 'undefined' ) {
             this.translations = jsObject.translations
@@ -35,12 +36,12 @@ export class LaunchCourse extends LitElement {
 
     render() {
         return html`
-            <button class="${this.asLink ? 'btn dark tight nav__button' : ' btn  tight'}" data-toggle="launch-course-panel">
+            <button class="${this.asLink ? 'btn dark tight nav__button' : ' btn  tight'}" data-toggle="launch-course-panel-${this.id}">
                 ${this.translations.launch_course}
             </button>
             <div
                 class="dropdown-pane"
-                id="launch-course-panel"
+                id="launch-course-panel-${this.id}"
                 data-dropdown
                 data-auto-focus="true"
                 data-close-on-click="true"

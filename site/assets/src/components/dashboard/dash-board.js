@@ -1251,7 +1251,9 @@ export class DashBoard extends navigator(router(LitElement)) {
                         <iframe width="100%" height="100%" src=${this.exploreCourseUrl()} frameborder="0"></iframe>
                     </div>
                     <div class="center">
-                        <launch-course></launch-course>
+                        <launch-course
+                            position="top"
+                        ></launch-course>
                     </div>
                 </div>
             </div>

@@ -1215,7 +1215,9 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                         <iframe width="100%" height="100%" src=${this.exploreCourseUrl()} frameborder="0"></iframe>
                     </div>
                     <div class="center">
-                        <launch-course></launch-course>
+                        <launch-course
+                            position="top"
+                        ></launch-course>
                     </div>
                 </div>
             </div>
@@ -3035,13 +3037,13 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                         `:""}
                 </div>
             </div>
-        `}}customElements.define("list-link",_l);class wl extends k{static get properties(){return{translations:{type:Object},urls:{type:Object},position:{type:String},asLink:{type:Boolean}}}constructor(){super(),this.translations={},this.urls={},typeof jsObject<"u"&&(this.translations=jsObject.translations,this.urls=jsObject.urls),this.position="bottom";const e=document.querySelector("html").dataset.dir;this.isRtl=e==="rtl"}updated(){jQuery(this.renderRoot).foundation()}render(){return l`
-            <button class="${this.asLink?"btn dark tight nav__button":" btn  tight"}" data-toggle="launch-course-panel">
+        `}}customElements.define("list-link",_l);class wl extends k{static get properties(){return{translations:{type:Object},urls:{type:Object},position:{type:String},asLink:{type:Boolean}}}constructor(){super(),this.translations={},this.urls={},this.id=window.crypto.randomUUID(),typeof jsObject<"u"&&(this.translations=jsObject.translations,this.urls=jsObject.urls),this.position="bottom";const e=document.querySelector("html").dataset.dir;this.isRtl=e==="rtl"}updated(){jQuery(this.renderRoot).foundation()}render(){return l`
+            <button class="${this.asLink?"btn dark tight nav__button":" btn  tight"}" data-toggle="launch-course-panel-${this.id}">
                 ${this.translations.launch_course}
             </button>
             <div
                 class="dropdown-pane"
-                id="launch-course-panel"
+                id="launch-course-panel-${this.id}"
                 data-dropdown
                 data-auto-focus="true"
                 data-close-on-click="true"
