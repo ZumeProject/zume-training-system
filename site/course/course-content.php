@@ -988,23 +988,7 @@ function zume_content( $lang_code = 'en' ) {
             'left' => [],
             'right' => [],
         ],
-        [
-            'key' => 't10_h',
-            'type' => 'discuss',
-            'menu' => [],
-            'length' => [10],
-            'center' => [],
-            'left' => [
-                __( 'DISCUSS', 'zume' ),
-            ],
-            'right' => [
-                [
-                    __( 'What do you learn about mankind from this story?', 'zume' ),
-                    __( 'What do you learn about God?', 'zume' ),
-                    __( 'Do you think it would be easier or harder to share God’s story by telling a story like this?', 'zume' ),
-                ],
-            ],
-        ],
+        
 
         // non-three circles languages
         [
@@ -1035,6 +1019,24 @@ function zume_content( $lang_code = 'en' ) {
             'id' => 10,
             'qr' => create_qr_url( $video_base_url . '10' ),
         ],
+        [
+            'key' => 't10_h',
+            'type' => 'discuss',
+            'menu' => [],
+            'length' => [10],
+            'center' => [],
+            'left' => [
+                __( 'DISCUSS', 'zume' ),
+            ],
+            'right' => [
+                [
+                    __( 'What do you learn about mankind from this story?', 'zume' ),
+                    __( 'What do you learn about God?', 'zume' ),
+                    __( 'Do you think it would be easier or harder to share God’s story by telling a story like this?', 'zume' ),
+                ],
+            ],
+        ],
+        
 
         [ // for three circles languages
             'key' => 's1_3_8',

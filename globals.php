@@ -1557,7 +1557,7 @@ if ( ! function_exists( 'zume_languages' ) ) {
             ),
             'ku' => array(
                 'name' => 'Kurdish',
-                'enDisplayName' => 'Kurdish',
+                'enDisplayName' => 'Kurdish', // sorani
                 'code' => 'ku',
                 'displayCode' => 'ku',
                 'locale' => 'ku',

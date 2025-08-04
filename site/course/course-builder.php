@@ -141,7 +141,7 @@ class Zume_Course_Builder {
                 $session['3'] = ['s1_3_1', 's1_3_2', 's1_3_3', 's1_3_4', 's1_3_5', false, 't9_a', 't9_b', 't9_c', false, 't10_a', 't10_b', 't10_c', 't10_d', 't10_e', 't10_f', 't10_g', false, 's1_3_8', false, 't11_a', 't11_b', 't11_c', 't11_d', false, 's1_3_10', 's1_3_11', 's1_3_12', 'final']; // sesssion 3
             }
             else {
-                $session['3'] = ['s1_3_1', 's1_3_2', 's1_3_3', 's1_3_4', 's1_3_5', false, 't9_a', 't9_b', 't9_c', false, 't10_a', 't10_b', 't10_i', 't10_j', 't10_e', false, 's1_3_8b', false, 't11_a', 't11_b', 't11_c', 't11_d', false, 's1_3_10', 's1_3_11', 's1_3_12', 'final']; // sesssion 3
+                $session['3'] = ['s1_3_1', 's1_3_2', 's1_3_3', 's1_3_4', 's1_3_5', false, 't9_a', 't9_b', 't9_c', false, 't10_a', 't10_b', 't10_i', 't10_j', 't10_e', 't10_h', false, 's1_3_8b', false, 't11_a', 't11_b', 't11_c', 't11_d', false, 's1_3_10', 's1_3_11', 's1_3_12', 'final']; // sesssion 3
             }
             
             $session['4'] = ['s1_4_1', 's1_4_2', 's1_4_3', 's1_4_4', 's1_4_5', false, 't12_a', 't12_b', 't12_c', false, 't13_a', 't13_b', 't13_c', false, 't14_a', 't14_b', 't14_c', false, 't15_a', 't15_b', 't15_c', false, 't16_a', 't16_b', 't16_c', false, 's1_4_6', 's1_4_7', 'final']; // session 4
@@ -164,7 +164,7 @@ class Zume_Course_Builder {
                 $session['6'] = ['s2_6_1', 's2_6_2', 's2_6_3', 's2_6_4', 's2_6_5', false, 't9_a', 't9_b', 't9_c', false, 't13_a', 't13_b', 't13_c', false, 't10_a', 't10_b', 't10_c', 't10_d', 't10_e', 't10_f', 't10_g', false, 's2_6_6', 's2_6_7', 'final']; // session 6
             }
             else {
-                $session['6'] = ['s2_6_1', 's2_6_2', 's2_6_3', 's2_6_4', 's2_6_5', false, 't9_a', 't9_b', 't9_c', false, 't13_a', 't13_b', 't13_c', false, 't10_a', 't10_b', 't10_i', 't10_j', 't10_e', false, 's2_6_6', 's2_6_7', 'final']; // session 6
+                $session['6'] = ['s2_6_1', 's2_6_2', 's2_6_3', 's2_6_4', 's2_6_5', false, 't9_a', 't9_b', 't9_c', false, 't13_a', 't13_b', 't13_c', false, 't10_a', 't10_b', 't10_i', 't10_j', 't10_e', 't10_h', false, 's2_6_6', 's2_6_7', 'final']; // session 6
             }
             $session['7'] = ['s2_7_1', 's2_7_2', 's2_7_3', 's2_7_4', 's2_7_5', false, 's2_7_6', 's2_7_7', 's2_7_8', 'final']; // session 7
             $session['8'] = ['s2_8_1', 's2_8_2', 's2_8_3', 's2_8_4', 's2_8_5', false, 't11_a', 't11_b', 't11_c', 't11_d', false, 't12_a', 't12_b', 't12_c', false, 's2_8_6', 's2_8_7', 'final']; // session 8
@@ -189,7 +189,7 @@ class Zume_Course_Builder {
                 $session['2'] = ['s3_2_1', 's3_2_2', 's1_3_3', 's1_3_5', false, 't9_a', 't9_b', 't9_c', false, 't10_a', 't10_b', 't10_c', 't10_d', 't10_e', 't10_f', 't10_g', false, 's1_3_8', false, 't11_a', 't11_b', 't11_c', 't11_d', false, 
                             's1_3_10', 's1_3_12', false, 'break', false, 's1_4_5', false, 't12_a', 't12_b', 't12_c', false, 't13_a', 't13_b', 't13_c', false, 't14_a', 't14_b', 't14_c', false, 't15_a', 't15_b', 't15_c', false, 't16_a', 't16_b', 't16_c', false, 's1_4_6', 'final', ]; // session 2
             } else {
-                $session['2'] = ['s3_2_1', 's3_2_2', 's1_3_3', 's1_3_5', false, 't9_a', 't9_b', 't9_c', false, 't10_a', 't10_b', 't10_i', 't10_j', 't10_e', false, 's1_3_8b', false, 't11_a', 't11_b', 't11_c', 't11_d', false, 
+                $session['2'] = ['s3_2_1', 's3_2_2', 's1_3_3', 's1_3_5', false, 't9_a', 't9_b', 't9_c', false, 't10_a', 't10_b', 't10_i', 't10_j', 't10_e', 't10_h', false, 's1_3_8b', false, 't11_a', 't11_b', 't11_c', 't11_d', false, 
                             's1_3_10', 's1_3_12', false, 'break', false, 's1_4_5', false, 't12_a', 't12_b', 't12_c', false, 't13_a', 't13_b', 't13_c', false, 't14_a', 't14_b', 't14_c', false, 't15_a', 't15_b', 't15_c', false, 't16_a', 't16_b', 't16_c', false, 's1_4_6', 'final', ]; // session 2
             }
             $session['3'] = ['s3_3_1', 's3_3_2', 's1_5_3', 's1_5_5', false, 't17_a', 't17_b', false, 't18_a', 't18_b', 't18_c', false, 't19_a', false, 't17_d', 't17_e', false, 'break', false, 's1_6_5', false, 't20_a', 't20_b', 't20_c', false, 
