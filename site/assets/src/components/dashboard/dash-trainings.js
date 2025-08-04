@@ -6,13 +6,14 @@ import { Wizards } from '../wizard/wizard-constants'
 import { RouteNames } from './routes'
 import { zumeRequest } from '../../js/zumeRequest'
 import { DateTime } from 'luxon'
+import { navigator } from 'lit-element-router'
 import {
     zumeAttachObservers,
     zumeDetachObservers,
 } from '../../js/zumeAttachObservers'
 import { encodeJSON } from '../../js/Base64'
 
-export class DashTrainings extends DashPage {
+export class DashTrainings extends navigator(DashPage) {
     static get properties() {
         return {
             showTeaser: { type: Boolean },
@@ -38,6 +39,7 @@ export class DashTrainings extends DashPage {
             privacyPolicyOpen: { type: Boolean, attribute: false },
             isPrivate: { type: Boolean, attribute: false },
             showPublicGroupWarning: { type: Boolean, attribute: false },
+            isConfirmDelete: { type: Boolean, attribute: false },
         }
     }
 
@@ -69,6 +71,7 @@ export class DashTrainings extends DashPage {
         this.renderTrainingItem = this.renderTrainingItem.bind(this)
         this.isPrivate = false
         this.showPublicGroupWarning = false
+        this.isConfirmDelete = false
     }
 
     connectedCallback() {
@@ -816,6 +819,27 @@ export class DashTrainings extends DashPage {
             }
         }, 2000)
     }
+    leaveGroup() {
+        zumeRequest
+            .post(`plan/${this.training.join_key}/leave`)
+            .then((result) => {
+                this.dispatchEvent(
+                    new CustomEvent('training:changed', { bubbles: true })
+                )
+                this.navigate(jsObject.base_url)
+            })
+    }
+    deleteGroup() {
+        zumeRequest
+            .delete(`plan/${this.training.join_key}`)
+            .then((result) => {
+                this.dispatchEvent(
+                    new CustomEvent('training:changed', { bubbles: true })
+                )
+                this.closeEditSessionDetailsModal()
+                this.navigate(jsObject.base_url)
+            })
+    }
     renderListItem(session) {
         const { id, name, datetime, completed } = session
 
@@ -1342,7 +1366,7 @@ export class DashTrainings extends DashPage {
                                       />
                                   </button>
                                   <div
-                                      class="zume-collapse | mt-0"
+                                      class="zume-collapse | stack | mt-0"
                                       ?data-expand=${this.groupMembersOpen}
                                   >
                                       ${!this.loading &&
@@ -1364,6 +1388,17 @@ export class DashTrainings extends DashPage {
                                       >
                                           ${jsObject.wizard_translations.join_training.privacy_policy}
                                       </button>
+                                      ${
+                                        !this.isGroupLeader() ? html`
+                                      }
+                                        <button
+                                            class="btn outline f--1 red"
+                                            @click=${this.leaveGroup}
+                                        >
+                                                ${jsObject.translations.leave}
+                                            </button>
+                                        ` : ''
+                                      }
                                   </div>
                                   <div class="stack-1 mt-1">
                                     <button
@@ -1911,33 +1946,62 @@ export class DashTrainings extends DashPage {
                         </button>
                       </div>
                     ` : ''}
-                    <div
-                        class="d-flex align-items-center justify-content-center gap--1"
-                    >
-                        <button
-                            class="btn outline tight"
-                            @click=${this.closeEditSessionDetailsModal}
-                            ?disabled=${this.isSavingSession}
-                            aria-disabled=${this.isSavingSession
-                                ? 'true'
-                                : 'false'}
-                        >
-                            ${jsObject.translations.cancel}
-                        </button>
-                        <button
-                            class="btn tight"
-                            ?disabled=${this.isSavingSession || this.showPublicGroupWarning}
-                            aria-disabled=${this.isSavingSession || this.showPublicGroupWarning
-                                ? 'true'
-                                : 'false'}
-                        >
-                            ${jsObject.translations.save}
-                            <span
-                                class="loading-spinner ${this.isSavingSession
-                                    ? 'active'
-                                    : ''}"
-                            ></span>
-                        </button>
+                    <div class="stack">
+                      <div
+                          class="d-flex align-items-center justify-content-center gap--1"
+                      >
+                          <button
+                              class="btn outline tight"
+                              @click=${this.closeEditSessionDetailsModal}
+                              ?disabled=${this.isSavingSession}
+                              aria-disabled=${this.isSavingSession
+                                  ? 'true'
+                                  : 'false'}
+                          >
+                              ${jsObject.translations.cancel}
+                          </button>
+                          <button
+                              class="btn tight"
+                              ?disabled=${this.isSavingSession || this.showPublicGroupWarning}
+                              aria-disabled=${this.isSavingSession || this.showPublicGroupWarning
+                                  ? 'true'
+                                  : 'false'}
+                          >
+                              ${jsObject.translations.save}
+                              <span
+                                  class="loading-spinner ${this.isSavingSession
+                                      ? 'active'
+                                      : ''}"
+                              ></span>
+                          </button>
+                      </div>
+                      <hr>
+                      ${
+                        this.isConfirmDelete ? html`
+                            <div class="">
+                              <p class="bold f-1">${jsObject.translations.delete}?</p>
+                              <div class="cluster">
+                                  <button class="btn outline tight" @click=${() => this.isConfirmDelete = false}>
+                                      ${jsObject.translations.no}
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn tight red"
+                                    @click=${() => this.deleteGroup()}
+                                  >
+                                      ${jsObject.translations.yes}
+                                  </button>
+                              </div>
+                            </div>
+                        ` : html`
+                            <button
+                                class="center | btn outline tight red"
+                                @click=${() => this.isConfirmDelete = true}
+                            >
+                                ${jsObject.translations.delete}
+                            </button>
+                        `
+                      }
                     </div>
                 </form>
             </div>

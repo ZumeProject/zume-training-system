@@ -52,7 +52,14 @@ class Zume_Plans_Endpoints
             ]
         );
         register_rest_route(
-            $this->namespace, '/plan', [
+            $this->namespace, '/plan/(?P<code>\w+)/leave', [
+                'methods' => 'POST',
+                'callback' => [ $this, 'leave_plan' ],
+                'permission_callback' => 'is_user_logged_in',
+            ]
+        );
+        register_rest_route(
+            $this->namespace, '/plan/(?P<code>\w+)', [
                 'methods' => 'DELETE',
                 'callback' => [ $this, 'delete_plan' ],
                 'permission_callback' => 'is_user_logged_in',
@@ -131,23 +138,36 @@ class Zume_Plans_Endpoints
         if ( ! is_user_logged_in() ) {
             return new WP_Error( __METHOD__, 'User not logged in', array( 'status' => 401 ) );
         }
-        $params = dt_recursive_sanitize_array( $request->get_params() );
-        if ( ! isset( $params['key'], $params['user_id'] ) ) {
-            return new WP_Error( __METHOD__, 'key and user_id required.', array( 'status' => 401 ) );
-        }
-        $user_id = zume_validate_user_id_request( $params['user_id'] );
-        if ( is_wp_error( $user_id ) ) {
-            return $user_id;
-        }
+        $user_id = get_current_user_id();
+        $code = $request['code'];
 
-        $post_id = Zume_Plans_Model::can_user_edit_plan( $params['key'], $user_id );
+        $user_id = zume_validate_user_id_request( $user_id );
+
+        $post_id = Zume_Plans_Model::can_user_edit_plan( $code, $user_id );
         if ( is_wp_error( $post_id ) ) {
             return $post_id;
         }
 
-        return Zume_Plans_Model::delete_plan( $params['type'], $params['subtype'], $user_id );
-    }
+        $return = Zume_Plans_Model::delete_plan( $user_id, $post_id );
+        if ( is_wp_error( $return ) ) {
+            return $return;
+        }
 
+        $return = Zume_Plans_Model::leave_plan( $code, $user_id );
+        if ( is_wp_error( $return ) ) {
+            return $return;
+        }
+
+        return [
+            'success' => true,
+        ];
+    }
+    public function leave_plan( WP_REST_Request $request ) {
+        $params = dt_recursive_sanitize_array( $request->get_params() );
+        $code = $params['code'];
+        $user_id = get_current_user_id();
+        return Zume_Plans_Model::leave_plan( $code, $user_id );
+    }
     public function completed_sessions( WP_REST_Request $request ) {
         $params = dt_recursive_sanitize_array( $request->get_params() );
 
