@@ -1677,7 +1677,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     ${this.routeName==="getting-started"?"":l`<dash-cta></dash-cta>`}
                 </div>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-top-level",Ye);class cl extends Ye{constructor(){super("getting-started")}createRenderRoot(){return this}}customElements.define("dash-getting-started",cl);class dl extends yt{static get properties(){return{showTeaser:{type:Boolean},scriptUrl:{type:String,attribute:!1},loading:{type:Boolean,attribute:!1}}}constructor(){super(),this.showTeaser=!1,this.scriptUrl=""}connectedCallback(){super.connectedCallback(),this.openModal=this.openModal.bind(this),this.handleLoad=this.handleLoad.bind(this)}firstUpdated(){jQuery(this.renderRoot).foundation(),document.querySelector("#map-iframe").addEventListener("load",this.handleLoad)}joinCommunity(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.joinCommunity}}))}openModal(t){let e=t.target.dataset.map;const s=this.scriptUrl;e==="hundred-hour-map"?this.scriptUrl="/zume_app/last100_hours?show-exit-button":e==="vision-map"?this.scriptUrl="/zume_app/heatmap_trainees?show-exit-button":e==="church-map"?this.scriptUrl="/zume_app/heatmap_churches?show-exit-button":this.scriptUrl="",s!==this.scriptUrl&&(this.loading=!0);const n=document.querySelector("#map-modal");jQuery(n).foundation("open")}handleLoad(){this.loading=!1,this.attachExitButtonEventHandler()}attachExitButtonEventHandler(){const e=document.querySelector("#map-iframe").contentDocument.querySelector("#exit-btn");e==null||e.addEventListener("click",s=>{this.closeModal()})}closeModal(){const t=document.querySelector("#map-modal");jQuery(t).foundation("close")}render(){return l`
+        `}createRenderRoot(){return this}}customElements.define("dash-top-level",Ye);class cl extends Ye{constructor(){super("getting-started")}createRenderRoot(){return this}}customElements.define("dash-getting-started",cl);class dl extends yt{static get properties(){return{showTeaser:{type:Boolean},scriptUrl:{type:String,attribute:!1},loading:{type:Boolean,attribute:!1}}}constructor(){super(),this.showTeaser=!1,this.scriptUrl=""}connectedCallback(){super.connectedCallback(),this.openModal=this.openModal.bind(this),this.handleLoad=this.handleLoad.bind(this)}firstUpdated(){jQuery(this.renderRoot).foundation(),document.querySelector("#map-iframe").addEventListener("load",this.handleLoad)}joinCommunity(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.joinCommunity}}))}openModal(t){const e=this.scriptUrl;t==="hundred-hour-map"?this.scriptUrl="/zume_app/last100_hours?show-exit-button":t==="vision-map"?this.scriptUrl="/zume_app/heatmap_trainees?show-exit-button":t==="church-map"?this.scriptUrl="/zume_app/heatmap_churches?show-exit-button":this.scriptUrl="",e!==this.scriptUrl&&(this.loading=!0);const s=document.querySelector("#map-modal");jQuery(s).foundation("open")}handleLoad(){this.loading=!1,this.attachExitButtonEventHandler()}attachExitButtonEventHandler(){const e=document.querySelector("#map-iframe").contentDocument.querySelector("#exit-btn");e==null||e.addEventListener("click",s=>{this.closeModal()})}closeModal(){const t=document.querySelector("#map-modal");jQuery(t).foundation("close")}render(){return l`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <dash-sidebar-toggle></dash-sidebar-toggle>
@@ -1715,24 +1715,24 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                           `:l`
                               <div class="nav-grid" data-full-width>
                                   <grid-link
-                                      data-map="hundred-hour-map"
-                                      @click=${this.openModal}
+                                      @click=${()=>this.openModal("hundred-hour-map")}
                                       text=${jsObject.translations.hundred_hour_map}
                                       ?noRenderText=${!0}
+                                      as="button"
                                   >
                                   </grid-link>
                                   <grid-link
-                                      data-map="vision-map"
-                                      @click=${this.openModal}
+                                      @click=${()=>this.openModal("vision-map")}
                                       text=${jsObject.translations.training_vision_map}
                                       ?noRenderText=${!0}
+                                      as="button"
                                   >
                                   </grid-link>
                                   <grid-link
-                                      data-map="church-map"
-                                      @click=${this.openModal}
+                                      @click=${()=>this.openModal("church-map")}
                                       text=${jsObject.translations.simple_church_planting_map}
                                       ?noRenderText=${!0}
+                                      as="button"
                                   >
                                   </grid-link>
                                   <!-- <grid-link

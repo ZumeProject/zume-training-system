@@ -40,23 +40,19 @@ export class DashMaps extends DashPage {
         )
     }
 
-    openModal(event) {
-        let map = event.target.dataset.map
-
+    openModal(map) {
         const currentUrl = this.scriptUrl
 
         /* use this to load the iframes by src into one iframe tag in one modal */
         /* This works but the heatmap sites don't load the heatmap properly */
-        if (true) {
-            if (map === 'hundred-hour-map') {
-                this.scriptUrl = '/zume_app/last100_hours?show-exit-button'
-            } else if (map === 'vision-map') {
-                this.scriptUrl = '/zume_app/heatmap_trainees?show-exit-button'
-            } else if (map === 'church-map') {
-                this.scriptUrl = '/zume_app/heatmap_churches?show-exit-button'
-            } else {
-                this.scriptUrl = ''
-            }
+        if (map === 'hundred-hour-map') {
+            this.scriptUrl = '/zume_app/last100_hours?show-exit-button'
+        } else if (map === 'vision-map') {
+            this.scriptUrl = '/zume_app/heatmap_trainees?show-exit-button'
+        } else if (map === 'church-map') {
+            this.scriptUrl = '/zume_app/heatmap_churches?show-exit-button'
+        } else {
+            this.scriptUrl = ''
         }
 
         if (currentUrl !== this.scriptUrl) {
@@ -130,27 +126,27 @@ export class DashMaps extends DashPage {
                         : html`
                               <div class="nav-grid" data-full-width>
                                   <grid-link
-                                      data-map="hundred-hour-map"
-                                      @click=${this.openModal}
+                                      @click=${() => this.openModal('hundred-hour-map')}
                                       text=${jsObject.translations
                                           .hundred_hour_map}
                                       ?noRenderText=${true}
+                                      as="button"
                                   >
                                   </grid-link>
                                   <grid-link
-                                      data-map="vision-map"
-                                      @click=${this.openModal}
+                                      @click=${() => this.openModal('vision-map')}
                                       text=${jsObject.translations
                                           .training_vision_map}
                                       ?noRenderText=${true}
+                                      as="button"
                                   >
                                   </grid-link>
                                   <grid-link
-                                      data-map="church-map"
-                                      @click=${this.openModal}
+                                      @click=${() => this.openModal('church-map')}
                                       text=${jsObject.translations
                                           .simple_church_planting_map}
                                       ?noRenderText=${true}
+                                      as="button"
                                   >
                                   </grid-link>
                                   <!-- <grid-link
