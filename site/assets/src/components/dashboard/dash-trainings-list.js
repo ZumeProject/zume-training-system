@@ -3,12 +3,14 @@ import { repeat } from 'lit/directives/repeat.js'
 import { DashBoard } from './dash-board'
 import { RouteNames } from './routes'
 import { Wizards } from '../wizard/wizard-constants'
+import { zumeAttachObservers } from '../../js/zumeAttachObservers'
 
 export class DashTrainingsList extends LitElement {
     static get properties() {
         return {
             activeTrainingGroups: { type: Object, attribute: false },
             inactiveTrainingGroups: { type: Object, attribute: false },
+            inactiveTrainingGroupsOpen: { type: Boolean, attribute: false },
         }
     }
 
@@ -18,6 +20,11 @@ export class DashTrainingsList extends LitElement {
         this.inactiveTrainingGroups = jsObject.inactive_training_groups
         this.routeName = RouteNames.myTrainings
         this.route = DashBoard.getRoute(this.routeName)
+        this.inactiveTrainingGroupsOpen = true
+    }
+
+    firstUpdated() {
+        zumeAttachObservers(this.renderRoot, 'dash-trainings-list')
     }
 
     makeTrainingHref(code) {
@@ -34,6 +41,10 @@ export class DashTrainingsList extends LitElement {
                 detail: { type: Wizards.planDecision },
             })
         )
+    }
+
+    toggleInactiveTrainingGroups() {
+        this.inactiveTrainingGroupsOpen = !this.inactiveTrainingGroupsOpen
     }
 
     render() {
@@ -73,20 +84,22 @@ export class DashTrainingsList extends LitElement {
                                 ></training-link>
                             `
                         )}
-                        <h2 class="h4">${jsObject.translations.inactive}</h2>
-                        ${repeat(
-                            this.inactiveTrainingGroups,
-                            ({ key }) => key,
-                            (group) => html`
-                                <training-link
-                                    as="nav"
-                                    text=${group.title}
-                                    href=${this.makeTrainingHref(
-                                        group.join_key
-                                    )}
-                                ></training-link>
-                            `
-                        )}
+                        ${
+                            this.inactiveTrainingGroups.length > 0 ? html`
+                                <h2 class="h4" @click=${this.toggleInactiveTrainingGroups}>${jsObject.translations.inactive}</h2>
+                                <div class="zume-collapse" ?data-expand=${this.inactiveTrainingGroupsOpen}>
+                                  ${repeat(this.inactiveTrainingGroups,({ key }) => key,(group) => html`
+                                      <training-link
+                                          as="nav"
+                                          text=${group.title}
+                                          href=${this.makeTrainingHref(
+                                              group.join_key
+                                          )}
+                                      ></training-link>
+                                      `
+                                  )}
+                                </div>
+                        ` : ''}
                     </div>
                 </div>
                 <div class="dashboard__secondary">

@@ -17,7 +17,6 @@ export class ConfirmTraining extends LitElement {
     constructor() {
         super()
         this.t = {}
-
         this.training = {}
     }
 
@@ -25,7 +24,19 @@ export class ConfirmTraining extends LitElement {
         const stateManager = WizardStateManager.getInstance(Modules.joinTraining)
         const data = stateManager.get(Steps.confirmPlan)
 
-        this.training = data.training
+        if ( !data || !data.training ) {
+          const code = (new URLSearchParams(window.location.search)).get('code')
+          this.getTraining( code )
+        } else {
+          this.training = data.training
+        }
+    }
+
+    getTraining( code ) {
+      zumeRequest.get( `/plan/${code}`)
+      .then( (training) => {
+        this.training = training
+      })
     }
 
     sendDoneStepEvent() {
