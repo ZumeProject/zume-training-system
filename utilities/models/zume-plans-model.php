@@ -262,13 +262,43 @@ class Zume_Plans_Model {
 
         return 1;
     }
+    public static function leave_plan( $code, $user_id ) {
+        $post_id = Zume_Connect_Endpoints::test_join_key( $code );
+        if ( !$post_id ) {
+            return new WP_Error( 'bad-plan-code', 'invalid key', array( 'status' => 400 ) );
+        }
 
-    public static function delete_plan( $type, $subtype, $user_id ) {
+        $contact_id = zume_get_user_contact_id( $user_id );
+
+        $updates = [
+            'participants' => [
+                'values' => [
+                    [
+                        'value' => $contact_id,
+                        'delete' => true,
+                    ],
+                ],
+            ],
+        ];
+        $result = DT_Posts::update_post( self::$post_type, $post_id, $updates, true, false );
+        if ( is_wp_error( $result ) ) {
+            return $result;
+        }
+
+        return $post_id;
+    }
+
+    public static function delete_plan( $user_id, $post_id ) {
         global $wpdb, $table_prefix;
 
+        $update = self::update_plan( $post_id, [ 'status' => 'inactive' ] );
+        if ( is_wp_error( $update ) ) {
+            return $update;
+        }
+
         $fields = [
-            'type' => $type,
-            'subtype' => $subtype,
+            'type' => 'system',
+            'subtype' => 'plan_created',
             'user_id' => $user_id,
         ];
 

@@ -475,6 +475,11 @@ input::-webkit-calendar-picker-indicator {
   color: color('white');
   border: none;
 }
+.banner.disabled {
+  background-color: color('gray-600');
+  color: white;
+  border: none;
+}
 
 .video-frame {
   border: 2px solid color('white');
