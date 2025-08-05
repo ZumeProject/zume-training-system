@@ -1,7 +1,7 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
-class Zume_Local_Map extends Zume_Magic_Page
+class Zume_Local_Map_Old extends Zume_Magic_Page
 {
     public $magic = false;
     public $parts = false;
@@ -97,6 +97,13 @@ class Zume_Local_Map extends Zume_Magic_Page
                 font-family: 'Arial', sans-serif;
                 background-color: #f5f5f5;
                 color: #333;
+            }
+
+            .container {
+                max-width: 900px;
+                margin: 0 auto;
+                background-color: white;
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
             }
 
             .header {
@@ -480,10 +487,6 @@ class Zume_Local_Map extends Zume_Magic_Page
                     text-align: center;
                 }
 
-                .container {
-                    max-width: 900px;
-                }
-
                 .title-section h1 {
                     font-size: 36px;
                 }
@@ -563,6 +566,9 @@ class Zume_Local_Map extends Zume_Magic_Page
         ?>
         <script>
             jQuery(document).ready(function($) {
+                // Initialize progress visuals first
+                initializeProgressVisuals();
+
                 // Check if localMapObject is available and has location data
                 if (typeof localMapObject === 'undefined' || !localMapObject.location_data) {
                     console.log('Local map object or location data not available');
@@ -608,6 +614,62 @@ class Zume_Local_Map extends Zume_Magic_Page
                     // Add click handler for more detailed information
                     addMapClickHandlers();
                 });
+
+                /**
+                 * Initialize the progress visuals with dynamic data
+                 */
+                function initializeProgressVisuals() {
+                    // Initialize trainees progress dots
+                    initializeProgressDots('trainees-progress-dots', localMapObject.trainees_percentage);
+
+                    // Initialize churches progress dots
+                    initializeProgressDots('churches-progress-dots', localMapObject.churches_percentage);
+
+                    // Animate the circular progress indicators
+                    animateProgress('trainees-progress', localMapObject.trainees_percentage);
+                    animateProgress('churches-progress', localMapObject.churches_percentage);
+                }
+
+                /**
+                 * Generate progress dots based on percentage
+                 */
+                function initializeProgressDots(elementId, percentage) {
+                    const container = document.getElementById(elementId);
+                    if (!container) return;
+
+                    // Clear existing dots
+                    container.innerHTML = '';
+
+                    // Create 12 dots (matching the HTML template)
+                    const totalDots = 12;
+                    const filledDots = Math.round((percentage / 100) * totalDots);
+
+                    for (let i = 0; i < totalDots; i++) {
+                        const dot = document.createElement('div');
+                        dot.className = 'progress-dot';
+                        if (i < filledDots) {
+                            dot.classList.add('filled');
+                        }
+                        container.appendChild(dot);
+                    }
+                }
+
+                /**
+                 * Animate the circular progress indicators
+                 */
+                function animateProgress(elementId, percentage) {
+                    const element = document.getElementById(elementId);
+                    if (!element) return;
+
+                    const progressCircle = element.querySelector('.circle-progress');
+                    if (!progressCircle) return;
+
+                    const degrees = (percentage / 100) * 360;
+
+                    setTimeout(() => {
+                        progressCircle.style.background = `conic-gradient(#00bcd4 ${degrees}deg, #e0e0e0 ${degrees}deg)`;
+                    }, 500);
+                }
 
                 /**
                  * Determine appropriate zoom level based on location level
@@ -910,6 +972,98 @@ class Zume_Local_Map extends Zume_Magic_Page
                     <div id="map" class="map-placeholder"><?php echo esc_html__( 'Global Map', 'zume' ) ?></div>
                 </div>
 
+                <div class="goals-section">
+                    <h2 class="goals-title"><?php echo esc_html__( 'Goal', 'zume' ) ?></h2>
+
+                    <div class="goals-container">
+                        <!-- Trainees Section -->
+                        <div class="goal-item">
+                            <div class="goal-left">
+                                <div class="goal-title"><?php echo esc_html__( 'Trainees', 'zume' ) ?></div>
+                                <div class="goal-icon">
+                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/countriesandterritories-groups.svg?raw=true', __DIR__ ) ); ?>" alt="<?php echo esc_attr__( 'Trainees', 'zume' ) ?>" />
+                                </div>
+                            </div>
+
+                            <div class="goal-middle">
+                                <div class="goal-subtitle">
+                                    <?php if ( $this->location_data['country_code'] === 'US' ) : ?>
+                                        <?php echo esc_html__( '1 trained multiplying disciple per 5,000 in the United States', 'zume' ) ?>
+                                    <?php else : ?>
+                                        <?php echo esc_html__( '1 trained multiplying disciple per 50,000 globally', 'zume' ) ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="stats-section">
+                                    <div class="progress-visual" id="trainees-progress-dots">
+                                        <!-- Progress dots will be generated dynamically -->
+                                    </div>
+                                    <div class="stat-labels">
+                                        <span class="stat-label"><?php echo esc_html__( 'Trainees Reported', 'zume' ) ?></span>
+                                        <span class="stat-label"><?php echo esc_html__( 'Trainees Needed', 'zume' ) ?></span>
+                                    </div>
+                                    <div class="stat-numbers">
+                                        <span class="stat-number"><?php echo number_format( $this->get_trainees_count() ) ?></span>
+                                        <span class="stat-number"><?php echo number_format( $this->calculate_trainees_needed() ) ?></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="goal-right">
+                                <div class="progress-circle" id="trainees-progress">
+                                    <div class="circle-bg"></div>
+                                    <div class="circle-progress">
+                                        <div class="circle-text"><?php echo esc_html( $this->calculate_progress_percentage( 'trainees' ) ) ?>%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-divider"></div>
+
+                        <!-- Churches Section -->
+                        <div class="goal-item">
+                            <div class="goal-left">
+                                <div class="goal-title"><?php echo esc_html__( 'Churches', 'zume' ) ?></div>
+                                <div class="goal-icon">
+                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/GroupsFormed.svg?raw=true', __DIR__ ) ); ?>" alt="<?php echo esc_attr__( 'Churches', 'zume' ) ?>" />
+                                </div>
+                            </div>
+
+                            <div class="goal-middle">
+                                <div class="goal-subtitle">
+                                    <?php if ( $this->location_data['country_code'] === 'US' ) : ?>
+                                        <?php echo esc_html__( '2 simple churches per 5,000 people in the United States', 'zume' ) ?>
+                                    <?php else : ?>
+                                        <?php echo esc_html__( '2 simple churches per 50,000 people globally', 'zume' ) ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="stats-section">
+                                    <div class="progress-visual" id="churches-progress-dots">
+                                        <!-- Progress dots will be generated dynamically -->
+                                    </div>
+                                    <div class="stat-labels">
+                                        <span class="stat-label"><?php echo esc_html__( 'Churches Reported', 'zume' ) ?></span>
+                                        <span class="stat-label"><?php echo esc_html__( 'Churches Needed', 'zume' ) ?></span>
+                                    </div>
+                                    <div class="stat-numbers">
+                                        <span class="stat-number"><?php echo number_format( $this->get_churches_count() ) ?></span>
+                                        <span class="stat-number"><?php echo number_format( $this->calculate_churches_needed() ) ?></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="goal-right">
+                                <div class="progress-circle" id="churches-progress">
+                                    <div class="circle-bg"></div>
+                                    <div class="circle-progress">
+                                        <div class="circle-text"><?php echo esc_html( $this->calculate_progress_percentage( 'churches' ) ) ?>%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="footer">
                     <div class="footer-text"><?php echo esc_html__( 'Getting Started', 'zume' ) ?></div>
                     <div class="qr-code">
@@ -920,7 +1074,6 @@ class Zume_Local_Map extends Zume_Magic_Page
                         <div class="url">https://zume.training</div>
                     </div>
                 </div>
-
             </div>
         <?php endif; ?>
 
@@ -1147,4 +1300,4 @@ class Zume_Local_Map extends Zume_Magic_Page
 }
 
 // Initialize the page
-Zume_Local_Map::instance();
+//Zume_Local_Map_Old::instance();
