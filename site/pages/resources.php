@@ -176,10 +176,6 @@ class Zume_Training_Resources extends Zume_Magic_Page
 
         <hr>
 
-        <?php include( trailingslashit( plugin_dir_path( __DIR__ ) ) . 'parts/download-slides.php' ) ?>
-
-        <hr>
-
         <div class="container-md stack-2 | py-1 w-70">
             <div class="switcher | gap-3">
                 <div class="stack-1 | grow-2">
@@ -199,7 +195,10 @@ class Zume_Training_Resources extends Zume_Magic_Page
                 </div>
             </div>
         </div>
+        
+        <hr>
 
+        <?php include( trailingslashit( plugin_dir_path( __DIR__ ) ) . 'parts/download-slides.php' ) ?>
        
 
         <br></br>

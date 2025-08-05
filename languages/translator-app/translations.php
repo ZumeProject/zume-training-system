@@ -333,14 +333,16 @@ class Zume_Training_Translations extends Zume_Magic_Page
                         <th style="width:1%"></th>
                         <th style="width:8%">Language</th>
                         <th style="width:8%">Native</th>
-                        <th style="width:4%">Population</th>
+                        <!-- <th style="width:4%">Population</th> -->
                         <th style="width:2%">RTL</th>
                         <th style="width:2%">Code</th>
                         <th style="width:2%">Locale</th>
                         <th style="width:2%">Weblate</th>
-                        <th style="width:4%">Translator Enabled</th>
+                        
                         <th style="width:4%">v5 Ready</th>
                         <th style="width:4%">Pieces</th>
+
+                        <th style="width:3%">3 Circles</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -353,15 +355,16 @@ class Zume_Training_Translations extends Zume_Magic_Page
                             <td><?php echo esc_html( $globe_count ) ?></td>
                             <td><a href="/<?php echo esc_attr( $code ) ?>/app/translator/?tab=status"><?php echo esc_html( $language['enDisplayName'] ) ?></a></td>
                             <td><?php echo esc_html( $language['nativeName'] ) ?></td>
-                            <td><?php echo esc_html( number_format( $language['population'] ) ) ?></td>
+                            <!-- <td><?php // echo esc_html( number_format( $language['population'] ) ) ?></td> -->
                             <td><?php echo ( $language['rtl'] ) ?'Yes' :'No' ?></td>
                             <td><?php echo esc_html( $language['code'] ) ?></td>
                             <td><?php echo esc_html( $language['locale'] ) ?></td>
                             <td><?php echo esc_html( $language['weblate'] ) ?></td>
                             
-                            <td><?php echo ( $language['enable_flags']['translator_enabled'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+                            
                             <td><?php echo ( $language['enable_flags']['version_5_ready'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $language['enable_flags']['pieces_pages'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+                            <td><?php echo ( $language['enable_flags']['3_circles'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                         </tr>
                         <?php
                         $globe_count++;
@@ -395,7 +398,8 @@ class Zume_Training_Translations extends Zume_Magic_Page
                         <th style="width:3%">Int key</th>
                         <th style="width:3%">Int ppt</th>
 
-                        
+
+   
                     </tr>
                     </thead>
                     <tbody>
@@ -428,6 +432,8 @@ class Zume_Training_Translations extends Zume_Magic_Page
                             <td><?php echo ( $elements['guidebook_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $elements['key_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
                             <td><?php echo ( $elements['ppt_intensive'] ) ? '<span class="green"></span>' : '<span class="red"></span>' ?></td>
+
+                            
 
                         </tr>
                         <?php

@@ -196,7 +196,7 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
 
                 <?php if ( $is_public ) : ?>
 
-                    <a href="<?php echo esc_url( zume_join_a_public_plan_url() ); ?>" class="btn outline">
+                    <a href="<?php echo esc_url( zume_join_a_public_plan_url( $this->lang_code ) ); ?>" class="btn outline">
                         <?php echo esc_html__( 'Back to Public Training Groups', 'zume' ); ?>
                     </a>
 

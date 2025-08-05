@@ -34,12 +34,7 @@ if ( is_admin() ) {
                     </form>
                 </div>
 
-
-
-
                 <hr></hr>
-
-
 
                 <?php
                 if ( isset( $_POST['language'] ) && isset( $_POST[__FUNCTION__ . '_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[__FUNCTION__ . '_nonce'] ) ), __FUNCTION__ ) ) {
@@ -47,13 +42,9 @@ if ( is_admin() ) {
                     $language_code = $language['code'];
                     ?>
 
-
                     <h1><?php echo 'Language: ' . esc_html( $language['name'] ) ?></h1>
 
-
                     <hr></hr>
-
-
 
                     <h2>Pieces</h2>
                     <?php
@@ -69,6 +60,8 @@ if ( is_admin() ) {
                             JOIN zume_postmeta pm ON p.ID=pm.post_id AND pm.meta_key = 'zume_lang' AND pm.meta_value = %s
                             JOIN zume_postmeta pm1 ON p.ID=pm1.post_id AND pm1.meta_key = 'zume_piece' AND pm1.meta_value = %s
                             WHERE p.post_type = 'zume_pieces'", $language_code, $item['key'] ) );
+
+
                         if ( $installed ) {
                             echo '<p>' . esc_html( $item['title'] ) . ' - <a href="'.esc_url( site_url() ).'/wp-admin/post.php?post='.esc_url( $installed ).'&action=edit">&#10003;</a></p>';
                         } else {
@@ -93,6 +86,22 @@ if ( is_admin() ) {
                         "SELECT p.ID
                         FROM zume_posts p
                         WHERE p.post_type = 'zume_scripts' AND p.post_title = %s", $language_code ) );
+
+                    if ( ! $script_id ) {
+                        // Insert a new zume_scripts post for this language
+                        $new_script_id = wp_insert_post( array(
+                            'post_title'   => $language_code,
+                            'post_type'    => 'zume_scripts',
+                            'post_status'  => 'publish',
+                        ) );
+                        if ( $new_script_id && ! is_wp_error( $new_script_id ) ) {
+                            $script_id = $new_script_id;
+                            echo '<p>Created new Script record - &#10003; (ID: ' . esc_html( $script_id ) . ')</p>';
+                        } else {
+                            echo '<p style="color:red;">Failed to create Script record for language: ' . esc_html( $language_code ) . '</p>';
+                        }
+                    }
+
                     if ( $script_id ) {
                         echo '<p>Script - &#10003;</p>';
 
@@ -103,7 +112,7 @@ if ( is_admin() ) {
                             foreach ( $fields as $key => $item ) {
                                 if ( ! isset( $meta[$key] ) ) {
                                     update_post_meta( $script_id, $key, '' );
-                                    echo '<p>Added ' . esc_html( $item['title'] ) . '('. esc_html( $key ) .') - &#10003;</p>';
+                                    echo '<p>Added ' . esc_html( $item['name'] ) . '('. esc_html( $key ) .') - &#10003;</p>';
                                 }
                             }
                         }
@@ -126,6 +135,21 @@ if ( is_admin() ) {
                         FROM zume_posts p
                         WHERE p.post_type = 'zume_download' AND p.post_title = %s", $language_code ) );
 
+                    if ( ! $download_id ) {
+                        // Insert a new zume_download post for this language
+                        $new_download_id = wp_insert_post( array(
+                            'post_title'   => $language_code,
+                            'post_type'    => 'zume_download',
+                            'post_status'  => 'publish',
+                        ) );
+                        if ( $new_download_id && ! is_wp_error( $new_download_id ) ) {
+                            $download_id = $new_download_id;
+                            echo '<p>Created new Download record - &#10003; (ID: ' . esc_html( $download_id ) . ')</p>';
+                        } else {
+                            echo '<p style="color:red;">Failed to create Download record for language: ' . esc_html( $language_code ) . '</p>';
+                        }
+                    }
+
                     if ( $download_id ) {
                         echo '<p>Downloads - &#10003;</p>';
 
@@ -135,7 +159,7 @@ if ( is_admin() ) {
                         foreach ( $fields as $key => $item ) {
                             if ( ! isset( $meta[$key] ) ) {
                                 update_post_meta( $download_id, $key, '' );
-                                echo '<p>Added ' . esc_html( $item['title'] ) . '('. esc_html( $key ) .') - &#10003;</p>';
+                                echo '<p>Added ' . esc_html( $item['name'] ) . '('. esc_html( $key ) .') - &#10003;</p>';
                             }
                         }
                     } else {
@@ -156,6 +180,22 @@ if ( is_admin() ) {
                         "SELECT p.ID
                         FROM zume_posts p
                         WHERE p.post_type = 'zume_video' AND p.post_title = %s", $language_code ) );
+
+                    if ( ! $video_id ) {
+                        // Insert a new zume_video post for this language
+                        $new_video_id = wp_insert_post( array(
+                            'post_title'   => $language_code,
+                            'post_type'    => 'zume_video',
+                            'post_status'  => 'publish',
+                        ) );
+                        if ( $new_video_id && ! is_wp_error( $new_video_id ) ) {
+                            $video_id = $new_video_id;
+                            echo '<p>Created new Video record - &#10003; (ID: ' . esc_html( $video_id ) . ')</p>';
+                        } else {
+                            echo '<p style="color:red;">Failed to create Video record for language: ' . esc_html( $language_code ) . '</p>';
+                        }
+                    }
+
                     if ( $video_id ) {
                         echo '<p>Video - &#10003;</p>';
 
@@ -166,7 +206,7 @@ if ( is_admin() ) {
                         foreach ( $fields as $key => $item ) {
                             if ( ! isset( $meta[$key] ) ) {
                                 update_post_meta( $video_id, $key, '' );
-                                echo '<p>Added ' . esc_html( $item['title'] ) . '('.esc_html( $key ) .') - &#10003;</p>';
+                                echo '<p>Added ' . esc_html( $item['name'] ) . '('.esc_html( $key ) .') - &#10003;</p>';
                             }
                         }
                     } else {
@@ -188,23 +228,23 @@ if ( is_admin() ) {
                         "SELECT p.ID
                         FROM zume_posts p
                         WHERE p.post_type = 'zume_messages' AND p.post_status = 'publish'");
+
                     if ( $message_ids ) {
                         echo '<p>Message - &#10003;</p>';
 
-                        foreach ( $message_ids as $message ) {
-                            $meta = get_post_meta( $message );
-                            if ( $meta ) {
-                                foreach ( $zume_languages_full_list as $item ) {
-                                    if ( ! isset( $meta['subject_'.$item['code']] ) ) {
-                                        update_post_meta( $message, 'subject_'.$item['code'], '' );
-                                        echo '<p>Added ' . esc_html( $item['name'] ) . ' subject_'.esc_html( $item['code'] ) .' - &#10003;</p>';
-                                    }
-                                    if ( ! isset( $meta['body_'.$item['code']] ) ) {
-                                        update_post_meta( $message, 'body_'.$item['code'], '' );
-                                        echo '<p>Added ' . esc_html( $item['name'] ) . ' body_'.esc_html( $item['code'] ) .'  - &#10003;</p>';
-                                    }
-                                }
+                        foreach ( $message_ids as $message_id ) {
+                           
+                            // Ensure the meta fields for this language exist for each message
+                            $meta = get_post_meta( $message_id );
+                            if ( ! isset( $meta['subject_' . $language_code] ) ) {
+                                update_post_meta( $message_id, 'subject_' . $language_code, '' );
+                                echo '<p>Added subject_' . esc_html( $language_code ) . ' to message ID ' . esc_html( $message_id ) . ' - &#10003;</p>';
                             }
+                            if ( ! isset( $meta['body_' . $language_code] ) ) {
+                                update_post_meta( $message_id, 'body_' . $language_code, '' );
+                                echo '<p>Added body_' . esc_html( $language_code ) . ' to message ID ' . esc_html( $message_id ) . ' - &#10003;</p>';
+                            }
+
                         }
                     } else {
                         echo '<p>Message - &#x2718;</p>';
@@ -213,10 +253,41 @@ if ( is_admin() ) {
                     ?>
 
                     <hr></hr>
+
+                    <h2>Activities</h2>
+                    <?php
+                    /* Check that video language is installed. */
+                    $activities_ids = $wpdb->get_col(
+                        "SELECT p.ID
+                        FROM zume_posts p
+                        WHERE p.post_type = 'zume_activities' AND p.post_status = 'publish'");
+
+                    if ( $activities_ids ) {
+                        echo '<p>Activities - &#10003;</p>';
+
+                        foreach ( $activities_ids as $activities_id ) {
+                            // Ensure the meta fields for this language exist for each message
+                            $meta = get_post_meta( $activities_id );
+                            if ( ! isset( $meta['subject_' . $language_code] ) ) {
+                                update_post_meta( $activities_id, 'subject_' . $language_code, '' );
+                                echo '<p>Added subject_' . esc_html( $language_code ) . ' to message ID ' . esc_html( $activities_id ) . ' - &#10003;</p>';
+                            }
+                            if ( ! isset( $meta['body_' . $language_code] ) ) {
+                                update_post_meta( $activities_id, 'body_' . $language_code, '' );
+                                echo '<p>Added body_' . esc_html( $language_code ) . ' to message ID ' . esc_html( $activities_id ) . ' - &#10003;</p>';
+                            }
+                        }
+                    } else {
+                        echo '<p>Activities - &#x2718;</p>';
+                        echo '<p><a href="/wp-admin/edit.php?post_type=zume_activities">Got to add new record for the language.</a></p>';
+                    }
+                    ?>
+
+                    <hr></hr>
                     <h2>.po and .mo Files</h2>
                     <?php
                     /* Check that .po and .mo files are installed. */
-                    $po_file = plugin_dir_path( __DIR__ ) .'zume-'. $language['locale'] . '.po';
+                    $po_file = plugin_dir_path( __DIR__ ) . $language['locale'] . '.po';
                     echo esc_html( $po_file );
                     if ( file_exists( $po_file ) ) {
                         echo ' &#10003;';
@@ -224,7 +295,7 @@ if ( is_admin() ) {
                         echo ' &#x2718;';
                     }
                     echo '<br>';
-                    $mo_file = plugin_dir_path( __DIR__ ) .'zume-'. $language['locale'] . '.mo';
+                    $mo_file = plugin_dir_path( __DIR__ ) . $language['locale'] . '.mo';
                     echo esc_html( $mo_file );
                     if ( file_exists( $mo_file ) ) {
                         echo ' &#10003;';

@@ -7,7 +7,7 @@ function zume_content( $lang_code = 'en' ) {
 //        return get_transient( __FUNCTION__.'_'.$lang_code );
 //    }
 
-
+    
     $mirror_url = 'https://storage.googleapis.com/zume-file-mirror/' . $lang_code . '/';
     $checkin_base_url = site_url() . '/' . $lang_code . '/checkin/?code=';
     $activity_base_url = trailingslashit( site_url() ) . 'app/qr/?l=' . $lang_code . '&a=';
@@ -882,9 +882,7 @@ function zume_content( $lang_code = 'en' ) {
             'right' => [
                 __( 'What are some differences you see between God’s Spiritual Economy and our earthly way of getting things done?', 'zume' ),
             ],
-        ],
-
-            
+        ],   
         [
             'key' => 't10_a',
             'type' => 'center',
@@ -990,6 +988,37 @@ function zume_content( $lang_code = 'en' ) {
             'left' => [],
             'right' => [],
         ],
+        
+
+        // non-three circles languages
+        [
+            'key' => 't10_i',
+            'type' => 'center',
+            'menu' => [],
+            'length' => [],
+            'center' => [],
+            'left' => [
+                __( 'The Gospel', 'zume' ),
+                __( 'There’s no one “best way” to tell God’s story (also called the gospel), because the best way will depend on who you’re sharing with. Every disciple should learn to tell God’s story in a way that’s true to scripture and connects with the audience they’re sharing with.', 'zume' ),   
+            ],
+            'right' => [],
+        ],
+        [
+            'key' => 't10_j',
+            'type' => 'watch',
+            'menu' => [],
+            'length' => [5],
+            'center' => [],
+            'left' => [
+                __( 'WATCH', 'zume' ),
+            ],
+            'right' => [
+                '',
+                __( 'One way to share God’s good news is by telling God’s story from Creation to Judgement – from the beginning of humankind all the way to the end of this age.', 'zume' ),
+            ],
+            'id' => 10,
+            'qr' => create_qr_url( $video_base_url . '10' ),
+        ],
         [
             'key' => 't10_h',
             'type' => 'discuss',
@@ -1007,10 +1036,9 @@ function zume_content( $lang_code = 'en' ) {
                 ],
             ],
         ],
+        
 
-
-
-        [
+        [ // for three circles languages
             'key' => 's1_3_8',
             'type' => 'activity',
             'menu' => [],
@@ -1021,7 +1049,32 @@ function zume_content( $lang_code = 'en' ) {
             'left' => [
                 __( 'Share the Gospel', 'zume' ),
                 [
+                    __( 'Scan the QR code.', 'zume' ),
                     __( 'Choose one of the two presentations you watched.', 'zume' ),
+                    __( 'Break into groups of two or three people.', 'zume' ),
+                    __( 'Take turns telling the Gospel to each other.', 'zume' ),
+                ],
+
+            ],
+            'right' => [
+                $activity_base_url . 'sharegospel',
+                create_qr_url( $activity_base_url . 'sharegospel' ),
+                __( 'Activity Resource', 'zume' ),
+            ],
+            'id' => 'sharegospel',
+            'qr' => create_qr_url( $activity_base_url . 'sharegospel' ),
+        ],
+        [  // for non-three circles languages
+            'key' => 's1_3_8b',
+            'type' => 'activity',
+            'menu' => [],
+            'length' => [45],
+            'center' => [
+                __( 'ACTIVITY', 'zume' ),
+            ],
+            'left' => [
+                __( 'Share the Gospel', 'zume' ),
+                [
                     __( 'Scan the QR code.', 'zume' ),
                     __( 'Break into groups of two or three people.', 'zume' ),
                     __( 'Take turns telling the Gospel to each other.', 'zume' ),
@@ -1036,6 +1089,9 @@ function zume_content( $lang_code = 'en' ) {
             'id' => 'sharegospel',
             'qr' => create_qr_url( $activity_base_url . 'sharegospel' ),
         ],
+
+
+
         [
             'key' => 't11_a',
             'type' => 'watch',

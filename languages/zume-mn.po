@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
-"POT-Creation-Date: 2025-07-28 17:05-0600\n"
+"POT-Creation-Date: 2025-07-29 09:25-0600\n"
 "PO-Revision-Date: 2024-06-11 05:53+0000\n"
 "Last-Translator: Google Cloud Translation Basic <noreply-mt-google-"
 "translate@weblate.org>\n"
@@ -50,20 +50,20 @@ msgstr "тухай"
 #: 404.php:94 appearance/style-override/navigation.php:106
 #: site/course/presenter.php:144 site/dashboard/checkin-dashboard.php:29
 #: site/dashboard/checkin-dashboard.php:177 site/dashboard/dashboard.php:29
-#: site/dashboard/wizard.php:181 site/dashboard/wizard.php:194
+#: site/dashboard/wizard.php:189 site/dashboard/wizard.php:202
 #: site/pages/home.php:118 site/parts/checkin-nav.php:13
 #: site/parts/mobile-nav.php:7 site/parts/nav.php:19
 #, fuzzy
 msgid "Dashboard"
 msgstr "Хяналтын самбар"
 
-#: 404.php:99 site/dashboard/dashboard.php:251 site/parts/footer.php:25
+#: 404.php:99 site/dashboard/dashboard.php:272 site/parts/footer.php:25
 #: site/parts/footer.php:28
 #, fuzzy
 msgid "Launch Course"
 msgstr "Курс эхлүүлэх"
 
-#: 404.php:100 site/dashboard/dashboard.php:256 site/pages/resources.php:145
+#: 404.php:100 site/dashboard/dashboard.php:277 site/pages/resources.php:145
 #: site/pages/resources.php:147 site/pages/resources.php:162
 #: site/pages/resources.php:195 site/parts/download-slides.php:31
 #: site/parts/download-slides.php:43 site/parts/footer.php:29
@@ -74,7 +74,7 @@ msgstr "Курс эхлүүлэх"
 msgid "10 Session Course"
 msgstr "10 хуралдааны курс"
 
-#: 404.php:101 site/dashboard/dashboard.php:257 site/pages/resources.php:150
+#: 404.php:101 site/dashboard/dashboard.php:278 site/pages/resources.php:150
 #: site/pages/resources.php:166 site/pages/resources.php:196
 #: site/parts/download-slides.php:34 site/parts/download-slides.php:46
 #: site/parts/footer.php:30 utilities/integrations/replace-placeholder.php:114
@@ -92,8 +92,8 @@ msgstr "3 өдрийн эрчимжүүлсэн сургалт"
 #: appearance/style-override/navigation.php:75
 #: appearance/style-override/navigation.php:79
 #: maps/js-translation-strings.php:26 maps/local-map.php:1070
-#: site/course/presenter.php:147 site/dashboard/dashboard.php:222
-#: site/dashboard/dashboard.php:282 site/pages/training.php:29
+#: site/course/presenter.php:147 site/dashboard/dashboard.php:243
+#: site/dashboard/dashboard.php:309 site/pages/training.php:29
 #: site/parts/footer.php:11 site/parts/mobile-nav.php:27 site/parts/nav.php:25
 #, fuzzy
 msgid "Training"
@@ -161,7 +161,7 @@ msgstr "Түүхүүд"
 msgid "Global Map"
 msgstr "Дэлхийн газрын зураг"
 
-#: globals.php:2332 globals.php:2335 site/course/course-content.php:87
+#: globals.php:2355 globals.php:2358 site/course/course-content.php:87
 #: site/course/course-content.php:102 site/course/course-content.php:111
 #: site/course/course-content.php:372 site/course/course-content.php:3332
 #: site/course/course-content.php:3350 site/pages/follow-jesus.php:177
@@ -169,7 +169,7 @@ msgstr "Дэлхийн газрын зураг"
 msgid "God Uses Ordinary People"
 msgstr "Бурхан жирийн хүмүүсийг ашигладаг"
 
-#: globals.php:2334 site/pages/follow-jesus.php:178
+#: globals.php:2357 site/pages/follow-jesus.php:178
 #, fuzzy
 msgid ""
 "You'll see how God uses ordinary people doing simple things to make a big "
@@ -178,13 +178,13 @@ msgstr ""
 "Их нөлөө үзүүлэхийн тулд Бурхан энгийн хүмүүсийг энгийн зүйлсийг хийхэд "
 "хэрхэн ашигладагийг та харах болно."
 
-#: globals.php:2345 site/course/course-content.php:3333
+#: globals.php:2368 site/course/course-content.php:3333
 #: site/course/course-content.php:3351 site/pages/follow-jesus.php:181
 #, fuzzy
 msgid "Simple Definition of Disciple and Church"
 msgstr "Шавь ба сүмийн энгийн тодорхойлолт"
 
-#: globals.php:2347 site/course/course-content.php:157
+#: globals.php:2370 site/course/course-content.php:157
 #: site/pages/follow-jesus.php:182
 #, fuzzy
 msgid ""
@@ -193,37 +193,37 @@ msgid ""
 msgstr ""
 "Шавь байх, шавь бэлтгэхийн мөн чанар, сүм гэж юу вэ гэдгийг олж мэдээрэй."
 
-#: globals.php:2348 site/course/course-content.php:147
+#: globals.php:2371 site/course/course-content.php:147
 #: site/course/course-content.php:156
 #, fuzzy
 msgid "Disciples and the Church"
 msgstr "Шавь нар ба Сүм"
 
-#: globals.php:2358 site/course/course-content.php:3334
+#: globals.php:2381 site/course/course-content.php:3334
 #: site/course/course-content.php:3352 site/pages/follow-jesus.php:203
 #, fuzzy
 msgid "Spiritual Breathing is Hearing and Obeying God"
 msgstr "Сүнслэг амьсгал бол Бурханыг сонсож, дуулгавартай дагах явдал юм"
 
-#: globals.php:2360 site/pages/follow-jesus.php:204
+#: globals.php:2383 site/pages/follow-jesus.php:204
 #, fuzzy
 msgid "Being a disciple means we hear from God and we obey God."
 msgstr ""
 "Шавь байна гэдэг нь бид Бурханаас сонсож, Бурханыг дуулгавартай дагадаг "
 "гэсэн үг."
 
-#: globals.php:2361 site/course/course-content.php:196
+#: globals.php:2384 site/course/course-content.php:196
 #: site/course/course-content.php:205
 #, fuzzy
 msgid "Hearing and Obeying God"
 msgstr "Бурханыг сонсож, дуулгавартай дагах"
 
-#: globals.php:2371 globals.php:2374
+#: globals.php:2394 globals.php:2397
 #, fuzzy
 msgid "S.O.A.P.S. Bible Study"
 msgstr "S.O.A.P.S. Библийн судалгаа"
 
-#: globals.php:2373 site/pages/follow-jesus.php:219
+#: globals.php:2396 site/pages/follow-jesus.php:219
 #, fuzzy
 msgid ""
 "A tool for daily Bible study that helps you understand, obey, and share "
@@ -232,7 +232,7 @@ msgstr ""
 "Бурханы үгийг ойлгох, дуулгавартай дагах, хуваалцахад тань туслах өдөр бүр "
 "Библи судлах хэрэгсэл."
 
-#: globals.php:2384 globals.php:2387 site/course/course-content.php:94
+#: globals.php:2407 globals.php:2410 site/course/course-content.php:94
 #: site/course/course-content.php:307 site/course/course-content.php:316
 #: site/course/course-content.php:379 site/course/course-content.php:3581
 #: site/course/course-content.php:3597 site/pages/follow-jesus.php:233
@@ -240,7 +240,7 @@ msgstr ""
 msgid "Accountability Groups"
 msgstr "Хариуцлагын бүлгүүд"
 
-#: globals.php:2386 site/pages/follow-jesus.php:234
+#: globals.php:2409 site/pages/follow-jesus.php:234
 #, fuzzy
 msgid ""
 "A tool for two or three people of the same gender to meet weekly and "
@@ -251,12 +251,12 @@ msgstr ""
 "газруудад бие биенээ урамшуулж, засч залруулах шаардлагатай газруудыг "
 "илрүүлэх хэрэгсэл."
 
-#: globals.php:2397 site/pages/follow-jesus.php:197
+#: globals.php:2420 site/pages/follow-jesus.php:197
 #, fuzzy
 msgid "Consumer vs Producer Lifestyle"
 msgstr "Хэрэглэгч ба үйлдвэрлэгчийн амьдралын хэв маяг"
 
-#: globals.php:2399 site/pages/follow-jesus.php:198
+#: globals.php:2422 site/pages/follow-jesus.php:198
 #, fuzzy
 msgid ""
 "You'll discover the four main ways God makes everyday followers more like "
@@ -265,32 +265,32 @@ msgstr ""
 "Та Бурхан өдөр тутмын дагалдагчдыг Есүстэй илүү адилхан болгох дөрвөн үндсэн "
 "аргыг олж мэдэх болно."
 
-#: globals.php:2400
+#: globals.php:2423
 #, fuzzy
 msgid "Producer not Consumer"
 msgstr "Хэрэглэгч биш үйлдвэрлэгч"
 
-#: globals.php:2410 globals.php:2413 site/pages/follow-jesus.php:207
+#: globals.php:2433 globals.php:2436 site/pages/follow-jesus.php:207
 #, fuzzy
 msgid "How to Spend an Hour in Prayer"
 msgstr "Нэг цагийг залбиралд хэрхэн зарцуулах вэ"
 
-#: globals.php:2412 site/pages/follow-jesus.php:208
+#: globals.php:2435 site/pages/follow-jesus.php:208
 #, fuzzy
 msgid "See how easy it is to spend an hour in prayer."
 msgstr "Залбиралд нэг цаг зарцуулах нь хичнээн амархан болохыг хараарай."
 
-#: globals.php:2423 site/pages/follow-jesus.php:294
+#: globals.php:2446 site/pages/follow-jesus.php:294
 #, fuzzy
 msgid "Relational Stewardship – List of 100"
 msgstr "Харилцааны удирдлага - 100-ын жагсаалт"
 
-#: globals.php:2425 site/pages/follow-jesus.php:295
+#: globals.php:2448 site/pages/follow-jesus.php:295
 #, fuzzy
 msgid "A tool designed to help you be a good steward of your relationships."
 msgstr "Таны харилцааны сайн даамал болоход туслах хэрэгсэл."
 
-#: globals.php:2426 site/activities/list-of-100-printable.php:22
+#: globals.php:2449 site/activities/list-of-100-printable.php:22
 #: site/activities/list-of-100-printable.php:90
 #: site/activities/list-of-100.php:22 site/activities/list-of-100.php:81
 #: site/course/course-content.php:496 site/course/course-content.php:634
@@ -303,14 +303,14 @@ msgstr "Таны харилцааны сайн даамал болоход ту�
 msgid "List of 100"
 msgstr "100-ын жагсаалт"
 
-#: globals.php:2436 globals.php:2439 site/course/course-content.php:832
+#: globals.php:2459 globals.php:2462 site/course/course-content.php:832
 #: site/course/course-content.php:845 site/course/course-content.php:854
 #: site/course/course-content.php:3977 site/course/course-content.php:3996
 #, fuzzy
 msgid "Spiritual Economy"
 msgstr "Сүнслэг эдийн засаг"
 
-#: globals.php:2438 site/pages/follow-jesus.php:253
+#: globals.php:2461 site/pages/follow-jesus.php:253
 #, fuzzy
 msgid ""
 "Learn how God's economy is different from the world's. God invests more in "
@@ -320,12 +320,12 @@ msgstr ""
 "өөрт нь өгөгдсөн зүйлдээ үнэнч байгаа хүмүүст илүү их хөрөнгө оруулалт "
 "хийдэг."
 
-#: globals.php:2449 site/pages/follow-jesus.php:298
+#: globals.php:2472 site/pages/follow-jesus.php:298
 #, fuzzy
 msgid "The Gospel and How to Share It"
 msgstr "Сайн мэдээ ба үүнийг хэрхэн хуваалцах вэ"
 
-#: globals.php:2451 site/pages/follow-jesus.php:299
+#: globals.php:2474 site/pages/follow-jesus.php:299
 #, fuzzy
 msgid ""
 "Learn a way to share God’s Good News from the beginning of humanity all the "
@@ -334,17 +334,17 @@ msgstr ""
 "Хүн төрөлхтний эхэн үеэс эхлэн энэ эриний төгсгөл хүртэл Бурханы сайн мэдээг "
 "хуваалцах арга замыг сур."
 
-#: globals.php:2452
+#: globals.php:2475
 #, fuzzy
 msgid "Sharing God‘s Story"
 msgstr "Бурханы түүхийг хуваалцах"
 
-#: globals.php:2462 site/pages/follow-jesus.php:245
+#: globals.php:2485 site/pages/follow-jesus.php:245
 #, fuzzy
 msgid "Baptism and How To Do It"
 msgstr "Баптисм ба үүнийг хэрхэн хийх вэ"
 
-#: globals.php:2464 site/pages/follow-jesus.php:246
+#: globals.php:2487 site/pages/follow-jesus.php:246
 #, fuzzy
 msgid ""
 "Jesus said, “Go and make disciples of all nations, BAPTIZING them in the "
@@ -354,7 +354,7 @@ msgstr ""
 "Есүс “Явж, бүх үндэстнийг Эцэг, Хүү, Ариун Сүнсний нэрээр баптисм хүртэж, "
 "дагалдагч болго...” Үүнийг хэрхэн хэрэгжүүлэх талаар суралц."
 
-#: globals.php:2465 site/course/course-content.php:837
+#: globals.php:2488 site/course/course-content.php:837
 #: site/course/course-content.php:1043 site/course/course-content.php:1052
 #: site/course/course-content.php:1118 site/course/course-content.php:4252
 #: site/course/course-content.php:4269
@@ -362,12 +362,12 @@ msgstr ""
 msgid "Baptism"
 msgstr "Баптисм хүртэх"
 
-#: globals.php:2475 site/pages/follow-jesus.php:302
+#: globals.php:2498 site/pages/follow-jesus.php:302
 #, fuzzy
 msgid "Prepare Your 3-Minute Testimony"
 msgstr "Гурван минутын мэдүүлгээ бэлтгэ"
 
-#: globals.php:2477 site/pages/follow-jesus.php:303
+#: globals.php:2500 site/pages/follow-jesus.php:303
 #, fuzzy
 msgid ""
 "Learn how to share your testimony in three minutes by sharing how Jesus has "
@@ -376,19 +376,19 @@ msgstr ""
 "Есүс таны амьдралд хэрхэн нөлөөлсөн тухай хуваалцснаар гурван минутын дотор "
 "гэрчлэлээ хэрхэн хуваалцах талаар суралц."
 
-#: globals.php:2478
+#: globals.php:2501
 #, fuzzy
 msgid "3-Minute Testimony"
 msgstr "3 минутын гэрчлэл"
 
-#: globals.php:2488 site/course/course-content.php:1237
+#: globals.php:2511 site/course/course-content.php:1237
 #: site/course/course-content.php:1518 site/course/course-content.php:3978
 #: site/course/course-content.php:3997 site/pages/follow-jesus.php:185
 #, fuzzy
 msgid "Vision Casting the Greatest Blessing"
 msgstr "Хамгийн агуу адислалыг цутгах тухай алсын хараа"
 
-#: globals.php:2490 site/course/course-content.php:1318
+#: globals.php:2513 site/course/course-content.php:1318
 #: site/pages/follow-jesus.php:186
 #, fuzzy
 msgid ""
@@ -398,22 +398,22 @@ msgstr ""
 "Зөвхөн Есүсийн нэг дагалдагч биш, харин хойч үедээ үржих бүх сүнслэг гэр "
 "бүлүүдийг бий болгох энгийн загварыг сур."
 
-#: globals.php:2491
+#: globals.php:2514
 #, fuzzy
 msgid "Great, Greater, and Greatest Blessing"
 msgstr "Агуу, агуу, хамгийн агуу адислал"
 
-#: globals.php:2501 site/pages/follow-jesus.php:275
+#: globals.php:2524 site/pages/follow-jesus.php:275
 #, fuzzy
 msgid "Duckling Discipleship – Leading Immediately"
 msgstr "Нугасны дэгдээхэйний шавь - Шууд тэргүүлэх"
 
-#: globals.php:2503
+#: globals.php:2526
 #, fuzzy
 msgid "Learn what ducklings have to do with disciple-making."
 msgstr "Нугасны дэгдээхэйнүүд шавь бэлтгэхэд ямар холбоотой болохыг олж мэд."
 
-#: globals.php:2504 site/course/course-content.php:1238
+#: globals.php:2527 site/course/course-content.php:1238
 #: site/course/course-content.php:1357 site/course/course-content.php:1366
 #: site/course/course-content.php:1519 site/course/course-content.php:4529
 #: site/course/course-content.php:4550
@@ -421,7 +421,7 @@ msgstr "Нугасны дэгдээхэйнүүд шавь бэлтгэхэд я
 msgid "Duckling Discipleship"
 msgstr "Нугасны дэгдээхэй шавь"
 
-#: globals.php:2514 globals.php:2517 site/course/course-content.php:1239
+#: globals.php:2537 globals.php:2540 site/course/course-content.php:1239
 #: site/course/course-content.php:1405 site/course/course-content.php:1414
 #: site/course/course-content.php:1520 site/course/course-content.php:4530
 #: site/course/course-content.php:4551 site/pages/follow-jesus.php:256
@@ -429,7 +429,7 @@ msgstr "Нугасны дэгдээхэй шавь"
 msgid "Eyes to See Where the Kingdom Isn’t"
 msgstr "Хаанчлал хаана байгааг харах нүд"
 
-#: globals.php:2516 site/pages/follow-jesus.php:257
+#: globals.php:2539 site/pages/follow-jesus.php:257
 #, fuzzy
 msgid ""
 "Begin to see where God’s Kingdom isn’t. These are usually the places where "
@@ -438,12 +438,12 @@ msgstr ""
 "Бурхны Хаанчлал хаана байдаггүйг харж эхлээрэй. Эдгээр нь ихэвчлэн Бурханы "
 "хамгийн их ажиллахыг хүсдэг газрууд юм."
 
-#: globals.php:2527 site/pages/follow-jesus.php:241
+#: globals.php:2550 site/pages/follow-jesus.php:241
 #, fuzzy
 msgid "The Lord’s Supper and How To Lead It"
 msgstr "Их Эзэний оройн зоог ба түүнийг хэрхэн удирдах вэ"
 
-#: globals.php:2529
+#: globals.php:2552
 #, fuzzy
 msgid ""
 "It’s a simple way to celebrate our intimate connection and ongoing "
@@ -452,7 +452,7 @@ msgstr ""
 "Энэ бол Есүстэй дотно харилцаа, байнгын харилцаагаа тэмдэглэх энгийн арга "
 "юм. Баяр тэмдэглэх энгийн аргыг сур."
 
-#: globals.php:2530 site/activities/activities.php:258
+#: globals.php:2553 site/activities/activities.php:258
 #: site/course/course-content.php:1244 site/course/course-content.php:1455
 #: site/course/course-content.php:1464 site/course/course-content.php:1525
 #: site/course/course-content.php:4534 site/course/course-content.php:4555
@@ -460,12 +460,12 @@ msgstr ""
 msgid "The Lord’s Supper"
 msgstr "Их Эзэний оройн зоог"
 
-#: globals.php:2540 site/pages/follow-jesus.php:313
+#: globals.php:2563 site/pages/follow-jesus.php:313
 #, fuzzy
 msgid "Prayer Walking and How To Do It"
 msgstr "Залбирал алхах ба үүнийг хэрхэн хийх вэ"
 
-#: globals.php:2542
+#: globals.php:2565
 #, fuzzy
 msgid ""
 "It‘s a simple way to obey God’s command to pray for others. And it‘s just "
@@ -474,7 +474,7 @@ msgstr ""
 "Энэ бол бусдын төлөө залбирах Бурханы тушаалыг дагах энгийн арга юм. Энэ нь "
 "яг л ийм сонсогдож байна - эргэн тойрон алхаж байхдаа Бурханд залбирах!"
 
-#: globals.php:2543 site/activities/activities.php:327
+#: globals.php:2566 site/activities/activities.php:327
 #: site/course/course-content.php:1636 site/course/course-content.php:1644
 #: site/course/course-content.php:1653 site/course/course-content.php:1759
 #: site/course/course-content.php:4661 site/course/course-content.php:4674
@@ -482,12 +482,12 @@ msgstr ""
 msgid "Prayer Walking"
 msgstr "Залбирал алхах"
 
-#: globals.php:2553 site/pages/follow-jesus.php:309
+#: globals.php:2576 site/pages/follow-jesus.php:309
 #, fuzzy
 msgid "A Person of Peace and How To Find One"
 msgstr "Амар амгалангийн хүн ба түүнийг хэрхэн олох вэ"
 
-#: globals.php:2555
+#: globals.php:2578
 #, fuzzy
 msgid ""
 "Learn who a person of peace might be and how to know when you‘ve found one."
@@ -495,19 +495,19 @@ msgstr ""
 "Амар амгалангийн хүн гэж хэн байж болох, түүнийг олсон үедээ хэрхэн мэдэх "
 "талаар олж мэдээрэй."
 
-#: globals.php:2556 site/course/course-content.php:1631
+#: globals.php:2579 site/course/course-content.php:1631
 #: site/course/course-content.php:1676 site/course/course-content.php:1685
 #: site/course/course-content.php:4777 site/course/course-content.php:4797
 #, fuzzy
 msgid "Person of Peace"
 msgstr "Энх тайвны хүн"
 
-#: globals.php:2566 site/pages/follow-jesus.php:222
+#: globals.php:2589 site/pages/follow-jesus.php:222
 #, fuzzy
 msgid "Faithfulness is Better Than Knowledge"
 msgstr "Үнэнч байх нь мэдлэгээс дээр"
 
-#: globals.php:2568
+#: globals.php:2591
 #, fuzzy
 msgid ""
 "It‘s important what disciples know — but it‘s much more important what they "
@@ -516,34 +516,34 @@ msgstr ""
 "Шавь нар юу мэддэг нь чухал боловч мэддэг зүйлээрээ юу хийх нь хамаагүй "
 "чухал."
 
-#: globals.php:2569 site/course/course-content.php:1891
+#: globals.php:2592 site/course/course-content.php:1891
 #: site/course/course-content.php:1900 site/course/course-content.php:4908
 #: site/course/course-content.php:4957
 #, fuzzy
 msgid "Faithfulness"
 msgstr "Үнэнч байдал"
 
-#: globals.php:2579 site/pages/follow-jesus.php:211
+#: globals.php:2602 site/pages/follow-jesus.php:211
 #, fuzzy
 msgid "The BLESS Prayer Pattern"
 msgstr "\"Ерөөл\" залбирлын загвар"
 
-#: globals.php:2581 site/pages/follow-jesus.php:212
+#: globals.php:2604 site/pages/follow-jesus.php:212
 #, fuzzy
 msgid "Practice a simple mnemonic to remind you of ways to pray for others."
 msgstr "Бусдын төлөө залбирах арга замыг сануулах энгийн мнемоник дасгал хий."
 
-#: globals.php:2582 site/course/course-content.php:1725
+#: globals.php:2605 site/course/course-content.php:1725
 #, fuzzy
 msgid "The B.L.E.S.S. Prayer"
 msgstr "B.L.E.S.S. Залбирал"
 
-#: globals.php:2592 site/pages/follow-jesus.php:229
+#: globals.php:2615 site/pages/follow-jesus.php:229
 #, fuzzy
 msgid "3/3 Group Meeting Pattern"
 msgstr "3/3 Бүлгийн уулзалтын загвар"
 
-#: globals.php:2594
+#: globals.php:2617
 #, fuzzy
 msgid ""
 "A 3/3 Group is a way for followers of Jesus to meet, pray, learn, grow, "
@@ -554,17 +554,17 @@ msgstr ""
 "нөхөрлөх, сурсан зүйлээ дуулгавартай дагах, хуваалцах дадлага хийх арга зам "
 "юм. Ийм байдлаар 3/3 бүлэг нь зөвхөн жижиг бүлэг биш, харин Энгийн сүм юм."
 
-#: globals.php:2595
+#: globals.php:2618
 #, fuzzy
 msgid "3/3 Group"
 msgstr "3/3 бүлэг"
 
-#: globals.php:2605 site/pages/follow-jesus.php:279
+#: globals.php:2628 site/pages/follow-jesus.php:279
 #, fuzzy
 msgid "Training Cycle for Maturing Disciples"
 msgstr "Төлөвшсөн шавь нарт зориулсан сургалтын мөчлөг"
 
-#: globals.php:2607 site/pages/follow-jesus.php:280
+#: globals.php:2630 site/pages/follow-jesus.php:280
 #, fuzzy
 msgid ""
 "Learn the training cycle and consider how it applies to disciple making."
@@ -572,13 +572,13 @@ msgstr ""
 "Сургалтын мөчлөгийг судалж, энэ нь шавь бэлтгэхэд хэрхэн хамаатай болохыг "
 "анхаарч үзээрэй."
 
-#: globals.php:2608 site/course/course-content.php:5214
+#: globals.php:2631 site/course/course-content.php:5214
 #: site/course/course-content.php:5231
 #, fuzzy
 msgid "Training Cycle"
 msgstr "Сургалтын мөчлөг"
 
-#: globals.php:2618 globals.php:2621 site/course/course-content.php:2327
+#: globals.php:2641 globals.php:2644 site/course/course-content.php:2327
 #: site/course/course-content.php:2339 site/course/course-content.php:2348
 #: site/course/course-content.php:2421 site/course/course-content.php:5215
 #: site/course/course-content.php:5232 site/pages/follow-jesus.php:334
@@ -586,7 +586,7 @@ msgstr "Сургалтын мөчлөг"
 msgid "Leadership Cells"
 msgstr "Манлайллын эсүүд"
 
-#: globals.php:2620 site/course/course-content.php:2350
+#: globals.php:2643 site/course/course-content.php:2350
 #: site/pages/follow-jesus.php:335
 #, fuzzy
 msgid ""
@@ -596,13 +596,13 @@ msgstr ""
 "Манлайллын эс гэдэг нь манлайлахад дуудагдсан гэдгээ мэдэрсэн хүн үйлчлэх "
 "дадлага хийснээр манлайллаа хөгжүүлэх арга зам юм."
 
-#: globals.php:2631 globals.php:2634 site/course/course-content.php:5339
+#: globals.php:2654 globals.php:2657 site/course/course-content.php:5339
 #: site/course/course-content.php:5357 site/pages/follow-jesus.php:283
 #, fuzzy
 msgid "Expect Non-Sequential Growth"
 msgstr "Дараалсан бус өсөлтийг хүлээ"
 
-#: globals.php:2633
+#: globals.php:2656
 #, fuzzy
 msgid ""
 "See how disciple making doesn‘t have to be linear. Multiple things can "
@@ -611,13 +611,13 @@ msgstr ""
 "Шавь бэлтгэх нь шугаман байх албагүйг хараарай. Олон зүйл нэгэн зэрэг "
 "тохиолдож болно."
 
-#: globals.php:2644 site/course/course-content.php:2930
+#: globals.php:2667 site/course/course-content.php:2930
 #: site/pages/follow-jesus.php:287
 #, fuzzy
 msgid "Pace of Multiplication Matters"
 msgstr "Үржүүлэх үйл явцын хурд"
 
-#: globals.php:2646 site/pages/follow-jesus.php:288
+#: globals.php:2669 site/pages/follow-jesus.php:288
 #, fuzzy
 msgid ""
 "Multiplying matters and multiplying quickly matters even more. See why pace "
@@ -626,14 +626,14 @@ msgstr ""
 "Бодисыг үржүүлэх, хурдан үржүүлэх нь бүр ч чухал юм. Хурд яагаад чухал "
 "болохыг хараарай."
 
-#: globals.php:2647 site/course/course-content.php:2532
+#: globals.php:2670 site/course/course-content.php:2532
 #: site/course/course-content.php:2595 site/course/course-content.php:2604
 #: site/course/course-content.php:5340 site/course/course-content.php:5358
 #, fuzzy
 msgid "Pace"
 msgstr "Хурд"
 
-#: globals.php:2657 globals.php:2660 site/course/course-content.php:2533
+#: globals.php:2680 globals.php:2683 site/course/course-content.php:2533
 #: site/course/course-content.php:2644 site/course/course-content.php:2653
 #: site/course/course-content.php:2931 site/course/course-content.php:5341
 #: site/course/course-content.php:5359 site/pages/follow-jesus.php:237
@@ -641,19 +641,19 @@ msgstr "Хурд"
 msgid "Always Part of Two Churches"
 msgstr "Үргэлж хоёр сүмийн нэг хэсэг"
 
-#: globals.php:2659
+#: globals.php:2682
 #, fuzzy
 msgid "Learn how to obey Jesus‘ commands by going AND staying."
 msgstr "Явах, үлдэх замаар Есүсийн зарлигуудыг хэрхэн дагахыг сур."
 
-#: globals.php:2671 globals.php:2674 site/course/course-content.php:3062
+#: globals.php:2694 globals.php:2697 site/course/course-content.php:3062
 #: site/course/course-content.php:3174 site/course/course-content.php:3180
 #: site/course/course-content.php:3246 site/course/course-content.php:5877
 #, fuzzy
 msgid "Three-Month Plan"
 msgstr "Гурван сарын төлөвлөгөө"
 
-#: globals.php:2673
+#: globals.php:2696
 #, fuzzy
 msgid ""
 "Create and share your plan for how you will implement the Zúme tools over "
@@ -662,7 +662,7 @@ msgstr ""
 "Дараагийн гурван сарын хугацаанд Zúme хэрэгслийг хэрхэн хэрэгжүүлэх "
 "төлөвлөгөөгөө гаргаж, хуваалцаарай."
 
-#: globals.php:2683 globals.php:2686
+#: globals.php:2706 globals.php:2709
 #: site/activities/coaching-checklist-host.php:22
 #: site/activities/coaching-checklist-host.php:89
 #: site/activities/coaching-checklist-mawl.php:22
@@ -685,7 +685,7 @@ msgstr ""
 msgid "Coaching Checklist"
 msgstr "Дасгалжуулалтын хяналтын хуудас"
 
-#: globals.php:2685 site/pages/follow-jesus.php:331
+#: globals.php:2708 site/pages/follow-jesus.php:331
 #, fuzzy
 msgid ""
 "A powerful tool you can use to quickly assess your own strengths and "
@@ -694,7 +694,7 @@ msgstr ""
 "Үрждэг шавь бэлтгэхэд өөрийн давуу болон сул талыг хурдан үнэлэхэд ашиглаж "
 "болох хүчирхэг хэрэгсэл."
 
-#: globals.php:2696 globals.php:2699 site/course/course-content.php:3057
+#: globals.php:2719 globals.php:2722 site/course/course-content.php:3057
 #: site/course/course-content.php:3070 site/course/course-content.php:3079
 #: site/course/course-content.php:3241 site/course/course-content.php:5468
 #: site/course/course-content.php:5488 site/pages/follow-jesus.php:338
@@ -702,7 +702,7 @@ msgstr ""
 msgid "Leadership in Networks"
 msgstr "Сүлжээний манлайлал"
 
-#: globals.php:2698 site/pages/follow-jesus.php:339
+#: globals.php:2721 site/pages/follow-jesus.php:339
 #, fuzzy
 msgid ""
 "Learn how multiplying churches stay connected and live life together as an "
@@ -711,7 +711,7 @@ msgstr ""
 "Өсөн нэмэгдэж буй сүмүүд хэрхэн уялдаа холбоотой байж, өргөн уудам, сүнслэг "
 "гэр бүл болон хамтдаа амьдарч байгааг олж мэд."
 
-#: globals.php:2709 site/course/course-content.php:3061
+#: globals.php:2732 site/course/course-content.php:3061
 #: site/course/course-content.php:3116 site/course/course-content.php:3125
 #: site/course/course-content.php:3245 site/course/course-content.php:5738
 #: site/course/course-content.php:5754 site/pages/follow-jesus.php:326
@@ -719,7 +719,7 @@ msgstr ""
 msgid "Peer Mentoring Groups"
 msgstr "Үе тэнгийн зөвлөх бүлгүүд"
 
-#: globals.php:2711 site/pages/follow-jesus.php:327
+#: globals.php:2734 site/pages/follow-jesus.php:327
 #, fuzzy
 msgid ""
 "This is a group that consists of people who are leading and starting 3/3 "
@@ -730,18 +730,18 @@ msgstr ""
 "мөн 3/3 форматыг дагаж мөрддөг бөгөөд таны нутаг дэвсгэр дэх Бурханы ажлын "
 "сүнслэг байдлыг үнэлэх хүчирхэг арга юм."
 
-#: globals.php:2712 site/activities/activities.php:350
-#: site/dashboard/wizard.php:185
+#: globals.php:2735 site/activities/activities.php:350
+#: site/dashboard/wizard.php:193
 #, fuzzy
 msgid "Peer Mentoring"
 msgstr "Үе тэнгийн зөвлөх"
 
-#: globals.php:2722 globals.php:2725
+#: globals.php:2745 globals.php:2748
 #, fuzzy
 msgid "Four Fields Tool"
 msgstr "Дөрвөн талбарын хэрэгсэл"
 
-#: globals.php:2724
+#: globals.php:2747
 #, fuzzy
 msgid ""
 "The four fields diagnostic chart is a simple tool to be used by a leadership "
@@ -752,7 +752,7 @@ msgstr ""
 "чармайлтын байдал, тэдгээрийн эргэн тойрон дахь хаант улсын үйл ажиллагааны "
 "талаар тусгахад ашиглах энгийн хэрэгсэл юм."
 
-#: globals.php:2735 globals.php:2738 site/activities/activities.php:396
+#: globals.php:2758 globals.php:2761 site/activities/activities.php:396
 #: site/course/course-content.php:2539 site/course/course-content.php:2867
 #: site/course/course-content.php:2873 site/course/course-content.php:2937
 #: site/course/course-content.php:5602 site/course/course-content.php:5632
@@ -760,7 +760,7 @@ msgstr ""
 msgid "Generational Mapping"
 msgstr "Үе үеийн зураглал"
 
-#: globals.php:2737
+#: globals.php:2760
 #, fuzzy
 msgid ""
 "Generation mapping is another simple tool to help leaders in a movement "
@@ -769,12 +769,12 @@ msgstr ""
 "Үе үеийн зураглал нь хөдөлгөөний удирдагчдад эргэн тойрон дахь өсөлтийг "
 "ойлгоход туслах өөр нэг энгийн хэрэгсэл юм."
 
-#: globals.php:2748
+#: globals.php:2771
 #, fuzzy
 msgid "3-Circles Gospel Presentation"
 msgstr "3 тойрогт сайн мэдээний танилцуулга"
 
-#: globals.php:2750 site/course/course-content.php:975
+#: globals.php:2773 site/course/course-content.php:975
 #, fuzzy
 msgid ""
 "The 3-Circles gospel presentation is a way to tell the gospel using a simple "
@@ -783,22 +783,22 @@ msgstr ""
 "3-тойрог сайн мэдээний танилцуулга нь цаасан дээр зурж болох энгийн дүрслэл "
 "ашиглан сайн мэдээг хэлэх арга юм."
 
-#: globals.php:2751
+#: globals.php:2774
 #, fuzzy
 msgid "3-Circles"
 msgstr "3-тойрог"
 
-#: globals.php:8148 maps/html/heatmap-html.php:56 maps/html/heatmap-html.php:59
+#: globals.php:8171 maps/html/heatmap-html.php:56 maps/html/heatmap-html.php:59
 #: maps/js-translation-strings.php:43 site/course/presenter.php:169
-#: site/dashboard/checkin-dashboard.php:179 site/dashboard/dashboard.php:303
-#: site/dashboard/wizard.php:179 site/pages/follow-jesus.php:349
+#: site/dashboard/checkin-dashboard.php:179 site/dashboard/dashboard.php:330
+#: site/dashboard/wizard.php:187 site/pages/follow-jesus.php:349
 #: site/parts/footer.php:77 site/parts/footer.php:84 site/parts/footer.php:91
 #: site/parts/language-menu.php:4 utilities/apis/pieces-api.php:202
 #, fuzzy
 msgid "Close"
 msgstr "Хаах"
 
-#: globals.php:8350
+#: globals.php:8373
 #, fuzzy
 msgid "No Results"
 msgstr "Үр дүнгүй"
@@ -1068,12 +1068,13 @@ msgstr ""
 msgid "Studying"
 msgstr ""
 
-#: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:235
+#: maps/js-translation-strings.php:27 site/dashboard/dashboard.php:256
 #, fuzzy
 msgid "Practicing"
 msgstr "Дасгал хийж байна"
 
-#: maps/js-translation-strings.php:28 site/dashboard/wizard.php:226
+#: maps/js-translation-strings.php:28 site/dashboard/dashboard.php:240
+#: site/dashboard/wizard.php:234
 #, fuzzy
 msgid "Coaching"
 msgstr "Дасгалжуулагч"
@@ -1166,7 +1167,7 @@ msgstr "Бэлтгэлтэй"
 msgid "Churches"
 msgstr "Сүм"
 
-#: maps/local-map.php:553
+#: maps/local-map.php:553 site/dashboard/dashboard.php:201
 #, fuzzy
 msgid "Progress"
 msgstr "Миний ахиц дэвшил"
@@ -1182,24 +1183,25 @@ msgid "Please enter a grid_id parameter"
 msgstr "Найзын код оруулна уу."
 
 #: maps/local-map.php:944 maps/local-map.php:1068
-#: site/dashboard/dashboard.php:211
+#: site/dashboard/dashboard.php:231
 #, fuzzy
 msgid "Getting Started"
 msgstr "Эхлэх"
 
 #: maps/local-map.php:946 maps/local-map.php:963
-#: site/dashboard/dashboard.php:197 site/dashboard/wizard.php:305
-#: site/dashboard/wizard.php:306 site/dashboard/wizard.php:330
+#: site/dashboard/dashboard.php:214 site/dashboard/wizard.php:290
+#: site/dashboard/wizard.php:352 site/dashboard/wizard.php:353
+#: site/dashboard/wizard.php:384 site/pages/plans.php:148
 #, fuzzy
 msgid "Location"
 msgstr "Байршил"
 
-#: maps/local-map.php:954 site/dashboard/dashboard.php:196
+#: maps/local-map.php:954 site/dashboard/dashboard.php:213
 #, fuzzy
 msgid "No Locations found"
 msgstr "Байршил олдсонгүй"
 
-#: maps/local-map.php:955 site/dashboard/wizard.php:180
+#: maps/local-map.php:955 site/dashboard/wizard.php:188
 #, fuzzy
 msgid "No locations found"
 msgstr "Байршил олдсонгүй"
@@ -1409,7 +1411,7 @@ msgstr "Би өөрөөсөө асуугаарай"
 #: site/activities/coaching-checklist-two.php:187
 #: site/activities/coaching-checklist.php:150
 #: site/activities/coaching-checklist.php:290
-#: site/dashboard/checkin-dashboard.php:183 site/dashboard/dashboard.php:259
+#: site/dashboard/checkin-dashboard.php:183 site/dashboard/dashboard.php:280
 #, fuzzy
 msgid "Heard"
 msgstr "Сонссон"
@@ -1420,7 +1422,7 @@ msgstr "Сонссон"
 #: site/activities/coaching-checklist-two.php:191
 #: site/activities/coaching-checklist.php:153
 #: site/activities/coaching-checklist.php:293
-#: site/dashboard/checkin-dashboard.php:185 site/dashboard/dashboard.php:261
+#: site/dashboard/checkin-dashboard.php:185 site/dashboard/dashboard.php:282
 #, fuzzy
 msgid "Obeyed"
 msgstr "Дагасан"
@@ -1431,7 +1433,7 @@ msgstr "Дагасан"
 #: site/activities/coaching-checklist-two.php:195
 #: site/activities/coaching-checklist.php:156
 #: site/activities/coaching-checklist.php:296
-#: site/dashboard/checkin-dashboard.php:187 site/dashboard/dashboard.php:263
+#: site/dashboard/checkin-dashboard.php:187 site/dashboard/dashboard.php:284
 #, fuzzy
 msgid "Shared"
 msgstr "Хуваалцсан"
@@ -1442,7 +1444,7 @@ msgstr "Хуваалцсан"
 #: site/activities/coaching-checklist-two.php:199
 #: site/activities/coaching-checklist.php:159
 #: site/activities/coaching-checklist.php:299
-#: site/dashboard/checkin-dashboard.php:189 site/dashboard/dashboard.php:265
+#: site/dashboard/checkin-dashboard.php:189 site/dashboard/dashboard.php:286
 #, fuzzy
 msgid "Trained"
 msgstr "Бэлтгэлтэй"
@@ -1450,7 +1452,7 @@ msgstr "Бэлтгэлтэй"
 #: site/activities/coaching-checklist-host.php:157
 #: site/activities/coaching-checklist-two.php:189
 #: site/activities/coaching-checklist.php:290
-#: site/dashboard/checkin-dashboard.php:184 site/dashboard/dashboard.php:260
+#: site/dashboard/checkin-dashboard.php:184 site/dashboard/dashboard.php:281
 #, fuzzy
 msgid "Have I heard about this tool or concept?"
 msgstr "Би энэ хэрэгсэл эсвэл үзэл баримтлалын талаар сонссон уу?"
@@ -1458,7 +1460,7 @@ msgstr "Би энэ хэрэгсэл эсвэл үзэл баримтлалын 
 #: site/activities/coaching-checklist-host.php:161
 #: site/activities/coaching-checklist-two.php:193
 #: site/activities/coaching-checklist.php:293
-#: site/dashboard/checkin-dashboard.php:186 site/dashboard/dashboard.php:262
+#: site/dashboard/checkin-dashboard.php:186 site/dashboard/dashboard.php:283
 #, fuzzy
 msgid ""
 "Have I obeyed this tool or concept? If a tool, have I practiced it on my "
@@ -1471,7 +1473,7 @@ msgstr ""
 #: site/activities/coaching-checklist-host.php:165
 #: site/activities/coaching-checklist-two.php:197
 #: site/activities/coaching-checklist.php:296
-#: site/dashboard/checkin-dashboard.php:188 site/dashboard/dashboard.php:264
+#: site/dashboard/checkin-dashboard.php:188 site/dashboard/dashboard.php:285
 #, fuzzy
 msgid ""
 "Have I shared this tool or concept? If a tool, have you shown anyone how to "
@@ -1484,7 +1486,7 @@ msgstr ""
 #: site/activities/coaching-checklist-host.php:169
 #: site/activities/coaching-checklist-two.php:201
 #: site/activities/coaching-checklist.php:299
-#: site/dashboard/checkin-dashboard.php:190 site/dashboard/dashboard.php:266
+#: site/dashboard/checkin-dashboard.php:190 site/dashboard/dashboard.php:287
 #, fuzzy
 msgid ""
 "Have I trained others to share this tool or concept? If a tool, have I "
@@ -1825,7 +1827,7 @@ msgid "3 Month Plan"
 msgstr "3 сарын төлөвлөгөө"
 
 #: site/activities/three-month-plan-printable.php:47
-#: site/activities/three-month-plan.php:57 site/dashboard/dashboard.php:229
+#: site/activities/three-month-plan.php:57 site/dashboard/dashboard.php:250
 #, fuzzy
 msgid "3-Month Plan"
 msgstr "3 сарын төлөвлөгөө"
@@ -1849,8 +1851,8 @@ msgstr ""
 "Энэ интерактив хуудсыг ашиглахын тулд скриптүүдийг асаана уу. Үгүй бол дээрх "
 "холбоосыг ашиглан хэвлэх боломжтой хувилбарыг ашиглаж болно."
 
-#: site/activities/three-month-plan.php:83 site/dashboard/dashboard.php:172
-#: site/dashboard/wizard.php:313 site/profile/profile.php:148
+#: site/activities/three-month-plan.php:83 site/dashboard/dashboard.php:177
+#: site/dashboard/wizard.php:360 site/profile/profile.php:148
 #, fuzzy
 msgid "Save"
 msgstr "Хадгалах"
@@ -1860,15 +1862,15 @@ msgstr "Хадгалах"
 msgid "Cancel"
 msgstr "цуцлах"
 
-#: site/activities/three-month-plan.php:85 site/dashboard/dashboard.php:329
+#: site/activities/three-month-plan.php:85 site/dashboard/dashboard.php:362
 msgid "Question"
 msgstr ""
 
-#: site/activities/three-month-plan.php:86 site/dashboard/dashboard.php:330
+#: site/activities/three-month-plan.php:86 site/dashboard/dashboard.php:363
 msgid "Answer"
 msgstr ""
 
-#: site/activities/three-month-plan.php:87 site/dashboard/dashboard.php:331
+#: site/activities/three-month-plan.php:87 site/dashboard/dashboard.php:364
 msgid "Note"
 msgstr ""
 
@@ -2879,7 +2881,7 @@ msgstr ""
 msgid "Obey"
 msgstr "Дага"
 
-#: site/course/course-content.php:719 site/dashboard/dashboard.php:174
+#: site/course/course-content.php:719 site/dashboard/dashboard.php:179
 #: site/pages/_strings-mobile-pwa.php:37 site/pages/share.php:29
 #: site/pages/share.php:84 site/parts/nav.php:41
 #, fuzzy
@@ -3892,8 +3894,8 @@ msgstr ""
 "Хэрэв танд дасгалжуулагч, зөвлөгч байхгүй бол QR кодыг уншаад яг одоо хүсэлт "
 "гаргана уу."
 
-#: site/course/course-content.php:2771 site/dashboard/dashboard.php:220
-#: site/dashboard/wizard.php:239 site/pages/about.php:271
+#: site/course/course-content.php:2771 site/dashboard/dashboard.php:241
+#: site/dashboard/wizard.php:247 site/pages/about.php:271
 #: site/parts/footer.php:12 site/parts/footer.php:18
 #: site/parts/mobile-nav.php:14 utilities/apis/cta-api.php:246
 #: utilities/apis/cta-api.php:248
@@ -4248,7 +4250,7 @@ msgstr ""
 msgid "God makes plans, and He expects us to make plans, too."
 msgstr "Бурхан төлөвлөгөө гаргадаг ба бид ч бас төлөвлөгөө гаргахыг хүсдэг."
 
-#: site/course/course-content.php:3183 site/dashboard/dashboard.php:231
+#: site/course/course-content.php:3183 site/dashboard/dashboard.php:252
 #, fuzzy
 msgid ""
 "A Three Month Plan is a tool you can use to help focus your attention and "
@@ -4929,7 +4931,7 @@ msgid "INTENSIVE SESSION 5"
 msgstr "ЭРЧИМЖҮҮЛСЭН ЧУУЛГАН 5"
 
 #: site/course/course-content.php:6160 site/course/course-content.php:6168
-#: site/dashboard/dashboard.php:267 site/parts/mobile-nav.php:20
+#: site/dashboard/dashboard.php:288 site/parts/mobile-nav.php:20
 #, fuzzy
 msgid "Join the Community"
 msgstr "Нийгэмлэгт нэгдээрэй"
@@ -4982,7 +4984,7 @@ msgstr "Хичээлийн хөтлөгч"
 msgid "Links"
 msgstr "Холбоосууд"
 
-#: site/course/presenter.php:148 site/dashboard/dashboard.php:271
+#: site/course/presenter.php:148 site/dashboard/dashboard.php:292
 #: site/pages/resources.php:29 site/pages/resources.php:122
 #: site/parts/checkin-nav.php:14 site/parts/footer.php:41
 #: site/parts/mobile-nav.php:8 site/parts/mobile-nav.php:28
@@ -4996,7 +4998,7 @@ msgstr "Нөөц"
 msgid "Exit Course"
 msgstr "Хичээлээс гарах"
 
-#: site/course/presenter.php:163 site/dashboard/dashboard.php:189
+#: site/course/presenter.php:163 site/dashboard/dashboard.php:194
 #, fuzzy
 msgid "Menu"
 msgstr "Цэс"
@@ -5006,7 +5008,7 @@ msgstr "Цэс"
 msgid "Slide View"
 msgstr "Тор харах"
 
-#: site/course/presenter.php:165 site/dashboard/dashboard.php:184
+#: site/course/presenter.php:165 site/dashboard/dashboard.php:189
 #, fuzzy
 msgid "List View"
 msgstr "Жагсаалт харах"
@@ -5021,8 +5023,9 @@ msgstr "Дараагийн слайд"
 msgid "Previous slide"
 msgstr "Өмнөх слайд"
 
-#: site/course/presenter.php:168 site/dashboard/wizard.php:250
-#: site/pages/join-a-training-public.php:105
+#: site/course/presenter.php:168 site/dashboard/wizard.php:266
+#: site/dashboard/wizard.php:297 site/pages/join-a-training-public.php:105
+#: site/pages/join-a-training-public.php:129 site/pages/plans.php:156
 #, fuzzy
 msgid "Session"
 msgstr "Сессия"
@@ -5081,220 +5084,290 @@ msgstr "Баяр хүргэе"
 msgid "You're checked in"
 msgstr "Амжилттай нэвтэрлээ"
 
-#: site/dashboard/checkin-dashboard.php:182
+#: site/dashboard/checkin-dashboard.php:182 site/dashboard/dashboard.php:369
 #: site/pages/_strings-mobile-pwa.php:41
 #, fuzzy
 msgid "Learn more"
 msgstr "Илүү их судла"
 
-#: site/dashboard/dashboard.php:170 site/dashboard/wizard.php:311
+#: site/dashboard/dashboard.php:175 site/dashboard/wizard.php:358
 #, fuzzy
 msgid "Done"
 msgstr "Дууслаа"
 
-#: site/dashboard/dashboard.php:171
+#: site/dashboard/dashboard.php:176
 #, fuzzy
 msgid "Edit"
 msgstr "Засварлах"
 
-#: site/dashboard/dashboard.php:173 site/pages/_strings-mobile-pwa.php:27
+#: site/dashboard/dashboard.php:178 site/pages/_strings-mobile-pwa.php:27
 #, fuzzy
 msgid "Delete"
 msgstr "Устгах"
 
-#: site/dashboard/dashboard.php:175
+#: site/dashboard/dashboard.php:180
 msgid "Status"
 msgstr ""
 
-#: site/dashboard/dashboard.php:176
+#: site/dashboard/dashboard.php:181 site/pages/plans.php:113
 #, fuzzy
 msgid "Active"
 msgstr "Идэвхтэй"
 
-#: site/dashboard/dashboard.php:177
+#: site/dashboard/dashboard.php:182 site/pages/plans.php:113
 #, fuzzy
 msgid "Inactive"
 msgstr "Идэвхтэй"
 
-#: site/dashboard/dashboard.php:178
+#: site/dashboard/dashboard.php:183
 #, fuzzy
 msgid "Completed"
 msgstr "Дууссан"
 
-#: site/dashboard/dashboard.php:179
+#: site/dashboard/dashboard.php:184
 #, fuzzy
 msgid "Uncompleted"
 msgstr "Дуусаагүй"
 
-#: site/dashboard/dashboard.php:180
+#: site/dashboard/dashboard.php:185
 #, fuzzy
 msgid "Not Heard"
 msgstr "Сонсоогүй"
 
-#: site/dashboard/dashboard.php:181 site/pages/share.php:124
+#: site/dashboard/dashboard.php:186 site/pages/share.php:124
 #, fuzzy
 msgid "All"
 msgstr "Бүгд"
 
-#: site/dashboard/dashboard.php:182 site/profile/profile.php:154
+#: site/dashboard/dashboard.php:187 site/profile/profile.php:154
 #, fuzzy
 msgid "Logout"
 msgstr "Гарах"
 
-#: site/dashboard/dashboard.php:183 site/pages/share.php:127
+#: site/dashboard/dashboard.php:188 site/pages/share.php:127
 #, fuzzy
 msgid "Filter"
 msgstr "Шүүлтүүр"
 
-#: site/dashboard/dashboard.php:185
+#: site/dashboard/dashboard.php:190
 #, fuzzy
 msgid "Grid View"
 msgstr "Тор харах"
 
-#: site/dashboard/dashboard.php:186
+#: site/dashboard/dashboard.php:191
 #, fuzzy
 msgid "View Now"
 msgstr "Одоо үзэх"
 
-#: site/dashboard/dashboard.php:187
+#: site/dashboard/dashboard.php:192
 #, fuzzy
 msgid "Complete Now"
 msgstr "Одоо дуусга"
 
-#: site/dashboard/dashboard.php:188
+#: site/dashboard/dashboard.php:193
 #, fuzzy
 msgid "View"
 msgstr "Харах"
 
-#: site/dashboard/dashboard.php:190 site/dashboard/wizard.php:202
-#: site/dashboard/wizard.php:248 site/pages/join-a-training-public.php:104
-#: site/profile/profile.php:111
+#: site/dashboard/dashboard.php:195 site/dashboard/wizard.php:210
+#: site/dashboard/wizard.php:264 site/pages/join-a-training-public.php:104
+#: site/pages/join-a-training-public.php:128 site/profile/profile.php:111
 #, fuzzy
 msgid "Name"
 msgstr "Нэр"
 
-#: site/dashboard/dashboard.php:191 site/dashboard/wizard.php:200
-#: site/dashboard/wizard.php:218 site/profile/profile.php:115
-#: zume-training-system.php:404
+#: site/dashboard/dashboard.php:196 site/dashboard/wizard.php:208
+#: site/dashboard/wizard.php:226 site/profile/profile.php:115
+#: zume-training-system.php:563
 #, fuzzy
 msgid "Phone"
 msgstr "Утас"
 
-#: site/dashboard/dashboard.php:192 site/dashboard/wizard.php:216
+#: site/dashboard/dashboard.php:197 site/dashboard/wizard.php:224
 #: site/login/login-template.php:450 site/login/login-template.php:451
-#: site/profile/profile.php:119 zume-training-system.php:402
+#: site/profile/profile.php:119 zume-training-system.php:561
 #, fuzzy
 msgid "Email"
 msgstr "Имэйл"
 
-#: site/dashboard/dashboard.php:193
-#, fuzzy
-msgid "Linked Accounts"
-msgstr "Данс"
-
-#: site/dashboard/dashboard.php:194
+#: site/dashboard/dashboard.php:198
 #, fuzzy
 msgid "Communications Email"
 msgstr "Харилцаа холбооны имэйл"
 
-#: site/dashboard/dashboard.php:195 site/dashboard/wizard.php:201
+#: site/dashboard/dashboard.php:199
+msgid "If these are not correct, please update your profile."
+msgstr ""
+
+#: site/dashboard/dashboard.php:200
+#, fuzzy
+msgid "Contact Info"
+msgstr "Харилцагчид"
+
+#: site/dashboard/dashboard.php:202
+#, fuzzy
+msgid "Copy Emails"
+msgstr "Имэйл"
+
+#: site/dashboard/dashboard.php:203
+#, fuzzy
+msgid "Copy Phones"
+msgstr "Урилгыг хуулах"
+
+#: site/dashboard/dashboard.php:204
+#, fuzzy
+msgid "Copy Code"
+msgstr "Урилгыг хуулах"
+
+#: site/dashboard/dashboard.php:205
+#, fuzzy
+msgid "Linked Accounts"
+msgstr "Данс"
+
+#: site/dashboard/dashboard.php:206 site/dashboard/wizard.php:273
+#, fuzzy
+msgid "Change Preferences"
+msgstr "Харилцаа холбооны тохиргоог шинэчлэх"
+
+#: site/dashboard/dashboard.php:207
+#, fuzzy
+msgid "Email Preferences"
+msgstr "Харилцаа холбооны тохиргоог шинэчлэх"
+
+#: site/dashboard/dashboard.php:208
+msgid "Choose which email lists you want to receive"
+msgstr ""
+
+#: site/dashboard/dashboard.php:209 zume-training-system.php:541
+msgid "Hide my contact information from other participants in trainings"
+msgstr ""
+
+#: site/dashboard/dashboard.php:210 zume-training-system.php:533
+msgid "Hide my progress from other participants in trainings"
+msgstr ""
+
+#: site/dashboard/dashboard.php:211
+msgid ""
+"Don't forget to send subscribers an email to notify them of the training."
+msgstr ""
+
+#: site/dashboard/dashboard.php:212 site/dashboard/wizard.php:209
 #: site/profile/profile.php:123
 #, fuzzy
 msgid "City"
 msgstr "Хот"
 
-#: site/dashboard/dashboard.php:198 site/dashboard/wizard.php:310
-#: site/dashboard/wizard.php:314 site/dashboard/wizard.php:331
+#: site/dashboard/dashboard.php:215 site/dashboard/wizard.php:357
+#: site/dashboard/wizard.php:361 site/dashboard/wizard.php:385
+#: zume-training-system.php:252
 #, fuzzy
 msgid "Time"
 msgstr "Цаг хугацаа"
 
-#: site/dashboard/dashboard.php:199 site/dashboard/wizard.php:224
-#: site/dashboard/wizard.php:253 site/pages/_strings-mobile-pwa.php:17
-#: site/pages/join-a-training-public.php:109 site/parts/language-menu.php:7
+#: site/dashboard/dashboard.php:216 site/dashboard/wizard.php:232
+#: site/dashboard/wizard.php:269 site/pages/_strings-mobile-pwa.php:17
+#: site/pages/join-a-training-public.php:109
+#: site/pages/join-a-training-public.php:133 site/parts/language-menu.php:7
 #: site/profile/profile.php:133 utilities/post-types/posttype-pieces.php:300
+#: zume-training-system.php:258
 #, fuzzy
 msgid "Language"
 msgstr "Хэл"
 
-#: site/dashboard/dashboard.php:200 site/dashboard/wizard.php:252
-#: site/pages/join-a-training-public.php:108
+#: site/dashboard/dashboard.php:217 site/dashboard/wizard.php:268
+#: site/dashboard/wizard.php:296 site/pages/join-a-training-public.php:108
+#: site/pages/join-a-training-public.php:132 site/pages/plans.php:152
+#: zume-training-system.php:255
 #, fuzzy
 msgid "Timezone"
 msgstr "Цагийн бүс"
 
-#: site/dashboard/dashboard.php:201 site/dashboard/wizard.php:332
+#: site/dashboard/dashboard.php:218
+#, fuzzy
+msgid "Select timezone"
+msgstr "Хэрэглэгчийн цагийн бүс"
+
+#: site/dashboard/dashboard.php:219
+msgid "New"
+msgstr ""
+
+#: site/dashboard/dashboard.php:220 site/dashboard/wizard.php:386
 #, fuzzy
 msgid "Meeting link"
 msgstr "Бүртгүүлж байна"
 
-#: site/dashboard/dashboard.php:202
+#: site/dashboard/dashboard.php:221
 msgid "Zoom, Google Meet, Microsoft Teams etc."
 msgstr ""
 
-#: site/dashboard/dashboard.php:203
+#: site/dashboard/dashboard.php:222
 #, fuzzy
 msgid "Edit Profile"
 msgstr "Засварлах Хувийн мэдээллийг vзэх"
 
-#: site/dashboard/dashboard.php:204
+#: site/dashboard/dashboard.php:223
 #, fuzzy
 msgid "Check out this Zúme concept"
 msgstr "Энэхүү Zúme концепцийг үзээрэй"
 
-#: site/dashboard/dashboard.php:205 site/pages/resources.php:160
+#: site/dashboard/dashboard.php:224 site/pages/resources.php:160
 #, fuzzy
 msgid "Preview"
 msgstr "Урьдчилан үзэх"
 
-#: site/dashboard/dashboard.php:206 site/dashboard/dashboard.php:282
-#: site/dashboard/dashboard.php:295
+#: site/dashboard/dashboard.php:225 site/dashboard/dashboard.php:309
+#: site/dashboard/dashboard.php:322
 #, fuzzy, php-format
 msgid "Add new %s"
 msgstr "Шинэ %s нэмэх"
 
-#: site/dashboard/dashboard.php:206
+#: site/dashboard/dashboard.php:225
 #, fuzzy
 msgid "Commitment"
 msgstr "Амлалт"
 
-#: site/dashboard/dashboard.php:207 site/pages/share.php:85
+#: site/dashboard/dashboard.php:226 site/pages/share.php:85
 #, fuzzy
 msgid "Copy Link"
 msgstr "Холбоосыг хуулах"
 
-#: site/dashboard/dashboard.php:208
+#: site/dashboard/dashboard.php:227
 #, fuzzy
 msgid "Copy this link and send it to your friends 🙂"
 msgstr "Энэ холбоосыг хуулж аваад найзууддаа илгээгээрэй 🙂"
 
-#: site/dashboard/dashboard.php:209 site/pages/share.php:87
+#: site/dashboard/dashboard.php:228 site/pages/share.php:87
 #, fuzzy
 msgid "Thanks!"
 msgstr "Баярлалаа!"
 
-#: site/dashboard/dashboard.php:210
+#: site/dashboard/dashboard.php:229
 #, fuzzy
 msgid "Link copied"
 msgstr "Холбоосыг хуулсан"
 
-#: site/dashboard/dashboard.php:212 utilities/apis/cta-api.php:157
+#: site/dashboard/dashboard.php:230 site/pages/share.php:88
+#, fuzzy
+msgid "Copied"
+msgstr "Хуулсан"
+
+#: site/dashboard/dashboard.php:232 utilities/apis/cta-api.php:157
 #: utilities/apis/cta-api.php:159
 #, fuzzy
 msgid "Set Profile"
 msgstr "Профайл тохируулах"
 
-#: site/dashboard/dashboard.php:213
+#: site/dashboard/dashboard.php:233
 #, fuzzy
 msgid "Complete a short Profile Wizard to set your profile"
 msgstr "Өөрийн профайлыг тохируулахын тулд богино профайл шидтэнг бөглөнө үү"
 
-#: site/dashboard/dashboard.php:214 site/dashboard/wizard.php:274
+#: site/dashboard/dashboard.php:234 site/dashboard/wizard.php:316
 #, fuzzy
 msgid "Join or create a training group"
 msgstr "Сургалтын бүлэгт элсэх эсвэл үүсгэ"
 
-#: site/dashboard/dashboard.php:215
+#: site/dashboard/dashboard.php:235
 #, fuzzy
 msgid ""
 "Join one of our online trainings or create your own training group with our "
@@ -5303,28 +5376,29 @@ msgstr ""
 "Манай онлайн сургалтуудын аль нэгэнд хамрагдах эсвэл тохируулахад хялбар "
 "шидтэнг ашиглан өөрийн сургалтын бүлгийг үүсгэ"
 
-#: site/dashboard/dashboard.php:216
+#: site/dashboard/dashboard.php:236
 #, fuzzy
 msgid "Create Training Group"
 msgstr "Сургалтын бүлэг үүсгэх"
 
-#: site/dashboard/dashboard.php:217
+#: site/dashboard/dashboard.php:237
 #, fuzzy
 msgid "Create your own training group with our easy to set up wizard"
 msgstr ""
 "Манай тохируулахад хялбар шидтэнг ашиглан өөрийн сургалтын бүлгийг үүсгэ"
 
-#: site/dashboard/dashboard.php:218 site/dashboard/wizard.php:333
+#: site/dashboard/dashboard.php:238 site/dashboard/wizard.php:317
+#: site/dashboard/wizard.php:387 site/pages/plans.php:194
 #, fuzzy
 msgid "Join Training Group"
 msgstr "Сургалтын группд нэгдээрэй"
 
-#: site/dashboard/dashboard.php:219
+#: site/dashboard/dashboard.php:239
 #, fuzzy
 msgid "Join an online training group run by a coach"
 msgstr "Дасгалжуулагчийн удирддаг онлайн сургалтын бүлэгт элсээрэй"
 
-#: site/dashboard/dashboard.php:221
+#: site/dashboard/dashboard.php:242
 #, fuzzy
 msgid ""
 "Connect with a coach for any help or encouragement before, during or after "
@@ -5333,12 +5407,12 @@ msgstr ""
 "Дасгалжуулагчтай холбогдож сургалтын өмнө, үеэр болон дараа нь ямар нэгэн "
 "тусламж, дэмжлэг аваарай."
 
-#: site/dashboard/dashboard.php:223 site/parts/checkin-nav.php:8
+#: site/dashboard/dashboard.php:244 site/parts/checkin-nav.php:8
 #, fuzzy
 msgid "My Progress"
 msgstr "Миний ахиц дэвшил"
 
-#: site/dashboard/dashboard.php:224
+#: site/dashboard/dashboard.php:245
 #, fuzzy
 msgid ""
 "Track your course progress with this interactive view. Learn to listen, "
@@ -5347,22 +5421,22 @@ msgstr ""
 "Энэхүү интерактив харагдацаар хичээлийнхээ явцыг хянах. Сурсан зүйлээ "
 "сонсож, дуулгавартай дагаж, бусадтай хуваалцаж, сургаж сур."
 
-#: site/dashboard/dashboard.php:225
+#: site/dashboard/dashboard.php:246
 #, fuzzy
 msgid "Information about progress"
 msgstr "Ахиц дэвшлийн талаархи мэдээлэл"
 
-#: site/dashboard/dashboard.php:226
+#: site/dashboard/dashboard.php:247
 #, fuzzy
 msgid "My Training"
 msgstr "Миний сургалт"
 
-#: site/dashboard/dashboard.php:227
+#: site/dashboard/dashboard.php:248
 #, fuzzy
 msgid "My Trainings"
 msgstr "Миний сургалтууд"
 
-#: site/dashboard/dashboard.php:228
+#: site/dashboard/dashboard.php:249
 #, fuzzy
 msgid ""
 "Full access to your training content, schedule, group details and sharing "
@@ -5371,17 +5445,17 @@ msgstr ""
 "Сургалтын агуулга, хуваарь, бүлгийн дэлгэрэнгүй мэдээлэл, хуваалцах "
 "хэрэгсэлд бүрэн хандах боломжтой."
 
-#: site/dashboard/dashboard.php:230
+#: site/dashboard/dashboard.php:251
 #, fuzzy
 msgid "Create Your Plan"
 msgstr "Төлөвлөгөөгөө үүсгэ"
 
-#: site/dashboard/dashboard.php:232
+#: site/dashboard/dashboard.php:253
 #, fuzzy
 msgid "Three Month Plan Locked"
 msgstr "Гурван сарын төлөвлөгөө түгжигдсэн"
 
-#: site/dashboard/dashboard.php:233
+#: site/dashboard/dashboard.php:254
 #, fuzzy
 msgid ""
 "The three month plan is a tool to help you take action and implement the "
@@ -5392,27 +5466,27 @@ msgstr ""
 "хэрэгжүүлэхэд тань туслах хэрэгсэл юм. Сургалтыг дуусгасны дараа энэ нь "
 "хамгийн ашигтай байдаг."
 
-#: site/dashboard/dashboard.php:234
+#: site/dashboard/dashboard.php:255
 #, fuzzy
 msgid "Unlock now"
 msgstr "Одоо түгжээг тайл"
 
-#: site/dashboard/dashboard.php:236
+#: site/dashboard/dashboard.php:257
 #, fuzzy
 msgid "My Coach"
 msgstr "Миний дасгалжуулагч"
 
-#: site/dashboard/dashboard.php:237
+#: site/dashboard/dashboard.php:258
 #, fuzzy
 msgid "Quick access to your coach at all times."
 msgstr "Дасгалжуулагчтайгаа үргэлж хурдан холбогдоорой."
 
-#: site/dashboard/dashboard.php:238
+#: site/dashboard/dashboard.php:259
 #, fuzzy
 msgid "My Tools"
 msgstr "Миний хэрэгсэл"
 
-#: site/dashboard/dashboard.php:239
+#: site/dashboard/dashboard.php:260
 #, fuzzy
 msgid ""
 "Your My Tools area will unlock as you move through the course, practicing "
@@ -5421,12 +5495,12 @@ msgstr ""
 "Таныг хичээлээ давж, дадлага хийж, шавийн ур чадвараа хөгжүүлснээр таны "
 "Миний хэрэгсэл хэсэг нээгдэнэ."
 
-#: site/dashboard/dashboard.php:240
+#: site/dashboard/dashboard.php:261
 #, fuzzy
 msgid "My Plans"
 msgstr "Миний төлөвлөгөө"
 
-#: site/dashboard/dashboard.php:241
+#: site/dashboard/dashboard.php:262
 #, fuzzy
 msgid ""
 "Unlock the My Plans area by completing your 3-Month plan in the final "
@@ -5435,12 +5509,12 @@ msgstr ""
 "Төгсгөлийн хэсэгт 3 сарын төлөвлөгөөгөө дуусгаснаар Миний төлөвлөгөөний "
 "түгжээг нээгээрэй."
 
-#: site/dashboard/dashboard.php:242
+#: site/dashboard/dashboard.php:263
 #, fuzzy
 msgid "My Plans are Locked"
 msgstr "Миний төлөвлөгөө цоожтой байна"
 
-#: site/dashboard/dashboard.php:243
+#: site/dashboard/dashboard.php:264
 #, fuzzy
 msgid ""
 "Unlock this area by creating your Three-Month Plan or adding a commitment of "
@@ -5449,28 +5523,28 @@ msgstr ""
 "Гурван сарын төлөвлөгөөгөө гаргах эсвэл өөрийн гэсэн амлалтыг нэмснээр энэ "
 "талбайн түгжээг нээгээрэй."
 
-#: site/dashboard/dashboard.php:244
+#: site/dashboard/dashboard.php:265
 #, fuzzy
 msgid "My Churches"
 msgstr "Миний сүмүүд"
 
-#: site/dashboard/dashboard.php:245 site/dashboard/dashboard.php:285
+#: site/dashboard/dashboard.php:266 site/dashboard/dashboard.php:312
 msgid ""
 "My Churches tool makes it easy for you to track your simple church and the "
 "simple church generations that grow out of your spiritual family."
 msgstr ""
 
-#: site/dashboard/dashboard.php:246
+#: site/dashboard/dashboard.php:267
 #, fuzzy
 msgid "My Maps"
 msgstr "Миний Газрын зураг"
 
-#: site/dashboard/dashboard.php:247
+#: site/dashboard/dashboard.php:268
 #, fuzzy
 msgid "My Maps are Locked"
 msgstr "Миний газрын зураг түгжигдсэн"
 
-#: site/dashboard/dashboard.php:248
+#: site/dashboard/dashboard.php:269
 #, fuzzy
 msgid ""
 "My maps help clarify the Zúme vision of 1 trainee and 2 churches for every "
@@ -5484,214 +5558,241 @@ msgstr ""
 "даалгавар биелсэн байхыг харах хүсэлтэй бусад шавь бэлтгэгчидтэй "
 "холбогдоорой."
 
-#: site/dashboard/dashboard.php:249
+#: site/dashboard/dashboard.php:270
 #, fuzzy
 msgid "My Training is Locked"
 msgstr "Миний сургалт түгжигдсэн байна"
 
-#: site/dashboard/dashboard.php:250
+#: site/dashboard/dashboard.php:271
 #, fuzzy
 msgid "Present Course"
 msgstr "Хичээлийн хөтлөгч"
 
-#: site/dashboard/dashboard.php:252
+#: site/dashboard/dashboard.php:273
 #, fuzzy
 msgid "Course Content"
 msgstr "Курсын тухай ойлголт"
 
-#: site/dashboard/dashboard.php:253
+#: site/dashboard/dashboard.php:274
 #, fuzzy
 msgid "Course"
 msgstr "Мэдээж"
 
-#: site/dashboard/dashboard.php:254
+#: site/dashboard/dashboard.php:275
 #, fuzzy
 msgid "Enter Course"
 msgstr "Хичээлээс гарах"
 
-#: site/dashboard/dashboard.php:255
+#: site/dashboard/dashboard.php:276
 #, fuzzy
 msgid "Course Slides"
 msgstr "Хичээлийн хөтлөгч"
 
-#: site/dashboard/dashboard.php:258 site/pages/resources.php:153
+#: site/dashboard/dashboard.php:279 site/pages/resources.php:153
 #: site/pages/resources.php:170 site/pages/resources.php:197
 #: site/parts/download-slides.php:37 site/parts/download-slides.php:49
 #, fuzzy
 msgid "Intensive Course"
 msgstr "Эрчимжүүлсэн курс"
 
-#: site/dashboard/dashboard.php:268 site/dashboard/wizard.php:254
+#: site/dashboard/dashboard.php:289 site/dashboard/wizard.php:270
 #: site/pages/home.php:281 site/pages/join-a-training-public.php:136
-#: site/pages/training.php:150 utilities/apis/cta-api.php:189
-#: utilities/apis/cta-api.php:412
+#: site/pages/training.php:150 utilities/apis/communications-api.php:104
+#: utilities/apis/cta-api.php:189 utilities/apis/cta-api.php:412
 #, fuzzy
 msgid "Join"
 msgstr "Нэгдэх"
 
-#: site/dashboard/dashboard.php:269
+#: site/dashboard/dashboard.php:290
 #, fuzzy
 msgid "Join the community to get access to this area."
 msgstr "Энэ хэсэгт хандахын тулд нийгэмлэгт нэгдээрэй."
 
-#: site/dashboard/dashboard.php:270
+#: site/dashboard/dashboard.php:291
 #, fuzzy
 msgid "Community links"
 msgstr "Олон нийтийн холбоосууд"
 
-#: site/dashboard/dashboard.php:272
+#: site/dashboard/dashboard.php:293
 #, fuzzy
 msgid "Previous Slide"
 msgstr "Өмнөх слайд"
 
-#: site/dashboard/dashboard.php:273
+#: site/dashboard/dashboard.php:294
 #, fuzzy
 msgid "Next Slide"
 msgstr "Дараагийн слайд"
 
-#: site/dashboard/dashboard.php:274
+#: site/dashboard/dashboard.php:295
 #, fuzzy
 msgid "Group Members"
 msgstr "Бүлгийн гишүүд"
 
-#: site/dashboard/dashboard.php:275
+#: site/dashboard/dashboard.php:296
 #, fuzzy
 msgid "Group Members Link"
 msgstr "Бүлгийн гишүүд"
 
-#: site/dashboard/dashboard.php:276
+#: site/dashboard/dashboard.php:297
 #, fuzzy
 msgid "Group Details"
 msgstr "Профайлын дэлгэрэнгүй мэдээлэл"
 
-#: site/dashboard/dashboard.php:277
+#: site/dashboard/dashboard.php:298
+#, fuzzy
+msgid "Group Communication"
+msgstr "Харилцаа холбооны имэйл"
+
+#: site/dashboard/dashboard.php:299
+msgid "Subscribers"
+msgstr ""
+
+#: site/dashboard/dashboard.php:300
+msgid "Has joined a group"
+msgstr ""
+
+#: site/dashboard/dashboard.php:301
+#, fuzzy
+msgid "Emailed on"
+msgstr "Имэйл"
+
+#: site/dashboard/dashboard.php:302
+msgid "Send Email to Subscribers"
+msgstr ""
+
+#: site/dashboard/dashboard.php:303
 #, fuzzy
 msgid "Mark Completed"
 msgstr "Дууссан гэж тэмдэглээрэй"
 
-#: site/dashboard/dashboard.php:278
+#: site/dashboard/dashboard.php:304
+#, fuzzy
+msgid "Mark Uncompleted"
+msgstr "Дууссан гэж тэмдэглээрэй"
+
+#: site/dashboard/dashboard.php:305
 #, fuzzy, php-format
 msgid "Session %d"
 msgstr "Сессия %d"
 
-#: site/dashboard/dashboard.php:279 site/pages/_strings-mobile-pwa.php:31
+#: site/dashboard/dashboard.php:306 site/pages/_strings-mobile-pwa.php:31
 #, fuzzy
 msgid "Start Session"
 msgstr "Сессийг эхлүүлэх"
 
-#: site/dashboard/dashboard.php:280
+#: site/dashboard/dashboard.php:307
 #, fuzzy
 msgid "Show details"
 msgstr "Дэлгэрэнгүй харуулах"
 
-#: site/dashboard/dashboard.php:281
+#: site/dashboard/dashboard.php:308
 #, fuzzy
 msgid "Edit time"
 msgstr "Цаг засах"
 
-#: site/dashboard/dashboard.php:283
+#: site/dashboard/dashboard.php:310
 #, fuzzy
 msgid "Invite Friends"
 msgstr "Найзуудаа урих"
 
-#: site/dashboard/dashboard.php:284
+#: site/dashboard/dashboard.php:311
 #, fuzzy
 msgid "My Churches are Locked"
 msgstr "Миний газрын зураг түгжигдсэн"
 
-#: site/dashboard/dashboard.php:286
+#: site/dashboard/dashboard.php:313
 #, fuzzy
 msgid "Unlock the My Churches area by joining the community."
 msgstr "Нийгэмлэгт нэгдэж Миний сүмүүдийн талбайн түгжээг нээгээрэй."
 
-#: site/dashboard/dashboard.php:287
+#: site/dashboard/dashboard.php:314
 #, fuzzy
 msgid "Click to add your first church"
 msgstr "Анхны сүмээ нэмэхийн тулд товшино уу"
 
-#: site/dashboard/dashboard.php:288
+#: site/dashboard/dashboard.php:315
 #, fuzzy
 msgid "Church Name"
 msgstr "Сүмийн нэр"
 
-#: site/dashboard/dashboard.php:289
+#: site/dashboard/dashboard.php:316
 #, fuzzy
 msgid "Number of People"
 msgstr "Хүмүүсийн тоо"
 
-#: site/dashboard/dashboard.php:290
+#: site/dashboard/dashboard.php:317
 #, fuzzy
 msgid "Church Location"
 msgstr "Сүмийн байршил"
 
-#: site/dashboard/dashboard.php:291
+#: site/dashboard/dashboard.php:318
 #, fuzzy
 msgid "Parent Church"
 msgstr "Эцэг эхийн сүм"
 
-#: site/dashboard/dashboard.php:292 site/dashboard/wizard.php:309
+#: site/dashboard/dashboard.php:319 site/dashboard/wizard.php:356
 #, fuzzy
 msgid "Start Date"
 msgstr "Эхлэх өдөр"
 
-#: site/dashboard/dashboard.php:293
+#: site/dashboard/dashboard.php:320
 #, fuzzy
 msgid "Mark Active"
 msgstr "Идэвхтэй"
 
-#: site/dashboard/dashboard.php:294
+#: site/dashboard/dashboard.php:321
 msgid "Mark Inactive"
 msgstr ""
 
-#: site/dashboard/dashboard.php:295
+#: site/dashboard/dashboard.php:322
 #, fuzzy
 msgid "Church"
 msgstr "Сүм"
 
-#: site/dashboard/dashboard.php:296
+#: site/dashboard/dashboard.php:323
 #, fuzzy
 msgid "cancel"
 msgstr "цуцлах"
 
-#: site/dashboard/dashboard.php:297 utilities/apis/cta-api.php:173
+#: site/dashboard/dashboard.php:324 utilities/apis/cta-api.php:173
 #: utilities/apis/cta-api.php:203 utilities/apis/cta-api.php:323
 #: utilities/apis/cta-api.php:337 utilities/apis/cta-api.php:366
 #, fuzzy
 msgid "Congratulations!"
 msgstr "Баяр хүргэе!"
 
-#: site/dashboard/dashboard.php:298
+#: site/dashboard/dashboard.php:325
 #, fuzzy
 msgid "You have requested a coach"
 msgstr "Та дасгалжуулагчийн хүсэлт тавьсан"
 
-#: site/dashboard/dashboard.php:299
+#: site/dashboard/dashboard.php:326
 #, fuzzy
 msgid "You have joined a training"
 msgstr "Та сургалтанд хамрагдлаа"
 
-#: site/dashboard/dashboard.php:300
+#: site/dashboard/dashboard.php:327
 #, fuzzy
 msgid "You have set your profile"
 msgstr "Та профайлаа тохируулсан байна"
 
-#: site/dashboard/dashboard.php:301
+#: site/dashboard/dashboard.php:328
 #, fuzzy, php-format
 msgctxt "3-month plan unlocked"
 msgid "%s unlocked"
 msgstr "%s түгжээг тайлсан"
 
-#: site/dashboard/dashboard.php:301 utilities/apis/cta-api.php:322
+#: site/dashboard/dashboard.php:328 utilities/apis/cta-api.php:322
 #, fuzzy
 msgid "3 month plan"
 msgstr "3 сарын төлөвлөгөө"
 
-#: site/dashboard/dashboard.php:302
+#: site/dashboard/dashboard.php:329
 #, fuzzy
 msgid "You have joined the community"
 msgstr "Та нийгэмлэгт нэгдсэн"
 
-#: site/dashboard/dashboard.php:304 site/dashboard/wizard.php:210
+#: site/dashboard/dashboard.php:331 site/dashboard/wizard.php:218
 #: site/pages/privacy-policy.php:110
 #, fuzzy
 msgid ""
@@ -5703,7 +5804,7 @@ msgstr ""
 "чанарыг сайжруулах, түүнчлэн харилцагчийн үйлчилгээний хүсэлт, зааварчилгааг "
 "өгөхийг хүсч байна."
 
-#: site/dashboard/dashboard.php:305 site/pages/privacy-policy.php:116
+#: site/dashboard/dashboard.php:332 site/pages/privacy-policy.php:116
 #, fuzzy
 msgid ""
 "A user’s email address is required to establish an account and is used for "
@@ -5712,7 +5813,7 @@ msgstr ""
 "Хэрэглэгчийн цахим шуудангийн хаяг нь данс үүсгэх шаардлагатай бөгөөд сайтын "
 "үйл ажиллагааны нэг хэсэг болгон гүйлгээний харилцаанд ашиглагддаг."
 
-#: site/dashboard/dashboard.php:306 site/dashboard/wizard.php:211
+#: site/dashboard/dashboard.php:333 site/dashboard/wizard.php:219
 #: site/pages/privacy-policy.php:119
 #, fuzzy
 msgid ""
@@ -5722,7 +5823,7 @@ msgstr ""
 "Хэрэглэгчийн утасны дугаарыг үнэгүй дасгалжуулах үйлчилгээг дэмжих зорилгоор "
 "цуглуулж, хадгалдаг."
 
-#: site/dashboard/dashboard.php:307 site/dashboard/wizard.php:212
+#: site/dashboard/dashboard.php:334 site/dashboard/wizard.php:220
 #: site/pages/privacy-policy.php:122
 #, fuzzy
 msgid ""
@@ -5733,7 +5834,7 @@ msgstr ""
 "хэрэглэгчдийг зохих зааварчилгаа, харилцагчийн үйлчилгээний нөөцтэй холбохыг "
 "хүсч байна."
 
-#: site/dashboard/dashboard.php:308 site/dashboard/wizard.php:240
+#: site/dashboard/dashboard.php:335 site/dashboard/wizard.php:248
 #: site/pages/privacy-policy.php:113
 #, fuzzy
 msgid ""
@@ -5745,29 +5846,29 @@ msgstr ""
 "зааварчилгаа, нөөцөөр холбоход туслах зорилгоор хэрэглэгчийн хэлний "
 "сонголтыг хадгалдаг."
 
-#: site/dashboard/dashboard.php:309 site/dashboard/wizard.php:334
+#: site/dashboard/dashboard.php:336 site/dashboard/wizard.php:388
 #, fuzzy
-msgid "Join key"
+msgid "Join Code"
 msgstr "Түлхүүр нэгдэх"
 
-#: site/dashboard/dashboard.php:310 site/pages/checkin.php:91
-#: site/pages/friend-invite.php:79 site/pages/plan-invite.php:78
-#: site/pages/plan-invite.php:174
+#: site/dashboard/dashboard.php:337 site/dashboard/wizard.php:322
+#: site/pages/checkin.php:91 site/pages/friend-invite.php:79
+#: site/pages/plan-invite.php:78 site/pages/plan-invite.php:174
 #, fuzzy
 msgid "Not a recognized code. Please check the number."
 msgstr "Хүлээн зөвшөөрөгдсөн код биш. Дугаарыг шалгана уу."
 
-#: site/dashboard/dashboard.php:311
+#: site/dashboard/dashboard.php:338
 #, fuzzy
 msgid "You are not authorized to access this page"
 msgstr "Та энэ хуудсанд хандах эрхгүй"
 
-#: site/dashboard/dashboard.php:312
+#: site/dashboard/dashboard.php:339
 #, fuzzy
 msgid "There has been an error with your request"
 msgstr "Таны хүсэлтэд алдаа гарлаа"
 
-#: site/dashboard/dashboard.php:313
+#: site/dashboard/dashboard.php:340
 #, fuzzy
 msgid ""
 "Thank you for your coaching request. Our team will be working to connect you "
@@ -5776,7 +5877,7 @@ msgstr ""
 "Дасгалжуулагчийн хүсэлт тавьсанд баярлалаа. Манай баг таныг хэл болон бүс "
 "нутагт тань тохирох дасгалжуулагчтай холбохоор ажиллах болно."
 
-#: site/dashboard/dashboard.php:314
+#: site/dashboard/dashboard.php:341
 #, fuzzy
 msgid ""
 "Please watch for communication from your coach within the communication "
@@ -5785,108 +5886,175 @@ msgstr ""
 "Таны заасан харилцааны тохиргооны хүрээнд дасгалжуулагчтайгаа харилцахыг "
 "анхаарна уу."
 
-#: site/dashboard/dashboard.php:315
+#: site/dashboard/dashboard.php:342
+msgid "We apologize for the delay"
+msgstr ""
+
+#: site/dashboard/dashboard.php:343
+#, fuzzy
+msgid "Message"
+msgstr "элч"
+
+#: site/dashboard/dashboard.php:344
+msgid ""
+"If you have any queries or need help, please enter a message below and we "
+"will get back to you as soon as possible."
+msgstr ""
+
+#: site/dashboard/dashboard.php:345
+msgid "Send Message"
+msgstr ""
+
+#: site/dashboard/dashboard.php:346
+#, fuzzy
+msgid "There was an error sending your message. Please try again later."
+msgstr ""
+"Уучлаарай. Бид таны хүсэлтийг гаргаж чадсангүй. Дараа дахин оролдож үзнэ үү."
+
+#: site/dashboard/dashboard.php:347
+msgid "Message sent successfully"
+msgstr ""
+
+#: site/dashboard/dashboard.php:348
 #, fuzzy
 msgid "100 Hour Map"
 msgstr "100 цагийн газрын зураг"
 
-#: site/dashboard/dashboard.php:316
+#: site/dashboard/dashboard.php:349
 #, fuzzy
 msgid "Trainee vision map"
 msgstr "Сургалтын харааны зураг"
 
-#: site/dashboard/dashboard.php:317
+#: site/dashboard/dashboard.php:350
 #, fuzzy
 msgid "Simple church vision map"
 msgstr "Энгийн сүм тарих газрын зураг"
 
-#: site/dashboard/dashboard.php:318
+#: site/dashboard/dashboard.php:351
 msgid "Missing answer"
 msgstr ""
 
-#: site/dashboard/dashboard.php:319 site/dashboard/wizard.php:193
-#: site/dashboard/wizard.php:247 site/dashboard/wizard.php:264
-#: site/dashboard/wizard.php:271
+#: site/dashboard/dashboard.php:352 site/dashboard/wizard.php:201
+#: site/dashboard/wizard.php:263 site/dashboard/wizard.php:306
+#: site/dashboard/wizard.php:313 site/dashboard/wizard.php:377
 #, fuzzy
 msgid "Something went wrong"
 msgstr "Ямар нэгэн зүйл буруугаар эргэсэн"
 
-#: site/dashboard/dashboard.php:320 site/dashboard/wizard.php:283
+#: site/dashboard/dashboard.php:353 site/dashboard/wizard.php:330
 #: site/pages/_strings-mobile-pwa.php:10
 #, fuzzy
 msgid "Yes"
 msgstr "Тиймээ"
 
-#: site/dashboard/dashboard.php:321 site/dashboard/wizard.php:284
+#: site/dashboard/dashboard.php:354 site/dashboard/wizard.php:331
 #: site/pages/_strings-mobile-pwa.php:11
 #, fuzzy
 msgid "No"
 msgstr "Үгүй"
 
-#: site/dashboard/dashboard.php:322
+#: site/dashboard/dashboard.php:355
 #, fuzzy
 msgid "No date"
 msgstr "Огноо байхгүй"
 
-#: site/dashboard/dashboard.php:323 site/dashboard/wizard.php:219
-#: zume-training-system.php:405
+#: site/dashboard/dashboard.php:356 site/dashboard/wizard.php:227
+#: zume-training-system.php:564
 #, fuzzy
 msgid "Whatsapp"
 msgstr "Whatsapp"
 
-#: site/dashboard/dashboard.php:324 site/dashboard/wizard.php:220
-#: zume-training-system.php:406
+#: site/dashboard/dashboard.php:357 site/dashboard/wizard.php:228
+#: zume-training-system.php:565
 #, fuzzy
 msgid "Signal"
 msgstr "Дохио"
 
-#: site/dashboard/dashboard.php:325 site/dashboard/wizard.php:221
-#: zume-training-system.php:407
+#: site/dashboard/dashboard.php:358 site/dashboard/wizard.php:229
+#: zume-training-system.php:566
 #, fuzzy
 msgid "Telegram"
 msgstr "Telegram"
 
-#: site/dashboard/dashboard.php:326 site/dashboard/wizard.php:222
+#: site/dashboard/dashboard.php:359 site/dashboard/wizard.php:230
 #, fuzzy
 msgid "Facebook Messenger"
 msgstr "Facebook Messenger"
 
-#: site/dashboard/dashboard.php:327 site/dashboard/wizard.php:318
+#: site/dashboard/dashboard.php:360 site/dashboard/wizard.php:365
 msgid "Clear"
 msgstr ""
 
-#: site/dashboard/dashboard.php:328 site/dashboard/wizard.php:319
+#: site/dashboard/dashboard.php:361 site/dashboard/wizard.php:366
 msgid "Today"
 msgstr ""
 
-#: site/dashboard/dashboard.php:332
+#: site/dashboard/dashboard.php:365
 #, fuzzy
 msgid "Coaching Portal"
 msgstr "Дасгалжуулагч"
 
-#: site/dashboard/dashboard.php:333
+#: site/dashboard/dashboard.php:366
 msgid "Visibility"
 msgstr ""
 
-#: site/dashboard/dashboard.php:334 site/dashboard/dashboard.php:335
+#: site/dashboard/dashboard.php:367 site/dashboard/dashboard.php:368
 #, php-format
 msgctxt "public/private group"
 msgid "%s group"
 msgstr ""
 
-#: site/dashboard/dashboard.php:334
+#: site/dashboard/dashboard.php:367 site/pages/plans.php:112
 msgid "Private"
 msgstr ""
 
-#: site/dashboard/dashboard.php:335
+#: site/dashboard/dashboard.php:368 site/pages/plans.php:112
 msgid "Public"
 msgstr ""
 
-#: site/dashboard/dashboard.php:336
+#: site/dashboard/dashboard.php:370 site/dashboard/wizard.php:281
+#: site/dashboard/wizard.php:373 site/pages/join-a-training-public.php:171
+msgid "Notify me about future trainings"
+msgstr ""
+
+#: site/dashboard/dashboard.php:371
+#, fuzzy
+msgid "Preferences"
+msgstr "Давуу эрхтэй холбоо барих аргууд"
+
+#: site/dashboard/dashboard.php:372
+msgid "Your progress is always visible to the group leader."
+msgstr ""
+
+#: site/dashboard/dashboard.php:373
+msgid ""
+"Contact information is currently hidden from other participants in trainings."
+msgstr ""
+
+#: site/dashboard/dashboard.php:374
+msgid "Progress is currently hidden from other participants in trainings."
+msgstr ""
+
+#: site/dashboard/dashboard.php:375
 msgid "Local Vision Map"
 msgstr ""
 
-#: site/dashboard/dashboard.php:342
+#: site/dashboard/dashboard.php:376
+msgid ""
+"You are making this group public. It will show up on the public list of "
+"trainings. Please confirm you are ready to make it public."
+msgstr ""
+
+#: site/dashboard/dashboard.php:377
+msgid "Confirm"
+msgstr ""
+
+#: site/dashboard/dashboard.php:378
+#, php-format
+msgid "You can message again in %d hours"
+msgstr ""
+
+#: site/dashboard/dashboard.php:384
 #, fuzzy
 msgid ""
 "I will share My Story [Testimony] and God‘s Story [the Gospel] with the "
@@ -5895,14 +6063,14 @@ msgstr ""
 "Би Өөрийн түүх [гэрчлэл] болон Бурханы түүхийг [Сайн мэдээ] дараах хүмүүст "
 "хуваалцах болно:"
 
-#: site/dashboard/dashboard.php:343
+#: site/dashboard/dashboard.php:385
 #, fuzzy
 msgid ""
 "I will invite the following people to begin an Accountability Group with me:"
 msgstr ""
 "Би дараах хүмүүсийг надтай хамтран Хариуцлагын бүлэг байгуулахыг урьж байна."
 
-#: site/dashboard/dashboard.php:344
+#: site/dashboard/dashboard.php:386
 #, fuzzy
 msgid ""
 "I will challenge the following people to begin their own Accountability "
@@ -5911,12 +6079,12 @@ msgstr ""
 "Би дараах хүмүүсийг хариуцлагын бүлгүүдээ байгуулж, үүнийг хэрхэн хийх "
 "талаар сургах болно."
 
-#: site/dashboard/dashboard.php:345
+#: site/dashboard/dashboard.php:387
 #, fuzzy
 msgid "I will invite the following people to begin a 3/3 Group with me:"
 msgstr "Би дараах хүмүүсийг надтай 3/3 групп байгуулахыг урих болно."
 
-#: site/dashboard/dashboard.php:346
+#: site/dashboard/dashboard.php:388
 #, fuzzy
 msgid ""
 "I will challenge the following people to begin their own 3/3 Groups and "
@@ -5925,7 +6093,7 @@ msgstr ""
 "Би дараах хүмүүсийг өөрсдийн 3/3 бүлгийг үүсгэж, үүнийг хэрхэн хийхийг "
 "сургах болно."
 
-#: site/dashboard/dashboard.php:347
+#: site/dashboard/dashboard.php:389
 #, fuzzy
 msgid ""
 "I will invite the following people to participate in a 3/3 Hope or Discover "
@@ -5933,18 +6101,18 @@ msgid ""
 msgstr ""
 "Би дараах хүмүүсийг 3/3 Hope эсвэл Discover группт оролцохыг урьж байна."
 
-#: site/dashboard/dashboard.php:348
+#: site/dashboard/dashboard.php:390
 #, fuzzy
 msgid ""
 "I will invite the following people to participate in Prayer Walking with me:"
 msgstr "Би дараах хүмүүсийг надтай хамт алхах залбиралд оролцохыг урих болно."
 
-#: site/dashboard/dashboard.php:349
+#: site/dashboard/dashboard.php:391
 #, fuzzy
 msgid "I will Prayer Walk once every [days / weeks / months]."
 msgstr "Би [өдөр/долоо хоног/сард] нэг удаа залбирах болно."
 
-#: site/dashboard/dashboard.php:350
+#: site/dashboard/dashboard.php:392
 #, fuzzy
 msgid ""
 "I will equip the following people to share their story and God‘s Story and "
@@ -5953,7 +6121,7 @@ msgstr ""
 "Би дараах хүмүүсийг өөрсдийн түүх болон Бурханы түүхийг хуваалцаж, тэдний "
 "харилцааны сүлжээнд байгаа 100 хүний жагсаалтыг гаргах болно."
 
-#: site/dashboard/dashboard.php:351
+#: site/dashboard/dashboard.php:393
 #, fuzzy
 msgid ""
 "I will challenge the following people to use the Prayer Cycle tool on a "
@@ -5962,14 +6130,14 @@ msgstr ""
 "Би дараах хүмүүсийг Залбирлын мөчлөгийн хэрэгслийг үе үе ашиглахыг уриалах "
 "болно."
 
-#: site/dashboard/dashboard.php:352
+#: site/dashboard/dashboard.php:394
 #, fuzzy
 msgid "I will use the Prayer Cycle tool once every [days / weeks / months]."
 msgstr ""
 "Би залбирлын мөчлөгийн хэрэгслийг [өдөр / долоо хоног / сар] тутамд нэг удаа "
 "ашиглах болно."
 
-#: site/dashboard/dashboard.php:353
+#: site/dashboard/dashboard.php:395
 #, fuzzy
 msgid ""
 "I will invite the following people to be part of a Leadership Cell that I "
@@ -5978,14 +6146,14 @@ msgstr ""
 "Би дараах хүмүүсийг миний удирдах Манлайллын үүрийн нэг хэсэг болгон урьж "
 "байна."
 
-#: site/dashboard/dashboard.php:354
+#: site/dashboard/dashboard.php:396
 #, fuzzy
 msgid ""
 "I will encourage the following people to go through this Zúme Training "
 "course:"
 msgstr "Би дараах хүмүүсийг Zúme сургалтын курст хамрагдахыг уриалах болно."
 
-#: site/dashboard/dashboard.php:355
+#: site/dashboard/dashboard.php:397
 #, fuzzy
 msgid "Other commitments:"
 msgstr "Бусад амлалтууд:"
@@ -5995,7 +6163,7 @@ msgstr "Бусад амлалтууд:"
 msgid "Wizard"
 msgstr "Муу шидтэн"
 
-#: site/dashboard/wizard.php:171
+#: site/dashboard/wizard.php:179
 #, fuzzy
 msgctxt ""
 "This is the title for the screen where the application wizard has not been "
@@ -6003,7 +6171,7 @@ msgctxt ""
 msgid "Bad Wizard"
 msgstr "Муу шидтэн"
 
-#: site/dashboard/wizard.php:172
+#: site/dashboard/wizard.php:180
 #, fuzzy
 msgctxt ""
 "This is some humourous text using a play on words as the application wizard "
@@ -6011,45 +6179,45 @@ msgctxt ""
 msgid "You have fallen in with some very bad wizards!"
 msgstr "Та маш муу шидтэнгүүдийн дунд орчихлоо!"
 
-#: site/dashboard/wizard.php:173
+#: site/dashboard/wizard.php:181
 #, fuzzy
 msgid "Wizard is already completed"
 msgstr "Wizard аль хэдийн дууссан"
 
-#: site/dashboard/wizard.php:174
+#: site/dashboard/wizard.php:182
 #, fuzzy
 msgid "Get back home"
 msgstr "Гэртээ буц"
 
-#: site/dashboard/wizard.php:175 site/login/login-template.php:421
+#: site/dashboard/wizard.php:183 site/login/login-template.php:421
 #, fuzzy
 msgid "Back"
 msgstr "Буцах"
 
-#: site/dashboard/wizard.php:176 site/dashboard/wizard.php:195
-#: site/dashboard/wizard.php:208 site/dashboard/wizard.php:231
-#: site/dashboard/wizard.php:255 site/dashboard/wizard.php:323
-#: site/pages/_strings-mobile-pwa.php:35
+#: site/dashboard/wizard.php:184 site/dashboard/wizard.php:203
+#: site/dashboard/wizard.php:216 site/dashboard/wizard.php:239
+#: site/dashboard/wizard.php:271 site/dashboard/wizard.php:294
+#: site/dashboard/wizard.php:370 site/pages/_strings-mobile-pwa.php:35
 #, fuzzy
 msgid "Next"
 msgstr "Дараачийн"
 
-#: site/dashboard/wizard.php:177 site/dashboard/wizard.php:312
+#: site/dashboard/wizard.php:185 site/dashboard/wizard.php:359
 #, fuzzy
 msgid "Skip"
 msgstr "Алгасах"
 
-#: site/dashboard/wizard.php:178 site/pages/_strings-mobile-pwa.php:36
+#: site/dashboard/wizard.php:186 site/pages/_strings-mobile-pwa.php:36
 #, fuzzy
 msgid "Finish"
 msgstr "Дуусга"
 
-#: site/dashboard/wizard.php:183
+#: site/dashboard/wizard.php:191
 #, fuzzy
 msgid "Zúme Community"
 msgstr "Зуме нийгэмлэг"
 
-#: site/dashboard/wizard.php:184
+#: site/dashboard/wizard.php:192
 #, fuzzy
 msgid ""
 "Zúme is a community of practice and encouragement for those who want to see "
@@ -6061,7 +6229,7 @@ msgstr ""
 "урам зоригийн нийгэмлэг юм. Zúme-ийн алсын хараа нь АНУ-д 5000, дэлхийн "
 "хэмжээнд 50,000 хүн тутамд нэг дадлагажигч, хоёр энгийн сүмтэй байх явдал юм."
 
-#: site/dashboard/wizard.php:186
+#: site/dashboard/wizard.php:194
 #, fuzzy
 msgid ""
 "Connect with others like you who want to see a disciple making movement in "
@@ -6072,12 +6240,12 @@ msgstr ""
 "бусад хүмүүстэй холбогдоорой. Өөрийн туршлагаа бусадтай хуваалцаж, шинэ зүйл "
 "нээж байгаа хүмүүсээс суралцаарай."
 
-#: site/dashboard/wizard.php:187
+#: site/dashboard/wizard.php:195
 #, fuzzy
 msgid "Encouragement"
 msgstr "Урам зориг"
 
-#: site/dashboard/wizard.php:188
+#: site/dashboard/wizard.php:196
 #, fuzzy
 msgid ""
 "Hear news about disciple making movements in your region and your wider "
@@ -6088,12 +6256,12 @@ msgstr ""
 "мэдээг сонсож, ахиц дэвшлийн тайланг авч, онлайн болон нүүр тулан "
 "цугларалттай холбогдоорой."
 
-#: site/dashboard/wizard.php:189
+#: site/dashboard/wizard.php:197
 #, fuzzy
 msgid "Free Tools"
 msgstr "Үнэгүй хэрэгслүүд"
 
-#: site/dashboard/wizard.php:190
+#: site/dashboard/wizard.php:198
 #, fuzzy
 msgid ""
 "Access free tools for tracking disciple-making and church planting in your "
@@ -6104,104 +6272,105 @@ msgstr ""
 "хэрэгслүүдэд хандаарай. Хотоо олон шавь, сүм хийдээр дүүргэх алсын харааг "
 "харуулах газрын зураг аваарай."
 
-#: site/dashboard/wizard.php:191
+#: site/dashboard/wizard.php:199
 #, fuzzy
 msgid "Join for Free"
 msgstr "Үнэгүй нэгдээрэй"
 
-#: site/dashboard/wizard.php:192
+#: site/dashboard/wizard.php:200
 #, fuzzy
 msgid "Successfully joined community"
 msgstr "Нийгэмлэгт амжилттай нэгдсэн"
 
-#: site/dashboard/wizard.php:196 site/dashboard/wizard.php:238
-#: site/dashboard/wizard.php:244 site/dashboard/wizard.php:261
-#: site/dashboard/wizard.php:268
+#: site/dashboard/wizard.php:204 site/dashboard/wizard.php:246
+#: site/dashboard/wizard.php:260 site/dashboard/wizard.php:303
+#: site/dashboard/wizard.php:310 site/dashboard/wizard.php:374
 #, fuzzy
 msgid "Please wait while we connect you"
 msgstr "Бид тантай холбогдох хүртэл түр хүлээнэ үү"
 
-#: site/dashboard/wizard.php:199
+#: site/dashboard/wizard.php:207
 #, fuzzy
 msgid "Complete your profile"
 msgstr "Профайлаа бөглөнө үү"
 
-#: site/dashboard/wizard.php:203
+#: site/dashboard/wizard.php:211
 #, fuzzy
 msgid "What is your name?"
 msgstr "Таны нэр хэн бэ?"
 
-#: site/dashboard/wizard.php:204
+#: site/dashboard/wizard.php:212
 #, fuzzy
 msgid "What is your phone number?"
 msgstr "Таны утасны дугаар хэд вэ?"
 
-#: site/dashboard/wizard.php:205
+#: site/dashboard/wizard.php:213
 #, fuzzy
 msgid "Phone number can only contain numbers, brackets and hyphens"
 msgstr "Утасны дугаар нь зөвхөн тоо, хаалт, зураас агуулсан байж болно"
 
-#: site/dashboard/wizard.php:206
+#: site/dashboard/wizard.php:214
 #, fuzzy
 msgid "What city do you live in?"
 msgstr "Та аль хотод амьдардаг вэ?"
 
-#: site/dashboard/wizard.php:207
+#: site/dashboard/wizard.php:215
 #, fuzzy
 msgid "This is your approximate location."
 msgstr "Энэ бол таны ойролцоо байршил юм."
 
-#: site/dashboard/wizard.php:209 site/parts/footer.php:57
+#: site/dashboard/wizard.php:217 site/dashboard/wizard.php:272
+#: site/parts/footer.php:57
 #, fuzzy
 msgid "Privacy Policy"
 msgstr "Нууцлалын бодлого"
 
-#: site/dashboard/wizard.php:215
+#: site/dashboard/wizard.php:223
 #, fuzzy
 msgid "What is your contact preference?"
 msgstr "Таны холбоо барих сонголт юу вэ?"
 
-#: site/dashboard/wizard.php:217 zume-training-system.php:403
+#: site/dashboard/wizard.php:225 zume-training-system.php:562
 #, fuzzy
 msgid "Text"
 msgstr "Текст"
 
-#: site/dashboard/wizard.php:223
+#: site/dashboard/wizard.php:231
 #, fuzzy
 msgid "What is your language preference?"
 msgstr "Та ямар хэлийг илүүд үздэг вэ?"
 
-#: site/dashboard/wizard.php:225
+#: site/dashboard/wizard.php:233
 #, fuzzy
 msgid "How can we serve you?"
 msgstr "Бид танд хэрхэн үйлчлэх вэ?"
 
-#: site/dashboard/wizard.php:227
+#: site/dashboard/wizard.php:235
 #, fuzzy
 msgid "Technical Assistance"
 msgstr "Техникийн тусламж"
 
-#: site/dashboard/wizard.php:228
+#: site/dashboard/wizard.php:236
 #, fuzzy
 msgid "Question about implementing the training"
 msgstr "Сургалтыг хэрэгжүүлэхтэй холбоотой асуулт"
 
-#: site/dashboard/wizard.php:229
+#: site/dashboard/wizard.php:237
 #, fuzzy
 msgid "Question about the content"
 msgstr "Агуулгын талаархи асуулт"
 
-#: site/dashboard/wizard.php:230
+#: site/dashboard/wizard.php:238
 #, fuzzy
 msgid "Help with what to do after starting a group"
 msgstr "Бүлэг үүсгэсний дараа юу хийх талаар туслаарай"
 
-#: site/dashboard/wizard.php:232
+#: site/dashboard/wizard.php:240
 #, fuzzy
 msgid "Please give a response to this question"
 msgstr "Энэ асуултад хариулт өгнө үү"
 
-#: site/dashboard/wizard.php:233
+#: site/dashboard/wizard.php:241
 #, fuzzy
 msgid ""
 "Request Submitted, we will do our best to connect you with a coach near you."
@@ -6209,288 +6378,458 @@ msgstr ""
 "Хүсэлт илгээсэн тохиолдолд бид таныг ойр байгаа дасгалжуулагчтай холбохын "
 "тулд чадах бүхнээ хийх болно."
 
-#: site/dashboard/wizard.php:234
+#: site/dashboard/wizard.php:242
 #, fuzzy
 msgid "Sorry. We were unable to submit your request. Please try again later."
 msgstr ""
 "Уучлаарай. Бид таны хүсэлтийг гаргаж чадсангүй. Дараа дахин оролдож үзнэ үү."
 
-#: site/dashboard/wizard.php:235
+#: site/dashboard/wizard.php:243
 #, fuzzy
 msgid "You have already requested a coach"
 msgstr "Та аль хэдийн дасгалжуулагчийн хүсэлт тавьсан байна"
 
-#: site/dashboard/wizard.php:236
+#: site/dashboard/wizard.php:244
 #, fuzzy
 msgid "Error connecting with a coach"
 msgstr "Дасгалжуулагчтай холбогдоход алдаа гарлаа"
 
-#: site/dashboard/wizard.php:237
+#: site/dashboard/wizard.php:245
 #, fuzzy
 msgid "Connecting you to a Coach"
 msgstr "Таныг дасгалжуулагчтай холбож байна"
 
-#: site/dashboard/wizard.php:243
+#: site/dashboard/wizard.php:249 site/pages/get-a-coach.php:93
+#, fuzzy
+msgid ""
+"Every athletic sport, especially at higher levels, uses coaching. Even "
+"olympic athletes have coaches, and often more than one. Disciple making can "
+"equally benefit from coaching by those who have more experience."
+msgstr ""
+"Хөнгөн атлетикийн спорт бүр, ялангуяа өндөр түвшинд дасгалжуулалтыг "
+"ашигладаг. Олимпийн тамирчид хүртэл дасгалжуулагчтай байдаг бөгөөд ихэнхдээ "
+"нэгээс олон байдаг. Шавь бэлтгэх нь илүү туршлагатай хүмүүсийн "
+"дасгалжуулалтын үр шимийг хүртэх боломжтой."
+
+#: site/dashboard/wizard.php:250
+msgid ""
+"In order to connect you to an appropriate coach, we need to know a little "
+"more about you."
+msgstr ""
+
+#: site/dashboard/wizard.php:251 site/pages/get-a-coach.php:96
+#, fuzzy
+msgid "No Cost"
+msgstr "Үнэгүй"
+
+#: site/dashboard/wizard.php:252 site/pages/get-a-coach.php:103
+#, fuzzy
+msgid "Localized"
+msgstr "Нутагшуулсан"
+
+#: site/dashboard/wizard.php:253 site/pages/get-a-coach.php:110
+#, fuzzy
+msgid "Experienced"
+msgstr "Туршлагатай"
+
+#: site/dashboard/wizard.php:254 site/pages/get-a-coach.php:99
+#, fuzzy
+msgid ""
+"Our network of volunteer coaches are not paid, but are driven rather by a "
+"passion for loving God, loving others, and obeying the Great Commission."
+msgstr ""
+"Манай сайн дурын дасгалжуулагчдын сүлжээ нь цалин авдаггүй, харин Бурханыг "
+"хайрлах, бусдыг хайрлах, Агуу Захирамжийг дуулгавартай дагах хүсэл "
+"тэмүүллээр удирддаг."
+
+#: site/dashboard/wizard.php:255 site/pages/get-a-coach.php:106
+#, fuzzy
+msgid ""
+"Our connection team attempts to connect you with a coach who speaks your "
+"language and is geographically as close as possible."
+msgstr ""
+"Манай холболтын баг таныг танай хэлээр ярьдаг, газарзүйн хувьд аль болох "
+"ойрхон дасгалжуулагчтай холбохыг хичээдэг."
+
+#: site/dashboard/wizard.php:256 site/pages/get-a-coach.php:30
+#: site/pages/get-a-coach.php:113
+#, fuzzy
+msgid ""
+"All our coaches are trained and practicing the concepts and tools found in "
+"Zûme. All our coaches can help you over barriers and make steps in your "
+"journey."
+msgstr ""
+"Манай бүх дасгалжуулагчид Zûme-д байдаг үзэл баримтлал, багаж хэрэгслийг "
+"сургаж, дадлагажуулж байна. Манай бүх дасгалжуулагчид саад бэрхшээлийг даван "
+"туулж, аялалд тань туслах болно."
+
+#: site/dashboard/wizard.php:259
 #, fuzzy
 msgid "Joining Plan"
 msgstr "Нэгдэх төлөвлөгөө"
 
-#: site/dashboard/wizard.php:245 site/dashboard/wizard.php:335
+#: site/dashboard/wizard.php:261 site/dashboard/wizard.php:389
 #, fuzzy
 msgid "The training link is broken. Please try again."
 msgstr "Сургалтын холбоос эвдэрсэн байна. Дахин оролдоно уу."
 
-#: site/dashboard/wizard.php:246
+#: site/dashboard/wizard.php:262
 #, fuzzy, php-format
 msgid "Successfully joined training %s"
 msgstr "Сургалтанд амжилттай хамрагдлаа %s"
 
-#: site/dashboard/wizard.php:249 site/pages/join-a-training-public.php:106
+#: site/dashboard/wizard.php:265 site/dashboard/wizard.php:293
+#: site/pages/join-a-training-public.php:106
+#: site/pages/join-a-training-public.php:130 site/pages/plans.php:160
 #, fuzzy
 msgid "Next Session Date"
 msgstr "Дараагийн хуралдааны огноо"
 
-#: site/dashboard/wizard.php:251 site/pages/join-a-training-public.php:107
+#: site/dashboard/wizard.php:267 site/pages/join-a-training-public.php:107
+#: site/pages/join-a-training-public.php:131
 #, fuzzy
 msgid "Start Time"
 msgstr "Эхлэх цаг"
 
-#: site/dashboard/wizard.php:256
+#: site/dashboard/wizard.php:274
+msgid "Your contact information is always visible to the group leader."
+msgstr ""
+
+#: site/dashboard/wizard.php:275
+msgid ""
+"You are joining a private training group, where everyone can see your "
+"contact information."
+msgstr ""
+
+#: site/dashboard/wizard.php:276
+msgid ""
+"You can change your contact information visibility at any time in your "
+"profile."
+msgstr ""
+
+#: site/dashboard/wizard.php:277
+#, fuzzy
+msgid "We were unable to connect you with a coach. Please try again later."
+msgstr ""
+"Уучлаарай. Бид таны хүсэлтийг гаргаж чадсангүй. Дараа дахин оролдож үзнэ үү."
+
+#: site/dashboard/wizard.php:278
 #, fuzzy
 msgid "There are currently no public trainings available."
 msgstr "Одоогоор олон нийтэд зориулсан сургалт байхгүй байна."
 
-#: site/dashboard/wizard.php:257
+#: site/dashboard/wizard.php:279 site/pages/join-a-training-public.php:160
+#, fuzzy
+msgid "Would you like to be notified about future trainings?"
+msgstr "Сургалтын хуваарь гаргах уу?"
+
+#: site/dashboard/wizard.php:280 site/pages/join-a-training-public.php:161
+msgid "We will send you an email when a new training is available."
+msgstr ""
+
+#: site/dashboard/wizard.php:282 site/pages/join-a-training-public.php:162
+msgid "You can always unsubscribe from these emails at any time."
+msgstr ""
+
+#: site/dashboard/wizard.php:283 site/pages/join-a-training-public.php:164
+msgid "Notify me"
+msgstr ""
+
+#: site/dashboard/wizard.php:284
+msgid "Do you want to unsubscribe from the notification list?"
+msgstr ""
+
+#: site/dashboard/wizard.php:285
+msgid "Continue"
+msgstr ""
+
+#: site/dashboard/wizard.php:286 site/pages/plans.php:140
+#, fuzzy
+msgid "Training Group Details"
+msgstr "Профайлын дэлгэрэнгүй мэдээлэл"
+
+#: site/dashboard/wizard.php:289 site/pages/plans.php:144
+#, fuzzy
+msgid "Facilitator"
+msgstr "Өөрийгөө хөнгөвчлөх"
+
+#: site/dashboard/wizard.php:291 site/pages/plans.php:164
+#, fuzzy
+msgid "Time of Day"
+msgstr "Өдрийн хэдэн цагт?"
+
+#: site/dashboard/wizard.php:292
+#, fuzzy
+msgid "Zoom Link"
+msgstr "Холбоосыг хуулах"
+
+#: site/dashboard/wizard.php:295
 msgid ""
 "Please make sure that your profile is up to date, so that group leaders can "
 "contact you."
 msgstr ""
 
-#: site/dashboard/wizard.php:260
+#: site/dashboard/wizard.php:298 site/pages/plans.php:173
+#, fuzzy
+msgid "The next session is:"
+msgstr "Сеанс руу орсон:"
+
+#: site/dashboard/wizard.php:299 site/pages/plans.php:177
+#, fuzzy
+msgid "In this timezone:"
+msgstr "Хэрэглэгчийн цагийн бүс"
+
+#: site/dashboard/wizard.php:302
 #, fuzzy
 msgid "Connecting with friend"
 msgstr "Найзтайгаа холбогдож байна"
 
-#: site/dashboard/wizard.php:262
+#: site/dashboard/wizard.php:304
 #, fuzzy
 msgid "The friend link is broken. Please try again."
 msgstr "Найзын холбоос эвдэрсэн байна. Дахин оролдоно уу."
 
-#: site/dashboard/wizard.php:263
+#: site/dashboard/wizard.php:305
 #, fuzzy, php-format
 msgid "Successfully connected with friend %s"
 msgstr "Найзтайгаа амжилттай холбогдлоо %s"
 
-#: site/dashboard/wizard.php:267
+#: site/dashboard/wizard.php:309
 #, fuzzy
 msgid "Checking in"
 msgstr "Бүртгүүлж байна"
 
-#: site/dashboard/wizard.php:269
+#: site/dashboard/wizard.php:311
 #, fuzzy
 msgid "The checkin link is broken. Please try again."
 msgstr "Бүртгэлийн холбоос эвдэрсэн байна. Дахин оролдоно уу."
 
-#: site/dashboard/wizard.php:270
+#: site/dashboard/wizard.php:312
 #, fuzzy
 msgid "Successfully checked in"
 msgstr "Амжилттай нэвтэрлээ"
 
-#: site/dashboard/wizard.php:275
+#: site/dashboard/wizard.php:318
 #, fuzzy
 msgid "Create a training group"
 msgstr "Сургалтын бүлэг үүсгэх"
 
-#: site/dashboard/wizard.php:276
+#: site/dashboard/wizard.php:319
 #, fuzzy
 msgid "Join a public training group"
 msgstr "Олон нийтийн сургалтын бүлэгт нэгдээрэй"
 
-#: site/dashboard/wizard.php:277
+#: site/dashboard/wizard.php:320
+#, fuzzy
+msgid "Join with code"
+msgstr "Нийгэмлэгт нэгдээрэй"
+
+#: site/dashboard/wizard.php:321 site/pages/friend-invite.php:172
+#: site/pages/plan-invite.php:177
+#, fuzzy
+msgid "Use the code your friend sent you."
+msgstr "Найзынхаа илгээсэн кодыг ашиглана уу."
+
+#: site/dashboard/wizard.php:323 site/pages/checkin.php:257
+#: site/pages/friend-invite.php:177 site/pages/plan-invite.php:182
+#, fuzzy
+msgid "Connect"
+msgstr "Холбох"
+
+#: site/dashboard/wizard.php:324
 #, fuzzy
 msgid "Skip for now"
 msgstr "Одоохондоо алгасая"
 
-#: site/dashboard/wizard.php:278
+#: site/dashboard/wizard.php:325
 #, fuzzy
 msgid "Choose your course format"
 msgstr "Хичээлийн форматаа сонгоно уу"
 
-#: site/dashboard/wizard.php:279
+#: site/dashboard/wizard.php:326
 #, fuzzy
 msgid "1 hour (20 sessions)"
 msgstr "1 цаг (20 хуралдаан)"
 
-#: site/dashboard/wizard.php:280
+#: site/dashboard/wizard.php:327
 #, fuzzy
 msgid "2 hour (10 sessions)"
 msgstr "2 цаг (10 хуралдаан)"
 
-#: site/dashboard/wizard.php:281
+#: site/dashboard/wizard.php:328
 #, fuzzy
 msgid "4 hour (5 sessions)"
 msgstr "4 цаг (5 хуралдаан)"
 
-#: site/dashboard/wizard.php:282
+#: site/dashboard/wizard.php:329
 #, fuzzy
 msgid "Would you like to schedule your training?"
 msgstr "Сургалтын хуваарь гаргах уу?"
 
-#: site/dashboard/wizard.php:285
+#: site/dashboard/wizard.php:332
 #, fuzzy
 msgid "What time of day?"
 msgstr "Өдрийн хэдэн цагт?"
 
-#: site/dashboard/wizard.php:286
+#: site/dashboard/wizard.php:333
 #, fuzzy
 msgid "Morning"
 msgstr "Өглөө"
 
-#: site/dashboard/wizard.php:287
+#: site/dashboard/wizard.php:334
 #, fuzzy
 msgid "Afternoon"
 msgstr "Үдээс хойш"
 
-#: site/dashboard/wizard.php:288
+#: site/dashboard/wizard.php:335
 #, fuzzy
 msgid "Evening"
 msgstr "Орой"
 
-#: site/dashboard/wizard.php:289
+#: site/dashboard/wizard.php:336
 #, fuzzy
 msgid "How often will you meet?"
 msgstr "Та хэр олон удаа уулзах вэ?"
 
-#: site/dashboard/wizard.php:290
+#: site/dashboard/wizard.php:337
 #, fuzzy
 msgid "Every day"
 msgstr "Өдөр бүр"
 
-#: site/dashboard/wizard.php:291
+#: site/dashboard/wizard.php:338
 #, fuzzy
 msgid "Once a week"
 msgstr "Долоо хоногт нэг удаа"
 
-#: site/dashboard/wizard.php:292
+#: site/dashboard/wizard.php:339
 #, fuzzy
 msgid "Twice a month"
 msgstr "Сард хоёр удаа"
 
-#: site/dashboard/wizard.php:293
+#: site/dashboard/wizard.php:340
 #, fuzzy
 msgid "Once a month"
 msgstr "Сард нэг удаа"
 
-#: site/dashboard/wizard.php:294
+#: site/dashboard/wizard.php:341
 #, fuzzy
 msgid "Other"
 msgstr "Бусад"
 
-#: site/dashboard/wizard.php:295
+#: site/dashboard/wizard.php:342
 #, fuzzy
 msgid "What is the name of the training group?"
 msgstr "Сургалтын бүлгийн нэр юу вэ?"
 
-#: site/dashboard/wizard.php:296
+#: site/dashboard/wizard.php:343
 #, fuzzy
 msgid "My first training group"
 msgstr "Миний анхны сургалтын бүлэг"
 
-#: site/dashboard/wizard.php:297
+#: site/dashboard/wizard.php:344
 #, fuzzy
 msgid "When do you plan to start?"
 msgstr "Та хэзээ эхлэхээр төлөвлөж байна вэ?"
 
-#: site/dashboard/wizard.php:298
+#: site/dashboard/wizard.php:345
 #, fuzzy
 msgid "Where do you plan to meet?"
 msgstr "Та хаана уулзахаар төлөвлөж байна вэ?"
 
-#: site/dashboard/wizard.php:299
+#: site/dashboard/wizard.php:346
 #, fuzzy
 msgid "This could be online or in person"
 msgstr "Энэ нь онлайн эсвэл биечлэн байж болно"
 
-#: site/dashboard/wizard.php:300
+#: site/dashboard/wizard.php:347
 #, fuzzy
 msgid "Review Schedule"
 msgstr "Хяналтын хуваарь"
 
-#: site/dashboard/wizard.php:301
+#: site/dashboard/wizard.php:348
 #, fuzzy, php-format
 msgctxt "1 of 10 selected"
 msgid "%1$s of %2$s selected"
 msgstr "%2$s-аас %1$s сонгосон"
 
-#: site/dashboard/wizard.php:302
+#: site/dashboard/wizard.php:349
 #, fuzzy
 msgctxt "All 10 sessions scheduled"
 msgid "Ready"
 msgstr "Бэлэн"
 
-#: site/dashboard/wizard.php:303
+#: site/dashboard/wizard.php:350
 #, fuzzy, php-format
 msgctxt "Too many selected: 2"
 msgid "Too many selected: %s"
 msgstr "Хэт олон сонгосон: %s"
 
-#: site/dashboard/wizard.php:304
+#: site/dashboard/wizard.php:351
 #, fuzzy
 msgid "Incorrect number of sessions selected"
 msgstr "Сеансуудын тоог буруу сонгосон"
 
-#: site/dashboard/wizard.php:305 site/dashboard/wizard.php:307
-#: site/dashboard/wizard.php:309 site/dashboard/wizard.php:310
+#: site/dashboard/wizard.php:352 site/dashboard/wizard.php:354
+#: site/dashboard/wizard.php:356 site/dashboard/wizard.php:357
 #, fuzzy, php-format
 msgid "Set %s"
 msgstr "%s тохируулах"
 
-#: site/dashboard/wizard.php:307
+#: site/dashboard/wizard.php:354
 #, fuzzy
 msgid "Group Name"
 msgstr "Бүлгийн нэр"
 
-#: site/dashboard/wizard.php:308
+#: site/dashboard/wizard.php:355
 #, fuzzy
 msgid "Group name"
 msgstr "Бүлгийн нэр"
 
-#: site/dashboard/wizard.php:315
+#: site/dashboard/wizard.php:362
 #, fuzzy
 msgid "Date"
 msgstr "Огноо"
 
-#: site/dashboard/wizard.php:316
+#: site/dashboard/wizard.php:363
 #, fuzzy
 msgid "Summary"
 msgstr "Дүгнэлт"
 
-#: site/dashboard/wizard.php:317
+#: site/dashboard/wizard.php:364
 #, fuzzy
 msgid "Clear Calendar"
 msgstr "Хуанли арилгах"
 
-#: site/dashboard/wizard.php:320
+#: site/dashboard/wizard.php:367
 #, fuzzy
 msgid "Add"
 msgstr "Нэмэх"
 
-#: site/dashboard/wizard.php:321
+#: site/dashboard/wizard.php:368
 #, fuzzy
 msgid "Add some dates to your schedule"
 msgstr "Хуваарьдаа хэдэн огноо нэмнэ үү"
 
-#: site/dashboard/wizard.php:322
+#: site/dashboard/wizard.php:369
 #, fuzzy
 msgid "Change"
 msgstr "Өөрчлөх"
 
-#: site/dashboard/wizard.php:326
+#: site/dashboard/wizard.php:375
+#, fuzzy
+msgid "The notify me about future trainings link is broken. Please try again."
+msgstr "Сургалтын холбоос эвдэрсэн байна. Дахин оролдоно уу."
+
+#: site/dashboard/wizard.php:376
+msgid "You have been added to the list to be notified about future trainings."
+msgstr ""
+
+#: site/dashboard/wizard.php:380
 #, fuzzy
 msgid "Invite your friends to join your training"
 msgstr "Найзуудаа сургалтандаа урь"
 
-#: site/dashboard/wizard.php:327
+#: site/dashboard/wizard.php:381
 #, fuzzy
 msgid ""
 "Share the invite or link below with your friends so that they can join your "
@@ -6499,17 +6838,17 @@ msgstr ""
 "Найзуудтайгаа сургалтанд хамрагдахын тулд урилга эсвэл доорх холбоосыг "
 "хуваалцаарай."
 
-#: site/dashboard/wizard.php:328
+#: site/dashboard/wizard.php:382
 #, fuzzy
 msgid "Join my zume plan"
 msgstr "Миний zume төлөвлөгөөнд нэгдээрэй"
 
-#: site/dashboard/wizard.php:329
+#: site/dashboard/wizard.php:383
 #, fuzzy, php-format
 msgid "%s is inviting you to a Zume Training Group"
 msgstr "%s таныг Zume сургалтын группт урьж байна"
 
-#: site/dashboard/wizard.php:336
+#: site/dashboard/wizard.php:390
 #, fuzzy
 msgid "Copy Invite"
 msgstr "Урилгыг хуулах"
@@ -7199,12 +7538,6 @@ msgstr "Найзын код оруулна уу."
 msgid "Use the code on the screen or in the book"
 msgstr "Дэлгэц эсвэл номон дээрх кодыг ашиглана уу"
 
-#: site/pages/checkin.php:257 site/pages/friend-invite.php:177
-#: site/pages/plan-invite.php:182
-#, fuzzy
-msgid "Connect"
-msgstr "Холбох"
-
 #: site/pages/checkin.php:261
 #, fuzzy
 msgid "or"
@@ -7425,44 +7758,11 @@ msgstr ""
 msgid "Friend Invitation"
 msgstr "Найзын урилга"
 
-#: site/pages/friend-invite.php:172 site/pages/plan-invite.php:177
-#, fuzzy
-msgid "Use the code your friend sent you."
-msgstr "Найзынхаа илгээсэн кодыг ашиглана уу."
-
 #: site/pages/get-a-coach.php:29 site/pages/get-a-coach.php:92
 #: site/pages/get-a-coach.php:119
 #, fuzzy
 msgid "Get A Coach"
 msgstr "Дасгалжуулагч авна"
-
-#: site/pages/get-a-coach.php:30 site/pages/get-a-coach.php:113
-#, fuzzy
-msgid ""
-"All our coaches are trained and practicing the concepts and tools found in "
-"Zûme. All our coaches can help you over barriers and make steps in your "
-"journey."
-msgstr ""
-"Манай бүх дасгалжуулагчид Zûme-д байдаг үзэл баримтлал, багаж хэрэгслийг "
-"сургаж, дадлагажуулж байна. Манай бүх дасгалжуулагчид саад бэрхшээлийг даван "
-"туулж, аялалд тань туслах болно."
-
-#: site/pages/get-a-coach.php:93
-#, fuzzy
-msgid ""
-"Every athletic sport, especially at higher levels, uses coaching. Even "
-"olympic athletes have coaches, and often more than one. Disciple making can "
-"equally benefit from coaching by those who have more experience."
-msgstr ""
-"Хөнгөн атлетикийн спорт бүр, ялангуяа өндөр түвшинд дасгалжуулалтыг "
-"ашигладаг. Олимпийн тамирчид хүртэл дасгалжуулагчтай байдаг бөгөөд ихэнхдээ "
-"нэгээс олон байдаг. Шавь бэлтгэх нь илүү туршлагатай хүмүүсийн "
-"дасгалжуулалтын үр шимийг хүртэх боломжтой."
-
-#: site/pages/get-a-coach.php:96
-#, fuzzy
-msgid "No Cost"
-msgstr "Үнэгүй"
 
 #: site/pages/get-a-coach.php:97 site/pages/get-a-coach.php:104
 #: site/pages/home.php:269 site/pages/home.php:276 site/pages/home.php:277
@@ -7471,35 +7771,6 @@ msgstr "Үнэгүй"
 #, fuzzy
 msgid "Join a training group"
 msgstr "Сургалтын бүлэгт элсээрэй"
-
-#: site/pages/get-a-coach.php:99
-#, fuzzy
-msgid ""
-"Our network of volunteer coaches are not paid, but are driven rather by a "
-"passion for loving God, loving others, and obeying the Great Commission."
-msgstr ""
-"Манай сайн дурын дасгалжуулагчдын сүлжээ нь цалин авдаггүй, харин Бурханыг "
-"хайрлах, бусдыг хайрлах, Агуу Захирамжийг дуулгавартай дагах хүсэл "
-"тэмүүллээр удирддаг."
-
-#: site/pages/get-a-coach.php:103
-#, fuzzy
-msgid "Localized"
-msgstr "Нутагшуулсан"
-
-#: site/pages/get-a-coach.php:106
-#, fuzzy
-msgid ""
-"Our connection team attempts to connect you with a coach who speaks your "
-"language and is geographically as close as possible."
-msgstr ""
-"Манай холболтын баг таныг танай хэлээр ярьдаг, газарзүйн хувьд аль болох "
-"ойрхон дасгалжуулагчтай холбохыг хичээдэг."
-
-#: site/pages/get-a-coach.php:110
-#, fuzzy
-msgid "Experienced"
-msgstr "Туршлагатай"
 
 #: site/pages/get-a-coach.php:111 site/pages/home.php:285
 #: site/pages/training.php:154
@@ -7797,8 +8068,8 @@ msgstr ""
 msgid "No active trainings available at this time."
 msgstr ""
 
-#: site/pages/join-a-training-public.php:158
-msgid "Notify me about future trainings"
+#: site/pages/join-a-training-public.php:156
+msgid "Want to know about future trainings?"
 msgstr ""
 
 #: site/pages/messages.php:283 utilities/apis/encouragement-api.php:534
@@ -7858,6 +8129,11 @@ msgstr "Төлөвлөгөөний урилга"
 #, fuzzy
 msgid "Please enter a code."
 msgstr "Кодоо оруулна уу."
+
+#: site/pages/plans.php:200
+#, fuzzy
+msgid "Back to Public Training Groups"
+msgstr "Сургалтын группд нэгдээрэй"
 
 #: site/pages/privacy-policy.php:29 site/pages/privacy-policy.php:86
 #, fuzzy
@@ -8148,11 +8424,6 @@ msgstr ""
 msgid "Copy this link and send it to your friends."
 msgstr "Энэ холбоосыг хуулж аваад найзууддаа илгээнэ үү."
 
-#: site/pages/share.php:88
-#, fuzzy
-msgid "Copied"
-msgstr "Хуулсан"
-
 #: site/pages/share.php:125
 #, fuzzy
 msgid "Tools"
@@ -8377,12 +8648,66 @@ msgid ""
 "training"
 msgstr ""
 
-#: utilities/apis/connect-api.php:86
+#: utilities/apis/communications-api.php:99
+#, fuzzy, php-format
+msgid "Hello %s"
+msgstr "Сайн уу?"
+
+#: utilities/apis/communications-api.php:100
+#, php-format
+msgid ""
+"A new online Zume Training is now available. You can view it at the "
+"following link: %s"
+msgstr ""
+
+#: utilities/apis/communications-api.php:101
+#, php-format
+msgid "The training is in the %1$s format and will be held in %2$s"
+msgstr ""
+
+#: utilities/apis/communications-api.php:102
+#, php-format
+msgid "First session: %1$s %2$s (%3$s)."
+msgstr ""
+
+#: utilities/apis/communications-api.php:103
+msgid "You can also join the training by clicking the link below:"
+msgstr ""
+
+#: utilities/apis/communications-api.php:105
+#, php-format
+msgid "The training will be led by %s speakers."
+msgstr ""
+
+#: utilities/apis/communications-api.php:106
+msgid "Best regards,"
+msgstr ""
+
+#: utilities/apis/communications-api.php:107
+msgid "The Zume Team"
+msgstr ""
+
+#: utilities/apis/connect-api.php:82
+msgid ""
+"You have successfully subscribed to receive notifications about future "
+"trainings."
+msgstr ""
+
+#: utilities/apis/connect-api.php:83
+msgid "You can unsubscribe from these notifications at any time."
+msgstr ""
+
+#: utilities/apis/connect-api.php:91
+#, fuzzy
+msgid "Zume Training - Future Trainings"
+msgstr "Zúme сургалтын програм"
+
+#: utilities/apis/connect-api.php:141
 #, fuzzy
 msgid "your friend"
 msgstr "чиний найз"
 
-#: utilities/apis/connect-api.php:237
+#: utilities/apis/connect-api.php:294
 #, fuzzy
 msgid "the plan"
 msgstr "төлөвлөгөө"
@@ -8492,19 +8817,7 @@ msgstr "Нийгэмлэгт нэгдээрэй"
 msgid "Joined Community"
 msgstr "Нийгэмлэгт нэгдээрэй"
 
-#: utilities/apis/plans-api.php:126
-#, fuzzy, php-format
-msgctxt "My first training - username"
-msgid "My first training - %s"
-msgstr "Миний анхны сургалт - %s"
-
-#: utilities/apis/plans-api.php:128
-#, fuzzy, php-format
-msgctxt "Training 2 - username"
-msgid "Training %1$d - %2$s"
-msgstr "Сургалт %1$d - %2$s"
-
-#: utilities/hooks/admin-email-test.php:169
+#: utilities/hooks/admin-email-test.php:227
 #, fuzzy
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Та энэ хуудсанд хандах эрхгүй"
@@ -8564,91 +8877,128 @@ msgstr "Zúme хуудсыг хуваалцаарай"
 msgid "Zúme Annual Report"
 msgstr "Зумегийн жилийн тайлан"
 
+#: utilities/models/zume-plans-model.php:153
+#, fuzzy, php-format
+msgctxt "My first training - username"
+msgid "My first training - %s"
+msgstr "Миний анхны сургалт - %s"
+
+#: utilities/models/zume-plans-model.php:155
+#, fuzzy, php-format
+msgctxt "Training 2 - username"
+msgid "Training %1$d - %2$s"
+msgstr "Сургалт %1$d - %2$s"
+
 #: utilities/post-types/posttype-pieces.php:299
 #, fuzzy
 msgid "Piece"
 msgstr "Хэсэг"
 
-#: zume-training-system.php:277
+#: zume-training-system.php:199
+msgid "Add the details for training with code abc123"
+msgstr ""
+
+#: zume-training-system.php:203
+msgid "Set the language to e.g. en_US"
+msgstr ""
+
+#: zume-training-system.php:263
+#, fuzzy
+msgid "Learn More"
+msgstr "Илүү их судла"
+
+#: zume-training-system.php:293
+msgid "Zume Admin"
+msgstr ""
+
+#: zume-training-system.php:404
 #, fuzzy
 msgid "Someone has requested a password reset for the following account:"
 msgstr "Хэн нэгэн дараах бүртгэлийн нууц үг шинэчлэх хүсэлт гаргасан байна:"
 
 #. translators: %s: site name
-#: zume-training-system.php:279
+#: zume-training-system.php:406
 #, fuzzy, php-format
 msgid "Site Name: %s"
 msgstr "Сайтын нэр: %s"
 
 #. translators: %s: user login
-#: zume-training-system.php:281
+#: zume-training-system.php:408
 #, fuzzy, php-format
 msgid "Username: %s"
 msgstr "Хэрэглэгчийн нэр: %s"
 
-#: zume-training-system.php:282
+#: zume-training-system.php:409
 #, fuzzy
 msgid "If this was a mistake, just ignore this email and nothing will happen."
 msgstr ""
 "Хэрэв энэ нь алдаа байсан бол энэ имэйлийг үл тоомсорлож, юу ч болохгүй."
 
-#: zume-training-system.php:283
+#: zume-training-system.php:410
 #, fuzzy
 msgid "To reset your password, visit the following address:"
 msgstr "Нууц үгээ шинэчлэхийн тулд дараах хаягаар зочилно уу."
 
 #. translators: Password reset email subject. %s: Site name
-#: zume-training-system.php:301
+#: zume-training-system.php:428
 #, fuzzy, php-format
 msgid "[%s] Password Reset"
 msgstr "[%s] Нууц үг шинэчлэх"
 
-#: zume-training-system.php:329
+#: zume-training-system.php:456
 #, fuzzy
 msgid "Profile Details"
 msgstr "Профайлын дэлгэрэнгүй мэдээлэл"
 
-#: zume-training-system.php:341
+#: zume-training-system.php:468
 #, fuzzy
 msgid "User Email"
 msgstr "Хэрэглэгчийн имэйл"
 
-#: zume-training-system.php:350
+#: zume-training-system.php:477
 #, fuzzy
 msgid "User Phone"
 msgstr "Хэрэглэгчийн утас"
 
-#: zume-training-system.php:358
+#: zume-training-system.php:485
 #, fuzzy
 msgid "User Timezone"
 msgstr "Хэрэглэгчийн цагийн бүс"
 
-#: zume-training-system.php:366
+#: zume-training-system.php:493
 #, fuzzy
 msgid "User Friend Key"
 msgstr "Хэрэглэгчийн найз түлхүүр"
 
-#: zume-training-system.php:374
+#: zume-training-system.php:501
 #, fuzzy
 msgid "User Preferred Language"
 msgstr "Хэрэглэгчийн сонгосон хэл"
 
-#: zume-training-system.php:382
+#: zume-training-system.php:509
 #, fuzzy
 msgid "User Preferred Email"
 msgstr "Хэрэглэгчийн сонгосон имэйл"
 
-#: zume-training-system.php:390
+#: zume-training-system.php:517
+msgid "Notify of Future Trainings"
+msgstr ""
+
+#: zume-training-system.php:525
+msgid "Notify of Future Trainings Date Subscribed"
+msgstr ""
+
+#: zume-training-system.php:549
 #, fuzzy
 msgid "Coaching Contact ID"
 msgstr "Дасгалжуулагч"
 
-#: zume-training-system.php:398
+#: zume-training-system.php:557
 #, fuzzy
 msgid "Preferred Contact Methods"
 msgstr "Давуу эрхтэй холбоо барих аргууд"
 
-#: zume-training-system.php:408
+#: zume-training-system.php:567
 #, fuzzy
 msgid "Messenger"
 msgstr "элч"
@@ -8697,10 +9047,6 @@ msgstr "Zúme сургалтын програм"
 #~ msgstr ""
 #~ "Залбирлын мөчлөгийн удирдамжийг утсан дээрээ авахын тулд QR кодыг уншина "
 #~ "уу."
-
-#, fuzzy
-#~ msgid "Checked into session:"
-#~ msgstr "Сеанс руу орсон:"
 
 #, fuzzy, php-format
 #~ msgid "%1$d of %2$d"

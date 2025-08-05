@@ -611,6 +611,9 @@ class Zume_Book_Generator extends Zume_Magic_Page
         else if ( str_contains( $id, 'listof100' ) ) {
             $this->list_of_100();
         }
+        else if ( str_contains( $id, 'sharegospel' ) ) {
+            $activity = '';
+        }
         else {
             $activities = list_zume_activities( $lang );
             $activity = '';
@@ -674,6 +677,7 @@ class Zume_Book_Generator extends Zume_Magic_Page
         }
         else {
             $course = Zume_Course_Builder::builder( $_GET['type'], $_GET['lang'], $_GET['session'] );
+        
 
             ?><div class="print-content"><?php
 

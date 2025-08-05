@@ -454,12 +454,12 @@ class Zume_Training_Translator extends Zume_Magic_Page
                 ?>
                 <div>
                     <p style="text-align:center;margin: 10px 0 0;"><strong style="text-decoration: underline;">ENGLISH WORDS</strong>:</p>
-                    <strong>Weblate: </strong> <?php echo number_format( $weblate[$language['weblate']]['total_words'] ); ?> |
+                    <strong>Weblate: </strong> <?php echo number_format( $weblate[$language['weblate']]['total_words'] ?? 0 ); ?> |
                     <strong>Scripts: </strong> <?php echo number_format( $scripts_en ); ?> |
                     <strong>Activities: </strong> <?php echo number_format( $activities_en ); ?> |
                     <strong>Messages: </strong> <?php echo number_format( $messages_en ); ?> |
                     <strong>Pieces: </strong> <?php echo number_format( $pieces_en ); ?> ||
-                    <strong style="text-decoration: underline;">TOTAL: </strong> <?php echo number_format( $pieces_en + $scripts_en + $activities_en + $messages_en + $weblate[$language['weblate']]['total_words'] ); ?>
+                    <strong style="text-decoration: underline;">TOTAL: </strong> <?php echo number_format( $pieces_en + $scripts_en + $activities_en + $messages_en + $weblate[$language['weblate']]['total_words'] ?? 0 ); ?>
                 </div>
                 <?php
                 $pieces = zume_word_count_pieces( $language['code'] );
@@ -469,17 +469,17 @@ class Zume_Training_Translator extends Zume_Magic_Page
                 ?>
                 <div>
                     <p style="text-align:center;margin: 10px 0 0;"><strong style="text-decoration: underline; text-transform: uppercase;"><?php echo $language['name'] ?> WORDS</strong>:</p>
-                    <strong>Weblate:</strong> <?php echo number_format( $weblate[$language['weblate']]['translated_words'] ); ?> |
+                    <strong>Weblate:</strong> <?php echo number_format( $weblate[$language['weblate']]['translated_words'] ?? 0 ); ?> |
                     <strong>Scripts:</strong> <?php echo number_format( $scripts ); ?> |
                     <strong>Activities:</strong> <?php echo number_format( $activities ); ?> |
                     <strong>Messages:</strong> <?php echo number_format( $messages ); ?> |
                     <strong>Pieces:</strong> <?php echo number_format( $pieces ); ?> ||
-                    <strong style="text-decoration: underline;">TOTAL:</strong> <?php echo number_format( $pieces + $scripts + $activities + $messages + $weblate[$language['weblate']]['translated_words'] ); ?>
+                    <strong style="text-decoration: underline;">TOTAL:</strong> <?php echo number_format( $pieces + $scripts + $activities + $messages + $weblate[$language['weblate']]['translated_words'] ?? 0 ); ?>
                 </div>
                 <div>
                     <p style="text-align: center; margin: 10px 0 0;"><strong style="text-decoration: underline; text-transform: uppercase;">WEBLATE STRINGS: </strong></p>
-                    <strong>English:</strong> <?php echo number_format( $weblate[$language['weblate']]['total'] ); ?> |
-                    <strong><?php echo $language['name'] ?>:</strong> <?php echo number_format( $weblate[$language['weblate']]['translated'] ); ?> (<?php echo $weblate[$language['weblate']]['translated_percent']; ?>%)
+                    <strong>English:</strong> <?php echo number_format( $weblate[$language['weblate']]['total'] ?? 0 ); ?> |
+                    <strong><?php echo $language['name'] ?>:</strong> <?php echo number_format( $weblate[$language['weblate']]['translated'] ?? 0 ); ?> (<?php echo $weblate[$language['weblate']]['translated_percent'] ?? 0; ?>%)
                 </div>
             </div>
 
@@ -712,10 +712,10 @@ class Zume_Training_Translator extends Zume_Magic_Page
                     <strong style="text-decoration: underline; text-transform: uppercase;">WEBLATE STRINGS: </strong>
                 </p>
                 <p>
-                    <strong>English:</strong> <?php echo number_format( $weblate[$language['weblate']]['total'] ); ?>
+                    <strong>English:</strong> <?php echo number_format( $weblate[$language['weblate']]['total'] ?? 0 ); ?>
                 </p>
                 <p>
-                    <strong><?php echo $language['name'] ?>:</strong> <?php echo number_format( $weblate[$language['weblate']]['translated'] ); ?> (<?php echo $weblate[$language['weblate']]['translated_percent']; ?>%)
+                    <strong><?php echo $language['name'] ?>:</strong> <?php echo number_format( $weblate[$language['weblate']]['translated'] ?? 0 ); ?> (<?php echo $weblate[$language['weblate']]['translated_percent'] ?? 0; ?>%)
                 </p>
                 <p>
                     <strong style="text-decoration: underline; text-transform: uppercase;">WEBLATE WORDS: </strong>
