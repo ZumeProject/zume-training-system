@@ -20,7 +20,7 @@ export class DashTrainingsList extends LitElement {
         this.inactiveTrainingGroups = jsObject.inactive_training_groups
         this.routeName = RouteNames.myTrainings
         this.route = DashBoard.getRoute(this.routeName)
-        this.inactiveTrainingGroupsOpen = true
+        this.inactiveTrainingGroupsOpen = false
     }
 
     firstUpdated() {
@@ -86,7 +86,16 @@ export class DashTrainingsList extends LitElement {
                         )}
                         ${
                             this.inactiveTrainingGroups.length > 0 ? html`
-                                <h2 class="h4" @click=${this.toggleInactiveTrainingGroups}>${jsObject.translations.inactive}</h2>
+                                    <h2 role="button" class="h4 repel align-items-center" @click=${this.toggleInactiveTrainingGroups}>
+                                      ${jsObject.translations.inactive}
+                                      <img
+                                          class="svg w-1rem h-1rem chevron ${this.inactiveTrainingGroupsOpen ? 'rotate-180' : ''}"
+                                          src=${jsObject.images_url +
+                                          '/chevron.svg'}
+                                      />
+                                    </h2>
+
+
                                 <div class="zume-collapse" ?data-expand=${this.inactiveTrainingGroupsOpen}>
                                   ${repeat(this.inactiveTrainingGroups,({ key }) => key,(group) => html`
                                       <training-link

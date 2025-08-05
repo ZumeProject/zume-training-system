@@ -2987,7 +2987,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                     </div>
                 </form>
             </div>
-        `}createRenderRoot(){return this}}customElements.define("dash-trainings",gl);class bl extends k{static get properties(){return{activeTrainingGroups:{type:Object,attribute:!1},inactiveTrainingGroups:{type:Object,attribute:!1},inactiveTrainingGroupsOpen:{type:Boolean,attribute:!1}}}constructor(){super(),this.activeTrainingGroups=jsObject.active_training_groups,this.inactiveTrainingGroups=jsObject.inactive_training_groups,this.routeName=v.myTrainings,this.route=S.getRoute(this.routeName),this.inactiveTrainingGroupsOpen=!0}firstUpdated(){G(this.renderRoot,"dash-trainings-list")}makeTrainingHref(t){return S.routes.find(({name:n})=>n===v.myTraining).pattern.replace(":code",t)}createTraining(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.planDecision}}))}toggleInactiveTrainingGroups(){this.inactiveTrainingGroupsOpen=!this.inactiveTrainingGroupsOpen}render(){return l`
+        `}createRenderRoot(){return this}}customElements.define("dash-trainings",gl);class bl extends k{static get properties(){return{activeTrainingGroups:{type:Object,attribute:!1},inactiveTrainingGroups:{type:Object,attribute:!1},inactiveTrainingGroupsOpen:{type:Boolean,attribute:!1}}}constructor(){super(),this.activeTrainingGroups=jsObject.active_training_groups,this.inactiveTrainingGroups=jsObject.inactive_training_groups,this.routeName=v.myTrainings,this.route=S.getRoute(this.routeName),this.inactiveTrainingGroupsOpen=!1}firstUpdated(){G(this.renderRoot,"dash-trainings-list")}makeTrainingHref(t){return S.routes.find(({name:n})=>n===v.myTraining).pattern.replace(":code",t)}createTraining(){this.dispatchEvent(new CustomEvent("open-wizard",{bubbles:!0,detail:{type:y.planDecision}}))}toggleInactiveTrainingGroups(){this.inactiveTrainingGroupsOpen=!this.inactiveTrainingGroupsOpen}render(){return l`
             <div class="dashboard__content">
                 <div class="dashboard__header left">
                     <div class="dashboard__title">
@@ -3017,7 +3017,15 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                 ></training-link>
                             `)}
                         ${this.inactiveTrainingGroups.length>0?l`
-                                <h2 class="h4" @click=${this.toggleInactiveTrainingGroups}>${jsObject.translations.inactive}</h2>
+                                    <h2 role="button" class="h4 repel align-items-center" @click=${this.toggleInactiveTrainingGroups}>
+                                      ${jsObject.translations.inactive}
+                                      <img
+                                          class="svg w-1rem h-1rem chevron ${this.inactiveTrainingGroupsOpen?"rotate-180":""}"
+                                          src=${jsObject.images_url+"/chevron.svg"}
+                                      />
+                                    </h2>
+
+
                                 <div class="zume-collapse" ?data-expand=${this.inactiveTrainingGroupsOpen}>
                                   ${U(this.inactiveTrainingGroups,({key:t})=>t,t=>l`
                                       <training-link
