@@ -456,4 +456,45 @@ This logging system creates a comprehensive audit trail of user activities while
 
 This documentation provides a comprehensive understanding of the `zume_dt_reports` table structure, usage patterns, and query strategies for AI systems to accurately interpret and work with this data.
 
+---
+
+## Source Files
+
+This documentation was generated from the following source files in the Zume Training System codebase:
+
+### Primary Schema and Data Sources
+- `ai-documentation/table-zume_dt_reports.md` - Original table schema and type/subtype data
+- `ai-documentation/databse-schema.txt` - Database schema reference
+
+### Core Query and Logic Sources
+- `maps/queries.php` - Main query class with stage totals, location queries, and practitioner counts
+- `globals.php` - Core logging system implementation:
+  - `Zume_System_Log_API` class (lines 6715-8234)
+  - `zume_get_user_log()` function (lines 924-945)
+  - `zume_get_user_stage()` function (lines 199-344)
+  - `zume_get_user_location()` function (lines 381-433)
+
+### Map and Analytics Sources
+- `maps/heatmap.php` - Geographic query patterns and location-based reporting
+- `maps/local-map.php` - Local mapping queries and user stage filtering
+
+### API and Integration Sources
+- `utilities/apis/cta-api.php` - Call-to-action API with training and system logging examples
+- `site/assets/src/components/` - Frontend components that trigger logging events
+
+### Training and Activity Sources
+- `site/activities/` - Activity pages that generate training reports
+- `site/pages/` - Public pages with logging integration
+- `utilities/models/zume-plans-model.php` - Plan-related logging patterns
+
+### Configuration and Setup
+- `zume-training-system.php` - Main plugin file with logging initialization
+- `package.json` - Build configuration for frontend logging components
+
+### Anonymous Logging
+- `zume_dt_reports_anonymous` table - Anonymous user activity tracking
+- `DT_Ipstack_API` integration - IP-based location detection for anonymous users
+
+These source files contain the complete implementation of the logging system, query patterns, business logic, and data structures referenced in this documentation.
+
 
