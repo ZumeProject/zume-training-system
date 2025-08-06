@@ -597,12 +597,23 @@ class Zume_Local_Map extends Zume_Magic_Page
                 }));
 
                 // Wait for map to load before adding markers and data
-                map.on('load', function() {
+                map.on('load', async function() {
                     // Check map container dimensions
                     checkMapContainerDimensions();
 
                     // Load the polygon for this grid_id
-                    loadGridPolygon(getParentGridID(localMapObject.grid_id));
+                    await loadGridPolygon(getParentGridID(localMapObject.grid_id));
+                    await loadGridPolygon(localMapObject.grid_id, {
+                        fill: {
+                            color: '#00bcd4',
+                            opacity: 0.5,
+                        },
+                        outline: {
+                            color: '#00bcd4',
+                            width: 4,
+                            opacity: 0.8,
+                        }
+                    });
 
                     // Load and display activity data if available
                     loadActivityData();
@@ -707,7 +718,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 /**
                  * Add grid name label at the center of the polygon
                  */
-                function addGridNameLabel(bounds) {
+                function addGridNameLabel(bounds, options = {}) {
                     // Remove existing grid label if it exists
                     if (map.getLayer('grid-name-label')) {
                         map.removeLayer('grid-name-label');
@@ -779,15 +790,31 @@ class Zume_Local_Map extends Zume_Magic_Page
                 /**
                  * Load and display the polygon for the current grid_id
                  */
-                function loadGridPolygon(gridId) {
+                async function loadGridPolygon(gridId, options = {}) {
                     if (!gridId) {
                         return;
                     }
                     const mirrorUrl = localMapObject.mirror_url;
 
+                    const defaultOptions = {
+                        fill: {
+                            color: '#00bcd4',
+                            opacity: 0.1
+                        },
+                        outline: {
+                            color: '#00bcd4',
+                            width: 2,
+                            opacity: 0.8
+                        },
+                    }
+
+                    options = { ...defaultOptions, ...options };
+
                     const polygonUrl = `${mirrorUrl}collection/${gridId}.geojson`;
 
-                    fetch(polygonUrl)
+                    const sourceName = `grid-polygon-${gridId}`;
+
+                    await fetch(polygonUrl)
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error(`Failed to fetch polygon: ${response.status}`);
@@ -796,40 +823,44 @@ class Zume_Local_Map extends Zume_Magic_Page
                         })
                         .then(geojsonData => {
                             // Add the polygon source
-                            map.addSource('grid-polygon', {
+                            map.addSource(sourceName, {
                                 'type': 'geojson',
                                 'data': geojsonData
                             });
 
-                            // Add polygon fill layer
-                            map.addLayer({
-                                'id': 'grid-polygon-fill',
-                                'type': 'fill',
-                                'source': 'grid-polygon',
-                                'paint': {
-                                    'fill-color': '#00bcd4',
-                                    'fill-opacity': 0.1
-                                }
-                            });
+                            if (options.fill) {
+                                //Add polygon fill layer
+                                map.addLayer({
+                                    'id': `grid-polygon-fill-${gridId}`,
+                                    'type': 'fill',
+                                    'source': sourceName,
+                                    'paint': {
+                                        'fill-color': options.fill.color,
+                                        'fill-opacity': options.fill.opacity
+                                    }
+                                });
+                            }
 
-                            // Add polygon outline layer
-                            map.addLayer({
-                                'id': 'grid-polygon-outline',
-                                'type': 'line',
-                                'source': 'grid-polygon',
-                                'paint': {
-                                    'line-color': '#00bcd4',
-                                    'line-width': 2,
-                                    'line-opacity': 0.8
-                                }
-                            });
+                            if (options.outline) {
+                                // Add polygon outline layer
+                                map.addLayer({
+                                    'id': `grid-polygon-outline-${gridId}`,
+                                    'type': 'line',
+                                    'source': sourceName,
+                                    'paint': {
+                                        'line-color': options.outline.color,
+                                        'line-width': options.outline.width,
+                                        'line-opacity': options.outline.opacity
+                                    }
+                                });
+                            }
 
                             // Calculate polygon bounds by finding north, south, east, west points
                             const polygonBounds = calculatePolygonBounds(geojsonData);
 
                             if (polygonBounds) {
                                 // Add grid name label at the center of the polygon
-                                addGridNameLabel(polygonBounds);
+                                addGridNameLabel(polygonBounds, options);
 
                                 // Create bounding box from calculated bounds
                                 const bounds = new mapboxgl.LngLatBounds(
