@@ -536,6 +536,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 'root' => esc_url_raw( rest_url() ),
                 'grid_id' => $this->grid_id,
                 'location_data' => $this->location_data,
+                'mirror_url' => dt_get_location_grid_mirror( true ),
                 'us_div' => 5000,
                 'global_div' => 50000,
                 'trainees_percentage' => $this->calculate_progress_percentage( 'trainees' ),
@@ -580,6 +581,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                     style: 'mapbox://styles/mapbox/streets-v12',
                     center: [parseFloat(locationData.longitude), parseFloat(locationData.latitude)],
                     zoom: getZoomLevel(locationData.level),
+                    projection: 'mercator', // Ensures a flat map
                     minZoom: 2,
                     maxZoom: 16
                 });
@@ -600,7 +602,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                     checkMapContainerDimensions();
 
                     // Load the polygon for this grid_id
-                    loadGridPolygon();
+                    loadGridPolygon(getParentGridID(localMapObject.grid_id));
 
                     // Load and display activity data if available
                     loadActivityData();
@@ -755,16 +757,35 @@ class Zume_Local_Map extends Zume_Magic_Page
                     });
                 }
 
+                function getParentGridID(gridId) {
+                    const locationData = localMapObject.location_data;
+                    const level = Number(locationData.level);
+
+                    if (level === 0) {
+                        return gridId;
+                    }
+
+                    if (level === 1) {
+                        return locationData.admin0_grid_id;
+                    }
+
+                    if (level === 2) {
+                        return locationData.admin1_grid_id;
+                    }
+
+                    return locationData.admin2_grid_id;
+                }
+
                 /**
                  * Load and display the polygon for the current grid_id
                  */
-                function loadGridPolygon() {
-                    const gridId = localMapObject.grid_id;
+                function loadGridPolygon(gridId) {
                     if (!gridId) {
                         return;
                     }
+                    const mirrorUrl = localMapObject.mirror_url;
 
-                    const polygonUrl = `https://storage.googleapis.com/location-grid-mirror-v2/high/${gridId}.geojson`;
+                    const polygonUrl = `${mirrorUrl}collection/${gridId}.geojson`;
 
                     fetch(polygonUrl)
                         .then(response => {
@@ -945,8 +966,11 @@ class Zume_Local_Map extends Zume_Magic_Page
                 lg.latitude,
                 lg.level,
                 admin0.name as admin0_name,
+                admin0.grid_id as admin0_grid_id,
                 admin1.name as admin1_name,
+                admin1.grid_id as admin1_grid_id,
                 admin2.name as admin2_name,
+                admin2.grid_id as admin2_grid_id,
                 lgn.name as localized_name,
                 admin0_gn.name as admin0_localized_name,
                 admin1_gn.name as admin1_localized_name,
