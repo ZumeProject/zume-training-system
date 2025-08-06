@@ -600,10 +600,28 @@ class Zume_Local_Map extends Zume_Magic_Page
                 map.on('load', async function() {
                     // Check map container dimensions
                     checkMapContainerDimensions();
+                    let parentGeojsonData = null;
+                    let geojsonData = null;
 
-                    // Load the polygon for this grid_id
-                    await loadGridPolygon(getParentGridID(localMapObject.grid_id));
-                    await loadGridPolygon(localMapObject.grid_id, {
+                    try {
+                        parentGeojsonData = await getGeoJSON(getParentGridID(localMapObject.grid_id));
+                    } catch (error) {
+                        console.error('Could not load grid polygon:', error.message);
+                        return;
+                    }
+
+                    await loadGridPolygon(getParentGridID(localMapObject.grid_id), parentGeojsonData);
+
+                    try {
+                        geojsonData = await getGeoJSON(localMapObject.grid_id);
+                    } catch (error) {
+                        console.error('Could not load grid polygon:', error.message);
+                        return;
+                    }
+                    localMapObject.parentGeojsonData = parentGeojsonData;
+                    localMapObject.geojsonData = geojsonData;
+
+                    await loadGridPolygon(localMapObject.grid_id, geojsonData, {
                         fill: {
                             color: '#00bcd4',
                             opacity: 0.5,
@@ -614,6 +632,18 @@ class Zume_Local_Map extends Zume_Magic_Page
                             opacity: 0.8,
                         }
                     });
+
+                    fitMapToBounds(calculatePolygonBounds(geojsonData));
+
+                    const cameraChanged = (event) => {
+                        const labeledFeatures = filterFeaturesToBounds(parentGeojsonData.features, getMapBounds());
+                        // Add grid name label at the center of the polygon
+                        addGridNameLabel(labeledFeatures, localMapObject.grid_id);
+                    }
+                    map.on('moveend', cameraChanged);
+                    map.on('zoomend', cameraChanged);
+                    map.on('pitchend', cameraChanged);
+                    map.on('rotateend', cameraChanged);
 
                     // Load and display activity data if available
                     loadActivityData();
@@ -722,7 +752,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 /**
                  * Add grid name label at the center of the polygon
                  */
-                function addGridNameLabel(features = [], gridId, options = {}) {
+                function addGridNameLabel(features = [], gridId) {
                     if (features.length === 0) {
                         return;
                     }
@@ -825,8 +855,8 @@ class Zume_Local_Map extends Zume_Magic_Page
                 /**
                  * Load and display the polygon for the current grid_id
                  */
-                async function loadGridPolygon(gridId, options = {}) {
-                    if (!gridId) {
+                async function loadGridPolygon(gridId, geojsonData, options = {}) {
+                    if (!geojsonData) {
                         return;
                     }
 
@@ -845,14 +875,6 @@ class Zume_Local_Map extends Zume_Magic_Page
                     options = { ...defaultOptions, ...options };
 
                     const sourceName = `grid-polygon-${gridId}`;
-                    let geojsonData = null;
-
-                    try {
-                        geojsonData = await getGeoJSON(gridId);
-                    } catch (error) {
-                        console.error('Could not load grid polygon:', error.message);
-                        return;
-                    }
 
                     // Add the polygon source
                     map.addSource(sourceName, {
@@ -887,19 +909,12 @@ class Zume_Local_Map extends Zume_Magic_Page
                         });
                     }
 
-                    // Calculate polygon bounds by finding north, south, east, west points
                     const polygonBounds = calculatePolygonBounds(geojsonData);
 
-                    const featuresInBounds = geojsonData.features
-                        .map(feature => withCenter(feature))
-                        .filter(feature => isInBounds(feature, polygonBounds));
-                    featuresInBounds.sort((a, b) => a.properties.centerLat - b.properties.centerLat);
-                    featuresInBounds.sort((a, b) => a.properties.centerLng - b.properties.centerLng);
-                    labeledFeatures = featuresInBounds.map((feature, index) => withLabel(feature, `${index + 1}`));
+                    console.log('Grid polygon loaded successfully');
+                }
 
-                    // Add grid name label at the center of the polygon
-                    addGridNameLabel(labeledFeatures, gridId, options);
-
+                function fitMapToBounds(polygonBounds) {
                     // Create bounding box from calculated bounds
                     const bounds = new mapboxgl.LngLatBounds(
                         [polygonBounds.west, polygonBounds.south], // Southwest corner
@@ -916,9 +931,33 @@ class Zume_Local_Map extends Zume_Magic_Page
                     // Verify the fit after animation completes
                     setTimeout(() => {
                         checkMapContainerDimensions();
+                        const bounds = getMapBounds();
+                        const labeledFeatures = filterFeaturesToBounds(localMapObject.parentGeojsonData.features, bounds);
+                        addGridNameLabel(labeledFeatures, localMapObject.grid_id);
                     }, 2100);
+                }
 
-                    console.log('Grid polygon loaded successfully');
+                function getMapBounds() {
+                    const bounds = map.getBounds();
+                    return {
+                        north: bounds.getNorth(),
+                        south: bounds.getSouth(),
+                        east: bounds.getEast(),
+                        west: bounds.getWest(),
+                        centerLng: bounds.getCenter().lng,
+                        centerLat: bounds.getCenter().lat
+                    };
+                }
+
+                function filterFeaturesToBounds(features, polygonBounds) {
+                    const featuresInBounds = features
+                        .map(feature => withCenter(feature))
+                        .filter(feature => isInBounds(feature, polygonBounds));
+                    featuresInBounds.sort((a, b) => b.properties.centerLng - a.properties.centerLng);
+                    featuresInBounds.sort((a, b) => b.properties.centerLat - a.properties.centerLat);
+                    labeledFeatures = featuresInBounds.map((feature, index) => withLabel(feature, `${index + 1}`));
+
+                    return labeledFeatures;
                 }
 
                 function withCenter(feature) {
