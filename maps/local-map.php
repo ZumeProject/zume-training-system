@@ -642,6 +642,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                         const labeledFeatures = filterFeaturesToBounds(parentGeojsonData.features, getMapBounds());
                         // Add grid name label at the center of the polygon
                         addGridNameLabel(labeledFeatures, localMapObject.grid_id);
+                        loadActivityData(labeledFeatures);
                     }
                     map.on('moveend', cameraChanged);
                     map.on('zoomend', cameraChanged);
@@ -649,7 +650,6 @@ class Zume_Local_Map extends Zume_Magic_Page
                     map.on('rotateend', cameraChanged);
 
                     // Load and display activity data if available
-                    loadActivityData();
 
                     // Add click handler for more detailed information
                     addMapClickHandlers();
@@ -999,16 +999,39 @@ class Zume_Local_Map extends Zume_Magic_Page
                 /**
                  * Load activity data for the location and surrounding areas
                  */
-                function loadActivityData() {
-                    // This could be expanded to load actual activity data from the API
-                    loadChildLocations();
-                }
+                function loadActivityData(features) {
+                    const tableBody = document.getElementById('local-map-table-body');
+                    tableBody.innerHTML = '';
+                    const loadingSpinner = document.querySelector('.loading-spinner');
+                    loadingSpinner.classList.add('active');
 
-                /**
-                 * Load child locations and activity points
-                 */
-                function loadChildLocations() {
-                    // Placeholder for future activity data loading
+                    // order the features by the label
+                    features.sort((a, b) => a.properties.label - b.properties.label);
+
+                    // move the current grid_id feature to the top of the list
+                    const currentGridId = localMapObject.grid_id;
+                    const currentGridIdIndex = features.findIndex(feature => feature.properties.grid_id === currentGridId);
+                    if (currentGridIdIndex !== -1) {
+                        const currentGridIdFeature = features.splice(currentGridIdIndex, 1)[0];
+                        features.unshift(currentGridIdFeature);
+                    }
+
+                    // add the features to the table
+                    for (const feature of features) {
+                        const levelData = localMapObject.trainees_percentage[feature.properties.grid_id];
+                        tableBody.innerHTML += `
+                            <tr>
+                                <td>${feature.properties.label}</td>
+                                <td>${levelData.name}</td>
+                                <td>${levelData.population}</td>
+                                <td>${levelData.needed}</td>
+                                <td>${levelData.reported}</td>
+                                <td>${levelData.percent}</td>
+                            </tr>
+                        `;
+                    }
+
+                    loadingSpinner.classList.remove('active');
                 }
 
                 /**
@@ -1067,6 +1090,23 @@ class Zume_Local_Map extends Zume_Magic_Page
 
                 <div class="map-container">
                     <div id="map" class="map-placeholder"><?php echo esc_html__( 'Global Map', 'zume' ) ?></div>
+                </div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><?php echo esc_html__( 'No.', 'zume' ) ?></th>
+                                <th><?php echo esc_html__( 'Name', 'zume' ) ?></th>
+                                <th><?php echo esc_html__( 'Population', 'zume' ) ?></th>
+                                <th><?php echo esc_html__( 'Trainees Needed', 'zume' ) ?></th>
+                                <th><?php echo esc_html__( 'Trainees Reported', 'zume' ) ?></th>
+                                <th><?php echo esc_html__( '%', 'zume' ) ?></th>
+                            </tr>
+                        </thead>
+                        <tbody id="local-map-table-body">
+                            <span class="loading-spinner active"></span>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="footer">
