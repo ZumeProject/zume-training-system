@@ -13,6 +13,8 @@ class Zume_Local_Map extends Zume_Magic_Page
     public static $token = 'map_local';
     public $grid_id = null;
     public $location_data = null;
+    public $global_div = 50000; // this equals 2 for every 50000
+    public $us_div = 5000; // this is 2 for every 5000
 
     private static $_instance = null;
     public static function instance() {
@@ -539,8 +541,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 'mirror_url' => dt_get_location_grid_mirror( true ),
                 'us_div' => 5000,
                 'global_div' => 50000,
-                'trainees_percentage' => $this->calculate_progress_percentage( 'trainees' ),
-                'churches_percentage' => $this->calculate_progress_percentage( 'churches' ),
+                'trainees_percentage' => $this->calculate_progress_percentages(),
                 'translation' => [
                     'local_map' => esc_html__( 'Local Map', 'zume' ),
                     'trainees' => esc_html__( 'Trainees', 'zume' ),
@@ -1281,20 +1282,51 @@ class Zume_Local_Map extends Zume_Magic_Page
         return array_column( $children, 'grid_id' );
     }
 
-    private function calculate_progress_percentage( $type ) {
-        if ( $type === 'trainees' ) {
-            $needed = $this->calculate_trainees_needed();
-            $reported = $this->get_trainees_count();
-        } else {
-            $needed = $this->calculate_churches_needed();
-            $reported = $this->get_churches_count();
+    private function calculate_progress_percentages() {
+        $level_data = get_transient( 'zume_local_map_level_data_' . $this->grid_id );
+        if ( $level_data ) {
+            return $level_data;
         }
 
-        if ( $needed === 0 ) {
-            return 0;
+        $parent_grid_id = $this->get_parent_grid_id( $this->grid_id );
+        $child_grid_ids = $this->get_child_grid_ids( $parent_grid_id );
+
+        $location_data = $this->get_location_data( $this->grid_id );
+        $level = 'a3';
+        if ( (int) $location_data['level'] === 0 ) {
+            $level = 'a0';
+        }
+        if ( (int) $location_data['level'] === 1 ) {
+            $level = 'a1';
+        }
+        if ( (int) $location_data['level'] === 2 ) {
+            $level = 'a2';
         }
 
-        return min( 100, round( ( $reported / $needed ) * 100 ) );
+        $list = Zume_Funnel_App_Heatmap::query_funnel_grid_totals( $level, $child_grid_ids );
+
+        $level_data = [];
+        foreach ( $child_grid_ids as $child_grid_id ) {
+            $level_data[$child_grid_id] = Zume_Funnel_App_Heatmap::endpoint_get_level( $child_grid_id, $level, $list, $this->global_div, $this->us_div );
+        }
+
+        set_transient( 'zume_local_map_level_data_' . $this->grid_id, $level_data, 60 * 60 * 24 );
+
+        return $level_data;
+    }
+
+    private function get_parent_grid_id( $grid_id ) {
+        $location_data = $this->get_location_data( $grid_id );
+        if ( (int) $location_data['level'] === 0 ) {
+            return $grid_id;
+        }
+        if ( (int) $location_data['level'] === 1 ) {
+            return $location_data['admin0_grid_id'];
+        }
+        if ( (int) $location_data['level'] === 2 ) {
+            return $location_data['admin1_grid_id'];
+        }
+        return $location_data['admin2_grid_id'];
     }
 
     private function format_population( $population ) {
