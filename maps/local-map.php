@@ -610,6 +610,8 @@ class Zume_Local_Map extends Zume_Magic_Page
                         return;
                     }
 
+                    // get the data we need from the features in the parentGeojsonData from the API
+
                     await loadGridPolygon(getParentGridID(localMapObject.grid_id), parentGeojsonData);
 
                     try {
@@ -810,12 +812,14 @@ class Zume_Local_Map extends Zume_Magic_Page
                         'layout': {
                             'text-field': ['get', 'name'],
                             'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
-                            'text-size': 18,
+                            'text-size': 22,
                             'text-anchor': 'center',
-                            'text-justify': 'center'
+                            'text-justify': 'center',
+                            'text-allow-overlap': true,
+                            'text-ignore-placement': true,
                         },
                         'paint': {
-                            'text-color': '#00bcd4',
+                            'text-color': '#111',
                             'text-halo-color': '#ffffff',
                             'text-halo-width': 3,
                             'text-opacity': 0.9
