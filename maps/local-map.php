@@ -611,18 +611,25 @@ class Zume_Local_Map extends Zume_Magic_Page
                         return;
                     }
 
-                    // get the data we need from the features in the parentGeojsonData from the API
+                    // add in percentage data into geojson for mapping
+                    parentGeojsonData.features.forEach(feature => {
+                        feature.properties.percentage = parseFloat(localMapObject.trainees_percentage[feature.properties.grid_id].percent);
+                    });
 
                     await loadGridPolygon(getParentGridID(localMapObject.grid_id), parentGeojsonData);
 
                     try {
-                        geojsonData = await getGeoJSON(localMapObject.grid_id);
+                        geojsonData = await getGeoJSON(localMapObject.grid_id, 'low');
                     } catch (error) {
                         console.error('Could not load grid polygon:', error.message);
                         return;
                     }
                     localMapObject.parentGeojsonData = parentGeojsonData;
                     localMapObject.geojsonData = geojsonData;
+
+                    geojsonData.features.forEach(feature => {
+                        feature.properties.percentage = parseFloat(localMapObject.trainees_percentage[feature.properties.grid_id].percent);
+                    });
 
                     await loadGridPolygon(localMapObject.grid_id, geojsonData, {
                         fill: {
@@ -847,9 +854,9 @@ class Zume_Local_Map extends Zume_Magic_Page
                     return locationData.admin2_grid_id;
                 }
 
-                async function getGeoJSON(gridId) {
+                async function getGeoJSON(gridId, folder = 'collection') {
                     const mirrorUrl = localMapObject.mirror_url;
-                    const polygonUrl = `${mirrorUrl}collection/${gridId}.geojson`;
+                    const polygonUrl = `${mirrorUrl}${folder}/${gridId}.geojson`;
                     const response = await fetch(polygonUrl);
                     if (!response.ok) {
                         throw new Error(`Failed to fetch polygon: ${response.status}`);
@@ -867,11 +874,9 @@ class Zume_Local_Map extends Zume_Magic_Page
 
                     const defaultOptions = {
                         fill: {
-                            color: '#00bcd4',
-                            opacity: 0.1
+                            opacity: 0.2
                         },
                         outline: {
-                            color: '#00bcd4',
                             width: 2,
                             opacity: 0.8
                         }
@@ -894,7 +899,15 @@ class Zume_Local_Map extends Zume_Magic_Page
                             'type': 'fill',
                             'source': sourceName,
                             'paint': {
-                                'fill-color': options.fill.color,
+                                'fill-color': [
+                                    "step",
+                                    ['get', 'percentage'],
+                                    'red',
+                                    33,
+                                    'orange',
+                                    66,
+                                    'green',
+                                ],
                                 'fill-opacity': options.fill.opacity
                             }
                         });
@@ -907,7 +920,15 @@ class Zume_Local_Map extends Zume_Magic_Page
                             'type': 'line',
                             'source': sourceName,
                             'paint': {
-                                'line-color': options.outline.color,
+                                'line-color': [
+                                    "step",
+                                    ['get', 'percentage'],
+                                    'red',
+                                    33,
+                                    'orange',
+                                    66,
+                                    'green',
+                                ],
                                 'line-width': options.outline.width,
                                 'line-opacity': options.outline.opacity
                             }
@@ -1343,7 +1364,7 @@ class Zume_Local_Map extends Zume_Magic_Page
             $level = 'a2';
         }
 
-        $list = Zume_Funnel_App_Heatmap::query_funnel_grid_totals( $level, $child_grid_ids );
+        $list = Zume_Funnel_App_Heatmap::query_funnel_grid_totals( $level, [ 3, 4, 5, 6 ] );
 
         $level_data = [];
         foreach ( $child_grid_ids as $child_grid_id ) {
