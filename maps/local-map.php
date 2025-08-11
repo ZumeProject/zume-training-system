@@ -101,6 +101,10 @@ class Zume_Local_Map extends Zume_Magic_Page
                 color: #333;
             }
 
+            .container {
+                max-width: 700px;
+            }
+
             .header {
                 display: flex;
                 justify-content: space-between;
@@ -571,6 +575,8 @@ class Zume_Local_Map extends Zume_Magic_Page
                     return;
                 }
 
+                preparePageForPrint();
+
                 const locationData = localMapObject.location_data;
 
                 // Set up Mapbox
@@ -586,6 +592,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                     minZoom: 2,
                     maxZoom: 16
                 });
+                window.localmap = map
 
                 // Disable map rotation
                 map.dragRotate.disable();
@@ -656,11 +663,20 @@ class Zume_Local_Map extends Zume_Magic_Page
                     map.on('pitchend', cameraChanged);
                     map.on('rotateend', cameraChanged);
 
-                    // Load and display activity data if available
-
                     // Add click handler for more detailed information
                     addMapClickHandlers();
                 });
+
+                function preparePageForPrint() {
+                    const viewBoxMetaElement = document.querySelector('meta[name="viewport"]');
+                    if (viewBoxMetaElement) {
+                        viewBoxMetaElement.setAttribute('content', 'width=800, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+                    }
+                    const bodyElement = document.body;
+                    if (bodyElement) {
+                        bodyElement.style.overflowX = 'auto'
+                    }
+                }
 
                 /**
                  * Determine appropriate zoom level based on location level
@@ -1113,7 +1129,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                     <div id="map" class="map-placeholder"><?php echo esc_html__( 'Global Map', 'zume' ) ?></div>
                 </div>
                 <div>
-                    <table>
+                    <table class="no-resize">
                         <thead>
                             <tr>
                                 <th><?php echo esc_html__( 'No.', 'zume' ) ?></th>
