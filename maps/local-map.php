@@ -623,7 +623,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                         feature.properties.percentage = parseFloat(localMapObject.trainees_percentage[feature.properties.grid_id].percent);
                     });
 
-                    await loadGridPolygon(getParentGridID(localMapObject.grid_id), parentGeojsonData);
+                    await loadGridPolygon(getParentGridID(localMapObject.grid_id) + 'parent', parentGeojsonData);
 
                     try {
                         geojsonData = await getGeoJSON(localMapObject.grid_id, 'low');
@@ -783,8 +783,8 @@ class Zume_Local_Map extends Zume_Magic_Page
                         return;
                     }
 
-                    //const id = `grid-name-label-${gridId}`;
-                    const id = 'grid-name-label';
+                    const id = `grid-name-label-${gridId}`;
+                    //const id = 'grid-name-label';
 
                     // Remove existing grid label if it exists
                     if (map.getLayer(id)) {
