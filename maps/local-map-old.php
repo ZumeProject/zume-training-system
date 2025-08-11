@@ -1,7 +1,7 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
-class Zume_Local_Map extends Zume_Magic_Page
+class Zume_Local_Map_Old extends Zume_Magic_Page
 {
     public $magic = false;
     public $parts = false;
@@ -13,8 +13,6 @@ class Zume_Local_Map extends Zume_Magic_Page
     public static $token = 'map_local';
     public $grid_id = null;
     public $location_data = null;
-    public $global_div = 50000; // this equals 2 for every 50000
-    public $us_div = 5000; // this is 2 for every 5000
 
     private static $_instance = null;
     public static function instance() {
@@ -102,7 +100,10 @@ class Zume_Local_Map extends Zume_Magic_Page
             }
 
             .container {
-                max-width: 700px;
+                max-width: 900px;
+                margin: 0 auto;
+                background-color: white;
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
             }
 
             .header {
@@ -486,10 +487,6 @@ class Zume_Local_Map extends Zume_Magic_Page
                     text-align: center;
                 }
 
-                .container {
-                    max-width: 900px;
-                }
-
                 .title-section h1 {
                     font-size: 36px;
                 }
@@ -542,10 +539,10 @@ class Zume_Local_Map extends Zume_Magic_Page
                 'root' => esc_url_raw( rest_url() ),
                 'grid_id' => $this->grid_id,
                 'location_data' => $this->location_data,
-                'mirror_url' => dt_get_location_grid_mirror( true ),
                 'us_div' => 5000,
                 'global_div' => 50000,
-                'trainees_percentage' => $this->calculate_progress_percentages(),
+                'trainees_percentage' => $this->calculate_progress_percentage( 'trainees' ),
+                'churches_percentage' => $this->calculate_progress_percentage( 'churches' ),
                 'translation' => [
                     'local_map' => esc_html__( 'Local Map', 'zume' ),
                     'trainees' => esc_html__( 'Trainees', 'zume' ),
@@ -569,13 +566,14 @@ class Zume_Local_Map extends Zume_Magic_Page
         ?>
         <script>
             jQuery(document).ready(function($) {
+                // Initialize progress visuals first
+                initializeProgressVisuals();
+
                 // Check if localMapObject is available and has location data
                 if (typeof localMapObject === 'undefined' || !localMapObject.location_data) {
                     console.log('Local map object or location data not available');
                     return;
                 }
-
-                preparePageForPrint();
 
                 const locationData = localMapObject.location_data;
 
@@ -588,11 +586,9 @@ class Zume_Local_Map extends Zume_Magic_Page
                     style: 'mapbox://styles/mapbox/streets-v12',
                     center: [parseFloat(locationData.longitude), parseFloat(locationData.latitude)],
                     zoom: getZoomLevel(locationData.level),
-                    projection: 'mercator', // Ensures a flat map
                     minZoom: 2,
                     maxZoom: 16
                 });
-                window.localmap = map
 
                 // Disable map rotation
                 map.dragRotate.disable();
@@ -605,77 +601,74 @@ class Zume_Local_Map extends Zume_Magic_Page
                 }));
 
                 // Wait for map to load before adding markers and data
-                map.on('load', async function() {
+                map.on('load', function() {
                     // Check map container dimensions
                     checkMapContainerDimensions();
-                    let parentGeojsonData = null;
-                    let geojsonData = null;
 
-                    try {
-                        parentGeojsonData = await getGeoJSON(getParentGridID(localMapObject.grid_id));
-                    } catch (error) {
-                        console.error('Could not load grid polygon:', error.message);
-                        return;
-                    }
+                    // Load the polygon for this grid_id
+                    loadGridPolygon();
 
-                    // add in percentage data into geojson for mapping
-                    parentGeojsonData.features.forEach(feature => {
-                        feature.properties.percentage = parseFloat(localMapObject.trainees_percentage[feature.properties.grid_id].percent);
-                    });
-
-                    await loadGridPolygon(getParentGridID(localMapObject.grid_id), parentGeojsonData);
-
-                    try {
-                        geojsonData = await getGeoJSON(localMapObject.grid_id, 'low');
-                    } catch (error) {
-                        console.error('Could not load grid polygon:', error.message);
-                        return;
-                    }
-                    localMapObject.parentGeojsonData = parentGeojsonData;
-                    localMapObject.geojsonData = geojsonData;
-
-                    geojsonData.features.forEach(feature => {
-                        feature.properties.percentage = parseFloat(localMapObject.trainees_percentage[feature.properties.grid_id].percent);
-                    });
-
-                    await loadGridPolygon(localMapObject.grid_id, geojsonData, {
-                        fill: {
-                            color: '#00bcd4',
-                            opacity: 0.5,
-                        },
-                        outline: {
-                            color: '#00bcd4',
-                            width: 4,
-                            opacity: 0.8,
-                        }
-                    });
-
-                    fitMapToBounds(calculatePolygonBounds(geojsonData));
-
-                    const cameraChanged = (event) => {
-                        const labeledFeatures = filterFeaturesToBounds(parentGeojsonData.features, getMapBounds());
-                        // Add grid name label at the center of the polygon
-                        addGridNameLabel(labeledFeatures, localMapObject.grid_id);
-                        loadActivityData(labeledFeatures);
-                    }
-                    map.on('moveend', cameraChanged);
-                    map.on('zoomend', cameraChanged);
-                    map.on('pitchend', cameraChanged);
-                    map.on('rotateend', cameraChanged);
+                    // Load and display activity data if available
+                    loadActivityData();
 
                     // Add click handler for more detailed information
                     addMapClickHandlers();
                 });
 
-                function preparePageForPrint() {
-                    const viewBoxMetaElement = document.querySelector('meta[name="viewport"]');
-                    if (viewBoxMetaElement) {
-                        viewBoxMetaElement.setAttribute('content', 'width=800, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+                /**
+                 * Initialize the progress visuals with dynamic data
+                 */
+                function initializeProgressVisuals() {
+                    // Initialize trainees progress dots
+                    initializeProgressDots('trainees-progress-dots', localMapObject.trainees_percentage);
+
+                    // Initialize churches progress dots
+                    initializeProgressDots('churches-progress-dots', localMapObject.churches_percentage);
+
+                    // Animate the circular progress indicators
+                    animateProgress('trainees-progress', localMapObject.trainees_percentage);
+                    animateProgress('churches-progress', localMapObject.churches_percentage);
+                }
+
+                /**
+                 * Generate progress dots based on percentage
+                 */
+                function initializeProgressDots(elementId, percentage) {
+                    const container = document.getElementById(elementId);
+                    if (!container) return;
+
+                    // Clear existing dots
+                    container.innerHTML = '';
+
+                    // Create 12 dots (matching the HTML template)
+                    const totalDots = 12;
+                    const filledDots = Math.round((percentage / 100) * totalDots);
+
+                    for (let i = 0; i < totalDots; i++) {
+                        const dot = document.createElement('div');
+                        dot.className = 'progress-dot';
+                        if (i < filledDots) {
+                            dot.classList.add('filled');
+                        }
+                        container.appendChild(dot);
                     }
-                    const bodyElement = document.body;
-                    if (bodyElement) {
-                        bodyElement.style.overflowX = 'auto'
-                    }
+                }
+
+                /**
+                 * Animate the circular progress indicators
+                 */
+                function animateProgress(elementId, percentage) {
+                    const element = document.getElementById(elementId);
+                    if (!element) return;
+
+                    const progressCircle = element.querySelector('.circle-progress');
+                    if (!progressCircle) return;
+
+                    const degrees = (percentage / 100) * 360;
+
+                    setTimeout(() => {
+                        progressCircle.style.background = `conic-gradient(#00bcd4 ${degrees}deg, #e0e0e0 ${degrees}deg)`;
+                    }, 500);
                 }
 
                 /**
@@ -760,15 +753,11 @@ class Zume_Local_Map extends Zume_Magic_Page
 
                     // Return bounds if we found coordinates
                     if (hasCoordinates) {
-                        const centerLng = (east + west) / 2;
-                        const centerLat = (north + south) / 2;
                         return {
                             north: north,
                             south: south,
                             east: east,
-                            west: west,
-                            centerLng: centerLng,
-                            centerLat: centerLat
+                            west: west
                         };
                     }
 
@@ -778,72 +767,49 @@ class Zume_Local_Map extends Zume_Magic_Page
                 /**
                  * Add grid name label at the center of the polygon
                  */
-                function addGridNameLabel(features = [], gridId) {
-                    if (features.length === 0) {
-                        return;
-                    }
-
-                    //const id = `grid-name-label-${gridId}`;
-                    const id = 'grid-name-label';
-
+                function addGridNameLabel(bounds) {
                     // Remove existing grid label if it exists
-                    if (map.getLayer(id)) {
-                        map.removeLayer(id);
-                        map.removeSource(id);
+                    if (map.getLayer('grid-name-label')) {
+                        map.removeLayer('grid-name-label');
+                        map.removeSource('grid-name-label');
                     }
+
+                    // Calculate center of the polygon
+                    const centerLng = (bounds.east + bounds.west) / 2;
+                    const centerLat = (bounds.north + bounds.south) / 2;
 
                     // Get the location name from the data
                     const locationName = locationData.name || `Grid ${localMapObject.grid_id}`;
 
-                    const data = features.length === 1 ? {
-                        'type': 'FeatureCollection',
-                        'features': [
-                            {
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [features[0].properties.centerLng, features[0].properties.centerLat]
-                                },
-                                'properties': {
-                                    'name': locationName
-                                }
-                            }
-                        ]
-                    } : {
-                        'type': 'FeatureCollection',
-                        'features': features.map(feature => ({
+                    // Add source for grid name label
+                    map.addSource('grid-name-label', {
+                        'type': 'geojson',
+                        'data': {
                             'type': 'Feature',
                             'geometry': {
                                 'type': 'Point',
-                                'coordinates': [feature.properties.centerLng, feature.properties.centerLat]
+                                'coordinates': [centerLng, centerLat]
                             },
                             'properties': {
-                                'name': feature.properties.label
+                                'name': locationName
                             }
-                        }))
-                    }
-
-                    // Add source for grid name label
-                    map.addSource(id, {
-                        'type': 'geojson',
-                        'data': data,
+                        }
                     });
 
                     // Add grid name label layer
                     map.addLayer({
-                        'id': id,
+                        'id': 'grid-name-label',
                         'type': 'symbol',
-                        'source': id,
+                        'source': 'grid-name-label',
                         'layout': {
                             'text-field': ['get', 'name'],
                             'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
-                            'text-size': 22,
+                            'text-size': 18,
                             'text-anchor': 'center',
-                            'text-justify': 'center',
-                            'text-allow-overlap': true,
-                            'text-ignore-placement': true,
+                            'text-justify': 'center'
                         },
                         'paint': {
-                            'text-color': '#111',
+                            'text-color': '#00bcd4',
                             'text-halo-color': '#ffffff',
                             'text-halo-width': 3,
                             'text-opacity': 0.9
@@ -851,224 +817,101 @@ class Zume_Local_Map extends Zume_Magic_Page
                     });
                 }
 
-                function getParentGridID(gridId) {
-                    const locationData = localMapObject.location_data;
-                    const level = Number(locationData.level);
-
-                    if (level === 0) {
-                        return gridId;
-                    }
-
-                    if (level === 1) {
-                        return locationData.admin0_grid_id;
-                    }
-
-                    if (level === 2) {
-                        return locationData.admin1_grid_id;
-                    }
-
-                    return locationData.admin2_grid_id;
-                }
-
-                async function getGeoJSON(gridId, folder = 'collection') {
-                    const mirrorUrl = localMapObject.mirror_url;
-                    const polygonUrl = `${mirrorUrl}${folder}/${gridId}.geojson`;
-                    const response = await fetch(polygonUrl);
-                    if (!response.ok) {
-                        throw new Error(`Failed to fetch polygon: ${response.status}`);
-                    }
-                    return response.json();
-                }
-
                 /**
                  * Load and display the polygon for the current grid_id
                  */
-                async function loadGridPolygon(gridId, geojsonData, options = {}) {
-                    if (!geojsonData) {
+                function loadGridPolygon() {
+                    const gridId = localMapObject.grid_id;
+                    if (!gridId) {
                         return;
                     }
 
-                    const defaultOptions = {
-                        fill: {
-                            opacity: 0.2
-                        },
-                        outline: {
-                            width: 2,
-                            opacity: 0.8
-                        }
-                    }
+                    const polygonUrl = `https://storage.googleapis.com/location-grid-mirror-v2/high/${gridId}.geojson`;
 
-                    options = { ...defaultOptions, ...options };
-
-                    const sourceName = `grid-polygon-${gridId}`;
-
-                    // Add the polygon source
-                    map.addSource(sourceName, {
-                        'type': 'geojson',
-                        'data': geojsonData
-                    });
-
-                    if (options.fill) {
-                        //Add polygon fill layer
-                        map.addLayer({
-                            'id': `grid-polygon-fill-${gridId}`,
-                            'type': 'fill',
-                            'source': sourceName,
-                            'paint': {
-                                'fill-color': [
-                                    "step",
-                                    ['get', 'percentage'],
-                                    'red',
-                                    33,
-                                    'orange',
-                                    66,
-                                    'green',
-                                ],
-                                'fill-opacity': options.fill.opacity
+                    fetch(polygonUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`Failed to fetch polygon: ${response.status}`);
                             }
-                        });
-                    }
+                            return response.json();
+                        })
+                        .then(geojsonData => {
+                            // Add the polygon source
+                            map.addSource('grid-polygon', {
+                                'type': 'geojson',
+                                'data': geojsonData
+                            });
 
-                    if (options.outline) {
-                        // Add polygon outline layer
-                        map.addLayer({
-                            'id': `grid-polygon-outline-${gridId}`,
-                            'type': 'line',
-                            'source': sourceName,
-                            'paint': {
-                                'line-color': [
-                                    "step",
-                                    ['get', 'percentage'],
-                                    'red',
-                                    33,
-                                    'orange',
-                                    66,
-                                    'green',
-                                ],
-                                'line-width': options.outline.width,
-                                'line-opacity': options.outline.opacity
+                            // Add polygon fill layer
+                            map.addLayer({
+                                'id': 'grid-polygon-fill',
+                                'type': 'fill',
+                                'source': 'grid-polygon',
+                                'paint': {
+                                    'fill-color': '#00bcd4',
+                                    'fill-opacity': 0.1
+                                }
+                            });
+
+                            // Add polygon outline layer
+                            map.addLayer({
+                                'id': 'grid-polygon-outline',
+                                'type': 'line',
+                                'source': 'grid-polygon',
+                                'paint': {
+                                    'line-color': '#00bcd4',
+                                    'line-width': 2,
+                                    'line-opacity': 0.8
+                                }
+                            });
+
+                            // Calculate polygon bounds by finding north, south, east, west points
+                            const polygonBounds = calculatePolygonBounds(geojsonData);
+
+                            if (polygonBounds) {
+                                // Add grid name label at the center of the polygon
+                                addGridNameLabel(polygonBounds);
+
+                                // Create bounding box from calculated bounds
+                                const bounds = new mapboxgl.LngLatBounds(
+                                    [polygonBounds.west, polygonBounds.south], // Southwest corner
+                                    [polygonBounds.east, polygonBounds.north]  // Northeast corner
+                                );
+
+                                // Fit the map to the polygon bounds with padding
+                                map.fitBounds(bounds, {
+                                    padding: {top: 50, bottom: 50, left: 50, right: 50},
+                                    maxZoom: 15,
+                                    duration: 2000
+                                });
+
+                                // Verify the fit after animation completes
+                                setTimeout(() => {
+                                    checkMapContainerDimensions();
+                                }, 2100);
                             }
+
+                            console.log('Grid polygon loaded successfully');
+                        })
+                        .catch(error => {
+                            console.log('Could not load grid polygon:', error.message);
+                            // Continue without polygon - this is not a critical error
                         });
-                    }
-
-                    const polygonBounds = calculatePolygonBounds(geojsonData);
-
-                    console.log('Grid polygon loaded successfully');
-                }
-
-                function fitMapToBounds(polygonBounds) {
-                    // Create bounding box from calculated bounds
-                    const bounds = new mapboxgl.LngLatBounds(
-                        [polygonBounds.west, polygonBounds.south], // Southwest corner
-                        [polygonBounds.east, polygonBounds.north]  // Northeast corner
-                    );
-
-                    // Fit the map to the polygon bounds with padding
-                    map.fitBounds(bounds, {
-                        padding: {top: 50, bottom: 50, left: 50, right: 50},
-                        maxZoom: 15,
-                        duration: 2000
-                    });
-
-                    // Verify the fit after animation completes
-                    setTimeout(() => {
-                        checkMapContainerDimensions();
-                        const bounds = getMapBounds();
-                        const labeledFeatures = filterFeaturesToBounds(localMapObject.parentGeojsonData.features, bounds);
-                        addGridNameLabel(labeledFeatures, localMapObject.grid_id);
-                    }, 2100);
-                }
-
-                function getMapBounds() {
-                    const bounds = map.getBounds();
-                    return {
-                        north: bounds.getNorth(),
-                        south: bounds.getSouth(),
-                        east: bounds.getEast(),
-                        west: bounds.getWest(),
-                        centerLng: bounds.getCenter().lng,
-                        centerLat: bounds.getCenter().lat
-                    };
-                }
-
-                function filterFeaturesToBounds(features, polygonBounds) {
-                    const featuresInBounds = features
-                        .map(feature => withCenter(feature))
-                        .filter(feature => isInBounds(feature, polygonBounds));
-                    featuresInBounds.sort((a, b) => b.properties.centerLng - a.properties.centerLng);
-                    featuresInBounds.sort((a, b) => b.properties.centerLat - a.properties.centerLat);
-                    labeledFeatures = featuresInBounds.map((feature, index) => withLabel(feature, `${index + 1}`));
-
-                    return labeledFeatures;
-                }
-
-                function withCenter(feature) {
-                    const bounds = calculatePolygonBounds(feature);
-                    return {
-                        ...feature,
-                        properties: {
-                            ...feature.properties,
-                            centerLng: bounds.centerLng,
-                            centerLat: bounds.centerLat
-                        }
-                    }
-                }
-                function withLabel(feature, label) {
-                    return {
-                        ...feature,
-                        properties: {
-                            ...feature.properties,
-                            label: label
-                        }
-                    }
-                }
-                function isInBounds(feature, bounds) {
-                    if (feature.properties.centerLat > bounds.south &&
-                        feature.properties.centerLat < bounds.north &&
-                        feature.properties.centerLng > bounds.west &&
-                        feature.properties.centerLng < bounds.east
-                    ) {
-                        return true;
-                    }
-                    return false;
                 }
 
                 /**
                  * Load activity data for the location and surrounding areas
                  */
-                function loadActivityData(features) {
-                    const tableBody = document.getElementById('local-map-table-body');
-                    tableBody.innerHTML = '';
-                    const loadingSpinner = document.querySelector('.loading-spinner');
-                    loadingSpinner.classList.add('active');
+                function loadActivityData() {
+                    // This could be expanded to load actual activity data from the API
+                    loadChildLocations();
+                }
 
-                    // order the features by the label
-                    features.sort((a, b) => a.properties.label - b.properties.label);
-
-                    // move the current grid_id feature to the top of the list
-                    const currentGridId = localMapObject.grid_id;
-                    const currentGridIdIndex = features.findIndex(feature => feature.properties.grid_id === currentGridId);
-                    if (currentGridIdIndex !== -1) {
-                        const currentGridIdFeature = features.splice(currentGridIdIndex, 1)[0];
-                        features.unshift(currentGridIdFeature);
-                    }
-
-                    // add the features to the table
-                    for (const feature of features) {
-                        const levelData = localMapObject.trainees_percentage[feature.properties.grid_id];
-                        tableBody.innerHTML += `
-                            <tr>
-                                <td>${feature.properties.label}</td>
-                                <td>${levelData.name}</td>
-                                <td>${levelData.population}</td>
-                                <td>${levelData.needed}</td>
-                                <td>${levelData.reported}</td>
-                                <td>${levelData.percent}</td>
-                            </tr>
-                        `;
-                    }
-
-                    loadingSpinner.classList.remove('active');
+                /**
+                 * Load child locations and activity points
+                 */
+                function loadChildLocations() {
+                    // Placeholder for future activity data loading
                 }
 
                 /**
@@ -1128,22 +971,97 @@ class Zume_Local_Map extends Zume_Magic_Page
                 <div class="map-container">
                     <div id="map" class="map-placeholder"><?php echo esc_html__( 'Global Map', 'zume' ) ?></div>
                 </div>
-                <div>
-                    <table class="no-resize">
-                        <thead>
-                            <tr>
-                                <th><?php echo esc_html__( 'No.', 'zume' ) ?></th>
-                                <th><?php echo esc_html__( 'Name', 'zume' ) ?></th>
-                                <th><?php echo esc_html__( 'Population', 'zume' ) ?></th>
-                                <th><?php echo esc_html__( 'Trainees Needed', 'zume' ) ?></th>
-                                <th><?php echo esc_html__( 'Trainees Reported', 'zume' ) ?></th>
-                                <th><?php echo esc_html__( '%', 'zume' ) ?></th>
-                            </tr>
-                        </thead>
-                        <tbody id="local-map-table-body">
-                            <span class="loading-spinner active"></span>
-                        </tbody>
-                    </table>
+
+                <div class="goals-section">
+                    <h2 class="goals-title"><?php echo esc_html__( 'Goal', 'zume' ) ?></h2>
+
+                    <div class="goals-container">
+                        <!-- Trainees Section -->
+                        <div class="goal-item">
+                            <div class="goal-left">
+                                <div class="goal-title"><?php echo esc_html__( 'Trainees', 'zume' ) ?></div>
+                                <div class="goal-icon">
+                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/countriesandterritories-groups.svg?raw=true', __DIR__ ) ); ?>" alt="<?php echo esc_attr__( 'Trainees', 'zume' ) ?>" />
+                                </div>
+                            </div>
+
+                            <div class="goal-middle">
+                                <div class="goal-subtitle">
+                                    <?php if ( $this->location_data['country_code'] === 'US' ) : ?>
+                                        <?php echo esc_html__( '1 trained multiplying disciple per 5,000 in the United States', 'zume' ) ?>
+                                    <?php else : ?>
+                                        <?php echo esc_html__( '1 trained multiplying disciple per 50,000 globally', 'zume' ) ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="stats-section">
+                                    <div class="progress-visual" id="trainees-progress-dots">
+                                        <!-- Progress dots will be generated dynamically -->
+                                    </div>
+                                    <div class="stat-labels">
+                                        <span class="stat-label"><?php echo esc_html__( 'Trainees Reported', 'zume' ) ?></span>
+                                        <span class="stat-label"><?php echo esc_html__( 'Trainees Needed', 'zume' ) ?></span>
+                                    </div>
+                                    <div class="stat-numbers">
+                                        <span class="stat-number"><?php echo number_format( $this->get_trainees_count() ) ?></span>
+                                        <span class="stat-number"><?php echo number_format( $this->calculate_trainees_needed() ) ?></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="goal-right">
+                                <div class="progress-circle" id="trainees-progress">
+                                    <div class="circle-bg"></div>
+                                    <div class="circle-progress">
+                                        <div class="circle-text"><?php echo esc_html( $this->calculate_progress_percentage( 'trainees' ) ) ?>%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-divider"></div>
+
+                        <!-- Churches Section -->
+                        <div class="goal-item">
+                            <div class="goal-left">
+                                <div class="goal-title"><?php echo esc_html__( 'Churches', 'zume' ) ?></div>
+                                <div class="goal-icon">
+                                    <img src="<?php echo esc_url( plugins_url( 'site/assets/images/GroupsFormed.svg?raw=true', __DIR__ ) ); ?>" alt="<?php echo esc_attr__( 'Churches', 'zume' ) ?>" />
+                                </div>
+                            </div>
+
+                            <div class="goal-middle">
+                                <div class="goal-subtitle">
+                                    <?php if ( $this->location_data['country_code'] === 'US' ) : ?>
+                                        <?php echo esc_html__( '2 simple churches per 5,000 people in the United States', 'zume' ) ?>
+                                    <?php else : ?>
+                                        <?php echo esc_html__( '2 simple churches per 50,000 people globally', 'zume' ) ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="stats-section">
+                                    <div class="progress-visual" id="churches-progress-dots">
+                                        <!-- Progress dots will be generated dynamically -->
+                                    </div>
+                                    <div class="stat-labels">
+                                        <span class="stat-label"><?php echo esc_html__( 'Churches Reported', 'zume' ) ?></span>
+                                        <span class="stat-label"><?php echo esc_html__( 'Churches Needed', 'zume' ) ?></span>
+                                    </div>
+                                    <div class="stat-numbers">
+                                        <span class="stat-number"><?php echo number_format( $this->get_churches_count() ) ?></span>
+                                        <span class="stat-number"><?php echo number_format( $this->calculate_churches_needed() ) ?></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="goal-right">
+                                <div class="progress-circle" id="churches-progress">
+                                    <div class="circle-bg"></div>
+                                    <div class="circle-progress">
+                                        <div class="circle-text"><?php echo esc_html( $this->calculate_progress_percentage( 'churches' ) ) ?>%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="footer">
@@ -1156,7 +1074,6 @@ class Zume_Local_Map extends Zume_Magic_Page
                         <div class="url">https://zume.training</div>
                     </div>
                 </div>
-
             </div>
         <?php endif; ?>
 
@@ -1181,11 +1098,8 @@ class Zume_Local_Map extends Zume_Magic_Page
                 lg.latitude,
                 lg.level,
                 admin0.name as admin0_name,
-                admin0.grid_id as admin0_grid_id,
                 admin1.name as admin1_name,
-                admin1.grid_id as admin1_grid_id,
                 admin2.name as admin2_name,
-                admin2.grid_id as admin2_grid_id,
                 lgn.name as localized_name,
                 admin0_gn.name as admin0_localized_name,
                 admin1_gn.name as admin1_localized_name,
@@ -1359,51 +1273,20 @@ class Zume_Local_Map extends Zume_Magic_Page
         return array_column( $children, 'grid_id' );
     }
 
-    private function calculate_progress_percentages() {
-        $level_data = get_transient( 'zume_local_map_level_data_' . $this->grid_id );
-        if ( $level_data ) {
-            return $level_data;
+    private function calculate_progress_percentage( $type ) {
+        if ( $type === 'trainees' ) {
+            $needed = $this->calculate_trainees_needed();
+            $reported = $this->get_trainees_count();
+        } else {
+            $needed = $this->calculate_churches_needed();
+            $reported = $this->get_churches_count();
         }
 
-        $parent_grid_id = $this->get_parent_grid_id( $this->grid_id );
-        $child_grid_ids = $this->get_child_grid_ids( $parent_grid_id );
-
-        $location_data = $this->get_location_data( $this->grid_id );
-        $level = 'a3';
-        if ( (int) $location_data['level'] === 0 ) {
-            $level = 'a0';
-        }
-        if ( (int) $location_data['level'] === 1 ) {
-            $level = 'a1';
-        }
-        if ( (int) $location_data['level'] === 2 ) {
-            $level = 'a2';
+        if ( $needed === 0 ) {
+            return 0;
         }
 
-        $list = Zume_Funnel_App_Heatmap::query_funnel_grid_totals( $level, [ 3, 4, 5, 6 ] );
-
-        $level_data = [];
-        foreach ( $child_grid_ids as $child_grid_id ) {
-            $level_data[$child_grid_id] = Zume_Funnel_App_Heatmap::endpoint_get_level( $child_grid_id, $level, $list, $this->global_div, $this->us_div );
-        }
-
-        set_transient( 'zume_local_map_level_data_' . $this->grid_id, $level_data, 60 * 60 * 24 );
-
-        return $level_data;
-    }
-
-    private function get_parent_grid_id( $grid_id ) {
-        $location_data = $this->get_location_data( $grid_id );
-        if ( (int) $location_data['level'] === 0 ) {
-            return $grid_id;
-        }
-        if ( (int) $location_data['level'] === 1 ) {
-            return $location_data['admin0_grid_id'];
-        }
-        if ( (int) $location_data['level'] === 2 ) {
-            return $location_data['admin1_grid_id'];
-        }
-        return $location_data['admin2_grid_id'];
+        return min( 100, round( ( $reported / $needed ) * 100 ) );
     }
 
     private function format_population( $population ) {
@@ -1417,4 +1300,4 @@ class Zume_Local_Map extends Zume_Magic_Page
 }
 
 // Initialize the page
-Zume_Local_Map::instance();
+//Zume_Local_Map_Old::instance();
