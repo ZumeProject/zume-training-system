@@ -42,6 +42,12 @@ class Zume_Local_Map extends Zume_Magic_Page
             $this->lang_code = $lang_code;
             $this->grid_id = sanitize_text_field( wp_unslash( $_GET['grid_id'] ?? '' ) );
 
+            if ( empty( $this->grid_id ) && is_user_logged_in() ) {
+                $profile = zume_get_user_profile();
+                $grid_id = $profile['location']['grid_id'];
+                $this->grid_id = $grid_id;
+            }
+
             // Query location data if grid_id is provided
             if ( !empty( $this->grid_id ) ) {
                 $this->location_data = $this->get_location_data( $this->grid_id );
