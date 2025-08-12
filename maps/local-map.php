@@ -483,6 +483,18 @@ class Zume_Local_Map extends Zume_Magic_Page
                 display: none !important;
             }
             */
+            @media print {
+                @page {
+                    margin: 0;
+                }
+
+                body {
+                    transform-origin: top left;
+                    transform: scale(100vw / 800px);
+                    width: 800px; // The size of the viewport that seems to work
+                    height: 100vh;
+                }
+            }
 
             /* Responsive adjustments */
             @media (max-width: 768px) {
