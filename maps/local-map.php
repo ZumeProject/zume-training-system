@@ -105,6 +105,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 font-family: 'Arial', sans-serif;
                 background-color: #f5f5f5;
                 color: #333;
+                font-size: clamp(16px, 1vw, 48px);
             }
 
             .container {
@@ -166,13 +167,9 @@ class Zume_Local_Map extends Zume_Magic_Page
                 background-color: #e0e0e0;
                 border: 3px solid #00bcd4;
                 border-radius: 15px;
-                height: 400px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
+                aspect-ratio: 16 / 9;      /* preferred: keeps proportions across paper sizes */
+                height: auto;              /* let aspect-ratio define height */
             }
-
             .map-placeholder {
                 font-size: 120px;
                 font-weight: 300;
@@ -185,6 +182,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 width: 100%;
                 height: 100%;
                 border-radius: 12px;
+                position: relative;
             }
 
             .goals-section {
@@ -491,41 +489,38 @@ class Zume_Local_Map extends Zume_Magic_Page
             */
             @media print {
                 @page {
-                    margin: 0;
+                    margin: 0.5in;
+                    size: auto;
                 }
 
-                body {
-                    transform-origin: top left;
-                    transform: scale(100vw / 800px);
-                    width: 800px; // The size of the viewport that seems to work
-                    height: 100vh;
+                html, body {
+                    width: 100%;
+                    height: auto;
                 }
 
                 .container {
-                    width: 700px !important;
+                    max-width: none !important;
+                    width: 80% !important;
                 }
-            }
-
-            /* Responsive adjustments */
-            @media (max-width: 768px) {
-                .container {
-                    max-width: 900px;
-                }
+                #map, #map canvas { width: 100% !important; height: 100% !important; }
 
                 .title-section h1 {
                     font-size: 36px;
+                    font-size: clamp(24px, 6vw, 48px);
                 }
-
                 .title-section h2 {
                     font-size: 28px;
+                    font-size: clamp(18px, 4.5vw, 36px);
                 }
 
                 .population .number {
                     font-size: 48px;
+                    font-size: clamp(28px, 8vw, 64px);
                 }
 
                 .goals-title {
                     font-size: 36px;
+                    font-size: clamp(24px, 5vw, 48px);
                 }
 
                 .goal-item {
@@ -535,10 +530,12 @@ class Zume_Local_Map extends Zume_Magic_Page
 
                 .goal-title {
                     font-size: 28px;
+                    font-size: clamp(18px, 4vw, 32px);
                 }
 
                 .stat-number {
                     font-size: 36px;
+                    font-size: clamp(20px, 4.5vw, 47px);
                 }
 
                 .footer {
@@ -596,8 +593,6 @@ class Zume_Local_Map extends Zume_Magic_Page
                     console.log('Local map object or location data not available');
                     return;
                 }
-
-                preparePageForPrint();
 
                 const locationData = localMapObject.location_data;
 
@@ -689,59 +684,51 @@ class Zume_Local_Map extends Zume_Magic_Page
 
                     // Add click handler for more detailed information
                     addMapClickHandlers();
+
+                    preparePageForPrint();
                 });
 
                 function preparePageForPrint() {
-                    const viewBoxMetaElement = document.querySelector('meta[name="viewport"]');
-                    if (viewBoxMetaElement) {
-                        viewBoxMetaElement.setAttribute('content', 'width=800, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+                    const mapEl = document.getElementById('map');
+                    const containerEl = mapEl ? mapEl.parentElement : null;
+                    if (!map || !mapEl || !containerEl) return;
+
+                    let ro = null;
+                    let rafId = null;
+
+                    const resizeMap = () => {
+                        // lock #map to current container size (prevents CSS % ambiguity in print)
+                        mapEl.style.width = containerEl.clientWidth + 'px';
+                        mapEl.style.height = containerEl.clientHeight + 'px';
+                        // two passes to catch late layout updates
+                        if (rafId) cancelAnimationFrame(rafId);
+                        rafId = requestAnimationFrame(() => {
+                            map.resize();
+                            setTimeout(() => map.resize(), 150);
+                        });
+                    };
+
+                    const startPrintWatch = () => {
+                        resizeMap();
+                        // watch for print-preview size changes (paper size/orientation, margins)
+                        ro = new ResizeObserver(resizeMap);
+                        ro.observe(containerEl);
+                    };
+
+                    const endPrintWatch = () => {
+                        if (ro) { ro.disconnect(); ro = null; }
+                        mapEl.style.width = '';
+                        mapEl.style.height = '';
+                        setTimeout(() => map.resize(), 100);
+                    };
+
+                    // Cross-browser hooks
+                    const mql = window.matchMedia('print');
+                    if (mql && mql.addEventListener) {
+                        mql.addEventListener('change', e => e.matches ? startPrintWatch() : endPrintWatch());
                     }
-                    const bodyElement = document.body;
-                    if (bodyElement) {
-                        bodyElement.style.overflowX = 'auto'
-                    }
-
-                    let printObserver;
-
-                    // Listen for print events
-                    window.addEventListener('beforeprint', handlePrintStart);
-                    window.addEventListener('afterprint', handlePrintEnd);
-
-                    function handlePrintStart() {
-                      // Set up observer to watch for size changes during print preview
-                        if (!printObserver) {
-                            const mapContainer = document.getElementById('map');
-
-                            printObserver = new ResizeObserver(entries => {
-                                for (let entry of entries) {
-                                    const { width, height } = entry.contentRect;
-                                    console.log(`Map container resized to: ${width}x${height}`);
-
-                                    // Force map to resize to match container
-                                    setTimeout(() => {
-                                        map.resize();
-                                      // Optionally adjust zoom to fit content
-                                      // map.fitBounds(yourBounds, { padding: 20 });
-                                    }, 100);
-                                }
-                            });
-
-                            printObserver.observe(mapContainer);
-                        }
-                    }
-
-                    function handlePrintEnd() {
-                      // Clean up observer
-                        if (printObserver) {
-                            printObserver.disconnect();
-                            printObserver = null;
-                        }
-
-                      // Ensure map is properly sized for screen
-                        if (map) {
-                            setTimeout(() => map.resize(), 100);
-                        }
-                    }
+                    window.addEventListener('beforeprint', startPrintWatch);
+                    window.addEventListener('afterprint', endPrintWatch);
                 }
 
                 /**
@@ -1063,7 +1050,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                         .filter(feature => isInBounds(feature, polygonBounds));
                     featuresInBounds.sort((a, b) => b.properties.centerLng - a.properties.centerLng);
                     featuresInBounds.sort((a, b) => b.properties.centerLat - a.properties.centerLat);
-                    labeledFeatures = featuresInBounds.map((feature, index) => withLabel(feature, `${index + 1}`));
+                    const labeledFeatures = featuresInBounds.map((feature, index) => withLabel(feature, `${index + 1}`));
 
                     return labeledFeatures;
                 }
@@ -1192,7 +1179,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 </div>
 
                 <div class="map-container">
-                    <div id="map" class="map-placeholder"><?php echo esc_html__( 'Global Map', 'zume' ) ?></div>
+                    <div id="map" class="map-placeholder"></div>
                 </div>
                 <div>
                     <table class="no-resize">
