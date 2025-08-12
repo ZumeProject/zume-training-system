@@ -4,7 +4,7 @@
         "enDisplayName": "English",
         "code": "en",
         "apple_code": "en-us",
-        "displayCode": "en", 
+        "displayCode": "en",
         "locale": "en",
         "flutter": "en",
         "weblate": "en",
@@ -17,7 +17,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": true
+            "course_slides_download": true,
+            "3_circles": true
         }
     },
     "am": {
@@ -26,7 +27,7 @@
         "code": "am",
         "apple_code": null,
         "displayCode": "am",
-        "locale": "amh",
+        "locale": "am",
         "flutter": "am",
         "weblate": "am",
         "nativeName": "አማርኛ",
@@ -36,9 +37,10 @@
         "enable_flags": {
             "version_4_available": false,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": true
         }
     },
     "ar": {
@@ -59,7 +61,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "ar_jo": {
@@ -80,12 +83,13 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "ar_tn": {
         "name": "Arabic (Tunisian)",
-        "enDisplayName": "Arabic (Tunisian)", 
+        "enDisplayName": "Arabic (Tunisian)",
         "code": "ar_tn",
         "apple_code": null,
         "displayCode": "ar_tn",
@@ -101,7 +105,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": true
+            "course_slides_download": true,
+            "3_circles": false
         }
     },
     "ar_ma": {
@@ -122,7 +127,8 @@
             "translator_enabled": false,
             "version_5_ready": false,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "hy": {
@@ -143,7 +149,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "az": {
@@ -164,7 +171,8 @@
             "translator_enabled": false,
             "version_5_ready": false,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "asl": {
@@ -185,7 +193,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "bn": {
@@ -204,9 +213,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "bho": {
@@ -225,9 +235,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": true
         }
     },
     "bs": {
@@ -248,7 +259,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "bg": {
@@ -269,7 +281,8 @@
             "translator_enabled": false,
             "version_5_ready": false,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "my": {
@@ -288,9 +301,10 @@
         "enable_flags": {
             "version_4_available": false,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": true
         }
     },
     "zhhk": {
@@ -299,7 +313,7 @@
         "code": "zhhk",
         "apple_code": "zh-hk",
         "displayCode": "zhhk",
-        "locale": "zh_HK",
+        "locale": "zh_Hant_HK",
         "flutter": "zh_HK",
         "weblate": "zh_Hant_HK",
         "nativeName": "中文（繁體,香港）",
@@ -311,7 +325,8 @@
             "translator_enabled": true,
             "version_5_ready": false,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "zhcn": {
@@ -332,7 +347,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": true
+            "course_slides_download": true,
+            "3_circles": false
         }
     },
     "zhtw": {
@@ -353,7 +369,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": true
+            "course_slides_download": true,
+            "3_circles": false
         }
     },
     "hr": {
@@ -374,7 +391,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "fo": {
@@ -395,7 +413,8 @@
             "translator_enabled": false,
             "version_5_ready": false,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "fr": {
@@ -414,9 +433,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": true
         }
     },
     "de": {
@@ -437,7 +457,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": true
+            "course_slides_download": true,
+            "3_circles": false
         }
     },
     "gu": {
@@ -456,9 +477,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "ha": {
@@ -479,7 +501,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "hi": {
@@ -500,7 +523,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "id": {
@@ -521,7 +545,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "it": {
@@ -542,7 +567,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "ja": {
@@ -561,9 +587,10 @@
         "enable_flags": {
             "version_4_available": false,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": true
         }
     },
     "kn": {
@@ -584,7 +611,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "ko": {
@@ -605,7 +633,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "ku": {
@@ -624,9 +653,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": true
         }
     },
     "lo": {
@@ -645,9 +675,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": true
         }
     },
     "lv": {
@@ -668,7 +699,8 @@
             "translator_enabled": false,
             "version_5_ready": false,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "mai": {
@@ -687,9 +719,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": true
         }
     },
     "ml": {
@@ -708,9 +741,32 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
+        }
+    },
+    "ms": {
+        "name": "Malay",
+        "enDisplayName": "Malay",
+        "code": "ms",
+        "apple_code": null,
+        "displayCode": "ms",
+        "locale": "ms",
+        "flutter": "ms",
+        "weblate": "ms",
+        "nativeName": "Bahasa Malaysia",
+        "rtl": false,
+        "flag": "🇲🇾",
+        "population": 200000000,
+        "enable_flags": {
+            "version_4_available": false,
+            "translator_enabled": true,
+            "version_5_ready": false,
+            "pieces_pages": false,
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "mr": {
@@ -731,7 +787,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "mn": {
@@ -752,7 +809,8 @@
             "translator_enabled": false,
             "version_5_ready": false,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "ne": {
@@ -773,18 +831,19 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "or": {
-        "name": "Oriya",
-        "enDisplayName": "Oriya",
+        "name": "Odia",
+        "enDisplayName": "Odia",
         "code": "or",
         "apple_code": null,
         "displayCode": "or",
-        "locale": "or_IN",
+        "locale": "or",
         "flutter": "or",
-        "weblate": "or_IN",
+        "weblate": "or",
         "nativeName": "ଓଡ଼ିଆ",
         "rtl": false,
         "flag": "🇮🇳",
@@ -792,9 +851,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "fa": {
@@ -815,7 +875,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "pl": {
@@ -834,9 +895,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "pt": {
@@ -857,7 +919,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": true
+            "course_slides_download": true,
+            "3_circles": false
         }
     },
     "pa": {
@@ -876,9 +939,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "pa_pk": {
@@ -891,15 +955,16 @@
         "flutter": "pa_pk",
         "weblate": "pa_PK",
         "nativeName": "ਪੰਜਾਬੀ (ਪੱਛਮੀ)",
-        "rtl": false,
+        "rtl": true,
         "flag": "🇵🇰",
         "population": 80000000,
         "enable_flags": {
             "version_4_available": false,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": true
         }
     },
     "ru": {
@@ -920,7 +985,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "ro": {
@@ -941,7 +1007,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "sl": {
@@ -950,19 +1017,20 @@
         "code": "sl",
         "apple_code": "sl-si",
         "displayCode": "sl",
-        "locale": "sl",
+        "locale": "sl_SI",
         "flutter": "sl",
-        "weblate": "sl",
+        "weblate": "sl_SI",
         "nativeName": "Slovenščina",
         "rtl": false,
         "flag": "🇸🇮",
-        "population": 2000000,
+        "population": 2500000,
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": true,
+            "3_circles": true
         }
     },
     "so": {
@@ -977,13 +1045,14 @@
         "nativeName": "Soomaali",
         "rtl": false,
         "flag": "🇸🇴",
-        "population": 15000000,
+        "population": 24000000,
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": true,
-            "pieces_pages": true,
-            "course_slides_download": false
+            "version_5_ready": false,
+            "pieces_pages": false,
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "es": {
@@ -1004,28 +1073,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": true
-        }
-    },
-    "es_es": {
-        "name": "Spanish (Spain)",
-        "enDisplayName": "Spanish (Spain)",
-        "code": "es_es",
-        "apple_code": "es-es",
-        "displayCode": "es_es",
-        "locale": "es_ES",
-        "flutter": "es_es",
-        "weblate": "es_ES",
-        "nativeName": "Español (España)",
-        "rtl": false,
-        "flag": "🇪🇸",
-        "population": 0,
-        "enable_flags": {
-            "version_4_available": false,
-            "translator_enabled": false,
-            "version_5_ready": false,
-            "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": true,
+            "3_circles": true
         }
     },
     "swa": {
@@ -1046,7 +1095,30 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
+        }
+    },
+    "tl": {
+        "name": "Tagalog",
+        "enDisplayName": "Tagalog",
+        "code": "tl",
+        "apple_code": null,
+        "displayCode": "tl",
+        "locale": "tl",
+        "flutter": "tl",
+        "weblate": "tl",
+        "nativeName": "Tagalog",
+        "rtl": false,
+        "flag": "🇵🇭",
+        "population": 83000000,
+        "enable_flags": {
+            "version_4_available": false,
+            "translator_enabled": true,
+            "version_5_ready": false,
+            "pieces_pages": false,
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "ta": {
@@ -1067,7 +1139,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "te": {
@@ -1088,7 +1161,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "th": {
@@ -1107,9 +1181,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": true
         }
     },
     "tr": {
@@ -1130,7 +1205,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "uk": {
@@ -1151,7 +1227,8 @@
             "translator_enabled": false,
             "version_5_ready": false,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "ur": {
@@ -1170,9 +1247,10 @@
         "enable_flags": {
             "version_4_available": true,
             "translator_enabled": true,
-            "version_5_ready": false,
+            "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "vi": {
@@ -1193,7 +1271,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": true,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     },
     "yo": {
@@ -1214,7 +1293,8 @@
             "translator_enabled": true,
             "version_5_ready": true,
             "pieces_pages": false,
-            "course_slides_download": false
+            "course_slides_download": false,
+            "3_circles": false
         }
     }
 }
