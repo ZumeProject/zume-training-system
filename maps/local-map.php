@@ -644,17 +644,19 @@ class Zume_Local_Map extends Zume_Magic_Page
                         feature.properties.percentage = parseFloat(localMapObject.trainees_percentage[feature.properties.grid_id].percent);
                     });
 
-                    await loadGridPolygon(localMapObject.grid_id, geojsonData, {
-                        fill: {
-                            color: '#00bcd4',
-                            opacity: 0.5,
-                        },
-                        outline: {
-                            color: '#00bcd4',
-                            width: 4,
-                            opacity: 0.8,
-                        }
-                    });
+                    if (localMapObject.location_data.level !== '0') {
+                        await loadGridPolygon(localMapObject.grid_id, geojsonData, {
+                            fill: {
+                                color: '#00bcd4',
+                                opacity: 0.5,
+                            },
+                            outline: {
+                                color: '#00bcd4',
+                                width: 4,
+                                opacity: 0.8,
+                            }
+                        });
+                    }
 
                     fitMapToBounds(calculatePolygonBounds(geojsonData));
 
@@ -1377,7 +1379,7 @@ class Zume_Local_Map extends Zume_Magic_Page
         $location_data = $this->get_location_data( $this->grid_id );
         $level = 'a3';
         if ( (int) $location_data['level'] === 0 ) {
-            $level = 'a0';
+            $level = 'a1';
         }
         if ( (int) $location_data['level'] === 1 ) {
             $level = 'a1';
