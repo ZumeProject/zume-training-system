@@ -494,6 +494,10 @@ class Zume_Local_Map extends Zume_Magic_Page
                     width: 800px; // The size of the viewport that seems to work
                     height: 100vh;
                 }
+
+                .container {
+                    width: 700px !important;
+                }
             }
 
             /* Responsive adjustments */
@@ -695,6 +699,48 @@ class Zume_Local_Map extends Zume_Magic_Page
                     const bodyElement = document.body;
                     if (bodyElement) {
                         bodyElement.style.overflowX = 'auto'
+                    }
+
+                    let printObserver;
+
+                    // Listen for print events
+                    window.addEventListener('beforeprint', handlePrintStart);
+                    window.addEventListener('afterprint', handlePrintEnd);
+
+                    function handlePrintStart() {
+                      // Set up observer to watch for size changes during print preview
+                        if (!printObserver) {
+                            const mapContainer = document.getElementById('map');
+
+                            printObserver = new ResizeObserver(entries => {
+                                for (let entry of entries) {
+                                    const { width, height } = entry.contentRect;
+                                    console.log(`Map container resized to: ${width}x${height}`);
+
+                                    // Force map to resize to match container
+                                    setTimeout(() => {
+                                        map.resize();
+                                      // Optionally adjust zoom to fit content
+                                      // map.fitBounds(yourBounds, { padding: 20 });
+                                    }, 100);
+                                }
+                            });
+
+                            printObserver.observe(mapContainer);
+                        }
+                    }
+
+                    function handlePrintEnd() {
+                      // Clean up observer
+                        if (printObserver) {
+                            printObserver.disconnect();
+                            printObserver = null;
+                        }
+
+                      // Ensure map is properly sized for screen
+                        if (map) {
+                            setTimeout(() => map.resize(), 100);
+                        }
                     }
                 }
 
