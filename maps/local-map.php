@@ -117,6 +117,11 @@ class Zume_Local_Map extends Zume_Magic_Page
                 align-items: center;
                 padding: 30px 40px 20px;
                 background-color: transparent;
+                gap: 1rem;
+            }
+
+            .title-section {
+                width: 70%;
             }
 
             .title-section h1 {
@@ -136,6 +141,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 font-size: 36px;
                 font-weight: 600;
                 color: black;
+                text-align: left;
             }
 
             .population {
@@ -502,12 +508,6 @@ class Zume_Local_Map extends Zume_Magic_Page
 
             /* Responsive adjustments */
             @media (max-width: 768px) {
-                .header {
-                    flex-direction: column;
-                    gap: 20px;
-                    text-align: center;
-                }
-
                 .container {
                     max-width: 900px;
                 }
