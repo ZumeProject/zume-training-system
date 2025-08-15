@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme Project\n"
 "POT-Creation-Date: 2025-07-29 09:25-0600\n"
-"PO-Revision-Date: 2024-10-29 15:00+0000\n"
+"PO-Revision-Date: 2025-08-12 12:03+0000\n"
 "Last-Translator: nesrine <nesrine0325@gmail.com>\n"
-"Language-Team: Arabic <https://translate.disciple.tools/projects/zume-"
-"training/zume-training-system/ar_TN/>\n"
+"Language-Team: Arabic <https://translate.disciple.tools/projects/"
+"zume-training/zume-training-system/ar_TN/>\n"
 "Language: ar_TN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.8.1\n"
+"X-Generator: Weblate 5.12.2\n"
 
 #: 404.php:89
 msgid "Epic 404 - Not Found"
@@ -987,15 +987,14 @@ msgid "Always report new simple churches that you are starting."
 msgstr "قوم بالتبليغ ديما على الكنائس البسيطة الجديدة إلّي تبداها."
 
 #: maps/local-map.php:28 maps/local-map.php:547
-#, fuzzy
 msgid "Local Map"
-msgstr "الخريطة العالمية"
+msgstr "الخريطة المحلية"
 
 #: maps/local-map.php:29
 msgid ""
 "Local map showing Zúme training progress and church planting activity for a "
 "specific location."
-msgstr ""
+msgstr "خريطة محلّية توضح تقدم تدريب زومّيه ونشاط تأسيس الكنائس في موقع محدّد."
 
 #: maps/local-map.php:548 maps/local-map.php:982 maps/local-map.php:984
 #: maps/map-3-trainees.php:123
@@ -1008,19 +1007,16 @@ msgid "Churches"
 msgstr "الكنائس"
 
 #: maps/local-map.php:553 site/dashboard/dashboard.php:201
-#, fuzzy
 msgid "Progress"
-msgstr "تقدّمي"
+msgstr "التقدّم"
 
 #: maps/local-map.php:554
-#, fuzzy
 msgid "Location not found"
 msgstr "الموقع موش موجود"
 
 #: maps/local-map.php:555
-#, fuzzy
 msgid "Please enter a grid_id parameter"
-msgstr "يعيّشك دخل كود صاحبك."
+msgstr "يعيّشك دخل كود الشبكة"
 
 #: maps/local-map.php:944 maps/local-map.php:1068
 #: site/dashboard/dashboard.php:231
@@ -1128,9 +1124,8 @@ msgstr ""
 "50,000 على مستوى العالم"
 
 #: maps/map-5-churches.php:95
-#, fuzzy
 msgid "Vision Map"
-msgstr "الرؤية"
+msgstr "خريطة الرؤية"
 
 #: maps/map-5-churches.php:125
 msgid "Map of Zúme Churches"
@@ -1562,27 +1557,24 @@ msgid "Unknown"
 msgstr "موش معروف"
 
 #: site/activities/sharegospel.php:132 site/course/course-content.php:945
-#, fuzzy
 msgid "Presentation 1"
-msgstr "المقدّم"
+msgstr "العرض التقديمي 1"
 
 #: site/activities/sharegospel.php:135 site/course/course-content.php:974
-#, fuzzy
 msgid "Presentation 2"
-msgstr "المقدّم"
+msgstr "العرض التقديمي 2"
 
 #: site/activities/sharegospel.php:171
-#, fuzzy
 msgid "3 Circles Gospel Presentation"
-msgstr "عرض الإنجيل على شكل 3 - دوائر"
+msgstr "عرض الإنجيل على شكل 3 دوائر"
 
 #: site/activities/sharegospel.php:196
 msgid "No script content found for this language."
-msgstr ""
+msgstr "مفماش محتوى نصّي للغة هاذي."
 
 #: site/activities/sharegospel.php:200
 msgid "No script found for this language."
-msgstr ""
+msgstr "مفماش نص للغة هاذي."
 
 #: site/activities/three-month-plan-printable.php:22
 #: site/activities/three-month-plan.php:22
@@ -2560,7 +2552,7 @@ msgstr ""
 
 #: site/course/course-content.php:931
 msgid "Review the following two presentations and choose one to practice."
-msgstr ""
+msgstr "راجع العرضين التقديميين هاذم وإختار واحد منهم باش تتدرّب عليه."
 
 #: site/course/course-content.php:946
 msgid ""
@@ -2577,7 +2569,7 @@ msgstr "المشاركة بالإنجيل"
 
 #: site/course/course-content.php:1024
 msgid "Choose one of the two presentations you watched."
-msgstr ""
+msgstr "إختار واحد مالعرضين إلّي تفرجتوا فيهم."
 
 #: site/course/course-content.php:1026
 msgid "Break into groups of two or three people."
@@ -4398,58 +4390,52 @@ msgstr "البريد الإلكتروني للإتصالات"
 
 #: site/dashboard/dashboard.php:199
 msgid "If these are not correct, please update your profile."
-msgstr ""
+msgstr "إذا المعلومات هاذي موش صحيحة، لازم تجدّد ملفك الشّخصي."
 
 #: site/dashboard/dashboard.php:200
-#, fuzzy
 msgid "Contact Info"
-msgstr "جهات الإتّصال"
+msgstr "معلومات الإتّصال"
 
 #: site/dashboard/dashboard.php:202
-#, fuzzy
 msgid "Copy Emails"
-msgstr "العنوان الإلكتروني"
+msgstr "نسخ البريد الإلكتروني"
 
 #: site/dashboard/dashboard.php:203
-#, fuzzy
 msgid "Copy Phones"
-msgstr "نسخ الدّعوة"
+msgstr "نسخ الهواتف"
 
 #: site/dashboard/dashboard.php:204
-#, fuzzy
 msgid "Copy Code"
-msgstr "نسخ الدّعوة"
+msgstr "نسخ الكود"
 
 #: site/dashboard/dashboard.php:205
 msgid "Linked Accounts"
 msgstr "الحسابات المرتبطة"
 
 #: site/dashboard/dashboard.php:206 site/dashboard/wizard.php:273
-#, fuzzy
 msgid "Change Preferences"
-msgstr "تحديث تفضيلات الإتّصال"
+msgstr "تغيير التفضيلات"
 
 #: site/dashboard/dashboard.php:207
-#, fuzzy
 msgid "Email Preferences"
-msgstr "تحديث تفضيلات الإتّصال"
+msgstr "تفضيلات البريد الإلكتروني"
 
 #: site/dashboard/dashboard.php:208
 msgid "Choose which email lists you want to receive"
-msgstr ""
+msgstr "إختار قوائم البريد الإلكتروني إلّي تحب تاخدها"
 
 #: site/dashboard/dashboard.php:209 zume-training-system.php:541
 msgid "Hide my contact information from other participants in trainings"
-msgstr ""
+msgstr "إخفاء معلومات الإتّصال الخاصّة بي على المشاركين الخرين في التدريبات"
 
 #: site/dashboard/dashboard.php:210 zume-training-system.php:533
 msgid "Hide my progress from other participants in trainings"
-msgstr ""
+msgstr "إخفاء تقدمي على المشاركين الخرين في التدريبات"
 
 #: site/dashboard/dashboard.php:211
 msgid ""
 "Don't forget to send subscribers an email to notify them of the training."
-msgstr ""
+msgstr "متنساش تبعث بريد إلكتروني للمشتركين باش تعلمهم بالتدريب."
 
 #: site/dashboard/dashboard.php:212 site/dashboard/wizard.php:209
 #: site/profile/profile.php:123
@@ -4479,13 +4465,12 @@ msgid "Timezone"
 msgstr "المنطقة الزمنية"
 
 #: site/dashboard/dashboard.php:218
-#, fuzzy
 msgid "Select timezone"
-msgstr "المنطقة الزّمنية للمستعمل"
+msgstr "حدد المنطقة الزمنية"
 
 #: site/dashboard/dashboard.php:219
 msgid "New"
-msgstr ""
+msgstr "جديد"
 
 #: site/dashboard/dashboard.php:220 site/dashboard/wizard.php:386
 msgid "Meeting link"
@@ -4592,7 +4577,7 @@ msgid ""
 "obey, share and train others with what you have learned."
 msgstr ""
 "تبّع تقدّمك في الدّورة التّدريبية بإستعمال العرض التّفاعلي.تعلّم الإستماع والطّاعة "
-"والمشاركة وتدريب النّاس بالّي تعلّمتوا."
+"والمشاركة وتدريب النّاس بإلّي تعلّمتوا."
 
 #: site/dashboard/dashboard.php:246
 msgid "Information about progress"
@@ -4773,33 +4758,30 @@ msgid "Group Details"
 msgstr "تفاصيل المجموعة"
 
 #: site/dashboard/dashboard.php:298
-#, fuzzy
 msgid "Group Communication"
-msgstr "البريد الإلكتروني للإتصالات"
+msgstr "التواصل الجماعي"
 
 #: site/dashboard/dashboard.php:299
 msgid "Subscribers"
-msgstr ""
+msgstr "المشتركين"
 
 #: site/dashboard/dashboard.php:300
 msgid "Has joined a group"
-msgstr ""
+msgstr "إنضم للمجموعة"
 
 #: site/dashboard/dashboard.php:301
-#, fuzzy
 msgid "Emailed on"
-msgstr "العنوان الإلكتروني"
+msgstr "تبعث بالبريد الإلكتروني على"
 
 #: site/dashboard/dashboard.php:302
 msgid "Send Email to Subscribers"
-msgstr ""
+msgstr "أبعث بريد إلكتروني للمشتركين"
 
 #: site/dashboard/dashboard.php:303
 msgid "Mark Completed"
 msgstr "حطّ علامة وفات"
 
 #: site/dashboard/dashboard.php:304
-#, fuzzy
 msgid "Mark Uncompleted"
 msgstr "حطّ علامة وفات"
 
@@ -4814,7 +4796,7 @@ msgstr "بداية الجلسة‬"
 
 #: site/dashboard/dashboard.php:307
 msgid "Show details"
-msgstr "ظهّر التفاصيل"
+msgstr "ضهّر التفاصيل"
 
 #: site/dashboard/dashboard.php:308
 msgid "Edit time"
@@ -4949,9 +4931,8 @@ msgstr ""
 "ربط المستعمل بالتّدريب والموارد المناسبة."
 
 #: site/dashboard/dashboard.php:336 site/dashboard/wizard.php:388
-#, fuzzy
 msgid "Join Code"
-msgstr "مفتاح الإنضمام"
+msgstr "رمز الإنضمام"
 
 #: site/dashboard/dashboard.php:337 site/dashboard/wizard.php:322
 #: site/pages/checkin.php:91 site/pages/friend-invite.php:79
@@ -4982,10 +4963,9 @@ msgstr "يعيشك راقب التّواصل مع مدرّبك ضمن تفضيل
 
 #: site/dashboard/dashboard.php:342
 msgid "We apologize for the delay"
-msgstr ""
+msgstr "نعتذر على التأخير"
 
 #: site/dashboard/dashboard.php:343
-#, fuzzy
 msgid "Message"
 msgstr "المسنجر"
 
@@ -4994,19 +4974,20 @@ msgid ""
 "If you have any queries or need help, please enter a message below and we "
 "will get back to you as soon as possible."
 msgstr ""
+"إذا كان عندك أيّ إستفسارات وإلاّ تستحق للمساعدة، يرجى إدخال رسالة لوطا وباش "
+"نعاودوا نرجعولك في أقرب وقت ممكن."
 
 #: site/dashboard/dashboard.php:345
 msgid "Send Message"
-msgstr ""
+msgstr "أبعث رسالة"
 
 #: site/dashboard/dashboard.php:346
-#, fuzzy
 msgid "There was an error sending your message. Please try again later."
-msgstr "سمحنا.منجّمناش نبعثوا الطلب متاعك.حاول مرّة أخرى."
+msgstr "صارت غلطة في إرسال رسالتك..حاول مرّة أخرى."
 
 #: site/dashboard/dashboard.php:347
 msgid "Message sent successfully"
-msgstr ""
+msgstr "تمّ إرسال الرسالة بنجاح"
 
 #: site/dashboard/dashboard.php:348
 msgid "100 Hour Map"
@@ -5033,7 +5014,7 @@ msgstr "صارت غلطة"
 #: site/dashboard/dashboard.php:353 site/dashboard/wizard.php:330
 #: site/pages/_strings-mobile-pwa.php:10
 msgid "Yes"
-msgstr "أي"
+msgstr "نعم"
 
 #: site/dashboard/dashboard.php:354 site/dashboard/wizard.php:331
 #: site/pages/_strings-mobile-pwa.php:11
@@ -5096,44 +5077,45 @@ msgstr "العام"
 #: site/dashboard/dashboard.php:370 site/dashboard/wizard.php:281
 #: site/dashboard/wizard.php:373 site/pages/join-a-training-public.php:171
 msgid "Notify me about future trainings"
-msgstr ""
+msgstr "إعلمني على التدريبات المستقبلية"
 
 #: site/dashboard/dashboard.php:371
-#, fuzzy
 msgid "Preferences"
-msgstr "طرق الإتّصال المفضّلة"
+msgstr "التفضيلات"
 
 #: site/dashboard/dashboard.php:372
 msgid "Your progress is always visible to the group leader."
-msgstr ""
+msgstr "يولّي تقدّمك ديما ضاهر لقائد المجموعة."
 
 #: site/dashboard/dashboard.php:373
 msgid ""
 "Contact information is currently hidden from other participants in trainings."
-msgstr ""
+msgstr "معلومات مخفيةالإتّصال توّا على المشاركين الخرين في التدريبات."
 
 #: site/dashboard/dashboard.php:374
 msgid "Progress is currently hidden from other participants in trainings."
-msgstr ""
+msgstr "يتمّ إخفاء التقدّم توّا على المشاركين الخرين في التدريبات."
 
 #: site/dashboard/dashboard.php:375
 msgid "Local Vision Map"
-msgstr ""
+msgstr "خريطة الرؤية المحلّية"
 
 #: site/dashboard/dashboard.php:376
 msgid ""
 "You are making this group public. It will show up on the public list of "
 "trainings. Please confirm you are ready to make it public."
 msgstr ""
+"أنت توّا باش تخلّي المجموعة هاذي عامة.باش تظهر في قائمة التدريبات العامة. يعيّ"
+"شك تأكّد مين إستعدادك باش تخلّيها عامة."
 
 #: site/dashboard/dashboard.php:377
 msgid "Confirm"
-msgstr ""
+msgstr "تأكيد"
 
 #: site/dashboard/dashboard.php:378
 #, php-format
 msgid "You can message again in %d hours"
-msgstr ""
+msgstr "تنجم تبعث رسالة مرّة أخرى في %d ساعة"
 
 #: site/dashboard/dashboard.php:384
 msgid ""
@@ -5383,7 +5365,7 @@ msgstr "السؤال بخصوص المحتوى"
 
 #: site/dashboard/wizard.php:238
 msgid "Help with what to do after starting a group"
-msgstr "المساعدة فالّي لازم يتعمل بعد بداية المجموعة"
+msgstr "المساعدة فإلّي لازم يتعمل بعد بداية المجموعة"
 
 #: site/dashboard/wizard.php:240
 msgid "Please give a response to this question"
@@ -5424,7 +5406,7 @@ msgstr ""
 msgid ""
 "In order to connect you to an appropriate coach, we need to know a little "
 "more about you."
-msgstr ""
+msgstr "باش نجّموا نوصّلوك بالمدرب المناسب، نستحقّوا لمعرفتك أكثر."
 
 #: site/dashboard/wizard.php:251 site/pages/get-a-coach.php:96
 msgid "No Cost"
@@ -5489,73 +5471,69 @@ msgstr "وقت البداية"
 
 #: site/dashboard/wizard.php:274
 msgid "Your contact information is always visible to the group leader."
-msgstr ""
+msgstr "معلومات الإتّصال الخاصّة بيك تكون ديما ضاهرة لقائد المجموعة."
 
 #: site/dashboard/wizard.php:275
 msgid ""
 "You are joining a private training group, where everyone can see your "
 "contact information."
 msgstr ""
+"إنضميت لمجموعة تدريب خاصّة، ينجّم أيّ شخص يشوف معلومات الإتّصال الخاصّة بيك."
 
 #: site/dashboard/wizard.php:276
 msgid ""
 "You can change your contact information visibility at any time in your "
 "profile."
 msgstr ""
+"تنجم تغيّر ضهور معلومات الإّتصال الخاصّة بيك في أيّ وقت في ملفك الشّخصي."
 
 #: site/dashboard/wizard.php:277
-#, fuzzy
 msgid "We were unable to connect you with a coach. Please try again later."
-msgstr "سمحنا.منجّمناش نبعثوا الطلب متاعك.حاول مرّة أخرى."
+msgstr "منجمناش نوصّلوك لمدرب.حاول مرّة أخرى."
 
 #: site/dashboard/wizard.php:278
 msgid "There are currently no public trainings available."
 msgstr "مفمّاش تدريبات عامّة موجودة توّا."
 
 #: site/dashboard/wizard.php:279 site/pages/join-a-training-public.php:160
-#, fuzzy
 msgid "Would you like to be notified about future trainings?"
-msgstr "هل تحب تحدّد موعد تدريبك؟"
+msgstr "هل تحب يتمّ بإعلامك بالتدريبات المستقبلية؟"
 
 #: site/dashboard/wizard.php:280 site/pages/join-a-training-public.php:161
 msgid "We will send you an email when a new training is available."
-msgstr ""
+msgstr "باش نبعثولك بريد إلكتروني وقت يتوفر تدريب جديد."
 
 #: site/dashboard/wizard.php:282 site/pages/join-a-training-public.php:162
 msgid "You can always unsubscribe from these emails at any time."
-msgstr ""
+msgstr "تنجّم ديما تلغي الإشتراك في الرسائل الإلكترونية هاذي في أيّ وقت."
 
 #: site/dashboard/wizard.php:283 site/pages/join-a-training-public.php:164
 msgid "Notify me"
-msgstr ""
+msgstr "إعلمني"
 
 #: site/dashboard/wizard.php:284
 msgid "Do you want to unsubscribe from the notification list?"
-msgstr ""
+msgstr "هل تحب تلغي الإشتراك في قائمة الإشعارات؟"
 
 #: site/dashboard/wizard.php:285
 msgid "Continue"
 msgstr "متابعة"
 
 #: site/dashboard/wizard.php:286 site/pages/plans.php:140
-#, fuzzy
 msgid "Training Group Details"
-msgstr "تفاصيل المجموعة"
+msgstr "تفاصيل مجموعة التدريب"
 
 #: site/dashboard/wizard.php:289 site/pages/plans.php:144
-#, fuzzy
 msgid "Facilitator"
-msgstr "التسهيل الذّاتي"
+msgstr "الميسّر"
 
 #: site/dashboard/wizard.php:291 site/pages/plans.php:164
-#, fuzzy
 msgid "Time of Day"
-msgstr "في أيّ وقت ماليوم؟"
+msgstr "الوقت ماليوم"
 
 #: site/dashboard/wizard.php:292
-#, fuzzy
 msgid "Zoom Link"
-msgstr "نسخ الرّابط"
+msgstr "رابط زووم"
 
 #: site/dashboard/wizard.php:295
 msgid ""
@@ -5564,14 +5542,12 @@ msgid ""
 msgstr "يعيّشك تأّكد من تحديث ملفّك الشّخصي، باش ينجّموا قادة المجموعة يتصلوا بيك."
 
 #: site/dashboard/wizard.php:298 site/pages/plans.php:173
-#, fuzzy
 msgid "The next session is:"
-msgstr "تمّ تسجيل الدّخول للجلسة:"
+msgstr "الجلسة الجاية هي:"
 
 #: site/dashboard/wizard.php:299 site/pages/plans.php:177
-#, fuzzy
 msgid "In this timezone:"
-msgstr "المنطقة الزّمنية للمستعمل"
+msgstr "في المنطقة الزمنية هاذي :"
 
 #: site/dashboard/wizard.php:302
 msgid "Connecting with friend"
@@ -5607,9 +5583,8 @@ msgid "Join a public training group"
 msgstr "إنضم لمجموعة التّدريب العامّة"
 
 #: site/dashboard/wizard.php:320
-#, fuzzy
 msgid "Join with code"
-msgstr "أربط مع غوغل "
+msgstr "إنضم بإستعمال الكود"
 
 #: site/dashboard/wizard.php:321 site/pages/friend-invite.php:172
 #: site/pages/plan-invite.php:177
@@ -5655,7 +5630,7 @@ msgstr "الصباح"
 
 #: site/dashboard/wizard.php:334
 msgid "Afternoon"
-msgstr "بعد الظهر"
+msgstr "بعد الضهر"
 
 #: site/dashboard/wizard.php:335
 msgid "Evening"
@@ -5769,13 +5744,12 @@ msgid "Change"
 msgstr "بدّل"
 
 #: site/dashboard/wizard.php:375
-#, fuzzy
 msgid "The notify me about future trainings link is broken. Please try again."
-msgstr "رابط التّدريب معطّل.حاول مرّة أخرى."
+msgstr "رابط التدريبات المستقبلية معطّل.حاول مرّة أخرى."
 
 #: site/dashboard/wizard.php:376
 msgid "You have been added to the list to be notified about future trainings."
-msgstr ""
+msgstr "تمّ إضافتك للقائمة باش تاخوا إشعارات حول التدريبات المستقبلية."
 
 #: site/dashboard/wizard.php:380
 msgid "Invite your friends to join your training"
@@ -5906,7 +5880,7 @@ msgstr "وإلاّ"
 
 #: site/login/login-template.php:415
 msgid "Register with Email"
-msgstr "سجل بالبريد الإلكتروني"
+msgstr "سجّل بالبريد الإلكتروني"
 
 #: site/login/login-template.php:453
 msgid "Badly formatted email address"
@@ -6446,7 +6420,7 @@ msgid ""
 "It's important what disciples know — but it's much more important what they "
 "DO with what they know."
 msgstr ""
-"حاجة مهمّة إلّي يعرفوه التّلامذة - أما إلّي أهمّ برشا هو إلّي يعملوه بالّي يعرفوه."
+"حاجة مهمّة إلّي يعرفوه التّلامذة - أما إلّي أهمّ برشا هو إلّي يعملوه بإلّي يعرفوه."
 
 #: site/pages/follow-jesus.php:230
 msgid ""
@@ -6778,7 +6752,6 @@ msgid "Get started"
 msgstr "البداية"
 
 #: site/pages/join-a-training-public.php:30
-#, fuzzy
 msgid "Join a Training"
 msgstr "إنضمّ لتّدريب"
 
@@ -6793,11 +6766,11 @@ msgstr ""
 
 #: site/pages/join-a-training-public.php:146
 msgid "No active trainings available at this time."
-msgstr ""
+msgstr "مفماش تدريبات موجودة في هذا الوقت."
 
 #: site/pages/join-a-training-public.php:156
 msgid "Want to know about future trainings?"
-msgstr ""
+msgstr "هل تحب تعرف برشا على التدريبات المستقبلية؟"
 
 #: site/pages/messages.php:283 utilities/apis/encouragement-api.php:534
 msgid "Friend"
@@ -6844,9 +6817,8 @@ msgid "Please enter a code."
 msgstr "يعيّشك دخل الكود."
 
 #: site/pages/plans.php:200
-#, fuzzy
 msgid "Back to Public Training Groups"
-msgstr "إنضم لمجموعة التّدريب"
+msgstr "العودة لمجموعات التدريب العامة"
 
 #: site/pages/privacy-policy.php:29 site/pages/privacy-policy.php:86
 msgid "Zúme Privacy Policy"
@@ -7294,9 +7266,9 @@ msgstr ""
 "إلّي تبّع في يسوع.تدريب على حركة تلمذة التلامذة عبر الأنترنت في الحياة"
 
 #: utilities/apis/communications-api.php:99
-#, fuzzy, php-format
+#, php-format
 msgid "Hello %s"
-msgstr "عسلامة!"
+msgstr "عسلامة%s"
 
 #: utilities/apis/communications-api.php:100
 #, php-format
@@ -7304,48 +7276,49 @@ msgid ""
 "A new online Zume Training is now available. You can view it at the "
 "following link: %s"
 msgstr ""
+"دورة تدريبية جديدة عبر الإنترنت لزوميّه موجودة توّا.تنجم تشوفها عبر الرابط "
+"التالي: %s"
 
 #: utilities/apis/communications-api.php:101
 #, php-format
 msgid "The training is in the %1$s format and will be held in %2$s"
-msgstr ""
+msgstr "التدريب بتنسيق %1$s وسيُعقد في %2$s"
 
 #: utilities/apis/communications-api.php:102
 #, php-format
 msgid "First session: %1$s %2$s (%3$s)."
-msgstr ""
+msgstr "الجلسة الأولى: %1$s %2$s (%3$s)."
 
 #: utilities/apis/communications-api.php:103
 msgid "You can also join the training by clicking the link below:"
-msgstr ""
+msgstr "تنجّم زادا تنضم للتّدريب وتنزل على الرابط إلّي لوطا:"
 
 #: utilities/apis/communications-api.php:105
 #, php-format
 msgid "The training will be led by %s speakers."
-msgstr ""
+msgstr "باش يتمّ إجراء التدريب بواسطة %s مالمتحدثين."
 
 #: utilities/apis/communications-api.php:106
 msgid "Best regards,"
-msgstr ""
+msgstr "أطيب التحيات،"
 
 #: utilities/apis/communications-api.php:107
 msgid "The Zume Team"
-msgstr ""
+msgstr "فريق زومّيه"
 
 #: utilities/apis/connect-api.php:82
 msgid ""
 "You have successfully subscribed to receive notifications about future "
 "trainings."
-msgstr ""
+msgstr "قمت بالإشتراك بنجاح باش ناخوا إشعارات حول التدريبات المستقبلية."
 
 #: utilities/apis/connect-api.php:83
 msgid "You can unsubscribe from these notifications at any time."
-msgstr ""
+msgstr "تنجّم تلغي الإشتراك في الإشعارات هاذي في أيّ وقت."
 
 #: utilities/apis/connect-api.php:91
-#, fuzzy
 msgid "Zume Training - Future Trainings"
-msgstr "نظام تدريب زومّيه"
+msgstr "تدريب زومّيه - التدريبات المستقبلية"
 
 #: utilities/apis/connect-api.php:141
 msgid "your friend"
@@ -7441,9 +7414,8 @@ msgid "Joined Community"
 msgstr "إنضم للمجموعة"
 
 #: utilities/hooks/admin-email-test.php:227
-#, fuzzy
 msgid "You do not have sufficient permissions to access this page."
-msgstr "معندكش الحقّ تدخل لصفحة هذي"
+msgstr "معندكش الحقّ بالكامل تدخل لصفحة هذي."
 
 #: utilities/hooks/ipstack-admin-tab.php:47
 msgid "Ipstack"
@@ -7511,21 +7483,19 @@ msgstr "القطعة"
 
 #: zume-training-system.php:199
 msgid "Add the details for training with code abc123"
-msgstr ""
+msgstr "أضف تفاصيل التدريب بإستعمال الكود abc123"
 
 #: zume-training-system.php:203
 msgid "Set the language to e.g. en_US"
-msgstr ""
+msgstr "أضبط اللّغة على سبيل المثال en_US"
 
 #: zume-training-system.php:263
-#, fuzzy
 msgid "Learn More"
 msgstr "تعلّم برشة"
 
 #: zume-training-system.php:293
-#, fuzzy
 msgid "Zume Admin"
-msgstr "تسّجيل الدخول لزومّي"
+msgstr "إدارة زومّيه"
 
 #: zume-training-system.php:404
 msgid "Someone has requested a password reset for the following account:"
@@ -7586,17 +7556,16 @@ msgid "User Preferred Email"
 msgstr "البريد الإلكتروني المفضّل للمستعمل"
 
 #: zume-training-system.php:517
-#, fuzzy
 msgid "Notify of Future Trainings"
-msgstr "تقديم تدّريب"
+msgstr "إشعار بالتدريبات المستقبلية"
 
 #: zume-training-system.php:525
 msgid "Notify of Future Trainings Date Subscribed"
-msgstr ""
+msgstr "إشعار بالتدريبات المستقبلية تاريخ الإشتراك"
 
 #: zume-training-system.php:549
 msgid "Coaching Contact ID"
-msgstr "معرّف جهة إتصال التدريب"
+msgstr "معرّف جهة إتّصال التّدريب"
 
 #: zume-training-system.php:557
 msgid "Preferred Contact Methods"
@@ -7608,7 +7577,7 @@ msgstr "المسنجر"
 
 #. Plugin Name of the plugin/theme
 msgid "Zúme - Training System"
-msgstr "زومّيه - نظام التدريب"
+msgstr "زومّيه - نضام التّدريب"
 
 #. Plugin URI of the plugin/theme
 #. Author URI of the plugin/theme
@@ -7617,7 +7586,7 @@ msgstr "‫https://github.com/ZumeProject/zume-training"
 
 #. Description of the plugin/theme
 msgid "Zume Training System"
-msgstr "نظام تدريب زومّيه"
+msgstr "نضام تدريب زومّيه"
 
 #~ msgid "View All Giving Opportunities"
 #~ msgstr "عرض كلّ فرص العطاء"
