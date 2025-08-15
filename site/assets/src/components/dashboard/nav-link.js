@@ -15,6 +15,7 @@ export class NavLink extends navigator(LitElement) {
             text: { type: String },
             explanation: { type: String },
             noRenderText: { type: Boolean },
+            targetBlank: { type: Boolean, attribute: 'target-blank' },
         }
     }
 
@@ -32,10 +33,14 @@ export class NavLink extends navigator(LitElement) {
         this.active = false
     }
 
-    handleClick(event) {
+    handleClick(event, isListLink = false) {
         if (this.as === 'nav') {
             event.preventDefault()
             this.navigate(this.href)
+        }
+        if (this.as === 'link' && isListLink) {
+            window.open(this.href, '_blank')
+            return
         }
         if (this.as === 'link') {
             return
@@ -56,6 +61,7 @@ export class NavLink extends navigator(LitElement) {
                 class=${this.class}
                 @click=${this.handleClick}
                 aria-disabled=${this.completed}
+                target=${this.targetBlank ? '_blank' : '_self'}
                 ?data-completed=${this.completed}
                 ?data-locked=${this.locked}
                 ?data-active=${this.active}
