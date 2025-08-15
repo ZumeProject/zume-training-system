@@ -103,12 +103,13 @@ class Zume_Training_Donate extends Zume_Magic_Page
                             <div class="center"><span class="loading-spinner active"></span></div>
                         </div>
 
-                        <iframe height="650"
-                                src="https://axiainternational.net/embed/giving/662-2892CRE" width="100%" id="givingWidget662-2892CRE"
+                        <iframe allow="payment"
+                                height="650"
+                                src="https://axiainternational.net/embed/giving/662-2892CRE?project_id=938" width="100%" id="givingWidget662-2892CRE"
                                 style="border: none" scrolling="no"
-                                onload="document.querySelector('#give-loading-spinner').remove()"
-                        ></iframe>
-                        <script>window.addEventListener("message", function (event) {if (event.origin ==='https://axiainternational.net' && (typeof event.data == "number" || typeof event.data == "string")) {
+                                onload="document.querySelector('#give-loading-spinner').remove()">
+                        </iframe>
+                        <script>window.addEventListener("message", function (event) {if (event.origin === "https://axiainternational.net" && (typeof event.data == "number" || typeof event.data == "string")) {
                             document.getElementById("givingWidget662-2892CRE").height = event.data;
                           }});</script>
                     </div>

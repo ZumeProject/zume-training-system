@@ -24,7 +24,7 @@ export class ListLink extends NavLink {
                 ?data-completed=${this.completed}
                 ?data-button=${this.disableNavigate}
                 role="button"
-                @click=${this.handleClick}
+                @click=${(event) => this.handleClick(event, true)}
             >
                 <div class="dash-menu__icon-area | stack--5">
                     <span class="icon ${this.getIcon()} dash-menu__list-icon"></span>
@@ -32,7 +32,7 @@ export class ListLink extends NavLink {
                 <div class="dash-menu__text-area | switcher | switcher-width-20">
                     <div>
                         <h3 class="f-1 bold uppercase">${this.text}</h3>
-                        <p>${this.explanation}</p>
+                        ${this.explanation ? html`<p>${this.explanation}</p>` : ''}
                     </div>
                     ${
                         this.completed

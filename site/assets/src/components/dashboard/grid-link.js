@@ -28,6 +28,7 @@ export class GridLink extends NavLink {
                 class="card-btn grid-link position-relative"
                 role="button"
                 style=${!this.icon ? 'justify-content: center;' : ''}
+                target=${this.targetBlank ? '_blank' : '_self'}
                 @click=${this.handleClick}
                 aria-disabled=${this.printBool(this.locked)}
                 ?data-locked=${this.locked}

@@ -2,15 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2025-07-29 09:25-0600\n"
-"PO-Revision-Date: 2024-02-20 08:22-0700\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-08-12 17:03+0000\n"
+"Last-Translator: LEONG CHEE CHOONG <jonyleong2022@gmail.com>\n"
+"Language-Team: Malay <https://translate.disciple.tools/projects/"
+"zume-training/zume-training-system/ms/>\n"
 "Language: ms\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Weblate 5.12.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
@@ -26,22 +27,22 @@ msgstr ""
 
 #: 404.php:89
 msgid "Epic 404 - Not Found"
-msgstr ""
+msgstr "Epik 404 - Tidak Ditemui"
 
 #: 404.php:90
 msgid "The page you were looking for was not found or was deleted"
-msgstr ""
+msgstr "Halaman yang anda cari tidak ditemui atau telah dipadamkan"
 
 #: 404.php:92 site/course/presenter.php:142
 #: site/pages/_strings-mobile-pwa.php:12
 msgid "Home"
-msgstr ""
+msgstr "Laman Utama"
 
 #: 404.php:93 site/course/presenter.php:146
 #: site/pages/_strings-mobile-pwa.php:14 site/pages/about.php:27
 #: site/parts/footer.php:10 site/parts/mobile-nav.php:26 site/parts/nav.php:24
 msgid "About"
-msgstr ""
+msgstr "Tentang"
 
 #: 404.php:94 appearance/style-override/navigation.php:106
 #: site/course/presenter.php:144 site/dashboard/checkin-dashboard.php:29

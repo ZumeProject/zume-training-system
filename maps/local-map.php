@@ -12,7 +12,9 @@ class Zume_Local_Map extends Zume_Magic_Page
     public $lang_code = 'en';
     public static $token = 'map_local';
     public $grid_id = null;
+    public $parent_grid_id = null;
     public $location_data = null;
+    public $child_location_data = null;
     public $global_div = 50000; // this equals 2 for every 50000
     public $us_div = 5000; // this is 2 for every 5000
 
@@ -41,17 +43,23 @@ class Zume_Local_Map extends Zume_Magic_Page
 
             $this->lang_code = $lang_code;
             $this->grid_id = sanitize_text_field( wp_unslash( $_GET['grid_id'] ?? '' ) );
+            $this->parent_grid_id = sanitize_text_field( wp_unslash( $_GET['parent_grid_id'] ?? '' ) );
 
-            if ( empty( $this->grid_id ) && is_user_logged_in() ) {
+            if ( $this->grid_id === '' && $this->parent_grid_id === '' && is_user_logged_in() ) {
                 $profile = zume_get_user_profile();
                 $grid_id = $profile['location']['grid_id'];
                 $this->grid_id = $grid_id;
+                $this->parent_grid_id = $this->get_parent_grid_id( $this->grid_id );
             }
 
-            // Query location data if grid_id is provided
-            if ( !empty( $this->grid_id ) ) {
-                $this->location_data = $this->get_location_data( $this->grid_id );
+            $child_grid_ids = $this->get_child_grid_ids( $this->parent_grid_id );
+            if ( !in_array( $this->grid_id, $child_grid_ids ) ) {
+                $this->grid_id = '';
+            } else {
+                $this->child_location_data = $this->get_location_data( $this->grid_id );
             }
+
+            $this->location_data = $this->get_location_data( $this->parent_grid_id );
 
             $this->register_url_and_access();
             $this->header_content();
@@ -378,7 +386,10 @@ class Zume_Local_Map extends Zume_Magic_Page
             }
 
             .footer-link {
-                text-align: right;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                gap: 10px;
             }
 
             .footer-link .check-out {
@@ -548,6 +559,20 @@ class Zume_Local_Map extends Zume_Magic_Page
                     font-size: 28px;
                 }
 
+                #parent-map-link {
+                    display: none;
+                }
+
+                .child-map-link {
+                    color: inherit;
+                }
+                a {
+                    text-decoration: none;
+                }
+                a[href]:after {
+                    content: none !important;
+                }
+
                 .footer-link .check-out,
                 .footer-link .url {
                     font-size: 20px;
@@ -560,7 +585,10 @@ class Zume_Local_Map extends Zume_Magic_Page
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'root' => esc_url_raw( rest_url() ),
                 'grid_id' => $this->grid_id,
+                'parent_grid_id' => $this->parent_grid_id,
+                'parent_level' => $this->location_data['level'],
                 'location_data' => $this->location_data,
+                'child_location_data' => $this->child_location_data,
                 'mirror_url' => dt_get_location_grid_mirror( true ),
                 'us_div' => 5000,
                 'global_div' => 50000,
@@ -629,33 +657,41 @@ class Zume_Local_Map extends Zume_Magic_Page
                     let geojsonData = null;
 
                     try {
-                        parentGeojsonData = await getGeoJSON(getParentGridID(localMapObject.grid_id));
-                    } catch (error) {
-                        console.error('Could not load grid polygon:', error.message);
-                        return;
-                    }
-
-                    // add in percentage data into geojson for mapping
-                    parentGeojsonData.features.forEach(feature => {
-                        feature.properties.percentage = parseFloat(localMapObject.trainees_percentage[feature.properties.grid_id].percent);
-                    });
-
-                    await loadGridPolygon(getParentGridID(localMapObject.grid_id) + 'parent', parentGeojsonData);
-
-                    try {
-                        geojsonData = await getGeoJSON(localMapObject.grid_id, 'low');
+                        parentGeojsonData = await getGeoJSON(localMapObject.parent_grid_id);
                     } catch (error) {
                         console.error('Could not load grid polygon:', error.message);
                         return;
                     }
                     localMapObject.parentGeojsonData = parentGeojsonData;
-                    localMapObject.geojsonData = geojsonData;
 
-                    geojsonData.features.forEach(feature => {
+                    // add in percentage data into geojson for mapping
+                    parentGeojsonData.features.forEach(feature => {
+                        if (!localMapObject.trainees_percentage[feature.properties.grid_id]) {
+                            feature.properties.percentage = 0.0;
+                            return
+                        }
                         feature.properties.percentage = parseFloat(localMapObject.trainees_percentage[feature.properties.grid_id].percent);
                     });
 
-                    if (localMapObject.location_data.level !== '0') {
+                    await loadGridPolygon(localMapObject.parent_grid_id + 'parent', parentGeojsonData);
+
+                    if (localMapObject.grid_id !== '') {
+                        try {
+                            geojsonData = await getGeoJSON(localMapObject.grid_id, 'low');
+                        } catch (error) {
+                            console.error('Could not load grid polygon:', error.message);
+                            return;
+                        }
+                        localMapObject.geojsonData = geojsonData;
+
+                        geojsonData.features.forEach(feature => {
+                            if (!localMapObject.trainees_percentage[feature.properties.grid_id]) {
+                                feature.properties.percentage = 0.0;
+                                return
+                            }
+                            feature.properties.percentage = parseFloat(localMapObject.trainees_percentage[feature.properties.grid_id].percent);
+                        });
+
                         await loadGridPolygon(localMapObject.grid_id, geojsonData, {
                             fill: {
                                 color: '#00bcd4',
@@ -669,7 +705,11 @@ class Zume_Local_Map extends Zume_Magic_Page
                         });
                     }
 
-                    fitMapToBounds(calculatePolygonBounds(geojsonData));
+                    if (geojsonData) {
+                        fitMapToBounds(calculatePolygonBounds(geojsonData));
+                    } else {
+                        fitMapToBounds(calculatePolygonBounds(parentGeojsonData));
+                    }
 
                     const cameraChanged = (event) => {
                         const labeledFeatures = filterFeaturesToBounds(parentGeojsonData.features, getMapBounds());
@@ -908,7 +948,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                     const locationData = localMapObject.location_data;
                     const level = Number(locationData.level);
 
-                    if (level === 0) {
+                    if (level === 0 || level === -3) {
                         return gridId;
                     }
 
@@ -1109,14 +1149,18 @@ class Zume_Local_Map extends Zume_Magic_Page
                     // add the features to the table
                     for (const feature of features) {
                         const levelData = localMapObject.trainees_percentage[feature.properties.grid_id];
+                        let linkURL = `/map/local?parent_grid_id=${feature.properties.grid_id}`
+                        if (localMapObject.parent_level === '1') {
+                            linkURL = `/map/local?parent_grid_id=${localMapObject.parent_grid_id}&grid_id=${feature.properties.grid_id}`;
+                        }
                         tableBody.innerHTML += `
                             <tr>
                                 <td>${feature.properties.label}</td>
-                                <td>${levelData.name}</td>
-                                <td>${levelData.population}</td>
-                                <td>${levelData.needed}</td>
-                                <td>${levelData.reported}</td>
-                                <td>${levelData.percent}</td>
+                                <td><a class="child-map-link" href="${linkURL}">${levelData?.name}</a></td>
+                                <td>${levelData?.population}</td>
+                                <td>${levelData?.needed}</td>
+                                <td>${levelData?.reported}</td>
+                                <td>${levelData?.percent}</td>
                             </tr>
                         `;
                     }
@@ -1144,10 +1188,9 @@ class Zume_Local_Map extends Zume_Magic_Page
     }
 
     public function body() {
-        global $zume_languages_by_code;
         ?>
 
-        <?php if ( empty( $this->grid_id ) ) : ?>
+        <?php if ( $this->parent_grid_id === '' ) : ?>
             <div class="container-md stack-2 center py-2">
                 <div class="card stack-1 p-2">
                     <h1 class="text-center"><?php echo esc_html__( 'Global Map', 'zume' ) ?></h1>
@@ -1166,21 +1209,27 @@ class Zume_Local_Map extends Zume_Magic_Page
                 </div>
             </div>
         <?php else : ?>
+            <?php
+                $location_data = $this->child_location_data ? $this->child_location_data : $this->location_data;
+            ?>
             <div class="container">
                 <div class="header">
                     <div class="title-section">
                         <h1><span class="zume">ZÚME</span> <span style="text-transform: uppercase;"><?php echo esc_html__( 'Vision', 'zume' ) ?></span></h1>
-                        <h2><?php echo esc_html( $this->location_data['full_name'] ?? $this->location_data['name'] ?? esc_html__( 'Location', 'zume' ) ) ?></h2>
+                        <h2><?php echo esc_html( $location_data['full_name'] ?? $location_data['name'] ?? esc_html__( 'Location', 'zume' ) ) ?></h2>
                     </div>
                     <div class="population">
                         <h3><?php echo esc_html__( 'Population', 'zume' ) ?></h3>
-                        <div class="number"><?php echo esc_html( $this->format_population( $this->location_data['population'] ?? 0 ) ) ?></div>
+                        <div class="number"><?php echo esc_html( $this->format_population( $location_data['population'] ?? 0 ) ) ?></div>
                     </div>
                 </div>
 
                 <div class="map-container">
                     <div id="map" class="map-placeholder"></div>
                 </div>
+                <?php if ( $this->parent_grid_id !== '1' ) : ?>
+                    <a id="parent-map-link" href="/map/local?parent_grid_id=<?php echo esc_attr( $this->get_parent_grid_id( $this->parent_grid_id ) ) ?>&grid_id=<?php echo esc_attr( $this->parent_grid_id ) ?>" class="">View Parent Map</a>
+                <?php endif; ?>
                 <div>
                     <table class="no-resize">
                         <thead>
@@ -1205,7 +1254,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                         <img src="<?php echo esc_url( plugins_url( 'site/assets/images/zt-qr-code.png', __DIR__ ) ); ?>" alt="<?php echo esc_attr__( 'Training', 'zume' ) ?>" />
                     </div>
                     <div class="footer-link">
-                        <div class="check-out"><?php echo esc_html__( 'Vision', 'zume' ) ?>:</div>
+                        <div class="check-out"><?php echo esc_html__( 'Vision', 'zume' ) ?>: </div>
                         <div class="url">https://zume.training</div>
                     </div>
                 </div>
@@ -1219,10 +1268,11 @@ class Zume_Local_Map extends Zume_Magic_Page
     private function get_location_data( $grid_id ) {
         global $wpdb;
 
-        $grid_id = intval( $grid_id );
-        if ( empty( $grid_id ) ) {
+        if ( $grid_id === '' ) {
             return null;
         }
+
+        $grid_id = intval( $grid_id );
 
         $result = $wpdb->get_row( $wpdb->prepare(
             'SELECT
@@ -1302,104 +1352,6 @@ class Zume_Local_Map extends Zume_Magic_Page
         return implode( ', ', $name_parts );
     }
 
-    private function calculate_trainees_needed() {
-        if ( empty( $this->location_data ) ) {
-            return 0;
-        }
-
-        $population = intval( $this->location_data['population'] ?? 0 );
-        $divisor = ( $this->location_data['country_code'] === 'US' ) ? 5000 : 50000;
-
-        return max( 1, round( $population / $divisor ) );
-    }
-
-    private function calculate_churches_needed() {
-        if ( empty( $this->location_data ) ) {
-            return 0;
-        }
-
-        $population = intval( $this->location_data['population'] ?? 0 );
-        $divisor = ( $this->location_data['country_code'] === 'US' ) ? 5000 : 50000;
-
-        return max( 2, round( ( $population / $divisor ) * 2 ) );
-    }
-
-    private function get_trainees_count() {
-        global $wpdb;
-
-        if ( empty( $this->grid_id ) ) {
-            return 0;
-        }
-
-        // Get children grid IDs for this location
-        $children_ids = $this->get_child_grid_ids( $this->grid_id );
-        $all_ids = array_merge( [ $this->grid_id ], $children_ids );
-        $prepared_list = dt_array_to_sql( $all_ids );
-
-        $count = $wpdb->get_var( "
-            SELECT COUNT(DISTINCT r.user_id)
-            FROM zume_dt_reports r
-            LEFT JOIN zume_dt_location_grid lg ON lg.grid_id = r.grid_id
-            WHERE r.grid_id IN ($prepared_list)
-            AND r.type = 'system'
-            AND r.subtype = 'current_level'
-            AND r.value > 0
-        " );
-
-        return intval( $count );
-    }
-
-    private function get_churches_count() {
-        global $wpdb;
-
-        if ( empty( $this->grid_id ) ) {
-            return 0;
-        }
-
-        // Get children grid IDs for this location
-        $children_ids = $this->get_child_grid_ids( $this->grid_id );
-        $all_ids = array_merge( [ $this->grid_id ], $children_ids );
-        $prepared_list = dt_array_to_sql( $all_ids );
-
-        $count = $wpdb->get_var( "
-            SELECT COUNT(DISTINCT r.post_id)
-            FROM zume_dt_reports r
-            WHERE r.grid_id IN ($prepared_list)
-            AND r.type = 'church_report'
-        " );
-
-        return intval( $count );
-    }
-
-    private function get_new_trainees_last_year() {
-        global $wpdb;
-
-        if ( empty( $this->grid_id ) ) {
-            return 0;
-        }
-
-        // Get children grid IDs for this location
-        $children_ids = $this->get_child_grid_ids( $this->grid_id );
-        $all_ids = array_merge( [ $this->grid_id ], $children_ids );
-        $prepared_list = dt_array_to_sql( $all_ids );
-
-        // Calculate timestamp for 365 days ago
-        $one_year_ago = time() - ( 365 * 24 * 60 * 60 );
-
-        $count = $wpdb->get_var( $wpdb->prepare("
-            SELECT COUNT(DISTINCT r.user_id)
-            FROM zume_dt_reports r
-            LEFT JOIN zume_dt_location_grid lg ON lg.grid_id = r.grid_id
-            WHERE r.grid_id IN ($prepared_list)
-            AND r.type = 'system'
-            AND r.subtype = 'current_level'
-            AND r.value > 0
-            AND r.timestamp >= %d
-        ", $one_year_ago) );
-
-        return intval( $count );
-    }
-
     private function get_child_grid_ids( $grid_id ) {
         global $wpdb;
 
@@ -1418,19 +1370,21 @@ class Zume_Local_Map extends Zume_Magic_Page
             return $level_data;
         }
 
-        $parent_grid_id = $this->get_parent_grid_id( $this->grid_id );
-        $child_grid_ids = $this->get_child_grid_ids( $parent_grid_id );
+        $child_grid_ids = $this->get_child_grid_ids( $this->parent_grid_id );
 
-        $location_data = $this->get_location_data( $this->grid_id );
+        $location_data = $this->get_location_data( $this->parent_grid_id );
         $level = 'a3';
+        if ( (int) $location_data['level'] === -3 ) {
+            $level = 'a0';
+        }
         if ( (int) $location_data['level'] === 0 ) {
             $level = 'a1';
         }
         if ( (int) $location_data['level'] === 1 ) {
-            $level = 'a1';
+            $level = 'a2';
         }
         if ( (int) $location_data['level'] === 2 ) {
-            $level = 'a2';
+            $level = 'a3';
         }
 
         $list = Zume_Funnel_App_Heatmap::query_funnel_grid_totals( $level, [ 3, 4, 5, 6 ] );
@@ -1447,8 +1401,8 @@ class Zume_Local_Map extends Zume_Magic_Page
 
     private function get_parent_grid_id( $grid_id ) {
         $location_data = $this->get_location_data( $grid_id );
-        if ( (int) $location_data['level'] === 0 ) {
-            return $grid_id;
+        if ( (int) $location_data['level'] === 0 || (int) $location_data['level'] === -3 ) {
+            return 1;
         }
         if ( (int) $location_data['level'] === 1 ) {
             return $location_data['admin0_grid_id'];
@@ -1456,7 +1410,10 @@ class Zume_Local_Map extends Zume_Magic_Page
         if ( (int) $location_data['level'] === 2 ) {
             return $location_data['admin1_grid_id'];
         }
-        return $location_data['admin2_grid_id'];
+        if ( (int) $location_data['level'] === 3 ) {
+            return $location_data['admin2_grid_id'];
+        }
+        return $location_data['admin3_grid_id'];
     }
 
     private function format_population( $population ) {
