@@ -126,19 +126,21 @@ export class DashMaps extends DashPage {
                         : html`
                               <div class="stack" data-full-width>
                                   <list-link
-                                      @click=${() => this.openModal('hundred-hour-map')}
-                                      icon="z-icon-time"
-                                      text=${jsObject.translations
-                                          .hundred_hour_map}
-                                      ?noRenderText=${true}
-                                      as="button"
-                                  >
-                                  </list-link>
+                                    data-map="local-map"
+                                    href="/map/local"
+                                    as="link"
+                                    target-blank
+                                    icon="z-icon-maps"
+                                    text=${jsObject.translations.local_map}
+                                    explanation=${jsObject.translations.local_map_explanation}
+                                    ?noRenderText=${true}
+                                  ></list-link>
                                   <list-link
                                       @click=${() => this.openModal('vision-map')}
                                       icon="z-icon-training"
                                       text=${jsObject.translations
                                           .training_vision_map}
+                                      explanation=${jsObject.translations.training_vision_map_explanation}
                                       ?noRenderText=${true}
                                       as="button"
                                   >
@@ -148,18 +150,19 @@ export class DashMaps extends DashPage {
                                       icon="z-icon-churches"
                                       text=${jsObject.translations
                                           .simple_church_planting_map}
+                                      explanation=${jsObject.translations.simple_church_planting_map_explanation}
                                       ?noRenderText=${true}
                                       as="button"
                                   >
                                   </list-link>
                                   <list-link
-                                    data-map="local-map"
-                                    href="/map/local"
-                                    as="link"
-                                    target-blank
-                                    icon="z-icon-maps"
-                                    text=${jsObject.translations.local_map}
-                                    ?noRenderText=${true}
+                                      @click=${() => this.openModal('hundred-hour-map')}
+                                      icon="z-icon-time"
+                                      text=${jsObject.translations
+                                          .hundred_hour_map}
+                                      explanation=${jsObject.translations.hundred_hour_map_explanation}
+                                      ?noRenderText=${true}
+                                      as="button"
                                   >
                                   </list-link>
                               </div>

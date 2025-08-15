@@ -1715,17 +1715,20 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                           `:l`
                               <div class="stack" data-full-width>
                                   <list-link
-                                      @click=${()=>this.openModal("hundred-hour-map")}
-                                      icon="z-icon-time"
-                                      text=${jsObject.translations.hundred_hour_map}
-                                      ?noRenderText=${!0}
-                                      as="button"
-                                  >
-                                  </list-link>
+                                    data-map="local-map"
+                                    href="/map/local"
+                                    as="link"
+                                    target-blank
+                                    icon="z-icon-maps"
+                                    text=${jsObject.translations.local_map}
+                                    explanation=${jsObject.translations.local_map_explanation}
+                                    ?noRenderText=${!0}
+                                  ></list-link>
                                   <list-link
                                       @click=${()=>this.openModal("vision-map")}
                                       icon="z-icon-training"
                                       text=${jsObject.translations.training_vision_map}
+                                      explanation=${jsObject.translations.training_vision_map_explanation}
                                       ?noRenderText=${!0}
                                       as="button"
                                   >
@@ -1734,18 +1737,18 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                       @click=${()=>this.openModal("church-map")}
                                       icon="z-icon-churches"
                                       text=${jsObject.translations.simple_church_planting_map}
+                                      explanation=${jsObject.translations.simple_church_planting_map_explanation}
                                       ?noRenderText=${!0}
                                       as="button"
                                   >
                                   </list-link>
                                   <list-link
-                                    data-map="local-map"
-                                    href="/map/local"
-                                    as="link"
-                                    target-blank
-                                    icon="z-icon-maps"
-                                    text=${jsObject.translations.local_map}
-                                    ?noRenderText=${!0}
+                                      @click=${()=>this.openModal("hundred-hour-map")}
+                                      icon="z-icon-time"
+                                      text=${jsObject.translations.hundred_hour_map}
+                                      explanation=${jsObject.translations.hundred_hour_map_explanation}
+                                      ?noRenderText=${!0}
+                                      as="button"
                                   >
                                   </list-link>
                               </div>
@@ -3107,7 +3110,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                 <div class="dash-menu__text-area | switcher | switcher-width-20">
                     <div>
                         <h3 class="f-1 bold uppercase">${this.text}</h3>
-                        <p>${this.explanation}</p>
+                        ${this.explanation?l`<p>${this.explanation}</p>`:""}
                     </div>
                     ${this.completed?l`
                             <div class="grow-0"><span class="icon z-icon-check-mark grow-0 | dash-menu__list-success"></span></div>

@@ -32,7 +32,7 @@ export class ListLink extends NavLink {
                 <div class="dash-menu__text-area | switcher | switcher-width-20">
                     <div>
                         <h3 class="f-1 bold uppercase">${this.text}</h3>
-                        <p>${this.explanation}</p>
+                        ${this.explanation ? html`<p>${this.explanation}</p>` : ''}
                     </div>
                     ${
                         this.completed
