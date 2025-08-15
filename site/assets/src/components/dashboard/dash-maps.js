@@ -124,39 +124,44 @@ export class DashMaps extends DashPage {
                               </div>
                           `
                         : html`
-                              <div class="nav-grid" data-full-width>
-                                  <grid-link
+                              <div class="stack" data-full-width>
+                                  <list-link
                                       @click=${() => this.openModal('hundred-hour-map')}
+                                      icon="z-icon-time"
                                       text=${jsObject.translations
                                           .hundred_hour_map}
                                       ?noRenderText=${true}
                                       as="button"
                                   >
-                                  </grid-link>
-                                  <grid-link
+                                  </list-link>
+                                  <list-link
                                       @click=${() => this.openModal('vision-map')}
+                                      icon="z-icon-training"
                                       text=${jsObject.translations
                                           .training_vision_map}
                                       ?noRenderText=${true}
                                       as="button"
                                   >
-                                  </grid-link>
-                                  <grid-link
+                                  </list-link>
+                                  <list-link
                                       @click=${() => this.openModal('church-map')}
+                                      icon="z-icon-churches"
                                       text=${jsObject.translations
                                           .simple_church_planting_map}
                                       ?noRenderText=${true}
                                       as="button"
                                   >
-                                  </grid-link>
-                                  <!-- <grid-link
+                                  </list-link>
+                                  <list-link
                                     data-map="local-map"
-                                    href="/maps/local?grid_id=${jsObject.profile.location.grid_id || ''}&lang=${jsObject.language}"
-                                    target="_blank"
+                                    href="/map/local"
+                                    as="link"
+                                    target-blank
+                                    icon="z-icon-maps"
                                     text=${jsObject.translations.local_map}
                                     ?noRenderText=${true}
                                   >
-                                  </grid-link> -->
+                                  </list-link>
                               </div>
                           `}
                 </div>

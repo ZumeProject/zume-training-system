@@ -24,7 +24,7 @@ export class ListLink extends NavLink {
                 ?data-completed=${this.completed}
                 ?data-button=${this.disableNavigate}
                 role="button"
-                @click=${this.handleClick}
+                @click=${(event) => this.handleClick(event, true)}
             >
                 <div class="dash-menu__icon-area | stack--5">
                     <span class="icon ${this.getIcon()} dash-menu__list-icon"></span>
