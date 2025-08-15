@@ -386,7 +386,10 @@ class Zume_Local_Map extends Zume_Magic_Page
             }
 
             .footer-link {
-                text-align: right;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                gap: 10px;
             }
 
             .footer-link .check-out {
@@ -554,6 +557,20 @@ class Zume_Local_Map extends Zume_Magic_Page
 
                 .footer-text {
                     font-size: 28px;
+                }
+
+                #parent-map-link {
+                    display: none;
+                }
+
+                .child-map-link {
+                    color: inherit;
+                }
+                a {
+                    text-decoration: none;
+                }
+                a[href]:after {
+                    content: none !important;
                 }
 
                 .footer-link .check-out,
@@ -1237,7 +1254,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                         <img src="<?php echo esc_url( plugins_url( 'site/assets/images/zt-qr-code.png', __DIR__ ) ); ?>" alt="<?php echo esc_attr__( 'Training', 'zume' ) ?>" />
                     </div>
                     <div class="footer-link">
-                        <div class="check-out"><?php echo esc_html__( 'Vision', 'zume' ) ?>:</div>
+                        <div class="check-out"><?php echo esc_html__( 'Vision', 'zume' ) ?>: </div>
                         <div class="url">https://zume.training</div>
                     </div>
                 </div>
