@@ -14,6 +14,7 @@ class Zume_Local_Map extends Zume_Magic_Page
     public $grid_id = null;
     public $parent_grid_id = null;
     public $location_data = null;
+    public $child_location_data = null;
     public $global_div = 50000; // this equals 2 for every 50000
     public $us_div = 5000; // this is 2 for every 5000
 
@@ -54,6 +55,8 @@ class Zume_Local_Map extends Zume_Magic_Page
             $child_grid_ids = $this->get_child_grid_ids( $this->parent_grid_id );
             if ( !in_array( $this->grid_id, $child_grid_ids ) ) {
                 $this->grid_id = '';
+            } else {
+                $this->child_location_data = $this->get_location_data( $this->grid_id );
             }
 
             $this->location_data = $this->get_location_data( $this->parent_grid_id );
@@ -568,6 +571,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 'parent_grid_id' => $this->parent_grid_id,
                 'parent_level' => $this->location_data['level'],
                 'location_data' => $this->location_data,
+                'child_location_data' => $this->child_location_data,
                 'mirror_url' => dt_get_location_grid_mirror( true ),
                 'us_div' => 5000,
                 'global_div' => 50000,
@@ -1188,15 +1192,18 @@ class Zume_Local_Map extends Zume_Magic_Page
                 </div>
             </div>
         <?php else : ?>
+            <?php
+                $location_data = $this->child_location_data ? $this->child_location_data : $this->location_data;
+            ?>
             <div class="container">
                 <div class="header">
                     <div class="title-section">
                         <h1><span class="zume">ZÚME</span> <span style="text-transform: uppercase;"><?php echo esc_html__( 'Vision', 'zume' ) ?></span></h1>
-                        <h2><?php echo esc_html( $this->location_data['full_name'] ?? $this->location_data['name'] ?? esc_html__( 'Location', 'zume' ) ) ?></h2>
+                        <h2><?php echo esc_html( $location_data['full_name'] ?? $location_data['name'] ?? esc_html__( 'Location', 'zume' ) ) ?></h2>
                     </div>
                     <div class="population">
                         <h3><?php echo esc_html__( 'Population', 'zume' ) ?></h3>
-                        <div class="number"><?php echo esc_html( $this->format_population( $this->location_data['population'] ?? 0 ) ) ?></div>
+                        <div class="number"><?php echo esc_html( $this->format_population( $location_data['population'] ?? 0 ) ) ?></div>
                     </div>
                 </div>
 
@@ -1341,11 +1348,9 @@ class Zume_Local_Map extends Zume_Magic_Page
     }
 
     private function calculate_progress_percentages() {
-        if ( !defined( 'WP_DEBUG' ) || !WP_DEBUG ) {
-            $level_data = get_transient( 'zume_local_map_level_data_' . $this->grid_id );
-            if ( $level_data ) {
-                return $level_data;
-            }
+        $level_data = get_transient( 'zume_local_map_level_data_' . $this->grid_id );
+        if ( $level_data ) {
+            return $level_data;
         }
 
         $child_grid_ids = $this->get_child_grid_ids( $this->parent_grid_id );
