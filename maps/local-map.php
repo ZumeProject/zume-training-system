@@ -142,7 +142,7 @@ class Zume_Local_Map extends Zume_Magic_Page
             }
 
             .title-section h1 .zume {
-                color: #00bcd4;
+                color: #00b0e6;
                 font-weight: 600;
             }
 
@@ -159,7 +159,7 @@ class Zume_Local_Map extends Zume_Magic_Page
 
             .population h3 {
                 font-size: 24px;
-                color: #00bcd4;
+                color: #00b0e6;
                 font-weight: 300;
                 margin-bottom: 5px;
             }
@@ -173,7 +173,7 @@ class Zume_Local_Map extends Zume_Magic_Page
             .map-container {
                 margin: 20px 40px;
                 background-color: #e0e0e0;
-                border: 3px solid #00bcd4;
+                border: 3px solid #00b0e6;
                 border-radius: 15px;
                 aspect-ratio: 16 / 9;      /* preferred: keeps proportions across paper sizes */
                 height: auto;              /* let aspect-ratio define height */
@@ -181,7 +181,7 @@ class Zume_Local_Map extends Zume_Magic_Page
             .map-placeholder {
                 font-size: 120px;
                 font-weight: 300;
-                color: #00bcd4;
+                color: #00b0e6;
                 opacity: 0.7;
             }
 
@@ -240,7 +240,7 @@ class Zume_Local_Map extends Zume_Magic_Page
 
             .goal-title {
                 font-size: 32px;
-                color: #00bcd4;
+                color: #00b0e6;
                 font-weight: 700;
                 margin-bottom: 0;
             }
@@ -264,7 +264,7 @@ class Zume_Local_Map extends Zume_Magic_Page
 
             .section-divider {
                 height: 2px;
-                background-color: #00bcd4;
+                background-color: #00b0e6;
                 margin: 30px 40px;
             }
 
@@ -317,7 +317,7 @@ class Zume_Local_Map extends Zume_Magic_Page
             }
 
             .progress-dot.filled {
-                background-color: #00bcd4;
+                background-color: #00b0e6;
             }
 
             .progress-circle {
@@ -340,7 +340,7 @@ class Zume_Local_Map extends Zume_Magic_Page
                 width: 100%;
                 height: 100%;
                 border-radius: 50%;
-                background: conic-gradient(#00bcd4 0deg, #e0e0e0 0deg);
+                background: conic-gradient(#00b0e6 0deg, #e0e0e0 0deg);
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -354,7 +354,7 @@ class Zume_Local_Map extends Zume_Magic_Page
             }
 
             .footer {
-                background-color: #00bcd4;
+                background-color: #00b0e6;
                 color: white;
                 padding: 30px 40px;
                 display: flex;
@@ -405,11 +405,11 @@ class Zume_Local_Map extends Zume_Magic_Page
 
             /* SVG Icons */
             .icon-churches {
-                fill: #00bcd4;
+                fill: #00b0e6;
             }
 
             .icon-trainees {
-                fill: #00bcd4;
+                fill: #00b0e6;
             }
 
             /* Map popups */
@@ -694,11 +694,11 @@ class Zume_Local_Map extends Zume_Magic_Page
 
                         await loadGridPolygon(localMapObject.grid_id, geojsonData, {
                             fill: {
-                                color: '#00bcd4',
+                                color: '#00b0e6',
                                 opacity: 0.5,
                             },
                             outline: {
-                                color: '#00bcd4',
+                                color: '#00b0e6',
                                 width: 4,
                                 opacity: 0.8,
                             }
