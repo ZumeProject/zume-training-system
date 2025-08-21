@@ -676,7 +676,18 @@ switch ( $request_action ) {
                             $query_params = $dt_url->query_params;
                             $query_redirect_to = $query_params->get( 'redirect_to' );
 
-                            do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code redirect_to=$query_redirect_to]" )
+                            $firebase_params = [];
+                            if ( !empty( $query_redirect_to ) ) {
+                                $firebase_params['redirect_to'] = $query_redirect_to;
+                            }
+                            if ( !empty( $query_ref ) ) {
+                                $firebase_params['ref'] = $query_ref;
+                            }
+
+                            // Pass parameters to Firebase UI
+                            do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code " . implode( ' ', array_map( function( $key, $value ) {
+                                return "$key=$value";
+                            }, array_keys( $firebase_params ), $firebase_params ) ) . "]" )
 
                             ?>
 

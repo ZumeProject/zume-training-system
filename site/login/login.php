@@ -82,6 +82,22 @@ class Zume_Training_Login extends Zume_Magic_Page {
                     })
                 )
 
+                // Handle ref parameter in form submission
+                const form = document.getElementById('loginform');
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const ref = urlParams.get('ref');
+                        
+                        if (ref && !document.querySelector('input[name="ref"]')) {
+                            const refInput = document.createElement('input');
+                            refInput.type = 'hidden';
+                            refInput.name = 'ref';
+                            refInput.value = ref;
+                            form.appendChild(refInput);
+                        }
+                    });
+                }
             });
         </script>
         <?php
