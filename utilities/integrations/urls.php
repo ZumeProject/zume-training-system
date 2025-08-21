@@ -28,9 +28,19 @@ function zume_url( $slug ) {
  *
  * @return string
  */
-function zume_login_url( $type = 'login', $redirect_url = false ) {
+function zume_login_url( $type = 'login', $redirect_url = false, $ref = false ) {
+    $params = [];
+    
     if ( $redirect_url ) {
-        $url = dt_create_site_url( '', [ 'redirect_to' => rawurlencode( $redirect_url ) ] );
+        $params['redirect_to'] = rawurlencode( $redirect_url );
+    }
+    
+    if ( $ref ) {
+        $params['ref'] = $ref;
+    }
+    
+    if ( !empty( $params ) ) {
+        $url = dt_create_site_url( '', $params );
         return dt_login_url( $type, $url );
     }
 
@@ -44,13 +54,13 @@ function zume_getting_started_url( $type ) {
     $params = [ 'flow' => 'start' ];
     return zume_start_wizard_url( $type, $params );
 }
-function zume_start_wizard_url( $type = 'register', $params = [] ) {
+function zume_start_wizard_url( $type = 'register', $params = [], $ref = false ) {
     $redirect_url = zume_wizard_url( 'start', $params );
-    return zume_login_url( $type, $redirect_url );
+    return zume_login_url( $type, $redirect_url, $ref );
 }
-function zume_make_a_group_wizard_url() {
+function zume_make_a_group_wizard_url( $ref = false ) {
     $redirect_url = zume_wizard_url( 'make_a_group' );
-    return zume_login_url( 'register', $redirect_url );
+    return zume_login_url( 'register', $redirect_url, $ref );
 }
 function zume_set_profile_wizard() {
     $redirect_url = zume_wizard_url( 'profile' );

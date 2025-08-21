@@ -405,8 +405,9 @@ switch ( $request_action ) {
                                 $dt_url = new DT_URL( dt_get_url_path() );
                                 $query_params = $dt_url->query_params;
                                 $query_redirect_to = $query_params->get( 'redirect_to' );
+                                $query_ref = $query_params->get( 'ref' ); // Add this line
 
-                                do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code redirect_to=$query_redirect_to]" )
+                                do_shortcode( "[dt_firebase_login_ui lang_code=$lang_code redirect_to=$query_redirect_to ref=$query_ref]" )
 
                                 ?>
 
@@ -468,6 +469,9 @@ switch ( $request_action ) {
                                                         <?php esc_html_e( 'Passwords do not match. Please, try again.', 'zume' ) ?>
                                                     </span>
                                                 </div>
+                                                <?php if ( !empty( $query_ref ) ) : ?>
+                                                    <input type="hidden" name="ref" value="<?php echo esc_attr( $query_ref ); ?>" />
+                                                <?php endif; ?>
                                                 <div data-abide-error class="warning banner" style="display: none;">
                                                     <p><i class="fi-alert"></i><?php esc_html_e( 'There are some errors in your form.', 'zume' ) ?></p>
                                                 </div>

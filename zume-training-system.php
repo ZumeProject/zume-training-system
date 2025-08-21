@@ -660,6 +660,18 @@ Thanks!
                     ],
                 ];
             }
+            if ( !isset( $fields['registration_source'] ) ) {
+                $fields['registration_source'] = [
+                    'name' => 'Registration Source',
+                    'description' => 'Where the user came from when they registered',
+                    'type' => 'text',
+                    'default' => '',
+                    'tile' => 'details',
+                    'icon' => get_template_directory_uri() . '/dt-assets/images/source.svg',
+                    'show_in_table' => 40,
+                ];
+            }
+            
         }
         return $fields;
     }
@@ -699,6 +711,14 @@ Thanks!
         }
 
         $user_language = zume_get_user_language();
+        
+        // Get the ref parameter from the registration process
+        $ref_source = '';
+        if ( isset( $_POST['ref'] ) ) {
+            $ref_source = sanitize_text_field( wp_unslash( $_POST['ref'] ) );
+        } elseif ( isset( $_GET['ref'] ) ) {
+            $ref_source = sanitize_text_field( wp_unslash( $_GET['ref'] ) );
+        }
 
         $fields = [
             'user_email' => $user->user_email,
@@ -723,6 +743,12 @@ Thanks!
                 ],
             ],
         ];
+        
+        // Add the ref source to the contact record
+        if ( !empty( $ref_source ) ) {
+            $fields['registration_source'] = $ref_source;
+        }
+        
         $contact_location = DT_Posts::update_post( 'contacts', $new_user_contact['ID'], $fields, true, false );
 
         zume_log_insert('training', 'registered', [
@@ -738,7 +764,7 @@ Thanks!
             'label' => $contact_location['location_grid_meta'][0]['label'],
             'grid_id' => $contact_location['location_grid_meta'][0]['grid_id'],
             'time_end' => time(),
-            'language_code' => $user_language['code'] ?? 'en',
+            'language_code' => $user_language['code'] ?? 'en',           
         ], true );
 
         zume_log_insert('system', 'current_level', [
@@ -756,6 +782,25 @@ Thanks!
             'time_end' => time(),
             'language_code' => $user_language['code'] ?? 'en',
         ], true );
+        
+        if ( !empty( $ref_source ) ) {
+            zume_log_insert('system', 'registration_source', [
+                'user_id' => $user->ID,
+                'post_id' => $new_user_contact['ID'],
+                'post_type' => 'zume',
+                'type' => 'system',
+                'subtype' => 'registration_source',
+                'payload' => $ref_source,
+                'value' => 0,
+                'lng' => $contact_location['location_grid_meta'][0]['lng'],
+                'lat' => $contact_location['location_grid_meta'][0]['lat'],
+                'level' => $contact_location['location_grid_meta'][0]['level'],
+                'label' => $contact_location['location_grid_meta'][0]['label'],
+                'grid_id' => $contact_location['location_grid_meta'][0]['grid_id'],
+                'time_end' => time(),
+                'language_code' => $user_language['code'] ?? 'en',           
+            ], true );
+        }
 
         // Zume_System_Encouragement_API::update_plan( $user->ID, 'training', 'registered' ); @todo remove this
     }
