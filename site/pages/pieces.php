@@ -146,6 +146,8 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
     public function body(){
         require __DIR__ . '/../parts/nav.php';
 
+        // insert if then structure here. If pieces exists, then show the pieces content. If not, then show video and transcript on the page.   
+        
         pieces_content( $this->postid, $this->lang_code, [
             'wtv' => esc_html__( 'Watch This Video', 'zume' ),
             'ay' => esc_html__( 'Ask Yourself', 'zume' ),
@@ -153,6 +155,8 @@ class Zume_Training_Pieces_URL extends Zume_Magic_Page
             'lra' => esc_html__( 'Listen and Read Along', 'zume' ),
             'vt' => esc_html__( 'View Transcript', 'zume' ),
         ] );
+
+        
     }
 }
 Zume_Training_Pieces_URL::instance();

@@ -33,7 +33,7 @@ class Zume_Magic_Page extends DT_Magic_Url_Base {
     public function consistent_head() {
 
         ?>
-        <!-- Google tag (gtag.js) -->
+        <!-- Google tag (gtag.js) for Google Analytics -->
         <!-- phpcs:disable -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-N27P3H7SBT"></script>
         <!-- phpcs:enable -->
@@ -43,6 +43,16 @@ class Zume_Magic_Page extends DT_Magic_Url_Base {
         gtag('js', new Date());
 
         gtag('config', 'G-N27P3H7SBT');
+        </script>
+        <!-- Google tag (gtag.js) for Google Ads -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16678073167">
+        </script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-16678073167');
         </script>
 
         <?php require_once trailingslashit( __DIR__ ) . 'parts/head.php'; ?>
