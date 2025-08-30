@@ -377,7 +377,7 @@ class Zume_Messages extends Zume_Magic_Page
             | [link_joincommunity]
             | [link_checkin]
             | <a href="<?php echo esc_url( zume_donate_url() ); ?>"><?php echo esc_html__( 'Donate', 'zume' ) ?></a>
-            | 109 S. Main Street, Mooreland, OK 73852 USA
+            | 19500 State HWY 249 Ste 230 Houston, TX 77070
         </p>
         <?php
         $html = ob_get_contents();
