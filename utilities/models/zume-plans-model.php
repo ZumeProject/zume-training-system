@@ -337,7 +337,7 @@ class Zume_Plans_Model {
             return new WP_Error( 'bad-plan-code', 'invalid key', array( 'status' => 400 ) );
         }
 
-        $training_group = DT_Posts::get_post( 'zume_plans', $post_id );
+        $training_group = DT_Posts::get_post( 'zume_plans', $post_id, true, false );
         if ( is_wp_error( $training_group ) ) {
             return new WP_Error( __METHOD__, 'Failed to access post.', array( 'status' => 401 ) );
         }
