@@ -406,6 +406,15 @@ export class DashTrainings extends navigator(DashPage) {
                 this.training.time_of_day || ''
         }
 
+        if (this.isActive()) {
+            document.querySelector(
+                '#edit-session-details-modal #active[type="radio"]'
+            ).checked = true
+        } else {
+            document.querySelector(
+                '#edit-session-details-modal #inactive[type="radio"]'
+            ).checked = true
+        }
         if (this.isCoach()) {
             document.querySelector('#language-note').value =
                 this.training.language_note || ''
@@ -423,15 +432,6 @@ export class DashTrainings extends navigator(DashPage) {
             } else {
                 document.querySelector(
                     '#edit-session-details-modal #private[type="radio"]'
-                ).checked = true
-            }
-            if (this.isActive()) {
-                document.querySelector(
-                    '#edit-session-details-modal #active[type="radio"]'
-                ).checked = true
-            } else {
-                document.querySelector(
-                    '#edit-session-details-modal #inactive[type="radio"]'
                 ).checked = true
             }
         }
@@ -1548,7 +1548,7 @@ export class DashTrainings extends navigator(DashPage) {
                                                       </div>
                                                   ` : ''
                                               }
-                                          ${this.isCoach()
+                                          ${this.isGroupLeader()
                                               ? html`
                                                     <button
                                                         @click=${this
