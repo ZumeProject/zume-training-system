@@ -106,8 +106,8 @@ class Zume_Plans_Endpoints
 
         $user_id = get_current_user_id();
         $post_id = Zume_Plans_Model::can_user_access_plan( $code, $user_id );
-        if ( is_wp_error( $post_id ) ) {
-            return $post_id;
+        if ( $post_id === false ) {
+            return new WP_Error( 'not_authorized', 'You are not authorized to access this plan', [ 'status' => 400 ] );
         }
 
         return Zume_Plans_Model::get_plan( $post_id );
@@ -128,8 +128,8 @@ class Zume_Plans_Endpoints
         $params = dt_recursive_sanitize_array( $request->get_params() );
 
         $post_id = Zume_Plans_Model::can_user_edit_plan( $code );
-        if ( is_wp_error( $post_id ) ) {
-            return $post_id;
+        if ( $post_id === false ) {
+            return new WP_Error( 'not_authorized', 'You are not authorized to edit this plan', [ 'status' => 400 ] );
         }
 
         return Zume_Plans_Model::update_plan( $post_id, $params );
@@ -144,8 +144,8 @@ class Zume_Plans_Endpoints
         $user_id = zume_validate_user_id_request( $user_id );
 
         $post_id = Zume_Plans_Model::can_user_edit_plan( $code, $user_id );
-        if ( is_wp_error( $post_id ) ) {
-            return $post_id;
+        if ( $post_id === false ) {
+            return new WP_Error( 'not_authorized', 'You are not authorized to edit this plan', [ 'status' => 400 ] );
         }
 
         $return = Zume_Plans_Model::delete_plan( $user_id, $post_id );
@@ -191,8 +191,8 @@ class Zume_Plans_Endpoints
 
         $key = $params['key'];
         $post_id = Zume_Plans_Model::can_user_edit_plan( $key, $user_id );
-        if ( is_wp_error( $post_id ) ) {
-            return $post_id;
+        if ( $post_id === false ) {
+            return new WP_Error( 'not_authorized', 'You are not authorized to edit this plan', [ 'status' => 400 ] );
         }
 
         $meta_key = $params['session_id'];
@@ -214,8 +214,8 @@ class Zume_Plans_Endpoints
         // access check
         $user_id = get_current_user_id();
         $post_id = Zume_Plans_Model::can_user_edit_plan( $key, $user_id );
-        if ( is_wp_error( $post_id ) ) {
-            return $post_id;
+        if ( $post_id === false ) {
+            return new WP_Error( 'not_authorized', 'You are not authorized to edit this plan', [ 'status' => 400 ] );
         }
 
         // return new list
