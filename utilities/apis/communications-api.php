@@ -40,8 +40,8 @@ class Zume_Communications_API
         }
 
         $post_id = Zume_Plans_Model::can_user_access_plan( $params['join_key'], get_current_user_id() );
-        if ( is_wp_error( $post_id ) ) {
-            return $post_id;
+        if ( $post_id === false ) {
+            return new WP_Error( 'not_authorized', 'You are not authorized to access this plan', [ 'status' => 400 ] );
         }
 
         $logs = zume_get_user_log( get_current_user_id(), 'system', 'email_notification' );

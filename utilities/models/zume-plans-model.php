@@ -79,7 +79,7 @@ class Zume_Plans_Model {
             $training_id = self::can_user_edit_plan( $training_group['join_key'], $current_user_id );
             $hide_public_progress = get_post_meta( $participant['ID'], 'hide_public_progress', true );
             $training_group['participants'][$i]['hide_public_progress'] = $hide_public_progress;
-            if ( !is_wp_error( $training_id )
+            if ( $training_id !== false
                 || ( $hide_public_progress !== '1' && $is_private_group )
                 || $current_user_id == $participant_user_id
             ) {
@@ -89,7 +89,7 @@ class Zume_Plans_Model {
 
             $hide_public_contact = get_post_meta( $participant['ID'], 'hide_public_contact', true );
             $training_group['participants'][$i]['hide_public_contact'] = $hide_public_contact;
-            if ( !is_wp_error( $training_id )
+            if ( $training_id !== false
                 || ( $hide_public_contact !== '1' && $is_private_group )
                 || $current_user_id == $participant_user_id
             ) {
@@ -315,12 +315,12 @@ class Zume_Plans_Model {
         $post_id = Zume_Connect_Endpoints::test_join_key( $join_key );
 
         if ( !$post_id ) {
-            return new WP_Error( 'bad-plan-code', 'invalid key', array( 'status' => 400 ) );
+            return false;
         }
 
         $training_group = DT_Posts::get_post( self::$post_type, $post_id, true, false );
         if ( is_wp_error( $training_group ) ) {
-            return new WP_Error( __METHOD__, 'Failed to get post.', array( 'status' => 401 ) );
+            return false;
         }
 
         return $post_id;
@@ -334,16 +334,16 @@ class Zume_Plans_Model {
         $post_id = Zume_Connect_Endpoints::test_join_key( $join_key );
 
         if ( !$post_id ) {
-            return new WP_Error( 'bad-plan-code', 'invalid key', array( 'status' => 400 ) );
+            return false;
         }
 
         $training_group = DT_Posts::get_post( 'zume_plans', $post_id, true, false );
         if ( is_wp_error( $training_group ) ) {
-            return new WP_Error( __METHOD__, 'Failed to access post.', array( 'status' => 401 ) );
+            return false;
         }
 
         if ( $training_group['assigned_to']['id'] !== "$user_id" && !dt_current_user_has_role( 'dt_admin' ) ) {
-            return new WP_Error( 'not-authorized', 'you are not authorised', array( 'status' => 400 ) );
+            return false;
         }
 
         return $post_id;
