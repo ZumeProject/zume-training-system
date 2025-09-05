@@ -1644,7 +1644,7 @@ ${this.t.meeting_link}: ${this.training.zoom_link_note}
                                     explanation=${e.explanation}
                                     icon=${e.icon}
                                     ?disableNavigate=${e.type==="handled-link"}
-                                    as=${e.type==="handled-link"?"link":"nav"}
+                                    as=${e.type==="handled-link"?"button":"nav"}
                                     @click=${e.type==="handled-link"?r=>{!e.data.neverDisabled&&S.getCompletedStatus(e.name,t)||e.clickHandler(r,this.dispatchEvent)}:null}
                                     ?completed=${S.getCompletedStatus(e.name,t)}
                                     ?locked=${S.getLockedStatus(e.name,t)}
