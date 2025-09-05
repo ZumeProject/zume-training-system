@@ -444,7 +444,7 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
 
     isGettingStartedActive() {
-      this.getGettingStartedPercentage() === 100
+      return this.getGettingStartedPercentage() !== 100
     }
 
     getGettingStartedPercentage() {
