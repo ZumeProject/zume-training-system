@@ -40,7 +40,12 @@ class Zume_Plans_Model {
         $training_group['next_session_date'] = $next_session_date;
 
         $time_of_day = $training_group['time_of_day'];
-        $next_session_datetime = DateTime::createFromFormat( 'Y-m-d H:i', "$next_session_date $time_of_day", new DateTimeZone( 'UTC' ) );
+
+        if ( empty( $time_of_day ) ) {
+            $next_session_datetime = DateTime::createFromFormat( 'Y-m-d', $next_session_date, new DateTimeZone( 'UTC' ) );
+        } else {
+            $next_session_datetime = DateTime::createFromFormat( 'Y-m-d H:i', "$next_session_date $time_of_day", new DateTimeZone( 'UTC' ) );
+        }
         $training_group['time_of_day_formatted'] = $time_formatter->format( $next_session_datetime );
         $training_group['next_session_date_formatted'] = $date_formatter->format( $next_session_datetime );
         $training_group['day_of_week'] = $day_formatter->format( $next_session_datetime );
@@ -408,7 +413,7 @@ class Zume_Plans_Model {
     public static function get_current_session( $training_id ) {
         $training = DT_Posts::get_post( self::$post_type, $training_id, false, false );
         $set_type = $training['set_type']['key'] ?? '';
-        $total = intval( $training['set_type']['label'] ?? 0 );
+        $total = self::get_total_sessions( $set_type );
         $current = 1;
 
         $completed_sessions = self::get_completed_sessions( $training_id );
@@ -443,7 +448,7 @@ class Zume_Plans_Model {
     public static function get_next_session_date( $training_id ) {
         $training = DT_Posts::get_post( self::$post_type, $training_id, false, false );
         $set_type = $training['set_type']['key'] ?? '';
-        $total = intval( $training['set_type']['label'] ?? 0 );
+        $total = self::get_total_sessions( $set_type );
 
         $today = time();
         for ( $i = 1; $i <= $total; $i++ ) {
@@ -478,7 +483,8 @@ class Zume_Plans_Model {
     public static function get_session_dates( $training_id ) {
         $training = DT_Posts::get_post( self::$post_type, $training_id, false, false );
         $set_type = $training['set_type']['key'] ?? '';
-        $total = intval( $training['set_type']['label'] ?? 0 );
+
+        $total = self::get_total_sessions( $set_type );
 
         $dates = [];
         for ( $i = 1; $i <= $total; $i++ ) {
@@ -489,5 +495,15 @@ class Zume_Plans_Model {
             ];
         }
         return $dates;
+    }
+
+    public static function get_total_sessions( $set_type ) {
+        if ( $set_type === 'set_c' ) {
+            return 5;
+        } elseif ( $set_type === 'set_b' ) {
+            return 20;
+        } else {
+            return 10;
+        }
     }
 }
