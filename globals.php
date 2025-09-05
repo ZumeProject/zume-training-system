@@ -204,6 +204,7 @@ if ( ! function_exists( 'zume_get_user_stage' ) ) {
             $log = zume_get_user_log( $user_id );
         }
 
+        $users_training_groups = zume_get_user_plans( $user_id );
         $funnel = zume_funnel_stages();
         $stage = $funnel[0];
 
@@ -276,6 +277,9 @@ if ( ! function_exists( 'zume_get_user_stage' ) ) {
                 // user state
                 if ( 'plan_created' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
+                }
+                if ( !empty( $users_training_groups ) ) {
+                    $user_state['is_in_a_training_group'] = true;
                 }
                 if ( 'joined_online_training' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
