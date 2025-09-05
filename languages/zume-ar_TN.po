@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme Project\n"
 "POT-Creation-Date: 2025-07-29 09:25-0600\n"
-"PO-Revision-Date: 2025-08-12 12:03+0000\n"
+"PO-Revision-Date: 2025-09-02 14:03+0000\n"
 "Last-Translator: nesrine <nesrine0325@gmail.com>\n"
 "Language-Team: Arabic <https://translate.disciple.tools/projects/"
 "zume-training/zume-training-system/ar_TN/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.12.2\n"
+"X-Generator: Weblate 5.13\n"
 
 #: 404.php:89
 msgid "Epic 404 - Not Found"
@@ -196,8 +196,8 @@ msgid ""
 "encourage each other in areas that are going well and reveal areas that need "
 "correction."
 msgstr ""
-"أداة يجتمعوا فيها كلّ جمعة ثنين وإلاّ ثلاثة عباد من نفس الجنسّ ويشجّعوا بعضهم في "
-"البلايص إلّي تمشي فيها الأمور لباس ويكتشفوا البلايص إلّي تستحقّ تصحيح."
+"أداة يجتمعوا فيها كلّ جمعة ثنين وإلاّ ثلاثة عباد من نفس الجنس ويشجّعوا بعضهم في "
+"البلايص إلّي تمشي فيها الأمور لباس ويكتشفوا البلايص إلّي تستحق تصحيح."
 
 #: globals.php:2420 site/pages/follow-jesus.php:197
 msgid "Consumer vs Producer Lifestyle"
@@ -389,7 +389,7 @@ msgstr "مسير الصّلاة"
 
 #: globals.php:2576 site/pages/follow-jesus.php:309
 msgid "A Person of Peace and How To Find One"
-msgstr "كيفاه نلقاو إنسان السّلام"
+msgstr "كيفاه نلقاوا إنسان السّلام"
 
 #: globals.php:2578
 msgid ""
@@ -410,7 +410,7 @@ msgstr "الأمانة خير مالمعرفة"
 msgid ""
 "It‘s important what disciples know — but it‘s much more important what they "
 "DO with what they know."
-msgstr "إلّي يعرفوه التلامذة مهمّ برشة.أما إلّي يتلمذوه بالّي يعرفوه أهمّ برشا."
+msgstr "إلّي يعرفوه التلامذة مهمّ برشة.أما إلّي يتلمذوه بإلّي يعرفوه أهمّ برشا."
 
 #: globals.php:2592 site/course/course-content.php:1891
 #: site/course/course-content.php:1900 site/course/course-content.php:4908
@@ -441,7 +441,7 @@ msgid ""
 "way, a 3/3 Group is not just a small group but a Simple Church."
 msgstr ""
 "مجموعة 3/3 هي طريقة يتقابلوا بيها أتباع يسوع يصلّيوا, يتعلّموا, يكبروا, "
-"يشاركوا ويمارسوا الطّاعة والمشاركة بلّي تعلّموه.مجموعة 3/3 موش مجموعة صغيرة "
+"يشاركوا ويمارسوا الطّاعة والمشاركة بإلّي تعلّموه.مجموعة 3/3 موش مجموعة صغيرة "
 "أكهو, أما هي كنسية بسيطة."
 
 #: globals.php:2618
