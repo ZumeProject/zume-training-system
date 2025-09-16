@@ -93,7 +93,7 @@ export class DashTopLevel extends DashPage {
                                     explanation=${route.explanation}
                                     icon=${route.icon}
                                     ?disableNavigate=${route.type === 'handled-link'}
-                                    as=${route.type === 'handled-link' ? 'link' : 'nav'}
+                                    as=${route.type === 'handled-link' ? 'button' : 'nav'}
                                     @click=${route.type === 'handled-link' ? (event) => {
                                         if (!route.data.neverDisabled && DashBoard.getCompletedStatus(route.name, userState)) return
                                         route.clickHandler(event, this.dispatchEvent)

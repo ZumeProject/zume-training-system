@@ -431,11 +431,15 @@ export class DashBoard extends navigator(router(LitElement)) {
             return true
         }
         if (
-            routeName === RouteNames.myTraining &&
-            !userState.plan_created &&
-            !userState.joined_online_training
+            routeName === RouteNames.myTraining
         ) {
-            return true
+            if (!userState.is_in_a_training_group) {
+                return true
+            }
+            if (!userState.plan_created &&
+              !userState.joined_online_training ) {
+                return true
+            }
         }
         if (routeName === RouteNames.myCoach && !userState.requested_a_coach) {
             return true
@@ -444,7 +448,7 @@ export class DashBoard extends navigator(router(LitElement)) {
     }
 
     isGettingStartedActive() {
-      this.getGettingStartedPercentage() === 100
+      return this.getGettingStartedPercentage() !== 100
     }
 
     getGettingStartedPercentage() {
@@ -752,6 +756,7 @@ export class DashBoard extends navigator(router(LitElement)) {
                 Wizards.joinATraining,
                 Wizards.joinFriendsPlan,
                 Wizards.planDecision,
+                Wizards.joinDecision,
             ].includes(type)
         ) {
             zumeRequest.get( 'plans', {}).then(

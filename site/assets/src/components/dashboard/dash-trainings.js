@@ -823,9 +823,8 @@ export class DashTrainings extends navigator(DashPage) {
         zumeRequest
             .post(`plan/${this.training.join_key}/leave`)
             .then((result) => {
-                this.dispatchEvent(
-                    new CustomEvent('training:changed', { bubbles: true })
-                )
+                this.dispatchEvent(new CustomEvent('training:changed', { bubbles: true }))
+                this.dispatchEvent(new CustomEvent('user-state:change', { bubbles: true }))
                 this.navigate(jsObject.base_url)
             })
     }
