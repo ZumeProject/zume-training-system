@@ -43,8 +43,13 @@
 
             ?>
             <tr role="button" class="language-selector" data-url="<?php echo esc_url( $url ) ?>" data-value="<?php echo esc_attr( $item['code'] ) ?>" id="row-<?php echo esc_attr( $item['code'] ) ?>">
-                <td><?php echo esc_html( $item['nativeName'] ) ?></td>
-                <td><?php echo esc_html( $item['enDisplayName'] ) ?></td>
+                <?php if ( wp_is_mobile() ) : ?>
+                    <td style="justify-content: unset !important;"><?php echo esc_html( $item['nativeName'] ) ?> | <?php echo esc_html( $item['enDisplayName'] ) ?></td>
+                <?php else : ?>
+                    <td><?php echo esc_html( $item['nativeName'] ) ?></td>
+                    <td><?php echo esc_html( $item['enDisplayName'] ) ?></td>
+                <?php endif; ?>
+               
             </tr>
             <?php
         }

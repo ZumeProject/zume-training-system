@@ -5,6 +5,7 @@
             <?php if ( is_user_logged_in() ) : ?>
 
                 <a role="listitem" href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="link-light nav__link"><span class="icon z-icon-dashboard"></span><span><?php echo esc_html__( 'Dashboard', 'zume' ) ?></span></a>
+                <a role="listitem" href="<?php echo esc_url( zume_training_url() ) ?>" class="link-light nav__link"><div class="icon z-icon-my-training"></div> <span><?php echo esc_html__( 'Overview', 'zume' ) ?></span></a>
                 <a role="listitem" href="<?php echo esc_url( zume_resources_url() ) ?>" class="link-light nav__link"><span class="icon z-icon-resources"></span><span><?php echo esc_html__( 'Resources', 'zume' ) ?></span></a>
 
                 <?php $user_stage = zume_get_user_stage() ?>
@@ -24,7 +25,7 @@
             <?php else : ?>
 
                 <a role="listitem" href="<?php echo esc_url( zume_about_url() ) ?>" class="link-light nav__link"><span class="icon z-icon-info"></span> <span><?php echo esc_html__( 'About', 'zume' ) ?></span></a>
-                <a role="listitem" href="<?php echo esc_url( zume_training_url() ) ?>" class="link-light nav__link"><div class="icon z-icon-my-training"></div> <span><?php echo esc_html__( 'Training', 'zume' ) ?></span></a>
+                <a role="listitem" href="<?php echo esc_url( zume_training_url() ) ?>" class="link-light nav__link"><div class="icon z-icon-my-training"></div> <span><?php echo esc_html__( 'Overview', 'zume' ) ?></span></a>
                 <a role="listitem" href="<?php echo esc_url( zume_resources_url() ) ?>" class="link-light nav__link"><div class="icon z-icon-resources"></div> <span><?php echo esc_html__( 'Resources', 'zume' ) ?></span></a>
                 <a role="listitem" href="<?php echo esc_url( zume_getting_started_url( 'register' ) ) ?>" class="link-light nav__link outline"><div class="icon z-icon-invite"></div> <span><?php echo esc_html__( 'Register', 'zume' ) ?></span></a>
                 <a role="listitem" href="<?php echo esc_url( zume_getting_started_url( 'login' ) ) ?>" class="link-light nav__link"><div class="icon z-icon-profile"></div> <span><?php echo esc_html__( 'Login', 'zume' ) ?></span></a>
@@ -34,6 +35,7 @@
             <hr>
 
             <a role="listitem" href="<?php echo esc_url( zume_checkin_url() ) ?>" class="link-light nav__link"><div class="icon z-icon-checkin"></div> <span><?php echo esc_html__( 'Check-in', 'zume' ) ?></span></a>
+            <a role="listitem" href="<?php echo esc_url( zume_share_url() ) ?>" class="link-light nav__link"><div class="icon z-icon-share"></div> <span><?php echo esc_html__( 'Concepts', 'zume' ) ?></span></a>
 
             <?php $code = zume_current_language() ?>
             <?php $display_code = zume_get_language_display_code( $code ) ?>

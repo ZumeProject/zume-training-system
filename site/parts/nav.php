@@ -15,14 +15,14 @@
                 <div class="cluster | s--2 | nav nav__list" role="list">
 
                     <?php if ( is_user_logged_in() ) : ?>
-
                         <a role="listitem" href="<?php echo esc_url( zume_dashboard_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Dashboard', 'zume' ) ?></a>
+                        <a role="listitem" href="<?php echo esc_url( zume_training_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Overview', 'zume' ) ?></a>
                         <a role="listitem" href="<?php echo esc_url( zume_resources_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Resources', 'zume' ) ?></a>
 
                     <?php else : ?>
 
                         <a role="listitem" href="<?php echo esc_url( zume_about_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'About', 'zume' ) ?></a>
-                        <a role="listitem" href="<?php echo esc_url( zume_training_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Training', 'zume' ) ?></a>
+                        <a role="listitem" href="<?php echo esc_url( zume_training_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Overview', 'zume' ) ?></a>
                         <a role="listitem" href="<?php echo esc_url( zume_resources_url() ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Resources', 'zume' ) ?></a>
                         <a role="listitem" href="<?php echo esc_url( zume_getting_started_url( 'register' ) ) ?>" class="btn outline dark nav__button"><?php echo esc_html__( 'Register', 'zume' ) ?></a>
                         <a role="listitem" href="<?php echo esc_url( zume_getting_started_url( 'login' ) ) ?>" class="btn dark nav__button"><?php echo esc_html__( 'Login', 'zume' ) ?></a>
@@ -38,7 +38,7 @@
 
                     <a class="nav__link" role="listitem" id="share-button" href="<?php echo esc_url( zume_share_url() ) ?>" aria-label="Share" data-tool>
                         <div class="icon z-icon-share"></div>
-                        <span><?php echo esc_html__( 'Share', 'zume' ) ?></span>
+                        <span><?php echo esc_html__( 'Concepts', 'zume' ) ?></span>
                     </a>
 
 
