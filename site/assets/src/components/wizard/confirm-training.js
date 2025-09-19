@@ -63,14 +63,11 @@ export class ConfirmTraining extends LitElement {
                         <td class="f-medium">${this.t.location}:</td>
                         <td>${this.training.location_note}</td>
                     </tr>
-                    <tr>
-                        <td class="f-medium">${this.t.timezone}:</td>
-                        <td>${this.training.timezone ? this.training.timezone : this.training.timezone_note}</td>
-                    </tr>
+                    
 
                     <tr>
                         <td class="f-medium">${this.t.session}:</td>
-                        <td>${this.training.current_session} / ${this.training.total_sessions}</td>
+                        <td>${this.training.total_sessions}</td>
                     </tr>
                     <tr>
                         <td class="f-medium">${this.t.next_session_date}:</td>
@@ -87,19 +84,13 @@ export class ConfirmTraining extends LitElement {
                             <td>${this.training.time_of_day_note}</td>
                         </tr>
                     `}
+                    <tr>
+                        <td class="f-medium">${this.t.timezone}:</td>
+                        <td>${this.training.timezone ? this.training.timezone : this.training.timezone_note}</td>
+                    </tr>
                 </tbody>
             </table>
-            <p class="text-center">
-                ${this.training.next_session_date_in_user_timezone ? html`
-                    ${this.t.next_session_date_in_timezone}
-                    <br>
-                    <strong>${this.training.next_session_date_in_user_timezone}</strong>
-                    <br>
-                    ${this.t.this_timezone}
-                    <br>
-                    <strong>${jsObject.profile.timezone}</strong>
-                ` : ''}
-            </p>
+            
             <calendar-select
                 style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
                 .selectedDays=${this.training.session_dates}
@@ -108,14 +99,12 @@ export class ConfirmTraining extends LitElement {
                 endDate=${this.training.session_dates[this.training.session_dates.length - 1].date}
                 viewOnly
             ></calendar-select>
+            
             <p class="text-center">${this.t.complete_profile}</p>
             <button class="btn" @click=${this.sendDoneStepEvent}>${this.t.join_training}</button>
         `
     }
 
-    createRenderRoot() {
-        return this
-    }
 }
 
 window.customElements.define( 'confirm-training', ConfirmTraining )

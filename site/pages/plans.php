@@ -79,6 +79,7 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
     public function header_style(){
 
         ?>
+       
         <script>
             jQuery(document).ready(() => {
                 jQuery(document).foundation()
@@ -168,12 +169,13 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
                 </tbody>
             </table>
 
+           
             <calendar-select
                 style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
                 selectedDays="<?php echo esc_attr( json_encode( $session_dates ) ); ?>"
                 view="all"
-                startDate="<?php echo esc_attr( $next_session_formatted ); ?>"
-                endDate="<?php echo esc_attr( $session_dates[ count( $session_dates ) - 1 ]['date'] ); ?>"
+                startDate="<?php echo esc_attr( $next_session ); ?>"
+                endDate="<?php echo esc_attr( !empty( $session_dates ) ? $session_dates[ count( $session_dates ) - 1 ]['date'] : '' ); ?>"
                 viewOnly
             ></calendar-select>
 
@@ -183,7 +185,7 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
                 </a>
 
                 <?php if ( $is_public ) : ?>
-
+                    <br><br><br><br>
                     <a href="<?php echo esc_url( zume_join_a_public_plan_url( $this->lang_code ) ); ?>" class="btn outline">
                         <?php echo esc_html__( 'Back to Public Training Groups', 'zume' ); ?>
                     </a>

@@ -133,8 +133,5 @@ export class CalendarList extends LitElement {
         `;
     }
 
-    createRenderRoot() {
-        return this
-    }
 }
 customElements.define('calendar-list', CalendarList);

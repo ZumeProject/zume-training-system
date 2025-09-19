@@ -119,14 +119,33 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
                                 ],
                             ], false );
 
+                            // Initialize variables for calendar component
+                            $session_dates = [];
+                            $next_session_formatted = '';
+
                             if ( !empty( $trainings['posts'] ) ) {
                                 foreach ( $trainings['posts'] as $training ) {
                                     $session_info = Zume_Plans_Model::get_current_session( $training['ID'] );
                                     $next_session = Zume_Plans_Model::get_next_session_date( $training['ID'] );
+                                    
+                                    // Collect session dates for calendar component
+                                    if ( !empty( $session_info ) && isset( $session_info['dates'] ) ) {
+                                        foreach ( $session_info['dates'] as $date ) {
+                                            $session_dates[] = [
+                                                'date' => $date,
+                                                'title' => $training['post_title'] ?? ''
+                                            ];
+                                        }
+                                    }
+                                    
+                                    // Set the next session formatted date (use first training's next session)
+                                    if ( empty( $next_session_formatted ) && !empty( $next_session ) ) {
+                                        $next_session_formatted = $next_session;
+                                    }
                                     ?>
                                     <tr>
                                         <td data-label="<?php echo esc_html__( 'Name', 'zume' ); ?>"><?php echo esc_html( $training['post_title'] ?? '' ); ?></td>
-                                        <td data-label="<?php echo esc_html__( 'Session', 'zume' ); ?>"><?php echo esc_html( $session_info['total'] ); ?></td>
+                                        <td data-label="<?php echo esc_html__( 'Session', 'zume' ); ?>"><?php echo esc_html( $session_info['total'] ?? '' ); ?></td>
                                         <td data-label="<?php echo esc_html__( 'Next Session Date', 'zume' ); ?>"><?php echo esc_html( $next_session ); ?></td>
                                         <td data-label="<?php echo esc_html__( 'Start Time', 'zume' ); ?>"><?php echo esc_html( $training['time_of_day_note'] ?? '' ); ?></td>
                                         <td data-label="<?php echo esc_html__( 'Timezone', 'zume' ); ?>"><?php echo esc_html( $training['timezone_note'] ?? '' ); ?></td>
@@ -156,7 +175,7 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
                         selectedDays="<?php echo esc_attr( json_encode( $session_dates ) ); ?>"
                         view="all"
                         startDate="<?php echo esc_attr( $next_session_formatted ); ?>"
-                        endDate="<?php echo esc_attr( $session_dates[ count( $session_dates ) - 1 ]['date'] ); ?>"
+                        endDate="<?php echo esc_attr( !empty( $session_dates ) ? $session_dates[ count( $session_dates ) - 1 ]['date'] : '' ); ?>"
                         viewOnly
                     ></calendar-select>
                 </div>
