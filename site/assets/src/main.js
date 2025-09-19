@@ -37,6 +37,7 @@ jQuery(document).ready(() => {
 
     Settings.defaultLocale = locale
 
+
     /* Check if Vimeo is available. If not we will have to use html5 players */
     checkVimeoAvailability()
 

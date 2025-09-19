@@ -299,9 +299,9 @@ export class CalendarSelect extends LitElement {
     }
 
     renderCalendar(monthDate) {
-        const weekDayNames = this.getDaysOfTheWeekInitials(navigator.language, 'narrow')
+        const weekDayNames = this.getDaysOfTheWeekInitials(jsObject.locale, 'narrow')
         const dayOfWeekNumber = monthDate.startOf('month').weekday
-        const monthDays =  this.buildCalendarDays(navigator.language, monthDate)
+        const monthDays =  this.buildCalendarDays(jsObject.locale, monthDate)
         return html`
             ${
                 weekDayNames.map( name => html`
@@ -337,14 +337,14 @@ export class CalendarSelect extends LitElement {
         })
     }
     selectToday() {
-        this.monthToShow = DateTime.now({ locale: navigator.language})
+        this.monthToShow = DateTime.now({ locale: jsObject.locale})
         const nowDate = this.monthToShow.toISODate()
         const target = this.shadowRoot.querySelector(`.day[data-day="${nowDate}"]`)
         this.selectDay(nowDate, target)
     }
 
     renderSlider() {
-        const now = DateTime.now({ locale: navigator.language })
+        const now = DateTime.now({ locale: jsObject.locale })
         const monthDate = this.monthToShow || DateTime.fromISO(this.startDate)
         const monthStart = monthDate.startOf('month')
 

@@ -93,6 +93,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
             const jsObject = [<?php echo json_encode([
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'root' => esc_url_raw( rest_url() ),
+                'locale' => $this->lang,
                 'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
                 'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '/assets/images' ),
                 'language_cookie' => ZUME_LANGUAGE_COOKIE,

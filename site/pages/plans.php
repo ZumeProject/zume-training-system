@@ -77,13 +77,23 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
     }
 
     public function header_style(){
-
+        [
+            'lang_code' => $lang_code,
+            'url_parts' => $url_parts,
+        ] = zume_get_url_pieces();
+        $language = zume_languages($lang_code);
         ?>
        
         <script>
             jQuery(document).ready(() => {
                 jQuery(document).foundation()
+
             })
+        </script>
+         <script>
+            const jsObject = [<?php echo json_encode([
+                'locale' => $this->lang_code
+            ]) ?>][0]
         </script>
 
         <?php if ( $this->lang_code == 'en' || empty( $this->lang_code ) ) { ?>

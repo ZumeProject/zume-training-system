@@ -12,6 +12,7 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
     public $type = 'join-a-training';
     public $lang = 'en';
     public $lang_code = 'en';
+    public $lang_slug = '';
     public $post_type = 'zume_plans';
     public static $token = 'app_get_a_coach';
 
@@ -40,7 +41,7 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
         if ( str_contains( $page_slug, $this->type ) && ! dt_is_rest() ) {
 
             $this->lang_code = $lang_code;
-            $lang_slug = empty( $code ) ? '' : $code . '/';
+            
 
             $this->register_url_and_access();
             $this->header_content();
@@ -79,6 +80,12 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
             jQuery(document).ready(function(){
                 jQuery(document).foundation();
             });
+           
+        </script>
+        <script>
+            const jsObject = [<?php echo json_encode([
+                'locale' => $this->lang_code
+            ]) ?>][0]
         </script>
 
         <link rel="canonical" href="<?php echo esc_url( $canon_url ); ?>" />
@@ -89,6 +96,11 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
 
     public function body(){
         global $zume_user_profile;
+        [
+            'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
+        ] = zume_get_url_pieces();
+        $this->lang_slug = empty( $lang_code ) ? '' : '/' . $lang_code ;
 
         require __DIR__ . '/../parts/nav.php';
         ?>
@@ -151,7 +163,7 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
                                         <td data-label="<?php echo esc_html__( 'Timezone', 'zume' ); ?>"><?php echo esc_html( $training['timezone_note'] ?? '' ); ?></td>
                                         <td data-label="<?php echo esc_html__( 'Language', 'zume' ); ?>"><?php echo esc_html( $training['language_note'] ?? '' ); ?></td>
                                         <td>
-                                            <a href="/training-group/<?php echo esc_html( $training['join_key'] ?? '' ); ?>" class="btn" data-code="<?php echo esc_attr( $training['join_key'] ?? '' ); ?>">
+                                            <a href="<?php echo $this->lang_slug ?>/training-group/<?php echo esc_html( $training['join_key'] ?? '' ); ?>" class="btn" data-code="<?php echo esc_attr( $training['join_key'] ?? '' ); ?>">
                                                 <?php echo esc_html__( 'Join', 'zume' ); ?>
                                             </a>
                                         </td>
