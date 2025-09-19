@@ -105,6 +105,9 @@ export class ConfirmTraining extends LitElement {
         `
     }
 
+    createRenderRoot() {
+        return this
+    }
 }
 
 window.customElements.define( 'confirm-training', ConfirmTraining )
