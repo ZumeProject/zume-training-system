@@ -65,9 +65,15 @@ class Zume_Plans_Model {
 
         $logs = zume_get_user_log( get_current_user_id(), 'system', 'email_notification' );
         $has_emailed_notification = array_search( $training_id, array_column( $logs, 'post_id' ) );
-        $log = $logs[$has_emailed_notification];
-        $training_group['last_emailed_notification'] = $log['timestamp'];
-        $training_group['has_emailed_notification'] = $has_emailed_notification !== false ? true : false;
+        
+        if ( $has_emailed_notification !== false && isset( $logs[$has_emailed_notification] ) ) {
+            $log = $logs[$has_emailed_notification];
+            $training_group['last_emailed_notification'] = $log['timestamp'];
+            $training_group['has_emailed_notification'] = true;
+        } else {
+            $training_group['last_emailed_notification'] = '';
+            $training_group['has_emailed_notification'] = false;
+        }
 
         /* Include Invite QR url in the training */
         $invite_url = dt_create_site_url() . '/training-group/' . $training_group['join_key'];

@@ -126,7 +126,7 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
                                     ?>
                                     <tr>
                                         <td data-label="<?php echo esc_html__( 'Name', 'zume' ); ?>"><?php echo esc_html( $training['post_title'] ?? '' ); ?></td>
-                                        <td data-label="<?php echo esc_html__( 'Session', 'zume' ); ?>"><?php echo esc_html( $session_info['current'] ); ?> / <?php echo esc_html( $session_info['total'] ); ?></td>
+                                        <td data-label="<?php echo esc_html__( 'Session', 'zume' ); ?>"><?php echo esc_html( $session_info['total'] ); ?></td>
                                         <td data-label="<?php echo esc_html__( 'Next Session Date', 'zume' ); ?>"><?php echo esc_html( $next_session ); ?></td>
                                         <td data-label="<?php echo esc_html__( 'Start Time', 'zume' ); ?>"><?php echo esc_html( $training['time_of_day_note'] ?? '' ); ?></td>
                                         <td data-label="<?php echo esc_html__( 'Timezone', 'zume' ); ?>"><?php echo esc_html( $training['timezone_note'] ?? '' ); ?></td>
@@ -151,6 +151,14 @@ class Zume_Join_A_Training_Public extends Zume_Magic_Page
                             ?>
                         </tbody>
                     </table>
+                    <calendar-select
+                        style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
+                        selectedDays="<?php echo esc_attr( json_encode( $session_dates ) ); ?>"
+                        view="all"
+                        startDate="<?php echo esc_attr( $next_session_formatted ); ?>"
+                        endDate="<?php echo esc_attr( $session_dates[ count( $session_dates ) - 1 ]['date'] ); ?>"
+                        viewOnly
+                    ></calendar-select>
                 </div>
                 <button class="btn" id="toggle-future-trainings" data-toggle="future-trainings-collapse">
                     <?php echo esc_html__( 'Want to know about future trainings?', 'zume' ); ?>

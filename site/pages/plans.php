@@ -136,8 +136,8 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
         ?>
 
         <div class="page container-md stack">
-            <h1 class="text-center brand-light"><?php echo esc_html( $training_group['post_title'] ); ?></h1>
-            <h2 class="h3 text-center"><?php echo esc_html__( 'Training Group Details', 'zume' ); ?></h2>
+            <h1 class="text-center brand-light"><?php echo esc_html( $training_group['title'] ); ?></h1>
+            <div class="text-center"><strong><?php echo esc_html__( 'Training Group Details', 'zume' ); ?></strong></div>
             <table class="center" no-labels>
                 <tbody>
                     <tr>
@@ -148,13 +148,10 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
                         <td class="f-medium"><?php echo esc_html__( 'Location', 'zume' ); ?>:</td>
                         <td><?php echo esc_html( $location_note ); ?></td>
                     </tr>
-                    <tr>
-                        <td class="f-medium"><?php echo esc_html__( 'Timezone', 'zume' ); ?>:</td>
-                        <td><?php echo esc_html( $timezone_note ); ?></td>
-                    </tr>
+                    
                     <tr>
                         <td class="f-medium"><?php echo esc_html__( 'Session', 'zume' ); ?>:</td>
-                        <td><?php echo esc_html( $session_info['current'] ); ?> / <?php echo esc_html( $session_info['total'] ); ?></td>
+                        <td><?php echo esc_html( $session_info['total'] ); ?></td>
                     </tr>
                     <tr>
                         <td class="f-medium"><?php echo esc_html__( 'Next Session Date', 'zume' ); ?>:</td>
@@ -164,22 +161,12 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
                         <td class="f-medium"><?php echo esc_html__( 'Time of Day', 'zume' ); ?>:</td>
                         <td><?php echo esc_html( $time_of_day_formatted ); ?></td>
                     </tr>
+                    <tr>
+                        <td class="f-medium"><?php echo esc_html__( 'Timezone', 'zume' ); ?>:</td>
+                        <td><?php echo esc_html( $timezone_note ); ?></td>
+                    </tr>
                 </tbody>
             </table>
-
-            <?php if ( !empty( $next_session_datetime_in_user_timezone ) ) : ?>
-
-                <p class="text-center">
-                    <?php echo esc_html__( 'The next session is:', 'zume' ); ?>
-                    <br>
-                    <strong><?php echo esc_html( $next_session_datetime_in_user_timezone ); ?></strong>
-                    <br>
-                    <?php echo esc_html__( 'In this timezone:', 'zume' ); ?>
-                    <br>
-                    <strong><?php echo esc_html( $user_timezone ); ?></strong>
-                </p>
-
-            <?php endif; ?>
 
             <calendar-select
                 style='--primary-color: var(--z-brand-light); --hover-color: var(--z-brand-fade)'
@@ -189,6 +176,7 @@ class Zume_Training_Plans_URL extends Zume_Magic_Page
                 endDate="<?php echo esc_attr( $session_dates[ count( $session_dates ) - 1 ]['date'] ); ?>"
                 viewOnly
             ></calendar-select>
+
             <div class="stack-2 fit-content mx-auto">
                 <a href="<?php echo esc_url( $join_url ); ?>" class="btn large">
                     <?php echo esc_html__( 'Join Training Group', 'zume' ); ?>

@@ -8,7 +8,7 @@
                 <?php if ( is_user_logged_in() ) : ?>
 
                     <a role="listitem" class="link-light" href="<?php echo esc_url( zume_about_url() ) ?>"><?php echo esc_html__( 'About', 'zume' ) ?></a>
-                    <a role="listitem" class="link-light" href="<?php echo esc_url( zume_training_url() ) ?>"><?php echo esc_html__( 'Training', 'zume' ) ?></a>
+                    <a role="listitem" class="link-light" href="<?php echo esc_url( zume_training_url() ) ?>"><?php echo esc_html__( 'Overview', 'zume' ) ?></a>
                     <a role="listitem" class="link-light" href="<?php echo esc_url( zume_get_a_coach_url() ) ?>"><?php echo esc_html__( 'Get a Coach', 'zume' ) ?></a>
 
                 <?php else : ?>
@@ -38,7 +38,7 @@
                     position="top"
                     asLink
                 ></launch-course>
-                <a role="listitem" class="link-light" href="<?php echo esc_url( zume_resources_url() ) ?>"><?php echo esc_html__( 'Resources', 'zume' ) ?></a>
+                <a role="listitem" class="link-light" href="<?php echo esc_url( zume_how_to_follow_jesus() ) ?>"><?php echo esc_html__( 'How to Follow Jesus', 'zume' ) ?></a>
                 <a role="listitem" class="link-light" href="<?php echo esc_url( zume_donate_url() ) ?>"><?php echo esc_html__( 'Donate', 'zume' ) ?></a>
             </div>
         </div>
