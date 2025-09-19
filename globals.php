@@ -238,16 +238,16 @@ if ( ! function_exists( 'zume_get_user_stage' ) ) {
                 if ( 'training_completed' == $value['subtype'] ) {
                     $funnel_steps[3] = true;
                 }
-                if ( ! ( strpos( $value['subtype'], 'heard' ) === false ) ) {
+                if ( isset( $value['subtype'] ) && ! ( strpos( $value['subtype'], 'heard' ) === false ) ) {
                     $progress[$value['subtype']] = true;
                     if ( count( $progress ) > 25 ) {
                         $funnel_steps[3] = true;
                     }
                 }
-                if ( 'first_practitioner_report' == $value['subtype'] || 'join_community' == $value['subtype'] ) {
+                if ( isset( $value['subtype'] ) && ( 'first_practitioner_report' == $value['subtype'] || 'join_community' == $value['subtype'] ) ) {
                     $funnel_steps[4] = true;
                 }
-                if ( 'mawl_completed' == $value['subtype'] || 'host_completed' == $value['subtype'] ) {
+                if ( isset( $value['subtype'] ) && ( 'mawl_completed' == $value['subtype'] || 'host_completed' == $value['subtype'] ) ) {
                     $funnel_steps[5] = true;
                 }
                 if ( 'seeing_generational_fruit' == $value['subtype'] ) {
@@ -292,7 +292,9 @@ if ( ! function_exists( 'zume_get_user_stage' ) ) {
                 }
                 if ( 'requested_a_coach' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
-                    $user_state['requested_a_coach_date'] = $value['timestamp'];
+                    if ( isset( $value['timestamp'] ) ) {
+                        $user_state['requested_a_coach_date'] = $value['timestamp'];
+                    }
                 }
                 if ( 'set_profile_location' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
@@ -303,7 +305,7 @@ if ( ! function_exists( 'zume_get_user_stage' ) ) {
                 if ( 'set_profile_name' == $value['subtype'] ) {
                     $user_state[$value['subtype']] = true;
                 }
-                if ( 'training_26_heard' == $value['log_key'] ) {
+                if ( isset( $value['log_key'] ) && 'training_26_heard' == $value['log_key'] ) {
                     $user_state['can_create_3_month_plan'] = true;
                 }
                 if ( 'made_post_training_plan' == $value['subtype'] ) {
@@ -929,22 +931,26 @@ if ( ! function_exists( 'zume_get_user_log' ) ) {
     function zume_get_user_log( $user_id, $type = null, $subtype = null ) {
         global $wpdb, $table_prefix;
 
-        $sql = $wpdb->prepare( "SELECT CONCAT( r.type, '_', r.subtype ) as log_key, r.*
+        $sql = "SELECT CONCAT( r.type, '_', r.subtype ) as log_key, r.*
             FROM zume_dt_reports r
             WHERE r.user_id = %s
-            AND r.post_type = 'zume'
-        ", $user_id );
+            AND r.post_type = 'zume'";
+
+        $args = [ $user_id ];
 
         if ( !empty( $type ) ) {
-            $sql .= $wpdb->prepare( "AND r.type = %s\n", $type );
+            $sql .= " AND r.type = %s";
+            $args[] = $type;
         }
 
         if ( !empty( $subtype ) ) {
-            $sql .= $wpdb->prepare( 'AND r.subtype = %s', $subtype );
+            $sql .= " AND r.subtype = %s";
+            $args[] = $subtype;
         }
 
+        $prepared_sql = $wpdb->prepare( $sql, $args );
         // phpcs:ignore
-        $results = $wpdb->get_results( $sql, ARRAY_A );
+        $results = $wpdb->get_results( $prepared_sql, ARRAY_A );
 
         if ( is_array( $results ) ) {
             return $results;

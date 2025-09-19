@@ -6,7 +6,7 @@ class Zume_Plans_Model {
     public static function get_plan_by_code( $training_code, $locale = null ) {
         // get the post id from the post meta that has the 'join_key' as $training_code
         global $wpdb;
-        $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'join_key' AND meta_value = %s", $training_code ) );
+        $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM zume_postmeta WHERE meta_key = 'join_key' AND meta_value = %s", $training_code ) );
         if ( !$post_id ) {
             return null;
         }
@@ -161,8 +161,12 @@ class Zume_Plans_Model {
                 }
             }
             $next_session_date = self::get_next_session_date( $plan['ID'] );
-            $time_of_day = $plan['time_of_day'];
-            $next_session_datetime = DateTime::createFromFormat( 'Y-m-d H:i', "$next_session_date $time_of_day", new DateTimeZone( 'UTC' ) );
+            $time_of_day = isset( $plan['time_of_day'] ) ? $plan['time_of_day'] : '';
+            if ( !empty( $time_of_day ) ) {
+                $next_session_datetime = DateTime::createFromFormat( 'Y-m-d H:i', "$next_session_date $time_of_day", new DateTimeZone( 'UTC' ) );
+            } else {
+                $next_session_datetime = null;
+            }
             $post['post_author_display_name'] = get_user_by( 'id', $plan['assigned_to']['id'] )->display_name;
             $post['next_session_date'] = self::get_next_session_date( $plan['ID'] );
             $post['current_session'] = self::get_current_session( $plan['ID'] )['current'];
@@ -463,8 +467,8 @@ class Zume_Plans_Model {
     public static function get_next_session_date_in_user_timezone( $training_id, $user_timezone ) {
         $next_session_date = self::get_next_session_date( $training_id );
         $training = DT_Posts::get_post( self::$post_type, $training_id, false, false );
-        $time_of_day = $training['time_of_day'];
-        $timezone = $training['timezone'];
+        $time_of_day = isset( $training['time_of_day'] ) ? $training['time_of_day'] : '';
+        $timezone = isset( $training['timezone'] ) ? $training['timezone'] : '';
         if ( empty( $time_of_day ) || empty( $timezone ) || empty( $next_session_date ) ) {
             return '';
         }

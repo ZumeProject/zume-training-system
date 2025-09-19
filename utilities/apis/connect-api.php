@@ -307,6 +307,11 @@ class Zume_Connect_Endpoints
         // if exists, add coach and plan to old contact
         // if does not exits, add new contact, and connect with coach
 
+        dt_write_log( __METHOD__ . ' ' . $user_id . ' ' . $plan['join_key'] . ' ' . $coach_id . ' ' . $coach_user_id );
+        dt_write_log( print_r( $plan, true ) );
+        dt_write_log( print_r( $coach_id, true ) );
+        dt_write_log( print_r( $coach_user_id, true ) );
+
         $profile = zume_get_user_profile( $user_id );
         $coaching_contact_id = $profile['coaching_contact_id'];
         $preferred_language = empty( $data ) ? $profile['preferred_language'] : 'en';
@@ -443,6 +448,7 @@ class Zume_Connect_Endpoints
         $result = wp_remote_post( $url, $args );
         if ( is_wp_error( $result ) || $result['response']['code'] !== 200 ) {
             dt_write_log( __METHOD__ . " FAILED TO $method COACHING CONTACT FOR " . $profile['name'] );
+            dt_write_log( print_r( $result, true ) );
             return new WP_Error( 'coach_request_failed', "Failed to $method coaching contact", array( 'status' => 400 ) );
         }
 

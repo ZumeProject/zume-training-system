@@ -258,7 +258,7 @@ class Zume_Profile_Model {
         }
 
         if ( !empty( $grid_data['admin2_grid_id'] ) ) {
-            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM {$wpdb->location_grid_cities} WHERE admin2_grid_id = %d", $grid_data['admin2_grid_id'] ) );
+            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM zume_location_grid_cities WHERE admin2_grid_id = %d", $grid_data['admin2_grid_id'] ) );
 
             if ( !empty( $timezone ) ) {
                 return $timezone;
@@ -266,7 +266,7 @@ class Zume_Profile_Model {
         }
 
         if ( !empty( $grid_data['admin1_grid_id'] ) ) {
-            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM {$wpdb->location_grid_cities} WHERE admin1_grid_id = %d", $grid_data['admin1_grid_id'] ) );
+            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM zume_location_grid_cities WHERE admin1_grid_id = %d", $grid_data['admin1_grid_id'] ) );
 
             if ( !empty( $timezone ) ) {
                 return $timezone;
@@ -274,7 +274,7 @@ class Zume_Profile_Model {
         }
 
         if ( !empty( $grid_data['admin0_grid_id'] ) ) {
-            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM {$wpdb->location_grid_cities} WHERE admin0_grid_id = %d", $grid_data['admin0_grid_id'] ) );
+            $timezone = $wpdb->get_var( $wpdb->prepare( "SELECT timezone FROM zume_location_grid_cities WHERE admin0_grid_id = %d", $grid_data['admin0_grid_id'] ) );
 
             if ( !empty( $timezone ) ) {
                 return $timezone;

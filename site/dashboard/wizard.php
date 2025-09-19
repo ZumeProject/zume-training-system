@@ -124,8 +124,8 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 $url->query_params->has( 'flow' ) &&
                 $url->query_params->get( 'flow' ) === 'start' &&
                 isset( $user_stage['state'] ) &&
-                $user_stage['state']['set_profile_name'] &&
-                $user_stage['state']['set_profile_location'] &&
+                ( isset( $user_stage['state']['set_profile_name'] ) ? $user_stage['state']['set_profile_name'] : false ) &&
+                ( isset( $user_stage['state']['set_profile_location'] ) ? $user_stage['state']['set_profile_location'] : false ) &&
                 ( isset( $user_stage['state']['plan_created'] ) ? $user_stage['state']['plan_created'] : false )
             ) || (
                 !empty( $has_been_on_notification_list ) &&

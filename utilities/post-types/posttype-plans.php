@@ -1022,10 +1022,10 @@ class Zume_Plans_Post_Type extends DT_Module_Base {
     public function generate_join_key() {
         global $wpdb;
         $key = substr( md5( rand( 10000, 100000 ) ), 0, 3 ) . substr( md5( rand( 10000, 100000 ) ), 0, 3 );
-        $key_exists = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = 'join_key' AND meta_value = %s", $key ) );
+        $key_exists = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM {zume_postmeta} WHERE meta_key = 'join_key' AND meta_value = %s", $key ) );
         while ( $key_exists ){
             $key = substr( md5( rand( 10000, 100000 ) ), 0, 3 ) . substr( md5( rand( 10000, 100000 ) ), 0, 3 );
-            $key_exists = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = 'join_key' AND meta_value = %s", $key ) );
+            $key_exists = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM {zume_postmeta} WHERE meta_key = 'join_key' AND meta_value = %s", $key ) );
         }
         return $key;
     }
@@ -1069,9 +1069,9 @@ class Zume_Plans_Post_Type extends DT_Module_Base {
 
         $results = $wpdb->get_results( $wpdb->prepare( "
             SELECT status.meta_value as status, count(pm.post_id) as count
-            FROM $wpdb->postmeta pm
+            FROM zume_postmeta pm
             INNER JOIN $wpdb->posts a ON( a.ID = pm.post_id AND a.post_type = %s and a.post_status = 'publish' )
-            INNER JOIN $wpdb->postmeta status ON ( status.post_id = pm.post_id AND status.meta_key = 'status' )
+            INNER JOIN zume_postmeta status ON ( status.post_id = pm.post_id AND status.meta_key = 'status' )
             WHERE pm.meta_key = 'assigned_to'
             AND pm.meta_value = CONCAT( 'user-', %s )
             GROUP BY status.meta_value
@@ -1085,7 +1085,7 @@ class Zume_Plans_Post_Type extends DT_Module_Base {
         global $wpdb;
         $results = $wpdb->get_results($wpdb->prepare( "
             SELECT status.meta_value as status, count(status.post_id) as count
-            FROM $wpdb->postmeta status
+            FROM zume_postmeta status
             INNER JOIN $wpdb->posts a ON( a.ID = status.post_id AND a.post_type = %s and a.post_status = 'publish' )
             WHERE status.meta_key = 'status'
             GROUP BY status.meta_value
