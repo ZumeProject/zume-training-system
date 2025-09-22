@@ -408,7 +408,7 @@ Thanks!
             'url_parts' => $url_parts,
         ] = zume_get_url_pieces();
 
-        if ( ! in_array( $url_parts[0], [ 'share', 'resources', 'training', 'about', 'how-to-follow-jesus'] ) ) {
+        if ( ! isset( $url_parts[0] ) || ! in_array( $url_parts[0], [ 'share', 'resources', 'training', 'about', 'how-to-follow-jesus'] ) ) {
             return;
         }
 

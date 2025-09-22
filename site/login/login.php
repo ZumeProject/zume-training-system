@@ -36,7 +36,7 @@ class Zume_Training_Login extends Zume_Magic_Page {
             'lang_code' => $lang_code,
         ] = zume_get_url_pieces();
 
-        if ( $url_parts[0] === $this->type && ! dt_is_rest() ) {
+        if ( isset( $url_parts[0] ) && $url_parts[0] === $this->type && ! dt_is_rest() ) {
 
             $this->lang_code = $lang_code;
 

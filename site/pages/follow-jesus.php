@@ -168,7 +168,7 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
         <div class="page bg-gray-100">
             <div class="container-md center">
                 <ul class="stack-2 | accordion | w-100" data-accordion data-multi-expand="true" data-allow-all-closed="true">
-                    <li class="accordion-item rounded shadow" data-accordion-item>
+                    <li class="accordion-item rounded shadow is-active" data-accordion-item>
                         <a href="#" class="accordion-title"><h2><?php echo esc_html__( 'What is a follower of Jesus?', 'zume' ) ?></h2></a>
 
                         <div class="accordion-content" data-tab-content>
@@ -188,7 +188,7 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
                             </div>
 
                         </div>
-                    </li><li class="accordion-item rounded shadow" data-accordion-item>
+                    </li><li class="accordion-item rounded shadow is-active" data-accordion-item>
                         <a href="#" class="accordion-title"><h2><?php echo esc_html__( 'What are the activities of a follower of Jesus?', 'zume' ) ?></h2></a>
 
                         <div class="accordion-content" data-tab-content>
@@ -260,7 +260,7 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
                             </div>
 
                         </div>
-                    </li><li class="accordion-item rounded shadow" data-accordion-item>
+                    </li><li class="accordion-item rounded shadow is-active" data-accordion-item>
                         <a href="#" class="accordion-title"><h2><?php echo esc_html__( 'How do I obey Jesus and help others become followers with me?', 'zume' ) ?></h2></a>
 
                         <div class="accordion-content" data-tab-content>
@@ -317,7 +317,7 @@ class Zume_Training_Follow_Jesus extends Zume_Magic_Page
                             </div>
 
                         </div>
-                    </li><li class="accordion-item rounded shadow" data-accordion-item>
+                    </li><li class="accordion-item rounded shadow is-active" data-accordion-item>
                         <a href="#" class="accordion-title"><h2><?php echo esc_html__( 'What if many friends, family and others start following Jesus with me?', 'zume' ) ?></h2></a>
 
                         <div class="accordion-content" data-tab-content>

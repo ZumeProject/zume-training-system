@@ -30,7 +30,7 @@ class Zume_Communication_Preferences extends Zume_Magic_Page
             'url_parts' => $url_parts,
         ] = zume_get_url_pieces();
 
-        if ( $url_parts[0] === $this->root && $url_parts[1] === $this->type && ! dt_is_rest() ) {
+        if ( isset( $url_parts[0] ) && isset( $url_parts[1] ) && $url_parts[0] === $this->root && $url_parts[1] === $this->type && ! dt_is_rest() ) {
 
             $this->register_url_and_access();
             $this->header_content();

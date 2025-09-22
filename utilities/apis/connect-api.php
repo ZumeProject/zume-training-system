@@ -463,6 +463,8 @@ class Zume_Connect_Endpoints
 
         $result = wp_remote_post( $url, $comment_args );
         if ( is_wp_error( $result ) ) {
+            dt_write_log($__METHOD__);
+            dt_write_log($result);
             dt_write_log( __METHOD__ . ' FAILED TO ADD COMMENTS TO COACHING CONTACT FOR ' . $profile['name'] );
         }
 
