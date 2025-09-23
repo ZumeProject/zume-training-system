@@ -128,6 +128,14 @@ class Zume_Get_A_Coach_Endpoints
             ];
         }
 
+        if ( !empty( $profile['phone'] ) ) {
+            $fields['contact_phone'] = [
+                'values' => [
+                    [ 'value' => $profile['phone'] ],
+                ]
+            ];
+        }
+
         if ( ! empty( $profile['location'] ) ) {
             $fields['location_grid_meta'] = [
                 'values' => [
