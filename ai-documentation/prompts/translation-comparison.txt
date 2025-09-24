@@ -1,5 +1,0 @@
-First, review and copyedit this Somali translation (https://zume.training/so/app/script?s=61) for communication and theological accuracy using the source versions for comparison.  
-
-The source versions are English (https://zume.training/en/app/script?s=61), German (https://zume.training/de/app/script?s=61), Spanish (https://zume.training/so/app/script?s=61), and Nepali (https://zume.training/ne/app/script?s=61).  Second, log the changes and reason for the changes in a tabular format. 
-
-Third, update the Somali translation, and output the new translation into an artifact.

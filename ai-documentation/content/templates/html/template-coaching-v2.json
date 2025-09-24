@@ -1,0 +1,114 @@
+{
+  "head": {
+    "title": "Zúme Coaching - Transform from Disciple to Disciple-Maker",
+    "description": "Get personalized coaching to break spiritual stagnation and multiply disciples. Olympic athletes have coaches - disciple-makers need them too. Start your transformation today.",
+    "keywords": "Zume coaching, discipleship coaching, disciple-making, spiritual growth, multiplication movements, mentorship"
+  },
+  "hero": {
+    "headline": "Olympic Athletes Have Coaches. Disciple-Makers Need Them Too.",
+    "subtitle": "Transform from Disciple to Disciple-Maker with Personalized Mentorship",
+    "description": "Zúme Coaching provides the missing link between learning biblical principles and actually multiplying disciples in real life. While the 20-hour Zúme Training equips you with proven tools, coaching ensures you successfully implement these principles to create sustainable multiplication movements.",
+    "cta_text": "Get Your Coach Today →",
+    "cta_link": "https://zume.training/login?redirect_to=https%3A%2F%2Fzume.training%2Fwizard%2Fget-a-coach&action=register&ref=coaching-template-v2",
+    "image": "https://pages.zume.training/images/global-unity-people-earth.png",
+    "image_alt": "Global Unity People Earth"
+  },
+  "features": {
+    "title": "Why Zúme Coaching Works",
+    "subtitle": "Unlike traditional discipleship programs that focus on knowledge transfer, Zúme Coaching prioritizes experiential learning with proven results.",
+    "card1": {
+      "title": "Personalized Coach Matching",
+      "description": "Connect with experienced practitioners who speak your language and understand your cultural context. Our coaches are matched based on your ministry experience and personal circumstances.",
+      "icon": "fas fa-users"
+    },
+    "card2": {
+      "title": "Competency-Based Development",
+      "description": "Focus on developing skills and building competence, not just gaining knowledge. Practical application of all 22 Zúme training elements in real-life contexts.",
+      "icon": "fas fa-graduation-cap"
+    },
+    "card3": {
+      "title": "Obstacle Navigation Support",
+      "description": "All coaches help you overcome barriers and make meaningful progress in your disciple-making journey. Personalized problem-solving for cultural, logistical, and spiritual challenges.",
+      "icon": "fas fa-handshake"
+    }
+  },
+  "cta": {
+    "title": "Ready to Break Through Your Spiritual Plateau?",
+    "description": "Join thousands of disciple-makers who have transformed from learners to multipliers through personalized coaching. Your journey to multiplication starts with one conversation.",
+    "cta_text": "Start Your Coaching Journey →",
+    "cta_link": "https://zume.training/login?redirect_to=https%3A%2F%2Fzume.training%2Fwizard%2Fget-a-coach&action=register&ref=coaching-template-v2"
+  },
+  "publishing": {
+    "title": "HOW DOES ZUME TRAINING WORK?",
+    "description": "While most discipleship programs focus on information transfer, Zúme Coaching prioritizes experiential learning. In every session, the goal is fruitful action. The best outcome will be a changed lifestyle and experience of increased power in your faith.",
+    "highlight": "Coaches guide you through real-world application, ensuring principles translate into actual disciple-making results.",
+    "video_title": "HOW DOES ZUME TRAINING WORK?",
+    "video_source": "https://storage.googleapis.com/zume-file-mirror/en/32.mp4"
+  },
+  "benefits": {
+    "title": "What Makes Zúme Coaching Different",
+    "subtitle": "We've been training disciple-makers globally for over thirty years with proven methodologies that create lasting impact.",
+    "card1": {
+      "title": "Experiential Learning Approach",
+      "description": "Turn theoretical knowledge into actual disciple-making conversations and relationships. Every session focuses on fruitful action, not just information transfer.",
+      "icon": "fas fa-comments"
+    },
+    "card2": {
+      "title": "Movement Thinking",
+      "description": "Move from discipling individuals to training disciple-makers. Develop systems and approaches that create sustainable, expanding networks.",
+      "icon": "fas fa-network-wired"
+    },
+    "card3": {
+      "title": "Cultural Adaptation",
+      "description": "Learn to adapt biblical principles to your specific cultural and social context. Coaches understand local challenges and effective approaches.",
+      "icon": "fas fa-globe"
+    }
+  },
+  "testimonials": {
+    "title": "Real Results from Real Disciple-Makers",
+    "card1": {
+      "name": "New Disciple-Maker",
+      "achievement": "Started 3 disciple-making groups",
+      "quote": "\"I wanted to make disciples but didn't know where to start. My Zúme coach helped me overcome impostor syndrome and gave me practical steps to begin meaningful spiritual conversations. Now I'm confidently leading others.\"",
+      "icon": "fas fa-user"
+    },
+    "card2": {
+      "name": "Experienced Leader",
+      "achievement": "Trained 12 new disciple-makers",
+      "quote": "\"I've been discipling people for years but wanted to see multiplication. My coach helped me move from addition to multiplication, creating systems that train others to train others. The impact has been exponential.\"",
+      "icon": "fas fa-user"
+    },
+    "card3": {
+      "name": "Church Leader",
+      "achievement": "Mobilized entire congregation",
+      "quote": "\"My Zúme coach helped me shift our church culture from program-dependent to mission-driven. We've seen more people actively making disciples in the past 6 months than in the previous 5 years.\"",
+      "icon": "fas fa-user"
+    },
+    "card4": {
+      "name": "Small Group Facilitator",
+      "achievement": "Launched 2 new discovery groups",
+      "quote": "\"Before coaching, I struggled to keep my group engaged and growing. My Zúme coach gave me simple tools and encouragement to help others take ownership. Now, two members have started their own groups and our impact is multiplying!\"",
+      "icon": "fas fa-user"
+    }
+  },
+  "final_cta": {
+    "title": "Don't Wait to Start Multiplying Disciples",
+    "description": "Every day you wait is another day people aren't being reached with the gospel. Join the global movement of ordinary believers creating extraordinary kingdom impact.",
+    "cta_text": "Get Your Coach Now →",
+    "cta_link": "https://zume.training/login?redirect_to=https%3A%2F%2Fzume.training%2Fwizard%2Fget-a-coach&action=register&ref=coaching-template-v2"
+  },
+  "footer": {
+    "text": "Ready to move from learning about disciple-making to actually multiplying disciples?",
+    "cta_text": "Connect with a Zúme Coach Today",
+    "cta_link": "https://zume.training/login?redirect_to=https%3A%2F%2Fzume.training%2Fwizard%2Fget-a-coach&action=register&ref=coaching-template-v2"
+  },
+  "schema": {
+    "organization_name": "Zume Training",
+    "organization_url": "https://zume.training",
+    "organization_logo": "https://zume.training/logo.png",
+    "social_links": [
+      "https://www.facebook.com/zumemultiplyingdisciples",
+      "https://www.instagram.com/zume.training"
+    ]
+  }
+}
