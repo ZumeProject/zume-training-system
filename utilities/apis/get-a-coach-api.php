@@ -84,7 +84,17 @@ class Zume_Get_A_Coach_Endpoints
             return new WP_Error( 'already_has_coach', 'User has already requested a coach', array( 'status' => 400 ) );
         }
 
-        $preferred_language = empty( $data ) ? $profile['preferred_language'] : $data['preferred-language']['value'];
+        // Get preferred language with proper error checking
+        $preferred_language = 'en'; // default
+        if ( empty( $data ) ) {
+            $preferred_language = $profile['preferred_language'] ?? 'en';
+        } else {
+            if ( isset( $data['preferred-language']['value'] ) ) {
+                $preferred_language = $data['preferred-language']['value'];
+            } elseif ( isset( $data['preferred_language'] ) ) {
+                $preferred_language = $data['preferred_language'];
+            }
+        }
         $preferred_language = empty( $preferred_language ) ? 'en' : $preferred_language;
 
         $fields = [
