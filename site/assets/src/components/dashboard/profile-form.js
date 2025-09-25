@@ -8,6 +8,10 @@ export class ProfileForm extends LitElement {
             loading: { type: Boolean, attribute: false },
             locations: { type: Array, attribute: false },
             infosOpen: { type: Array, attribute: false },
+            hasError: { type: Boolean, attribute: false },
+            showError: { type: Boolean, attribute: false },
+            phoneError: { type: String, attribute: false },
+            errorMessage: { type: String, attribute: false },
         }
     }
     constructor() {
@@ -15,6 +19,10 @@ export class ProfileForm extends LitElement {
         this.userProfile = {}
         this.locations = []
         this.infosOpen = []
+        this.hasError = false
+        this.showError = false
+        this.phoneError = ''
+        this.errorMessage = ''
     }
 
     firstUpdated() {
@@ -45,10 +53,12 @@ export class ProfileForm extends LitElement {
     submitProfileForm(e) {
         e.preventDefault()
 
+        this.showError = false
+
         const name = this.nameInput.value
         const email = this.emailInput.value
         const communications_email = this.preferredEmailInput.value
-        const phone = this.phoneInput.value
+        const phone = this.phoneInput.number
         const preferred_language = this.prefferedLanguageInput.value
 
         const data = {
@@ -63,6 +73,11 @@ export class ProfileForm extends LitElement {
             this.mapboxSelectedId,
             this.userProfile.location
         )
+
+        if (this.hasError) {
+            this.showErrorMessage(jsObject.wizard_translations.complete_profile.form_error)
+            return
+        }
 
         this.loading = true
 
@@ -148,6 +163,14 @@ export class ProfileForm extends LitElement {
             })
     }
 
+    showErrorMessage(message) {
+        this.showError = true
+        this.errorMessage = message
+        setTimeout(() => {
+            this.errorMessage = ''
+        }, 3000)
+    }
+
     fireEvents(profile) {
         const event = new CustomEvent('user-profile:change', {
             bubbles: true,
@@ -199,6 +222,16 @@ export class ProfileForm extends LitElement {
         return this.userProfile.sso_identities !== ''
     }
 
+    _handleInvalidPhone(event) {
+        this.hasError = true
+        this.phoneError = event.detail.message
+    }
+
+    _handlePhoneInput() {
+        this.hasError = false
+        this.phoneError = ''
+    }
+
     render() {
         return html`
             <form action="" class="stack--2" id="profile-form" @submit=${this.submitProfileForm}>
@@ -230,13 +263,23 @@ export class ProfileForm extends LitElement {
                 <div class="">
                     <label for="phone">${jsObject.translations.phone}</label>
                     <div class="d-flex align-items-center">
-                        <input
-                          class="input"
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value=${this.userProfile.phone}
-                        >
+                        <div class="w-100">
+                          <phone-input
+                            class="w-100"
+                            id="phone"
+                            name="phone"
+                            value=${this.userProfile.phone}
+                            .t=${jsObject.wizard_translations.complete_profile}
+                            @phone-input=${this._handlePhoneInput}
+                            @invalid=${this._handleInvalidPhone}
+                          ></phone-input>
+                          <div class="input-error" data-state="${this.showError && this.phoneError.length ? '' : 'empty'}" >${this.phoneError}</div>
+                          ${
+                            this.showError && this.phoneError.length ? html`
+                              <div class="input-subtext">${jsObject.wizard_translations.complete_profile.phone_help}</div>
+                            ` : ''
+                          }
+                        </div>
                         <button type="button" class="icon-btn f-1 ${this.isSSOUser() ? 'invisible' : ''}" @click=${() =>
                             this._toggleInfo('phone')}>
                             <span class="icon z-icon-info brand-light"></span>
@@ -446,6 +489,7 @@ export class ProfileForm extends LitElement {
                       ${jsObject.translations.save}
                     </button>
                 </div>
+                <div class="banner warning" data-state=${this.errorMessage.length ? '' : 'empty'}>${this.errorMessage}</div>
                 <span class="loading-spinner ${this.loading ? 'active' : ''}"></span>
             </form>
             <hr>

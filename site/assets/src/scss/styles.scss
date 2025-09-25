@@ -927,6 +927,9 @@ input::-webkit-calendar-picker-indicator {
 .chevron {
   transition: transform 120ms linear;
 }
+.iti {
+    display: block;
+}
 
 @media (min-width: $break-lg) {
     .nav__link[data-tool] {
