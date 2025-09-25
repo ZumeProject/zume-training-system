@@ -1,4 +1,41 @@
 {
+  "Zume-Icons-Square.eot": {
+    "file": "assets/Zume-Icons-Square.eot",
+    "src": "Zume-Icons-Square.eot"
+  },
+  "Zume-Icons-Square.svg": {
+    "file": "assets/Zume-Icons-Square.svg",
+    "src": "Zume-Icons-Square.svg"
+  },
+  "Zume-Icons-Square.ttf": {
+    "file": "assets/Zume-Icons-Square.ttf",
+    "src": "Zume-Icons-Square.ttf"
+  },
+  "Zume-Icons-Square.woff": {
+    "file": "assets/Zume-Icons-Square.woff",
+    "src": "Zume-Icons-Square.woff"
+  },
+  "flags.webp": {
+    "file": "assets/flags.webp",
+    "src": "flags.webp"
+  },
+  "flags@2x.webp": {
+    "file": "assets/flags@2x.webp",
+    "src": "flags@2x.webp"
+  },
+  "node_modules/intl-tel-input/build/img/flags.webp": {
+    "file": "assets/flags.webp",
+    "src": "node_modules/intl-tel-input/build/img/flags.webp"
+  },
+  "node_modules/intl-tel-input/build/img/flags@2x.webp": {
+    "file": "assets/flags@2x.webp",
+    "src": "node_modules/intl-tel-input/build/img/flags@2x.webp"
+  },
+  "node_modules/intl-tel-input/build/js/utils.js": {
+    "file": "assets/utils-bundle.js",
+    "isDynamicEntry": true,
+    "src": "node_modules/intl-tel-input/build/js/utils.js"
+  },
   "site/assets/fonts/ZumeIconsSquare/fonts/Zume-Icons-Square.eot": {
     "file": "assets/Zume-Icons-Square.eot",
     "src": "site/assets/fonts/ZumeIconsSquare/fonts/Zume-Icons-Square.eot"
@@ -21,6 +58,8 @@
   },
   "site/assets/src/main.js": {
     "assets": [
+      "assets/flags.webp",
+      "assets/flags@2x.webp",
       "assets/Zume-Icons-Square.eot",
       "assets/Zume-Icons-Square.ttf",
       "assets/Zume-Icons-Square.woff",

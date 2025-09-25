@@ -1,3 +1,4 @@
+import 'intl-tel-input/build/css/intlTelInput.css'
 import './scss/styles.scss'
 
 import './js/Base64'
@@ -15,6 +16,7 @@ import './components/public-trainings'
 import './components/progress-circle'
 import './components/host-progress-circle'
 import './components/progress-slider'
+import './components/phone-input'
 
 import './components/wizard/index'
 import './components/dashboard/index'

@@ -48,7 +48,7 @@ export class ProfileForm extends LitElement {
         const name = this.nameInput.value
         const email = this.emailInput.value
         const communications_email = this.preferredEmailInput.value
-        const phone = this.phoneInput.value
+        const phone = this.phoneInput.number
         const preferred_language = this.prefferedLanguageInput.value
 
         const data = {
@@ -230,13 +230,12 @@ export class ProfileForm extends LitElement {
                 <div class="">
                     <label for="phone">${jsObject.translations.phone}</label>
                     <div class="d-flex align-items-center">
-                        <input
-                          class="input"
-                          type="tel"
+                        <phone-input
                           id="phone"
                           name="phone"
                           value=${this.userProfile.phone}
-                        >
+                          style="width: 100%;"
+                        ></phone-input>
                         <button type="button" class="icon-btn f-1 ${this.isSSOUser() ? 'invisible' : ''}" @click=${() =>
                             this._toggleInfo('phone')}>
                             <span class="icon z-icon-info brand-light"></span>

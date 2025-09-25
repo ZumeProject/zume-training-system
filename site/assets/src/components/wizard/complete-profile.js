@@ -89,18 +89,14 @@ export class CompleteProfile extends LitElement {
                 <h2>${this.t.phone_question}</h2>
                 <div class="d-flex align-items-center">
                     <label for="phone" class="visually-hidden">${this.t.phone}</label>
-                    <input
-                        class="input"
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        pattern="\\(?\\+?[\\(\\)\\-\\s0-9]*"
-                        value=""
-                        placeholder=${this.t.phone}
-                        ?required=${!this.skippable}
-                        @input=${this._handleInput}
-                        @invalid=${this._handleInvalid}
-                    >
+                    <phone-input
+                      id="phone"
+                      name="phone"
+                      value=""
+                      ?required=${!this.skippable}
+                      @input=${this._handleInput}
+                      @invalid=${this._handleInvalid}
+                    ></phone-input>
                     <button type="button" class="icon-btn f-1" @click=${() => this._toggleInfo('phone')}>
                         <span class="icon z-icon-info brand-light"></span>
                     </button>
