@@ -22,13 +22,16 @@ export class CompleteProfile extends LitElement {
 
             locations: { attribute: false },
             locationError: { attribute: false },
-            phoneError: { attribute: false },
             city: { attribute: false },
             loading: { attribute: false },
             state: { attribute: false },
             localValue: { attribute: false },
             isInfoOpen: { type: Boolean, attribute: false },
             infoText: { type: String, attribute: false },
+            phoneError: { type: String, attribute: false },
+            phoneNumber: { type: String, attribute: false },
+            errorMessage: { type: String, attribute: false },
+            showError: { type: Boolean, attribute: false },
         }
     }
 
@@ -43,9 +46,11 @@ export class CompleteProfile extends LitElement {
         this.loading = false
         this.localValue = ''
         this.phoneError = ''
+        this.phoneNumber = ''
         this.isInfoOpen = false
         this.infoText = ''
-
+        this.errorMessage = ''
+        this.showError = false
         this._clearLocations = this._clearLocations.bind(this)
         this._handleSuggestions = this._handleSuggestions.bind(this)
         this._debounceCityChange = debounce(getAddressSuggestions(this._handleSuggestions, jsObject.map_key)).bind(this)
@@ -58,7 +63,10 @@ export class CompleteProfile extends LitElement {
 
     updated(properties) {
         if (properties.has('variant')) {
-            this.renderRoot.querySelector('.inputs input').focus()
+            const input = this.renderRoot.querySelector('.inputs input')
+            if (input) {
+                input.focus()
+            }
             this.isInfoOpen = false
         }
         zumeDetachObservers('complete-profile')
@@ -89,22 +97,27 @@ export class CompleteProfile extends LitElement {
                 <h2>${this.t.phone_question}</h2>
                 <div class="d-flex align-items-center">
                     <label for="phone" class="visually-hidden">${this.t.phone}</label>
-                    <input
-                        class="input"
-                        type="tel"
+                    <div class="w-100">
+                      <phone-input
+                        class="w-100"
                         id="phone"
                         name="phone"
-                        pattern="\\(?\\+?[\\(\\)\\-\\s0-9]*"
                         value=""
-                        placeholder=${this.t.phone}
                         ?required=${!this.skippable}
-                        @input=${this._handleInput}
+                        @phone-input=${this._handleInput}
                         @invalid=${this._handleInvalid}
-                    >
+                        .t=${this.t}
+                      ></phone-input>
+                      <div class="input-error" data-state="${this.showError && this.phoneError.length ? '' : 'empty'}" >${this.phoneError}</div>
+                      ${
+                        this.showError && this.phoneError.length ? html`
+                          <div class="input-subtext">${this.t.phone_help}</div>
+                        ` : ''
+                      }
+                    </div>
                     <button type="button" class="icon-btn f-1" @click=${() => this._toggleInfo('phone')}>
                         <span class="icon z-icon-info brand-light"></span>
                     </button>
-                    <div class="input-error" data-state="${this.phoneError.length ? '' : 'empty'}" >${this.phoneError}</div>
                 </div>
             ` : ''}
 
@@ -167,18 +180,30 @@ export class CompleteProfile extends LitElement {
 
     _handleInput(event) {
         this.phoneError = ''
+        this.phoneNumber = event.detail.number
     }
 
     _handleInvalid(event) {
         event.preventDefault()
 
-        this.phoneError = this.t.phone_error
+        this.phoneError = event.detail.message
     }
 
     _handleSubmit(event) {
         event.preventDefault()
+        this.showError = false
 
         const hasLocation = event.srcElement.querySelector('#city')
+
+        if (this.variant === Steps.updatePhone && this.phoneError.length ) {
+          this.showErrorMessage(this.phoneError)
+          return
+        }
+
+        if (this.variant === Steps.updatePhone && this.phoneNumber.length === 0) {
+          this.showErrorMessage(this.t.phone_error)
+          return
+        }
 
         if (hasLocation) {
             this._handleSubmitLocation()
@@ -200,8 +225,9 @@ export class CompleteProfile extends LitElement {
 
         let { name, value } = targetInput
 
-        if (targetInput.type === 'tel') {
-            value = targetInput.value.replace(/[\(\)\-\s]/g, '')
+        if (this.variant === Steps.updatePhone) {
+          name = 'phone'
+          value = this.phoneNumber
         }
 
         this._updateProfile(name, value, () => {
@@ -211,6 +237,14 @@ export class CompleteProfile extends LitElement {
 
     _sendDoneStepEvent() {
         this.dispatchEvent(new CustomEvent( 'done-step', { bubbles: true } ))
+    }
+
+    showErrorMessage(message) {
+        this.showError = true
+        this.errorMessage = message
+        setTimeout(() => {
+            this.errorMessage = ''
+        }, 3000)
     }
 
     _sendProfileUpdateEvent() {
