@@ -222,6 +222,7 @@ class Zume_Training_Wizard extends Zume_Magic_Page
                 'phone_error_too_short' => __( 'Phone number is too short', 'zume' ),
                 'phone_error_too_long' => __( 'Phone number is too long', 'zume' ),
                 'phone_error' => __( 'Phone number is invalid', 'zume' ),
+                'phone_help' => __( 'Check your country code and phone number length', 'zume' ),
                 'form_error' => __( 'Please fix the errors in the form', 'zume' ),
             ],
             'get_a_coach' => [
