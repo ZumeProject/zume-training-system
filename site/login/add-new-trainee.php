@@ -440,8 +440,9 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
                     $options = $field_settings['options'] ?? [];
                     foreach ( $options as $code => $language_data ) : 
                         $display_name = $language_data['enDisplayName'] ?? $language_data['name'] ?? $code;
+                        $selected = ( $code === 'en' ) ? 'selected' : '';
                     ?>
-                        <option value="<?php echo esc_attr( $code ); ?>">
+                        <option value="<?php echo esc_attr( $code ); ?>" <?php echo $selected; ?>>
                             <?php echo esc_html( $display_name ); ?>
                         </option>
                     <?php endforeach; ?>
@@ -593,14 +594,30 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
                     })
                     .done(function(response) {
                         console.log('Trainee submission successful:', response);
+                        console.log('User data:', {
+                            user_id: response.data?.user_id,
+                            user_contact_id: response.data?.user_contact_id,
+                            user_coaching_contact_id: response.data?.user_coaching_contact_id
+                        });
                         
                         // Show success message
                         $('.error-text').removeClass('error-text').addClass('success-text')
                             .html('<div style="color: green; padding: 10px; background: #d4edda; border: 1px solid #c3e6cb; border-radius: 4px;">' + 
                                   jsObject.translations.submit_success + '</div>');
                         
-                        // Reset form
-                        $('.js-create-post')[0].reset();
+                        // Redirect to coaching contact page if user_coaching_contact_id is available
+                        if (response.data && response.data.user_coaching_contact_id) {
+                            const coachingUrl = 'https://zume.training/coaching/contacts/' + response.data.user_coaching_contact_id;
+                            console.log('Redirecting to coaching contact:', coachingUrl);
+                            
+                            // Add a small delay to show the success message before redirecting
+                            setTimeout(function() {
+                                window.location.href = coachingUrl;
+                            }, 1500);
+                        } else {
+                            // Reset form if no redirect is needed
+                            $('.js-create-post')[0].reset();
+                        }
                     })
                     .fail(function(xhr) {
                         console.error('Trainee submission failed:', xhr);
@@ -833,8 +850,11 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
             }
             
         
+            // Initialize coaching_contact_id variable
+            $coach_contact_id = $trainee_data['coach'];
+            
             // connect the user to the coach
-            $coaching_result = Zume_Get_A_Coach_Endpoints::register_request_to_coaching( $user_id, $trainee_data['coach'] );
+            $coaching_result = Zume_Get_A_Coach_Endpoints::register_request_to_coaching( $user_id, $coach_contact_id );
             if ( is_wp_error( $coaching_result ) ) {
                 return new WP_Error(
                     __METHOD__,
@@ -843,14 +863,7 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
                 );
             }
             
-            // Check if coaching_result has the expected structure
-            if ( isset( $coaching_result['coach_request']['ID'] ) ) {
-                $coaching_contact_id = $coaching_result['coach_request']['ID'];
-                update_post_meta( $contact_id, 'coaching_contact_id', $coaching_contact_id );
-            } else {
-                // Log the issue but don't fail the entire process
-                error_log( 'Coaching result structure unexpected: ' . print_r( $coaching_result, true ) );
-            }
+            
 
 
             // Return the new user and contact info
@@ -859,28 +872,16 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
                 'message' => __( 'New trainee created successfully.', 'disciple_tools' ),
                 'data' => [
                     'user_id' => $user_id,
-                    'contact_id' => $contact_id,    
-                    'coaching_contact_id' => $coaching_contact_id,
-                    'email' => $trainee_data['email'],
+                    'user_contact_id' => $contact_id,    
+                    'user_coaching_contact_id' => $coaching_result['ID'],
+                    
                 ]
             ];
         }
        
         
 
-        // Return success response
-        return [
-            'success' => true,
-            'message' => __( 'Trainee information received successfully', 'disciple_tools' ),
-            'data' => [
-                'name' => $trainee_data['name'],
-                'email' => $trainee_data['email'],
-                'phone' => $trainee_data['phone'],
-                'location' => $trainee_data['location'],
-                'preferred_language' => $trainee_data['preferred_language'],
-                'coach' => $trainee_data['coach'],
-            ]
-        ];
+       
     }
 
 }
