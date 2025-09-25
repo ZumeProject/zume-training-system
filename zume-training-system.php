@@ -671,7 +671,7 @@ Thanks!
                     'show_in_table' => 40,
                 ];
             }
-            
+
         }
         return $fields;
     }
@@ -711,7 +711,7 @@ Thanks!
         }
 
         $user_language = zume_get_user_language();
-        
+
         // Get the ref parameter from the registration process
         $ref_source = '';
         if ( isset( $_POST['ref'] ) ) {
@@ -743,12 +743,12 @@ Thanks!
                 ],
             ],
         ];
-        
+
         // Add the ref source to the contact record
         if ( !empty( $ref_source ) ) {
             $fields['registration_source'] = $ref_source;
         }
-        
+
         $contact_location = DT_Posts::update_post( 'contacts', $new_user_contact['ID'], $fields, true, false );
 
         zume_log_insert('training', 'registered', [
@@ -764,7 +764,7 @@ Thanks!
             'label' => $contact_location['location_grid_meta'][0]['label'],
             'grid_id' => $contact_location['location_grid_meta'][0]['grid_id'],
             'time_end' => time(),
-            'language_code' => $user_language['code'] ?? 'en',           
+            'language_code' => $user_language['code'] ?? 'en',
         ], true );
 
         zume_log_insert('system', 'current_level', [
@@ -782,7 +782,7 @@ Thanks!
             'time_end' => time(),
             'language_code' => $user_language['code'] ?? 'en',
         ], true );
-        
+
         if ( !empty( $ref_source ) ) {
             zume_log_insert('system', 'registration_source', [
                 'user_id' => $user->ID,
@@ -798,7 +798,7 @@ Thanks!
                 'label' => $contact_location['location_grid_meta'][0]['label'],
                 'grid_id' => $contact_location['location_grid_meta'][0]['grid_id'],
                 'time_end' => time(),
-                'language_code' => $user_language['code'] ?? 'en',           
+                'language_code' => $user_language['code'] ?? 'en',
             ], true );
         }
 

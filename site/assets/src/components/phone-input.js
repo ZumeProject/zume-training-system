@@ -15,6 +15,7 @@ export class PhoneInput extends LitElement {
   firstUpdated() {
     const input = this.renderRoot.querySelector("#phone");
     this.iti = intlTelInput(input, {
+      initialCountry: jsObject.profile.location.country_code,
       loadUtils: () => new Promise((resolve) => {
         if (window.intlTelInputUtils) {
           resolve({default: window.intlTelInputUtils});
