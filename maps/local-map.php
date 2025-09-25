@@ -1374,17 +1374,21 @@ class Zume_Local_Map extends Zume_Magic_Page
 
         $location_data = $this->get_location_data( $this->parent_grid_id );
         $level = 'a3';
-        if ( (int) $location_data['level'] === -3 ) {
-            $level = 'a0';
-        }
-        if ( (int) $location_data['level'] === 0 ) {
-            $level = 'a1';
-        }
-        if ( (int) $location_data['level'] === 1 ) {
-            $level = 'a2';
-        }
-        if ( (int) $location_data['level'] === 2 ) {
-            $level = 'a3';
+        
+        // Check if location_data is not null before accessing array offsets
+        if ( $location_data && isset( $location_data['level'] ) ) {
+            if ( (int) $location_data['level'] === -3 ) {
+                $level = 'a0';
+            }
+            if ( (int) $location_data['level'] === 0 ) {
+                $level = 'a1';
+            }
+            if ( (int) $location_data['level'] === 1 ) {
+                $level = 'a2';
+            }
+            if ( (int) $location_data['level'] === 2 ) {
+                $level = 'a3';
+            }
         }
 
         $list = Zume_Funnel_App_Heatmap::query_funnel_grid_totals( $level, [ 3, 4, 5, 6 ] );

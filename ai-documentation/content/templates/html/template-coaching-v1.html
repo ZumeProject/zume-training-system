@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{head.title}}</title>
+  <meta name="description" content="{{head.description}}">
+  <meta name="keywords" content="{{head.keywords}}">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&family=Indie+Flower&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+    :root { --brand:#008CC7; --brand-light:#2CACE2; --brand-lighter:#8ACDEA; --brand-fade:#E5F3F9; --white:#FFF; --gray-100:#F8F9FA; --gray-200:#E9ECEF; --gray-300:#DEE2E6; --gray-500:#ADB5BD; --gray-700:#495057; --gray-900:#212529; --black:#000; --error-main:#FF3F3F; --success:#198754; --disabled:#6C757D; --font-title:'Bebas Neue',sans-serif; --font-family:'Poppins',sans-serif; --font-cursive:'Indie Flower',cursive; --s-5:clamp(.25rem,.2vw,.5rem); --s-4:clamp(.5rem,.4vw,.75rem); --s-3:clamp(.75rem,.6vw,1rem); --s-2:clamp(1rem,.8vw,1.25rem); --s-1:clamp(1.25rem,1vw,1.5rem); --s0:clamp(1.5rem,1.5vw,2rem); --s1:clamp(2rem,2vw,2.5rem); --s2:clamp(2.5rem,2.5vw,3rem); --s3:clamp(3rem,3vw,4rem); --s4:clamp(4rem,4vw,5rem); --s5:clamp(5rem,5vw,6rem); --border-radius:8px; }
+    body { font-family:var(--font-family); margin:0; padding:0; color:var(--gray-900); background:var(--white); line-height:1.6; }
+    h1, h2, h3, h4, h5 { font-family:var(--font-title); margin-top:0; }
+    .hero { background:linear-gradient(135deg,var(--brand) 0%,var(--brand-light) 100%); color:var(--white); padding:var(--s4) var(--s1); position:relative; overflow:hidden; text-align:center; }
+    .hero::after { content:''; position:absolute; bottom:-50px; left:0; width:100%; height:100px; background:var(--white); clip-path:ellipse(50% 50% at 50% 50%); z-index:1; }
+    .hero-content { max-width:800px; margin:0 auto; position:relative; z-index:2; }
+    .hero h1 { font-size:clamp(3rem,8vw,5rem); margin-bottom:var(--s0); line-height:1.1; letter-spacing:1px; }
+    .hero p { font-size:clamp(1.1rem,2vw,1.5rem); margin-bottom:var(--s2); max-width:600px; margin-left:auto; margin-right:auto; }
+    .btn { display:inline-block; border-radius:100px; padding:.25em 3em; text-transform:uppercase; font-weight:600; border:2px solid transparent; transition:all 150ms linear; text-align:center; text-decoration:none; font-size:1.1rem; line-height:1.1; cursor:pointer; }
+    .btn-brand { background:var(--brand); color:var(--white); }
+    .btn-brand:hover { background:var(--brand-light); transform:translateY(-3px); box-shadow:0 4px 10px rgba(0,0,0,.15); }
+    .btn-large { padding:.5em 4em; font-size:1.3rem; }
+    .info-section { padding:var(--s3) var(--s1); background:var(--gray-100); position:relative; }
+    .info-container { max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:center; gap:var(--s2); }
+    .info-card { background:var(--white); border-radius:var(--border-radius); padding:var(--s1); flex:1 1 300px; max-width:350px; box-shadow:0 4px 12px rgba(0,0,0,.08); display:flex; flex-direction:column; align-items:center; text-align:center; }
+    .info-card i { font-size:3rem; color:var(--brand); margin-bottom:var(--s-1); }
+    .info-card h3 { margin-bottom:var(--s-2); font-size:1.8rem; }
+    .section-title { text-align:center; font-size:clamp(2.2rem,5vw,3.5rem); margin-bottom:var(--s2); color:var(--brand); }
+    .section-subtitle { text-align:center; font-size:1.2rem; max-width:700px; margin:0 auto var(--s2); color:var(--gray-700); }
+    .faq-section { padding:var(--s3) var(--s1); background:var(--white); }
+    .faq-container { max-width:800px; margin:0 auto; }
+    .faq-item { margin-bottom:var(--s0); border-bottom:2px solid var(--gray-200); padding-bottom:var(--s0); }
+    .faq-question { font-weight:600; font-size:1.3rem; color:var(--brand); cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+    .faq-question::after { content:'\f107'; font-family:'Font Awesome 6 Free'; font-weight:900; transition:transform .3s ease; }
+    .faq-item.active .faq-question::after { transform:rotate(180deg); }
+    .faq-answer { padding-top:var(--s-2); display:none; }
+    .faq-item.active .faq-answer { display:block; }
+    .cta-section { background:var(--brand-fade); padding:var(--s3) var(--s1); text-align:center; }
+    .cta-content { max-width:700px; margin:0 auto; }
+    .cta-section h2 { font-size:clamp(2rem,4vw,3rem); margin-bottom:var(--s0); color:var(--brand); }
+    @media (max-width:768px) {
+      .hero { padding:var(--s2) var(--s0); }
+      .info-card { flex:0 0 100%; }
+    }
+</style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16678073167">
+  </script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-16678073167');
+  </script>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>{{hero.title}}</h1>
+      <p>{{hero.description}}</p>
+      <a href="{{hero.cta_link}}" class="btn btn-large btn-brand">{{hero.cta_text}}</a>
+    </div>
+  </section>
+  
+  <!-- Info Section -->
+  <section class="info-section" id="features">
+    <h2 class="section-title">{{info.title}}</h2>
+    <p class="section-subtitle">{{info.subtitle}}</p>
+    
+    <div class="info-container">
+      <div class="info-card">
+        <i class="fas fa-hands-helping"></i>
+        <h3>{{info.card1.title}}</h3>
+        <p>{{info.card1.description}}</p>
+      </div>
+      
+      <div class="info-card">
+        <i class="fas fa-map-signs"></i>
+        <h3>{{info.card2.title}}</h3>
+        <p>{{info.card2.description}}</p>
+      </div>
+      
+      <div class="info-card">
+        <i class="fas fa-users"></i>
+        <h3>{{info.card3.title}}</h3>
+        <p>{{info.card3.description}}</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <h2 class="section-title">{{faq.title}}</h2>
+    <p class="section-subtitle">{{faq.subtitle}}</p>
+    
+    <div class="faq-container">
+      <div class="faq-item active">
+        <div class="faq-question">{{faq.item1.question}}</div>
+        <div class="faq-answer">
+          <p>{{faq.item1.answer}}</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">{{faq.item2.question}}</div>
+        <div class="faq-answer">
+          <p>{{faq.item2.answer}}</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">{{faq.item3.question}}</div>
+        <div class="faq-answer">
+          <p>{{faq.item3.answer}}</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">{{faq.item4.question}}</div>
+        <div class="faq-answer">
+          <p>{{faq.item4.answer}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="cta-content">
+      <h2>{{cta.title}}</h2>
+      <p>{{cta.description}}</p>
+      <a href="{{cta.cta_link}}" class="btn btn-large btn-brand">{{cta.cta_text}}</a>
+    </div>
+  </section>
+  
+  <script>
+    // FAQ Toggle Functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all FAQ items
+        document.querySelectorAll('.faq-item').forEach(faqItem => {
+          faqItem.classList.remove('active');
+        });
+        
+        // If the clicked item wasn't active, make it active
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Zume Training",
+  "url": "https://zume.training",
+  "logo": "https://zume.training/logo.png",
+  "sameAs": [
+    "https://www.facebook.com/zumemultiplyingdisciples",
+    "https://www.instagram.com/zume.training"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "website": "https://www.facebook.com/zumemultiplyingdisciples",
+    "contactType": "Customer Service"
+  }
+}
+</script>
+</body>
+</html>

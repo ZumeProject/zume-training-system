@@ -1,0 +1,55 @@
+{
+  "head": {
+    "title": "Zúme Training - Coaching",
+    "description": "Free coaching that equips you with practical tools to break spiritual stagnation, make disciples, and live out your faith with confidence and purpose.",
+    "keywords": "Zume, coaching, spiritual growth, discipleship, faith, free coaching, personal development"
+  },
+  "hero": {
+    "title": "MOVE FROM BELIEF TO ACTION",
+    "description": "Free coaching that equips you with practical tools to break spiritual stagnation, make disciples, and live out your faith with confidence and purpose.",
+    "cta_text": "Get Free Coaching",
+    "cta_link": "https://zume.training/en/login?redirect_to=https%3A%2F%2Fzume.training%2Fwizard%2Fget-a-coach&action=register&ref=template-coaching-v1"
+  },
+  "info": {
+    "title": "How Zúme Coaching Helps",
+    "subtitle": "Our free coaching program provides the practical tools, support, and accountability you need to break through spiritual stagnation and live out your faith with confidence.",
+    "card1": {
+      "title": "PERSONALIZED GUIDANCE",
+      "description": "Connect with an experienced coach who understands your journey. Our coaches are trained practitioners who will help you apply simple, reproducible methods in your unique context."
+    },
+    "card2": {
+      "title": "PRACTICAL PATHWAYS",
+      "description": "Gain confidence with clear, actionable steps for spiritual growth and disciple-making. No more wondering where to start or feeling ill-equipped to share your faith with others."
+    },
+    "card3": {
+      "title": "MEANINGFUL COMMUNITY",
+      "description": "Experience the accountability and support you've been missing. Our coaches help you move beyond passive belief to active obedience through consistent engagement and practice."
+    }
+  },
+  "faq": {
+    "title": "Common Questions",
+    "subtitle": "Answers to questions you may have about Zúme Coaching and how it can help you grow in your faith journey.",
+    "item1": {
+      "question": "How much time will this require from me?",
+      "answer": "We understand you have a busy schedule. Coaching sessions are typically 45-60 minutes and can be scheduled at your convenience. Most participants meet with their coach every 2 weeks, making it manageable even with work and family commitments. The practical tools we provide are designed to integrate into your daily life without overwhelming your schedule."
+    },
+    "item2": {
+      "question": "I've tried other programs before. How is Zúme Coaching different?",
+      "answer": "Zúme Coaching isn't just another program to consume—it's a pathway to action. Our approach is practical rather than theoretical, focusing on simple tools you can immediately apply. We pair you with a personal coach who has real-world experience in disciple-making and understands the challenges you're facing. Many people who felt stuck in their faith, just like you, have experienced breakthrough with Zúme's approach to practical discipleship."
+    },
+    "item3": {
+      "question": "I don't feel qualified to disciple others. Will this really help me?",
+      "answer": "Many people feel exactly as you do. Feeling unqualified is actually one of the most common concerns we hear. Zúme Coaching specifically addresses this by providing simple, reproducible tools that build your confidence step by step. Our coaches meet you where you are and help you grow at your own pace. You don't need seminary training or decades of experience—just a willingness to take the next step in your faith journey."
+    },
+    "item4": {
+      "question": "How does the coaching process work?",
+      "answer": "Getting started is simple. After signing up, we'll match you with a coach who speaks your language and, when possible, lives in your geographical area. This coach will contact you to schedule your first session, where you'll discuss your current situation and goals. From there, your coach will guide you through Zúme's practical discipleship tools, provide accountability, answer questions, and help you apply what you're learning in your specific context. All coaching is provided at no cost to you—our coaches volunteer their time because they're passionate about helping others grow."
+    }
+  },
+  "cta": {
+    "title": "Ready to Break Through Your Spiritual Plateau?",
+    "description": "Take a simple step today that can transform your faith journey. Connect with a free coach who will guide you from belief to action, helping you make disciples with confidence.",
+    "cta_text": "Get Your Free Coach",
+    "cta_link": "https://zume.training/en/login?redirect_to=https%3A%2F%2Fzume.training%2Fwizard%2Fget-a-coach&action=register&ref=template-coaching-v1"
+  }
+}

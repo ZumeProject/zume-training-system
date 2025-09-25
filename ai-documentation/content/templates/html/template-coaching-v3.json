@@ -1,0 +1,122 @@
+{
+  "head": {
+    "title": "Zúme Coaching - Transform from Disciple to Disciple-Maker | Free Mentorship",
+    "description": "Olympic athletes have coaches. Disciple-makers need them too. Get free, personalized coaching to multiply disciples and create sustainable movements. Start your transformation today.",
+    "keywords": "Zume coaching, disciple making, free coaching, spiritual mentorship, multiplication movements, Christian coaching, discipleship training"
+  },
+  "hero": {
+    "subtitle": "\"Olympic Athletes Have Coaches. Disciple-Makers Need Them Too.\"",
+    "headline": "Transform from Disciple to Disciple-Maker with Personalized Coaching",
+    "description": "Get free, volunteer-driven mentorship from experienced practitioners who have successfully multiplied disciples. Break through barriers and create sustainable multiplication movements in your unique context.",
+    "cta_primary_text": "GET FREE COACHING",
+    "cta_primary_link": "https://zume.training/en/login?redirect_to=https%3A%2F%2Fzume.training%2Fwizard%2Fget-a-coach&action=register&ref=template-coaching-v3",
+    "cta_secondary_text": "LEARN MORE",
+    "cta_secondary_link": "https://zume.training/en/training&ref=template-coaching-v3"
+  },
+  "chat": {
+    "coach_name_1": "Coach Sarah",
+    "message_1": "\"Let's work on your testimony this week. What's your story?\"",
+    "user_name_1": "You",
+    "message_2": "\"I'm nervous about sharing with my coworkers...\"",
+    "coach_name_2": "Coach Sarah",
+    "message_3": "\"Perfect! Let's practice together. Start with...\"",
+    "user_name_2": "You",
+    "message_4": "\"This is really helping! I feel more confident.\""
+  },
+  "features": {
+    "title": "What Makes Zúme Coaching Different?",
+    "subtitle": "Unlike traditional discipleship programs, we focus on practical implementation and multiplication outcomes",
+    "phase_model_title": "Model Phase",
+    "phase_model_description": "Coach demonstrates disciple-making practices",
+    "phase_assist_title": "Assist Phase",
+    "phase_assist_description": "Hand-holding until you understand basics",
+    "phase_watch_title": "Watch Phase",
+    "phase_watch_description": "Develop full competence through practice",
+    "phase_leave_title": "Leave Phase",
+    "phase_leave_description": "Graduate to become a coach yourself",
+    "card1": {
+      "title": "Personalized Coach Matching",
+      "description": "Get matched with coaches who speak your language, understand your culture, and have relevant ministry experience."
+    },
+    "card2": {
+      "title": "Competency-Based Development",
+      "description": "Focus on developing skills and building competence, not just gaining knowledge. Master all 22 Zúme training elements."
+    },
+    "card3": {
+      "title": "Cultural & Contextual Adaptation",
+      "description": "Learn to adapt biblical principles to your specific cultural and social context for maximum impact."
+    },
+    "card4": {
+      "title": "Volunteer-Driven Authenticity",
+      "description": "Coaches are driven by passion, not profit. Authentic relationships focused on kingdom impact."
+    },
+    "cta_text": "START YOUR TRANSFORMATION",
+    "cta_link": "https://zume.training/en/login?redirect_to=https%3A%2F%2Fzume.training%2Fwizard%2Fget-a-coach&action=register&ref=template-coaching-v3"
+  },
+  "benefits": {
+    "visual_title": "MULTIPLICATION MOVEMENTS",
+    "title": "Proven Results: From Learning to Multiplying",
+    "description": "Zúme Coaching has helped thousands of ordinary believers create extraordinary kingdom impact through systematic skill development and practical application.",
+    "item1": {
+      "title": "Confidence Building:",
+      "description": "Overcome impostor syndrome through guided practice"
+    },
+    "item2": {
+      "title": "Practical Application:",
+      "description": "Transform theory into actual disciple-making conversations"
+    },
+    "item3": {
+      "title": "Multiplication Breakthrough:",
+      "description": "Move from addition to multiplication"
+    },
+    "item4": {
+      "title": "Movement Thinking:",
+      "description": "Create sustainable, expanding networks"
+    },
+    "item5": {
+      "title": "Fourth Generation Impact:",
+      "description": "Successfully train others who train others"
+    }
+  },
+  "testimonials": {
+    "title": "What Our Coaches and Participants Say",
+    "card1": {
+      "organization": "OM International",
+      "quote": "\"Zúme Coaching provides the missing link between learning biblical principles and actually multiplying disciples in real life. Our global teams have seen remarkable transformation.\"",
+      "type": "Global Missions Organization"
+    },
+    "card2": {
+      "organization": "Team Expansion",
+      "quote": "\"The coaching relationship ensures you successfully implement these principles to create sustainable multiplication movements in your unique context.\"",
+      "type": "Worldwide Impact Partner"
+    },
+    "card3": {
+      "organization": "24:14 Network",
+      "quote": "\"A wonderful on-ramp for our coalition. The volunteer coach model ensures sustainability and authenticity while maintaining accessibility.\"",
+      "type": "Church Planting Network"
+    }
+  },
+  "cta": {
+    "title": "Ready to Move from Learning to Multiplying?",
+    "description": "Join thousands of ordinary believers creating extraordinary kingdom impact through personalized coaching",
+    "primary_text": "GET FREE COACHING",
+    "primary_link": "https://zume.training/en/login?redirect_to=https%3A%2F%2Fzume.training%2Fwizard%2Fget-a-coach&action=register&ref=template-coaching-v3",
+    "secondary_text": "LEARN MORE ABOUT ZÚME",
+    "secondary_link": "https://zume.training/en/training&ref=template-coaching-v3"
+  },
+  "schema": {
+    "organization_name": "Zúme Training",
+    "organization_url": "https://zume.training",
+    "organization_logo": "https://zume.training/logo.png",
+    "description": "Transform from disciple to disciple-maker with free, personalized coaching from experienced practitioners",
+    "social_links": [
+      "https://www.facebook.com/zumemultiplyingdisciples",
+      "https://www.instagram.com/zume.training"
+    ],
+    "offer": {
+      "price": "0",
+      "currency": "USD",
+      "description": "Free coaching to multiply disciples and create sustainable movements"
+    }
+  }
+}
