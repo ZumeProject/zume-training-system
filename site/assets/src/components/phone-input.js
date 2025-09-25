@@ -8,12 +8,12 @@ export class PhoneInput extends LitElement {
   static get properties() {
     return {
       value: { type: String },
+      t: { type: Object },
       number: { type: String, reflect: true },
     };
   }
 
   firstUpdated() {
-    this.t = jsObject.translations;
     const input = this.renderRoot.querySelector("#phone");
     this.iti = intlTelInput(input, {
       loadUtils: () => ({ default: intlTelInputUtils }),
@@ -23,10 +23,11 @@ export class PhoneInput extends LitElement {
 
   _handleInput() {
     this.number = this.iti.getNumber();
-    this.dispatchEvent(new CustomEvent('input', { detail: { number: this.number } }));
+    this.dispatchEvent(new CustomEvent('phone-input', { detail: { number: this.number } }));
 
     if ( !this.iti.isValidNumber() ) {
       const error = this.iti.getValidationError();
+      let message = ''
 
       if ( error === 'TOO_SHORT' ) {
         message = this.t.phone_error_too_short;

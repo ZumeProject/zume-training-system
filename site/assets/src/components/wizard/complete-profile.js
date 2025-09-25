@@ -96,6 +96,7 @@ export class CompleteProfile extends LitElement {
                       ?required=${!this.skippable}
                       @input=${this._handleInput}
                       @invalid=${this._handleInvalid}
+                      t=${this.t}
                     ></phone-input>
                     <button type="button" class="icon-btn f-1" @click=${() => this._toggleInfo('phone')}>
                         <span class="icon z-icon-info brand-light"></span>

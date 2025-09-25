@@ -31,11 +31,6 @@
     "file": "assets/flags@2x.webp",
     "src": "node_modules/intl-tel-input/build/img/flags@2x.webp"
   },
-  "node_modules/intl-tel-input/build/js/utils.js": {
-    "file": "assets/utils-bundle.js",
-    "isDynamicEntry": true,
-    "src": "node_modules/intl-tel-input/build/js/utils.js"
-  },
   "site/assets/fonts/ZumeIconsSquare/fonts/Zume-Icons-Square.eot": {
     "file": "assets/Zume-Icons-Square.eot",
     "src": "site/assets/fonts/ZumeIconsSquare/fonts/Zume-Icons-Square.eot"
