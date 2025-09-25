@@ -9,6 +9,7 @@ export class ProfileForm extends LitElement {
             locations: { type: Array, attribute: false },
             infosOpen: { type: Array, attribute: false },
             hasError: { type: Boolean, attribute: false },
+            showError: { type: Boolean, attribute: false },
             phoneError: { type: String, attribute: false },
             errorMessage: { type: String, attribute: false },
         }
@@ -19,6 +20,7 @@ export class ProfileForm extends LitElement {
         this.locations = []
         this.infosOpen = []
         this.hasError = false
+        this.showError = false
         this.phoneError = ''
         this.errorMessage = ''
     }
@@ -50,6 +52,8 @@ export class ProfileForm extends LitElement {
 
     submitProfileForm(e) {
         e.preventDefault()
+
+        this.showError = false
 
         const name = this.nameInput.value
         const email = this.emailInput.value
@@ -160,6 +164,7 @@ export class ProfileForm extends LitElement {
     }
 
     showErrorMessage(message) {
+        this.showError = true
         this.errorMessage = message
         setTimeout(() => {
             this.errorMessage = ''
@@ -258,17 +263,22 @@ export class ProfileForm extends LitElement {
                 <div class="">
                     <label for="phone">${jsObject.translations.phone}</label>
                     <div class="d-flex align-items-center">
-                        <div>
+                        <div class="w-100">
                           <phone-input
+                            class="w-100"
                             id="phone"
                             name="phone"
                             value=${this.userProfile.phone}
-                            style="width: 100%;"
                             .t=${jsObject.wizard_translations.complete_profile}
                             @phone-input=${this._handlePhoneInput}
                             @invalid=${this._handleInvalidPhone}
                           ></phone-input>
-                          <div class="input-error" data-state="${this.phoneError.length ? '' : 'empty'}" >${this.phoneError}</div>
+                          <div class="input-error" data-state="${this.showError && this.phoneError.length ? '' : 'empty'}" >${this.phoneError}</div>
+                          ${
+                            this.showError && this.phoneError.length ? html`
+                              <div class="input-subtext">${jsObject.wizard_translations.complete_profile.phone_help}</div>
+                            ` : ''
+                          }
                         </div>
                         <button type="button" class="icon-btn f-1 ${this.isSSOUser() ? 'invisible' : ''}" @click=${() =>
                             this._toggleInfo('phone')}>

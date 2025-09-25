@@ -63,7 +63,10 @@ export class CompleteProfile extends LitElement {
 
     updated(properties) {
         if (properties.has('variant')) {
-            this.renderRoot.querySelector('.inputs input').focus()
+            const input = this.renderRoot.querySelector('.inputs input')
+            if (input) {
+                input.focus()
+            }
             this.isInfoOpen = false
         }
         zumeDetachObservers('complete-profile')
@@ -105,12 +108,12 @@ export class CompleteProfile extends LitElement {
                         @invalid=${this._handleInvalid}
                         .t=${this.t}
                       ></phone-input>
+                      <div class="input-error" data-state="${this.showError && this.phoneError.length ? '' : 'empty'}" >${this.phoneError}</div>
                       ${
                         this.showError && this.phoneError.length ? html`
                           <div class="input-subtext">${this.t.phone_help}</div>
                         ` : ''
                       }
-                      <div class="input-error" data-state="${this.showError && this.phoneError.length ? '' : 'empty'}" >${this.phoneError}</div>
                     </div>
                     <button type="button" class="icon-btn f-1" @click=${() => this._toggleInfo('phone')}>
                         <span class="icon z-icon-info brand-light"></span>
@@ -223,6 +226,7 @@ export class CompleteProfile extends LitElement {
         let { name, value } = targetInput
 
         if (this.variant === Steps.updatePhone) {
+          name = 'phone'
           value = this.phoneNumber
         }
 
