@@ -207,7 +207,7 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
                 'phone' => [
                     'label' => __( 'Phone', 'disciple_tools' ),
                     'type'  => 'text',
-                    'required' => false,
+                    'required' => true,
                     'placeholder' => __( 'Enter phone number', 'disciple_tools' ),
                     'tile' => 'contact_info',
                     'in_create_form' => true,
@@ -215,7 +215,7 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
                 'location' => [
                     'label' => __( 'Location', 'disciple_tools' ),
                     'type'  => 'text',
-                    'required' => false,
+                    'required' => true,
                     'placeholder' => __( 'Enter location', 'disciple_tools' ),
                     'tile' => 'location_info',
                     'in_create_form' => true,
@@ -223,7 +223,7 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
                 'preferred_language' => [
                     'label' => __( 'Preferred Language', 'disciple_tools' ),
                     'type'  => 'select',
-                    'required' => false,
+                    'required' => true,
                     'options' => zume_languages(),
                     'tile' => 'basic_info',
                     'in_create_form' => true,
@@ -504,10 +504,12 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
                     const name = $('#name').val().trim();
                     const email = $('#email').val().trim();
                     const phone = $('#phone').val().trim();
+                    const location = $('#location').val().trim();
+                    const preferred_language = $('#preferred_language').val();
                     const coach = $('#coach').val();
                     const submitButton = $('.js-create-post-button');
                     
-                    let isValid = name.length > 0 && email.length > 0 && coach.length > 0;
+                    let isValid = name.length > 0 && email.length > 0 && phone.length > 0 && location.length > 0 && preferred_language.length > 0 && coach.length > 0;
                     
                     // Check email format if email is provided
                     if (email.length > 0 && !isValidEmail(email)) {
@@ -557,6 +559,18 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
                     }
                     if (!formData.email.trim()) {
                         alert('Email is required');
+                        return;
+                    }
+                    if (!formData.phone.trim()) {
+                        alert('Phone is required');
+                        return;
+                    }
+                    if (!formData.location.trim()) {
+                        alert('Location is required');
+                        return;
+                    }
+                    if (!formData.preferred_language.trim()) {
+                        alert('Preferred Language is required');
                         return;
                     }
                     if (!formData.coach.trim()) {
@@ -702,7 +716,7 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
      */
     private function handle_trainee_creation( $params ) {
         // Validate required fields
-        $required_fields = [ 'name', 'email', 'coach' ];
+        $required_fields = [ 'name', 'email', 'phone', 'location', 'preferred_language', 'coach' ];
         $missing_fields = [];
         
         foreach ( $required_fields as $field ) {
