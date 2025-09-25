@@ -6,6 +6,7 @@ import path from 'path';
 const config = create_config(
     [
         'site/assets/src/main.js',
+        'site/assets/src/intl-tel-input-utils.js'
     ],
     'site/assets/dist',
     {
@@ -18,7 +19,8 @@ const config = create_config(
 /*                     manualChunks: {
                         lit: 'lit',
                     } */
-                }
+                },
+                format: 'iife'
             }
         },
         css: {

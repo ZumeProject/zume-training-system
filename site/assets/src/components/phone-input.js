@@ -1,6 +1,5 @@
 import { LitElement, html } from 'lit';
 import intlTelInput from 'intl-tel-input';
-import intlTelInputUtils from "intl-tel-input/utils";
 
 
 export class PhoneInput extends LitElement {
@@ -16,7 +15,17 @@ export class PhoneInput extends LitElement {
   firstUpdated() {
     const input = this.renderRoot.querySelector("#phone");
     this.iti = intlTelInput(input, {
-      loadUtils: () => ({ default: intlTelInputUtils }),
+      loadUtils: () => new Promise((resolve) => {
+        if (window.intlTelInputUtils) {
+          resolve({default: window.intlTelInputUtils});
+        } else {
+          const script = document.createElement('script');
+          script.type = 'module'
+          script.src = '/wp-content/plugins/zume-training-system/site/assets/dist/assets/intl-tel-input-utils-bundle.js';
+          script.onload = () => resolve({default: window.intlTelInputUtils});
+          document.body.appendChild(script);
+        }
+      }),
     });
     this.number = this.value;
   }

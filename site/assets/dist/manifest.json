@@ -47,6 +47,11 @@
     "file": "assets/Zume-Icons-Square.woff",
     "src": "site/assets/fonts/ZumeIconsSquare/fonts/Zume-Icons-Square.woff"
   },
+  "site/assets/src/intl-tel-input-utils.js": {
+    "file": "assets/intl-tel-input-utils-bundle.js",
+    "isEntry": true,
+    "src": "site/assets/src/intl-tel-input-utils.js"
+  },
   "site/assets/src/main.css": {
     "file": "assets/main.css",
     "src": "site/assets/src/main.css"
