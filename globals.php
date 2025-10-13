@@ -1621,6 +1621,26 @@ if ( ! function_exists( 'zume_languages' ) ) {
                     '3_circles' => false,
                 ],
             ),
+            'ky' => array(
+                'name' => 'Kyrgyz',
+                'enDisplayName' => 'Kyrgyz',
+                'code' => 'ky',
+                'displayCode' => 'ky',
+                'locale' => 'ky',
+                'weblate' => 'ky',
+                'nativeName' => 'Кыргызча',
+                'rtl' => false,
+                'flag' => '🇰🇬',
+                'population' => 6500000,
+                'enable_flags' => [
+                    'version_4_available' => false,
+                    'translator_enabled' => true,
+                    'version_5_ready' => false,
+                    'pieces_pages' => false,
+                    'course_slides_download' => false,
+                    '3_circles' => false,
+                ],
+            ),
             'ku' => array(
                 'name' => 'Kurdish',
                 'enDisplayName' => 'Kurdish', // sorani
