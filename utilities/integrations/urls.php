@@ -70,6 +70,20 @@ function zume_get_a_coach_wizard_url() {
     $redirect_url = zume_wizard_url( 'coaching' );
     return zume_login_url( 'register', $redirect_url );
 }
+function zume_coach_profile_url( $username_slug, $lang_code = null ) {
+    if ( !$lang_code ) {
+        $lang_code = zume_current_language();
+    }
+    
+    $params = [ 'name' => $username_slug ];
+    
+    if ( $lang_code === 'en' ) {
+        return dt_create_site_url( 'app/coaches', $params );
+    }
+    
+    return dt_create_site_url( $lang_code . '/app/coaches', $params );
+}
+
 function zume_notify_of_future_trainings_url() {
     $redirect_url = zume_wizard_url( 'notify-of-future-trainings' );
     return zume_login_url( 'register', $redirect_url );
