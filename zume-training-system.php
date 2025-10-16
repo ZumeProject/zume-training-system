@@ -870,7 +870,8 @@ Thanks!
         [ 'lang_code' => $lang_code ] = zume_get_url_pieces();
 
         /* Get the path from the redirect url without any lang codes */
-        [ 'path' => $path ] = zume_get_url_pieces( ltrim( $parsed_url['path'], '/' ) );
+        $url_path = $parsed_url['path'] ?? '';
+        [ 'path' => $path ] = zume_get_url_pieces( ltrim( $url_path, '/' ) );
 
         if ( $lang_code !== 'en' ) {
             $path = $lang_code . '/' . $path;
