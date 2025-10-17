@@ -131,6 +131,11 @@ class Zume_Training_Coaches extends Zume_Magic_Page
 
         <div class="container stack-1 | page" style="padding-top: 2rem;">
             
+            <!-- Page Title -->
+            <div class="container-md stack-1 center | py-0">
+                <h1 class="text-center"><?php echo esc_html__( 'Zúme Coach', 'zume' ); ?></h1>
+            </div>
+            
             <!-- Hero Section -->
             <div class="container-md stack-1 center | py-0">
                 <div class="switcher | align-items-center gap-2">
@@ -146,7 +151,6 @@ class Zume_Training_Coaches extends Zume_Magic_Page
             <!-- About Section -->
             <?php if ( !empty( $coach['bio'] ) ) : ?>
                 <div class="container-md stack-1 center | py-0">
-                    <h2 class="text-center"><?php echo esc_html__( 'About', 'zume' ); ?></h2>
                     <div class="card | px-2 py-1">
                         <p><?php echo wp_kses_post( nl2br( $coach['bio'] ) ); ?></p>
                     </div>
