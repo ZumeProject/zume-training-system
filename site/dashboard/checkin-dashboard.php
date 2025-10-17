@@ -90,7 +90,7 @@ class Zume_Training_Checkin_Dashboard extends Zume_Magic_Page
                 'root' => esc_url_raw( rest_url() ),
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'language' => $this->lang_code,
-                'site_url' => get_site_url(),
+                'site_url' => zume_home_url(),
                 'images_url' => esc_url_raw( plugin_dir_url( __DIR__ ) . '/assets/images' ),
                 'rest_endpoint' => esc_url_raw( rest_url() ) . 'zume_system/v1',
                 'user_stage' => zume_get_user_stage(),

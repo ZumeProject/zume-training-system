@@ -101,7 +101,7 @@ class Zume_Training_Dashboard extends Zume_Magic_Page
                 'root' => esc_url_raw( rest_url() ),
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'language' => $this->lang_code,
-                'site_url' => get_site_url(),
+                'site_url' => zume_home_url(),
                 'base_url' => $this->base_url,
                 'map_key' => DT_Mapbox_API::get_key(),
                 'mapbox_selected_id' => 'current',
