@@ -65,13 +65,26 @@ class Zume_Get_A_Coach_Endpoints
     }
 
     /**
+     * Register a trainee to a specific coach in the coaching system.
+     *
+     * @param int $user_id The trainee user ID
+     * @param int $coach_contact_id The coach contact ID in the coaching system
+     * @param array $data Optional additional data (e.g., preferred-language)
+     * @return array|WP_Error The created/updated coaching contact or error
+     */
+    public static function register_trainee_to_coach( $user_id, $coach_contact_id, $data = [] ) {
+        return self::manage_user_coaching( $user_id, $coach_contact_id, $data );
+    }
+
+    /**
      * Creates/updates user's coaching contact.
      *
      * If the coaching contact already exists, this function will update it.
      * If it doesn't already exist it will be created.
      *
-     * @param int $user_id
-     * @param int $coach_id
+     * @param int $user_id The trainee user ID
+     * @param int|null $coach_id The coach contact ID in the coaching system (optional)
+     * @param array $data Optional additional data
      */
     private static function manage_user_coaching( $user_id, $coach_id = null, $data = [] )
     {
@@ -130,12 +143,27 @@ class Zume_Get_A_Coach_Endpoints
             ];
         }
 
+        $coach_user_id = null;
         if ( $coach_id !== null ) {
             $fields['coached_by'] = [
                 'values' => [
                     [ 'value' => $coach_id ],
                 ],
             ];
+
+            // Get the coach user ID from the coach contact ID for assigned_to field
+            global $wpdb;
+            $coach_user_id = $wpdb->get_var(
+                $wpdb->prepare(
+                    "SELECT meta_value FROM zume_3_postmeta WHERE post_id = %d AND meta_key = 'corresponds_to_user'",
+                    $coach_id
+                )
+            );
+
+            // Set assigned_to field if we found the coach user ID
+            if ( $coach_user_id ) {
+                $fields['assigned_to'] = (int) $coach_user_id;
+            }
         }
 
         if ( !empty( $profile['phone'] ) ) {

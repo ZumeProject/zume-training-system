@@ -34,7 +34,13 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
         parent::__construct();
 
         $url = dt_get_url_path();
-        if ( ( $this->root . '/' . $this->type ) === $url ) {
+        [
+            'url_parts' => $url_parts,
+            'lang_code' => $lang_code,
+        ] = zume_get_url_pieces();
+
+        // Check if this is a coaches page request
+        if ( isset( $url_parts[0] ) && $url_parts[0] === $this->root && isset( $url_parts[1] ) && $url_parts[1] === $this->type && ! dt_is_rest() ) {
             // Permission check: Only allow users who are coaches in the coaching system
             
             $current_user_id = get_current_user_id();
@@ -853,22 +859,18 @@ class Zume_Add_New_Trainee extends DT_Magic_Url_Base
             }
 
             // connect the user to the coaching system
+            $coach_contact_id = $trainee_data['coach'];
             
-            $coaching_data = $trainee_data;
-            // Convert preferred_language to preferred-language for API compatibility
+            // Prepare coaching data with preferred language if needed
+            $coaching_data = [];
             if ( !empty( $trainee_data['preferred_language'] ) ) {
                 $coaching_data['preferred-language'] = [
                     'value' => $trainee_data['preferred_language']
                 ];
-                unset( $coaching_data['preferred_language'] );
             }
             
-        
-            // Initialize coaching_contact_id variable
-            $coach_contact_id = $trainee_data['coach'];
-            
-            // connect the user to the coach
-            $coaching_result = Zume_Get_A_Coach_Endpoints::register_request_to_coaching( $user_id, $coach_contact_id );
+            // connect the user to the coach using the new method that properly assigns the coach
+            $coaching_result = Zume_Get_A_Coach_Endpoints::register_trainee_to_coach( $user_id, $coach_contact_id, $coaching_data );
             if ( is_wp_error( $coaching_result ) ) {
                 return new WP_Error(
                     __METHOD__,
