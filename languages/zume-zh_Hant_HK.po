@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2025-07-29 09:25-0600\n"
-"PO-Revision-Date: 2025-11-15 02:03+0000\n"
+"PO-Revision-Date: 2025-11-21 00:03+0000\n"
 "Last-Translator: Philip Yuen <translator@disciple.tools>\n"
 "Language-Team: Chinese (Traditional Han script, Hong Kong) <https://"
 "translate.disciple.tools/projects/zume-training/zume-training-system/"
@@ -2373,7 +2373,7 @@ msgstr "聖經告訴我們﹐禱告給我們機會向那創造我們的神說話
 
 #: site/course/course-content.php:599 site/course/course-content.php:3846
 msgid "Pray the Prayer Cycle for an hour individually"
-msgstr "單獨進行一小時的循環祈禱"
+msgstr "單獨進行一小時的「禱告輪」"
 
 #: site/course/course-content.php:601 site/course/course-content.php:3847
 msgid ""
