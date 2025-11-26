@@ -202,6 +202,8 @@ class Zume_Training_Privacy_Policy extends Zume_Magic_Page
                         <?php echo esc_html__( 'Opt out of any future contact from us.', 'zume' ) ?>
                     </li>
                 </ul>
+
+                <a href="<?php echo esc_url( zume_wizard_url( 'coaching' ) ); ?>" class="btn fit-content"><?php echo esc_html__( 'Contact Us', 'zume' ) ?></a>
             </div>
 
             <hr>
