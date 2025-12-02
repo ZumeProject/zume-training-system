@@ -139,8 +139,7 @@ class Zume_Training_Delete_Data extends Zume_Magic_Page
                     $request_type_label = __( 'Delete My Personal Data', 'zume' );
                 }
 
-                //$to = 'awheeler@teamexpansion.org';
-                $to = 'nathinabob@gmail.com';
+                $to = dt_get_option( 'zume_training_delete_data_email' );
                 $subject = sprintf( __( 'Data Request from %s', 'zume' ), $name );
                 $message = sprintf(
                     __( "Data Request Submission:\n\nName: %1\$s\nEmail: %2\$s\nRequest Type: %3\$s\n\nAdditional Information:\n%4\$s", 'zume' ),
