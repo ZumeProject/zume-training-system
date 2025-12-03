@@ -1,0 +1,60 @@
+# Copyright (C) 2025 
+# This file is distributed under the same license as the Zúme - Training System plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Zúme - Training System 0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/zume-training-system\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-12-03T14:46:02+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: zume-training-system\n"
+
+#. Plugin Name of the plugin
+#: zume-training-system.php
+msgid "Zúme - Training System"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: zume-training-system.php
+msgid "https://github.com/ZumeProject/zume-training-system"
+msgstr ""
+
+#. Description of the plugin
+#: zume-training-system.php
+msgid "Zume Training System"
+msgstr ""
+
+#: appearance/menu-maintenance.php:36
+msgid "Maintenance"
+msgstr ""
+
+#: appearance/menu-maintenance.php:47
+msgid "Join keys have been successfully repaired!"
+msgstr ""
+
+#: appearance/menu-maintenance.php:49
+msgid "An error occurred while repairing join keys."
+msgstr ""
+
+#: appearance/menu-maintenance.php:54
+msgid "Zúme Training: Maintenance"
+msgstr ""
+
+#: appearance/menu-maintenance.php:58
+#: appearance/menu-maintenance.php:65
+msgid "Repair Join Keys"
+msgstr ""
+
+#: appearance/menu-maintenance.php:59
+msgid "This utility will check all plans and ensure they have a join_key. If a plan is missing a join_key or has an empty one, a new key will be generated and assigned."
+msgstr ""
+
+#: appearance/menu-maintenance.php:64
+msgid "Are you sure you want to repair join keys for all plans?"
+msgstr ""
