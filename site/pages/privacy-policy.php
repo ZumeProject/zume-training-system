@@ -203,7 +203,7 @@ class Zume_Training_Privacy_Policy extends Zume_Magic_Page
                     </li>
                 </ul>
 
-                <a href="<?php echo esc_url( zume_url( 'delete-data' ) ); ?>" class="btn fit-content"><?php echo esc_html__( 'Contact Us', 'zume' ) ?></a>
+                <a href="<?php echo esc_url( zume_url( 'contact-us' ) ); ?>" class="btn fit-content"><?php echo esc_html__( 'Contact Us', 'zume' ) ?></a>
             </div>
 
             <hr>
