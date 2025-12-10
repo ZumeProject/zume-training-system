@@ -182,7 +182,7 @@ class Zume_Training_Privacy_Policy extends Zume_Magic_Page
             <div class="stack">
                 <h3 class="brand-light"><?php esc_html_e( 'Your Access to and Control Over Information.', 'zume' ) ?></h3>
                 <p>
-                    <?php esc_html_e( 'You can do the following at any time by contacting us via our "Get a Coach" form and choosing "Technical Assistance" from your user dashboard.', 'zume' ) ?>
+                    <?php esc_html_e( 'You can do the following at any time by contacting us via our "Contact Us" page.', 'zume' ) ?>
                 </p>
 
                 <ul class="bullets">
@@ -202,6 +202,8 @@ class Zume_Training_Privacy_Policy extends Zume_Magic_Page
                         <?php echo esc_html__( 'Opt out of any future contact from us.', 'zume' ) ?>
                     </li>
                 </ul>
+
+                <a href="<?php echo esc_url( zume_url( 'contact-us' ) ); ?>" class="btn fit-content"><?php echo esc_html__( 'Contact Us', 'zume' ) ?></a>
             </div>
 
             <hr>
