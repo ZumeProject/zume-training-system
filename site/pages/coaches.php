@@ -276,3 +276,4 @@ class Zume_Training_Coaches extends Zume_Magic_Page
 }
 Zume_Training_Coaches::instance();
 
+

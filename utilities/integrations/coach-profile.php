@@ -192,3 +192,4 @@ function zume_validate_coach_slug( $slug, $exclude_user_id = 0 ) {
     
     return [ 'valid' => true, 'message' => 'Slug is valid' ];
 }
+
