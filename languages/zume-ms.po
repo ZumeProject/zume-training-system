@@ -2,23 +2,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zúme - Training System\n"
 "POT-Creation-Date: 2025-07-29 09:25-0600\n"
-"PO-Revision-Date: 2025-08-12 17:03+0000\n"
-"Last-Translator: LEONG CHEE CHOONG <jonyleong2022@gmail.com>\n"
-"Language-Team: Malay <https://translate.disciple.tools/projects/"
-"zume-training/zume-training-system/ms/>\n"
+"PO-Revision-Date: 2026-02-26 10:05+0000\n"
+"Last-Translator: Paul Ng Xin Yi <translator@disciple.tools>\n"
+"Language-Team: Malay <https://translate.disciple.tools/projects/zume-"
+"training/zume-training-system/ms/>\n"
 "Language: ms\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.12.2\n"
+"X-Generator: Weblate 5.16\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: zume-training-system.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: "
-"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,"
-"2\n"
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
@@ -51,12 +50,12 @@ msgstr "Tentang"
 #: site/pages/home.php:118 site/parts/checkin-nav.php:13
 #: site/parts/mobile-nav.php:7 site/parts/nav.php:19
 msgid "Dashboard"
-msgstr ""
+msgstr "Papan Pemuka"
 
 #: 404.php:99 site/dashboard/dashboard.php:272 site/parts/footer.php:25
 #: site/parts/footer.php:28
 msgid "Launch Course"
-msgstr ""
+msgstr "Lancarkan Kursus"
 
 #: 404.php:100 site/dashboard/dashboard.php:277 site/pages/resources.php:145
 #: site/pages/resources.php:147 site/pages/resources.php:162
@@ -66,7 +65,7 @@ msgstr ""
 #: utilities/integrations/replace-placeholder.php:111
 #: utilities/integrations/replace-placeholder.php:112
 msgid "10 Session Course"
-msgstr ""
+msgstr "10 Sesi Latihan"
 
 #: 404.php:101 site/dashboard/dashboard.php:278 site/pages/resources.php:150
 #: site/pages/resources.php:166 site/pages/resources.php:196
@@ -75,11 +74,11 @@ msgstr ""
 #: utilities/integrations/replace-placeholder.php:115
 #: utilities/integrations/replace-placeholder.php:116
 msgid "20 Session Course"
-msgstr ""
+msgstr "20 Sesi Latihan"
 
 #: 404.php:102 site/parts/footer.php:31
 msgid "3 Day Intensive Course"
-msgstr ""
+msgstr "Kursus Intensif 3 Hari"
 
 #: appearance/style-override/navigation.php:75
 #: appearance/style-override/navigation.php:79
@@ -88,75 +87,77 @@ msgstr ""
 #: site/dashboard/dashboard.php:309 site/pages/training.php:29
 #: site/parts/footer.php:11 site/parts/mobile-nav.php:27 site/parts/nav.php:25
 msgid "Training"
-msgstr ""
+msgstr "Latihan"
 
 #: appearance/style-override/navigation.php:85 site/pages/home.php:220
 msgid "How it Works"
-msgstr ""
+msgstr "Bagaimana ia Berfungsi"
 
 #: appearance/style-override/navigation.php:91
 msgid "Download Guidebook"
-msgstr ""
+msgstr "Muat Turun Buku Panduan"
 
 #: appearance/style-override/navigation.php:97
 msgid "FAQs"
-msgstr ""
+msgstr "Soalan Lazim"
 
 #: appearance/style-override/navigation.php:112
 msgid "My Zúme"
-msgstr ""
+msgstr "Zúme Saya"
 
 #: appearance/style-override/navigation.php:117
 msgid "Contacts"
-msgstr ""
+msgstr "Kenalan"
 
 #: appearance/style-override/navigation.php:123
 msgid "Groups"
-msgstr ""
+msgstr "Kumpulan"
 
 #: appearance/style-override/navigation.php:129
 msgid "Trainings"
-msgstr ""
+msgstr "Latihan"
 
 #: appearance/style-override/navigation.php:135
 msgid "Metrics"
-msgstr ""
+msgstr "Metrik"
 
 #: appearance/style-override/navigation.php:143 site/pages/follow-jesus.php:227
 msgid "Community"
-msgstr ""
+msgstr "Komuniti"
 
 #: appearance/style-override/navigation.php:148 maps/local-map.php:962
 #: maps/local-map.php:1073
 msgid "Vision"
-msgstr ""
+msgstr "Visi"
 
 #: appearance/style-override/navigation.php:154
 msgid "Stories"
-msgstr ""
+msgstr "Cerita"
 
 #: appearance/style-override/navigation.php:160 maps/local-map.php:943
 #: maps/local-map.php:972
 msgid "Global Map"
-msgstr ""
+msgstr "Peta Dunia"
 
 #: globals.php:2355 globals.php:2358 site/course/course-content.php:87
 #: site/course/course-content.php:102 site/course/course-content.php:111
 #: site/course/course-content.php:372 site/course/course-content.php:3332
 #: site/course/course-content.php:3350 site/pages/follow-jesus.php:177
 msgid "God Uses Ordinary People"
-msgstr ""
+msgstr "Tuhan Guna Orang Biasa"
 
 #: globals.php:2357 site/pages/follow-jesus.php:178
 msgid ""
 "You'll see how God uses ordinary people doing simple things to make a big "
 "impact."
 msgstr ""
+"Anda akan melihat bagaimana Tuhan menggunakan orang biasa yang melakukan "
+"perkara mudah untuk memberikan impak yang besar."
 
 #: globals.php:2368 site/course/course-content.php:3333
 #: site/course/course-content.php:3351 site/pages/follow-jesus.php:181
 msgid "Simple Definition of Disciple and Church"
-msgstr ""
+msgstr "Definisi Ringkas bagi Murid dan Gereja"
 
 #: globals.php:2370 site/course/course-content.php:157
 #: site/pages/follow-jesus.php:182
@@ -164,42 +165,48 @@ msgid ""
 "Discover the essence of being a disciple, making a disciple, and what is the "
 "church."
 msgstr ""
+"Temui intipati sebenar tentang apa itu menjadi seorang murid, cara "
+"pemuridan, dan apakah itu gereja."
 
 #: globals.php:2371 site/course/course-content.php:147
 #: site/course/course-content.php:156
 msgid "Disciples and the Church"
-msgstr ""
+msgstr "Murid dan Gereja"
 
 #: globals.php:2381 site/course/course-content.php:3334
 #: site/course/course-content.php:3352 site/pages/follow-jesus.php:203
 msgid "Spiritual Breathing is Hearing and Obeying God"
-msgstr ""
+msgstr "Pernafasan Rohani adalah Mendengar dan Mentaati Tuhan"
 
 #: globals.php:2383 site/pages/follow-jesus.php:204
 msgid "Being a disciple means we hear from God and we obey God."
 msgstr ""
+"Menjadi seorang murid bermaksud kita mendengar daripada Tuhan dan kita "
+"mentaati Tuhan."
 
 #: globals.php:2384 site/course/course-content.php:196
 #: site/course/course-content.php:205
 msgid "Hearing and Obeying God"
-msgstr ""
+msgstr "Mendengar dan Mentaati Tuhan"
 
 #: globals.php:2394 globals.php:2397
 msgid "S.O.A.P.S. Bible Study"
-msgstr ""
+msgstr "S.O.A.P.S. Kajian Alkitab"
 
 #: globals.php:2396 site/pages/follow-jesus.php:219
 msgid ""
 "A tool for daily Bible study that helps you understand, obey, and share "
 "God’s Word."
 msgstr ""
+"Satu alat untuk kajian Alkitab harian yang membantu anda memahami, mentaati, "
+"dan berkongsi Firman Tuhan."
 
 #: globals.php:2407 globals.php:2410 site/course/course-content.php:94
 #: site/course/course-content.php:307 site/course/course-content.php:316
 #: site/course/course-content.php:379 site/course/course-content.php:3581
 #: site/course/course-content.php:3597 site/pages/follow-jesus.php:233
 msgid "Accountability Groups"
-msgstr ""
+msgstr "Kumpulan Pertanggungjawaban"
 
 #: globals.php:2409 site/pages/follow-jesus.php:234
 msgid ""
@@ -207,36 +214,43 @@ msgid ""
 "encourage each other in areas that are going well and reveal areas that need "
 "correction."
 msgstr ""
+"Satu alat untuk dua atau tiga orang yang sama jantina untuk bertemu setiap "
+"minggu bagi memberi sokongan dalam perkara yang berjalan lancar dan "
+"mendedahkan bahagian yang memerlukan pembetulan."
 
 #: globals.php:2420 site/pages/follow-jesus.php:197
 msgid "Consumer vs Producer Lifestyle"
-msgstr ""
+msgstr "Gaya Hidup Pengguna dan Pengeluar"
 
 #: globals.php:2422 site/pages/follow-jesus.php:198
 msgid ""
 "You'll discover the four main ways God makes everyday followers more like "
 "Jesus."
 msgstr ""
+"Anda akan menemui empat cara utama bagaimana Tuhan membentuk pengikut biasa "
+"menjadi lebih menyerupai Yesus."
 
 #: globals.php:2423
 msgid "Producer not Consumer"
-msgstr ""
+msgstr "Pengeluar, bukan Pengguna"
 
 #: globals.php:2433 globals.php:2436 site/pages/follow-jesus.php:207
 msgid "How to Spend an Hour in Prayer"
-msgstr ""
+msgstr "Cara Meluangkan Satu Jam dalam Doa"
 
 #: globals.php:2435 site/pages/follow-jesus.php:208
 msgid "See how easy it is to spend an hour in prayer."
-msgstr ""
+msgstr "Lihat betapa mudahnya untuk meluangkan masa satu jam dalam doa."
 
 #: globals.php:2446 site/pages/follow-jesus.php:294
 msgid "Relational Stewardship – List of 100"
-msgstr ""
+msgstr "Penatalayanan Hubungan – Senarai 100"
 
 #: globals.php:2448 site/pages/follow-jesus.php:295
 msgid "A tool designed to help you be a good steward of your relationships."
 msgstr ""
+"Satu alat yang direka untuk membantu anda menjadi penatalayan yang baik bagi "
+"hubungan-hubungan anda."
 
 #: globals.php:2449 site/activities/list-of-100-printable.php:22
 #: site/activities/list-of-100-printable.php:90
@@ -248,37 +262,42 @@ msgstr ""
 #: utilities/integrations/replace-placeholder.php:99
 #: utilities/integrations/replace-placeholder.php:100
 msgid "List of 100"
-msgstr ""
+msgstr "Senarai 100"
 
 #: globals.php:2459 globals.php:2462 site/course/course-content.php:832
 #: site/course/course-content.php:845 site/course/course-content.php:854
 #: site/course/course-content.php:3977 site/course/course-content.php:3996
 msgid "Spiritual Economy"
-msgstr ""
+msgstr "Ekonomi Rohani"
 
 #: globals.php:2461 site/pages/follow-jesus.php:253
 msgid ""
 "Learn how God's economy is different from the world's. God invests more in "
 "those who are faithful with what they've already been given."
 msgstr ""
+"Pelajari bagaimana ekonomi Tuhan sangat berbeza daripada ekonomi dunia. "
+"Tuhan melabur lebih banyak kepada mereka yang setia dengan apa yang telah "
+"diberikan kepada mereka."
 
 #: globals.php:2472 site/pages/follow-jesus.php:298
 msgid "The Gospel and How to Share It"
-msgstr ""
+msgstr "Injil dan Cara Mengongsikannya"
 
 #: globals.php:2474 site/pages/follow-jesus.php:299
 msgid ""
 "Learn a way to share God’s Good News from the beginning of humanity all the "
 "way to the end of this age."
 msgstr ""
+"Pelajari satu cara untuk mengongsikan Berita Baik Tuhan bermula dari "
+"penciptaan manusia sehinggalah ke akhir zaman."
 
 #: globals.php:2475
 msgid "Sharing God‘s Story"
-msgstr ""
+msgstr "Berkongsi Kisah Tuhan"
 
 #: globals.php:2485 site/pages/follow-jesus.php:245
 msgid "Baptism and How To Do It"
-msgstr ""
+msgstr "Pembaptisan dan Cara Melakukannya"
 
 #: globals.php:2487 site/pages/follow-jesus.php:246
 msgid ""
@@ -286,33 +305,38 @@ msgid ""
 "name of the Father and of the Son and of the Holy Spirit…” Learn how to put "
 "this into practice."
 msgstr ""
+"Yesus berkata, “Pergilah dan jadikanlah semua bangsa murid-Ku, BAPTISLAH "
+"mereka dalam nama Bapa, Anak, dan Roh Kudus…” Pelajarilah bagaimana untuk "
+"mempraktikkan perintah ini."
 
 #: globals.php:2488 site/course/course-content.php:837
 #: site/course/course-content.php:1043 site/course/course-content.php:1052
 #: site/course/course-content.php:1118 site/course/course-content.php:4252
 #: site/course/course-content.php:4269
 msgid "Baptism"
-msgstr ""
+msgstr "Pembaptisan"
 
 #: globals.php:2498 site/pages/follow-jesus.php:302
 msgid "Prepare Your 3-Minute Testimony"
-msgstr ""
+msgstr "Sediakan Kesaksian 3 Minit anda"
 
 #: globals.php:2500 site/pages/follow-jesus.php:303
 msgid ""
 "Learn how to share your testimony in three minutes by sharing how Jesus has "
 "impacted your life."
 msgstr ""
+"Pelajari cara untuk mengongsikan kesaksian anda dalam masa tiga minit dengan "
+"menceritakan bagaimana Yesus telah memberikan impak dalam hidup anda."
 
 #: globals.php:2501
 msgid "3-Minute Testimony"
-msgstr ""
+msgstr "Kesaksian 3 Minit"
 
 #: globals.php:2511 site/course/course-content.php:1237
 #: site/course/course-content.php:1518 site/course/course-content.php:3978
 #: site/course/course-content.php:3997 site/pages/follow-jesus.php:185
 msgid "Vision Casting the Greatest Blessing"
-msgstr ""
+msgstr "Visi: Berkat Terbesar"
 
 #: globals.php:2513 site/course/course-content.php:1318
 #: site/pages/follow-jesus.php:186
@@ -320,91 +344,103 @@ msgid ""
 "Learn a simple pattern of making not just one follower of Jesus but entire "
 "spiritual families who multiply for generations to come."
 msgstr ""
+"Pelajari satu corak mudah untuk melahirkan bukan sekadar seorang pengikut "
+"Yesus, tetapi seluruh keluarga rohani yang akan melipatganda untuk generasi-"
+"generasi akan datang."
 
 #: globals.php:2514
 msgid "Great, Greater, and Greatest Blessing"
-msgstr ""
+msgstr "Berkat Besar, Lebih Besar, dan Terbesar"
 
 #: globals.php:2524 site/pages/follow-jesus.php:275
 msgid "Duckling Discipleship – Leading Immediately"
-msgstr ""
+msgstr "Pemuridan Anak Itik – Memimpin Dengan Segera"
 
 #: globals.php:2526
 msgid "Learn what ducklings have to do with disciple-making."
-msgstr ""
+msgstr "Pelajari apa kaitannya anak itik dengan pemuridan."
 
 #: globals.php:2527 site/course/course-content.php:1238
 #: site/course/course-content.php:1357 site/course/course-content.php:1366
 #: site/course/course-content.php:1519 site/course/course-content.php:4529
 #: site/course/course-content.php:4550
 msgid "Duckling Discipleship"
-msgstr ""
+msgstr "Pemuridan Anak Itik"
 
 #: globals.php:2537 globals.php:2540 site/course/course-content.php:1239
 #: site/course/course-content.php:1405 site/course/course-content.php:1414
 #: site/course/course-content.php:1520 site/course/course-content.php:4530
 #: site/course/course-content.php:4551 site/pages/follow-jesus.php:256
 msgid "Eyes to See Where the Kingdom Isn’t"
-msgstr ""
+msgstr "Mata untuk Melihat Di Mana Kerajaan Tuhan Belum Hadir"
 
 #: globals.php:2539 site/pages/follow-jesus.php:257
 msgid ""
 "Begin to see where God’s Kingdom isn’t. These are usually the places where "
 "God wants to work the most."
 msgstr ""
+"Mulailah melihat di mana Kerajaan Tuhan belum hadir. Tempat-tempat inilah "
+"yang biasanya menjadi tumpuan di mana Tuhan paling ingin bekerja."
 
 #: globals.php:2550 site/pages/follow-jesus.php:241
 msgid "The Lord’s Supper and How To Lead It"
-msgstr ""
+msgstr "Perjamuan Tuhan dan Cara Memimpinnya"
 
 #: globals.php:2552
 msgid ""
 "It’s a simple way to celebrate our intimate connection and ongoing "
 "relationship with Jesus. Learn a simple way to celebrate."
 msgstr ""
+"Ia adalah cara yang ringkas untuk merayakan hubungan akrab dan berterusan "
+"kita dengan Yesus. Pelajarilah cara yang mudah untuk merayakannya."
 
 #: globals.php:2553 site/activities/activities.php:258
 #: site/course/course-content.php:1244 site/course/course-content.php:1455
 #: site/course/course-content.php:1464 site/course/course-content.php:1525
 #: site/course/course-content.php:4534 site/course/course-content.php:4555
 msgid "The Lord’s Supper"
-msgstr ""
+msgstr "Perjamuan Tuhan"
 
 #: globals.php:2563 site/pages/follow-jesus.php:313
 msgid "Prayer Walking and How To Do It"
-msgstr ""
+msgstr "Doa Sambil Berjalan dan Cara Melakukannya"
 
 #: globals.php:2565
 msgid ""
 "It‘s a simple way to obey God’s command to pray for others. And it‘s just "
 "what it sounds like — praying to God while walking around!"
 msgstr ""
+"Ia adalah cara yang ringkas untuk mentaati perintah Tuhan supaya mendoakan "
+"orang lain. Ia sama seperti namanya — berdoa kepada Tuhan sambil berjalan-"
+"jalan!"
 
 #: globals.php:2566 site/activities/activities.php:327
 #: site/course/course-content.php:1636 site/course/course-content.php:1644
 #: site/course/course-content.php:1653 site/course/course-content.php:1759
 #: site/course/course-content.php:4661 site/course/course-content.php:4674
 msgid "Prayer Walking"
-msgstr ""
+msgstr "Doa Sambil Berjalan"
 
 #: globals.php:2576 site/pages/follow-jesus.php:309
 msgid "A Person of Peace and How To Find One"
-msgstr ""
+msgstr "Orang Damai Sejahtera dan Cara Mencari Mereka"
 
 #: globals.php:2578
 msgid ""
 "Learn who a person of peace might be and how to know when you‘ve found one."
 msgstr ""
+"Pelajari siapa yang mungkin menjadi Orang Damai Sejahtera dan bagaimana "
+"untuk mengetahui apabila anda telah menemui mereka."
 
 #: globals.php:2579 site/course/course-content.php:1631
 #: site/course/course-content.php:1676 site/course/course-content.php:1685
 #: site/course/course-content.php:4777 site/course/course-content.php:4797
 msgid "Person of Peace"
-msgstr ""
+msgstr "Orang Damai"
 
 #: globals.php:2589 site/pages/follow-jesus.php:222
 msgid "Faithfulness is Better Than Knowledge"
-msgstr ""
+msgstr "Ketaatan Lebih Baik Daripada Pengetahuan"
 
 #: globals.php:2591
 msgid ""
