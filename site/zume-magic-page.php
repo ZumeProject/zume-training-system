@@ -4,7 +4,75 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 class Zume_Magic_Page extends DT_Magic_Url_Base {
 
     public function __construct() {
-        parent::__construct();
+        /**
+         * Override DT_Magic_Url_Base constructor to allow keyless public map pages.
+         *
+         * DT theme v1.79+ redirects to the expired-link page whenever post_id is
+         * empty after determine_post_id(). For Zume's public map pages (e.g.
+         * /zume_app/last100_hours) there is intentionally no public_key in the URL,
+         * so post_id will always be empty. We replicate the base constructor here,
+         * replacing the unconditional empty-post_id redirect with a conditional one:
+         * only redirect when a public_key was supplied but resolved to no post_id
+         * (i.e. the key is genuinely invalid/expired). When no public_key is present
+         * at all, allow the page to continue loading normally.
+         *
+         * If DT_Magic_Url_Base::__construct() gains new hooks in a future theme
+         * upgrade, review this override for parity.
+         */
+
+        // check for an instance_id in the magic_link url
+        $id = $this->fetch_incoming_link_param( 'id' );
+        $this->instance_id = ( ! empty( $id ) ) ? $id : '';
+
+        // register type
+        $this->magic = new DT_Magic_URL( $this->root );
+        add_filter( 'dt_magic_url_register_types', [ $this, 'dt_magic_url_register_types' ], 10, 1 );
+        // register REST and REST access
+        add_filter( 'dt_allow_rest_access', [ $this, 'authorize_url' ], 10, 1 );
+        // add send and tiles
+        add_filter( 'dt_settings_apps_list', [ $this, 'dt_settings_apps_list' ], 10, 1 );
+
+        // fail if not valid url
+        $this->parts = $this->magic->parse_url_parts();
+        if ( ! $this->parts ) {
+            return;
+        }
+
+        // fail if does not match type
+        if ( $this->type !== $this->parts['type'] ) {
+            return;
+        }
+
+        $this->magic->determine_post_id( $this->parts );
+
+        // Only redirect when a public_key was supplied but could not be resolved.
+        // Keyless public pages (no public_key) intentionally have no post_id and
+        // must be allowed through.
+        if ( ! empty( $this->parts['public_key'] ) && empty( $this->parts['post_id'] ) ) {
+            $this->magic->redirect_to_expired_landing_page();
+        }
+
+        // Wider callout to ensure link is still valid (keyed flows only).
+        if ( apply_filters( 'dt_magic_link_continue', true, $this->parts ) === false ) {
+            $this->magic->redirect_to_expired_landing_page();
+        }
+
+        // register url and access
+        add_filter( 'dt_blank_access', [ $this, '_has_access' ] );
+        add_filter( 'dt_templates_for_urls', [ $this, 'register_url' ], 199, 1 );
+        add_filter( 'dt_allow_non_login_access', function () {
+            return true;
+        }, 100, 1 );
+        add_filter( 'dt_blank_title', [ $this, 'page_tab_title' ] );
+        add_action( 'wp_print_scripts', [ $this, 'print_scripts' ], 5 );
+        add_action( 'wp_print_footer_scripts', [ $this, 'print_scripts' ], 5 );
+        add_action( 'wp_print_styles', [ $this, 'print_styles' ], 1500 );
+
+        add_action( 'dt_blank_head', [ $this, '_header' ] );
+        add_action( 'dt_blank_footer', [ $this, '_footer' ] );
+
+        // determine language locale to be adopted
+        $this->determine_language_locale( $this->parts );
 
         add_filter( 'dt_custom_dir_attr_override', '__return_true' );
     }
