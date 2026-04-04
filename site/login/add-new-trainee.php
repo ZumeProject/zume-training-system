@@ -11,7 +11,7 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
  * audience. I.E public maps or statistics on the DT system.
  * @see https://zume.vision/maps for a public map link example
  */
-class Zume_Add_New_Trainee extends DT_Magic_Url_Base
+class Zume_Add_New_Trainee extends Zume_Magic_Page
 {
     public $magic = false;
     public $parts = false;

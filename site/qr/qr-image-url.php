@@ -20,7 +20,7 @@ function create_qr_url( $data, $options = [] ) {
 }
 
 
-class DT_Make_QR extends DT_Magic_Url_Base
+class DT_Make_QR extends Zume_Magic_Page
 {
     public $magic = false;
     public $parts = false;
